@@ -255,19 +255,19 @@ class Activity {
 
   Activity.fromJson(core.Map _json) {
     if (_json.containsKey('activityTime')) {
-      activityTime = _json['activityTime'];
+      activityTime = _json['activityTime'] as core.String;
     }
     if (_json.containsKey('activityType')) {
-      activityType = _json['activityType'];
+      activityType = _json['activityType'] as core.String;
     }
     if (_json.containsKey('appview')) {
       appview = ScreenviewData.fromJson(_json['appview']);
     }
     if (_json.containsKey('campaign')) {
-      campaign = _json['campaign'];
+      campaign = _json['campaign'] as core.String;
     }
     if (_json.containsKey('channelGrouping')) {
-      channelGrouping = _json['channelGrouping'];
+      channelGrouping = _json['channelGrouping'] as core.String;
     }
     if (_json.containsKey('customDimension')) {
       customDimension = (_json['customDimension'] as core.List)
@@ -284,22 +284,22 @@ class Activity {
       goals = GoalSetData.fromJson(_json['goals']);
     }
     if (_json.containsKey('hostname')) {
-      hostname = _json['hostname'];
+      hostname = _json['hostname'] as core.String;
     }
     if (_json.containsKey('keyword')) {
-      keyword = _json['keyword'];
+      keyword = _json['keyword'] as core.String;
     }
     if (_json.containsKey('landingPagePath')) {
-      landingPagePath = _json['landingPagePath'];
+      landingPagePath = _json['landingPagePath'] as core.String;
     }
     if (_json.containsKey('medium')) {
-      medium = _json['medium'];
+      medium = _json['medium'] as core.String;
     }
     if (_json.containsKey('pageview')) {
       pageview = PageviewData.fromJson(_json['pageview']);
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
   }
 
@@ -392,10 +392,10 @@ class Cohort {
       dateRange = DateRange.fromJson(_json['dateRange']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -453,7 +453,7 @@ class CohortGroup {
           .toList();
     }
     if (_json.containsKey('lifetimeValue')) {
-      lifetimeValue = _json['lifetimeValue'];
+      lifetimeValue = _json['lifetimeValue'] as core.bool;
     }
   }
 
@@ -481,7 +481,9 @@ class ColumnHeader {
 
   ColumnHeader.fromJson(core.Map _json) {
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('metricHeader')) {
       metricHeader = MetricHeader.fromJson(_json['metricHeader']);
@@ -513,10 +515,10 @@ class CustomDimension {
 
   CustomDimension.fromJson(core.Map _json) {
     if (_json.containsKey('index')) {
-      index = _json['index'];
+      index = _json['index'] as core.int;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -546,10 +548,10 @@ class DateRange {
 
   DateRange.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
   }
 
@@ -583,7 +585,9 @@ class DateRangeValues {
           .toList();
     }
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.String>();
+      values = (_json['values'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -633,11 +637,12 @@ class Dimension {
 
   Dimension.fromJson(core.Map _json) {
     if (_json.containsKey('histogramBuckets')) {
-      histogramBuckets =
-          (_json['histogramBuckets'] as core.List).cast<core.String>();
+      histogramBuckets = (_json['histogramBuckets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -706,19 +711,21 @@ class DimensionFilter {
 
   DimensionFilter.fromJson(core.Map _json) {
     if (_json.containsKey('caseSensitive')) {
-      caseSensitive = _json['caseSensitive'];
+      caseSensitive = _json['caseSensitive'] as core.bool;
     }
     if (_json.containsKey('dimensionName')) {
-      dimensionName = _json['dimensionName'];
+      dimensionName = _json['dimensionName'] as core.String;
     }
     if (_json.containsKey('expressions')) {
-      expressions = (_json['expressions'] as core.List).cast<core.String>();
+      expressions = (_json['expressions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('not')) {
-      not = _json['not'];
+      not = _json['not'] as core.bool;
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
   }
 
@@ -767,7 +774,7 @@ class DimensionFilterClause {
           .toList();
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
   }
 
@@ -799,7 +806,7 @@ class DynamicSegment {
 
   DynamicSegment.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sessionSegment')) {
       sessionSegment = SegmentDefinition.fromJson(_json['sessionSegment']);
@@ -858,10 +865,10 @@ class EcommerceData {
 
   EcommerceData.fromJson(core.Map _json) {
     if (_json.containsKey('actionType')) {
-      actionType = _json['actionType'];
+      actionType = _json['actionType'] as core.String;
     }
     if (_json.containsKey('ecommerceType')) {
-      ecommerceType = _json['ecommerceType'];
+      ecommerceType = _json['ecommerceType'] as core.String;
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
@@ -912,19 +919,19 @@ class EventData {
 
   EventData.fromJson(core.Map _json) {
     if (_json.containsKey('eventAction')) {
-      eventAction = _json['eventAction'];
+      eventAction = _json['eventAction'] as core.String;
     }
     if (_json.containsKey('eventCategory')) {
-      eventCategory = _json['eventCategory'];
+      eventCategory = _json['eventCategory'] as core.String;
     }
     if (_json.containsKey('eventCount')) {
-      eventCount = _json['eventCount'];
+      eventCount = _json['eventCount'] as core.String;
     }
     if (_json.containsKey('eventLabel')) {
-      eventLabel = _json['eventLabel'];
+      eventLabel = _json['eventLabel'] as core.String;
     }
     if (_json.containsKey('eventValue')) {
-      eventValue = _json['eventValue'];
+      eventValue = _json['eventValue'] as core.String;
     }
   }
 
@@ -975,7 +982,7 @@ class GetReportsRequest {
           .toList();
     }
     if (_json.containsKey('useResourceQuotas')) {
-      useResourceQuotas = _json['useResourceQuotas'];
+      useResourceQuotas = _json['useResourceQuotas'] as core.bool;
     }
   }
 
@@ -1009,7 +1016,7 @@ class GetReportsResponse {
 
   GetReportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('queryCost')) {
-      queryCost = _json['queryCost'];
+      queryCost = _json['queryCost'] as core.int;
     }
     if (_json.containsKey('reports')) {
       reports = (_json['reports'] as core.List)
@@ -1067,25 +1074,25 @@ class GoalData {
 
   GoalData.fromJson(core.Map _json) {
     if (_json.containsKey('goalCompletionLocation')) {
-      goalCompletionLocation = _json['goalCompletionLocation'];
+      goalCompletionLocation = _json['goalCompletionLocation'] as core.String;
     }
     if (_json.containsKey('goalCompletions')) {
-      goalCompletions = _json['goalCompletions'];
+      goalCompletions = _json['goalCompletions'] as core.String;
     }
     if (_json.containsKey('goalIndex')) {
-      goalIndex = _json['goalIndex'];
+      goalIndex = _json['goalIndex'] as core.int;
     }
     if (_json.containsKey('goalName')) {
-      goalName = _json['goalName'];
+      goalName = _json['goalName'] as core.String;
     }
     if (_json.containsKey('goalPreviousStep1')) {
-      goalPreviousStep1 = _json['goalPreviousStep1'];
+      goalPreviousStep1 = _json['goalPreviousStep1'] as core.String;
     }
     if (_json.containsKey('goalPreviousStep2')) {
-      goalPreviousStep2 = _json['goalPreviousStep2'];
+      goalPreviousStep2 = _json['goalPreviousStep2'] as core.String;
     }
     if (_json.containsKey('goalPreviousStep3')) {
-      goalPreviousStep3 = _json['goalPreviousStep3'];
+      goalPreviousStep3 = _json['goalPreviousStep3'] as core.String;
     }
     if (_json.containsKey('goalValue')) {
       goalValue = _json['goalValue'].toDouble();
@@ -1182,13 +1189,13 @@ class Metric {
 
   Metric.fromJson(core.Map _json) {
     if (_json.containsKey('alias')) {
-      alias = _json['alias'];
+      alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('formattingType')) {
-      formattingType = _json['formattingType'];
+      formattingType = _json['formattingType'] as core.String;
     }
   }
 
@@ -1241,16 +1248,16 @@ class MetricFilter {
 
   MetricFilter.fromJson(core.Map _json) {
     if (_json.containsKey('comparisonValue')) {
-      comparisonValue = _json['comparisonValue'];
+      comparisonValue = _json['comparisonValue'] as core.String;
     }
     if (_json.containsKey('metricName')) {
-      metricName = _json['metricName'];
+      metricName = _json['metricName'] as core.String;
     }
     if (_json.containsKey('not')) {
-      not = _json['not'];
+      not = _json['not'] as core.bool;
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
   }
 
@@ -1296,7 +1303,7 @@ class MetricFilterClause {
           .toList();
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
   }
 
@@ -1368,10 +1375,10 @@ class MetricHeaderEntry {
 
   MetricHeaderEntry.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1455,13 +1462,13 @@ class OrderBy {
 
   OrderBy.fromJson(core.Map _json) {
     if (_json.containsKey('fieldName')) {
-      fieldName = _json['fieldName'];
+      fieldName = _json['fieldName'] as core.String;
     }
     if (_json.containsKey('orderType')) {
-      orderType = _json['orderType'];
+      orderType = _json['orderType'] as core.String;
     }
     if (_json.containsKey('sortOrder')) {
-      sortOrder = _json['sortOrder'];
+      sortOrder = _json['sortOrder'] as core.String;
     }
   }
 
@@ -1492,10 +1499,10 @@ class PageviewData {
 
   PageviewData.fromJson(core.Map _json) {
     if (_json.containsKey('pagePath')) {
-      pagePath = _json['pagePath'];
+      pagePath = _json['pagePath'] as core.String;
     }
     if (_json.containsKey('pageTitle')) {
-      pageTitle = _json['pageTitle'];
+      pageTitle = _json['pageTitle'] as core.String;
     }
   }
 
@@ -1565,7 +1572,7 @@ class Pivot {
           .toList();
     }
     if (_json.containsKey('maxGroupCount')) {
-      maxGroupCount = _json['maxGroupCount'];
+      maxGroupCount = _json['maxGroupCount'] as core.int;
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -1573,7 +1580,7 @@ class Pivot {
           .toList();
     }
     if (_json.containsKey('startGroup')) {
-      startGroup = _json['startGroup'];
+      startGroup = _json['startGroup'] as core.int;
     }
   }
 
@@ -1616,7 +1623,7 @@ class PivotHeader {
           .toList();
     }
     if (_json.containsKey('totalPivotGroupsCount')) {
-      totalPivotGroupsCount = _json['totalPivotGroupsCount'];
+      totalPivotGroupsCount = _json['totalPivotGroupsCount'] as core.int;
     }
   }
 
@@ -1649,12 +1656,14 @@ class PivotHeaderEntry {
 
   PivotHeaderEntry.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionNames')) {
-      dimensionNames =
-          (_json['dimensionNames'] as core.List).cast<core.String>();
+      dimensionNames = (_json['dimensionNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('dimensionValues')) {
-      dimensionValues =
-          (_json['dimensionValues'] as core.List).cast<core.String>();
+      dimensionValues = (_json['dimensionValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('metric')) {
       metric = MetricHeaderEntry.fromJson(_json['metric']);
@@ -1685,7 +1694,9 @@ class PivotValueRegion {
 
   PivotValueRegion.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.String>();
+      values = (_json['values'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1720,13 +1731,13 @@ class ProductData {
       itemRevenue = _json['itemRevenue'].toDouble();
     }
     if (_json.containsKey('productName')) {
-      productName = _json['productName'];
+      productName = _json['productName'] as core.String;
     }
     if (_json.containsKey('productQuantity')) {
-      productQuantity = _json['productQuantity'];
+      productQuantity = _json['productQuantity'] as core.String;
     }
     if (_json.containsKey('productSku')) {
-      productSku = _json['productSku'];
+      productSku = _json['productSku'] as core.String;
     }
   }
 
@@ -1769,7 +1780,7 @@ class Report {
       data = ReportData.fromJson(_json['data']);
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1843,10 +1854,10 @@ class ReportData {
 
   ReportData.fromJson(core.Map _json) {
     if (_json.containsKey('dataLastRefreshed')) {
-      dataLastRefreshed = _json['dataLastRefreshed'];
+      dataLastRefreshed = _json['dataLastRefreshed'] as core.String;
     }
     if (_json.containsKey('isDataGolden')) {
-      isDataGolden = _json['isDataGolden'];
+      isDataGolden = _json['isDataGolden'] as core.bool;
     }
     if (_json.containsKey('maximums')) {
       maximums = (_json['maximums'] as core.List)
@@ -1859,7 +1870,7 @@ class ReportData {
           .toList();
     }
     if (_json.containsKey('rowCount')) {
-      rowCount = _json['rowCount'];
+      rowCount = _json['rowCount'] as core.int;
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -1867,12 +1878,14 @@ class ReportData {
           .toList();
     }
     if (_json.containsKey('samplesReadCounts')) {
-      samplesReadCounts =
-          (_json['samplesReadCounts'] as core.List).cast<core.String>();
+      samplesReadCounts = (_json['samplesReadCounts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('samplingSpaceSizes')) {
-      samplingSpaceSizes =
-          (_json['samplingSpaceSizes'] as core.List).cast<core.String>();
+      samplingSpaceSizes = (_json['samplingSpaceSizes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('totals')) {
       totals = (_json['totals'] as core.List)
@@ -2052,16 +2065,16 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('filtersExpression')) {
-      filtersExpression = _json['filtersExpression'];
+      filtersExpression = _json['filtersExpression'] as core.String;
     }
     if (_json.containsKey('hideTotals')) {
-      hideTotals = _json['hideTotals'];
+      hideTotals = _json['hideTotals'] as core.bool;
     }
     if (_json.containsKey('hideValueRanges')) {
-      hideValueRanges = _json['hideValueRanges'];
+      hideValueRanges = _json['hideValueRanges'] as core.bool;
     }
     if (_json.containsKey('includeEmptyRows')) {
-      includeEmptyRows = _json['includeEmptyRows'];
+      includeEmptyRows = _json['includeEmptyRows'] as core.bool;
     }
     if (_json.containsKey('metricFilterClauses')) {
       metricFilterClauses = (_json['metricFilterClauses'] as core.List)
@@ -2080,10 +2093,10 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('pivots')) {
       pivots = (_json['pivots'] as core.List)
@@ -2091,7 +2104,7 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('samplingLevel')) {
-      samplingLevel = _json['samplingLevel'];
+      samplingLevel = _json['samplingLevel'] as core.String;
     }
     if (_json.containsKey('segments')) {
       segments = (_json['segments'] as core.List)
@@ -2099,7 +2112,7 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('viewId')) {
-      viewId = _json['viewId'];
+      viewId = _json['viewId'] as core.String;
     }
   }
 
@@ -2174,7 +2187,9 @@ class ReportRow {
 
   ReportRow.fromJson(core.Map _json) {
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
@@ -2208,10 +2223,12 @@ class ResourceQuotasRemaining {
 
   ResourceQuotasRemaining.fromJson(core.Map _json) {
     if (_json.containsKey('dailyQuotaTokensRemaining')) {
-      dailyQuotaTokensRemaining = _json['dailyQuotaTokensRemaining'];
+      dailyQuotaTokensRemaining =
+          _json['dailyQuotaTokensRemaining'] as core.int;
     }
     if (_json.containsKey('hourlyQuotaTokensRemaining')) {
-      hourlyQuotaTokensRemaining = _json['hourlyQuotaTokensRemaining'];
+      hourlyQuotaTokensRemaining =
+          _json['hourlyQuotaTokensRemaining'] as core.int;
     }
   }
 
@@ -2244,16 +2261,16 @@ class ScreenviewData {
 
   ScreenviewData.fromJson(core.Map _json) {
     if (_json.containsKey('appName')) {
-      appName = _json['appName'];
+      appName = _json['appName'] as core.String;
     }
     if (_json.containsKey('mobileDeviceBranding')) {
-      mobileDeviceBranding = _json['mobileDeviceBranding'];
+      mobileDeviceBranding = _json['mobileDeviceBranding'] as core.String;
     }
     if (_json.containsKey('mobileDeviceModel')) {
-      mobileDeviceModel = _json['mobileDeviceModel'];
+      mobileDeviceModel = _json['mobileDeviceModel'] as core.String;
     }
     if (_json.containsKey('screenName')) {
-      screenName = _json['screenName'];
+      screenName = _json['screenName'] as core.String;
     }
   }
 
@@ -2314,22 +2331,24 @@ class SearchUserActivityRequest {
 
   SearchUserActivityRequest.fromJson(core.Map _json) {
     if (_json.containsKey('activityTypes')) {
-      activityTypes = (_json['activityTypes'] as core.List).cast<core.String>();
+      activityTypes = (_json['activityTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('dateRange')) {
       dateRange = DateRange.fromJson(_json['dateRange']);
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);
     }
     if (_json.containsKey('viewId')) {
-      viewId = _json['viewId'];
+      viewId = _json['viewId'] as core.String;
     }
   }
 
@@ -2381,7 +2400,7 @@ class SearchUserActivityResponse {
 
   SearchUserActivityResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('sampleRate')) {
       sampleRate = _json['sampleRate'].toDouble();
@@ -2393,7 +2412,7 @@ class SearchUserActivityResponse {
           .toList();
     }
     if (_json.containsKey('totalRows')) {
-      totalRows = _json['totalRows'];
+      totalRows = _json['totalRows'] as core.int;
     }
   }
 
@@ -2432,7 +2451,7 @@ class Segment {
       dynamicSegment = DynamicSegment.fromJson(_json['dynamicSegment']);
     }
     if (_json.containsKey('segmentId')) {
-      segmentId = _json['segmentId'];
+      segmentId = _json['segmentId'] as core.String;
     }
   }
 
@@ -2526,22 +2545,24 @@ class SegmentDimensionFilter {
 
   SegmentDimensionFilter.fromJson(core.Map _json) {
     if (_json.containsKey('caseSensitive')) {
-      caseSensitive = _json['caseSensitive'];
+      caseSensitive = _json['caseSensitive'] as core.bool;
     }
     if (_json.containsKey('dimensionName')) {
-      dimensionName = _json['dimensionName'];
+      dimensionName = _json['dimensionName'] as core.String;
     }
     if (_json.containsKey('expressions')) {
-      expressions = (_json['expressions'] as core.List).cast<core.String>();
+      expressions = (_json['expressions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('maxComparisonValue')) {
-      maxComparisonValue = _json['maxComparisonValue'];
+      maxComparisonValue = _json['maxComparisonValue'] as core.String;
     }
     if (_json.containsKey('minComparisonValue')) {
-      minComparisonValue = _json['minComparisonValue'];
+      minComparisonValue = _json['minComparisonValue'] as core.String;
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
   }
 
@@ -2595,7 +2616,7 @@ class SegmentFilter {
 
   SegmentFilter.fromJson(core.Map _json) {
     if (_json.containsKey('not')) {
-      not = _json['not'];
+      not = _json['not'] as core.bool;
     }
     if (_json.containsKey('sequenceSegment')) {
       sequenceSegment = SequenceSegment.fromJson(_json['sequenceSegment']);
@@ -2643,7 +2664,7 @@ class SegmentFilterClause {
       metricFilter = SegmentMetricFilter.fromJson(_json['metricFilter']);
     }
     if (_json.containsKey('not')) {
-      not = _json['not'];
+      not = _json['not'] as core.bool;
     }
   }
 
@@ -2706,19 +2727,19 @@ class SegmentMetricFilter {
 
   SegmentMetricFilter.fromJson(core.Map _json) {
     if (_json.containsKey('comparisonValue')) {
-      comparisonValue = _json['comparisonValue'];
+      comparisonValue = _json['comparisonValue'] as core.String;
     }
     if (_json.containsKey('maxComparisonValue')) {
-      maxComparisonValue = _json['maxComparisonValue'];
+      maxComparisonValue = _json['maxComparisonValue'] as core.String;
     }
     if (_json.containsKey('metricName')) {
-      metricName = _json['metricName'];
+      metricName = _json['metricName'] as core.String;
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
     if (_json.containsKey('scope')) {
-      scope = _json['scope'];
+      scope = _json['scope'] as core.String;
     }
   }
 
@@ -2764,7 +2785,7 @@ class SegmentSequenceStep {
 
   SegmentSequenceStep.fromJson(core.Map _json) {
     if (_json.containsKey('matchType')) {
-      matchType = _json['matchType'];
+      matchType = _json['matchType'] as core.String;
     }
     if (_json.containsKey('orFiltersForSegment')) {
       orFiltersForSegment = (_json['orFiltersForSegment'] as core.List)
@@ -2802,7 +2823,8 @@ class SequenceSegment {
 
   SequenceSegment.fromJson(core.Map _json) {
     if (_json.containsKey('firstStepShouldMatchFirstHit')) {
-      firstStepShouldMatchFirstHit = _json['firstStepShouldMatchFirstHit'];
+      firstStepShouldMatchFirstHit =
+          _json['firstStepShouldMatchFirstHit'] as core.bool;
     }
     if (_json.containsKey('segmentSequenceSteps')) {
       segmentSequenceSteps = (_json['segmentSequenceSteps'] as core.List)
@@ -2873,7 +2895,7 @@ class TransactionData {
 
   TransactionData.fromJson(core.Map _json) {
     if (_json.containsKey('transactionId')) {
-      transactionId = _json['transactionId'];
+      transactionId = _json['transactionId'] as core.String;
     }
     if (_json.containsKey('transactionRevenue')) {
       transactionRevenue = _json['transactionRevenue'].toDouble();
@@ -2924,10 +2946,10 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -2975,19 +2997,19 @@ class UserActivitySession {
           .toList();
     }
     if (_json.containsKey('dataSource')) {
-      dataSource = _json['dataSource'];
+      dataSource = _json['dataSource'] as core.String;
     }
     if (_json.containsKey('deviceCategory')) {
-      deviceCategory = _json['deviceCategory'];
+      deviceCategory = _json['deviceCategory'] as core.String;
     }
     if (_json.containsKey('platform')) {
-      platform = _json['platform'];
+      platform = _json['platform'] as core.String;
     }
     if (_json.containsKey('sessionDate')) {
-      sessionDate = _json['sessionDate'];
+      sessionDate = _json['sessionDate'] as core.String;
     }
     if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'];
+      sessionId = _json['sessionId'] as core.String;
     }
   }
 

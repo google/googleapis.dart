@@ -279,7 +279,7 @@ abstract class PrimitiveDartSchemaType extends DartSchemaType {
   String jsonEncode(String value) => value;
 
   @override
-  String jsonDecode(String json) => json;
+  String jsonDecode(String json) => '$json as $declaration';
 }
 
 class BooleanType extends PrimitiveDartSchemaType {
@@ -446,6 +446,10 @@ abstract class ComplexDartSchemaType extends DartSchemaType {
         'Complex schema types do not have a primitive string encoding for URI'
         'query parameters.');
   }
+}
+
+abstract class HasInnertype {
+  DartSchemaType innerType;
 }
 
 /// Represents an unnamed List<T> type with a given `T`.

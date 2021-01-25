@@ -140,7 +140,7 @@ class Action {
       timeRange = TimeRange.fromJson(_json['timeRange']);
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -391,7 +391,7 @@ class ApplicationReference {
 
   ApplicationReference.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -428,7 +428,7 @@ class Assignment {
       assignedUser = User.fromJson(_json['assignedUser']);
     }
     if (_json.containsKey('subtype')) {
-      subtype = _json['subtype'];
+      subtype = _json['subtype'] as core.String;
     }
   }
 
@@ -611,7 +611,7 @@ class DataLeakPreventionChange {
 
   DataLeakPreventionChange.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -637,7 +637,7 @@ class Delete {
 
   Delete.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -676,10 +676,10 @@ class Domain {
 
   Domain.fromJson(core.Map _json) {
     if (_json.containsKey('legacyId')) {
-      legacyId = _json['legacyId'];
+      legacyId = _json['legacyId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -712,13 +712,13 @@ class Drive {
 
   Drive.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('root')) {
       root = DriveItem.fromJson(_json['root']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -791,7 +791,7 @@ class DriveActivity {
       timeRange = TimeRange.fromJson(_json['timeRange']);
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
   }
 
@@ -847,7 +847,7 @@ class DriveFolder {
 
   DriveFolder.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -903,16 +903,16 @@ class DriveItem {
       folder = Folder.fromJson(_json['folder']);
     }
     if (_json.containsKey('mimeType')) {
-      mimeType = _json['mimeType'];
+      mimeType = _json['mimeType'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('owner')) {
       owner = Owner.fromJson(_json['owner']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -982,10 +982,10 @@ class DriveItemReference {
       folder = Folder.fromJson(_json['folder']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1027,10 +1027,10 @@ class DriveReference {
 
   DriveReference.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1098,13 +1098,13 @@ class FileComment {
 
   FileComment.fromJson(core.Map _json) {
     if (_json.containsKey('legacyCommentId')) {
-      legacyCommentId = _json['legacyCommentId'];
+      legacyCommentId = _json['legacyCommentId'] as core.String;
     }
     if (_json.containsKey('legacyDiscussionId')) {
-      legacyDiscussionId = _json['legacyDiscussionId'];
+      legacyDiscussionId = _json['legacyDiscussionId'] as core.String;
     }
     if (_json.containsKey('linkToDiscussion')) {
-      linkToDiscussion = _json['linkToDiscussion'];
+      linkToDiscussion = _json['linkToDiscussion'] as core.String;
     }
     if (_json.containsKey('parent')) {
       parent = DriveItem.fromJson(_json['parent']);
@@ -1147,7 +1147,7 @@ class Folder {
 
   Folder.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1172,10 +1172,10 @@ class Group {
 
   Group.fromJson(core.Map _json) {
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1228,10 +1228,10 @@ class KnownUser {
 
   KnownUser.fromJson(core.Map _json) {
     if (_json.containsKey('isCurrentUser')) {
-      isCurrentUser = _json['isCurrentUser'];
+      isCurrentUser = _json['isCurrentUser'] as core.bool;
     }
     if (_json.containsKey('personName')) {
-      personName = _json['personName'];
+      personName = _json['personName'] as core.String;
     }
   }
 
@@ -1421,7 +1421,7 @@ class Permission {
 
   Permission.fromJson(core.Map _json) {
     if (_json.containsKey('allowDiscovery')) {
-      allowDiscovery = _json['allowDiscovery'];
+      allowDiscovery = _json['allowDiscovery'] as core.bool;
     }
     if (_json.containsKey('anyone')) {
       anyone = Anyone.fromJson(_json['anyone']);
@@ -1433,7 +1433,7 @@ class Permission {
       group = Group.fromJson(_json['group']);
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);
@@ -1518,7 +1518,7 @@ class Post {
 
   Post.fromJson(core.Map _json) {
     if (_json.containsKey('subtype')) {
-      subtype = _json['subtype'];
+      subtype = _json['subtype'] as core.String;
     }
   }
 
@@ -1572,23 +1572,23 @@ class QueryDriveActivityRequest {
 
   QueryDriveActivityRequest.fromJson(core.Map _json) {
     if (_json.containsKey('ancestorName')) {
-      ancestorName = _json['ancestorName'];
+      ancestorName = _json['ancestorName'] as core.String;
     }
     if (_json.containsKey('consolidationStrategy')) {
       consolidationStrategy =
           ConsolidationStrategy.fromJson(_json['consolidationStrategy']);
     }
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('itemName')) {
-      itemName = _json['itemName'];
+      itemName = _json['itemName'] as core.String;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
   }
 
@@ -1634,7 +1634,7 @@ class QueryDriveActivityResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1662,10 +1662,10 @@ class Rename {
 
   Rename.fromJson(core.Map _json) {
     if (_json.containsKey('newTitle')) {
-      newTitle = _json['newTitle'];
+      newTitle = _json['newTitle'] as core.String;
     }
     if (_json.containsKey('oldTitle')) {
-      oldTitle = _json['oldTitle'];
+      oldTitle = _json['oldTitle'] as core.String;
     }
   }
 
@@ -1693,7 +1693,7 @@ class Restore {
 
   Restore.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1733,10 +1733,10 @@ class RestrictionChange {
 
   RestrictionChange.fromJson(core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('newRestriction')) {
-      newRestriction = _json['newRestriction'];
+      newRestriction = _json['newRestriction'] as core.String;
     }
   }
 
@@ -1796,7 +1796,7 @@ class Suggestion {
 
   Suggestion.fromJson(core.Map _json) {
     if (_json.containsKey('subtype')) {
-      subtype = _json['subtype'];
+      subtype = _json['subtype'] as core.String;
     }
   }
 
@@ -1824,7 +1824,7 @@ class SystemEvent {
 
   SystemEvent.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1941,13 +1941,13 @@ class TeamDrive {
 
   TeamDrive.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('root')) {
       root = DriveItem.fromJson(_json['root']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1978,10 +1978,10 @@ class TeamDriveReference {
 
   TeamDriveReference.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -2009,10 +2009,10 @@ class TimeRange {
 
   TimeRange.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 

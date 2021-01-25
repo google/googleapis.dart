@@ -3158,16 +3158,16 @@ class AclEntry {
 
   AclEntry.fromJson(core.Map _json) {
     if (_json.containsKey('expirationTime')) {
-      expirationTime = _json['expirationTime'];
+      expirationTime = _json['expirationTime'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -3206,10 +3206,10 @@ class ApiWarning {
 
   ApiWarning.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3265,28 +3265,31 @@ class BackupConfiguration {
           BackupRetentionSettings.fromJson(_json['backupRetentionSettings']);
     }
     if (_json.containsKey('binaryLogEnabled')) {
-      binaryLogEnabled = _json['binaryLogEnabled'];
+      binaryLogEnabled = _json['binaryLogEnabled'] as core.bool;
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('pointInTimeRecoveryEnabled')) {
-      pointInTimeRecoveryEnabled = _json['pointInTimeRecoveryEnabled'];
+      pointInTimeRecoveryEnabled =
+          _json['pointInTimeRecoveryEnabled'] as core.bool;
     }
     if (_json.containsKey('replicationLogArchivingEnabled')) {
-      replicationLogArchivingEnabled = _json['replicationLogArchivingEnabled'];
+      replicationLogArchivingEnabled =
+          _json['replicationLogArchivingEnabled'] as core.bool;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('transactionLogRetentionDays')) {
-      transactionLogRetentionDays = _json['transactionLogRetentionDays'];
+      transactionLogRetentionDays =
+          _json['transactionLogRetentionDays'] as core.int;
     }
   }
 
@@ -3343,10 +3346,10 @@ class BackupRetentionSettings {
 
   BackupRetentionSettings.fromJson(core.Map _json) {
     if (_json.containsKey('retainedBackups')) {
-      retainedBackups = _json['retainedBackups'];
+      retainedBackups = _json['retainedBackups'] as core.int;
     }
     if (_json.containsKey('retentionUnit')) {
-      retentionUnit = _json['retentionUnit'];
+      retentionUnit = _json['retentionUnit'] as core.String;
     }
   }
 
@@ -3446,10 +3449,10 @@ class BackupRun {
 
   BackupRun.fromJson(core.Map _json) {
     if (_json.containsKey('backupKind')) {
-      backupKind = _json['backupKind'];
+      backupKind = _json['backupKind'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
@@ -3460,40 +3463,40 @@ class BackupRun {
           DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('enqueuedTime')) {
-      enqueuedTime = _json['enqueuedTime'];
+      enqueuedTime = _json['enqueuedTime'] as core.String;
     }
     if (_json.containsKey('error')) {
       error = OperationError.fromJson(_json['error']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('windowStartTime')) {
-      windowStartTime = _json['windowStartTime'];
+      windowStartTime = _json['windowStartTime'] as core.String;
     }
   }
 
@@ -3573,10 +3576,10 @@ class BackupRunsListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3610,13 +3613,13 @@ class BinLogCoordinates {
 
   BinLogCoordinates.fromJson(core.Map _json) {
     if (_json.containsKey('binLogFileName')) {
-      binLogFileName = _json['binLogFileName'];
+      binLogFileName = _json['binLogFileName'] as core.String;
     }
     if (_json.containsKey('binLogPosition')) {
-      binLogPosition = _json['binLogPosition'];
+      binLogPosition = _json['binLogPosition'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -3662,16 +3665,16 @@ class CloneContext {
           BinLogCoordinates.fromJson(_json['binLogCoordinates']);
     }
     if (_json.containsKey('destinationInstanceName')) {
-      destinationInstanceName = _json['destinationInstanceName'];
+      destinationInstanceName = _json['destinationInstanceName'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('pitrTimestampMs')) {
-      pitrTimestampMs = _json['pitrTimestampMs'];
+      pitrTimestampMs = _json['pitrTimestampMs'] as core.String;
     }
     if (_json.containsKey('pointInTime')) {
-      pointInTime = _json['pointInTime'];
+      pointInTime = _json['pointInTime'] as core.String;
     }
   }
 
@@ -3730,28 +3733,28 @@ class Database {
 
   Database.fromJson(core.Map _json) {
     if (_json.containsKey('charset')) {
-      charset = _json['charset'];
+      charset = _json['charset'] as core.String;
     }
     if (_json.containsKey('collation')) {
-      collation = _json['collation'];
+      collation = _json['collation'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('project')) {
-      project = _json['project'];
+      project = _json['project'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('sqlserverDatabaseDetails')) {
       sqlserverDatabaseDetails =
@@ -3808,10 +3811,10 @@ class DatabaseFlags {
 
   DatabaseFlags.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -3845,10 +3848,10 @@ class DatabaseInstanceFailoverReplica {
 
   DatabaseInstanceFailoverReplica.fromJson(core.Map _json) {
     if (_json.containsKey('available')) {
-      available = _json['available'];
+      available = _json['available'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4038,16 +4041,16 @@ class DatabaseInstance {
 
   DatabaseInstance.fromJson(core.Map _json) {
     if (_json.containsKey('backendType')) {
-      backendType = _json['backendType'];
+      backendType = _json['backendType'] as core.String;
     }
     if (_json.containsKey('connectionName')) {
-      connectionName = _json['connectionName'];
+      connectionName = _json['connectionName'] as core.String;
     }
     if (_json.containsKey('currentDiskSize')) {
-      currentDiskSize = _json['currentDiskSize'];
+      currentDiskSize = _json['currentDiskSize'] as core.String;
     }
     if (_json.containsKey('databaseVersion')) {
-      databaseVersion = _json['databaseVersion'];
+      databaseVersion = _json['databaseVersion'] as core.String;
     }
     if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
@@ -4058,17 +4061,17 @@ class DatabaseInstance {
           DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('failoverReplica')) {
       failoverReplica =
           DatabaseInstanceFailoverReplica.fromJson(_json['failoverReplica']);
     }
     if (_json.containsKey('gceZone')) {
-      gceZone = _json['gceZone'];
+      gceZone = _json['gceZone'] as core.String;
     }
     if (_json.containsKey('instanceType')) {
-      instanceType = _json['instanceType'];
+      instanceType = _json['instanceType'] as core.String;
     }
     if (_json.containsKey('ipAddresses')) {
       ipAddresses = (_json['ipAddresses'] as core.List)
@@ -4076,62 +4079,66 @@ class DatabaseInstance {
           .toList();
     }
     if (_json.containsKey('ipv6Address')) {
-      ipv6Address = _json['ipv6Address'];
+      ipv6Address = _json['ipv6Address'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('masterInstanceName')) {
-      masterInstanceName = _json['masterInstanceName'];
+      masterInstanceName = _json['masterInstanceName'] as core.String;
     }
     if (_json.containsKey('maxDiskSize')) {
-      maxDiskSize = _json['maxDiskSize'];
+      maxDiskSize = _json['maxDiskSize'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('onPremisesConfiguration')) {
       onPremisesConfiguration =
           OnPremisesConfiguration.fromJson(_json['onPremisesConfiguration']);
     }
     if (_json.containsKey('project')) {
-      project = _json['project'];
+      project = _json['project'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('replicaConfiguration')) {
       replicaConfiguration =
           ReplicaConfiguration.fromJson(_json['replicaConfiguration']);
     }
     if (_json.containsKey('replicaNames')) {
-      replicaNames = (_json['replicaNames'] as core.List).cast<core.String>();
+      replicaNames = (_json['replicaNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('rootPassword')) {
-      rootPassword = _json['rootPassword'];
+      rootPassword = _json['rootPassword'] as core.String;
     }
     if (_json.containsKey('scheduledMaintenance')) {
       scheduledMaintenance =
           SqlScheduledMaintenance.fromJson(_json['scheduledMaintenance']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('serverCaCert')) {
       serverCaCert = SslCert.fromJson(_json['serverCaCert']);
     }
     if (_json.containsKey('serviceAccountEmailAddress')) {
-      serviceAccountEmailAddress = _json['serviceAccountEmailAddress'];
+      serviceAccountEmailAddress =
+          _json['serviceAccountEmailAddress'] as core.String;
     }
     if (_json.containsKey('settings')) {
       settings = Settings.fromJson(_json['settings']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('suspensionReason')) {
-      suspensionReason =
-          (_json['suspensionReason'] as core.List).cast<core.String>();
+      suspensionReason = (_json['suspensionReason'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4247,7 +4254,7 @@ class DatabasesListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4281,7 +4288,7 @@ class DemoteMasterConfiguration {
 
   DemoteMasterConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration =
@@ -4328,17 +4335,17 @@ class DemoteMasterContext {
 
   DemoteMasterContext.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('masterInstanceName')) {
-      masterInstanceName = _json['masterInstanceName'];
+      masterInstanceName = _json['masterInstanceName'] as core.String;
     }
     if (_json.containsKey('replicaConfiguration')) {
       replicaConfiguration =
           DemoteMasterConfiguration.fromJson(_json['replicaConfiguration']);
     }
     if (_json.containsKey('verifyGtidConsistency')) {
-      verifyGtidConsistency = _json['verifyGtidConsistency'];
+      verifyGtidConsistency = _json['verifyGtidConsistency'] as core.bool;
     }
   }
 
@@ -4386,22 +4393,22 @@ class DemoteMasterMySqlReplicaConfiguration {
 
   DemoteMasterMySqlReplicaConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'];
+      caCertificate = _json['caCertificate'] as core.String;
     }
     if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'];
+      clientCertificate = _json['clientCertificate'] as core.String;
     }
     if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'];
+      clientKey = _json['clientKey'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
   }
 
@@ -4452,13 +4459,13 @@ class DenyMaintenancePeriod {
 
   DenyMaintenancePeriod.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
     if (_json.containsKey('time')) {
-      time = _json['time'];
+      time = _json['time'] as core.String;
     }
   }
 
@@ -4489,10 +4496,10 @@ class DiskEncryptionConfiguration {
 
   DiskEncryptionConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'];
+      kmsKeyName = _json['kmsKeyName'] as core.String;
     }
   }
 
@@ -4520,10 +4527,10 @@ class DiskEncryptionStatus {
 
   DiskEncryptionStatus.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('kmsKeyVersionName')) {
-      kmsKeyVersionName = _json['kmsKeyVersionName'];
+      kmsKeyVersionName = _json['kmsKeyVersionName'] as core.String;
     }
   }
 
@@ -4548,7 +4555,7 @@ class ExportContextCsvExportOptions {
 
   ExportContextCsvExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('selectQuery')) {
-      selectQuery = _json['selectQuery'];
+      selectQuery = _json['selectQuery'] as core.String;
     }
   }
 
@@ -4573,7 +4580,7 @@ class ExportContextSqlExportOptionsMysqlExportOptions {
 
   ExportContextSqlExportOptionsMysqlExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('masterData')) {
-      masterData = _json['masterData'];
+      masterData = _json['masterData'] as core.int;
     }
   }
 
@@ -4608,10 +4615,12 @@ class ExportContextSqlExportOptions {
               _json['mysqlExportOptions']);
     }
     if (_json.containsKey('schemaOnly')) {
-      schemaOnly = _json['schemaOnly'];
+      schemaOnly = _json['schemaOnly'] as core.bool;
     }
     if (_json.containsKey('tables')) {
-      tables = (_json['tables'] as core.List).cast<core.String>();
+      tables = (_json['tables'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4678,23 +4687,25 @@ class ExportContext {
           ExportContextCsvExportOptions.fromJson(_json['csvExportOptions']);
     }
     if (_json.containsKey('databases')) {
-      databases = (_json['databases'] as core.List).cast<core.String>();
+      databases = (_json['databases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fileType')) {
-      fileType = _json['fileType'];
+      fileType = _json['fileType'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('offload')) {
-      offload = _json['offload'];
+      offload = _json['offload'] as core.bool;
     }
     if (_json.containsKey('sqlExportOptions')) {
       sqlExportOptions =
           ExportContextSqlExportOptions.fromJson(_json['sqlExportOptions']);
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -4738,10 +4749,10 @@ class FailoverContext {
 
   FailoverContext.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('settingsVersion')) {
-      settingsVersion = _json['settingsVersion'];
+      settingsVersion = _json['settingsVersion'] as core.String;
     }
   }
 
@@ -4810,36 +4821,40 @@ class Flag {
 
   Flag.fromJson(core.Map _json) {
     if (_json.containsKey('allowedIntValues')) {
-      allowedIntValues =
-          (_json['allowedIntValues'] as core.List).cast<core.String>();
+      allowedIntValues = (_json['allowedIntValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('allowedStringValues')) {
-      allowedStringValues =
-          (_json['allowedStringValues'] as core.List).cast<core.String>();
+      allowedStringValues = (_json['allowedStringValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('appliesTo')) {
-      appliesTo = (_json['appliesTo'] as core.List).cast<core.String>();
+      appliesTo = (_json['appliesTo'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('inBeta')) {
-      inBeta = _json['inBeta'];
+      inBeta = _json['inBeta'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'];
+      maxValue = _json['maxValue'] as core.String;
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'];
+      minValue = _json['minValue'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('requiresRestart')) {
-      requiresRestart = _json['requiresRestart'];
+      requiresRestart = _json['requiresRestart'] as core.bool;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4896,7 +4911,7 @@ class FlagsListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -4930,13 +4945,13 @@ class ImportContextBakImportOptionsEncryptionOptions {
 
   ImportContextBakImportOptionsEncryptionOptions.fromJson(core.Map _json) {
     if (_json.containsKey('certPath')) {
-      certPath = _json['certPath'];
+      certPath = _json['certPath'] as core.String;
     }
     if (_json.containsKey('pvkPassword')) {
-      pvkPassword = _json['pvkPassword'];
+      pvkPassword = _json['pvkPassword'] as core.String;
     }
     if (_json.containsKey('pvkPath')) {
-      pvkPath = _json['pvkPath'];
+      pvkPath = _json['pvkPath'] as core.String;
     }
   }
 
@@ -4991,10 +5006,12 @@ class ImportContextCsvImportOptions {
 
   ImportContextCsvImportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
-      columns = (_json['columns'] as core.List).cast<core.String>();
+      columns = (_json['columns'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('table')) {
-      table = _json['table'];
+      table = _json['table'] as core.String;
     }
   }
 
@@ -5057,19 +5074,19 @@ class ImportContext {
           ImportContextCsvImportOptions.fromJson(_json['csvImportOptions']);
     }
     if (_json.containsKey('database')) {
-      database = _json['database'];
+      database = _json['database'] as core.String;
     }
     if (_json.containsKey('fileType')) {
-      fileType = _json['fileType'];
+      fileType = _json['fileType'] as core.String;
     }
     if (_json.containsKey('importUser')) {
-      importUser = _json['importUser'];
+      importUser = _json['importUser'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -5235,10 +5252,10 @@ class InstancesListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
@@ -5279,7 +5296,7 @@ class InstancesListServerCasResponse {
 
   InstancesListServerCasResponse.fromJson(core.Map _json) {
     if (_json.containsKey('activeVersion')) {
-      activeVersion = _json['activeVersion'];
+      activeVersion = _json['activeVersion'] as core.String;
     }
     if (_json.containsKey('certs')) {
       certs = (_json['certs'] as core.List)
@@ -5287,7 +5304,7 @@ class InstancesListServerCasResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -5403,13 +5420,13 @@ class IpConfiguration {
           .toList();
     }
     if (_json.containsKey('ipv4Enabled')) {
-      ipv4Enabled = _json['ipv4Enabled'];
+      ipv4Enabled = _json['ipv4Enabled'] as core.bool;
     }
     if (_json.containsKey('privateNetwork')) {
-      privateNetwork = _json['privateNetwork'];
+      privateNetwork = _json['privateNetwork'] as core.String;
     }
     if (_json.containsKey('requireSsl')) {
-      requireSsl = _json['requireSsl'];
+      requireSsl = _json['requireSsl'] as core.bool;
     }
   }
 
@@ -5464,13 +5481,13 @@ class IpMapping {
 
   IpMapping.fromJson(core.Map _json) {
     if (_json.containsKey('ipAddress')) {
-      ipAddress = _json['ipAddress'];
+      ipAddress = _json['ipAddress'] as core.String;
     }
     if (_json.containsKey('timeToRetire')) {
-      timeToRetire = _json['timeToRetire'];
+      timeToRetire = _json['timeToRetire'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -5510,13 +5527,13 @@ class LocationPreference {
 
   LocationPreference.fromJson(core.Map _json) {
     if (_json.containsKey('followGaeApplication')) {
-      followGaeApplication = _json['followGaeApplication'];
+      followGaeApplication = _json['followGaeApplication'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('zone')) {
-      zone = _json['zone'];
+      zone = _json['zone'] as core.String;
     }
   }
 
@@ -5564,16 +5581,16 @@ class MaintenanceWindow {
 
   MaintenanceWindow.fromJson(core.Map _json) {
     if (_json.containsKey('day')) {
-      day = _json['day'];
+      day = _json['day'] as core.int;
     }
     if (_json.containsKey('hour')) {
-      hour = _json['hour'];
+      hour = _json['hour'] as core.int;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('updateTrack')) {
-      updateTrack = _json['updateTrack'];
+      updateTrack = _json['updateTrack'] as core.String;
     }
   }
 
@@ -5640,37 +5657,37 @@ class MySqlReplicaConfiguration {
 
   MySqlReplicaConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'];
+      caCertificate = _json['caCertificate'] as core.String;
     }
     if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'];
+      clientCertificate = _json['clientCertificate'] as core.String;
     }
     if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'];
+      clientKey = _json['clientKey'] as core.String;
     }
     if (_json.containsKey('connectRetryInterval')) {
-      connectRetryInterval = _json['connectRetryInterval'];
+      connectRetryInterval = _json['connectRetryInterval'] as core.int;
     }
     if (_json.containsKey('dumpFilePath')) {
-      dumpFilePath = _json['dumpFilePath'];
+      dumpFilePath = _json['dumpFilePath'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('masterHeartbeatPeriod')) {
-      masterHeartbeatPeriod = _json['masterHeartbeatPeriod'];
+      masterHeartbeatPeriod = _json['masterHeartbeatPeriod'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('sslCipher')) {
-      sslCipher = _json['sslCipher'];
+      sslCipher = _json['sslCipher'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
     if (_json.containsKey('verifyServerCertificate')) {
-      verifyServerCertificate = _json['verifyServerCertificate'];
+      verifyServerCertificate = _json['verifyServerCertificate'] as core.bool;
     }
   }
 
@@ -5744,28 +5761,28 @@ class OnPremisesConfiguration {
 
   OnPremisesConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('caCertificate')) {
-      caCertificate = _json['caCertificate'];
+      caCertificate = _json['caCertificate'] as core.String;
     }
     if (_json.containsKey('clientCertificate')) {
-      clientCertificate = _json['clientCertificate'];
+      clientCertificate = _json['clientCertificate'] as core.String;
     }
     if (_json.containsKey('clientKey')) {
-      clientKey = _json['clientKey'];
+      clientKey = _json['clientKey'] as core.String;
     }
     if (_json.containsKey('dumpFilePath')) {
-      dumpFilePath = _json['dumpFilePath'];
+      dumpFilePath = _json['dumpFilePath'] as core.String;
     }
     if (_json.containsKey('hostPort')) {
-      hostPort = _json['hostPort'];
+      hostPort = _json['hostPort'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
   }
 
@@ -5909,7 +5926,7 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('error')) {
       error = OperationErrors.fromJson(_json['error']);
@@ -5921,37 +5938,37 @@ class Operation {
       importContext = ImportContext.fromJson(_json['importContext']);
     }
     if (_json.containsKey('insertTime')) {
-      insertTime = _json['insertTime'];
+      insertTime = _json['insertTime'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('operationType')) {
-      operationType = _json['operationType'];
+      operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('targetId')) {
-      targetId = _json['targetId'];
+      targetId = _json['targetId'] as core.String;
     }
     if (_json.containsKey('targetLink')) {
-      targetLink = _json['targetLink'];
+      targetLink = _json['targetLink'] as core.String;
     }
     if (_json.containsKey('targetProject')) {
-      targetProject = _json['targetProject'];
+      targetProject = _json['targetProject'] as core.String;
     }
     if (_json.containsKey('user')) {
-      user = _json['user'];
+      user = _json['user'] as core.String;
     }
   }
 
@@ -6021,13 +6038,13 @@ class OperationError {
 
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -6063,7 +6080,7 @@ class OperationErrors {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6100,10 +6117,10 @@ class OperationsListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6146,10 +6163,10 @@ class ReplicaConfiguration {
 
   ReplicaConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('failoverTarget')) {
-      failoverTarget = _json['failoverTarget'];
+      failoverTarget = _json['failoverTarget'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration = MySqlReplicaConfiguration.fromJson(
@@ -6193,10 +6210,10 @@ class Reschedule {
 
   Reschedule.fromJson(core.Map _json) {
     if (_json.containsKey('rescheduleType')) {
-      rescheduleType = _json['rescheduleType'];
+      rescheduleType = _json['rescheduleType'] as core.String;
     }
     if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'];
+      scheduleTime = _json['scheduleTime'] as core.String;
     }
   }
 
@@ -6231,16 +6248,16 @@ class RestoreBackupContext {
 
   RestoreBackupContext.fromJson(core.Map _json) {
     if (_json.containsKey('backupRunId')) {
-      backupRunId = _json['backupRunId'];
+      backupRunId = _json['backupRunId'] as core.String;
     }
     if (_json.containsKey('instanceId')) {
-      instanceId = _json['instanceId'];
+      instanceId = _json['instanceId'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('project')) {
-      project = _json['project'];
+      project = _json['project'] as core.String;
     }
   }
 
@@ -6275,10 +6292,10 @@ class RotateServerCaContext {
 
   RotateServerCaContext.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextVersion')) {
-      nextVersion = _json['nextVersion'];
+      nextVersion = _json['nextVersion'] as core.String;
     }
   }
 
@@ -6430,7 +6447,7 @@ class Settings {
 
   Settings.fromJson(core.Map _json) {
     if (_json.containsKey('activationPolicy')) {
-      activationPolicy = _json['activationPolicy'];
+      activationPolicy = _json['activationPolicy'] as core.String;
     }
     if (_json.containsKey('activeDirectoryConfig')) {
       activeDirectoryConfig =
@@ -6438,26 +6455,29 @@ class Settings {
     }
     if (_json.containsKey('authorizedGaeApplications')) {
       authorizedGaeApplications =
-          (_json['authorizedGaeApplications'] as core.List).cast<core.String>();
+          (_json['authorizedGaeApplications'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('availabilityType')) {
-      availabilityType = _json['availabilityType'];
+      availabilityType = _json['availabilityType'] as core.String;
     }
     if (_json.containsKey('backupConfiguration')) {
       backupConfiguration =
           BackupConfiguration.fromJson(_json['backupConfiguration']);
     }
     if (_json.containsKey('collation')) {
-      collation = _json['collation'];
+      collation = _json['collation'] as core.String;
     }
     if (_json.containsKey('crashSafeReplicationEnabled')) {
-      crashSafeReplicationEnabled = _json['crashSafeReplicationEnabled'];
+      crashSafeReplicationEnabled =
+          _json['crashSafeReplicationEnabled'] as core.bool;
     }
     if (_json.containsKey('dataDiskSizeGb')) {
-      dataDiskSizeGb = _json['dataDiskSizeGb'];
+      dataDiskSizeGb = _json['dataDiskSizeGb'] as core.String;
     }
     if (_json.containsKey('dataDiskType')) {
-      dataDiskType = _json['dataDiskType'];
+      dataDiskType = _json['dataDiskType'] as core.String;
     }
     if (_json.containsKey('databaseFlags')) {
       databaseFlags = (_json['databaseFlags'] as core.List)
@@ -6465,7 +6485,8 @@ class Settings {
           .toList();
     }
     if (_json.containsKey('databaseReplicationEnabled')) {
-      databaseReplicationEnabled = _json['databaseReplicationEnabled'];
+      databaseReplicationEnabled =
+          _json['databaseReplicationEnabled'] as core.bool;
     }
     if (_json.containsKey('denyMaintenancePeriods')) {
       denyMaintenancePeriods = (_json['denyMaintenancePeriods'] as core.List)
@@ -6477,7 +6498,7 @@ class Settings {
       ipConfiguration = IpConfiguration.fromJson(_json['ipConfiguration']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locationPreference')) {
       locationPreference =
@@ -6488,26 +6509,27 @@ class Settings {
           MaintenanceWindow.fromJson(_json['maintenanceWindow']);
     }
     if (_json.containsKey('pricingPlan')) {
-      pricingPlan = _json['pricingPlan'];
+      pricingPlan = _json['pricingPlan'] as core.String;
     }
     if (_json.containsKey('replicationType')) {
-      replicationType = _json['replicationType'];
+      replicationType = _json['replicationType'] as core.String;
     }
     if (_json.containsKey('settingsVersion')) {
-      settingsVersion = _json['settingsVersion'];
+      settingsVersion = _json['settingsVersion'] as core.String;
     }
     if (_json.containsKey('storageAutoResize')) {
-      storageAutoResize = _json['storageAutoResize'];
+      storageAutoResize = _json['storageAutoResize'] as core.bool;
     }
     if (_json.containsKey('storageAutoResizeLimit')) {
-      storageAutoResizeLimit = _json['storageAutoResizeLimit'];
+      storageAutoResizeLimit = _json['storageAutoResizeLimit'] as core.String;
     }
     if (_json.containsKey('tier')) {
-      tier = _json['tier'];
+      tier = _json['tier'] as core.String;
     }
     if (_json.containsKey('userLabels')) {
-      userLabels =
-          (_json['userLabels'] as core.Map).cast<core.String, core.String>();
+      userLabels = commons.mapMap<core.String, core.String>(
+          _json['userLabels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -6600,10 +6622,10 @@ class SqlActiveDirectoryConfig {
 
   SqlActiveDirectoryConfig.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6667,13 +6689,13 @@ class SqlExternalSyncSettingError {
 
   SqlExternalSyncSettingError.fromJson(core.Map _json) {
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -6732,7 +6754,7 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -6762,13 +6784,13 @@ class SqlScheduledMaintenance {
 
   SqlScheduledMaintenance.fromJson(core.Map _json) {
     if (_json.containsKey('canDefer')) {
-      canDefer = _json['canDefer'];
+      canDefer = _json['canDefer'] as core.bool;
     }
     if (_json.containsKey('canReschedule')) {
-      canReschedule = _json['canReschedule'];
+      canReschedule = _json['canReschedule'] as core.bool;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -6799,10 +6821,10 @@ class SqlServerDatabaseDetails {
 
   SqlServerDatabaseDetails.fromJson(core.Map _json) {
     if (_json.containsKey('compatibilityLevel')) {
-      compatibilityLevel = _json['compatibilityLevel'];
+      compatibilityLevel = _json['compatibilityLevel'] as core.int;
     }
     if (_json.containsKey('recoveryModel')) {
-      recoveryModel = _json['recoveryModel'];
+      recoveryModel = _json['recoveryModel'] as core.String;
     }
   }
 
@@ -6830,10 +6852,12 @@ class SqlServerUserDetails {
 
   SqlServerUserDetails.fromJson(core.Map _json) {
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('serverRoles')) {
-      serverRoles = (_json['serverRoles'] as core.List).cast<core.String>();
+      serverRoles = (_json['serverRoles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -6884,31 +6908,31 @@ class SslCert {
 
   SslCert.fromJson(core.Map _json) {
     if (_json.containsKey('cert')) {
-      cert = _json['cert'];
+      cert = _json['cert'] as core.String;
     }
     if (_json.containsKey('certSerialNumber')) {
-      certSerialNumber = _json['certSerialNumber'];
+      certSerialNumber = _json['certSerialNumber'] as core.String;
     }
     if (_json.containsKey('commonName')) {
-      commonName = _json['commonName'];
+      commonName = _json['commonName'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('expirationTime')) {
-      expirationTime = _json['expirationTime'];
+      expirationTime = _json['expirationTime'] as core.String;
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('sha1Fingerprint')) {
-      sha1Fingerprint = _json['sha1Fingerprint'];
+      sha1Fingerprint = _json['sha1Fingerprint'] as core.String;
     }
   }
 
@@ -6961,7 +6985,7 @@ class SslCertDetail {
       certInfo = SslCert.fromJson(_json['certInfo']);
     }
     if (_json.containsKey('certPrivateKey')) {
-      certPrivateKey = _json['certPrivateKey'];
+      certPrivateKey = _json['certPrivateKey'] as core.String;
     }
   }
 
@@ -6986,7 +7010,7 @@ class SslCertsCreateEphemeralRequest {
 
   SslCertsCreateEphemeralRequest.fromJson(core.Map _json) {
     if (_json.containsKey('public_key')) {
-      publicKey = _json['public_key'];
+      publicKey = _json['public_key'] as core.String;
     }
   }
 
@@ -7009,7 +7033,7 @@ class SslCertsInsertRequest {
 
   SslCertsInsertRequest.fromJson(core.Map _json) {
     if (_json.containsKey('commonName')) {
-      commonName = _json['commonName'];
+      commonName = _json['commonName'] as core.String;
     }
   }
 
@@ -7045,7 +7069,7 @@ class SslCertsInsertResponse {
       clientCert = SslCertDetail.fromJson(_json['clientCert']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('operation')) {
       operation = Operation.fromJson(_json['operation']);
@@ -7090,7 +7114,7 @@ class SslCertsListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -7128,19 +7152,21 @@ class Tier {
 
   Tier.fromJson(core.Map _json) {
     if (_json.containsKey('DiskQuota')) {
-      DiskQuota = _json['DiskQuota'];
+      DiskQuota = _json['DiskQuota'] as core.String;
     }
     if (_json.containsKey('RAM')) {
-      RAM = _json['RAM'];
+      RAM = _json['RAM'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = (_json['region'] as core.List).cast<core.String>();
+      region = (_json['region'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('tier')) {
-      tier = _json['tier'];
+      tier = _json['tier'] as core.String;
     }
   }
 
@@ -7182,7 +7208,7 @@ class TiersListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -7211,10 +7237,10 @@ class TruncateLogContext {
 
   TruncateLogContext.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -7274,32 +7300,32 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('instance')) {
-      instance = _json['instance'];
+      instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('project')) {
-      project = _json['project'];
+      project = _json['project'] as core.String;
     }
     if (_json.containsKey('sqlserverUserDetails')) {
       sqlserverUserDetails =
           SqlServerUserDetails.fromJson(_json['sqlserverUserDetails']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -7358,10 +7384,10 @@ class UsersListResponse {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 

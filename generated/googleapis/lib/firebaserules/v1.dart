@@ -789,7 +789,7 @@ class Arg {
       anyValue = Empty.fromJson(_json['anyValue']);
     }
     if (_json.containsKey('exactValue')) {
-      exactValue = _json['exactValue'];
+      exactValue = _json['exactValue'] as core.Object;
     }
   }
 
@@ -890,13 +890,13 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -931,10 +931,12 @@ class FunctionCall {
 
   FunctionCall.fromJson(core.Map _json) {
     if (_json.containsKey('args')) {
-      args = (_json['args'] as core.List).cast<core.Object>();
+      args = (_json['args'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
   }
 
@@ -979,7 +981,7 @@ class FunctionMock {
           .toList();
     }
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
     if (_json.containsKey('result')) {
       result = Result.fromJson(_json['result']);
@@ -1046,22 +1048,22 @@ class GetReleaseExecutableResponse {
 
   GetReleaseExecutableResponse.fromJson(core.Map _json) {
     if (_json.containsKey('executable')) {
-      executable = _json['executable'];
+      executable = _json['executable'] as core.String;
     }
     if (_json.containsKey('executableVersion')) {
-      executableVersion = _json['executableVersion'];
+      executableVersion = _json['executableVersion'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('rulesetName')) {
-      rulesetName = _json['rulesetName'];
+      rulesetName = _json['rulesetName'] as core.String;
     }
     if (_json.containsKey('syncTime')) {
-      syncTime = _json['syncTime'];
+      syncTime = _json['syncTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1111,10 +1113,10 @@ class Issue {
 
   Issue.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('sourcePosition')) {
       sourcePosition = SourcePosition.fromJson(_json['sourcePosition']);
@@ -1149,7 +1151,7 @@ class ListReleasesResponse {
 
   ListReleasesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('releases')) {
       releases = (_json['releases'] as core.List)
@@ -1183,7 +1185,7 @@ class ListRulesetsResponse {
 
   ListRulesetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('rulesets')) {
       rulesets = (_json['rulesets'] as core.List)
@@ -1214,7 +1216,9 @@ class Metadata {
 
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List).cast<core.String>();
+      services = (_json['services'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1262,16 +1266,16 @@ class Release {
 
   Release.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('rulesetName')) {
-      rulesetName = _json['rulesetName'];
+      rulesetName = _json['rulesetName'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1312,7 +1316,7 @@ class Result {
       undefined = Empty.fromJson(_json['undefined']);
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.Object;
     }
   }
 
@@ -1348,13 +1352,13 @@ class Ruleset {
 
   Ruleset.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('metadata')) {
       metadata = Metadata.fromJson(_json['metadata']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('source')) {
       source = Source.fromJson(_json['source']);
@@ -1425,19 +1429,19 @@ class SourcePosition {
 
   SourcePosition.fromJson(core.Map _json) {
     if (_json.containsKey('column')) {
-      column = _json['column'];
+      column = _json['column'] as core.int;
     }
     if (_json.containsKey('currentOffset')) {
-      currentOffset = _json['currentOffset'];
+      currentOffset = _json['currentOffset'] as core.int;
     }
     if (_json.containsKey('endOffset')) {
-      endOffset = _json['endOffset'];
+      endOffset = _json['endOffset'] as core.int;
     }
     if (_json.containsKey('fileName')) {
-      fileName = _json['fileName'];
+      fileName = _json['fileName'] as core.String;
     }
     if (_json.containsKey('line')) {
-      line = _json['line'];
+      line = _json['line'] as core.int;
     }
   }
 
@@ -1526,10 +1530,10 @@ class TestCase {
 
   TestCase.fromJson(core.Map _json) {
     if (_json.containsKey('expectation')) {
-      expectation = _json['expectation'];
+      expectation = _json['expectation'] as core.String;
     }
     if (_json.containsKey('expressionReportLevel')) {
-      expressionReportLevel = _json['expressionReportLevel'];
+      expressionReportLevel = _json['expressionReportLevel'] as core.String;
     }
     if (_json.containsKey('functionMocks')) {
       functionMocks = (_json['functionMocks'] as core.List)
@@ -1537,13 +1541,13 @@ class TestCase {
           .toList();
     }
     if (_json.containsKey('pathEncoding')) {
-      pathEncoding = _json['pathEncoding'];
+      pathEncoding = _json['pathEncoding'] as core.String;
     }
     if (_json.containsKey('request')) {
-      request = _json['request'];
+      request = _json['request'] as core.Object;
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.Object;
     }
   }
 
@@ -1619,7 +1623,9 @@ class TestResult {
 
   TestResult.fromJson(core.Map _json) {
     if (_json.containsKey('debugMessages')) {
-      debugMessages = (_json['debugMessages'] as core.List).cast<core.String>();
+      debugMessages = (_json['debugMessages'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('errorPosition')) {
       errorPosition = SourcePosition.fromJson(_json['errorPosition']);
@@ -1635,7 +1641,7 @@ class TestResult {
           .toList();
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('visitedExpressions')) {
       visitedExpressions = (_json['visitedExpressions'] as core.List)
@@ -1784,7 +1790,7 @@ class UpdateReleaseRequest {
       release = Release.fromJson(_json['release']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -1816,10 +1822,10 @@ class ValueCount {
 
   ValueCount.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.int;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.Object;
     }
   }
 
@@ -1853,7 +1859,7 @@ class VisitedExpression {
       sourcePosition = SourcePosition.fromJson(_json['sourcePosition']);
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.Object;
     }
   }
 

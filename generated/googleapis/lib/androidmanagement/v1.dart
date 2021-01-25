@@ -1669,7 +1669,7 @@ class AdvancedSecurityOverrides {
 
   AdvancedSecurityOverrides.fromJson(core.Map _json) {
     if (_json.containsKey('untrustedAppsPolicy')) {
-      untrustedAppsPolicy = _json['untrustedAppsPolicy'];
+      untrustedAppsPolicy = _json['untrustedAppsPolicy'] as core.String;
     }
   }
 
@@ -1694,10 +1694,10 @@ class AlwaysOnVpnPackage {
 
   AlwaysOnVpnPackage.fromJson(core.Map _json) {
     if (_json.containsKey('lockdownEnabled')) {
-      lockdownEnabled = _json['lockdownEnabled'];
+      lockdownEnabled = _json['lockdownEnabled'] as core.bool;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
   }
 
@@ -1726,7 +1726,7 @@ class ApiLevelCondition {
 
   ApiLevelCondition.fromJson(core.Map _json) {
     if (_json.containsKey('minApiLevel')) {
-      minApiLevel = _json['minApiLevel'];
+      minApiLevel = _json['minApiLevel'] as core.int;
     }
   }
 
@@ -1754,10 +1754,10 @@ class AppTrackInfo {
 
   AppTrackInfo.fromJson(core.Map _json) {
     if (_json.containsKey('trackAlias')) {
-      trackAlias = _json['trackAlias'];
+      trackAlias = _json['trackAlias'] as core.String;
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
   }
 
@@ -1805,7 +1805,7 @@ class Application {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
@@ -1814,7 +1814,7 @@ class Application {
           .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1865,10 +1865,10 @@ class ApplicationEvent {
 
   ApplicationEvent.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'];
+      eventType = _json['eventType'] as core.String;
     }
   }
 
@@ -1900,13 +1900,13 @@ class ApplicationPermission {
 
   ApplicationPermission.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('permissionId')) {
-      permissionId = _json['permissionId'];
+      permissionId = _json['permissionId'] as core.String;
     }
   }
 
@@ -2029,41 +2029,45 @@ class ApplicationPolicy {
 
   ApplicationPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('accessibleTrackIds')) {
-      accessibleTrackIds =
-          (_json['accessibleTrackIds'] as core.List).cast<core.String>();
+      accessibleTrackIds = (_json['accessibleTrackIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('connectedWorkAndPersonalApp')) {
-      connectedWorkAndPersonalApp = _json['connectedWorkAndPersonalApp'];
+      connectedWorkAndPersonalApp =
+          _json['connectedWorkAndPersonalApp'] as core.String;
     }
     if (_json.containsKey('defaultPermissionPolicy')) {
-      defaultPermissionPolicy = _json['defaultPermissionPolicy'];
+      defaultPermissionPolicy = _json['defaultPermissionPolicy'] as core.String;
     }
     if (_json.containsKey('delegatedScopes')) {
-      delegatedScopes =
-          (_json['delegatedScopes'] as core.List).cast<core.String>();
+      delegatedScopes = (_json['delegatedScopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('installType')) {
-      installType = _json['installType'];
+      installType = _json['installType'] as core.String;
     }
     if (_json.containsKey('lockTaskAllowed')) {
-      lockTaskAllowed = _json['lockTaskAllowed'];
+      lockTaskAllowed = _json['lockTaskAllowed'] as core.bool;
     }
     if (_json.containsKey('managedConfiguration')) {
-      managedConfiguration = (_json['managedConfiguration'] as core.Map)
-          .cast<core.String, core.Object>();
+      managedConfiguration = commons.mapMap<core.Object, core.Object>(
+          _json['managedConfiguration'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('managedConfigurationTemplate')) {
       managedConfigurationTemplate = ManagedConfigurationTemplate.fromJson(
           _json['managedConfigurationTemplate']);
     }
     if (_json.containsKey('minimumVersionCode')) {
-      minimumVersionCode = _json['minimumVersionCode'];
+      minimumVersionCode = _json['minimumVersionCode'] as core.int;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('permissionGrants')) {
       permissionGrants = (_json['permissionGrants'] as core.List)
@@ -2173,10 +2177,10 @@ class ApplicationReport {
 
   ApplicationReport.fromJson(core.Map _json) {
     if (_json.containsKey('applicationSource')) {
-      applicationSource = _json['applicationSource'];
+      applicationSource = _json['applicationSource'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
@@ -2184,7 +2188,7 @@ class ApplicationReport {
           .toList();
     }
     if (_json.containsKey('installerPackageName')) {
-      installerPackageName = _json['installerPackageName'];
+      installerPackageName = _json['installerPackageName'] as core.String;
     }
     if (_json.containsKey('keyedAppStates')) {
       keyedAppStates = (_json['keyedAppStates'] as core.List)
@@ -2192,24 +2196,25 @@ class ApplicationReport {
           .toList();
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('packageSha256Hash')) {
-      packageSha256Hash = _json['packageSha256Hash'];
+      packageSha256Hash = _json['packageSha256Hash'] as core.String;
     }
     if (_json.containsKey('signingKeyCertFingerprints')) {
       signingKeyCertFingerprints =
           (_json['signingKeyCertFingerprints'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('versionCode')) {
-      versionCode = _json['versionCode'];
+      versionCode = _json['versionCode'] as core.int;
     }
     if (_json.containsKey('versionName')) {
-      versionName = _json['versionName'];
+      versionName = _json['versionName'] as core.String;
     }
   }
 
@@ -2262,7 +2267,7 @@ class ApplicationReportingSettings {
 
   ApplicationReportingSettings.fromJson(core.Map _json) {
     if (_json.containsKey('includeRemovedApps')) {
-      includeRemovedApps = _json['includeRemovedApps'];
+      includeRemovedApps = _json['includeRemovedApps'] as core.bool;
     }
   }
 
@@ -2300,10 +2305,10 @@ class BlockAction {
 
   BlockAction.fromJson(core.Map _json) {
     if (_json.containsKey('blockAfterDays')) {
-      blockAfterDays = _json['blockAfterDays'];
+      blockAfterDays = _json['blockAfterDays'] as core.int;
     }
     if (_json.containsKey('blockScope')) {
-      blockScope = _json['blockScope'];
+      blockScope = _json['blockScope'] as core.String;
     }
   }
 
@@ -2342,13 +2347,15 @@ class ChoosePrivateKeyRule {
 
   ChoosePrivateKeyRule.fromJson(core.Map _json) {
     if (_json.containsKey('packageNames')) {
-      packageNames = (_json['packageNames'] as core.List).cast<core.String>();
+      packageNames = (_json['packageNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('privateKeyAlias')) {
-      privateKeyAlias = _json['privateKeyAlias'];
+      privateKeyAlias = _json['privateKeyAlias'] as core.String;
     }
     if (_json.containsKey('urlPattern')) {
-      urlPattern = _json['urlPattern'];
+      urlPattern = _json['urlPattern'] as core.String;
     }
   }
 
@@ -2416,26 +2423,27 @@ class Command {
 
   Command.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('newPassword')) {
-      newPassword = _json['newPassword'];
+      newPassword = _json['newPassword'] as core.String;
     }
     if (_json.containsKey('resetPasswordFlags')) {
-      resetPasswordFlags =
-          (_json['resetPasswordFlags'] as core.List).cast<core.String>();
+      resetPasswordFlags = (_json['resetPasswordFlags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('userName')) {
-      userName = _json['userName'];
+      userName = _json['userName'] as core.String;
     }
   }
 
@@ -2499,15 +2507,16 @@ class ComplianceRule {
           ApiLevelCondition.fromJson(_json['apiLevelCondition']);
     }
     if (_json.containsKey('disableApps')) {
-      disableApps = _json['disableApps'];
+      disableApps = _json['disableApps'] as core.bool;
     }
     if (_json.containsKey('nonComplianceDetailCondition')) {
       nonComplianceDetailCondition = NonComplianceDetailCondition.fromJson(
           _json['nonComplianceDetailCondition']);
     }
     if (_json.containsKey('packageNamesToDisable')) {
-      packageNamesToDisable =
-          (_json['packageNamesToDisable'] as core.List).cast<core.String>();
+      packageNamesToDisable = (_json['packageNamesToDisable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2556,13 +2565,13 @@ class Date {
 
   Date.fromJson(core.Map _json) {
     if (_json.containsKey('day')) {
-      day = _json['day'];
+      day = _json['day'] as core.int;
     }
     if (_json.containsKey('month')) {
-      month = _json['month'];
+      month = _json['month'] as core.int;
     }
     if (_json.containsKey('year')) {
-      year = _json['year'];
+      year = _json['year'] as core.int;
     }
   }
 
@@ -2746,7 +2755,7 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('apiLevel')) {
-      apiLevel = _json['apiLevel'];
+      apiLevel = _json['apiLevel'] as core.int;
     }
     if (_json.containsKey('applicationReports')) {
       applicationReports = (_json['applicationReports'] as core.List)
@@ -2754,13 +2763,13 @@ class Device {
           .toList();
     }
     if (_json.containsKey('appliedPolicyName')) {
-      appliedPolicyName = _json['appliedPolicyName'];
+      appliedPolicyName = _json['appliedPolicyName'] as core.String;
     }
     if (_json.containsKey('appliedPolicyVersion')) {
-      appliedPolicyVersion = _json['appliedPolicyVersion'];
+      appliedPolicyVersion = _json['appliedPolicyVersion'] as core.String;
     }
     if (_json.containsKey('appliedState')) {
-      appliedState = _json['appliedState'];
+      appliedState = _json['appliedState'] as core.String;
     }
     if (_json.containsKey('deviceSettings')) {
       deviceSettings = DeviceSettings.fromJson(_json['deviceSettings']);
@@ -2774,13 +2783,13 @@ class Device {
           .toList();
     }
     if (_json.containsKey('enrollmentTime')) {
-      enrollmentTime = _json['enrollmentTime'];
+      enrollmentTime = _json['enrollmentTime'] as core.String;
     }
     if (_json.containsKey('enrollmentTokenData')) {
-      enrollmentTokenData = _json['enrollmentTokenData'];
+      enrollmentTokenData = _json['enrollmentTokenData'] as core.String;
     }
     if (_json.containsKey('enrollmentTokenName')) {
-      enrollmentTokenName = _json['enrollmentTokenName'];
+      enrollmentTokenName = _json['enrollmentTokenName'] as core.String;
     }
     if (_json.containsKey('hardwareInfo')) {
       hardwareInfo = HardwareInfo.fromJson(_json['hardwareInfo']);
@@ -2791,16 +2800,17 @@ class Device {
           .toList();
     }
     if (_json.containsKey('lastPolicyComplianceReportTime')) {
-      lastPolicyComplianceReportTime = _json['lastPolicyComplianceReportTime'];
+      lastPolicyComplianceReportTime =
+          _json['lastPolicyComplianceReportTime'] as core.String;
     }
     if (_json.containsKey('lastPolicySyncTime')) {
-      lastPolicySyncTime = _json['lastPolicySyncTime'];
+      lastPolicySyncTime = _json['lastPolicySyncTime'] as core.String;
     }
     if (_json.containsKey('lastStatusReportTime')) {
-      lastStatusReportTime = _json['lastStatusReportTime'];
+      lastStatusReportTime = _json['lastStatusReportTime'] as core.String;
     }
     if (_json.containsKey('managementMode')) {
-      managementMode = _json['managementMode'];
+      managementMode = _json['managementMode'] as core.String;
     }
     if (_json.containsKey('memoryEvents')) {
       memoryEvents = (_json['memoryEvents'] as core.List)
@@ -2811,7 +2821,7 @@ class Device {
       memoryInfo = MemoryInfo.fromJson(_json['memoryInfo']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkInfo')) {
       networkInfo = NetworkInfo.fromJson(_json['networkInfo']);
@@ -2823,13 +2833,13 @@ class Device {
           .toList();
     }
     if (_json.containsKey('ownership')) {
-      ownership = _json['ownership'];
+      ownership = _json['ownership'] as core.String;
     }
     if (_json.containsKey('policyCompliant')) {
-      policyCompliant = _json['policyCompliant'];
+      policyCompliant = _json['policyCompliant'] as core.bool;
     }
     if (_json.containsKey('policyName')) {
-      policyName = _json['policyName'];
+      policyName = _json['policyName'] as core.String;
     }
     if (_json.containsKey('powerManagementEvents')) {
       powerManagementEvents = (_json['powerManagementEvents'] as core.List)
@@ -2838,8 +2848,9 @@ class Device {
           .toList();
     }
     if (_json.containsKey('previousDeviceNames')) {
-      previousDeviceNames =
-          (_json['previousDeviceNames'] as core.List).cast<core.String>();
+      previousDeviceNames = (_json['previousDeviceNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('securityPosture')) {
       securityPosture = SecurityPosture.fromJson(_json['securityPosture']);
@@ -2848,17 +2859,18 @@ class Device {
       softwareInfo = SoftwareInfo.fromJson(_json['softwareInfo']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('systemProperties')) {
-      systemProperties = (_json['systemProperties'] as core.Map)
-          .cast<core.String, core.String>();
+      systemProperties = commons.mapMap<core.String, core.String>(
+          _json['systemProperties'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);
     }
     if (_json.containsKey('userName')) {
-      userName = _json['userName'];
+      userName = _json['userName'] as core.String;
     }
   }
 
@@ -3015,25 +3027,26 @@ class DeviceSettings {
 
   DeviceSettings.fromJson(core.Map _json) {
     if (_json.containsKey('adbEnabled')) {
-      adbEnabled = _json['adbEnabled'];
+      adbEnabled = _json['adbEnabled'] as core.bool;
     }
     if (_json.containsKey('developmentSettingsEnabled')) {
-      developmentSettingsEnabled = _json['developmentSettingsEnabled'];
+      developmentSettingsEnabled =
+          _json['developmentSettingsEnabled'] as core.bool;
     }
     if (_json.containsKey('encryptionStatus')) {
-      encryptionStatus = _json['encryptionStatus'];
+      encryptionStatus = _json['encryptionStatus'] as core.String;
     }
     if (_json.containsKey('isDeviceSecure')) {
-      isDeviceSecure = _json['isDeviceSecure'];
+      isDeviceSecure = _json['isDeviceSecure'] as core.bool;
     }
     if (_json.containsKey('isEncrypted')) {
-      isEncrypted = _json['isEncrypted'];
+      isEncrypted = _json['isEncrypted'] as core.bool;
     }
     if (_json.containsKey('unknownSourcesEnabled')) {
-      unknownSourcesEnabled = _json['unknownSourcesEnabled'];
+      unknownSourcesEnabled = _json['unknownSourcesEnabled'] as core.bool;
     }
     if (_json.containsKey('verifyAppsEnabled')) {
-      verifyAppsEnabled = _json['verifyAppsEnabled'];
+      verifyAppsEnabled = _json['verifyAppsEnabled'] as core.bool;
     }
   }
 
@@ -3097,25 +3110,25 @@ class Display {
 
   Display.fromJson(core.Map _json) {
     if (_json.containsKey('density')) {
-      density = _json['density'];
+      density = _json['density'] as core.int;
     }
     if (_json.containsKey('displayId')) {
-      displayId = _json['displayId'];
+      displayId = _json['displayId'] as core.int;
     }
     if (_json.containsKey('height')) {
-      height = _json['height'];
+      height = _json['height'] as core.int;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('refreshRate')) {
-      refreshRate = _json['refreshRate'];
+      refreshRate = _json['refreshRate'] as core.int;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'];
+      width = _json['width'] as core.int;
     }
   }
 
@@ -3235,34 +3248,34 @@ class EnrollmentToken {
 
   EnrollmentToken.fromJson(core.Map _json) {
     if (_json.containsKey('additionalData')) {
-      additionalData = _json['additionalData'];
+      additionalData = _json['additionalData'] as core.String;
     }
     if (_json.containsKey('allowPersonalUsage')) {
-      allowPersonalUsage = _json['allowPersonalUsage'];
+      allowPersonalUsage = _json['allowPersonalUsage'] as core.String;
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('expirationTimestamp')) {
-      expirationTimestamp = _json['expirationTimestamp'];
+      expirationTimestamp = _json['expirationTimestamp'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('oneTimeOnly')) {
-      oneTimeOnly = _json['oneTimeOnly'];
+      oneTimeOnly = _json['oneTimeOnly'] as core.bool;
     }
     if (_json.containsKey('policyName')) {
-      policyName = _json['policyName'];
+      policyName = _json['policyName'] as core.String;
     }
     if (_json.containsKey('qrCode')) {
-      qrCode = _json['qrCode'];
+      qrCode = _json['qrCode'] as core.String;
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -3344,26 +3357,28 @@ class Enterprise {
 
   Enterprise.fromJson(core.Map _json) {
     if (_json.containsKey('appAutoApprovalEnabled')) {
-      appAutoApprovalEnabled = _json['appAutoApprovalEnabled'];
+      appAutoApprovalEnabled = _json['appAutoApprovalEnabled'] as core.bool;
     }
     if (_json.containsKey('enabledNotificationTypes')) {
       enabledNotificationTypes =
-          (_json['enabledNotificationTypes'] as core.List).cast<core.String>();
+          (_json['enabledNotificationTypes'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('enterpriseDisplayName')) {
-      enterpriseDisplayName = _json['enterpriseDisplayName'];
+      enterpriseDisplayName = _json['enterpriseDisplayName'] as core.String;
     }
     if (_json.containsKey('logo')) {
       logo = ExternalData.fromJson(_json['logo']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('primaryColor')) {
-      primaryColor = _json['primaryColor'];
+      primaryColor = _json['primaryColor'] as core.int;
     }
     if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'];
+      pubsubTopic = _json['pubsubTopic'] as core.String;
     }
     if (_json.containsKey('signinDetails')) {
       signinDetails = (_json['signinDetails'] as core.List)
@@ -3431,10 +3446,10 @@ class ExternalData {
 
   ExternalData.fromJson(core.Map _json) {
     if (_json.containsKey('sha256Hash')) {
-      sha256Hash = _json['sha256Hash'];
+      sha256Hash = _json['sha256Hash'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3560,7 +3575,7 @@ class HardwareInfo {
               .toList();
     }
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('cpuShutdownTemperatures')) {
       cpuShutdownTemperatures = (_json['cpuShutdownTemperatures'] as core.List)
@@ -3574,7 +3589,7 @@ class HardwareInfo {
               .toList();
     }
     if (_json.containsKey('deviceBasebandVersion')) {
-      deviceBasebandVersion = _json['deviceBasebandVersion'];
+      deviceBasebandVersion = _json['deviceBasebandVersion'] as core.String;
     }
     if (_json.containsKey('gpuShutdownTemperatures')) {
       gpuShutdownTemperatures = (_json['gpuShutdownTemperatures'] as core.List)
@@ -3588,16 +3603,16 @@ class HardwareInfo {
               .toList();
     }
     if (_json.containsKey('hardware')) {
-      hardware = _json['hardware'];
+      hardware = _json['hardware'] as core.String;
     }
     if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'];
+      manufacturer = _json['manufacturer'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'];
+      serialNumber = _json['serialNumber'] as core.String;
     }
     if (_json.containsKey('skinShutdownTemperatures')) {
       skinShutdownTemperatures =
@@ -3707,7 +3722,7 @@ class HardwareStatus {
           .toList();
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('fanSpeeds')) {
       fanSpeeds = (_json['fanSpeeds'] as core.List)
@@ -3789,22 +3804,22 @@ class KeyedAppState {
 
   KeyedAppState.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'];
+      lastUpdateTime = _json['lastUpdateTime'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
   }
 
@@ -3900,19 +3915,19 @@ class KioskCustomization {
 
   KioskCustomization.fromJson(core.Map _json) {
     if (_json.containsKey('deviceSettings')) {
-      deviceSettings = _json['deviceSettings'];
+      deviceSettings = _json['deviceSettings'] as core.String;
     }
     if (_json.containsKey('powerButtonActions')) {
-      powerButtonActions = _json['powerButtonActions'];
+      powerButtonActions = _json['powerButtonActions'] as core.String;
     }
     if (_json.containsKey('statusBar')) {
-      statusBar = _json['statusBar'];
+      statusBar = _json['statusBar'] as core.String;
     }
     if (_json.containsKey('systemErrorWarnings')) {
-      systemErrorWarnings = _json['systemErrorWarnings'];
+      systemErrorWarnings = _json['systemErrorWarnings'] as core.String;
     }
     if (_json.containsKey('systemNavigation')) {
-      systemNavigation = _json['systemNavigation'];
+      systemNavigation = _json['systemNavigation'] as core.String;
     }
   }
 
@@ -3946,7 +3961,7 @@ class LaunchAppAction {
 
   LaunchAppAction.fromJson(core.Map _json) {
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
   }
 
@@ -3976,7 +3991,7 @@ class ListDevicesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4004,7 +4019,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -4037,7 +4052,7 @@ class ListPoliciesResponse {
 
   ListPoliciesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('policies')) {
       policies = (_json['policies'] as core.List)
@@ -4070,7 +4085,7 @@ class ListWebAppsResponse {
 
   ListWebAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('webApps')) {
       webApps = (_json['webApps'] as core.List)
@@ -4105,11 +4120,12 @@ class ManagedConfigurationTemplate {
 
   ManagedConfigurationTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('configurationVariables')) {
-      configurationVariables = (_json['configurationVariables'] as core.Map)
-          .cast<core.String, core.String>();
+      configurationVariables = commons.mapMap<core.String, core.String>(
+          _json['configurationVariables'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('templateId')) {
-      templateId = _json['templateId'];
+      templateId = _json['templateId'] as core.String;
     }
   }
 
@@ -4171,10 +4187,10 @@ class ManagedProperty {
 
   ManagedProperty.fromJson(core.Map _json) {
     if (_json.containsKey('defaultValue')) {
-      defaultValue = _json['defaultValue'];
+      defaultValue = _json['defaultValue'] as core.Object;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
@@ -4183,7 +4199,7 @@ class ManagedProperty {
           .toList();
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('nestedProperties')) {
       nestedProperties = (_json['nestedProperties'] as core.List)
@@ -4191,10 +4207,10 @@ class ManagedProperty {
           .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4239,10 +4255,10 @@ class ManagedPropertyEntry {
 
   ManagedPropertyEntry.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -4286,13 +4302,13 @@ class MemoryEvent {
 
   MemoryEvent.fromJson(core.Map _json) {
     if (_json.containsKey('byteCount')) {
-      byteCount = _json['byteCount'];
+      byteCount = _json['byteCount'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'];
+      eventType = _json['eventType'] as core.String;
     }
   }
 
@@ -4323,10 +4339,10 @@ class MemoryInfo {
 
   MemoryInfo.fromJson(core.Map _json) {
     if (_json.containsKey('totalInternalStorage')) {
-      totalInternalStorage = _json['totalInternalStorage'];
+      totalInternalStorage = _json['totalInternalStorage'] as core.String;
     }
     if (_json.containsKey('totalRam')) {
-      totalRam = _json['totalRam'];
+      totalRam = _json['totalRam'] as core.String;
     }
   }
 
@@ -4360,16 +4376,16 @@ class NetworkInfo {
 
   NetworkInfo.fromJson(core.Map _json) {
     if (_json.containsKey('imei')) {
-      imei = _json['imei'];
+      imei = _json['imei'] as core.String;
     }
     if (_json.containsKey('meid')) {
-      meid = _json['meid'];
+      meid = _json['meid'] as core.String;
     }
     if (_json.containsKey('networkOperatorName')) {
-      networkOperatorName = _json['networkOperatorName'];
+      networkOperatorName = _json['networkOperatorName'] as core.String;
     }
     if (_json.containsKey('wifiMacAddress')) {
-      wifiMacAddress = _json['wifiMacAddress'];
+      wifiMacAddress = _json['wifiMacAddress'] as core.String;
     }
   }
 
@@ -4473,22 +4489,23 @@ class NonComplianceDetail {
 
   NonComplianceDetail.fromJson(core.Map _json) {
     if (_json.containsKey('currentValue')) {
-      currentValue = _json['currentValue'];
+      currentValue = _json['currentValue'] as core.Object;
     }
     if (_json.containsKey('fieldPath')) {
-      fieldPath = _json['fieldPath'];
+      fieldPath = _json['fieldPath'] as core.String;
     }
     if (_json.containsKey('installationFailureReason')) {
-      installationFailureReason = _json['installationFailureReason'];
+      installationFailureReason =
+          _json['installationFailureReason'] as core.String;
     }
     if (_json.containsKey('nonComplianceReason')) {
-      nonComplianceReason = _json['nonComplianceReason'];
+      nonComplianceReason = _json['nonComplianceReason'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('settingName')) {
-      settingName = _json['settingName'];
+      settingName = _json['settingName'] as core.String;
     }
   }
 
@@ -4559,13 +4576,13 @@ class NonComplianceDetailCondition {
 
   NonComplianceDetailCondition.fromJson(core.Map _json) {
     if (_json.containsKey('nonComplianceReason')) {
-      nonComplianceReason = _json['nonComplianceReason'];
+      nonComplianceReason = _json['nonComplianceReason'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('settingName')) {
-      settingName = _json['settingName'];
+      settingName = _json['settingName'] as core.String;
     }
   }
 
@@ -4625,21 +4642,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -4673,7 +4692,9 @@ class PackageNameList {
 
   PackageNameList.fromJson(core.Map _json) {
     if (_json.containsKey('packageNames')) {
-      packageNames = (_json['packageNames'] as core.List).cast<core.String>();
+      packageNames = (_json['packageNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4779,43 +4800,45 @@ class PasswordRequirements {
 
   PasswordRequirements.fromJson(core.Map _json) {
     if (_json.containsKey('maximumFailedPasswordsForWipe')) {
-      maximumFailedPasswordsForWipe = _json['maximumFailedPasswordsForWipe'];
+      maximumFailedPasswordsForWipe =
+          _json['maximumFailedPasswordsForWipe'] as core.int;
     }
     if (_json.containsKey('passwordExpirationTimeout')) {
-      passwordExpirationTimeout = _json['passwordExpirationTimeout'];
+      passwordExpirationTimeout =
+          _json['passwordExpirationTimeout'] as core.String;
     }
     if (_json.containsKey('passwordHistoryLength')) {
-      passwordHistoryLength = _json['passwordHistoryLength'];
+      passwordHistoryLength = _json['passwordHistoryLength'] as core.int;
     }
     if (_json.containsKey('passwordMinimumLength')) {
-      passwordMinimumLength = _json['passwordMinimumLength'];
+      passwordMinimumLength = _json['passwordMinimumLength'] as core.int;
     }
     if (_json.containsKey('passwordMinimumLetters')) {
-      passwordMinimumLetters = _json['passwordMinimumLetters'];
+      passwordMinimumLetters = _json['passwordMinimumLetters'] as core.int;
     }
     if (_json.containsKey('passwordMinimumLowerCase')) {
-      passwordMinimumLowerCase = _json['passwordMinimumLowerCase'];
+      passwordMinimumLowerCase = _json['passwordMinimumLowerCase'] as core.int;
     }
     if (_json.containsKey('passwordMinimumNonLetter')) {
-      passwordMinimumNonLetter = _json['passwordMinimumNonLetter'];
+      passwordMinimumNonLetter = _json['passwordMinimumNonLetter'] as core.int;
     }
     if (_json.containsKey('passwordMinimumNumeric')) {
-      passwordMinimumNumeric = _json['passwordMinimumNumeric'];
+      passwordMinimumNumeric = _json['passwordMinimumNumeric'] as core.int;
     }
     if (_json.containsKey('passwordMinimumSymbols')) {
-      passwordMinimumSymbols = _json['passwordMinimumSymbols'];
+      passwordMinimumSymbols = _json['passwordMinimumSymbols'] as core.int;
     }
     if (_json.containsKey('passwordMinimumUpperCase')) {
-      passwordMinimumUpperCase = _json['passwordMinimumUpperCase'];
+      passwordMinimumUpperCase = _json['passwordMinimumUpperCase'] as core.int;
     }
     if (_json.containsKey('passwordQuality')) {
-      passwordQuality = _json['passwordQuality'];
+      passwordQuality = _json['passwordQuality'] as core.String;
     }
     if (_json.containsKey('passwordScope')) {
-      passwordScope = _json['passwordScope'];
+      passwordScope = _json['passwordScope'] as core.String;
     }
     if (_json.containsKey('requirePasswordUnlock')) {
-      requirePasswordUnlock = _json['requirePasswordUnlock'];
+      requirePasswordUnlock = _json['requirePasswordUnlock'] as core.String;
     }
   }
 
@@ -4884,10 +4907,10 @@ class PermissionGrant {
 
   PermissionGrant.fromJson(core.Map _json) {
     if (_json.containsKey('permission')) {
-      permission = _json['permission'];
+      permission = _json['permission'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = _json['policy'];
+      policy = _json['policy'] as core.String;
     }
   }
 
@@ -4929,13 +4952,17 @@ class PersistentPreferredActivity {
 
   PersistentPreferredActivity.fromJson(core.Map _json) {
     if (_json.containsKey('actions')) {
-      actions = (_json['actions'] as core.List).cast<core.String>();
+      actions = (_json['actions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('categories')) {
-      categories = (_json['categories'] as core.List).cast<core.String>();
+      categories = (_json['categories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('receiverActivity')) {
-      receiverActivity = _json['receiverActivity'];
+      receiverActivity = _json['receiverActivity'] as core.String;
     }
   }
 
@@ -4972,10 +4999,10 @@ class PersonalApplicationPolicy {
 
   PersonalApplicationPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('installType')) {
-      installType = _json['installType'];
+      installType = _json['installType'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
   }
 
@@ -5024,13 +5051,14 @@ class PersonalUsagePolicies {
     if (_json.containsKey('accountTypesWithManagementDisabled')) {
       accountTypesWithManagementDisabled =
           (_json['accountTypesWithManagementDisabled'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('cameraDisabled')) {
-      cameraDisabled = _json['cameraDisabled'];
+      cameraDisabled = _json['cameraDisabled'] as core.bool;
     }
     if (_json.containsKey('maxDaysWithWorkOff')) {
-      maxDaysWithWorkOff = _json['maxDaysWithWorkOff'];
+      maxDaysWithWorkOff = _json['maxDaysWithWorkOff'] as core.int;
     }
     if (_json.containsKey('personalApplications')) {
       personalApplications = (_json['personalApplications'] as core.List)
@@ -5039,10 +5067,10 @@ class PersonalUsagePolicies {
           .toList();
     }
     if (_json.containsKey('personalPlayStoreMode')) {
-      personalPlayStoreMode = _json['personalPlayStoreMode'];
+      personalPlayStoreMode = _json['personalPlayStoreMode'] as core.String;
     }
     if (_json.containsKey('screenCaptureDisabled')) {
-      screenCaptureDisabled = _json['screenCaptureDisabled'];
+      screenCaptureDisabled = _json['screenCaptureDisabled'] as core.bool;
     }
   }
 
@@ -5436,13 +5464,14 @@ class Policy {
     if (_json.containsKey('accountTypesWithManagementDisabled')) {
       accountTypesWithManagementDisabled =
           (_json['accountTypesWithManagementDisabled'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('addUserDisabled')) {
-      addUserDisabled = _json['addUserDisabled'];
+      addUserDisabled = _json['addUserDisabled'] as core.bool;
     }
     if (_json.containsKey('adjustVolumeDisabled')) {
-      adjustVolumeDisabled = _json['adjustVolumeDisabled'];
+      adjustVolumeDisabled = _json['adjustVolumeDisabled'] as core.bool;
     }
     if (_json.containsKey('advancedSecurityOverrides')) {
       advancedSecurityOverrides = AdvancedSecurityOverrides.fromJson(
@@ -5454,10 +5483,12 @@ class Policy {
     }
     if (_json.containsKey('androidDevicePolicyTracks')) {
       androidDevicePolicyTracks =
-          (_json['androidDevicePolicyTracks'] as core.List).cast<core.String>();
+          (_json['androidDevicePolicyTracks'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('appAutoUpdatePolicy')) {
-      appAutoUpdatePolicy = _json['appAutoUpdatePolicy'];
+      appAutoUpdatePolicy = _json['appAutoUpdatePolicy'] as core.String;
     }
     if (_json.containsKey('applications')) {
       applications = (_json['applications'] as core.List)
@@ -5465,26 +5496,27 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('autoTimeRequired')) {
-      autoTimeRequired = _json['autoTimeRequired'];
+      autoTimeRequired = _json['autoTimeRequired'] as core.bool;
     }
     if (_json.containsKey('blockApplicationsEnabled')) {
-      blockApplicationsEnabled = _json['blockApplicationsEnabled'];
+      blockApplicationsEnabled = _json['blockApplicationsEnabled'] as core.bool;
     }
     if (_json.containsKey('bluetoothConfigDisabled')) {
-      bluetoothConfigDisabled = _json['bluetoothConfigDisabled'];
+      bluetoothConfigDisabled = _json['bluetoothConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('bluetoothContactSharingDisabled')) {
       bluetoothContactSharingDisabled =
-          _json['bluetoothContactSharingDisabled'];
+          _json['bluetoothContactSharingDisabled'] as core.bool;
     }
     if (_json.containsKey('bluetoothDisabled')) {
-      bluetoothDisabled = _json['bluetoothDisabled'];
+      bluetoothDisabled = _json['bluetoothDisabled'] as core.bool;
     }
     if (_json.containsKey('cameraDisabled')) {
-      cameraDisabled = _json['cameraDisabled'];
+      cameraDisabled = _json['cameraDisabled'] as core.bool;
     }
     if (_json.containsKey('cellBroadcastsConfigDisabled')) {
-      cellBroadcastsConfigDisabled = _json['cellBroadcastsConfigDisabled'];
+      cellBroadcastsConfigDisabled =
+          _json['cellBroadcastsConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('choosePrivateKeyRules')) {
       choosePrivateKeyRules = (_json['choosePrivateKeyRules'] as core.List)
@@ -5498,100 +5530,110 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('createWindowsDisabled')) {
-      createWindowsDisabled = _json['createWindowsDisabled'];
+      createWindowsDisabled = _json['createWindowsDisabled'] as core.bool;
     }
     if (_json.containsKey('credentialsConfigDisabled')) {
-      credentialsConfigDisabled = _json['credentialsConfigDisabled'];
+      credentialsConfigDisabled =
+          _json['credentialsConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('dataRoamingDisabled')) {
-      dataRoamingDisabled = _json['dataRoamingDisabled'];
+      dataRoamingDisabled = _json['dataRoamingDisabled'] as core.bool;
     }
     if (_json.containsKey('debuggingFeaturesAllowed')) {
-      debuggingFeaturesAllowed = _json['debuggingFeaturesAllowed'];
+      debuggingFeaturesAllowed = _json['debuggingFeaturesAllowed'] as core.bool;
     }
     if (_json.containsKey('defaultPermissionPolicy')) {
-      defaultPermissionPolicy = _json['defaultPermissionPolicy'];
+      defaultPermissionPolicy = _json['defaultPermissionPolicy'] as core.String;
     }
     if (_json.containsKey('deviceOwnerLockScreenInfo')) {
       deviceOwnerLockScreenInfo =
           UserFacingMessage.fromJson(_json['deviceOwnerLockScreenInfo']);
     }
     if (_json.containsKey('encryptionPolicy')) {
-      encryptionPolicy = _json['encryptionPolicy'];
+      encryptionPolicy = _json['encryptionPolicy'] as core.String;
     }
     if (_json.containsKey('ensureVerifyAppsEnabled')) {
-      ensureVerifyAppsEnabled = _json['ensureVerifyAppsEnabled'];
+      ensureVerifyAppsEnabled = _json['ensureVerifyAppsEnabled'] as core.bool;
     }
     if (_json.containsKey('factoryResetDisabled')) {
-      factoryResetDisabled = _json['factoryResetDisabled'];
+      factoryResetDisabled = _json['factoryResetDisabled'] as core.bool;
     }
     if (_json.containsKey('frpAdminEmails')) {
-      frpAdminEmails =
-          (_json['frpAdminEmails'] as core.List).cast<core.String>();
+      frpAdminEmails = (_json['frpAdminEmails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('funDisabled')) {
-      funDisabled = _json['funDisabled'];
+      funDisabled = _json['funDisabled'] as core.bool;
     }
     if (_json.containsKey('installAppsDisabled')) {
-      installAppsDisabled = _json['installAppsDisabled'];
+      installAppsDisabled = _json['installAppsDisabled'] as core.bool;
     }
     if (_json.containsKey('installUnknownSourcesAllowed')) {
-      installUnknownSourcesAllowed = _json['installUnknownSourcesAllowed'];
+      installUnknownSourcesAllowed =
+          _json['installUnknownSourcesAllowed'] as core.bool;
     }
     if (_json.containsKey('keyguardDisabled')) {
-      keyguardDisabled = _json['keyguardDisabled'];
+      keyguardDisabled = _json['keyguardDisabled'] as core.bool;
     }
     if (_json.containsKey('keyguardDisabledFeatures')) {
       keyguardDisabledFeatures =
-          (_json['keyguardDisabledFeatures'] as core.List).cast<core.String>();
+          (_json['keyguardDisabledFeatures'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('kioskCustomLauncherEnabled')) {
-      kioskCustomLauncherEnabled = _json['kioskCustomLauncherEnabled'];
+      kioskCustomLauncherEnabled =
+          _json['kioskCustomLauncherEnabled'] as core.bool;
     }
     if (_json.containsKey('kioskCustomization')) {
       kioskCustomization =
           KioskCustomization.fromJson(_json['kioskCustomization']);
     }
     if (_json.containsKey('locationMode')) {
-      locationMode = _json['locationMode'];
+      locationMode = _json['locationMode'] as core.String;
     }
     if (_json.containsKey('longSupportMessage')) {
       longSupportMessage =
           UserFacingMessage.fromJson(_json['longSupportMessage']);
     }
     if (_json.containsKey('maximumTimeToLock')) {
-      maximumTimeToLock = _json['maximumTimeToLock'];
+      maximumTimeToLock = _json['maximumTimeToLock'] as core.String;
     }
     if (_json.containsKey('minimumApiLevel')) {
-      minimumApiLevel = _json['minimumApiLevel'];
+      minimumApiLevel = _json['minimumApiLevel'] as core.int;
     }
     if (_json.containsKey('mobileNetworksConfigDisabled')) {
-      mobileNetworksConfigDisabled = _json['mobileNetworksConfigDisabled'];
+      mobileNetworksConfigDisabled =
+          _json['mobileNetworksConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('modifyAccountsDisabled')) {
-      modifyAccountsDisabled = _json['modifyAccountsDisabled'];
+      modifyAccountsDisabled = _json['modifyAccountsDisabled'] as core.bool;
     }
     if (_json.containsKey('mountPhysicalMediaDisabled')) {
-      mountPhysicalMediaDisabled = _json['mountPhysicalMediaDisabled'];
+      mountPhysicalMediaDisabled =
+          _json['mountPhysicalMediaDisabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkEscapeHatchEnabled')) {
-      networkEscapeHatchEnabled = _json['networkEscapeHatchEnabled'];
+      networkEscapeHatchEnabled =
+          _json['networkEscapeHatchEnabled'] as core.bool;
     }
     if (_json.containsKey('networkResetDisabled')) {
-      networkResetDisabled = _json['networkResetDisabled'];
+      networkResetDisabled = _json['networkResetDisabled'] as core.bool;
     }
     if (_json.containsKey('openNetworkConfiguration')) {
-      openNetworkConfiguration = (_json['openNetworkConfiguration'] as core.Map)
-          .cast<core.String, core.Object>();
+      openNetworkConfiguration = commons.mapMap<core.Object, core.Object>(
+          _json['openNetworkConfiguration'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('outgoingBeamDisabled')) {
-      outgoingBeamDisabled = _json['outgoingBeamDisabled'];
+      outgoingBeamDisabled = _json['outgoingBeamDisabled'] as core.bool;
     }
     if (_json.containsKey('outgoingCallsDisabled')) {
-      outgoingCallsDisabled = _json['outgoingCallsDisabled'];
+      outgoingCallsDisabled = _json['outgoingCallsDisabled'] as core.bool;
     }
     if (_json.containsKey('passwordPolicies')) {
       passwordPolicies = (_json['passwordPolicies'] as core.List)
@@ -5628,7 +5670,7 @@ class Policy {
           PersonalUsagePolicies.fromJson(_json['personalUsagePolicies']);
     }
     if (_json.containsKey('playStoreMode')) {
-      playStoreMode = _json['playStoreMode'];
+      playStoreMode = _json['playStoreMode'] as core.String;
     }
     if (_json.containsKey('policyEnforcementRules')) {
       policyEnforcementRules = (_json['policyEnforcementRules'] as core.List)
@@ -5637,26 +5679,27 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('privateKeySelectionEnabled')) {
-      privateKeySelectionEnabled = _json['privateKeySelectionEnabled'];
+      privateKeySelectionEnabled =
+          _json['privateKeySelectionEnabled'] as core.bool;
     }
     if (_json.containsKey('recommendedGlobalProxy')) {
       recommendedGlobalProxy =
           ProxyInfo.fromJson(_json['recommendedGlobalProxy']);
     }
     if (_json.containsKey('removeUserDisabled')) {
-      removeUserDisabled = _json['removeUserDisabled'];
+      removeUserDisabled = _json['removeUserDisabled'] as core.bool;
     }
     if (_json.containsKey('safeBootDisabled')) {
-      safeBootDisabled = _json['safeBootDisabled'];
+      safeBootDisabled = _json['safeBootDisabled'] as core.bool;
     }
     if (_json.containsKey('screenCaptureDisabled')) {
-      screenCaptureDisabled = _json['screenCaptureDisabled'];
+      screenCaptureDisabled = _json['screenCaptureDisabled'] as core.bool;
     }
     if (_json.containsKey('setUserIconDisabled')) {
-      setUserIconDisabled = _json['setUserIconDisabled'];
+      setUserIconDisabled = _json['setUserIconDisabled'] as core.bool;
     }
     if (_json.containsKey('setWallpaperDisabled')) {
-      setWallpaperDisabled = _json['setWallpaperDisabled'];
+      setWallpaperDisabled = _json['setWallpaperDisabled'] as core.bool;
     }
     if (_json.containsKey('setupActions')) {
       setupActions = (_json['setupActions'] as core.List)
@@ -5664,58 +5707,60 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('shareLocationDisabled')) {
-      shareLocationDisabled = _json['shareLocationDisabled'];
+      shareLocationDisabled = _json['shareLocationDisabled'] as core.bool;
     }
     if (_json.containsKey('shortSupportMessage')) {
       shortSupportMessage =
           UserFacingMessage.fromJson(_json['shortSupportMessage']);
     }
     if (_json.containsKey('skipFirstUseHintsEnabled')) {
-      skipFirstUseHintsEnabled = _json['skipFirstUseHintsEnabled'];
+      skipFirstUseHintsEnabled = _json['skipFirstUseHintsEnabled'] as core.bool;
     }
     if (_json.containsKey('smsDisabled')) {
-      smsDisabled = _json['smsDisabled'];
+      smsDisabled = _json['smsDisabled'] as core.bool;
     }
     if (_json.containsKey('statusBarDisabled')) {
-      statusBarDisabled = _json['statusBarDisabled'];
+      statusBarDisabled = _json['statusBarDisabled'] as core.bool;
     }
     if (_json.containsKey('statusReportingSettings')) {
       statusReportingSettings =
           StatusReportingSettings.fromJson(_json['statusReportingSettings']);
     }
     if (_json.containsKey('stayOnPluggedModes')) {
-      stayOnPluggedModes =
-          (_json['stayOnPluggedModes'] as core.List).cast<core.String>();
+      stayOnPluggedModes = (_json['stayOnPluggedModes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('systemUpdate')) {
       systemUpdate = SystemUpdate.fromJson(_json['systemUpdate']);
     }
     if (_json.containsKey('tetheringConfigDisabled')) {
-      tetheringConfigDisabled = _json['tetheringConfigDisabled'];
+      tetheringConfigDisabled = _json['tetheringConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('uninstallAppsDisabled')) {
-      uninstallAppsDisabled = _json['uninstallAppsDisabled'];
+      uninstallAppsDisabled = _json['uninstallAppsDisabled'] as core.bool;
     }
     if (_json.containsKey('unmuteMicrophoneDisabled')) {
-      unmuteMicrophoneDisabled = _json['unmuteMicrophoneDisabled'];
+      unmuteMicrophoneDisabled = _json['unmuteMicrophoneDisabled'] as core.bool;
     }
     if (_json.containsKey('usbFileTransferDisabled')) {
-      usbFileTransferDisabled = _json['usbFileTransferDisabled'];
+      usbFileTransferDisabled = _json['usbFileTransferDisabled'] as core.bool;
     }
     if (_json.containsKey('usbMassStorageEnabled')) {
-      usbMassStorageEnabled = _json['usbMassStorageEnabled'];
+      usbMassStorageEnabled = _json['usbMassStorageEnabled'] as core.bool;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
     if (_json.containsKey('vpnConfigDisabled')) {
-      vpnConfigDisabled = _json['vpnConfigDisabled'];
+      vpnConfigDisabled = _json['vpnConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('wifiConfigDisabled')) {
-      wifiConfigDisabled = _json['wifiConfigDisabled'];
+      wifiConfigDisabled = _json['wifiConfigDisabled'] as core.bool;
     }
     if (_json.containsKey('wifiConfigsLockdownEnabled')) {
-      wifiConfigsLockdownEnabled = _json['wifiConfigsLockdownEnabled'];
+      wifiConfigsLockdownEnabled =
+          _json['wifiConfigsLockdownEnabled'] as core.bool;
     }
   }
 
@@ -6003,7 +6048,7 @@ class PolicyEnforcementRule {
       blockAction = BlockAction.fromJson(_json['blockAction']);
     }
     if (_json.containsKey('settingName')) {
-      settingName = _json['settingName'];
+      settingName = _json['settingName'] as core.String;
     }
     if (_json.containsKey('wipeAction')) {
       wipeAction = WipeAction.fromJson(_json['wipeAction']);
@@ -6050,7 +6095,7 @@ class PostureDetail {
           .toList();
     }
     if (_json.containsKey('securityRisk')) {
-      securityRisk = _json['securityRisk'];
+      securityRisk = _json['securityRisk'] as core.String;
     }
   }
 
@@ -6094,10 +6139,10 @@ class PowerManagementEvent {
       batteryLevel = _json['batteryLevel'].toDouble();
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('eventType')) {
-      eventType = _json['eventType'];
+      eventType = _json['eventType'] as core.String;
     }
   }
 
@@ -6137,16 +6182,18 @@ class ProxyInfo {
 
   ProxyInfo.fromJson(core.Map _json) {
     if (_json.containsKey('excludedHosts')) {
-      excludedHosts = (_json['excludedHosts'] as core.List).cast<core.String>();
+      excludedHosts = (_json['excludedHosts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('pacUri')) {
-      pacUri = _json['pacUri'];
+      pacUri = _json['pacUri'] as core.String;
     }
     if (_json.containsKey('port')) {
-      port = _json['port'];
+      port = _json['port'] as core.int;
     }
   }
 
@@ -6189,7 +6236,7 @@ class SecurityPosture {
 
   SecurityPosture.fromJson(core.Map _json) {
     if (_json.containsKey('devicePosture')) {
-      devicePosture = _json['devicePosture'];
+      devicePosture = _json['devicePosture'] as core.String;
     }
     if (_json.containsKey('postureDetails')) {
       postureDetails = (_json['postureDetails'] as core.List)
@@ -6290,16 +6337,16 @@ class SigninDetail {
 
   SigninDetail.fromJson(core.Map _json) {
     if (_json.containsKey('allowPersonalUsage')) {
-      allowPersonalUsage = _json['allowPersonalUsage'];
+      allowPersonalUsage = _json['allowPersonalUsage'] as core.String;
     }
     if (_json.containsKey('qrCode')) {
-      qrCode = _json['qrCode'];
+      qrCode = _json['qrCode'] as core.String;
     }
     if (_json.containsKey('signinEnrollmentToken')) {
-      signinEnrollmentToken = _json['signinEnrollmentToken'];
+      signinEnrollmentToken = _json['signinEnrollmentToken'] as core.String;
     }
     if (_json.containsKey('signinUrl')) {
-      signinUrl = _json['signinUrl'];
+      signinUrl = _json['signinUrl'] as core.String;
     }
   }
 
@@ -6335,10 +6382,10 @@ class SignupUrl {
 
   SignupUrl.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -6397,34 +6444,36 @@ class SoftwareInfo {
 
   SoftwareInfo.fromJson(core.Map _json) {
     if (_json.containsKey('androidBuildNumber')) {
-      androidBuildNumber = _json['androidBuildNumber'];
+      androidBuildNumber = _json['androidBuildNumber'] as core.String;
     }
     if (_json.containsKey('androidBuildTime')) {
-      androidBuildTime = _json['androidBuildTime'];
+      androidBuildTime = _json['androidBuildTime'] as core.String;
     }
     if (_json.containsKey('androidDevicePolicyVersionCode')) {
-      androidDevicePolicyVersionCode = _json['androidDevicePolicyVersionCode'];
+      androidDevicePolicyVersionCode =
+          _json['androidDevicePolicyVersionCode'] as core.int;
     }
     if (_json.containsKey('androidDevicePolicyVersionName')) {
-      androidDevicePolicyVersionName = _json['androidDevicePolicyVersionName'];
+      androidDevicePolicyVersionName =
+          _json['androidDevicePolicyVersionName'] as core.String;
     }
     if (_json.containsKey('androidVersion')) {
-      androidVersion = _json['androidVersion'];
+      androidVersion = _json['androidVersion'] as core.String;
     }
     if (_json.containsKey('bootloaderVersion')) {
-      bootloaderVersion = _json['bootloaderVersion'];
+      bootloaderVersion = _json['bootloaderVersion'] as core.String;
     }
     if (_json.containsKey('deviceBuildSignature')) {
-      deviceBuildSignature = _json['deviceBuildSignature'];
+      deviceBuildSignature = _json['deviceBuildSignature'] as core.String;
     }
     if (_json.containsKey('deviceKernelVersion')) {
-      deviceKernelVersion = _json['deviceKernelVersion'];
+      deviceKernelVersion = _json['deviceKernelVersion'] as core.String;
     }
     if (_json.containsKey('primaryLanguageCode')) {
-      primaryLanguageCode = _json['primaryLanguageCode'];
+      primaryLanguageCode = _json['primaryLanguageCode'] as core.String;
     }
     if (_json.containsKey('securityPatchLevel')) {
-      securityPatchLevel = _json['securityPatchLevel'];
+      securityPatchLevel = _json['securityPatchLevel'] as core.String;
     }
     if (_json.containsKey('systemUpdateInfo')) {
       systemUpdateInfo = SystemUpdateInfo.fromJson(_json['systemUpdateInfo']);
@@ -6496,16 +6545,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -6568,31 +6619,33 @@ class StatusReportingSettings {
           _json['applicationReportingSettings']);
     }
     if (_json.containsKey('applicationReportsEnabled')) {
-      applicationReportsEnabled = _json['applicationReportsEnabled'];
+      applicationReportsEnabled =
+          _json['applicationReportsEnabled'] as core.bool;
     }
     if (_json.containsKey('deviceSettingsEnabled')) {
-      deviceSettingsEnabled = _json['deviceSettingsEnabled'];
+      deviceSettingsEnabled = _json['deviceSettingsEnabled'] as core.bool;
     }
     if (_json.containsKey('displayInfoEnabled')) {
-      displayInfoEnabled = _json['displayInfoEnabled'];
+      displayInfoEnabled = _json['displayInfoEnabled'] as core.bool;
     }
     if (_json.containsKey('hardwareStatusEnabled')) {
-      hardwareStatusEnabled = _json['hardwareStatusEnabled'];
+      hardwareStatusEnabled = _json['hardwareStatusEnabled'] as core.bool;
     }
     if (_json.containsKey('memoryInfoEnabled')) {
-      memoryInfoEnabled = _json['memoryInfoEnabled'];
+      memoryInfoEnabled = _json['memoryInfoEnabled'] as core.bool;
     }
     if (_json.containsKey('networkInfoEnabled')) {
-      networkInfoEnabled = _json['networkInfoEnabled'];
+      networkInfoEnabled = _json['networkInfoEnabled'] as core.bool;
     }
     if (_json.containsKey('powerManagementEventsEnabled')) {
-      powerManagementEventsEnabled = _json['powerManagementEventsEnabled'];
+      powerManagementEventsEnabled =
+          _json['powerManagementEventsEnabled'] as core.bool;
     }
     if (_json.containsKey('softwareInfoEnabled')) {
-      softwareInfoEnabled = _json['softwareInfoEnabled'];
+      softwareInfoEnabled = _json['softwareInfoEnabled'] as core.bool;
     }
     if (_json.containsKey('systemPropertiesEnabled')) {
-      systemPropertiesEnabled = _json['systemPropertiesEnabled'];
+      systemPropertiesEnabled = _json['systemPropertiesEnabled'] as core.bool;
     }
   }
 
@@ -6671,7 +6724,7 @@ class SystemUpdate {
 
   SystemUpdate.fromJson(core.Map _json) {
     if (_json.containsKey('endMinutes')) {
-      endMinutes = _json['endMinutes'];
+      endMinutes = _json['endMinutes'] as core.int;
     }
     if (_json.containsKey('freezePeriods')) {
       freezePeriods = (_json['freezePeriods'] as core.List)
@@ -6679,10 +6732,10 @@ class SystemUpdate {
           .toList();
     }
     if (_json.containsKey('startMinutes')) {
-      startMinutes = _json['startMinutes'];
+      startMinutes = _json['startMinutes'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -6730,10 +6783,10 @@ class SystemUpdateInfo {
 
   SystemUpdateInfo.fromJson(core.Map _json) {
     if (_json.containsKey('updateReceivedTime')) {
-      updateReceivedTime = _json['updateReceivedTime'];
+      updateReceivedTime = _json['updateReceivedTime'] as core.String;
     }
     if (_json.containsKey('updateStatus')) {
-      updateStatus = _json['updateStatus'];
+      updateStatus = _json['updateStatus'] as core.String;
     }
   }
 
@@ -6794,7 +6847,7 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('accountIdentifier')) {
-      accountIdentifier = _json['accountIdentifier'];
+      accountIdentifier = _json['accountIdentifier'] as core.String;
     }
   }
 
@@ -6824,11 +6877,12 @@ class UserFacingMessage {
 
   UserFacingMessage.fromJson(core.Map _json) {
     if (_json.containsKey('defaultMessage')) {
-      defaultMessage = _json['defaultMessage'];
+      defaultMessage = _json['defaultMessage'] as core.String;
     }
     if (_json.containsKey('localizedMessages')) {
-      localizedMessages = (_json['localizedMessages'] as core.Map)
-          .cast<core.String, core.String>();
+      localizedMessages = commons.mapMap<core.String, core.String>(
+          _json['localizedMessages'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -6884,7 +6938,7 @@ class WebApp {
 
   WebApp.fromJson(core.Map _json) {
     if (_json.containsKey('displayMode')) {
-      displayMode = _json['displayMode'];
+      displayMode = _json['displayMode'] as core.String;
     }
     if (_json.containsKey('icons')) {
       icons = (_json['icons'] as core.List)
@@ -6892,16 +6946,16 @@ class WebApp {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('startUrl')) {
-      startUrl = _json['startUrl'];
+      startUrl = _json['startUrl'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('versionCode')) {
-      versionCode = _json['versionCode'];
+      versionCode = _json['versionCode'] as core.String;
     }
   }
 
@@ -6941,7 +6995,7 @@ class WebAppIcon {
 
   WebAppIcon.fromJson(core.Map _json) {
     if (_json.containsKey('imageData')) {
-      imageData = _json['imageData'];
+      imageData = _json['imageData'] as core.String;
     }
   }
 
@@ -6986,20 +7040,23 @@ class WebToken {
 
   WebToken.fromJson(core.Map _json) {
     if (_json.containsKey('enabledFeatures')) {
-      enabledFeatures =
-          (_json['enabledFeatures'] as core.List).cast<core.String>();
+      enabledFeatures = (_json['enabledFeatures'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentFrameUrl')) {
-      parentFrameUrl = _json['parentFrameUrl'];
+      parentFrameUrl = _json['parentFrameUrl'] as core.String;
     }
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -7039,10 +7096,10 @@ class WipeAction {
 
   WipeAction.fromJson(core.Map _json) {
     if (_json.containsKey('preserveFrp')) {
-      preserveFrp = _json['preserveFrp'];
+      preserveFrp = _json['preserveFrp'] as core.bool;
     }
     if (_json.containsKey('wipeAfterDays')) {
-      wipeAfterDays = _json['wipeAfterDays'];
+      wipeAfterDays = _json['wipeAfterDays'] as core.int;
     }
   }
 

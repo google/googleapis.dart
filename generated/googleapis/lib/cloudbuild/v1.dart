@@ -1400,10 +1400,12 @@ class ArtifactObjects {
 
   ArtifactObjects.fromJson(core.Map _json) {
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('paths')) {
-      paths = (_json['paths'] as core.List).cast<core.String>();
+      paths = (_json['paths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('timing')) {
       timing = TimeSpan.fromJson(_json['timing']);
@@ -1445,7 +1447,7 @@ class ArtifactResult {
           .toList();
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
   }
 
@@ -1483,7 +1485,9 @@ class Artifacts {
 
   Artifacts.fromJson(core.Map _json) {
     if (_json.containsKey('images')) {
-      images = (_json['images'] as core.List).cast<core.String>();
+      images = (_json['images'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('objects')) {
       objects = ArtifactObjects.fromJson(_json['objects']);
@@ -1630,37 +1634,39 @@ class Build {
       artifacts = Artifacts.fromJson(_json['artifacts']);
     }
     if (_json.containsKey('buildTriggerId')) {
-      buildTriggerId = _json['buildTriggerId'];
+      buildTriggerId = _json['buildTriggerId'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('finishTime')) {
-      finishTime = _json['finishTime'];
+      finishTime = _json['finishTime'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('images')) {
-      images = (_json['images'] as core.List).cast<core.String>();
+      images = (_json['images'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logUrl')) {
-      logUrl = _json['logUrl'];
+      logUrl = _json['logUrl'] as core.String;
     }
     if (_json.containsKey('logsBucket')) {
-      logsBucket = _json['logsBucket'];
+      logsBucket = _json['logsBucket'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('options')) {
       options = BuildOptions.fromJson(_json['options']);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('queueTtl')) {
-      queueTtl = _json['queueTtl'];
+      queueTtl = _json['queueTtl'] as core.String;
     }
     if (_json.containsKey('results')) {
       results = Results.fromJson(_json['results']);
@@ -1671,7 +1677,7 @@ class Build {
           .toList();
     }
     if (_json.containsKey('serviceAccount')) {
-      serviceAccount = _json['serviceAccount'];
+      serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('source')) {
       source = Source.fromJson(_json['source']);
@@ -1680,13 +1686,13 @@ class Build {
       sourceProvenance = SourceProvenance.fromJson(_json['sourceProvenance']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('statusDetail')) {
-      statusDetail = _json['statusDetail'];
+      statusDetail = _json['statusDetail'] as core.String;
     }
     if (_json.containsKey('steps')) {
       steps = (_json['steps'] as core.List)
@@ -1694,14 +1700,17 @@ class Build {
           .toList();
     }
     if (_json.containsKey('substitutions')) {
-      substitutions =
-          (_json['substitutions'] as core.Map).cast<core.String, core.String>();
+      substitutions = commons.mapMap<core.String, core.String>(
+          _json['substitutions'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List).cast<core.String>();
+      tags = (_json['tags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'];
+      timeout = _json['timeout'] as core.String;
     }
     if (_json.containsKey('timing')) {
       timing = commons.mapMap<core.Map, TimeSpan>(
@@ -1910,35 +1919,40 @@ class BuildOptions {
 
   BuildOptions.fromJson(core.Map _json) {
     if (_json.containsKey('diskSizeGb')) {
-      diskSizeGb = _json['diskSizeGb'];
+      diskSizeGb = _json['diskSizeGb'] as core.String;
     }
     if (_json.containsKey('dynamicSubstitutions')) {
-      dynamicSubstitutions = _json['dynamicSubstitutions'];
+      dynamicSubstitutions = _json['dynamicSubstitutions'] as core.bool;
     }
     if (_json.containsKey('env')) {
-      env = (_json['env'] as core.List).cast<core.String>();
+      env = (_json['env'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logStreamingOption')) {
-      logStreamingOption = _json['logStreamingOption'];
+      logStreamingOption = _json['logStreamingOption'] as core.String;
     }
     if (_json.containsKey('logging')) {
-      logging = _json['logging'];
+      logging = _json['logging'] as core.String;
     }
     if (_json.containsKey('machineType')) {
-      machineType = _json['machineType'];
+      machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('requestedVerifyOption')) {
-      requestedVerifyOption = _json['requestedVerifyOption'];
+      requestedVerifyOption = _json['requestedVerifyOption'] as core.String;
     }
     if (_json.containsKey('secretEnv')) {
-      secretEnv = (_json['secretEnv'] as core.List).cast<core.String>();
+      secretEnv = (_json['secretEnv'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sourceProvenanceHash')) {
-      sourceProvenanceHash =
-          (_json['sourceProvenanceHash'] as core.List).cast<core.String>();
+      sourceProvenanceHash = (_json['sourceProvenanceHash'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('substitutionOption')) {
-      substitutionOption = _json['substitutionOption'];
+      substitutionOption = _json['substitutionOption'] as core.String;
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
@@ -1946,7 +1960,7 @@ class BuildOptions {
           .toList();
     }
     if (_json.containsKey('workerPool')) {
-      workerPool = _json['workerPool'];
+      workerPool = _json['workerPool'] as core.String;
     }
   }
 
@@ -2088,34 +2102,40 @@ class BuildStep {
 
   BuildStep.fromJson(core.Map _json) {
     if (_json.containsKey('args')) {
-      args = (_json['args'] as core.List).cast<core.String>();
+      args = (_json['args'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('dir')) {
-      dir = _json['dir'];
+      dir = _json['dir'] as core.String;
     }
     if (_json.containsKey('entrypoint')) {
-      entrypoint = _json['entrypoint'];
+      entrypoint = _json['entrypoint'] as core.String;
     }
     if (_json.containsKey('env')) {
-      env = (_json['env'] as core.List).cast<core.String>();
+      env = (_json['env'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pullTiming')) {
       pullTiming = TimeSpan.fromJson(_json['pullTiming']);
     }
     if (_json.containsKey('secretEnv')) {
-      secretEnv = (_json['secretEnv'] as core.List).cast<core.String>();
+      secretEnv = (_json['secretEnv'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('timeout')) {
-      timeout = _json['timeout'];
+      timeout = _json['timeout'] as core.String;
     }
     if (_json.containsKey('timing')) {
       timing = TimeSpan.fromJson(_json['timing']);
@@ -2126,7 +2146,9 @@ class BuildStep {
           .toList();
     }
     if (_json.containsKey('waitFor')) {
-      waitFor = (_json['waitFor'] as core.List).cast<core.String>();
+      waitFor = (_json['waitFor'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2245,38 +2267,45 @@ class BuildTrigger {
       build = Build.fromJson(_json['build']);
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('filename')) {
-      filename = _json['filename'];
+      filename = _json['filename'] as core.String;
     }
     if (_json.containsKey('github')) {
       github = GitHubEventsConfig.fromJson(_json['github']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('ignoredFiles')) {
-      ignoredFiles = (_json['ignoredFiles'] as core.List).cast<core.String>();
+      ignoredFiles = (_json['ignoredFiles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includedFiles')) {
-      includedFiles = (_json['includedFiles'] as core.List).cast<core.String>();
+      includedFiles = (_json['includedFiles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('substitutions')) {
-      substitutions =
-          (_json['substitutions'] as core.Map).cast<core.String, core.String>();
+      substitutions = commons.mapMap<core.String, core.String>(
+          _json['substitutions'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('tags')) {
-      tags = (_json['tags'] as core.List).cast<core.String>();
+      tags = (_json['tags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('triggerTemplate')) {
       triggerTemplate = RepoSource.fromJson(_json['triggerTemplate']);
@@ -2344,10 +2373,10 @@ class BuiltImage {
 
   BuiltImage.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = _json['digest'];
+      digest = _json['digest'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pushTiming')) {
       pushTiming = TimeSpan.fromJson(_json['pushTiming']);
@@ -2385,13 +2414,13 @@ class CancelBuildRequest {
 
   CancelBuildRequest.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -2492,13 +2521,13 @@ class GitHubEventsConfig {
 
   GitHubEventsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('installationId')) {
-      installationId = _json['installationId'];
+      installationId = _json['installationId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = _json['owner'];
+      owner = _json['owner'] as core.String;
     }
     if (_json.containsKey('pullRequest')) {
       pullRequest = PullRequestFilter.fromJson(_json['pullRequest']);
@@ -2538,7 +2567,7 @@ class HTTPDelivery {
 
   HTTPDelivery.fromJson(core.Map _json) {
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -2573,10 +2602,10 @@ class Hash {
 
   Hash.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2604,7 +2633,7 @@ class ListBuildTriggersResponse {
 
   ListBuildTriggersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('triggers')) {
       triggers = (_json['triggers'] as core.List)
@@ -2642,7 +2671,7 @@ class ListBuildsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2685,7 +2714,7 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('httpDelivery')) {
       httpDelivery = HTTPDelivery.fromJson(_json['httpDelivery']);
@@ -2697,8 +2726,9 @@ class Notification {
       smtpDelivery = SMTPDelivery.fromJson(_json['smtpDelivery']);
     }
     if (_json.containsKey('structDelivery')) {
-      structDelivery = (_json['structDelivery'] as core.Map)
-          .cast<core.String, core.Object>();
+      structDelivery = commons.mapMap<core.Object, core.Object>(
+          _json['structDelivery'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2741,10 +2771,10 @@ class NotifierConfig {
 
   NotifierConfig.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
       metadata = NotifierMetadata.fromJson(_json['metadata']);
@@ -2788,10 +2818,10 @@ class NotifierMetadata {
 
   NotifierMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notifier')) {
-      notifier = _json['notifier'];
+      notifier = _json['notifier'] as core.String;
     }
   }
 
@@ -2824,10 +2854,10 @@ class NotifierSecret {
 
   NotifierSecret.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2854,7 +2884,7 @@ class NotifierSecretRef {
 
   NotifierSecretRef.fromJson(core.Map _json) {
     if (_json.containsKey('secretRef')) {
-      secretRef = _json['secretRef'];
+      secretRef = _json['secretRef'] as core.String;
     }
   }
 
@@ -2941,21 +2971,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -3007,13 +3039,13 @@ class PullRequestFilter {
 
   PullRequestFilter.fromJson(core.Map _json) {
     if (_json.containsKey('branch')) {
-      branch = _json['branch'];
+      branch = _json['branch'] as core.String;
     }
     if (_json.containsKey('commentControl')) {
-      commentControl = _json['commentControl'];
+      commentControl = _json['commentControl'] as core.String;
     }
     if (_json.containsKey('invertRegex')) {
-      invertRegex = _json['invertRegex'];
+      invertRegex = _json['invertRegex'] as core.bool;
     }
   }
 
@@ -3052,13 +3084,13 @@ class PushFilter {
 
   PushFilter.fromJson(core.Map _json) {
     if (_json.containsKey('branch')) {
-      branch = _json['branch'];
+      branch = _json['branch'] as core.String;
     }
     if (_json.containsKey('invertRegex')) {
-      invertRegex = _json['invertRegex'];
+      invertRegex = _json['invertRegex'] as core.bool;
     }
     if (_json.containsKey('tag')) {
-      tag = _json['tag'];
+      tag = _json['tag'] as core.String;
     }
   }
 
@@ -3116,29 +3148,30 @@ class RepoSource {
 
   RepoSource.fromJson(core.Map _json) {
     if (_json.containsKey('branchName')) {
-      branchName = _json['branchName'];
+      branchName = _json['branchName'] as core.String;
     }
     if (_json.containsKey('commitSha')) {
-      commitSha = _json['commitSha'];
+      commitSha = _json['commitSha'] as core.String;
     }
     if (_json.containsKey('dir')) {
-      dir = _json['dir'];
+      dir = _json['dir'] as core.String;
     }
     if (_json.containsKey('invertRegex')) {
-      invertRegex = _json['invertRegex'];
+      invertRegex = _json['invertRegex'] as core.bool;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('repoName')) {
-      repoName = _json['repoName'];
+      repoName = _json['repoName'] as core.String;
     }
     if (_json.containsKey('substitutions')) {
-      substitutions =
-          (_json['substitutions'] as core.Map).cast<core.String, core.String>();
+      substitutions = commons.mapMap<core.String, core.String>(
+          _json['substitutions'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'];
+      tagName = _json['tagName'] as core.String;
     }
   }
 
@@ -3201,18 +3234,20 @@ class Results {
 
   Results.fromJson(core.Map _json) {
     if (_json.containsKey('artifactManifest')) {
-      artifactManifest = _json['artifactManifest'];
+      artifactManifest = _json['artifactManifest'] as core.String;
     }
     if (_json.containsKey('artifactTiming')) {
       artifactTiming = TimeSpan.fromJson(_json['artifactTiming']);
     }
     if (_json.containsKey('buildStepImages')) {
-      buildStepImages =
-          (_json['buildStepImages'] as core.List).cast<core.String>();
+      buildStepImages = (_json['buildStepImages'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('buildStepOutputs')) {
-      buildStepOutputs =
-          (_json['buildStepOutputs'] as core.List).cast<core.String>();
+      buildStepOutputs = (_json['buildStepOutputs'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('images')) {
       images = (_json['images'] as core.List)
@@ -3220,7 +3255,7 @@ class Results {
           .toList();
     }
     if (_json.containsKey('numArtifacts')) {
-      numArtifacts = _json['numArtifacts'];
+      numArtifacts = _json['numArtifacts'] as core.String;
     }
   }
 
@@ -3264,13 +3299,13 @@ class RetryBuildRequest {
 
   RetryBuildRequest.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -3315,23 +3350,24 @@ class SMTPDelivery {
 
   SMTPDelivery.fromJson(core.Map _json) {
     if (_json.containsKey('fromAddress')) {
-      fromAddress = _json['fromAddress'];
+      fromAddress = _json['fromAddress'] as core.String;
     }
     if (_json.containsKey('password')) {
       password = NotifierSecretRef.fromJson(_json['password']);
     }
     if (_json.containsKey('port')) {
-      port = _json['port'];
+      port = _json['port'] as core.String;
     }
     if (_json.containsKey('recipientAddresses')) {
-      recipientAddresses =
-          (_json['recipientAddresses'] as core.List).cast<core.String>();
+      recipientAddresses = (_json['recipientAddresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('senderAddress')) {
-      senderAddress = _json['senderAddress'];
+      senderAddress = _json['senderAddress'] as core.String;
     }
     if (_json.containsKey('server')) {
-      server = _json['server'];
+      server = _json['server'] as core.String;
     }
   }
 
@@ -3376,11 +3412,12 @@ class Secret {
 
   Secret.fromJson(core.Map _json) {
     if (_json.containsKey('kmsKeyName')) {
-      kmsKeyName = _json['kmsKeyName'];
+      kmsKeyName = _json['kmsKeyName'] as core.String;
     }
     if (_json.containsKey('secretEnv')) {
-      secretEnv =
-          (_json['secretEnv'] as core.Map).cast<core.String, core.String>();
+      secretEnv = commons.mapMap<core.String, core.String>(
+          _json['secretEnv'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -3533,16 +3570,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3579,13 +3618,13 @@ class StorageSource {
 
   StorageSource.fromJson(core.Map _json) {
     if (_json.containsKey('bucket')) {
-      bucket = _json['bucket'];
+      bucket = _json['bucket'] as core.String;
     }
     if (_json.containsKey('generation')) {
-      generation = _json['generation'];
+      generation = _json['generation'] as core.String;
     }
     if (_json.containsKey('object')) {
-      object = _json['object'];
+      object = _json['object'] as core.String;
     }
   }
 
@@ -3616,10 +3655,10 @@ class TimeSpan {
 
   TimeSpan.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -3652,10 +3691,10 @@ class Volume {
 
   Volume.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 

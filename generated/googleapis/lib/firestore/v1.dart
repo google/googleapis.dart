@@ -2145,7 +2145,9 @@ class BatchGetDocumentsRequest {
 
   BatchGetDocumentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('documents')) {
-      documents = (_json['documents'] as core.List).cast<core.String>();
+      documents = (_json['documents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('mask')) {
       mask = DocumentMask.fromJson(_json['mask']);
@@ -2154,10 +2156,10 @@ class BatchGetDocumentsRequest {
       newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -2215,13 +2217,13 @@ class BatchGetDocumentsResponse {
       found = Document.fromJson(_json['found']);
     }
     if (_json.containsKey('missing')) {
-      missing = _json['missing'];
+      missing = _json['missing'] as core.String;
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -2257,7 +2259,9 @@ class BatchWriteRequest {
 
   BatchWriteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
@@ -2354,7 +2358,7 @@ class BeginTransactionResponse {
 
   BeginTransactionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -2381,10 +2385,10 @@ class CollectionSelector {
 
   CollectionSelector.fromJson(core.Map _json) {
     if (_json.containsKey('allDescendants')) {
-      allDescendants = _json['allDescendants'];
+      allDescendants = _json['allDescendants'] as core.bool;
     }
     if (_json.containsKey('collectionId')) {
-      collectionId = _json['collectionId'];
+      collectionId = _json['collectionId'] as core.String;
     }
   }
 
@@ -2419,7 +2423,7 @@ class CommitRequest {
 
   CommitRequest.fromJson(core.Map _json) {
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
@@ -2454,7 +2458,7 @@ class CommitResponse {
 
   CommitResponse.fromJson(core.Map _json) {
     if (_json.containsKey('commitTime')) {
-      commitTime = _json['commitTime'];
+      commitTime = _json['commitTime'] as core.String;
     }
     if (_json.containsKey('writeResults')) {
       writeResults = (_json['writeResults'] as core.List)
@@ -2497,7 +2501,7 @@ class CompositeFilter {
           .toList();
     }
     if (_json.containsKey('op')) {
-      op = _json['op'];
+      op = _json['op'] as core.String;
     }
   }
 
@@ -2528,7 +2532,7 @@ class Cursor {
 
   Cursor.fromJson(core.Map _json) {
     if (_json.containsKey('before')) {
-      before = _json['before'];
+      before = _json['before'] as core.bool;
     }
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
@@ -2588,7 +2592,7 @@ class Document {
 
   Document.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
@@ -2596,10 +2600,10 @@ class Document {
           (core.Map item) => Value.fromJson(item));
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2645,11 +2649,14 @@ class DocumentChange {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('removedTargetIds')) {
-      removedTargetIds =
-          (_json['removedTargetIds'] as core.List).cast<core.int>();
+      removedTargetIds = (_json['removedTargetIds'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('targetIds')) {
-      targetIds = (_json['targetIds'] as core.List).cast<core.int>();
+      targetIds = (_json['targetIds'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
   }
 
@@ -2687,14 +2694,15 @@ class DocumentDelete {
 
   DocumentDelete.fromJson(core.Map _json) {
     if (_json.containsKey('document')) {
-      document = _json['document'];
+      document = _json['document'] as core.String;
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('removedTargetIds')) {
-      removedTargetIds =
-          (_json['removedTargetIds'] as core.List).cast<core.int>();
+      removedTargetIds = (_json['removedTargetIds'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
   }
 
@@ -2726,7 +2734,9 @@ class DocumentMask {
 
   DocumentMask.fromJson(core.Map _json) {
     if (_json.containsKey('fieldPaths')) {
-      fieldPaths = (_json['fieldPaths'] as core.List).cast<core.String>();
+      fieldPaths = (_json['fieldPaths'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2760,14 +2770,15 @@ class DocumentRemove {
 
   DocumentRemove.fromJson(core.Map _json) {
     if (_json.containsKey('document')) {
-      document = _json['document'];
+      document = _json['document'] as core.String;
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('removedTargetIds')) {
-      removedTargetIds =
-          (_json['removedTargetIds'] as core.List).cast<core.int>();
+      removedTargetIds = (_json['removedTargetIds'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
   }
 
@@ -2799,7 +2810,7 @@ class DocumentTransform {
 
   DocumentTransform.fromJson(core.Map _json) {
     if (_json.containsKey('document')) {
-      document = _json['document'];
+      document = _json['document'] as core.String;
     }
     if (_json.containsKey('fieldTransforms')) {
       fieldTransforms = (_json['fieldTransforms'] as core.List)
@@ -2833,7 +2844,9 @@ class DocumentsTarget {
 
   DocumentsTarget.fromJson(core.Map _json) {
     if (_json.containsKey('documents')) {
-      documents = (_json['documents'] as core.List).cast<core.String>();
+      documents = (_json['documents'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2878,10 +2891,10 @@ class ExistenceFilter {
 
   ExistenceFilter.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.int;
     }
     if (_json.containsKey('targetId')) {
-      targetId = _json['targetId'];
+      targetId = _json['targetId'] as core.int;
     }
   }
 
@@ -2942,7 +2955,7 @@ class FieldFilter {
       field = FieldReference.fromJson(_json['field']);
     }
     if (_json.containsKey('op')) {
-      op = _json['op'];
+      op = _json['op'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = Value.fromJson(_json['value']);
@@ -2972,7 +2985,7 @@ class FieldReference {
 
   FieldReference.fromJson(core.Map _json) {
     if (_json.containsKey('fieldPath')) {
-      fieldPath = _json['fieldPath'];
+      fieldPath = _json['fieldPath'] as core.String;
     }
   }
 
@@ -3060,7 +3073,7 @@ class FieldTransform {
           ArrayValue.fromJson(_json['appendMissingElements']);
     }
     if (_json.containsKey('fieldPath')) {
-      fieldPath = _json['fieldPath'];
+      fieldPath = _json['fieldPath'] as core.String;
     }
     if (_json.containsKey('increment')) {
       increment = Value.fromJson(_json['increment']);
@@ -3075,7 +3088,7 @@ class FieldTransform {
       removeAllFromArray = ArrayValue.fromJson(_json['removeAllFromArray']);
     }
     if (_json.containsKey('setToServerValue')) {
-      setToServerValue = _json['setToServerValue'];
+      setToServerValue = _json['setToServerValue'] as core.String;
     }
   }
 
@@ -3188,16 +3201,18 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
 
   GoogleFirestoreAdminV1ExportDocumentsMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('collectionIds')) {
-      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
+      collectionIds = (_json['collectionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('operationState')) {
-      operationState = _json['operationState'];
+      operationState = _json['operationState'] as core.String;
     }
     if (_json.containsKey('outputUriPrefix')) {
-      outputUriPrefix = _json['outputUriPrefix'];
+      outputUriPrefix = _json['outputUriPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -3208,7 +3223,7 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
           GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -3258,10 +3273,12 @@ class GoogleFirestoreAdminV1ExportDocumentsRequest {
 
   GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('collectionIds')) {
-      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
+      collectionIds = (_json['collectionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('outputUriPrefix')) {
-      outputUriPrefix = _json['outputUriPrefix'];
+      outputUriPrefix = _json['outputUriPrefix'] as core.String;
     }
   }
 
@@ -3288,7 +3305,7 @@ class GoogleFirestoreAdminV1ExportDocumentsResponse {
 
   GoogleFirestoreAdminV1ExportDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputUriPrefix')) {
-      outputUriPrefix = _json['outputUriPrefix'];
+      outputUriPrefix = _json['outputUriPrefix'] as core.String;
     }
   }
 
@@ -3339,7 +3356,7 @@ class GoogleFirestoreAdminV1Field {
           GoogleFirestoreAdminV1IndexConfig.fromJson(_json['indexConfig']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3398,10 +3415,10 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
 
   GoogleFirestoreAdminV1FieldOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = _json['field'];
+      field = _json['field'] as core.String;
     }
     if (_json.containsKey('indexConfigDeltas')) {
       indexConfigDeltas = (_json['indexConfigDeltas'] as core.List)
@@ -3418,10 +3435,10 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
           GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3495,16 +3512,18 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
 
   GoogleFirestoreAdminV1ImportDocumentsMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('collectionIds')) {
-      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
+      collectionIds = (_json['collectionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('inputUriPrefix')) {
-      inputUriPrefix = _json['inputUriPrefix'];
+      inputUriPrefix = _json['inputUriPrefix'] as core.String;
     }
     if (_json.containsKey('operationState')) {
-      operationState = _json['operationState'];
+      operationState = _json['operationState'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -3515,7 +3534,7 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
           GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -3561,10 +3580,12 @@ class GoogleFirestoreAdminV1ImportDocumentsRequest {
 
   GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('collectionIds')) {
-      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
+      collectionIds = (_json['collectionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('inputUriPrefix')) {
-      inputUriPrefix = _json['inputUriPrefix'];
+      inputUriPrefix = _json['inputUriPrefix'] as core.String;
     }
   }
 
@@ -3644,13 +3665,13 @@ class GoogleFirestoreAdminV1Index {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('queryScope')) {
-      queryScope = _json['queryScope'];
+      queryScope = _json['queryScope'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3698,7 +3719,7 @@ class GoogleFirestoreAdminV1IndexConfig {
 
   GoogleFirestoreAdminV1IndexConfig.fromJson(core.Map _json) {
     if (_json.containsKey('ancestorField')) {
-      ancestorField = _json['ancestorField'];
+      ancestorField = _json['ancestorField'] as core.String;
     }
     if (_json.containsKey('indexes')) {
       indexes = (_json['indexes'] as core.List)
@@ -3707,10 +3728,10 @@ class GoogleFirestoreAdminV1IndexConfig {
           .toList();
     }
     if (_json.containsKey('reverting')) {
-      reverting = _json['reverting'];
+      reverting = _json['reverting'] as core.bool;
     }
     if (_json.containsKey('usesAncestorConfig')) {
-      usesAncestorConfig = _json['usesAncestorConfig'];
+      usesAncestorConfig = _json['usesAncestorConfig'] as core.bool;
     }
   }
 
@@ -3749,7 +3770,7 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
 
   GoogleFirestoreAdminV1IndexConfigDelta.fromJson(core.Map _json) {
     if (_json.containsKey('changeType')) {
-      changeType = _json['changeType'];
+      changeType = _json['changeType'] as core.String;
     }
     if (_json.containsKey('index')) {
       index = GoogleFirestoreAdminV1Index.fromJson(_json['index']);
@@ -3794,13 +3815,13 @@ class GoogleFirestoreAdminV1IndexField {
 
   GoogleFirestoreAdminV1IndexField.fromJson(core.Map _json) {
     if (_json.containsKey('arrayConfig')) {
-      arrayConfig = _json['arrayConfig'];
+      arrayConfig = _json['arrayConfig'] as core.String;
     }
     if (_json.containsKey('fieldPath')) {
-      fieldPath = _json['fieldPath'];
+      fieldPath = _json['fieldPath'] as core.String;
     }
     if (_json.containsKey('order')) {
-      order = _json['order'];
+      order = _json['order'] as core.String;
     }
   }
 
@@ -3859,10 +3880,10 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
 
   GoogleFirestoreAdminV1IndexOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('index')) {
-      index = _json['index'];
+      index = _json['index'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
       progressBytes =
@@ -3873,10 +3894,10 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
           GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3923,7 +3944,7 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3958,7 +3979,7 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4001,10 +4022,10 @@ class GoogleFirestoreAdminV1Progress {
 
   GoogleFirestoreAdminV1Progress.fromJson(core.Map _json) {
     if (_json.containsKey('completedWork')) {
-      completedWork = _json['completedWork'];
+      completedWork = _json['completedWork'] as core.String;
     }
     if (_json.containsKey('estimatedWork')) {
-      estimatedWork = _json['estimatedWork'];
+      estimatedWork = _json['estimatedWork'] as core.String;
     }
   }
 
@@ -4046,7 +4067,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -4109,21 +4130,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -4194,10 +4217,10 @@ class ListCollectionIdsRequest {
 
   ListCollectionIdsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
   }
 
@@ -4225,10 +4248,12 @@ class ListCollectionIdsResponse {
 
   ListCollectionIdsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('collectionIds')) {
-      collectionIds = (_json['collectionIds'] as core.List).cast<core.String>();
+      collectionIds = (_json['collectionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4261,7 +4286,7 @@ class ListDocumentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4294,7 +4319,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4328,10 +4353,12 @@ class ListenRequest {
       addTarget = Target.fromJson(_json['addTarget']);
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('removeTarget')) {
-      removeTarget = _json['removeTarget'];
+      removeTarget = _json['removeTarget'] as core.int;
     }
   }
 
@@ -4439,20 +4466,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4522,7 +4552,7 @@ class Order {
 
   Order.fromJson(core.Map _json) {
     if (_json.containsKey('direction')) {
-      direction = _json['direction'];
+      direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('field')) {
       field = FieldReference.fromJson(_json['field']);
@@ -4579,13 +4609,13 @@ class PartitionQueryRequest {
 
   PartitionQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('partitionCount')) {
-      partitionCount = _json['partitionCount'];
+      partitionCount = _json['partitionCount'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
       structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
@@ -4633,7 +4663,7 @@ class PartitionQueryResponse {
 
   PartitionQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('partitions')) {
       partitions = (_json['partitions'] as core.List)
@@ -4668,10 +4698,10 @@ class Precondition {
 
   Precondition.fromJson(core.Map _json) {
     if (_json.containsKey('exists')) {
-      exists = _json['exists'];
+      exists = _json['exists'] as core.bool;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -4728,7 +4758,7 @@ class QueryTarget {
 
   QueryTarget.fromJson(core.Map _json) {
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
       structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
@@ -4756,7 +4786,7 @@ class ReadOnly {
 
   ReadOnly.fromJson(core.Map _json) {
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
   }
 
@@ -4785,7 +4815,7 @@ class ReadWrite {
 
   ReadWrite.fromJson(core.Map _json) {
     if (_json.containsKey('retryTransaction')) {
-      retryTransaction = _json['retryTransaction'];
+      retryTransaction = _json['retryTransaction'] as core.String;
     }
   }
 
@@ -4814,7 +4844,7 @@ class RollbackRequest {
 
   RollbackRequest.fromJson(core.Map _json) {
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -4858,13 +4888,13 @@ class RunQueryRequest {
       newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
       structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -4922,13 +4952,13 @@ class RunQueryResponse {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('skippedResults')) {
-      skippedResults = _json['skippedResults'];
+      skippedResults = _json['skippedResults'] as core.int;
     }
     if (_json.containsKey('transaction')) {
-      transaction = _json['transaction'];
+      transaction = _json['transaction'] as core.String;
     }
   }
 
@@ -4976,16 +5006,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -5055,10 +5087,10 @@ class StructuredQuery {
           .toList();
     }
     if (_json.containsKey('limit')) {
-      limit = _json['limit'];
+      limit = _json['limit'] as core.int;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'];
+      offset = _json['offset'] as core.int;
     }
     if (_json.containsKey('orderBy')) {
       orderBy = (_json['orderBy'] as core.List)
@@ -5143,19 +5175,19 @@ class Target {
       documents = DocumentsTarget.fromJson(_json['documents']);
     }
     if (_json.containsKey('once')) {
-      once = _json['once'];
+      once = _json['once'] as core.bool;
     }
     if (_json.containsKey('query')) {
       query = QueryTarget.fromJson(_json['query']);
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('resumeToken')) {
-      resumeToken = _json['resumeToken'];
+      resumeToken = _json['resumeToken'] as core.String;
     }
     if (_json.containsKey('targetId')) {
-      targetId = _json['targetId'];
+      targetId = _json['targetId'] as core.int;
     }
   }
 
@@ -5236,16 +5268,18 @@ class TargetChange {
       cause = Status.fromJson(_json['cause']);
     }
     if (_json.containsKey('readTime')) {
-      readTime = _json['readTime'];
+      readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('resumeToken')) {
-      resumeToken = _json['resumeToken'];
+      resumeToken = _json['resumeToken'] as core.String;
     }
     if (_json.containsKey('targetChangeType')) {
-      targetChangeType = _json['targetChangeType'];
+      targetChangeType = _json['targetChangeType'] as core.String;
     }
     if (_json.containsKey('targetIds')) {
-      targetIds = (_json['targetIds'] as core.List).cast<core.int>();
+      targetIds = (_json['targetIds'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
   }
 
@@ -5326,7 +5360,7 @@ class UnaryFilter {
       field = FieldReference.fromJson(_json['field']);
     }
     if (_json.containsKey('op')) {
-      op = _json['op'];
+      op = _json['op'] as core.String;
     }
   }
 
@@ -5399,10 +5433,10 @@ class Value {
       arrayValue = ArrayValue.fromJson(_json['arrayValue']);
     }
     if (_json.containsKey('booleanValue')) {
-      booleanValue = _json['booleanValue'];
+      booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('bytesValue')) {
-      bytesValue = _json['bytesValue'];
+      bytesValue = _json['bytesValue'] as core.String;
     }
     if (_json.containsKey('doubleValue')) {
       doubleValue = _json['doubleValue'].toDouble();
@@ -5411,22 +5445,22 @@ class Value {
       geoPointValue = LatLng.fromJson(_json['geoPointValue']);
     }
     if (_json.containsKey('integerValue')) {
-      integerValue = _json['integerValue'];
+      integerValue = _json['integerValue'] as core.String;
     }
     if (_json.containsKey('mapValue')) {
       mapValue = MapValue.fromJson(_json['mapValue']);
     }
     if (_json.containsKey('nullValue')) {
-      nullValue = _json['nullValue'];
+      nullValue = _json['nullValue'] as core.String;
     }
     if (_json.containsKey('referenceValue')) {
-      referenceValue = _json['referenceValue'];
+      referenceValue = _json['referenceValue'] as core.String;
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('timestampValue')) {
-      timestampValue = _json['timestampValue'];
+      timestampValue = _json['timestampValue'] as core.String;
     }
   }
 
@@ -5507,7 +5541,7 @@ class Write {
       currentDocument = Precondition.fromJson(_json['currentDocument']);
     }
     if (_json.containsKey('delete')) {
-      delete = _json['delete'];
+      delete = _json['delete'] as core.String;
     }
     if (_json.containsKey('transform')) {
       transform = DocumentTransform.fromJson(_json['transform']);
@@ -5590,13 +5624,15 @@ class WriteRequest {
 
   WriteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('streamId')) {
-      streamId = _json['streamId'];
+      streamId = _json['streamId'] as core.String;
     }
     if (_json.containsKey('streamToken')) {
-      streamToken = _json['streamToken'];
+      streamToken = _json['streamToken'] as core.String;
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
@@ -5653,13 +5689,13 @@ class WriteResponse {
 
   WriteResponse.fromJson(core.Map _json) {
     if (_json.containsKey('commitTime')) {
-      commitTime = _json['commitTime'];
+      commitTime = _json['commitTime'] as core.String;
     }
     if (_json.containsKey('streamId')) {
-      streamId = _json['streamId'];
+      streamId = _json['streamId'] as core.String;
     }
     if (_json.containsKey('streamToken')) {
-      streamToken = _json['streamToken'];
+      streamToken = _json['streamToken'] as core.String;
     }
     if (_json.containsKey('writeResults')) {
       writeResults = (_json['writeResults'] as core.List)
@@ -5707,7 +5743,7 @@ class WriteResult {
           .toList();
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 

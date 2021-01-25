@@ -1257,7 +1257,7 @@ class Content {
           .toList();
     }
     if (_json.containsKey('scriptId')) {
-      scriptId = _json['scriptId'];
+      scriptId = _json['scriptId'] as core.String;
     }
   }
 
@@ -1287,10 +1287,10 @@ class CreateProjectRequest {
 
   CreateProjectRequest.fromJson(core.Map _json) {
     if (_json.containsKey('parentId')) {
-      parentId = _json['parentId'];
+      parentId = _json['parentId'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1327,7 +1327,7 @@ class Deployment {
       deploymentConfig = DeploymentConfig.fromJson(_json['deploymentConfig']);
     }
     if (_json.containsKey('deploymentId')) {
-      deploymentId = _json['deploymentId'];
+      deploymentId = _json['deploymentId'] as core.String;
     }
     if (_json.containsKey('entryPoints')) {
       entryPoints = (_json['entryPoints'] as core.List)
@@ -1335,7 +1335,7 @@ class Deployment {
           .toList();
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1376,16 +1376,16 @@ class DeploymentConfig {
 
   DeploymentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('manifestFileName')) {
-      manifestFileName = _json['manifestFileName'];
+      manifestFileName = _json['manifestFileName'] as core.String;
     }
     if (_json.containsKey('scriptId')) {
-      scriptId = _json['scriptId'];
+      scriptId = _json['scriptId'] as core.String;
     }
     if (_json.containsKey('versionNumber')) {
-      versionNumber = _json['versionNumber'];
+      versionNumber = _json['versionNumber'] as core.int;
     }
   }
 
@@ -1451,7 +1451,7 @@ class EntryPoint {
       addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json['addOn']);
     }
     if (_json.containsKey('entryPointType')) {
-      entryPointType = _json['entryPointType'];
+      entryPointType = _json['entryPointType'] as core.String;
     }
     if (_json.containsKey('executionApi')) {
       executionApi = GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
@@ -1526,10 +1526,10 @@ class ExecutionError {
 
   ExecutionError.fromJson(core.Map _json) {
     if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'];
+      errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('errorType')) {
-      errorType = _json['errorType'];
+      errorType = _json['errorType'] as core.String;
     }
     if (_json.containsKey('scriptStackTraceElements')) {
       scriptStackTraceElements =
@@ -1598,16 +1598,18 @@ class ExecutionRequest {
 
   ExecutionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('devMode')) {
-      devMode = _json['devMode'];
+      devMode = _json['devMode'] as core.bool;
     }
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = (_json['parameters'] as core.List).cast<core.Object>();
+      parameters = (_json['parameters'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
     if (_json.containsKey('sessionState')) {
-      sessionState = _json['sessionState'];
+      sessionState = _json['sessionState'] as core.String;
     }
   }
 
@@ -1647,7 +1649,7 @@ class ExecutionResponse {
 
   ExecutionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.Object;
     }
   }
 
@@ -1701,7 +1703,7 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('functionSet')) {
       functionSet =
@@ -1712,16 +1714,16 @@ class File {
           GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1780,22 +1782,22 @@ class GoogleAppsScriptTypeAddOnEntryPoint {
 
   GoogleAppsScriptTypeAddOnEntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey('addOnType')) {
-      addOnType = _json['addOnType'];
+      addOnType = _json['addOnType'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('helpUrl')) {
-      helpUrl = _json['helpUrl'];
+      helpUrl = _json['helpUrl'] as core.String;
     }
     if (_json.containsKey('postInstallTipUrl')) {
-      postInstallTipUrl = _json['postInstallTipUrl'];
+      postInstallTipUrl = _json['postInstallTipUrl'] as core.String;
     }
     if (_json.containsKey('reportIssueUrl')) {
-      reportIssueUrl = _json['reportIssueUrl'];
+      reportIssueUrl = _json['reportIssueUrl'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1842,7 +1844,7 @@ class GoogleAppsScriptTypeExecutionApiConfig {
 
   GoogleAppsScriptTypeExecutionApiConfig.fromJson(core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
   }
 
@@ -1887,7 +1889,7 @@ class GoogleAppsScriptTypeFunction {
 
   GoogleAppsScriptTypeFunction.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1983,25 +1985,25 @@ class GoogleAppsScriptTypeProcess {
 
   GoogleAppsScriptTypeProcess.fromJson(core.Map _json) {
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('functionName')) {
-      functionName = _json['functionName'];
+      functionName = _json['functionName'] as core.String;
     }
     if (_json.containsKey('processStatus')) {
-      processStatus = _json['processStatus'];
+      processStatus = _json['processStatus'] as core.String;
     }
     if (_json.containsKey('processType')) {
-      processType = _json['processType'];
+      processType = _json['processType'] as core.String;
     }
     if (_json.containsKey('projectName')) {
-      projectName = _json['projectName'];
+      projectName = _json['projectName'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('userAccessLevel')) {
-      userAccessLevel = _json['userAccessLevel'];
+      userAccessLevel = _json['userAccessLevel'] as core.String;
     }
   }
 
@@ -2050,16 +2052,16 @@ class GoogleAppsScriptTypeUser {
 
   GoogleAppsScriptTypeUser.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('photoUrl')) {
-      photoUrl = _json['photoUrl'];
+      photoUrl = _json['photoUrl'] as core.String;
     }
   }
 
@@ -2108,10 +2110,10 @@ class GoogleAppsScriptTypeWebAppConfig {
 
   GoogleAppsScriptTypeWebAppConfig.fromJson(core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
     if (_json.containsKey('executeAs')) {
-      executeAs = _json['executeAs'];
+      executeAs = _json['executeAs'] as core.String;
     }
   }
 
@@ -2143,7 +2145,7 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
           GoogleAppsScriptTypeWebAppConfig.fromJson(_json['entryPointConfig']);
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -2177,7 +2179,7 @@ class ListDeploymentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2207,7 +2209,7 @@ class ListScriptProcessesResponse {
 
   ListScriptProcessesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('processes')) {
       processes = (_json['processes'] as core.List)
@@ -2242,7 +2244,7 @@ class ListUserProcessesResponse {
 
   ListUserProcessesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('processes')) {
       processes = (_json['processes'] as core.List)
@@ -2301,7 +2303,7 @@ class ListVersionsResponse {
 
   ListVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
@@ -2387,13 +2389,13 @@ class MetricsValue {
 
   MetricsValue.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2452,14 +2454,15 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2507,7 +2510,7 @@ class Project {
 
   Project.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('creator')) {
       creator = GoogleAppsScriptTypeUser.fromJson(_json['creator']);
@@ -2517,16 +2520,16 @@ class Project {
           GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
     }
     if (_json.containsKey('parentId')) {
-      parentId = _json['parentId'];
+      parentId = _json['parentId'] as core.String;
     }
     if (_json.containsKey('scriptId')) {
-      scriptId = _json['scriptId'];
+      scriptId = _json['scriptId'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2591,10 +2594,10 @@ class ScriptStackTraceElement {
 
   ScriptStackTraceElement.fromJson(core.Map _json) {
     if (_json.containsKey('function')) {
-      function = _json['function'];
+      function = _json['function'] as core.String;
     }
     if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'];
+      lineNumber = _json['lineNumber'] as core.int;
     }
   }
 
@@ -2635,16 +2638,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -2758,29 +2763,30 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'];
+      boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('bytesValue')) {
-      bytesValue = _json['bytesValue'];
+      bytesValue = _json['bytesValue'] as core.String;
     }
     if (_json.containsKey('dateValue')) {
-      dateValue = _json['dateValue'];
+      dateValue = _json['dateValue'] as core.String;
     }
     if (_json.containsKey('listValue')) {
       listValue = ListValue.fromJson(_json['listValue']);
     }
     if (_json.containsKey('nullValue')) {
-      nullValue = _json['nullValue'];
+      nullValue = _json['nullValue'] as core.String;
     }
     if (_json.containsKey('numberValue')) {
       numberValue = _json['numberValue'].toDouble();
     }
     if (_json.containsKey('protoValue')) {
-      protoValue =
-          (_json['protoValue'] as core.Map).cast<core.String, core.Object>();
+      protoValue = commons.mapMap<core.Object, core.Object>(
+          _json['protoValue'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('structValue')) {
       structValue = Struct.fromJson(_json['structValue']);
@@ -2841,16 +2847,16 @@ class Version {
 
   Version.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('scriptId')) {
-      scriptId = _json['scriptId'];
+      scriptId = _json['scriptId'] as core.String;
     }
     if (_json.containsKey('versionNumber')) {
-      versionNumber = _json['versionNumber'];
+      versionNumber = _json['versionNumber'] as core.int;
     }
   }
 

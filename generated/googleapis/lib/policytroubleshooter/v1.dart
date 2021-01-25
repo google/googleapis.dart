@@ -133,13 +133,13 @@ class GoogleCloudPolicytroubleshooterV1AccessTuple {
 
   GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(core.Map _json) {
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
     if (_json.containsKey('permission')) {
-      permission = _json['permission'];
+      permission = _json['permission'] as core.String;
     }
     if (_json.containsKey('principal')) {
-      principal = _json['principal'];
+      principal = _json['principal'] as core.String;
     }
   }
 
@@ -239,7 +239,7 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
 
   GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = GoogleTypeExpr.fromJson(_json['condition']);
@@ -253,16 +253,16 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
                   .fromJson(item));
     }
     if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'];
+      relevance = _json['relevance'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
     if (_json.containsKey('rolePermission')) {
-      rolePermission = _json['rolePermission'];
+      rolePermission = _json['rolePermission'] as core.String;
     }
     if (_json.containsKey('rolePermissionRelevance')) {
-      rolePermissionRelevance = _json['rolePermissionRelevance'];
+      rolePermissionRelevance = _json['rolePermissionRelevance'] as core.String;
     }
   }
 
@@ -331,10 +331,10 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership {
   GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership.fromJson(
       core.Map _json) {
     if (_json.containsKey('membership')) {
-      membership = _json['membership'];
+      membership = _json['membership'] as core.String;
     }
     if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'];
+      relevance = _json['relevance'] as core.String;
     }
   }
 
@@ -401,7 +401,7 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
 
   GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
     if (_json.containsKey('bindingExplanations')) {
       bindingExplanations = (_json['bindingExplanations'] as core.List)
@@ -411,13 +411,13 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
           .toList();
     }
     if (_json.containsKey('fullResourceName')) {
-      fullResourceName = _json['fullResourceName'];
+      fullResourceName = _json['fullResourceName'] as core.String;
     }
     if (_json.containsKey('policy')) {
       policy = GoogleIamV1Policy.fromJson(_json['policy']);
     }
     if (_json.containsKey('relevance')) {
-      relevance = _json['relevance'];
+      relevance = _json['relevance'] as core.String;
     }
   }
 
@@ -497,7 +497,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
   GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('access')) {
-      access = _json['access'];
+      access = _json['access'] as core.String;
     }
     if (_json.containsKey('explainedPolicies')) {
       explainedPolicies = (_json['explainedPolicies'] as core.List)
@@ -555,7 +555,7 @@ class GoogleIamV1AuditConfig {
           .toList();
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
   }
 
@@ -594,11 +594,12 @@ class GoogleIamV1AuditLogConfig {
 
   GoogleIamV1AuditLogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('exemptedMembers')) {
-      exemptedMembers =
-          (_json['exemptedMembers'] as core.List).cast<core.String>();
+      exemptedMembers = (_json['exemptedMembers'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('logType')) {
-      logType = _json['logType'];
+      logType = _json['logType'] as core.String;
     }
   }
 
@@ -667,10 +668,12 @@ class GoogleIamV1Binding {
       condition = GoogleTypeExpr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -779,10 +782,10 @@ class GoogleIamV1Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -842,16 +845,16 @@ class GoogleTypeExpr {
 
   GoogleTypeExpr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 

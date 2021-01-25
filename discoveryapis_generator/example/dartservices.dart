@@ -368,22 +368,22 @@ class AnalysisIssue {
 
   AnalysisIssue.fromJson(core.Map _json) {
     if (_json.containsKey('charLength')) {
-      charLength = _json['charLength'];
+      charLength = _json['charLength'] as core.int;
     }
     if (_json.containsKey('charStart')) {
-      charStart = _json['charStart'];
+      charStart = _json['charStart'] as core.int;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('line')) {
-      line = _json['line'];
+      line = _json['line'] as core.int;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -440,7 +440,7 @@ class CompileResponse {
 
   CompileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 
@@ -460,7 +460,9 @@ class DocumentResponse {
 
   DocumentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('info')) {
-      info = (_json['info'] as core.Map).cast<core.String, core.String>();
+      info = commons.mapMap<core.String, core.String>(
+          _json['info'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
   }
 
@@ -481,10 +483,10 @@ class SourceRequest {
 
   SourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('offset')) {
-      offset = _json['offset'];
+      offset = _json['offset'] as core.int;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
   }
 

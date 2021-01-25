@@ -4915,22 +4915,22 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('shareData')) {
-      shareData = _json['shareData'];
+      shareData = _json['shareData'] as core.bool;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
   }
 
@@ -4974,7 +4974,7 @@ class AccountAccess {
 
   AccountAccess.fromJson(core.Map _json) {
     if (_json.containsKey('permission')) {
-      permission = _json['permission'];
+      permission = _json['permission'] as core.String;
     }
   }
 
@@ -5129,22 +5129,22 @@ class BuiltInVariable {
 
   BuiltInVariable.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -5222,19 +5222,19 @@ class Client {
 
   Client.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'];
+      clientId = _json['clientId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -5242,22 +5242,22 @@ class Client {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('priority')) {
-      priority = _json['priority'];
+      priority = _json['priority'] as core.int;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -5345,7 +5345,7 @@ class Condition {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -5405,34 +5405,38 @@ class Container {
 
   Container.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('domainName')) {
-      domainName = (_json['domainName'] as core.List).cast<core.String>();
+      domainName = (_json['domainName'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'];
+      publicId = _json['publicId'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('usageContext')) {
-      usageContext = (_json['usageContext'] as core.List).cast<core.String>();
+      usageContext = (_json['usageContext'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5494,10 +5498,10 @@ class ContainerAccess {
 
   ContainerAccess.fromJson(core.Map _json) {
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('permission')) {
-      permission = _json['permission'];
+      permission = _json['permission'] as core.String;
     }
   }
 
@@ -5576,7 +5580,7 @@ class ContainerVersion {
 
   ContainerVersion.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('builtInVariable')) {
       builtInVariable = (_json['builtInVariable'] as core.List)
@@ -5592,10 +5596,10 @@ class ContainerVersion {
       container = Container.fromJson(_json['container']);
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('customTemplate')) {
       customTemplate = (_json['customTemplate'] as core.List)
@@ -5603,13 +5607,13 @@ class ContainerVersion {
           .toList();
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('folder')) {
       folder = (_json['folder'] as core.List)
@@ -5617,10 +5621,10 @@ class ContainerVersion {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
@@ -5628,7 +5632,7 @@ class ContainerVersion {
           .toList();
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('trigger')) {
       trigger = (_json['trigger'] as core.List)
@@ -5754,43 +5758,43 @@ class ContainerVersionHeader {
 
   ContainerVersionHeader.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('numCustomTemplates')) {
-      numCustomTemplates = _json['numCustomTemplates'];
+      numCustomTemplates = _json['numCustomTemplates'] as core.String;
     }
     if (_json.containsKey('numMacros')) {
-      numMacros = _json['numMacros'];
+      numMacros = _json['numMacros'] as core.String;
     }
     if (_json.containsKey('numRules')) {
-      numRules = _json['numRules'];
+      numRules = _json['numRules'] as core.String;
     }
     if (_json.containsKey('numTags')) {
-      numTags = _json['numTags'];
+      numTags = _json['numTags'] as core.String;
     }
     if (_json.containsKey('numTriggers')) {
-      numTriggers = _json['numTriggers'];
+      numTriggers = _json['numTriggers'] as core.String;
     }
     if (_json.containsKey('numVariables')) {
-      numVariables = _json['numVariables'];
+      numVariables = _json['numVariables'] as core.String;
     }
     if (_json.containsKey('numZones')) {
-      numZones = _json['numZones'];
+      numZones = _json['numZones'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -5875,10 +5879,10 @@ class CreateContainerVersionRequestVersionOptions {
 
   CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
   }
 
@@ -5915,13 +5919,13 @@ class CreateContainerVersionResponse {
 
   CreateContainerVersionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'];
+      compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
       containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
     }
     if (_json.containsKey('newWorkspacePath')) {
-      newWorkspacePath = _json['newWorkspacePath'];
+      newWorkspacePath = _json['newWorkspacePath'] as core.String;
     }
     if (_json.containsKey('syncStatus')) {
       syncStatus = SyncStatus.fromJson(_json['syncStatus']);
@@ -5983,34 +5987,34 @@ class CustomTemplate {
 
   CustomTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('galleryReference')) {
       galleryReference = GalleryReference.fromJson(_json['galleryReference']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('templateData')) {
-      templateData = _json['templateData'];
+      templateData = _json['templateData'] as core.String;
     }
     if (_json.containsKey('templateId')) {
-      templateId = _json['templateId'];
+      templateId = _json['templateId'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -6078,7 +6082,7 @@ class Entity {
 
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey('changeStatus')) {
-      changeStatus = _json['changeStatus'];
+      changeStatus = _json['changeStatus'] as core.String;
     }
     if (_json.containsKey('folder')) {
       folder = Folder.fromJson(_json['folder']);
@@ -6183,49 +6187,49 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('authorizationCode')) {
-      authorizationCode = _json['authorizationCode'];
+      authorizationCode = _json['authorizationCode'] as core.String;
     }
     if (_json.containsKey('authorizationTimestamp')) {
-      authorizationTimestamp = _json['authorizationTimestamp'];
+      authorizationTimestamp = _json['authorizationTimestamp'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('enableDebug')) {
-      enableDebug = _json['enableDebug'];
+      enableDebug = _json['enableDebug'] as core.bool;
     }
     if (_json.containsKey('environmentId')) {
-      environmentId = _json['environmentId'];
+      environmentId = _json['environmentId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -6318,31 +6322,31 @@ class Folder {
 
   Folder.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('folderId')) {
-      folderId = _json['folderId'];
+      folderId = _json['folderId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -6397,7 +6401,7 @@ class FolderEntities {
 
   FolderEntities.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
@@ -6461,22 +6465,22 @@ class GalleryReference {
 
   GalleryReference.fromJson(core.Map _json) {
     if (_json.containsKey('host')) {
-      host = _json['host'];
+      host = _json['host'] as core.String;
     }
     if (_json.containsKey('isModified')) {
-      isModified = _json['isModified'];
+      isModified = _json['isModified'] as core.bool;
     }
     if (_json.containsKey('owner')) {
-      owner = _json['owner'];
+      owner = _json['owner'] as core.String;
     }
     if (_json.containsKey('repository')) {
-      repository = _json['repository'];
+      repository = _json['repository'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -6559,7 +6563,7 @@ class ListAccountsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6593,7 +6597,7 @@ class ListContainerVersionsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6627,7 +6631,7 @@ class ListContainersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6660,7 +6664,7 @@ class ListEnabledBuiltInVariablesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6694,7 +6698,7 @@ class ListEnvironmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6728,7 +6732,7 @@ class ListFoldersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -6756,7 +6760,7 @@ class ListTagsResponse {
 
   ListTagsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
@@ -6788,7 +6792,7 @@ class ListTemplatesResponse {
 
   ListTemplatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('template')) {
       template = (_json['template'] as core.List)
@@ -6821,7 +6825,7 @@ class ListTriggersResponse {
 
   ListTriggersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('trigger')) {
       trigger = (_json['trigger'] as core.List)
@@ -6854,7 +6858,7 @@ class ListUserPermissionsResponse {
 
   ListUserPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('userPermission')) {
       userPermission = (_json['userPermission'] as core.List)
@@ -6888,7 +6892,7 @@ class ListVariablesResponse {
 
   ListVariablesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('variable')) {
       variable = (_json['variable'] as core.List)
@@ -6921,7 +6925,7 @@ class ListWorkspacesResponse {
 
   ListWorkspacesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('workspace')) {
       workspace = (_json['workspace'] as core.List)
@@ -6953,7 +6957,7 @@ class ListZonesResponse {
 
   ListZonesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('zone')) {
       zone = (_json['zone'] as core.List)
@@ -7079,7 +7083,7 @@ class Parameter {
 
   Parameter.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('list')) {
       list = (_json['list'] as core.List)
@@ -7092,10 +7096,10 @@ class Parameter {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -7132,7 +7136,7 @@ class PublishContainerVersionResponse {
 
   PublishContainerVersionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'];
+      compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
       containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
@@ -7167,7 +7171,7 @@ class QuickPreviewResponse {
 
   QuickPreviewResponse.fromJson(core.Map _json) {
     if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'];
+      compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
       containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
@@ -7201,7 +7205,7 @@ class RevertBuiltInVariableResponse {
 
   RevertBuiltInVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
   }
 
@@ -7373,10 +7377,10 @@ class SetupTag {
 
   SetupTag.fromJson(core.Map _json) {
     if (_json.containsKey('stopOnSetupFailure')) {
-      stopOnSetupFailure = _json['stopOnSetupFailure'];
+      stopOnSetupFailure = _json['stopOnSetupFailure'] as core.bool;
     }
     if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'];
+      tagName = _json['tagName'] as core.String;
     }
   }
 
@@ -7404,10 +7408,10 @@ class SyncStatus {
 
   SyncStatus.fromJson(core.Map _json) {
     if (_json.containsKey('mergeConflict')) {
-      mergeConflict = _json['mergeConflict'];
+      mergeConflict = _json['mergeConflict'] as core.bool;
     }
     if (_json.containsKey('syncError')) {
-      syncError = _json['syncError'];
+      syncError = _json['syncError'] as core.bool;
     }
   }
 
@@ -7592,43 +7596,49 @@ class Tag {
 
   Tag.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('blockingRuleId')) {
-      blockingRuleId =
-          (_json['blockingRuleId'] as core.List).cast<core.String>();
+      blockingRuleId = (_json['blockingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('blockingTriggerId')) {
-      blockingTriggerId =
-          (_json['blockingTriggerId'] as core.List).cast<core.String>();
+      blockingTriggerId = (_json['blockingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('firingRuleId')) {
-      firingRuleId = (_json['firingRuleId'] as core.List).cast<core.String>();
+      firingRuleId = (_json['firingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('firingTriggerId')) {
-      firingTriggerId =
-          (_json['firingTriggerId'] as core.List).cast<core.String>();
+      firingTriggerId = (_json['firingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('liveOnly')) {
-      liveOnly = _json['liveOnly'];
+      liveOnly = _json['liveOnly'] as core.bool;
     }
     if (_json.containsKey('monitoringMetadata')) {
       monitoringMetadata = Parameter.fromJson(_json['monitoringMetadata']);
     }
     if (_json.containsKey('monitoringMetadataTagNameKey')) {
-      monitoringMetadataTagNameKey = _json['monitoringMetadataTagNameKey'];
+      monitoringMetadataTagNameKey =
+          _json['monitoringMetadataTagNameKey'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -7636,22 +7646,22 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('paused')) {
-      paused = _json['paused'];
+      paused = _json['paused'] as core.bool;
     }
     if (_json.containsKey('priority')) {
       priority = Parameter.fromJson(_json['priority']);
     }
     if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'];
+      scheduleEndMs = _json['scheduleEndMs'] as core.String;
     }
     if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'];
+      scheduleStartMs = _json['scheduleStartMs'] as core.String;
     }
     if (_json.containsKey('setupTag')) {
       setupTag = (_json['setupTag'] as core.List)
@@ -7659,13 +7669,13 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('tagFiringOption')) {
-      tagFiringOption = _json['tagFiringOption'];
+      tagFiringOption = _json['tagFiringOption'] as core.String;
     }
     if (_json.containsKey('tagId')) {
-      tagId = _json['tagId'];
+      tagId = _json['tagId'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('teardownTag')) {
       teardownTag = (_json['teardownTag'] as core.List)
@@ -7673,10 +7683,10 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -7780,10 +7790,10 @@ class TeardownTag {
 
   TeardownTag.fromJson(core.Map _json) {
     if (_json.containsKey('stopTeardownOnFailure')) {
-      stopTeardownOnFailure = _json['stopTeardownOnFailure'];
+      stopTeardownOnFailure = _json['stopTeardownOnFailure'] as core.bool;
     }
     if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'];
+      tagName = _json['tagName'] as core.String;
     }
   }
 
@@ -8010,7 +8020,7 @@ class Trigger {
 
   Trigger.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('autoEventFilter')) {
       autoEventFilter = (_json['autoEventFilter'] as core.List)
@@ -8021,7 +8031,7 @@ class Trigger {
       checkValidation = Parameter.fromJson(_json['checkValidation']);
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('continuousTimeMinMilliseconds')) {
       continuousTimeMinMilliseconds =
@@ -8041,7 +8051,7 @@ class Trigger {
           .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('horizontalScrollPercentageList')) {
       horizontalScrollPercentageList =
@@ -8061,10 +8071,10 @@ class Trigger {
           Parameter.fromJson(_json['maxTimerLengthSeconds']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -8072,26 +8082,26 @@ class Trigger {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('selector')) {
       selector = Parameter.fromJson(_json['selector']);
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('totalTimeMinMilliseconds')) {
       totalTimeMinMilliseconds =
           Parameter.fromJson(_json['totalTimeMinMilliseconds']);
     }
     if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'];
+      triggerId = _json['triggerId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('uniqueTriggerId')) {
       uniqueTriggerId = Parameter.fromJson(_json['uniqueTriggerId']);
@@ -8116,7 +8126,7 @@ class Trigger {
       waitForTagsTimeout = Parameter.fromJson(_json['waitForTagsTimeout']);
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -8255,7 +8265,7 @@ class UserPermission {
       accountAccess = AccountAccess.fromJson(_json['accountAccess']);
     }
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerAccess')) {
       containerAccess = (_json['containerAccess'] as core.List)
@@ -8263,10 +8273,10 @@ class UserPermission {
           .toList();
     }
     if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'];
+      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -8371,30 +8381,32 @@ class Variable {
 
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('disablingTriggerId')) {
-      disablingTriggerId =
-          (_json['disablingTriggerId'] as core.List).cast<core.String>();
+      disablingTriggerId = (_json['disablingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('enablingTriggerId')) {
-      enablingTriggerId =
-          (_json['enablingTriggerId'] as core.List).cast<core.String>();
+      enablingTriggerId = (_json['enablingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('formatValue')) {
       formatValue = VariableFormatValue.fromJson(_json['formatValue']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -8402,28 +8414,28 @@ class Variable {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'];
+      scheduleEndMs = _json['scheduleEndMs'] as core.String;
     }
     if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'];
+      scheduleStartMs = _json['scheduleStartMs'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('variableId')) {
-      variableId = _json['variableId'];
+      variableId = _json['variableId'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -8509,7 +8521,7 @@ class VariableFormatValue {
 
   VariableFormatValue.fromJson(core.Map _json) {
     if (_json.containsKey('caseConversionType')) {
-      caseConversionType = _json['caseConversionType'];
+      caseConversionType = _json['caseConversionType'] as core.String;
     }
     if (_json.containsKey('convertFalseToValue')) {
       convertFalseToValue = Parameter.fromJson(_json['convertFalseToValue']);
@@ -8582,28 +8594,28 @@ class Workspace {
 
   Workspace.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
   }
 
@@ -8680,7 +8692,7 @@ class Zone {
 
   Zone.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('boundary')) {
       boundary = ZoneBoundary.fromJson(_json['boundary']);
@@ -8692,31 +8704,31 @@ class Zone {
           .toList();
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('tagManagerUrl')) {
-      tagManagerUrl = _json['tagManagerUrl'];
+      tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('typeRestriction')) {
       typeRestriction = ZoneTypeRestriction.fromJson(_json['typeRestriction']);
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = _json['workspaceId'];
+      workspaceId = _json['workspaceId'] as core.String;
     }
     if (_json.containsKey('zoneId')) {
-      zoneId = _json['zoneId'];
+      zoneId = _json['zoneId'] as core.String;
     }
   }
 
@@ -8782,7 +8794,9 @@ class ZoneBoundary {
     }
     if (_json.containsKey('customEvaluationTriggerId')) {
       customEvaluationTriggerId =
-          (_json['customEvaluationTriggerId'] as core.List).cast<core.String>();
+          (_json['customEvaluationTriggerId'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
   }
 
@@ -8810,10 +8824,10 @@ class ZoneChildContainer {
 
   ZoneChildContainer.fromJson(core.Map _json) {
     if (_json.containsKey('nickname')) {
-      nickname = _json['nickname'];
+      nickname = _json['nickname'] as core.String;
     }
     if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'];
+      publicId = _json['publicId'] as core.String;
     }
   }
 
@@ -8841,11 +8855,12 @@ class ZoneTypeRestriction {
 
   ZoneTypeRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('enable')) {
-      enable = _json['enable'];
+      enable = _json['enable'] as core.bool;
     }
     if (_json.containsKey('whitelistedTypeId')) {
-      whitelistedTypeId =
-          (_json['whitelistedTypeId'] as core.List).cast<core.String>();
+      whitelistedTypeId = (_json['whitelistedTypeId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

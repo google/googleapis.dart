@@ -213,7 +213,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -257,16 +257,16 @@ class LongRunningRecognizeMetadata {
 
   LongRunningRecognizeMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'];
+      lastUpdateTime = _json['lastUpdateTime'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -359,21 +359,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -424,7 +426,7 @@ class SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -477,10 +479,10 @@ class SpeechRecognitionResult {
           .toList();
     }
     if (_json.containsKey('channelTag')) {
-      channelTag = _json['channelTag'];
+      channelTag = _json['channelTag'] as core.int;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -526,16 +528,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -595,16 +599,16 @@ class WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endOffset')) {
-      endOffset = _json['endOffset'];
+      endOffset = _json['endOffset'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startOffset')) {
-      startOffset = _json['startOffset'];
+      startOffset = _json['startOffset'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 

@@ -3941,7 +3941,7 @@ class GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata {
   GoogleCloudDialogflowCxV3beta1CreateVersionOperationMetadata.fromJson(
       core.Map _json) {
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -3974,10 +3974,10 @@ class GoogleCloudDialogflowCxV3beta1ExportAgentResponse {
 
   GoogleCloudDialogflowCxV3beta1ExportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -4003,7 +4003,7 @@ class GoogleCloudDialogflowCxV3beta1ImportAgentResponse {
 
   GoogleCloudDialogflowCxV3beta1ImportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agent')) {
-      agent = _json['agent'];
+      agent = _json['agent'] as core.String;
     }
   }
 
@@ -4031,7 +4031,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
 
   GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(core.Map _json) {
     if (_json.containsKey('currentPage')) {
-      currentPage = _json['currentPage'];
+      currentPage = _json['currentPage'] as core.String;
     }
     if (_json.containsKey('formInfo')) {
       formInfo = GoogleCloudDialogflowCxV3beta1PageInfoFormInfo.fromJson(
@@ -4125,19 +4125,19 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo {
   GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('justCollected')) {
-      justCollected = _json['justCollected'];
+      justCollected = _json['justCollected'] as core.bool;
     }
     if (_json.containsKey('required')) {
-      required = _json['required'];
+      required = _json['required'] as core.bool;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.Object;
     }
   }
 
@@ -4244,7 +4244,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
               _json['outputAudioText']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('playAudio')) {
       playAudio =
@@ -4308,8 +4310,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -4357,8 +4360,9 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -4429,13 +4433,14 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment {
   GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment.fromJson(
       core.Map _json) {
     if (_json.containsKey('allowPlaybackInterruption')) {
-      allowPlaybackInterruption = _json['allowPlaybackInterruption'];
+      allowPlaybackInterruption =
+          _json['allowPlaybackInterruption'] as core.bool;
     }
     if (_json.containsKey('audio')) {
-      audio = _json['audio'];
+      audio = _json['audio'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -4474,13 +4479,14 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText {
   GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromJson(
       core.Map _json) {
     if (_json.containsKey('allowPlaybackInterruption')) {
-      allowPlaybackInterruption = _json['allowPlaybackInterruption'];
+      allowPlaybackInterruption =
+          _json['allowPlaybackInterruption'] as core.bool;
     }
     if (_json.containsKey('ssml')) {
-      ssml = _json['ssml'];
+      ssml = _json['ssml'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -4515,10 +4521,11 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio {
   GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromJson(
       core.Map _json) {
     if (_json.containsKey('allowPlaybackInterruption')) {
-      allowPlaybackInterruption = _json['allowPlaybackInterruption'];
+      allowPlaybackInterruption =
+          _json['allowPlaybackInterruption'] as core.bool;
     }
     if (_json.containsKey('audioUri')) {
-      audioUri = _json['audioUri'];
+      audioUri = _json['audioUri'] as core.String;
     }
   }
 
@@ -4548,10 +4555,13 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageText {
 
   GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromJson(core.Map _json) {
     if (_json.containsKey('allowPlaybackInterruption')) {
-      allowPlaybackInterruption = _json['allowPlaybackInterruption'];
+      allowPlaybackInterruption =
+          _json['allowPlaybackInterruption'] as core.bool;
     }
     if (_json.containsKey('text')) {
-      text = (_json['text'] as core.List).cast<core.String>();
+      text = (_json['text'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4588,11 +4598,12 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
 
   GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('session')) {
-      session = _json['session'];
+      session = _json['session'] as core.String;
     }
   }
 
@@ -4642,7 +4653,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
 
   GoogleCloudDialogflowCxV3beta1WebhookRequest.fromJson(core.Map _json) {
     if (_json.containsKey('detectIntentResponseId')) {
-      detectIntentResponseId = _json['detectIntentResponseId'];
+      detectIntentResponseId = _json['detectIntentResponseId'] as core.String;
     }
     if (_json.containsKey('fulfillmentInfo')) {
       fulfillmentInfo =
@@ -4665,7 +4676,9 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
           GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(_json['pageInfo']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
@@ -4711,7 +4724,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo {
   GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('tag')) {
-      tag = _json['tag'];
+      tag = _json['tag'] as core.String;
     }
   }
 
@@ -4743,7 +4756,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('lastMatchedIntent')) {
-      lastMatchedIntent = _json['lastMatchedIntent'];
+      lastMatchedIntent = _json['lastMatchedIntent'] as core.String;
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Map,
@@ -4790,10 +4803,10 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
   GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue.fromJson(
       core.Map _json) {
     if (_json.containsKey('originalValue')) {
-      originalValue = _json['originalValue'];
+      originalValue = _json['originalValue'] as core.String;
     }
     if (_json.containsKey('resolvedValue')) {
-      resolvedValue = _json['resolvedValue'];
+      resolvedValue = _json['resolvedValue'] as core.Object;
     }
   }
 
@@ -4851,17 +4864,19 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
           GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(_json['pageInfo']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
           _json['sessionInfo']);
     }
     if (_json.containsKey('targetFlow')) {
-      targetFlow = _json['targetFlow'];
+      targetFlow = _json['targetFlow'] as core.String;
     }
     if (_json.containsKey('targetPage')) {
-      targetPage = _json['targetPage'];
+      targetPage = _json['targetPage'] as core.String;
     }
   }
 
@@ -4908,7 +4923,7 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
   GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('mergeBehavior')) {
-      mergeBehavior = _json['mergeBehavior'];
+      mergeBehavior = _json['mergeBehavior'] as core.String;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -5016,41 +5031,42 @@ class GoogleCloudDialogflowV2Agent {
 
   GoogleCloudDialogflowV2Agent.fromJson(core.Map _json) {
     if (_json.containsKey('apiVersion')) {
-      apiVersion = _json['apiVersion'];
+      apiVersion = _json['apiVersion'] as core.String;
     }
     if (_json.containsKey('avatarUri')) {
-      avatarUri = _json['avatarUri'];
+      avatarUri = _json['avatarUri'] as core.String;
     }
     if (_json.containsKey('classificationThreshold')) {
       classificationThreshold = _json['classificationThreshold'].toDouble();
     }
     if (_json.containsKey('defaultLanguageCode')) {
-      defaultLanguageCode = _json['defaultLanguageCode'];
+      defaultLanguageCode = _json['defaultLanguageCode'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('enableLogging')) {
-      enableLogging = _json['enableLogging'];
+      enableLogging = _json['enableLogging'] as core.bool;
     }
     if (_json.containsKey('matchMode')) {
-      matchMode = _json['matchMode'];
+      matchMode = _json['matchMode'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('supportedLanguageCodes')) {
-      supportedLanguageCodes =
-          (_json['supportedLanguageCodes'] as core.List).cast<core.String>();
+      supportedLanguageCodes = (_json['supportedLanguageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('tier')) {
-      tier = _json['tier'];
+      tier = _json['tier'] as core.String;
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -5122,13 +5138,13 @@ class GoogleCloudDialogflowV2AnnotatedMessagePart {
 
   GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(core.Map _json) {
     if (_json.containsKey('entityType')) {
-      entityType = _json['entityType'];
+      entityType = _json['entityType'] as core.String;
     }
     if (_json.containsKey('formattedValue')) {
-      formattedValue = _json['formattedValue'];
+      formattedValue = _json['formattedValue'] as core.Object;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5168,7 +5184,7 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -5201,10 +5217,12 @@ class GoogleCloudDialogflowV2BatchDeleteEntitiesRequest {
 
   GoogleCloudDialogflowV2BatchDeleteEntitiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entityValues')) {
-      entityValues = (_json['entityValues'] as core.List).cast<core.String>();
+      entityValues = (_json['entityValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -5231,8 +5249,9 @@ class GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest {
   GoogleCloudDialogflowV2BatchDeleteEntityTypesRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('entityTypeNames')) {
-      entityTypeNames =
-          (_json['entityTypeNames'] as core.List).cast<core.String>();
+      entityTypeNames = (_json['entityTypeNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5295,10 +5314,10 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -5345,13 +5364,13 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
           _json['entityTypeBatchInline']);
     }
     if (_json.containsKey('entityTypeBatchUri')) {
-      entityTypeBatchUri = _json['entityTypeBatchUri'];
+      entityTypeBatchUri = _json['entityTypeBatchUri'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -5433,16 +5452,16 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
           _json['intentBatchInline']);
     }
     if (_json.containsKey('intentBatchUri')) {
-      intentBatchUri = _json['intentBatchUri'];
+      intentBatchUri = _json['intentBatchUri'] as core.String;
     }
     if (_json.containsKey('intentView')) {
-      intentView = _json['intentView'];
+      intentView = _json['intentView'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -5541,14 +5560,15 @@ class GoogleCloudDialogflowV2Context {
 
   GoogleCloudDialogflowV2Context.fromJson(core.Map _json) {
     if (_json.containsKey('lifespanCount')) {
-      lifespanCount = _json['lifespanCount'];
+      lifespanCount = _json['lifespanCount'] as core.int;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -5607,7 +5627,7 @@ class GoogleCloudDialogflowV2ConversationEvent {
 
   GoogleCloudDialogflowV2ConversationEvent.fromJson(core.Map _json) {
     if (_json.containsKey('conversation')) {
-      conversation = _json['conversation'];
+      conversation = _json['conversation'] as core.String;
     }
     if (_json.containsKey('errorStatus')) {
       errorStatus = GoogleRpcStatus.fromJson(_json['errorStatus']);
@@ -5617,7 +5637,7 @@ class GoogleCloudDialogflowV2ConversationEvent {
           GoogleCloudDialogflowV2Message.fromJson(_json['newMessagePayload']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -5677,14 +5697,14 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
 
   GoogleCloudDialogflowV2DetectIntentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inputAudio')) {
-      inputAudio = _json['inputAudio'];
+      inputAudio = _json['inputAudio'] as core.String;
     }
     if (_json.containsKey('outputAudioConfig')) {
       outputAudioConfig = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
           _json['outputAudioConfig']);
     }
     if (_json.containsKey('outputAudioConfigMask')) {
-      outputAudioConfigMask = _json['outputAudioConfigMask'];
+      outputAudioConfigMask = _json['outputAudioConfigMask'] as core.String;
     }
     if (_json.containsKey('queryInput')) {
       queryInput =
@@ -5754,7 +5774,7 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
 
   GoogleCloudDialogflowV2DetectIntentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputAudio')) {
-      outputAudio = _json['outputAudio'];
+      outputAudio = _json['outputAudio'] as core.String;
     }
     if (_json.containsKey('outputAudioConfig')) {
       outputAudioConfig = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
@@ -5765,7 +5785,7 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
           GoogleCloudDialogflowV2QueryResult.fromJson(_json['queryResult']);
     }
     if (_json.containsKey('responseId')) {
-      responseId = _json['responseId'];
+      responseId = _json['responseId'] as core.String;
     }
     if (_json.containsKey('webhookStatus')) {
       webhookStatus = GoogleRpcStatus.fromJson(_json['webhookStatus']);
@@ -5842,13 +5862,13 @@ class GoogleCloudDialogflowV2EntityType {
 
   GoogleCloudDialogflowV2EntityType.fromJson(core.Map _json) {
     if (_json.containsKey('autoExpansionMode')) {
-      autoExpansionMode = _json['autoExpansionMode'];
+      autoExpansionMode = _json['autoExpansionMode'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('enableFuzzyExtraction')) {
-      enableFuzzyExtraction = _json['enableFuzzyExtraction'];
+      enableFuzzyExtraction = _json['enableFuzzyExtraction'] as core.bool;
     }
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
@@ -5857,10 +5877,10 @@ class GoogleCloudDialogflowV2EntityType {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -5933,10 +5953,12 @@ class GoogleCloudDialogflowV2EntityTypeEntity {
 
   GoogleCloudDialogflowV2EntityTypeEntity.fromJson(core.Map _json) {
     if (_json.containsKey('synonyms')) {
-      synonyms = (_json['synonyms'] as core.List).cast<core.String>();
+      synonyms = (_json['synonyms'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -5992,19 +6014,19 @@ class GoogleCloudDialogflowV2Environment {
 
   GoogleCloudDialogflowV2Environment.fromJson(core.Map _json) {
     if (_json.containsKey('agentVersion')) {
-      agentVersion = _json['agentVersion'];
+      agentVersion = _json['agentVersion'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -6060,14 +6082,15 @@ class GoogleCloudDialogflowV2EventInput {
 
   GoogleCloudDialogflowV2EventInput.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -6098,7 +6121,7 @@ class GoogleCloudDialogflowV2ExportAgentRequest {
 
   GoogleCloudDialogflowV2ExportAgentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -6131,10 +6154,10 @@ class GoogleCloudDialogflowV2ExportAgentResponse {
 
   GoogleCloudDialogflowV2ExportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -6181,10 +6204,10 @@ class GoogleCloudDialogflowV2Fulfillment {
 
   GoogleCloudDialogflowV2Fulfillment.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('enabled')) {
-      enabled = _json['enabled'];
+      enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
@@ -6198,7 +6221,7 @@ class GoogleCloudDialogflowV2Fulfillment {
               _json['genericWebService']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -6235,7 +6258,7 @@ class GoogleCloudDialogflowV2FulfillmentFeature {
 
   GoogleCloudDialogflowV2FulfillmentFeature.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -6276,20 +6299,21 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
 
   GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(core.Map _json) {
     if (_json.containsKey('isCloudFunction')) {
-      isCloudFunction = _json['isCloudFunction'];
+      isCloudFunction = _json['isCloudFunction'] as core.bool;
     }
     if (_json.containsKey('password')) {
-      password = _json['password'];
+      password = _json['password'] as core.String;
     }
     if (_json.containsKey('requestHeaders')) {
-      requestHeaders = (_json['requestHeaders'] as core.Map)
-          .cast<core.String, core.String>();
+      requestHeaders = commons.mapMap<core.String, core.String>(
+          _json['requestHeaders'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
   }
 
@@ -6334,10 +6358,10 @@ class GoogleCloudDialogflowV2ImportAgentRequest {
 
   GoogleCloudDialogflowV2ImportAgentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -6494,28 +6518,30 @@ class GoogleCloudDialogflowV2InputAudioConfig {
 
   GoogleCloudDialogflowV2InputAudioConfig.fromJson(core.Map _json) {
     if (_json.containsKey('audioEncoding')) {
-      audioEncoding = _json['audioEncoding'];
+      audioEncoding = _json['audioEncoding'] as core.String;
     }
     if (_json.containsKey('enableWordInfo')) {
-      enableWordInfo = _json['enableWordInfo'];
+      enableWordInfo = _json['enableWordInfo'] as core.bool;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('modelVariant')) {
-      modelVariant = _json['modelVariant'];
+      modelVariant = _json['modelVariant'] as core.String;
     }
     if (_json.containsKey('phraseHints')) {
-      phraseHints = (_json['phraseHints'] as core.List).cast<core.String>();
+      phraseHints = (_json['phraseHints'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sampleRateHertz')) {
-      sampleRateHertz = _json['sampleRateHertz'];
+      sampleRateHertz = _json['sampleRateHertz'] as core.int;
     }
     if (_json.containsKey('singleUtterance')) {
-      singleUtterance = _json['singleUtterance'];
+      singleUtterance = _json['singleUtterance'] as core.bool;
     }
     if (_json.containsKey('speechContexts')) {
       speechContexts = (_json['speechContexts'] as core.List)
@@ -6661,17 +6687,21 @@ class GoogleCloudDialogflowV2Intent {
 
   GoogleCloudDialogflowV2Intent.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('defaultResponsePlatforms')) {
       defaultResponsePlatforms =
-          (_json['defaultResponsePlatforms'] as core.List).cast<core.String>();
+          (_json['defaultResponsePlatforms'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List).cast<core.String>();
+      events = (_json['events'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('followupIntentInfo')) {
       followupIntentInfo = (_json['followupIntentInfo'] as core.List)
@@ -6680,11 +6710,12 @@ class GoogleCloudDialogflowV2Intent {
           .toList();
     }
     if (_json.containsKey('inputContextNames')) {
-      inputContextNames =
-          (_json['inputContextNames'] as core.List).cast<core.String>();
+      inputContextNames = (_json['inputContextNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('isFallback')) {
-      isFallback = _json['isFallback'];
+      isFallback = _json['isFallback'] as core.bool;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -6693,10 +6724,10 @@ class GoogleCloudDialogflowV2Intent {
           .toList();
     }
     if (_json.containsKey('mlDisabled')) {
-      mlDisabled = _json['mlDisabled'];
+      mlDisabled = _json['mlDisabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -6711,16 +6742,17 @@ class GoogleCloudDialogflowV2Intent {
           .toList();
     }
     if (_json.containsKey('parentFollowupIntentName')) {
-      parentFollowupIntentName = _json['parentFollowupIntentName'];
+      parentFollowupIntentName =
+          _json['parentFollowupIntentName'] as core.String;
     }
     if (_json.containsKey('priority')) {
-      priority = _json['priority'];
+      priority = _json['priority'] as core.int;
     }
     if (_json.containsKey('resetContexts')) {
-      resetContexts = _json['resetContexts'];
+      resetContexts = _json['resetContexts'] as core.bool;
     }
     if (_json.containsKey('rootFollowupIntentName')) {
-      rootFollowupIntentName = _json['rootFollowupIntentName'];
+      rootFollowupIntentName = _json['rootFollowupIntentName'] as core.String;
     }
     if (_json.containsKey('trainingPhrases')) {
       trainingPhrases = (_json['trainingPhrases'] as core.List)
@@ -6729,7 +6761,7 @@ class GoogleCloudDialogflowV2Intent {
           .toList();
     }
     if (_json.containsKey('webhookState')) {
-      webhookState = _json['webhookState'];
+      webhookState = _json['webhookState'] as core.String;
     }
   }
 
@@ -6835,10 +6867,11 @@ class GoogleCloudDialogflowV2IntentFollowupIntentInfo {
 
   GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(core.Map _json) {
     if (_json.containsKey('followupIntentName')) {
-      followupIntentName = _json['followupIntentName'];
+      followupIntentName = _json['followupIntentName'] as core.String;
     }
     if (_json.containsKey('parentFollowupIntentName')) {
-      parentFollowupIntentName = _json['parentFollowupIntentName'];
+      parentFollowupIntentName =
+          _json['parentFollowupIntentName'] as core.String;
     }
   }
 
@@ -6956,10 +6989,12 @@ class GoogleCloudDialogflowV2IntentMessage {
           _json['mediaContent']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('platform')) {
-      platform = _json['platform'];
+      platform = _json['platform'] as core.String;
     }
     if (_json.containsKey('quickReplies')) {
       quickReplies = GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
@@ -7062,17 +7097,17 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
           .toList();
     }
     if (_json.containsKey('formattedText')) {
-      formattedText = _json['formattedText'];
+      formattedText = _json['formattedText'] as core.String;
     }
     if (_json.containsKey('image')) {
       image =
           GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7115,7 +7150,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
               .fromJson(_json['openUriAction']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7141,7 +7176,7 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction {
   GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction.fromJson(
       core.Map _json) {
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -7187,7 +7222,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
       core.Map _json) {
     if (_json.containsKey('imageDisplayOptions')) {
-      imageDisplayOptions = _json['imageDisplayOptions'];
+      imageDisplayOptions = _json['imageDisplayOptions'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -7235,10 +7270,10 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('footer')) {
-      footer = _json['footer'];
+      footer = _json['footer'] as core.String;
     }
     if (_json.containsKey('image')) {
       image =
@@ -7250,7 +7285,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
               .fromJson(_json['openUriAction']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7294,10 +7329,10 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
       core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
     if (_json.containsKey('urlTypeHint')) {
-      urlTypeHint = _json['urlTypeHint'];
+      urlTypeHint = _json['urlTypeHint'] as core.String;
     }
   }
 
@@ -7337,13 +7372,13 @@ class GoogleCloudDialogflowV2IntentMessageCard {
           .toList();
     }
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7377,10 +7412,10 @@ class GoogleCloudDialogflowV2IntentMessageCardButton {
 
   GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(core.Map _json) {
     if (_json.containsKey('postback')) {
-      postback = _json['postback'];
+      postback = _json['postback'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -7441,7 +7476,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
   GoogleCloudDialogflowV2IntentMessageCarouselSelectItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
       image =
@@ -7452,7 +7487,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
           _json['info']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7493,10 +7528,10 @@ class GoogleCloudDialogflowV2IntentMessageColumnProperties {
   GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
       core.Map _json) {
     if (_json.containsKey('header')) {
-      header = _json['header'];
+      header = _json['header'] as core.String;
     }
     if (_json.containsKey('horizontalAlignment')) {
-      horizontalAlignment = _json['horizontalAlignment'];
+      horizontalAlignment = _json['horizontalAlignment'] as core.String;
     }
   }
 
@@ -7525,10 +7560,10 @@ class GoogleCloudDialogflowV2IntentMessageImage {
 
   GoogleCloudDialogflowV2IntentMessageImage.fromJson(core.Map _json) {
     if (_json.containsKey('accessibilityText')) {
-      accessibilityText = _json['accessibilityText'];
+      accessibilityText = _json['accessibilityText'] as core.String;
     }
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
   }
 
@@ -7559,10 +7594,10 @@ class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion {
   GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
       core.Map _json) {
     if (_json.containsKey('destinationName')) {
-      destinationName = _json['destinationName'];
+      destinationName = _json['destinationName'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -7600,10 +7635,10 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
           .toList();
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7640,7 +7675,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
 
   GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
       image =
@@ -7651,7 +7686,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
           _json['info']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7697,7 +7732,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
           .toList();
     }
     if (_json.containsKey('mediaType')) {
-      mediaType = _json['mediaType'];
+      mediaType = _json['mediaType'] as core.String;
     }
   }
 
@@ -7736,10 +7771,10 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
   GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject.fromJson(
       core.Map _json) {
     if (_json.containsKey('contentUrl')) {
-      contentUrl = _json['contentUrl'];
+      contentUrl = _json['contentUrl'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('icon')) {
       icon = GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['icon']);
@@ -7749,7 +7784,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
           _json['largeImage']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -7786,10 +7821,12 @@ class GoogleCloudDialogflowV2IntentMessageQuickReplies {
 
   GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(core.Map _json) {
     if (_json.containsKey('quickReplies')) {
-      quickReplies = (_json['quickReplies'] as core.List).cast<core.String>();
+      quickReplies = (_json['quickReplies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -7819,10 +7856,12 @@ class GoogleCloudDialogflowV2IntentMessageSelectItemInfo {
 
   GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('synonyms')) {
-      synonyms = (_json['synonyms'] as core.List).cast<core.String>();
+      synonyms = (_json['synonyms'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -7855,13 +7894,13 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponse {
 
   GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(core.Map _json) {
     if (_json.containsKey('displayText')) {
-      displayText = _json['displayText'];
+      displayText = _json['displayText'] as core.String;
     }
     if (_json.containsKey('ssml')) {
-      ssml = _json['ssml'];
+      ssml = _json['ssml'] as core.String;
     }
     if (_json.containsKey('textToSpeech')) {
-      textToSpeech = _json['textToSpeech'];
+      textToSpeech = _json['textToSpeech'] as core.String;
     }
   }
 
@@ -7920,7 +7959,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
 
   GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(core.Map _json) {
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -8008,10 +8047,10 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
           .toList();
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -8049,7 +8088,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardCell {
 
   GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(core.Map _json) {
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -8080,7 +8119,7 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
           .toList();
     }
     if (_json.containsKey('dividerAfter')) {
-      dividerAfter = _json['dividerAfter'];
+      dividerAfter = _json['dividerAfter'] as core.bool;
     }
   }
 
@@ -8105,7 +8144,9 @@ class GoogleCloudDialogflowV2IntentMessageText {
 
   GoogleCloudDialogflowV2IntentMessageText.fromJson(core.Map _json) {
     if (_json.containsKey('text')) {
-      text = (_json['text'] as core.List).cast<core.String>();
+      text = (_json['text'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -8157,28 +8198,30 @@ class GoogleCloudDialogflowV2IntentParameter {
 
   GoogleCloudDialogflowV2IntentParameter.fromJson(core.Map _json) {
     if (_json.containsKey('defaultValue')) {
-      defaultValue = _json['defaultValue'];
+      defaultValue = _json['defaultValue'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityTypeDisplayName')) {
-      entityTypeDisplayName = _json['entityTypeDisplayName'];
+      entityTypeDisplayName = _json['entityTypeDisplayName'] as core.String;
     }
     if (_json.containsKey('isList')) {
-      isList = _json['isList'];
+      isList = _json['isList'] as core.bool;
     }
     if (_json.containsKey('mandatory')) {
-      mandatory = _json['mandatory'];
+      mandatory = _json['mandatory'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('prompts')) {
-      prompts = (_json['prompts'] as core.List).cast<core.String>();
+      prompts = (_json['prompts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -8252,7 +8295,7 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
 
   GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
@@ -8261,10 +8304,10 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
           .toList();
     }
     if (_json.containsKey('timesAddedCount')) {
-      timesAddedCount = _json['timesAddedCount'];
+      timesAddedCount = _json['timesAddedCount'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -8310,16 +8353,16 @@ class GoogleCloudDialogflowV2IntentTrainingPhrasePart {
 
   GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(core.Map _json) {
     if (_json.containsKey('alias')) {
-      alias = _json['alias'];
+      alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('entityType')) {
-      entityType = _json['entityType'];
+      entityType = _json['entityType'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('userDefined')) {
-      userDefined = _json['userDefined'];
+      userDefined = _json['userDefined'] as core.bool;
     }
   }
 
@@ -8361,7 +8404,7 @@ class GoogleCloudDialogflowV2ListContextsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -8397,7 +8440,7 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -8434,7 +8477,7 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -8471,7 +8514,7 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -8502,7 +8545,7 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
   GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -8562,26 +8605,26 @@ class GoogleCloudDialogflowV2Message {
 
   GoogleCloudDialogflowV2Message.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('messageAnnotation')) {
       messageAnnotation = GoogleCloudDialogflowV2MessageAnnotation.fromJson(
           _json['messageAnnotation']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('participant')) {
-      participant = _json['participant'];
+      participant = _json['participant'] as core.String;
     }
     if (_json.containsKey('participantRole')) {
-      participantRole = _json['participantRole'];
+      participantRole = _json['participantRole'] as core.String;
     }
   }
 
@@ -8626,7 +8669,7 @@ class GoogleCloudDialogflowV2MessageAnnotation {
 
   GoogleCloudDialogflowV2MessageAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('containEntities')) {
-      containEntities = _json['containEntities'];
+      containEntities = _json['containEntities'] as core.bool;
     }
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
@@ -8676,13 +8719,15 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
 
   GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -8733,10 +8778,10 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
 
   GoogleCloudDialogflowV2OutputAudioConfig.fromJson(core.Map _json) {
     if (_json.containsKey('audioEncoding')) {
-      audioEncoding = _json['audioEncoding'];
+      audioEncoding = _json['audioEncoding'] as core.String;
     }
     if (_json.containsKey('sampleRateHertz')) {
-      sampleRateHertz = _json['sampleRateHertz'];
+      sampleRateHertz = _json['sampleRateHertz'] as core.int;
     }
     if (_json.containsKey('synthesizeSpeechConfig')) {
       synthesizeSpeechConfig =
@@ -8854,10 +8899,12 @@ class GoogleCloudDialogflowV2QueryParameters {
       geoLocation = GoogleTypeLatLng.fromJson(_json['geoLocation']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('resetContexts')) {
-      resetContexts = _json['resetContexts'];
+      resetContexts = _json['resetContexts'] as core.bool;
     }
     if (_json.containsKey('sentimentAnalysisRequestConfig')) {
       sentimentAnalysisRequestConfig =
@@ -8871,7 +8918,7 @@ class GoogleCloudDialogflowV2QueryParameters {
           .toList();
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -9005,14 +9052,15 @@ class GoogleCloudDialogflowV2QueryResult {
 
   GoogleCloudDialogflowV2QueryResult.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('allRequiredParamsPresent')) {
-      allRequiredParamsPresent = _json['allRequiredParamsPresent'];
+      allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>();
+      diagnosticInfo = commons.mapMap<core.Object, core.Object>(
+          _json['diagnosticInfo'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -9021,7 +9069,7 @@ class GoogleCloudDialogflowV2QueryResult {
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
-      fulfillmentText = _json['fulfillmentText'];
+      fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('intent')) {
       intent = GoogleCloudDialogflowV2Intent.fromJson(_json['intent']);
@@ -9030,7 +9078,7 @@ class GoogleCloudDialogflowV2QueryResult {
       intentDetectionConfidence = _json['intentDetectionConfidence'].toDouble();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -9039,11 +9087,12 @@ class GoogleCloudDialogflowV2QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('queryText')) {
-      queryText = _json['queryText'];
+      queryText = _json['queryText'] as core.String;
     }
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
@@ -9055,11 +9104,12 @@ class GoogleCloudDialogflowV2QueryResult {
           _json['speechRecognitionConfidence'].toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = (_json['webhookPayload'] as core.Map)
-          .cast<core.String, core.Object>();
+      webhookPayload = commons.mapMap<core.Object, core.Object>(
+          _json['webhookPayload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('webhookSource')) {
-      webhookSource = _json['webhookSource'];
+      webhookSource = _json['webhookSource'] as core.String;
     }
   }
 
@@ -9136,10 +9186,10 @@ class GoogleCloudDialogflowV2RestoreAgentRequest {
 
   GoogleCloudDialogflowV2RestoreAgentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -9175,7 +9225,7 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -9237,7 +9287,8 @@ class GoogleCloudDialogflowV2SentimentAnalysisRequestConfig {
   GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('analyzeQueryTextSentiment')) {
-      analyzeQueryTextSentiment = _json['analyzeQueryTextSentiment'];
+      analyzeQueryTextSentiment =
+          _json['analyzeQueryTextSentiment'] as core.bool;
     }
   }
 
@@ -9328,10 +9379,10 @@ class GoogleCloudDialogflowV2SessionEntityType {
           .toList();
     }
     if (_json.containsKey('entityOverrideMode')) {
-      entityOverrideMode = _json['entityOverrideMode'];
+      entityOverrideMode = _json['entityOverrideMode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -9377,7 +9428,9 @@ class GoogleCloudDialogflowV2SpeechContext {
       boost = _json['boost'].toDouble();
     }
     if (_json.containsKey('phrases')) {
-      phrases = (_json['phrases'] as core.List).cast<core.String>();
+      phrases = (_json['phrases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -9428,8 +9481,9 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
 
   GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(core.Map _json) {
     if (_json.containsKey('effectsProfileId')) {
-      effectsProfileId =
-          (_json['effectsProfileId'] as core.List).cast<core.String>();
+      effectsProfileId = (_json['effectsProfileId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('pitch')) {
       pitch = _json['pitch'].toDouble();
@@ -9483,10 +9537,10 @@ class GoogleCloudDialogflowV2TextInput {
 
   GoogleCloudDialogflowV2TextInput.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -9544,13 +9598,15 @@ class GoogleCloudDialogflowV2ValidationError {
 
   GoogleCloudDialogflowV2ValidationError.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
-      entries = (_json['entries'] as core.List).cast<core.String>();
+      entries = (_json['entries'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('errorMessage')) {
-      errorMessage = _json['errorMessage'];
+      errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
   }
 
@@ -9618,10 +9674,10 @@ class GoogleCloudDialogflowV2VoiceSelectionParams {
 
   GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('ssmlGender')) {
-      ssmlGender = _json['ssmlGender'];
+      ssmlGender = _json['ssmlGender'] as core.String;
     }
   }
 
@@ -9671,10 +9727,10 @@ class GoogleCloudDialogflowV2WebhookRequest {
           GoogleCloudDialogflowV2QueryResult.fromJson(_json['queryResult']);
     }
     if (_json.containsKey('responseId')) {
-      responseId = _json['responseId'];
+      responseId = _json['responseId'] as core.String;
     }
     if (_json.containsKey('session')) {
-      session = _json['session'];
+      session = _json['session'] as core.String;
     }
   }
 
@@ -9767,7 +9823,7 @@ class GoogleCloudDialogflowV2WebhookResponse {
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
-      fulfillmentText = _json['fulfillmentText'];
+      fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -9776,7 +9832,9 @@ class GoogleCloudDialogflowV2WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -9785,7 +9843,7 @@ class GoogleCloudDialogflowV2WebhookResponse {
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
   }
 
@@ -9857,25 +9915,25 @@ class GoogleCloudDialogflowV2beta1AnnotatedConversationDataset {
   GoogleCloudDialogflowV2beta1AnnotatedConversationDataset.fromJson(
       core.Map _json) {
     if (_json.containsKey('completedExampleCount')) {
-      completedExampleCount = _json['completedExampleCount'];
+      completedExampleCount = _json['completedExampleCount'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('exampleCount')) {
-      exampleCount = _json['exampleCount'];
+      exampleCount = _json['exampleCount'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('questionTypeName')) {
-      questionTypeName = _json['questionTypeName'];
+      questionTypeName = _json['questionTypeName'] as core.String;
     }
   }
 
@@ -9922,13 +9980,13 @@ class GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse {
   GoogleCloudDialogflowV2beta1AutoApproveSmartMessagingEntriesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('disabledCount')) {
-      disabledCount = _json['disabledCount'];
+      disabledCount = _json['disabledCount'] as core.int;
     }
     if (_json.containsKey('enabledCount')) {
-      enabledCount = _json['enabledCount'];
+      enabledCount = _json['enabledCount'] as core.int;
     }
     if (_json.containsKey('unreviewedCount')) {
-      unreviewedCount = _json['unreviewedCount'];
+      unreviewedCount = _json['unreviewedCount'] as core.int;
     }
   }
 
@@ -10079,14 +10137,15 @@ class GoogleCloudDialogflowV2beta1Context {
 
   GoogleCloudDialogflowV2beta1Context.fromJson(core.Map _json) {
     if (_json.containsKey('lifespanCount')) {
-      lifespanCount = _json['lifespanCount'];
+      lifespanCount = _json['lifespanCount'] as core.int;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -10155,13 +10214,13 @@ class GoogleCloudDialogflowV2beta1EntityType {
 
   GoogleCloudDialogflowV2beta1EntityType.fromJson(core.Map _json) {
     if (_json.containsKey('autoExpansionMode')) {
-      autoExpansionMode = _json['autoExpansionMode'];
+      autoExpansionMode = _json['autoExpansionMode'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('enableFuzzyExtraction')) {
-      enableFuzzyExtraction = _json['enableFuzzyExtraction'];
+      enableFuzzyExtraction = _json['enableFuzzyExtraction'] as core.bool;
     }
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
@@ -10170,10 +10229,10 @@ class GoogleCloudDialogflowV2beta1EntityType {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -10220,10 +10279,12 @@ class GoogleCloudDialogflowV2beta1EntityTypeEntity {
 
   GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(core.Map _json) {
     if (_json.containsKey('synonyms')) {
-      synonyms = (_json['synonyms'] as core.List).cast<core.String>();
+      synonyms = (_json['synonyms'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -10270,14 +10331,15 @@ class GoogleCloudDialogflowV2beta1EventInput {
 
   GoogleCloudDialogflowV2beta1EventInput.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -10316,10 +10378,10 @@ class GoogleCloudDialogflowV2beta1ExportAgentResponse {
 
   GoogleCloudDialogflowV2beta1ExportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -10479,20 +10541,24 @@ class GoogleCloudDialogflowV2beta1Intent {
 
   GoogleCloudDialogflowV2beta1Intent.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('defaultResponsePlatforms')) {
       defaultResponsePlatforms =
-          (_json['defaultResponsePlatforms'] as core.List).cast<core.String>();
+          (_json['defaultResponsePlatforms'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('endInteraction')) {
-      endInteraction = _json['endInteraction'];
+      endInteraction = _json['endInteraction'] as core.bool;
     }
     if (_json.containsKey('events')) {
-      events = (_json['events'] as core.List).cast<core.String>();
+      events = (_json['events'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('followupIntentInfo')) {
       followupIntentInfo = (_json['followupIntentInfo'] as core.List)
@@ -10502,11 +10568,12 @@ class GoogleCloudDialogflowV2beta1Intent {
           .toList();
     }
     if (_json.containsKey('inputContextNames')) {
-      inputContextNames =
-          (_json['inputContextNames'] as core.List).cast<core.String>();
+      inputContextNames = (_json['inputContextNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('isFallback')) {
-      isFallback = _json['isFallback'];
+      isFallback = _json['isFallback'] as core.bool;
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
@@ -10515,13 +10582,13 @@ class GoogleCloudDialogflowV2beta1Intent {
           .toList();
     }
     if (_json.containsKey('mlDisabled')) {
-      mlDisabled = _json['mlDisabled'];
+      mlDisabled = _json['mlDisabled'] as core.bool;
     }
     if (_json.containsKey('mlEnabled')) {
-      mlEnabled = _json['mlEnabled'];
+      mlEnabled = _json['mlEnabled'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -10536,16 +10603,17 @@ class GoogleCloudDialogflowV2beta1Intent {
           .toList();
     }
     if (_json.containsKey('parentFollowupIntentName')) {
-      parentFollowupIntentName = _json['parentFollowupIntentName'];
+      parentFollowupIntentName =
+          _json['parentFollowupIntentName'] as core.String;
     }
     if (_json.containsKey('priority')) {
-      priority = _json['priority'];
+      priority = _json['priority'] as core.int;
     }
     if (_json.containsKey('resetContexts')) {
-      resetContexts = _json['resetContexts'];
+      resetContexts = _json['resetContexts'] as core.bool;
     }
     if (_json.containsKey('rootFollowupIntentName')) {
-      rootFollowupIntentName = _json['rootFollowupIntentName'];
+      rootFollowupIntentName = _json['rootFollowupIntentName'] as core.String;
     }
     if (_json.containsKey('trainingPhrases')) {
       trainingPhrases = (_json['trainingPhrases'] as core.List)
@@ -10554,7 +10622,7 @@ class GoogleCloudDialogflowV2beta1Intent {
           .toList();
     }
     if (_json.containsKey('webhookState')) {
-      webhookState = _json['webhookState'];
+      webhookState = _json['webhookState'] as core.String;
     }
   }
 
@@ -10642,10 +10710,11 @@ class GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo {
   GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('followupIntentName')) {
-      followupIntentName = _json['followupIntentName'];
+      followupIntentName = _json['followupIntentName'] as core.String;
     }
     if (_json.containsKey('parentFollowupIntentName')) {
-      parentFollowupIntentName = _json['parentFollowupIntentName'];
+      parentFollowupIntentName =
+          _json['parentFollowupIntentName'] as core.String;
     }
   }
 
@@ -10789,10 +10858,12 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
               _json['mediaContent']);
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('platform')) {
-      platform = _json['platform'];
+      platform = _json['platform'] as core.String;
     }
     if (_json.containsKey('quickReplies')) {
       quickReplies =
@@ -10946,17 +11017,17 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
           .toList();
     }
     if (_json.containsKey('formattedText')) {
-      formattedText = _json['formattedText'];
+      formattedText = _json['formattedText'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
           _json['image']);
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11000,7 +11071,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
               .fromJson(_json['openUriAction']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11026,7 +11097,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction {
   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction.fromJson(
       core.Map _json) {
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -11072,7 +11143,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard.fromJson(
       core.Map _json) {
     if (_json.containsKey('imageDisplayOptions')) {
-      imageDisplayOptions = _json['imageDisplayOptions'];
+      imageDisplayOptions = _json['imageDisplayOptions'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -11120,10 +11191,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('footer')) {
-      footer = _json['footer'];
+      footer = _json['footer'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
@@ -11135,7 +11206,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
               .fromJson(_json['openUriAction']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11179,10 +11250,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction.fromJson(
       core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
     if (_json.containsKey('urlTypeHint')) {
-      urlTypeHint = _json['urlTypeHint'];
+      urlTypeHint = _json['urlTypeHint'] as core.String;
     }
   }
 
@@ -11223,13 +11294,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
           .toList();
     }
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11263,10 +11334,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButton {
 
   GoogleCloudDialogflowV2beta1IntentMessageCardButton.fromJson(core.Map _json) {
     if (_json.containsKey('postback')) {
-      postback = _json['postback'];
+      postback = _json['postback'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -11329,7 +11400,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
   GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
@@ -11340,7 +11411,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
           _json['info']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11381,10 +11452,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageColumnProperties {
   GoogleCloudDialogflowV2beta1IntentMessageColumnProperties.fromJson(
       core.Map _json) {
     if (_json.containsKey('header')) {
-      header = _json['header'];
+      header = _json['header'] as core.String;
     }
     if (_json.containsKey('horizontalAlignment')) {
-      horizontalAlignment = _json['horizontalAlignment'];
+      horizontalAlignment = _json['horizontalAlignment'] as core.String;
     }
   }
 
@@ -11413,10 +11484,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageImage {
 
   GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(core.Map _json) {
     if (_json.containsKey('accessibilityText')) {
-      accessibilityText = _json['accessibilityText'];
+      accessibilityText = _json['accessibilityText'] as core.String;
     }
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
   }
 
@@ -11447,10 +11518,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion {
   GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion.fromJson(
       core.Map _json) {
     if (_json.containsKey('destinationName')) {
-      destinationName = _json['destinationName'];
+      destinationName = _json['destinationName'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -11488,10 +11559,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
           .toList();
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11529,7 +11600,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
   GoogleCloudDialogflowV2beta1IntentMessageListSelectItem.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
@@ -11540,7 +11611,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
           _json['info']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11588,7 +11659,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
           .toList();
     }
     if (_json.containsKey('mediaType')) {
-      mediaType = _json['mediaType'];
+      mediaType = _json['mediaType'] as core.String;
     }
   }
 
@@ -11627,10 +11698,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
   GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject.fromJson(
       core.Map _json) {
     if (_json.containsKey('contentUrl')) {
-      contentUrl = _json['contentUrl'];
+      contentUrl = _json['contentUrl'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('icon')) {
       icon = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
@@ -11641,7 +11712,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
           _json['largeImage']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -11679,10 +11750,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageQuickReplies {
   GoogleCloudDialogflowV2beta1IntentMessageQuickReplies.fromJson(
       core.Map _json) {
     if (_json.containsKey('quickReplies')) {
-      quickReplies = (_json['quickReplies'] as core.List).cast<core.String>();
+      quickReplies = (_json['quickReplies'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11720,7 +11793,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromJson(
       core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('media')) {
       media = GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
@@ -11734,7 +11807,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
           .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -11791,13 +11864,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia {
   GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia.fromJson(
       core.Map _json) {
     if (_json.containsKey('fileUri')) {
-      fileUri = _json['fileUri'];
+      fileUri = _json['fileUri'] as core.String;
     }
     if (_json.containsKey('height')) {
-      height = _json['height'];
+      height = _json['height'] as core.String;
     }
     if (_json.containsKey('thumbnailUri')) {
-      thumbnailUri = _json['thumbnailUri'];
+      thumbnailUri = _json['thumbnailUri'] as core.String;
     }
   }
 
@@ -11845,7 +11918,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
           .toList();
     }
     if (_json.containsKey('cardWidth')) {
-      cardWidth = _json['cardWidth'];
+      cardWidth = _json['cardWidth'] as core.String;
     }
   }
 
@@ -11895,10 +11968,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
               _json['cardContent']);
     }
     if (_json.containsKey('cardOrientation')) {
-      cardOrientation = _json['cardOrientation'];
+      cardOrientation = _json['cardOrientation'] as core.String;
     }
     if (_json.containsKey('thumbnailImageAlignment')) {
-      thumbnailImageAlignment = _json['thumbnailImageAlignment'];
+      thumbnailImageAlignment = _json['thumbnailImageAlignment'] as core.String;
     }
   }
 
@@ -11955,7 +12028,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
               .fromJson(_json['openUrl']);
     }
     if (_json.containsKey('postbackData')) {
-      postbackData = _json['postbackData'];
+      postbackData = _json['postbackData'] as core.String;
     }
     if (_json.containsKey('shareLocation')) {
       shareLocation =
@@ -11963,7 +12036,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
               .fromJson(_json['shareLocation']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -12001,7 +12074,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial.fromJson(
       core.Map _json) {
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -12027,7 +12100,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedAct
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri.fromJson(
       core.Map _json) {
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -12071,10 +12144,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply {
   GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromJson(
       core.Map _json) {
     if (_json.containsKey('postbackData')) {
-      postbackData = _json['postbackData'];
+      postbackData = _json['postbackData'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -12148,7 +12221,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -12180,10 +12253,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo {
   GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('synonyms')) {
-      synonyms = (_json['synonyms'] as core.List).cast<core.String>();
+      synonyms = (_json['synonyms'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -12217,13 +12292,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse {
   GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('displayText')) {
-      displayText = _json['displayText'];
+      displayText = _json['displayText'] as core.String;
     }
     if (_json.containsKey('ssml')) {
-      ssml = _json['ssml'];
+      ssml = _json['ssml'] as core.String;
     }
     if (_json.containsKey('textToSpeech')) {
-      textToSpeech = _json['textToSpeech'];
+      textToSpeech = _json['textToSpeech'] as core.String;
     }
   }
 
@@ -12284,7 +12359,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestion {
 
   GoogleCloudDialogflowV2beta1IntentMessageSuggestion.fromJson(core.Map _json) {
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -12377,10 +12452,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
           .toList();
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -12419,7 +12494,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardCell {
   GoogleCloudDialogflowV2beta1IntentMessageTableCardCell.fromJson(
       core.Map _json) {
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -12452,7 +12527,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
           .toList();
     }
     if (_json.containsKey('dividerAfter')) {
-      dividerAfter = _json['dividerAfter'];
+      dividerAfter = _json['dividerAfter'] as core.bool;
     }
   }
 
@@ -12486,7 +12561,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio {
   GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio.fromJson(
       core.Map _json) {
     if (_json.containsKey('audioUri')) {
-      audioUri = _json['audioUri'];
+      audioUri = _json['audioUri'] as core.String;
     }
   }
 
@@ -12516,10 +12591,10 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech {
   GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech.fromJson(
       core.Map _json) {
     if (_json.containsKey('ssml')) {
-      ssml = _json['ssml'];
+      ssml = _json['ssml'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -12547,7 +12622,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall {
   GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall.fromJson(
       core.Map _json) {
     if (_json.containsKey('phoneNumber')) {
-      phoneNumber = _json['phoneNumber'];
+      phoneNumber = _json['phoneNumber'] as core.String;
     }
   }
 
@@ -12569,7 +12644,9 @@ class GoogleCloudDialogflowV2beta1IntentMessageText {
 
   GoogleCloudDialogflowV2beta1IntentMessageText.fromJson(core.Map _json) {
     if (_json.containsKey('text')) {
-      text = (_json['text'] as core.List).cast<core.String>();
+      text = (_json['text'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -12621,28 +12698,30 @@ class GoogleCloudDialogflowV2beta1IntentParameter {
 
   GoogleCloudDialogflowV2beta1IntentParameter.fromJson(core.Map _json) {
     if (_json.containsKey('defaultValue')) {
-      defaultValue = _json['defaultValue'];
+      defaultValue = _json['defaultValue'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityTypeDisplayName')) {
-      entityTypeDisplayName = _json['entityTypeDisplayName'];
+      entityTypeDisplayName = _json['entityTypeDisplayName'] as core.String;
     }
     if (_json.containsKey('isList')) {
-      isList = _json['isList'];
+      isList = _json['isList'] as core.bool;
     }
     if (_json.containsKey('mandatory')) {
-      mandatory = _json['mandatory'];
+      mandatory = _json['mandatory'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('prompts')) {
-      prompts = (_json['prompts'] as core.List).cast<core.String>();
+      prompts = (_json['prompts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -12716,7 +12795,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
 
   GoogleCloudDialogflowV2beta1IntentTrainingPhrase.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
@@ -12726,10 +12805,10 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
           .toList();
     }
     if (_json.containsKey('timesAddedCount')) {
-      timesAddedCount = _json['timesAddedCount'];
+      timesAddedCount = _json['timesAddedCount'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -12776,16 +12855,16 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart {
   GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromJson(
       core.Map _json) {
     if (_json.containsKey('alias')) {
-      alias = _json['alias'];
+      alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('entityType')) {
-      entityType = _json['entityType'];
+      entityType = _json['entityType'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('userDefined')) {
-      userDefined = _json['userDefined'];
+      userDefined = _json['userDefined'] as core.bool;
     }
   }
 
@@ -12873,19 +12952,19 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
 
   GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer.fromJson(core.Map _json) {
     if (_json.containsKey('answer')) {
-      answer = _json['answer'];
+      answer = _json['answer'] as core.String;
     }
     if (_json.containsKey('faqQuestion')) {
-      faqQuestion = _json['faqQuestion'];
+      faqQuestion = _json['faqQuestion'] as core.String;
     }
     if (_json.containsKey('matchConfidence')) {
       matchConfidence = _json['matchConfidence'].toDouble();
     }
     if (_json.containsKey('matchConfidenceLevel')) {
-      matchConfidenceLevel = _json['matchConfidenceLevel'];
+      matchConfidenceLevel = _json['matchConfidenceLevel'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
   }
 
@@ -12925,7 +13004,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata {
   GoogleCloudDialogflowV2beta1KnowledgeOperationMetadata.fromJson(
       core.Map _json) {
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -12994,13 +13073,15 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -13124,14 +13205,15 @@ class GoogleCloudDialogflowV2beta1QueryResult {
 
   GoogleCloudDialogflowV2beta1QueryResult.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = _json['action'];
+      action = _json['action'] as core.String;
     }
     if (_json.containsKey('allRequiredParamsPresent')) {
-      allRequiredParamsPresent = _json['allRequiredParamsPresent'];
+      allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
-          .cast<core.String, core.Object>();
+      diagnosticInfo = commons.mapMap<core.Object, core.Object>(
+          _json['diagnosticInfo'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -13140,7 +13222,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
-      fulfillmentText = _json['fulfillmentText'];
+      fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('intent')) {
       intent = GoogleCloudDialogflowV2beta1Intent.fromJson(_json['intent']);
@@ -13153,7 +13235,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           _json['knowledgeAnswers']);
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -13162,11 +13244,12 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters =
-          (_json['parameters'] as core.Map).cast<core.String, core.Object>();
+      parameters = commons.mapMap<core.Object, core.Object>(
+          _json['parameters'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('queryText')) {
-      queryText = _json['queryText'];
+      queryText = _json['queryText'] as core.String;
     }
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
@@ -13178,11 +13261,12 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           _json['speechRecognitionConfidence'].toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = (_json['webhookPayload'] as core.Map)
-          .cast<core.String, core.Object>();
+      webhookPayload = commons.mapMap<core.Object, core.Object>(
+          _json['webhookPayload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('webhookSource')) {
-      webhookSource = _json['webhookSource'];
+      webhookSource = _json['webhookSource'] as core.String;
     }
   }
 
@@ -13358,10 +13442,10 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
           .toList();
     }
     if (_json.containsKey('entityOverrideMode')) {
-      entityOverrideMode = _json['entityOverrideMode'];
+      entityOverrideMode = _json['entityOverrideMode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -13413,13 +13497,13 @@ class GoogleCloudDialogflowV2beta1SmartMessagingEntry {
               _json['messageInfo']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('rawText')) {
-      rawText = _json['rawText'];
+      rawText = _json['rawText'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -13462,10 +13546,10 @@ class GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo {
 
   GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo.fromJson(core.Map _json) {
     if (_json.containsKey('creationMethod')) {
-      creationMethod = _json['creationMethod'];
+      creationMethod = _json['creationMethod'] as core.String;
     }
     if (_json.containsKey('occurrenceCount')) {
-      occurrenceCount = _json['occurrenceCount'];
+      occurrenceCount = _json['occurrenceCount'] as core.int;
     }
   }
 
@@ -13525,10 +13609,10 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
           _json['queryResult']);
     }
     if (_json.containsKey('responseId')) {
-      responseId = _json['responseId'];
+      responseId = _json['responseId'] as core.String;
     }
     if (_json.containsKey('session')) {
-      session = _json['session'];
+      session = _json['session'] as core.String;
     }
   }
 
@@ -13620,7 +13704,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
 
   GoogleCloudDialogflowV2beta1WebhookResponse.fromJson(core.Map _json) {
     if (_json.containsKey('endInteraction')) {
-      endInteraction = _json['endInteraction'];
+      endInteraction = _json['endInteraction'] as core.bool;
     }
     if (_json.containsKey('followupEventInput')) {
       followupEventInput = GoogleCloudDialogflowV2beta1EventInput.fromJson(
@@ -13633,7 +13717,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
-      fulfillmentText = _json['fulfillmentText'];
+      fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
@@ -13642,7 +13726,9 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = (_json['payload'] as core.Map).cast<core.String, core.Object>();
+      payload = commons.mapMap<core.Object, core.Object>(
+          _json['payload'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -13651,7 +13737,7 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
   }
 
@@ -13708,10 +13794,10 @@ class GoogleCloudDialogflowV3alpha1ExportAgentResponse {
 
   GoogleCloudDialogflowV3alpha1ExportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agentContent')) {
-      agentContent = _json['agentContent'];
+      agentContent = _json['agentContent'] as core.String;
     }
     if (_json.containsKey('agentUri')) {
-      agentUri = _json['agentUri'];
+      agentUri = _json['agentUri'] as core.String;
     }
   }
 
@@ -13761,10 +13847,10 @@ class GoogleCloudDialogflowV3alpha1ExportTestCasesResponse {
   GoogleCloudDialogflowV3alpha1ExportTestCasesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsUri')) {
-      gcsUri = _json['gcsUri'];
+      gcsUri = _json['gcsUri'] as core.String;
     }
   }
 
@@ -13790,7 +13876,7 @@ class GoogleCloudDialogflowV3alpha1ImportAgentResponse {
 
   GoogleCloudDialogflowV3alpha1ImportAgentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agent')) {
-      agent = _json['agent'];
+      agent = _json['agent'] as core.String;
     }
   }
 
@@ -13828,7 +13914,9 @@ class GoogleCloudDialogflowV3alpha1ImportTestCasesResponse {
   GoogleCloudDialogflowV3alpha1ImportTestCasesResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List).cast<core.String>();
+      names = (_json['names'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -13853,7 +13941,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -13916,21 +14004,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = GoogleRpcStatus.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -13999,16 +14089,18 @@ class GoogleRpcStatus {
 
   GoogleRpcStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 

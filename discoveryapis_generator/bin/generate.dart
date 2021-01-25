@@ -86,7 +86,7 @@ void main(List<String> arguments) {
   final commandOptions = options.command;
   final subCommands = ['package', 'files'];
 
-  if (options['help']) {
+  if (options['help'] as bool) {
     dieWithUsage();
   } else if (commandOptions == null ||
       !subCommands.contains(commandOptions.name)) {
@@ -96,23 +96,29 @@ void main(List<String> arguments) {
   switch (commandOptions.name) {
     case 'package':
       final pubspec = Pubspec(
-          commandOptions['package-name'],
-          commandOptions['package-version'],
-          commandOptions['package-description'],
-          author: commandOptions['package-author'],
-          homepage: commandOptions['package-homepage']);
+        commandOptions['package-name'] as String,
+        commandOptions['package-version'] as String,
+        commandOptions['package-description'] as String,
+        author: commandOptions['package-author'] as String,
+        homepage: commandOptions['package-homepage'] as String,
+      );
       printResults(generateAllLibraries(
-          commandOptions['input-dir'], commandOptions['output-dir'], pubspec));
+        commandOptions['input-dir'] as String,
+        commandOptions['output-dir'] as String,
+        pubspec,
+      ));
       break;
     case 'files':
-      final String updatePubspec = commandOptions['update-pubspec']
+      final updatePubspec = (commandOptions['update-pubspec'] as String)
           .toLowerCase()
           .replaceAll('=', '')
           .trim();
       printResults(generateApiFiles(
-          commandOptions['input-dir'], commandOptions['output-dir'],
-          updatePubspec: updatePubspec == 'true',
-          useCorePrefixes: commandOptions['core-prefixes']));
+        commandOptions['input-dir'] as String,
+        commandOptions['output-dir'] as String,
+        updatePubspec: updatePubspec == 'true',
+        useCorePrefixes: commandOptions['core-prefixes'] as bool,
+      ));
       break;
   }
 }

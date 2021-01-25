@@ -683,19 +683,19 @@ class GdataBlobstore2Info {
 
   GdataBlobstore2Info.fromJson(core.Map _json) {
     if (_json.containsKey('blobGeneration')) {
-      blobGeneration = _json['blobGeneration'];
+      blobGeneration = _json['blobGeneration'] as core.String;
     }
     if (_json.containsKey('blobId')) {
-      blobId = _json['blobId'];
+      blobId = _json['blobId'] as core.String;
     }
     if (_json.containsKey('downloadReadHandle')) {
-      downloadReadHandle = _json['downloadReadHandle'];
+      downloadReadHandle = _json['downloadReadHandle'] as core.String;
     }
     if (_json.containsKey('readToken')) {
-      readToken = _json['readToken'];
+      readToken = _json['readToken'] as core.String;
     }
     if (_json.containsKey('uploadMetadataContainer')) {
-      uploadMetadataContainer = _json['uploadMetadataContainer'];
+      uploadMetadataContainer = _json['uploadMetadataContainer'] as core.String;
     }
   }
 
@@ -796,37 +796,37 @@ class GdataCompositeMedia {
 
   GdataCompositeMedia.fromJson(core.Map _json) {
     if (_json.containsKey('blobRef')) {
-      blobRef = _json['blobRef'];
+      blobRef = _json['blobRef'] as core.String;
     }
     if (_json.containsKey('blobstore2Info')) {
       blobstore2Info = GdataBlobstore2Info.fromJson(_json['blobstore2Info']);
     }
     if (_json.containsKey('cosmoBinaryReference')) {
-      cosmoBinaryReference = _json['cosmoBinaryReference'];
+      cosmoBinaryReference = _json['cosmoBinaryReference'] as core.String;
     }
     if (_json.containsKey('crc32cHash')) {
-      crc32cHash = _json['crc32cHash'];
+      crc32cHash = _json['crc32cHash'] as core.int;
     }
     if (_json.containsKey('inline')) {
-      inline = _json['inline'];
+      inline = _json['inline'] as core.String;
     }
     if (_json.containsKey('length')) {
-      length = _json['length'];
+      length = _json['length'] as core.String;
     }
     if (_json.containsKey('md5Hash')) {
-      md5Hash = _json['md5Hash'];
+      md5Hash = _json['md5Hash'] as core.String;
     }
     if (_json.containsKey('objectId')) {
       objectId = GdataObjectId.fromJson(_json['objectId']);
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('referenceType')) {
-      referenceType = _json['referenceType'];
+      referenceType = _json['referenceType'] as core.String;
     }
     if (_json.containsKey('sha1Hash')) {
-      sha1Hash = _json['sha1Hash'];
+      sha1Hash = _json['sha1Hash'] as core.String;
     }
   }
 
@@ -890,19 +890,19 @@ class GdataContentTypeInfo {
 
   GdataContentTypeInfo.fromJson(core.Map _json) {
     if (_json.containsKey('bestGuess')) {
-      bestGuess = _json['bestGuess'];
+      bestGuess = _json['bestGuess'] as core.String;
     }
     if (_json.containsKey('fromBytes')) {
-      fromBytes = _json['fromBytes'];
+      fromBytes = _json['fromBytes'] as core.String;
     }
     if (_json.containsKey('fromFileName')) {
-      fromFileName = _json['fromFileName'];
+      fromFileName = _json['fromFileName'] as core.String;
     }
     if (_json.containsKey('fromHeader')) {
-      fromHeader = _json['fromHeader'];
+      fromHeader = _json['fromHeader'] as core.String;
     }
     if (_json.containsKey('fromUrlPath')) {
-      fromUrlPath = _json['fromUrlPath'];
+      fromUrlPath = _json['fromUrlPath'] as core.String;
     }
   }
 
@@ -952,16 +952,16 @@ class GdataDiffChecksumsResponse {
           GdataCompositeMedia.fromJson(_json['checksumsLocation']);
     }
     if (_json.containsKey('chunkSizeBytes')) {
-      chunkSizeBytes = _json['chunkSizeBytes'];
+      chunkSizeBytes = _json['chunkSizeBytes'] as core.String;
     }
     if (_json.containsKey('objectLocation')) {
       objectLocation = GdataCompositeMedia.fromJson(_json['objectLocation']);
     }
     if (_json.containsKey('objectSizeBytes')) {
-      objectSizeBytes = _json['objectSizeBytes'];
+      objectSizeBytes = _json['objectSizeBytes'] as core.String;
     }
     if (_json.containsKey('objectVersion')) {
-      objectVersion = _json['objectVersion'];
+      objectVersion = _json['objectVersion'] as core.String;
     }
   }
 
@@ -1029,7 +1029,7 @@ class GdataDiffUploadRequest {
       objectInfo = GdataCompositeMedia.fromJson(_json['objectInfo']);
     }
     if (_json.containsKey('objectVersion')) {
-      objectVersion = _json['objectVersion'];
+      objectVersion = _json['objectVersion'] as core.String;
     }
   }
 
@@ -1060,7 +1060,7 @@ class GdataDiffUploadResponse {
 
   GdataDiffUploadResponse.fromJson(core.Map _json) {
     if (_json.containsKey('objectVersion')) {
-      objectVersion = _json['objectVersion'];
+      objectVersion = _json['objectVersion'] as core.String;
     }
     if (_json.containsKey('originalObject')) {
       originalObject = GdataCompositeMedia.fromJson(_json['originalObject']);
@@ -1091,10 +1091,10 @@ class GdataDiffVersionResponse {
 
   GdataDiffVersionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('objectSizeBytes')) {
-      objectSizeBytes = _json['objectSizeBytes'];
+      objectSizeBytes = _json['objectSizeBytes'] as core.String;
     }
     if (_json.containsKey('objectVersion')) {
-      objectVersion = _json['objectVersion'];
+      objectVersion = _json['objectVersion'] as core.String;
     }
   }
 
@@ -1122,10 +1122,10 @@ class GdataDownloadParameters {
 
   GdataDownloadParameters.fromJson(core.Map _json) {
     if (_json.containsKey('allowGzipCompression')) {
-      allowGzipCompression = _json['allowGzipCompression'];
+      allowGzipCompression = _json['allowGzipCompression'] as core.bool;
     }
     if (_json.containsKey('ignoreRange')) {
-      ignoreRange = _json['ignoreRange'];
+      ignoreRange = _json['ignoreRange'] as core.bool;
     }
   }
 
@@ -1302,13 +1302,13 @@ class GdataMedia {
 
   GdataMedia.fromJson(core.Map _json) {
     if (_json.containsKey('algorithm')) {
-      algorithm = _json['algorithm'];
+      algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('bigstoreObjectRef')) {
-      bigstoreObjectRef = _json['bigstoreObjectRef'];
+      bigstoreObjectRef = _json['bigstoreObjectRef'] as core.String;
     }
     if (_json.containsKey('blobRef')) {
-      blobRef = _json['blobRef'];
+      blobRef = _json['blobRef'] as core.String;
     }
     if (_json.containsKey('blobstore2Info')) {
       blobstore2Info = GdataBlobstore2Info.fromJson(_json['blobstore2Info']);
@@ -1320,16 +1320,16 @@ class GdataMedia {
           .toList();
     }
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('contentTypeInfo')) {
       contentTypeInfo = GdataContentTypeInfo.fromJson(_json['contentTypeInfo']);
     }
     if (_json.containsKey('cosmoBinaryReference')) {
-      cosmoBinaryReference = _json['cosmoBinaryReference'];
+      cosmoBinaryReference = _json['cosmoBinaryReference'] as core.String;
     }
     if (_json.containsKey('crc32cHash')) {
-      crc32cHash = _json['crc32cHash'];
+      crc32cHash = _json['crc32cHash'] as core.int;
     }
     if (_json.containsKey('diffChecksumsResponse')) {
       diffChecksumsResponse =
@@ -1356,49 +1356,49 @@ class GdataMedia {
           GdataDownloadParameters.fromJson(_json['downloadParameters']);
     }
     if (_json.containsKey('filename')) {
-      filename = _json['filename'];
+      filename = _json['filename'] as core.String;
     }
     if (_json.containsKey('hash')) {
-      hash = _json['hash'];
+      hash = _json['hash'] as core.String;
     }
     if (_json.containsKey('hashVerified')) {
-      hashVerified = _json['hashVerified'];
+      hashVerified = _json['hashVerified'] as core.bool;
     }
     if (_json.containsKey('inline')) {
-      inline = _json['inline'];
+      inline = _json['inline'] as core.String;
     }
     if (_json.containsKey('isPotentialRetry')) {
-      isPotentialRetry = _json['isPotentialRetry'];
+      isPotentialRetry = _json['isPotentialRetry'] as core.bool;
     }
     if (_json.containsKey('length')) {
-      length = _json['length'];
+      length = _json['length'] as core.String;
     }
     if (_json.containsKey('md5Hash')) {
-      md5Hash = _json['md5Hash'];
+      md5Hash = _json['md5Hash'] as core.String;
     }
     if (_json.containsKey('mediaId')) {
-      mediaId = _json['mediaId'];
+      mediaId = _json['mediaId'] as core.String;
     }
     if (_json.containsKey('objectId')) {
       objectId = GdataObjectId.fromJson(_json['objectId']);
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('referenceType')) {
-      referenceType = _json['referenceType'];
+      referenceType = _json['referenceType'] as core.String;
     }
     if (_json.containsKey('sha1Hash')) {
-      sha1Hash = _json['sha1Hash'];
+      sha1Hash = _json['sha1Hash'] as core.String;
     }
     if (_json.containsKey('sha256Hash')) {
-      sha256Hash = _json['sha256Hash'];
+      sha256Hash = _json['sha256Hash'] as core.String;
     }
     if (_json.containsKey('timestamp')) {
-      timestamp = _json['timestamp'];
+      timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
   }
 
@@ -1514,13 +1514,13 @@ class GdataObjectId {
 
   GdataObjectId.fromJson(core.Map _json) {
     if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'];
+      bucketName = _json['bucketName'] as core.String;
     }
     if (_json.containsKey('generation')) {
-      generation = _json['generation'];
+      generation = _json['generation'] as core.String;
     }
     if (_json.containsKey('objectName')) {
-      objectName = _json['objectName'];
+      objectName = _json['objectName'] as core.String;
     }
   }
 
@@ -1566,22 +1566,22 @@ class Job {
 
   Job.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('reportTypeId')) {
-      reportTypeId = _json['reportTypeId'];
+      reportTypeId = _json['reportTypeId'] as core.String;
     }
     if (_json.containsKey('systemManaged')) {
-      systemManaged = _json['systemManaged'];
+      systemManaged = _json['systemManaged'] as core.bool;
     }
   }
 
@@ -1628,7 +1628,7 @@ class ListJobsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1658,7 +1658,7 @@ class ListReportTypesResponse {
 
   ListReportTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('reportTypes')) {
       reportTypes = (_json['reportTypes'] as core.List)
@@ -1694,7 +1694,7 @@ class ListReportsResponse {
 
   ListReportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('reports')) {
       reports = (_json['reports'] as core.List)
@@ -1745,25 +1745,25 @@ class Report {
 
   Report.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('downloadUrl')) {
-      downloadUrl = _json['downloadUrl'];
+      downloadUrl = _json['downloadUrl'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('jobExpireTime')) {
-      jobExpireTime = _json['jobExpireTime'];
+      jobExpireTime = _json['jobExpireTime'] as core.String;
     }
     if (_json.containsKey('jobId')) {
-      jobId = _json['jobId'];
+      jobId = _json['jobId'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -1814,16 +1814,16 @@ class ReportType {
 
   ReportType.fromJson(core.Map _json) {
     if (_json.containsKey('deprecateTime')) {
-      deprecateTime = _json['deprecateTime'];
+      deprecateTime = _json['deprecateTime'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('systemManaged')) {
-      systemManaged = _json['systemManaged'];
+      systemManaged = _json['systemManaged'] as core.bool;
     }
   }
 

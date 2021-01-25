@@ -221,17 +221,18 @@ class AudioConfig {
 
   AudioConfig.fromJson(core.Map _json) {
     if (_json.containsKey('audioEncoding')) {
-      audioEncoding = _json['audioEncoding'];
+      audioEncoding = _json['audioEncoding'] as core.String;
     }
     if (_json.containsKey('effectsProfileId')) {
-      effectsProfileId =
-          (_json['effectsProfileId'] as core.List).cast<core.String>();
+      effectsProfileId = (_json['effectsProfileId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('pitch')) {
       pitch = _json['pitch'].toDouble();
     }
     if (_json.containsKey('sampleRateHertz')) {
-      sampleRateHertz = _json['sampleRateHertz'];
+      sampleRateHertz = _json['sampleRateHertz'] as core.int;
     }
     if (_json.containsKey('speakingRate')) {
       speakingRate = _json['speakingRate'].toDouble();
@@ -307,10 +308,10 @@ class SynthesisInput {
 
   SynthesisInput.fromJson(core.Map _json) {
     if (_json.containsKey('ssml')) {
-      ssml = _json['ssml'];
+      ssml = _json['ssml'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -386,7 +387,7 @@ class SynthesizeSpeechResponse {
 
   SynthesizeSpeechResponse.fromJson(core.Map _json) {
     if (_json.containsKey('audioContent')) {
-      audioContent = _json['audioContent'];
+      audioContent = _json['audioContent'] as core.String;
     }
   }
 
@@ -428,16 +429,18 @@ class Voice {
 
   Voice.fromJson(core.Map _json) {
     if (_json.containsKey('languageCodes')) {
-      languageCodes = (_json['languageCodes'] as core.List).cast<core.String>();
+      languageCodes = (_json['languageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('naturalSampleRateHertz')) {
-      naturalSampleRateHertz = _json['naturalSampleRateHertz'];
+      naturalSampleRateHertz = _json['naturalSampleRateHertz'] as core.int;
     }
     if (_json.containsKey('ssmlGender')) {
-      ssmlGender = _json['ssmlGender'];
+      ssmlGender = _json['ssmlGender'] as core.String;
     }
   }
 
@@ -498,13 +501,13 @@ class VoiceSelectionParams {
 
   VoiceSelectionParams.fromJson(core.Map _json) {
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('ssmlGender')) {
-      ssmlGender = _json['ssmlGender'];
+      ssmlGender = _json['ssmlGender'] as core.String;
     }
   }
 

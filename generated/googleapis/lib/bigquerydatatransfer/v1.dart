@@ -2240,7 +2240,7 @@ class CheckValidCredsResponse {
 
   CheckValidCredsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('hasValidCreds')) {
-      hasValidCreds = _json['hasValidCreds'];
+      hasValidCreds = _json['hasValidCreds'] as core.bool;
     }
   }
 
@@ -2351,40 +2351,41 @@ class DataSource {
 
   DataSource.fromJson(core.Map _json) {
     if (_json.containsKey('authorizationType')) {
-      authorizationType = _json['authorizationType'];
+      authorizationType = _json['authorizationType'] as core.String;
     }
     if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'];
+      clientId = _json['clientId'] as core.String;
     }
     if (_json.containsKey('dataRefreshType')) {
-      dataRefreshType = _json['dataRefreshType'];
+      dataRefreshType = _json['dataRefreshType'] as core.String;
     }
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('defaultDataRefreshWindowDays')) {
-      defaultDataRefreshWindowDays = _json['defaultDataRefreshWindowDays'];
+      defaultDataRefreshWindowDays =
+          _json['defaultDataRefreshWindowDays'] as core.int;
     }
     if (_json.containsKey('defaultSchedule')) {
-      defaultSchedule = _json['defaultSchedule'];
+      defaultSchedule = _json['defaultSchedule'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('helpUrl')) {
-      helpUrl = _json['helpUrl'];
+      helpUrl = _json['helpUrl'] as core.String;
     }
     if (_json.containsKey('manualRunsDisabled')) {
-      manualRunsDisabled = _json['manualRunsDisabled'];
+      manualRunsDisabled = _json['manualRunsDisabled'] as core.bool;
     }
     if (_json.containsKey('minimumScheduleInterval')) {
-      minimumScheduleInterval = _json['minimumScheduleInterval'];
+      minimumScheduleInterval = _json['minimumScheduleInterval'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
@@ -2393,19 +2394,22 @@ class DataSource {
           .toList();
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('supportsCustomSchedule')) {
-      supportsCustomSchedule = _json['supportsCustomSchedule'];
+      supportsCustomSchedule = _json['supportsCustomSchedule'] as core.bool;
     }
     if (_json.containsKey('supportsMultipleTransfers')) {
-      supportsMultipleTransfers = _json['supportsMultipleTransfers'];
+      supportsMultipleTransfers =
+          _json['supportsMultipleTransfers'] as core.bool;
     }
     if (_json.containsKey('transferType')) {
-      transferType = _json['transferType'];
+      transferType = _json['transferType'] as core.String;
     }
     if (_json.containsKey('updateDeadlineSeconds')) {
-      updateDeadlineSeconds = _json['updateDeadlineSeconds'];
+      updateDeadlineSeconds = _json['updateDeadlineSeconds'] as core.int;
     }
   }
 
@@ -2538,16 +2542,18 @@ class DataSourceParameter {
 
   DataSourceParameter.fromJson(core.Map _json) {
     if (_json.containsKey('allowedValues')) {
-      allowedValues = (_json['allowedValues'] as core.List).cast<core.String>();
+      allowedValues = (_json['allowedValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = _json['deprecated'];
+      deprecated = _json['deprecated'] as core.bool;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
@@ -2556,7 +2562,7 @@ class DataSourceParameter {
           .toList();
     }
     if (_json.containsKey('immutable')) {
-      immutable = _json['immutable'];
+      immutable = _json['immutable'] as core.bool;
     }
     if (_json.containsKey('maxValue')) {
       maxValue = _json['maxValue'].toDouble();
@@ -2565,28 +2571,28 @@ class DataSourceParameter {
       minValue = _json['minValue'].toDouble();
     }
     if (_json.containsKey('paramId')) {
-      paramId = _json['paramId'];
+      paramId = _json['paramId'] as core.String;
     }
     if (_json.containsKey('recurse')) {
-      recurse = _json['recurse'];
+      recurse = _json['recurse'] as core.bool;
     }
     if (_json.containsKey('repeated')) {
-      repeated = _json['repeated'];
+      repeated = _json['repeated'] as core.bool;
     }
     if (_json.containsKey('required')) {
-      required = _json['required'];
+      required = _json['required'] as core.bool;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('validationDescription')) {
-      validationDescription = _json['validationDescription'];
+      validationDescription = _json['validationDescription'] as core.String;
     }
     if (_json.containsKey('validationHelpUrl')) {
-      validationHelpUrl = _json['validationHelpUrl'];
+      validationHelpUrl = _json['validationHelpUrl'] as core.String;
     }
     if (_json.containsKey('validationRegex')) {
-      validationRegex = _json['validationRegex'];
+      validationRegex = _json['validationRegex'] as core.String;
     }
   }
 
@@ -2654,7 +2660,7 @@ class EmailPreferences {
 
   EmailPreferences.fromJson(core.Map _json) {
     if (_json.containsKey('enableFailureEmail')) {
-      enableFailureEmail = _json['enableFailureEmail'];
+      enableFailureEmail = _json['enableFailureEmail'] as core.bool;
     }
   }
 
@@ -2704,7 +2710,7 @@ class ListDataSourcesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2738,7 +2744,7 @@ class ListLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2768,7 +2774,7 @@ class ListTransferConfigsResponse {
 
   ListTransferConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('transferConfigs')) {
       transferConfigs = (_json['transferConfigs'] as core.List)
@@ -2804,7 +2810,7 @@ class ListTransferLogsResponse {
 
   ListTransferLogsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('transferMessages')) {
       transferMessages = (_json['transferMessages'] as core.List)
@@ -2840,7 +2846,7 @@ class ListTransferRunsResponse {
 
   ListTransferRunsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('transferRuns')) {
       transferRuns = (_json['transferRuns'] as core.List)
@@ -2890,20 +2896,23 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2953,13 +2962,13 @@ class ScheduleOptions {
 
   ScheduleOptions.fromJson(core.Map _json) {
     if (_json.containsKey('disableAutoScheduling')) {
-      disableAutoScheduling = _json['disableAutoScheduling'];
+      disableAutoScheduling = _json['disableAutoScheduling'] as core.bool;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -2992,10 +3001,10 @@ class ScheduleTransferRunsRequest {
 
   ScheduleTransferRunsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -3048,7 +3057,7 @@ class StartManualTransferRunsRequest {
 
   StartManualTransferRunsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('requestedRunTime')) {
-      requestedRunTime = _json['requestedRunTime'];
+      requestedRunTime = _json['requestedRunTime'] as core.String;
     }
     if (_json.containsKey('requestedTimeRange')) {
       requestedTimeRange = TimeRange.fromJson(_json['requestedTimeRange']);
@@ -3117,16 +3126,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3164,10 +3175,10 @@ class TimeRange {
 
   TimeRange.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -3273,52 +3284,54 @@ class TransferConfig {
 
   TransferConfig.fromJson(core.Map _json) {
     if (_json.containsKey('dataRefreshWindowDays')) {
-      dataRefreshWindowDays = _json['dataRefreshWindowDays'];
+      dataRefreshWindowDays = _json['dataRefreshWindowDays'] as core.int;
     }
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('datasetRegion')) {
-      datasetRegion = _json['datasetRegion'];
+      datasetRegion = _json['datasetRegion'] as core.String;
     }
     if (_json.containsKey('destinationDatasetId')) {
-      destinationDatasetId = _json['destinationDatasetId'];
+      destinationDatasetId = _json['destinationDatasetId'] as core.String;
     }
     if (_json.containsKey('disabled')) {
-      disabled = _json['disabled'];
+      disabled = _json['disabled'] as core.bool;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('emailPreferences')) {
       emailPreferences = EmailPreferences.fromJson(_json['emailPreferences']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('nextRunTime')) {
-      nextRunTime = _json['nextRunTime'];
+      nextRunTime = _json['nextRunTime'] as core.String;
     }
     if (_json.containsKey('notificationPubsubTopic')) {
-      notificationPubsubTopic = _json['notificationPubsubTopic'];
+      notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map).cast<core.String, core.Object>();
+      params = commons.mapMap<core.Object, core.Object>(
+          _json['params'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'];
+      schedule = _json['schedule'] as core.String;
     }
     if (_json.containsKey('scheduleOptions')) {
       scheduleOptions = ScheduleOptions.fromJson(_json['scheduleOptions']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -3396,13 +3409,13 @@ class TransferMessage {
 
   TransferMessage.fromJson(core.Map _json) {
     if (_json.containsKey('messageText')) {
-      messageText = _json['messageText'];
+      messageText = _json['messageText'] as core.String;
     }
     if (_json.containsKey('messageTime')) {
-      messageTime = _json['messageTime'];
+      messageTime = _json['messageTime'] as core.String;
     }
     if (_json.containsKey('severity')) {
-      severity = _json['severity'];
+      severity = _json['severity'] as core.String;
     }
   }
 
@@ -3495,49 +3508,51 @@ class TransferRun {
 
   TransferRun.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('destinationDatasetId')) {
-      destinationDatasetId = _json['destinationDatasetId'];
+      destinationDatasetId = _json['destinationDatasetId'] as core.String;
     }
     if (_json.containsKey('emailPreferences')) {
       emailPreferences = EmailPreferences.fromJson(_json['emailPreferences']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('errorStatus')) {
       errorStatus = Status.fromJson(_json['errorStatus']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationPubsubTopic')) {
-      notificationPubsubTopic = _json['notificationPubsubTopic'];
+      notificationPubsubTopic = _json['notificationPubsubTopic'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = (_json['params'] as core.Map).cast<core.String, core.Object>();
+      params = commons.mapMap<core.Object, core.Object>(
+          _json['params'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('runTime')) {
-      runTime = _json['runTime'];
+      runTime = _json['runTime'] as core.String;
     }
     if (_json.containsKey('schedule')) {
-      schedule = _json['schedule'];
+      schedule = _json['schedule'] as core.String;
     }
     if (_json.containsKey('scheduleTime')) {
-      scheduleTime = _json['scheduleTime'];
+      scheduleTime = _json['scheduleTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 

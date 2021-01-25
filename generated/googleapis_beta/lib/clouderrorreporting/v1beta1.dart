@@ -644,7 +644,7 @@ class ErrorContext {
           .toList();
     }
     if (_json.containsKey('user')) {
-      user = _json['user'];
+      user = _json['user'] as core.String;
     }
   }
 
@@ -690,10 +690,10 @@ class ErrorEvent {
       context = ErrorContext.fromJson(_json['context']);
     }
     if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'];
+      eventTime = _json['eventTime'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('serviceContext')) {
       serviceContext = ServiceContext.fromJson(_json['serviceContext']);
@@ -749,13 +749,13 @@ class ErrorGroup {
 
   ErrorGroup.fromJson(core.Map _json) {
     if (_json.containsKey('groupId')) {
-      groupId = _json['groupId'];
+      groupId = _json['groupId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('resolutionStatus')) {
-      resolutionStatus = _json['resolutionStatus'];
+      resolutionStatus = _json['resolutionStatus'] as core.String;
     }
     if (_json.containsKey('trackingIssues')) {
       trackingIssues = (_json['trackingIssues'] as core.List)
@@ -844,22 +844,22 @@ class ErrorGroupStats {
           .toList();
     }
     if (_json.containsKey('affectedUsersCount')) {
-      affectedUsersCount = _json['affectedUsersCount'];
+      affectedUsersCount = _json['affectedUsersCount'] as core.String;
     }
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.String;
     }
     if (_json.containsKey('firstSeenTime')) {
-      firstSeenTime = _json['firstSeenTime'];
+      firstSeenTime = _json['firstSeenTime'] as core.String;
     }
     if (_json.containsKey('group')) {
       group = ErrorGroup.fromJson(_json['group']);
     }
     if (_json.containsKey('lastSeenTime')) {
-      lastSeenTime = _json['lastSeenTime'];
+      lastSeenTime = _json['lastSeenTime'] as core.String;
     }
     if (_json.containsKey('numAffectedServices')) {
-      numAffectedServices = _json['numAffectedServices'];
+      numAffectedServices = _json['numAffectedServices'] as core.int;
     }
     if (_json.containsKey('representative')) {
       representative = ErrorEvent.fromJson(_json['representative']);
@@ -934,22 +934,22 @@ class HttpRequestContext {
 
   HttpRequestContext.fromJson(core.Map _json) {
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('referrer')) {
-      referrer = _json['referrer'];
+      referrer = _json['referrer'] as core.String;
     }
     if (_json.containsKey('remoteIp')) {
-      remoteIp = _json['remoteIp'];
+      remoteIp = _json['remoteIp'] as core.String;
     }
     if (_json.containsKey('responseStatusCode')) {
-      responseStatusCode = _json['responseStatusCode'];
+      responseStatusCode = _json['responseStatusCode'] as core.int;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
     if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'];
+      userAgent = _json['userAgent'] as core.String;
     }
   }
 
@@ -1000,10 +1000,10 @@ class ListEventsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('timeRangeBegin')) {
-      timeRangeBegin = _json['timeRangeBegin'];
+      timeRangeBegin = _json['timeRangeBegin'] as core.String;
     }
   }
 
@@ -1048,10 +1048,10 @@ class ListGroupStatsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('timeRangeBegin')) {
-      timeRangeBegin = _json['timeRangeBegin'];
+      timeRangeBegin = _json['timeRangeBegin'] as core.String;
     }
   }
 
@@ -1127,10 +1127,10 @@ class ReportedErrorEvent {
       context = ErrorContext.fromJson(_json['context']);
     }
     if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'];
+      eventTime = _json['eventTime'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('serviceContext')) {
       serviceContext = ServiceContext.fromJson(_json['serviceContext']);
@@ -1181,13 +1181,13 @@ class ServiceContext {
 
   ServiceContext.fromJson(core.Map _json) {
     if (_json.containsKey('resourceType')) {
-      resourceType = _json['resourceType'];
+      resourceType = _json['resourceType'] as core.String;
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1227,13 +1227,13 @@ class SourceLocation {
 
   SourceLocation.fromJson(core.Map _json) {
     if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'];
+      filePath = _json['filePath'] as core.String;
     }
     if (_json.containsKey('functionName')) {
-      functionName = _json['functionName'];
+      functionName = _json['functionName'] as core.String;
     }
     if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'];
+      lineNumber = _json['lineNumber'] as core.int;
     }
   }
 
@@ -1267,10 +1267,10 @@ class SourceReference {
 
   SourceReference.fromJson(core.Map _json) {
     if (_json.containsKey('repository')) {
-      repository = _json['repository'];
+      repository = _json['repository'] as core.String;
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
   }
 
@@ -1302,13 +1302,13 @@ class TimedCount {
 
   TimedCount.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -1337,7 +1337,7 @@ class TrackingIssue {
 
   TrackingIssue.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 

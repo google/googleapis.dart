@@ -595,15 +595,17 @@ class HttpBody {
 
   HttpBody.fromJson(core.Map _json) {
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
   }
@@ -651,25 +653,25 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey('href')) {
-      href = _json['href'];
+      href = _json['href'] as core.String;
     }
     if (_json.containsKey('hreflang')) {
-      hreflang = _json['hreflang'];
+      hreflang = _json['hreflang'] as core.String;
     }
     if (_json.containsKey('media')) {
-      media = _json['media'];
+      media = _json['media'] as core.String;
     }
     if (_json.containsKey('rel')) {
-      rel = _json['rel'];
+      rel = _json['rel'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -723,7 +725,9 @@ class Notice {
 
   Notice.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = (_json['description'] as core.List).cast<core.String>();
+      description = (_json['description'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
@@ -731,10 +735,10 @@ class Notice {
           .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -784,16 +788,18 @@ class RdapResponse {
 
   RdapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = (_json['description'] as core.List).cast<core.String>();
+      description = (_json['description'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.int;
     }
     if (_json.containsKey('jsonResponse')) {
       jsonResponse = HttpBody.fromJson(_json['jsonResponse']);
     }
     if (_json.containsKey('lang')) {
-      lang = _json['lang'];
+      lang = _json['lang'] as core.String;
     }
     if (_json.containsKey('notices')) {
       notices = (_json['notices'] as core.List)
@@ -801,11 +807,12 @@ class RdapResponse {
           .toList();
     }
     if (_json.containsKey('rdapConformance')) {
-      rdapConformance =
-          (_json['rdapConformance'] as core.List).cast<core.String>();
+      rdapConformance = (_json['rdapConformance'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 

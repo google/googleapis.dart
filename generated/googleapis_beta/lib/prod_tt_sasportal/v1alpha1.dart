@@ -3795,10 +3795,12 @@ class SasPortalAssignment {
 
   SasPortalAssignment.fromJson(core.Map _json) {
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -3825,7 +3827,7 @@ class SasPortalBulkCreateDeviceRequest {
 
   SasPortalBulkCreateDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('csv')) {
-      csv = _json['csv'];
+      csv = _json['csv'] as core.String;
     }
   }
 
@@ -3883,10 +3885,10 @@ class SasPortalCreateSignedDeviceRequest {
 
   SasPortalCreateSignedDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('encodedDevice')) {
-      encodedDevice = _json['encodedDevice'];
+      encodedDevice = _json['encodedDevice'] as core.String;
     }
     if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'];
+      installerId = _json['installerId'] as core.String;
     }
   }
 
@@ -3917,13 +3919,15 @@ class SasPortalCustomer {
 
   SasPortalCustomer.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sasUserIds')) {
-      sasUserIds = (_json['sasUserIds'] as core.List).cast<core.String>();
+      sasUserIds = (_json['sasUserIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3988,10 +3992,10 @@ class SasPortalDevice {
           SasPortalDeviceMetadata.fromJson(_json['deviceMetadata']);
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fccId')) {
-      fccId = _json['fccId'];
+      fccId = _json['fccId'] as core.String;
     }
     if (_json.containsKey('grants')) {
       grants = (_json['grants'] as core.List)
@@ -4000,17 +4004,17 @@ class SasPortalDevice {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('preloadedConfig')) {
       preloadedConfig =
           SasPortalDeviceConfig.fromJson(_json['preloadedConfig']);
     }
     if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'];
+      serialNumber = _json['serialNumber'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -4072,10 +4076,10 @@ class SasPortalDeviceAirInterface {
 
   SasPortalDeviceAirInterface.fromJson(core.Map _json) {
     if (_json.containsKey('radioTechnology')) {
-      radioTechnology = _json['radioTechnology'];
+      radioTechnology = _json['radioTechnology'] as core.String;
     }
     if (_json.containsKey('supportedSpec')) {
-      supportedSpec = _json['supportedSpec'];
+      supportedSpec = _json['supportedSpec'] as core.String;
     }
   }
 
@@ -4139,33 +4143,34 @@ class SasPortalDeviceConfig {
           SasPortalDeviceAirInterface.fromJson(_json['airInterface']);
     }
     if (_json.containsKey('callSign')) {
-      callSign = _json['callSign'];
+      callSign = _json['callSign'] as core.String;
     }
     if (_json.containsKey('category')) {
-      category = _json['category'];
+      category = _json['category'] as core.String;
     }
     if (_json.containsKey('installationParams')) {
       installationParams =
           SasPortalInstallationParams.fromJson(_json['installationParams']);
     }
     if (_json.containsKey('isSigned')) {
-      isSigned = _json['isSigned'];
+      isSigned = _json['isSigned'] as core.bool;
     }
     if (_json.containsKey('measurementCapabilities')) {
-      measurementCapabilities =
-          (_json['measurementCapabilities'] as core.List).cast<core.String>();
+      measurementCapabilities = (_json['measurementCapabilities'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('model')) {
       model = SasPortalDeviceModel.fromJson(_json['model']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -4252,17 +4257,17 @@ class SasPortalDeviceGrant {
 
   SasPortalDeviceGrant.fromJson(core.Map _json) {
     if (_json.containsKey('channelType')) {
-      channelType = _json['channelType'];
+      channelType = _json['channelType'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('frequencyRange')) {
       frequencyRange =
           SasPortalFrequencyRange.fromJson(_json['frequencyRange']);
     }
     if (_json.containsKey('grantId')) {
-      grantId = _json['grantId'];
+      grantId = _json['grantId'] as core.String;
     }
     if (_json.containsKey('maxEirp')) {
       maxEirp = _json['maxEirp'].toDouble();
@@ -4274,11 +4279,12 @@ class SasPortalDeviceGrant {
           .toList();
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('suspensionReason')) {
-      suspensionReason =
-          (_json['suspensionReason'] as core.List).cast<core.String>();
+      suspensionReason = (_json['suspensionReason'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4347,19 +4353,19 @@ class SasPortalDeviceModel {
 
   SasPortalDeviceModel.fromJson(core.Map _json) {
     if (_json.containsKey('firmwareVersion')) {
-      firmwareVersion = _json['firmwareVersion'];
+      firmwareVersion = _json['firmwareVersion'] as core.String;
     }
     if (_json.containsKey('hardwareVersion')) {
-      hardwareVersion = _json['hardwareVersion'];
+      hardwareVersion = _json['hardwareVersion'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('softwareVersion')) {
-      softwareVersion = _json['softwareVersion'];
+      softwareVersion = _json['softwareVersion'] as core.String;
     }
     if (_json.containsKey('vendor')) {
-      vendor = _json['vendor'];
+      vendor = _json['vendor'] as core.String;
     }
   }
 
@@ -4396,7 +4402,7 @@ class SasPortalDpaMoveList {
 
   SasPortalDpaMoveList.fromJson(core.Map _json) {
     if (_json.containsKey('dpaId')) {
-      dpaId = _json['dpaId'];
+      dpaId = _json['dpaId'] as core.String;
     }
     if (_json.containsKey('frequencyRange')) {
       frequencyRange =
@@ -4489,7 +4495,7 @@ class SasPortalGenerateSecretResponse {
 
   SasPortalGenerateSecretResponse.fromJson(core.Map _json) {
     if (_json.containsKey('secret')) {
-      secret = _json['secret'];
+      secret = _json['secret'] as core.String;
     }
   }
 
@@ -4511,7 +4517,7 @@ class SasPortalGetPolicyRequest {
 
   SasPortalGetPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
   }
 
@@ -4606,37 +4612,37 @@ class SasPortalInstallationParams {
 
   SasPortalInstallationParams.fromJson(core.Map _json) {
     if (_json.containsKey('antennaAzimuth')) {
-      antennaAzimuth = _json['antennaAzimuth'];
+      antennaAzimuth = _json['antennaAzimuth'] as core.int;
     }
     if (_json.containsKey('antennaBeamwidth')) {
-      antennaBeamwidth = _json['antennaBeamwidth'];
+      antennaBeamwidth = _json['antennaBeamwidth'] as core.int;
     }
     if (_json.containsKey('antennaDowntilt')) {
-      antennaDowntilt = _json['antennaDowntilt'];
+      antennaDowntilt = _json['antennaDowntilt'] as core.int;
     }
     if (_json.containsKey('antennaGain')) {
-      antennaGain = _json['antennaGain'];
+      antennaGain = _json['antennaGain'] as core.int;
     }
     if (_json.containsKey('antennaModel')) {
-      antennaModel = _json['antennaModel'];
+      antennaModel = _json['antennaModel'] as core.String;
     }
     if (_json.containsKey('cpeCbsdIndication')) {
-      cpeCbsdIndication = _json['cpeCbsdIndication'];
+      cpeCbsdIndication = _json['cpeCbsdIndication'] as core.bool;
     }
     if (_json.containsKey('eirpCapability')) {
-      eirpCapability = _json['eirpCapability'];
+      eirpCapability = _json['eirpCapability'] as core.int;
     }
     if (_json.containsKey('height')) {
       height = _json['height'].toDouble();
     }
     if (_json.containsKey('heightType')) {
-      heightType = _json['heightType'];
+      heightType = _json['heightType'] as core.String;
     }
     if (_json.containsKey('horizontalAccuracy')) {
       horizontalAccuracy = _json['horizontalAccuracy'].toDouble();
     }
     if (_json.containsKey('indoorDeployment')) {
-      indoorDeployment = _json['indoorDeployment'];
+      indoorDeployment = _json['indoorDeployment'] as core.bool;
     }
     if (_json.containsKey('latitude')) {
       latitude = _json['latitude'].toDouble();
@@ -4716,7 +4722,7 @@ class SasPortalListCustomersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4751,7 +4757,7 @@ class SasPortalListDevicesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4781,7 +4787,7 @@ class SasPortalListNodesResponse {
 
   SasPortalListNodesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('nodes')) {
       nodes = (_json['nodes'] as core.List)
@@ -4812,7 +4818,7 @@ class SasPortalMoveDeploymentRequest {
 
   SasPortalMoveDeploymentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
   }
 
@@ -4835,7 +4841,7 @@ class SasPortalMoveDeviceRequest {
 
   SasPortalMoveDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
   }
 
@@ -4858,7 +4864,7 @@ class SasPortalMoveNodeRequest {
 
   SasPortalMoveNodeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = _json['destination'];
+      destination = _json['destination'] as core.String;
     }
   }
 
@@ -4886,13 +4892,15 @@ class SasPortalNode {
 
   SasPortalNode.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sasUserIds')) {
-      sasUserIds = (_json['sasUserIds'] as core.List).cast<core.String>();
+      sasUserIds = (_json['sasUserIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4952,21 +4960,23 @@ class SasPortalOperation {
 
   SasPortalOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = SasPortalStatus.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -5022,7 +5032,7 @@ class SasPortalPolicy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
   }
 
@@ -5055,7 +5065,7 @@ class SasPortalSetPolicyRequest {
       policy = SasPortalPolicy.fromJson(_json['policy']);
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
   }
 
@@ -5120,16 +5130,18 @@ class SasPortalStatus {
 
   SasPortalStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -5160,10 +5172,12 @@ class SasPortalTestPermissionsRequest {
 
   SasPortalTestPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('resource')) {
-      resource = _json['resource'];
+      resource = _json['resource'] as core.String;
     }
   }
 
@@ -5188,7 +5202,9 @@ class SasPortalTestPermissionsResponse {
 
   SasPortalTestPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5222,10 +5238,10 @@ class SasPortalUpdateSignedDeviceRequest {
 
   SasPortalUpdateSignedDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('encodedDevice')) {
-      encodedDevice = _json['encodedDevice'];
+      encodedDevice = _json['encodedDevice'] as core.String;
     }
     if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'];
+      installerId = _json['installerId'] as core.String;
     }
   }
 
@@ -5258,13 +5274,13 @@ class SasPortalValidateInstallerRequest {
 
   SasPortalValidateInstallerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('encodedSecret')) {
-      encodedSecret = _json['encodedSecret'];
+      encodedSecret = _json['encodedSecret'] as core.String;
     }
     if (_json.containsKey('installerId')) {
-      installerId = _json['installerId'];
+      installerId = _json['installerId'] as core.String;
     }
     if (_json.containsKey('secret')) {
-      secret = _json['secret'];
+      secret = _json['secret'] as core.String;
     }
   }
 

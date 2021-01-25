@@ -103,10 +103,10 @@ class WrapRequest {
 
   WrapRequest.fromJson(core.Map _json) {
     if (_json.containsKey('age')) {
-      age = _json['age'];
+      age = _json['age'] as core.int;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -129,7 +129,7 @@ class WrapResponse {
 
   WrapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 

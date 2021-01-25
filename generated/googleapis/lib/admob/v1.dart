@@ -328,13 +328,13 @@ class Date {
 
   Date.fromJson(core.Map _json) {
     if (_json.containsKey('day')) {
-      day = _json['day'];
+      day = _json['day'] as core.int;
     }
     if (_json.containsKey('month')) {
-      month = _json['month'];
+      month = _json['month'] as core.int;
     }
     if (_json.containsKey('year')) {
-      year = _json['year'];
+      year = _json['year'] as core.int;
     }
   }
 
@@ -550,7 +550,7 @@ class ListPublisherAccountsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -583,10 +583,10 @@ class LocalizationSettings {
 
   LocalizationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -665,17 +665,21 @@ class MediationReportSpec {
           .toList();
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('localizationSettings')) {
       localizationSettings =
           LocalizationSettings.fromJson(_json['localizationSettings']);
     }
     if (_json.containsKey('maxReportRows')) {
-      maxReportRows = _json['maxReportRows'];
+      maxReportRows = _json['maxReportRows'] as core.int;
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List).cast<core.String>();
+      metrics = (_json['metrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sortConditions')) {
       sortConditions = (_json['sortConditions'] as core.List)
@@ -684,7 +688,7 @@ class MediationReportSpec {
           .toList();
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -759,7 +763,7 @@ class MediationReportSpecDimensionFilter {
 
   MediationReportSpecDimensionFilter.fromJson(core.Map _json) {
     if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'];
+      dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('matchesAny')) {
       matchesAny = StringList.fromJson(_json['matchesAny']);
@@ -850,13 +854,13 @@ class MediationReportSpecSortCondition {
 
   MediationReportSpecSortCondition.fromJson(core.Map _json) {
     if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'];
+      dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('metric')) {
-      metric = _json['metric'];
+      metric = _json['metric'] as core.String;
     }
     if (_json.containsKey('order')) {
-      order = _json['order'];
+      order = _json['order'] as core.String;
     }
   }
 
@@ -939,17 +943,21 @@ class NetworkReportSpec {
           .toList();
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = (_json['dimensions'] as core.List).cast<core.String>();
+      dimensions = (_json['dimensions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('localizationSettings')) {
       localizationSettings =
           LocalizationSettings.fromJson(_json['localizationSettings']);
     }
     if (_json.containsKey('maxReportRows')) {
-      maxReportRows = _json['maxReportRows'];
+      maxReportRows = _json['maxReportRows'] as core.int;
     }
     if (_json.containsKey('metrics')) {
-      metrics = (_json['metrics'] as core.List).cast<core.String>();
+      metrics = (_json['metrics'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sortConditions')) {
       sortConditions = (_json['sortConditions'] as core.List)
@@ -958,7 +966,7 @@ class NetworkReportSpec {
           .toList();
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -1032,7 +1040,7 @@ class NetworkReportSpecDimensionFilter {
 
   NetworkReportSpecDimensionFilter.fromJson(core.Map _json) {
     if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'];
+      dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('matchesAny')) {
       matchesAny = StringList.fromJson(_json['matchesAny']);
@@ -1123,13 +1131,13 @@ class NetworkReportSpecSortCondition {
 
   NetworkReportSpecSortCondition.fromJson(core.Map _json) {
     if (_json.containsKey('dimension')) {
-      dimension = _json['dimension'];
+      dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('metric')) {
-      metric = _json['metric'];
+      metric = _json['metric'] as core.String;
     }
     if (_json.containsKey('order')) {
-      order = _json['order'];
+      order = _json['order'] as core.String;
     }
   }
 
@@ -1172,16 +1180,16 @@ class PublisherAccount {
 
   PublisherAccount.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('publisherId')) {
-      publisherId = _json['publisherId'];
+      publisherId = _json['publisherId'] as core.String;
     }
     if (_json.containsKey('reportingTimeZone')) {
-      reportingTimeZone = _json['reportingTimeZone'];
+      reportingTimeZone = _json['reportingTimeZone'] as core.String;
     }
   }
 
@@ -1218,7 +1226,7 @@ class ReportFooter {
 
   ReportFooter.fromJson(core.Map _json) {
     if (_json.containsKey('matchingRowCount')) {
-      matchingRowCount = _json['matchingRowCount'];
+      matchingRowCount = _json['matchingRowCount'] as core.String;
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
@@ -1265,7 +1273,7 @@ class ReportHeader {
           LocalizationSettings.fromJson(_json['localizationSettings']);
     }
     if (_json.containsKey('reportingTimeZone')) {
-      reportingTimeZone = _json['reportingTimeZone'];
+      reportingTimeZone = _json['reportingTimeZone'] as core.String;
     }
   }
 
@@ -1339,10 +1347,10 @@ class ReportRowDimensionValue {
 
   ReportRowDimensionValue.fromJson(core.Map _json) {
     if (_json.containsKey('displayLabel')) {
-      displayLabel = _json['displayLabel'];
+      displayLabel = _json['displayLabel'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -1378,10 +1386,10 @@ class ReportRowMetricValue {
       doubleValue = _json['doubleValue'].toDouble();
     }
     if (_json.containsKey('integerValue')) {
-      integerValue = _json['integerValue'];
+      integerValue = _json['integerValue'] as core.String;
     }
     if (_json.containsKey('microsValue')) {
-      microsValue = _json['microsValue'];
+      microsValue = _json['microsValue'] as core.String;
     }
   }
 
@@ -1429,10 +1437,10 @@ class ReportWarning {
 
   ReportWarning.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1457,7 +1465,9 @@ class StringList {
 
   StringList.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.String>();
+      values = (_json['values'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

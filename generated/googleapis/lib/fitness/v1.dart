@@ -1160,7 +1160,7 @@ class AggregateBucket {
 
   AggregateBucket.fromJson(core.Map _json) {
     if (_json.containsKey('activity')) {
-      activity = _json['activity'];
+      activity = _json['activity'] as core.int;
     }
     if (_json.containsKey('dataset')) {
       dataset = (_json['dataset'] as core.List)
@@ -1168,16 +1168,16 @@ class AggregateBucket {
           .toList();
     }
     if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'];
+      endTimeMillis = _json['endTimeMillis'] as core.String;
     }
     if (_json.containsKey('session')) {
       session = Session.fromJson(_json['session']);
     }
     if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'];
+      startTimeMillis = _json['startTimeMillis'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1227,10 +1227,10 @@ class AggregateBy {
 
   AggregateBy.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('dataTypeName')) {
-      dataTypeName = _json['dataTypeName'];
+      dataTypeName = _json['dataTypeName'] as core.String;
     }
   }
 
@@ -1311,15 +1311,16 @@ class AggregateRequest {
       bucketByTime = BucketByTime.fromJson(_json['bucketByTime']);
     }
     if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'];
+      endTimeMillis = _json['endTimeMillis'] as core.String;
     }
     if (_json.containsKey('filteredDataQualityStandard')) {
       filteredDataQualityStandard =
           (_json['filteredDataQualityStandard'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'];
+      startTimeMillis = _json['startTimeMillis'] as core.String;
     }
   }
 
@@ -1401,16 +1402,16 @@ class Application {
 
   Application.fromJson(core.Map _json) {
     if (_json.containsKey('detailsUrl')) {
-      detailsUrl = _json['detailsUrl'];
+      detailsUrl = _json['detailsUrl'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1446,10 +1447,10 @@ class BucketByActivity {
 
   BucketByActivity.fromJson(core.Map _json) {
     if (_json.containsKey('activityDataSourceId')) {
-      activityDataSourceId = _json['activityDataSourceId'];
+      activityDataSourceId = _json['activityDataSourceId'] as core.String;
     }
     if (_json.containsKey('minDurationMillis')) {
-      minDurationMillis = _json['minDurationMillis'];
+      minDurationMillis = _json['minDurationMillis'] as core.String;
     }
   }
 
@@ -1474,7 +1475,7 @@ class BucketBySession {
 
   BucketBySession.fromJson(core.Map _json) {
     if (_json.containsKey('minDurationMillis')) {
-      minDurationMillis = _json['minDurationMillis'];
+      minDurationMillis = _json['minDurationMillis'] as core.String;
     }
   }
 
@@ -1498,7 +1499,7 @@ class BucketByTime {
 
   BucketByTime.fromJson(core.Map _json) {
     if (_json.containsKey('durationMillis')) {
-      durationMillis = _json['durationMillis'];
+      durationMillis = _json['durationMillis'] as core.String;
     }
     if (_json.containsKey('period')) {
       period = BucketByTimePeriod.fromJson(_json['period']);
@@ -1533,13 +1534,13 @@ class BucketByTimePeriod {
 
   BucketByTimePeriod.fromJson(core.Map _json) {
     if (_json.containsKey('timeZoneId')) {
-      timeZoneId = _json['timeZoneId'];
+      timeZoneId = _json['timeZoneId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.int;
     }
   }
 
@@ -1607,25 +1608,25 @@ class DataPoint {
 
   DataPoint.fromJson(core.Map _json) {
     if (_json.containsKey('computationTimeMillis')) {
-      computationTimeMillis = _json['computationTimeMillis'];
+      computationTimeMillis = _json['computationTimeMillis'] as core.String;
     }
     if (_json.containsKey('dataTypeName')) {
-      dataTypeName = _json['dataTypeName'];
+      dataTypeName = _json['dataTypeName'] as core.String;
     }
     if (_json.containsKey('endTimeNanos')) {
-      endTimeNanos = _json['endTimeNanos'];
+      endTimeNanos = _json['endTimeNanos'] as core.String;
     }
     if (_json.containsKey('modifiedTimeMillis')) {
-      modifiedTimeMillis = _json['modifiedTimeMillis'];
+      modifiedTimeMillis = _json['modifiedTimeMillis'] as core.String;
     }
     if (_json.containsKey('originDataSourceId')) {
-      originDataSourceId = _json['originDataSourceId'];
+      originDataSourceId = _json['originDataSourceId'] as core.String;
     }
     if (_json.containsKey('rawTimestampNanos')) {
-      rawTimestampNanos = _json['rawTimestampNanos'];
+      rawTimestampNanos = _json['rawTimestampNanos'] as core.String;
     }
     if (_json.containsKey('startTimeNanos')) {
-      startTimeNanos = _json['startTimeNanos'];
+      startTimeNanos = _json['startTimeNanos'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = (_json['value'] as core.List)
@@ -1745,14 +1746,15 @@ class DataSource {
       application = Application.fromJson(_json['application']);
     }
     if (_json.containsKey('dataQualityStandard')) {
-      dataQualityStandard =
-          (_json['dataQualityStandard'] as core.List).cast<core.String>();
+      dataQualityStandard = (_json['dataQualityStandard'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('dataStreamId')) {
-      dataStreamId = _json['dataStreamId'];
+      dataStreamId = _json['dataStreamId'] as core.String;
     }
     if (_json.containsKey('dataStreamName')) {
-      dataStreamName = _json['dataStreamName'];
+      dataStreamName = _json['dataStreamName'] as core.String;
     }
     if (_json.containsKey('dataType')) {
       dataType = DataType.fromJson(_json['dataType']);
@@ -1761,10 +1763,10 @@ class DataSource {
       device = Device.fromJson(_json['device']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1815,7 +1817,7 @@ class DataType {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1857,13 +1859,13 @@ class DataTypeField {
 
   DataTypeField.fromJson(core.Map _json) {
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('optional')) {
-      optional = _json['optional'];
+      optional = _json['optional'] as core.bool;
     }
   }
 
@@ -1916,16 +1918,16 @@ class Dataset {
 
   Dataset.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('maxEndTimeNs')) {
-      maxEndTimeNs = _json['maxEndTimeNs'];
+      maxEndTimeNs = _json['maxEndTimeNs'] as core.String;
     }
     if (_json.containsKey('minStartTimeNs')) {
-      minStartTimeNs = _json['minStartTimeNs'];
+      minStartTimeNs = _json['minStartTimeNs'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = (_json['point'] as core.List)
@@ -1998,19 +2000,19 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'];
+      manufacturer = _json['manufacturer'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -2055,7 +2057,7 @@ class ListDataPointChangesResponse {
 
   ListDataPointChangesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceId')) {
-      dataSourceId = _json['dataSourceId'];
+      dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('deletedDataPoint')) {
       deletedDataPoint = (_json['deletedDataPoint'] as core.List)
@@ -2068,7 +2070,7 @@ class ListDataPointChangesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2142,10 +2144,10 @@ class ListSessionsResponse {
           .toList();
     }
     if (_json.containsKey('hasMoreData')) {
-      hasMoreData = _json['hasMoreData'];
+      hasMoreData = _json['hasMoreData'] as core.bool;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('session')) {
       session = (_json['session'] as core.List)
@@ -2235,31 +2237,31 @@ class Session {
 
   Session.fromJson(core.Map _json) {
     if (_json.containsKey('activeTimeMillis')) {
-      activeTimeMillis = _json['activeTimeMillis'];
+      activeTimeMillis = _json['activeTimeMillis'] as core.String;
     }
     if (_json.containsKey('activityType')) {
-      activityType = _json['activityType'];
+      activityType = _json['activityType'] as core.int;
     }
     if (_json.containsKey('application')) {
       application = Application.fromJson(_json['application']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('endTimeMillis')) {
-      endTimeMillis = _json['endTimeMillis'];
+      endTimeMillis = _json['endTimeMillis'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('modifiedTimeMillis')) {
-      modifiedTimeMillis = _json['modifiedTimeMillis'];
+      modifiedTimeMillis = _json['modifiedTimeMillis'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('startTimeMillis')) {
-      startTimeMillis = _json['startTimeMillis'];
+      startTimeMillis = _json['startTimeMillis'] as core.String;
     }
   }
 
@@ -2324,7 +2326,7 @@ class Value {
       fpVal = _json['fpVal'].toDouble();
     }
     if (_json.containsKey('intVal')) {
-      intVal = _json['intVal'];
+      intVal = _json['intVal'] as core.int;
     }
     if (_json.containsKey('mapVal')) {
       mapVal = (_json['mapVal'] as core.List)
@@ -2332,7 +2334,7 @@ class Value {
           .toList();
     }
     if (_json.containsKey('stringVal')) {
-      stringVal = _json['stringVal'];
+      stringVal = _json['stringVal'] as core.String;
     }
   }
 
@@ -2362,7 +2364,7 @@ class ValueMapValEntry {
 
   ValueMapValEntry.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = MapValue.fromJson(_json['value']);

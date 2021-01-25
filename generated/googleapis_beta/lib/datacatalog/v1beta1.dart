@@ -3751,16 +3751,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -3837,16 +3839,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -3906,7 +3908,7 @@ class GetPolicyOptions {
 
   GetPolicyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('requestedPolicyVersion')) {
-      requestedPolicyVersion = _json['requestedPolicyVersion'];
+      requestedPolicyVersion = _json['requestedPolicyVersion'] as core.int;
     }
   }
 
@@ -3941,13 +3943,13 @@ class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
       core.Map _json) {
     if (_json.containsKey('dataset')) {
-      dataset = _json['dataset'];
+      dataset = _json['dataset'] as core.String;
     }
     if (_json.containsKey('shardCount')) {
-      shardCount = _json['shardCount'];
+      shardCount = _json['shardCount'] as core.String;
     }
     if (_json.containsKey('tablePrefix')) {
-      tablePrefix = _json['tablePrefix'];
+      tablePrefix = _json['tablePrefix'] as core.String;
     }
   }
 
@@ -3988,7 +3990,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
 
   GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(core.Map _json) {
     if (_json.containsKey('tableSourceType')) {
-      tableSourceType = _json['tableSourceType'];
+      tableSourceType = _json['tableSourceType'] as core.String;
     }
     if (_json.containsKey('tableSpec')) {
       tableSpec =
@@ -4040,13 +4042,13 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
 
   GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(core.Map _json) {
     if (_json.containsKey('column')) {
-      column = _json['column'];
+      column = _json['column'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('mode')) {
-      mode = _json['mode'];
+      mode = _json['mode'] as core.String;
     }
     if (_json.containsKey('subcolumns')) {
       subcolumns = (_json['subcolumns'] as core.List)
@@ -4055,7 +4057,7 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4190,23 +4192,23 @@ class GoogleCloudDatacatalogV1beta1Entry {
               _json['bigqueryTableSpec']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('gcsFilesetSpec')) {
       gcsFilesetSpec = GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
           _json['gcsFilesetSpec']);
     }
     if (_json.containsKey('integratedSystem')) {
-      integratedSystem = _json['integratedSystem'];
+      integratedSystem = _json['integratedSystem'] as core.String;
     }
     if (_json.containsKey('linkedResource')) {
-      linkedResource = _json['linkedResource'];
+      linkedResource = _json['linkedResource'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('schema')) {
       schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(_json['schema']);
@@ -4217,13 +4219,13 @@ class GoogleCloudDatacatalogV1beta1Entry {
               _json['sourceSystemTimestamps']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('userSpecifiedSystem')) {
-      userSpecifiedSystem = _json['userSpecifiedSystem'];
+      userSpecifiedSystem = _json['userSpecifiedSystem'] as core.String;
     }
     if (_json.containsKey('userSpecifiedType')) {
-      userSpecifiedType = _json['userSpecifiedType'];
+      userSpecifiedType = _json['userSpecifiedType'] as core.String;
     }
   }
 
@@ -4303,13 +4305,13 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
               _json['dataCatalogTimestamps']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4379,7 +4381,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
           _json['enumType']);
     }
     if (_json.containsKey('primitiveType')) {
-      primitiveType = _json['primitiveType'];
+      primitiveType = _json['primitiveType'] as core.String;
     }
   }
 
@@ -4440,7 +4442,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue.fromJson(
       core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
   }
 
@@ -4468,14 +4470,14 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
 
   GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(core.Map _json) {
     if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'];
+      filePath = _json['filePath'] as core.String;
     }
     if (_json.containsKey('gcsTimestamps')) {
       gcsTimestamps = GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
           _json['gcsTimestamps']);
     }
     if (_json.containsKey('sizeBytes')) {
-      sizeBytes = _json['sizeBytes'];
+      sizeBytes = _json['sizeBytes'] as core.String;
     }
   }
 
@@ -4524,7 +4526,9 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
 
   GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(core.Map _json) {
     if (_json.containsKey('filePatterns')) {
-      filePatterns = (_json['filePatterns'] as core.List).cast<core.String>();
+      filePatterns = (_json['filePatterns'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('sampleGcsFileSpecs')) {
       sampleGcsFileSpecs = (_json['sampleGcsFileSpecs'] as core.List)
@@ -4641,7 +4645,7 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4677,7 +4681,7 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4707,7 +4711,7 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
 
   GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('policyTags')) {
       policyTags = (_json['policyTags'] as core.List)
@@ -4742,7 +4746,7 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
 
   GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
@@ -4777,7 +4781,7 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
 
   GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('taxonomies')) {
       taxonomies = (_json['taxonomies'] as core.List)
@@ -4835,20 +4839,21 @@ class GoogleCloudDatacatalogV1beta1PolicyTag {
 
   GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(core.Map _json) {
     if (_json.containsKey('childPolicyTags')) {
-      childPolicyTags =
-          (_json['childPolicyTags'] as core.List).cast<core.String>();
+      childPolicyTags = (_json['childPolicyTags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentPolicyTag')) {
-      parentPolicyTag = _json['parentPolicyTag'];
+      parentPolicyTag = _json['parentPolicyTag'] as core.String;
     }
   }
 
@@ -4884,7 +4889,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('newEnumValueDisplayName')) {
-      newEnumValueDisplayName = _json['newEnumValueDisplayName'];
+      newEnumValueDisplayName = _json['newEnumValueDisplayName'] as core.String;
     }
   }
 
@@ -4908,7 +4913,7 @@ class GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('newTagTemplateFieldId')) {
-      newTagTemplateFieldId = _json['newTagTemplateFieldId'];
+      newTagTemplateFieldId = _json['newTagTemplateFieldId'] as core.String;
     }
   }
 
@@ -4986,16 +4991,16 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
 
   GoogleCloudDatacatalogV1beta1SearchCatalogRequest.fromJson(core.Map _json) {
     if (_json.containsKey('orderBy')) {
-      orderBy = _json['orderBy'];
+      orderBy = _json['orderBy'] as core.String;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('query')) {
-      query = _json['query'];
+      query = _json['query'] as core.String;
     }
     if (_json.containsKey('scope')) {
       scope = GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
@@ -5062,18 +5067,22 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
       core.Map _json) {
     if (_json.containsKey('includeGcpPublicDatasets')) {
-      includeGcpPublicDatasets = _json['includeGcpPublicDatasets'];
+      includeGcpPublicDatasets = _json['includeGcpPublicDatasets'] as core.bool;
     }
     if (_json.containsKey('includeOrgIds')) {
-      includeOrgIds = (_json['includeOrgIds'] as core.List).cast<core.String>();
+      includeOrgIds = (_json['includeOrgIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includeProjectIds')) {
-      includeProjectIds =
-          (_json['includeProjectIds'] as core.List).cast<core.String>();
+      includeProjectIds = (_json['includeProjectIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('restrictedLocations')) {
-      restrictedLocations =
-          (_json['restrictedLocations'] as core.List).cast<core.String>();
+      restrictedLocations = (_json['restrictedLocations'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5113,7 +5122,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
@@ -5122,7 +5131,9 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
           .toList();
     }
     if (_json.containsKey('unreachable')) {
-      unreachable = (_json['unreachable'] as core.List).cast<core.String>();
+      unreachable = (_json['unreachable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5174,16 +5185,16 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResult {
 
   GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(core.Map _json) {
     if (_json.containsKey('linkedResource')) {
-      linkedResource = _json['linkedResource'];
+      linkedResource = _json['linkedResource'] as core.String;
     }
     if (_json.containsKey('relativeResourceName')) {
-      relativeResourceName = _json['relativeResourceName'];
+      relativeResourceName = _json['relativeResourceName'] as core.String;
     }
     if (_json.containsKey('searchResultSubtype')) {
-      searchResultSubtype = _json['searchResultSubtype'];
+      searchResultSubtype = _json['searchResultSubtype'] as core.String;
     }
     if (_json.containsKey('searchResultType')) {
-      searchResultType = _json['searchResultType'];
+      searchResultType = _json['searchResultType'] as core.String;
     }
   }
 
@@ -5233,13 +5244,13 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
           .toList();
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('policyTag')) {
-      policyTag = _json['policyTag'];
+      policyTag = _json['policyTag'] as core.String;
     }
   }
 
@@ -5281,10 +5292,10 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
 
   GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('policyTags')) {
       policyTags = (_json['policyTags'] as core.List)
@@ -5325,13 +5336,13 @@ class GoogleCloudDatacatalogV1beta1SystemTimestamps {
 
   GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -5363,7 +5374,7 @@ class GoogleCloudDatacatalogV1beta1TableSpec {
 
   GoogleCloudDatacatalogV1beta1TableSpec.fromJson(core.Map _json) {
     if (_json.containsKey('groupedEntry')) {
-      groupedEntry = _json['groupedEntry'];
+      groupedEntry = _json['groupedEntry'] as core.String;
     }
   }
 
@@ -5411,7 +5422,7 @@ class GoogleCloudDatacatalogV1beta1Tag {
 
   GoogleCloudDatacatalogV1beta1Tag.fromJson(core.Map _json) {
     if (_json.containsKey('column')) {
-      column = _json['column'];
+      column = _json['column'] as core.String;
     }
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagField>(
@@ -5420,13 +5431,13 @@ class GoogleCloudDatacatalogV1beta1Tag {
               GoogleCloudDatacatalogV1beta1TagField.fromJson(item));
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('template')) {
-      template = _json['template'];
+      template = _json['template'] as core.String;
     }
     if (_json.containsKey('templateDisplayName')) {
-      templateDisplayName = _json['templateDisplayName'];
+      templateDisplayName = _json['templateDisplayName'] as core.String;
     }
   }
 
@@ -5484,10 +5495,10 @@ class GoogleCloudDatacatalogV1beta1TagField {
 
   GoogleCloudDatacatalogV1beta1TagField.fromJson(core.Map _json) {
     if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'];
+      boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('doubleValue')) {
       doubleValue = _json['doubleValue'].toDouble();
@@ -5497,13 +5508,13 @@ class GoogleCloudDatacatalogV1beta1TagField {
           _json['enumValue']);
     }
     if (_json.containsKey('order')) {
-      order = _json['order'];
+      order = _json['order'] as core.int;
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('timestampValue')) {
-      timestampValue = _json['timestampValue'];
+      timestampValue = _json['timestampValue'] as core.String;
     }
   }
 
@@ -5543,7 +5554,7 @@ class GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
 
   GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
   }
 
@@ -5587,7 +5598,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
 
   GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fields')) {
       fields = commons
@@ -5597,7 +5608,7 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
                   GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(item));
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -5649,16 +5660,16 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
 
   GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('isRequired')) {
-      isRequired = _json['isRequired'];
+      isRequired = _json['isRequired'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('order')) {
-      order = _json['order'];
+      order = _json['order'] as core.int;
     }
     if (_json.containsKey('type')) {
       type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json['type']);
@@ -5715,17 +5726,18 @@ class GoogleCloudDatacatalogV1beta1Taxonomy {
 
   GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(core.Map _json) {
     if (_json.containsKey('activatedPolicyTypes')) {
-      activatedPolicyTypes =
-          (_json['activatedPolicyTypes'] as core.List).cast<core.String>();
+      activatedPolicyTypes = (_json['activatedPolicyTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -5756,7 +5768,7 @@ class GoogleCloudDatacatalogV1beta1ViewSpec {
 
   GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(core.Map _json) {
     if (_json.containsKey('viewQuery')) {
-      viewQuery = _json['viewQuery'];
+      viewQuery = _json['viewQuery'] as core.String;
     }
   }
 
@@ -5849,10 +5861,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -5908,7 +5920,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -5931,7 +5945,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

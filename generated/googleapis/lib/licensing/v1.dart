@@ -619,28 +619,28 @@ class LicenseAssignment {
 
   LicenseAssignment.fromJson(core.Map _json) {
     if (_json.containsKey('etags')) {
-      etags = _json['etags'];
+      etags = _json['etags'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('productName')) {
-      productName = _json['productName'];
+      productName = _json['productName'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('skuId')) {
-      skuId = _json['skuId'];
+      skuId = _json['skuId'] as core.String;
     }
     if (_json.containsKey('skuName')) {
-      skuName = _json['skuName'];
+      skuName = _json['skuName'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -683,7 +683,7 @@ class LicenseAssignmentInsert {
 
   LicenseAssignmentInsert.fromJson(core.Map _json) {
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -716,7 +716,7 @@ class LicenseAssignmentList {
 
   LicenseAssignmentList.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -724,10 +724,10 @@ class LicenseAssignmentList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 

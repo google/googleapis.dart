@@ -280,7 +280,9 @@ class CreateProfileRequest {
       deployment = Deployment.fromJson(_json['deployment']);
     }
     if (_json.containsKey('profileType')) {
-      profileType = (_json['profileType'] as core.List).cast<core.String>();
+      profileType = (_json['profileType'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -324,13 +326,15 @@ class Deployment {
 
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('target')) {
-      target = _json['target'];
+      target = _json['target'] as core.String;
     }
   }
 
@@ -407,19 +411,21 @@ class Profile {
       deployment = Deployment.fromJson(_json['deployment']);
     }
     if (_json.containsKey('duration')) {
-      duration = _json['duration'];
+      duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('profileBytes')) {
-      profileBytes = _json['profileBytes'];
+      profileBytes = _json['profileBytes'] as core.String;
     }
     if (_json.containsKey('profileType')) {
-      profileType = _json['profileType'];
+      profileType = _json['profileType'] as core.String;
     }
   }
 

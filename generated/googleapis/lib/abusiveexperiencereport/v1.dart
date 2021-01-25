@@ -193,25 +193,25 @@ class SiteSummaryResponse {
 
   SiteSummaryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('abusiveStatus')) {
-      abusiveStatus = _json['abusiveStatus'];
+      abusiveStatus = _json['abusiveStatus'] as core.String;
     }
     if (_json.containsKey('enforcementTime')) {
-      enforcementTime = _json['enforcementTime'];
+      enforcementTime = _json['enforcementTime'] as core.String;
     }
     if (_json.containsKey('filterStatus')) {
-      filterStatus = _json['filterStatus'];
+      filterStatus = _json['filterStatus'] as core.String;
     }
     if (_json.containsKey('lastChangeTime')) {
-      lastChangeTime = _json['lastChangeTime'];
+      lastChangeTime = _json['lastChangeTime'] as core.String;
     }
     if (_json.containsKey('reportUrl')) {
-      reportUrl = _json['reportUrl'];
+      reportUrl = _json['reportUrl'] as core.String;
     }
     if (_json.containsKey('reviewedSite')) {
-      reviewedSite = _json['reviewedSite'];
+      reviewedSite = _json['reviewedSite'] as core.String;
     }
     if (_json.containsKey('underReview')) {
-      underReview = _json['underReview'];
+      underReview = _json['underReview'] as core.bool;
     }
   }
 

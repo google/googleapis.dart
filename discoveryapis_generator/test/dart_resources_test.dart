@@ -70,7 +70,7 @@ void main() {
   };
 
   withParsedDB(schema, (DartSchemaTypeDB db) {
-    Map buildApi(String i, {Map methods, Map resources}) {
+    Map<String, dynamic> buildApi(String i, {Map methods, Map resources}) {
       final api = <String, dynamic>{
         'name': 'apiname$i',
         'version': 'apiversion$i',

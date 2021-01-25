@@ -237,25 +237,25 @@ class Tokeninfo {
 
   Tokeninfo.fromJson(core.Map _json) {
     if (_json.containsKey('audience')) {
-      audience = _json['audience'];
+      audience = _json['audience'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('expires_in')) {
-      expiresIn = _json['expires_in'];
+      expiresIn = _json['expires_in'] as core.int;
     }
     if (_json.containsKey('issued_to')) {
-      issuedTo = _json['issued_to'];
+      issuedTo = _json['issued_to'] as core.String;
     }
     if (_json.containsKey('scope')) {
-      scope = _json['scope'];
+      scope = _json['scope'] as core.String;
     }
     if (_json.containsKey('user_id')) {
-      userId = _json['user_id'];
+      userId = _json['user_id'] as core.String;
     }
     if (_json.containsKey('verified_email')) {
-      verifiedEmail = _json['verified_email'];
+      verifiedEmail = _json['verified_email'] as core.bool;
     }
   }
 
@@ -325,37 +325,37 @@ class Userinfo {
 
   Userinfo.fromJson(core.Map _json) {
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('family_name')) {
-      familyName = _json['family_name'];
+      familyName = _json['family_name'] as core.String;
     }
     if (_json.containsKey('gender')) {
-      gender = _json['gender'];
+      gender = _json['gender'] as core.String;
     }
     if (_json.containsKey('given_name')) {
-      givenName = _json['given_name'];
+      givenName = _json['given_name'] as core.String;
     }
     if (_json.containsKey('hd')) {
-      hd = _json['hd'];
+      hd = _json['hd'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('link')) {
-      link = _json['link'];
+      link = _json['link'] as core.String;
     }
     if (_json.containsKey('locale')) {
-      locale = _json['locale'];
+      locale = _json['locale'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('picture')) {
-      picture = _json['picture'];
+      picture = _json['picture'] as core.String;
     }
     if (_json.containsKey('verified_email')) {
-      verifiedEmail = _json['verified_email'];
+      verifiedEmail = _json['verified_email'] as core.bool;
     }
   }
 

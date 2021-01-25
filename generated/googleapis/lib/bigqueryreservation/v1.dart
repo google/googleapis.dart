@@ -1545,16 +1545,16 @@ class Assignment {
 
   Assignment.fromJson(core.Map _json) {
     if (_json.containsKey('assignee')) {
-      assignee = _json['assignee'];
+      assignee = _json['assignee'] as core.String;
     }
     if (_json.containsKey('jobType')) {
-      jobType = _json['jobType'];
+      jobType = _json['jobType'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1592,13 +1592,13 @@ class BiReservation {
 
   BiReservation.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1697,28 +1697,28 @@ class CapacityCommitment {
 
   CapacityCommitment.fromJson(core.Map _json) {
     if (_json.containsKey('commitmentEndTime')) {
-      commitmentEndTime = _json['commitmentEndTime'];
+      commitmentEndTime = _json['commitmentEndTime'] as core.String;
     }
     if (_json.containsKey('commitmentStartTime')) {
-      commitmentStartTime = _json['commitmentStartTime'];
+      commitmentStartTime = _json['commitmentStartTime'] as core.String;
     }
     if (_json.containsKey('failureStatus')) {
       failureStatus = Status.fromJson(_json['failureStatus']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('plan')) {
-      plan = _json['plan'];
+      plan = _json['plan'] as core.String;
     }
     if (_json.containsKey('renewalPlan')) {
-      renewalPlan = _json['renewalPlan'];
+      renewalPlan = _json['renewalPlan'] as core.String;
     }
     if (_json.containsKey('slotCount')) {
-      slotCount = _json['slotCount'];
+      slotCount = _json['slotCount'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1762,7 +1762,7 @@ class CreateSlotPoolMetadata {
 
   CreateSlotPoolMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('slotPool')) {
-      slotPool = _json['slotPool'];
+      slotPool = _json['slotPool'] as core.String;
     }
   }
 
@@ -1811,7 +1811,7 @@ class ListAssignmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1847,7 +1847,7 @@ class ListCapacityCommitmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1876,7 +1876,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -1910,7 +1910,7 @@ class ListReservationsResponse {
 
   ListReservationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('reservations')) {
       reservations = (_json['reservations'] as core.List)
@@ -1944,8 +1944,9 @@ class MergeCapacityCommitmentsRequest {
 
   MergeCapacityCommitmentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('capacityCommitmentIds')) {
-      capacityCommitmentIds =
-          (_json['capacityCommitmentIds'] as core.List).cast<core.String>();
+      capacityCommitmentIds = (_json['capacityCommitmentIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1972,7 +1973,7 @@ class MoveAssignmentRequest {
 
   MoveAssignmentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destinationId')) {
-      destinationId = _json['destinationId'];
+      destinationId = _json['destinationId'] as core.String;
     }
   }
 
@@ -2026,21 +2027,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -2095,19 +2098,19 @@ class Reservation {
 
   Reservation.fromJson(core.Map _json) {
     if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'];
+      creationTime = _json['creationTime'] as core.String;
     }
     if (_json.containsKey('ignoreIdleSlots')) {
-      ignoreIdleSlots = _json['ignoreIdleSlots'];
+      ignoreIdleSlots = _json['ignoreIdleSlots'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('slotCapacity')) {
-      slotCapacity = _json['slotCapacity'];
+      slotCapacity = _json['slotCapacity'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2150,7 +2153,7 @@ class SearchAllAssignmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2185,7 +2188,7 @@ class SearchAssignmentsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2211,7 +2214,7 @@ class SplitCapacityCommitmentRequest {
 
   SplitCapacityCommitmentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('slotCount')) {
-      slotCount = _json['slotCount'];
+      slotCount = _json['slotCount'] as core.String;
     }
   }
 
@@ -2281,16 +2284,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 

@@ -165,14 +165,15 @@ class SearchResponse {
 
   SearchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('@context')) {
-      P_context = _json['@context'];
+      P_context = _json['@context'] as core.Object;
     }
     if (_json.containsKey('@type')) {
-      P_type = _json['@type'];
+      P_type = _json['@type'] as core.Object;
     }
     if (_json.containsKey('itemListElement')) {
-      itemListElement =
-          (_json['itemListElement'] as core.List).cast<core.Object>();
+      itemListElement = (_json['itemListElement'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
   }
 

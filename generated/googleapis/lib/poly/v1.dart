@@ -523,16 +523,16 @@ class Asset {
 
   Asset.fromJson(core.Map _json) {
     if (_json.containsKey('authorName')) {
-      authorName = _json['authorName'];
+      authorName = _json['authorName'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('formats')) {
       formats = (_json['formats'] as core.List)
@@ -540,16 +540,16 @@ class Asset {
           .toList();
     }
     if (_json.containsKey('isCurated')) {
-      isCurated = _json['isCurated'];
+      isCurated = _json['isCurated'] as core.bool;
     }
     if (_json.containsKey('license')) {
-      license = _json['license'];
+      license = _json['license'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = _json['metadata'];
+      metadata = _json['metadata'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('presentationParams')) {
       presentationParams =
@@ -562,10 +562,10 @@ class Asset {
       thumbnail = File.fromJson(_json['thumbnail']);
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'];
+      visibility = _json['visibility'] as core.String;
     }
   }
 
@@ -666,10 +666,10 @@ class AssetImportMessage {
 
   AssetImportMessage.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'];
+      filePath = _json['filePath'] as core.String;
     }
     if (_json.containsKey('imageError')) {
       imageError = ImageError.fromJson(_json['imageError']);
@@ -718,13 +718,13 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('relativePath')) {
-      relativePath = _json['relativePath'];
+      relativePath = _json['relativePath'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -777,7 +777,7 @@ class Format {
       formatComplexity = FormatComplexity.fromJson(_json['formatComplexity']);
     }
     if (_json.containsKey('formatType')) {
-      formatType = _json['formatType'];
+      formatType = _json['formatType'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -823,10 +823,10 @@ class FormatComplexity {
 
   FormatComplexity.fromJson(core.Map _json) {
     if (_json.containsKey('lodHint')) {
-      lodHint = _json['lodHint'];
+      lodHint = _json['lodHint'] as core.int;
     }
     if (_json.containsKey('triangleCount')) {
-      triangleCount = _json['triangleCount'];
+      triangleCount = _json['triangleCount'] as core.String;
     }
   }
 
@@ -860,10 +860,10 @@ class ImageError {
 
   ImageError.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'];
+      filePath = _json['filePath'] as core.String;
     }
   }
 
@@ -902,10 +902,10 @@ class ListAssetsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -947,10 +947,10 @@ class ListLikedAssetsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -987,10 +987,10 @@ class ListUserAssetsResponse {
 
   ListUserAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
     if (_json.containsKey('userAssets')) {
       userAssets = (_json['userAssets'] as core.List)
@@ -1082,22 +1082,22 @@ class ObjParseError {
 
   ObjParseError.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.String;
     }
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('filePath')) {
-      filePath = _json['filePath'];
+      filePath = _json['filePath'] as core.String;
     }
     if (_json.containsKey('line')) {
-      line = _json['line'];
+      line = _json['line'] as core.String;
     }
     if (_json.containsKey('lineNumber')) {
-      lineNumber = _json['lineNumber'];
+      lineNumber = _json['lineNumber'] as core.int;
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
   }
 
@@ -1167,10 +1167,10 @@ class PresentationParams {
 
   PresentationParams.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = _json['backgroundColor'];
+      backgroundColor = _json['backgroundColor'] as core.String;
     }
     if (_json.containsKey('colorSpace')) {
-      colorSpace = _json['colorSpace'];
+      colorSpace = _json['colorSpace'] as core.String;
     }
     if (_json.containsKey('orientingRotation')) {
       orientingRotation = Quaternion.fromJson(_json['orientingRotation']);
@@ -1254,7 +1254,9 @@ class RemixInfo {
 
   RemixInfo.fromJson(core.Map _json) {
     if (_json.containsKey('sourceAsset')) {
-      sourceAsset = (_json['sourceAsset'] as core.List).cast<core.String>();
+      sourceAsset = (_json['sourceAsset'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1290,10 +1292,10 @@ class StartAssetImportResponse {
 
   StartAssetImportResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assetId')) {
-      assetId = _json['assetId'];
+      assetId = _json['assetId'] as core.String;
     }
     if (_json.containsKey('assetImportId')) {
-      assetImportId = _json['assetImportId'];
+      assetImportId = _json['assetImportId'] as core.String;
     }
     if (_json.containsKey('assetImportMessages')) {
       assetImportMessages = (_json['assetImportMessages'] as core.List)
@@ -1302,7 +1304,7 @@ class StartAssetImportResponse {
           .toList();
     }
     if (_json.containsKey('publishUrl')) {
-      publishUrl = _json['publishUrl'];
+      publishUrl = _json['publishUrl'] as core.String;
     }
   }
 

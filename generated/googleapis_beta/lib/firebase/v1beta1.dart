@@ -2221,13 +2221,13 @@ class AddFirebaseRequest {
 
   AddFirebaseRequest.fromJson(core.Map _json) {
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'];
+      regionCode = _json['regionCode'] as core.String;
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -2262,10 +2262,10 @@ class AddGoogleAnalyticsRequest {
 
   AddGoogleAnalyticsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsAccountId')) {
-      analyticsAccountId = _json['analyticsAccountId'];
+      analyticsAccountId = _json['analyticsAccountId'] as core.String;
     }
     if (_json.containsKey('analyticsPropertyId')) {
-      analyticsPropertyId = _json['analyticsPropertyId'];
+      analyticsPropertyId = _json['analyticsPropertyId'] as core.String;
     }
   }
 
@@ -2307,16 +2307,16 @@ class AdminSdkConfig {
 
   AdminSdkConfig.fromJson(core.Map _json) {
     if (_json.containsKey('databaseURL')) {
-      databaseURL = _json['databaseURL'];
+      databaseURL = _json['databaseURL'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('storageBucket')) {
-      storageBucket = _json['storageBucket'];
+      storageBucket = _json['storageBucket'] as core.String;
     }
   }
 
@@ -2396,10 +2396,10 @@ class AnalyticsProperty {
 
   AnalyticsProperty.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -2450,19 +2450,19 @@ class AndroidApp {
 
   AndroidApp.fromJson(core.Map _json) {
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('packageName')) {
-      packageName = _json['packageName'];
+      packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -2507,10 +2507,10 @@ class AndroidAppConfig {
 
   AndroidAppConfig.fromJson(core.Map _json) {
     if (_json.containsKey('configFileContents')) {
-      configFileContents = _json['configFileContents'];
+      configFileContents = _json['configFileContents'] as core.String;
     }
     if (_json.containsKey('configFilename')) {
-      configFilename = _json['configFilename'];
+      configFilename = _json['configFilename'] as core.String;
     }
   }
 
@@ -2566,16 +2566,17 @@ class DefaultResources {
 
   DefaultResources.fromJson(core.Map _json) {
     if (_json.containsKey('hostingSite')) {
-      hostingSite = _json['hostingSite'];
+      hostingSite = _json['hostingSite'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('realtimeDatabaseInstance')) {
-      realtimeDatabaseInstance = _json['realtimeDatabaseInstance'];
+      realtimeDatabaseInstance =
+          _json['realtimeDatabaseInstance'] as core.String;
     }
     if (_json.containsKey('storageBucket')) {
-      storageBucket = _json['storageBucket'];
+      storageBucket = _json['storageBucket'] as core.String;
     }
   }
 
@@ -2625,7 +2626,7 @@ class FinalizeDefaultLocationRequest {
 
   FinalizeDefaultLocationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
   }
 
@@ -2676,19 +2677,19 @@ class FirebaseAppInfo {
 
   FirebaseAppInfo.fromJson(core.Map _json) {
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('namespace')) {
-      namespace = _json['namespace'];
+      namespace = _json['namespace'] as core.String;
     }
     if (_json.containsKey('platform')) {
-      platform = _json['platform'];
+      platform = _json['platform'] as core.String;
     }
   }
 
@@ -2764,22 +2765,22 @@ class FirebaseProject {
 
   FirebaseProject.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('projectNumber')) {
-      projectNumber = _json['projectNumber'];
+      projectNumber = _json['projectNumber'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = DefaultResources.fromJson(_json['resources']);
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -2846,22 +2847,22 @@ class IosApp {
 
   IosApp.fromJson(core.Map _json) {
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('appStoreId')) {
-      appStoreId = _json['appStoreId'];
+      appStoreId = _json['appStoreId'] as core.String;
     }
     if (_json.containsKey('bundleId')) {
-      bundleId = _json['bundleId'];
+      bundleId = _json['bundleId'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
   }
 
@@ -2909,10 +2910,10 @@ class IosAppConfig {
 
   IosAppConfig.fromJson(core.Map _json) {
     if (_json.containsKey('configFileContents')) {
-      configFileContents = _json['configFileContents'];
+      configFileContents = _json['configFileContents'] as core.String;
     }
     if (_json.containsKey('configFilename')) {
-      configFilename = _json['configFilename'];
+      configFilename = _json['configFilename'] as core.String;
     }
   }
 
@@ -2948,7 +2949,7 @@ class ListAndroidAppsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2984,7 +2985,7 @@ class ListAvailableLocationsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3016,7 +3017,7 @@ class ListAvailableProjectsResponse {
 
   ListAvailableProjectsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('projectInfo')) {
       projectInfo = (_json['projectInfo'] as core.List)
@@ -3053,7 +3054,7 @@ class ListFirebaseProjectsResponse {
 
   ListFirebaseProjectsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
@@ -3094,7 +3095,7 @@ class ListIosAppsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3154,7 +3155,7 @@ class ListWebAppsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3198,13 +3199,15 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('features')) {
-      features = (_json['features'] as core.List).cast<core.String>();
+      features = (_json['features'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3278,21 +3281,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -3342,13 +3347,13 @@ class ProjectInfo {
 
   ProjectInfo.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('project')) {
-      project = _json['project'];
+      project = _json['project'] as core.String;
     }
   }
 
@@ -3380,7 +3385,7 @@ class RemoveAnalyticsRequest {
 
   RemoveAnalyticsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsPropertyId')) {
-      analyticsPropertyId = _json['analyticsPropertyId'];
+      analyticsPropertyId = _json['analyticsPropertyId'] as core.String;
     }
   }
 
@@ -3412,7 +3417,7 @@ class SearchFirebaseAppsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3460,13 +3465,13 @@ class ShaCertificate {
 
   ShaCertificate.fromJson(core.Map _json) {
     if (_json.containsKey('certType')) {
-      certType = _json['certType'];
+      certType = _json['certType'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('shaHash')) {
-      shaHash = _json['shaHash'];
+      shaHash = _json['shaHash'] as core.String;
     }
   }
 
@@ -3511,16 +3516,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3564,19 +3571,19 @@ class StatusProto {
 
   StatusProto.fromJson(core.Map _json) {
     if (_json.containsKey('canonicalCode')) {
-      canonicalCode = _json['canonicalCode'];
+      canonicalCode = _json['canonicalCode'] as core.int;
     }
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
     if (_json.containsKey('messageSet')) {
       messageSet = MessageSet.fromJson(_json['messageSet']);
     }
     if (_json.containsKey('space')) {
-      space = _json['space'];
+      space = _json['space'] as core.String;
     }
   }
 
@@ -3629,13 +3636,13 @@ class StreamMapping {
 
   StreamMapping.fromJson(core.Map _json) {
     if (_json.containsKey('app')) {
-      app = _json['app'];
+      app = _json['app'] as core.String;
     }
     if (_json.containsKey('measurementId')) {
-      measurementId = _json['measurementId'];
+      measurementId = _json['measurementId'] as core.String;
     }
     if (_json.containsKey('streamId')) {
-      streamId = _json['streamId'];
+      streamId = _json['streamId'] as core.String;
     }
   }
 
@@ -3695,22 +3702,24 @@ class WebApp {
 
   WebApp.fromJson(core.Map _json) {
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('appUrls')) {
-      appUrls = (_json['appUrls'] as core.List).cast<core.String>();
+      appUrls = (_json['appUrls'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('webId')) {
-      webId = _json['webId'];
+      webId = _json['webId'] as core.String;
     }
   }
 
@@ -3791,31 +3800,31 @@ class WebAppConfig {
 
   WebAppConfig.fromJson(core.Map _json) {
     if (_json.containsKey('apiKey')) {
-      apiKey = _json['apiKey'];
+      apiKey = _json['apiKey'] as core.String;
     }
     if (_json.containsKey('appId')) {
-      appId = _json['appId'];
+      appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('authDomain')) {
-      authDomain = _json['authDomain'];
+      authDomain = _json['authDomain'] as core.String;
     }
     if (_json.containsKey('databaseURL')) {
-      databaseURL = _json['databaseURL'];
+      databaseURL = _json['databaseURL'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('measurementId')) {
-      measurementId = _json['measurementId'];
+      measurementId = _json['measurementId'] as core.String;
     }
     if (_json.containsKey('messagingSenderId')) {
-      messagingSenderId = _json['messagingSenderId'];
+      messagingSenderId = _json['messagingSenderId'] as core.String;
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('storageBucket')) {
-      storageBucket = _json['storageBucket'];
+      storageBucket = _json['storageBucket'] as core.String;
     }
   }
 

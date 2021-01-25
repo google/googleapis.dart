@@ -992,7 +992,9 @@ class ListOfListOfString extends collection.ListBase<core.List<core.String>> {
 
   ListOfListOfString.fromJson(core.List json)
       : _inner = json
-            .map((value) => (value as core.List).cast<core.String>())
+            .map((value) => (value as core.List)
+                .map<core.String>((value) => value as core.String)
+                .toList())
             .toList();
 
   core.List<core.List<core.String>> toJson() {
@@ -1058,8 +1060,11 @@ class ListOfListOfint extends collection.ListBase<core.List<core.int>> {
   ListOfListOfint() : _inner = [];
 
   ListOfListOfint.fromJson(core.List json)
-      : _inner =
-            json.map((value) => (value as core.List).cast<core.int>()).toList();
+      : _inner = json
+            .map((value) => (value as core.List)
+                .map<core.int>((value) => value as core.int)
+                .toList())
+            .toList();
 
   core.List<core.List<core.int>> toJson() {
     return _inner.map((value) => value).toList();
@@ -1092,7 +1097,9 @@ class ListOfMapOfListOfString
       : _inner = json
             .map((value) => commons.mapMap<core.List, core.List<core.String>>(
                 value.cast<core.String, core.List>(),
-                (core.List item) => (item as core.List).cast<core.String>()))
+                (core.List item) => (item as core.List)
+                    .map<core.String>((value) => value as core.String)
+                    .toList()))
             .toList();
 
   core.List<core.Map<core.String, core.List<core.String>>> toJson() {
@@ -1128,7 +1135,9 @@ class ListOfMapOfListOfint
       : _inner = json
             .map((value) => commons.mapMap<core.List, core.List<core.int>>(
                 value.cast<core.String, core.List>(),
-                (core.List item) => (item as core.List).cast<core.int>()))
+                (core.List item) => (item as core.List)
+                    .map<core.int>((value) => value as core.int)
+                    .toList()))
             .toList();
 
   core.List<core.Map<core.String, core.List<core.int>>> toJson() {
@@ -1160,7 +1169,7 @@ class ListOfString extends collection.ListBase<core.String> {
   ListOfString() : _inner = [];
 
   ListOfString.fromJson(core.List json)
-      : _inner = json.map((value) => value).toList();
+      : _inner = json.map((value) => value as core.String).toList();
 
   core.List<core.String> toJson() {
     return _inner.map((value) => value).toList();
@@ -1222,8 +1231,10 @@ class MapOfListOfMapOfbool extends collection
   MapOfListOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.bool>>(
-              (value) => (value as core.Map).cast<core.String, core.bool>())
+          .map<core.Map<core.String, core.bool>>((value) =>
+              commons.mapMap<core.bool, core.bool>(
+                  value.cast<core.String, core.bool>(),
+                  (core.bool item) => item as core.bool))
           .toList();
     });
   }
@@ -1263,8 +1274,10 @@ class MapOfListOfMapOfint extends collection
   MapOfListOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.int>>(
-              (value) => (value as core.Map).cast<core.String, core.int>())
+          .map<core.Map<core.String, core.int>>((value) =>
+              commons.mapMap<core.int, core.int>(
+                  value.cast<core.String, core.int>(),
+                  (core.int item) => item as core.int))
           .toList();
     });
   }
@@ -1303,7 +1316,9 @@ class MapOfMapOfbool
 
   MapOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = (value as core.Map).cast<core.String, core.bool>();
+      this[key] = commons.mapMap<core.bool, core.bool>(
+          value.cast<core.String, core.bool>(),
+          (core.bool item) => item as core.bool);
     });
   }
 
@@ -1340,7 +1355,9 @@ class MapOfMapOfint
 
   MapOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = (value as core.Map).cast<core.String, core.int>();
+      this[key] = commons.mapMap<core.int, core.int>(
+          value.cast<core.String, core.int>(),
+          (core.int item) => item as core.int);
     });
   }
 
@@ -1410,7 +1427,7 @@ class MapOfint extends collection.MapBase<core.String, core.int> {
 
   MapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = value;
+      this[key] = value as core.int;
     });
   }
 
@@ -1444,7 +1461,7 @@ class NestedResponse {
 
   NestedResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nestedResult')) {
-      nestedResult = _json['nestedResult'];
+      nestedResult = _json['nestedResult'] as core.String;
     }
   }
 
@@ -1464,7 +1481,7 @@ class ToyAgeRequest {
 
   ToyAgeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('age')) {
-      age = _json['age'];
+      age = _json['age'] as core.int;
     }
   }
 
@@ -1490,7 +1507,7 @@ class ToyMapResponse {
           (core.Map item) => NestedResponse.fromJson(item));
     }
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 
@@ -1516,10 +1533,10 @@ class ToyRequest {
 
   ToyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('age')) {
-      age = _json['age'];
+      age = _json['age'] as core.int;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1542,7 +1559,7 @@ class ToyResourceResponse {
 
   ToyResourceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 
@@ -1562,7 +1579,7 @@ class ToyResponse {
 
   ToyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 

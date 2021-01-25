@@ -1697,10 +1697,10 @@ class BindDeviceToGatewayRequest {
 
   BindDeviceToGatewayRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('gatewayId')) {
-      gatewayId = _json['gatewayId'];
+      gatewayId = _json['gatewayId'] as core.String;
     }
   }
 
@@ -1784,16 +1784,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -1922,7 +1924,7 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('blocked')) {
-      blocked = _json['blocked'];
+      blocked = _json['blocked'] as core.bool;
     }
     if (_json.containsKey('config')) {
       config = DeviceConfig.fromJson(_json['config']);
@@ -1936,41 +1938,42 @@ class Device {
       gatewayConfig = GatewayConfig.fromJson(_json['gatewayConfig']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('lastConfigAckTime')) {
-      lastConfigAckTime = _json['lastConfigAckTime'];
+      lastConfigAckTime = _json['lastConfigAckTime'] as core.String;
     }
     if (_json.containsKey('lastConfigSendTime')) {
-      lastConfigSendTime = _json['lastConfigSendTime'];
+      lastConfigSendTime = _json['lastConfigSendTime'] as core.String;
     }
     if (_json.containsKey('lastErrorStatus')) {
       lastErrorStatus = Status.fromJson(_json['lastErrorStatus']);
     }
     if (_json.containsKey('lastErrorTime')) {
-      lastErrorTime = _json['lastErrorTime'];
+      lastErrorTime = _json['lastErrorTime'] as core.String;
     }
     if (_json.containsKey('lastEventTime')) {
-      lastEventTime = _json['lastEventTime'];
+      lastEventTime = _json['lastEventTime'] as core.String;
     }
     if (_json.containsKey('lastHeartbeatTime')) {
-      lastHeartbeatTime = _json['lastHeartbeatTime'];
+      lastHeartbeatTime = _json['lastHeartbeatTime'] as core.String;
     }
     if (_json.containsKey('lastStateTime')) {
-      lastStateTime = _json['lastStateTime'];
+      lastStateTime = _json['lastStateTime'] as core.String;
     }
     if (_json.containsKey('logLevel')) {
-      logLevel = _json['logLevel'];
+      logLevel = _json['logLevel'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>();
+      metadata = commons.mapMap<core.String, core.String>(
+          _json['metadata'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('numId')) {
-      numId = _json['numId'];
+      numId = _json['numId'] as core.String;
     }
     if (_json.containsKey('state')) {
       state = DeviceState.fromJson(_json['state']);
@@ -2072,16 +2075,16 @@ class DeviceConfig {
 
   DeviceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('binaryData')) {
-      binaryData = _json['binaryData'];
+      binaryData = _json['binaryData'] as core.String;
     }
     if (_json.containsKey('cloudUpdateTime')) {
-      cloudUpdateTime = _json['cloudUpdateTime'];
+      cloudUpdateTime = _json['cloudUpdateTime'] as core.String;
     }
     if (_json.containsKey('deviceAckTime')) {
-      deviceAckTime = _json['deviceAckTime'];
+      deviceAckTime = _json['deviceAckTime'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -2126,7 +2129,7 @@ class DeviceCredential {
 
   DeviceCredential.fromJson(core.Map _json) {
     if (_json.containsKey('expirationTime')) {
-      expirationTime = _json['expirationTime'];
+      expirationTime = _json['expirationTime'] as core.String;
     }
     if (_json.containsKey('publicKey')) {
       publicKey = PublicKeyCredential.fromJson(_json['publicKey']);
@@ -2224,16 +2227,16 @@ class DeviceRegistry {
       httpConfig = HttpConfig.fromJson(_json['httpConfig']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('logLevel')) {
-      logLevel = _json['logLevel'];
+      logLevel = _json['logLevel'] as core.String;
     }
     if (_json.containsKey('mqttConfig')) {
       mqttConfig = MqttConfig.fromJson(_json['mqttConfig']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('stateNotificationConfig')) {
       stateNotificationConfig =
@@ -2293,10 +2296,10 @@ class DeviceState {
 
   DeviceState.fromJson(core.Map _json) {
     if (_json.containsKey('binaryData')) {
-      binaryData = _json['binaryData'];
+      binaryData = _json['binaryData'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2346,10 +2349,10 @@ class EventNotificationConfig {
 
   EventNotificationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('pubsubTopicName')) {
-      pubsubTopicName = _json['pubsubTopicName'];
+      pubsubTopicName = _json['pubsubTopicName'] as core.String;
     }
     if (_json.containsKey('subfolderMatches')) {
-      subfolderMatches = _json['subfolderMatches'];
+      subfolderMatches = _json['subfolderMatches'] as core.String;
     }
   }
 
@@ -2402,16 +2405,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -2468,16 +2471,16 @@ class GatewayConfig {
 
   GatewayConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gatewayAuthMethod')) {
-      gatewayAuthMethod = _json['gatewayAuthMethod'];
+      gatewayAuthMethod = _json['gatewayAuthMethod'] as core.String;
     }
     if (_json.containsKey('gatewayType')) {
-      gatewayType = _json['gatewayType'];
+      gatewayType = _json['gatewayType'] as core.String;
     }
     if (_json.containsKey('lastAccessedGatewayId')) {
-      lastAccessedGatewayId = _json['lastAccessedGatewayId'];
+      lastAccessedGatewayId = _json['lastAccessedGatewayId'] as core.String;
     }
     if (_json.containsKey('lastAccessedGatewayTime')) {
-      lastAccessedGatewayTime = _json['lastAccessedGatewayTime'];
+      lastAccessedGatewayTime = _json['lastAccessedGatewayTime'] as core.String;
     }
   }
 
@@ -2537,7 +2540,7 @@ class GetPolicyOptions {
 
   GetPolicyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('requestedPolicyVersion')) {
-      requestedPolicyVersion = _json['requestedPolicyVersion'];
+      requestedPolicyVersion = _json['requestedPolicyVersion'] as core.int;
     }
   }
 
@@ -2566,7 +2569,7 @@ class HttpConfig {
 
   HttpConfig.fromJson(core.Map _json) {
     if (_json.containsKey('httpEnabledState')) {
-      httpEnabledState = _json['httpEnabledState'];
+      httpEnabledState = _json['httpEnabledState'] as core.String;
     }
   }
 
@@ -2624,7 +2627,7 @@ class ListDeviceRegistriesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2685,7 +2688,7 @@ class ListDevicesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2724,10 +2727,10 @@ class ModifyCloudToDeviceConfigRequest {
 
   ModifyCloudToDeviceConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey('binaryData')) {
-      binaryData = _json['binaryData'];
+      binaryData = _json['binaryData'] as core.String;
     }
     if (_json.containsKey('versionToUpdate')) {
-      versionToUpdate = _json['versionToUpdate'];
+      versionToUpdate = _json['versionToUpdate'] as core.String;
     }
   }
 
@@ -2758,7 +2761,7 @@ class MqttConfig {
 
   MqttConfig.fromJson(core.Map _json) {
     if (_json.containsKey('mqttEnabledState')) {
-      mqttEnabledState = _json['mqttEnabledState'];
+      mqttEnabledState = _json['mqttEnabledState'] as core.String;
     }
   }
 
@@ -2851,10 +2854,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -2894,10 +2897,10 @@ class PublicKeyCertificate {
 
   PublicKeyCertificate.fromJson(core.Map _json) {
     if (_json.containsKey('certificate')) {
-      certificate = _json['certificate'];
+      certificate = _json['certificate'] as core.String;
     }
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
     if (_json.containsKey('x509Details')) {
       x509Details = X509CertificateDetails.fromJson(_json['x509Details']);
@@ -2950,10 +2953,10 @@ class PublicKeyCredential {
 
   PublicKeyCredential.fromJson(core.Map _json) {
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
   }
 
@@ -3016,10 +3019,10 @@ class SendCommandToDeviceRequest {
 
   SendCommandToDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('binaryData')) {
-      binaryData = _json['binaryData'];
+      binaryData = _json['binaryData'] as core.String;
     }
     if (_json.containsKey('subfolder')) {
-      subfolder = _json['subfolder'];
+      subfolder = _json['subfolder'] as core.String;
     }
   }
 
@@ -3084,7 +3087,7 @@ class StateNotificationConfig {
 
   StateNotificationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('pubsubTopicName')) {
-      pubsubTopicName = _json['pubsubTopicName'];
+      pubsubTopicName = _json['pubsubTopicName'] as core.String;
     }
   }
 
@@ -3123,16 +3126,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3163,7 +3168,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3186,7 +3193,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3214,10 +3223,10 @@ class UnbindDeviceFromGatewayRequest {
 
   UnbindDeviceFromGatewayRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deviceId')) {
-      deviceId = _json['deviceId'];
+      deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('gatewayId')) {
-      gatewayId = _json['gatewayId'];
+      gatewayId = _json['gatewayId'] as core.String;
     }
   }
 
@@ -3271,22 +3280,22 @@ class X509CertificateDetails {
 
   X509CertificateDetails.fromJson(core.Map _json) {
     if (_json.containsKey('expiryTime')) {
-      expiryTime = _json['expiryTime'];
+      expiryTime = _json['expiryTime'] as core.String;
     }
     if (_json.containsKey('issuer')) {
-      issuer = _json['issuer'];
+      issuer = _json['issuer'] as core.String;
     }
     if (_json.containsKey('publicKeyType')) {
-      publicKeyType = _json['publicKeyType'];
+      publicKeyType = _json['publicKeyType'] as core.String;
     }
     if (_json.containsKey('signatureAlgorithm')) {
-      signatureAlgorithm = _json['signatureAlgorithm'];
+      signatureAlgorithm = _json['signatureAlgorithm'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('subject')) {
-      subject = _json['subject'];
+      subject = _json['subject'] as core.String;
     }
   }
 

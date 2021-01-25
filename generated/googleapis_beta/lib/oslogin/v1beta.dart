@@ -459,7 +459,7 @@ class ImportSshPublicKeyResponse {
 
   ImportSshPublicKeyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('details')) {
-      details = _json['details'];
+      details = _json['details'] as core.String;
     }
     if (_json.containsKey('loginProfile')) {
       loginProfile = LoginProfile.fromJson(_json['loginProfile']);
@@ -494,7 +494,7 @@ class LoginProfile {
 
   LoginProfile.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('posixAccounts')) {
       posixAccounts = (_json['posixAccounts'] as core.List)
@@ -571,37 +571,37 @@ class PosixAccount {
 
   PosixAccount.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('gecos')) {
-      gecos = _json['gecos'];
+      gecos = _json['gecos'] as core.String;
     }
     if (_json.containsKey('gid')) {
-      gid = _json['gid'];
+      gid = _json['gid'] as core.String;
     }
     if (_json.containsKey('homeDirectory')) {
-      homeDirectory = _json['homeDirectory'];
+      homeDirectory = _json['homeDirectory'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('operatingSystemType')) {
-      operatingSystemType = _json['operatingSystemType'];
+      operatingSystemType = _json['operatingSystemType'] as core.String;
     }
     if (_json.containsKey('primary')) {
-      primary = _json['primary'];
+      primary = _json['primary'] as core.bool;
     }
     if (_json.containsKey('shell')) {
-      shell = _json['shell'];
+      shell = _json['shell'] as core.String;
     }
     if (_json.containsKey('systemId')) {
-      systemId = _json['systemId'];
+      systemId = _json['systemId'] as core.String;
     }
     if (_json.containsKey('uid')) {
-      uid = _json['uid'];
+      uid = _json['uid'] as core.String;
     }
     if (_json.containsKey('username')) {
-      username = _json['username'];
+      username = _json['username'] as core.String;
     }
   }
 
@@ -662,16 +662,16 @@ class SshPublicKey {
 
   SshPublicKey.fromJson(core.Map _json) {
     if (_json.containsKey('expirationTimeUsec')) {
-      expirationTimeUsec = _json['expirationTimeUsec'];
+      expirationTimeUsec = _json['expirationTimeUsec'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 

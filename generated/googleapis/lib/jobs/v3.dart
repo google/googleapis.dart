@@ -1100,13 +1100,17 @@ class ApplicationInfo {
 
   ApplicationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List).cast<core.String>();
+      emails = (_json['emails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('instruction')) {
-      instruction = _json['instruction'];
+      instruction = _json['instruction'] as core.String;
     }
     if (_json.containsKey('uris')) {
-      uris = (_json['uris'] as core.List).cast<core.String>();
+      uris = (_json['uris'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1137,7 +1141,7 @@ class BatchDeleteJobsRequest {
 
   BatchDeleteJobsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = _json['filter'];
+      filter = _json['filter'] as core.String;
     }
   }
 
@@ -1194,7 +1198,7 @@ class BucketizedCount {
 
   BucketizedCount.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.int;
     }
     if (_json.containsKey('range')) {
       range = BucketRange.fromJson(_json['range']);
@@ -1252,23 +1256,24 @@ class ClientEvent {
 
   ClientEvent.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('eventId')) {
-      eventId = _json['eventId'];
+      eventId = _json['eventId'] as core.String;
     }
     if (_json.containsKey('extraInfo')) {
-      extraInfo =
-          (_json['extraInfo'] as core.Map).cast<core.String, core.String>();
+      extraInfo = commons.mapMap<core.String, core.String>(
+          _json['extraInfo'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('jobEvent')) {
       jobEvent = JobEvent.fromJson(_json['jobEvent']);
     }
     if (_json.containsKey('parentEventId')) {
-      parentEventId = _json['parentEventId'];
+      parentEventId = _json['parentEventId'] as core.String;
     }
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
   }
 
@@ -1345,22 +1350,22 @@ class CommuteFilter {
 
   CommuteFilter.fromJson(core.Map _json) {
     if (_json.containsKey('allowImpreciseAddresses')) {
-      allowImpreciseAddresses = _json['allowImpreciseAddresses'];
+      allowImpreciseAddresses = _json['allowImpreciseAddresses'] as core.bool;
     }
     if (_json.containsKey('commuteMethod')) {
-      commuteMethod = _json['commuteMethod'];
+      commuteMethod = _json['commuteMethod'] as core.String;
     }
     if (_json.containsKey('departureTime')) {
       departureTime = TimeOfDay.fromJson(_json['departureTime']);
     }
     if (_json.containsKey('roadTraffic')) {
-      roadTraffic = _json['roadTraffic'];
+      roadTraffic = _json['roadTraffic'] as core.String;
     }
     if (_json.containsKey('startCoordinates')) {
       startCoordinates = LatLng.fromJson(_json['startCoordinates']);
     }
     if (_json.containsKey('travelDuration')) {
-      travelDuration = _json['travelDuration'];
+      travelDuration = _json['travelDuration'] as core.String;
     }
   }
 
@@ -1406,7 +1411,7 @@ class CommuteInfo {
       jobLocation = Location.fromJson(_json['jobLocation']);
     }
     if (_json.containsKey('travelDuration')) {
-      travelDuration = _json['travelDuration'];
+      travelDuration = _json['travelDuration'] as core.String;
     }
   }
 
@@ -1498,45 +1503,46 @@ class Company {
 
   Company.fromJson(core.Map _json) {
     if (_json.containsKey('careerSiteUri')) {
-      careerSiteUri = _json['careerSiteUri'];
+      careerSiteUri = _json['careerSiteUri'] as core.String;
     }
     if (_json.containsKey('derivedInfo')) {
       derivedInfo = CompanyDerivedInfo.fromJson(_json['derivedInfo']);
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('eeoText')) {
-      eeoText = _json['eeoText'];
+      eeoText = _json['eeoText'] as core.String;
     }
     if (_json.containsKey('externalId')) {
-      externalId = _json['externalId'];
+      externalId = _json['externalId'] as core.String;
     }
     if (_json.containsKey('headquartersAddress')) {
-      headquartersAddress = _json['headquartersAddress'];
+      headquartersAddress = _json['headquartersAddress'] as core.String;
     }
     if (_json.containsKey('hiringAgency')) {
-      hiringAgency = _json['hiringAgency'];
+      hiringAgency = _json['hiringAgency'] as core.bool;
     }
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
     if (_json.containsKey('keywordSearchableJobCustomAttributes')) {
       keywordSearchableJobCustomAttributes =
           (_json['keywordSearchableJobCustomAttributes'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
     if (_json.containsKey('suspended')) {
-      suspended = _json['suspended'];
+      suspended = _json['suspended'] as core.bool;
     }
     if (_json.containsKey('websiteUri')) {
-      websiteUri = _json['websiteUri'];
+      websiteUri = _json['websiteUri'] as core.String;
     }
   }
 
@@ -1668,7 +1674,7 @@ class CompensationEntry {
       amount = Money.fromJson(_json['amount']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expectedUnitsPerYear')) {
       expectedUnitsPerYear = _json['expectedUnitsPerYear'].toDouble();
@@ -1677,10 +1683,10 @@ class CompensationEntry {
       range = CompensationRange.fromJson(_json['range']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
   }
 
@@ -1749,16 +1755,18 @@ class CompensationFilter {
   CompensationFilter.fromJson(core.Map _json) {
     if (_json.containsKey('includeJobsWithUnspecifiedCompensationRange')) {
       includeJobsWithUnspecifiedCompensationRange =
-          _json['includeJobsWithUnspecifiedCompensationRange'];
+          _json['includeJobsWithUnspecifiedCompensationRange'] as core.bool;
     }
     if (_json.containsKey('range')) {
       range = CompensationRange.fromJson(_json['range']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('units')) {
-      units = (_json['units'] as core.List).cast<core.String>();
+      units = (_json['units'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1809,7 +1817,7 @@ class CompensationHistogramRequest {
           NumericBucketingOption.fromJson(_json['bucketingOption']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1849,7 +1857,7 @@ class CompensationHistogramResult {
       result = NumericBucketingResult.fromJson(_json['result']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -2009,13 +2017,13 @@ class CompletionResult {
 
   CompletionResult.fromJson(core.Map _json) {
     if (_json.containsKey('imageUri')) {
-      imageUri = _json['imageUri'];
+      imageUri = _json['imageUri'] as core.String;
     }
     if (_json.containsKey('suggestion')) {
-      suggestion = _json['suggestion'];
+      suggestion = _json['suggestion'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -2128,13 +2136,17 @@ class CustomAttribute {
 
   CustomAttribute.fromJson(core.Map _json) {
     if (_json.containsKey('filterable')) {
-      filterable = _json['filterable'];
+      filterable = _json['filterable'] as core.bool;
     }
     if (_json.containsKey('longValues')) {
-      longValues = (_json['longValues'] as core.List).cast<core.String>();
+      longValues = (_json['longValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('stringValues')) {
-      stringValues = (_json['stringValues'] as core.List).cast<core.String>();
+      stringValues = (_json['stringValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2175,14 +2187,14 @@ class CustomAttributeHistogramRequest {
 
   CustomAttributeHistogramRequest.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('longValueHistogramBucketingOption')) {
       longValueHistogramBucketingOption = NumericBucketingOption.fromJson(
           _json['longValueHistogramBucketingOption']);
     }
     if (_json.containsKey('stringValueHistogram')) {
-      stringValueHistogram = _json['stringValueHistogram'];
+      stringValueHistogram = _json['stringValueHistogram'] as core.bool;
     }
   }
 
@@ -2219,16 +2231,16 @@ class CustomAttributeHistogramResult {
 
   CustomAttributeHistogramResult.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('longValueHistogramResult')) {
       longValueHistogramResult =
           NumericBucketingResult.fromJson(_json['longValueHistogramResult']);
     }
     if (_json.containsKey('stringValueHistogramResult')) {
-      stringValueHistogramResult =
-          (_json['stringValueHistogramResult'] as core.Map)
-              .cast<core.String, core.int>();
+      stringValueHistogramResult = commons.mapMap<core.int, core.int>(
+          _json['stringValueHistogramResult'].cast<core.String, core.int>(),
+          (core.int item) => item as core.int);
     }
   }
 
@@ -2273,10 +2285,10 @@ class DeviceInfo {
 
   DeviceInfo.fromJson(core.Map _json) {
     if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'];
+      deviceType = _json['deviceType'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -2410,28 +2422,28 @@ class GoogleCloudTalentV4BatchOperationMetadata {
 
   GoogleCloudTalentV4BatchOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('failureCount')) {
-      failureCount = _json['failureCount'];
+      failureCount = _json['failureCount'] as core.int;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('stateDescription')) {
-      stateDescription = _json['stateDescription'];
+      stateDescription = _json['stateDescription'] as core.String;
     }
     if (_json.containsKey('successCount')) {
-      successCount = _json['successCount'];
+      successCount = _json['successCount'] as core.int;
     }
     if (_json.containsKey('totalCount')) {
-      totalCount = _json['totalCount'];
+      totalCount = _json['totalCount'] as core.int;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2612,7 +2624,7 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
       amount = Money.fromJson(_json['amount']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expectedUnitsPerYear')) {
       expectedUnitsPerYear = _json['expectedUnitsPerYear'].toDouble();
@@ -2622,10 +2634,10 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
           _json['range']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
   }
 
@@ -2720,16 +2732,20 @@ class GoogleCloudTalentV4CustomAttribute {
 
   GoogleCloudTalentV4CustomAttribute.fromJson(core.Map _json) {
     if (_json.containsKey('filterable')) {
-      filterable = _json['filterable'];
+      filterable = _json['filterable'] as core.bool;
     }
     if (_json.containsKey('keywordSearchable')) {
-      keywordSearchable = _json['keywordSearchable'];
+      keywordSearchable = _json['keywordSearchable'] as core.bool;
     }
     if (_json.containsKey('longValues')) {
-      longValues = (_json['longValues'] as core.List).cast<core.String>();
+      longValues = (_json['longValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('stringValues')) {
-      stringValues = (_json['stringValues'] as core.List).cast<core.String>();
+      stringValues = (_json['stringValues'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2985,17 +3001,19 @@ class GoogleCloudTalentV4Job {
 
   GoogleCloudTalentV4Job.fromJson(core.Map _json) {
     if (_json.containsKey('addresses')) {
-      addresses = (_json['addresses'] as core.List).cast<core.String>();
+      addresses = (_json['addresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('applicationInfo')) {
       applicationInfo = GoogleCloudTalentV4JobApplicationInfo.fromJson(
           _json['applicationInfo']);
     }
     if (_json.containsKey('company')) {
-      company = _json['company'];
+      company = _json['company'] as core.String;
     }
     if (_json.containsKey('companyDisplayName')) {
-      companyDisplayName = _json['companyDisplayName'];
+      companyDisplayName = _json['companyDisplayName'] as core.String;
     }
     if (_json.containsKey('compensationInfo')) {
       compensationInfo = GoogleCloudTalentV4CompensationInfo.fromJson(
@@ -3009,79 +3027,84 @@ class GoogleCloudTalentV4Job {
                   GoogleCloudTalentV4CustomAttribute.fromJson(item));
     }
     if (_json.containsKey('degreeTypes')) {
-      degreeTypes = (_json['degreeTypes'] as core.List).cast<core.String>();
+      degreeTypes = (_json['degreeTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('department')) {
-      department = _json['department'];
+      department = _json['department'] as core.String;
     }
     if (_json.containsKey('derivedInfo')) {
       derivedInfo =
           GoogleCloudTalentV4JobDerivedInfo.fromJson(_json['derivedInfo']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('employmentTypes')) {
-      employmentTypes =
-          (_json['employmentTypes'] as core.List).cast<core.String>();
+      employmentTypes = (_json['employmentTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('incentives')) {
-      incentives = _json['incentives'];
+      incentives = _json['incentives'] as core.String;
     }
     if (_json.containsKey('jobBenefits')) {
-      jobBenefits = (_json['jobBenefits'] as core.List).cast<core.String>();
+      jobBenefits = (_json['jobBenefits'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('jobEndTime')) {
-      jobEndTime = _json['jobEndTime'];
+      jobEndTime = _json['jobEndTime'] as core.String;
     }
     if (_json.containsKey('jobLevel')) {
-      jobLevel = _json['jobLevel'];
+      jobLevel = _json['jobLevel'] as core.String;
     }
     if (_json.containsKey('jobStartTime')) {
-      jobStartTime = _json['jobStartTime'];
+      jobStartTime = _json['jobStartTime'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('postingCreateTime')) {
-      postingCreateTime = _json['postingCreateTime'];
+      postingCreateTime = _json['postingCreateTime'] as core.String;
     }
     if (_json.containsKey('postingExpireTime')) {
-      postingExpireTime = _json['postingExpireTime'];
+      postingExpireTime = _json['postingExpireTime'] as core.String;
     }
     if (_json.containsKey('postingPublishTime')) {
-      postingPublishTime = _json['postingPublishTime'];
+      postingPublishTime = _json['postingPublishTime'] as core.String;
     }
     if (_json.containsKey('postingRegion')) {
-      postingRegion = _json['postingRegion'];
+      postingRegion = _json['postingRegion'] as core.String;
     }
     if (_json.containsKey('postingUpdateTime')) {
-      postingUpdateTime = _json['postingUpdateTime'];
+      postingUpdateTime = _json['postingUpdateTime'] as core.String;
     }
     if (_json.containsKey('processingOptions')) {
       processingOptions = GoogleCloudTalentV4JobProcessingOptions.fromJson(
           _json['processingOptions']);
     }
     if (_json.containsKey('promotionValue')) {
-      promotionValue = _json['promotionValue'];
+      promotionValue = _json['promotionValue'] as core.int;
     }
     if (_json.containsKey('qualifications')) {
-      qualifications = _json['qualifications'];
+      qualifications = _json['qualifications'] as core.String;
     }
     if (_json.containsKey('requisitionId')) {
-      requisitionId = _json['requisitionId'];
+      requisitionId = _json['requisitionId'] as core.String;
     }
     if (_json.containsKey('responsibilities')) {
-      responsibilities = _json['responsibilities'];
+      responsibilities = _json['responsibilities'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'];
+      visibility = _json['visibility'] as core.String;
     }
   }
 
@@ -3207,13 +3230,17 @@ class GoogleCloudTalentV4JobApplicationInfo {
 
   GoogleCloudTalentV4JobApplicationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List).cast<core.String>();
+      emails = (_json['emails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('instruction')) {
-      instruction = _json['instruction'];
+      instruction = _json['instruction'] as core.String;
     }
     if (_json.containsKey('uris')) {
-      uris = (_json['uris'] as core.List).cast<core.String>();
+      uris = (_json['uris'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3245,7 +3272,9 @@ class GoogleCloudTalentV4JobDerivedInfo {
 
   GoogleCloudTalentV4JobDerivedInfo.fromJson(core.Map _json) {
     if (_json.containsKey('jobCategories')) {
-      jobCategories = (_json['jobCategories'] as core.List).cast<core.String>();
+      jobCategories = (_json['jobCategories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
@@ -3289,10 +3318,11 @@ class GoogleCloudTalentV4JobProcessingOptions {
 
   GoogleCloudTalentV4JobProcessingOptions.fromJson(core.Map _json) {
     if (_json.containsKey('disableStreetAddressResolution')) {
-      disableStreetAddressResolution = _json['disableStreetAddressResolution'];
+      disableStreetAddressResolution =
+          _json['disableStreetAddressResolution'] as core.bool;
     }
     if (_json.containsKey('htmlSanitization')) {
-      htmlSanitization = _json['htmlSanitization'];
+      htmlSanitization = _json['htmlSanitization'] as core.String;
     }
   }
 
@@ -3389,7 +3419,7 @@ class GoogleCloudTalentV4Location {
       latLng = LatLng.fromJson(_json['latLng']);
     }
     if (_json.containsKey('locationType')) {
-      locationType = _json['locationType'];
+      locationType = _json['locationType'] as core.String;
     }
     if (_json.containsKey('postalAddress')) {
       postalAddress = PostalAddress.fromJson(_json['postalAddress']);
@@ -3449,8 +3479,9 @@ class HistogramFacets {
               .toList();
     }
     if (_json.containsKey('simpleHistogramFacets')) {
-      simpleHistogramFacets =
-          (_json['simpleHistogramFacets'] as core.List).cast<core.String>();
+      simpleHistogramFacets = (_json['simpleHistogramFacets'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3527,10 +3558,12 @@ class HistogramResult {
 
   HistogramResult.fromJson(core.Map _json) {
     if (_json.containsKey('searchType')) {
-      searchType = _json['searchType'];
+      searchType = _json['searchType'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.Map).cast<core.String, core.int>();
+      values = commons.mapMap<core.int, core.int>(
+          _json['values'].cast<core.String, core.int>(),
+          (core.int item) => item as core.int);
     }
   }
 
@@ -3837,16 +3870,18 @@ class Job {
 
   Job.fromJson(core.Map _json) {
     if (_json.containsKey('addresses')) {
-      addresses = (_json['addresses'] as core.List).cast<core.String>();
+      addresses = (_json['addresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('applicationInfo')) {
       applicationInfo = ApplicationInfo.fromJson(_json['applicationInfo']);
     }
     if (_json.containsKey('companyDisplayName')) {
-      companyDisplayName = _json['companyDisplayName'];
+      companyDisplayName = _json['companyDisplayName'] as core.String;
     }
     if (_json.containsKey('companyName')) {
-      companyName = _json['companyName'];
+      companyName = _json['companyName'] as core.String;
     }
     if (_json.containsKey('compensationInfo')) {
       compensationInfo = CompensationInfo.fromJson(_json['compensationInfo']);
@@ -3857,78 +3892,83 @@ class Job {
           (core.Map item) => CustomAttribute.fromJson(item));
     }
     if (_json.containsKey('degreeTypes')) {
-      degreeTypes = (_json['degreeTypes'] as core.List).cast<core.String>();
+      degreeTypes = (_json['degreeTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('department')) {
-      department = _json['department'];
+      department = _json['department'] as core.String;
     }
     if (_json.containsKey('derivedInfo')) {
       derivedInfo = JobDerivedInfo.fromJson(_json['derivedInfo']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('employmentTypes')) {
-      employmentTypes =
-          (_json['employmentTypes'] as core.List).cast<core.String>();
+      employmentTypes = (_json['employmentTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('incentives')) {
-      incentives = _json['incentives'];
+      incentives = _json['incentives'] as core.String;
     }
     if (_json.containsKey('jobBenefits')) {
-      jobBenefits = (_json['jobBenefits'] as core.List).cast<core.String>();
+      jobBenefits = (_json['jobBenefits'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('jobEndTime')) {
-      jobEndTime = _json['jobEndTime'];
+      jobEndTime = _json['jobEndTime'] as core.String;
     }
     if (_json.containsKey('jobLevel')) {
-      jobLevel = _json['jobLevel'];
+      jobLevel = _json['jobLevel'] as core.String;
     }
     if (_json.containsKey('jobStartTime')) {
-      jobStartTime = _json['jobStartTime'];
+      jobStartTime = _json['jobStartTime'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('postingCreateTime')) {
-      postingCreateTime = _json['postingCreateTime'];
+      postingCreateTime = _json['postingCreateTime'] as core.String;
     }
     if (_json.containsKey('postingExpireTime')) {
-      postingExpireTime = _json['postingExpireTime'];
+      postingExpireTime = _json['postingExpireTime'] as core.String;
     }
     if (_json.containsKey('postingPublishTime')) {
-      postingPublishTime = _json['postingPublishTime'];
+      postingPublishTime = _json['postingPublishTime'] as core.String;
     }
     if (_json.containsKey('postingRegion')) {
-      postingRegion = _json['postingRegion'];
+      postingRegion = _json['postingRegion'] as core.String;
     }
     if (_json.containsKey('postingUpdateTime')) {
-      postingUpdateTime = _json['postingUpdateTime'];
+      postingUpdateTime = _json['postingUpdateTime'] as core.String;
     }
     if (_json.containsKey('processingOptions')) {
       processingOptions =
           ProcessingOptions.fromJson(_json['processingOptions']);
     }
     if (_json.containsKey('promotionValue')) {
-      promotionValue = _json['promotionValue'];
+      promotionValue = _json['promotionValue'] as core.int;
     }
     if (_json.containsKey('qualifications')) {
-      qualifications = _json['qualifications'];
+      qualifications = _json['qualifications'] as core.String;
     }
     if (_json.containsKey('requisitionId')) {
-      requisitionId = _json['requisitionId'];
+      requisitionId = _json['requisitionId'] as core.String;
     }
     if (_json.containsKey('responsibilities')) {
-      responsibilities = _json['responsibilities'];
+      responsibilities = _json['responsibilities'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('visibility')) {
-      visibility = _json['visibility'];
+      visibility = _json['visibility'] as core.String;
     }
   }
 
@@ -4043,7 +4083,9 @@ class JobDerivedInfo {
 
   JobDerivedInfo.fromJson(core.Map _json) {
     if (_json.containsKey('jobCategories')) {
-      jobCategories = (_json['jobCategories'] as core.List).cast<core.String>();
+      jobCategories = (_json['jobCategories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
@@ -4145,10 +4187,12 @@ class JobEvent {
 
   JobEvent.fromJson(core.Map _json) {
     if (_json.containsKey('jobs')) {
-      jobs = (_json['jobs'] as core.List).cast<core.String>();
+      jobs = (_json['jobs'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4268,31 +4312,39 @@ class JobQuery {
       commuteFilter = CommuteFilter.fromJson(_json['commuteFilter']);
     }
     if (_json.containsKey('companyDisplayNames')) {
-      companyDisplayNames =
-          (_json['companyDisplayNames'] as core.List).cast<core.String>();
+      companyDisplayNames = (_json['companyDisplayNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('companyNames')) {
-      companyNames = (_json['companyNames'] as core.List).cast<core.String>();
+      companyNames = (_json['companyNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('compensationFilter')) {
       compensationFilter =
           CompensationFilter.fromJson(_json['compensationFilter']);
     }
     if (_json.containsKey('customAttributeFilter')) {
-      customAttributeFilter = _json['customAttributeFilter'];
+      customAttributeFilter = _json['customAttributeFilter'] as core.String;
     }
     if (_json.containsKey('disableSpellCheck')) {
-      disableSpellCheck = _json['disableSpellCheck'];
+      disableSpellCheck = _json['disableSpellCheck'] as core.bool;
     }
     if (_json.containsKey('employmentTypes')) {
-      employmentTypes =
-          (_json['employmentTypes'] as core.List).cast<core.String>();
+      employmentTypes = (_json['employmentTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('jobCategories')) {
-      jobCategories = (_json['jobCategories'] as core.List).cast<core.String>();
+      jobCategories = (_json['jobCategories'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('languageCodes')) {
-      languageCodes = (_json['languageCodes'] as core.List).cast<core.String>();
+      languageCodes = (_json['languageCodes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('locationFilters')) {
       locationFilters = (_json['locationFilters'] as core.List)
@@ -4303,10 +4355,10 @@ class JobQuery {
       publishTimeRange = TimestampRange.fromJson(_json['publishTimeRange']);
     }
     if (_json.containsKey('query')) {
-      query = _json['query'];
+      query = _json['query'] as core.String;
     }
     if (_json.containsKey('queryLanguageCode')) {
-      queryLanguageCode = _json['queryLanguageCode'];
+      queryLanguageCode = _json['queryLanguageCode'] as core.String;
     }
   }
 
@@ -4414,7 +4466,7 @@ class ListCompaniesResponse {
       metadata = ResponseMetadata.fromJson(_json['metadata']);
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4458,7 +4510,7 @@ class ListJobsResponse {
       metadata = ResponseMetadata.fromJson(_json['metadata']);
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4525,7 +4577,7 @@ class Location {
       latLng = LatLng.fromJson(_json['latLng']);
     }
     if (_json.containsKey('locationType')) {
-      locationType = _json['locationType'];
+      locationType = _json['locationType'] as core.String;
     }
     if (_json.containsKey('postalAddress')) {
       postalAddress = PostalAddress.fromJson(_json['postalAddress']);
@@ -4601,7 +4653,7 @@ class LocationFilter {
 
   LocationFilter.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = _json['address'];
+      address = _json['address'] as core.String;
     }
     if (_json.containsKey('distanceInMiles')) {
       distanceInMiles = _json['distanceInMiles'].toDouble();
@@ -4610,10 +4662,10 @@ class LocationFilter {
       latLng = LatLng.fromJson(_json['latLng']);
     }
     if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'];
+      regionCode = _json['regionCode'] as core.String;
     }
     if (_json.containsKey('telecommutePreference')) {
-      telecommutePreference = _json['telecommutePreference'];
+      telecommutePreference = _json['telecommutePreference'] as core.String;
     }
   }
 
@@ -4671,13 +4723,13 @@ class MatchingJob {
       job = Job.fromJson(_json['job']);
     }
     if (_json.containsKey('jobSummary')) {
-      jobSummary = _json['jobSummary'];
+      jobSummary = _json['jobSummary'] as core.String;
     }
     if (_json.containsKey('jobTitleSnippet')) {
-      jobTitleSnippet = _json['jobTitleSnippet'];
+      jobTitleSnippet = _json['jobTitleSnippet'] as core.String;
     }
     if (_json.containsKey('searchTextSnippet')) {
-      searchTextSnippet = _json['searchTextSnippet'];
+      searchTextSnippet = _json['searchTextSnippet'] as core.String;
     }
   }
 
@@ -4758,13 +4810,13 @@ class Money {
 
   Money.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('units')) {
-      units = _json['units'];
+      units = _json['units'] as core.String;
     }
   }
 
@@ -4868,59 +4920,72 @@ class NamespacedDebugInput {
   NamespacedDebugInput.fromJson(core.Map _json) {
     if (_json.containsKey('absolutelyForcedExpNames')) {
       absolutelyForcedExpNames =
-          (_json['absolutelyForcedExpNames'] as core.List).cast<core.String>();
+          (_json['absolutelyForcedExpNames'] as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('absolutelyForcedExpTags')) {
-      absolutelyForcedExpTags =
-          (_json['absolutelyForcedExpTags'] as core.List).cast<core.String>();
+      absolutelyForcedExpTags = (_json['absolutelyForcedExpTags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('absolutelyForcedExps')) {
-      absolutelyForcedExps =
-          (_json['absolutelyForcedExps'] as core.List).cast<core.int>();
+      absolutelyForcedExps = (_json['absolutelyForcedExps'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('conditionallyForcedExpNames')) {
       conditionallyForcedExpNames =
           (_json['conditionallyForcedExpNames'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('conditionallyForcedExpTags')) {
       conditionallyForcedExpTags =
           (_json['conditionallyForcedExpTags'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('conditionallyForcedExps')) {
-      conditionallyForcedExps =
-          (_json['conditionallyForcedExps'] as core.List).cast<core.int>();
+      conditionallyForcedExps = (_json['conditionallyForcedExps'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('disableAutomaticEnrollmentSelection')) {
       disableAutomaticEnrollmentSelection =
-          _json['disableAutomaticEnrollmentSelection'];
+          _json['disableAutomaticEnrollmentSelection'] as core.bool;
     }
     if (_json.containsKey('disableExpNames')) {
-      disableExpNames =
-          (_json['disableExpNames'] as core.List).cast<core.String>();
+      disableExpNames = (_json['disableExpNames'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('disableExpTags')) {
-      disableExpTags =
-          (_json['disableExpTags'] as core.List).cast<core.String>();
+      disableExpTags = (_json['disableExpTags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('disableExps')) {
-      disableExps = (_json['disableExps'] as core.List).cast<core.int>();
+      disableExps = (_json['disableExps'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('disableManualEnrollmentSelection')) {
       disableManualEnrollmentSelection =
-          _json['disableManualEnrollmentSelection'];
+          _json['disableManualEnrollmentSelection'] as core.bool;
     }
     if (_json.containsKey('disableOrganicSelection')) {
-      disableOrganicSelection = _json['disableOrganicSelection'];
+      disableOrganicSelection = _json['disableOrganicSelection'] as core.bool;
     }
     if (_json.containsKey('forcedFlags')) {
-      forcedFlags =
-          (_json['forcedFlags'] as core.Map).cast<core.String, core.String>();
+      forcedFlags = commons.mapMap<core.String, core.String>(
+          _json['forcedFlags'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('forcedRollouts')) {
-      forcedRollouts =
-          (_json['forcedRollouts'] as core.Map).cast<core.String, core.bool>();
+      forcedRollouts = commons.mapMap<core.bool, core.bool>(
+          _json['forcedRollouts'].cast<core.String, core.bool>(),
+          (core.bool item) => item as core.bool);
     }
   }
 
@@ -4996,7 +5061,7 @@ class NumericBucketingOption {
           .toList();
     }
     if (_json.containsKey('requiresMinMax')) {
-      requiresMinMax = _json['requiresMinMax'];
+      requiresMinMax = _json['requiresMinMax'] as core.bool;
     }
   }
 
@@ -5152,37 +5217,41 @@ class PostalAddress {
 
   PostalAddress.fromJson(core.Map _json) {
     if (_json.containsKey('addressLines')) {
-      addressLines = (_json['addressLines'] as core.List).cast<core.String>();
+      addressLines = (_json['addressLines'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('administrativeArea')) {
-      administrativeArea = _json['administrativeArea'];
+      administrativeArea = _json['administrativeArea'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('locality')) {
-      locality = _json['locality'];
+      locality = _json['locality'] as core.String;
     }
     if (_json.containsKey('organization')) {
-      organization = _json['organization'];
+      organization = _json['organization'] as core.String;
     }
     if (_json.containsKey('postalCode')) {
-      postalCode = _json['postalCode'];
+      postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('recipients')) {
-      recipients = (_json['recipients'] as core.List).cast<core.String>();
+      recipients = (_json['recipients'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('regionCode')) {
-      regionCode = _json['regionCode'];
+      regionCode = _json['regionCode'] as core.String;
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.int;
     }
     if (_json.containsKey('sortingCode')) {
-      sortingCode = _json['sortingCode'];
+      sortingCode = _json['sortingCode'] as core.String;
     }
     if (_json.containsKey('sublocality')) {
-      sublocality = _json['sublocality'];
+      sublocality = _json['sublocality'] as core.String;
     }
   }
 
@@ -5247,10 +5316,11 @@ class ProcessingOptions {
 
   ProcessingOptions.fromJson(core.Map _json) {
     if (_json.containsKey('disableStreetAddressResolution')) {
-      disableStreetAddressResolution = _json['disableStreetAddressResolution'];
+      disableStreetAddressResolution =
+          _json['disableStreetAddressResolution'] as core.bool;
     }
     if (_json.containsKey('htmlSanitization')) {
-      htmlSanitization = _json['htmlSanitization'];
+      htmlSanitization = _json['htmlSanitization'] as core.String;
     }
   }
 
@@ -5310,13 +5380,13 @@ class RequestMetadata {
       deviceInfo = DeviceInfo.fromJson(_json['deviceInfo']);
     }
     if (_json.containsKey('domain')) {
-      domain = _json['domain'];
+      domain = _json['domain'] as core.String;
     }
     if (_json.containsKey('sessionId')) {
-      sessionId = _json['sessionId'];
+      sessionId = _json['sessionId'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -5349,7 +5419,7 @@ class ResponseMetadata {
 
   ResponseMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('requestId')) {
-      requestId = _json['requestId'];
+      requestId = _json['requestId'] as core.String;
     }
   }
 
@@ -5495,13 +5565,13 @@ class SearchJobsRequest {
 
   SearchJobsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('disableKeywordMatch')) {
-      disableKeywordMatch = _json['disableKeywordMatch'];
+      disableKeywordMatch = _json['disableKeywordMatch'] as core.bool;
     }
     if (_json.containsKey('diversificationLevel')) {
-      diversificationLevel = _json['diversificationLevel'];
+      diversificationLevel = _json['diversificationLevel'] as core.String;
     }
     if (_json.containsKey('enableBroadening')) {
-      enableBroadening = _json['enableBroadening'];
+      enableBroadening = _json['enableBroadening'] as core.bool;
     }
     if (_json.containsKey('histogramFacets')) {
       histogramFacets = HistogramFacets.fromJson(_json['histogramFacets']);
@@ -5510,28 +5580,28 @@ class SearchJobsRequest {
       jobQuery = JobQuery.fromJson(_json['jobQuery']);
     }
     if (_json.containsKey('jobView')) {
-      jobView = _json['jobView'];
+      jobView = _json['jobView'] as core.String;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'];
+      offset = _json['offset'] as core.int;
     }
     if (_json.containsKey('orderBy')) {
-      orderBy = _json['orderBy'];
+      orderBy = _json['orderBy'] as core.String;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = _json['pageSize'];
+      pageSize = _json['pageSize'] as core.int;
     }
     if (_json.containsKey('pageToken')) {
-      pageToken = _json['pageToken'];
+      pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('requestMetadata')) {
       requestMetadata = RequestMetadata.fromJson(_json['requestMetadata']);
     }
     if (_json.containsKey('requirePreciseResultSize')) {
-      requirePreciseResultSize = _json['requirePreciseResultSize'];
+      requirePreciseResultSize = _json['requirePreciseResultSize'] as core.bool;
     }
     if (_json.containsKey('searchMode')) {
-      searchMode = _json['searchMode'];
+      searchMode = _json['searchMode'] as core.String;
     }
   }
 
@@ -5626,10 +5696,10 @@ class SearchJobsResponse {
 
   SearchJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('broadenedQueryJobsCount')) {
-      broadenedQueryJobsCount = _json['broadenedQueryJobsCount'];
+      broadenedQueryJobsCount = _json['broadenedQueryJobsCount'] as core.int;
     }
     if (_json.containsKey('estimatedTotalSize')) {
-      estimatedTotalSize = _json['estimatedTotalSize'];
+      estimatedTotalSize = _json['estimatedTotalSize'] as core.int;
     }
     if (_json.containsKey('histogramResults')) {
       histogramResults = HistogramResults.fromJson(_json['histogramResults']);
@@ -5648,13 +5718,13 @@ class SearchJobsResponse {
       metadata = ResponseMetadata.fromJson(_json['metadata']);
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('spellCorrection')) {
       spellCorrection = SpellingCorrection.fromJson(_json['spellCorrection']);
     }
     if (_json.containsKey('totalSize')) {
-      totalSize = _json['totalSize'];
+      totalSize = _json['totalSize'] as core.int;
     }
   }
 
@@ -5705,10 +5775,10 @@ class SpellingCorrection {
 
   SpellingCorrection.fromJson(core.Map _json) {
     if (_json.containsKey('corrected')) {
-      corrected = _json['corrected'];
+      corrected = _json['corrected'] as core.bool;
     }
     if (_json.containsKey('correctedText')) {
-      correctedText = _json['correctedText'];
+      correctedText = _json['correctedText'] as core.String;
     }
   }
 
@@ -5750,16 +5820,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -5800,16 +5872,16 @@ class TimeOfDay {
 
   TimeOfDay.fromJson(core.Map _json) {
     if (_json.containsKey('hours')) {
-      hours = _json['hours'];
+      hours = _json['hours'] as core.int;
     }
     if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'];
+      minutes = _json['minutes'] as core.int;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'];
+      seconds = _json['seconds'] as core.int;
     }
   }
 
@@ -5843,10 +5915,10 @@ class TimestampRange {
 
   TimestampRange.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
   }
 
@@ -5881,7 +5953,7 @@ class UpdateCompanyRequest {
       company = Company.fromJson(_json['company']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -5916,7 +5988,7 @@ class UpdateJobRequest {
       job = Job.fromJson(_json['job']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 

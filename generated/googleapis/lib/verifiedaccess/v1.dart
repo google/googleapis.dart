@@ -225,10 +225,10 @@ class SignedData {
 
   SignedData.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = _json['data'];
+      data = _json['data'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
   }
 
@@ -263,7 +263,7 @@ class VerifyChallengeResponseRequest {
       challengeResponse = SignedData.fromJson(_json['challengeResponse']);
     }
     if (_json.containsKey('expectedIdentity')) {
-      expectedIdentity = _json['expectedIdentity'];
+      expectedIdentity = _json['expectedIdentity'] as core.String;
     }
   }
 
@@ -305,16 +305,17 @@ class VerifyChallengeResponseResult {
 
   VerifyChallengeResponseResult.fromJson(core.Map _json) {
     if (_json.containsKey('deviceEnrollmentId')) {
-      deviceEnrollmentId = _json['deviceEnrollmentId'];
+      deviceEnrollmentId = _json['deviceEnrollmentId'] as core.String;
     }
     if (_json.containsKey('devicePermanentId')) {
-      devicePermanentId = _json['devicePermanentId'];
+      devicePermanentId = _json['devicePermanentId'] as core.String;
     }
     if (_json.containsKey('signedPublicKeyAndChallenge')) {
-      signedPublicKeyAndChallenge = _json['signedPublicKeyAndChallenge'];
+      signedPublicKeyAndChallenge =
+          _json['signedPublicKeyAndChallenge'] as core.String;
     }
     if (_json.containsKey('verificationOutput')) {
-      verificationOutput = _json['verificationOutput'];
+      verificationOutput = _json['verificationOutput'] as core.String;
     }
   }
 

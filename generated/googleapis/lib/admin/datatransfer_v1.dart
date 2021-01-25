@@ -381,16 +381,16 @@ class Application {
 
   Application.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('transferParams')) {
       transferParams = (_json['transferParams'] as core.List)
@@ -438,7 +438,7 @@ class ApplicationDataTransfer {
 
   ApplicationDataTransfer.fromJson(core.Map _json) {
     if (_json.containsKey('applicationId')) {
-      applicationId = _json['applicationId'];
+      applicationId = _json['applicationId'] as core.String;
     }
     if (_json.containsKey('applicationTransferParams')) {
       applicationTransferParams =
@@ -448,7 +448,8 @@ class ApplicationDataTransfer {
               .toList();
     }
     if (_json.containsKey('applicationTransferStatus')) {
-      applicationTransferStatus = _json['applicationTransferStatus'];
+      applicationTransferStatus =
+          _json['applicationTransferStatus'] as core.String;
     }
   }
 
@@ -481,10 +482,12 @@ class ApplicationTransferParam {
 
   ApplicationTransferParam.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = (_json['value'] as core.List).cast<core.String>();
+      value = (_json['value'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -527,13 +530,13 @@ class ApplicationsListResponse {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -599,22 +602,23 @@ class DataTransfer {
               .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('newOwnerUserId')) {
-      newOwnerUserId = _json['newOwnerUserId'];
+      newOwnerUserId = _json['newOwnerUserId'] as core.String;
     }
     if (_json.containsKey('oldOwnerUserId')) {
-      oldOwnerUserId = _json['oldOwnerUserId'];
+      oldOwnerUserId = _json['oldOwnerUserId'] as core.String;
     }
     if (_json.containsKey('overallTransferStatusCode')) {
-      overallTransferStatusCode = _json['overallTransferStatusCode'];
+      overallTransferStatusCode =
+          _json['overallTransferStatusCode'] as core.String;
     }
     if (_json.containsKey('requestTime')) {
       requestTime = core.DateTime.parse(_json['requestTime']);
@@ -678,13 +682,13 @@ class DataTransfersListResponse {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 

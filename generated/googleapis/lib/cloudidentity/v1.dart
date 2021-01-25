@@ -2185,10 +2185,10 @@ class EntityKey {
 
   EntityKey.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('namespace')) {
-      namespace = _json['namespace'];
+      namespace = _json['namespace'] as core.String;
     }
   }
 
@@ -2233,16 +2233,16 @@ class GoogleAppsCloudidentityDevicesV1AndroidAttributes {
 
   GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(core.Map _json) {
     if (_json.containsKey('enabledUnknownSources')) {
-      enabledUnknownSources = _json['enabledUnknownSources'];
+      enabledUnknownSources = _json['enabledUnknownSources'] as core.bool;
     }
     if (_json.containsKey('ownerProfileAccount')) {
-      ownerProfileAccount = _json['ownerProfileAccount'];
+      ownerProfileAccount = _json['ownerProfileAccount'] as core.bool;
     }
     if (_json.containsKey('ownershipPrivilege')) {
-      ownershipPrivilege = _json['ownershipPrivilege'];
+      ownershipPrivilege = _json['ownershipPrivilege'] as core.String;
     }
     if (_json.containsKey('supportsWorkProfile')) {
-      supportsWorkProfile = _json['supportsWorkProfile'];
+      supportsWorkProfile = _json['supportsWorkProfile'] as core.bool;
     }
   }
 
@@ -2279,7 +2279,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest {
   GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -2331,7 +2331,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest {
   GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -2383,7 +2383,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest {
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -2435,7 +2435,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest {
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -2562,22 +2562,24 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
 
   GoogleAppsCloudidentityDevicesV1ClientState.fromJson(core.Map _json) {
     if (_json.containsKey('assetTags')) {
-      assetTags = (_json['assetTags'] as core.List).cast<core.String>();
+      assetTags = (_json['assetTags'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('complianceState')) {
-      complianceState = _json['complianceState'];
+      complianceState = _json['complianceState'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('customId')) {
-      customId = _json['customId'];
+      customId = _json['customId'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('healthScore')) {
-      healthScore = _json['healthScore'];
+      healthScore = _json['healthScore'] as core.String;
     }
     if (_json.containsKey('keyValuePairs')) {
       keyValuePairs = commons.mapMap<core.Map,
@@ -2588,19 +2590,19 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
                   item));
     }
     if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'];
+      lastUpdateTime = _json['lastUpdateTime'] as core.String;
     }
     if (_json.containsKey('managed')) {
-      managed = _json['managed'];
+      managed = _json['managed'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('ownerType')) {
-      ownerType = _json['ownerType'];
+      ownerType = _json['ownerType'] as core.String;
     }
     if (_json.containsKey('scoreReason')) {
-      scoreReason = _json['scoreReason'];
+      scoreReason = _json['scoreReason'] as core.String;
     }
   }
 
@@ -2667,13 +2669,13 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
       core.Map _json) {
     if (_json.containsKey('boolValue')) {
-      boolValue = _json['boolValue'];
+      boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('numberValue')) {
       numberValue = _json['numberValue'].toDouble();
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = _json['stringValue'];
+      stringValue = _json['stringValue'] as core.String;
     }
   }
 
@@ -2831,86 +2833,89 @@ class GoogleAppsCloudidentityDevicesV1Device {
               _json['androidSpecificAttributes']);
     }
     if (_json.containsKey('assetTag')) {
-      assetTag = _json['assetTag'];
+      assetTag = _json['assetTag'] as core.String;
     }
     if (_json.containsKey('basebandVersion')) {
-      basebandVersion = _json['basebandVersion'];
+      basebandVersion = _json['basebandVersion'] as core.String;
     }
     if (_json.containsKey('bootloaderVersion')) {
-      bootloaderVersion = _json['bootloaderVersion'];
+      bootloaderVersion = _json['bootloaderVersion'] as core.String;
     }
     if (_json.containsKey('brand')) {
-      brand = _json['brand'];
+      brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('buildNumber')) {
-      buildNumber = _json['buildNumber'];
+      buildNumber = _json['buildNumber'] as core.String;
     }
     if (_json.containsKey('compromisedState')) {
-      compromisedState = _json['compromisedState'];
+      compromisedState = _json['compromisedState'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'];
+      deviceType = _json['deviceType'] as core.String;
     }
     if (_json.containsKey('enabledDeveloperOptions')) {
-      enabledDeveloperOptions = _json['enabledDeveloperOptions'];
+      enabledDeveloperOptions = _json['enabledDeveloperOptions'] as core.bool;
     }
     if (_json.containsKey('enabledUsbDebugging')) {
-      enabledUsbDebugging = _json['enabledUsbDebugging'];
+      enabledUsbDebugging = _json['enabledUsbDebugging'] as core.bool;
     }
     if (_json.containsKey('encryptionState')) {
-      encryptionState = _json['encryptionState'];
+      encryptionState = _json['encryptionState'] as core.String;
     }
     if (_json.containsKey('imei')) {
-      imei = _json['imei'];
+      imei = _json['imei'] as core.String;
     }
     if (_json.containsKey('kernelVersion')) {
-      kernelVersion = _json['kernelVersion'];
+      kernelVersion = _json['kernelVersion'] as core.String;
     }
     if (_json.containsKey('lastSyncTime')) {
-      lastSyncTime = _json['lastSyncTime'];
+      lastSyncTime = _json['lastSyncTime'] as core.String;
     }
     if (_json.containsKey('managementState')) {
-      managementState = _json['managementState'];
+      managementState = _json['managementState'] as core.String;
     }
     if (_json.containsKey('manufacturer')) {
-      manufacturer = _json['manufacturer'];
+      manufacturer = _json['manufacturer'] as core.String;
     }
     if (_json.containsKey('meid')) {
-      meid = _json['meid'];
+      meid = _json['meid'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkOperator')) {
-      networkOperator = _json['networkOperator'];
+      networkOperator = _json['networkOperator'] as core.String;
     }
     if (_json.containsKey('osVersion')) {
-      osVersion = _json['osVersion'];
+      osVersion = _json['osVersion'] as core.String;
     }
     if (_json.containsKey('otherAccounts')) {
-      otherAccounts = (_json['otherAccounts'] as core.List).cast<core.String>();
+      otherAccounts = (_json['otherAccounts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('ownerType')) {
-      ownerType = _json['ownerType'];
+      ownerType = _json['ownerType'] as core.String;
     }
     if (_json.containsKey('releaseVersion')) {
-      releaseVersion = _json['releaseVersion'];
+      releaseVersion = _json['releaseVersion'] as core.String;
     }
     if (_json.containsKey('securityPatchTime')) {
-      securityPatchTime = _json['securityPatchTime'];
+      securityPatchTime = _json['securityPatchTime'] as core.String;
     }
     if (_json.containsKey('serialNumber')) {
-      serialNumber = _json['serialNumber'];
+      serialNumber = _json['serialNumber'] as core.String;
     }
     if (_json.containsKey('wifiMacAddresses')) {
-      wifiMacAddresses =
-          (_json['wifiMacAddresses'] as core.List).cast<core.String>();
+      wifiMacAddresses = (_json['wifiMacAddresses'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3063,34 +3068,34 @@ class GoogleAppsCloudidentityDevicesV1DeviceUser {
 
   GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(core.Map _json) {
     if (_json.containsKey('compromisedState')) {
-      compromisedState = _json['compromisedState'];
+      compromisedState = _json['compromisedState'] as core.String;
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('firstSyncTime')) {
-      firstSyncTime = _json['firstSyncTime'];
+      firstSyncTime = _json['firstSyncTime'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('lastSyncTime')) {
-      lastSyncTime = _json['lastSyncTime'];
+      lastSyncTime = _json['lastSyncTime'] as core.String;
     }
     if (_json.containsKey('managementState')) {
-      managementState = _json['managementState'];
+      managementState = _json['managementState'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('passwordState')) {
-      passwordState = _json['passwordState'];
+      passwordState = _json['passwordState'] as core.String;
     }
     if (_json.containsKey('userAgent')) {
-      userAgent = _json['userAgent'];
+      userAgent = _json['userAgent'] as core.String;
     }
     if (_json.containsKey('userEmail')) {
-      userEmail = _json['userEmail'];
+      userEmail = _json['userEmail'] as core.String;
     }
   }
 
@@ -3150,7 +3155,7 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3187,7 +3192,7 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3223,7 +3228,7 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3262,13 +3267,15 @@ class GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse {
   GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
     if (_json.containsKey('names')) {
-      names = (_json['names'] as core.List).cast<core.String>();
+      names = (_json['names'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3301,7 +3308,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceRequest {
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -3352,7 +3359,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest {
   GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = _json['customer'];
+      customer = _json['customer'] as core.String;
     }
   }
 
@@ -3430,28 +3437,30 @@ class Group {
 
   Group.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('groupKey')) {
       groupKey = EntityKey.fromJson(_json['groupKey']);
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = _json['parent'];
+      parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -3503,7 +3512,7 @@ class ListGroupsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3536,7 +3545,7 @@ class ListMembershipsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3563,7 +3572,7 @@ class LookupGroupNameResponse {
 
   LookupGroupNameResponse.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3588,7 +3597,7 @@ class LookupMembershipNameResponse {
 
   LookupMembershipNameResponse.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3639,10 +3648,10 @@ class Membership {
 
   Membership.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('preferredMemberKey')) {
       preferredMemberKey = EntityKey.fromJson(_json['preferredMemberKey']);
@@ -3653,10 +3662,10 @@ class Membership {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -3694,7 +3703,7 @@ class MembershipRole {
 
   MembershipRole.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -3730,7 +3739,9 @@ class ModifyMembershipRolesRequest {
           .toList();
     }
     if (_json.containsKey('removeRoles')) {
-      removeRoles = (_json['removeRoles'] as core.List).cast<core.String>();
+      removeRoles = (_json['removeRoles'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3809,21 +3820,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -3865,7 +3878,7 @@ class SearchGroupsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3907,16 +3920,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 

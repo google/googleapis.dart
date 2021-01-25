@@ -3362,16 +3362,16 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('shareData')) {
-      shareData = _json['shareData'];
+      shareData = _json['shareData'] as core.bool;
     }
   }
 
@@ -3404,7 +3404,9 @@ class AccountAccess {
 
   AccountAccess.fromJson(core.Map _json) {
     if (_json.containsKey('permission')) {
-      permission = (_json['permission'] as core.List).cast<core.String>();
+      permission = (_json['permission'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3457,7 +3459,7 @@ class Condition {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -3528,38 +3530,43 @@ class Container {
 
   Container.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('domainName')) {
-      domainName = (_json['domainName'] as core.List).cast<core.String>();
+      domainName = (_json['domainName'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('enabledBuiltInVariable')) {
-      enabledBuiltInVariable =
-          (_json['enabledBuiltInVariable'] as core.List).cast<core.String>();
+      enabledBuiltInVariable = (_json['enabledBuiltInVariable'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('publicId')) {
-      publicId = _json['publicId'];
+      publicId = _json['publicId'] as core.String;
     }
     if (_json.containsKey('timeZoneCountryId')) {
-      timeZoneCountryId = _json['timeZoneCountryId'];
+      timeZoneCountryId = _json['timeZoneCountryId'] as core.String;
     }
     if (_json.containsKey('timeZoneId')) {
-      timeZoneId = _json['timeZoneId'];
+      timeZoneId = _json['timeZoneId'] as core.String;
     }
     if (_json.containsKey('usageContext')) {
-      usageContext = (_json['usageContext'] as core.List).cast<core.String>();
+      usageContext = (_json['usageContext'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3617,10 +3624,12 @@ class ContainerAccess {
 
   ContainerAccess.fromJson(core.Map _json) {
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('permission')) {
-      permission = (_json['permission'] as core.List).cast<core.String>();
+      permission = (_json['permission'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3687,22 +3696,22 @@ class ContainerVersion {
 
   ContainerVersion.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('container')) {
       container = Container.fromJson(_json['container']);
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('folder')) {
       folder = (_json['folder'] as core.List)
@@ -3715,10 +3724,10 @@ class ContainerVersion {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('rule')) {
       rule = (_json['rule'] as core.List)
@@ -3826,34 +3835,34 @@ class ContainerVersionHeader {
 
   ContainerVersionHeader.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('deleted')) {
-      deleted = _json['deleted'];
+      deleted = _json['deleted'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('numMacros')) {
-      numMacros = _json['numMacros'];
+      numMacros = _json['numMacros'] as core.String;
     }
     if (_json.containsKey('numRules')) {
-      numRules = _json['numRules'];
+      numRules = _json['numRules'] as core.String;
     }
     if (_json.containsKey('numTags')) {
-      numTags = _json['numTags'];
+      numTags = _json['numTags'] as core.String;
     }
     if (_json.containsKey('numTriggers')) {
-      numTriggers = _json['numTriggers'];
+      numTriggers = _json['numTriggers'] as core.String;
     }
     if (_json.containsKey('numVariables')) {
-      numVariables = _json['numVariables'];
+      numVariables = _json['numVariables'] as core.String;
     }
   }
 
@@ -3909,13 +3918,13 @@ class CreateContainerVersionRequestVersionOptions {
 
   CreateContainerVersionRequestVersionOptions.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('quickPreview')) {
-      quickPreview = _json['quickPreview'];
+      quickPreview = _json['quickPreview'] as core.bool;
     }
   }
 
@@ -3946,7 +3955,7 @@ class CreateContainerVersionResponse {
 
   CreateContainerVersionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'];
+      compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
       containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
@@ -4024,40 +4033,41 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('authorizationCode')) {
-      authorizationCode = _json['authorizationCode'];
+      authorizationCode = _json['authorizationCode'] as core.String;
     }
     if (_json.containsKey('authorizationTimestampMs')) {
-      authorizationTimestampMs = _json['authorizationTimestampMs'];
+      authorizationTimestampMs =
+          _json['authorizationTimestampMs'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('containerVersionId')) {
-      containerVersionId = _json['containerVersionId'];
+      containerVersionId = _json['containerVersionId'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('enableDebug')) {
-      enableDebug = _json['enableDebug'];
+      enableDebug = _json['enableDebug'] as core.bool;
     }
     if (_json.containsKey('environmentId')) {
-      environmentId = _json['environmentId'];
+      environmentId = _json['environmentId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -4127,19 +4137,19 @@ class Folder {
 
   Folder.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('folderId')) {
-      folderId = _json['folderId'];
+      folderId = _json['folderId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -4505,30 +4515,32 @@ class Macro {
 
   Macro.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('disablingRuleId')) {
-      disablingRuleId =
-          (_json['disablingRuleId'] as core.List).cast<core.String>();
+      disablingRuleId = (_json['disablingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('enablingRuleId')) {
-      enablingRuleId =
-          (_json['enablingRuleId'] as core.List).cast<core.String>();
+      enablingRuleId = (_json['enablingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('macroId')) {
-      macroId = _json['macroId'];
+      macroId = _json['macroId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -4536,16 +4548,16 @@ class Macro {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'];
+      scheduleEndMs = _json['scheduleEndMs'] as core.String;
     }
     if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'];
+      scheduleStartMs = _json['scheduleStartMs'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -4662,7 +4674,7 @@ class Parameter {
 
   Parameter.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('list')) {
       list = (_json['list'] as core.List)
@@ -4675,10 +4687,10 @@ class Parameter {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -4715,7 +4727,7 @@ class PublishContainerVersionResponse {
 
   PublishContainerVersionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('compilerError')) {
-      compilerError = _json['compilerError'];
+      compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
       containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
@@ -4767,7 +4779,7 @@ class Rule {
 
   Rule.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = (_json['condition'] as core.List)
@@ -4775,19 +4787,19 @@ class Rule {
           .toList();
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('ruleId')) {
-      ruleId = _json['ruleId'];
+      ruleId = _json['ruleId'] as core.String;
     }
   }
 
@@ -4831,10 +4843,10 @@ class SetupTag {
 
   SetupTag.fromJson(core.Map _json) {
     if (_json.containsKey('stopOnSetupFailure')) {
-      stopOnSetupFailure = _json['stopOnSetupFailure'];
+      stopOnSetupFailure = _json['stopOnSetupFailure'] as core.bool;
     }
     if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'];
+      tagName = _json['tagName'] as core.String;
     }
   }
 
@@ -4954,37 +4966,42 @@ class Tag {
 
   Tag.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('blockingRuleId')) {
-      blockingRuleId =
-          (_json['blockingRuleId'] as core.List).cast<core.String>();
+      blockingRuleId = (_json['blockingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('blockingTriggerId')) {
-      blockingTriggerId =
-          (_json['blockingTriggerId'] as core.List).cast<core.String>();
+      blockingTriggerId = (_json['blockingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('firingRuleId')) {
-      firingRuleId = (_json['firingRuleId'] as core.List).cast<core.String>();
+      firingRuleId = (_json['firingRuleId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('firingTriggerId')) {
-      firingTriggerId =
-          (_json['firingTriggerId'] as core.List).cast<core.String>();
+      firingTriggerId = (_json['firingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('liveOnly')) {
-      liveOnly = _json['liveOnly'];
+      liveOnly = _json['liveOnly'] as core.bool;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -4992,19 +5009,19 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('paused')) {
-      paused = _json['paused'];
+      paused = _json['paused'] as core.bool;
     }
     if (_json.containsKey('priority')) {
       priority = Parameter.fromJson(_json['priority']);
     }
     if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'];
+      scheduleEndMs = _json['scheduleEndMs'] as core.String;
     }
     if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'];
+      scheduleStartMs = _json['scheduleStartMs'] as core.String;
     }
     if (_json.containsKey('setupTag')) {
       setupTag = (_json['setupTag'] as core.List)
@@ -5012,10 +5029,10 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('tagFiringOption')) {
-      tagFiringOption = _json['tagFiringOption'];
+      tagFiringOption = _json['tagFiringOption'] as core.String;
     }
     if (_json.containsKey('tagId')) {
-      tagId = _json['tagId'];
+      tagId = _json['tagId'] as core.String;
     }
     if (_json.containsKey('teardownTag')) {
       teardownTag = (_json['teardownTag'] as core.List)
@@ -5023,7 +5040,7 @@ class Tag {
           .toList();
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -5110,10 +5127,10 @@ class TeardownTag {
 
   TeardownTag.fromJson(core.Map _json) {
     if (_json.containsKey('stopTeardownOnFailure')) {
-      stopTeardownOnFailure = _json['stopTeardownOnFailure'];
+      stopTeardownOnFailure = _json['stopTeardownOnFailure'] as core.bool;
     }
     if (_json.containsKey('tagName')) {
-      tagName = _json['tagName'];
+      tagName = _json['tagName'] as core.String;
     }
   }
 
@@ -5308,7 +5325,7 @@ class Trigger {
 
   Trigger.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('autoEventFilter')) {
       autoEventFilter = (_json['autoEventFilter'] as core.List)
@@ -5319,7 +5336,7 @@ class Trigger {
       checkValidation = Parameter.fromJson(_json['checkValidation']);
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('continuousTimeMinMilliseconds')) {
       continuousTimeMinMilliseconds =
@@ -5339,7 +5356,7 @@ class Trigger {
           .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('horizontalScrollPercentageList')) {
       horizontalScrollPercentageList =
@@ -5359,7 +5376,7 @@ class Trigger {
           Parameter.fromJson(_json['maxTimerLengthSeconds']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -5367,7 +5384,7 @@ class Trigger {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('selector')) {
       selector = Parameter.fromJson(_json['selector']);
@@ -5377,10 +5394,10 @@ class Trigger {
           Parameter.fromJson(_json['totalTimeMinMilliseconds']);
     }
     if (_json.containsKey('triggerId')) {
-      triggerId = _json['triggerId'];
+      triggerId = _json['triggerId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('uniqueTriggerId')) {
       uniqueTriggerId = Parameter.fromJson(_json['uniqueTriggerId']);
@@ -5529,7 +5546,7 @@ class UserAccess {
       accountAccess = AccountAccess.fromJson(_json['accountAccess']);
     }
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerAccess')) {
       containerAccess = (_json['containerAccess'] as core.List)
@@ -5537,10 +5554,10 @@ class UserAccess {
           .toList();
     }
     if (_json.containsKey('emailAddress')) {
-      emailAddress = _json['emailAddress'];
+      emailAddress = _json['emailAddress'] as core.String;
     }
     if (_json.containsKey('permissionId')) {
-      permissionId = _json['permissionId'];
+      permissionId = _json['permissionId'] as core.String;
     }
   }
 
@@ -5632,27 +5649,29 @@ class Variable {
 
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerId')) {
-      containerId = _json['containerId'];
+      containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('disablingTriggerId')) {
-      disablingTriggerId =
-          (_json['disablingTriggerId'] as core.List).cast<core.String>();
+      disablingTriggerId = (_json['disablingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('enablingTriggerId')) {
-      enablingTriggerId =
-          (_json['enablingTriggerId'] as core.List).cast<core.String>();
+      enablingTriggerId = (_json['enablingTriggerId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = _json['fingerprint'];
+      fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notes')) {
-      notes = _json['notes'];
+      notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
@@ -5660,19 +5679,19 @@ class Variable {
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
-      parentFolderId = _json['parentFolderId'];
+      parentFolderId = _json['parentFolderId'] as core.String;
     }
     if (_json.containsKey('scheduleEndMs')) {
-      scheduleEndMs = _json['scheduleEndMs'];
+      scheduleEndMs = _json['scheduleEndMs'] as core.String;
     }
     if (_json.containsKey('scheduleStartMs')) {
-      scheduleStartMs = _json['scheduleStartMs'];
+      scheduleStartMs = _json['scheduleStartMs'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('variableId')) {
-      variableId = _json['variableId'];
+      variableId = _json['variableId'] as core.String;
     }
   }
 

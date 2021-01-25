@@ -956,14 +956,15 @@ class AdmissionRule {
 
   AdmissionRule.fromJson(core.Map _json) {
     if (_json.containsKey('enforcementMode')) {
-      enforcementMode = _json['enforcementMode'];
+      enforcementMode = _json['enforcementMode'] as core.String;
     }
     if (_json.containsKey('evaluationMode')) {
-      evaluationMode = _json['evaluationMode'];
+      evaluationMode = _json['evaluationMode'] as core.String;
     }
     if (_json.containsKey('requireAttestationsBy')) {
-      requireAttestationsBy =
-          (_json['requireAttestationsBy'] as core.List).cast<core.String>();
+      requireAttestationsBy = (_json['requireAttestationsBy'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -994,7 +995,7 @@ class AdmissionWhitelistPattern {
 
   AdmissionWhitelistPattern.fromJson(core.Map _json) {
     if (_json.containsKey('namePattern')) {
-      namePattern = _json['namePattern'];
+      namePattern = _json['namePattern'] as core.String;
     }
   }
 
@@ -1052,7 +1053,7 @@ class AttestationOccurrence {
           .toList();
     }
     if (_json.containsKey('serializedPayload')) {
-      serializedPayload = _json['serializedPayload'];
+      serializedPayload = _json['serializedPayload'] as core.String;
     }
     if (_json.containsKey('signatures')) {
       signatures = (_json['signatures'] as core.List)
@@ -1098,13 +1099,13 @@ class Attestor {
 
   Attestor.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('userOwnedGrafeasNote')) {
       userOwnedGrafeasNote =
@@ -1162,13 +1163,14 @@ class AttestorPublicKey {
 
   AttestorPublicKey.fromJson(core.Map _json) {
     if (_json.containsKey('asciiArmoredPgpPublicKey')) {
-      asciiArmoredPgpPublicKey = _json['asciiArmoredPgpPublicKey'];
+      asciiArmoredPgpPublicKey =
+          _json['asciiArmoredPgpPublicKey'] as core.String;
     }
     if (_json.containsKey('comment')) {
-      comment = _json['comment'];
+      comment = _json['comment'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('pkixPublicKey')) {
       pkixPublicKey = PkixPublicKey.fromJson(_json['pkixPublicKey']);
@@ -1247,16 +1249,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -1333,16 +1337,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1444,10 +1448,10 @@ class IamPolicy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -1476,7 +1480,7 @@ class Jwt {
 
   Jwt.fromJson(core.Map _json) {
     if (_json.containsKey('compactJwt')) {
-      compactJwt = _json['compactJwt'];
+      compactJwt = _json['compactJwt'] as core.String;
     }
   }
 
@@ -1508,7 +1512,7 @@ class ListAttestorsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1568,10 +1572,10 @@ class PkixPublicKey {
 
   PkixPublicKey.fromJson(core.Map _json) {
     if (_json.containsKey('publicKeyPem')) {
-      publicKeyPem = _json['publicKeyPem'];
+      publicKeyPem = _json['publicKeyPem'] as core.String;
     }
     if (_json.containsKey('signatureAlgorithm')) {
-      signatureAlgorithm = _json['signatureAlgorithm'];
+      signatureAlgorithm = _json['signatureAlgorithm'] as core.String;
     }
   }
 
@@ -1646,16 +1650,17 @@ class Policy {
           AdmissionRule.fromJson(_json['defaultAdmissionRule']);
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('globalPolicyEvaluationMode')) {
-      globalPolicyEvaluationMode = _json['globalPolicyEvaluationMode'];
+      globalPolicyEvaluationMode =
+          _json['globalPolicyEvaluationMode'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -1763,10 +1768,10 @@ class Signature {
 
   Signature.fromJson(core.Map _json) {
     if (_json.containsKey('publicKeyId')) {
-      publicKeyId = _json['publicKeyId'];
+      publicKeyId = _json['publicKeyId'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = _json['signature'];
+      signature = _json['signature'] as core.String;
     }
   }
 
@@ -1794,7 +1799,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1817,7 +1824,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1861,10 +1870,11 @@ class UserOwnedGrafeasNote {
 
   UserOwnedGrafeasNote.fromJson(core.Map _json) {
     if (_json.containsKey('delegationServiceAccountEmail')) {
-      delegationServiceAccountEmail = _json['delegationServiceAccountEmail'];
+      delegationServiceAccountEmail =
+          _json['delegationServiceAccountEmail'] as core.String;
     }
     if (_json.containsKey('noteReference')) {
-      noteReference = _json['noteReference'];
+      noteReference = _json['noteReference'] as core.String;
     }
     if (_json.containsKey('publicKeys')) {
       publicKeys = (_json['publicKeys'] as core.List)
@@ -1910,10 +1920,10 @@ class ValidateAttestationOccurrenceRequest {
       attestation = AttestationOccurrence.fromJson(_json['attestation']);
     }
     if (_json.containsKey('occurrenceNote')) {
-      occurrenceNote = _json['occurrenceNote'];
+      occurrenceNote = _json['occurrenceNote'] as core.String;
     }
     if (_json.containsKey('occurrenceResourceUri')) {
-      occurrenceResourceUri = _json['occurrenceResourceUri'];
+      occurrenceResourceUri = _json['occurrenceResourceUri'] as core.String;
     }
   }
 
@@ -1949,10 +1959,10 @@ class ValidateAttestationOccurrenceResponse {
 
   ValidateAttestationOccurrenceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('denialReason')) {
-      denialReason = _json['denialReason'];
+      denialReason = _json['denialReason'] as core.String;
     }
     if (_json.containsKey('result')) {
-      result = _json['result'];
+      result = _json['result'] as core.String;
     }
   }
 

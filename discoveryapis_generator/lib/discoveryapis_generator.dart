@@ -77,9 +77,11 @@ List<GenerateResult> generateAllLibraries(
 
   final apiDescriptions = Directory(inputDirectory)
       .listSync()
-      .where((fse) => fse is File && fse.path.endsWith('.json'))
-      .map((FileSystemEntity entity) => RestDescription.fromJson(
-          json.decode((entity as File).readAsStringSync())))
+      .whereType<File>()
+      .where((fse) => fse.path.endsWith('.json'))
+      .map((entity) => RestDescription.fromJson(
+            json.decode(entity.readAsStringSync()) as Map,
+          ))
       .toList();
   return generateApiPackage(
     apiDescriptions,

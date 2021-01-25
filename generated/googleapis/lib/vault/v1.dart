@@ -1849,7 +1849,9 @@ class AccountInfo {
 
   AccountInfo.fromJson(core.Map _json) {
     if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List).cast<core.String>();
+      emails = (_json['emails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1908,10 +1910,14 @@ class AddHeldAccountsRequest {
 
   AddHeldAccountsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('accountIds')) {
-      accountIds = (_json['accountIds'] as core.List).cast<core.String>();
+      accountIds = (_json['accountIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('emails')) {
-      emails = (_json['emails'] as core.List).cast<core.String>();
+      emails = (_json['emails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1970,13 +1976,13 @@ class AddMatterPermissionsRequest {
 
   AddMatterPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('ccMe')) {
-      ccMe = _json['ccMe'];
+      ccMe = _json['ccMe'] as core.bool;
     }
     if (_json.containsKey('matterPermission')) {
       matterPermission = MatterPermission.fromJson(_json['matterPermission']);
     }
     if (_json.containsKey('sendEmails')) {
-      sendEmails = _json['sendEmails'];
+      sendEmails = _json['sendEmails'] as core.bool;
     }
   }
 
@@ -2052,16 +2058,16 @@ class CloudStorageFile {
 
   CloudStorageFile.fromJson(core.Map _json) {
     if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'];
+      bucketName = _json['bucketName'] as core.String;
     }
     if (_json.containsKey('md5Hash')) {
-      md5Hash = _json['md5Hash'];
+      md5Hash = _json['md5Hash'] as core.String;
     }
     if (_json.containsKey('objectName')) {
-      objectName = _json['objectName'];
+      objectName = _json['objectName'] as core.String;
     }
     if (_json.containsKey('size')) {
-      size = _json['size'];
+      size = _json['size'] as core.String;
     }
   }
 
@@ -2168,7 +2174,7 @@ class DriveExportOptions {
 
   DriveExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('includeAccessInfo')) {
-      includeAccessInfo = _json['includeAccessInfo'];
+      includeAccessInfo = _json['includeAccessInfo'] as core.bool;
     }
   }
 
@@ -2197,13 +2203,13 @@ class DriveOptions {
 
   DriveOptions.fromJson(core.Map _json) {
     if (_json.containsKey('includeSharedDrives')) {
-      includeSharedDrives = _json['includeSharedDrives'];
+      includeSharedDrives = _json['includeSharedDrives'] as core.bool;
     }
     if (_json.containsKey('includeTeamDrives')) {
-      includeTeamDrives = _json['includeTeamDrives'];
+      includeTeamDrives = _json['includeTeamDrives'] as core.bool;
     }
     if (_json.containsKey('versionDate')) {
-      versionDate = _json['versionDate'];
+      versionDate = _json['versionDate'] as core.String;
     }
   }
 
@@ -2284,19 +2290,19 @@ class Export {
       cloudStorageSink = CloudStorageSink.fromJson(_json['cloudStorageSink']);
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('exportOptions')) {
       exportOptions = ExportOptions.fromJson(_json['exportOptions']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'];
+      matterId = _json['matterId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('query')) {
       query = Query.fromJson(_json['query']);
@@ -2308,7 +2314,7 @@ class Export {
       stats = ExportStats.fromJson(_json['stats']);
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
   }
 
@@ -2388,7 +2394,7 @@ class ExportOptions {
       mailOptions = MailExportOptions.fromJson(_json['mailOptions']);
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
   }
 
@@ -2428,13 +2434,13 @@ class ExportStats {
 
   ExportStats.fromJson(core.Map _json) {
     if (_json.containsKey('exportedArtifactCount')) {
-      exportedArtifactCount = _json['exportedArtifactCount'];
+      exportedArtifactCount = _json['exportedArtifactCount'] as core.String;
     }
     if (_json.containsKey('sizeInBytes')) {
-      sizeInBytes = _json['sizeInBytes'];
+      sizeInBytes = _json['sizeInBytes'] as core.String;
     }
     if (_json.containsKey('totalArtifactCount')) {
-      totalArtifactCount = _json['totalArtifactCount'];
+      totalArtifactCount = _json['totalArtifactCount'] as core.String;
     }
   }
 
@@ -2466,7 +2472,7 @@ class GroupsExportOptions {
 
   GroupsExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'];
+      exportFormat = _json['exportFormat'] as core.String;
     }
   }
 
@@ -2492,7 +2498,7 @@ class HangoutsChatExportOptions {
 
   HangoutsChatExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'];
+      exportFormat = _json['exportFormat'] as core.String;
     }
   }
 
@@ -2514,7 +2520,9 @@ class HangoutsChatInfo {
 
   HangoutsChatInfo.fromJson(core.Map _json) {
     if (_json.containsKey('roomId')) {
-      roomId = (_json['roomId'] as core.List).cast<core.String>();
+      roomId = (_json['roomId'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2536,7 +2544,7 @@ class HangoutsChatOptions {
 
   HangoutsChatOptions.fromJson(core.Map _json) {
     if (_json.containsKey('includeRooms')) {
-      includeRooms = _json['includeRooms'];
+      includeRooms = _json['includeRooms'] as core.bool;
     }
   }
 
@@ -2572,19 +2580,19 @@ class HeldAccount {
 
   HeldAccount.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
     if (_json.containsKey('firstName')) {
-      firstName = _json['firstName'];
+      firstName = _json['firstName'] as core.String;
     }
     if (_json.containsKey('holdTime')) {
-      holdTime = _json['holdTime'];
+      holdTime = _json['holdTime'] as core.String;
     }
     if (_json.containsKey('lastName')) {
-      lastName = _json['lastName'];
+      lastName = _json['lastName'] as core.String;
     }
   }
 
@@ -2621,10 +2629,10 @@ class HeldDriveQuery {
 
   HeldDriveQuery.fromJson(core.Map _json) {
     if (_json.containsKey('includeSharedDriveFiles')) {
-      includeSharedDriveFiles = _json['includeSharedDriveFiles'];
+      includeSharedDriveFiles = _json['includeSharedDriveFiles'] as core.bool;
     }
     if (_json.containsKey('includeTeamDriveFiles')) {
-      includeTeamDriveFiles = _json['includeTeamDriveFiles'];
+      includeTeamDriveFiles = _json['includeTeamDriveFiles'] as core.bool;
     }
   }
 
@@ -2657,13 +2665,13 @@ class HeldGroupsQuery {
 
   HeldGroupsQuery.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('terms')) {
-      terms = _json['terms'];
+      terms = _json['terms'] as core.String;
     }
   }
 
@@ -2691,7 +2699,7 @@ class HeldHangoutsChatQuery {
 
   HeldHangoutsChatQuery.fromJson(core.Map _json) {
     if (_json.containsKey('includeRooms')) {
-      includeRooms = _json['includeRooms'];
+      includeRooms = _json['includeRooms'] as core.bool;
     }
   }
 
@@ -2721,13 +2729,13 @@ class HeldMailQuery {
 
   HeldMailQuery.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('terms')) {
-      terms = _json['terms'];
+      terms = _json['terms'] as core.String;
     }
   }
 
@@ -2759,10 +2767,10 @@ class HeldOrgUnit {
 
   HeldOrgUnit.fromJson(core.Map _json) {
     if (_json.containsKey('holdTime')) {
-      holdTime = _json['holdTime'];
+      holdTime = _json['holdTime'] as core.String;
     }
     if (_json.containsKey('orgUnitId')) {
-      orgUnitId = _json['orgUnitId'];
+      orgUnitId = _json['orgUnitId'] as core.String;
     }
   }
 
@@ -2822,13 +2830,13 @@ class Hold {
           .toList();
     }
     if (_json.containsKey('corpus')) {
-      corpus = _json['corpus'];
+      corpus = _json['corpus'] as core.String;
     }
     if (_json.containsKey('holdId')) {
-      holdId = _json['holdId'];
+      holdId = _json['holdId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('orgUnit')) {
       orgUnit = HeldOrgUnit.fromJson(_json['orgUnit']);
@@ -2837,7 +2845,7 @@ class Hold {
       query = CorpusQuery.fromJson(_json['query']);
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2885,7 +2893,7 @@ class ListExportsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2943,7 +2951,7 @@ class ListHoldsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -2976,7 +2984,7 @@ class ListMattersResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3005,7 +3013,7 @@ class ListSavedQueriesResponse {
 
   ListSavedQueriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('savedQueries')) {
       savedQueries = (_json['savedQueries'] as core.List)
@@ -3043,10 +3051,11 @@ class MailExportOptions {
 
   MailExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('exportFormat')) {
-      exportFormat = _json['exportFormat'];
+      exportFormat = _json['exportFormat'] as core.String;
     }
     if (_json.containsKey('showConfidentialModeContent')) {
-      showConfidentialModeContent = _json['showConfidentialModeContent'];
+      showConfidentialModeContent =
+          _json['showConfidentialModeContent'] as core.bool;
     }
   }
 
@@ -3071,7 +3080,7 @@ class MailOptions {
 
   MailOptions.fromJson(core.Map _json) {
     if (_json.containsKey('excludeDrafts')) {
-      excludeDrafts = _json['excludeDrafts'];
+      excludeDrafts = _json['excludeDrafts'] as core.bool;
     }
   }
 
@@ -3112,10 +3121,10 @@ class Matter {
 
   Matter.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'];
+      matterId = _json['matterId'] as core.String;
     }
     if (_json.containsKey('matterPermissions')) {
       matterPermissions = (_json['matterPermissions'] as core.List)
@@ -3123,10 +3132,10 @@ class Matter {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -3170,10 +3179,10 @@ class MatterPermission {
 
   MatterPermission.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -3198,7 +3207,7 @@ class OrgUnitInfo {
 
   OrgUnitInfo.fromJson(core.Map _json) {
     if (_json.containsKey('orgUnitId')) {
-      orgUnitId = _json['orgUnitId'];
+      orgUnitId = _json['orgUnitId'] as core.String;
     }
   }
 
@@ -3318,16 +3327,16 @@ class Query {
       accountInfo = AccountInfo.fromJson(_json['accountInfo']);
     }
     if (_json.containsKey('corpus')) {
-      corpus = _json['corpus'];
+      corpus = _json['corpus'] as core.String;
     }
     if (_json.containsKey('dataScope')) {
-      dataScope = _json['dataScope'];
+      dataScope = _json['dataScope'] as core.String;
     }
     if (_json.containsKey('driveOptions')) {
       driveOptions = DriveOptions.fromJson(_json['driveOptions']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('hangoutsChatInfo')) {
       hangoutsChatInfo = HangoutsChatInfo.fromJson(_json['hangoutsChatInfo']);
@@ -3340,28 +3349,28 @@ class Query {
       mailOptions = MailOptions.fromJson(_json['mailOptions']);
     }
     if (_json.containsKey('method')) {
-      method = _json['method'];
+      method = _json['method'] as core.String;
     }
     if (_json.containsKey('orgUnitInfo')) {
       orgUnitInfo = OrgUnitInfo.fromJson(_json['orgUnitInfo']);
     }
     if (_json.containsKey('searchMethod')) {
-      searchMethod = _json['searchMethod'];
+      searchMethod = _json['searchMethod'] as core.String;
     }
     if (_json.containsKey('sharedDriveInfo')) {
       sharedDriveInfo = SharedDriveInfo.fromJson(_json['sharedDriveInfo']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('teamDriveInfo')) {
       teamDriveInfo = TeamDriveInfo.fromJson(_json['teamDriveInfo']);
     }
     if (_json.containsKey('terms')) {
-      terms = _json['terms'];
+      terms = _json['terms'] as core.String;
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = _json['timeZone'];
+      timeZone = _json['timeZone'] as core.String;
     }
   }
 
@@ -3428,7 +3437,9 @@ class RemoveHeldAccountsRequest {
 
   RemoveHeldAccountsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('accountIds')) {
-      accountIds = (_json['accountIds'] as core.List).cast<core.String>();
+      accountIds = (_json['accountIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3475,7 +3486,7 @@ class RemoveMatterPermissionsRequest {
 
   RemoveMatterPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('accountId')) {
-      accountId = _json['accountId'];
+      accountId = _json['accountId'] as core.String;
     }
   }
 
@@ -3548,19 +3559,19 @@ class SavedQuery {
 
   SavedQuery.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('matterId')) {
-      matterId = _json['matterId'];
+      matterId = _json['matterId'] as core.String;
     }
     if (_json.containsKey('query')) {
       query = Query.fromJson(_json['query']);
     }
     if (_json.containsKey('savedQueryId')) {
-      savedQueryId = _json['savedQueryId'];
+      savedQueryId = _json['savedQueryId'] as core.String;
     }
   }
 
@@ -3594,8 +3605,9 @@ class SharedDriveInfo {
 
   SharedDriveInfo.fromJson(core.Map _json) {
     if (_json.containsKey('sharedDriveIds')) {
-      sharedDriveIds =
-          (_json['sharedDriveIds'] as core.List).cast<core.String>();
+      sharedDriveIds = (_json['sharedDriveIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3634,16 +3646,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -3671,7 +3685,9 @@ class TeamDriveInfo {
 
   TeamDriveInfo.fromJson(core.Map _json) {
     if (_json.containsKey('teamDriveIds')) {
-      teamDriveIds = (_json['teamDriveIds'] as core.List).cast<core.String>();
+      teamDriveIds = (_json['teamDriveIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -3710,10 +3726,10 @@ class UserInfo {
 
   UserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('email')) {
-      email = _json['email'];
+      email = _json['email'] as core.String;
     }
   }
 

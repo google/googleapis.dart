@@ -173,10 +173,10 @@ class DirectoryListItemsIcons {
 
   DirectoryListItemsIcons.fromJson(core.Map _json) {
     if (_json.containsKey('x16')) {
-      x16 = _json['x16'];
+      x16 = _json['x16'] as core.String;
     }
     if (_json.containsKey('x32')) {
-      x32 = _json['x32'];
+      x32 = _json['x32'] as core.String;
     }
   }
 
@@ -233,40 +233,42 @@ class DirectoryListItems {
 
   DirectoryListItems.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('discoveryLink')) {
-      discoveryLink = _json['discoveryLink'];
+      discoveryLink = _json['discoveryLink'] as core.String;
     }
     if (_json.containsKey('discoveryRestUrl')) {
-      discoveryRestUrl = _json['discoveryRestUrl'];
+      discoveryRestUrl = _json['discoveryRestUrl'] as core.String;
     }
     if (_json.containsKey('documentationLink')) {
-      documentationLink = _json['documentationLink'];
+      documentationLink = _json['documentationLink'] as core.String;
     }
     if (_json.containsKey('icons')) {
       icons = DirectoryListItemsIcons.fromJson(_json['icons']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List).cast<core.String>();
+      labels = (_json['labels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('preferred')) {
-      preferred = _json['preferred'];
+      preferred = _json['preferred'] as core.bool;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -326,7 +328,7 @@ class DirectoryList {
 
   DirectoryList.fromJson(core.Map _json) {
     if (_json.containsKey('discoveryVersion')) {
-      discoveryVersion = _json['discoveryVersion'];
+      discoveryVersion = _json['discoveryVersion'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -335,7 +337,7 @@ class DirectoryList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -363,7 +365,9 @@ class JsonSchemaAnnotations {
 
   JsonSchemaAnnotations.fromJson(core.Map _json) {
     if (_json.containsKey('required')) {
-      required = (_json['required'] as core.List).cast<core.String>();
+      required = (_json['required'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -384,10 +388,10 @@ class JsonSchemaVariantMap {
 
   JsonSchemaVariantMap.fromJson(core.Map _json) {
     if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'];
+      P_ref = _json['\$ref'] as core.String;
     }
     if (_json.containsKey('type_value')) {
-      typeValue = _json['type_value'];
+      typeValue = _json['type_value'] as core.String;
     }
   }
 
@@ -417,7 +421,7 @@ class JsonSchemaVariant {
 
   JsonSchemaVariant.fromJson(core.Map _json) {
     if (_json.containsKey('discriminant')) {
-      discriminant = _json['discriminant'];
+      discriminant = _json['discriminant'] as core.String;
     }
     if (_json.containsKey('map')) {
       map = (_json['map'] as core.List)
@@ -518,7 +522,7 @@ class JsonSchema {
 
   JsonSchema.fromJson(core.Map _json) {
     if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'];
+      P_ref = _json['\$ref'] as core.String;
     }
     if (_json.containsKey('additionalProperties')) {
       additionalProperties = JsonSchema.fromJson(_json['additionalProperties']);
@@ -527,38 +531,41 @@ class JsonSchema {
       annotations = JsonSchemaAnnotations.fromJson(_json['annotations']);
     }
     if (_json.containsKey('default')) {
-      default_ = _json['default'];
+      default_ = _json['default'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('enum')) {
-      enum_ = (_json['enum'] as core.List).cast<core.String>();
+      enum_ = (_json['enum'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('enumDescriptions')) {
-      enumDescriptions =
-          (_json['enumDescriptions'] as core.List).cast<core.String>();
+      enumDescriptions = (_json['enumDescriptions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('format')) {
-      format = _json['format'];
+      format = _json['format'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = JsonSchema.fromJson(_json['items']);
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('maximum')) {
-      maximum = _json['maximum'];
+      maximum = _json['maximum'] as core.String;
     }
     if (_json.containsKey('minimum')) {
-      minimum = _json['minimum'];
+      minimum = _json['minimum'] as core.String;
     }
     if (_json.containsKey('pattern')) {
-      pattern = _json['pattern'];
+      pattern = _json['pattern'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.Map, JsonSchema>(
@@ -566,16 +573,16 @@ class JsonSchema {
           (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey('readOnly')) {
-      readOnly = _json['readOnly'];
+      readOnly = _json['readOnly'] as core.bool;
     }
     if (_json.containsKey('repeated')) {
-      repeated = _json['repeated'];
+      repeated = _json['repeated'] as core.bool;
     }
     if (_json.containsKey('required')) {
-      required = _json['required'];
+      required = _json['required'] as core.bool;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('variant')) {
       variant = JsonSchemaVariant.fromJson(_json['variant']);
@@ -659,7 +666,7 @@ class RestDescriptionAuthOauth2ScopesValue {
 
   RestDescriptionAuthOauth2ScopesValue.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
   }
 
@@ -733,10 +740,10 @@ class RestDescriptionIcons {
 
   RestDescriptionIcons.fromJson(core.Map _json) {
     if (_json.containsKey('x16')) {
-      x16 = _json['x16'];
+      x16 = _json['x16'] as core.String;
     }
     if (_json.containsKey('x32')) {
-      x32 = _json['x32'];
+      x32 = _json['x32'] as core.String;
     }
   }
 
@@ -851,46 +858,51 @@ class RestDescription {
       auth = RestDescriptionAuth.fromJson(_json['auth']);
     }
     if (_json.containsKey('basePath')) {
-      basePath = _json['basePath'];
+      basePath = _json['basePath'] as core.String;
     }
     if (_json.containsKey('baseUrl')) {
-      baseUrl = _json['baseUrl'];
+      baseUrl = _json['baseUrl'] as core.String;
     }
     if (_json.containsKey('batchPath')) {
-      batchPath = _json['batchPath'];
+      batchPath = _json['batchPath'] as core.String;
     }
     if (_json.containsKey('canonicalName')) {
-      canonicalName = _json['canonicalName'];
+      canonicalName = _json['canonicalName'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('discoveryVersion')) {
-      discoveryVersion = _json['discoveryVersion'];
+      discoveryVersion = _json['discoveryVersion'] as core.String;
     }
     if (_json.containsKey('documentationLink')) {
-      documentationLink = _json['documentationLink'];
+      documentationLink = _json['documentationLink'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('exponentialBackoffDefault')) {
-      exponentialBackoffDefault = _json['exponentialBackoffDefault'];
+      exponentialBackoffDefault =
+          _json['exponentialBackoffDefault'] as core.bool;
     }
     if (_json.containsKey('features')) {
-      features = (_json['features'] as core.List).cast<core.String>();
+      features = (_json['features'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('icons')) {
       icons = RestDescriptionIcons.fromJson(_json['icons']);
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List).cast<core.String>();
+      labels = (_json['labels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('methods')) {
       methods = commons.mapMap<core.Map, RestMethod>(
@@ -898,16 +910,16 @@ class RestDescription {
           (core.Map item) => RestMethod.fromJson(item));
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('ownerDomain')) {
-      ownerDomain = _json['ownerDomain'];
+      ownerDomain = _json['ownerDomain'] as core.String;
     }
     if (_json.containsKey('ownerName')) {
-      ownerName = _json['ownerName'];
+      ownerName = _json['ownerName'] as core.String;
     }
     if (_json.containsKey('packagePath')) {
-      packagePath = _json['packagePath'];
+      packagePath = _json['packagePath'] as core.String;
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Map, JsonSchema>(
@@ -915,7 +927,7 @@ class RestDescription {
           (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey('protocol')) {
-      protocol = _json['protocol'];
+      protocol = _json['protocol'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = commons.mapMap<core.Map, RestResource>(
@@ -923,10 +935,10 @@ class RestDescription {
           (core.Map item) => RestResource.fromJson(item));
     }
     if (_json.containsKey('revision')) {
-      revision = _json['revision'];
+      revision = _json['revision'] as core.String;
     }
     if (_json.containsKey('rootUrl')) {
-      rootUrl = _json['rootUrl'];
+      rootUrl = _json['rootUrl'] as core.String;
     }
     if (_json.containsKey('schemas')) {
       schemas = commons.mapMap<core.Map, JsonSchema>(
@@ -934,16 +946,16 @@ class RestDescription {
           (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey('servicePath')) {
-      servicePath = _json['servicePath'];
+      servicePath = _json['servicePath'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
     if (_json.containsKey('version_module')) {
-      versionModule = _json['version_module'];
+      versionModule = _json['version_module'] as core.bool;
     }
   }
 
@@ -1064,10 +1076,10 @@ class RestMethodMediaUploadProtocolsResumable {
 
   RestMethodMediaUploadProtocolsResumable.fromJson(core.Map _json) {
     if (_json.containsKey('multipart')) {
-      multipart = _json['multipart'];
+      multipart = _json['multipart'] as core.bool;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -1096,10 +1108,10 @@ class RestMethodMediaUploadProtocolsSimple {
 
   RestMethodMediaUploadProtocolsSimple.fromJson(core.Map _json) {
     if (_json.containsKey('multipart')) {
-      multipart = _json['multipart'];
+      multipart = _json['multipart'] as core.bool;
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
   }
 
@@ -1162,10 +1174,12 @@ class RestMethodMediaUpload {
 
   RestMethodMediaUpload.fromJson(core.Map _json) {
     if (_json.containsKey('accept')) {
-      accept = (_json['accept'] as core.List).cast<core.String>();
+      accept = (_json['accept'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('maxSize')) {
-      maxSize = _json['maxSize'];
+      maxSize = _json['maxSize'] as core.String;
     }
     if (_json.containsKey('protocols')) {
       protocols = RestMethodMediaUploadProtocols.fromJson(_json['protocols']);
@@ -1199,10 +1213,10 @@ class RestMethodRequest {
 
   RestMethodRequest.fromJson(core.Map _json) {
     if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'];
+      P_ref = _json['\$ref'] as core.String;
     }
     if (_json.containsKey('parameterName')) {
-      parameterName = _json['parameterName'];
+      parameterName = _json['parameterName'] as core.String;
     }
   }
 
@@ -1227,7 +1241,7 @@ class RestMethodResponse {
 
   RestMethodResponse.fromJson(core.Map _json) {
     if (_json.containsKey('\$ref')) {
-      P_ref = _json['\$ref'];
+      P_ref = _json['\$ref'] as core.String;
     }
   }
 
@@ -1297,23 +1311,24 @@ class RestMethod {
 
   RestMethod.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('etagRequired')) {
-      etagRequired = _json['etagRequired'];
+      etagRequired = _json['etagRequired'] as core.bool;
     }
     if (_json.containsKey('httpMethod')) {
-      httpMethod = _json['httpMethod'];
+      httpMethod = _json['httpMethod'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('mediaUpload')) {
       mediaUpload = RestMethodMediaUpload.fromJson(_json['mediaUpload']);
     }
     if (_json.containsKey('parameterOrder')) {
-      parameterOrder =
-          (_json['parameterOrder'] as core.List).cast<core.String>();
+      parameterOrder = (_json['parameterOrder'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Map, JsonSchema>(
@@ -1321,7 +1336,7 @@ class RestMethod {
           (core.Map item) => JsonSchema.fromJson(item));
     }
     if (_json.containsKey('path')) {
-      path = _json['path'];
+      path = _json['path'] as core.String;
     }
     if (_json.containsKey('request')) {
       request = RestMethodRequest.fromJson(_json['request']);
@@ -1330,19 +1345,21 @@ class RestMethod {
       response = RestMethodResponse.fromJson(_json['response']);
     }
     if (_json.containsKey('scopes')) {
-      scopes = (_json['scopes'] as core.List).cast<core.String>();
+      scopes = (_json['scopes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('supportsMediaDownload')) {
-      supportsMediaDownload = _json['supportsMediaDownload'];
+      supportsMediaDownload = _json['supportsMediaDownload'] as core.bool;
     }
     if (_json.containsKey('supportsMediaUpload')) {
-      supportsMediaUpload = _json['supportsMediaUpload'];
+      supportsMediaUpload = _json['supportsMediaUpload'] as core.bool;
     }
     if (_json.containsKey('supportsSubscription')) {
-      supportsSubscription = _json['supportsSubscription'];
+      supportsSubscription = _json['supportsSubscription'] as core.bool;
     }
     if (_json.containsKey('useMediaDownloadService')) {
-      useMediaDownloadService = _json['useMediaDownloadService'];
+      useMediaDownloadService = _json['useMediaDownloadService'] as core.bool;
     }
   }
 

@@ -856,7 +856,7 @@ class AccessDeniedPageSettings {
 
   AccessDeniedPageSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accessDeniedPageUri')) {
-      accessDeniedPageUri = _json['accessDeniedPageUri'];
+      accessDeniedPageUri = _json['accessDeniedPageUri'] as core.String;
     }
   }
 
@@ -940,7 +940,7 @@ class ApplicationSettings {
           AccessDeniedPageSettings.fromJson(_json['accessDeniedPageSettings']);
     }
     if (_json.containsKey('cookieDomain')) {
-      cookieDomain = _json['cookieDomain'];
+      cookieDomain = _json['cookieDomain'] as core.String;
     }
     if (_json.containsKey('csmSettings')) {
       csmSettings = CsmSettings.fromJson(_json['csmSettings']);
@@ -1016,16 +1016,18 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('bindingId')) {
-      bindingId = _json['bindingId'];
+      bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
       condition = Expr.fromJson(_json['condition']);
     }
     if (_json.containsKey('members')) {
-      members = (_json['members'] as core.List).cast<core.String>();
+      members = (_json['members'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
   }
 
@@ -1069,16 +1071,16 @@ class Brand {
 
   Brand.fromJson(core.Map _json) {
     if (_json.containsKey('applicationTitle')) {
-      applicationTitle = _json['applicationTitle'];
+      applicationTitle = _json['applicationTitle'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('orgInternalOnly')) {
-      orgInternalOnly = _json['orgInternalOnly'];
+      orgInternalOnly = _json['orgInternalOnly'] as core.bool;
     }
     if (_json.containsKey('supportEmail')) {
-      supportEmail = _json['supportEmail'];
+      supportEmail = _json['supportEmail'] as core.String;
     }
   }
 
@@ -1111,7 +1113,7 @@ class CorsSettings {
 
   CorsSettings.fromJson(core.Map _json) {
     if (_json.containsKey('allowHttpOptions')) {
-      allowHttpOptions = _json['allowHttpOptions'];
+      allowHttpOptions = _json['allowHttpOptions'] as core.bool;
     }
   }
 
@@ -1137,7 +1139,7 @@ class CsmSettings {
 
   CsmSettings.fromJson(core.Map _json) {
     if (_json.containsKey('rctokenAud')) {
-      rctokenAud = _json['rctokenAud'];
+      rctokenAud = _json['rctokenAud'] as core.String;
     }
   }
 
@@ -1205,16 +1207,16 @@ class Expr {
 
   Expr.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('expression')) {
-      expression = _json['expression'];
+      expression = _json['expression'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = _json['location'];
+      location = _json['location'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1255,10 +1257,12 @@ class GcipSettings {
 
   GcipSettings.fromJson(core.Map _json) {
     if (_json.containsKey('loginPageUri')) {
-      loginPageUri = _json['loginPageUri'];
+      loginPageUri = _json['loginPageUri'] as core.String;
     }
     if (_json.containsKey('tenantIds')) {
-      tenantIds = (_json['tenantIds'] as core.List).cast<core.String>();
+      tenantIds = (_json['tenantIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1312,7 +1316,7 @@ class GetPolicyOptions {
 
   GetPolicyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('requestedPolicyVersion')) {
-      requestedPolicyVersion = _json['requestedPolicyVersion'];
+      requestedPolicyVersion = _json['requestedPolicyVersion'] as core.int;
     }
   }
 
@@ -1347,7 +1351,7 @@ class IapSettings {
           ApplicationSettings.fromJson(_json['applicationSettings']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1381,13 +1385,13 @@ class IdentityAwareProxyClient {
 
   IdentityAwareProxyClient.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('secret')) {
-      secret = _json['secret'];
+      secret = _json['secret'] as core.String;
     }
   }
 
@@ -1450,7 +1454,7 @@ class ListIdentityAwareProxyClientsResponse {
               .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1490,10 +1494,10 @@ class OAuthSettings {
 
   OAuthSettings.fromJson(core.Map _json) {
     if (_json.containsKey('clientId')) {
-      clientId = _json['clientId'];
+      clientId = _json['clientId'] as core.String;
     }
     if (_json.containsKey('loginHint')) {
-      loginHint = _json['loginHint'];
+      loginHint = _json['loginHint'] as core.String;
     }
   }
 
@@ -1589,10 +1593,10 @@ class Policy {
           .toList();
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.int;
     }
   }
 
@@ -1636,10 +1640,10 @@ class PolicyDelegationSettings {
 
   PolicyDelegationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('iamPermission')) {
-      iamPermission = _json['iamPermission'];
+      iamPermission = _json['iamPermission'] as core.String;
     }
     if (_json.containsKey('iamServiceName')) {
-      iamServiceName = _json['iamServiceName'];
+      iamServiceName = _json['iamServiceName'] as core.String;
     }
     if (_json.containsKey('policyName')) {
       policyName = PolicyName.fromJson(_json['policyName']);
@@ -1684,13 +1688,13 @@ class PolicyName {
 
   PolicyName.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('region')) {
-      region = _json['region'];
+      region = _json['region'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1770,16 +1774,18 @@ class Resource {
 
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.Map).cast<core.String, core.String>();
+      labels = commons.mapMap<core.String, core.String>(
+          _json['labels'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('service')) {
-      service = _json['service'];
+      service = _json['service'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1838,7 +1844,9 @@ class TestIamPermissionsRequest {
 
   TestIamPermissionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1861,7 +1869,9 @@ class TestIamPermissionsResponse {
 
   TestIamPermissionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('permissions')) {
-      permissions = (_json['permissions'] as core.List).cast<core.String>();
+      permissions = (_json['permissions'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 

@@ -135,10 +135,10 @@ class Groups {
 
   Groups.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('responseCode')) {
-      responseCode = _json['responseCode'];
+      responseCode = _json['responseCode'] as core.String;
     }
   }
 

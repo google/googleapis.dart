@@ -644,22 +644,22 @@ class Availability {
 
   Availability.fromJson(core.Map _json) {
     if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'];
+      advertiserId = _json['advertiserId'] as core.String;
     }
     if (_json.containsKey('agencyId')) {
-      agencyId = _json['agencyId'];
+      agencyId = _json['agencyId'] as core.String;
     }
     if (_json.containsKey('availabilityTimestamp')) {
-      availabilityTimestamp = _json['availabilityTimestamp'];
+      availabilityTimestamp = _json['availabilityTimestamp'] as core.String;
     }
     if (_json.containsKey('segmentationId')) {
-      segmentationId = _json['segmentationId'];
+      segmentationId = _json['segmentationId'] as core.String;
     }
     if (_json.containsKey('segmentationName')) {
-      segmentationName = _json['segmentationName'];
+      segmentationName = _json['segmentationName'] as core.String;
     }
     if (_json.containsKey('segmentationType')) {
-      segmentationType = _json['segmentationType'];
+      segmentationType = _json['segmentationType'] as core.String;
     }
   }
 
@@ -815,46 +815,47 @@ class Conversion {
 
   Conversion.fromJson(core.Map _json) {
     if (_json.containsKey('adGroupId')) {
-      adGroupId = _json['adGroupId'];
+      adGroupId = _json['adGroupId'] as core.String;
     }
     if (_json.containsKey('adId')) {
-      adId = _json['adId'];
+      adId = _json['adId'] as core.String;
     }
     if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'];
+      advertiserId = _json['advertiserId'] as core.String;
     }
     if (_json.containsKey('agencyId')) {
-      agencyId = _json['agencyId'];
+      agencyId = _json['agencyId'] as core.String;
     }
     if (_json.containsKey('attributionModel')) {
-      attributionModel = _json['attributionModel'];
+      attributionModel = _json['attributionModel'] as core.String;
     }
     if (_json.containsKey('campaignId')) {
-      campaignId = _json['campaignId'];
+      campaignId = _json['campaignId'] as core.String;
     }
     if (_json.containsKey('channel')) {
-      channel = _json['channel'];
+      channel = _json['channel'] as core.String;
     }
     if (_json.containsKey('clickId')) {
-      clickId = _json['clickId'];
+      clickId = _json['clickId'] as core.String;
     }
     if (_json.containsKey('conversionId')) {
-      conversionId = _json['conversionId'];
+      conversionId = _json['conversionId'] as core.String;
     }
     if (_json.containsKey('conversionModifiedTimestamp')) {
-      conversionModifiedTimestamp = _json['conversionModifiedTimestamp'];
+      conversionModifiedTimestamp =
+          _json['conversionModifiedTimestamp'] as core.String;
     }
     if (_json.containsKey('conversionTimestamp')) {
-      conversionTimestamp = _json['conversionTimestamp'];
+      conversionTimestamp = _json['conversionTimestamp'] as core.String;
     }
     if (_json.containsKey('countMillis')) {
-      countMillis = _json['countMillis'];
+      countMillis = _json['countMillis'] as core.String;
     }
     if (_json.containsKey('criterionId')) {
-      criterionId = _json['criterionId'];
+      criterionId = _json['criterionId'] as core.String;
     }
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('customDimension')) {
       customDimension = (_json['customDimension'] as core.List)
@@ -867,55 +868,55 @@ class Conversion {
           .toList();
     }
     if (_json.containsKey('deviceType')) {
-      deviceType = _json['deviceType'];
+      deviceType = _json['deviceType'] as core.String;
     }
     if (_json.containsKey('dsConversionId')) {
-      dsConversionId = _json['dsConversionId'];
+      dsConversionId = _json['dsConversionId'] as core.String;
     }
     if (_json.containsKey('engineAccountId')) {
-      engineAccountId = _json['engineAccountId'];
+      engineAccountId = _json['engineAccountId'] as core.String;
     }
     if (_json.containsKey('floodlightOrderId')) {
-      floodlightOrderId = _json['floodlightOrderId'];
+      floodlightOrderId = _json['floodlightOrderId'] as core.String;
     }
     if (_json.containsKey('inventoryAccountId')) {
-      inventoryAccountId = _json['inventoryAccountId'];
+      inventoryAccountId = _json['inventoryAccountId'] as core.String;
     }
     if (_json.containsKey('productCountry')) {
-      productCountry = _json['productCountry'];
+      productCountry = _json['productCountry'] as core.String;
     }
     if (_json.containsKey('productGroupId')) {
-      productGroupId = _json['productGroupId'];
+      productGroupId = _json['productGroupId'] as core.String;
     }
     if (_json.containsKey('productId')) {
-      productId = _json['productId'];
+      productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('productLanguage')) {
-      productLanguage = _json['productLanguage'];
+      productLanguage = _json['productLanguage'] as core.String;
     }
     if (_json.containsKey('quantityMillis')) {
-      quantityMillis = _json['quantityMillis'];
+      quantityMillis = _json['quantityMillis'] as core.String;
     }
     if (_json.containsKey('revenueMicros')) {
-      revenueMicros = _json['revenueMicros'];
+      revenueMicros = _json['revenueMicros'] as core.String;
     }
     if (_json.containsKey('segmentationId')) {
-      segmentationId = _json['segmentationId'];
+      segmentationId = _json['segmentationId'] as core.String;
     }
     if (_json.containsKey('segmentationName')) {
-      segmentationName = _json['segmentationName'];
+      segmentationName = _json['segmentationName'] as core.String;
     }
     if (_json.containsKey('segmentationType')) {
-      segmentationType = _json['segmentationType'];
+      segmentationType = _json['segmentationType'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
     if (_json.containsKey('storeId')) {
-      storeId = _json['storeId'];
+      storeId = _json['storeId'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1044,7 +1045,7 @@ class ConversionList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -1072,10 +1073,10 @@ class CustomDimension {
 
   CustomDimension.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -1103,7 +1104,7 @@ class CustomMetric {
 
   CustomMetric.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
       value = _json['value'].toDouble();
@@ -1133,10 +1134,10 @@ class ReportFiles {
 
   ReportFiles.fromJson(core.Map _json) {
     if (_json.containsKey('byteCount')) {
-      byteCount = _json['byteCount'];
+      byteCount = _json['byteCount'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -1200,19 +1201,19 @@ class Report {
           .toList();
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('isReportReady')) {
-      isReportReady = _json['isReportReady'];
+      isReportReady = _json['isReportReady'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('request')) {
       request = ReportRequest.fromJson(_json['request']);
     }
     if (_json.containsKey('rowCount')) {
-      rowCount = _json['rowCount'];
+      rowCount = _json['rowCount'] as core.int;
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -1220,10 +1221,10 @@ class Report {
           .toList();
     }
     if (_json.containsKey('statisticsCurrencyCode')) {
-      statisticsCurrencyCode = _json['statisticsCurrencyCode'];
+      statisticsCurrencyCode = _json['statisticsCurrencyCode'] as core.String;
     }
     if (_json.containsKey('statisticsTimeZone')) {
-      statisticsTimeZone = _json['statisticsTimeZone'];
+      statisticsTimeZone = _json['statisticsTimeZone'] as core.String;
     }
   }
 
@@ -1318,34 +1319,35 @@ class ReportApiColumnSpec {
 
   ReportApiColumnSpec.fromJson(core.Map _json) {
     if (_json.containsKey('columnName')) {
-      columnName = _json['columnName'];
+      columnName = _json['columnName'] as core.String;
     }
     if (_json.containsKey('customDimensionName')) {
-      customDimensionName = _json['customDimensionName'];
+      customDimensionName = _json['customDimensionName'] as core.String;
     }
     if (_json.containsKey('customMetricName')) {
-      customMetricName = _json['customMetricName'];
+      customMetricName = _json['customMetricName'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('groupByColumn')) {
-      groupByColumn = _json['groupByColumn'];
+      groupByColumn = _json['groupByColumn'] as core.bool;
     }
     if (_json.containsKey('headerText')) {
-      headerText = _json['headerText'];
+      headerText = _json['headerText'] as core.String;
     }
     if (_json.containsKey('platformSource')) {
-      platformSource = _json['platformSource'];
+      platformSource = _json['platformSource'] as core.String;
     }
     if (_json.containsKey('productReportPerspective')) {
-      productReportPerspective = _json['productReportPerspective'];
+      productReportPerspective =
+          _json['productReportPerspective'] as core.String;
     }
     if (_json.containsKey('savedColumnName')) {
-      savedColumnName = _json['savedColumnName'];
+      savedColumnName = _json['savedColumnName'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
   }
 
@@ -1408,10 +1410,12 @@ class ReportRequestFilters {
       column = ReportApiColumnSpec.fromJson(_json['column']);
     }
     if (_json.containsKey('operator')) {
-      operator = _json['operator'];
+      operator = _json['operator'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = (_json['values'] as core.List).cast<core.Object>();
+      values = (_json['values'] as core.List)
+          .map<core.Object>((value) => value as core.Object)
+          .toList();
     }
   }
 
@@ -1445,7 +1449,7 @@ class ReportRequestOrderBy {
       column = ReportApiColumnSpec.fromJson(_json['column']);
     }
     if (_json.containsKey('sortOrder')) {
-      sortOrder = _json['sortOrder'];
+      sortOrder = _json['sortOrder'] as core.String;
     }
   }
 
@@ -1490,25 +1494,25 @@ class ReportRequestReportScope {
 
   ReportRequestReportScope.fromJson(core.Map _json) {
     if (_json.containsKey('adGroupId')) {
-      adGroupId = _json['adGroupId'];
+      adGroupId = _json['adGroupId'] as core.String;
     }
     if (_json.containsKey('adId')) {
-      adId = _json['adId'];
+      adId = _json['adId'] as core.String;
     }
     if (_json.containsKey('advertiserId')) {
-      advertiserId = _json['advertiserId'];
+      advertiserId = _json['advertiserId'] as core.String;
     }
     if (_json.containsKey('agencyId')) {
-      agencyId = _json['agencyId'];
+      agencyId = _json['agencyId'] as core.String;
     }
     if (_json.containsKey('campaignId')) {
-      campaignId = _json['campaignId'];
+      campaignId = _json['campaignId'] as core.String;
     }
     if (_json.containsKey('engineAccountId')) {
-      engineAccountId = _json['engineAccountId'];
+      engineAccountId = _json['engineAccountId'] as core.String;
     }
     if (_json.containsKey('keywordId')) {
-      keywordId = _json['keywordId'];
+      keywordId = _json['keywordId'] as core.String;
     }
   }
 
@@ -1561,16 +1565,17 @@ class ReportRequestTimeRange {
   ReportRequestTimeRange.fromJson(core.Map _json) {
     if (_json.containsKey('changedAttributesSinceTimestamp')) {
       changedAttributesSinceTimestamp =
-          _json['changedAttributesSinceTimestamp'];
+          _json['changedAttributesSinceTimestamp'] as core.String;
     }
     if (_json.containsKey('changedMetricsSinceTimestamp')) {
-      changedMetricsSinceTimestamp = _json['changedMetricsSinceTimestamp'];
+      changedMetricsSinceTimestamp =
+          _json['changedMetricsSinceTimestamp'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = _json['endDate'];
+      endDate = _json['endDate'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = _json['startDate'];
+      startDate = _json['startDate'] as core.String;
     }
   }
 
@@ -1674,7 +1679,7 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('downloadFormat')) {
-      downloadFormat = _json['downloadFormat'];
+      downloadFormat = _json['downloadFormat'] as core.String;
     }
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
@@ -1683,13 +1688,13 @@ class ReportRequest {
           .toList();
     }
     if (_json.containsKey('includeDeletedEntities')) {
-      includeDeletedEntities = _json['includeDeletedEntities'];
+      includeDeletedEntities = _json['includeDeletedEntities'] as core.bool;
     }
     if (_json.containsKey('includeRemovedEntities')) {
-      includeRemovedEntities = _json['includeRemovedEntities'];
+      includeRemovedEntities = _json['includeRemovedEntities'] as core.bool;
     }
     if (_json.containsKey('maxRowsPerFile')) {
-      maxRowsPerFile = _json['maxRowsPerFile'];
+      maxRowsPerFile = _json['maxRowsPerFile'] as core.int;
     }
     if (_json.containsKey('orderBy')) {
       orderBy = (_json['orderBy'] as core.List)
@@ -1701,22 +1706,22 @@ class ReportRequest {
       reportScope = ReportRequestReportScope.fromJson(_json['reportScope']);
     }
     if (_json.containsKey('reportType')) {
-      reportType = _json['reportType'];
+      reportType = _json['reportType'] as core.String;
     }
     if (_json.containsKey('rowCount')) {
-      rowCount = _json['rowCount'];
+      rowCount = _json['rowCount'] as core.int;
     }
     if (_json.containsKey('startRow')) {
-      startRow = _json['startRow'];
+      startRow = _json['startRow'] as core.int;
     }
     if (_json.containsKey('statisticsCurrency')) {
-      statisticsCurrency = _json['statisticsCurrency'];
+      statisticsCurrency = _json['statisticsCurrency'] as core.String;
     }
     if (_json.containsKey('timeRange')) {
       timeRange = ReportRequestTimeRange.fromJson(_json['timeRange']);
     }
     if (_json.containsKey('verifySingleTimeZone')) {
-      verifySingleTimeZone = _json['verifySingleTimeZone'];
+      verifySingleTimeZone = _json['verifySingleTimeZone'] as core.bool;
     }
   }
 
@@ -1779,7 +1784,7 @@ class ReportRow extends collection.MapBase<core.String, core.Object> {
 
   ReportRow.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = value;
+      this[key] = value as core.Object;
     });
   }
 
@@ -1822,13 +1827,13 @@ class SavedColumn {
 
   SavedColumn.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('savedColumnName')) {
-      savedColumnName = _json['savedColumnName'];
+      savedColumnName = _json['savedColumnName'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1868,7 +1873,7 @@ class SavedColumnList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 

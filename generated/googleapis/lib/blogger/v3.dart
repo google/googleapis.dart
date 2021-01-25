@@ -2537,13 +2537,13 @@ class BlogLocale {
 
   BlogLocale.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('variant')) {
-      variant = _json['variant'];
+      variant = _json['variant'] as core.String;
     }
   }
 
@@ -2574,10 +2574,10 @@ class BlogPages {
 
   BlogPages.fromJson(core.Map _json) {
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -2613,10 +2613,10 @@ class BlogPosts {
           .toList();
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.int;
     }
   }
 
@@ -2682,22 +2682,22 @@ class Blog {
 
   Blog.fromJson(core.Map _json) {
     if (_json.containsKey('customMetaData')) {
-      customMetaData = _json['customMetaData'];
+      customMetaData = _json['customMetaData'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locale')) {
       locale = BlogLocale.fromJson(_json['locale']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('pages')) {
       pages = BlogPages.fromJson(_json['pages']);
@@ -2706,19 +2706,19 @@ class Blog {
       posts = BlogPosts.fromJson(_json['posts']);
     }
     if (_json.containsKey('published')) {
-      published = _json['published'];
+      published = _json['published'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -2791,7 +2791,7 @@ class BlogList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -2840,22 +2840,22 @@ class BlogPerUserInfo {
 
   BlogPerUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'];
+      blogId = _json['blogId'] as core.String;
     }
     if (_json.containsKey('hasAdminAccess')) {
-      hasAdminAccess = _json['hasAdminAccess'];
+      hasAdminAccess = _json['hasAdminAccess'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('photosAlbumKey')) {
-      photosAlbumKey = _json['photosAlbumKey'];
+      photosAlbumKey = _json['photosAlbumKey'] as core.String;
     }
     if (_json.containsKey('role')) {
-      role = _json['role'];
+      role = _json['role'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -2903,7 +2903,7 @@ class BlogUserInfo {
       blogUserInfo = BlogPerUserInfo.fromJson(_json['blog_user_info']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -2931,7 +2931,7 @@ class CommentAuthorImage {
 
   CommentAuthorImage.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -2962,16 +2962,16 @@ class CommentAuthor {
 
   CommentAuthor.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = CommentAuthorImage.fromJson(_json['image']);
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3002,7 +3002,7 @@ class CommentBlog {
 
   CommentBlog.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3024,7 +3024,7 @@ class CommentInReplyTo {
 
   CommentInReplyTo.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3046,7 +3046,7 @@ class CommentPost {
 
   CommentPost.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3108,31 +3108,31 @@ class Comment {
       blog = CommentBlog.fromJson(_json['blog']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('inReplyTo')) {
       inReplyTo = CommentInReplyTo.fromJson(_json['inReplyTo']);
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('post')) {
       post = CommentPost.fromJson(_json['post']);
     }
     if (_json.containsKey('published')) {
-      published = _json['published'];
+      published = _json['published'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
   }
 
@@ -3195,7 +3195,7 @@ class CommentList {
 
   CommentList.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -3203,13 +3203,13 @@ class CommentList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'];
+      prevPageToken = _json['prevPageToken'] as core.String;
     }
   }
 
@@ -3243,7 +3243,7 @@ class PageAuthorImage {
 
   PageAuthorImage.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3274,16 +3274,16 @@ class PageAuthor {
 
   PageAuthor.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = PageAuthorImage.fromJson(_json['image']);
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3314,7 +3314,7 @@ class PageBlog {
 
   PageBlog.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3378,34 +3378,34 @@ class Page {
       blog = PageBlog.fromJson(_json['blog']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('published')) {
-      published = _json['published'];
+      published = _json['published'] as core.String;
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3468,7 +3468,7 @@ class PageList {
 
   PageList.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -3476,10 +3476,10 @@ class PageList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -3516,10 +3516,10 @@ class PageviewsCounts {
 
   PageviewsCounts.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'];
+      count = _json['count'] as core.String;
     }
     if (_json.containsKey('timeRange')) {
-      timeRange = _json['timeRange'];
+      timeRange = _json['timeRange'] as core.String;
     }
   }
 
@@ -3549,7 +3549,7 @@ class Pageviews {
 
   Pageviews.fromJson(core.Map _json) {
     if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'];
+      blogId = _json['blogId'] as core.String;
     }
     if (_json.containsKey('counts')) {
       counts = (_json['counts'] as core.List)
@@ -3557,7 +3557,7 @@ class Pageviews {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
   }
 
@@ -3585,7 +3585,7 @@ class PostAuthorImage {
 
   PostAuthorImage.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3616,16 +3616,16 @@ class PostAuthor {
 
   PostAuthor.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
       image = PostAuthorImage.fromJson(_json['image']);
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3656,7 +3656,7 @@ class PostBlog {
 
   PostBlog.fromJson(core.Map _json) {
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
   }
 
@@ -3676,7 +3676,7 @@ class PostImages {
 
   PostImages.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3713,10 +3713,10 @@ class PostLocation {
       lng = _json['lng'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('span')) {
-      span = _json['span'];
+      span = _json['span'] as core.String;
     }
   }
 
@@ -3758,10 +3758,10 @@ class PostReplies {
           .toList();
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('totalItems')) {
-      totalItems = _json['totalItems'];
+      totalItems = _json['totalItems'] as core.String;
     }
   }
 
@@ -3856,16 +3856,16 @@ class Post {
       blog = PostBlog.fromJson(_json['blog']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('customMetaData')) {
-      customMetaData = _json['customMetaData'];
+      customMetaData = _json['customMetaData'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('images')) {
       images = (_json['images'] as core.List)
@@ -3873,40 +3873,42 @@ class Post {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = (_json['labels'] as core.List).cast<core.String>();
+      labels = (_json['labels'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('location')) {
       location = PostLocation.fromJson(_json['location']);
     }
     if (_json.containsKey('published')) {
-      published = _json['published'];
+      published = _json['published'] as core.String;
     }
     if (_json.containsKey('readerComments')) {
-      readerComments = _json['readerComments'];
+      readerComments = _json['readerComments'] as core.String;
     }
     if (_json.containsKey('replies')) {
       replies = PostReplies.fromJson(_json['replies']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
     if (_json.containsKey('titleLink')) {
-      titleLink = _json['titleLink'];
+      titleLink = _json['titleLink'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = _json['updated'];
+      updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3993,7 +3995,7 @@ class PostList {
 
   PostList.fromJson(core.Map _json) {
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
@@ -4001,13 +4003,13 @@ class PostList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('prevPageToken')) {
-      prevPageToken = _json['prevPageToken'];
+      prevPageToken = _json['prevPageToken'] as core.String;
     }
   }
 
@@ -4052,19 +4054,19 @@ class PostPerUserInfo {
 
   PostPerUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('blogId')) {
-      blogId = _json['blogId'];
+      blogId = _json['blogId'] as core.String;
     }
     if (_json.containsKey('hasEditAccess')) {
-      hasEditAccess = _json['hasEditAccess'];
+      hasEditAccess = _json['hasEditAccess'] as core.bool;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('postId')) {
-      postId = _json['postId'];
+      postId = _json['postId'] as core.String;
     }
     if (_json.containsKey('userId')) {
-      userId = _json['userId'];
+      userId = _json['userId'] as core.String;
     }
   }
 
@@ -4103,7 +4105,7 @@ class PostUserInfo {
 
   PostUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('post')) {
       post = Post.fromJson(_json['post']);
@@ -4147,10 +4149,10 @@ class PostUserInfosList {
           .toList();
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -4178,7 +4180,7 @@ class UserBlogs {
 
   UserBlogs.fromJson(core.Map _json) {
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
   }
 
@@ -4206,13 +4208,13 @@ class UserLocale {
 
   UserLocale.fromJson(core.Map _json) {
     if (_json.containsKey('country')) {
-      country = _json['country'];
+      country = _json['country'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('variant')) {
-      variant = _json['variant'];
+      variant = _json['variant'] as core.String;
     }
   }
 
@@ -4263,31 +4265,31 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('about')) {
-      about = _json['about'];
+      about = _json['about'] as core.String;
     }
     if (_json.containsKey('blogs')) {
       blogs = UserBlogs.fromJson(_json['blogs']);
     }
     if (_json.containsKey('created')) {
-      created = _json['created'];
+      created = _json['created'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = _json['id'];
+      id = _json['id'] as core.String;
     }
     if (_json.containsKey('kind')) {
-      kind = _json['kind'];
+      kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locale')) {
       locale = UserLocale.fromJson(_json['locale']);
     }
     if (_json.containsKey('selfLink')) {
-      selfLink = _json['selfLink'];
+      selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 

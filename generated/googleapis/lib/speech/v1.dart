@@ -454,7 +454,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -497,16 +497,16 @@ class LongRunningRecognizeMetadata {
 
   LongRunningRecognizeMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('lastUpdateTime')) {
-      lastUpdateTime = _json['lastUpdateTime'];
+      lastUpdateTime = _json['lastUpdateTime'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -632,21 +632,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -700,10 +702,10 @@ class RecognitionAudio {
 
   RecognitionAudio.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -857,42 +859,43 @@ class RecognitionConfig {
 
   RecognitionConfig.fromJson(core.Map _json) {
     if (_json.containsKey('audioChannelCount')) {
-      audioChannelCount = _json['audioChannelCount'];
+      audioChannelCount = _json['audioChannelCount'] as core.int;
     }
     if (_json.containsKey('diarizationConfig')) {
       diarizationConfig =
           SpeakerDiarizationConfig.fromJson(_json['diarizationConfig']);
     }
     if (_json.containsKey('enableAutomaticPunctuation')) {
-      enableAutomaticPunctuation = _json['enableAutomaticPunctuation'];
+      enableAutomaticPunctuation =
+          _json['enableAutomaticPunctuation'] as core.bool;
     }
     if (_json.containsKey('enableSeparateRecognitionPerChannel')) {
       enableSeparateRecognitionPerChannel =
-          _json['enableSeparateRecognitionPerChannel'];
+          _json['enableSeparateRecognitionPerChannel'] as core.bool;
     }
     if (_json.containsKey('enableWordTimeOffsets')) {
-      enableWordTimeOffsets = _json['enableWordTimeOffsets'];
+      enableWordTimeOffsets = _json['enableWordTimeOffsets'] as core.bool;
     }
     if (_json.containsKey('encoding')) {
-      encoding = _json['encoding'];
+      encoding = _json['encoding'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('maxAlternatives')) {
-      maxAlternatives = _json['maxAlternatives'];
+      maxAlternatives = _json['maxAlternatives'] as core.int;
     }
     if (_json.containsKey('metadata')) {
       metadata = RecognitionMetadata.fromJson(_json['metadata']);
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('profanityFilter')) {
-      profanityFilter = _json['profanityFilter'];
+      profanityFilter = _json['profanityFilter'] as core.bool;
     }
     if (_json.containsKey('sampleRateHertz')) {
-      sampleRateHertz = _json['sampleRateHertz'];
+      sampleRateHertz = _json['sampleRateHertz'] as core.int;
     }
     if (_json.containsKey('speechContexts')) {
       speechContexts = (_json['speechContexts'] as core.List)
@@ -900,7 +903,7 @@ class RecognitionConfig {
           .toList();
     }
     if (_json.containsKey('useEnhanced')) {
-      useEnhanced = _json['useEnhanced'];
+      useEnhanced = _json['useEnhanced'] as core.bool;
     }
   }
 
@@ -1031,28 +1034,28 @@ class RecognitionMetadata {
 
   RecognitionMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('audioTopic')) {
-      audioTopic = _json['audioTopic'];
+      audioTopic = _json['audioTopic'] as core.String;
     }
     if (_json.containsKey('industryNaicsCodeOfAudio')) {
-      industryNaicsCodeOfAudio = _json['industryNaicsCodeOfAudio'];
+      industryNaicsCodeOfAudio = _json['industryNaicsCodeOfAudio'] as core.int;
     }
     if (_json.containsKey('interactionType')) {
-      interactionType = _json['interactionType'];
+      interactionType = _json['interactionType'] as core.String;
     }
     if (_json.containsKey('microphoneDistance')) {
-      microphoneDistance = _json['microphoneDistance'];
+      microphoneDistance = _json['microphoneDistance'] as core.String;
     }
     if (_json.containsKey('originalMediaType')) {
-      originalMediaType = _json['originalMediaType'];
+      originalMediaType = _json['originalMediaType'] as core.String;
     }
     if (_json.containsKey('originalMimeType')) {
-      originalMimeType = _json['originalMimeType'];
+      originalMimeType = _json['originalMimeType'] as core.String;
     }
     if (_json.containsKey('recordingDeviceName')) {
-      recordingDeviceName = _json['recordingDeviceName'];
+      recordingDeviceName = _json['recordingDeviceName'] as core.String;
     }
     if (_json.containsKey('recordingDeviceType')) {
-      recordingDeviceType = _json['recordingDeviceType'];
+      recordingDeviceType = _json['recordingDeviceType'] as core.String;
     }
   }
 
@@ -1170,16 +1173,16 @@ class SpeakerDiarizationConfig {
 
   SpeakerDiarizationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('enableSpeakerDiarization')) {
-      enableSpeakerDiarization = _json['enableSpeakerDiarization'];
+      enableSpeakerDiarization = _json['enableSpeakerDiarization'] as core.bool;
     }
     if (_json.containsKey('maxSpeakerCount')) {
-      maxSpeakerCount = _json['maxSpeakerCount'];
+      maxSpeakerCount = _json['maxSpeakerCount'] as core.int;
     }
     if (_json.containsKey('minSpeakerCount')) {
-      minSpeakerCount = _json['minSpeakerCount'];
+      minSpeakerCount = _json['minSpeakerCount'] as core.int;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
   }
 
@@ -1221,7 +1224,9 @@ class SpeechContext {
 
   SpeechContext.fromJson(core.Map _json) {
     if (_json.containsKey('phrases')) {
-      phrases = (_json['phrases'] as core.List).cast<core.String>();
+      phrases = (_json['phrases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1259,7 +1264,7 @@ class SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -1306,7 +1311,7 @@ class SpeechRecognitionResult {
           .toList();
     }
     if (_json.containsKey('channelTag')) {
-      channelTag = _json['channelTag'];
+      channelTag = _json['channelTag'] as core.int;
     }
   }
 
@@ -1349,16 +1354,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -1405,16 +1412,16 @@ class WordInfo {
 
   WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 

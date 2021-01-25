@@ -290,12 +290,14 @@ class AutoText {
 
   AutoText.fromJson(core.Map _json) {
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -306,7 +308,7 @@ class AutoText {
       textStyle = TextStyle.fromJson(_json['textStyle']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -368,7 +370,7 @@ class BackgroundSuggestionState {
 
   BackgroundSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColorSuggested')) {
-      backgroundColorSuggested = _json['backgroundColorSuggested'];
+      backgroundColorSuggested = _json['backgroundColorSuggested'] as core.bool;
     }
   }
 
@@ -430,7 +432,7 @@ class BatchUpdateDocumentResponse {
 
   BatchUpdateDocumentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('documentId')) {
-      documentId = _json['documentId'];
+      documentId = _json['documentId'] as core.String;
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
@@ -498,10 +500,10 @@ class Bullet {
 
   Bullet.fromJson(core.Map _json) {
     if (_json.containsKey('listId')) {
-      listId = _json['listId'];
+      listId = _json['listId'] as core.String;
     }
     if (_json.containsKey('nestingLevel')) {
-      nestingLevel = _json['nestingLevel'];
+      nestingLevel = _json['nestingLevel'] as core.int;
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(_json['textStyle']);
@@ -541,10 +543,10 @@ class BulletSuggestionState {
 
   BulletSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('listIdSuggested')) {
-      listIdSuggested = _json['listIdSuggested'];
+      listIdSuggested = _json['listIdSuggested'] as core.bool;
     }
     if (_json.containsKey('nestingLevelSuggested')) {
-      nestingLevelSuggested = _json['nestingLevelSuggested'];
+      nestingLevelSuggested = _json['nestingLevelSuggested'] as core.bool;
     }
     if (_json.containsKey('textStyleSuggestionState')) {
       textStyleSuggestionState =
@@ -614,12 +616,14 @@ class ColumnBreak {
 
   ColumnBreak.fromJson(core.Map _json) {
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -677,7 +681,7 @@ class CreateFooterRequest {
       sectionBreakLocation = Location.fromJson(_json['sectionBreakLocation']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -702,7 +706,7 @@ class CreateFooterResponse {
 
   CreateFooterResponse.fromJson(core.Map _json) {
     if (_json.containsKey('footerId')) {
-      footerId = _json['footerId'];
+      footerId = _json['footerId'] as core.String;
     }
   }
 
@@ -767,7 +771,7 @@ class CreateFootnoteResponse {
 
   CreateFootnoteResponse.fromJson(core.Map _json) {
     if (_json.containsKey('footnoteId')) {
-      footnoteId = _json['footnoteId'];
+      footnoteId = _json['footnoteId'] as core.String;
     }
   }
 
@@ -805,7 +809,7 @@ class CreateHeaderRequest {
       sectionBreakLocation = Location.fromJson(_json['sectionBreakLocation']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -830,7 +834,7 @@ class CreateHeaderResponse {
 
   CreateHeaderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('headerId')) {
-      headerId = _json['headerId'];
+      headerId = _json['headerId'] as core.String;
     }
   }
 
@@ -857,7 +861,7 @@ class CreateNamedRangeRequest {
 
   CreateNamedRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('range')) {
       range = Range.fromJson(_json['range']);
@@ -885,7 +889,7 @@ class CreateNamedRangeResponse {
 
   CreateNamedRangeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('namedRangeId')) {
-      namedRangeId = _json['namedRangeId'];
+      namedRangeId = _json['namedRangeId'] as core.String;
     }
   }
 
@@ -958,7 +962,7 @@ class CreateParagraphBulletsRequest {
 
   CreateParagraphBulletsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bulletPreset')) {
-      bulletPreset = _json['bulletPreset'];
+      bulletPreset = _json['bulletPreset'] as core.String;
     }
     if (_json.containsKey('range')) {
       range = Range.fromJson(_json['range']);
@@ -1073,19 +1077,19 @@ class CropPropertiesSuggestionState {
 
   CropPropertiesSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('angleSuggested')) {
-      angleSuggested = _json['angleSuggested'];
+      angleSuggested = _json['angleSuggested'] as core.bool;
     }
     if (_json.containsKey('offsetBottomSuggested')) {
-      offsetBottomSuggested = _json['offsetBottomSuggested'];
+      offsetBottomSuggested = _json['offsetBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('offsetLeftSuggested')) {
-      offsetLeftSuggested = _json['offsetLeftSuggested'];
+      offsetLeftSuggested = _json['offsetLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('offsetRightSuggested')) {
-      offsetRightSuggested = _json['offsetRightSuggested'];
+      offsetRightSuggested = _json['offsetRightSuggested'] as core.bool;
     }
     if (_json.containsKey('offsetTopSuggested')) {
-      offsetTopSuggested = _json['offsetTopSuggested'];
+      offsetTopSuggested = _json['offsetTopSuggested'] as core.bool;
     }
   }
 
@@ -1156,7 +1160,7 @@ class DeleteFooterRequest {
 
   DeleteFooterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('footerId')) {
-      footerId = _json['footerId'];
+      footerId = _json['footerId'] as core.String;
     }
   }
 
@@ -1182,7 +1186,7 @@ class DeleteHeaderRequest {
 
   DeleteHeaderRequest.fromJson(core.Map _json) {
     if (_json.containsKey('headerId')) {
-      headerId = _json['headerId'];
+      headerId = _json['headerId'] as core.String;
     }
   }
 
@@ -1208,10 +1212,10 @@ class DeleteNamedRangeRequest {
 
   DeleteNamedRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('namedRangeId')) {
-      namedRangeId = _json['namedRangeId'];
+      namedRangeId = _json['namedRangeId'] as core.String;
     }
   }
 
@@ -1260,7 +1264,7 @@ class DeletePositionedObjectRequest {
 
   DeletePositionedObjectRequest.fromJson(core.Map _json) {
     if (_json.containsKey('objectId')) {
-      objectId = _json['objectId'];
+      objectId = _json['objectId'] as core.String;
     }
   }
 
@@ -1344,7 +1348,7 @@ class Dimension {
       magnitude = _json['magnitude'].toDouble();
     }
     if (_json.containsKey('unit')) {
-      unit = _json['unit'];
+      unit = _json['unit'] as core.String;
     }
   }
 
@@ -1447,7 +1451,7 @@ class Document {
       body = Body.fromJson(_json['body']);
     }
     if (_json.containsKey('documentId')) {
-      documentId = _json['documentId'];
+      documentId = _json['documentId'] as core.String;
     }
     if (_json.containsKey('documentStyle')) {
       documentStyle = DocumentStyle.fromJson(_json['documentStyle']);
@@ -1491,7 +1495,7 @@ class Document {
           (core.Map item) => PositionedObject.fromJson(item));
     }
     if (_json.containsKey('revisionId')) {
-      revisionId = _json['revisionId'];
+      revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('suggestedDocumentStyleChanges')) {
       suggestedDocumentStyleChanges =
@@ -1508,10 +1512,10 @@ class Document {
               (core.Map item) => SuggestedNamedStyles.fromJson(item));
     }
     if (_json.containsKey('suggestionsViewMode')) {
-      suggestionsViewMode = _json['suggestionsViewMode'];
+      suggestionsViewMode = _json['suggestionsViewMode'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1681,22 +1685,22 @@ class DocumentStyle {
       background = Background.fromJson(_json['background']);
     }
     if (_json.containsKey('defaultFooterId')) {
-      defaultFooterId = _json['defaultFooterId'];
+      defaultFooterId = _json['defaultFooterId'] as core.String;
     }
     if (_json.containsKey('defaultHeaderId')) {
-      defaultHeaderId = _json['defaultHeaderId'];
+      defaultHeaderId = _json['defaultHeaderId'] as core.String;
     }
     if (_json.containsKey('evenPageFooterId')) {
-      evenPageFooterId = _json['evenPageFooterId'];
+      evenPageFooterId = _json['evenPageFooterId'] as core.String;
     }
     if (_json.containsKey('evenPageHeaderId')) {
-      evenPageHeaderId = _json['evenPageHeaderId'];
+      evenPageHeaderId = _json['evenPageHeaderId'] as core.String;
     }
     if (_json.containsKey('firstPageFooterId')) {
-      firstPageFooterId = _json['firstPageFooterId'];
+      firstPageFooterId = _json['firstPageFooterId'] as core.String;
     }
     if (_json.containsKey('firstPageHeaderId')) {
-      firstPageHeaderId = _json['firstPageHeaderId'];
+      firstPageHeaderId = _json['firstPageHeaderId'] as core.String;
     }
     if (_json.containsKey('marginBottom')) {
       marginBottom = Dimension.fromJson(_json['marginBottom']);
@@ -1717,19 +1721,20 @@ class DocumentStyle {
       marginTop = Dimension.fromJson(_json['marginTop']);
     }
     if (_json.containsKey('pageNumberStart')) {
-      pageNumberStart = _json['pageNumberStart'];
+      pageNumberStart = _json['pageNumberStart'] as core.int;
     }
     if (_json.containsKey('pageSize')) {
       pageSize = Size.fromJson(_json['pageSize']);
     }
     if (_json.containsKey('useCustomHeaderFooterMargins')) {
-      useCustomHeaderFooterMargins = _json['useCustomHeaderFooterMargins'];
+      useCustomHeaderFooterMargins =
+          _json['useCustomHeaderFooterMargins'] as core.bool;
     }
     if (_json.containsKey('useEvenPageHeaderFooter')) {
-      useEvenPageHeaderFooter = _json['useEvenPageHeaderFooter'];
+      useEvenPageHeaderFooter = _json['useEvenPageHeaderFooter'] as core.bool;
     }
     if (_json.containsKey('useFirstPageHeaderFooter')) {
-      useFirstPageHeaderFooter = _json['useFirstPageHeaderFooter'];
+      useFirstPageHeaderFooter = _json['useFirstPageHeaderFooter'] as core.bool;
     }
   }
 
@@ -1862,43 +1867,47 @@ class DocumentStyleSuggestionState {
           _json['backgroundSuggestionState']);
     }
     if (_json.containsKey('defaultFooterIdSuggested')) {
-      defaultFooterIdSuggested = _json['defaultFooterIdSuggested'];
+      defaultFooterIdSuggested = _json['defaultFooterIdSuggested'] as core.bool;
     }
     if (_json.containsKey('defaultHeaderIdSuggested')) {
-      defaultHeaderIdSuggested = _json['defaultHeaderIdSuggested'];
+      defaultHeaderIdSuggested = _json['defaultHeaderIdSuggested'] as core.bool;
     }
     if (_json.containsKey('evenPageFooterIdSuggested')) {
-      evenPageFooterIdSuggested = _json['evenPageFooterIdSuggested'];
+      evenPageFooterIdSuggested =
+          _json['evenPageFooterIdSuggested'] as core.bool;
     }
     if (_json.containsKey('evenPageHeaderIdSuggested')) {
-      evenPageHeaderIdSuggested = _json['evenPageHeaderIdSuggested'];
+      evenPageHeaderIdSuggested =
+          _json['evenPageHeaderIdSuggested'] as core.bool;
     }
     if (_json.containsKey('firstPageFooterIdSuggested')) {
-      firstPageFooterIdSuggested = _json['firstPageFooterIdSuggested'];
+      firstPageFooterIdSuggested =
+          _json['firstPageFooterIdSuggested'] as core.bool;
     }
     if (_json.containsKey('firstPageHeaderIdSuggested')) {
-      firstPageHeaderIdSuggested = _json['firstPageHeaderIdSuggested'];
+      firstPageHeaderIdSuggested =
+          _json['firstPageHeaderIdSuggested'] as core.bool;
     }
     if (_json.containsKey('marginBottomSuggested')) {
-      marginBottomSuggested = _json['marginBottomSuggested'];
+      marginBottomSuggested = _json['marginBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('marginFooterSuggested')) {
-      marginFooterSuggested = _json['marginFooterSuggested'];
+      marginFooterSuggested = _json['marginFooterSuggested'] as core.bool;
     }
     if (_json.containsKey('marginHeaderSuggested')) {
-      marginHeaderSuggested = _json['marginHeaderSuggested'];
+      marginHeaderSuggested = _json['marginHeaderSuggested'] as core.bool;
     }
     if (_json.containsKey('marginLeftSuggested')) {
-      marginLeftSuggested = _json['marginLeftSuggested'];
+      marginLeftSuggested = _json['marginLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('marginRightSuggested')) {
-      marginRightSuggested = _json['marginRightSuggested'];
+      marginRightSuggested = _json['marginRightSuggested'] as core.bool;
     }
     if (_json.containsKey('marginTopSuggested')) {
-      marginTopSuggested = _json['marginTopSuggested'];
+      marginTopSuggested = _json['marginTopSuggested'] as core.bool;
     }
     if (_json.containsKey('pageNumberStartSuggested')) {
-      pageNumberStartSuggested = _json['pageNumberStartSuggested'];
+      pageNumberStartSuggested = _json['pageNumberStartSuggested'] as core.bool;
     }
     if (_json.containsKey('pageSizeSuggestionState')) {
       pageSizeSuggestionState =
@@ -1906,15 +1915,15 @@ class DocumentStyleSuggestionState {
     }
     if (_json.containsKey('useCustomHeaderFooterMarginsSuggested')) {
       useCustomHeaderFooterMarginsSuggested =
-          _json['useCustomHeaderFooterMarginsSuggested'];
+          _json['useCustomHeaderFooterMarginsSuggested'] as core.bool;
     }
     if (_json.containsKey('useEvenPageHeaderFooterSuggested')) {
       useEvenPageHeaderFooterSuggested =
-          _json['useEvenPageHeaderFooterSuggested'];
+          _json['useEvenPageHeaderFooterSuggested'] as core.bool;
     }
     if (_json.containsKey('useFirstPageHeaderFooterSuggested')) {
       useFirstPageHeaderFooterSuggested =
-          _json['useFirstPageHeaderFooterSuggested'];
+          _json['useFirstPageHeaderFooterSuggested'] as core.bool;
     }
   }
 
@@ -2054,7 +2063,7 @@ class EmbeddedObject {
 
   EmbeddedObject.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('embeddedDrawingProperties')) {
       embeddedDrawingProperties = EmbeddedDrawingProperties.fromJson(
@@ -2087,7 +2096,7 @@ class EmbeddedObject {
       size = Size.fromJson(_json['size']);
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -2165,10 +2174,10 @@ class EmbeddedObjectBorder {
       color = OptionalColor.fromJson(_json['color']);
     }
     if (_json.containsKey('dashStyle')) {
-      dashStyle = _json['dashStyle'];
+      dashStyle = _json['dashStyle'] as core.String;
     }
     if (_json.containsKey('propertyState')) {
-      propertyState = _json['propertyState'];
+      propertyState = _json['propertyState'] as core.String;
     }
     if (_json.containsKey('width')) {
       width = Dimension.fromJson(_json['width']);
@@ -2213,16 +2222,16 @@ class EmbeddedObjectBorderSuggestionState {
 
   EmbeddedObjectBorderSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('colorSuggested')) {
-      colorSuggested = _json['colorSuggested'];
+      colorSuggested = _json['colorSuggested'] as core.bool;
     }
     if (_json.containsKey('dashStyleSuggested')) {
-      dashStyleSuggested = _json['dashStyleSuggested'];
+      dashStyleSuggested = _json['dashStyleSuggested'] as core.bool;
     }
     if (_json.containsKey('propertyStateSuggested')) {
-      propertyStateSuggested = _json['propertyStateSuggested'];
+      propertyStateSuggested = _json['propertyStateSuggested'] as core.bool;
     }
     if (_json.containsKey('widthSuggested')) {
-      widthSuggested = _json['widthSuggested'];
+      widthSuggested = _json['widthSuggested'] as core.bool;
     }
   }
 
@@ -2291,7 +2300,7 @@ class EmbeddedObjectSuggestionState {
 
   EmbeddedObjectSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('descriptionSuggested')) {
-      descriptionSuggested = _json['descriptionSuggested'];
+      descriptionSuggested = _json['descriptionSuggested'] as core.bool;
     }
     if (_json.containsKey('embeddedDrawingPropertiesSuggestionState')) {
       embeddedDrawingPropertiesSuggestionState =
@@ -2313,23 +2322,23 @@ class EmbeddedObjectSuggestionState {
               _json['linkedContentReferenceSuggestionState']);
     }
     if (_json.containsKey('marginBottomSuggested')) {
-      marginBottomSuggested = _json['marginBottomSuggested'];
+      marginBottomSuggested = _json['marginBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('marginLeftSuggested')) {
-      marginLeftSuggested = _json['marginLeftSuggested'];
+      marginLeftSuggested = _json['marginLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('marginRightSuggested')) {
-      marginRightSuggested = _json['marginRightSuggested'];
+      marginRightSuggested = _json['marginRightSuggested'] as core.bool;
     }
     if (_json.containsKey('marginTopSuggested')) {
-      marginTopSuggested = _json['marginTopSuggested'];
+      marginTopSuggested = _json['marginTopSuggested'] as core.bool;
     }
     if (_json.containsKey('sizeSuggestionState')) {
       sizeSuggestionState =
           SizeSuggestionState.fromJson(_json['sizeSuggestionState']);
     }
     if (_json.containsKey('titleSuggested')) {
-      titleSuggested = _json['titleSuggested'];
+      titleSuggested = _json['titleSuggested'] as core.bool;
     }
   }
 
@@ -2387,7 +2396,7 @@ class EndOfSegmentLocation {
 
   EndOfSegmentLocation.fromJson(core.Map _json) {
     if (_json.containsKey('segmentId')) {
-      segmentId = _json['segmentId'];
+      segmentId = _json['segmentId'] as core.String;
     }
   }
 
@@ -2415,12 +2424,14 @@ class Equation {
 
   Equation.fromJson(core.Map _json) {
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -2454,7 +2465,7 @@ class Footer {
           .toList();
     }
     if (_json.containsKey('footerId')) {
-      footerId = _json['footerId'];
+      footerId = _json['footerId'] as core.String;
     }
   }
 
@@ -2488,7 +2499,7 @@ class Footnote {
           .toList();
     }
     if (_json.containsKey('footnoteId')) {
-      footnoteId = _json['footnoteId'];
+      footnoteId = _json['footnoteId'] as core.String;
     }
   }
 
@@ -2535,18 +2546,20 @@ class FootnoteReference {
 
   FootnoteReference.fromJson(core.Map _json) {
     if (_json.containsKey('footnoteId')) {
-      footnoteId = _json['footnoteId'];
+      footnoteId = _json['footnoteId'] as core.String;
     }
     if (_json.containsKey('footnoteNumber')) {
-      footnoteNumber = _json['footnoteNumber'];
+      footnoteNumber = _json['footnoteNumber'] as core.String;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -2603,7 +2616,7 @@ class Header {
           .toList();
     }
     if (_json.containsKey('headerId')) {
-      headerId = _json['headerId'];
+      headerId = _json['headerId'] as core.String;
     }
   }
 
@@ -2644,12 +2657,14 @@ class HorizontalRule {
 
   HorizontalRule.fromJson(core.Map _json) {
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -2722,7 +2737,7 @@ class ImageProperties {
       brightness = _json['brightness'].toDouble();
     }
     if (_json.containsKey('contentUri')) {
-      contentUri = _json['contentUri'];
+      contentUri = _json['contentUri'] as core.String;
     }
     if (_json.containsKey('contrast')) {
       contrast = _json['contrast'].toDouble();
@@ -2731,7 +2746,7 @@ class ImageProperties {
       cropProperties = CropProperties.fromJson(_json['cropProperties']);
     }
     if (_json.containsKey('sourceUri')) {
-      sourceUri = _json['sourceUri'];
+      sourceUri = _json['sourceUri'] as core.String;
     }
     if (_json.containsKey('transparency')) {
       transparency = _json['transparency'].toDouble();
@@ -2795,26 +2810,26 @@ class ImagePropertiesSuggestionState {
 
   ImagePropertiesSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('angleSuggested')) {
-      angleSuggested = _json['angleSuggested'];
+      angleSuggested = _json['angleSuggested'] as core.bool;
     }
     if (_json.containsKey('brightnessSuggested')) {
-      brightnessSuggested = _json['brightnessSuggested'];
+      brightnessSuggested = _json['brightnessSuggested'] as core.bool;
     }
     if (_json.containsKey('contentUriSuggested')) {
-      contentUriSuggested = _json['contentUriSuggested'];
+      contentUriSuggested = _json['contentUriSuggested'] as core.bool;
     }
     if (_json.containsKey('contrastSuggested')) {
-      contrastSuggested = _json['contrastSuggested'];
+      contrastSuggested = _json['contrastSuggested'] as core.bool;
     }
     if (_json.containsKey('cropPropertiesSuggestionState')) {
       cropPropertiesSuggestionState = CropPropertiesSuggestionState.fromJson(
           _json['cropPropertiesSuggestionState']);
     }
     if (_json.containsKey('sourceUriSuggested')) {
-      sourceUriSuggested = _json['sourceUriSuggested'];
+      sourceUriSuggested = _json['sourceUriSuggested'] as core.bool;
     }
     if (_json.containsKey('transparencySuggested')) {
-      transparencySuggested = _json['transparencySuggested'];
+      transparencySuggested = _json['transparencySuggested'] as core.bool;
     }
   }
 
@@ -2876,11 +2891,12 @@ class InlineObject {
           InlineObjectProperties.fromJson(_json['inlineObjectProperties']);
     }
     if (_json.containsKey('objectId')) {
-      objectId = _json['objectId'];
+      objectId = _json['objectId'] as core.String;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInlineObjectPropertiesChanges')) {
       suggestedInlineObjectPropertiesChanges =
@@ -2891,7 +2907,7 @@ class InlineObject {
                   SuggestedInlineObjectProperties.fromJson(item));
     }
     if (_json.containsKey('suggestedInsertionId')) {
-      suggestedInsertionId = _json['suggestedInsertionId'];
+      suggestedInsertionId = _json['suggestedInsertionId'] as core.String;
     }
   }
 
@@ -2948,15 +2964,17 @@ class InlineObjectElement {
 
   InlineObjectElement.fromJson(core.Map _json) {
     if (_json.containsKey('inlineObjectId')) {
-      inlineObjectId = _json['inlineObjectId'];
+      inlineObjectId = _json['inlineObjectId'] as core.String;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -3086,7 +3104,7 @@ class InsertInlineImageRequest {
       objectSize = Size.fromJson(_json['objectSize']);
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -3117,7 +3135,7 @@ class InsertInlineImageResponse {
 
   InsertInlineImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('objectId')) {
-      objectId = _json['objectId'];
+      objectId = _json['objectId'] as core.String;
     }
   }
 
@@ -3139,7 +3157,7 @@ class InsertInlineSheetsChartResponse {
 
   InsertInlineSheetsChartResponse.fromJson(core.Map _json) {
     if (_json.containsKey('objectId')) {
-      objectId = _json['objectId'];
+      objectId = _json['objectId'] as core.String;
     }
   }
 
@@ -3228,7 +3246,7 @@ class InsertSectionBreakRequest {
       location = Location.fromJson(_json['location']);
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
   }
 
@@ -3263,7 +3281,7 @@ class InsertTableColumnRequest {
 
   InsertTableColumnRequest.fromJson(core.Map _json) {
     if (_json.containsKey('insertRight')) {
-      insertRight = _json['insertRight'];
+      insertRight = _json['insertRight'] as core.bool;
     }
     if (_json.containsKey('tableCellLocation')) {
       tableCellLocation =
@@ -3309,7 +3327,7 @@ class InsertTableRequest {
 
   InsertTableRequest.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
-      columns = _json['columns'];
+      columns = _json['columns'] as core.int;
     }
     if (_json.containsKey('endOfSegmentLocation')) {
       endOfSegmentLocation =
@@ -3319,7 +3337,7 @@ class InsertTableRequest {
       location = Location.fromJson(_json['location']);
     }
     if (_json.containsKey('rows')) {
-      rows = _json['rows'];
+      rows = _json['rows'] as core.int;
     }
   }
 
@@ -3357,7 +3375,7 @@ class InsertTableRowRequest {
 
   InsertTableRowRequest.fromJson(core.Map _json) {
     if (_json.containsKey('insertBelow')) {
-      insertBelow = _json['insertBelow'];
+      insertBelow = _json['insertBelow'] as core.bool;
     }
     if (_json.containsKey('tableCellLocation')) {
       tableCellLocation =
@@ -3413,7 +3431,7 @@ class InsertTextRequest {
       location = Location.fromJson(_json['location']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -3447,13 +3465,13 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey('bookmarkId')) {
-      bookmarkId = _json['bookmarkId'];
+      bookmarkId = _json['bookmarkId'] as core.String;
     }
     if (_json.containsKey('headingId')) {
-      headingId = _json['headingId'];
+      headingId = _json['headingId'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -3548,11 +3566,12 @@ class List {
       listProperties = ListProperties.fromJson(_json['listProperties']);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionId')) {
-      suggestedInsertionId = _json['suggestedInsertionId'];
+      suggestedInsertionId = _json['suggestedInsertionId'] as core.String;
     }
     if (_json.containsKey('suggestedListPropertiesChanges')) {
       suggestedListPropertiesChanges =
@@ -3660,10 +3679,10 @@ class Location {
 
   Location.fromJson(core.Map _json) {
     if (_json.containsKey('index')) {
-      index = _json['index'];
+      index = _json['index'] as core.int;
     }
     if (_json.containsKey('segmentId')) {
-      segmentId = _json['segmentId'];
+      segmentId = _json['segmentId'] as core.String;
     }
   }
 
@@ -3730,10 +3749,10 @@ class NamedRange {
 
   NamedRange.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('namedRangeId')) {
-      namedRangeId = _json['namedRangeId'];
+      namedRangeId = _json['namedRangeId'] as core.String;
     }
     if (_json.containsKey('ranges')) {
       ranges = (_json['ranges'] as core.List)
@@ -3769,7 +3788,7 @@ class NamedRanges {
 
   NamedRanges.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('namedRanges')) {
       namedRanges = (_json['namedRanges'] as core.List)
@@ -3819,7 +3838,7 @@ class NamedStyle {
 
   NamedStyle.fromJson(core.Map _json) {
     if (_json.containsKey('namedStyleType')) {
-      namedStyleType = _json['namedStyleType'];
+      namedStyleType = _json['namedStyleType'] as core.String;
     }
     if (_json.containsKey('paragraphStyle')) {
       paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
@@ -3874,7 +3893,7 @@ class NamedStyleSuggestionState {
 
   NamedStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('namedStyleType')) {
-      namedStyleType = _json['namedStyleType'];
+      namedStyleType = _json['namedStyleType'] as core.String;
     }
     if (_json.containsKey('paragraphStyleSuggestionState')) {
       paragraphStyleSuggestionState = ParagraphStyleSuggestionState.fromJson(
@@ -4043,16 +4062,16 @@ class NestingLevel {
 
   NestingLevel.fromJson(core.Map _json) {
     if (_json.containsKey('bulletAlignment')) {
-      bulletAlignment = _json['bulletAlignment'];
+      bulletAlignment = _json['bulletAlignment'] as core.String;
     }
     if (_json.containsKey('glyphFormat')) {
-      glyphFormat = _json['glyphFormat'];
+      glyphFormat = _json['glyphFormat'] as core.String;
     }
     if (_json.containsKey('glyphSymbol')) {
-      glyphSymbol = _json['glyphSymbol'];
+      glyphSymbol = _json['glyphSymbol'] as core.String;
     }
     if (_json.containsKey('glyphType')) {
-      glyphType = _json['glyphType'];
+      glyphType = _json['glyphType'] as core.String;
     }
     if (_json.containsKey('indentFirstLine')) {
       indentFirstLine = Dimension.fromJson(_json['indentFirstLine']);
@@ -4061,7 +4080,7 @@ class NestingLevel {
       indentStart = Dimension.fromJson(_json['indentStart']);
     }
     if (_json.containsKey('startNumber')) {
-      startNumber = _json['startNumber'];
+      startNumber = _json['startNumber'] as core.int;
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(_json['textStyle']);
@@ -4131,25 +4150,25 @@ class NestingLevelSuggestionState {
 
   NestingLevelSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('bulletAlignmentSuggested')) {
-      bulletAlignmentSuggested = _json['bulletAlignmentSuggested'];
+      bulletAlignmentSuggested = _json['bulletAlignmentSuggested'] as core.bool;
     }
     if (_json.containsKey('glyphFormatSuggested')) {
-      glyphFormatSuggested = _json['glyphFormatSuggested'];
+      glyphFormatSuggested = _json['glyphFormatSuggested'] as core.bool;
     }
     if (_json.containsKey('glyphSymbolSuggested')) {
-      glyphSymbolSuggested = _json['glyphSymbolSuggested'];
+      glyphSymbolSuggested = _json['glyphSymbolSuggested'] as core.bool;
     }
     if (_json.containsKey('glyphTypeSuggested')) {
-      glyphTypeSuggested = _json['glyphTypeSuggested'];
+      glyphTypeSuggested = _json['glyphTypeSuggested'] as core.bool;
     }
     if (_json.containsKey('indentFirstLineSuggested')) {
-      indentFirstLineSuggested = _json['indentFirstLineSuggested'];
+      indentFirstLineSuggested = _json['indentFirstLineSuggested'] as core.bool;
     }
     if (_json.containsKey('indentStartSuggested')) {
-      indentStartSuggested = _json['indentStartSuggested'];
+      indentStartSuggested = _json['indentStartSuggested'] as core.bool;
     }
     if (_json.containsKey('startNumberSuggested')) {
-      startNumberSuggested = _json['startNumberSuggested'];
+      startNumberSuggested = _json['startNumberSuggested'] as core.bool;
     }
     if (_json.containsKey('textStyleSuggestionState')) {
       textStyleSuggestionState =
@@ -4196,7 +4215,9 @@ class ObjectReferences {
 
   ObjectReferences.fromJson(core.Map _json) {
     if (_json.containsKey('objectIds')) {
-      objectIds = (_json['objectIds'] as core.List).cast<core.String>();
+      objectIds = (_json['objectIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -4257,12 +4278,14 @@ class PageBreak {
 
   PageBreak.fromJson(core.Map _json) {
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -4337,8 +4360,9 @@ class Paragraph {
       paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
     }
     if (_json.containsKey('positionedObjectIds')) {
-      positionedObjectIds =
-          (_json['positionedObjectIds'] as core.List).cast<core.String>();
+      positionedObjectIds = (_json['positionedObjectIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedBulletChanges')) {
       suggestedBulletChanges = commons.mapMap<core.Map, SuggestedBullet>(
@@ -4423,7 +4447,7 @@ class ParagraphBorder {
       color = OptionalColor.fromJson(_json['color']);
     }
     if (_json.containsKey('dashStyle')) {
-      dashStyle = _json['dashStyle'];
+      dashStyle = _json['dashStyle'] as core.String;
     }
     if (_json.containsKey('padding')) {
       padding = Dimension.fromJson(_json['padding']);
@@ -4495,7 +4519,7 @@ class ParagraphElement {
       columnBreak = ColumnBreak.fromJson(_json['columnBreak']);
     }
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('equation')) {
       equation = Equation.fromJson(_json['equation']);
@@ -4515,7 +4539,7 @@ class ParagraphElement {
       pageBreak = PageBreak.fromJson(_json['pageBreak']);
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('textRun')) {
       textRun = TextRun.fromJson(_json['textRun']);
@@ -4703,10 +4727,10 @@ class ParagraphStyle {
 
   ParagraphStyle.fromJson(core.Map _json) {
     if (_json.containsKey('alignment')) {
-      alignment = _json['alignment'];
+      alignment = _json['alignment'] as core.String;
     }
     if (_json.containsKey('avoidWidowAndOrphan')) {
-      avoidWidowAndOrphan = _json['avoidWidowAndOrphan'];
+      avoidWidowAndOrphan = _json['avoidWidowAndOrphan'] as core.bool;
     }
     if (_json.containsKey('borderBetween')) {
       borderBetween = ParagraphBorder.fromJson(_json['borderBetween']);
@@ -4724,10 +4748,10 @@ class ParagraphStyle {
       borderTop = ParagraphBorder.fromJson(_json['borderTop']);
     }
     if (_json.containsKey('direction')) {
-      direction = _json['direction'];
+      direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('headingId')) {
-      headingId = _json['headingId'];
+      headingId = _json['headingId'] as core.String;
     }
     if (_json.containsKey('indentEnd')) {
       indentEnd = Dimension.fromJson(_json['indentEnd']);
@@ -4739,16 +4763,16 @@ class ParagraphStyle {
       indentStart = Dimension.fromJson(_json['indentStart']);
     }
     if (_json.containsKey('keepLinesTogether')) {
-      keepLinesTogether = _json['keepLinesTogether'];
+      keepLinesTogether = _json['keepLinesTogether'] as core.bool;
     }
     if (_json.containsKey('keepWithNext')) {
-      keepWithNext = _json['keepWithNext'];
+      keepWithNext = _json['keepWithNext'] as core.bool;
     }
     if (_json.containsKey('lineSpacing')) {
       lineSpacing = _json['lineSpacing'].toDouble();
     }
     if (_json.containsKey('namedStyleType')) {
-      namedStyleType = _json['namedStyleType'];
+      namedStyleType = _json['namedStyleType'] as core.String;
     }
     if (_json.containsKey('shading')) {
       shading = Shading.fromJson(_json['shading']);
@@ -4760,7 +4784,7 @@ class ParagraphStyle {
       spaceBelow = Dimension.fromJson(_json['spaceBelow']);
     }
     if (_json.containsKey('spacingMode')) {
-      spacingMode = _json['spacingMode'];
+      spacingMode = _json['spacingMode'] as core.String;
     }
     if (_json.containsKey('tabStops')) {
       tabStops = (_json['tabStops'] as core.List)
@@ -4907,65 +4931,67 @@ class ParagraphStyleSuggestionState {
 
   ParagraphStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('alignmentSuggested')) {
-      alignmentSuggested = _json['alignmentSuggested'];
+      alignmentSuggested = _json['alignmentSuggested'] as core.bool;
     }
     if (_json.containsKey('avoidWidowAndOrphanSuggested')) {
-      avoidWidowAndOrphanSuggested = _json['avoidWidowAndOrphanSuggested'];
+      avoidWidowAndOrphanSuggested =
+          _json['avoidWidowAndOrphanSuggested'] as core.bool;
     }
     if (_json.containsKey('borderBetweenSuggested')) {
-      borderBetweenSuggested = _json['borderBetweenSuggested'];
+      borderBetweenSuggested = _json['borderBetweenSuggested'] as core.bool;
     }
     if (_json.containsKey('borderBottomSuggested')) {
-      borderBottomSuggested = _json['borderBottomSuggested'];
+      borderBottomSuggested = _json['borderBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('borderLeftSuggested')) {
-      borderLeftSuggested = _json['borderLeftSuggested'];
+      borderLeftSuggested = _json['borderLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('borderRightSuggested')) {
-      borderRightSuggested = _json['borderRightSuggested'];
+      borderRightSuggested = _json['borderRightSuggested'] as core.bool;
     }
     if (_json.containsKey('borderTopSuggested')) {
-      borderTopSuggested = _json['borderTopSuggested'];
+      borderTopSuggested = _json['borderTopSuggested'] as core.bool;
     }
     if (_json.containsKey('directionSuggested')) {
-      directionSuggested = _json['directionSuggested'];
+      directionSuggested = _json['directionSuggested'] as core.bool;
     }
     if (_json.containsKey('headingIdSuggested')) {
-      headingIdSuggested = _json['headingIdSuggested'];
+      headingIdSuggested = _json['headingIdSuggested'] as core.bool;
     }
     if (_json.containsKey('indentEndSuggested')) {
-      indentEndSuggested = _json['indentEndSuggested'];
+      indentEndSuggested = _json['indentEndSuggested'] as core.bool;
     }
     if (_json.containsKey('indentFirstLineSuggested')) {
-      indentFirstLineSuggested = _json['indentFirstLineSuggested'];
+      indentFirstLineSuggested = _json['indentFirstLineSuggested'] as core.bool;
     }
     if (_json.containsKey('indentStartSuggested')) {
-      indentStartSuggested = _json['indentStartSuggested'];
+      indentStartSuggested = _json['indentStartSuggested'] as core.bool;
     }
     if (_json.containsKey('keepLinesTogetherSuggested')) {
-      keepLinesTogetherSuggested = _json['keepLinesTogetherSuggested'];
+      keepLinesTogetherSuggested =
+          _json['keepLinesTogetherSuggested'] as core.bool;
     }
     if (_json.containsKey('keepWithNextSuggested')) {
-      keepWithNextSuggested = _json['keepWithNextSuggested'];
+      keepWithNextSuggested = _json['keepWithNextSuggested'] as core.bool;
     }
     if (_json.containsKey('lineSpacingSuggested')) {
-      lineSpacingSuggested = _json['lineSpacingSuggested'];
+      lineSpacingSuggested = _json['lineSpacingSuggested'] as core.bool;
     }
     if (_json.containsKey('namedStyleTypeSuggested')) {
-      namedStyleTypeSuggested = _json['namedStyleTypeSuggested'];
+      namedStyleTypeSuggested = _json['namedStyleTypeSuggested'] as core.bool;
     }
     if (_json.containsKey('shadingSuggestionState')) {
       shadingSuggestionState =
           ShadingSuggestionState.fromJson(_json['shadingSuggestionState']);
     }
     if (_json.containsKey('spaceAboveSuggested')) {
-      spaceAboveSuggested = _json['spaceAboveSuggested'];
+      spaceAboveSuggested = _json['spaceAboveSuggested'] as core.bool;
     }
     if (_json.containsKey('spaceBelowSuggested')) {
-      spaceBelowSuggested = _json['spaceBelowSuggested'];
+      spaceBelowSuggested = _json['spaceBelowSuggested'] as core.bool;
     }
     if (_json.containsKey('spacingModeSuggested')) {
-      spacingModeSuggested = _json['spacingModeSuggested'];
+      spacingModeSuggested = _json['spacingModeSuggested'] as core.bool;
     }
   }
 
@@ -5062,18 +5088,19 @@ class PositionedObject {
 
   PositionedObject.fromJson(core.Map _json) {
     if (_json.containsKey('objectId')) {
-      objectId = _json['objectId'];
+      objectId = _json['objectId'] as core.String;
     }
     if (_json.containsKey('positionedObjectProperties')) {
       positionedObjectProperties = PositionedObjectProperties.fromJson(
           _json['positionedObjectProperties']);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionId')) {
-      suggestedInsertionId = _json['suggestedInsertionId'];
+      suggestedInsertionId = _json['suggestedInsertionId'] as core.String;
     }
     if (_json.containsKey('suggestedPositionedObjectPropertiesChanges')) {
       suggestedPositionedObjectPropertiesChanges =
@@ -5142,7 +5169,7 @@ class PositionedObjectPositioning {
 
   PositionedObjectPositioning.fromJson(core.Map _json) {
     if (_json.containsKey('layout')) {
-      layout = _json['layout'];
+      layout = _json['layout'] as core.String;
     }
     if (_json.containsKey('leftOffset')) {
       leftOffset = Dimension.fromJson(_json['leftOffset']);
@@ -5184,13 +5211,13 @@ class PositionedObjectPositioningSuggestionState {
 
   PositionedObjectPositioningSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('layoutSuggested')) {
-      layoutSuggested = _json['layoutSuggested'];
+      layoutSuggested = _json['layoutSuggested'] as core.bool;
     }
     if (_json.containsKey('leftOffsetSuggested')) {
-      leftOffsetSuggested = _json['leftOffsetSuggested'];
+      leftOffsetSuggested = _json['leftOffsetSuggested'] as core.bool;
     }
     if (_json.containsKey('topOffsetSuggested')) {
-      topOffsetSuggested = _json['topOffsetSuggested'];
+      topOffsetSuggested = _json['topOffsetSuggested'] as core.bool;
     }
   }
 
@@ -5301,13 +5328,13 @@ class Range {
 
   Range.fromJson(core.Map _json) {
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('segmentId')) {
-      segmentId = _json['segmentId'];
+      segmentId = _json['segmentId'] as core.String;
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
   }
 
@@ -5341,7 +5368,7 @@ class ReplaceAllTextRequest {
       containsText = SubstringMatchCriteria.fromJson(_json['containsText']);
     }
     if (_json.containsKey('replaceText')) {
-      replaceText = _json['replaceText'];
+      replaceText = _json['replaceText'] as core.String;
     }
   }
 
@@ -5366,7 +5393,7 @@ class ReplaceAllTextResponse {
 
   ReplaceAllTextResponse.fromJson(core.Map _json) {
     if (_json.containsKey('occurrencesChanged')) {
-      occurrencesChanged = _json['occurrencesChanged'];
+      occurrencesChanged = _json['occurrencesChanged'] as core.int;
     }
   }
 
@@ -5408,13 +5435,13 @@ class ReplaceImageRequest {
 
   ReplaceImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('imageObjectId')) {
-      imageObjectId = _json['imageObjectId'];
+      imageObjectId = _json['imageObjectId'] as core.String;
     }
     if (_json.containsKey('imageReplaceMethod')) {
-      imageReplaceMethod = _json['imageReplaceMethod'];
+      imageReplaceMethod = _json['imageReplaceMethod'] as core.String;
     }
     if (_json.containsKey('uri')) {
-      uri = _json['uri'];
+      uri = _json['uri'] as core.String;
     }
   }
 
@@ -5457,13 +5484,13 @@ class ReplaceNamedRangeContentRequest {
 
   ReplaceNamedRangeContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('namedRangeId')) {
-      namedRangeId = _json['namedRangeId'];
+      namedRangeId = _json['namedRangeId'] as core.String;
     }
     if (_json.containsKey('namedRangeName')) {
-      namedRangeName = _json['namedRangeName'];
+      namedRangeName = _json['namedRangeName'] as core.String;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -5948,12 +5975,14 @@ class SectionBreak {
       sectionStyle = SectionStyle.fromJson(_json['sectionStyle']);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -6154,28 +6183,28 @@ class SectionStyle {
           .toList();
     }
     if (_json.containsKey('columnSeparatorStyle')) {
-      columnSeparatorStyle = _json['columnSeparatorStyle'];
+      columnSeparatorStyle = _json['columnSeparatorStyle'] as core.String;
     }
     if (_json.containsKey('contentDirection')) {
-      contentDirection = _json['contentDirection'];
+      contentDirection = _json['contentDirection'] as core.String;
     }
     if (_json.containsKey('defaultFooterId')) {
-      defaultFooterId = _json['defaultFooterId'];
+      defaultFooterId = _json['defaultFooterId'] as core.String;
     }
     if (_json.containsKey('defaultHeaderId')) {
-      defaultHeaderId = _json['defaultHeaderId'];
+      defaultHeaderId = _json['defaultHeaderId'] as core.String;
     }
     if (_json.containsKey('evenPageFooterId')) {
-      evenPageFooterId = _json['evenPageFooterId'];
+      evenPageFooterId = _json['evenPageFooterId'] as core.String;
     }
     if (_json.containsKey('evenPageHeaderId')) {
-      evenPageHeaderId = _json['evenPageHeaderId'];
+      evenPageHeaderId = _json['evenPageHeaderId'] as core.String;
     }
     if (_json.containsKey('firstPageFooterId')) {
-      firstPageFooterId = _json['firstPageFooterId'];
+      firstPageFooterId = _json['firstPageFooterId'] as core.String;
     }
     if (_json.containsKey('firstPageHeaderId')) {
-      firstPageHeaderId = _json['firstPageHeaderId'];
+      firstPageHeaderId = _json['firstPageHeaderId'] as core.String;
     }
     if (_json.containsKey('marginBottom')) {
       marginBottom = Dimension.fromJson(_json['marginBottom']);
@@ -6196,13 +6225,13 @@ class SectionStyle {
       marginTop = Dimension.fromJson(_json['marginTop']);
     }
     if (_json.containsKey('pageNumberStart')) {
-      pageNumberStart = _json['pageNumberStart'];
+      pageNumberStart = _json['pageNumberStart'] as core.int;
     }
     if (_json.containsKey('sectionType')) {
-      sectionType = _json['sectionType'];
+      sectionType = _json['sectionType'] as core.String;
     }
     if (_json.containsKey('useFirstPageHeaderFooter')) {
-      useFirstPageHeaderFooter = _json['useFirstPageHeaderFooter'];
+      useFirstPageHeaderFooter = _json['useFirstPageHeaderFooter'] as core.bool;
     }
   }
 
@@ -6300,7 +6329,7 @@ class ShadingSuggestionState {
 
   ShadingSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColorSuggested')) {
-      backgroundColorSuggested = _json['backgroundColorSuggested'];
+      backgroundColorSuggested = _json['backgroundColorSuggested'] as core.bool;
     }
   }
 
@@ -6326,10 +6355,10 @@ class SheetsChartReference {
 
   SheetsChartReference.fromJson(core.Map _json) {
     if (_json.containsKey('chartId')) {
-      chartId = _json['chartId'];
+      chartId = _json['chartId'] as core.int;
     }
     if (_json.containsKey('spreadsheetId')) {
-      spreadsheetId = _json['spreadsheetId'];
+      spreadsheetId = _json['spreadsheetId'] as core.String;
     }
   }
 
@@ -6359,10 +6388,10 @@ class SheetsChartReferenceSuggestionState {
 
   SheetsChartReferenceSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('chartIdSuggested')) {
-      chartIdSuggested = _json['chartIdSuggested'];
+      chartIdSuggested = _json['chartIdSuggested'] as core.bool;
     }
     if (_json.containsKey('spreadsheetIdSuggested')) {
-      spreadsheetIdSuggested = _json['spreadsheetIdSuggested'];
+      spreadsheetIdSuggested = _json['spreadsheetIdSuggested'] as core.bool;
     }
   }
 
@@ -6423,10 +6452,10 @@ class SizeSuggestionState {
 
   SizeSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('heightSuggested')) {
-      heightSuggested = _json['heightSuggested'];
+      heightSuggested = _json['heightSuggested'] as core.bool;
     }
     if (_json.containsKey('widthSuggested')) {
-      widthSuggested = _json['widthSuggested'];
+      widthSuggested = _json['widthSuggested'] as core.bool;
     }
   }
 
@@ -6469,7 +6498,7 @@ class StructuralElement {
 
   StructuralElement.fromJson(core.Map _json) {
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('paragraph')) {
       paragraph = Paragraph.fromJson(_json['paragraph']);
@@ -6478,7 +6507,7 @@ class StructuralElement {
       sectionBreak = SectionBreak.fromJson(_json['sectionBreak']);
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('table')) {
       table = Table.fromJson(_json['table']);
@@ -6525,10 +6554,10 @@ class SubstringMatchCriteria {
 
   SubstringMatchCriteria.fromJson(core.Map _json) {
     if (_json.containsKey('matchCase')) {
-      matchCase = _json['matchCase'];
+      matchCase = _json['matchCase'] as core.bool;
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -6927,7 +6956,7 @@ class TabStop {
 
   TabStop.fromJson(core.Map _json) {
     if (_json.containsKey('alignment')) {
-      alignment = _json['alignment'];
+      alignment = _json['alignment'] as core.String;
     }
     if (_json.containsKey('offset')) {
       offset = Dimension.fromJson(_json['offset']);
@@ -6974,18 +7003,20 @@ class Table {
 
   Table.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
-      columns = _json['columns'];
+      columns = _json['columns'] as core.int;
     }
     if (_json.containsKey('rows')) {
-      rows = _json['rows'];
+      rows = _json['rows'] as core.int;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('tableRows')) {
       tableRows = (_json['tableRows'] as core.List)
@@ -7056,18 +7087,20 @@ class TableCell {
           .toList();
     }
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTableCellStyleChanges')) {
       suggestedTableCellStyleChanges =
@@ -7138,7 +7171,7 @@ class TableCellBorder {
       color = OptionalColor.fromJson(_json['color']);
     }
     if (_json.containsKey('dashStyle')) {
-      dashStyle = _json['dashStyle'];
+      dashStyle = _json['dashStyle'] as core.String;
     }
     if (_json.containsKey('width')) {
       width = Dimension.fromJson(_json['width']);
@@ -7177,10 +7210,10 @@ class TableCellLocation {
 
   TableCellLocation.fromJson(core.Map _json) {
     if (_json.containsKey('columnIndex')) {
-      columnIndex = _json['columnIndex'];
+      columnIndex = _json['columnIndex'] as core.int;
     }
     if (_json.containsKey('rowIndex')) {
-      rowIndex = _json['rowIndex'];
+      rowIndex = _json['rowIndex'] as core.int;
     }
     if (_json.containsKey('tableStartLocation')) {
       tableStartLocation = Location.fromJson(_json['tableStartLocation']);
@@ -7272,10 +7305,10 @@ class TableCellStyle {
       borderTop = TableCellBorder.fromJson(_json['borderTop']);
     }
     if (_json.containsKey('columnSpan')) {
-      columnSpan = _json['columnSpan'];
+      columnSpan = _json['columnSpan'] as core.int;
     }
     if (_json.containsKey('contentAlignment')) {
-      contentAlignment = _json['contentAlignment'];
+      contentAlignment = _json['contentAlignment'] as core.String;
     }
     if (_json.containsKey('paddingBottom')) {
       paddingBottom = Dimension.fromJson(_json['paddingBottom']);
@@ -7290,7 +7323,7 @@ class TableCellStyle {
       paddingTop = Dimension.fromJson(_json['paddingTop']);
     }
     if (_json.containsKey('rowSpan')) {
-      rowSpan = _json['rowSpan'];
+      rowSpan = _json['rowSpan'] as core.int;
     }
   }
 
@@ -7380,40 +7413,41 @@ class TableCellStyleSuggestionState {
 
   TableCellStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColorSuggested')) {
-      backgroundColorSuggested = _json['backgroundColorSuggested'];
+      backgroundColorSuggested = _json['backgroundColorSuggested'] as core.bool;
     }
     if (_json.containsKey('borderBottomSuggested')) {
-      borderBottomSuggested = _json['borderBottomSuggested'];
+      borderBottomSuggested = _json['borderBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('borderLeftSuggested')) {
-      borderLeftSuggested = _json['borderLeftSuggested'];
+      borderLeftSuggested = _json['borderLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('borderRightSuggested')) {
-      borderRightSuggested = _json['borderRightSuggested'];
+      borderRightSuggested = _json['borderRightSuggested'] as core.bool;
     }
     if (_json.containsKey('borderTopSuggested')) {
-      borderTopSuggested = _json['borderTopSuggested'];
+      borderTopSuggested = _json['borderTopSuggested'] as core.bool;
     }
     if (_json.containsKey('columnSpanSuggested')) {
-      columnSpanSuggested = _json['columnSpanSuggested'];
+      columnSpanSuggested = _json['columnSpanSuggested'] as core.bool;
     }
     if (_json.containsKey('contentAlignmentSuggested')) {
-      contentAlignmentSuggested = _json['contentAlignmentSuggested'];
+      contentAlignmentSuggested =
+          _json['contentAlignmentSuggested'] as core.bool;
     }
     if (_json.containsKey('paddingBottomSuggested')) {
-      paddingBottomSuggested = _json['paddingBottomSuggested'];
+      paddingBottomSuggested = _json['paddingBottomSuggested'] as core.bool;
     }
     if (_json.containsKey('paddingLeftSuggested')) {
-      paddingLeftSuggested = _json['paddingLeftSuggested'];
+      paddingLeftSuggested = _json['paddingLeftSuggested'] as core.bool;
     }
     if (_json.containsKey('paddingRightSuggested')) {
-      paddingRightSuggested = _json['paddingRightSuggested'];
+      paddingRightSuggested = _json['paddingRightSuggested'] as core.bool;
     }
     if (_json.containsKey('paddingTopSuggested')) {
-      paddingTopSuggested = _json['paddingTopSuggested'];
+      paddingTopSuggested = _json['paddingTopSuggested'] as core.bool;
     }
     if (_json.containsKey('rowSpanSuggested')) {
-      rowSpanSuggested = _json['rowSpanSuggested'];
+      rowSpanSuggested = _json['rowSpanSuggested'] as core.bool;
     }
   }
 
@@ -7483,7 +7517,7 @@ class TableColumnProperties {
       width = Dimension.fromJson(_json['width']);
     }
     if (_json.containsKey('widthType')) {
-      widthType = _json['widthType'];
+      widthType = _json['widthType'] as core.String;
     }
   }
 
@@ -7522,12 +7556,14 @@ class TableOfContents {
           .toList();
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -7567,10 +7603,10 @@ class TableRange {
 
   TableRange.fromJson(core.Map _json) {
     if (_json.containsKey('columnSpan')) {
-      columnSpan = _json['columnSpan'];
+      columnSpan = _json['columnSpan'] as core.int;
     }
     if (_json.containsKey('rowSpan')) {
-      rowSpan = _json['rowSpan'];
+      rowSpan = _json['rowSpan'] as core.int;
     }
     if (_json.containsKey('tableCellLocation')) {
       tableCellLocation =
@@ -7625,18 +7661,20 @@ class TableRow {
 
   TableRow.fromJson(core.Map _json) {
     if (_json.containsKey('endIndex')) {
-      endIndex = _json['endIndex'];
+      endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTableRowStyleChanges')) {
       suggestedTableRowStyleChanges =
@@ -7720,7 +7758,7 @@ class TableRowStyleSuggestionState {
 
   TableRowStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('minRowHeightSuggested')) {
-      minRowHeightSuggested = _json['minRowHeightSuggested'];
+      minRowHeightSuggested = _json['minRowHeightSuggested'] as core.bool;
     }
   }
 
@@ -7787,15 +7825,17 @@ class TextRun {
 
   TextRun.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('suggestedDeletionIds')) {
-      suggestedDeletionIds =
-          (_json['suggestedDeletionIds'] as core.List).cast<core.String>();
+      suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedInsertionIds')) {
-      suggestedInsertionIds =
-          (_json['suggestedInsertionIds'] as core.List).cast<core.String>();
+      suggestedInsertionIds = (_json['suggestedInsertionIds'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
@@ -7913,10 +7953,10 @@ class TextStyle {
       backgroundColor = OptionalColor.fromJson(_json['backgroundColor']);
     }
     if (_json.containsKey('baselineOffset')) {
-      baselineOffset = _json['baselineOffset'];
+      baselineOffset = _json['baselineOffset'] as core.String;
     }
     if (_json.containsKey('bold')) {
-      bold = _json['bold'];
+      bold = _json['bold'] as core.bool;
     }
     if (_json.containsKey('fontSize')) {
       fontSize = Dimension.fromJson(_json['fontSize']);
@@ -7925,19 +7965,19 @@ class TextStyle {
       foregroundColor = OptionalColor.fromJson(_json['foregroundColor']);
     }
     if (_json.containsKey('italic')) {
-      italic = _json['italic'];
+      italic = _json['italic'] as core.bool;
     }
     if (_json.containsKey('link')) {
       link = Link.fromJson(_json['link']);
     }
     if (_json.containsKey('smallCaps')) {
-      smallCaps = _json['smallCaps'];
+      smallCaps = _json['smallCaps'] as core.bool;
     }
     if (_json.containsKey('strikethrough')) {
-      strikethrough = _json['strikethrough'];
+      strikethrough = _json['strikethrough'] as core.bool;
     }
     if (_json.containsKey('underline')) {
-      underline = _json['underline'];
+      underline = _json['underline'] as core.bool;
     }
     if (_json.containsKey('weightedFontFamily')) {
       weightedFontFamily =
@@ -8025,37 +8065,38 @@ class TextStyleSuggestionState {
 
   TextStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColorSuggested')) {
-      backgroundColorSuggested = _json['backgroundColorSuggested'];
+      backgroundColorSuggested = _json['backgroundColorSuggested'] as core.bool;
     }
     if (_json.containsKey('baselineOffsetSuggested')) {
-      baselineOffsetSuggested = _json['baselineOffsetSuggested'];
+      baselineOffsetSuggested = _json['baselineOffsetSuggested'] as core.bool;
     }
     if (_json.containsKey('boldSuggested')) {
-      boldSuggested = _json['boldSuggested'];
+      boldSuggested = _json['boldSuggested'] as core.bool;
     }
     if (_json.containsKey('fontSizeSuggested')) {
-      fontSizeSuggested = _json['fontSizeSuggested'];
+      fontSizeSuggested = _json['fontSizeSuggested'] as core.bool;
     }
     if (_json.containsKey('foregroundColorSuggested')) {
-      foregroundColorSuggested = _json['foregroundColorSuggested'];
+      foregroundColorSuggested = _json['foregroundColorSuggested'] as core.bool;
     }
     if (_json.containsKey('italicSuggested')) {
-      italicSuggested = _json['italicSuggested'];
+      italicSuggested = _json['italicSuggested'] as core.bool;
     }
     if (_json.containsKey('linkSuggested')) {
-      linkSuggested = _json['linkSuggested'];
+      linkSuggested = _json['linkSuggested'] as core.bool;
     }
     if (_json.containsKey('smallCapsSuggested')) {
-      smallCapsSuggested = _json['smallCapsSuggested'];
+      smallCapsSuggested = _json['smallCapsSuggested'] as core.bool;
     }
     if (_json.containsKey('strikethroughSuggested')) {
-      strikethroughSuggested = _json['strikethroughSuggested'];
+      strikethroughSuggested = _json['strikethroughSuggested'] as core.bool;
     }
     if (_json.containsKey('underlineSuggested')) {
-      underlineSuggested = _json['underlineSuggested'];
+      underlineSuggested = _json['underlineSuggested'] as core.bool;
     }
     if (_json.containsKey('weightedFontFamilySuggested')) {
-      weightedFontFamilySuggested = _json['weightedFontFamilySuggested'];
+      weightedFontFamilySuggested =
+          _json['weightedFontFamilySuggested'] as core.bool;
     }
   }
 
@@ -8146,7 +8187,7 @@ class UpdateDocumentStyleRequest {
       documentStyle = DocumentStyle.fromJson(_json['documentStyle']);
     }
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
   }
 
@@ -8183,7 +8224,7 @@ class UpdateParagraphStyleRequest {
 
   UpdateParagraphStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('paragraphStyle')) {
       paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
@@ -8229,7 +8270,7 @@ class UpdateSectionStyleRequest {
 
   UpdateSectionStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
       range = Range.fromJson(_json['range']);
@@ -8285,7 +8326,7 @@ class UpdateTableCellStyleRequest {
 
   UpdateTableCellStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('tableCellStyle')) {
       tableCellStyle = TableCellStyle.fromJson(_json['tableCellStyle']);
@@ -8340,10 +8381,12 @@ class UpdateTableColumnPropertiesRequest {
 
   UpdateTableColumnPropertiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('columnIndices')) {
-      columnIndices = (_json['columnIndices'] as core.List).cast<core.int>();
+      columnIndices = (_json['columnIndices'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('tableColumnProperties')) {
       tableColumnProperties =
@@ -8394,10 +8437,12 @@ class UpdateTableRowStyleRequest {
 
   UpdateTableRowStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('rowIndices')) {
-      rowIndices = (_json['rowIndices'] as core.List).cast<core.int>();
+      rowIndices = (_json['rowIndices'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('tableRowStyle')) {
       tableRowStyle = TableRowStyle.fromJson(_json['tableRowStyle']);
@@ -8451,7 +8496,7 @@ class UpdateTextStyleRequest {
 
   UpdateTextStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = _json['fields'];
+      fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
       range = Range.fromJson(_json['range']);
@@ -8503,10 +8548,10 @@ class WeightedFontFamily {
 
   WeightedFontFamily.fromJson(core.Map _json) {
     if (_json.containsKey('fontFamily')) {
-      fontFamily = _json['fontFamily'];
+      fontFamily = _json['fontFamily'] as core.String;
     }
     if (_json.containsKey('weight')) {
-      weight = _json['weight'];
+      weight = _json['weight'] as core.int;
     }
   }
 
@@ -8552,10 +8597,10 @@ class WriteControl {
 
   WriteControl.fromJson(core.Map _json) {
     if (_json.containsKey('requiredRevisionId')) {
-      requiredRevisionId = _json['requiredRevisionId'];
+      requiredRevisionId = _json['requiredRevisionId'] as core.String;
     }
     if (_json.containsKey('targetRevisionId')) {
-      targetRevisionId = _json['targetRevisionId'];
+      targetRevisionId = _json['targetRevisionId'] as core.String;
     }
   }
 

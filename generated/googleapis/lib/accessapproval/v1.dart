@@ -1388,7 +1388,7 @@ class AccessApprovalSettings {
 
   AccessApprovalSettings.fromJson(core.Map _json) {
     if (_json.containsKey('enrolledAncestor')) {
-      enrolledAncestor = _json['enrolledAncestor'];
+      enrolledAncestor = _json['enrolledAncestor'] as core.bool;
     }
     if (_json.containsKey('enrolledServices')) {
       enrolledServices = (_json['enrolledServices'] as core.List)
@@ -1396,11 +1396,12 @@ class AccessApprovalSettings {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationEmails')) {
-      notificationEmails =
-          (_json['notificationEmails'] as core.List).cast<core.String>();
+      notificationEmails = (_json['notificationEmails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1445,11 +1446,11 @@ class AccessLocations {
 
   AccessLocations.fromJson(core.Map _json) {
     if (_json.containsKey('principalOfficeCountry')) {
-      principalOfficeCountry = _json['principalOfficeCountry'];
+      principalOfficeCountry = _json['principalOfficeCountry'] as core.String;
     }
     if (_json.containsKey('principalPhysicalLocationCountry')) {
       principalPhysicalLocationCountry =
-          _json['principalPhysicalLocationCountry'];
+          _json['principalPhysicalLocationCountry'] as core.String;
     }
   }
 
@@ -1491,10 +1492,10 @@ class AccessReason {
 
   AccessReason.fromJson(core.Map _json) {
     if (_json.containsKey('detail')) {
-      detail = _json['detail'];
+      detail = _json['detail'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1558,13 +1559,13 @@ class ApprovalRequest {
       dismiss = DismissDecision.fromJson(_json['dismiss']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('requestTime')) {
-      requestTime = _json['requestTime'];
+      requestTime = _json['requestTime'] as core.String;
     }
     if (_json.containsKey('requestedExpiration')) {
-      requestedExpiration = _json['requestedExpiration'];
+      requestedExpiration = _json['requestedExpiration'] as core.String;
     }
     if (_json.containsKey('requestedLocations')) {
       requestedLocations =
@@ -1574,7 +1575,7 @@ class ApprovalRequest {
       requestedReason = AccessReason.fromJson(_json['requestedReason']);
     }
     if (_json.containsKey('requestedResourceName')) {
-      requestedResourceName = _json['requestedResourceName'];
+      requestedResourceName = _json['requestedResourceName'] as core.String;
     }
     if (_json.containsKey('requestedResourceProperties')) {
       requestedResourceProperties =
@@ -1625,7 +1626,7 @@ class ApproveApprovalRequestMessage {
 
   ApproveApprovalRequestMessage.fromJson(core.Map _json) {
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
   }
 
@@ -1650,10 +1651,10 @@ class ApproveDecision {
 
   ApproveDecision.fromJson(core.Map _json) {
     if (_json.containsKey('approveTime')) {
-      approveTime = _json['approveTime'];
+      approveTime = _json['approveTime'] as core.String;
     }
     if (_json.containsKey('expireTime')) {
-      expireTime = _json['expireTime'];
+      expireTime = _json['expireTime'] as core.String;
     }
   }
 
@@ -1697,10 +1698,10 @@ class DismissDecision {
 
   DismissDecision.fromJson(core.Map _json) {
     if (_json.containsKey('dismissTime')) {
-      dismissTime = _json['dismissTime'];
+      dismissTime = _json['dismissTime'] as core.String;
     }
     if (_json.containsKey('implicit')) {
-      implicit = _json['implicit'];
+      implicit = _json['implicit'] as core.bool;
     }
   }
 
@@ -1766,10 +1767,10 @@ class EnrolledService {
 
   EnrolledService.fromJson(core.Map _json) {
     if (_json.containsKey('cloudProduct')) {
-      cloudProduct = _json['cloudProduct'];
+      cloudProduct = _json['cloudProduct'] as core.String;
     }
     if (_json.containsKey('enrollmentLevel')) {
-      enrollmentLevel = _json['enrollmentLevel'];
+      enrollmentLevel = _json['enrollmentLevel'] as core.String;
     }
   }
 
@@ -1802,7 +1803,7 @@ class ListApprovalRequestsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1829,7 +1830,7 @@ class ResourceProperties {
 
   ResourceProperties.fromJson(core.Map _json) {
     if (_json.containsKey('excludesDescendants')) {
-      excludesDescendants = _json['excludesDescendants'];
+      excludesDescendants = _json['excludesDescendants'] as core.bool;
     }
   }
 

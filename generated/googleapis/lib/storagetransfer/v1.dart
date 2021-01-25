@@ -681,10 +681,10 @@ class AwsAccessKey {
 
   AwsAccessKey.fromJson(core.Map _json) {
     if (_json.containsKey('accessKeyId')) {
-      accessKeyId = _json['accessKeyId'];
+      accessKeyId = _json['accessKeyId'] as core.String;
     }
     if (_json.containsKey('secretAccessKey')) {
-      secretAccessKey = _json['secretAccessKey'];
+      secretAccessKey = _json['secretAccessKey'] as core.String;
     }
   }
 
@@ -719,7 +719,7 @@ class AwsS3Data {
       awsAccessKey = AwsAccessKey.fromJson(_json['awsAccessKey']);
     }
     if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'];
+      bucketName = _json['bucketName'] as core.String;
     }
   }
 
@@ -760,10 +760,10 @@ class AzureBlobStorageData {
       azureCredentials = AzureCredentials.fromJson(_json['azureCredentials']);
     }
     if (_json.containsKey('container')) {
-      container = _json['container'];
+      container = _json['container'] as core.String;
     }
     if (_json.containsKey('storageAccount')) {
-      storageAccount = _json['storageAccount'];
+      storageAccount = _json['storageAccount'] as core.String;
     }
   }
 
@@ -793,7 +793,7 @@ class AzureCredentials {
 
   AzureCredentials.fromJson(core.Map _json) {
     if (_json.containsKey('sasToken')) {
-      sasToken = _json['sasToken'];
+      sasToken = _json['sasToken'] as core.String;
     }
   }
 
@@ -846,13 +846,13 @@ class Date {
 
   Date.fromJson(core.Map _json) {
     if (_json.containsKey('day')) {
-      day = _json['day'];
+      day = _json['day'] as core.int;
     }
     if (_json.containsKey('month')) {
-      month = _json['month'];
+      month = _json['month'] as core.int;
     }
     if (_json.containsKey('year')) {
-      year = _json['year'];
+      year = _json['year'] as core.int;
     }
   }
 
@@ -902,10 +902,12 @@ class ErrorLogEntry {
 
   ErrorLogEntry.fromJson(core.Map _json) {
     if (_json.containsKey('errorDetails')) {
-      errorDetails = (_json['errorDetails'] as core.List).cast<core.String>();
+      errorDetails = (_json['errorDetails'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -1018,10 +1020,10 @@ class ErrorSummary {
 
   ErrorSummary.fromJson(core.Map _json) {
     if (_json.containsKey('errorCode')) {
-      errorCode = _json['errorCode'];
+      errorCode = _json['errorCode'] as core.String;
     }
     if (_json.containsKey('errorCount')) {
-      errorCount = _json['errorCount'];
+      errorCount = _json['errorCount'] as core.String;
     }
     if (_json.containsKey('errorLogEntries')) {
       errorLogEntries = (_json['errorLogEntries'] as core.List)
@@ -1059,7 +1061,7 @@ class GcsData {
 
   GcsData.fromJson(core.Map _json) {
     if (_json.containsKey('bucketName')) {
-      bucketName = _json['bucketName'];
+      bucketName = _json['bucketName'] as core.String;
     }
   }
 
@@ -1081,7 +1083,7 @@ class GoogleServiceAccount {
 
   GoogleServiceAccount.fromJson(core.Map _json) {
     if (_json.containsKey('accountEmail')) {
-      accountEmail = _json['accountEmail'];
+      accountEmail = _json['accountEmail'] as core.String;
     }
   }
 
@@ -1129,7 +1131,7 @@ class HttpData {
 
   HttpData.fromJson(core.Map _json) {
     if (_json.containsKey('listUrl')) {
-      listUrl = _json['listUrl'];
+      listUrl = _json['listUrl'] as core.String;
     }
   }
 
@@ -1154,7 +1156,7 @@ class ListOperationsResponse {
 
   ListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -1187,7 +1189,7 @@ class ListTransferJobsResponse {
 
   ListTransferJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('transferJobs')) {
       transferJobs = (_json['transferJobs'] as core.List)
@@ -1242,13 +1244,15 @@ class NotificationConfig {
 
   NotificationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('eventTypes')) {
-      eventTypes = (_json['eventTypes'] as core.List).cast<core.String>();
+      eventTypes = (_json['eventTypes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('payloadFormat')) {
-      payloadFormat = _json['payloadFormat'];
+      payloadFormat = _json['payloadFormat'] as core.String;
     }
     if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'];
+      pubsubTopic = _json['pubsubTopic'] as core.String;
     }
   }
 
@@ -1333,26 +1337,28 @@ class ObjectConditions {
 
   ObjectConditions.fromJson(core.Map _json) {
     if (_json.containsKey('excludePrefixes')) {
-      excludePrefixes =
-          (_json['excludePrefixes'] as core.List).cast<core.String>();
+      excludePrefixes = (_json['excludePrefixes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('includePrefixes')) {
-      includePrefixes =
-          (_json['includePrefixes'] as core.List).cast<core.String>();
+      includePrefixes = (_json['includePrefixes'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('lastModifiedBefore')) {
-      lastModifiedBefore = _json['lastModifiedBefore'];
+      lastModifiedBefore = _json['lastModifiedBefore'] as core.String;
     }
     if (_json.containsKey('lastModifiedSince')) {
-      lastModifiedSince = _json['lastModifiedSince'];
+      lastModifiedSince = _json['lastModifiedSince'] as core.String;
     }
     if (_json.containsKey('maxTimeElapsedSinceLastModification')) {
       maxTimeElapsedSinceLastModification =
-          _json['maxTimeElapsedSinceLastModification'];
+          _json['maxTimeElapsedSinceLastModification'] as core.String;
     }
     if (_json.containsKey('minTimeElapsedSinceLastModification')) {
       minTimeElapsedSinceLastModification =
-          _json['minTimeElapsedSinceLastModification'];
+          _json['minTimeElapsedSinceLastModification'] as core.String;
     }
   }
 
@@ -1421,21 +1427,23 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = Status.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -1576,16 +1584,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -1626,16 +1636,16 @@ class TimeOfDay {
 
   TimeOfDay.fromJson(core.Map _json) {
     if (_json.containsKey('hours')) {
-      hours = _json['hours'];
+      hours = _json['hours'] as core.int;
     }
     if (_json.containsKey('minutes')) {
-      minutes = _json['minutes'];
+      minutes = _json['minutes'] as core.int;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('seconds')) {
-      seconds = _json['seconds'];
+      seconds = _json['seconds'] as core.int;
     }
   }
 
@@ -1719,52 +1729,58 @@ class TransferCounters {
 
   TransferCounters.fromJson(core.Map _json) {
     if (_json.containsKey('bytesCopiedToSink')) {
-      bytesCopiedToSink = _json['bytesCopiedToSink'];
+      bytesCopiedToSink = _json['bytesCopiedToSink'] as core.String;
     }
     if (_json.containsKey('bytesDeletedFromSink')) {
-      bytesDeletedFromSink = _json['bytesDeletedFromSink'];
+      bytesDeletedFromSink = _json['bytesDeletedFromSink'] as core.String;
     }
     if (_json.containsKey('bytesDeletedFromSource')) {
-      bytesDeletedFromSource = _json['bytesDeletedFromSource'];
+      bytesDeletedFromSource = _json['bytesDeletedFromSource'] as core.String;
     }
     if (_json.containsKey('bytesFailedToDeleteFromSink')) {
-      bytesFailedToDeleteFromSink = _json['bytesFailedToDeleteFromSink'];
+      bytesFailedToDeleteFromSink =
+          _json['bytesFailedToDeleteFromSink'] as core.String;
     }
     if (_json.containsKey('bytesFoundFromSource')) {
-      bytesFoundFromSource = _json['bytesFoundFromSource'];
+      bytesFoundFromSource = _json['bytesFoundFromSource'] as core.String;
     }
     if (_json.containsKey('bytesFoundOnlyFromSink')) {
-      bytesFoundOnlyFromSink = _json['bytesFoundOnlyFromSink'];
+      bytesFoundOnlyFromSink = _json['bytesFoundOnlyFromSink'] as core.String;
     }
     if (_json.containsKey('bytesFromSourceFailed')) {
-      bytesFromSourceFailed = _json['bytesFromSourceFailed'];
+      bytesFromSourceFailed = _json['bytesFromSourceFailed'] as core.String;
     }
     if (_json.containsKey('bytesFromSourceSkippedBySync')) {
-      bytesFromSourceSkippedBySync = _json['bytesFromSourceSkippedBySync'];
+      bytesFromSourceSkippedBySync =
+          _json['bytesFromSourceSkippedBySync'] as core.String;
     }
     if (_json.containsKey('objectsCopiedToSink')) {
-      objectsCopiedToSink = _json['objectsCopiedToSink'];
+      objectsCopiedToSink = _json['objectsCopiedToSink'] as core.String;
     }
     if (_json.containsKey('objectsDeletedFromSink')) {
-      objectsDeletedFromSink = _json['objectsDeletedFromSink'];
+      objectsDeletedFromSink = _json['objectsDeletedFromSink'] as core.String;
     }
     if (_json.containsKey('objectsDeletedFromSource')) {
-      objectsDeletedFromSource = _json['objectsDeletedFromSource'];
+      objectsDeletedFromSource =
+          _json['objectsDeletedFromSource'] as core.String;
     }
     if (_json.containsKey('objectsFailedToDeleteFromSink')) {
-      objectsFailedToDeleteFromSink = _json['objectsFailedToDeleteFromSink'];
+      objectsFailedToDeleteFromSink =
+          _json['objectsFailedToDeleteFromSink'] as core.String;
     }
     if (_json.containsKey('objectsFoundFromSource')) {
-      objectsFoundFromSource = _json['objectsFoundFromSource'];
+      objectsFoundFromSource = _json['objectsFoundFromSource'] as core.String;
     }
     if (_json.containsKey('objectsFoundOnlyFromSink')) {
-      objectsFoundOnlyFromSink = _json['objectsFoundOnlyFromSink'];
+      objectsFoundOnlyFromSink =
+          _json['objectsFoundOnlyFromSink'] as core.String;
     }
     if (_json.containsKey('objectsFromSourceFailed')) {
-      objectsFromSourceFailed = _json['objectsFromSourceFailed'];
+      objectsFromSourceFailed = _json['objectsFromSourceFailed'] as core.String;
     }
     if (_json.containsKey('objectsFromSourceSkippedBySync')) {
-      objectsFromSourceSkippedBySync = _json['objectsFromSourceSkippedBySync'];
+      objectsFromSourceSkippedBySync =
+          _json['objectsFromSourceSkippedBySync'] as core.String;
     }
   }
 
@@ -1881,32 +1897,32 @@ class TransferJob {
 
   TransferJob.fromJson(core.Map _json) {
     if (_json.containsKey('creationTime')) {
-      creationTime = _json['creationTime'];
+      creationTime = _json['creationTime'] as core.String;
     }
     if (_json.containsKey('deletionTime')) {
-      deletionTime = _json['deletionTime'];
+      deletionTime = _json['deletionTime'] as core.String;
     }
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('lastModificationTime')) {
-      lastModificationTime = _json['lastModificationTime'];
+      lastModificationTime = _json['lastModificationTime'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
       notificationConfig =
           NotificationConfig.fromJson(_json['notificationConfig']);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('schedule')) {
       schedule = Schedule.fromJson(_json['schedule']);
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('transferSpec')) {
       transferSpec = TransferSpec.fromJson(_json['transferSpec']);
@@ -1997,7 +2013,7 @@ class TransferOperation {
       counters = TransferCounters.fromJson(_json['counters']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('errorBreakdowns')) {
       errorBreakdowns = (_json['errorBreakdowns'] as core.List)
@@ -2005,23 +2021,23 @@ class TransferOperation {
           .toList();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
       notificationConfig =
           NotificationConfig.fromJson(_json['notificationConfig']);
     }
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = _json['status'];
+      status = _json['status'] as core.String;
     }
     if (_json.containsKey('transferJobName')) {
-      transferJobName = _json['transferJobName'];
+      transferJobName = _json['transferJobName'] as core.String;
     }
     if (_json.containsKey('transferSpec')) {
       transferSpec = TransferSpec.fromJson(_json['transferSpec']);
@@ -2085,14 +2101,15 @@ class TransferOptions {
   TransferOptions.fromJson(core.Map _json) {
     if (_json.containsKey('deleteObjectsFromSourceAfterTransfer')) {
       deleteObjectsFromSourceAfterTransfer =
-          _json['deleteObjectsFromSourceAfterTransfer'];
+          _json['deleteObjectsFromSourceAfterTransfer'] as core.bool;
     }
     if (_json.containsKey('deleteObjectsUniqueInSink')) {
-      deleteObjectsUniqueInSink = _json['deleteObjectsUniqueInSink'];
+      deleteObjectsUniqueInSink =
+          _json['deleteObjectsUniqueInSink'] as core.bool;
     }
     if (_json.containsKey('overwriteObjectsAlreadyExistingInSink')) {
       overwriteObjectsAlreadyExistingInSink =
-          _json['overwriteObjectsAlreadyExistingInSink'];
+          _json['overwriteObjectsAlreadyExistingInSink'] as core.bool;
     }
   }
 
@@ -2219,13 +2236,14 @@ class UpdateTransferJobRequest {
 
   UpdateTransferJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('projectId')) {
-      projectId = _json['projectId'];
+      projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('transferJob')) {
       transferJob = TransferJob.fromJson(_json['transferJob']);
     }
     if (_json.containsKey('updateTransferJobFieldMask')) {
-      updateTransferJobFieldMask = _json['updateTransferJobFieldMask'];
+      updateTransferJobFieldMask =
+          _json['updateTransferJobFieldMask'] as core.String;
     }
   }
 

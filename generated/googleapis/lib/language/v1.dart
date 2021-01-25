@@ -381,7 +381,7 @@ class AnalyzeEntitiesRequest {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('encodingType')) {
-      encodingType = _json['encodingType'];
+      encodingType = _json['encodingType'] as core.String;
     }
   }
 
@@ -416,7 +416,7 @@ class AnalyzeEntitiesResponse {
           .toList();
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
   }
 
@@ -459,7 +459,7 @@ class AnalyzeEntitySentimentRequest {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('encodingType')) {
-      encodingType = _json['encodingType'];
+      encodingType = _json['encodingType'] as core.String;
     }
   }
 
@@ -494,7 +494,7 @@ class AnalyzeEntitySentimentResponse {
           .toList();
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
   }
 
@@ -537,7 +537,7 @@ class AnalyzeSentimentRequest {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('encodingType')) {
-      encodingType = _json['encodingType'];
+      encodingType = _json['encodingType'] as core.String;
     }
   }
 
@@ -573,7 +573,7 @@ class AnalyzeSentimentResponse {
       documentSentiment = Sentiment.fromJson(_json['documentSentiment']);
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('sentences')) {
       sentences = (_json['sentences'] as core.List)
@@ -624,7 +624,7 @@ class AnalyzeSyntaxRequest {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('encodingType')) {
-      encodingType = _json['encodingType'];
+      encodingType = _json['encodingType'] as core.String;
     }
   }
 
@@ -657,7 +657,7 @@ class AnalyzeSyntaxResponse {
 
   AnalyzeSyntaxResponse.fromJson(core.Map _json) {
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('sentences')) {
       sentences = (_json['sentences'] as core.List)
@@ -717,7 +717,7 @@ class AnnotateTextRequest {
       document = Document.fromJson(_json['document']);
     }
     if (_json.containsKey('encodingType')) {
-      encodingType = _json['encodingType'];
+      encodingType = _json['encodingType'] as core.String;
     }
     if (_json.containsKey('features')) {
       features = Features.fromJson(_json['features']);
@@ -784,7 +784,7 @@ class AnnotateTextResponse {
           .toList();
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('sentences')) {
       sentences = (_json['sentences'] as core.List)
@@ -839,7 +839,7 @@ class ClassificationCategory {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -1005,10 +1005,10 @@ class DependencyEdge {
 
   DependencyEdge.fromJson(core.Map _json) {
     if (_json.containsKey('headTokenIndex')) {
-      headTokenIndex = _json['headTokenIndex'];
+      headTokenIndex = _json['headTokenIndex'] as core.int;
     }
     if (_json.containsKey('label')) {
-      label = _json['label'];
+      label = _json['label'] as core.String;
     }
   }
 
@@ -1058,16 +1058,16 @@ class Document {
 
   Document.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsContentUri')) {
-      gcsContentUri = _json['gcsContentUri'];
+      gcsContentUri = _json['gcsContentUri'] as core.String;
     }
     if (_json.containsKey('language')) {
-      language = _json['language'];
+      language = _json['language'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1158,11 +1158,12 @@ class Entity {
           .toList();
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.String>();
+      metadata = commons.mapMap<core.String, core.String>(
+          _json['metadata'].cast<core.String, core.String>(),
+          (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('salience')) {
       salience = _json['salience'].toDouble();
@@ -1171,7 +1172,7 @@ class Entity {
       sentiment = Sentiment.fromJson(_json['sentiment']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1228,7 +1229,7 @@ class EntityMention {
       text = TextSpan.fromJson(_json['text']);
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -1269,19 +1270,19 @@ class Features {
 
   Features.fromJson(core.Map _json) {
     if (_json.containsKey('classifyText')) {
-      classifyText = _json['classifyText'];
+      classifyText = _json['classifyText'] as core.bool;
     }
     if (_json.containsKey('extractDocumentSentiment')) {
-      extractDocumentSentiment = _json['extractDocumentSentiment'];
+      extractDocumentSentiment = _json['extractDocumentSentiment'] as core.bool;
     }
     if (_json.containsKey('extractEntities')) {
-      extractEntities = _json['extractEntities'];
+      extractEntities = _json['extractEntities'] as core.bool;
     }
     if (_json.containsKey('extractEntitySentiment')) {
-      extractEntitySentiment = _json['extractEntitySentiment'];
+      extractEntitySentiment = _json['extractEntitySentiment'] as core.bool;
     }
     if (_json.containsKey('extractSyntax')) {
-      extractSyntax = _json['extractSyntax'];
+      extractSyntax = _json['extractSyntax'] as core.bool;
     }
   }
 
@@ -1454,40 +1455,40 @@ class PartOfSpeech {
 
   PartOfSpeech.fromJson(core.Map _json) {
     if (_json.containsKey('aspect')) {
-      aspect = _json['aspect'];
+      aspect = _json['aspect'] as core.String;
     }
     if (_json.containsKey('case')) {
-      case_ = _json['case'];
+      case_ = _json['case'] as core.String;
     }
     if (_json.containsKey('form')) {
-      form = _json['form'];
+      form = _json['form'] as core.String;
     }
     if (_json.containsKey('gender')) {
-      gender = _json['gender'];
+      gender = _json['gender'] as core.String;
     }
     if (_json.containsKey('mood')) {
-      mood = _json['mood'];
+      mood = _json['mood'] as core.String;
     }
     if (_json.containsKey('number')) {
-      number = _json['number'];
+      number = _json['number'] as core.String;
     }
     if (_json.containsKey('person')) {
-      person = _json['person'];
+      person = _json['person'] as core.String;
     }
     if (_json.containsKey('proper')) {
-      proper = _json['proper'];
+      proper = _json['proper'] as core.String;
     }
     if (_json.containsKey('reciprocity')) {
-      reciprocity = _json['reciprocity'];
+      reciprocity = _json['reciprocity'] as core.String;
     }
     if (_json.containsKey('tag')) {
-      tag = _json['tag'];
+      tag = _json['tag'] as core.String;
     }
     if (_json.containsKey('tense')) {
-      tense = _json['tense'];
+      tense = _json['tense'] as core.String;
     }
     if (_json.containsKey('voice')) {
-      voice = _json['voice'];
+      voice = _json['voice'] as core.String;
     }
   }
 
@@ -1627,16 +1628,18 @@ class Status {
 
   Status.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
@@ -1668,10 +1671,10 @@ class TextSpan {
 
   TextSpan.fromJson(core.Map _json) {
     if (_json.containsKey('beginOffset')) {
-      beginOffset = _json['beginOffset'];
+      beginOffset = _json['beginOffset'] as core.int;
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
   }
 
@@ -1709,7 +1712,7 @@ class Token {
       dependencyEdge = DependencyEdge.fromJson(_json['dependencyEdge']);
     }
     if (_json.containsKey('lemma')) {
-      lemma = _json['lemma'];
+      lemma = _json['lemma'] as core.String;
     }
     if (_json.containsKey('partOfSpeech')) {
       partOfSpeech = PartOfSpeech.fromJson(_json['partOfSpeech']);

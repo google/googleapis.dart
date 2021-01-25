@@ -683,10 +683,10 @@ class ActionParameter {
 
   ActionParameter.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = _json['key'];
+      key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -720,10 +720,10 @@ class ActionResponse {
 
   ActionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -772,16 +772,16 @@ class Annotation {
 
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey('length')) {
-      length = _json['length'];
+      length = _json['length'] as core.int;
     }
     if (_json.containsKey('slashCommand')) {
       slashCommand = SlashCommandMetadata.fromJson(_json['slashCommand']);
     }
     if (_json.containsKey('startIndex')) {
-      startIndex = _json['startIndex'];
+      startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('userMention')) {
       userMention = UserMentionMetadata.fromJson(_json['userMention']);
@@ -853,25 +853,25 @@ class Attachment {
           AttachmentDataRef.fromJson(_json['attachmentDataRef']);
     }
     if (_json.containsKey('contentName')) {
-      contentName = _json['contentName'];
+      contentName = _json['contentName'] as core.String;
     }
     if (_json.containsKey('contentType')) {
-      contentType = _json['contentType'];
+      contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('downloadUri')) {
-      downloadUri = _json['downloadUri'];
+      downloadUri = _json['downloadUri'] as core.String;
     }
     if (_json.containsKey('driveDataRef')) {
       driveDataRef = DriveDataRef.fromJson(_json['driveDataRef']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = _json['source'];
+      source = _json['source'] as core.String;
     }
     if (_json.containsKey('thumbnailUri')) {
-      thumbnailUri = _json['thumbnailUri'];
+      thumbnailUri = _json['thumbnailUri'] as core.String;
     }
   }
 
@@ -915,7 +915,7 @@ class AttachmentDataRef {
 
   AttachmentDataRef.fromJson(core.Map _json) {
     if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'];
+      resourceName = _json['resourceName'] as core.String;
     }
   }
 
@@ -985,7 +985,7 @@ class Card {
       header = CardHeader.fromJson(_json['header']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('sections')) {
       sections = (_json['sections'] as core.List)
@@ -1027,7 +1027,7 @@ class CardAction {
 
   CardAction.fromJson(core.Map _json) {
     if (_json.containsKey('actionLabel')) {
-      actionLabel = _json['actionLabel'];
+      actionLabel = _json['actionLabel'] as core.String;
     }
     if (_json.containsKey('onClick')) {
       onClick = OnClick.fromJson(_json['onClick']);
@@ -1069,16 +1069,16 @@ class CardHeader {
 
   CardHeader.fromJson(core.Map _json) {
     if (_json.containsKey('imageStyle')) {
-      imageStyle = _json['imageStyle'];
+      imageStyle = _json['imageStyle'] as core.String;
     }
     if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'];
+      imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('subtitle')) {
-      subtitle = _json['subtitle'];
+      subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('title')) {
-      title = _json['title'];
+      title = _json['title'] as core.String;
     }
   }
 
@@ -1152,10 +1152,11 @@ class DeprecatedEvent {
       action = FormAction.fromJson(_json['action']);
     }
     if (_json.containsKey('configCompleteRedirectUrl')) {
-      configCompleteRedirectUrl = _json['configCompleteRedirectUrl'];
+      configCompleteRedirectUrl =
+          _json['configCompleteRedirectUrl'] as core.String;
     }
     if (_json.containsKey('eventTime')) {
-      eventTime = _json['eventTime'];
+      eventTime = _json['eventTime'] as core.String;
     }
     if (_json.containsKey('message')) {
       message = Message.fromJson(_json['message']);
@@ -1164,13 +1165,13 @@ class DeprecatedEvent {
       space = Space.fromJson(_json['space']);
     }
     if (_json.containsKey('threadKey')) {
-      threadKey = _json['threadKey'];
+      threadKey = _json['threadKey'] as core.String;
     }
     if (_json.containsKey('token')) {
-      token = _json['token'];
+      token = _json['token'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);
@@ -1219,7 +1220,7 @@ class DriveDataRef {
 
   DriveDataRef.fromJson(core.Map _json) {
     if (_json.containsKey('driveFileId')) {
-      driveFileId = _json['driveFileId'];
+      driveFileId = _json['driveFileId'] as core.String;
     }
   }
 
@@ -1266,7 +1267,7 @@ class FormAction {
 
   FormAction.fromJson(core.Map _json) {
     if (_json.containsKey('actionMethodName')) {
-      actionMethodName = _json['actionMethodName'];
+      actionMethodName = _json['actionMethodName'] as core.String;
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
@@ -1308,7 +1309,7 @@ class Image {
       aspectRatio = _json['aspectRatio'].toDouble();
     }
     if (_json.containsKey('imageUrl')) {
-      imageUrl = _json['imageUrl'];
+      imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('onClick')) {
       onClick = OnClick.fromJson(_json['onClick']);
@@ -1382,13 +1383,13 @@ class ImageButton {
 
   ImageButton.fromJson(core.Map _json) {
     if (_json.containsKey('icon')) {
-      icon = _json['icon'];
+      icon = _json['icon'] as core.String;
     }
     if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'];
+      iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('onClick')) {
       onClick = OnClick.fromJson(_json['onClick']);
@@ -1478,28 +1479,28 @@ class KeyValue {
 
   KeyValue.fromJson(core.Map _json) {
     if (_json.containsKey('bottomLabel')) {
-      bottomLabel = _json['bottomLabel'];
+      bottomLabel = _json['bottomLabel'] as core.String;
     }
     if (_json.containsKey('button')) {
       button = Button.fromJson(_json['button']);
     }
     if (_json.containsKey('content')) {
-      content = _json['content'];
+      content = _json['content'] as core.String;
     }
     if (_json.containsKey('contentMultiline')) {
-      contentMultiline = _json['contentMultiline'];
+      contentMultiline = _json['contentMultiline'] as core.bool;
     }
     if (_json.containsKey('icon')) {
-      icon = _json['icon'];
+      icon = _json['icon'] as core.String;
     }
     if (_json.containsKey('iconUrl')) {
-      iconUrl = _json['iconUrl'];
+      iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('onClick')) {
       onClick = OnClick.fromJson(_json['onClick']);
     }
     if (_json.containsKey('topLabel')) {
-      topLabel = _json['topLabel'];
+      topLabel = _json['topLabel'] as core.String;
     }
   }
 
@@ -1550,7 +1551,7 @@ class ListMembershipsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -1580,7 +1581,7 @@ class ListSpacesResponse {
 
   ListSpacesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('spaces')) {
       spaces = (_json['spaces'] as core.List)
@@ -1610,7 +1611,7 @@ class Media {
 
   Media.fromJson(core.Map _json) {
     if (_json.containsKey('resourceName')) {
-      resourceName = _json['resourceName'];
+      resourceName = _json['resourceName'] as core.String;
     }
   }
 
@@ -1647,16 +1648,16 @@ class Membership {
 
   Membership.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('member')) {
       member = User.fromJson(_json['member']);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = _json['state'];
+      state = _json['state'] as core.String;
     }
   }
 
@@ -1742,7 +1743,7 @@ class Message {
           .toList();
     }
     if (_json.containsKey('argumentText')) {
-      argumentText = _json['argumentText'];
+      argumentText = _json['argumentText'] as core.String;
     }
     if (_json.containsKey('attachment')) {
       attachment = (_json['attachment'] as core.List)
@@ -1755,16 +1756,16 @@ class Message {
           .toList();
     }
     if (_json.containsKey('createTime')) {
-      createTime = _json['createTime'];
+      createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('fallbackText')) {
-      fallbackText = _json['fallbackText'];
+      fallbackText = _json['fallbackText'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('previewText')) {
-      previewText = _json['previewText'];
+      previewText = _json['previewText'] as core.String;
     }
     if (_json.containsKey('sender')) {
       sender = User.fromJson(_json['sender']);
@@ -1776,7 +1777,7 @@ class Message {
       space = Space.fromJson(_json['space']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('thread')) {
       thread = Thread.fromJson(_json['thread']);
@@ -1872,7 +1873,7 @@ class OpenLink {
 
   OpenLink.fromJson(core.Map _json) {
     if (_json.containsKey('url')) {
-      url = _json['url'];
+      url = _json['url'] as core.String;
     }
   }
 
@@ -1900,7 +1901,7 @@ class Section {
 
   Section.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = _json['header'];
+      header = _json['header'] as core.String;
     }
     if (_json.containsKey('widgets')) {
       widgets = (_json['widgets'] as core.List)
@@ -1930,7 +1931,7 @@ class SlashCommand {
 
   SlashCommand.fromJson(core.Map _json) {
     if (_json.containsKey('commandId')) {
-      commandId = _json['commandId'];
+      commandId = _json['commandId'] as core.String;
     }
   }
 
@@ -1971,16 +1972,16 @@ class SlashCommandMetadata {
       bot = User.fromJson(_json['bot']);
     }
     if (_json.containsKey('commandId')) {
-      commandId = _json['commandId'];
+      commandId = _json['commandId'] as core.String;
     }
     if (_json.containsKey('commandName')) {
-      commandName = _json['commandName'];
+      commandName = _json['commandName'] as core.String;
     }
     if (_json.containsKey('triggersDialog')) {
-      triggersDialog = _json['triggersDialog'];
+      triggersDialog = _json['triggersDialog'] as core.bool;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -2034,19 +2035,19 @@ class Space {
 
   Space.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('singleUserBotDm')) {
-      singleUserBotDm = _json['singleUserBotDm'];
+      singleUserBotDm = _json['singleUserBotDm'] as core.bool;
     }
     if (_json.containsKey('threaded')) {
-      threaded = _json['threaded'];
+      threaded = _json['threaded'] as core.bool;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -2086,7 +2087,7 @@ class TextButton {
       onClick = OnClick.fromJson(_json['onClick']);
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -2110,7 +2111,7 @@ class TextParagraph {
 
   TextParagraph.fromJson(core.Map _json) {
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
   }
 
@@ -2133,7 +2134,7 @@ class Thread {
 
   Thread.fromJson(core.Map _json) {
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -2168,16 +2169,16 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('domainId')) {
-      domainId = _json['domainId'];
+      domainId = _json['domainId'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
   }
 
@@ -2215,7 +2216,7 @@ class UserMentionMetadata {
 
   UserMentionMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('type')) {
-      type = _json['type'];
+      type = _json['type'] as core.String;
     }
     if (_json.containsKey('user')) {
       user = User.fromJson(_json['user']);

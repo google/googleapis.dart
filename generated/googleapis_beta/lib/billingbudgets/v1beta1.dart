@@ -406,18 +406,20 @@ class GoogleCloudBillingBudgetsV1beta1AllUpdatesRule {
 
   GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(core.Map _json) {
     if (_json.containsKey('disableDefaultIamRecipients')) {
-      disableDefaultIamRecipients = _json['disableDefaultIamRecipients'];
+      disableDefaultIamRecipients =
+          _json['disableDefaultIamRecipients'] as core.bool;
     }
     if (_json.containsKey('monitoringNotificationChannels')) {
       monitoringNotificationChannels =
           (_json['monitoringNotificationChannels'] as core.List)
-              .cast<core.String>();
+              .map<core.String>((value) => value as core.String)
+              .toList();
     }
     if (_json.containsKey('pubsubTopic')) {
-      pubsubTopic = _json['pubsubTopic'];
+      pubsubTopic = _json['pubsubTopic'] as core.String;
     }
     if (_json.containsKey('schemaVersion')) {
-      schemaVersion = _json['schemaVersion'];
+      schemaVersion = _json['schemaVersion'] as core.String;
     }
   }
 
@@ -489,13 +491,13 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
           _json['budgetFilter']);
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('etag')) {
-      etag = _json['etag'];
+      etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('thresholdRules')) {
       thresholdRules = (_json['thresholdRules'] as core.List)
@@ -636,21 +638,29 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
 
   GoogleCloudBillingBudgetsV1beta1Filter.fromJson(core.Map _json) {
     if (_json.containsKey('creditTypesTreatment')) {
-      creditTypesTreatment = _json['creditTypesTreatment'];
+      creditTypesTreatment = _json['creditTypesTreatment'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.List, core.List<core.Object>>(
           _json['labels'].cast<core.String, core.List>(),
-          (core.List item) => (item as core.List).cast<core.Object>());
+          (core.List item) => (item as core.List)
+              .map<core.Object>((value) => value as core.Object)
+              .toList());
     }
     if (_json.containsKey('projects')) {
-      projects = (_json['projects'] as core.List).cast<core.String>();
+      projects = (_json['projects'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('services')) {
-      services = (_json['services'] as core.List).cast<core.String>();
+      services = (_json['services'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('subaccounts')) {
-      subaccounts = (_json['subaccounts'] as core.List).cast<core.String>();
+      subaccounts = (_json['subaccounts'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -711,7 +721,7 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
   }
 
@@ -752,7 +762,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
 
   GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(core.Map _json) {
     if (_json.containsKey('spendBasis')) {
-      spendBasis = _json['spendBasis'];
+      spendBasis = _json['spendBasis'] as core.String;
     }
     if (_json.containsKey('thresholdPercent')) {
       thresholdPercent = _json['thresholdPercent'].toDouble();
@@ -792,7 +802,7 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
       budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json['budget']);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = _json['updateMask'];
+      updateMask = _json['updateMask'] as core.String;
     }
   }
 
@@ -847,13 +857,13 @@ class GoogleTypeMoney {
 
   GoogleTypeMoney.fromJson(core.Map _json) {
     if (_json.containsKey('currencyCode')) {
-      currencyCode = _json['currencyCode'];
+      currencyCode = _json['currencyCode'] as core.String;
     }
     if (_json.containsKey('nanos')) {
-      nanos = _json['nanos'];
+      nanos = _json['nanos'] as core.int;
     }
     if (_json.containsKey('units')) {
-      units = _json['units'];
+      units = _json['units'] as core.String;
     }
   }
 

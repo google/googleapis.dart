@@ -802,19 +802,21 @@ class GoogleCloudVideointelligenceV1AnnotateVideoRequest {
 
   GoogleCloudVideointelligenceV1AnnotateVideoRequest.fromJson(core.Map _json) {
     if (_json.containsKey('features')) {
-      features = (_json['features'] as core.List).cast<core.String>();
+      features = (_json['features'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('inputContent')) {
-      inputContent = _json['inputContent'];
+      inputContent = _json['inputContent'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('locationId')) {
-      locationId = _json['locationId'];
+      locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('outputUri')) {
-      outputUri = _json['outputUri'];
+      outputUri = _json['outputUri'] as core.String;
     }
     if (_json.containsKey('videoContext')) {
       videoContext = GoogleCloudVideointelligenceV1VideoContext.fromJson(
@@ -896,10 +898,10 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -938,7 +940,7 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(
@@ -977,13 +979,13 @@ class GoogleCloudVideointelligenceV1Entity {
 
   GoogleCloudVideointelligenceV1Entity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'];
+      entityId = _json['entityId'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -1024,7 +1026,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1051,7 +1053,7 @@ class GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig {
   GoogleCloudVideointelligenceV1ExplicitContentDetectionConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
   }
 
@@ -1084,10 +1086,10 @@ class GoogleCloudVideointelligenceV1ExplicitContentFrame {
 
   GoogleCloudVideointelligenceV1ExplicitContentFrame.fromJson(core.Map _json) {
     if (_json.containsKey('pornographyLikelihood')) {
-      pornographyLikelihood = _json['pornographyLikelihood'];
+      pornographyLikelihood = _json['pornographyLikelihood'] as core.String;
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -1147,7 +1149,7 @@ class GoogleCloudVideointelligenceV1LabelAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1217,13 +1219,13 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
       frameConfidenceThreshold = _json['frameConfidenceThreshold'].toDouble();
     }
     if (_json.containsKey('labelDetectionMode')) {
-      labelDetectionMode = _json['labelDetectionMode'];
+      labelDetectionMode = _json['labelDetectionMode'] as core.String;
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
     if (_json.containsKey('stationaryCamera')) {
-      stationaryCamera = _json['stationaryCamera'];
+      stationaryCamera = _json['stationaryCamera'] as core.bool;
     }
     if (_json.containsKey('videoConfidenceThreshold')) {
       videoConfidenceThreshold = _json['videoConfidenceThreshold'].toDouble();
@@ -1267,7 +1269,7 @@ class GoogleCloudVideointelligenceV1LabelFrame {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -1529,10 +1531,10 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
           GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1570,7 +1572,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingConfig {
 
   GoogleCloudVideointelligenceV1ObjectTrackingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
   }
 
@@ -1601,7 +1603,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingFrame {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -1628,7 +1630,7 @@ class GoogleCloudVideointelligenceV1ShotChangeDetectionConfig {
   GoogleCloudVideointelligenceV1ShotChangeDetectionConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
   }
 
@@ -1656,7 +1658,9 @@ class GoogleCloudVideointelligenceV1SpeechContext {
 
   GoogleCloudVideointelligenceV1SpeechContext.fromJson(core.Map _json) {
     if (_json.containsKey('phrases')) {
-      phrases = (_json['phrases'] as core.List).cast<core.String>();
+      phrases = (_json['phrases'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
   }
 
@@ -1695,7 +1699,7 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -1746,7 +1750,7 @@ class GoogleCloudVideointelligenceV1SpeechTranscription {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -1823,28 +1827,31 @@ class GoogleCloudVideointelligenceV1SpeechTranscriptionConfig {
   GoogleCloudVideointelligenceV1SpeechTranscriptionConfig.fromJson(
       core.Map _json) {
     if (_json.containsKey('audioTracks')) {
-      audioTracks = (_json['audioTracks'] as core.List).cast<core.int>();
+      audioTracks = (_json['audioTracks'] as core.List)
+          .map<core.int>((value) => value as core.int)
+          .toList();
     }
     if (_json.containsKey('diarizationSpeakerCount')) {
-      diarizationSpeakerCount = _json['diarizationSpeakerCount'];
+      diarizationSpeakerCount = _json['diarizationSpeakerCount'] as core.int;
     }
     if (_json.containsKey('enableAutomaticPunctuation')) {
-      enableAutomaticPunctuation = _json['enableAutomaticPunctuation'];
+      enableAutomaticPunctuation =
+          _json['enableAutomaticPunctuation'] as core.bool;
     }
     if (_json.containsKey('enableSpeakerDiarization')) {
-      enableSpeakerDiarization = _json['enableSpeakerDiarization'];
+      enableSpeakerDiarization = _json['enableSpeakerDiarization'] as core.bool;
     }
     if (_json.containsKey('enableWordConfidence')) {
-      enableWordConfidence = _json['enableWordConfidence'];
+      enableWordConfidence = _json['enableWordConfidence'] as core.bool;
     }
     if (_json.containsKey('filterProfanity')) {
-      filterProfanity = _json['filterProfanity'];
+      filterProfanity = _json['filterProfanity'] as core.bool;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('maxAlternatives')) {
-      maxAlternatives = _json['maxAlternatives'];
+      maxAlternatives = _json['maxAlternatives'] as core.int;
     }
     if (_json.containsKey('speechContexts')) {
       speechContexts = (_json['speechContexts'] as core.List)
@@ -1911,10 +1918,10 @@ class GoogleCloudVideointelligenceV1TextAnnotation {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -1949,10 +1956,12 @@ class GoogleCloudVideointelligenceV1TextDetectionConfig {
 
   GoogleCloudVideointelligenceV1TextDetectionConfig.fromJson(core.Map _json) {
     if (_json.containsKey('languageHints')) {
-      languageHints = (_json['languageHints'] as core.List).cast<core.String>();
+      languageHints = (_json['languageHints'] as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList();
     }
     if (_json.containsKey('model')) {
-      model = _json['model'];
+      model = _json['model'] as core.String;
     }
   }
 
@@ -1987,7 +1996,7 @@ class GoogleCloudVideointelligenceV1TextFrame {
               _json['rotatedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -2085,7 +2094,7 @@ class GoogleCloudVideointelligenceV1TimestampedObject {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -2202,23 +2211,23 @@ class GoogleCloudVideointelligenceV1VideoAnnotationProgress {
   GoogleCloudVideointelligenceV1VideoAnnotationProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('segment')) {
       segment =
           GoogleCloudVideointelligenceV1VideoSegment.fromJson(_json['segment']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -2331,7 +2340,7 @@ class GoogleCloudVideointelligenceV1VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('logoRecognitionAnnotations')) {
       logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
@@ -2568,10 +2577,10 @@ class GoogleCloudVideointelligenceV1VideoSegment {
 
   GoogleCloudVideointelligenceV1VideoSegment.fromJson(core.Map _json) {
     if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'];
+      endTimeOffset = _json['endTimeOffset'] as core.String;
     }
     if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'];
+      startTimeOffset = _json['startTimeOffset'] as core.String;
     }
   }
 
@@ -2628,16 +2637,16 @@ class GoogleCloudVideointelligenceV1WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 
@@ -2747,10 +2756,10 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -2789,7 +2798,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(
@@ -2828,13 +2837,13 @@ class GoogleCloudVideointelligenceV1beta2Entity {
 
   GoogleCloudVideointelligenceV1beta2Entity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'];
+      entityId = _json['entityId'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -2875,7 +2884,7 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -2912,10 +2921,10 @@ class GoogleCloudVideointelligenceV1beta2ExplicitContentFrame {
   GoogleCloudVideointelligenceV1beta2ExplicitContentFrame.fromJson(
       core.Map _json) {
     if (_json.containsKey('pornographyLikelihood')) {
-      pornographyLikelihood = _json['pornographyLikelihood'];
+      pornographyLikelihood = _json['pornographyLikelihood'] as core.String;
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -2976,7 +2985,7 @@ class GoogleCloudVideointelligenceV1beta2LabelAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -3018,7 +3027,7 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -3285,10 +3294,10 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
           _json['segment']);
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -3336,7 +3345,7 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingFrame {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -3378,7 +3387,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -3430,7 +3439,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechTranscription {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -3470,10 +3479,10 @@ class GoogleCloudVideointelligenceV1beta2TextAnnotation {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -3511,7 +3520,7 @@ class GoogleCloudVideointelligenceV1beta2TextFrame {
               _json['rotatedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -3613,7 +3622,7 @@ class GoogleCloudVideointelligenceV1beta2TimestampedObject {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -3733,23 +3742,23 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress {
   GoogleCloudVideointelligenceV1beta2VideoAnnotationProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
           _json['segment']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -3865,7 +3874,7 @@ class GoogleCloudVideointelligenceV1beta2VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('logoRecognitionAnnotations')) {
       logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
@@ -4012,10 +4021,10 @@ class GoogleCloudVideointelligenceV1beta2VideoSegment {
 
   GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(core.Map _json) {
     if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'];
+      endTimeOffset = _json['endTimeOffset'] as core.String;
     }
     if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'];
+      startTimeOffset = _json['startTimeOffset'] as core.String;
     }
   }
 
@@ -4072,16 +4081,16 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 
@@ -4191,10 +4200,10 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -4234,7 +4243,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
@@ -4273,13 +4282,13 @@ class GoogleCloudVideointelligenceV1p1beta1Entity {
 
   GoogleCloudVideointelligenceV1p1beta1Entity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'];
+      entityId = _json['entityId'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -4321,7 +4330,7 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -4358,10 +4367,10 @@ class GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame {
   GoogleCloudVideointelligenceV1p1beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
     if (_json.containsKey('pornographyLikelihood')) {
-      pornographyLikelihood = _json['pornographyLikelihood'];
+      pornographyLikelihood = _json['pornographyLikelihood'] as core.String;
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -4423,7 +4432,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -4465,7 +4474,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -4734,10 +4743,10 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
           _json['segment']);
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -4785,7 +4794,7 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingFrame {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -4827,7 +4836,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -4879,7 +4888,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechTranscription {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -4919,10 +4928,10 @@ class GoogleCloudVideointelligenceV1p1beta1TextAnnotation {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -4961,7 +4970,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextFrame {
               _json['rotatedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -5063,7 +5072,7 @@ class GoogleCloudVideointelligenceV1p1beta1TimestampedObject {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -5183,23 +5192,23 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress {
   GoogleCloudVideointelligenceV1p1beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
           _json['segment']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -5316,7 +5325,7 @@ class GoogleCloudVideointelligenceV1p1beta1VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('logoRecognitionAnnotations')) {
       logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
@@ -5466,10 +5475,10 @@ class GoogleCloudVideointelligenceV1p1beta1VideoSegment {
 
   GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(core.Map _json) {
     if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'];
+      endTimeOffset = _json['endTimeOffset'] as core.String;
     }
     if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'];
+      startTimeOffset = _json['startTimeOffset'] as core.String;
     }
   }
 
@@ -5526,16 +5535,16 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 
@@ -5645,10 +5654,10 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -5688,7 +5697,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
@@ -5727,13 +5736,13 @@ class GoogleCloudVideointelligenceV1p2beta1Entity {
 
   GoogleCloudVideointelligenceV1p2beta1Entity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'];
+      entityId = _json['entityId'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -5775,7 +5784,7 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -5812,10 +5821,10 @@ class GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame {
   GoogleCloudVideointelligenceV1p2beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
     if (_json.containsKey('pornographyLikelihood')) {
-      pornographyLikelihood = _json['pornographyLikelihood'];
+      pornographyLikelihood = _json['pornographyLikelihood'] as core.String;
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -5877,7 +5886,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -5919,7 +5928,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -6188,10 +6197,10 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
           _json['segment']);
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -6239,7 +6248,7 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingFrame {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -6281,7 +6290,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -6333,7 +6342,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechTranscription {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -6373,10 +6382,10 @@ class GoogleCloudVideointelligenceV1p2beta1TextAnnotation {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -6415,7 +6424,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextFrame {
               _json['rotatedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -6517,7 +6526,7 @@ class GoogleCloudVideointelligenceV1p2beta1TimestampedObject {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -6637,23 +6646,23 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress {
   GoogleCloudVideointelligenceV1p2beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
           _json['segment']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -6770,7 +6779,7 @@ class GoogleCloudVideointelligenceV1p2beta1VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('logoRecognitionAnnotations')) {
       logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
@@ -6920,10 +6929,10 @@ class GoogleCloudVideointelligenceV1p2beta1VideoSegment {
 
   GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(core.Map _json) {
     if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'];
+      endTimeOffset = _json['endTimeOffset'] as core.String;
     }
     if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'];
+      startTimeOffset = _json['startTimeOffset'] as core.String;
     }
   }
 
@@ -6980,16 +6989,16 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 
@@ -7097,13 +7106,13 @@ class GoogleCloudVideointelligenceV1p3beta1Celebrity {
 
   GoogleCloudVideointelligenceV1p3beta1Celebrity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('displayName')) {
-      displayName = _json['displayName'];
+      displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
   }
 
@@ -7144,7 +7153,7 @@ class GoogleCloudVideointelligenceV1p3beta1CelebrityRecognitionAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7222,10 +7231,10 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'];
+      value = _json['value'] as core.String;
     }
   }
 
@@ -7265,7 +7274,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('point')) {
       point = GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
@@ -7304,13 +7313,13 @@ class GoogleCloudVideointelligenceV1p3beta1Entity {
 
   GoogleCloudVideointelligenceV1p3beta1Entity.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = _json['description'];
+      description = _json['description'] as core.String;
     }
     if (_json.containsKey('entityId')) {
-      entityId = _json['entityId'];
+      entityId = _json['entityId'] as core.String;
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -7352,7 +7361,7 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7389,10 +7398,10 @@ class GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame {
   GoogleCloudVideointelligenceV1p3beta1ExplicitContentFrame.fromJson(
       core.Map _json) {
     if (_json.containsKey('pornographyLikelihood')) {
-      pornographyLikelihood = _json['pornographyLikelihood'];
+      pornographyLikelihood = _json['pornographyLikelihood'] as core.String;
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -7430,7 +7439,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
   GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('thumbnail')) {
-      thumbnail = _json['thumbnail'];
+      thumbnail = _json['thumbnail'] as core.String;
     }
     if (_json.containsKey('tracks')) {
       tracks = (_json['tracks'] as core.List)
@@ -7439,7 +7448,7 @@ class GoogleCloudVideointelligenceV1p3beta1FaceDetectionAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7504,7 +7513,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7546,7 +7555,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -7815,10 +7824,10 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
           _json['segment']);
     }
     if (_json.containsKey('trackId')) {
-      trackId = _json['trackId'];
+      trackId = _json['trackId'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7866,7 +7875,7 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingFrame {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -7901,7 +7910,7 @@ class GoogleCloudVideointelligenceV1p3beta1PersonDetectionAnnotation {
           .toList();
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -7976,7 +7985,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('transcript')) {
-      transcript = _json['transcript'];
+      transcript = _json['transcript'] as core.String;
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
@@ -8028,7 +8037,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechTranscription {
           .toList();
     }
     if (_json.containsKey('languageCode')) {
-      languageCode = _json['languageCode'];
+      languageCode = _json['languageCode'] as core.String;
     }
   }
 
@@ -8072,7 +8081,7 @@ class GoogleCloudVideointelligenceV1p3beta1StreamingAnnotateVideoResponse {
               .fromJson(_json['annotationResults']);
     }
     if (_json.containsKey('annotationResultsUri')) {
-      annotationResultsUri = _json['annotationResultsUri'];
+      annotationResultsUri = _json['annotationResultsUri'] as core.String;
     }
     if (_json.containsKey('error')) {
       error = GoogleRpcStatus.fromJson(_json['error']);
@@ -8188,10 +8197,10 @@ class GoogleCloudVideointelligenceV1p3beta1TextAnnotation {
           .toList();
     }
     if (_json.containsKey('text')) {
-      text = _json['text'];
+      text = _json['text'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = _json['version'];
+      version = _json['version'] as core.String;
     }
   }
 
@@ -8230,7 +8239,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextFrame {
               _json['rotatedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -8332,7 +8341,7 @@ class GoogleCloudVideointelligenceV1p3beta1TimestampedObject {
               _json['normalizedBoundingBox']);
     }
     if (_json.containsKey('timeOffset')) {
-      timeOffset = _json['timeOffset'];
+      timeOffset = _json['timeOffset'] as core.String;
     }
   }
 
@@ -8455,23 +8464,23 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress {
   GoogleCloudVideointelligenceV1p3beta1VideoAnnotationProgress.fromJson(
       core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = _json['feature'];
+      feature = _json['feature'] as core.String;
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('progressPercent')) {
-      progressPercent = _json['progressPercent'];
+      progressPercent = _json['progressPercent'] as core.int;
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
           _json['segment']);
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('updateTime')) {
-      updateTime = _json['updateTime'];
+      updateTime = _json['updateTime'] as core.String;
     }
   }
 
@@ -8614,7 +8623,7 @@ class GoogleCloudVideointelligenceV1p3beta1VideoAnnotationResults {
           .toList();
     }
     if (_json.containsKey('inputUri')) {
-      inputUri = _json['inputUri'];
+      inputUri = _json['inputUri'] as core.String;
     }
     if (_json.containsKey('logoRecognitionAnnotations')) {
       logoRecognitionAnnotations = (_json['logoRecognitionAnnotations']
@@ -8785,10 +8794,10 @@ class GoogleCloudVideointelligenceV1p3beta1VideoSegment {
 
   GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(core.Map _json) {
     if (_json.containsKey('endTimeOffset')) {
-      endTimeOffset = _json['endTimeOffset'];
+      endTimeOffset = _json['endTimeOffset'] as core.String;
     }
     if (_json.containsKey('startTimeOffset')) {
-      startTimeOffset = _json['startTimeOffset'];
+      startTimeOffset = _json['startTimeOffset'] as core.String;
     }
   }
 
@@ -8845,16 +8854,16 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
       confidence = _json['confidence'].toDouble();
     }
     if (_json.containsKey('endTime')) {
-      endTime = _json['endTime'];
+      endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('speakerTag')) {
-      speakerTag = _json['speakerTag'];
+      speakerTag = _json['speakerTag'] as core.int;
     }
     if (_json.containsKey('startTime')) {
-      startTime = _json['startTime'];
+      startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('word')) {
-      word = _json['word'];
+      word = _json['word'] as core.String;
     }
   }
 
@@ -8905,7 +8914,7 @@ class GoogleLongrunningListOperationsResponse {
 
   GoogleLongrunningListOperationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nextPageToken')) {
-      nextPageToken = _json['nextPageToken'];
+      nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
@@ -8968,21 +8977,23 @@ class GoogleLongrunningOperation {
 
   GoogleLongrunningOperation.fromJson(core.Map _json) {
     if (_json.containsKey('done')) {
-      done = _json['done'];
+      done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
       error = GoogleRpcStatus.fromJson(_json['error']);
     }
     if (_json.containsKey('metadata')) {
-      metadata =
-          (_json['metadata'] as core.Map).cast<core.String, core.Object>();
+      metadata = commons.mapMap<core.Object, core.Object>(
+          _json['metadata'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
-      name = _json['name'];
+      name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response =
-          (_json['response'] as core.Map).cast<core.String, core.Object>();
+      response = commons.mapMap<core.Object, core.Object>(
+          _json['response'].cast<core.String, core.Object>(),
+          (core.Object item) => item as core.Object);
     }
   }
 
@@ -9051,16 +9062,18 @@ class GoogleRpcStatus {
 
   GoogleRpcStatus.fromJson(core.Map _json) {
     if (_json.containsKey('code')) {
-      code = _json['code'];
+      code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<core.Map<core.String, core.Object>>(
-              (value) => (value as core.Map).cast<core.String, core.Object>())
+          .map<core.Map<core.String, core.Object>>((value) =>
+              commons.mapMap<core.Object, core.Object>(
+                  value.cast<core.String, core.Object>(),
+                  (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = _json['message'];
+      message = _json['message'] as core.String;
     }
   }
 
