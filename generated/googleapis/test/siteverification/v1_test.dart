@@ -30,8 +30,8 @@ import 'package:test/test.dart' as unittest;
 import 'package:googleapis/siteverification/v1.dart' as api;
 
 class HttpServerMock extends http.BaseClient {
-  core.Future<http.StreamedResponse> Function(
-      http.BaseRequest bob, core.Object foo) _callback;
+  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
+      _callback;
   core.bool _expectJson;
 
   void register(
