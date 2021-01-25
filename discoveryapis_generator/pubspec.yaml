@@ -1,7 +1,7 @@
 name: discoveryapis_generator
 version: 0.9.16-dev
 description: Create API Client libraries based on the Discovery API Service.
-repository: https://github.com/dart-lang/discoveryapis_generator
+repository: https://github.com/dart-lang/googleapis
 
 environment:
   sdk: '>=2.10.0 <3.0.0'
