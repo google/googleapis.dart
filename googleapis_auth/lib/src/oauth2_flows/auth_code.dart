@@ -36,7 +36,7 @@ Future<List<String>> obtainScopesFromAccessToken(
 
   final response = await client.post(url);
   if (response.statusCode == 200) {
-    final Map json = jsonDecode(response.body);
+    final json = jsonDecode(response.body) as Map;
     final scope = json['scope'];
     if (scope is! String) {
       throw Exception(
@@ -72,11 +72,11 @@ Future<AccessCredentials> obtainAccessCredentialsUsingCode(
       .transform(json.decoder)
       .first as Map;
 
-  final idToken = jsonMap['id_token'];
+  final idToken = jsonMap['id_token'] as String?;
   final tokenType = jsonMap['token_type'];
-  final accessToken = jsonMap['access_token'];
+  final accessToken = jsonMap['access_token'] as String?;
   final seconds = jsonMap['expires_in'];
-  final refreshToken = jsonMap['refresh_token'];
+  final refreshToken = jsonMap['refresh_token'] as String?;
   final error = jsonMap['error'];
 
   if (response.statusCode != 200 && error != null) {

@@ -61,8 +61,8 @@ class MetadataServerAuthorizationFlow {
         .where((part) => part.isNotEmpty)
         .toList();
 
-    final type = json['token_type'];
-    final accessToken = json['access_token'];
+    final type = json['token_type'] as String;
+    final accessToken = json['access_token'] as String?;
     final expiresIn = json['expires_in'];
     final error = json['error'];
 
@@ -76,12 +76,15 @@ class MetadataServerAuthorizationFlow {
     }
 
     return AccessCredentials(
-        AccessToken(type, accessToken, expiryDate(expiresIn)), null, scopes);
+      AccessToken(type, accessToken, expiryDate(expiresIn)),
+      null,
+      scopes,
+    );
   }
 
   Future<Map> _getToken() async {
     final response = await _client.get(_tokenUrl, headers: _headers);
-    return jsonDecode(response.body);
+    return jsonDecode(response.body) as Map;
   }
 
   Future<String> _getScopes() async {

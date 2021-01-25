@@ -74,8 +74,8 @@ class JwtFlow {
         .transform(utf8.decoder)
         .transform(json.decoder)
         .first as Map;
-    final tokenType = response['token_type'];
-    final token = response['access_token'];
+    final tokenType = response['token_type'] as String;
+    final token = response['access_token'] as String?;
     final expiresIn = response['expires_in'];
     final error = response['error'];
 
