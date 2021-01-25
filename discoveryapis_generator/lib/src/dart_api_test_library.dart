@@ -117,10 +117,18 @@ import 'package:test/test.dart' as unittest;
 import '$apiImportPath' as api;
 
 class HttpServerMock extends http.BaseClient {
-  core.Function _callback;
+  core.Future<http.StreamedResponse> Function(
+      http.BaseRequest bob, core.Object foo) _callback;
   core.bool _expectJson;
 
-  void register(core.Function callback, core.bool expectJson) {
+  void register(
+    core.Future<http.StreamedResponse> Function(
+      http.BaseRequest bob,
+      core.Object foo,
+    )
+        callback,
+    core.bool expectJson,
+  ) {
     _callback = callback;
     _expectJson = expectJson;
   }
