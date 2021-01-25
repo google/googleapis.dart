@@ -272,7 +272,7 @@ class DartResourceMethod {
       // NOTE: We need to special case array values, since they get encoded
       // as repeated query parameters.
       if (param.type is UnnamedArrayType || param.type is NamedArrayType) {
-        final DartSchemaType innerType = (param.type as dynamic).innerType;
+        final innerType = (param.type as HasInnertype).innerType;
         String expr;
         if (innerType.needsPrimitiveEncoding) {
           expr = '${param.name}.map('
@@ -807,7 +807,8 @@ DartResourceClass _parseResource(
     final scopes = <OAuth2Scope>[];
 
     if (description.auth != null && description.auth.oauth2 != null) {
-      orderedForEach(description.auth.oauth2.scopes, (scope, description) {
+      orderedForEach(description.auth.oauth2.scopes,
+          (String scope, RestDescriptionAuthOauth2ScopesValue description) {
         final scopeId = classScope.newIdentifier(Scope.toValidScopeName(scope));
 
         scopes
@@ -881,7 +882,7 @@ DartApiClass parseResources(
       description.methods,
       description.resources,
       '',
-    );
+    ) as DartApiClass;
 
 /// Generates a string representation of all resource classes, beginning with
 /// [apiClass].

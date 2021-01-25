@@ -86,7 +86,8 @@ void main() {
     test('dataWrapper', () {
       final descriptionJson =
           File(p.join(dataPath, 'wrapapi.json')).readAsStringSync();
-      final description = RestDescription.fromJson(jsonDecode(descriptionJson));
+      final description =
+          RestDescription.fromJson(jsonDecode(descriptionJson) as Map);
       final generatedLib = DartApiLibrary.build(description, 'wrapapi');
 
       _expectFilesMatch(

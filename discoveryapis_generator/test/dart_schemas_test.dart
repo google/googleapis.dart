@@ -93,7 +93,7 @@ void main() {
 
         expect(db.namedSchemaTypes, contains('Task'));
         expect(db.dartClassTypes, hasLength(1));
-        final ObjectType task = db.dartClassTypes.first;
+        final task = db.dartClassTypes.first as ObjectType;
         expect(db.dartTypes, contains(task));
         expect(db.namedSchemaTypes['Task'], equals(task));
 
@@ -129,7 +129,7 @@ void main() {
         expect(labels, isNotNull);
         expect(labels.name.name, equals('labels'));
         expect(labels.type is UnnamedArrayType, isTrue);
-        final UnnamedArrayType labelsTyped = labels.type;
+        final labelsTyped = labels.type as UnnamedArrayType;
         expect(labelsTyped.className, isNull);
         expect(labelsTyped.innerType, equals(db.integerType));
 
@@ -142,7 +142,7 @@ void main() {
         expect(properties, isNotNull);
         expect(properties.name.name, equals('properties'));
         expect(properties.type is UnnamedMapType, isTrue);
-        final UnnamedMapType propertiesTyped = properties.type;
+        final propertiesTyped = properties.type as UnnamedMapType;
         expect(propertiesTyped.className, isNull);
         expect(propertiesTyped.fromType, equals(db.stringType));
         expect(propertiesTyped.toType, equals(db.stringType));
@@ -334,7 +334,7 @@ void main() {
         expect(db.dartClassTypes, hasLength(1));
 
         expect(db.namedSchemaTypes, contains('Properties'));
-        final NamedMapType properties = db.dartClassTypes.first;
+        final properties = db.dartClassTypes.first as NamedMapType;
         expect(properties.className.name, equals('Properties'));
         expect(properties.fromType, equals(db.stringType));
         expect(properties.toType, equals(db.integerType));
@@ -357,7 +357,7 @@ void main() {
         expect(db.dartClassTypes, hasLength(1));
 
         expect(db.namedSchemaTypes, contains('NamedArray'));
-        final NamedArrayType properties = db.dartClassTypes.first;
+        final properties = db.dartClassTypes.first as NamedArrayType;
         expect(properties.className.name, equals('NamedArray'));
         expect(properties.innerType, equals(db.stringType));
       });
@@ -452,19 +452,19 @@ void main() {
         }, (DartSchemaTypeDB db) {
           // Primitive Types
           expect(db.stringType.needsJsonEncoding, false);
-          expect(db.stringType.needsJsonDecoding, false);
+          expect(db.stringType.needsJsonDecoding, true);
           expect(db.integerType.needsJsonEncoding, false);
-          expect(db.integerType.needsJsonDecoding, false);
+          expect(db.integerType.needsJsonDecoding, true);
           expect(db.doubleType.needsJsonEncoding, false);
           expect(db.doubleType.needsJsonDecoding, true);
           expect(db.booleanType.needsJsonEncoding, false);
-          expect(db.booleanType.needsJsonDecoding, false);
+          expect(db.booleanType.needsJsonDecoding, true);
           expect(db.dateType.needsJsonEncoding, true);
           expect(db.dateType.needsJsonDecoding, true);
           expect(db.dateTimeType.needsJsonEncoding, true);
           expect(db.dateTimeType.needsJsonDecoding, true);
           expect(db.anyType.needsJsonEncoding, false);
-          expect(db.anyType.needsJsonDecoding, false);
+          expect(db.anyType.needsJsonDecoding, true);
 
           // Named complex types
           final namedArraySimple = db.namedSchemaTypes['NamedArraySimple'];

@@ -330,7 +330,7 @@ class ApiLibraryNamer {
 
     final allAllocatedNames = <String>{};
 
-    void nameScope(Scope scope, parentResolver) {
+    void nameScope(Scope scope, IdentifierNamer parentResolver) {
       final resolver = IdentifierNamer(parentNamer: parentResolver);
       scope.identifiers.forEach(resolver.nameIdentifier);
       // Order does not matter because child scopes are independent of each
