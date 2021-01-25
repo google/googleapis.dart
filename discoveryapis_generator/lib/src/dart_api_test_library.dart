@@ -417,7 +417,8 @@ class MethodArgsTest extends TestHelper {
     ln('var query = $uriExpr.query;');
     ln('var queryOffset = 0;');
     ln('var queryMap = <core.String, core.List<core.String>>{};');
-    ln('void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);');
+    ln('void addQueryParam(core.String n, core.String v) => '
+        'queryMap.putIfAbsent(n, () => []).add(v);');
     ln(parseBoolPlaceholder);
     ln('if (query.isNotEmpty) {');
     ln("  for (var part in query.split('&')) {");
