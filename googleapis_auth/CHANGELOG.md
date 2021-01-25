@@ -1,0 +1,106 @@
+## 0.2.12+2-dev
+
+## 0.2.12+1
+
+ * Removed a `dart:async` import that isn't required for \>=Dart 2.1.
+ * Require \>=Dart 2.1.
+
+## 0.2.12
+ * Add `clientViaApplicationDefaultCredentials` for obtaining credentials using
+   [ADC](https://cloud.google.com/docs/authentication/production).
+
+## 0.2.11+1
+ * Fix 'multiple completer completion' bug in `ImplicitFlow`.
+
+## 0.2.11
+ * Add the `force` parameter to the `obtainAccessCredentialsViaUserConsent` API.
+
+## 0.2.10
+ * Look for GCE metadata host in environment under `$GCE_METADATA_HOST`.
+
+## 0.2.9
+ * Prepare for [Uint8List SDK breaking change](Prepare for Uint8List SDK breaking change).
+
+## 0.2.8
+
+* Initialize implicit browser flows statically, allowing multiple ImplicitFlow
+  objects to initialize without trying to load the gapi JavaScript library
+  multiple times.
+
+## 0.2.7
+
+ - Support for specifying desired `ResponseType`, allowing applications to
+   obtain an `id_token` using `ImplicitBrowserFlow`.
+
+## 0.2.6
+
+- Ignore script loading error after timeout for in-browser implicit login-flow.
+
+## 0.2.5+3
+
+- Support `package:http` `>=0.11.3+17 <0.13.0`.
+
+## 0.2.5+2
+
+* Support Dart 2.
+
+## 0.2.5+1
+
+* Switch all uppercase constants from `dart:convert` to lowercase.
+
+## 0.2.5
+
+* Add an optional `loginHint` parameter to browser oauth2 flow APIs which can be
+  used to specify a hint as to which user is being logged in.
+
+## 0.2.4
+
+* Added `id_token` to `AccessCredentials`
+
+* Migrated to Dart 2 `BigInt`.
+
+## 0.2.3+6
+
+- Fix async issue in oauth2 flow implementation
+
+## 0.2.3+5
+
+- Support the latest version of `crypto` package.
+
+## 0.2.3+4
+
+- Make package strong-mode compliant.
+
+## 0.2.3+3
+
+- Support package:crypto >= 0.9.2
+
+## 0.2.3+2
+
+- Use preferred "Metadata-Flavor" HTTP header in
+  `MetadataServerAuthorizationFlow` instead of the deprecated
+  "X-Google-Metadata-Request" header.
+
+## 0.2.3
+
+- Allow `ServiceAccountCredentials` constructors to take an optional
+  `user` argument to specify a user to impersonate.
+
+## 0.2.2
+
+- Allow `ServiceAccountCredentials.fromJson` to accept a `Map`.
+- Cleaned up `README.md`
+
+## 0.2.1
+- Added optional `force` and `immediate` arguments to `runHybridFlow`.
+
+## 0.2.0
+- Renamed `forceUserConsent` parameter to `immediate`.
+- Added `runHybridFlow` function to `auth_browser`, with corresponding
+  `HybridFlowResult` class.
+
+## 0.1.1
+- Add `clientViaApiKey` functions to `auth_io` ad `auth_browser`.
+
+## 0.1.0
+- First release.
