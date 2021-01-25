@@ -448,12 +448,13 @@ abstract class ComplexDartSchemaType extends DartSchemaType {
   }
 }
 
-abstract class HasInnertype {
+abstract class HasInnertype implements ComplexDartSchemaType {
   DartSchemaType innerType;
 }
 
 /// Represents an unnamed List<T> type with a given `T`.
-class UnnamedArrayType extends ComplexDartSchemaType {
+class UnnamedArrayType extends ComplexDartSchemaType implements HasInnertype {
+  @override
   DartSchemaType innerType;
 
   UnnamedArrayType(DartApiImports imports, this.innerType)
@@ -504,7 +505,8 @@ class UnnamedArrayType extends ComplexDartSchemaType {
 }
 
 /// Represents a named List<T> type with a given `T`.
-class NamedArrayType extends ComplexDartSchemaType {
+class NamedArrayType extends ComplexDartSchemaType implements HasInnertype {
+  @override
   DartSchemaType innerType;
 
   NamedArrayType(DartApiImports imports, Identifier name, this.innerType,
