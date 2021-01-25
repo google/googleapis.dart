@@ -7870,13 +7870,13 @@ class GooglePrivacyDlpV2Color {
 
   GooglePrivacyDlpV2Color.fromJson(core.Map _json) {
     if (_json.containsKey('blue')) {
-      blue = _json['blue'].toDouble();
+      blue = (_json['blue'] as core.num).toDouble();
     }
     if (_json.containsKey('green')) {
-      green = _json['green'].toDouble();
+      green = (_json['green'] as core.num).toDouble();
     }
     if (_json.containsKey('red')) {
-      red = _json['red'].toDouble();
+      red = (_json['red'] as core.num).toDouble();
     }
   }
 
@@ -9317,10 +9317,10 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
           .toList();
     }
     if (_json.containsKey('maxProbability')) {
-      maxProbability = _json['maxProbability'].toDouble();
+      maxProbability = (_json['maxProbability'] as core.num).toDouble();
     }
     if (_json.containsKey('minProbability')) {
-      minProbability = _json['minProbability'].toDouble();
+      minProbability = (_json['minProbability'] as core.num).toDouble();
     }
   }
 
@@ -9366,7 +9366,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues.fromJson(
       core.Map _json) {
     if (_json.containsKey('estimatedProbability')) {
-      estimatedProbability = _json['estimatedProbability'].toDouble();
+      estimatedProbability =
+          (_json['estimatedProbability'] as core.num).toDouble();
     }
     if (_json.containsKey('quasiIdsValues')) {
       quasiIdsValues = (_json['quasiIdsValues'] as core.List)
@@ -10207,7 +10208,7 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
 
   GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bucketSize')) {
-      bucketSize = _json['bucketSize'].toDouble();
+      bucketSize = (_json['bucketSize'] as core.num).toDouble();
     }
     if (_json.containsKey('lowerBound')) {
       lowerBound = GooglePrivacyDlpV2Value.fromJson(_json['lowerBound']);
@@ -15185,7 +15186,7 @@ class GooglePrivacyDlpV2Value {
       dayOfWeekValue = _json['dayOfWeekValue'] as core.String;
     }
     if (_json.containsKey('floatValue')) {
-      floatValue = _json['floatValue'].toDouble();
+      floatValue = (_json['floatValue'] as core.num).toDouble();
     }
     if (_json.containsKey('integerValue')) {
       integerValue = _json['integerValue'] as core.String;

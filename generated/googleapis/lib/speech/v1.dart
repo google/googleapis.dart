@@ -1261,7 +1261,7 @@ class SpeechRecognitionAlternative {
 
   SpeechRecognitionAlternative.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;

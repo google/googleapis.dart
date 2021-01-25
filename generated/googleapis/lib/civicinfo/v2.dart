@@ -1605,10 +1605,10 @@ class PollingLocation {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;

@@ -2185,7 +2185,7 @@ class MapValue {
 
   MapValue.fromJson(core.Map _json) {
     if (_json.containsKey('fpVal')) {
-      fpVal = _json['fpVal'].toDouble();
+      fpVal = (_json['fpVal'] as core.num).toDouble();
     }
   }
 
@@ -2323,7 +2323,7 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey('fpVal')) {
-      fpVal = _json['fpVal'].toDouble();
+      fpVal = (_json['fpVal'] as core.num).toDouble();
     }
     if (_json.containsKey('intVal')) {
       intVal = _json['intVal'] as core.int;

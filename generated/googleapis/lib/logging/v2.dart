@@ -7523,7 +7523,7 @@ class Explicit {
   Explicit.fromJson(core.Map _json) {
     if (_json.containsKey('bounds')) {
       bounds = (_json['bounds'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -7557,13 +7557,13 @@ class Exponential {
 
   Exponential.fromJson(core.Map _json) {
     if (_json.containsKey('growthFactor')) {
-      growthFactor = _json['growthFactor'].toDouble();
+      growthFactor = (_json['growthFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('numFiniteBuckets')) {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('scale')) {
-      scale = _json['scale'].toDouble();
+      scale = (_json['scale'] as core.num).toDouble();
     }
   }
 
@@ -7813,10 +7813,10 @@ class Linear {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'].toDouble();
+      offset = (_json['offset'] as core.num).toDouble();
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
   }
 
@@ -9799,7 +9799,7 @@ class RequestLog {
       appId = _json['appId'] as core.String;
     }
     if (_json.containsKey('cost')) {
-      cost = _json['cost'].toDouble();
+      cost = (_json['cost'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;

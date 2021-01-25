@@ -1174,7 +1174,7 @@ class GoogleCloudDocumentaiV1beta1DocumentEntity {
 
   GoogleCloudDocumentaiV1beta1DocumentEntity.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -1693,7 +1693,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage {
   GoogleCloudDocumentaiV1beta1DocumentPageDetectedLanguage.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -1727,13 +1727,13 @@ class GoogleCloudDocumentaiV1beta1DocumentPageDimension {
 
   GoogleCloudDocumentaiV1beta1DocumentPageDimension.fromJson(core.Map _json) {
     if (_json.containsKey('height')) {
-      height = _json['height'].toDouble();
+      height = (_json['height'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
   }
 
@@ -1917,7 +1917,7 @@ class GoogleCloudDocumentaiV1beta1DocumentPageLayout {
           _json['boundingPoly']);
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('orientation')) {
       orientation = _json['orientation'] as core.String;
@@ -2733,7 +2733,7 @@ class GoogleCloudDocumentaiV1beta1DocumentStyleFontSize {
 
   GoogleCloudDocumentaiV1beta1DocumentStyleFontSize.fromJson(core.Map _json) {
     if (_json.containsKey('size')) {
-      size = _json['size'].toDouble();
+      size = (_json['size'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
@@ -3021,10 +3021,10 @@ class GoogleCloudDocumentaiV1beta1NormalizedVertex {
 
   GoogleCloudDocumentaiV1beta1NormalizedVertex.fromJson(core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -3559,7 +3559,7 @@ class GoogleCloudDocumentaiV1beta2DocumentEntity {
 
   GoogleCloudDocumentaiV1beta2DocumentEntity.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -3773,7 +3773,7 @@ class GoogleCloudDocumentaiV1beta2DocumentLabel {
       automlModel = _json['automlModel'] as core.String;
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4124,7 +4124,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage {
   GoogleCloudDocumentaiV1beta2DocumentPageDetectedLanguage.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -4158,13 +4158,13 @@ class GoogleCloudDocumentaiV1beta2DocumentPageDimension {
 
   GoogleCloudDocumentaiV1beta2DocumentPageDimension.fromJson(core.Map _json) {
     if (_json.containsKey('height')) {
-      height = _json['height'].toDouble();
+      height = (_json['height'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
   }
 
@@ -4348,7 +4348,7 @@ class GoogleCloudDocumentaiV1beta2DocumentPageLayout {
           _json['boundingPoly']);
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('orientation')) {
       orientation = _json['orientation'] as core.String;
@@ -5164,7 +5164,7 @@ class GoogleCloudDocumentaiV1beta2DocumentStyleFontSize {
 
   GoogleCloudDocumentaiV1beta2DocumentStyleFontSize.fromJson(core.Map _json) {
     if (_json.containsKey('size')) {
-      size = _json['size'].toDouble();
+      size = (_json['size'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
@@ -5585,10 +5585,10 @@ class GoogleCloudDocumentaiV1beta2NormalizedVertex {
 
   GoogleCloudDocumentaiV1beta2NormalizedVertex.fromJson(core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -6465,16 +6465,16 @@ class GoogleTypeColor {
 
   GoogleTypeColor.fromJson(core.Map _json) {
     if (_json.containsKey('alpha')) {
-      alpha = _json['alpha'].toDouble();
+      alpha = (_json['alpha'] as core.num).toDouble();
     }
     if (_json.containsKey('blue')) {
-      blue = _json['blue'].toDouble();
+      blue = (_json['blue'] as core.num).toDouble();
     }
     if (_json.containsKey('green')) {
-      green = _json['green'].toDouble();
+      green = (_json['green'] as core.num).toDouble();
     }
     if (_json.containsKey('red')) {
-      red = _json['red'].toDouble();
+      red = (_json['red'] as core.num).toDouble();
     }
   }
 

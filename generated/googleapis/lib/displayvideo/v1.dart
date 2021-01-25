@@ -22400,7 +22400,7 @@ class Transcode {
       fileSizeBytes = _json['fileSizeBytes'] as core.String;
     }
     if (_json.containsKey('frameRate')) {
-      frameRate = _json['frameRate'].toDouble();
+      frameRate = (_json['frameRate'] as core.num).toDouble();
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;

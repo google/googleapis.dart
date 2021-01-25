@@ -638,13 +638,13 @@ class ApiDataRow {
 
   ApiDataRow.fromJson(core.Map _json) {
     if (_json.containsKey('clicks')) {
-      clicks = _json['clicks'].toDouble();
+      clicks = (_json['clicks'] as core.num).toDouble();
     }
     if (_json.containsKey('ctr')) {
-      ctr = _json['ctr'].toDouble();
+      ctr = (_json['ctr'] as core.num).toDouble();
     }
     if (_json.containsKey('impressions')) {
-      impressions = _json['impressions'].toDouble();
+      impressions = (_json['impressions'] as core.num).toDouble();
     }
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
@@ -652,7 +652,7 @@ class ApiDataRow {
           .toList();
     }
     if (_json.containsKey('position')) {
-      position = _json['position'].toDouble();
+      position = (_json['position'] as core.num).toDouble();
     }
   }
 

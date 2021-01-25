@@ -895,7 +895,7 @@ class GoogleCloudVideointelligenceV1DetectedAttribute {
 
   GoogleCloudVideointelligenceV1DetectedAttribute.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -937,7 +937,7 @@ class GoogleCloudVideointelligenceV1DetectedLandmark {
 
   GoogleCloudVideointelligenceV1DetectedLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1216,7 +1216,8 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
 
   GoogleCloudVideointelligenceV1LabelDetectionConfig.fromJson(core.Map _json) {
     if (_json.containsKey('frameConfidenceThreshold')) {
-      frameConfidenceThreshold = _json['frameConfidenceThreshold'].toDouble();
+      frameConfidenceThreshold =
+          (_json['frameConfidenceThreshold'] as core.num).toDouble();
     }
     if (_json.containsKey('labelDetectionMode')) {
       labelDetectionMode = _json['labelDetectionMode'] as core.String;
@@ -1228,7 +1229,8 @@ class GoogleCloudVideointelligenceV1LabelDetectionConfig {
       stationaryCamera = _json['stationaryCamera'] as core.bool;
     }
     if (_json.containsKey('videoConfidenceThreshold')) {
-      videoConfidenceThreshold = _json['videoConfidenceThreshold'].toDouble();
+      videoConfidenceThreshold =
+          (_json['videoConfidenceThreshold'] as core.num).toDouble();
     }
   }
 
@@ -1266,7 +1268,7 @@ class GoogleCloudVideointelligenceV1LabelFrame {
 
   GoogleCloudVideointelligenceV1LabelFrame.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('timeOffset')) {
       timeOffset = _json['timeOffset'] as core.String;
@@ -1297,7 +1299,7 @@ class GoogleCloudVideointelligenceV1LabelSegment {
 
   GoogleCloudVideointelligenceV1LabelSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment =
@@ -1386,16 +1388,16 @@ class GoogleCloudVideointelligenceV1NormalizedBoundingBox {
 
   GoogleCloudVideointelligenceV1NormalizedBoundingBox.fromJson(core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = _json['bottom'].toDouble();
+      bottom = (_json['bottom'] as core.num).toDouble();
     }
     if (_json.containsKey('left')) {
-      left = _json['left'].toDouble();
+      left = (_json['left'] as core.num).toDouble();
     }
     if (_json.containsKey('right')) {
-      right = _json['right'].toDouble();
+      right = (_json['right'] as core.num).toDouble();
     }
     if (_json.containsKey('top')) {
-      top = _json['top'].toDouble();
+      top = (_json['top'] as core.num).toDouble();
     }
   }
 
@@ -1463,10 +1465,10 @@ class GoogleCloudVideointelligenceV1NormalizedVertex {
 
   GoogleCloudVideointelligenceV1NormalizedVertex.fromJson(core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -1515,7 +1517,7 @@ class GoogleCloudVideointelligenceV1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('entity')) {
       entity = GoogleCloudVideointelligenceV1Entity.fromJson(_json['entity']);
@@ -1696,7 +1698,7 @@ class GoogleCloudVideointelligenceV1SpeechRecognitionAlternative {
   GoogleCloudVideointelligenceV1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;
@@ -2028,7 +2030,7 @@ class GoogleCloudVideointelligenceV1TextSegment {
 
   GoogleCloudVideointelligenceV1TextSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
@@ -2140,7 +2142,7 @@ class GoogleCloudVideointelligenceV1Track {
           .toList();
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment =
@@ -2634,7 +2636,7 @@ class GoogleCloudVideointelligenceV1WordInfo {
 
   GoogleCloudVideointelligenceV1WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
@@ -2753,7 +2755,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedAttribute {
   GoogleCloudVideointelligenceV1beta2DetectedAttribute.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2795,7 +2797,7 @@ class GoogleCloudVideointelligenceV1beta2DetectedLandmark {
 
   GoogleCloudVideointelligenceV1beta2DetectedLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3024,7 +3026,7 @@ class GoogleCloudVideointelligenceV1beta2LabelFrame {
 
   GoogleCloudVideointelligenceV1beta2LabelFrame.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('timeOffset')) {
       timeOffset = _json['timeOffset'] as core.String;
@@ -3055,7 +3057,7 @@ class GoogleCloudVideointelligenceV1beta2LabelSegment {
 
   GoogleCloudVideointelligenceV1beta2LabelSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
@@ -3146,16 +3148,16 @@ class GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox {
   GoogleCloudVideointelligenceV1beta2NormalizedBoundingBox.fromJson(
       core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = _json['bottom'].toDouble();
+      bottom = (_json['bottom'] as core.num).toDouble();
     }
     if (_json.containsKey('left')) {
-      left = _json['left'].toDouble();
+      left = (_json['left'] as core.num).toDouble();
     }
     if (_json.containsKey('right')) {
-      right = _json['right'].toDouble();
+      right = (_json['right'] as core.num).toDouble();
     }
     if (_json.containsKey('top')) {
-      top = _json['top'].toDouble();
+      top = (_json['top'] as core.num).toDouble();
     }
   }
 
@@ -3224,10 +3226,10 @@ class GoogleCloudVideointelligenceV1beta2NormalizedVertex {
 
   GoogleCloudVideointelligenceV1beta2NormalizedVertex.fromJson(core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -3276,7 +3278,7 @@ class GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1beta2ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('entity')) {
       entity =
@@ -3384,7 +3386,7 @@ class GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative {
   GoogleCloudVideointelligenceV1beta2SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;
@@ -3552,7 +3554,7 @@ class GoogleCloudVideointelligenceV1beta2TextSegment {
 
   GoogleCloudVideointelligenceV1beta2TextSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
@@ -3670,7 +3672,7 @@ class GoogleCloudVideointelligenceV1beta2Track {
           .toList();
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1beta2VideoSegment.fromJson(
@@ -4078,7 +4080,7 @@ class GoogleCloudVideointelligenceV1beta2WordInfo {
 
   GoogleCloudVideointelligenceV1beta2WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
@@ -4197,7 +4199,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedAttribute {
   GoogleCloudVideointelligenceV1p1beta1DetectedAttribute.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4240,7 +4242,7 @@ class GoogleCloudVideointelligenceV1p1beta1DetectedLandmark {
   GoogleCloudVideointelligenceV1p1beta1DetectedLandmark.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4471,7 +4473,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelFrame {
 
   GoogleCloudVideointelligenceV1p1beta1LabelFrame.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('timeOffset')) {
       timeOffset = _json['timeOffset'] as core.String;
@@ -4502,7 +4504,7 @@ class GoogleCloudVideointelligenceV1p1beta1LabelSegment {
 
   GoogleCloudVideointelligenceV1p1beta1LabelSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
@@ -4593,16 +4595,16 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox {
   GoogleCloudVideointelligenceV1p1beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = _json['bottom'].toDouble();
+      bottom = (_json['bottom'] as core.num).toDouble();
     }
     if (_json.containsKey('left')) {
-      left = _json['left'].toDouble();
+      left = (_json['left'] as core.num).toDouble();
     }
     if (_json.containsKey('right')) {
-      right = _json['right'].toDouble();
+      right = (_json['right'] as core.num).toDouble();
     }
     if (_json.containsKey('top')) {
-      top = _json['top'].toDouble();
+      top = (_json['top'] as core.num).toDouble();
     }
   }
 
@@ -4672,10 +4674,10 @@ class GoogleCloudVideointelligenceV1p1beta1NormalizedVertex {
   GoogleCloudVideointelligenceV1p1beta1NormalizedVertex.fromJson(
       core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -4724,7 +4726,7 @@ class GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p1beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('entity')) {
       entity =
@@ -4833,7 +4835,7 @@ class GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative {
   GoogleCloudVideointelligenceV1p1beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;
@@ -5002,7 +5004,7 @@ class GoogleCloudVideointelligenceV1p1beta1TextSegment {
 
   GoogleCloudVideointelligenceV1p1beta1TextSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
@@ -5120,7 +5122,7 @@ class GoogleCloudVideointelligenceV1p1beta1Track {
           .toList();
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p1beta1VideoSegment.fromJson(
@@ -5532,7 +5534,7 @@ class GoogleCloudVideointelligenceV1p1beta1WordInfo {
 
   GoogleCloudVideointelligenceV1p1beta1WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
@@ -5651,7 +5653,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedAttribute {
   GoogleCloudVideointelligenceV1p2beta1DetectedAttribute.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5694,7 +5696,7 @@ class GoogleCloudVideointelligenceV1p2beta1DetectedLandmark {
   GoogleCloudVideointelligenceV1p2beta1DetectedLandmark.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5925,7 +5927,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelFrame {
 
   GoogleCloudVideointelligenceV1p2beta1LabelFrame.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('timeOffset')) {
       timeOffset = _json['timeOffset'] as core.String;
@@ -5956,7 +5958,7 @@ class GoogleCloudVideointelligenceV1p2beta1LabelSegment {
 
   GoogleCloudVideointelligenceV1p2beta1LabelSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
@@ -6047,16 +6049,16 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox {
   GoogleCloudVideointelligenceV1p2beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = _json['bottom'].toDouble();
+      bottom = (_json['bottom'] as core.num).toDouble();
     }
     if (_json.containsKey('left')) {
-      left = _json['left'].toDouble();
+      left = (_json['left'] as core.num).toDouble();
     }
     if (_json.containsKey('right')) {
-      right = _json['right'].toDouble();
+      right = (_json['right'] as core.num).toDouble();
     }
     if (_json.containsKey('top')) {
-      top = _json['top'].toDouble();
+      top = (_json['top'] as core.num).toDouble();
     }
   }
 
@@ -6126,10 +6128,10 @@ class GoogleCloudVideointelligenceV1p2beta1NormalizedVertex {
   GoogleCloudVideointelligenceV1p2beta1NormalizedVertex.fromJson(
       core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -6178,7 +6180,7 @@ class GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p2beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('entity')) {
       entity =
@@ -6287,7 +6289,7 @@ class GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative {
   GoogleCloudVideointelligenceV1p2beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;
@@ -6456,7 +6458,7 @@ class GoogleCloudVideointelligenceV1p2beta1TextSegment {
 
   GoogleCloudVideointelligenceV1p2beta1TextSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
@@ -6574,7 +6576,7 @@ class GoogleCloudVideointelligenceV1p2beta1Track {
           .toList();
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p2beta1VideoSegment.fromJson(
@@ -6986,7 +6988,7 @@ class GoogleCloudVideointelligenceV1p2beta1WordInfo {
 
   GoogleCloudVideointelligenceV1p2beta1WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
@@ -7228,7 +7230,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedAttribute {
   GoogleCloudVideointelligenceV1p3beta1DetectedAttribute.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7271,7 +7273,7 @@ class GoogleCloudVideointelligenceV1p3beta1DetectedLandmark {
   GoogleCloudVideointelligenceV1p3beta1DetectedLandmark.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7552,7 +7554,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelFrame {
 
   GoogleCloudVideointelligenceV1p3beta1LabelFrame.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('timeOffset')) {
       timeOffset = _json['timeOffset'] as core.String;
@@ -7583,7 +7585,7 @@ class GoogleCloudVideointelligenceV1p3beta1LabelSegment {
 
   GoogleCloudVideointelligenceV1p3beta1LabelSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
@@ -7674,16 +7676,16 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox {
   GoogleCloudVideointelligenceV1p3beta1NormalizedBoundingBox.fromJson(
       core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = _json['bottom'].toDouble();
+      bottom = (_json['bottom'] as core.num).toDouble();
     }
     if (_json.containsKey('left')) {
-      left = _json['left'].toDouble();
+      left = (_json['left'] as core.num).toDouble();
     }
     if (_json.containsKey('right')) {
-      right = _json['right'].toDouble();
+      right = (_json['right'] as core.num).toDouble();
     }
     if (_json.containsKey('top')) {
-      top = _json['top'].toDouble();
+      top = (_json['top'] as core.num).toDouble();
     }
   }
 
@@ -7753,10 +7755,10 @@ class GoogleCloudVideointelligenceV1p3beta1NormalizedVertex {
   GoogleCloudVideointelligenceV1p3beta1NormalizedVertex.fromJson(
       core.Map _json) {
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
   }
 
@@ -7805,7 +7807,7 @@ class GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation {
   GoogleCloudVideointelligenceV1p3beta1ObjectTrackingAnnotation.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('entity')) {
       entity =
@@ -7943,7 +7945,7 @@ class GoogleCloudVideointelligenceV1p3beta1RecognizedCelebrity {
           _json['celebrity']);
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
   }
 
@@ -7982,7 +7984,7 @@ class GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative {
   GoogleCloudVideointelligenceV1p3beta1SpeechRecognitionAlternative.fromJson(
       core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('transcript')) {
       transcript = _json['transcript'] as core.String;
@@ -8271,7 +8273,7 @@ class GoogleCloudVideointelligenceV1p3beta1TextSegment {
 
   GoogleCloudVideointelligenceV1p3beta1TextSegment.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
@@ -8389,7 +8391,7 @@ class GoogleCloudVideointelligenceV1p3beta1Track {
           .toList();
     }
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('segment')) {
       segment = GoogleCloudVideointelligenceV1p3beta1VideoSegment.fromJson(
@@ -8851,7 +8853,7 @@ class GoogleCloudVideointelligenceV1p3beta1WordInfo {
 
   GoogleCloudVideointelligenceV1p3beta1WordInfo.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;

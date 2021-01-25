@@ -5501,7 +5501,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('enumValue')) {
       enumValue = GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(

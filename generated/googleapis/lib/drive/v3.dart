@@ -4544,13 +4544,13 @@ class DriveBackgroundImageFile {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
     if (_json.containsKey('xCoordinate')) {
-      xCoordinate = _json['xCoordinate'].toDouble();
+      xCoordinate = (_json['xCoordinate'] as core.num).toDouble();
     }
     if (_json.containsKey('yCoordinate')) {
-      yCoordinate = _json['yCoordinate'].toDouble();
+      yCoordinate = (_json['yCoordinate'] as core.num).toDouble();
     }
   }
 
@@ -5440,13 +5440,13 @@ class FileImageMediaMetadataLocation {
 
   FileImageMediaMetadataLocation.fromJson(core.Map _json) {
     if (_json.containsKey('altitude')) {
-      altitude = _json['altitude'].toDouble();
+      altitude = (_json['altitude'] as core.num).toDouble();
     }
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -5536,7 +5536,7 @@ class FileImageMediaMetadata {
 
   FileImageMediaMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('aperture')) {
-      aperture = _json['aperture'].toDouble();
+      aperture = (_json['aperture'] as core.num).toDouble();
     }
     if (_json.containsKey('cameraMake')) {
       cameraMake = _json['cameraMake'] as core.String;
@@ -5548,19 +5548,19 @@ class FileImageMediaMetadata {
       colorSpace = _json['colorSpace'] as core.String;
     }
     if (_json.containsKey('exposureBias')) {
-      exposureBias = _json['exposureBias'].toDouble();
+      exposureBias = (_json['exposureBias'] as core.num).toDouble();
     }
     if (_json.containsKey('exposureMode')) {
       exposureMode = _json['exposureMode'] as core.String;
     }
     if (_json.containsKey('exposureTime')) {
-      exposureTime = _json['exposureTime'].toDouble();
+      exposureTime = (_json['exposureTime'] as core.num).toDouble();
     }
     if (_json.containsKey('flashUsed')) {
       flashUsed = _json['flashUsed'] as core.bool;
     }
     if (_json.containsKey('focalLength')) {
-      focalLength = _json['focalLength'].toDouble();
+      focalLength = (_json['focalLength'] as core.num).toDouble();
     }
     if (_json.containsKey('height')) {
       height = _json['height'] as core.int;
@@ -5575,7 +5575,7 @@ class FileImageMediaMetadata {
       location = FileImageMediaMetadataLocation.fromJson(_json['location']);
     }
     if (_json.containsKey('maxApertureValue')) {
-      maxApertureValue = _json['maxApertureValue'].toDouble();
+      maxApertureValue = (_json['maxApertureValue'] as core.num).toDouble();
     }
     if (_json.containsKey('meteringMode')) {
       meteringMode = _json['meteringMode'] as core.String;
@@ -7211,13 +7211,13 @@ class TeamDriveBackgroundImageFile {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
     if (_json.containsKey('xCoordinate')) {
-      xCoordinate = _json['xCoordinate'].toDouble();
+      xCoordinate = (_json['xCoordinate'] as core.num).toDouble();
     }
     if (_json.containsKey('yCoordinate')) {
-      yCoordinate = _json['yCoordinate'].toDouble();
+      yCoordinate = (_json['yCoordinate'] as core.num).toDouble();
     }
   }
 

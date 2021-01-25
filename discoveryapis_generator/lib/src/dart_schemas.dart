@@ -337,7 +337,8 @@ class DoubleType extends PrimitiveDartSchemaType {
   String get declaration => '${imports.core.ref()}double';
 
   @override
-  String jsonDecode(String json) => '$json.toDouble()';
+  String jsonDecode(String json) =>
+      '($json as ${imports.core.ref()}num).toDouble()';
 }
 
 class StringType extends PrimitiveDartSchemaType {

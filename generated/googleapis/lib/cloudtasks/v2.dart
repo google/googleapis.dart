@@ -2532,7 +2532,8 @@ class RateLimits {
       maxConcurrentDispatches = _json['maxConcurrentDispatches'] as core.int;
     }
     if (_json.containsKey('maxDispatchesPerSecond')) {
-      maxDispatchesPerSecond = _json['maxDispatchesPerSecond'].toDouble();
+      maxDispatchesPerSecond =
+          (_json['maxDispatchesPerSecond'] as core.num).toDouble();
     }
   }
 
@@ -2735,7 +2736,7 @@ class StackdriverLoggingConfig {
 
   StackdriverLoggingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('samplingRatio')) {
-      samplingRatio = _json['samplingRatio'].toDouble();
+      samplingRatio = (_json['samplingRatio'] as core.num).toDouble();
     }
   }
 

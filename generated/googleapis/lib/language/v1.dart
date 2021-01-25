@@ -836,7 +836,7 @@ class ClassificationCategory {
 
   ClassificationCategory.fromJson(core.Map _json) {
     if (_json.containsKey('confidence')) {
-      confidence = _json['confidence'].toDouble();
+      confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1166,7 +1166,7 @@ class Entity {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('salience')) {
-      salience = _json['salience'].toDouble();
+      salience = (_json['salience'] as core.num).toDouble();
     }
     if (_json.containsKey('sentiment')) {
       sentiment = Sentiment.fromJson(_json['sentiment']);
@@ -1583,10 +1583,10 @@ class Sentiment {
 
   Sentiment.fromJson(core.Map _json) {
     if (_json.containsKey('magnitude')) {
-      magnitude = _json['magnitude'].toDouble();
+      magnitude = (_json['magnitude'] as core.num).toDouble();
     }
     if (_json.containsKey('score')) {
-      score = _json['score'].toDouble();
+      score = (_json['score'] as core.num).toDouble();
     }
   }
 

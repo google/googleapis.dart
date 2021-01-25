@@ -229,16 +229,16 @@ class AudioConfig {
           .toList();
     }
     if (_json.containsKey('pitch')) {
-      pitch = _json['pitch'].toDouble();
+      pitch = (_json['pitch'] as core.num).toDouble();
     }
     if (_json.containsKey('sampleRateHertz')) {
       sampleRateHertz = _json['sampleRateHertz'] as core.int;
     }
     if (_json.containsKey('speakingRate')) {
-      speakingRate = _json['speakingRate'].toDouble();
+      speakingRate = (_json['speakingRate'] as core.num).toDouble();
     }
     if (_json.containsKey('volumeGainDb')) {
-      volumeGainDb = _json['volumeGainDb'].toDouble();
+      volumeGainDb = (_json['volumeGainDb'] as core.num).toDouble();
     }
   }
 

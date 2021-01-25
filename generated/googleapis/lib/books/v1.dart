@@ -6228,10 +6228,10 @@ class GeolayerdataGeoViewportHi {
 
   GeolayerdataGeoViewportHi.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -6255,10 +6255,10 @@ class GeolayerdataGeoViewportLo {
 
   GeolayerdataGeoViewportLo.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -6349,10 +6349,10 @@ class GeolayerdataGeo {
       countryCode = _json['countryCode'] as core.String;
     }
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
     if (_json.containsKey('mapType')) {
       mapType = _json['mapType'] as core.String;
@@ -7244,7 +7244,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo {
   SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('amountInMicros')) {
-      amountInMicros = _json['amountInMicros'].toDouble();
+      amountInMicros = (_json['amountInMicros'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -7286,7 +7286,7 @@ class SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo {
   SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
       core.Map _json) {
     if (_json.containsKey('amountInMicros')) {
-      amountInMicros = _json['amountInMicros'].toDouble();
+      amountInMicros = (_json['amountInMicros'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -8068,7 +8068,7 @@ class VolumeSaleInfoListPrice {
 
   VolumeSaleInfoListPrice.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = _json['amount'].toDouble();
+      amount = (_json['amount'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -8096,7 +8096,7 @@ class VolumeSaleInfoOffersListPrice {
 
   VolumeSaleInfoOffersListPrice.fromJson(core.Map _json) {
     if (_json.containsKey('amountInMicros')) {
-      amountInMicros = _json['amountInMicros'].toDouble();
+      amountInMicros = (_json['amountInMicros'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -8124,7 +8124,7 @@ class VolumeSaleInfoOffersRentalDuration {
 
   VolumeSaleInfoOffersRentalDuration.fromJson(core.Map _json) {
     if (_json.containsKey('count')) {
-      count = _json['count'].toDouble();
+      count = (_json['count'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
@@ -8152,7 +8152,7 @@ class VolumeSaleInfoOffersRetailPrice {
 
   VolumeSaleInfoOffersRetailPrice.fromJson(core.Map _json) {
     if (_json.containsKey('amountInMicros')) {
-      amountInMicros = _json['amountInMicros'].toDouble();
+      amountInMicros = (_json['amountInMicros'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -8244,7 +8244,7 @@ class VolumeSaleInfoRetailPrice {
 
   VolumeSaleInfoRetailPrice.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = _json['amount'].toDouble();
+      amount = (_json['amount'] as core.num).toDouble();
     }
     if (_json.containsKey('currencyCode')) {
       currencyCode = _json['currencyCode'] as core.String;
@@ -9021,7 +9021,7 @@ class VolumeVolumeInfo {
           .toList();
     }
     if (_json.containsKey('averageRating')) {
-      averageRating = _json['averageRating'].toDouble();
+      averageRating = (_json['averageRating'] as core.num).toDouble();
     }
     if (_json.containsKey('canonicalVolumeLink')) {
       canonicalVolumeLink = _json['canonicalVolumeLink'] as core.String;

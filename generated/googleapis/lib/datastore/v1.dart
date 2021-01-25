@@ -2748,10 +2748,10 @@ class LatLng {
 
   LatLng.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -3839,7 +3839,7 @@ class Value {
       booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('entityValue')) {
       entityValue = Entity.fromJson(_json['entityValue']);

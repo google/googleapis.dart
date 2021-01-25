@@ -53531,7 +53531,7 @@ class AutoscalingPolicyCpuUtilization {
 
   AutoscalingPolicyCpuUtilization.fromJson(core.Map _json) {
     if (_json.containsKey('utilizationTarget')) {
-      utilizationTarget = _json['utilizationTarget'].toDouble();
+      utilizationTarget = (_json['utilizationTarget'] as core.num).toDouble();
     }
   }
 
@@ -53578,7 +53578,7 @@ class AutoscalingPolicyCustomMetricUtilization {
       metric = _json['metric'] as core.String;
     }
     if (_json.containsKey('utilizationTarget')) {
-      utilizationTarget = _json['utilizationTarget'].toDouble();
+      utilizationTarget = (_json['utilizationTarget'] as core.num).toDouble();
     }
     if (_json.containsKey('utilizationTargetType')) {
       utilizationTargetType = _json['utilizationTargetType'] as core.String;
@@ -53611,7 +53611,7 @@ class AutoscalingPolicyLoadBalancingUtilization {
 
   AutoscalingPolicyLoadBalancingUtilization.fromJson(core.Map _json) {
     if (_json.containsKey('utilizationTarget')) {
-      utilizationTarget = _json['utilizationTarget'].toDouble();
+      utilizationTarget = (_json['utilizationTarget'] as core.num).toDouble();
     }
   }
 
@@ -53838,7 +53838,7 @@ class Backend {
       balancingMode = _json['balancingMode'] as core.String;
     }
     if (_json.containsKey('capacityScaler')) {
-      capacityScaler = _json['capacityScaler'].toDouble();
+      capacityScaler = (_json['capacityScaler'] as core.num).toDouble();
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -53864,13 +53864,13 @@ class Backend {
       maxRate = _json['maxRate'] as core.int;
     }
     if (_json.containsKey('maxRatePerEndpoint')) {
-      maxRatePerEndpoint = _json['maxRatePerEndpoint'].toDouble();
+      maxRatePerEndpoint = (_json['maxRatePerEndpoint'] as core.num).toDouble();
     }
     if (_json.containsKey('maxRatePerInstance')) {
-      maxRatePerInstance = _json['maxRatePerInstance'].toDouble();
+      maxRatePerInstance = (_json['maxRatePerInstance'] as core.num).toDouble();
     }
     if (_json.containsKey('maxUtilization')) {
-      maxUtilization = _json['maxUtilization'].toDouble();
+      maxUtilization = (_json['maxUtilization'] as core.num).toDouble();
     }
   }
 
@@ -55024,7 +55024,7 @@ class BackendServiceFailoverPolicy {
       dropTrafficIfUnhealthy = _json['dropTrafficIfUnhealthy'] as core.bool;
     }
     if (_json.containsKey('failoverRatio')) {
-      failoverRatio = _json['failoverRatio'].toDouble();
+      failoverRatio = (_json['failoverRatio'] as core.num).toDouble();
     }
   }
 
@@ -55346,7 +55346,7 @@ class BackendServiceLogConfig {
       enable = _json['enable'] as core.bool;
     }
     if (_json.containsKey('sampleRate')) {
-      sampleRate = _json['sampleRate'].toDouble();
+      sampleRate = (_json['sampleRate'] as core.num).toDouble();
     }
   }
 
@@ -63276,7 +63276,7 @@ class HttpFaultAbort {
       httpStatus = _json['httpStatus'] as core.int;
     }
     if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'].toDouble();
+      percentage = (_json['percentage'] as core.num).toDouble();
     }
   }
 
@@ -63310,7 +63310,7 @@ class HttpFaultDelay {
       fixedDelay = Duration.fromJson(_json['fixedDelay']);
     }
     if (_json.containsKey('percentage')) {
-      percentage = _json['percentage'].toDouble();
+      percentage = (_json['percentage'] as core.num).toDouble();
     }
   }
 
@@ -71881,7 +71881,7 @@ class InterconnectDiagnosticsLinkOpticalPower {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -82466,7 +82466,7 @@ class Quota {
 
   Quota.fromJson(core.Map _json) {
     if (_json.containsKey('limit')) {
-      limit = _json['limit'].toDouble();
+      limit = (_json['limit'] as core.num).toDouble();
     }
     if (_json.containsKey('metric')) {
       metric = _json['metric'] as core.String;
@@ -82475,7 +82475,7 @@ class Quota {
       owner = _json['owner'] as core.String;
     }
     if (_json.containsKey('usage')) {
-      usage = _json['usage'].toDouble();
+      usage = (_json['usage'] as core.num).toDouble();
     }
   }
 
@@ -92217,7 +92217,7 @@ class SubnetworkLogConfig {
       filterExpr = _json['filterExpr'] as core.String;
     }
     if (_json.containsKey('flowSampling')) {
-      flowSampling = _json['flowSampling'].toDouble();
+      flowSampling = (_json['flowSampling'] as core.num).toDouble();
     }
     if (_json.containsKey('metadata')) {
       metadata = _json['metadata'] as core.String;
@@ -94939,7 +94939,7 @@ class TargetPool {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('failoverRatio')) {
-      failoverRatio = _json['failoverRatio'].toDouble();
+      failoverRatio = (_json['failoverRatio'] as core.num).toDouble();
     }
     if (_json.containsKey('healthChecks')) {
       healthChecks = (_json['healthChecks'] as core.List)

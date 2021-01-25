@@ -871,7 +871,7 @@ class Entity {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('salience')) {
-      salience = _json['salience'].toDouble();
+      salience = (_json['salience'] as core.num).toDouble();
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -1256,13 +1256,13 @@ class Sentiment {
 
   Sentiment.fromJson(core.Map _json) {
     if (_json.containsKey('magnitude')) {
-      magnitude = _json['magnitude'].toDouble();
+      magnitude = (_json['magnitude'] as core.num).toDouble();
     }
     if (_json.containsKey('polarity')) {
-      polarity = _json['polarity'].toDouble();
+      polarity = (_json['polarity'] as core.num).toDouble();
     }
     if (_json.containsKey('score')) {
-      score = _json['score'].toDouble();
+      score = (_json['score'] as core.num).toDouble();
     }
   }
 

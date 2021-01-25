@@ -2938,7 +2938,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetric {
   GoogleCloudMlV1HyperparameterOutputHyperparameterMetric.fromJson(
       core.Map _json) {
     if (_json.containsKey('objectiveValue')) {
-      objectiveValue = _json['objectiveValue'].toDouble();
+      objectiveValue = (_json['objectiveValue'] as core.num).toDouble();
     }
     if (_json.containsKey('trainingStep')) {
       trainingStep = _json['trainingStep'] as core.String;
@@ -2972,7 +2972,7 @@ class GoogleCloudMlV1MeasurementMetric {
       metric = _json['metric'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -3026,7 +3026,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDiscreteValueSpec {
       core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -3052,10 +3052,10 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec {
   GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpec.fromJson(
       core.Map _json) {
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
   }
 
@@ -3140,7 +3140,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecMatchingParentDiscreteValueSpec {
       core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -3384,7 +3384,7 @@ class GoogleCloudMlV1TrialParameter {
 
   GoogleCloudMlV1TrialParameter.fromJson(core.Map _json) {
     if (_json.containsKey('floatValue')) {
-      floatValue = _json['floatValue'].toDouble();
+      floatValue = (_json['floatValue'] as core.num).toDouble();
     }
     if (_json.containsKey('intValue')) {
       intValue = _json['intValue'] as core.String;
@@ -5138,14 +5138,14 @@ class GoogleCloudMlV1ParameterSpec {
     }
     if (_json.containsKey('discreteValues')) {
       discreteValues = (_json['discreteValues'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
     if (_json.containsKey('parameterName')) {
       parameterName = _json['parameterName'] as core.String;
@@ -5397,7 +5397,7 @@ class GoogleCloudMlV1PredictionOutput {
       errorCount = _json['errorCount'] as core.String;
     }
     if (_json.containsKey('nodeHours')) {
-      nodeHours = _json['nodeHours'].toDouble();
+      nodeHours = (_json['nodeHours'] as core.num).toDouble();
     }
     if (_json.containsKey('outputPath')) {
       outputPath = _json['outputPath'] as core.String;
@@ -5552,7 +5552,7 @@ class GoogleCloudMlV1RequestLoggingConfig {
       bigqueryTableName = _json['bigqueryTableName'] as core.String;
     }
     if (_json.containsKey('samplingPercentage')) {
-      samplingPercentage = _json['samplingPercentage'].toDouble();
+      samplingPercentage = (_json['samplingPercentage'] as core.num).toDouble();
     }
   }
 
@@ -6437,7 +6437,7 @@ class GoogleCloudMlV1TrainingOutput {
       completedTrialCount = _json['completedTrialCount'] as core.String;
     }
     if (_json.containsKey('consumedMLUnits')) {
-      consumedMLUnits = _json['consumedMLUnits'].toDouble();
+      consumedMLUnits = (_json['consumedMLUnits'] as core.num).toDouble();
     }
     if (_json.containsKey('hyperparameterMetricTag')) {
       hyperparameterMetricTag = _json['hyperparameterMetricTag'] as core.String;

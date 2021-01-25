@@ -12682,7 +12682,8 @@ class GoogleCloudDialogflowV2QueryResult {
       intent = GoogleCloudDialogflowV2Intent.fromJson(_json['intent']);
     }
     if (_json.containsKey('intentDetectionConfidence')) {
-      intentDetectionConfidence = _json['intentDetectionConfidence'].toDouble();
+      intentDetectionConfidence =
+          (_json['intentDetectionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -12708,7 +12709,7 @@ class GoogleCloudDialogflowV2QueryResult {
     }
     if (_json.containsKey('speechRecognitionConfidence')) {
       speechRecognitionConfidence =
-          _json['speechRecognitionConfidence'].toDouble();
+          (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
       webhookPayload = commons.mapMap<core.Object, core.Object>(
@@ -12789,10 +12790,10 @@ class GoogleCloudDialogflowV2Sentiment {
 
   GoogleCloudDialogflowV2Sentiment.fromJson(core.Map _json) {
     if (_json.containsKey('magnitude')) {
-      magnitude = _json['magnitude'].toDouble();
+      magnitude = (_json['magnitude'] as core.num).toDouble();
     }
     if (_json.containsKey('score')) {
-      score = _json['score'].toDouble();
+      score = (_json['score'] as core.num).toDouble();
     }
   }
 
@@ -13185,7 +13186,8 @@ class GoogleCloudDialogflowV2beta1Agent {
       avatarUri = _json['avatarUri'] as core.String;
     }
     if (_json.containsKey('classificationThreshold')) {
-      classificationThreshold = _json['classificationThreshold'].toDouble();
+      classificationThreshold =
+          (_json['classificationThreshold'] as core.num).toDouble();
     }
     if (_json.containsKey('defaultLanguageCode')) {
       defaultLanguageCode = _json['defaultLanguageCode'] as core.String;
@@ -17546,7 +17548,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer {
       faqQuestion = _json['faqQuestion'] as core.String;
     }
     if (_json.containsKey('matchConfidence')) {
-      matchConfidence = _json['matchConfidence'].toDouble();
+      matchConfidence = (_json['matchConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('matchConfidenceLevel')) {
       matchConfidenceLevel = _json['matchConfidenceLevel'] as core.String;
@@ -18376,7 +18378,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
       intent = GoogleCloudDialogflowV2beta1Intent.fromJson(_json['intent']);
     }
     if (_json.containsKey('intentDetectionConfidence')) {
-      intentDetectionConfidence = _json['intentDetectionConfidence'].toDouble();
+      intentDetectionConfidence =
+          (_json['intentDetectionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('knowledgeAnswers')) {
       knowledgeAnswers = GoogleCloudDialogflowV2beta1KnowledgeAnswers.fromJson(
@@ -18406,7 +18409,7 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     }
     if (_json.containsKey('speechRecognitionConfidence')) {
       speechRecognitionConfidence =
-          _json['speechRecognitionConfidence'].toDouble();
+          (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
       webhookPayload = commons.mapMap<core.Object, core.Object>(
@@ -18589,10 +18592,10 @@ class GoogleCloudDialogflowV2beta1Sentiment {
 
   GoogleCloudDialogflowV2beta1Sentiment.fromJson(core.Map _json) {
     if (_json.containsKey('magnitude')) {
-      magnitude = _json['magnitude'].toDouble();
+      magnitude = (_json['magnitude'] as core.num).toDouble();
     }
     if (_json.containsKey('score')) {
-      score = _json['score'].toDouble();
+      score = (_json['score'] as core.num).toDouble();
     }
   }
 
@@ -18861,7 +18864,7 @@ class GoogleCloudDialogflowV2beta1SpeechContext {
 
   GoogleCloudDialogflowV2beta1SpeechContext.fromJson(core.Map _json) {
     if (_json.containsKey('boost')) {
-      boost = _json['boost'].toDouble();
+      boost = (_json['boost'] as core.num).toDouble();
     }
     if (_json.containsKey('phrases')) {
       phrases = (_json['phrases'] as core.List)
@@ -18956,17 +18959,17 @@ class GoogleCloudDialogflowV2beta1SynthesizeSpeechConfig {
           .toList();
     }
     if (_json.containsKey('pitch')) {
-      pitch = _json['pitch'].toDouble();
+      pitch = (_json['pitch'] as core.num).toDouble();
     }
     if (_json.containsKey('speakingRate')) {
-      speakingRate = _json['speakingRate'].toDouble();
+      speakingRate = (_json['speakingRate'] as core.num).toDouble();
     }
     if (_json.containsKey('voice')) {
       voice = GoogleCloudDialogflowV2beta1VoiceSelectionParams.fromJson(
           _json['voice']);
     }
     if (_json.containsKey('volumeGainDb')) {
-      volumeGainDb = _json['volumeGainDb'].toDouble();
+      volumeGainDb = (_json['volumeGainDb'] as core.num).toDouble();
     }
   }
 
@@ -19732,10 +19735,10 @@ class GoogleTypeLatLng {
 
   GoogleTypeLatLng.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 

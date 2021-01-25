@@ -777,16 +777,16 @@ class Color {
 
   Color.fromJson(core.Map _json) {
     if (_json.containsKey('alpha')) {
-      alpha = _json['alpha'].toDouble();
+      alpha = (_json['alpha'] as core.num).toDouble();
     }
     if (_json.containsKey('blue')) {
-      blue = _json['blue'].toDouble();
+      blue = (_json['blue'] as core.num).toDouble();
     }
     if (_json.containsKey('green')) {
-      green = _json['green'].toDouble();
+      green = (_json['green'] as core.num).toDouble();
     }
     if (_json.containsKey('red')) {
-      red = _json['red'].toDouble();
+      red = (_json['red'] as core.num).toDouble();
     }
   }
 

@@ -1017,19 +1017,19 @@ class CropProperties {
 
   CropProperties.fromJson(core.Map _json) {
     if (_json.containsKey('angle')) {
-      angle = _json['angle'].toDouble();
+      angle = (_json['angle'] as core.num).toDouble();
     }
     if (_json.containsKey('offsetBottom')) {
-      offsetBottom = _json['offsetBottom'].toDouble();
+      offsetBottom = (_json['offsetBottom'] as core.num).toDouble();
     }
     if (_json.containsKey('offsetLeft')) {
-      offsetLeft = _json['offsetLeft'].toDouble();
+      offsetLeft = (_json['offsetLeft'] as core.num).toDouble();
     }
     if (_json.containsKey('offsetRight')) {
-      offsetRight = _json['offsetRight'].toDouble();
+      offsetRight = (_json['offsetRight'] as core.num).toDouble();
     }
     if (_json.containsKey('offsetTop')) {
-      offsetTop = _json['offsetTop'].toDouble();
+      offsetTop = (_json['offsetTop'] as core.num).toDouble();
     }
   }
 
@@ -1345,7 +1345,7 @@ class Dimension {
 
   Dimension.fromJson(core.Map _json) {
     if (_json.containsKey('magnitude')) {
-      magnitude = _json['magnitude'].toDouble();
+      magnitude = (_json['magnitude'] as core.num).toDouble();
     }
     if (_json.containsKey('unit')) {
       unit = _json['unit'] as core.String;
@@ -2731,16 +2731,16 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey('angle')) {
-      angle = _json['angle'].toDouble();
+      angle = (_json['angle'] as core.num).toDouble();
     }
     if (_json.containsKey('brightness')) {
-      brightness = _json['brightness'].toDouble();
+      brightness = (_json['brightness'] as core.num).toDouble();
     }
     if (_json.containsKey('contentUri')) {
       contentUri = _json['contentUri'] as core.String;
     }
     if (_json.containsKey('contrast')) {
-      contrast = _json['contrast'].toDouble();
+      contrast = (_json['contrast'] as core.num).toDouble();
     }
     if (_json.containsKey('cropProperties')) {
       cropProperties = CropProperties.fromJson(_json['cropProperties']);
@@ -2749,7 +2749,7 @@ class ImageProperties {
       sourceUri = _json['sourceUri'] as core.String;
     }
     if (_json.containsKey('transparency')) {
-      transparency = _json['transparency'].toDouble();
+      transparency = (_json['transparency'] as core.num).toDouble();
     }
   }
 
@@ -4769,7 +4769,7 @@ class ParagraphStyle {
       keepWithNext = _json['keepWithNext'] as core.bool;
     }
     if (_json.containsKey('lineSpacing')) {
-      lineSpacing = _json['lineSpacing'].toDouble();
+      lineSpacing = (_json['lineSpacing'] as core.num).toDouble();
     }
     if (_json.containsKey('namedStyleType')) {
       namedStyleType = _json['namedStyleType'] as core.String;
@@ -5926,13 +5926,13 @@ class RgbColor {
 
   RgbColor.fromJson(core.Map _json) {
     if (_json.containsKey('blue')) {
-      blue = _json['blue'].toDouble();
+      blue = (_json['blue'] as core.num).toDouble();
     }
     if (_json.containsKey('green')) {
-      green = _json['green'].toDouble();
+      green = (_json['green'] as core.num).toDouble();
     }
     if (_json.containsKey('red')) {
-      red = _json['red'].toDouble();
+      red = (_json['red'] as core.num).toDouble();
     }
   }
 

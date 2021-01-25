@@ -1107,7 +1107,7 @@ class CustomMetric {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 

@@ -3565,13 +3565,13 @@ class HardwareInfo {
     if (_json.containsKey('batteryShutdownTemperatures')) {
       batteryShutdownTemperatures =
           (_json['batteryShutdownTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('batteryThrottlingTemperatures')) {
       batteryThrottlingTemperatures =
           (_json['batteryThrottlingTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('brand')) {
@@ -3579,13 +3579,13 @@ class HardwareInfo {
     }
     if (_json.containsKey('cpuShutdownTemperatures')) {
       cpuShutdownTemperatures = (_json['cpuShutdownTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('cpuThrottlingTemperatures')) {
       cpuThrottlingTemperatures =
           (_json['cpuThrottlingTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('deviceBasebandVersion')) {
@@ -3593,13 +3593,13 @@ class HardwareInfo {
     }
     if (_json.containsKey('gpuShutdownTemperatures')) {
       gpuShutdownTemperatures = (_json['gpuShutdownTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('gpuThrottlingTemperatures')) {
       gpuThrottlingTemperatures =
           (_json['gpuThrottlingTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('hardware')) {
@@ -3617,13 +3617,13 @@ class HardwareInfo {
     if (_json.containsKey('skinShutdownTemperatures')) {
       skinShutdownTemperatures =
           (_json['skinShutdownTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('skinThrottlingTemperatures')) {
       skinThrottlingTemperatures =
           (_json['skinThrottlingTemperatures'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
   }
@@ -3708,17 +3708,17 @@ class HardwareStatus {
   HardwareStatus.fromJson(core.Map _json) {
     if (_json.containsKey('batteryTemperatures')) {
       batteryTemperatures = (_json['batteryTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('cpuTemperatures')) {
       cpuTemperatures = (_json['cpuTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('cpuUsages')) {
       cpuUsages = (_json['cpuUsages'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('createTime')) {
@@ -3726,17 +3726,17 @@ class HardwareStatus {
     }
     if (_json.containsKey('fanSpeeds')) {
       fanSpeeds = (_json['fanSpeeds'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('gpuTemperatures')) {
       gpuTemperatures = (_json['gpuTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('skinTemperatures')) {
       skinTemperatures = (_json['skinTemperatures'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -6136,7 +6136,7 @@ class PowerManagementEvent {
 
   PowerManagementEvent.fromJson(core.Map _json) {
     if (_json.containsKey('batteryLevel')) {
-      batteryLevel = _json['batteryLevel'].toDouble();
+      batteryLevel = (_json['batteryLevel'] as core.num).toDouble();
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;

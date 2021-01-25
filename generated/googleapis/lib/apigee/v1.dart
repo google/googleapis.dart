@@ -18722,7 +18722,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
       sampler = _json['sampler'] as core.String;
     }
     if (_json.containsKey('samplingRate')) {
-      samplingRate = _json['samplingRate'].toDouble();
+      samplingRate = (_json['samplingRate'] as core.num).toDouble();
     }
   }
 

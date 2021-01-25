@@ -3565,7 +3565,7 @@ class CpuUtilization {
       aggregationWindowLength = _json['aggregationWindowLength'] as core.String;
     }
     if (_json.containsKey('targetUtilization')) {
-      targetUtilization = _json['targetUtilization'].toDouble();
+      targetUtilization = (_json['targetUtilization'] as core.num).toDouble();
     }
   }
 
@@ -3685,13 +3685,14 @@ class CustomMetric {
       metricName = _json['metricName'] as core.String;
     }
     if (_json.containsKey('singleInstanceAssignment')) {
-      singleInstanceAssignment = _json['singleInstanceAssignment'].toDouble();
+      singleInstanceAssignment =
+          (_json['singleInstanceAssignment'] as core.num).toDouble();
     }
     if (_json.containsKey('targetType')) {
       targetType = _json['targetType'] as core.String;
     }
     if (_json.containsKey('targetUtilization')) {
-      targetUtilization = _json['targetUtilization'].toDouble();
+      targetUtilization = (_json['targetUtilization'] as core.num).toDouble();
     }
   }
 
@@ -4468,7 +4469,7 @@ class Instance {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('qps')) {
-      qps = _json['qps'].toDouble();
+      qps = (_json['qps'] as core.num).toDouble();
     }
     if (_json.containsKey('requests')) {
       requests = _json['requests'] as core.int;
@@ -5864,16 +5865,16 @@ class Resources {
 
   Resources.fromJson(core.Map _json) {
     if (_json.containsKey('cpu')) {
-      cpu = _json['cpu'].toDouble();
+      cpu = (_json['cpu'] as core.num).toDouble();
     }
     if (_json.containsKey('diskGb')) {
-      diskGb = _json['diskGb'].toDouble();
+      diskGb = (_json['diskGb'] as core.num).toDouble();
     }
     if (_json.containsKey('kmsKeyReference')) {
       kmsKeyReference = _json['kmsKeyReference'] as core.String;
     }
     if (_json.containsKey('memoryGb')) {
-      memoryGb = _json['memoryGb'].toDouble();
+      memoryGb = (_json['memoryGb'] as core.num).toDouble();
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
@@ -6069,11 +6070,12 @@ class StandardSchedulerSettings {
       minInstances = _json['minInstances'] as core.int;
     }
     if (_json.containsKey('targetCpuUtilization')) {
-      targetCpuUtilization = _json['targetCpuUtilization'].toDouble();
+      targetCpuUtilization =
+          (_json['targetCpuUtilization'] as core.num).toDouble();
     }
     if (_json.containsKey('targetThroughputUtilization')) {
       targetThroughputUtilization =
-          _json['targetThroughputUtilization'].toDouble();
+          (_json['targetThroughputUtilization'] as core.num).toDouble();
     }
   }
 
@@ -6277,7 +6279,7 @@ class TrafficSplit {
     if (_json.containsKey('allocations')) {
       allocations = commons.mapMap<core.num, core.double>(
           _json['allocations'].cast<core.String, core.num>(),
-          (core.num item) => item.toDouble());
+          (core.num item) => (item as core.num).toDouble());
     }
     if (_json.containsKey('shardBy')) {
       shardBy = _json['shardBy'] as core.String;
@@ -6923,7 +6925,7 @@ class Volume {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('sizeGb')) {
-      sizeGb = _json['sizeGb'].toDouble();
+      sizeGb = (_json['sizeGb'] as core.num).toDouble();
     }
     if (_json.containsKey('volumeType')) {
       volumeType = _json['volumeType'] as core.String;

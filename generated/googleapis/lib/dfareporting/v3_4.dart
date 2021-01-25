@@ -18534,7 +18534,7 @@ class Conversion {
       treatmentForUnderage = _json['treatmentForUnderage'] as core.bool;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -19501,7 +19501,7 @@ class Creative {
       mediaDescription = _json['mediaDescription'] as core.String;
     }
     if (_json.containsKey('mediaDuration')) {
-      mediaDuration = _json['mediaDuration'].toDouble();
+      mediaDuration = (_json['mediaDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -20201,7 +20201,7 @@ class CreativeAsset {
       flashVersion = _json['flashVersion'] as core.int;
     }
     if (_json.containsKey('frameRate')) {
-      frameRate = _json['frameRate'].toDouble();
+      frameRate = (_json['frameRate'] as core.num).toDouble();
     }
     if (_json.containsKey('hideFlashObjects')) {
       hideFlashObjects = _json['hideFlashObjects'] as core.bool;
@@ -20219,7 +20219,7 @@ class CreativeAsset {
       idDimensionValue = DimensionValue.fromJson(_json['idDimensionValue']);
     }
     if (_json.containsKey('mediaDuration')) {
-      mediaDuration = _json['mediaDuration'].toDouble();
+      mediaDuration = (_json['mediaDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -20252,7 +20252,7 @@ class CreativeAsset {
       pushdown = _json['pushdown'] as core.bool;
     }
     if (_json.containsKey('pushdownDuration')) {
-      pushdownDuration = _json['pushdownDuration'].toDouble();
+      pushdownDuration = (_json['pushdownDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;

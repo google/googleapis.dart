@@ -846,10 +846,10 @@ class LatLng {
 
   LatLng.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -884,7 +884,7 @@ class Level {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('number')) {
-      number = _json['number'].toDouble();
+      number = (_json['number'] as core.num).toDouble();
     }
   }
 
@@ -1307,13 +1307,13 @@ class Pose {
 
   Pose.fromJson(core.Map _json) {
     if (_json.containsKey('accuracyMeters')) {
-      accuracyMeters = _json['accuracyMeters'].toDouble();
+      accuracyMeters = (_json['accuracyMeters'] as core.num).toDouble();
     }
     if (_json.containsKey('altitude')) {
-      altitude = _json['altitude'].toDouble();
+      altitude = (_json['altitude'] as core.num).toDouble();
     }
     if (_json.containsKey('heading')) {
-      heading = _json['heading'].toDouble();
+      heading = (_json['heading'] as core.num).toDouble();
     }
     if (_json.containsKey('latLngPair')) {
       latLngPair = LatLng.fromJson(_json['latLngPair']);
@@ -1322,10 +1322,10 @@ class Pose {
       level = Level.fromJson(_json['level']);
     }
     if (_json.containsKey('pitch')) {
-      pitch = _json['pitch'].toDouble();
+      pitch = (_json['pitch'] as core.num).toDouble();
     }
     if (_json.containsKey('roll')) {
-      roll = _json['roll'].toDouble();
+      roll = (_json['roll'] as core.num).toDouble();
     }
   }
 

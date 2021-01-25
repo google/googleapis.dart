@@ -5516,16 +5516,18 @@ class StatsResponse {
 
   StatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('avg_session_length_minutes')) {
-      avgSessionLengthMinutes = _json['avg_session_length_minutes'].toDouble();
+      avgSessionLengthMinutes =
+          (_json['avg_session_length_minutes'] as core.num).toDouble();
     }
     if (_json.containsKey('churn_probability')) {
-      churnProbability = _json['churn_probability'].toDouble();
+      churnProbability = (_json['churn_probability'] as core.num).toDouble();
     }
     if (_json.containsKey('days_since_last_played')) {
       daysSinceLastPlayed = _json['days_since_last_played'] as core.int;
     }
     if (_json.containsKey('high_spender_probability')) {
-      highSpenderProbability = _json['high_spender_probability'].toDouble();
+      highSpenderProbability =
+          (_json['high_spender_probability'] as core.num).toDouble();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -5537,16 +5539,18 @@ class StatsResponse {
       numSessions = _json['num_sessions'] as core.int;
     }
     if (_json.containsKey('num_sessions_percentile')) {
-      numSessionsPercentile = _json['num_sessions_percentile'].toDouble();
+      numSessionsPercentile =
+          (_json['num_sessions_percentile'] as core.num).toDouble();
     }
     if (_json.containsKey('spend_percentile')) {
-      spendPercentile = _json['spend_percentile'].toDouble();
+      spendPercentile = (_json['spend_percentile'] as core.num).toDouble();
     }
     if (_json.containsKey('spend_probability')) {
-      spendProbability = _json['spend_probability'].toDouble();
+      spendProbability = (_json['spend_probability'] as core.num).toDouble();
     }
     if (_json.containsKey('total_spend_next_28_days')) {
-      totalSpendNext28Days = _json['total_spend_next_28_days'].toDouble();
+      totalSpendNext28Days =
+          (_json['total_spend_next_28_days'] as core.num).toDouble();
     }
   }
 

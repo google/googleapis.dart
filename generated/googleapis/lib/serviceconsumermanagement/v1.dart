@@ -1556,7 +1556,7 @@ class BackendRule {
       address = _json['address'] as core.String;
     }
     if (_json.containsKey('deadline')) {
-      deadline = _json['deadline'].toDouble();
+      deadline = (_json['deadline'] as core.num).toDouble();
     }
     if (_json.containsKey('disableAuth')) {
       disableAuth = _json['disableAuth'] as core.bool;
@@ -1565,10 +1565,10 @@ class BackendRule {
       jwtAudience = _json['jwtAudience'] as core.String;
     }
     if (_json.containsKey('minDeadline')) {
-      minDeadline = _json['minDeadline'].toDouble();
+      minDeadline = (_json['minDeadline'] as core.num).toDouble();
     }
     if (_json.containsKey('operationDeadline')) {
-      operationDeadline = _json['operationDeadline'].toDouble();
+      operationDeadline = (_json['operationDeadline'] as core.num).toDouble();
     }
     if (_json.containsKey('pathTranslation')) {
       pathTranslation = _json['pathTranslation'] as core.String;

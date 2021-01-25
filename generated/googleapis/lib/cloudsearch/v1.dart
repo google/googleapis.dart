@@ -4020,7 +4020,7 @@ class DoubleValues {
   DoubleValues.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -8408,7 +8408,7 @@ class SearchQualityMetadata {
 
   SearchQualityMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('quality')) {
-      quality = _json['quality'].toDouble();
+      quality = (_json['quality'] as core.num).toDouble();
     }
   }
 
@@ -9668,7 +9668,7 @@ class Value {
       dateValue = Date.fromJson(_json['dateValue']);
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('integerValue')) {
       integerValue = _json['integerValue'] as core.String;

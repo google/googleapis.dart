@@ -1212,16 +1212,16 @@ class Quaternion {
 
   Quaternion.fromJson(core.Map _json) {
     if (_json.containsKey('w')) {
-      w = _json['w'].toDouble();
+      w = (_json['w'] as core.num).toDouble();
     }
     if (_json.containsKey('x')) {
-      x = _json['x'].toDouble();
+      x = (_json['x'] as core.num).toDouble();
     }
     if (_json.containsKey('y')) {
-      y = _json['y'].toDouble();
+      y = (_json['y'] as core.num).toDouble();
     }
     if (_json.containsKey('z')) {
-      z = _json['z'].toDouble();
+      z = (_json['z'] as core.num).toDouble();
     }
   }
 

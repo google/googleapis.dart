@@ -2672,7 +2672,7 @@ class GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
       boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('numberValue')) {
-      numberValue = _json['numberValue'].toDouble();
+      numberValue = (_json['numberValue'] as core.num).toDouble();
     }
     if (_json.containsKey('stringValue')) {
       stringValue = _json['stringValue'] as core.String;

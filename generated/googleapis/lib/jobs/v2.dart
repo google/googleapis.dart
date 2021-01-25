@@ -1145,10 +1145,10 @@ class BucketRange {
 
   BucketRange.fromJson(core.Map _json) {
     if (_json.containsKey('from')) {
-      from = _json['from'].toDouble();
+      from = (_json['from'] as core.num).toDouble();
     }
     if (_json.containsKey('to')) {
-      to = _json['to'].toDouble();
+      to = (_json['to'] as core.num).toDouble();
     }
   }
 
@@ -1671,7 +1671,8 @@ class CompensationEntry {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('expectedUnitsPerYear')) {
-      expectedUnitsPerYear = _json['expectedUnitsPerYear'].toDouble();
+      expectedUnitsPerYear =
+          (_json['expectedUnitsPerYear'] as core.num).toDouble();
     }
     if (_json.containsKey('range')) {
       range = CompensationRange.fromJson(_json['range']);
@@ -3282,7 +3283,8 @@ class GoogleCloudTalentV4CompensationInfoCompensationEntry {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('expectedUnitsPerYear')) {
-      expectedUnitsPerYear = _json['expectedUnitsPerYear'].toDouble();
+      expectedUnitsPerYear =
+          (_json['expectedUnitsPerYear'] as core.num).toDouble();
     }
     if (_json.containsKey('range')) {
       range = GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
@@ -4080,7 +4082,7 @@ class GoogleCloudTalentV4Location {
       postalAddress = PostalAddress.fromJson(_json['postalAddress']);
     }
     if (_json.containsKey('radiusMiles')) {
-      radiusMiles = _json['radiusMiles'].toDouble();
+      radiusMiles = (_json['radiusMiles'] as core.num).toDouble();
     }
   }
 
@@ -5177,7 +5179,7 @@ class JobLocation {
       postalAddress = PostalAddress.fromJson(_json['postalAddress']);
     }
     if (_json.containsKey('radiusMeters')) {
-      radiusMeters = _json['radiusMeters'].toDouble();
+      radiusMeters = (_json['radiusMeters'] as core.num).toDouble();
     }
   }
 
@@ -5448,10 +5450,10 @@ class LatLng {
 
   LatLng.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -5649,7 +5651,7 @@ class LocationFilter {
 
   LocationFilter.fromJson(core.Map _json) {
     if (_json.containsKey('distanceInMiles')) {
-      distanceInMiles = _json['distanceInMiles'].toDouble();
+      distanceInMiles = (_json['distanceInMiles'] as core.num).toDouble();
     }
     if (_json.containsKey('isTelecommute')) {
       isTelecommute = _json['isTelecommute'] as core.bool;
@@ -6054,7 +6056,7 @@ class NumericBucketingOption {
   NumericBucketingOption.fromJson(core.Map _json) {
     if (_json.containsKey('bucketBounds')) {
       bucketBounds = (_json['bucketBounds'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
     if (_json.containsKey('requiresMinMax')) {
@@ -6097,10 +6099,10 @@ class NumericBucketingResult {
           .toList();
     }
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
   }
 

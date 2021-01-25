@@ -4065,7 +4065,7 @@ class UserInfo {
       passwordHash = _json['passwordHash'] as core.String;
     }
     if (_json.containsKey('passwordUpdatedAt')) {
-      passwordUpdatedAt = _json['passwordUpdatedAt'].toDouble();
+      passwordUpdatedAt = (_json['passwordUpdatedAt'] as core.num).toDouble();
     }
     if (_json.containsKey('phoneNumber')) {
       phoneNumber = _json['phoneNumber'] as core.String;
