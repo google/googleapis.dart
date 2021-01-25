@@ -134,16 +134,16 @@ jobs:
         working-directory: generator
         run: dartanalyzer --fatal-infos .
   job_003:
-    name: "analyze_and_format; Dart dev; PKGS: _test, _test_package, discoveryapis_common, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator; `dartfmt -n --set-exit-if-changed .`, `dartanalyzer --fatal-infos .`"
+    name: "analyze_and_format; Dart dev; PKGS: _test, _test_package, discoveryapis_commons, discoveryapis_generator, generated/googleapis, generated/googleapis_beta, generator; `dartfmt -n --set-exit-if-changed .`, `dartanalyzer --fatal-infos .`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v2
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_common-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator;commands:dartfmt-dartanalyzer"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator;commands:dartfmt-dartanalyzer"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_common-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator
+            os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:_test-_test_package-discoveryapis_commons-discoveryapis_generator-generated/googleapis-generated/googleapis_beta-generator
             os:ubuntu-latest;pub-cache-hosted;dart:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -178,18 +178,18 @@ jobs:
         if: "always() && steps._test_package_pub_upgrade.conclusion == 'success'"
         working-directory: _test_package
         run: dartanalyzer --fatal-infos .
-      - id: discoveryapis_common_pub_upgrade
-        name: "discoveryapis_common; pub upgrade --no-precompile"
+      - id: discoveryapis_commons_pub_upgrade
+        name: "discoveryapis_commons; pub upgrade --no-precompile"
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: discoveryapis_common
+        working-directory: discoveryapis_commons
         run: pub upgrade --no-precompile
-      - name: "discoveryapis_common; dartfmt -n --set-exit-if-changed ."
-        if: "always() && steps.discoveryapis_common_pub_upgrade.conclusion == 'success'"
-        working-directory: discoveryapis_common
+      - name: "discoveryapis_commons; dartfmt -n --set-exit-if-changed ."
+        if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
+        working-directory: discoveryapis_commons
         run: dartfmt -n --set-exit-if-changed .
-      - name: "discoveryapis_common; dartanalyzer --fatal-infos ."
-        if: "always() && steps.discoveryapis_common_pub_upgrade.conclusion == 'success'"
-        working-directory: discoveryapis_common
+      - name: "discoveryapis_commons; dartanalyzer --fatal-infos ."
+        if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
+        working-directory: discoveryapis_commons
         run: dartanalyzer --fatal-infos .
       - id: discoveryapis_generator_pub_upgrade
         name: "discoveryapis_generator; pub upgrade --no-precompile"
@@ -244,16 +244,16 @@ jobs:
         working-directory: generator
         run: dartanalyzer --fatal-infos .
   job_004:
-    name: "unittest; Dart dev; PKG: discoveryapis_common; `pub run test`"
+    name: "unittest; Dart dev; PKG: discoveryapis_commons; `pub run test`"
     runs-on: ubuntu-latest
     steps:
       - name: Cache Pub hosted dependencies
         uses: actions/cache@v2
         with:
           path: "~/.pub-cache/hosted"
-          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:discoveryapis_common;commands:test"
+          key: "os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:discoveryapis_commons;commands:test"
           restore-keys: |
-            os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:discoveryapis_common
+            os:ubuntu-latest;pub-cache-hosted;dart:dev;packages:discoveryapis_commons
             os:ubuntu-latest;pub-cache-hosted;dart:dev
             os:ubuntu-latest;pub-cache-hosted
             os:ubuntu-latest
@@ -262,14 +262,14 @@ jobs:
           sdk: dev
       - id: checkout
         uses: actions/checkout@v2
-      - id: discoveryapis_common_pub_upgrade
-        name: "discoveryapis_common; pub upgrade --no-precompile"
+      - id: discoveryapis_commons_pub_upgrade
+        name: "discoveryapis_commons; pub upgrade --no-precompile"
         if: "always() && steps.checkout.conclusion == 'success'"
-        working-directory: discoveryapis_common
+        working-directory: discoveryapis_commons
         run: pub upgrade --no-precompile
-      - name: discoveryapis_common; pub run test
-        if: "always() && steps.discoveryapis_common_pub_upgrade.conclusion == 'success'"
-        working-directory: discoveryapis_common
+      - name: discoveryapis_commons; pub run test
+        if: "always() && steps.discoveryapis_commons_pub_upgrade.conclusion == 'success'"
+        working-directory: discoveryapis_commons
         run: pub run test
     needs:
       - job_001
