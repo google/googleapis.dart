@@ -88,7 +88,7 @@ api.AttachTrustRequest buildAttachTrustRequest() {
 void checkAttachTrustRequest(api.AttachTrustRequest o) {
   buildCounterAttachTrustRequest++;
   if (buildCounterAttachTrustRequest < 3) {
-    checkTrust(o.trust);
+    checkTrust(o.trust as api.Trust);
   }
   buildCounterAttachTrustRequest--;
 }
@@ -124,7 +124,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed5745(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -160,7 +160,7 @@ api.DetachTrustRequest buildDetachTrustRequest() {
 void checkDetachTrustRequest(api.DetachTrustRequest o) {
   buildCounterDetachTrustRequest++;
   if (buildCounterDetachTrustRequest < 3) {
-    checkTrust(o.trust);
+    checkTrust(o.trust as api.Trust);
   }
   buildCounterDetachTrustRequest--;
 }
@@ -213,8 +213,8 @@ core.List<api.Trust> buildUnnamed5749() {
 
 void checkUnnamed5749(core.List<api.Trust> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrust(o[0]);
-  checkTrust(o[1]);
+  checkTrust(o[0] as api.Trust);
+  checkTrust(o[1] as api.Trust);
 }
 
 core.int buildCounterDomain = 0;
@@ -434,10 +434,12 @@ void checkUnnamed5752(
             api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['x']);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['y']);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['x']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['y']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
 }
 
 core.Map<core.String, core.String> buildUnnamed5753() {
@@ -470,8 +472,12 @@ void checkUnnamed5754(
             api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
 }
 
 core.Map<core.String, core.String> buildUnnamed5755() {
@@ -526,13 +532,15 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
     checkUnnamed5751(o.maintenancePolicyNames);
     checkUnnamed5752(o.maintenanceSchedules);
     checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-        o.maintenanceSettings);
+        o.maintenanceSettings as api
+            .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5753(o.producerMetadata);
     checkUnnamed5754(o.provisionedResources);
     unittest.expect(o.slmInstanceTemplate, unittest.equals('foo'));
     checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
-        o.sloMetadata);
+        o.sloMetadata
+            as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     checkUnnamed5755(o.softwareVersions);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.tenantProjectId, unittest.equals('foo'));
@@ -611,8 +619,10 @@ void checkUnnamed5756(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.int
@@ -741,8 +751,10 @@ void checkUnnamed5757(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
@@ -759,8 +771,10 @@ void checkUnnamed5758(
             api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
 }
 
 core.int
@@ -786,8 +800,9 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
   buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata++;
   if (buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata <
       3) {
-    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(
-        o.eligibility);
+    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(o
+            .eligibility
+        as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     checkUnnamed5757(o.exclusions);
     checkUnnamed5758(o.nodes);
     unittest.expect(o.tier, unittest.equals('foo'));
@@ -804,8 +819,8 @@ core.List<api.Domain> buildUnnamed5759() {
 
 void checkUnnamed5759(core.List<api.Domain> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDomain(o[0]);
-  checkDomain(o[1]);
+  checkDomain(o[0] as api.Domain);
+  checkDomain(o[1] as api.Domain);
 }
 
 core.List<core.String> buildUnnamed5760() {
@@ -853,8 +868,8 @@ core.List<api.Location> buildUnnamed5761() {
 
 void checkUnnamed5761(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -887,8 +902,8 @@ core.List<api.Operation> buildUnnamed5762() {
 
 void checkUnnamed5762(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -1058,7 +1073,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5765(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5766(o.response);
@@ -1106,8 +1121,8 @@ core.List<api.Binding> buildUnnamed5767() {
 
 void checkUnnamed5767(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1215,7 +1230,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -1415,7 +1430,7 @@ api.ValidateTrustRequest buildValidateTrustRequest() {
 void checkValidateTrustRequest(api.ValidateTrustRequest o) {
   buildCounterValidateTrustRequest++;
   if (buildCounterValidateTrustRequest < 3) {
-    checkTrust(o.trust);
+    checkTrust(o.trust as api.Trust);
   }
   buildCounterValidateTrustRequest--;
 }
@@ -1425,7 +1440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttachTrustRequest();
       var od = api.AttachTrustRequest.fromJson(o.toJson());
-      checkAttachTrustRequest(od);
+      checkAttachTrustRequest(od as api.AttachTrustRequest);
     });
   });
 
@@ -1433,7 +1448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1441,7 +1456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1449,7 +1464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDetachTrustRequest();
       var od = api.DetachTrustRequest.fromJson(o.toJson());
-      checkDetachTrustRequest(od);
+      checkDetachTrustRequest(od as api.DetachTrustRequest);
     });
   });
 
@@ -1457,7 +1472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
-      checkDomain(od);
+      checkDomain(od as api.Domain);
     });
   });
 
@@ -1465,7 +1480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1473,7 +1488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1482,7 +1497,8 @@ void main() {
       var o = buildGoogleCloudManagedidentitiesV1OpMetadata();
       var od =
           api.GoogleCloudManagedidentitiesV1OpMetadata.fromJson(o.toJson());
-      checkGoogleCloudManagedidentitiesV1OpMetadata(od);
+      checkGoogleCloudManagedidentitiesV1OpMetadata(
+          od as api.GoogleCloudManagedidentitiesV1OpMetadata);
     });
   });
 
@@ -1492,7 +1508,8 @@ void main() {
       var o = buildGoogleCloudManagedidentitiesV1alpha1OpMetadata();
       var od = api.GoogleCloudManagedidentitiesV1alpha1OpMetadata.fromJson(
           o.toJson());
-      checkGoogleCloudManagedidentitiesV1alpha1OpMetadata(od);
+      checkGoogleCloudManagedidentitiesV1alpha1OpMetadata(
+          od as api.GoogleCloudManagedidentitiesV1alpha1OpMetadata);
     });
   });
 
@@ -1502,7 +1519,8 @@ void main() {
       var o = buildGoogleCloudManagedidentitiesV1beta1OpMetadata();
       var od = api.GoogleCloudManagedidentitiesV1beta1OpMetadata.fromJson(
           o.toJson());
-      checkGoogleCloudManagedidentitiesV1beta1OpMetadata(od);
+      checkGoogleCloudManagedidentitiesV1beta1OpMetadata(
+          od as api.GoogleCloudManagedidentitiesV1beta1OpMetadata);
     });
   });
 
@@ -1513,7 +1531,8 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
               o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1Instance);
     });
   });
 
@@ -1526,8 +1545,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
     });
   });
 
@@ -1540,8 +1560,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     });
   });
 
@@ -1554,7 +1575,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
     });
   });
 
@@ -1567,8 +1590,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
     });
   });
 
@@ -1580,7 +1604,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     });
   });
 
@@ -1592,7 +1617,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
     });
   });
 
@@ -1603,7 +1629,8 @@ void main() {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     });
   });
 
@@ -1611,7 +1638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDomainsResponse();
       var od = api.ListDomainsResponse.fromJson(o.toJson());
-      checkListDomainsResponse(od);
+      checkListDomainsResponse(od as api.ListDomainsResponse);
     });
   });
 
@@ -1619,7 +1646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1627,7 +1654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1635,7 +1662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1643,7 +1670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1651,7 +1678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -1659,7 +1686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1667,7 +1694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReconfigureTrustRequest();
       var od = api.ReconfigureTrustRequest.fromJson(o.toJson());
-      checkReconfigureTrustRequest(od);
+      checkReconfigureTrustRequest(od as api.ReconfigureTrustRequest);
     });
   });
 
@@ -1675,7 +1702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResetAdminPasswordRequest();
       var od = api.ResetAdminPasswordRequest.fromJson(o.toJson());
-      checkResetAdminPasswordRequest(od);
+      checkResetAdminPasswordRequest(od as api.ResetAdminPasswordRequest);
     });
   });
 
@@ -1683,7 +1710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResetAdminPasswordResponse();
       var od = api.ResetAdminPasswordResponse.fromJson(o.toJson());
-      checkResetAdminPasswordResponse(od);
+      checkResetAdminPasswordResponse(od as api.ResetAdminPasswordResponse);
     });
   });
 
@@ -1691,7 +1718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1699,7 +1726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1707,7 +1734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1715,7 +1742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1723,7 +1750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrust();
       var od = api.Trust.fromJson(o.toJson());
-      checkTrust(od);
+      checkTrust(od as api.Trust);
     });
   });
 
@@ -1731,7 +1758,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValidateTrustRequest();
       var od = api.ValidateTrustRequest.fromJson(o.toJson());
-      checkValidateTrustRequest(od);
+      checkValidateTrustRequest(od as api.ValidateTrustRequest);
     });
   });
 
@@ -1780,7 +1807,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1844,7 +1871,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1858,8 +1885,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AttachTrustRequest.fromJson(json);
-        checkAttachTrustRequest(obj);
+        var obj = api.AttachTrustRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAttachTrustRequest(obj as api.AttachTrustRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1899,7 +1927,7 @@ void main() {
       res
           .attachTrust(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1912,8 +1940,9 @@ void main() {
       var arg_domainName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1956,7 +1985,7 @@ void main() {
           .create(arg_request, arg_parent,
               domainName: arg_domainName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2005,7 +2034,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2017,8 +2046,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DetachTrustRequest.fromJson(json);
-        checkDetachTrustRequest(obj);
+        var obj = api.DetachTrustRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDetachTrustRequest(obj as api.DetachTrustRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2058,7 +2088,7 @@ void main() {
       res
           .detachTrust(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2107,7 +2137,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
 
@@ -2163,7 +2193,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2228,7 +2258,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDomainsResponse(response);
+        checkListDomainsResponse(response as api.ListDomainsResponse);
       })));
     });
 
@@ -2241,8 +2271,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2285,7 +2316,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2297,8 +2328,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReconfigureTrustRequest.fromJson(json);
-        checkReconfigureTrustRequest(obj);
+        var obj = api.ReconfigureTrustRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReconfigureTrustRequest(obj as api.ReconfigureTrustRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2338,7 +2370,7 @@ void main() {
       res
           .reconfigureTrust(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2350,8 +2382,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ResetAdminPasswordRequest.fromJson(json);
-        checkResetAdminPasswordRequest(obj);
+        var obj = api.ResetAdminPasswordRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResetAdminPasswordRequest(obj as api.ResetAdminPasswordRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2391,7 +2424,8 @@ void main() {
       res
           .resetAdminPassword(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResetAdminPasswordResponse(response);
+        checkResetAdminPasswordResponse(
+            response as api.ResetAdminPasswordResponse);
       })));
     });
 
@@ -2403,8 +2437,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2444,7 +2479,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2456,8 +2491,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2497,7 +2533,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -2509,8 +2546,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ValidateTrustRequest.fromJson(json);
-        checkValidateTrustRequest(obj);
+        var obj = api.ValidateTrustRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkValidateTrustRequest(obj as api.ValidateTrustRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2550,7 +2588,7 @@ void main() {
       res
           .validateTrust(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2564,8 +2602,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2605,7 +2644,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2654,7 +2693,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2703,7 +2742,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2764,7 +2803,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

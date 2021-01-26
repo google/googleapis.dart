@@ -306,7 +306,10 @@ class ActivitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Activities.fromJson(data));
+    return _response.then(
+      (data) =>
+          Activities.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Start receiving notifications for account activities. For more
@@ -554,7 +557,9 @@ class ActivitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -608,7 +613,9 @@ class ChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -708,7 +715,10 @@ class CustomerUsageReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UsageReports.fromJson(data));
+    return _response.then(
+      (data) =>
+          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -864,7 +874,10 @@ class EntityUsageReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UsageReports.fromJson(data));
+    return _response.then(
+      (data) =>
+          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1016,7 +1029,10 @@ class UserUsageReportResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UsageReports.fromJson(data));
+    return _response.then(
+      (data) =>
+          UsageReports.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1044,7 +1060,8 @@ class Activities {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Activity>((value) => Activity.fromJson(value))
+          .map<Activity>((value) =>
+              Activity.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1138,7 +1155,8 @@ class ActivityEventsParametersMessageValue {
   ActivityEventsParametersMessageValue.fromJson(core.Map _json) {
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<NestedParameter>((value) => NestedParameter.fromJson(value))
+          .map<NestedParameter>((value) => NestedParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1161,7 +1179,8 @@ class ActivityEventsParametersMultiMessageValue {
   ActivityEventsParametersMultiMessageValue.fromJson(core.Map _json) {
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<NestedParameter>((value) => NestedParameter.fromJson(value))
+          .map<NestedParameter>((value) => NestedParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1213,8 +1232,8 @@ class ActivityEventsParameters {
       intValue = _json['intValue'] as core.String;
     }
     if (_json.containsKey('messageValue')) {
-      messageValue =
-          ActivityEventsParametersMessageValue.fromJson(_json['messageValue']);
+      messageValue = ActivityEventsParametersMessageValue.fromJson(
+          _json['messageValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('multiIntValue')) {
       multiIntValue = (_json['multiIntValue'] as core.List)
@@ -1224,7 +1243,8 @@ class ActivityEventsParameters {
     if (_json.containsKey('multiMessageValue')) {
       multiMessageValue = (_json['multiMessageValue'] as core.List)
           .map<ActivityEventsParametersMultiMessageValue>((value) =>
-              ActivityEventsParametersMultiMessageValue.fromJson(value))
+              ActivityEventsParametersMultiMessageValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('multiValue')) {
@@ -1303,8 +1323,9 @@ class ActivityEvents {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<ActivityEventsParameters>(
-              (value) => ActivityEventsParameters.fromJson(value))
+          .map<ActivityEventsParameters>((value) =>
+              ActivityEventsParameters.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -1410,18 +1431,21 @@ class Activity {
 
   Activity.fromJson(core.Map _json) {
     if (_json.containsKey('actor')) {
-      actor = ActivityActor.fromJson(_json['actor']);
+      actor = ActivityActor.fromJson(
+          _json['actor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
-          .map<ActivityEvents>((value) => ActivityEvents.fromJson(value))
+          .map<ActivityEvents>((value) => ActivityEvents.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
-      id = ActivityId.fromJson(_json['id']);
+      id = ActivityId.fromJson(
+          _json['id'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('ipAddress')) {
       ipAddress = _json['ipAddress'] as core.String;
@@ -1514,7 +1538,8 @@ class Channel {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.String, core.String>(
-          _json['params'].cast<core.String, core.String>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
@@ -1752,7 +1777,8 @@ class UsageReportParameters {
       msgValue = (_json['msgValue'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -1815,7 +1841,8 @@ class UsageReport {
       date = _json['date'] as core.String;
     }
     if (_json.containsKey('entity')) {
-      entity = UsageReportEntity.fromJson(_json['entity']);
+      entity = UsageReportEntity.fromJson(
+          _json['entity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -1825,8 +1852,8 @@ class UsageReport {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<UsageReportParameters>(
-              (value) => UsageReportParameters.fromJson(value))
+          .map<UsageReportParameters>((value) => UsageReportParameters.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1906,8 +1933,9 @@ class UsageReportsWarnings {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<UsageReportsWarningsData>(
-              (value) => UsageReportsWarningsData.fromJson(value))
+          .map<UsageReportsWarningsData>((value) =>
+              UsageReportsWarningsData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -1964,13 +1992,14 @@ class UsageReports {
     }
     if (_json.containsKey('usageReports')) {
       usageReports = (_json['usageReports'] as core.List)
-          .map<UsageReport>((value) => UsageReport.fromJson(value))
+          .map<UsageReport>((value) => UsageReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<UsageReportsWarnings>(
-              (value) => UsageReportsWarnings.fromJson(value))
+          .map<UsageReportsWarnings>((value) => UsageReportsWarnings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

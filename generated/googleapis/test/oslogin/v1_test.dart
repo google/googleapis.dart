@@ -105,7 +105,7 @@ void checkImportSshPublicKeyResponse(api.ImportSshPublicKeyResponse o) {
   buildCounterImportSshPublicKeyResponse++;
   if (buildCounterImportSshPublicKeyResponse < 3) {
     unittest.expect(o.details, unittest.equals('foo'));
-    checkLoginProfile(o.loginProfile);
+    checkLoginProfile(o.loginProfile as api.LoginProfile);
   }
   buildCounterImportSshPublicKeyResponse--;
 }
@@ -119,8 +119,8 @@ core.List<api.PosixAccount> buildUnnamed2735() {
 
 void checkUnnamed2735(core.List<api.PosixAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPosixAccount(o[0]);
-  checkPosixAccount(o[1]);
+  checkPosixAccount(o[0] as api.PosixAccount);
+  checkPosixAccount(o[1] as api.PosixAccount);
 }
 
 core.Map<core.String, api.SshPublicKey> buildUnnamed2736() {
@@ -132,8 +132,8 @@ core.Map<core.String, api.SshPublicKey> buildUnnamed2736() {
 
 void checkUnnamed2736(core.Map<core.String, api.SshPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSshPublicKey(o['x']);
-  checkSshPublicKey(o['y']);
+  checkSshPublicKey(o['x'] as api.SshPublicKey);
+  checkSshPublicKey(o['y'] as api.SshPublicKey);
 }
 
 core.int buildCounterLoginProfile = 0;
@@ -228,7 +228,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -236,7 +236,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportSshPublicKeyResponse();
       var od = api.ImportSshPublicKeyResponse.fromJson(o.toJson());
-      checkImportSshPublicKeyResponse(od);
+      checkImportSshPublicKeyResponse(od as api.ImportSshPublicKeyResponse);
     });
   });
 
@@ -244,7 +244,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLoginProfile();
       var od = api.LoginProfile.fromJson(o.toJson());
-      checkLoginProfile(od);
+      checkLoginProfile(od as api.LoginProfile);
     });
   });
 
@@ -252,7 +252,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPosixAccount();
       var od = api.PosixAccount.fromJson(o.toJson());
-      checkPosixAccount(od);
+      checkPosixAccount(od as api.PosixAccount);
     });
   });
 
@@ -260,7 +260,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSshPublicKey();
       var od = api.SshPublicKey.fromJson(o.toJson());
-      checkSshPublicKey(od);
+      checkSshPublicKey(od as api.SshPublicKey);
     });
   });
 
@@ -318,7 +318,7 @@ void main() {
               systemId: arg_systemId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLoginProfile(response);
+        checkLoginProfile(response as api.LoginProfile);
       })));
     });
 
@@ -330,8 +330,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SshPublicKey.fromJson(json);
-        checkSshPublicKey(obj);
+        var obj = api.SshPublicKey.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSshPublicKey(obj as api.SshPublicKey);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -374,7 +375,8 @@ void main() {
           .importSshPublicKey(arg_request, arg_parent,
               projectId: arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImportSshPublicKeyResponse(response);
+        checkImportSshPublicKeyResponse(
+            response as api.ImportSshPublicKeyResponse);
       })));
     });
   });
@@ -424,7 +426,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -474,7 +476,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -522,7 +524,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSshPublicKey(response);
+        checkSshPublicKey(response as api.SshPublicKey);
       })));
     });
 
@@ -534,8 +536,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SshPublicKey.fromJson(json);
-        checkSshPublicKey(obj);
+        var obj = api.SshPublicKey.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSshPublicKey(obj as api.SshPublicKey);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -578,7 +581,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSshPublicKey(response);
+        checkSshPublicKey(response as api.SshPublicKey);
       })));
     });
   });

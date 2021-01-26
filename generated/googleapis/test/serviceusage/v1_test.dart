@@ -125,8 +125,8 @@ core.List<api.Method> buildUnnamed167() {
 
 void checkUnnamed167(core.List<api.Method> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMethod(o[0]);
-  checkMethod(o[1]);
+  checkMethod(o[0] as api.Method);
+  checkMethod(o[1] as api.Method);
 }
 
 core.List<api.Mixin> buildUnnamed168() {
@@ -138,8 +138,8 @@ core.List<api.Mixin> buildUnnamed168() {
 
 void checkUnnamed168(core.List<api.Mixin> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMixin(o[0]);
-  checkMixin(o[1]);
+  checkMixin(o[0] as api.Mixin);
+  checkMixin(o[1] as api.Mixin);
 }
 
 core.List<api.Option> buildUnnamed169() {
@@ -151,8 +151,8 @@ core.List<api.Option> buildUnnamed169() {
 
 void checkUnnamed169(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterApi = 0;
@@ -179,7 +179,7 @@ void checkApi(api.Api o) {
     checkUnnamed168(o.mixins);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed169(o.options);
-    checkSourceContext(o.sourceContext);
+    checkSourceContext(o.sourceContext as api.SourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
   }
@@ -195,8 +195,8 @@ core.List<api.JwtLocation> buildUnnamed170() {
 
 void checkUnnamed170(core.List<api.JwtLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJwtLocation(o[0]);
-  checkJwtLocation(o[1]);
+  checkJwtLocation(o[0] as api.JwtLocation);
+  checkJwtLocation(o[1] as api.JwtLocation);
 }
 
 core.int buildCounterAuthProvider = 0;
@@ -258,8 +258,8 @@ core.List<api.AuthProvider> buildUnnamed171() {
 
 void checkUnnamed171(core.List<api.AuthProvider> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuthProvider(o[0]);
-  checkAuthProvider(o[1]);
+  checkAuthProvider(o[0] as api.AuthProvider);
+  checkAuthProvider(o[1] as api.AuthProvider);
 }
 
 core.List<api.AuthenticationRule> buildUnnamed172() {
@@ -271,8 +271,8 @@ core.List<api.AuthenticationRule> buildUnnamed172() {
 
 void checkUnnamed172(core.List<api.AuthenticationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuthenticationRule(o[0]);
-  checkAuthenticationRule(o[1]);
+  checkAuthenticationRule(o[0] as api.AuthenticationRule);
+  checkAuthenticationRule(o[1] as api.AuthenticationRule);
 }
 
 core.int buildCounterAuthentication = 0;
@@ -305,8 +305,8 @@ core.List<api.AuthRequirement> buildUnnamed173() {
 
 void checkUnnamed173(core.List<api.AuthRequirement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuthRequirement(o[0]);
-  checkAuthRequirement(o[1]);
+  checkAuthRequirement(o[0] as api.AuthRequirement);
+  checkAuthRequirement(o[1] as api.AuthRequirement);
 }
 
 core.int buildCounterAuthenticationRule = 0;
@@ -327,7 +327,7 @@ void checkAuthenticationRule(api.AuthenticationRule o) {
   buildCounterAuthenticationRule++;
   if (buildCounterAuthenticationRule < 3) {
     unittest.expect(o.allowWithoutCredential, unittest.isTrue);
-    checkOAuthRequirements(o.oauth);
+    checkOAuthRequirements(o.oauth as api.OAuthRequirements);
     checkUnnamed173(o.requirements);
     unittest.expect(o.selector, unittest.equals('foo'));
   }
@@ -343,8 +343,8 @@ core.List<api.BackendRule> buildUnnamed174() {
 
 void checkUnnamed174(core.List<api.BackendRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBackendRule(o[0]);
-  checkBackendRule(o[1]);
+  checkBackendRule(o[0] as api.BackendRule);
+  checkBackendRule(o[1] as api.BackendRule);
 }
 
 core.int buildCounterBackend = 0;
@@ -410,8 +410,8 @@ core.List<api.QuotaOverride> buildUnnamed175() {
 
 void checkUnnamed175(core.List<api.QuotaOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQuotaOverride(o[0]);
-  checkQuotaOverride(o[1]);
+  checkQuotaOverride(o[0] as api.QuotaOverride);
+  checkQuotaOverride(o[1] as api.QuotaOverride);
 }
 
 core.int buildCounterBatchCreateAdminOverridesResponse = 0;
@@ -443,8 +443,8 @@ core.List<api.QuotaOverride> buildUnnamed176() {
 
 void checkUnnamed176(core.List<api.QuotaOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQuotaOverride(o[0]);
-  checkQuotaOverride(o[1]);
+  checkQuotaOverride(o[0] as api.QuotaOverride);
+  checkQuotaOverride(o[1] as api.QuotaOverride);
 }
 
 core.int buildCounterBatchCreateConsumerOverridesResponse = 0;
@@ -509,8 +509,8 @@ core.List<api.EnableFailure> buildUnnamed178() {
 
 void checkUnnamed178(core.List<api.EnableFailure> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnableFailure(o[0]);
-  checkEnableFailure(o[1]);
+  checkEnableFailure(o[0] as api.EnableFailure);
+  checkEnableFailure(o[1] as api.EnableFailure);
 }
 
 core.List<api.GoogleApiServiceusageV1Service> buildUnnamed179() {
@@ -522,8 +522,10 @@ core.List<api.GoogleApiServiceusageV1Service> buildUnnamed179() {
 
 void checkUnnamed179(core.List<api.GoogleApiServiceusageV1Service> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleApiServiceusageV1Service(o[0]);
-  checkGoogleApiServiceusageV1Service(o[1]);
+  checkGoogleApiServiceusageV1Service(
+      o[0] as api.GoogleApiServiceusageV1Service);
+  checkGoogleApiServiceusageV1Service(
+      o[1] as api.GoogleApiServiceusageV1Service);
 }
 
 core.int buildCounterBatchEnableServicesResponse = 0;
@@ -556,8 +558,10 @@ core.List<api.GoogleApiServiceusageV1Service> buildUnnamed180() {
 
 void checkUnnamed180(core.List<api.GoogleApiServiceusageV1Service> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleApiServiceusageV1Service(o[0]);
-  checkGoogleApiServiceusageV1Service(o[1]);
+  checkGoogleApiServiceusageV1Service(
+      o[0] as api.GoogleApiServiceusageV1Service);
+  checkGoogleApiServiceusageV1Service(
+      o[1] as api.GoogleApiServiceusageV1Service);
 }
 
 core.int buildCounterBatchGetServicesResponse = 0;
@@ -588,8 +592,8 @@ core.List<api.BillingDestination> buildUnnamed181() {
 
 void checkUnnamed181(core.List<api.BillingDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBillingDestination(o[0]);
-  checkBillingDestination(o[1]);
+  checkBillingDestination(o[0] as api.BillingDestination);
+  checkBillingDestination(o[1] as api.BillingDestination);
 }
 
 core.int buildCounterBilling = 0;
@@ -669,8 +673,8 @@ core.List<api.ContextRule> buildUnnamed183() {
 
 void checkUnnamed183(core.List<api.ContextRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContextRule(o[0]);
-  checkContextRule(o[1]);
+  checkContextRule(o[0] as api.ContextRule);
+  checkContextRule(o[1] as api.ContextRule);
 }
 
 core.int buildCounterContext = 0;
@@ -799,8 +803,8 @@ core.List<api.CustomErrorRule> buildUnnamed188() {
 
 void checkUnnamed188(core.List<api.CustomErrorRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomErrorRule(o[0]);
-  checkCustomErrorRule(o[1]);
+  checkCustomErrorRule(o[0] as api.CustomErrorRule);
+  checkCustomErrorRule(o[1] as api.CustomErrorRule);
 }
 
 core.List<core.String> buildUnnamed189() {
@@ -914,7 +918,8 @@ api.DisableServiceResponse buildDisableServiceResponse() {
 void checkDisableServiceResponse(api.DisableServiceResponse o) {
   buildCounterDisableServiceResponse++;
   if (buildCounterDisableServiceResponse < 3) {
-    checkGoogleApiServiceusageV1Service(o.service);
+    checkGoogleApiServiceusageV1Service(
+        o.service as api.GoogleApiServiceusageV1Service);
   }
   buildCounterDisableServiceResponse--;
 }
@@ -928,8 +933,8 @@ core.List<api.Page> buildUnnamed190() {
 
 void checkUnnamed190(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.List<api.DocumentationRule> buildUnnamed191() {
@@ -941,8 +946,8 @@ core.List<api.DocumentationRule> buildUnnamed191() {
 
 void checkUnnamed191(core.List<api.DocumentationRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDocumentationRule(o[0]);
-  checkDocumentationRule(o[1]);
+  checkDocumentationRule(o[0] as api.DocumentationRule);
+  checkDocumentationRule(o[1] as api.DocumentationRule);
 }
 
 core.int buildCounterDocumentation = 0;
@@ -1062,7 +1067,8 @@ api.EnableServiceResponse buildEnableServiceResponse() {
 void checkEnableServiceResponse(api.EnableServiceResponse o) {
   buildCounterEnableServiceResponse++;
   if (buildCounterEnableServiceResponse < 3) {
-    checkGoogleApiServiceusageV1Service(o.service);
+    checkGoogleApiServiceusageV1Service(
+        o.service as api.GoogleApiServiceusageV1Service);
   }
   buildCounterEnableServiceResponse--;
 }
@@ -1114,8 +1120,8 @@ core.List<api.EnumValue> buildUnnamed193() {
 
 void checkUnnamed193(core.List<api.EnumValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnumValue(o[0]);
-  checkEnumValue(o[1]);
+  checkEnumValue(o[0] as api.EnumValue);
+  checkEnumValue(o[1] as api.EnumValue);
 }
 
 core.List<api.Option> buildUnnamed194() {
@@ -1127,8 +1133,8 @@ core.List<api.Option> buildUnnamed194() {
 
 void checkUnnamed194(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterEnum = 0;
@@ -1152,7 +1158,7 @@ void checkEnum(api.Enum o) {
     checkUnnamed193(o.enumvalue);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed194(o.options);
-    checkSourceContext(o.sourceContext);
+    checkSourceContext(o.sourceContext as api.SourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
   }
   buildCounterEnum--;
@@ -1167,8 +1173,8 @@ core.List<api.Option> buildUnnamed195() {
 
 void checkUnnamed195(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterEnumValue = 0;
@@ -1203,8 +1209,8 @@ core.List<api.Option> buildUnnamed196() {
 
 void checkUnnamed196(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterField = 0;
@@ -1259,7 +1265,7 @@ api.GetServiceIdentityResponse buildGetServiceIdentityResponse() {
 void checkGetServiceIdentityResponse(api.GetServiceIdentityResponse o) {
   buildCounterGetServiceIdentityResponse++;
   if (buildCounterGetServiceIdentityResponse < 3) {
-    checkServiceIdentity(o.identity);
+    checkServiceIdentity(o.identity as api.ServiceIdentity);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterGetServiceIdentityResponse--;
@@ -1274,8 +1280,8 @@ core.List<api.Api> buildUnnamed197() {
 
 void checkUnnamed197(core.List<api.Api> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApi(o[0]);
-  checkApi(o[1]);
+  checkApi(o[0] as api.Api);
+  checkApi(o[1] as api.Api);
 }
 
 core.List<api.Endpoint> buildUnnamed198() {
@@ -1287,8 +1293,8 @@ core.List<api.Endpoint> buildUnnamed198() {
 
 void checkUnnamed198(core.List<api.Endpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEndpoint(o[0]);
-  checkEndpoint(o[1]);
+  checkEndpoint(o[0] as api.Endpoint);
+  checkEndpoint(o[1] as api.Endpoint);
 }
 
 core.List<api.Enum> buildUnnamed199() {
@@ -1300,8 +1306,8 @@ core.List<api.Enum> buildUnnamed199() {
 
 void checkUnnamed199(core.List<api.Enum> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnum(o[0]);
-  checkEnum(o[1]);
+  checkEnum(o[0] as api.Enum);
+  checkEnum(o[1] as api.Enum);
 }
 
 core.List<api.LogDescriptor> buildUnnamed200() {
@@ -1313,8 +1319,8 @@ core.List<api.LogDescriptor> buildUnnamed200() {
 
 void checkUnnamed200(core.List<api.LogDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogDescriptor(o[0]);
-  checkLogDescriptor(o[1]);
+  checkLogDescriptor(o[0] as api.LogDescriptor);
+  checkLogDescriptor(o[1] as api.LogDescriptor);
 }
 
 core.List<api.MetricDescriptor> buildUnnamed201() {
@@ -1326,8 +1332,8 @@ core.List<api.MetricDescriptor> buildUnnamed201() {
 
 void checkUnnamed201(core.List<api.MetricDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricDescriptor(o[0]);
-  checkMetricDescriptor(o[1]);
+  checkMetricDescriptor(o[0] as api.MetricDescriptor);
+  checkMetricDescriptor(o[1] as api.MetricDescriptor);
 }
 
 core.List<api.MonitoredResourceDescriptor> buildUnnamed202() {
@@ -1339,8 +1345,8 @@ core.List<api.MonitoredResourceDescriptor> buildUnnamed202() {
 
 void checkUnnamed202(core.List<api.MonitoredResourceDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMonitoredResourceDescriptor(o[0]);
-  checkMonitoredResourceDescriptor(o[1]);
+  checkMonitoredResourceDescriptor(o[0] as api.MonitoredResourceDescriptor);
+  checkMonitoredResourceDescriptor(o[1] as api.MonitoredResourceDescriptor);
 }
 
 core.List<api.Type> buildUnnamed203() {
@@ -1352,8 +1358,8 @@ core.List<api.Type> buildUnnamed203() {
 
 void checkUnnamed203(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkType(o[0]);
-  checkType(o[1]);
+  checkType(o[0] as api.Type);
+  checkType(o[1] as api.Type);
 }
 
 core.List<api.Type> buildUnnamed204() {
@@ -1365,8 +1371,8 @@ core.List<api.Type> buildUnnamed204() {
 
 void checkUnnamed204(core.List<api.Type> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkType(o[0]);
-  checkType(o[1]);
+  checkType(o[0] as api.Type);
+  checkType(o[1] as api.Type);
 }
 
 core.int buildCounterGoogleApiService = 0;
@@ -1410,32 +1416,32 @@ void checkGoogleApiService(api.GoogleApiService o) {
   buildCounterGoogleApiService++;
   if (buildCounterGoogleApiService < 3) {
     checkUnnamed197(o.apis);
-    checkAuthentication(o.authentication);
-    checkBackend(o.backend);
-    checkBilling(o.billing);
+    checkAuthentication(o.authentication as api.Authentication);
+    checkBackend(o.backend as api.Backend);
+    checkBilling(o.billing as api.Billing);
     unittest.expect(o.configVersion, unittest.equals(42));
-    checkContext(o.context);
-    checkControl(o.control);
-    checkCustomError(o.customError);
-    checkDocumentation(o.documentation);
+    checkContext(o.context as api.Context);
+    checkControl(o.control as api.Control);
+    checkCustomError(o.customError as api.CustomError);
+    checkDocumentation(o.documentation as api.Documentation);
     checkUnnamed198(o.endpoints);
     checkUnnamed199(o.enums);
-    checkHttp(o.http);
+    checkHttp(o.http as api.Http);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkLogging(o.logging);
+    checkLogging(o.logging as api.Logging);
     checkUnnamed200(o.logs);
     checkUnnamed201(o.metrics);
     checkUnnamed202(o.monitoredResources);
-    checkMonitoring(o.monitoring);
+    checkMonitoring(o.monitoring as api.Monitoring);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.producerProjectId, unittest.equals('foo'));
-    checkQuota(o.quota);
-    checkSourceInfo(o.sourceInfo);
-    checkSystemParameters(o.systemParameters);
+    checkQuota(o.quota as api.Quota);
+    checkSourceInfo(o.sourceInfo as api.SourceInfo);
+    checkSystemParameters(o.systemParameters as api.SystemParameters);
     checkUnnamed203(o.systemTypes);
     unittest.expect(o.title, unittest.equals('foo'));
     checkUnnamed204(o.types);
-    checkUsage(o.usage);
+    checkUsage(o.usage as api.Usage);
   }
   buildCounterGoogleApiService--;
 }
@@ -1514,7 +1520,8 @@ api.GoogleApiServiceusageV1Service buildGoogleApiServiceusageV1Service() {
 void checkGoogleApiServiceusageV1Service(api.GoogleApiServiceusageV1Service o) {
   buildCounterGoogleApiServiceusageV1Service++;
   if (buildCounterGoogleApiServiceusageV1Service < 3) {
-    checkGoogleApiServiceusageV1ServiceConfig(o.config);
+    checkGoogleApiServiceusageV1ServiceConfig(
+        o.config as api.GoogleApiServiceusageV1ServiceConfig);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -1531,8 +1538,8 @@ core.List<api.Api> buildUnnamed206() {
 
 void checkUnnamed206(core.List<api.Api> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApi(o[0]);
-  checkApi(o[1]);
+  checkApi(o[0] as api.Api);
+  checkApi(o[1] as api.Api);
 }
 
 core.List<api.Endpoint> buildUnnamed207() {
@@ -1544,8 +1551,8 @@ core.List<api.Endpoint> buildUnnamed207() {
 
 void checkUnnamed207(core.List<api.Endpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEndpoint(o[0]);
-  checkEndpoint(o[1]);
+  checkEndpoint(o[0] as api.Endpoint);
+  checkEndpoint(o[1] as api.Endpoint);
 }
 
 core.List<api.MonitoredResourceDescriptor> buildUnnamed208() {
@@ -1557,8 +1564,8 @@ core.List<api.MonitoredResourceDescriptor> buildUnnamed208() {
 
 void checkUnnamed208(core.List<api.MonitoredResourceDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMonitoredResourceDescriptor(o[0]);
-  checkMonitoredResourceDescriptor(o[1]);
+  checkMonitoredResourceDescriptor(o[0] as api.MonitoredResourceDescriptor);
+  checkMonitoredResourceDescriptor(o[1] as api.MonitoredResourceDescriptor);
 }
 
 core.int buildCounterGoogleApiServiceusageV1ServiceConfig = 0;
@@ -1587,15 +1594,15 @@ void checkGoogleApiServiceusageV1ServiceConfig(
   buildCounterGoogleApiServiceusageV1ServiceConfig++;
   if (buildCounterGoogleApiServiceusageV1ServiceConfig < 3) {
     checkUnnamed206(o.apis);
-    checkAuthentication(o.authentication);
-    checkDocumentation(o.documentation);
+    checkAuthentication(o.authentication as api.Authentication);
+    checkDocumentation(o.documentation as api.Documentation);
     checkUnnamed207(o.endpoints);
     checkUnnamed208(o.monitoredResources);
-    checkMonitoring(o.monitoring);
+    checkMonitoring(o.monitoring as api.Monitoring);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkQuota(o.quota);
+    checkQuota(o.quota as api.Quota);
     unittest.expect(o.title, unittest.equals('foo'));
-    checkUsage(o.usage);
+    checkUsage(o.usage as api.Usage);
   }
   buildCounterGoogleApiServiceusageV1ServiceConfig--;
 }
@@ -1617,7 +1624,8 @@ void checkGoogleApiServiceusageV1beta1GetServiceIdentityResponse(
     api.GoogleApiServiceusageV1beta1GetServiceIdentityResponse o) {
   buildCounterGoogleApiServiceusageV1beta1GetServiceIdentityResponse++;
   if (buildCounterGoogleApiServiceusageV1beta1GetServiceIdentityResponse < 3) {
-    checkGoogleApiServiceusageV1beta1ServiceIdentity(o.identity);
+    checkGoogleApiServiceusageV1beta1ServiceIdentity(
+        o.identity as api.GoogleApiServiceusageV1beta1ServiceIdentity);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterGoogleApiServiceusageV1beta1GetServiceIdentityResponse--;
@@ -1655,8 +1663,8 @@ core.List<api.HttpRule> buildUnnamed209() {
 
 void checkUnnamed209(core.List<api.HttpRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHttpRule(o[0]);
-  checkHttpRule(o[1]);
+  checkHttpRule(o[0] as api.HttpRule);
+  checkHttpRule(o[1] as api.HttpRule);
 }
 
 core.int buildCounterHttp = 0;
@@ -1689,8 +1697,8 @@ core.List<api.HttpRule> buildUnnamed210() {
 
 void checkUnnamed210(core.List<api.HttpRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHttpRule(o[0]);
-  checkHttpRule(o[1]);
+  checkHttpRule(o[0] as api.HttpRule);
+  checkHttpRule(o[1] as api.HttpRule);
 }
 
 core.int buildCounterHttpRule = 0;
@@ -1720,7 +1728,7 @@ void checkHttpRule(api.HttpRule o) {
     checkUnnamed210(o.additionalBindings);
     unittest.expect(o.allowHalfDuplex, unittest.isTrue);
     unittest.expect(o.body, unittest.equals('foo'));
-    checkCustomHttpPattern(o.custom);
+    checkCustomHttpPattern(o.custom as api.CustomHttpPattern);
     unittest.expect(o.delete, unittest.equals('foo'));
     unittest.expect(o.get, unittest.equals('foo'));
     unittest.expect(o.patch, unittest.equals('foo'));
@@ -1741,8 +1749,8 @@ core.List<api.QuotaOverride> buildUnnamed211() {
 
 void checkUnnamed211(core.List<api.QuotaOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQuotaOverride(o[0]);
-  checkQuotaOverride(o[1]);
+  checkQuotaOverride(o[0] as api.QuotaOverride);
+  checkQuotaOverride(o[1] as api.QuotaOverride);
 }
 
 core.int buildCounterImportAdminOverridesResponse = 0;
@@ -1773,8 +1781,8 @@ core.List<api.AdminQuotaPolicy> buildUnnamed212() {
 
 void checkUnnamed212(core.List<api.AdminQuotaPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdminQuotaPolicy(o[0]);
-  checkAdminQuotaPolicy(o[1]);
+  checkAdminQuotaPolicy(o[0] as api.AdminQuotaPolicy);
+  checkAdminQuotaPolicy(o[1] as api.AdminQuotaPolicy);
 }
 
 core.int buildCounterImportAdminQuotaPoliciesResponse = 0;
@@ -1806,8 +1814,8 @@ core.List<api.QuotaOverride> buildUnnamed213() {
 
 void checkUnnamed213(core.List<api.QuotaOverride> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQuotaOverride(o[0]);
-  checkQuotaOverride(o[1]);
+  checkQuotaOverride(o[0] as api.QuotaOverride);
+  checkQuotaOverride(o[1] as api.QuotaOverride);
 }
 
 core.int buildCounterImportConsumerOverridesResponse = 0;
@@ -1885,8 +1893,8 @@ core.List<api.Operation> buildUnnamed214() {
 
 void checkUnnamed214(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -1919,8 +1927,10 @@ core.List<api.GoogleApiServiceusageV1Service> buildUnnamed215() {
 
 void checkUnnamed215(core.List<api.GoogleApiServiceusageV1Service> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleApiServiceusageV1Service(o[0]);
-  checkGoogleApiServiceusageV1Service(o[1]);
+  checkGoogleApiServiceusageV1Service(
+      o[0] as api.GoogleApiServiceusageV1Service);
+  checkGoogleApiServiceusageV1Service(
+      o[1] as api.GoogleApiServiceusageV1Service);
 }
 
 core.int buildCounterListServicesResponse = 0;
@@ -1953,8 +1963,8 @@ core.List<api.LabelDescriptor> buildUnnamed216() {
 
 void checkUnnamed216(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabelDescriptor(o[0]);
-  checkLabelDescriptor(o[1]);
+  checkLabelDescriptor(o[0] as api.LabelDescriptor);
+  checkLabelDescriptor(o[1] as api.LabelDescriptor);
 }
 
 core.int buildCounterLogDescriptor = 0;
@@ -1991,8 +2001,8 @@ core.List<api.LoggingDestination> buildUnnamed217() {
 
 void checkUnnamed217(core.List<api.LoggingDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLoggingDestination(o[0]);
-  checkLoggingDestination(o[1]);
+  checkLoggingDestination(o[0] as api.LoggingDestination);
+  checkLoggingDestination(o[1] as api.LoggingDestination);
 }
 
 core.List<api.LoggingDestination> buildUnnamed218() {
@@ -2004,8 +2014,8 @@ core.List<api.LoggingDestination> buildUnnamed218() {
 
 void checkUnnamed218(core.List<api.LoggingDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLoggingDestination(o[0]);
-  checkLoggingDestination(o[1]);
+  checkLoggingDestination(o[0] as api.LoggingDestination);
+  checkLoggingDestination(o[1] as api.LoggingDestination);
 }
 
 core.int buildCounterLogging = 0;
@@ -2072,8 +2082,8 @@ core.List<api.Option> buildUnnamed220() {
 
 void checkUnnamed220(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterMethod = 0;
@@ -2116,8 +2126,8 @@ core.List<api.LabelDescriptor> buildUnnamed221() {
 
 void checkUnnamed221(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabelDescriptor(o[0]);
-  checkLabelDescriptor(o[1]);
+  checkLabelDescriptor(o[0] as api.LabelDescriptor);
+  checkLabelDescriptor(o[1] as api.LabelDescriptor);
 }
 
 core.List<core.String> buildUnnamed222() {
@@ -2161,7 +2171,7 @@ void checkMetricDescriptor(api.MetricDescriptor o) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkUnnamed221(o.labels);
     unittest.expect(o.launchStage, unittest.equals('foo'));
-    checkMetricDescriptorMetadata(o.metadata);
+    checkMetricDescriptorMetadata(o.metadata as api.MetricDescriptorMetadata);
     unittest.expect(o.metricKind, unittest.equals('foo'));
     checkUnnamed222(o.monitoredResourceTypes);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -2259,8 +2269,8 @@ core.List<api.LabelDescriptor> buildUnnamed224() {
 
 void checkUnnamed224(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabelDescriptor(o[0]);
-  checkLabelDescriptor(o[1]);
+  checkLabelDescriptor(o[0] as api.LabelDescriptor);
+  checkLabelDescriptor(o[1] as api.LabelDescriptor);
 }
 
 core.int buildCounterMonitoredResourceDescriptor = 0;
@@ -2301,8 +2311,8 @@ core.List<api.MonitoringDestination> buildUnnamed225() {
 
 void checkUnnamed225(core.List<api.MonitoringDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMonitoringDestination(o[0]);
-  checkMonitoringDestination(o[1]);
+  checkMonitoringDestination(o[0] as api.MonitoringDestination);
+  checkMonitoringDestination(o[1] as api.MonitoringDestination);
 }
 
 core.List<api.MonitoringDestination> buildUnnamed226() {
@@ -2314,8 +2324,8 @@ core.List<api.MonitoringDestination> buildUnnamed226() {
 
 void checkUnnamed226(core.List<api.MonitoringDestination> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMonitoringDestination(o[0]);
-  checkMonitoringDestination(o[1]);
+  checkMonitoringDestination(o[0] as api.MonitoringDestination);
+  checkMonitoringDestination(o[1] as api.MonitoringDestination);
 }
 
 core.int buildCounterMonitoring = 0;
@@ -2469,7 +2479,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed228(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed229(o.response);
@@ -2568,8 +2578,8 @@ core.List<api.Page> buildUnnamed232() {
 
 void checkUnnamed232(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.int buildCounterPage = 0;
@@ -2604,8 +2614,8 @@ core.List<api.QuotaLimit> buildUnnamed233() {
 
 void checkUnnamed233(core.List<api.QuotaLimit> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQuotaLimit(o[0]);
-  checkQuotaLimit(o[1]);
+  checkQuotaLimit(o[0] as api.QuotaLimit);
+  checkQuotaLimit(o[1] as api.QuotaLimit);
 }
 
 core.List<api.MetricRule> buildUnnamed234() {
@@ -2617,8 +2627,8 @@ core.List<api.MetricRule> buildUnnamed234() {
 
 void checkUnnamed234(core.List<api.MetricRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricRule(o[0]);
-  checkMetricRule(o[1]);
+  checkMetricRule(o[0] as api.MetricRule);
+  checkMetricRule(o[1] as api.MetricRule);
 }
 
 core.int buildCounterQuota = 0;
@@ -2932,8 +2942,8 @@ core.List<api.SystemParameter> buildUnnamed241() {
 
 void checkUnnamed241(core.List<api.SystemParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSystemParameter(o[0]);
-  checkSystemParameter(o[1]);
+  checkSystemParameter(o[0] as api.SystemParameter);
+  checkSystemParameter(o[1] as api.SystemParameter);
 }
 
 core.int buildCounterSystemParameterRule = 0;
@@ -2966,8 +2976,8 @@ core.List<api.SystemParameterRule> buildUnnamed242() {
 
 void checkUnnamed242(core.List<api.SystemParameterRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSystemParameterRule(o[0]);
-  checkSystemParameterRule(o[1]);
+  checkSystemParameterRule(o[0] as api.SystemParameterRule);
+  checkSystemParameterRule(o[1] as api.SystemParameterRule);
 }
 
 core.int buildCounterSystemParameters = 0;
@@ -2998,8 +3008,8 @@ core.List<api.Field> buildUnnamed243() {
 
 void checkUnnamed243(core.List<api.Field> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkField(o[0]);
-  checkField(o[1]);
+  checkField(o[0] as api.Field);
+  checkField(o[1] as api.Field);
 }
 
 core.List<core.String> buildUnnamed244() {
@@ -3024,8 +3034,8 @@ core.List<api.Option> buildUnnamed245() {
 
 void checkUnnamed245(core.List<api.Option> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOption(o[0]);
-  checkOption(o[1]);
+  checkOption(o[0] as api.Option);
+  checkOption(o[1] as api.Option);
 }
 
 core.int buildCounterType = 0;
@@ -3051,7 +3061,7 @@ void checkType(api.Type o) {
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed244(o.oneofs);
     checkUnnamed245(o.options);
-    checkSourceContext(o.sourceContext);
+    checkSourceContext(o.sourceContext as api.SourceContext);
     unittest.expect(o.syntax, unittest.equals('foo'));
   }
   buildCounterType--;
@@ -3079,8 +3089,8 @@ core.List<api.UsageRule> buildUnnamed247() {
 
 void checkUnnamed247(core.List<api.UsageRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsageRule(o[0]);
-  checkUsageRule(o[1]);
+  checkUsageRule(o[0] as api.UsageRule);
+  checkUsageRule(o[1] as api.UsageRule);
 }
 
 core.int buildCounterUsage = 0;
@@ -3103,7 +3113,8 @@ void checkUsage(api.Usage o) {
     unittest.expect(o.producerNotificationChannel, unittest.equals('foo'));
     checkUnnamed246(o.requirements);
     checkUnnamed247(o.rules);
-    checkGoogleApiServiceIdentity(o.serviceIdentity);
+    checkGoogleApiServiceIdentity(
+        o.serviceIdentity as api.GoogleApiServiceIdentity);
   }
   buildCounterUsage--;
 }
@@ -3149,7 +3160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdminQuotaPolicy();
       var od = api.AdminQuotaPolicy.fromJson(o.toJson());
-      checkAdminQuotaPolicy(od);
+      checkAdminQuotaPolicy(od as api.AdminQuotaPolicy);
     });
   });
 
@@ -3157,7 +3168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApi();
       var od = api.Api.fromJson(o.toJson());
-      checkApi(od);
+      checkApi(od as api.Api);
     });
   });
 
@@ -3165,7 +3176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthProvider();
       var od = api.AuthProvider.fromJson(o.toJson());
-      checkAuthProvider(od);
+      checkAuthProvider(od as api.AuthProvider);
     });
   });
 
@@ -3173,7 +3184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthRequirement();
       var od = api.AuthRequirement.fromJson(o.toJson());
-      checkAuthRequirement(od);
+      checkAuthRequirement(od as api.AuthRequirement);
     });
   });
 
@@ -3181,7 +3192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthentication();
       var od = api.Authentication.fromJson(o.toJson());
-      checkAuthentication(od);
+      checkAuthentication(od as api.Authentication);
     });
   });
 
@@ -3189,7 +3200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthenticationRule();
       var od = api.AuthenticationRule.fromJson(o.toJson());
-      checkAuthenticationRule(od);
+      checkAuthenticationRule(od as api.AuthenticationRule);
     });
   });
 
@@ -3197,7 +3208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBackend();
       var od = api.Backend.fromJson(o.toJson());
-      checkBackend(od);
+      checkBackend(od as api.Backend);
     });
   });
 
@@ -3205,7 +3216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBackendRule();
       var od = api.BackendRule.fromJson(o.toJson());
-      checkBackendRule(od);
+      checkBackendRule(od as api.BackendRule);
     });
   });
 
@@ -3213,7 +3224,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchCreateAdminOverridesResponse();
       var od = api.BatchCreateAdminOverridesResponse.fromJson(o.toJson());
-      checkBatchCreateAdminOverridesResponse(od);
+      checkBatchCreateAdminOverridesResponse(
+          od as api.BatchCreateAdminOverridesResponse);
     });
   });
 
@@ -3221,7 +3233,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchCreateConsumerOverridesResponse();
       var od = api.BatchCreateConsumerOverridesResponse.fromJson(o.toJson());
-      checkBatchCreateConsumerOverridesResponse(od);
+      checkBatchCreateConsumerOverridesResponse(
+          od as api.BatchCreateConsumerOverridesResponse);
     });
   });
 
@@ -3229,7 +3242,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchEnableServicesRequest();
       var od = api.BatchEnableServicesRequest.fromJson(o.toJson());
-      checkBatchEnableServicesRequest(od);
+      checkBatchEnableServicesRequest(od as api.BatchEnableServicesRequest);
     });
   });
 
@@ -3237,7 +3250,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchEnableServicesResponse();
       var od = api.BatchEnableServicesResponse.fromJson(o.toJson());
-      checkBatchEnableServicesResponse(od);
+      checkBatchEnableServicesResponse(od as api.BatchEnableServicesResponse);
     });
   });
 
@@ -3245,7 +3258,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetServicesResponse();
       var od = api.BatchGetServicesResponse.fromJson(o.toJson());
-      checkBatchGetServicesResponse(od);
+      checkBatchGetServicesResponse(od as api.BatchGetServicesResponse);
     });
   });
 
@@ -3253,7 +3266,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBilling();
       var od = api.Billing.fromJson(o.toJson());
-      checkBilling(od);
+      checkBilling(od as api.Billing);
     });
   });
 
@@ -3261,7 +3274,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBillingDestination();
       var od = api.BillingDestination.fromJson(o.toJson());
-      checkBillingDestination(od);
+      checkBillingDestination(od as api.BillingDestination);
     });
   });
 
@@ -3269,7 +3282,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -3277,7 +3290,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContext();
       var od = api.Context.fromJson(o.toJson());
-      checkContext(od);
+      checkContext(od as api.Context);
     });
   });
 
@@ -3285,7 +3298,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContextRule();
       var od = api.ContextRule.fromJson(o.toJson());
-      checkContextRule(od);
+      checkContextRule(od as api.ContextRule);
     });
   });
 
@@ -3293,7 +3306,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildControl();
       var od = api.Control.fromJson(o.toJson());
-      checkControl(od);
+      checkControl(od as api.Control);
     });
   });
 
@@ -3301,7 +3314,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomError();
       var od = api.CustomError.fromJson(o.toJson());
-      checkCustomError(od);
+      checkCustomError(od as api.CustomError);
     });
   });
 
@@ -3309,7 +3322,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomErrorRule();
       var od = api.CustomErrorRule.fromJson(o.toJson());
-      checkCustomErrorRule(od);
+      checkCustomErrorRule(od as api.CustomErrorRule);
     });
   });
 
@@ -3317,7 +3330,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomHttpPattern();
       var od = api.CustomHttpPattern.fromJson(o.toJson());
-      checkCustomHttpPattern(od);
+      checkCustomHttpPattern(od as api.CustomHttpPattern);
     });
   });
 
@@ -3325,7 +3338,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDisableServiceRequest();
       var od = api.DisableServiceRequest.fromJson(o.toJson());
-      checkDisableServiceRequest(od);
+      checkDisableServiceRequest(od as api.DisableServiceRequest);
     });
   });
 
@@ -3333,7 +3346,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDisableServiceResponse();
       var od = api.DisableServiceResponse.fromJson(o.toJson());
-      checkDisableServiceResponse(od);
+      checkDisableServiceResponse(od as api.DisableServiceResponse);
     });
   });
 
@@ -3341,7 +3354,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentation();
       var od = api.Documentation.fromJson(o.toJson());
-      checkDocumentation(od);
+      checkDocumentation(od as api.Documentation);
     });
   });
 
@@ -3349,7 +3362,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentationRule();
       var od = api.DocumentationRule.fromJson(o.toJson());
-      checkDocumentationRule(od);
+      checkDocumentationRule(od as api.DocumentationRule);
     });
   });
 
@@ -3357,7 +3370,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -3365,7 +3378,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnableFailure();
       var od = api.EnableFailure.fromJson(o.toJson());
-      checkEnableFailure(od);
+      checkEnableFailure(od as api.EnableFailure);
     });
   });
 
@@ -3373,7 +3386,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnableServiceRequest();
       var od = api.EnableServiceRequest.fromJson(o.toJson());
-      checkEnableServiceRequest(od);
+      checkEnableServiceRequest(od as api.EnableServiceRequest);
     });
   });
 
@@ -3381,7 +3394,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnableServiceResponse();
       var od = api.EnableServiceResponse.fromJson(o.toJson());
-      checkEnableServiceResponse(od);
+      checkEnableServiceResponse(od as api.EnableServiceResponse);
     });
   });
 
@@ -3389,7 +3402,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEndpoint();
       var od = api.Endpoint.fromJson(o.toJson());
-      checkEndpoint(od);
+      checkEndpoint(od as api.Endpoint);
     });
   });
 
@@ -3397,7 +3410,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnum();
       var od = api.Enum.fromJson(o.toJson());
-      checkEnum(od);
+      checkEnum(od as api.Enum);
     });
   });
 
@@ -3405,7 +3418,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnumValue();
       var od = api.EnumValue.fromJson(o.toJson());
-      checkEnumValue(od);
+      checkEnumValue(od as api.EnumValue);
     });
   });
 
@@ -3413,7 +3426,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildField();
       var od = api.Field.fromJson(o.toJson());
-      checkField(od);
+      checkField(od as api.Field);
     });
   });
 
@@ -3421,7 +3434,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetServiceIdentityResponse();
       var od = api.GetServiceIdentityResponse.fromJson(o.toJson());
-      checkGetServiceIdentityResponse(od);
+      checkGetServiceIdentityResponse(od as api.GetServiceIdentityResponse);
     });
   });
 
@@ -3429,7 +3442,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleApiService();
       var od = api.GoogleApiService.fromJson(o.toJson());
-      checkGoogleApiService(od);
+      checkGoogleApiService(od as api.GoogleApiService);
     });
   });
 
@@ -3437,7 +3450,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleApiServiceIdentity();
       var od = api.GoogleApiServiceIdentity.fromJson(o.toJson());
-      checkGoogleApiServiceIdentity(od);
+      checkGoogleApiServiceIdentity(od as api.GoogleApiServiceIdentity);
     });
   });
 
@@ -3446,7 +3459,8 @@ void main() {
       var o = buildGoogleApiServiceusageV1OperationMetadata();
       var od =
           api.GoogleApiServiceusageV1OperationMetadata.fromJson(o.toJson());
-      checkGoogleApiServiceusageV1OperationMetadata(od);
+      checkGoogleApiServiceusageV1OperationMetadata(
+          od as api.GoogleApiServiceusageV1OperationMetadata);
     });
   });
 
@@ -3454,7 +3468,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleApiServiceusageV1Service();
       var od = api.GoogleApiServiceusageV1Service.fromJson(o.toJson());
-      checkGoogleApiServiceusageV1Service(od);
+      checkGoogleApiServiceusageV1Service(
+          od as api.GoogleApiServiceusageV1Service);
     });
   });
 
@@ -3462,7 +3477,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleApiServiceusageV1ServiceConfig();
       var od = api.GoogleApiServiceusageV1ServiceConfig.fromJson(o.toJson());
-      checkGoogleApiServiceusageV1ServiceConfig(od);
+      checkGoogleApiServiceusageV1ServiceConfig(
+          od as api.GoogleApiServiceusageV1ServiceConfig);
     });
   });
 
@@ -3473,7 +3489,8 @@ void main() {
       var od =
           api.GoogleApiServiceusageV1beta1GetServiceIdentityResponse.fromJson(
               o.toJson());
-      checkGoogleApiServiceusageV1beta1GetServiceIdentityResponse(od);
+      checkGoogleApiServiceusageV1beta1GetServiceIdentityResponse(
+          od as api.GoogleApiServiceusageV1beta1GetServiceIdentityResponse);
     });
   });
 
@@ -3482,7 +3499,8 @@ void main() {
       var o = buildGoogleApiServiceusageV1beta1ServiceIdentity();
       var od =
           api.GoogleApiServiceusageV1beta1ServiceIdentity.fromJson(o.toJson());
-      checkGoogleApiServiceusageV1beta1ServiceIdentity(od);
+      checkGoogleApiServiceusageV1beta1ServiceIdentity(
+          od as api.GoogleApiServiceusageV1beta1ServiceIdentity);
     });
   });
 
@@ -3490,7 +3508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttp();
       var od = api.Http.fromJson(o.toJson());
-      checkHttp(od);
+      checkHttp(od as api.Http);
     });
   });
 
@@ -3498,7 +3516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpRule();
       var od = api.HttpRule.fromJson(o.toJson());
-      checkHttpRule(od);
+      checkHttpRule(od as api.HttpRule);
     });
   });
 
@@ -3506,7 +3524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportAdminOverridesResponse();
       var od = api.ImportAdminOverridesResponse.fromJson(o.toJson());
-      checkImportAdminOverridesResponse(od);
+      checkImportAdminOverridesResponse(od as api.ImportAdminOverridesResponse);
     });
   });
 
@@ -3514,7 +3532,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportAdminQuotaPoliciesResponse();
       var od = api.ImportAdminQuotaPoliciesResponse.fromJson(o.toJson());
-      checkImportAdminQuotaPoliciesResponse(od);
+      checkImportAdminQuotaPoliciesResponse(
+          od as api.ImportAdminQuotaPoliciesResponse);
     });
   });
 
@@ -3522,7 +3541,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportConsumerOverridesResponse();
       var od = api.ImportConsumerOverridesResponse.fromJson(o.toJson());
-      checkImportConsumerOverridesResponse(od);
+      checkImportConsumerOverridesResponse(
+          od as api.ImportConsumerOverridesResponse);
     });
   });
 
@@ -3530,7 +3550,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJwtLocation();
       var od = api.JwtLocation.fromJson(o.toJson());
-      checkJwtLocation(od);
+      checkJwtLocation(od as api.JwtLocation);
     });
   });
 
@@ -3538,7 +3558,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
-      checkLabelDescriptor(od);
+      checkLabelDescriptor(od as api.LabelDescriptor);
     });
   });
 
@@ -3546,7 +3566,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -3554,7 +3574,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListServicesResponse();
       var od = api.ListServicesResponse.fromJson(o.toJson());
-      checkListServicesResponse(od);
+      checkListServicesResponse(od as api.ListServicesResponse);
     });
   });
 
@@ -3562,7 +3582,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogDescriptor();
       var od = api.LogDescriptor.fromJson(o.toJson());
-      checkLogDescriptor(od);
+      checkLogDescriptor(od as api.LogDescriptor);
     });
   });
 
@@ -3570,7 +3590,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogging();
       var od = api.Logging.fromJson(o.toJson());
-      checkLogging(od);
+      checkLogging(od as api.Logging);
     });
   });
 
@@ -3578,7 +3598,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLoggingDestination();
       var od = api.LoggingDestination.fromJson(o.toJson());
-      checkLoggingDestination(od);
+      checkLoggingDestination(od as api.LoggingDestination);
     });
   });
 
@@ -3586,7 +3606,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMethod();
       var od = api.Method.fromJson(o.toJson());
-      checkMethod(od);
+      checkMethod(od as api.Method);
     });
   });
 
@@ -3594,7 +3614,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
-      checkMetricDescriptor(od);
+      checkMetricDescriptor(od as api.MetricDescriptor);
     });
   });
 
@@ -3602,7 +3622,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
-      checkMetricDescriptorMetadata(od);
+      checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
     });
   });
 
@@ -3610,7 +3630,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricRule();
       var od = api.MetricRule.fromJson(o.toJson());
-      checkMetricRule(od);
+      checkMetricRule(od as api.MetricRule);
     });
   });
 
@@ -3618,7 +3638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMixin();
       var od = api.Mixin.fromJson(o.toJson());
-      checkMixin(od);
+      checkMixin(od as api.Mixin);
     });
   });
 
@@ -3626,7 +3646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
-      checkMonitoredResourceDescriptor(od);
+      checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
     });
   });
 
@@ -3634,7 +3654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoring();
       var od = api.Monitoring.fromJson(o.toJson());
-      checkMonitoring(od);
+      checkMonitoring(od as api.Monitoring);
     });
   });
 
@@ -3642,7 +3662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoringDestination();
       var od = api.MonitoringDestination.fromJson(o.toJson());
-      checkMonitoringDestination(od);
+      checkMonitoringDestination(od as api.MonitoringDestination);
     });
   });
 
@@ -3650,7 +3670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOAuthRequirements();
       var od = api.OAuthRequirements.fromJson(o.toJson());
-      checkOAuthRequirements(od);
+      checkOAuthRequirements(od as api.OAuthRequirements);
     });
   });
 
@@ -3658,7 +3678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -3666,7 +3686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -3674,7 +3694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOption();
       var od = api.Option.fromJson(o.toJson());
-      checkOption(od);
+      checkOption(od as api.Option);
     });
   });
 
@@ -3682,7 +3702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
-      checkPage(od);
+      checkPage(od as api.Page);
     });
   });
 
@@ -3690,7 +3710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
-      checkQuota(od);
+      checkQuota(od as api.Quota);
     });
   });
 
@@ -3698,7 +3718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuotaLimit();
       var od = api.QuotaLimit.fromJson(o.toJson());
-      checkQuotaLimit(od);
+      checkQuotaLimit(od as api.QuotaLimit);
     });
   });
 
@@ -3706,7 +3726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuotaOverride();
       var od = api.QuotaOverride.fromJson(o.toJson());
-      checkQuotaOverride(od);
+      checkQuotaOverride(od as api.QuotaOverride);
     });
   });
 
@@ -3714,7 +3734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServiceIdentity();
       var od = api.ServiceIdentity.fromJson(o.toJson());
-      checkServiceIdentity(od);
+      checkServiceIdentity(od as api.ServiceIdentity);
     });
   });
 
@@ -3722,7 +3742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
-      checkSourceContext(od);
+      checkSourceContext(od as api.SourceContext);
     });
   });
 
@@ -3730,7 +3750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceInfo();
       var od = api.SourceInfo.fromJson(o.toJson());
-      checkSourceInfo(od);
+      checkSourceInfo(od as api.SourceInfo);
     });
   });
 
@@ -3738,7 +3758,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -3746,7 +3766,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystemParameter();
       var od = api.SystemParameter.fromJson(o.toJson());
-      checkSystemParameter(od);
+      checkSystemParameter(od as api.SystemParameter);
     });
   });
 
@@ -3754,7 +3774,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystemParameterRule();
       var od = api.SystemParameterRule.fromJson(o.toJson());
-      checkSystemParameterRule(od);
+      checkSystemParameterRule(od as api.SystemParameterRule);
     });
   });
 
@@ -3762,7 +3782,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystemParameters();
       var od = api.SystemParameters.fromJson(o.toJson());
-      checkSystemParameters(od);
+      checkSystemParameters(od as api.SystemParameters);
     });
   });
 
@@ -3770,7 +3790,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildType();
       var od = api.Type.fromJson(o.toJson());
-      checkType(od);
+      checkType(od as api.Type);
     });
   });
 
@@ -3778,7 +3798,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsage();
       var od = api.Usage.fromJson(o.toJson());
-      checkUsage(od);
+      checkUsage(od as api.Usage);
     });
   });
 
@@ -3786,7 +3806,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageRule();
       var od = api.UsageRule.fromJson(o.toJson());
-      checkUsageRule(od);
+      checkUsageRule(od as api.UsageRule);
     });
   });
 
@@ -3798,8 +3818,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3839,7 +3860,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3887,7 +3908,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3935,7 +3956,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3996,7 +4017,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -4009,8 +4030,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchEnableServicesRequest.fromJson(json);
-        checkBatchEnableServicesRequest(obj);
+        var obj = api.BatchEnableServicesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchEnableServicesRequest(obj as api.BatchEnableServicesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4050,7 +4072,7 @@ void main() {
       res
           .batchEnable(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4100,7 +4122,7 @@ void main() {
       res
           .batchGet(arg_parent, names: arg_names, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetServicesResponse(response);
+        checkBatchGetServicesResponse(response as api.BatchGetServicesResponse);
       })));
     });
 
@@ -4111,8 +4133,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DisableServiceRequest.fromJson(json);
-        checkDisableServiceRequest(obj);
+        var obj = api.DisableServiceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDisableServiceRequest(obj as api.DisableServiceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4152,7 +4175,7 @@ void main() {
       res
           .disable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4163,8 +4186,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EnableServiceRequest.fromJson(json);
-        checkEnableServiceRequest(obj);
+        var obj = api.EnableServiceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnableServiceRequest(obj as api.EnableServiceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4204,7 +4228,7 @@ void main() {
       res
           .enable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4252,7 +4276,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleApiServiceusageV1Service(response);
+        checkGoogleApiServiceusageV1Service(
+            response as api.GoogleApiServiceusageV1Service);
       })));
     });
 
@@ -4312,7 +4337,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListServicesResponse(response);
+        checkListServicesResponse(response as api.ListServicesResponse);
       })));
     });
   });

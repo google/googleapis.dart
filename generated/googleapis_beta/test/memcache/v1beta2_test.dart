@@ -147,8 +147,8 @@ core.Map<core.String, api.ZoneMetadata> buildUnnamed6303() {
 
 void checkUnnamed6303(core.Map<core.String, api.ZoneMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkZoneMetadata(o['x']);
-  checkZoneMetadata(o['y']);
+  checkZoneMetadata(o['x'] as api.ZoneMetadata);
+  checkZoneMetadata(o['y'] as api.ZoneMetadata);
 }
 
 core.int buildCounterGoogleCloudMemcacheV1beta2LocationMetadata = 0;
@@ -248,10 +248,12 @@ void checkUnnamed6306(
             api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['x']);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['y']);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['x']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['y']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
 }
 
 core.Map<core.String, core.String> buildUnnamed6307() {
@@ -284,8 +286,12 @@ void checkUnnamed6308(
             api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
 }
 
 core.Map<core.String, core.String> buildUnnamed6309() {
@@ -340,13 +346,15 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
     checkUnnamed6305(o.maintenancePolicyNames);
     checkUnnamed6306(o.maintenanceSchedules);
     checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-        o.maintenanceSettings);
+        o.maintenanceSettings as api
+            .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6307(o.producerMetadata);
     checkUnnamed6308(o.provisionedResources);
     unittest.expect(o.slmInstanceTemplate, unittest.equals('foo'));
     checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
-        o.sloMetadata);
+        o.sloMetadata
+            as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     checkUnnamed6309(o.softwareVersions);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.tenantProjectId, unittest.equals('foo'));
@@ -425,8 +433,10 @@ void checkUnnamed6310(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.int
@@ -555,8 +565,10 @@ void checkUnnamed6311(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
@@ -573,8 +585,10 @@ void checkUnnamed6312(
             api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
 }
 
 core.int
@@ -600,8 +614,9 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
   buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata++;
   if (buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata <
       3) {
-    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(
-        o.eligibility);
+    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(o
+            .eligibility
+        as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     checkUnnamed6311(o.exclusions);
     checkUnnamed6312(o.nodes);
     unittest.expect(o.tier, unittest.equals('foo'));
@@ -618,8 +633,8 @@ core.List<api.InstanceMessage> buildUnnamed6313() {
 
 void checkUnnamed6313(core.List<api.InstanceMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstanceMessage(o[0]);
-  checkInstanceMessage(o[1]);
+  checkInstanceMessage(o[0] as api.InstanceMessage);
+  checkInstanceMessage(o[1] as api.InstanceMessage);
 }
 
 core.Map<core.String, core.String> buildUnnamed6314() {
@@ -644,8 +659,8 @@ core.List<api.Node> buildUnnamed6315() {
 
 void checkUnnamed6315(core.List<api.Node> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNode(o[0]);
-  checkNode(o[1]);
+  checkNode(o[0] as api.Node);
+  checkNode(o[1] as api.Node);
 }
 
 core.List<core.String> buildUnnamed6316() {
@@ -700,9 +715,9 @@ void checkInstance(api.Instance o) {
     checkUnnamed6315(o.memcacheNodes);
     unittest.expect(o.memcacheVersion, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkNodeConfig(o.nodeConfig);
+    checkNodeConfig(o.nodeConfig as api.NodeConfig);
     unittest.expect(o.nodeCount, unittest.equals(42));
-    checkMemcacheParameters(o.parameters);
+    checkMemcacheParameters(o.parameters as api.MemcacheParameters);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
     checkUnnamed6316(o.zones);
@@ -740,8 +755,8 @@ core.List<api.Instance> buildUnnamed6317() {
 
 void checkUnnamed6317(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstance(o[0]);
-  checkInstance(o[1]);
+  checkInstance(o[0] as api.Instance);
+  checkInstance(o[1] as api.Instance);
 }
 
 core.List<core.String> buildUnnamed6318() {
@@ -789,8 +804,8 @@ core.List<api.Location> buildUnnamed6319() {
 
 void checkUnnamed6319(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -823,8 +838,8 @@ core.List<api.Operation> buildUnnamed6320() {
 
 void checkUnnamed6320(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -972,7 +987,7 @@ void checkNode(api.Node o) {
   if (buildCounterNode < 3) {
     unittest.expect(o.host, unittest.equals('foo'));
     unittest.expect(o.nodeId, unittest.equals('foo'));
-    checkMemcacheParameters(o.parameters);
+    checkMemcacheParameters(o.parameters as api.MemcacheParameters);
     unittest.expect(o.port, unittest.equals(42));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.zone, unittest.equals('foo'));
@@ -1078,7 +1093,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed6324(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6325(o.response);
@@ -1166,7 +1181,7 @@ api.UpdateParametersRequest buildUpdateParametersRequest() {
 void checkUpdateParametersRequest(api.UpdateParametersRequest o) {
   buildCounterUpdateParametersRequest++;
   if (buildCounterUpdateParametersRequest < 3) {
-    checkMemcacheParameters(o.parameters);
+    checkMemcacheParameters(o.parameters as api.MemcacheParameters);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterUpdateParametersRequest--;
@@ -1192,7 +1207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplyParametersRequest();
       var od = api.ApplyParametersRequest.fromJson(o.toJson());
-      checkApplyParametersRequest(od);
+      checkApplyParametersRequest(od as api.ApplyParametersRequest);
     });
   });
 
@@ -1200,7 +1215,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1208,7 +1223,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1217,7 +1232,8 @@ void main() {
       var o = buildGoogleCloudMemcacheV1beta2LocationMetadata();
       var od =
           api.GoogleCloudMemcacheV1beta2LocationMetadata.fromJson(o.toJson());
-      checkGoogleCloudMemcacheV1beta2LocationMetadata(od);
+      checkGoogleCloudMemcacheV1beta2LocationMetadata(
+          od as api.GoogleCloudMemcacheV1beta2LocationMetadata);
     });
   });
 
@@ -1226,7 +1242,8 @@ void main() {
       var o = buildGoogleCloudMemcacheV1beta2OperationMetadata();
       var od =
           api.GoogleCloudMemcacheV1beta2OperationMetadata.fromJson(o.toJson());
-      checkGoogleCloudMemcacheV1beta2OperationMetadata(od);
+      checkGoogleCloudMemcacheV1beta2OperationMetadata(
+          od as api.GoogleCloudMemcacheV1beta2OperationMetadata);
     });
   });
 
@@ -1237,7 +1254,8 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
               o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1Instance);
     });
   });
 
@@ -1250,8 +1268,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
     });
   });
 
@@ -1264,8 +1283,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     });
   });
 
@@ -1278,7 +1298,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
     });
   });
 
@@ -1291,8 +1313,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
     });
   });
 
@@ -1304,7 +1327,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     });
   });
 
@@ -1316,7 +1340,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
     });
   });
 
@@ -1327,7 +1352,8 @@ void main() {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     });
   });
 
@@ -1335,7 +1361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
-      checkInstance(od);
+      checkInstance(od as api.Instance);
     });
   });
 
@@ -1343,7 +1369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstanceMessage();
       var od = api.InstanceMessage.fromJson(o.toJson());
-      checkInstanceMessage(od);
+      checkInstanceMessage(od as api.InstanceMessage);
     });
   });
 
@@ -1351,7 +1377,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
-      checkListInstancesResponse(od);
+      checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
 
@@ -1359,7 +1385,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1367,7 +1393,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1375,7 +1401,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1383,7 +1409,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMemcacheParameters();
       var od = api.MemcacheParameters.fromJson(o.toJson());
-      checkMemcacheParameters(od);
+      checkMemcacheParameters(od as api.MemcacheParameters);
     });
   });
 
@@ -1391,7 +1417,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNode();
       var od = api.Node.fromJson(o.toJson());
-      checkNode(od);
+      checkNode(od as api.Node);
     });
   });
 
@@ -1399,7 +1425,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNodeConfig();
       var od = api.NodeConfig.fromJson(o.toJson());
-      checkNodeConfig(od);
+      checkNodeConfig(od as api.NodeConfig);
     });
   });
 
@@ -1407,7 +1433,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1415,7 +1441,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1423,7 +1449,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateParametersRequest();
       var od = api.UpdateParametersRequest.fromJson(o.toJson());
-      checkUpdateParametersRequest(od);
+      checkUpdateParametersRequest(od as api.UpdateParametersRequest);
     });
   });
 
@@ -1431,7 +1457,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildZoneMetadata();
       var od = api.ZoneMetadata.fromJson(o.toJson());
-      checkZoneMetadata(od);
+      checkZoneMetadata(od as api.ZoneMetadata);
     });
   });
 
@@ -1480,7 +1506,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1540,7 +1566,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1553,8 +1579,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApplyParametersRequest.fromJson(json);
-        checkApplyParametersRequest(obj);
+        var obj = api.ApplyParametersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkApplyParametersRequest(obj as api.ApplyParametersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1594,7 +1621,7 @@ void main() {
       res
           .applyParameters(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1606,8 +1633,9 @@ void main() {
       var arg_instanceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1650,7 +1678,7 @@ void main() {
           .create(arg_request, arg_parent,
               instanceId: arg_instanceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1698,7 +1726,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1746,7 +1774,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInstance(response);
+        checkInstance(response as api.Instance);
       })));
     });
 
@@ -1810,7 +1838,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response);
+        checkListInstancesResponse(response as api.ListInstancesResponse);
       })));
     });
 
@@ -1822,8 +1850,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1866,7 +1895,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1877,8 +1906,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateParametersRequest.fromJson(json);
-        checkUpdateParametersRequest(obj);
+        var obj = api.UpdateParametersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateParametersRequest(obj as api.UpdateParametersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1918,7 +1948,7 @@ void main() {
       res
           .updateParameters(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1931,8 +1961,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1972,7 +2003,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2020,7 +2051,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2068,7 +2099,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2128,7 +2159,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

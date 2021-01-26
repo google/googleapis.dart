@@ -116,7 +116,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -184,7 +186,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -260,7 +265,9 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => KeyRing.fromJson(data));
+    return _response.then(
+      (data) => KeyRing.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns metadata for a given KeyRing.
@@ -309,7 +316,9 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => KeyRing.fromJson(data));
+    return _response.then(
+      (data) => KeyRing.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -377,7 +386,9 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists KeyRings.
@@ -461,7 +472,10 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListKeyRingsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListKeyRingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -522,7 +536,9 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -585,7 +601,10 @@ class ProjectsLocationsKeyRingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -674,7 +693,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKey.fromJson(data));
+    return _response.then(
+      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be
@@ -732,7 +753,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DecryptResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          DecryptResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Encrypts data, so that it can only be recovered by a call to Decrypt. The
@@ -791,7 +815,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EncryptResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          EncryptResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns metadata for a given CryptoKey, as well as its primary
@@ -842,7 +869,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKey.fromJson(data));
+    return _response.then(
+      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -911,7 +940,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists CryptoKeys.
@@ -1008,7 +1039,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCryptoKeysResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCryptoKeysResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a CryptoKey.
@@ -1071,7 +1105,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKey.fromJson(data));
+    return _response.then(
+      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1133,7 +1169,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1197,7 +1235,10 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the version of a CryptoKey that will be used in Encrypt. Returns an
@@ -1256,7 +1297,9 @@ class ProjectsLocationsKeyRingsCryptoKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKey.fromJson(data));
+    return _response.then(
+      (data) => CryptoKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1325,7 +1368,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AsymmetricDecryptResponse.fromJson(data));
+    return _response.then(
+      (data) => AsymmetricDecryptResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs data using a CryptoKeyVersion with CryptoKey.purpose
@@ -1386,7 +1432,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AsymmetricSignResponse.fromJson(data));
+    return _response.then(
+      (data) => AsymmetricSignResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new CryptoKeyVersion in a CryptoKey. The server will assign the
@@ -1446,7 +1495,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Schedule a CryptoKeyVersion for destruction. Upon calling this method,
@@ -1507,7 +1559,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns metadata for a given CryptoKeyVersion.
@@ -1557,7 +1612,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the public key for the given CryptoKeyVersion. The
@@ -1609,7 +1667,9 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PublicKey.fromJson(data));
+    return _response.then(
+      (data) => PublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports a new CryptoKeyVersion into an existing CryptoKey using the
@@ -1669,7 +1729,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists CryptoKeyVersions.
@@ -1767,8 +1830,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListCryptoKeyVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCryptoKeyVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a CryptoKeyVersion's metadata. state may be changed between ENABLED
@@ -1834,7 +1899,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon
@@ -1892,7 +1960,10 @@ class ProjectsLocationsKeyRingsCryptoKeysCryptoKeyVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CryptoKeyVersion.fromJson(data));
+    return _response.then(
+      (data) => CryptoKeyVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1965,7 +2036,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImportJob.fromJson(data));
+    return _response.then(
+      (data) => ImportJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns metadata for a given ImportJob.
@@ -2015,7 +2088,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImportJob.fromJson(data));
+    return _response.then(
+      (data) => ImportJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -2084,7 +2159,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists ImportJobs.
@@ -2169,7 +2246,10 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListImportJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListImportJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -2231,7 +2311,9 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -2295,7 +2377,10 @@ class ProjectsLocationsKeyRingsImportJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2440,7 +2525,8 @@ class AsymmetricSignRequest {
 
   AsymmetricSignRequest.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = Digest.fromJson(_json['digest']);
+      digest = Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('digestCrc32c')) {
       digestCrc32c = _json['digestCrc32c'] as core.String;
@@ -2563,7 +2649,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -2684,7 +2771,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -2823,7 +2911,8 @@ class CryptoKey {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -2833,7 +2922,8 @@ class CryptoKey {
       nextRotationTime = _json['nextRotationTime'] as core.String;
     }
     if (_json.containsKey('primary')) {
-      primary = CryptoKeyVersion.fromJson(_json['primary']);
+      primary = CryptoKeyVersion.fromJson(
+          _json['primary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('purpose')) {
       purpose = _json['purpose'] as core.String;
@@ -2842,8 +2932,8 @@ class CryptoKey {
       rotationPeriod = _json['rotationPeriod'] as core.String;
     }
     if (_json.containsKey('versionTemplate')) {
-      versionTemplate =
-          CryptoKeyVersionTemplate.fromJson(_json['versionTemplate']);
+      versionTemplate = CryptoKeyVersionTemplate.fromJson(
+          _json['versionTemplate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3003,7 +3093,8 @@ class CryptoKeyVersion {
       algorithm = _json['algorithm'] as core.String;
     }
     if (_json.containsKey('attestation')) {
-      attestation = KeyOperationAttestation.fromJson(_json['attestation']);
+      attestation = KeyOperationAttestation.fromJson(
+          _json['attestation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -3016,7 +3107,8 @@ class CryptoKeyVersion {
     }
     if (_json.containsKey('externalProtectionLevelOptions')) {
       externalProtectionLevelOptions = ExternalProtectionLevelOptions.fromJson(
-          _json['externalProtectionLevelOptions']);
+          _json['externalProtectionLevelOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('generateTime')) {
       generateTime = _json['generateTime'] as core.String;
@@ -3843,7 +3935,8 @@ class ImportJob {
 
   ImportJob.fromJson(core.Map _json) {
     if (_json.containsKey('attestation')) {
-      attestation = KeyOperationAttestation.fromJson(_json['attestation']);
+      attestation = KeyOperationAttestation.fromJson(
+          _json['attestation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -3867,7 +3960,8 @@ class ImportJob {
       protectionLevel = _json['protectionLevel'] as core.String;
     }
     if (_json.containsKey('publicKey')) {
-      publicKey = WrappingPublicKey.fromJson(_json['publicKey']);
+      publicKey = WrappingPublicKey.fromJson(
+          _json['publicKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -3941,7 +4035,8 @@ class KeyOperationAttestation {
 
   KeyOperationAttestation.fromJson(core.Map _json) {
     if (_json.containsKey('certChains')) {
-      certChains = CertificateChains.fromJson(_json['certChains']);
+      certChains = CertificateChains.fromJson(
+          _json['certChains'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -4016,7 +4111,8 @@ class ListCryptoKeyVersionsResponse {
   ListCryptoKeyVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cryptoKeyVersions')) {
       cryptoKeyVersions = (_json['cryptoKeyVersions'] as core.List)
-          .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(value))
+          .map<CryptoKeyVersion>((value) => CryptoKeyVersion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4060,7 +4156,8 @@ class ListCryptoKeysResponse {
   ListCryptoKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cryptoKeys')) {
       cryptoKeys = (_json['cryptoKeys'] as core.List)
-          .map<CryptoKey>((value) => CryptoKey.fromJson(value))
+          .map<CryptoKey>((value) =>
+              CryptoKey.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4103,7 +4200,8 @@ class ListImportJobsResponse {
   ListImportJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('importJobs')) {
       importJobs = (_json['importJobs'] as core.List)
-          .map<ImportJob>((value) => ImportJob.fromJson(value))
+          .map<ImportJob>((value) =>
+              ImportJob.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4146,7 +4244,8 @@ class ListKeyRingsResponse {
   ListKeyRingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keyRings')) {
       keyRings = (_json['keyRings'] as core.List)
-          .map<KeyRing>((value) => KeyRing.fromJson(value))
+          .map<KeyRing>((value) =>
+              KeyRing.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4185,7 +4284,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4237,7 +4337,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -4245,7 +4346,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4386,12 +4488,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -4548,7 +4652,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

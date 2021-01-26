@@ -83,8 +83,8 @@ core.List<api.CustomDimension> buildUnnamed5640() {
 
 void checkUnnamed5640(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomDimension(o[0]);
-  checkCustomDimension(o[1]);
+  checkCustomDimension(o[0] as api.CustomDimension);
+  checkCustomDimension(o[1] as api.CustomDimension);
 }
 
 core.int buildCounterActivity = 0;
@@ -117,18 +117,18 @@ void checkActivity(api.Activity o) {
   if (buildCounterActivity < 3) {
     unittest.expect(o.activityTime, unittest.equals('foo'));
     unittest.expect(o.activityType, unittest.equals('foo'));
-    checkScreenviewData(o.appview);
+    checkScreenviewData(o.appview as api.ScreenviewData);
     unittest.expect(o.campaign, unittest.equals('foo'));
     unittest.expect(o.channelGrouping, unittest.equals('foo'));
     checkUnnamed5640(o.customDimension);
-    checkEcommerceData(o.ecommerce);
-    checkEventData(o.event);
-    checkGoalSetData(o.goals);
+    checkEcommerceData(o.ecommerce as api.EcommerceData);
+    checkEventData(o.event as api.EventData);
+    checkGoalSetData(o.goals as api.GoalSetData);
     unittest.expect(o.hostname, unittest.equals('foo'));
     unittest.expect(o.keyword, unittest.equals('foo'));
     unittest.expect(o.landingPagePath, unittest.equals('foo'));
     unittest.expect(o.medium, unittest.equals('foo'));
-    checkPageviewData(o.pageview);
+    checkPageviewData(o.pageview as api.PageviewData);
     unittest.expect(o.source, unittest.equals('foo'));
   }
   buildCounterActivity--;
@@ -150,7 +150,7 @@ api.Cohort buildCohort() {
 void checkCohort(api.Cohort o) {
   buildCounterCohort++;
   if (buildCounterCohort < 3) {
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -166,8 +166,8 @@ core.List<api.Cohort> buildUnnamed5641() {
 
 void checkUnnamed5641(core.List<api.Cohort> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCohort(o[0]);
-  checkCohort(o[1]);
+  checkCohort(o[0] as api.Cohort);
+  checkCohort(o[1] as api.Cohort);
 }
 
 core.int buildCounterCohortGroup = 0;
@@ -220,7 +220,7 @@ void checkColumnHeader(api.ColumnHeader o) {
   buildCounterColumnHeader++;
   if (buildCounterColumnHeader < 3) {
     checkUnnamed5642(o.dimensions);
-    checkMetricHeader(o.metricHeader);
+    checkMetricHeader(o.metricHeader as api.MetricHeader);
   }
   buildCounterColumnHeader--;
 }
@@ -276,8 +276,8 @@ core.List<api.PivotValueRegion> buildUnnamed5643() {
 
 void checkUnnamed5643(core.List<api.PivotValueRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPivotValueRegion(o[0]);
-  checkPivotValueRegion(o[1]);
+  checkPivotValueRegion(o[0] as api.PivotValueRegion);
+  checkPivotValueRegion(o[1] as api.PivotValueRegion);
 }
 
 core.List<core.String> buildUnnamed5644() {
@@ -397,8 +397,8 @@ core.List<api.DimensionFilter> buildUnnamed5647() {
 
 void checkUnnamed5647(core.List<api.DimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimensionFilter(o[0]);
-  checkDimensionFilter(o[1]);
+  checkDimensionFilter(o[0] as api.DimensionFilter);
+  checkDimensionFilter(o[1] as api.DimensionFilter);
 }
 
 core.int buildCounterDimensionFilterClause = 0;
@@ -439,8 +439,8 @@ void checkDynamicSegment(api.DynamicSegment o) {
   buildCounterDynamicSegment++;
   if (buildCounterDynamicSegment < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkSegmentDefinition(o.sessionSegment);
-    checkSegmentDefinition(o.userSegment);
+    checkSegmentDefinition(o.sessionSegment as api.SegmentDefinition);
+    checkSegmentDefinition(o.userSegment as api.SegmentDefinition);
   }
   buildCounterDynamicSegment--;
 }
@@ -454,8 +454,8 @@ core.List<api.ProductData> buildUnnamed5648() {
 
 void checkUnnamed5648(core.List<api.ProductData> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductData(o[0]);
-  checkProductData(o[1]);
+  checkProductData(o[0] as api.ProductData);
+  checkProductData(o[1] as api.ProductData);
 }
 
 core.int buildCounterEcommerceData = 0;
@@ -478,7 +478,7 @@ void checkEcommerceData(api.EcommerceData o) {
     unittest.expect(o.actionType, unittest.equals('foo'));
     unittest.expect(o.ecommerceType, unittest.equals('foo'));
     checkUnnamed5648(o.products);
-    checkTransactionData(o.transaction);
+    checkTransactionData(o.transaction as api.TransactionData);
   }
   buildCounterEcommerceData--;
 }
@@ -519,8 +519,8 @@ core.List<api.ReportRequest> buildUnnamed5649() {
 
 void checkUnnamed5649(core.List<api.ReportRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRequest(o[0]);
-  checkReportRequest(o[1]);
+  checkReportRequest(o[0] as api.ReportRequest);
+  checkReportRequest(o[1] as api.ReportRequest);
 }
 
 core.int buildCounterGetReportsRequest = 0;
@@ -553,8 +553,8 @@ core.List<api.Report> buildUnnamed5650() {
 
 void checkUnnamed5650(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReport(o[0]);
-  checkReport(o[1]);
+  checkReport(o[0] as api.Report);
+  checkReport(o[1] as api.Report);
 }
 
 core.int buildCounterGetReportsResponse = 0;
@@ -575,7 +575,8 @@ void checkGetReportsResponse(api.GetReportsResponse o) {
   if (buildCounterGetReportsResponse < 3) {
     unittest.expect(o.queryCost, unittest.equals(42));
     checkUnnamed5650(o.reports);
-    checkResourceQuotasRemaining(o.resourceQuotasRemaining);
+    checkResourceQuotasRemaining(
+        o.resourceQuotasRemaining as api.ResourceQuotasRemaining);
   }
   buildCounterGetReportsResponse--;
 }
@@ -622,8 +623,8 @@ core.List<api.GoalData> buildUnnamed5651() {
 
 void checkUnnamed5651(core.List<api.GoalData> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoalData(o[0]);
-  checkGoalData(o[1]);
+  checkGoalData(o[0] as api.GoalData);
+  checkGoalData(o[1] as api.GoalData);
 }
 
 core.int buildCounterGoalSetData = 0;
@@ -702,8 +703,8 @@ core.List<api.MetricFilter> buildUnnamed5652() {
 
 void checkUnnamed5652(core.List<api.MetricFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricFilter(o[0]);
-  checkMetricFilter(o[1]);
+  checkMetricFilter(o[0] as api.MetricFilter);
+  checkMetricFilter(o[1] as api.MetricFilter);
 }
 
 core.int buildCounterMetricFilterClause = 0;
@@ -736,8 +737,8 @@ core.List<api.MetricHeaderEntry> buildUnnamed5653() {
 
 void checkUnnamed5653(core.List<api.MetricHeaderEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricHeaderEntry(o[0]);
-  checkMetricHeaderEntry(o[1]);
+  checkMetricHeaderEntry(o[0] as api.MetricHeaderEntry);
+  checkMetricHeaderEntry(o[1] as api.MetricHeaderEntry);
 }
 
 core.List<api.PivotHeader> buildUnnamed5654() {
@@ -749,8 +750,8 @@ core.List<api.PivotHeader> buildUnnamed5654() {
 
 void checkUnnamed5654(core.List<api.PivotHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPivotHeader(o[0]);
-  checkPivotHeader(o[1]);
+  checkPivotHeader(o[0] as api.PivotHeader);
+  checkPivotHeader(o[1] as api.PivotHeader);
 }
 
 core.int buildCounterMetricHeader = 0;
@@ -804,8 +805,8 @@ core.List<api.SegmentFilterClause> buildUnnamed5655() {
 
 void checkUnnamed5655(core.List<api.SegmentFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegmentFilterClause(o[0]);
-  checkSegmentFilterClause(o[1]);
+  checkSegmentFilterClause(o[0] as api.SegmentFilterClause);
+  checkSegmentFilterClause(o[1] as api.SegmentFilterClause);
 }
 
 core.int buildCounterOrFiltersForSegment = 0;
@@ -880,8 +881,8 @@ core.List<api.DimensionFilterClause> buildUnnamed5656() {
 
 void checkUnnamed5656(core.List<api.DimensionFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimensionFilterClause(o[0]);
-  checkDimensionFilterClause(o[1]);
+  checkDimensionFilterClause(o[0] as api.DimensionFilterClause);
+  checkDimensionFilterClause(o[1] as api.DimensionFilterClause);
 }
 
 core.List<api.Dimension> buildUnnamed5657() {
@@ -893,8 +894,8 @@ core.List<api.Dimension> buildUnnamed5657() {
 
 void checkUnnamed5657(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
+  checkDimension(o[0] as api.Dimension);
+  checkDimension(o[1] as api.Dimension);
 }
 
 core.List<api.Metric> buildUnnamed5658() {
@@ -906,8 +907,8 @@ core.List<api.Metric> buildUnnamed5658() {
 
 void checkUnnamed5658(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
+  checkMetric(o[0] as api.Metric);
+  checkMetric(o[1] as api.Metric);
 }
 
 core.int buildCounterPivot = 0;
@@ -946,8 +947,8 @@ core.List<api.PivotHeaderEntry> buildUnnamed5659() {
 
 void checkUnnamed5659(core.List<api.PivotHeaderEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPivotHeaderEntry(o[0]);
-  checkPivotHeaderEntry(o[1]);
+  checkPivotHeaderEntry(o[0] as api.PivotHeaderEntry);
+  checkPivotHeaderEntry(o[1] as api.PivotHeaderEntry);
 }
 
 core.int buildCounterPivotHeader = 0;
@@ -1015,7 +1016,7 @@ void checkPivotHeaderEntry(api.PivotHeaderEntry o) {
   if (buildCounterPivotHeaderEntry < 3) {
     checkUnnamed5660(o.dimensionNames);
     checkUnnamed5661(o.dimensionValues);
-    checkMetricHeaderEntry(o.metric);
+    checkMetricHeaderEntry(o.metric as api.MetricHeaderEntry);
   }
   buildCounterPivotHeaderEntry--;
 }
@@ -1093,8 +1094,8 @@ api.Report buildReport() {
 void checkReport(api.Report o) {
   buildCounterReport++;
   if (buildCounterReport < 3) {
-    checkColumnHeader(o.columnHeader);
-    checkReportData(o.data);
+    checkColumnHeader(o.columnHeader as api.ColumnHeader);
+    checkReportData(o.data as api.ReportData);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterReport--;
@@ -1109,8 +1110,8 @@ core.List<api.DateRangeValues> buildUnnamed5663() {
 
 void checkUnnamed5663(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDateRangeValues(o[0]);
-  checkDateRangeValues(o[1]);
+  checkDateRangeValues(o[0] as api.DateRangeValues);
+  checkDateRangeValues(o[1] as api.DateRangeValues);
 }
 
 core.List<api.DateRangeValues> buildUnnamed5664() {
@@ -1122,8 +1123,8 @@ core.List<api.DateRangeValues> buildUnnamed5664() {
 
 void checkUnnamed5664(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDateRangeValues(o[0]);
-  checkDateRangeValues(o[1]);
+  checkDateRangeValues(o[0] as api.DateRangeValues);
+  checkDateRangeValues(o[1] as api.DateRangeValues);
 }
 
 core.List<api.ReportRow> buildUnnamed5665() {
@@ -1135,8 +1136,8 @@ core.List<api.ReportRow> buildUnnamed5665() {
 
 void checkUnnamed5665(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRow(o[0]);
-  checkReportRow(o[1]);
+  checkReportRow(o[0] as api.ReportRow);
+  checkReportRow(o[1] as api.ReportRow);
 }
 
 core.List<core.String> buildUnnamed5666() {
@@ -1174,8 +1175,8 @@ core.List<api.DateRangeValues> buildUnnamed5668() {
 
 void checkUnnamed5668(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDateRangeValues(o[0]);
-  checkDateRangeValues(o[1]);
+  checkDateRangeValues(o[0] as api.DateRangeValues);
+  checkDateRangeValues(o[1] as api.DateRangeValues);
 }
 
 core.int buildCounterReportData = 0;
@@ -1222,8 +1223,8 @@ core.List<api.DateRange> buildUnnamed5669() {
 
 void checkUnnamed5669(core.List<api.DateRange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDateRange(o[0]);
-  checkDateRange(o[1]);
+  checkDateRange(o[0] as api.DateRange);
+  checkDateRange(o[1] as api.DateRange);
 }
 
 core.List<api.DimensionFilterClause> buildUnnamed5670() {
@@ -1235,8 +1236,8 @@ core.List<api.DimensionFilterClause> buildUnnamed5670() {
 
 void checkUnnamed5670(core.List<api.DimensionFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimensionFilterClause(o[0]);
-  checkDimensionFilterClause(o[1]);
+  checkDimensionFilterClause(o[0] as api.DimensionFilterClause);
+  checkDimensionFilterClause(o[1] as api.DimensionFilterClause);
 }
 
 core.List<api.Dimension> buildUnnamed5671() {
@@ -1248,8 +1249,8 @@ core.List<api.Dimension> buildUnnamed5671() {
 
 void checkUnnamed5671(core.List<api.Dimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimension(o[0]);
-  checkDimension(o[1]);
+  checkDimension(o[0] as api.Dimension);
+  checkDimension(o[1] as api.Dimension);
 }
 
 core.List<api.MetricFilterClause> buildUnnamed5672() {
@@ -1261,8 +1262,8 @@ core.List<api.MetricFilterClause> buildUnnamed5672() {
 
 void checkUnnamed5672(core.List<api.MetricFilterClause> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricFilterClause(o[0]);
-  checkMetricFilterClause(o[1]);
+  checkMetricFilterClause(o[0] as api.MetricFilterClause);
+  checkMetricFilterClause(o[1] as api.MetricFilterClause);
 }
 
 core.List<api.Metric> buildUnnamed5673() {
@@ -1274,8 +1275,8 @@ core.List<api.Metric> buildUnnamed5673() {
 
 void checkUnnamed5673(core.List<api.Metric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetric(o[0]);
-  checkMetric(o[1]);
+  checkMetric(o[0] as api.Metric);
+  checkMetric(o[1] as api.Metric);
 }
 
 core.List<api.OrderBy> buildUnnamed5674() {
@@ -1287,8 +1288,8 @@ core.List<api.OrderBy> buildUnnamed5674() {
 
 void checkUnnamed5674(core.List<api.OrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrderBy(o[0]);
-  checkOrderBy(o[1]);
+  checkOrderBy(o[0] as api.OrderBy);
+  checkOrderBy(o[1] as api.OrderBy);
 }
 
 core.List<api.Pivot> buildUnnamed5675() {
@@ -1300,8 +1301,8 @@ core.List<api.Pivot> buildUnnamed5675() {
 
 void checkUnnamed5675(core.List<api.Pivot> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPivot(o[0]);
-  checkPivot(o[1]);
+  checkPivot(o[0] as api.Pivot);
+  checkPivot(o[1] as api.Pivot);
 }
 
 core.List<api.Segment> buildUnnamed5676() {
@@ -1313,8 +1314,8 @@ core.List<api.Segment> buildUnnamed5676() {
 
 void checkUnnamed5676(core.List<api.Segment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegment(o[0]);
-  checkSegment(o[1]);
+  checkSegment(o[0] as api.Segment);
+  checkSegment(o[1] as api.Segment);
 }
 
 core.int buildCounterReportRequest = 0;
@@ -1347,7 +1348,7 @@ api.ReportRequest buildReportRequest() {
 void checkReportRequest(api.ReportRequest o) {
   buildCounterReportRequest++;
   if (buildCounterReportRequest < 3) {
-    checkCohortGroup(o.cohortGroup);
+    checkCohortGroup(o.cohortGroup as api.CohortGroup);
     checkUnnamed5669(o.dateRanges);
     checkUnnamed5670(o.dimensionFilterClauses);
     checkUnnamed5671(o.dimensions);
@@ -1390,8 +1391,8 @@ core.List<api.DateRangeValues> buildUnnamed5678() {
 
 void checkUnnamed5678(core.List<api.DateRangeValues> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDateRangeValues(o[0]);
-  checkDateRangeValues(o[1]);
+  checkDateRangeValues(o[0] as api.DateRangeValues);
+  checkDateRangeValues(o[1] as api.DateRangeValues);
 }
 
 core.int buildCounterReportRow = 0;
@@ -1494,10 +1495,10 @@ void checkSearchUserActivityRequest(api.SearchUserActivityRequest o) {
   buildCounterSearchUserActivityRequest++;
   if (buildCounterSearchUserActivityRequest < 3) {
     checkUnnamed5679(o.activityTypes);
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     unittest.expect(o.pageSize, unittest.equals(42));
     unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkUser(o.user);
+    checkUser(o.user as api.User);
     unittest.expect(o.viewId, unittest.equals('foo'));
   }
   buildCounterSearchUserActivityRequest--;
@@ -1512,8 +1513,8 @@ core.List<api.UserActivitySession> buildUnnamed5680() {
 
 void checkUnnamed5680(core.List<api.UserActivitySession> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserActivitySession(o[0]);
-  checkUserActivitySession(o[1]);
+  checkUserActivitySession(o[0] as api.UserActivitySession);
+  checkUserActivitySession(o[1] as api.UserActivitySession);
 }
 
 core.int buildCounterSearchUserActivityResponse = 0;
@@ -1556,7 +1557,7 @@ api.Segment buildSegment() {
 void checkSegment(api.Segment o) {
   buildCounterSegment++;
   if (buildCounterSegment < 3) {
-    checkDynamicSegment(o.dynamicSegment);
+    checkDynamicSegment(o.dynamicSegment as api.DynamicSegment);
     unittest.expect(o.segmentId, unittest.equals('foo'));
   }
   buildCounterSegment--;
@@ -1571,8 +1572,8 @@ core.List<api.SegmentFilter> buildUnnamed5681() {
 
 void checkUnnamed5681(core.List<api.SegmentFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegmentFilter(o[0]);
-  checkSegmentFilter(o[1]);
+  checkSegmentFilter(o[0] as api.SegmentFilter);
+  checkSegmentFilter(o[1] as api.SegmentFilter);
 }
 
 core.int buildCounterSegmentDefinition = 0;
@@ -1653,8 +1654,8 @@ void checkSegmentFilter(api.SegmentFilter o) {
   buildCounterSegmentFilter++;
   if (buildCounterSegmentFilter < 3) {
     unittest.expect(o.not, unittest.isTrue);
-    checkSequenceSegment(o.sequenceSegment);
-    checkSimpleSegment(o.simpleSegment);
+    checkSequenceSegment(o.sequenceSegment as api.SequenceSegment);
+    checkSimpleSegment(o.simpleSegment as api.SimpleSegment);
   }
   buildCounterSegmentFilter--;
 }
@@ -1675,8 +1676,9 @@ api.SegmentFilterClause buildSegmentFilterClause() {
 void checkSegmentFilterClause(api.SegmentFilterClause o) {
   buildCounterSegmentFilterClause++;
   if (buildCounterSegmentFilterClause < 3) {
-    checkSegmentDimensionFilter(o.dimensionFilter);
-    checkSegmentMetricFilter(o.metricFilter);
+    checkSegmentDimensionFilter(
+        o.dimensionFilter as api.SegmentDimensionFilter);
+    checkSegmentMetricFilter(o.metricFilter as api.SegmentMetricFilter);
     unittest.expect(o.not, unittest.isTrue);
   }
   buildCounterSegmentFilterClause--;
@@ -1718,8 +1720,8 @@ core.List<api.OrFiltersForSegment> buildUnnamed5683() {
 
 void checkUnnamed5683(core.List<api.OrFiltersForSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrFiltersForSegment(o[0]);
-  checkOrFiltersForSegment(o[1]);
+  checkOrFiltersForSegment(o[0] as api.OrFiltersForSegment);
+  checkOrFiltersForSegment(o[1] as api.OrFiltersForSegment);
 }
 
 core.int buildCounterSegmentSequenceStep = 0;
@@ -1752,8 +1754,8 @@ core.List<api.SegmentSequenceStep> buildUnnamed5684() {
 
 void checkUnnamed5684(core.List<api.SegmentSequenceStep> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegmentSequenceStep(o[0]);
-  checkSegmentSequenceStep(o[1]);
+  checkSegmentSequenceStep(o[0] as api.SegmentSequenceStep);
+  checkSegmentSequenceStep(o[1] as api.SegmentSequenceStep);
 }
 
 core.int buildCounterSequenceSegment = 0;
@@ -1786,8 +1788,8 @@ core.List<api.OrFiltersForSegment> buildUnnamed5685() {
 
 void checkUnnamed5685(core.List<api.OrFiltersForSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrFiltersForSegment(o[0]);
-  checkOrFiltersForSegment(o[1]);
+  checkOrFiltersForSegment(o[0] as api.OrFiltersForSegment);
+  checkOrFiltersForSegment(o[1] as api.OrFiltersForSegment);
 }
 
 core.int buildCounterSimpleSegment = 0;
@@ -1864,8 +1866,8 @@ core.List<api.Activity> buildUnnamed5686() {
 
 void checkUnnamed5686(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivity(o[0]);
-  checkActivity(o[1]);
+  checkActivity(o[0] as api.Activity);
+  checkActivity(o[1] as api.Activity);
 }
 
 core.int buildCounterUserActivitySession = 0;
@@ -1902,7 +1904,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
-      checkActivity(od);
+      checkActivity(od as api.Activity);
     });
   });
 
@@ -1910,7 +1912,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCohort();
       var od = api.Cohort.fromJson(o.toJson());
-      checkCohort(od);
+      checkCohort(od as api.Cohort);
     });
   });
 
@@ -1918,7 +1920,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCohortGroup();
       var od = api.CohortGroup.fromJson(o.toJson());
-      checkCohortGroup(od);
+      checkCohortGroup(od as api.CohortGroup);
     });
   });
 
@@ -1926,7 +1928,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColumnHeader();
       var od = api.ColumnHeader.fromJson(o.toJson());
-      checkColumnHeader(od);
+      checkColumnHeader(od as api.ColumnHeader);
     });
   });
 
@@ -1934,7 +1936,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
-      checkCustomDimension(od);
+      checkCustomDimension(od as api.CustomDimension);
     });
   });
 
@@ -1942,7 +1944,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
-      checkDateRange(od);
+      checkDateRange(od as api.DateRange);
     });
   });
 
@@ -1950,7 +1952,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDateRangeValues();
       var od = api.DateRangeValues.fromJson(o.toJson());
-      checkDateRangeValues(od);
+      checkDateRangeValues(od as api.DateRangeValues);
     });
   });
 
@@ -1958,7 +1960,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
-      checkDimension(od);
+      checkDimension(od as api.Dimension);
     });
   });
 
@@ -1966,7 +1968,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDimensionFilter();
       var od = api.DimensionFilter.fromJson(o.toJson());
-      checkDimensionFilter(od);
+      checkDimensionFilter(od as api.DimensionFilter);
     });
   });
 
@@ -1974,7 +1976,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDimensionFilterClause();
       var od = api.DimensionFilterClause.fromJson(o.toJson());
-      checkDimensionFilterClause(od);
+      checkDimensionFilterClause(od as api.DimensionFilterClause);
     });
   });
 
@@ -1982,7 +1984,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDynamicSegment();
       var od = api.DynamicSegment.fromJson(o.toJson());
-      checkDynamicSegment(od);
+      checkDynamicSegment(od as api.DynamicSegment);
     });
   });
 
@@ -1990,7 +1992,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEcommerceData();
       var od = api.EcommerceData.fromJson(o.toJson());
-      checkEcommerceData(od);
+      checkEcommerceData(od as api.EcommerceData);
     });
   });
 
@@ -1998,7 +2000,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventData();
       var od = api.EventData.fromJson(o.toJson());
-      checkEventData(od);
+      checkEventData(od as api.EventData);
     });
   });
 
@@ -2006,7 +2008,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetReportsRequest();
       var od = api.GetReportsRequest.fromJson(o.toJson());
-      checkGetReportsRequest(od);
+      checkGetReportsRequest(od as api.GetReportsRequest);
     });
   });
 
@@ -2014,7 +2016,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetReportsResponse();
       var od = api.GetReportsResponse.fromJson(o.toJson());
-      checkGetReportsResponse(od);
+      checkGetReportsResponse(od as api.GetReportsResponse);
     });
   });
 
@@ -2022,7 +2024,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalData();
       var od = api.GoalData.fromJson(o.toJson());
-      checkGoalData(od);
+      checkGoalData(od as api.GoalData);
     });
   });
 
@@ -2030,7 +2032,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalSetData();
       var od = api.GoalSetData.fromJson(o.toJson());
-      checkGoalSetData(od);
+      checkGoalSetData(od as api.GoalSetData);
     });
   });
 
@@ -2038,7 +2040,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetric();
       var od = api.Metric.fromJson(o.toJson());
-      checkMetric(od);
+      checkMetric(od as api.Metric);
     });
   });
 
@@ -2046,7 +2048,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricFilter();
       var od = api.MetricFilter.fromJson(o.toJson());
-      checkMetricFilter(od);
+      checkMetricFilter(od as api.MetricFilter);
     });
   });
 
@@ -2054,7 +2056,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricFilterClause();
       var od = api.MetricFilterClause.fromJson(o.toJson());
-      checkMetricFilterClause(od);
+      checkMetricFilterClause(od as api.MetricFilterClause);
     });
   });
 
@@ -2062,7 +2064,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricHeader();
       var od = api.MetricHeader.fromJson(o.toJson());
-      checkMetricHeader(od);
+      checkMetricHeader(od as api.MetricHeader);
     });
   });
 
@@ -2070,7 +2072,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricHeaderEntry();
       var od = api.MetricHeaderEntry.fromJson(o.toJson());
-      checkMetricHeaderEntry(od);
+      checkMetricHeaderEntry(od as api.MetricHeaderEntry);
     });
   });
 
@@ -2078,7 +2080,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrFiltersForSegment();
       var od = api.OrFiltersForSegment.fromJson(o.toJson());
-      checkOrFiltersForSegment(od);
+      checkOrFiltersForSegment(od as api.OrFiltersForSegment);
     });
   });
 
@@ -2086,7 +2088,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrderBy();
       var od = api.OrderBy.fromJson(o.toJson());
-      checkOrderBy(od);
+      checkOrderBy(od as api.OrderBy);
     });
   });
 
@@ -2094,7 +2096,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageviewData();
       var od = api.PageviewData.fromJson(o.toJson());
-      checkPageviewData(od);
+      checkPageviewData(od as api.PageviewData);
     });
   });
 
@@ -2102,7 +2104,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPivot();
       var od = api.Pivot.fromJson(o.toJson());
-      checkPivot(od);
+      checkPivot(od as api.Pivot);
     });
   });
 
@@ -2110,7 +2112,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPivotHeader();
       var od = api.PivotHeader.fromJson(o.toJson());
-      checkPivotHeader(od);
+      checkPivotHeader(od as api.PivotHeader);
     });
   });
 
@@ -2118,7 +2120,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPivotHeaderEntry();
       var od = api.PivotHeaderEntry.fromJson(o.toJson());
-      checkPivotHeaderEntry(od);
+      checkPivotHeaderEntry(od as api.PivotHeaderEntry);
     });
   });
 
@@ -2126,7 +2128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPivotValueRegion();
       var od = api.PivotValueRegion.fromJson(o.toJson());
-      checkPivotValueRegion(od);
+      checkPivotValueRegion(od as api.PivotValueRegion);
     });
   });
 
@@ -2134,7 +2136,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProductData();
       var od = api.ProductData.fromJson(o.toJson());
-      checkProductData(od);
+      checkProductData(od as api.ProductData);
     });
   });
 
@@ -2142,7 +2144,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
-      checkReport(od);
+      checkReport(od as api.Report);
     });
   });
 
@@ -2150,7 +2152,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportData();
       var od = api.ReportData.fromJson(o.toJson());
-      checkReportData(od);
+      checkReportData(od as api.ReportData);
     });
   });
 
@@ -2158,7 +2160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
-      checkReportRequest(od);
+      checkReportRequest(od as api.ReportRequest);
     });
   });
 
@@ -2166,7 +2168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
-      checkReportRow(od);
+      checkReportRow(od as api.ReportRow);
     });
   });
 
@@ -2174,7 +2176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceQuotasRemaining();
       var od = api.ResourceQuotasRemaining.fromJson(o.toJson());
-      checkResourceQuotasRemaining(od);
+      checkResourceQuotasRemaining(od as api.ResourceQuotasRemaining);
     });
   });
 
@@ -2182,7 +2184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScreenviewData();
       var od = api.ScreenviewData.fromJson(o.toJson());
-      checkScreenviewData(od);
+      checkScreenviewData(od as api.ScreenviewData);
     });
   });
 
@@ -2190,7 +2192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchUserActivityRequest();
       var od = api.SearchUserActivityRequest.fromJson(o.toJson());
-      checkSearchUserActivityRequest(od);
+      checkSearchUserActivityRequest(od as api.SearchUserActivityRequest);
     });
   });
 
@@ -2198,7 +2200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchUserActivityResponse();
       var od = api.SearchUserActivityResponse.fromJson(o.toJson());
-      checkSearchUserActivityResponse(od);
+      checkSearchUserActivityResponse(od as api.SearchUserActivityResponse);
     });
   });
 
@@ -2206,7 +2208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
-      checkSegment(od);
+      checkSegment(od as api.Segment);
     });
   });
 
@@ -2214,7 +2216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentDefinition();
       var od = api.SegmentDefinition.fromJson(o.toJson());
-      checkSegmentDefinition(od);
+      checkSegmentDefinition(od as api.SegmentDefinition);
     });
   });
 
@@ -2222,7 +2224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentDimensionFilter();
       var od = api.SegmentDimensionFilter.fromJson(o.toJson());
-      checkSegmentDimensionFilter(od);
+      checkSegmentDimensionFilter(od as api.SegmentDimensionFilter);
     });
   });
 
@@ -2230,7 +2232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentFilter();
       var od = api.SegmentFilter.fromJson(o.toJson());
-      checkSegmentFilter(od);
+      checkSegmentFilter(od as api.SegmentFilter);
     });
   });
 
@@ -2238,7 +2240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentFilterClause();
       var od = api.SegmentFilterClause.fromJson(o.toJson());
-      checkSegmentFilterClause(od);
+      checkSegmentFilterClause(od as api.SegmentFilterClause);
     });
   });
 
@@ -2246,7 +2248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentMetricFilter();
       var od = api.SegmentMetricFilter.fromJson(o.toJson());
-      checkSegmentMetricFilter(od);
+      checkSegmentMetricFilter(od as api.SegmentMetricFilter);
     });
   });
 
@@ -2254,7 +2256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegmentSequenceStep();
       var od = api.SegmentSequenceStep.fromJson(o.toJson());
-      checkSegmentSequenceStep(od);
+      checkSegmentSequenceStep(od as api.SegmentSequenceStep);
     });
   });
 
@@ -2262,7 +2264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSequenceSegment();
       var od = api.SequenceSegment.fromJson(o.toJson());
-      checkSequenceSegment(od);
+      checkSequenceSegment(od as api.SequenceSegment);
     });
   });
 
@@ -2270,7 +2272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSimpleSegment();
       var od = api.SimpleSegment.fromJson(o.toJson());
-      checkSimpleSegment(od);
+      checkSimpleSegment(od as api.SimpleSegment);
     });
   });
 
@@ -2278,7 +2280,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransactionData();
       var od = api.TransactionData.fromJson(o.toJson());
-      checkTransactionData(od);
+      checkTransactionData(od as api.TransactionData);
     });
   });
 
@@ -2286,7 +2288,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -2294,7 +2296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserActivitySession();
       var od = api.UserActivitySession.fromJson(o.toJson());
-      checkUserActivitySession(od);
+      checkUserActivitySession(od as api.UserActivitySession);
     });
   });
 
@@ -2305,8 +2307,9 @@ void main() {
       var arg_request = buildGetReportsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetReportsRequest.fromJson(json);
-        checkGetReportsRequest(obj);
+        var obj = api.GetReportsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetReportsRequest(obj as api.GetReportsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2345,7 +2348,7 @@ void main() {
       res
           .batchGet(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetReportsResponse(response);
+        checkGetReportsResponse(response as api.GetReportsResponse);
       })));
     });
   });
@@ -2357,8 +2360,9 @@ void main() {
       var arg_request = buildSearchUserActivityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchUserActivityRequest.fromJson(json);
-        checkSearchUserActivityRequest(obj);
+        var obj = api.SearchUserActivityRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchUserActivityRequest(obj as api.SearchUserActivityRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2397,7 +2401,8 @@ void main() {
       res
           .search(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchUserActivityResponse(response);
+        checkSearchUserActivityResponse(
+            response as api.SearchUserActivityResponse);
       })));
     });
   });

@@ -73,7 +73,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AnalysisResults.fromJson(data));
+    return _response.then(
+      (data) =>
+          AnalysisResults.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -112,7 +115,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AnalysisResults.fromJson(data));
+    return _response.then(
+      (data) =>
+          AnalysisResults.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -149,7 +155,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CompileResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          CompileResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -188,7 +197,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CompileResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          CompileResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -225,7 +237,9 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Request parameters:
@@ -270,7 +284,9 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -307,7 +323,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DocumentResponse.fromJson(data));
+    return _response.then(
+      (data) => DocumentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -352,7 +371,10 @@ class DartservicesApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DocumentResponse.fromJson(data));
+    return _response.then(
+      (data) => DocumentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -419,7 +441,8 @@ class AnalysisResults {
   AnalysisResults.fromJson(core.Map _json) {
     if (_json.containsKey('issues')) {
       issues = (_json['issues'] as core.List)
-          .map<AnalysisIssue>((value) => AnalysisIssue.fromJson(value))
+          .map<AnalysisIssue>((value) => AnalysisIssue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -461,7 +484,8 @@ class DocumentResponse {
   DocumentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('info')) {
       info = commons.mapMap<core.String, core.String>(
-          _json['info'].cast<core.String, core.String>(),
+          (_json['info'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }

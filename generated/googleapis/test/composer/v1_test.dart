@@ -122,7 +122,7 @@ api.Environment buildEnvironment() {
 void checkEnvironment(api.Environment o) {
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
-    checkEnvironmentConfig(o.config);
+    checkEnvironmentConfig(o.config as api.EnvironmentConfig);
     unittest.expect(o.createTime, unittest.equals('foo'));
     checkUnnamed1838(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -156,10 +156,11 @@ void checkEnvironmentConfig(api.EnvironmentConfig o) {
     unittest.expect(o.airflowUri, unittest.equals('foo'));
     unittest.expect(o.dagGcsPrefix, unittest.equals('foo'));
     unittest.expect(o.gkeCluster, unittest.equals('foo'));
-    checkNodeConfig(o.nodeConfig);
+    checkNodeConfig(o.nodeConfig as api.NodeConfig);
     unittest.expect(o.nodeCount, unittest.equals(42));
-    checkPrivateEnvironmentConfig(o.privateEnvironmentConfig);
-    checkSoftwareConfig(o.softwareConfig);
+    checkPrivateEnvironmentConfig(
+        o.privateEnvironmentConfig as api.PrivateEnvironmentConfig);
+    checkSoftwareConfig(o.softwareConfig as api.SoftwareConfig);
   }
   buildCounterEnvironmentConfig--;
 }
@@ -236,8 +237,8 @@ core.List<api.Environment> buildUnnamed1840() {
 
 void checkUnnamed1840(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnvironment(o[0]);
-  checkEnvironment(o[1]);
+  checkEnvironment(o[0] as api.Environment);
+  checkEnvironment(o[1] as api.Environment);
 }
 
 core.int buildCounterListEnvironmentsResponse = 0;
@@ -270,8 +271,8 @@ core.List<api.ImageVersion> buildUnnamed1841() {
 
 void checkUnnamed1841(core.List<api.ImageVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImageVersion(o[0]);
-  checkImageVersion(o[1]);
+  checkImageVersion(o[0] as api.ImageVersion);
+  checkImageVersion(o[1] as api.ImageVersion);
 }
 
 core.int buildCounterListImageVersionsResponse = 0;
@@ -304,8 +305,8 @@ core.List<api.Operation> buildUnnamed1842() {
 
 void checkUnnamed1842(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -378,7 +379,7 @@ void checkNodeConfig(api.NodeConfig o) {
   buildCounterNodeConfig++;
   if (buildCounterNodeConfig < 3) {
     unittest.expect(o.diskSizeGb, unittest.equals(42));
-    checkIPAllocationPolicy(o.ipAllocationPolicy);
+    checkIPAllocationPolicy(o.ipAllocationPolicy as api.IPAllocationPolicy);
     unittest.expect(o.location, unittest.equals('foo'));
     unittest.expect(o.machineType, unittest.equals('foo'));
     unittest.expect(o.network, unittest.equals('foo'));
@@ -467,7 +468,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1845(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1846(o.response);
@@ -547,7 +548,8 @@ void checkPrivateEnvironmentConfig(api.PrivateEnvironmentConfig o) {
   if (buildCounterPrivateEnvironmentConfig < 3) {
     unittest.expect(o.cloudSqlIpv4CidrBlock, unittest.equals('foo'));
     unittest.expect(o.enablePrivateEnvironment, unittest.isTrue);
-    checkPrivateClusterConfig(o.privateClusterConfig);
+    checkPrivateClusterConfig(
+        o.privateClusterConfig as api.PrivateClusterConfig);
     unittest.expect(o.webServerIpv4CidrBlock, unittest.equals('foo'));
     unittest.expect(o.webServerIpv4ReservedRange, unittest.equals('foo'));
   }
@@ -690,7 +692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -698,7 +700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
-      checkEnvironment(od);
+      checkEnvironment(od as api.Environment);
     });
   });
 
@@ -706,7 +708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironmentConfig();
       var od = api.EnvironmentConfig.fromJson(o.toJson());
-      checkEnvironmentConfig(od);
+      checkEnvironmentConfig(od as api.EnvironmentConfig);
     });
   });
 
@@ -714,7 +716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIPAllocationPolicy();
       var od = api.IPAllocationPolicy.fromJson(o.toJson());
-      checkIPAllocationPolicy(od);
+      checkIPAllocationPolicy(od as api.IPAllocationPolicy);
     });
   });
 
@@ -722,7 +724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageVersion();
       var od = api.ImageVersion.fromJson(o.toJson());
-      checkImageVersion(od);
+      checkImageVersion(od as api.ImageVersion);
     });
   });
 
@@ -730,7 +732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
-      checkListEnvironmentsResponse(od);
+      checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
     });
   });
 
@@ -738,7 +740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListImageVersionsResponse();
       var od = api.ListImageVersionsResponse.fromJson(o.toJson());
-      checkListImageVersionsResponse(od);
+      checkListImageVersionsResponse(od as api.ListImageVersionsResponse);
     });
   });
 
@@ -746,7 +748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -754,7 +756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNodeConfig();
       var od = api.NodeConfig.fromJson(o.toJson());
-      checkNodeConfig(od);
+      checkNodeConfig(od as api.NodeConfig);
     });
   });
 
@@ -762,7 +764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -770,7 +772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -778,7 +780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPrivateClusterConfig();
       var od = api.PrivateClusterConfig.fromJson(o.toJson());
-      checkPrivateClusterConfig(od);
+      checkPrivateClusterConfig(od as api.PrivateClusterConfig);
     });
   });
 
@@ -786,7 +788,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPrivateEnvironmentConfig();
       var od = api.PrivateEnvironmentConfig.fromJson(o.toJson());
-      checkPrivateEnvironmentConfig(od);
+      checkPrivateEnvironmentConfig(od as api.PrivateEnvironmentConfig);
     });
   });
 
@@ -794,7 +796,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSoftwareConfig();
       var od = api.SoftwareConfig.fromJson(o.toJson());
-      checkSoftwareConfig(od);
+      checkSoftwareConfig(od as api.SoftwareConfig);
     });
   });
 
@@ -802,7 +804,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -814,8 +816,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Environment.fromJson(json);
-        checkEnvironment(obj);
+        var obj = api.Environment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnvironment(obj as api.Environment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -855,7 +858,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -903,7 +906,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -951,7 +954,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
 
@@ -1008,7 +1011,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response);
+        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
       })));
     });
 
@@ -1020,8 +1023,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Environment.fromJson(json);
-        checkEnvironment(obj);
+        var obj = api.Environment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnvironment(obj as api.Environment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1064,7 +1068,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1123,7 +1127,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListImageVersionsResponse(response);
+        checkListImageVersionsResponse(
+            response as api.ListImageVersionsResponse);
       })));
     });
   });
@@ -1173,7 +1178,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1221,7 +1226,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1281,7 +1286,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

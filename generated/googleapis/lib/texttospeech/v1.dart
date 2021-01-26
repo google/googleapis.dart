@@ -100,7 +100,10 @@ class TextResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SynthesizeSpeechResponse.fromJson(data));
+    return _response.then(
+      (data) => SynthesizeSpeechResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -161,7 +164,10 @@ class VoicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVoicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVoicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -276,7 +282,8 @@ class ListVoicesResponse {
   ListVoicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('voices')) {
       voices = (_json['voices'] as core.List)
-          .map<Voice>((value) => Voice.fromJson(value))
+          .map<Voice>((value) =>
+              Voice.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -342,13 +349,16 @@ class SynthesizeSpeechRequest {
 
   SynthesizeSpeechRequest.fromJson(core.Map _json) {
     if (_json.containsKey('audioConfig')) {
-      audioConfig = AudioConfig.fromJson(_json['audioConfig']);
+      audioConfig = AudioConfig.fromJson(
+          _json['audioConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('input')) {
-      input = SynthesisInput.fromJson(_json['input']);
+      input = SynthesisInput.fromJson(
+          _json['input'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('voice')) {
-      voice = VoiceSelectionParams.fromJson(_json['voice']);
+      voice = VoiceSelectionParams.fromJson(
+          _json['voice'] as core.Map<core.String, core.dynamic>);
     }
   }
 

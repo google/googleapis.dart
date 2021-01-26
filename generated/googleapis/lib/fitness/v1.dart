@@ -224,7 +224,10 @@ class UsersDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified data source. The request will fail if the data
@@ -282,7 +285,10 @@ class UsersDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified data source.
@@ -339,7 +345,10 @@ class UsersDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all data sources that are visible to the developer, using the OAuth
@@ -398,7 +407,10 @@ class UsersDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDataSourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDataSourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified data source. The dataStreamId, dataType, type,
@@ -463,7 +475,10 @@ class UsersDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -544,8 +559,10 @@ class UsersDataSourcesDataPointChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListDataPointChangesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDataPointChangesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -640,7 +657,9 @@ class UsersDataSourcesDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns a dataset containing all data points whose start and end times
@@ -731,7 +750,9 @@ class UsersDataSourcesDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Dataset.fromJson(data));
+    return _response.then(
+      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds data points to a dataset. The dataset need not be previously created.
@@ -817,7 +838,9 @@ class UsersDataSourcesDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Dataset.fromJson(data));
+    return _response.then(
+      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -881,7 +904,10 @@ class UsersDatasetResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AggregateResponse.fromJson(data));
+    return _response.then(
+      (data) => AggregateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -951,7 +977,9 @@ class UsersSessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Lists sessions previously created.
@@ -1044,7 +1072,10 @@ class UsersSessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSessionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSessionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates or insert a given session.
@@ -1114,7 +1145,9 @@ class UsersSessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Session.fromJson(data));
+    return _response.then(
+      (data) => Session.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1164,14 +1197,16 @@ class AggregateBucket {
     }
     if (_json.containsKey('dataset')) {
       dataset = (_json['dataset'] as core.List)
-          .map<Dataset>((value) => Dataset.fromJson(value))
+          .map<Dataset>((value) =>
+              Dataset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('endTimeMillis')) {
       endTimeMillis = _json['endTimeMillis'] as core.String;
     }
     if (_json.containsKey('session')) {
-      session = Session.fromJson(_json['session']);
+      session = Session.fromJson(
+          _json['session'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTimeMillis')) {
       startTimeMillis = _json['startTimeMillis'] as core.String;
@@ -1293,22 +1328,26 @@ class AggregateRequest {
   AggregateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('aggregateBy')) {
       aggregateBy = (_json['aggregateBy'] as core.List)
-          .map<AggregateBy>((value) => AggregateBy.fromJson(value))
+          .map<AggregateBy>((value) => AggregateBy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bucketByActivitySegment')) {
-      bucketByActivitySegment =
-          BucketByActivity.fromJson(_json['bucketByActivitySegment']);
+      bucketByActivitySegment = BucketByActivity.fromJson(
+          _json['bucketByActivitySegment']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bucketByActivityType')) {
-      bucketByActivityType =
-          BucketByActivity.fromJson(_json['bucketByActivityType']);
+      bucketByActivityType = BucketByActivity.fromJson(
+          _json['bucketByActivityType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bucketBySession')) {
-      bucketBySession = BucketBySession.fromJson(_json['bucketBySession']);
+      bucketBySession = BucketBySession.fromJson(
+          _json['bucketBySession'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bucketByTime')) {
-      bucketByTime = BucketByTime.fromJson(_json['bucketByTime']);
+      bucketByTime = BucketByTime.fromJson(
+          _json['bucketByTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTimeMillis')) {
       endTimeMillis = _json['endTimeMillis'] as core.String;
@@ -1364,7 +1403,8 @@ class AggregateResponse {
   AggregateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('bucket')) {
       bucket = (_json['bucket'] as core.List)
-          .map<AggregateBucket>((value) => AggregateBucket.fromJson(value))
+          .map<AggregateBucket>((value) => AggregateBucket.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1502,7 +1542,8 @@ class BucketByTime {
       durationMillis = _json['durationMillis'] as core.String;
     }
     if (_json.containsKey('period')) {
-      period = BucketByTimePeriod.fromJson(_json['period']);
+      period = BucketByTimePeriod.fromJson(
+          _json['period'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1630,7 +1671,8 @@ class DataPoint {
     }
     if (_json.containsKey('value')) {
       value = (_json['value'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1743,7 +1785,8 @@ class DataSource {
 
   DataSource.fromJson(core.Map _json) {
     if (_json.containsKey('application')) {
-      application = Application.fromJson(_json['application']);
+      application = Application.fromJson(
+          _json['application'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataQualityStandard')) {
       dataQualityStandard = (_json['dataQualityStandard'] as core.List)
@@ -1757,10 +1800,12 @@ class DataSource {
       dataStreamName = _json['dataStreamName'] as core.String;
     }
     if (_json.containsKey('dataType')) {
-      dataType = DataType.fromJson(_json['dataType']);
+      dataType = DataType.fromJson(
+          _json['dataType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('device')) {
-      device = Device.fromJson(_json['device']);
+      device = Device.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1813,7 +1858,8 @@ class DataType {
   DataType.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
       field = (_json['field'] as core.List)
-          .map<DataTypeField>((value) => DataTypeField.fromJson(value))
+          .map<DataTypeField>((value) => DataTypeField.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -1931,7 +1977,8 @@ class Dataset {
     }
     if (_json.containsKey('point')) {
       point = (_json['point'] as core.List)
-          .map<DataPoint>((value) => DataPoint.fromJson(value))
+          .map<DataPoint>((value) =>
+              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2061,12 +2108,14 @@ class ListDataPointChangesResponse {
     }
     if (_json.containsKey('deletedDataPoint')) {
       deletedDataPoint = (_json['deletedDataPoint'] as core.List)
-          .map<DataPoint>((value) => DataPoint.fromJson(value))
+          .map<DataPoint>((value) =>
+              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('insertedDataPoint')) {
       insertedDataPoint = (_json['insertedDataPoint'] as core.List)
-          .map<DataPoint>((value) => DataPoint.fromJson(value))
+          .map<DataPoint>((value) =>
+              DataPoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2103,7 +2152,8 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataSource')) {
       dataSource = (_json['dataSource'] as core.List)
-          .map<DataSource>((value) => DataSource.fromJson(value))
+          .map<DataSource>((value) =>
+              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2140,7 +2190,8 @@ class ListSessionsResponse {
   ListSessionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deletedSession')) {
       deletedSession = (_json['deletedSession'] as core.List)
-          .map<Session>((value) => Session.fromJson(value))
+          .map<Session>((value) =>
+              Session.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('hasMoreData')) {
@@ -2151,7 +2202,8 @@ class ListSessionsResponse {
     }
     if (_json.containsKey('session')) {
       session = (_json['session'] as core.List)
-          .map<Session>((value) => Session.fromJson(value))
+          .map<Session>((value) =>
+              Session.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2243,7 +2295,8 @@ class Session {
       activityType = _json['activityType'] as core.int;
     }
     if (_json.containsKey('application')) {
-      application = Application.fromJson(_json['application']);
+      application = Application.fromJson(
+          _json['application'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -2330,7 +2383,8 @@ class Value {
     }
     if (_json.containsKey('mapVal')) {
       mapVal = (_json['mapVal'] as core.List)
-          .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(value))
+          .map<ValueMapValEntry>((value) => ValueMapValEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('stringVal')) {
@@ -2367,7 +2421,8 @@ class ValueMapValEntry {
       key = _json['key'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = MapValue.fromJson(_json['value']);
+      value = MapValue.fromJson(
+          _json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 

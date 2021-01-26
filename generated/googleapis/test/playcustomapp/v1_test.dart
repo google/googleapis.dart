@@ -102,7 +102,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomApp();
       var od = api.CustomApp.fromJson(o.toJson());
-      checkCustomApp(od);
+      checkCustomApp(od as api.CustomApp);
     });
   });
 
@@ -117,8 +117,9 @@ void main() {
       var arg_account = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomApp.fromJson(json);
-        checkCustomApp(obj);
+        var obj =
+            api.CustomApp.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCustomApp(obj as api.CustomApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -166,7 +167,7 @@ void main() {
       res
           .create(arg_request, arg_account, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomApp(response);
+        checkCustomApp(response as api.CustomApp);
       })));
     });
   });

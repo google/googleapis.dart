@@ -112,7 +112,10 @@ class GoogleServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleServiceAccount.fromJson(data));
+    return _response.then(
+      (data) => GoogleServiceAccount.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -166,7 +169,10 @@ class TransferJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferJob.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a transfer job.
@@ -222,7 +228,10 @@ class TransferJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferJob.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists transfer jobs.
@@ -289,7 +298,10 @@ class TransferJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a transfer job. Updating a job's transfer spec does not affect
@@ -347,7 +359,10 @@ class TransferJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferJob.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -426,7 +441,9 @@ class TransferOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -477,7 +494,9 @@ class TransferOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists transfer operations.
@@ -553,7 +572,10 @@ class TransferOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pauses a transfer operation.
@@ -608,7 +630,9 @@ class TransferOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resumes a transfer operation that is paused.
@@ -663,7 +687,9 @@ class TransferOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -716,7 +742,8 @@ class AwsS3Data {
 
   AwsS3Data.fromJson(core.Map _json) {
     if (_json.containsKey('awsAccessKey')) {
-      awsAccessKey = AwsAccessKey.fromJson(_json['awsAccessKey']);
+      awsAccessKey = AwsAccessKey.fromJson(
+          _json['awsAccessKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bucketName')) {
       bucketName = _json['bucketName'] as core.String;
@@ -757,7 +784,8 @@ class AzureBlobStorageData {
 
   AzureBlobStorageData.fromJson(core.Map _json) {
     if (_json.containsKey('azureCredentials')) {
-      azureCredentials = AzureCredentials.fromJson(_json['azureCredentials']);
+      azureCredentials = AzureCredentials.fromJson(
+          _json['azureCredentials'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('container')) {
       container = _json['container'] as core.String;
@@ -1027,7 +1055,8 @@ class ErrorSummary {
     }
     if (_json.containsKey('errorLogEntries')) {
       errorLogEntries = (_json['errorLogEntries'] as core.List)
-          .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(value))
+          .map<ErrorLogEntry>((value) => ErrorLogEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1160,7 +1189,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1193,7 +1223,8 @@ class ListTransferJobsResponse {
     }
     if (_json.containsKey('transferJobs')) {
       transferJobs = (_json['transferJobs'] as core.List)
-          .map<TransferJob>((value) => TransferJob.fromJson(value))
+          .map<TransferJob>((value) => TransferJob.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1430,11 +1461,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1442,7 +1475,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1533,13 +1567,16 @@ class Schedule {
 
   Schedule.fromJson(core.Map _json) {
     if (_json.containsKey('scheduleEndDate')) {
-      scheduleEndDate = Date.fromJson(_json['scheduleEndDate']);
+      scheduleEndDate = Date.fromJson(
+          _json['scheduleEndDate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scheduleStartDate')) {
-      scheduleStartDate = Date.fromJson(_json['scheduleStartDate']);
+      scheduleStartDate = Date.fromJson(
+          _json['scheduleStartDate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTimeOfDay')) {
-      startTimeOfDay = TimeOfDay.fromJson(_json['startTimeOfDay']);
+      startTimeOfDay = TimeOfDay.fromJson(
+          _json['startTimeOfDay'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1590,7 +1627,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -1912,20 +1950,22 @@ class TransferJob {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
-      notificationConfig =
-          NotificationConfig.fromJson(_json['notificationConfig']);
+      notificationConfig = NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('schedule')) {
-      schedule = Schedule.fromJson(_json['schedule']);
+      schedule = Schedule.fromJson(
+          _json['schedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
     }
     if (_json.containsKey('transferSpec')) {
-      transferSpec = TransferSpec.fromJson(_json['transferSpec']);
+      transferSpec = TransferSpec.fromJson(
+          _json['transferSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2010,22 +2050,24 @@ class TransferOperation {
 
   TransferOperation.fromJson(core.Map _json) {
     if (_json.containsKey('counters')) {
-      counters = TransferCounters.fromJson(_json['counters']);
+      counters = TransferCounters.fromJson(
+          _json['counters'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('errorBreakdowns')) {
       errorBreakdowns = (_json['errorBreakdowns'] as core.List)
-          .map<ErrorSummary>((value) => ErrorSummary.fromJson(value))
+          .map<ErrorSummary>((value) => ErrorSummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
-      notificationConfig =
-          NotificationConfig.fromJson(_json['notificationConfig']);
+      notificationConfig = NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
@@ -2040,7 +2082,8 @@ class TransferOperation {
       transferJobName = _json['transferJobName'] as core.String;
     }
     if (_json.containsKey('transferSpec')) {
-      transferSpec = TransferSpec.fromJson(_json['transferSpec']);
+      transferSpec = TransferSpec.fromJson(
+          _json['transferSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2161,26 +2204,33 @@ class TransferSpec {
 
   TransferSpec.fromJson(core.Map _json) {
     if (_json.containsKey('awsS3DataSource')) {
-      awsS3DataSource = AwsS3Data.fromJson(_json['awsS3DataSource']);
+      awsS3DataSource = AwsS3Data.fromJson(
+          _json['awsS3DataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('azureBlobStorageDataSource')) {
-      azureBlobStorageDataSource =
-          AzureBlobStorageData.fromJson(_json['azureBlobStorageDataSource']);
+      azureBlobStorageDataSource = AzureBlobStorageData.fromJson(
+          _json['azureBlobStorageDataSource']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcsDataSink')) {
-      gcsDataSink = GcsData.fromJson(_json['gcsDataSink']);
+      gcsDataSink = GcsData.fromJson(
+          _json['gcsDataSink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcsDataSource')) {
-      gcsDataSource = GcsData.fromJson(_json['gcsDataSource']);
+      gcsDataSource = GcsData.fromJson(
+          _json['gcsDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpDataSource')) {
-      httpDataSource = HttpData.fromJson(_json['httpDataSource']);
+      httpDataSource = HttpData.fromJson(
+          _json['httpDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectConditions')) {
-      objectConditions = ObjectConditions.fromJson(_json['objectConditions']);
+      objectConditions = ObjectConditions.fromJson(
+          _json['objectConditions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transferOptions')) {
-      transferOptions = TransferOptions.fromJson(_json['transferOptions']);
+      transferOptions = TransferOptions.fromJson(
+          _json['transferOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2239,7 +2289,8 @@ class UpdateTransferJobRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('transferJob')) {
-      transferJob = TransferJob.fromJson(_json['transferJob']);
+      transferJob = TransferJob.fromJson(
+          _json['transferJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTransferJobFieldMask')) {
       updateTransferJobFieldMask =

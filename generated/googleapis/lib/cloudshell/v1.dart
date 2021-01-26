@@ -114,7 +114,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -166,7 +168,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -217,7 +221,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -292,7 +298,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -368,7 +377,9 @@ class UsersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends OAuth credentials to a running environment on behalf of a user. When
@@ -429,7 +440,9 @@ class UsersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an environment. Returns NOT_FOUND if the environment does not exist.
@@ -480,7 +493,10 @@ class UsersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a public SSH key from an environment. Clients will no longer be
@@ -541,7 +557,9 @@ class UsersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts an existing environment, allowing clients to connect to it. The
@@ -603,7 +621,9 @@ class UsersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -941,7 +961,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1002,11 +1023,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1014,7 +1037,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1176,7 +1200,8 @@ class StartEnvironmentResponse {
 
   StartEnvironmentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('environment')) {
-      environment = Environment.fromJson(_json['environment']);
+      environment = Environment.fromJson(
+          _json['environment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1221,7 +1246,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

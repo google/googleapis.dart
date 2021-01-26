@@ -106,8 +106,8 @@ core.List<api.AuditLogConfig> buildUnnamed2315() {
 
 void checkUnnamed2315(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -219,7 +219,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2317(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -319,8 +319,8 @@ core.List<api.BillingAccount> buildUnnamed2319() {
 
 void checkUnnamed2319(core.List<api.BillingAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBillingAccount(o[0]);
-  checkBillingAccount(o[1]);
+  checkBillingAccount(o[0] as api.BillingAccount);
+  checkBillingAccount(o[1] as api.BillingAccount);
 }
 
 core.int buildCounterListBillingAccountsResponse = 0;
@@ -353,8 +353,8 @@ core.List<api.ProjectBillingInfo> buildUnnamed2320() {
 
 void checkUnnamed2320(core.List<api.ProjectBillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProjectBillingInfo(o[0]);
-  checkProjectBillingInfo(o[1]);
+  checkProjectBillingInfo(o[0] as api.ProjectBillingInfo);
+  checkProjectBillingInfo(o[1] as api.ProjectBillingInfo);
 }
 
 core.int buildCounterListProjectBillingInfoResponse = 0;
@@ -387,8 +387,8 @@ core.List<api.Service> buildUnnamed2321() {
 
 void checkUnnamed2321(core.List<api.Service> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkService(o[0]);
-  checkService(o[1]);
+  checkService(o[0] as api.Service);
+  checkService(o[1] as api.Service);
 }
 
 core.int buildCounterListServicesResponse = 0;
@@ -421,8 +421,8 @@ core.List<api.Sku> buildUnnamed2322() {
 
 void checkUnnamed2322(core.List<api.Sku> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSku(o[0]);
-  checkSku(o[1]);
+  checkSku(o[0] as api.Sku);
+  checkSku(o[1] as api.Sku);
 }
 
 core.int buildCounterListSkusResponse = 0;
@@ -478,8 +478,8 @@ core.List<api.AuditConfig> buildUnnamed2323() {
 
 void checkUnnamed2323(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed2324() {
@@ -491,8 +491,8 @@ core.List<api.Binding> buildUnnamed2324() {
 
 void checkUnnamed2324(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -529,8 +529,8 @@ core.List<api.TierRate> buildUnnamed2325() {
 
 void checkUnnamed2325(core.List<api.TierRate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTierRate(o[0]);
-  checkTierRate(o[1]);
+  checkTierRate(o[0] as api.TierRate);
+  checkTierRate(o[1] as api.TierRate);
 }
 
 core.int buildCounterPricingExpression = 0;
@@ -582,10 +582,10 @@ api.PricingInfo buildPricingInfo() {
 void checkPricingInfo(api.PricingInfo o) {
   buildCounterPricingInfo++;
   if (buildCounterPricingInfo < 3) {
-    checkAggregationInfo(o.aggregationInfo);
+    checkAggregationInfo(o.aggregationInfo as api.AggregationInfo);
     unittest.expect(o.currencyConversionRate, unittest.equals(42.0));
     unittest.expect(o.effectiveTime, unittest.equals('foo'));
-    checkPricingExpression(o.pricingExpression);
+    checkPricingExpression(o.pricingExpression as api.PricingExpression);
     unittest.expect(o.summary, unittest.equals('foo'));
   }
   buildCounterPricingInfo--;
@@ -656,7 +656,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -671,8 +671,8 @@ core.List<api.PricingInfo> buildUnnamed2326() {
 
 void checkUnnamed2326(core.List<api.PricingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPricingInfo(o[0]);
-  checkPricingInfo(o[1]);
+  checkPricingInfo(o[0] as api.PricingInfo);
+  checkPricingInfo(o[1] as api.PricingInfo);
 }
 
 core.List<core.String> buildUnnamed2327() {
@@ -709,9 +709,9 @@ api.Sku buildSku() {
 void checkSku(api.Sku o) {
   buildCounterSku++;
   if (buildCounterSku < 3) {
-    checkCategory(o.category);
+    checkCategory(o.category as api.Category);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkGeoTaxonomy(o.geoTaxonomy);
+    checkGeoTaxonomy(o.geoTaxonomy as api.GeoTaxonomy);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2326(o.pricingInfo);
     unittest.expect(o.serviceProviderName, unittest.equals('foo'));
@@ -801,7 +801,7 @@ void checkTierRate(api.TierRate o) {
   buildCounterTierRate++;
   if (buildCounterTierRate < 3) {
     unittest.expect(o.startUsageAmount, unittest.equals(42.0));
-    checkMoney(o.unitPrice);
+    checkMoney(o.unitPrice as api.Money);
   }
   buildCounterTierRate--;
 }
@@ -811,7 +811,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAggregationInfo();
       var od = api.AggregationInfo.fromJson(o.toJson());
-      checkAggregationInfo(od);
+      checkAggregationInfo(od as api.AggregationInfo);
     });
   });
 
@@ -819,7 +819,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -827,7 +827,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -835,7 +835,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBillingAccount();
       var od = api.BillingAccount.fromJson(o.toJson());
-      checkBillingAccount(od);
+      checkBillingAccount(od as api.BillingAccount);
     });
   });
 
@@ -843,7 +843,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -851,7 +851,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
-      checkCategory(od);
+      checkCategory(od as api.Category);
     });
   });
 
@@ -859,7 +859,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -867,7 +867,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeoTaxonomy();
       var od = api.GeoTaxonomy.fromJson(o.toJson());
-      checkGeoTaxonomy(od);
+      checkGeoTaxonomy(od as api.GeoTaxonomy);
     });
   });
 
@@ -875,7 +875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListBillingAccountsResponse();
       var od = api.ListBillingAccountsResponse.fromJson(o.toJson());
-      checkListBillingAccountsResponse(od);
+      checkListBillingAccountsResponse(od as api.ListBillingAccountsResponse);
     });
   });
 
@@ -883,7 +883,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListProjectBillingInfoResponse();
       var od = api.ListProjectBillingInfoResponse.fromJson(o.toJson());
-      checkListProjectBillingInfoResponse(od);
+      checkListProjectBillingInfoResponse(
+          od as api.ListProjectBillingInfoResponse);
     });
   });
 
@@ -891,7 +892,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListServicesResponse();
       var od = api.ListServicesResponse.fromJson(o.toJson());
-      checkListServicesResponse(od);
+      checkListServicesResponse(od as api.ListServicesResponse);
     });
   });
 
@@ -899,7 +900,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSkusResponse();
       var od = api.ListSkusResponse.fromJson(o.toJson());
-      checkListSkusResponse(od);
+      checkListSkusResponse(od as api.ListSkusResponse);
     });
   });
 
@@ -907,7 +908,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
-      checkMoney(od);
+      checkMoney(od as api.Money);
     });
   });
 
@@ -915,7 +916,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -923,7 +924,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPricingExpression();
       var od = api.PricingExpression.fromJson(o.toJson());
-      checkPricingExpression(od);
+      checkPricingExpression(od as api.PricingExpression);
     });
   });
 
@@ -931,7 +932,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPricingInfo();
       var od = api.PricingInfo.fromJson(o.toJson());
-      checkPricingInfo(od);
+      checkPricingInfo(od as api.PricingInfo);
     });
   });
 
@@ -939,7 +940,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjectBillingInfo();
       var od = api.ProjectBillingInfo.fromJson(o.toJson());
-      checkProjectBillingInfo(od);
+      checkProjectBillingInfo(od as api.ProjectBillingInfo);
     });
   });
 
@@ -947,7 +948,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildService();
       var od = api.Service.fromJson(o.toJson());
-      checkService(od);
+      checkService(od as api.Service);
     });
   });
 
@@ -955,7 +956,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -963,7 +964,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSku();
       var od = api.Sku.fromJson(o.toJson());
-      checkSku(od);
+      checkSku(od as api.Sku);
     });
   });
 
@@ -971,7 +972,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -979,7 +980,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -987,7 +988,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTierRate();
       var od = api.TierRate.fromJson(o.toJson());
-      checkTierRate(od);
+      checkTierRate(od as api.TierRate);
     });
   });
 
@@ -998,8 +999,9 @@ void main() {
       var arg_request = buildBillingAccount();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BillingAccount.fromJson(json);
-        checkBillingAccount(obj);
+        var obj = api.BillingAccount.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBillingAccount(obj as api.BillingAccount);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1038,7 +1040,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response);
+        checkBillingAccount(response as api.BillingAccount);
       })));
     });
 
@@ -1086,7 +1088,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response);
+        checkBillingAccount(response as api.BillingAccount);
       })));
     });
 
@@ -1141,7 +1143,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1199,7 +1201,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBillingAccountsResponse(response);
+        checkListBillingAccountsResponse(
+            response as api.ListBillingAccountsResponse);
       })));
     });
 
@@ -1211,8 +1214,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BillingAccount.fromJson(json);
-        checkBillingAccount(obj);
+        var obj = api.BillingAccount.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBillingAccount(obj as api.BillingAccount);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1255,7 +1259,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBillingAccount(response);
+        checkBillingAccount(response as api.BillingAccount);
       })));
     });
 
@@ -1266,8 +1270,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1307,7 +1312,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1318,8 +1323,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1359,7 +1365,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -1418,7 +1425,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListProjectBillingInfoResponse(response);
+        checkListProjectBillingInfoResponse(
+            response as api.ListProjectBillingInfoResponse);
       })));
     });
   });
@@ -1468,7 +1476,7 @@ void main() {
       res
           .getBillingInfo(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProjectBillingInfo(response);
+        checkProjectBillingInfo(response as api.ProjectBillingInfo);
       })));
     });
 
@@ -1479,8 +1487,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProjectBillingInfo.fromJson(json);
-        checkProjectBillingInfo(obj);
+        var obj = api.ProjectBillingInfo.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProjectBillingInfo(obj as api.ProjectBillingInfo);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1520,7 +1529,7 @@ void main() {
       res
           .updateBillingInfo(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProjectBillingInfo(response);
+        checkProjectBillingInfo(response as api.ProjectBillingInfo);
       })));
     });
   });
@@ -1577,7 +1586,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListServicesResponse(response);
+        checkListServicesResponse(response as api.ListServicesResponse);
       })));
     });
   });
@@ -1648,7 +1657,7 @@ void main() {
               startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSkusResponse(response);
+        checkListSkusResponse(response as api.ListSkusResponse);
       })));
     });
   });

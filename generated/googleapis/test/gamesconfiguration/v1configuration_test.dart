@@ -96,11 +96,13 @@ void checkAchievementConfiguration(api.AchievementConfiguration o) {
   buildCounterAchievementConfiguration++;
   if (buildCounterAchievementConfiguration < 3) {
     unittest.expect(o.achievementType, unittest.equals('foo'));
-    checkAchievementConfigurationDetail(o.draft);
+    checkAchievementConfigurationDetail(
+        o.draft as api.AchievementConfigurationDetail);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.initialState, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkAchievementConfigurationDetail(o.published);
+    checkAchievementConfigurationDetail(
+        o.published as api.AchievementConfigurationDetail);
     unittest.expect(o.stepsToUnlock, unittest.equals(42));
     unittest.expect(o.token, unittest.equals('foo'));
   }
@@ -126,10 +128,10 @@ api.AchievementConfigurationDetail buildAchievementConfigurationDetail() {
 void checkAchievementConfigurationDetail(api.AchievementConfigurationDetail o) {
   buildCounterAchievementConfigurationDetail++;
   if (buildCounterAchievementConfigurationDetail < 3) {
-    checkLocalizedStringBundle(o.description);
+    checkLocalizedStringBundle(o.description as api.LocalizedStringBundle);
     unittest.expect(o.iconUrl, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLocalizedStringBundle(o.name);
+    checkLocalizedStringBundle(o.name as api.LocalizedStringBundle);
     unittest.expect(o.pointValue, unittest.equals(42));
     unittest.expect(o.sortRank, unittest.equals(42));
   }
@@ -145,8 +147,8 @@ core.List<api.AchievementConfiguration> buildUnnamed2775() {
 
 void checkUnnamed2775(core.List<api.AchievementConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementConfiguration(o[0]);
-  checkAchievementConfiguration(o[1]);
+  checkAchievementConfiguration(o[0] as api.AchievementConfiguration);
+  checkAchievementConfiguration(o[1] as api.AchievementConfiguration);
 }
 
 core.int buildCounterAchievementConfigurationListResponse = 0;
@@ -193,12 +195,12 @@ api.GamesNumberAffixConfiguration buildGamesNumberAffixConfiguration() {
 void checkGamesNumberAffixConfiguration(api.GamesNumberAffixConfiguration o) {
   buildCounterGamesNumberAffixConfiguration++;
   if (buildCounterGamesNumberAffixConfiguration < 3) {
-    checkLocalizedStringBundle(o.few);
-    checkLocalizedStringBundle(o.many);
-    checkLocalizedStringBundle(o.one);
-    checkLocalizedStringBundle(o.other);
-    checkLocalizedStringBundle(o.two);
-    checkLocalizedStringBundle(o.zero);
+    checkLocalizedStringBundle(o.few as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.many as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.one as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.other as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.two as api.LocalizedStringBundle);
+    checkLocalizedStringBundle(o.zero as api.LocalizedStringBundle);
   }
   buildCounterGamesNumberAffixConfiguration--;
 }
@@ -223,7 +225,8 @@ void checkGamesNumberFormatConfiguration(api.GamesNumberFormatConfiguration o) {
     unittest.expect(o.currencyCode, unittest.equals('foo'));
     unittest.expect(o.numDecimalPlaces, unittest.equals(42));
     unittest.expect(o.numberFormatType, unittest.equals('foo'));
-    checkGamesNumberAffixConfiguration(o.suffix);
+    checkGamesNumberAffixConfiguration(
+        o.suffix as api.GamesNumberAffixConfiguration);
   }
   buildCounterGamesNumberFormatConfiguration--;
 }
@@ -274,10 +277,12 @@ api.LeaderboardConfiguration buildLeaderboardConfiguration() {
 void checkLeaderboardConfiguration(api.LeaderboardConfiguration o) {
   buildCounterLeaderboardConfiguration++;
   if (buildCounterLeaderboardConfiguration < 3) {
-    checkLeaderboardConfigurationDetail(o.draft);
+    checkLeaderboardConfigurationDetail(
+        o.draft as api.LeaderboardConfigurationDetail);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLeaderboardConfigurationDetail(o.published);
+    checkLeaderboardConfigurationDetail(
+        o.published as api.LeaderboardConfigurationDetail);
     unittest.expect(o.scoreMax, unittest.equals('foo'));
     unittest.expect(o.scoreMin, unittest.equals('foo'));
     unittest.expect(o.scoreOrder, unittest.equals('foo'));
@@ -306,8 +311,9 @@ void checkLeaderboardConfigurationDetail(api.LeaderboardConfigurationDetail o) {
   if (buildCounterLeaderboardConfigurationDetail < 3) {
     unittest.expect(o.iconUrl, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLocalizedStringBundle(o.name);
-    checkGamesNumberFormatConfiguration(o.scoreFormat);
+    checkLocalizedStringBundle(o.name as api.LocalizedStringBundle);
+    checkGamesNumberFormatConfiguration(
+        o.scoreFormat as api.GamesNumberFormatConfiguration);
     unittest.expect(o.sortRank, unittest.equals(42));
   }
   buildCounterLeaderboardConfigurationDetail--;
@@ -322,8 +328,8 @@ core.List<api.LeaderboardConfiguration> buildUnnamed2776() {
 
 void checkUnnamed2776(core.List<api.LeaderboardConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLeaderboardConfiguration(o[0]);
-  checkLeaderboardConfiguration(o[1]);
+  checkLeaderboardConfiguration(o[0] as api.LeaderboardConfiguration);
+  checkLeaderboardConfiguration(o[1] as api.LeaderboardConfiguration);
 }
 
 core.int buildCounterLeaderboardConfigurationListResponse = 0;
@@ -383,8 +389,8 @@ core.List<api.LocalizedString> buildUnnamed2777() {
 
 void checkUnnamed2777(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedString(o[0]);
-  checkLocalizedString(o[1]);
+  checkLocalizedString(o[0] as api.LocalizedString);
+  checkLocalizedString(o[1] as api.LocalizedString);
 }
 
 core.int buildCounterLocalizedStringBundle = 0;
@@ -413,7 +419,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementConfiguration();
       var od = api.AchievementConfiguration.fromJson(o.toJson());
-      checkAchievementConfiguration(od);
+      checkAchievementConfiguration(od as api.AchievementConfiguration);
     });
   });
 
@@ -421,7 +427,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementConfigurationDetail();
       var od = api.AchievementConfigurationDetail.fromJson(o.toJson());
-      checkAchievementConfigurationDetail(od);
+      checkAchievementConfigurationDetail(
+          od as api.AchievementConfigurationDetail);
     });
   });
 
@@ -429,7 +436,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementConfigurationListResponse();
       var od = api.AchievementConfigurationListResponse.fromJson(o.toJson());
-      checkAchievementConfigurationListResponse(od);
+      checkAchievementConfigurationListResponse(
+          od as api.AchievementConfigurationListResponse);
     });
   });
 
@@ -437,7 +445,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesNumberAffixConfiguration();
       var od = api.GamesNumberAffixConfiguration.fromJson(o.toJson());
-      checkGamesNumberAffixConfiguration(od);
+      checkGamesNumberAffixConfiguration(
+          od as api.GamesNumberAffixConfiguration);
     });
   });
 
@@ -445,7 +454,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesNumberFormatConfiguration();
       var od = api.GamesNumberFormatConfiguration.fromJson(o.toJson());
-      checkGamesNumberFormatConfiguration(od);
+      checkGamesNumberFormatConfiguration(
+          od as api.GamesNumberFormatConfiguration);
     });
   });
 
@@ -453,7 +463,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageConfiguration();
       var od = api.ImageConfiguration.fromJson(o.toJson());
-      checkImageConfiguration(od);
+      checkImageConfiguration(od as api.ImageConfiguration);
     });
   });
 
@@ -461,7 +471,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardConfiguration();
       var od = api.LeaderboardConfiguration.fromJson(o.toJson());
-      checkLeaderboardConfiguration(od);
+      checkLeaderboardConfiguration(od as api.LeaderboardConfiguration);
     });
   });
 
@@ -469,7 +479,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardConfigurationDetail();
       var od = api.LeaderboardConfigurationDetail.fromJson(o.toJson());
-      checkLeaderboardConfigurationDetail(od);
+      checkLeaderboardConfigurationDetail(
+          od as api.LeaderboardConfigurationDetail);
     });
   });
 
@@ -477,7 +488,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardConfigurationListResponse();
       var od = api.LeaderboardConfigurationListResponse.fromJson(o.toJson());
-      checkLeaderboardConfigurationListResponse(od);
+      checkLeaderboardConfigurationListResponse(
+          od as api.LeaderboardConfigurationListResponse);
     });
   });
 
@@ -485,7 +497,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizedString();
       var od = api.LocalizedString.fromJson(o.toJson());
-      checkLocalizedString(od);
+      checkLocalizedString(od as api.LocalizedString);
     });
   });
 
@@ -493,7 +505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizedStringBundle();
       var od = api.LocalizedStringBundle.fromJson(o.toJson());
-      checkLocalizedStringBundle(od);
+      checkLocalizedStringBundle(od as api.LocalizedStringBundle);
     });
   });
 
@@ -592,7 +604,7 @@ void main() {
       res
           .get(arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response);
+        checkAchievementConfiguration(response as api.AchievementConfiguration);
       })));
     });
 
@@ -603,8 +615,9 @@ void main() {
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementConfiguration.fromJson(json);
-        checkAchievementConfiguration(obj);
+        var obj = api.AchievementConfiguration.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAchievementConfiguration(obj as api.AchievementConfiguration);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -652,7 +665,7 @@ void main() {
       res
           .insert(arg_request, arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response);
+        checkAchievementConfiguration(response as api.AchievementConfiguration);
       })));
     });
 
@@ -718,7 +731,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementConfigurationListResponse(response);
+        checkAchievementConfigurationListResponse(
+            response as api.AchievementConfigurationListResponse);
       })));
     });
 
@@ -729,8 +743,9 @@ void main() {
       var arg_achievementId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementConfiguration.fromJson(json);
-        checkAchievementConfiguration(obj);
+        var obj = api.AchievementConfiguration.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAchievementConfiguration(obj as api.AchievementConfiguration);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -772,7 +787,7 @@ void main() {
       res
           .update(arg_request, arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementConfiguration(response);
+        checkAchievementConfiguration(response as api.AchievementConfiguration);
       })));
     });
   });
@@ -837,7 +852,7 @@ void main() {
       res
           .upload(arg_resourceId, arg_imageType, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImageConfiguration(response);
+        checkImageConfiguration(response as api.ImageConfiguration);
       })));
     });
   });
@@ -937,7 +952,7 @@ void main() {
       res
           .get(arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response);
+        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
       })));
     });
 
@@ -948,8 +963,9 @@ void main() {
       var arg_applicationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LeaderboardConfiguration.fromJson(json);
-        checkLeaderboardConfiguration(obj);
+        var obj = api.LeaderboardConfiguration.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLeaderboardConfiguration(obj as api.LeaderboardConfiguration);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -997,7 +1013,7 @@ void main() {
       res
           .insert(arg_request, arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response);
+        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
       })));
     });
 
@@ -1063,7 +1079,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfigurationListResponse(response);
+        checkLeaderboardConfigurationListResponse(
+            response as api.LeaderboardConfigurationListResponse);
       })));
     });
 
@@ -1074,8 +1091,9 @@ void main() {
       var arg_leaderboardId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LeaderboardConfiguration.fromJson(json);
-        checkLeaderboardConfiguration(obj);
+        var obj = api.LeaderboardConfiguration.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLeaderboardConfiguration(obj as api.LeaderboardConfiguration);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1117,7 +1135,7 @@ void main() {
       res
           .update(arg_request, arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardConfiguration(response);
+        checkLeaderboardConfiguration(response as api.LeaderboardConfiguration);
       })));
     });
   });

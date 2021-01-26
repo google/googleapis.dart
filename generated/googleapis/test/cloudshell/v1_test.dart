@@ -297,8 +297,8 @@ core.List<api.Operation> buildUnnamed1807() {
 
 void checkUnnamed1807(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -399,7 +399,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1808(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1809(o.response);
@@ -523,7 +523,7 @@ api.StartEnvironmentResponse buildStartEnvironmentResponse() {
 void checkStartEnvironmentResponse(api.StartEnvironmentResponse o) {
   buildCounterStartEnvironmentResponse++;
   if (buildCounterStartEnvironmentResponse < 3) {
-    checkEnvironment(o.environment);
+    checkEnvironment(o.environment as api.Environment);
   }
   buildCounterStartEnvironmentResponse--;
 }
@@ -598,7 +598,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddPublicKeyMetadata();
       var od = api.AddPublicKeyMetadata.fromJson(o.toJson());
-      checkAddPublicKeyMetadata(od);
+      checkAddPublicKeyMetadata(od as api.AddPublicKeyMetadata);
     });
   });
 
@@ -606,7 +606,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddPublicKeyRequest();
       var od = api.AddPublicKeyRequest.fromJson(o.toJson());
-      checkAddPublicKeyRequest(od);
+      checkAddPublicKeyRequest(od as api.AddPublicKeyRequest);
     });
   });
 
@@ -614,7 +614,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddPublicKeyResponse();
       var od = api.AddPublicKeyResponse.fromJson(o.toJson());
-      checkAddPublicKeyResponse(od);
+      checkAddPublicKeyResponse(od as api.AddPublicKeyResponse);
     });
   });
 
@@ -622,7 +622,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthorizeEnvironmentMetadata();
       var od = api.AuthorizeEnvironmentMetadata.fromJson(o.toJson());
-      checkAuthorizeEnvironmentMetadata(od);
+      checkAuthorizeEnvironmentMetadata(od as api.AuthorizeEnvironmentMetadata);
     });
   });
 
@@ -630,7 +630,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthorizeEnvironmentRequest();
       var od = api.AuthorizeEnvironmentRequest.fromJson(o.toJson());
-      checkAuthorizeEnvironmentRequest(od);
+      checkAuthorizeEnvironmentRequest(od as api.AuthorizeEnvironmentRequest);
     });
   });
 
@@ -638,7 +638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthorizeEnvironmentResponse();
       var od = api.AuthorizeEnvironmentResponse.fromJson(o.toJson());
-      checkAuthorizeEnvironmentResponse(od);
+      checkAuthorizeEnvironmentResponse(od as api.AuthorizeEnvironmentResponse);
     });
   });
 
@@ -646,7 +646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -654,7 +654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateEnvironmentMetadata();
       var od = api.CreateEnvironmentMetadata.fromJson(o.toJson());
-      checkCreateEnvironmentMetadata(od);
+      checkCreateEnvironmentMetadata(od as api.CreateEnvironmentMetadata);
     });
   });
 
@@ -662,7 +662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteEnvironmentMetadata();
       var od = api.DeleteEnvironmentMetadata.fromJson(o.toJson());
-      checkDeleteEnvironmentMetadata(od);
+      checkDeleteEnvironmentMetadata(od as api.DeleteEnvironmentMetadata);
     });
   });
 
@@ -670,7 +670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -678,7 +678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
-      checkEnvironment(od);
+      checkEnvironment(od as api.Environment);
     });
   });
 
@@ -686,7 +686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -694,7 +694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -702,7 +702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemovePublicKeyMetadata();
       var od = api.RemovePublicKeyMetadata.fromJson(o.toJson());
-      checkRemovePublicKeyMetadata(od);
+      checkRemovePublicKeyMetadata(od as api.RemovePublicKeyMetadata);
     });
   });
 
@@ -710,7 +710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemovePublicKeyRequest();
       var od = api.RemovePublicKeyRequest.fromJson(o.toJson());
-      checkRemovePublicKeyRequest(od);
+      checkRemovePublicKeyRequest(od as api.RemovePublicKeyRequest);
     });
   });
 
@@ -718,7 +718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemovePublicKeyResponse();
       var od = api.RemovePublicKeyResponse.fromJson(o.toJson());
-      checkRemovePublicKeyResponse(od);
+      checkRemovePublicKeyResponse(od as api.RemovePublicKeyResponse);
     });
   });
 
@@ -726,7 +726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartEnvironmentMetadata();
       var od = api.StartEnvironmentMetadata.fromJson(o.toJson());
-      checkStartEnvironmentMetadata(od);
+      checkStartEnvironmentMetadata(od as api.StartEnvironmentMetadata);
     });
   });
 
@@ -734,7 +734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartEnvironmentRequest();
       var od = api.StartEnvironmentRequest.fromJson(o.toJson());
-      checkStartEnvironmentRequest(od);
+      checkStartEnvironmentRequest(od as api.StartEnvironmentRequest);
     });
   });
 
@@ -742,7 +742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartEnvironmentResponse();
       var od = api.StartEnvironmentResponse.fromJson(o.toJson());
-      checkStartEnvironmentResponse(od);
+      checkStartEnvironmentResponse(od as api.StartEnvironmentResponse);
     });
   });
 
@@ -750,7 +750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -762,8 +762,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -803,7 +804,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -851,7 +852,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -899,7 +900,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -959,7 +960,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -972,8 +973,9 @@ void main() {
       var arg_environment = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddPublicKeyRequest.fromJson(json);
-        checkAddPublicKeyRequest(obj);
+        var obj = api.AddPublicKeyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddPublicKeyRequest(obj as api.AddPublicKeyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1013,7 +1015,7 @@ void main() {
       res
           .addPublicKey(arg_request, arg_environment, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1024,8 +1026,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AuthorizeEnvironmentRequest.fromJson(json);
-        checkAuthorizeEnvironmentRequest(obj);
+        var obj = api.AuthorizeEnvironmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAuthorizeEnvironmentRequest(
+            obj as api.AuthorizeEnvironmentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1065,7 +1069,7 @@ void main() {
       res
           .authorize(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1113,7 +1117,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
 
@@ -1124,8 +1128,9 @@ void main() {
       var arg_environment = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemovePublicKeyRequest.fromJson(json);
-        checkRemovePublicKeyRequest(obj);
+        var obj = api.RemovePublicKeyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemovePublicKeyRequest(obj as api.RemovePublicKeyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1165,7 +1170,7 @@ void main() {
       res
           .removePublicKey(arg_request, arg_environment, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1176,8 +1181,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StartEnvironmentRequest.fromJson(json);
-        checkStartEnvironmentRequest(obj);
+        var obj = api.StartEnvironmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStartEnvironmentRequest(obj as api.StartEnvironmentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1217,7 +1223,7 @@ void main() {
       res
           .start(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

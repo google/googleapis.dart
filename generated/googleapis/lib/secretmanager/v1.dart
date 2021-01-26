@@ -111,7 +111,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -179,7 +181,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -247,7 +252,10 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecretVersion.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new Secret containing no SecretVersions.
@@ -313,7 +321,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Secret.fromJson(data));
+    return _response.then(
+      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Secret.
@@ -363,7 +373,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets metadata for a given Secret.
@@ -413,7 +425,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Secret.fromJson(data));
+    return _response.then(
+      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a secret. Returns empty policy if the
@@ -481,7 +495,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Secrets.
@@ -547,7 +563,10 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSecretsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSecretsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates metadata of an existing Secret.
@@ -609,7 +628,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Secret.fromJson(data));
+    return _response.then(
+      (data) => Secret.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified secret. Replaces any
@@ -670,7 +691,9 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has for the specified secret. If the
@@ -733,7 +756,10 @@ class ProjectsSecretsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -791,7 +817,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessSecretVersionResponse.fromJson(data));
+    return _response.then(
+      (data) => AccessSecretVersionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED
@@ -848,7 +877,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecretVersion.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
@@ -904,7 +936,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecretVersion.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
@@ -960,7 +995,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecretVersion.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets metadata for a SecretVersion. `projects / * /secrets / *
@@ -1012,7 +1050,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecretVersion.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecretVersion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists SecretVersions. This call does not return secret data.
@@ -1078,7 +1119,10 @@ class ProjectsSecretsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSecretVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSecretVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1098,7 +1142,8 @@ class AccessSecretVersionResponse {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('payload')) {
-      payload = SecretPayload.fromJson(_json['payload']);
+      payload = SecretPayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1123,7 +1168,8 @@ class AddSecretVersionRequest {
 
   AddSecretVersionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = SecretPayload.fromJson(_json['payload']);
+      payload = SecretPayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1166,7 +1212,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -1245,7 +1292,8 @@ class Automatic {
   Automatic.fromJson(core.Map _json) {
     if (_json.containsKey('customerManagedEncryption')) {
       customerManagedEncryption = CustomerManagedEncryption.fromJson(
-          _json['customerManagedEncryption']);
+          _json['customerManagedEncryption']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1270,7 +1318,8 @@ class AutomaticStatus {
   AutomaticStatus.fromJson(core.Map _json) {
     if (_json.containsKey('customerManagedEncryption')) {
       customerManagedEncryption = CustomerManagedEncryptionStatus.fromJson(
-          _json['customerManagedEncryption']);
+          _json['customerManagedEncryption']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1340,7 +1389,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1563,7 +1613,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1607,7 +1658,8 @@ class ListSecretVersionsResponse {
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
-          .map<SecretVersion>((value) => SecretVersion.fromJson(value))
+          .map<SecretVersion>((value) => SecretVersion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1647,7 +1699,8 @@ class ListSecretsResponse {
     }
     if (_json.containsKey('secrets')) {
       secrets = (_json['secrets'] as core.List)
-          .map<Secret>((value) => Secret.fromJson(value))
+          .map<Secret>((value) =>
+              Secret.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalSize')) {
@@ -1702,7 +1755,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1710,7 +1764,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1818,12 +1873,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1871,7 +1928,8 @@ class Replica {
   Replica.fromJson(core.Map _json) {
     if (_json.containsKey('customerManagedEncryption')) {
       customerManagedEncryption = CustomerManagedEncryption.fromJson(
-          _json['customerManagedEncryption']);
+          _json['customerManagedEncryption']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -1905,7 +1963,8 @@ class ReplicaStatus {
   ReplicaStatus.fromJson(core.Map _json) {
     if (_json.containsKey('customerManagedEncryption')) {
       customerManagedEncryption = CustomerManagedEncryptionStatus.fromJson(
-          _json['customerManagedEncryption']);
+          _json['customerManagedEncryption']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -1936,10 +1995,12 @@ class Replication {
 
   Replication.fromJson(core.Map _json) {
     if (_json.containsKey('automatic')) {
-      automatic = Automatic.fromJson(_json['automatic']);
+      automatic = Automatic.fromJson(
+          _json['automatic'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userManaged')) {
-      userManaged = UserManaged.fromJson(_json['userManaged']);
+      userManaged = UserManaged.fromJson(
+          _json['userManaged'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1971,10 +2032,12 @@ class ReplicationStatus {
 
   ReplicationStatus.fromJson(core.Map _json) {
     if (_json.containsKey('automatic')) {
-      automatic = AutomaticStatus.fromJson(_json['automatic']);
+      automatic = AutomaticStatus.fromJson(
+          _json['automatic'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userManaged')) {
-      userManaged = UserManagedStatus.fromJson(_json['userManaged']);
+      userManaged = UserManagedStatus.fromJson(
+          _json['userManaged'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2023,14 +2086,16 @@ class Secret {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('replication')) {
-      replication = Replication.fromJson(_json['replication']);
+      replication = Replication.fromJson(
+          _json['replication'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2121,8 +2186,8 @@ class SecretVersion {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('replicationStatus')) {
-      replicationStatus =
-          ReplicationStatus.fromJson(_json['replicationStatus']);
+      replicationStatus = ReplicationStatus.fromJson(
+          _json['replicationStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -2167,7 +2232,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -2249,7 +2315,8 @@ class UserManaged {
   UserManaged.fromJson(core.Map _json) {
     if (_json.containsKey('replicas')) {
       replicas = (_json['replicas'] as core.List)
-          .map<Replica>((value) => Replica.fromJson(value))
+          .map<Replica>((value) =>
+              Replica.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2274,7 +2341,8 @@ class UserManagedStatus {
   UserManagedStatus.fromJson(core.Map _json) {
     if (_json.containsKey('replicas')) {
       replicas = (_json['replicas'] as core.List)
-          .map<ReplicaStatus>((value) => ReplicaStatus.fromJson(value))
+          .map<ReplicaStatus>((value) => ReplicaStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

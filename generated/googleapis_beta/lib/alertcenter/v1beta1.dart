@@ -100,7 +100,10 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchDeleteAlertsResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchDeleteAlertsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Performs batch undelete operation on alerts.
@@ -148,7 +151,10 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchUndeleteAlertsResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUndeleteAlertsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Marks the specified alert for deletion. An alert that has been marked for
@@ -208,7 +214,9 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified alert. Attempting to get a nonexistent alert returns
@@ -265,7 +273,9 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alert.fromJson(data));
+    return _response.then(
+      (data) => Alert.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the metadata of an alert. Attempting to get metadata for a
@@ -325,7 +335,10 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AlertMetadata.fromJson(data));
+    return _response.then(
+      (data) =>
+          AlertMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the alerts.
@@ -410,7 +423,10 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAlertsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAlertsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores, or "undeletes", an alert that was marked for deletion within the
@@ -470,7 +486,9 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alert.fromJson(data));
+    return _response.then(
+      (data) => Alert.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -544,7 +562,10 @@ class AlertsFeedbackResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AlertFeedback.fromJson(data));
+    return _response.then(
+      (data) =>
+          AlertFeedback.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the feedback for an alert. Attempting to list feedbacks for a
@@ -614,7 +635,10 @@ class AlertsFeedbackResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAlertFeedbackResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAlertFeedbackResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -670,7 +694,9 @@ class V1beta1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Settings.fromJson(data));
+    return _response.then(
+      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the customer-level settings.
@@ -726,7 +752,9 @@ class V1beta1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Settings.fromJson(data));
+    return _response.then(
+      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -748,7 +776,8 @@ class AccountWarning {
       email = _json['email'] as core.String;
     }
     if (_json.containsKey('loginDetails')) {
-      loginDetails = LoginDetails.fromJson(_json['loginDetails']);
+      loginDetails = LoginDetails.fromJson(
+          _json['loginDetails'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -970,7 +999,8 @@ class Alert {
     }
     if (_json.containsKey('data')) {
       data = commons.mapMap<core.Object, core.Object>(
-          _json['data'].cast<core.String, core.Object>(),
+          (_json['data'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('deleted')) {
@@ -983,7 +1013,8 @@ class Alert {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = AlertMetadata.fromJson(_json['metadata']);
+      metadata = AlertMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('securityInvestigationToolLink')) {
       securityInvestigationToolLink =
@@ -1219,7 +1250,8 @@ class AppMakerSqlSetupNotification {
   AppMakerSqlSetupNotification.fromJson(core.Map _json) {
     if (_json.containsKey('requestInfo')) {
       requestInfo = (_json['requestInfo'] as core.List)
-          .map<RequestInfo>((value) => RequestInfo.fromJson(value))
+          .map<RequestInfo>((value) => RequestInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1243,7 +1275,7 @@ class Attachment {
 
   Attachment.fromJson(core.Map _json) {
     if (_json.containsKey('csv')) {
-      csv = Csv.fromJson(_json['csv']);
+      csv = Csv.fromJson(_json['csv'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1275,14 +1307,17 @@ class BadWhitelist {
 
   BadWhitelist.fromJson(core.Map _json) {
     if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(_json['domainId']);
+      domainId = DomainId.fromJson(
+          _json['domainId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(_json['maliciousEntity']);
+      maliciousEntity = MaliciousEntity.fromJson(
+          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sourceIp')) {
@@ -1355,8 +1390,10 @@ class BatchDeleteAlertsResponse {
   BatchDeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
       failedAlertStatus = commons.mapMap<core.Map, Status>(
-          _json['failedAlertStatus'].cast<core.String, core.Map>(),
-          (core.Map item) => Status.fromJson(item));
+          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Status.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1426,8 +1463,10 @@ class BatchUndeleteAlertsResponse {
   BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
       failedAlertStatus = commons.mapMap<core.Map, Status>(
-          _json['failedAlertStatus'].cast<core.String, core.Map>(),
-          (core.Map item) => Status.fromJson(item));
+          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Status.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1505,7 +1544,8 @@ class Csv {
   Csv.fromJson(core.Map _json) {
     if (_json.containsKey('dataRows')) {
       dataRows = (_json['dataRows'] as core.List)
-          .map<CsvRow>((value) => CsvRow.fromJson(value))
+          .map<CsvRow>((value) =>
+              CsvRow.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('headers')) {
@@ -1568,8 +1608,9 @@ class DeviceCompromised {
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
-          .map<DeviceCompromisedSecurityDetail>(
-              (value) => DeviceCompromisedSecurityDetail.fromJson(value))
+          .map<DeviceCompromisedSecurityDetail>((value) =>
+              DeviceCompromisedSecurityDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1675,8 +1716,8 @@ class DlpRuleViolation {
 
   DlpRuleViolation.fromJson(core.Map _json) {
     if (_json.containsKey('ruleViolationInfo')) {
-      ruleViolationInfo =
-          RuleViolationInfo.fromJson(_json['ruleViolationInfo']);
+      ruleViolationInfo = RuleViolationInfo.fromJson(
+          _json['ruleViolationInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1874,7 +1915,8 @@ class GoogleOperations {
           .toList();
     }
     if (_json.containsKey('attachmentData')) {
-      attachmentData = Attachment.fromJson(_json['attachmentData']);
+      attachmentData = Attachment.fromJson(
+          _json['attachmentData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -1913,7 +1955,8 @@ class ListAlertFeedbackResponse {
   ListAlertFeedbackResponse.fromJson(core.Map _json) {
     if (_json.containsKey('feedback')) {
       feedback = (_json['feedback'] as core.List)
-          .map<AlertFeedback>((value) => AlertFeedback.fromJson(value))
+          .map<AlertFeedback>((value) => AlertFeedback.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1943,7 +1986,8 @@ class ListAlertsResponse {
   ListAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('alerts')) {
       alerts = (_json['alerts'] as core.List)
-          .map<Alert>((value) => Alert.fromJson(value))
+          .map<Alert>((value) =>
+              Alert.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2024,17 +2068,20 @@ class MailPhishing {
 
   MailPhishing.fromJson(core.Map _json) {
     if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(_json['domainId']);
+      domainId = DomainId.fromJson(
+          _json['domainId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isInternal')) {
       isInternal = _json['isInternal'] as core.bool;
     }
     if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(_json['maliciousEntity']);
+      maliciousEntity = MaliciousEntity.fromJson(
+          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('systemActionType')) {
@@ -2081,7 +2128,8 @@ class MaliciousEntity {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entity')) {
-      entity = User.fromJson(_json['entity']);
+      entity =
+          User.fromJson(_json['entity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fromHeader')) {
       fromHeader = _json['fromHeader'] as core.String;
@@ -2115,12 +2163,12 @@ class MatchInfo {
 
   MatchInfo.fromJson(core.Map _json) {
     if (_json.containsKey('predefinedDetector')) {
-      predefinedDetector =
-          PredefinedDetectorInfo.fromJson(_json['predefinedDetector']);
+      predefinedDetector = PredefinedDetectorInfo.fromJson(
+          _json['predefinedDetector'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userDefinedDetector')) {
-      userDefinedDetector =
-          UserDefinedDetectorInfo.fromJson(_json['userDefinedDetector']);
+      userDefinedDetector = UserDefinedDetectorInfo.fromJson(
+          _json['userDefinedDetector'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2146,7 +2194,8 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey('cloudPubsubTopic')) {
-      cloudPubsubTopic = CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']);
+      cloudPubsubTopic = CloudPubsubTopic.fromJson(
+          _json['cloudPubsubTopic'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2180,17 +2229,20 @@ class PhishingSpike {
 
   PhishingSpike.fromJson(core.Map _json) {
     if (_json.containsKey('domainId')) {
-      domainId = DomainId.fromJson(_json['domainId']);
+      domainId = DomainId.fromJson(
+          _json['domainId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isInternal')) {
       isInternal = _json['isInternal'] as core.bool;
     }
     if (_json.containsKey('maliciousEntity')) {
-      maliciousEntity = MaliciousEntity.fromJson(_json['maliciousEntity']);
+      maliciousEntity = MaliciousEntity.fromJson(
+          _json['maliciousEntity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(value))
+          .map<GmailMessageInfo>((value) => GmailMessageInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2390,7 +2442,8 @@ class RuleViolationInfo {
     }
     if (_json.containsKey('matchInfo')) {
       matchInfo = (_json['matchInfo'] as core.List)
-          .map<MatchInfo>((value) => MatchInfo.fromJson(value))
+          .map<MatchInfo>((value) =>
+              MatchInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('recipients')) {
@@ -2399,10 +2452,12 @@ class RuleViolationInfo {
           .toList();
     }
     if (_json.containsKey('resourceInfo')) {
-      resourceInfo = ResourceInfo.fromJson(_json['resourceInfo']);
+      resourceInfo = ResourceInfo.fromJson(
+          _json['resourceInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('ruleInfo')) {
-      ruleInfo = RuleInfo.fromJson(_json['ruleInfo']);
+      ruleInfo = RuleInfo.fromJson(
+          _json['ruleInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suppressedActionTypes')) {
       suppressedActionTypes = (_json['suppressedActionTypes'] as core.List)
@@ -2465,7 +2520,8 @@ class Settings {
   Settings.fromJson(core.Map _json) {
     if (_json.containsKey('notifications')) {
       notifications = (_json['notifications'] as core.List)
-          .map<Notification>((value) => Notification.fromJson(value))
+          .map<Notification>((value) => Notification.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2534,7 +2590,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -2574,8 +2631,9 @@ class SuspiciousActivity {
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
-          .map<SuspiciousActivitySecurityDetail>(
-              (value) => SuspiciousActivitySecurityDetail.fromJson(value))
+          .map<SuspiciousActivitySecurityDetail>((value) =>
+              SuspiciousActivitySecurityDetail.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

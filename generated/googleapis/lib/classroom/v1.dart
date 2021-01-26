@@ -210,7 +210,9 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Course.fromJson(data));
+    return _response.then(
+      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a course. This method returns the following error codes: *
@@ -262,7 +264,9 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a course. This method returns the following error codes: *
@@ -314,7 +318,9 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Course.fromJson(data));
+    return _response.then(
+      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of courses that the requesting user is permitted to view,
@@ -404,7 +410,10 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCoursesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCoursesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields in a course. This method returns the following
@@ -478,7 +487,9 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Course.fromJson(data));
+    return _response.then(
+      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a course. This method returns the following error codes: *
@@ -537,7 +548,9 @@ class CoursesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Course.fromJson(data));
+    return _response.then(
+      (data) => Course.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -605,7 +618,10 @@ class CoursesAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseAlias.fromJson(data));
+    return _response.then(
+      (data) =>
+          CourseAlias.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an alias of a course. This method returns the following error
@@ -669,7 +685,9 @@ class CoursesAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of aliases for a course. This method returns the following
@@ -739,7 +757,10 @@ class CoursesAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCourseAliasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCourseAliasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -809,7 +830,10 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Announcement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an announcement. This request must be made by the Developer
@@ -876,7 +900,9 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns an announcement. This method returns the following error codes: *
@@ -938,7 +964,10 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Announcement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of announcements that the requester is permitted to view.
@@ -1030,7 +1059,10 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAnnouncementsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAnnouncementsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies assignee mode and options of an announcement. Only a teacher of
@@ -1101,7 +1133,10 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Announcement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields of an announcement. This method returns the
@@ -1184,7 +1219,10 @@ class CoursesAnnouncementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Announcement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Announcement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1262,7 +1300,10 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWork.fromJson(data));
+    return _response.then(
+      (data) =>
+          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a course work. This request must be made by the Developer Console
@@ -1329,7 +1370,9 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns course work. This method returns the following error codes: *
@@ -1391,7 +1434,10 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWork.fromJson(data));
+    return _response.then(
+      (data) =>
+          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of course work that the requester is permitted to view.
@@ -1483,7 +1529,10 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCourseWorkResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCourseWorkResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies assignee mode and options of a coursework. Only a teacher of the
@@ -1553,7 +1602,10 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWork.fromJson(data));
+    return _response.then(
+      (data) =>
+          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields of a course work. See
@@ -1643,7 +1695,10 @@ class CoursesCourseWorkResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWork.fromJson(data));
+    return _response.then(
+      (data) =>
+          CourseWork.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1720,7 +1775,10 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StudentSubmission.fromJson(data));
+    return _response.then(
+      (data) => StudentSubmission.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of student submissions that the requester is permitted to
@@ -1836,8 +1894,10 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListStudentSubmissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListStudentSubmissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies attachments of student submission. Attachments may only be added
@@ -1920,7 +1980,10 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StudentSubmission.fromJson(data));
+    return _response.then(
+      (data) => StudentSubmission.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields of a student submission. See
@@ -2011,7 +2074,10 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StudentSubmission.fromJson(data));
+    return _response.then(
+      (data) => StudentSubmission.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reclaims a student submission on behalf of the student that owns it.
@@ -2097,7 +2163,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a student submission. Returning a student submission transfers
@@ -2183,7 +2251,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Turns in a student submission. Turning in a student submission transfers
@@ -2267,7 +2337,9 @@ class CoursesCourseWorkStudentSubmissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2338,7 +2410,10 @@ class CoursesCourseWorkMaterialsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWorkMaterial.fromJson(data));
+    return _response.then(
+      (data) => CourseWorkMaterial.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a course work material. This request must be made by the Developer
@@ -2405,7 +2480,9 @@ class CoursesCourseWorkMaterialsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a course work material. This method returns the following error
@@ -2467,7 +2544,10 @@ class CoursesCourseWorkMaterialsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWorkMaterial.fromJson(data));
+    return _response.then(
+      (data) => CourseWorkMaterial.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of course work material that the requester is permitted to
@@ -2575,8 +2655,10 @@ class CoursesCourseWorkMaterialsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListCourseWorkMaterialResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCourseWorkMaterialResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields of a course work material. This method returns
@@ -2659,7 +2741,10 @@ class CoursesCourseWorkMaterialsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CourseWorkMaterial.fromJson(data));
+    return _response.then(
+      (data) => CourseWorkMaterial.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2738,7 +2823,9 @@ class CoursesStudentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Student.fromJson(data));
+    return _response.then(
+      (data) => Student.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a student of a course. This method returns the following error
@@ -2803,7 +2890,9 @@ class CoursesStudentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a student of a course. This method returns the following error
@@ -2868,7 +2957,9 @@ class CoursesStudentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Student.fromJson(data));
+    return _response.then(
+      (data) => Student.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of students of this course that the requester is permitted
@@ -2938,7 +3029,10 @@ class CoursesStudentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListStudentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListStudentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3008,7 +3102,9 @@ class CoursesTeachersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Teacher.fromJson(data));
+    return _response.then(
+      (data) => Teacher.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a teacher of a course. This method returns the following error
@@ -3074,7 +3170,9 @@ class CoursesTeachersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a teacher of a course. This method returns the following error
@@ -3139,7 +3237,9 @@ class CoursesTeachersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Teacher.fromJson(data));
+    return _response.then(
+      (data) => Teacher.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of teachers of this course that the requester is permitted
@@ -3209,7 +3309,10 @@ class CoursesTeachersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTeachersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTeachersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3275,7 +3378,9 @@ class CoursesTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a topic. This method returns the following error codes: *
@@ -3337,7 +3442,9 @@ class CoursesTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a topic. This method returns the following error codes: *
@@ -3398,7 +3505,9 @@ class CoursesTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of topics that the requester is permitted to view. This
@@ -3469,7 +3578,10 @@ class CoursesTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTopicResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTopicResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates one or more fields of a topic. This method returns the following
@@ -3549,7 +3661,9 @@ class CoursesTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3611,7 +3725,9 @@ class InvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an invitation. Only one invitation for a user and course may exist
@@ -3667,7 +3783,10 @@ class InvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Invitation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Invitation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an invitation. This method returns the following error codes: *
@@ -3718,7 +3837,9 @@ class InvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns an invitation. This method returns the following error codes: *
@@ -3769,7 +3890,10 @@ class InvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Invitation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Invitation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of invitations that the requesting user is permitted to
@@ -3848,7 +3972,10 @@ class InvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListInvitationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListInvitationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3923,7 +4050,10 @@ class RegistrationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Registration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Registration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a `Registration`, causing Classroom to stop sending notifications
@@ -3974,7 +4104,9 @@ class RegistrationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4039,7 +4171,10 @@ class UserProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserProfile.fromJson(data));
+    return _response.then(
+      (data) =>
+          UserProfile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4125,7 +4260,10 @@ class UserProfilesGuardianInvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GuardianInvitation.fromJson(data));
+    return _response.then(
+      (data) => GuardianInvitation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a specific guardian invitation. This method returns the following
@@ -4193,7 +4331,10 @@ class UserProfilesGuardianInvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GuardianInvitation.fromJson(data));
+    return _response.then(
+      (data) => GuardianInvitation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of guardian invitations that the requesting user is
@@ -4291,8 +4432,10 @@ class UserProfilesGuardianInvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListGuardianInvitationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGuardianInvitationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies a guardian invitation. Currently, the only valid modification is
@@ -4378,7 +4521,10 @@ class UserProfilesGuardianInvitationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GuardianInvitation.fromJson(data));
+    return _response.then(
+      (data) => GuardianInvitation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4455,7 +4601,9 @@ class UserProfilesGuardiansResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a specific guardian. This method returns the following error
@@ -4524,7 +4672,9 @@ class UserProfilesGuardiansResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Guardian.fromJson(data));
+    return _response.then(
+      (data) => Guardian.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of guardians that the requesting user is permitted to view,
@@ -4619,7 +4769,10 @@ class UserProfilesGuardiansResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGuardiansResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGuardiansResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4709,11 +4862,13 @@ class Announcement {
     }
     if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']);
+          _json['individualStudentsOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('materials')) {
       materials = (_json['materials'] as core.List)
-          .map<Material>((value) => Material.fromJson(value))
+          .map<Material>((value) =>
+              Material.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('scheduledTime')) {
@@ -4782,7 +4937,8 @@ class Assignment {
 
   Assignment.fromJson(core.Map _json) {
     if (_json.containsKey('studentWorkFolder')) {
-      studentWorkFolder = DriveFolder.fromJson(_json['studentWorkFolder']);
+      studentWorkFolder = DriveFolder.fromJson(
+          _json['studentWorkFolder'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4810,7 +4966,8 @@ class AssignmentSubmission {
   AssignmentSubmission.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<Attachment>((value) => Attachment.fromJson(value))
+          .map<Attachment>((value) =>
+              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4844,16 +5001,20 @@ class Attachment {
 
   Attachment.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(_json['driveFile']);
+      driveFile = DriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('form')) {
-      form = Form.fromJson(_json['form']);
+      form =
+          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
-      link = Link.fromJson(_json['link']);
+      link =
+          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('youTubeVideo')) {
-      youTubeVideo = YouTubeVideo.fromJson(_json['youTubeVideo']);
+      youTubeVideo = YouTubeVideo.fromJson(
+          _json['youTubeVideo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5022,7 +5183,8 @@ class Course {
     }
     if (_json.containsKey('courseMaterialSets')) {
       courseMaterialSets = (_json['courseMaterialSets'] as core.List)
-          .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(value))
+          .map<CourseMaterialSet>((value) => CourseMaterialSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('courseState')) {
@@ -5059,7 +5221,8 @@ class Course {
       section = _json['section'] as core.String;
     }
     if (_json.containsKey('teacherFolder')) {
-      teacherFolder = DriveFolder.fromJson(_json['teacherFolder']);
+      teacherFolder = DriveFolder.fromJson(
+          _json['teacherFolder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teacherGroupEmail')) {
       teacherGroupEmail = _json['teacherGroupEmail'] as core.String;
@@ -5183,16 +5346,20 @@ class CourseMaterial {
 
   CourseMaterial.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(_json['driveFile']);
+      driveFile = DriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('form')) {
-      form = Form.fromJson(_json['form']);
+      form =
+          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
-      link = Link.fromJson(_json['link']);
+      link =
+          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('youTubeVideo')) {
-      youTubeVideo = YouTubeVideo.fromJson(_json['youTubeVideo']);
+      youTubeVideo = YouTubeVideo.fromJson(
+          _json['youTubeVideo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5229,7 +5396,8 @@ class CourseMaterialSet {
   CourseMaterialSet.fromJson(core.Map _json) {
     if (_json.containsKey('materials')) {
       materials = (_json['materials'] as core.List)
-          .map<CourseMaterial>((value) => CourseMaterial.fromJson(value))
+          .map<CourseMaterial>((value) => CourseMaterial.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('title')) {
@@ -5398,7 +5566,8 @@ class CourseWork {
       assigneeMode = _json['assigneeMode'] as core.String;
     }
     if (_json.containsKey('assignment')) {
-      assignment = Assignment.fromJson(_json['assignment']);
+      assignment = Assignment.fromJson(
+          _json['assignment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('associatedWithDeveloper')) {
       associatedWithDeveloper = _json['associatedWithDeveloper'] as core.bool;
@@ -5416,29 +5585,34 @@ class CourseWork {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('dueDate')) {
-      dueDate = Date.fromJson(_json['dueDate']);
+      dueDate = Date.fromJson(
+          _json['dueDate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dueTime')) {
-      dueTime = TimeOfDay.fromJson(_json['dueTime']);
+      dueTime = TimeOfDay.fromJson(
+          _json['dueTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']);
+          _json['individualStudentsOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('materials')) {
       materials = (_json['materials'] as core.List)
-          .map<Material>((value) => Material.fromJson(value))
+          .map<Material>((value) =>
+              Material.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxPoints')) {
       maxPoints = (_json['maxPoints'] as core.num).toDouble();
     }
     if (_json.containsKey('multipleChoiceQuestion')) {
-      multipleChoiceQuestion =
-          MultipleChoiceQuestion.fromJson(_json['multipleChoiceQuestion']);
+      multipleChoiceQuestion = MultipleChoiceQuestion.fromJson(
+          _json['multipleChoiceQuestion']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scheduledTime')) {
       scheduledTime = _json['scheduledTime'] as core.String;
@@ -5658,11 +5832,13 @@ class CourseWorkMaterial {
     }
     if (_json.containsKey('individualStudentsOptions')) {
       individualStudentsOptions = IndividualStudentsOptions.fromJson(
-          _json['individualStudentsOptions']);
+          _json['individualStudentsOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('materials')) {
       materials = (_json['materials'] as core.List)
-          .map<Material>((value) => Material.fromJson(value))
+          .map<Material>((value) =>
+              Material.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('scheduledTime')) {
@@ -5925,12 +6101,14 @@ class Feed {
 
   Feed.fromJson(core.Map _json) {
     if (_json.containsKey('courseRosterChangesInfo')) {
-      courseRosterChangesInfo =
-          CourseRosterChangesInfo.fromJson(_json['courseRosterChangesInfo']);
+      courseRosterChangesInfo = CourseRosterChangesInfo.fromJson(
+          _json['courseRosterChangesInfo']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('courseWorkChangesInfo')) {
-      courseWorkChangesInfo =
-          CourseWorkChangesInfo.fromJson(_json['courseWorkChangesInfo']);
+      courseWorkChangesInfo = CourseWorkChangesInfo.fromJson(
+          _json['courseWorkChangesInfo']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('feedType')) {
       feedType = _json['feedType'] as core.String;
@@ -6118,7 +6296,8 @@ class Guardian {
       guardianId = _json['guardianId'] as core.String;
     }
     if (_json.containsKey('guardianProfile')) {
-      guardianProfile = UserProfile.fromJson(_json['guardianProfile']);
+      guardianProfile = UserProfile.fromJson(
+          _json['guardianProfile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('invitedEmailAddress')) {
       invitedEmailAddress = _json['invitedEmailAddress'] as core.String;
@@ -6349,7 +6528,8 @@ class ListAnnouncementsResponse {
   ListAnnouncementsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('announcements')) {
       announcements = (_json['announcements'] as core.List)
-          .map<Announcement>((value) => Announcement.fromJson(value))
+          .map<Announcement>((value) => Announcement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6384,7 +6564,8 @@ class ListCourseAliasesResponse {
   ListCourseAliasesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('aliases')) {
       aliases = (_json['aliases'] as core.List)
-          .map<CourseAlias>((value) => CourseAlias.fromJson(value))
+          .map<CourseAlias>((value) => CourseAlias.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6418,8 +6599,8 @@ class ListCourseWorkMaterialResponse {
   ListCourseWorkMaterialResponse.fromJson(core.Map _json) {
     if (_json.containsKey('courseWorkMaterial')) {
       courseWorkMaterial = (_json['courseWorkMaterial'] as core.List)
-          .map<CourseWorkMaterial>(
-              (value) => CourseWorkMaterial.fromJson(value))
+          .map<CourseWorkMaterial>((value) => CourseWorkMaterial.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6454,7 +6635,8 @@ class ListCourseWorkResponse {
   ListCourseWorkResponse.fromJson(core.Map _json) {
     if (_json.containsKey('courseWork')) {
       courseWork = (_json['courseWork'] as core.List)
-          .map<CourseWork>((value) => CourseWork.fromJson(value))
+          .map<CourseWork>((value) =>
+              CourseWork.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6488,7 +6670,8 @@ class ListCoursesResponse {
   ListCoursesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('courses')) {
       courses = (_json['courses'] as core.List)
-          .map<Course>((value) => Course.fromJson(value))
+          .map<Course>((value) =>
+              Course.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6522,8 +6705,8 @@ class ListGuardianInvitationsResponse {
   ListGuardianInvitationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('guardianInvitations')) {
       guardianInvitations = (_json['guardianInvitations'] as core.List)
-          .map<GuardianInvitation>(
-              (value) => GuardianInvitation.fromJson(value))
+          .map<GuardianInvitation>((value) => GuardianInvitation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6559,7 +6742,8 @@ class ListGuardiansResponse {
   ListGuardiansResponse.fromJson(core.Map _json) {
     if (_json.containsKey('guardians')) {
       guardians = (_json['guardians'] as core.List)
-          .map<Guardian>((value) => Guardian.fromJson(value))
+          .map<Guardian>((value) =>
+              Guardian.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6593,7 +6777,8 @@ class ListInvitationsResponse {
   ListInvitationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('invitations')) {
       invitations = (_json['invitations'] as core.List)
-          .map<Invitation>((value) => Invitation.fromJson(value))
+          .map<Invitation>((value) =>
+              Invitation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6631,7 +6816,8 @@ class ListStudentSubmissionsResponse {
     }
     if (_json.containsKey('studentSubmissions')) {
       studentSubmissions = (_json['studentSubmissions'] as core.List)
-          .map<StudentSubmission>((value) => StudentSubmission.fromJson(value))
+          .map<StudentSubmission>((value) => StudentSubmission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6666,7 +6852,8 @@ class ListStudentsResponse {
     }
     if (_json.containsKey('students')) {
       students = (_json['students'] as core.List)
-          .map<Student>((value) => Student.fromJson(value))
+          .map<Student>((value) =>
+              Student.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6700,7 +6887,8 @@ class ListTeachersResponse {
     }
     if (_json.containsKey('teachers')) {
       teachers = (_json['teachers'] as core.List)
-          .map<Teacher>((value) => Teacher.fromJson(value))
+          .map<Teacher>((value) =>
+              Teacher.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6734,7 +6922,8 @@ class ListTopicResponse {
     }
     if (_json.containsKey('topic')) {
       topic = (_json['topic'] as core.List)
-          .map<Topic>((value) => Topic.fromJson(value))
+          .map<Topic>((value) =>
+              Topic.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6771,16 +6960,20 @@ class Material {
 
   Material.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = SharedDriveFile.fromJson(_json['driveFile']);
+      driveFile = SharedDriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('form')) {
-      form = Form.fromJson(_json['form']);
+      form =
+          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
-      link = Link.fromJson(_json['link']);
+      link =
+          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('youtubeVideo')) {
-      youtubeVideo = YouTubeVideo.fromJson(_json['youtubeVideo']);
+      youtubeVideo = YouTubeVideo.fromJson(
+          _json['youtubeVideo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6826,7 +7019,8 @@ class ModifyAnnouncementAssigneesRequest {
     if (_json.containsKey('modifyIndividualStudentsOptions')) {
       modifyIndividualStudentsOptions =
           ModifyIndividualStudentsOptions.fromJson(
-              _json['modifyIndividualStudentsOptions']);
+              _json['modifyIndividualStudentsOptions']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6854,7 +7048,8 @@ class ModifyAttachmentsRequest {
   ModifyAttachmentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('addAttachments')) {
       addAttachments = (_json['addAttachments'] as core.List)
-          .map<Attachment>((value) => Attachment.fromJson(value))
+          .map<Attachment>((value) =>
+              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6893,7 +7088,8 @@ class ModifyCourseWorkAssigneesRequest {
     if (_json.containsKey('modifyIndividualStudentsOptions')) {
       modifyIndividualStudentsOptions =
           ModifyIndividualStudentsOptions.fromJson(
-              _json['modifyIndividualStudentsOptions']);
+              _json['modifyIndividualStudentsOptions']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7070,13 +7266,15 @@ class Registration {
 
   Registration.fromJson(core.Map _json) {
     if (_json.containsKey('cloudPubsubTopic')) {
-      cloudPubsubTopic = CloudPubsubTopic.fromJson(_json['cloudPubsubTopic']);
+      cloudPubsubTopic = CloudPubsubTopic.fromJson(
+          _json['cloudPubsubTopic'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('expiryTime')) {
       expiryTime = _json['expiryTime'] as core.String;
     }
     if (_json.containsKey('feed')) {
-      feed = Feed.fromJson(_json['feed']);
+      feed =
+          Feed.fromJson(_json['feed'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('registrationId')) {
       registrationId = _json['registrationId'] as core.String;
@@ -7133,7 +7331,8 @@ class SharedDriveFile {
 
   SharedDriveFile.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(_json['driveFile']);
+      driveFile = DriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shareMode')) {
       shareMode = _json['shareMode'] as core.String;
@@ -7252,10 +7451,12 @@ class Student {
       courseId = _json['courseId'] as core.String;
     }
     if (_json.containsKey('profile')) {
-      profile = UserProfile.fromJson(_json['profile']);
+      profile = UserProfile.fromJson(
+          _json['profile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('studentWorkFolder')) {
-      studentWorkFolder = DriveFolder.fromJson(_json['studentWorkFolder']);
+      studentWorkFolder = DriveFolder.fromJson(
+          _json['studentWorkFolder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userId')) {
       userId = _json['userId'] as core.String;
@@ -7374,8 +7575,8 @@ class StudentSubmission {
       assignedGrade = (_json['assignedGrade'] as core.num).toDouble();
     }
     if (_json.containsKey('assignmentSubmission')) {
-      assignmentSubmission =
-          AssignmentSubmission.fromJson(_json['assignmentSubmission']);
+      assignmentSubmission = AssignmentSubmission.fromJson(
+          _json['assignmentSubmission'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('associatedWithDeveloper')) {
       associatedWithDeveloper = _json['associatedWithDeveloper'] as core.bool;
@@ -7402,19 +7603,22 @@ class StudentSubmission {
       late = _json['late'] as core.bool;
     }
     if (_json.containsKey('multipleChoiceSubmission')) {
-      multipleChoiceSubmission =
-          MultipleChoiceSubmission.fromJson(_json['multipleChoiceSubmission']);
+      multipleChoiceSubmission = MultipleChoiceSubmission.fromJson(
+          _json['multipleChoiceSubmission']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shortAnswerSubmission')) {
-      shortAnswerSubmission =
-          ShortAnswerSubmission.fromJson(_json['shortAnswerSubmission']);
+      shortAnswerSubmission = ShortAnswerSubmission.fromJson(
+          _json['shortAnswerSubmission']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('submissionHistory')) {
       submissionHistory = (_json['submissionHistory'] as core.List)
-          .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(value))
+          .map<SubmissionHistory>((value) => SubmissionHistory.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {
@@ -7496,10 +7700,12 @@ class SubmissionHistory {
 
   SubmissionHistory.fromJson(core.Map _json) {
     if (_json.containsKey('gradeHistory')) {
-      gradeHistory = GradeHistory.fromJson(_json['gradeHistory']);
+      gradeHistory = GradeHistory.fromJson(
+          _json['gradeHistory'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stateHistory')) {
-      stateHistory = StateHistory.fromJson(_json['stateHistory']);
+      stateHistory = StateHistory.fromJson(
+          _json['stateHistory'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7536,7 +7742,8 @@ class Teacher {
       courseId = _json['courseId'] as core.String;
     }
     if (_json.containsKey('profile')) {
-      profile = UserProfile.fromJson(_json['profile']);
+      profile = UserProfile.fromJson(
+          _json['profile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userId')) {
       userId = _json['userId'] as core.String;
@@ -7711,11 +7918,13 @@ class UserProfile {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = Name.fromJson(_json['name']);
+      name =
+          Name.fromJson(_json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
-          .map<GlobalPermission>((value) => GlobalPermission.fromJson(value))
+          .map<GlobalPermission>((value) => GlobalPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('photoUrl')) {

@@ -324,8 +324,10 @@ class AcceleratorTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AcceleratorTypeAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => AcceleratorTypeAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified accelerator type.
@@ -394,7 +396,10 @@ class AcceleratorTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AcceleratorType.fromJson(data));
+    return _response.then(
+      (data) =>
+          AcceleratorType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of accelerator types that are available to the specified
@@ -524,7 +529,10 @@ class AcceleratorTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AcceleratorTypeList.fromJson(data));
+    return _response.then(
+      (data) => AcceleratorTypeList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -661,7 +669,10 @@ class AddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AddressAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => AddressAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified address resource.
@@ -747,7 +758,9 @@ class AddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified address resource.
@@ -816,7 +829,9 @@ class AddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Address.fromJson(data));
+    return _response.then(
+      (data) => Address.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an address resource in the specified project by using the data
@@ -900,7 +915,9 @@ class AddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of addresses contained within the specified region.
@@ -1029,7 +1046,10 @@ class AddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AddressList.fromJson(data));
+    return _response.then(
+      (data) =>
+          AddressList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1167,7 +1187,10 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalerAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => AutoscalerAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified autoscaler.
@@ -1253,7 +1276,9 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified autoscaler resource. Gets a list of available
@@ -1323,7 +1348,10 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Autoscaler.fromJson(data));
+    return _response.then(
+      (data) =>
+          Autoscaler.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an autoscaler in the specified project using the data included in
@@ -1407,7 +1435,9 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of autoscalers contained within the specified zone.
@@ -1536,7 +1566,10 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalerList.fromJson(data));
+    return _response.then(
+      (data) =>
+          AutoscalerList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an autoscaler in the specified project using the data included in
@@ -1629,7 +1662,9 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an autoscaler in the specified project using the data included in
@@ -1721,7 +1756,9 @@ class AutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1811,7 +1848,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified BackendBucket resource.
@@ -1888,7 +1927,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a key for validating requests with signed URLs for this backend
@@ -1973,7 +2014,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified BackendBucket resource. Gets a list of available
@@ -2034,7 +2077,10 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendBucket.fromJson(data));
+    return _response.then(
+      (data) =>
+          BackendBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a BackendBucket resource in the specified project using the data
@@ -2108,7 +2154,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of BackendBucket resources available to the specified
@@ -2228,7 +2276,10 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendBucketList.fromJson(data));
+    return _response.then(
+      (data) => BackendBucketList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified BackendBucket resource with the data included in the
@@ -2313,7 +2364,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified BackendBucket resource with the data included in the
@@ -2397,7 +2450,9 @@ class BackendBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2487,7 +2542,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of all BackendService resources, regional and global,
@@ -2620,8 +2677,10 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BackendServiceAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => BackendServiceAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified BackendService resource.
@@ -2698,7 +2757,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a key for validating requests with signed URLs for this backend
@@ -2783,7 +2844,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified BackendService resource. Gets a list of available
@@ -2844,7 +2907,10 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendService.fromJson(data));
+    return _response.then(
+      (data) =>
+          BackendService.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the most recent health check results for this BackendService.
@@ -2916,7 +2982,10 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendServiceGroupHealth.fromJson(data));
+    return _response.then(
+      (data) => BackendServiceGroupHealth.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a BackendService resource in the specified project using the data
@@ -2992,7 +3061,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of BackendService resources available to the specified
@@ -3113,7 +3184,10 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendServiceList.fromJson(data));
+    return _response.then(
+      (data) => BackendServiceList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified BackendService resource with the data included in
@@ -3199,7 +3273,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the security policy for the specified backend service.
@@ -3282,7 +3358,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified BackendService resource with the data included in
@@ -3366,7 +3444,9 @@ class BackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3503,7 +3583,10 @@ class DiskTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskTypeAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => DiskTypeAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified disk type. Gets a list of available disk types by
@@ -3573,7 +3656,9 @@ class DiskTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskType.fromJson(data));
+    return _response.then(
+      (data) => DiskType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of disk types available to the specified project.
@@ -3702,7 +3787,10 @@ class DiskTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskTypeList.fromJson(data));
+    return _response.then(
+      (data) =>
+          DiskTypeList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3802,7 +3890,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an aggregated list of persistent disks.
@@ -3933,7 +4023,10 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => DiskAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a snapshot of a specified persistent disk.
@@ -4035,7 +4128,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified persistent disk. Deleting a disk removes its data
@@ -4122,7 +4217,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a specified persistent disk. Gets a list of available persistent
@@ -4192,7 +4289,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Disk.fromJson(data));
+    return _response.then(
+      (data) => Disk.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -4271,7 +4370,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a persistent disk in the specified project using the data in the
@@ -4364,7 +4465,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of persistent disks contained within the specified zone.
@@ -4493,7 +4596,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskList.fromJson(data));
+    return _response.then(
+      (data) => DiskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes resource policies from a disk.
@@ -4586,7 +4691,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resizes the specified persistent disk. You can only increase the size of
@@ -4680,7 +4787,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -4757,7 +4866,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on a disk. To learn more about labels, read the Labeling
@@ -4851,7 +4962,9 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -4927,7 +5040,10 @@ class DisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5010,7 +5126,9 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified externalVpnGateway. Get a list of available
@@ -5070,7 +5188,10 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExternalVpnGateway.fromJson(data));
+    return _response.then(
+      (data) => ExternalVpnGateway.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a ExternalVpnGateway in the specified project using the data
@@ -5145,7 +5266,9 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of ExternalVpnGateway available to the specified
@@ -5266,7 +5389,10 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExternalVpnGatewayList.fromJson(data));
+    return _response.then(
+      (data) => ExternalVpnGatewayList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on an ExternalVpnGateway. To learn more about labels, read
@@ -5334,7 +5460,9 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -5401,7 +5529,10 @@ class ExternalVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5484,7 +5615,9 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified firewall.
@@ -5544,7 +5677,9 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Firewall.fromJson(data));
+    return _response.then(
+      (data) => Firewall.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a firewall rule in the specified project using the data included
@@ -5618,7 +5753,9 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of firewall rules available to the specified project.
@@ -5737,7 +5874,10 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FirewallList.fromJson(data));
+    return _response.then(
+      (data) =>
+          FirewallList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified firewall rule with the data included in the request.
@@ -5822,7 +5962,9 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified firewall rule with the data included in the request.
@@ -5907,7 +6049,9 @@ class FirewallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6045,8 +6189,10 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ForwardingRuleAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => ForwardingRuleAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified ForwardingRule resource.
@@ -6132,7 +6278,9 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified ForwardingRule resource.
@@ -6201,7 +6349,10 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingRule.fromJson(data));
+    return _response.then(
+      (data) =>
+          ForwardingRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a ForwardingRule resource in the specified project and region
@@ -6285,7 +6436,9 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of ForwardingRule resources available to the specified
@@ -6415,7 +6568,10 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingRuleList.fromJson(data));
+    return _response.then(
+      (data) => ForwardingRuleList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified forwarding rule with the data included in the
@@ -6510,7 +6666,9 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes target URL for forwarding rule. The new target should be of the
@@ -6605,7 +6763,9 @@ class ForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6688,7 +6848,9 @@ class GlobalAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified address resource. Gets a list of available addresses
@@ -6749,7 +6911,9 @@ class GlobalAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Address.fromJson(data));
+    return _response.then(
+      (data) => Address.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an address resource in the specified project by using the data
@@ -6823,7 +6987,9 @@ class GlobalAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of global addresses.
@@ -6942,7 +7108,10 @@ class GlobalAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AddressList.fromJson(data));
+    return _response.then(
+      (data) =>
+          AddressList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7026,7 +7195,9 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified GlobalForwardingRule resource. Gets a list of
@@ -7087,7 +7258,10 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingRule.fromJson(data));
+    return _response.then(
+      (data) =>
+          ForwardingRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a GlobalForwardingRule resource in the specified project using the
@@ -7162,7 +7336,9 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of GlobalForwardingRule resources available to the
@@ -7283,7 +7459,10 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingRuleList.fromJson(data));
+    return _response.then(
+      (data) => ForwardingRuleList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified forwarding rule with the data included in the
@@ -7369,7 +7548,9 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes target URL for the GlobalForwardingRule resource. The new target
@@ -7455,7 +7636,9 @@ class GlobalForwardingRulesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7545,7 +7728,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified network endpoint group.Note that the NEG cannot be
@@ -7622,7 +7807,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detach the network endpoint from the specified network endpoint group.
@@ -7705,7 +7892,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified network endpoint group. Gets a list of available
@@ -7765,7 +7954,10 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroup.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a network endpoint group in the specified project using the
@@ -7840,7 +8032,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of network endpoint groups that are located in the
@@ -7961,7 +8155,10 @@ class GlobalNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroupList.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroupList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the network endpoints in the specified network endpoint group.
@@ -8092,7 +8289,9 @@ class GlobalNetworkEndpointGroupsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => NetworkEndpointGroupsListNetworkEndpoints.fromJson(data));
+      (data) => NetworkEndpointGroupsListNetworkEndpoints.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8230,7 +8429,10 @@ class GlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OperationAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => OperationAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified Operations resource.
@@ -8290,7 +8492,9 @@ class GlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the specified Operations resource. Gets a list of operations by
@@ -8351,7 +8555,9 @@ class GlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of Operation resources contained within the specified
@@ -8471,7 +8677,10 @@ class GlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OperationList.fromJson(data));
+    return _response.then(
+      (data) =>
+          OperationList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Waits for the specified Operation resource to return as `DONE` or for the
@@ -8545,7 +8754,9 @@ class GlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8684,7 +8895,10 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthChecksAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => HealthChecksAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified HealthCheck resource.
@@ -8761,7 +8975,9 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified HealthCheck resource. Gets a list of available
@@ -8822,7 +9038,10 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheck.fromJson(data));
+    return _response.then(
+      (data) =>
+          HealthCheck.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a HealthCheck resource in the specified project using the data
@@ -8896,7 +9115,9 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of HealthCheck resources available to the specified
@@ -9016,7 +9237,10 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheckList.fromJson(data));
+    return _response.then(
+      (data) =>
+          HealthCheckList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HealthCheck resource in the specified project using the data
@@ -9101,7 +9325,9 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HealthCheck resource in the specified project using the data
@@ -9185,7 +9411,9 @@ class HealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9269,7 +9497,9 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified HttpHealthCheck resource. Gets a list of available
@@ -9330,7 +9560,10 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpHealthCheck.fromJson(data));
+    return _response.then(
+      (data) =>
+          HttpHealthCheck.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a HttpHealthCheck resource in the specified project using the data
@@ -9405,7 +9638,9 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of HttpHealthCheck resources available to the specified
@@ -9526,7 +9761,10 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpHealthCheckList.fromJson(data));
+    return _response.then(
+      (data) => HttpHealthCheckList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HttpHealthCheck resource in the specified project using the data
@@ -9611,7 +9849,9 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HttpHealthCheck resource in the specified project using the data
@@ -9695,7 +9935,9 @@ class HttpHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9779,7 +10021,9 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified HttpsHealthCheck resource. Gets a list of available
@@ -9840,7 +10084,10 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpsHealthCheck.fromJson(data));
+    return _response.then(
+      (data) => HttpsHealthCheck.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a HttpsHealthCheck resource in the specified project using the
@@ -9915,7 +10162,9 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of HttpsHealthCheck resources available to the
@@ -10036,7 +10285,10 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpsHealthCheckList.fromJson(data));
+    return _response.then(
+      (data) => HttpsHealthCheckList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HttpsHealthCheck resource in the specified project using the
@@ -10121,7 +10373,9 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HttpsHealthCheck resource in the specified project using the
@@ -10205,7 +10459,9 @@ class HttpsHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10288,7 +10544,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the deprecation status of an image.
@@ -10374,7 +10632,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified image. Gets a list of available images by making a
@@ -10435,7 +10695,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Image.fromJson(data));
+    return _response.then(
+      (data) => Image.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the latest image that is part of an image family and is not
@@ -10496,7 +10758,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Image.fromJson(data));
+    return _response.then(
+      (data) => Image.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -10566,7 +10830,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an image in the specified project using the data included in the
@@ -10646,7 +10912,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of custom images available to the specified project.
@@ -10770,7 +11038,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImageList.fromJson(data));
+    return _response.then(
+      (data) => ImageList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified image with the data included in the request. Only
@@ -10855,7 +11125,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -10923,7 +11195,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on an image. To learn more about labels, read the Labeling
@@ -10991,7 +11265,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -11058,7 +11334,10 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11168,7 +11447,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of managed instance groups and groups them by zone.
@@ -11300,8 +11581,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => InstanceGroupManagerAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManagerAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Applies changes to selected instances on the managed instance group. This
@@ -11377,7 +11660,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates instances with per-instance configs in this managed instance
@@ -11473,7 +11758,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified managed instance group and all of the instances in
@@ -11558,7 +11845,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Flags the specified instances in the managed instance group for immediate
@@ -11660,7 +11949,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes selected per-instance configs for the managed instance group.
@@ -11735,7 +12026,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all of the details about the specified managed instance group.
@@ -11803,7 +12096,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupManager.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManager.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a managed instance group using the information that you specify in
@@ -11894,7 +12190,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of managed instance groups that are contained within the
@@ -12023,7 +12321,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupManagerList.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManagerList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all errors thrown by actions on instances for a given managed
@@ -12164,8 +12465,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => InstanceGroupManagersListErrorsResponse.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManagersListErrorsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the instances in the managed instance group. Each instance in
@@ -12307,8 +12610,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        InstanceGroupManagersListManagedInstancesResponse.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManagersListManagedInstancesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the per-instance configs defined for the managed instance
@@ -12448,8 +12753,10 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        InstanceGroupManagersListPerInstanceConfigsResp.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManagersListPerInstanceConfigsResp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a managed instance group using the information that you specify in
@@ -12544,7 +12851,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts or patches per-instance configs for the managed instance group.
@@ -12638,7 +12947,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Flags the specified instances in the managed instance group to be
@@ -12739,7 +13050,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resizes the managed instance group. If you increase the size, the group
@@ -12851,7 +13164,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Specifies the instance template to use when creating new instances in this
@@ -12943,7 +13258,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the target pools to which all instances in this managed instance
@@ -13038,7 +13355,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts or updates per-instance configs for the managed instance group.
@@ -13132,7 +13451,9 @@ class InstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -13231,7 +13552,9 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of instance groups and sorts them by zone.
@@ -13363,7 +13686,10 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified instance group. The instances in the group are not
@@ -13448,7 +13774,9 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified zonal instance group. Get a list of available zonal
@@ -13518,7 +13846,10 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroup.fromJson(data));
+    return _response.then(
+      (data) =>
+          InstanceGroup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an instance group in the specified project using the parameters
@@ -13601,7 +13932,9 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of zonal instance group resources contained within the
@@ -13733,7 +14066,10 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupList.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the instances in the specified instance group. The orderBy query
@@ -13877,7 +14213,10 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupsListInstances.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupsListInstances.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes one or more instances from the specified instance group, but does
@@ -13973,7 +14312,9 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the named ports for the specified instance group.
@@ -14064,7 +14405,9 @@ class InstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -14150,7 +14493,9 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified instance template. Gets a list of available instance
@@ -14211,7 +14556,10 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceTemplate.fromJson(data));
+    return _response.then(
+      (data) => InstanceTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -14281,7 +14629,9 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an instance template in the specified project using the data that
@@ -14358,7 +14708,9 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of instance templates that are contained within the
@@ -14479,7 +14831,10 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceTemplateList.fromJson(data));
+    return _response.then(
+      (data) => InstanceTemplateList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -14547,7 +14902,9 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -14614,7 +14971,10 @@ class InstanceTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -14721,7 +15081,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds existing resource policies to an instance. You can only add one
@@ -14816,7 +15178,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves aggregated list of all of the instances in your project across
@@ -14948,7 +15312,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => InstanceAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Attaches an existing Disk resource to an instance. You must first create
@@ -15052,7 +15419,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified Instance resource. For more information, see
@@ -15139,7 +15508,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an access config from an instance's network interface.
@@ -15240,7 +15611,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detaches a disk from an instance.
@@ -15335,7 +15708,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified Instance resource. Gets a list of available
@@ -15405,7 +15780,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Instance.fromJson(data));
+    return _response.then(
+      (data) => Instance.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified guest attributes entry.
@@ -15487,7 +15864,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GuestAttributes.fromJson(data));
+    return _response.then(
+      (data) =>
+          GuestAttributes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -15566,7 +15946,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the screenshot from the specified instance.
@@ -15636,7 +16018,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Screenshot.fromJson(data));
+    return _response.then(
+      (data) =>
+          Screenshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the last 1 MB of serial port output from the specified instance.
@@ -15733,7 +16118,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SerialPortOutput.fromJson(data));
+    return _response.then(
+      (data) => SerialPortOutput.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the Shielded Instance Identity of an instance
@@ -15803,7 +16191,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ShieldedInstanceIdentity.fromJson(data));
+    return _response.then(
+      (data) => ShieldedInstanceIdentity.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an instance resource in the specified project using the data
@@ -15901,7 +16292,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of instances contained within the specified zone.
@@ -16030,7 +16423,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceList.fromJson(data));
+    return _response.then(
+      (data) =>
+          InstanceList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of resources that refer to the VM instance specified in
@@ -16173,7 +16569,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceListReferrers.fromJson(data));
+    return _response.then(
+      (data) => InstanceListReferrers.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes resource policies from an instance.
@@ -16266,7 +16665,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Performs a reset on the instance. This is a hard reset the VM does not do
@@ -16354,7 +16755,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets deletion protection on the instance.
@@ -16448,7 +16851,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the auto-delete flag for a disk attached to an instance.
@@ -16552,7 +16957,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -16629,7 +17036,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets labels on an instance. To learn more about labels, read the Labeling
@@ -16723,7 +17132,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the number and/or type of accelerator for a stopped instance to
@@ -16817,7 +17228,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the machine type for a stopped instance to the machine type
@@ -16911,7 +17324,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets metadata for the specified instance to the data included in the
@@ -17005,7 +17420,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the minimum CPU platform that this instance should use. This
@@ -17100,7 +17517,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets an instance's scheduling options. You can only call this method on a
@@ -17196,7 +17615,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the service account on the instance. For more information, read
@@ -17290,7 +17711,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the Shielded Instance integrity policy for an instance. You can only
@@ -17385,7 +17808,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets network tags for the specified instance to the data included in the
@@ -17479,7 +17904,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Simulates a maintenance event on the instance.
@@ -17549,7 +17976,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts an instance that was stopped using the instances().stop method. For
@@ -17637,7 +18066,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts an instance that was stopped using the instances().stop method. For
@@ -17731,7 +18162,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stops a running instance, shutting it down cleanly, and allows you to
@@ -17823,7 +18256,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -17899,7 +18334,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an instance only if the necessary resources are available. This
@@ -18024,7 +18462,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified access config from an instance's network interface
@@ -18127,7 +18567,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the Display config for a VM instance. You can only use this method
@@ -18221,7 +18663,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an instance's network interface. This method follows PATCH
@@ -18322,7 +18766,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the Shielded Instance config for an instance. You can only use
@@ -18417,7 +18863,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -18556,8 +19004,10 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => InterconnectAttachmentAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => InterconnectAttachmentAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified interconnect attachment.
@@ -18643,7 +19093,9 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified interconnect attachment.
@@ -18712,7 +19164,10 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InterconnectAttachment.fromJson(data));
+    return _response.then(
+      (data) => InterconnectAttachment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an InterconnectAttachment in the specified project using the data
@@ -18802,7 +19257,9 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of interconnect attachments contained within the
@@ -18932,7 +19389,10 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InterconnectAttachmentList.fromJson(data));
+    return _response.then(
+      (data) => InterconnectAttachmentList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified interconnect attachment with the data included in
@@ -19026,7 +19486,9 @@ class InterconnectAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -19094,7 +19556,10 @@ class InterconnectLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InterconnectLocation.fromJson(data));
+    return _response.then(
+      (data) => InterconnectLocation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of interconnect locations available to the specified
@@ -19215,7 +19680,10 @@ class InterconnectLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InterconnectLocationList.fromJson(data));
+    return _response.then(
+      (data) => InterconnectLocationList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -19298,7 +19766,9 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified interconnect. Get a list of available interconnects
@@ -19359,7 +19829,10 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Interconnect.fromJson(data));
+    return _response.then(
+      (data) =>
+          Interconnect.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the interconnectDiagnostics for the specified interconnect.
@@ -19420,8 +19893,10 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => InterconnectsGetDiagnosticsResponse.fromJson(data));
+    return _response.then(
+      (data) => InterconnectsGetDiagnosticsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Interconnect in the specified project using the data included in
@@ -19495,7 +19970,9 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of interconnect available to the specified project.
@@ -19614,7 +20091,10 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InterconnectList.fromJson(data));
+    return _response.then(
+      (data) => InterconnectList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified interconnect with the data included in the request.
@@ -19699,7 +20179,9 @@ class InterconnectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -19768,7 +20250,10 @@ class LicenseCodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseCode.fromJson(data));
+    return _response.then(
+      (data) =>
+          LicenseCode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.  Caution
@@ -19837,7 +20322,10 @@ class LicenseCodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -19921,7 +20409,9 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified License resource.  Caution This resource is intended
@@ -19983,7 +20473,9 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => License.fromJson(data));
+    return _response.then(
+      (data) => License.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -20054,7 +20546,9 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a License resource in the specified project.  Caution This resource
@@ -20129,7 +20623,9 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of licenses available in the specified project. This
@@ -20254,7 +20750,10 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicensesListResponse.fromJson(data));
+    return _response.then(
+      (data) => LicensesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -20323,7 +20822,9 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.  Caution
@@ -20392,7 +20893,10 @@ class LicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -20530,7 +21034,10 @@ class MachineTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MachineTypeAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => MachineTypeAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified machine type. Gets a list of available machine types
@@ -20600,7 +21107,10 @@ class MachineTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MachineType.fromJson(data));
+    return _response.then(
+      (data) =>
+          MachineType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of machine types available to the specified project.
@@ -20729,7 +21239,10 @@ class MachineTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MachineTypeList.fromJson(data));
+    return _response.then(
+      (data) =>
+          MachineTypeList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -20868,8 +21381,10 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => NetworkEndpointGroupAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroupAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Attach a list of network endpoints to the specified network endpoint
@@ -20962,7 +21477,9 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified network endpoint group. The network endpoints in the
@@ -21050,7 +21567,9 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detach a list of network endpoints from the specified network endpoint
@@ -21143,7 +21662,9 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified network endpoint group. Gets a list of available
@@ -21212,7 +21733,10 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroup.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a network endpoint group in the specified project using the
@@ -21296,7 +21820,9 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of network endpoint groups that are located in the
@@ -21426,7 +21952,10 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroupList.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroupList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the network endpoints in the specified network endpoint group.
@@ -21572,7 +22101,9 @@ class NetworkEndpointGroupsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => NetworkEndpointGroupsListNetworkEndpoints.fromJson(data));
+      (data) => NetworkEndpointGroupsListNetworkEndpoints.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -21648,7 +22179,10 @@ class NetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -21738,7 +22272,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified network.
@@ -21815,7 +22351,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified network. Gets a list of available networks by making
@@ -21876,7 +22414,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Network.fromJson(data));
+    return _response.then(
+      (data) => Network.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a network in the specified project using the data included in the
@@ -21950,7 +22490,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of networks available to the specified project.
@@ -22069,7 +22611,10 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkList.fromJson(data));
+    return _response.then(
+      (data) =>
+          NetworkList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the peering routes exchanged over peering connection.
@@ -22221,7 +22766,10 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExchangedPeeringRoutesList.fromJson(data));
+    return _response.then(
+      (data) => ExchangedPeeringRoutesList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified network with the data included in the request. Only
@@ -22305,7 +22853,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a peering from the specified network.
@@ -22389,7 +22939,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Switches the network mode from auto subnet mode to custom subnet mode.
@@ -22467,7 +23019,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified network peering with the data included in the
@@ -22555,7 +23109,9 @@ class NetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -22654,7 +23210,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an aggregated list of node groups. Note: use
@@ -22786,7 +23344,10 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeGroupAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => NodeGroupAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified NodeGroup resource.
@@ -22872,7 +23433,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes specified nodes from the node group.
@@ -22965,7 +23528,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified NodeGroup. Get a list of available NodeGroups by
@@ -23036,7 +23601,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeGroup.fromJson(data));
+    return _response.then(
+      (data) => NodeGroup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -23115,7 +23682,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a NodeGroup resource in the specified project using the data
@@ -23206,7 +23775,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of node groups available to the specified project. Note:
@@ -23336,7 +23907,10 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeGroupList.fromJson(data));
+    return _response.then(
+      (data) =>
+          NodeGroupList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes in the node group.
@@ -23475,7 +24049,10 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeGroupsListNodes.fromJson(data));
+    return _response.then(
+      (data) => NodeGroupsListNodes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified node group.
@@ -23567,7 +24144,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -23644,7 +24223,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the node template of the node group.
@@ -23737,7 +24318,9 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -23813,7 +24396,10 @@ class NodeGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -23951,7 +24537,10 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeTemplateAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => NodeTemplateAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified NodeTemplate resource.
@@ -24037,7 +24626,9 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified node template. Gets a list of available node
@@ -24107,7 +24698,10 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeTemplate.fromJson(data));
+    return _response.then(
+      (data) =>
+          NodeTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -24186,7 +24780,9 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a NodeTemplate resource in the specified project using the data
@@ -24270,7 +24866,9 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of node templates available to the specified project.
@@ -24399,7 +24997,10 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeTemplateList.fromJson(data));
+    return _response.then(
+      (data) => NodeTemplateList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -24476,7 +25077,9 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -24552,7 +25155,10 @@ class NodeTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -24689,7 +25295,10 @@ class NodeTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeTypeAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => NodeTypeAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified node type. Gets a list of available node types by
@@ -24759,7 +25368,9 @@ class NodeTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeType.fromJson(data));
+    return _response.then(
+      (data) => NodeType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of node types available to the specified project.
@@ -24888,7 +25499,10 @@ class NodeTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodeTypeList.fromJson(data));
+    return _response.then(
+      (data) =>
+          NodeTypeList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -25027,8 +25641,10 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PacketMirroringAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => PacketMirroringAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified PacketMirroring resource.
@@ -25114,7 +25730,9 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified PacketMirroring resource.
@@ -25183,7 +25801,10 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PacketMirroring.fromJson(data));
+    return _response.then(
+      (data) =>
+          PacketMirroring.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a PacketMirroring resource in the specified project and region
@@ -25267,7 +25888,9 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of PacketMirroring resources available to the specified
@@ -25397,7 +26020,10 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PacketMirroringList.fromJson(data));
+    return _response.then(
+      (data) => PacketMirroringList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified PacketMirroring resource with the data included in
@@ -25491,7 +26117,9 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -25567,7 +26195,10 @@ class PacketMirroringsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -25640,7 +26271,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Disable a service resource (also known as service project) associated with
@@ -25714,7 +26347,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enable this project as a shared VPC host project.
@@ -25781,7 +26416,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enable service resource (a.k.a service project) for a host project, so
@@ -25856,7 +26493,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified Project resource.
@@ -25906,7 +26545,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the shared VPC host project that this project links to. May be empty
@@ -25957,7 +26598,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets service resources (a.k.a service project) associated with this host
@@ -26077,7 +26720,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProjectsGetXpnResources.fromJson(data));
+    return _response.then(
+      (data) => ProjectsGetXpnResources.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all shared VPC host projects visible to the user in an organization.
@@ -26202,7 +26848,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => XpnHostList.fromJson(data));
+    return _response.then(
+      (data) =>
+          XpnHostList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a persistent disk from one zone to another.
@@ -26275,7 +26924,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves an instance and its attached persistent disks from one zone to
@@ -26349,7 +27000,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets metadata common to all instances within the specified project using
@@ -26424,7 +27077,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the default network tier of the project. The default network tier is
@@ -26499,7 +27154,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables the usage export feature and sets the usage export bucket where
@@ -26574,7 +27231,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -26667,7 +27326,9 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified autoscaler.
@@ -26736,7 +27397,10 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Autoscaler.fromJson(data));
+    return _response.then(
+      (data) =>
+          Autoscaler.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an autoscaler in the specified project using the data included in
@@ -26820,7 +27484,9 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of autoscalers contained within the specified region.
@@ -26949,7 +27615,10 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegionAutoscalerList.fromJson(data));
+    return _response.then(
+      (data) => RegionAutoscalerList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an autoscaler in the specified project using the data included in
@@ -27042,7 +27711,9 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an autoscaler in the specified project using the data included in
@@ -27134,7 +27805,9 @@ class RegionAutoscalersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -27227,7 +27900,9 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified regional BackendService resource.
@@ -27296,7 +27971,10 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendService.fromJson(data));
+    return _response.then(
+      (data) =>
+          BackendService.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the most recent health check results for this regional
@@ -27374,7 +28052,10 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendServiceGroupHealth.fromJson(data));
+    return _response.then(
+      (data) => BackendServiceGroupHealth.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a regional BackendService resource in the specified project using
@@ -27459,7 +28140,9 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of regional BackendService resources available to the
@@ -27589,7 +28272,10 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackendServiceList.fromJson(data));
+    return _response.then(
+      (data) => BackendServiceList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified regional BackendService resource with the data
@@ -27684,7 +28370,9 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified regional BackendService resource with the data
@@ -27778,7 +28466,9 @@ class RegionBackendServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -27917,7 +28607,10 @@ class RegionCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommitmentAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => CommitmentAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified commitment resource. Gets a list of available
@@ -27987,7 +28680,10 @@ class RegionCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Commitment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Commitment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a commitment in the specified project using the data included in
@@ -28071,7 +28767,9 @@ class RegionCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of commitments contained within the specified region.
@@ -28200,7 +28898,10 @@ class RegionCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommitmentList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommitmentList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -28276,7 +28977,9 @@ class RegionDiskTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskType.fromJson(data));
+    return _response.then(
+      (data) => DiskType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of regional disk types available to the specified
@@ -28406,7 +29109,10 @@ class RegionDiskTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegionDiskTypeList.fromJson(data));
+    return _response.then(
+      (data) => RegionDiskTypeList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -28507,7 +29213,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a snapshot of this regional disk.
@@ -28600,7 +29308,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified regional persistent disk. Deleting a regional disk
@@ -28687,7 +29397,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a specified regional persistent disk.
@@ -28756,7 +29468,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Disk.fromJson(data));
+    return _response.then(
+      (data) => Disk.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -28835,7 +29549,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a persistent regional disk in the specified project using the data
@@ -28925,7 +29641,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of persistent disks contained within the specified
@@ -29055,7 +29773,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DiskList.fromJson(data));
+    return _response.then(
+      (data) => DiskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes resource policies from a regional disk.
@@ -29148,7 +29868,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resizes the specified regional persistent disk.
@@ -29241,7 +29963,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -29318,7 +30042,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on the target regional disk.
@@ -29411,7 +30137,9 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -29487,7 +30215,10 @@ class RegionDisksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -29579,7 +30310,9 @@ class RegionHealthCheckServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified regional HealthCheckService resource.
@@ -29647,7 +30380,10 @@ class RegionHealthCheckServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheckService.fromJson(data));
+    return _response.then(
+      (data) => HealthCheckService.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a regional HealthCheckService resource in the specified project
@@ -29731,7 +30467,9 @@ class RegionHealthCheckServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the HealthCheckService resources that have been configured for
@@ -29861,7 +30599,10 @@ class RegionHealthCheckServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheckServicesList.fromJson(data));
+    return _response.then(
+      (data) => HealthCheckServicesList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified regional HealthCheckService resource with the data
@@ -29954,7 +30695,9 @@ class RegionHealthCheckServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -30047,7 +30790,9 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified HealthCheck resource. Gets a list of available
@@ -30117,7 +30862,10 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheck.fromJson(data));
+    return _response.then(
+      (data) =>
+          HealthCheck.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a HealthCheck resource in the specified project using the data
@@ -30201,7 +30949,9 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of HealthCheck resources available to the specified
@@ -30331,7 +31081,10 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HealthCheckList.fromJson(data));
+    return _response.then(
+      (data) =>
+          HealthCheckList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HealthCheck resource in the specified project using the data
@@ -30425,7 +31178,9 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a HealthCheck resource in the specified project using the data
@@ -30518,7 +31273,9 @@ class RegionHealthChecksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -30628,7 +31385,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Apply updates to selected instances the managed instance group.
@@ -30703,7 +31462,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates instances with per-instance configs in this regional managed
@@ -30799,7 +31560,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified managed instance group and all of the instances in
@@ -30883,7 +31646,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Flags the specified instances in the managed instance group to be
@@ -30986,7 +31751,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes selected per-instance configs for the managed instance group.
@@ -31061,7 +31828,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all of the details about the specified managed instance group.
@@ -31127,7 +31896,10 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroupManager.fromJson(data));
+    return _response.then(
+      (data) => InstanceGroupManager.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a managed instance group using the information that you specify in
@@ -31216,7 +31988,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of managed instance groups that are contained within
@@ -31345,8 +32119,10 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => RegionInstanceGroupManagerList.fromJson(data));
+    return _response.then(
+      (data) => RegionInstanceGroupManagerList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all errors thrown by actions on instances for a given regional
@@ -31489,7 +32265,9 @@ class RegionInstanceGroupManagersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => RegionInstanceGroupManagersListErrorsResponse.fromJson(data));
+      (data) => RegionInstanceGroupManagersListErrorsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the instances in the managed instance group and instances that are
@@ -31629,8 +32407,10 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        RegionInstanceGroupManagersListInstancesResponse.fromJson(data));
+    return _response.then(
+      (data) => RegionInstanceGroupManagersListInstancesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the per-instance configs defined for the managed instance
@@ -31770,8 +32550,10 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        RegionInstanceGroupManagersListInstanceConfigsResp.fromJson(data));
+    return _response.then(
+      (data) => RegionInstanceGroupManagersListInstanceConfigsResp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a managed instance group using the information that you specify in
@@ -31865,7 +32647,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert or patch (for the ones that already exist) per-instance configs for
@@ -31959,7 +32743,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Flags the specified instances in the managed instance group to be
@@ -32060,7 +32846,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the intended size of the managed instance group. If you increase
@@ -32164,7 +32952,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the instance template to use when creating new instances or
@@ -32255,7 +33045,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the target pools to which all new instances in this group are
@@ -32346,7 +33138,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert or update (for the ones that already exist) per-instance configs
@@ -32440,7 +33234,9 @@ class RegionInstanceGroupManagersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -32513,7 +33309,10 @@ class RegionInstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstanceGroup.fromJson(data));
+    return _response.then(
+      (data) =>
+          InstanceGroup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of instance group resources contained within the
@@ -32642,7 +33441,10 @@ class RegionInstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegionInstanceGroupList.fromJson(data));
+    return _response.then(
+      (data) => RegionInstanceGroupList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the instances in the specified instance group and displays
@@ -32788,8 +33590,10 @@ class RegionInstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => RegionInstanceGroupsListInstances.fromJson(data));
+    return _response.then(
+      (data) => RegionInstanceGroupsListInstances.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the named ports for the specified regional instance group.
@@ -32880,7 +33684,9 @@ class RegionInstanceGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -32973,7 +33779,9 @@ class RegionNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified network endpoint group. Gets a list of available
@@ -33042,7 +33850,10 @@ class RegionNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroup.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a network endpoint group in the specified project using the
@@ -33126,7 +33937,9 @@ class RegionNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of regional network endpoint groups available to the
@@ -33256,7 +34069,10 @@ class RegionNetworkEndpointGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NetworkEndpointGroupList.fromJson(data));
+    return _response.then(
+      (data) => NetworkEndpointGroupList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -33350,7 +34166,9 @@ class RegionNotificationEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified NotificationEndpoint resource in the given region.
@@ -33420,7 +34238,10 @@ class RegionNotificationEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NotificationEndpoint.fromJson(data));
+    return _response.then(
+      (data) => NotificationEndpoint.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a NotificationEndpoint in the specified project in the given region
@@ -33504,7 +34325,9 @@ class RegionNotificationEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the NotificationEndpoints for a project in the given region.
@@ -33633,7 +34456,10 @@ class RegionNotificationEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NotificationEndpointList.fromJson(data));
+    return _response.then(
+      (data) => NotificationEndpointList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -33709,7 +34535,9 @@ class RegionOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the specified region-specific Operations resource.
@@ -33778,7 +34606,9 @@ class RegionOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of Operation resources contained within the specified
@@ -33908,7 +34738,10 @@ class RegionOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OperationList.fromJson(data));
+    return _response.then(
+      (data) =>
+          OperationList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Waits for the specified Operation resource to return as `DONE` or for the
@@ -33991,7 +34824,9 @@ class RegionOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -34084,7 +34919,9 @@ class RegionSslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified SslCertificate resource in the specified region. Get
@@ -34154,7 +34991,10 @@ class RegionSslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertificate.fromJson(data));
+    return _response.then(
+      (data) =>
+          SslCertificate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a SslCertificate resource in the specified project and region
@@ -34238,7 +35078,9 @@ class RegionSslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of SslCertificate resources available to the specified
@@ -34368,7 +35210,10 @@ class RegionSslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertificateList.fromJson(data));
+    return _response.then(
+      (data) => SslCertificateList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -34461,7 +35306,9 @@ class RegionTargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetHttpProxy resource in the specified region.
@@ -34531,7 +35378,10 @@ class RegionTargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpProxy.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetHttpProxy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetHttpProxy resource in the specified project and region
@@ -34615,7 +35465,9 @@ class RegionTargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetHttpProxy resources available to the specified
@@ -34745,7 +35597,10 @@ class RegionTargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the URL map for TargetHttpProxy.
@@ -34838,7 +35693,9 @@ class RegionTargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -34931,7 +35788,9 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetHttpsProxy resource in the specified region.
@@ -35001,7 +35860,10 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpsProxy.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpsProxy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetHttpsProxy resource in the specified project and region
@@ -35085,7 +35947,9 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetHttpsProxy resources available to the
@@ -35215,7 +36079,10 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpsProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpsProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replaces SslCertificates for TargetHttpsProxy.
@@ -35309,7 +36176,9 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the URL map for TargetHttpsProxy.
@@ -35402,7 +36271,9 @@ class RegionTargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -35484,7 +36355,9 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified UrlMap resource. Gets a list of available URL maps
@@ -35554,7 +36427,9 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMap.fromJson(data));
+    return _response.then(
+      (data) => UrlMap.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a UrlMap resource in the specified project using the data included
@@ -35628,7 +36503,9 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of UrlMap resources available to the specified project
@@ -35758,7 +36635,10 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMapList.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlMapList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified UrlMap resource with the data included in the
@@ -35842,7 +36722,9 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified UrlMap resource with the data included in the
@@ -35925,7 +36807,9 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Runs static validation for the UrlMap. In particular, the tests of the
@@ -36003,7 +36887,10 @@ class RegionUrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMapsValidateResponse.fromJson(data));
+    return _response.then(
+      (data) => UrlMapsValidateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -36070,7 +36957,9 @@ class RegionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Region.fromJson(data));
+    return _response.then(
+      (data) => Region.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of region resources available to the specified project.
@@ -36189,7 +37078,10 @@ class RegionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          RegionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -36327,7 +37219,10 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReservationAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => ReservationAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified reservation.
@@ -36413,7 +37308,9 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves information about the specified reservation.
@@ -36482,7 +37379,10 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -36561,7 +37461,9 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new reservation. For more information, read Reserving zonal
@@ -36645,7 +37547,9 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// A list of all the reservations that have been configured for the specified
@@ -36775,7 +37679,10 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReservationList.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReservationList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resizes the reservation (applicable to standalone reservations only). For
@@ -36868,7 +37775,9 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -36945,7 +37854,9 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -37021,7 +37932,10 @@ class ReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -37160,8 +38074,10 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ResourcePolicyAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => ResourcePolicyAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified resource policy.
@@ -37247,7 +38163,9 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves all information of the specified resource policy.
@@ -37316,7 +38234,10 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResourcePolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          ResourcePolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -37395,7 +38316,9 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new resource policy.
@@ -37478,7 +38401,9 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// A list all the resource policies that have been configured for the
@@ -37608,7 +38533,10 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResourcePolicyList.fromJson(data));
+    return _response.then(
+      (data) => ResourcePolicyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -37685,7 +38613,9 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -37761,7 +38691,10 @@ class ResourcePoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -37898,7 +38831,10 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RouterAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => RouterAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified Router resource.
@@ -37984,7 +38920,9 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified Router resource. Gets a list of available routers by
@@ -38054,7 +38992,9 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Router.fromJson(data));
+    return _response.then(
+      (data) => Router.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves runtime Nat mapping information of VM endpoints.
@@ -38194,7 +39134,10 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VmEndpointNatMappingsList.fromJson(data));
+    return _response.then(
+      (data) => VmEndpointNatMappingsList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves runtime information of the specified router.
@@ -38264,7 +39207,10 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RouterStatusResponse.fromJson(data));
+    return _response.then(
+      (data) => RouterStatusResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Router resource in the specified project and region using the
@@ -38348,7 +39294,9 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of Router resources available to the specified project.
@@ -38477,7 +39425,10 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RouterList.fromJson(data));
+    return _response.then(
+      (data) =>
+          RouterList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified Router resource with the data included in the
@@ -38571,7 +39522,9 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Preview fields auto-generated during router create and update operations.
@@ -38648,7 +39601,10 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RoutersPreviewResponse.fromJson(data));
+    return _response.then(
+      (data) => RoutersPreviewResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified Router resource with the data included in the
@@ -38743,7 +39699,9 @@ class RoutersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -38826,7 +39784,9 @@ class RoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified Route resource. Gets a list of available routes by
@@ -38887,7 +39847,9 @@ class RoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Route.fromJson(data));
+    return _response.then(
+      (data) => Route.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Route resource in the specified project using the data included
@@ -38961,7 +39923,9 @@ class RoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of Route resources available to the specified project.
@@ -39080,7 +40044,9 @@ class RoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RouteList.fromJson(data));
+    return _response.then(
+      (data) => RouteList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -39154,7 +40120,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified policy.
@@ -39231,7 +40199,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all of the ordered rules present in a single specified policy.
@@ -39291,7 +40261,10 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecurityPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecurityPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a rule at the specified priority.
@@ -39359,7 +40332,10 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecurityPolicyRule.fromJson(data));
+    return _response.then(
+      (data) => SecurityPolicyRule.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new policy in the specified project using the data included in
@@ -39434,7 +40410,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all the policies that have been configured for the specified project.
@@ -39554,7 +40532,10 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SecurityPolicyList.fromJson(data));
+    return _response.then(
+      (data) => SecurityPolicyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the current list of preconfigured Web Application Firewall (WAF)
@@ -39677,8 +40658,11 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        SecurityPoliciesListPreconfiguredExpressionSetsResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SecurityPoliciesListPreconfiguredExpressionSetsResponse.fromJson(
+              data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified policy with the data included in the request.
@@ -39761,7 +40745,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a rule at the specified priority.
@@ -39834,7 +40820,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a rule at the specified priority.
@@ -39901,7 +40889,9 @@ class SecurityPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -39990,7 +40980,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified Snapshot resource. Gets a list of available
@@ -40051,7 +41043,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Snapshot.fromJson(data));
+    return _response.then(
+      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -40121,7 +41115,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of Snapshot resources contained within the specified
@@ -40241,7 +41237,10 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SnapshotList.fromJson(data));
+    return _response.then(
+      (data) =>
+          SnapshotList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -40309,7 +41308,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on a snapshot. To learn more about labels, read the
@@ -40377,7 +41378,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -40444,7 +41447,10 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -40583,8 +41589,10 @@ class SslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SslCertificateAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => SslCertificateAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified SslCertificate resource.
@@ -40661,7 +41669,9 @@ class SslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified SslCertificate resource. Gets a list of available
@@ -40722,7 +41732,10 @@ class SslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertificate.fromJson(data));
+    return _response.then(
+      (data) =>
+          SslCertificate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a SslCertificate resource in the specified project using the data
@@ -40797,7 +41810,9 @@ class SslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of SslCertificate resources available to the specified
@@ -40918,7 +41933,10 @@ class SslCertificatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertificateList.fromJson(data));
+    return _response.then(
+      (data) => SslCertificateList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -41002,7 +42020,9 @@ class SslPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the ordered rules present in a single specified policy.
@@ -41061,7 +42081,9 @@ class SslPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslPolicy.fromJson(data));
+    return _response.then(
+      (data) => SslPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified SSL policy resource. Gets a list of available SSL
@@ -41135,7 +42157,9 @@ class SslPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the SSL policies that have been configured for the specified
@@ -41255,7 +42279,10 @@ class SslPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslPoliciesList.fromJson(data));
+    return _response.then(
+      (data) =>
+          SslPoliciesList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all features that can be specified in the SSL policy when using
@@ -41377,7 +42404,9 @@ class SslPoliciesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => SslPoliciesListAvailableFeaturesResponse.fromJson(data));
+      (data) => SslPoliciesListAvailableFeaturesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified SSL policy with the data included in the request.
@@ -41459,7 +42488,9 @@ class SslPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -41597,7 +42628,10 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SubnetworkAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => SubnetworkAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified subnetwork.
@@ -41683,7 +42717,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Expands the IP CIDR range of the subnetwork to a specified value.
@@ -41776,7 +42812,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified subnetwork. Gets a list of available subnetworks
@@ -41846,7 +42884,10 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subnetwork.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subnetwork.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. May be empty if no such
@@ -41925,7 +42966,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a subnetwork in the specified project using the data included in
@@ -42009,7 +43052,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of subnetworks available to the specified project.
@@ -42138,7 +43183,10 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SubnetworkList.fromJson(data));
+    return _response.then(
+      (data) =>
+          SubnetworkList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an aggregated list of all usable subnetworks in the project.
@@ -42258,8 +43306,10 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => UsableSubnetworksAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => UsableSubnetworksAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified subnetwork with the data included in the request.
@@ -42367,7 +43417,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -42444,7 +43496,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Set whether VMs in this subnet can access Google services without
@@ -42538,7 +43592,9 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -42614,7 +43670,10 @@ class SubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -42698,7 +43757,9 @@ class TargetGrpcProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetGrpcProxy resource in the given scope.
@@ -42758,7 +43819,10 @@ class TargetGrpcProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetGrpcProxy.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetGrpcProxy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetGrpcProxy in the specified project in the given scope
@@ -42833,7 +43897,9 @@ class TargetGrpcProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the TargetGrpcProxies for a project in the given scope.
@@ -42953,7 +44019,10 @@ class TargetGrpcProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetGrpcProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetGrpcProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified TargetGrpcProxy resource with the data included in
@@ -43038,7 +44107,9 @@ class TargetGrpcProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -43178,8 +44249,10 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => TargetHttpProxyAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpProxyAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified TargetHttpProxy resource.
@@ -43256,7 +44329,9 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetHttpProxy resource. Gets a list of available
@@ -43317,7 +44392,10 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpProxy.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetHttpProxy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetHttpProxy resource in the specified project using the data
@@ -43392,7 +44470,9 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetHttpProxy resources available to the specified
@@ -43513,7 +44593,10 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified TargetHttpProxy resource with the data included in
@@ -43599,7 +44682,9 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the URL map for TargetHttpProxy.
@@ -43683,7 +44768,9 @@ class TargetHttpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -43823,8 +44910,10 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => TargetHttpsProxyAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpsProxyAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified TargetHttpsProxy resource.
@@ -43901,7 +44990,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetHttpsProxy resource. Gets a list of available
@@ -43962,7 +45053,10 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpsProxy.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpsProxy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetHttpsProxy resource in the specified project using the
@@ -44037,7 +45131,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetHttpsProxy resources available to the
@@ -44158,7 +45254,10 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetHttpsProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetHttpsProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the QUIC override policy for TargetHttpsProxy.
@@ -44241,7 +45340,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replaces SslCertificates for TargetHttpsProxy.
@@ -44326,7 +45427,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the
@@ -44413,7 +45516,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the URL map for TargetHttpsProxy.
@@ -44498,7 +45603,9 @@ class TargetHttpsProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -44636,8 +45743,10 @@ class TargetInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => TargetInstanceAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => TargetInstanceAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified TargetInstance resource.
@@ -44723,7 +45832,9 @@ class TargetInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetInstance resource. Gets a list of available
@@ -44793,7 +45904,10 @@ class TargetInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetInstance.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetInstance.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetInstance resource in the specified project and zone using
@@ -44877,7 +45991,9 @@ class TargetInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of TargetInstance resources available to the specified
@@ -45007,7 +46123,10 @@ class TargetInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetInstanceList.fromJson(data));
+    return _response.then(
+      (data) => TargetInstanceList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -45106,7 +46225,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds an instance to a target pool.
@@ -45199,7 +46320,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an aggregated list of target pools.
@@ -45331,7 +46454,10 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetPoolAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => TargetPoolAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified target pool.
@@ -45417,7 +46543,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified target pool. Gets a list of available target pools
@@ -45487,7 +46615,10 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetPool.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetPool.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the most recent health check results for each IP for the instance
@@ -45565,7 +46696,10 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetPoolInstanceHealth.fromJson(data));
+    return _response.then(
+      (data) => TargetPoolInstanceHealth.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a target pool in the specified project and region using the data
@@ -45649,7 +46783,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of target pools available to the specified project and
@@ -45779,7 +46915,10 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetPoolList.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetPoolList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes health check URL from a target pool.
@@ -45872,7 +47011,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes instance URL from a target pool.
@@ -45965,7 +47106,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes a backup target pool's configurations.
@@ -46064,7 +47207,9 @@ class TargetPoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -46148,7 +47293,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetSslProxy resource. Gets a list of available
@@ -46209,7 +47356,10 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetSslProxy.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetSslProxy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetSslProxy resource in the specified project using the data
@@ -46284,7 +47434,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetSslProxy resources available to the specified
@@ -46405,7 +47557,10 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetSslProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetSslProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the BackendService for TargetSslProxy.
@@ -46490,7 +47645,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the ProxyHeaderType for TargetSslProxy.
@@ -46575,7 +47732,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes SslCertificates for TargetSslProxy.
@@ -46660,7 +47819,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the SSL policy for TargetSslProxy. The SSL policy specifies the
@@ -46746,7 +47907,9 @@ class TargetSslProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -46830,7 +47993,9 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified TargetTcpProxy resource. Gets a list of available
@@ -46891,7 +48056,10 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetTcpProxy.fromJson(data));
+    return _response.then(
+      (data) =>
+          TargetTcpProxy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a TargetTcpProxy resource in the specified project using the data
@@ -46966,7 +48134,9 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of TargetTcpProxy resources available to the specified
@@ -47087,7 +48257,10 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetTcpProxyList.fromJson(data));
+    return _response.then(
+      (data) => TargetTcpProxyList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the BackendService for TargetTcpProxy.
@@ -47172,7 +48345,9 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes the ProxyHeaderType for TargetTcpProxy.
@@ -47257,7 +48432,9 @@ class TargetTcpProxiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -47396,8 +48573,10 @@ class TargetVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => TargetVpnGatewayAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => TargetVpnGatewayAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified target VPN gateway.
@@ -47483,7 +48662,9 @@ class TargetVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified target VPN gateway. Gets a list of available target
@@ -47553,7 +48734,10 @@ class TargetVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetVpnGateway.fromJson(data));
+    return _response.then(
+      (data) => TargetVpnGateway.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a target VPN gateway in the specified project and region using the
@@ -47637,7 +48821,9 @@ class TargetVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of target VPN gateways available to the specified project
@@ -47767,7 +48953,10 @@ class TargetVpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TargetVpnGatewayList.fromJson(data));
+    return _response.then(
+      (data) => TargetVpnGatewayList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -47905,7 +49094,10 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMapsAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => UrlMapsAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified UrlMap resource.
@@ -47982,7 +49174,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified UrlMap resource. Gets a list of available URL maps
@@ -48043,7 +49237,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMap.fromJson(data));
+    return _response.then(
+      (data) => UrlMap.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a UrlMap resource in the specified project using the data included
@@ -48117,7 +49313,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Initiates a cache invalidation operation, invalidating the specified path,
@@ -48202,7 +49400,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of UrlMap resources available to the specified project.
@@ -48321,7 +49521,10 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMapList.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlMapList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the specified UrlMap resource with the data included in the
@@ -48406,7 +49609,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified UrlMap resource with the data included in the
@@ -48490,7 +49695,9 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Runs static validation for the UrlMap. In particular, the tests of the
@@ -48559,7 +49766,10 @@ class UrlMapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlMapsValidateResponse.fromJson(data));
+    return _response.then(
+      (data) => UrlMapsValidateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -48697,7 +49907,10 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnGatewayAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => VpnGatewayAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified VPN gateway.
@@ -48783,7 +49996,9 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified VPN gateway. Gets a list of available VPN gateways
@@ -48853,7 +50068,10 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnGateway.fromJson(data));
+    return _response.then(
+      (data) =>
+          VpnGateway.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the status for the specified VPN gateway.
@@ -48923,8 +50141,10 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => VpnGatewaysGetStatusResponse.fromJson(data));
+    return _response.then(
+      (data) => VpnGatewaysGetStatusResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a VPN gateway in the specified project and region using the data
@@ -49008,7 +50228,9 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of VPN gateways available to the specified project and
@@ -49138,7 +50360,10 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnGatewayList.fromJson(data));
+    return _response.then(
+      (data) =>
+          VpnGatewayList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the labels on a VpnGateway. To learn more about labels, read the
@@ -49232,7 +50457,9 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -49308,7 +50535,10 @@ class VpnGatewaysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -49445,7 +50675,10 @@ class VpnTunnelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnTunnelAggregatedList.fromJson(data));
+    return _response.then(
+      (data) => VpnTunnelAggregatedList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified VpnTunnel resource.
@@ -49531,7 +50764,9 @@ class VpnTunnelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the specified VpnTunnel resource. Gets a list of available VPN
@@ -49601,7 +50836,9 @@ class VpnTunnelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnTunnel.fromJson(data));
+    return _response.then(
+      (data) => VpnTunnel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a VpnTunnel resource in the specified project and region using the
@@ -49685,7 +50922,9 @@ class VpnTunnelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of VpnTunnel resources contained in the specified project
@@ -49815,7 +51054,10 @@ class VpnTunnelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VpnTunnelList.fromJson(data));
+    return _response.then(
+      (data) =>
+          VpnTunnelList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -49890,7 +51132,9 @@ class ZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the specified zone-specific Operations resource.
@@ -49959,7 +51203,9 @@ class ZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of Operation resources contained within the specified
@@ -50089,7 +51335,10 @@ class ZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OperationList.fromJson(data));
+    return _response.then(
+      (data) =>
+          OperationList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Waits for the specified Operation resource to return as `DONE` or for the
@@ -50172,7 +51421,9 @@ class ZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -50239,7 +51490,9 @@ class ZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Zone.fromJson(data));
+    return _response.then(
+      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of Zone resources available to the specified project.
@@ -50358,7 +51611,9 @@ class ZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ZoneList.fromJson(data));
+    return _response.then(
+      (data) => ZoneList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -50444,7 +51699,8 @@ class AcceleratorType {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -50586,7 +51842,8 @@ class AcceleratorTypeAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<AcceleratorTypeAggregatedListWarningData>((value) =>
-              AcceleratorTypeAggregatedListWarningData.fromJson(value))
+              AcceleratorTypeAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -50645,8 +51902,10 @@ class AcceleratorTypeAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, AcceleratorTypesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => AcceleratorTypesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => AcceleratorTypesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -50663,7 +51922,8 @@ class AcceleratorTypeAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AcceleratorTypeAggregatedListWarning.fromJson(_json['warning']);
+      warning = AcceleratorTypeAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -50779,8 +52039,9 @@ class AcceleratorTypeListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AcceleratorTypeListWarningData>(
-              (value) => AcceleratorTypeListWarningData.fromJson(value))
+          .map<AcceleratorTypeListWarningData>((value) =>
+              AcceleratorTypeListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -50836,7 +52097,8 @@ class AcceleratorTypeList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AcceleratorType>((value) => AcceleratorType.fromJson(value))
+          .map<AcceleratorType>((value) => AcceleratorType.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -50849,7 +52111,8 @@ class AcceleratorTypeList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = AcceleratorTypeListWarning.fromJson(_json['warning']);
+      warning = AcceleratorTypeListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -50961,8 +52224,9 @@ class AcceleratorTypesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AcceleratorTypesScopedListWarningData>(
-              (value) => AcceleratorTypesScopedListWarningData.fromJson(value))
+          .map<AcceleratorTypesScopedListWarningData>((value) =>
+              AcceleratorTypesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -50998,11 +52262,13 @@ class AcceleratorTypesScopedList {
   AcceleratorTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('acceleratorTypes')) {
       acceleratorTypes = (_json['acceleratorTypes'] as core.List)
-          .map<AcceleratorType>((value) => AcceleratorType.fromJson(value))
+          .map<AcceleratorType>((value) => AcceleratorType.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AcceleratorTypesScopedListWarning.fromJson(_json['warning']);
+      warning = AcceleratorTypesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -51447,8 +52713,9 @@ class AddressAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AddressAggregatedListWarningData>(
-              (value) => AddressAggregatedListWarningData.fromJson(value))
+          .map<AddressAggregatedListWarningData>((value) =>
+              AddressAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -51506,8 +52773,10 @@ class AddressAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, AddressesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => AddressesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => AddressesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -51524,7 +52793,8 @@ class AddressAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AddressAggregatedListWarning.fromJson(_json['warning']);
+      warning = AddressAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -51640,8 +52910,9 @@ class AddressListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AddressListWarningData>(
-              (value) => AddressListWarningData.fromJson(value))
+          .map<AddressListWarningData>((value) =>
+              AddressListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -51697,7 +52968,8 @@ class AddressList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Address>((value) => Address.fromJson(value))
+          .map<Address>((value) =>
+              Address.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -51710,7 +52982,8 @@ class AddressList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = AddressListWarning.fromJson(_json['warning']);
+      warning = AddressListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -51822,8 +53095,9 @@ class AddressesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AddressesScopedListWarningData>(
-              (value) => AddressesScopedListWarningData.fromJson(value))
+          .map<AddressesScopedListWarningData>((value) =>
+              AddressesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -51859,11 +53133,13 @@ class AddressesScopedList {
   AddressesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('addresses')) {
       addresses = (_json['addresses'] as core.List)
-          .map<Address>((value) => Address.fromJson(value))
+          .map<Address>((value) =>
+              Address.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AddressesScopedListWarning.fromJson(_json['warning']);
+      warning = AddressesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -51977,7 +53253,8 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
       core.Map _json) {
     if (_json.containsKey('guestAccelerators')) {
       guestAccelerators = (_json['guestAccelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localSsds')) {
@@ -51985,7 +53262,7 @@ class AllocationSpecificSKUAllocationReservedInstanceProperties {
           .map<AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk>(
               (value) =>
                   AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('machineType')) {
@@ -52039,7 +53316,8 @@ class AllocationSpecificSKUReservation {
     if (_json.containsKey('instanceProperties')) {
       instanceProperties =
           AllocationSpecificSKUAllocationReservedInstanceProperties.fromJson(
-              _json['instanceProperties']);
+              _json['instanceProperties']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -52178,23 +53456,24 @@ class AttachedDisk {
       deviceName = _json['deviceName'] as core.String;
     }
     if (_json.containsKey('diskEncryptionKey')) {
-      diskEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['diskEncryptionKey']);
+      diskEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['diskEncryptionKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diskSizeGb')) {
       diskSizeGb = _json['diskSizeGb'] as core.String;
     }
     if (_json.containsKey('guestOsFeatures')) {
       guestOsFeatures = (_json['guestOsFeatures'] as core.List)
-          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(value))
+          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('index')) {
       index = _json['index'] as core.int;
     }
     if (_json.containsKey('initializeParams')) {
-      initializeParams =
-          AttachedDiskInitializeParams.fromJson(_json['initializeParams']);
+      initializeParams = AttachedDiskInitializeParams.fromJson(
+          _json['initializeParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('interface')) {
       interface = _json['interface'] as core.String;
@@ -52211,8 +53490,9 @@ class AttachedDisk {
       mode = _json['mode'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceInitialState')) {
-      shieldedInstanceInitialState =
-          InitialStateConfig.fromJson(_json['shieldedInstanceInitialState']);
+      shieldedInstanceInitialState = InitialStateConfig.fromJson(
+          _json['shieldedInstanceInitialState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -52398,7 +53678,8 @@ class AttachedDiskInitializeParams {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('onUpdateAction')) {
@@ -52413,15 +53694,17 @@ class AttachedDiskInitializeParams {
       sourceImage = _json['sourceImage'] as core.String;
     }
     if (_json.containsKey('sourceImageEncryptionKey')) {
-      sourceImageEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceImageEncryptionKey']);
+      sourceImageEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceImageEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceSnapshot')) {
       sourceSnapshot = _json['sourceSnapshot'] as core.String;
     }
     if (_json.containsKey('sourceSnapshotEncryptionKey')) {
-      sourceSnapshotEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceSnapshotEncryptionKey']);
+      sourceSnapshotEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceSnapshotEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -52502,7 +53785,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('exemptedMembers')) {
@@ -52706,8 +53990,8 @@ class Autoscaler {
 
   Autoscaler.fromJson(core.Map _json) {
     if (_json.containsKey('autoscalingPolicy')) {
-      autoscalingPolicy =
-          AutoscalingPolicy.fromJson(_json['autoscalingPolicy']);
+      autoscalingPolicy = AutoscalingPolicy.fromJson(
+          _json['autoscalingPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -52738,8 +54022,9 @@ class Autoscaler {
     }
     if (_json.containsKey('statusDetails')) {
       statusDetails = (_json['statusDetails'] as core.List)
-          .map<AutoscalerStatusDetails>(
-              (value) => AutoscalerStatusDetails.fromJson(value))
+          .map<AutoscalerStatusDetails>((value) =>
+              AutoscalerStatusDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('target')) {
@@ -52879,8 +54164,9 @@ class AutoscalerAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AutoscalerAggregatedListWarningData>(
-              (value) => AutoscalerAggregatedListWarningData.fromJson(value))
+          .map<AutoscalerAggregatedListWarningData>((value) =>
+              AutoscalerAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -52938,8 +54224,10 @@ class AutoscalerAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, AutoscalersScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => AutoscalersScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => AutoscalersScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -52956,7 +54244,8 @@ class AutoscalerAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AutoscalerAggregatedListWarning.fromJson(_json['warning']);
+      warning = AutoscalerAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -53072,8 +54361,9 @@ class AutoscalerListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AutoscalerListWarningData>(
-              (value) => AutoscalerListWarningData.fromJson(value))
+          .map<AutoscalerListWarningData>((value) =>
+              AutoscalerListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -53129,7 +54419,8 @@ class AutoscalerList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Autoscaler>((value) => Autoscaler.fromJson(value))
+          .map<Autoscaler>((value) =>
+              Autoscaler.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -53142,7 +54433,8 @@ class AutoscalerList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = AutoscalerListWarning.fromJson(_json['warning']);
+      warning = AutoscalerListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -53344,8 +54636,9 @@ class AutoscalersScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<AutoscalersScopedListWarningData>(
-              (value) => AutoscalersScopedListWarningData.fromJson(value))
+          .map<AutoscalersScopedListWarningData>((value) =>
+              AutoscalersScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -53381,11 +54674,13 @@ class AutoscalersScopedList {
   AutoscalersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('autoscalers')) {
       autoscalers = (_json['autoscalers'] as core.List)
-          .map<Autoscaler>((value) => Autoscaler.fromJson(value))
+          .map<Autoscaler>((value) =>
+              Autoscaler.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = AutoscalersScopedListWarning.fromJson(_json['warning']);
+      warning = AutoscalersScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -53451,20 +54746,22 @@ class AutoscalingPolicy {
       coolDownPeriodSec = _json['coolDownPeriodSec'] as core.int;
     }
     if (_json.containsKey('cpuUtilization')) {
-      cpuUtilization =
-          AutoscalingPolicyCpuUtilization.fromJson(_json['cpuUtilization']);
+      cpuUtilization = AutoscalingPolicyCpuUtilization.fromJson(
+          _json['cpuUtilization'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customMetricUtilizations')) {
       customMetricUtilizations =
           (_json['customMetricUtilizations'] as core.List)
               .map<AutoscalingPolicyCustomMetricUtilization>((value) =>
-                  AutoscalingPolicyCustomMetricUtilization.fromJson(value))
+                  AutoscalingPolicyCustomMetricUtilization.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('loadBalancingUtilization')) {
       loadBalancingUtilization =
           AutoscalingPolicyLoadBalancingUtilization.fromJson(
-              _json['loadBalancingUtilization']);
+              _json['loadBalancingUtilization']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxNumReplicas')) {
       maxNumReplicas = _json['maxNumReplicas'] as core.int;
@@ -53476,8 +54773,8 @@ class AutoscalingPolicy {
       mode = _json['mode'] as core.String;
     }
     if (_json.containsKey('scaleInControl')) {
-      scaleInControl =
-          AutoscalingPolicyScaleInControl.fromJson(_json['scaleInControl']);
+      scaleInControl = AutoscalingPolicyScaleInControl.fromJson(
+          _json['scaleInControl'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -53642,8 +54939,8 @@ class AutoscalingPolicyScaleInControl {
 
   AutoscalingPolicyScaleInControl.fromJson(core.Map _json) {
     if (_json.containsKey('maxScaledInReplicas')) {
-      maxScaledInReplicas =
-          FixedOrPercent.fromJson(_json['maxScaledInReplicas']);
+      maxScaledInReplicas = FixedOrPercent.fromJson(
+          _json['maxScaledInReplicas'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeWindowSec')) {
       timeWindowSec = _json['timeWindowSec'] as core.int;
@@ -53962,7 +55259,8 @@ class BackendBucket {
       bucketName = _json['bucketName'] as core.String;
     }
     if (_json.containsKey('cdnPolicy')) {
-      cdnPolicy = BackendBucketCdnPolicy.fromJson(_json['cdnPolicy']);
+      cdnPolicy = BackendBucketCdnPolicy.fromJson(
+          _json['cdnPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -54142,8 +55440,9 @@ class BackendBucketListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<BackendBucketListWarningData>(
-              (value) => BackendBucketListWarningData.fromJson(value))
+          .map<BackendBucketListWarningData>((value) =>
+              BackendBucketListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -54198,7 +55497,8 @@ class BackendBucketList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<BackendBucket>((value) => BackendBucket.fromJson(value))
+          .map<BackendBucket>((value) => BackendBucket.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -54211,7 +55511,8 @@ class BackendBucketList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = BackendBucketListWarning.fromJson(_json['warning']);
+      warning = BackendBucketListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -54550,22 +55851,25 @@ class BackendService {
     }
     if (_json.containsKey('backends')) {
       backends = (_json['backends'] as core.List)
-          .map<Backend>((value) => Backend.fromJson(value))
+          .map<Backend>((value) =>
+              Backend.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cdnPolicy')) {
-      cdnPolicy = BackendServiceCdnPolicy.fromJson(_json['cdnPolicy']);
+      cdnPolicy = BackendServiceCdnPolicy.fromJson(
+          _json['cdnPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('circuitBreakers')) {
-      circuitBreakers = CircuitBreakers.fromJson(_json['circuitBreakers']);
+      circuitBreakers = CircuitBreakers.fromJson(
+          _json['circuitBreakers'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('connectionDraining')) {
-      connectionDraining =
-          ConnectionDraining.fromJson(_json['connectionDraining']);
+      connectionDraining = ConnectionDraining.fromJson(
+          _json['connectionDraining'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('consistentHash')) {
-      consistentHash =
-          ConsistentHashLoadBalancerSettings.fromJson(_json['consistentHash']);
+      consistentHash = ConsistentHashLoadBalancerSettings.fromJson(
+          _json['consistentHash'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -54582,8 +55886,8 @@ class BackendService {
       enableCDN = _json['enableCDN'] as core.bool;
     }
     if (_json.containsKey('failoverPolicy')) {
-      failoverPolicy =
-          BackendServiceFailoverPolicy.fromJson(_json['failoverPolicy']);
+      failoverPolicy = BackendServiceFailoverPolicy.fromJson(
+          _json['failoverPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
@@ -54594,7 +55898,8 @@ class BackendService {
           .toList();
     }
     if (_json.containsKey('iap')) {
-      iap = BackendServiceIAP.fromJson(_json['iap']);
+      iap = BackendServiceIAP.fromJson(
+          _json['iap'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -54609,7 +55914,8 @@ class BackendService {
       localityLbPolicy = _json['localityLbPolicy'] as core.String;
     }
     if (_json.containsKey('logConfig')) {
-      logConfig = BackendServiceLogConfig.fromJson(_json['logConfig']);
+      logConfig = BackendServiceLogConfig.fromJson(
+          _json['logConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -54618,7 +55924,8 @@ class BackendService {
       network = _json['network'] as core.String;
     }
     if (_json.containsKey('outlierDetection')) {
-      outlierDetection = OutlierDetection.fromJson(_json['outlierDetection']);
+      outlierDetection = OutlierDetection.fromJson(
+          _json['outlierDetection'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('port')) {
       port = _json['port'] as core.int;
@@ -54826,7 +56133,8 @@ class BackendServiceAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<BackendServiceAggregatedListWarningData>((value) =>
-              BackendServiceAggregatedListWarningData.fromJson(value))
+              BackendServiceAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -54884,8 +56192,10 @@ class BackendServiceAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, BackendServicesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => BackendServicesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => BackendServicesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -54902,7 +56212,8 @@ class BackendServiceAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = BackendServiceAggregatedListWarning.fromJson(_json['warning']);
+      warning = BackendServiceAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -54956,7 +56267,8 @@ class BackendServiceCdnPolicy {
 
   BackendServiceCdnPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('cacheKeyPolicy')) {
-      cacheKeyPolicy = CacheKeyPolicy.fromJson(_json['cacheKeyPolicy']);
+      cacheKeyPolicy = CacheKeyPolicy.fromJson(
+          _json['cacheKeyPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('signedUrlCacheMaxAgeSec')) {
       signedUrlCacheMaxAgeSec = _json['signedUrlCacheMaxAgeSec'] as core.String;
@@ -55061,12 +56373,14 @@ class BackendServiceGroupHealth {
   BackendServiceGroupHealth.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = commons.mapMap<core.String, core.String>(
-          _json['annotations'].cast<core.String, core.String>(),
+          (_json['annotations'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('healthStatus')) {
       healthStatus = (_json['healthStatus'] as core.List)
-          .map<HealthStatus>((value) => HealthStatus.fromJson(value))
+          .map<HealthStatus>((value) => HealthStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -55227,8 +56541,9 @@ class BackendServiceListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<BackendServiceListWarningData>(
-              (value) => BackendServiceListWarningData.fromJson(value))
+          .map<BackendServiceListWarningData>((value) =>
+              BackendServiceListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -55284,7 +56599,8 @@ class BackendServiceList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<BackendService>((value) => BackendService.fromJson(value))
+          .map<BackendService>((value) => BackendService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -55297,7 +56613,8 @@ class BackendServiceList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = BackendServiceListWarning.fromJson(_json['warning']);
+      warning = BackendServiceListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -55466,8 +56783,9 @@ class BackendServicesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<BackendServicesScopedListWarningData>(
-              (value) => BackendServicesScopedListWarningData.fromJson(value))
+          .map<BackendServicesScopedListWarningData>((value) =>
+              BackendServicesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -55503,11 +56821,13 @@ class BackendServicesScopedList {
   BackendServicesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('backendServices')) {
       backendServices = (_json['backendServices'] as core.List)
-          .map<BackendService>((value) => BackendService.fromJson(value))
+          .map<BackendService>((value) => BackendService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = BackendServicesScopedListWarning.fromJson(_json['warning']);
+      warning = BackendServicesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -55601,7 +56921,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -55906,8 +57227,8 @@ class Commitment {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('licenseResource')) {
-      licenseResource =
-          LicenseResourceCommitment.fromJson(_json['licenseResource']);
+      licenseResource = LicenseResourceCommitment.fromJson(
+          _json['licenseResource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -55920,13 +57241,14 @@ class Commitment {
     }
     if (_json.containsKey('reservations')) {
       reservations = (_json['reservations'] as core.List)
-          .map<Reservation>((value) => Reservation.fromJson(value))
+          .map<Reservation>((value) => Reservation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ResourceCommitment>(
-              (value) => ResourceCommitment.fromJson(value))
+          .map<ResourceCommitment>((value) => ResourceCommitment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -56081,8 +57403,9 @@ class CommitmentAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<CommitmentAggregatedListWarningData>(
-              (value) => CommitmentAggregatedListWarningData.fromJson(value))
+          .map<CommitmentAggregatedListWarningData>((value) =>
+              CommitmentAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -56140,8 +57463,10 @@ class CommitmentAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, CommitmentsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => CommitmentsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => CommitmentsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -56158,7 +57483,8 @@ class CommitmentAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = CommitmentAggregatedListWarning.fromJson(_json['warning']);
+      warning = CommitmentAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -56274,8 +57600,9 @@ class CommitmentListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<CommitmentListWarningData>(
-              (value) => CommitmentListWarningData.fromJson(value))
+          .map<CommitmentListWarningData>((value) =>
+              CommitmentListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -56331,7 +57658,8 @@ class CommitmentList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Commitment>((value) => Commitment.fromJson(value))
+          .map<Commitment>((value) =>
+              Commitment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -56344,7 +57672,8 @@ class CommitmentList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = CommitmentListWarning.fromJson(_json['warning']);
+      warning = CommitmentListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -56456,8 +57785,9 @@ class CommitmentsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<CommitmentsScopedListWarningData>(
-              (value) => CommitmentsScopedListWarningData.fromJson(value))
+          .map<CommitmentsScopedListWarningData>((value) =>
+              CommitmentsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -56493,11 +57823,13 @@ class CommitmentsScopedList {
   CommitmentsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('commitments')) {
       commitments = (_json['commitments'] as core.List)
-          .map<Commitment>((value) => Commitment.fromJson(value))
+          .map<Commitment>((value) =>
+              Commitment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = CommitmentsScopedListWarning.fromJson(_json['warning']);
+      warning = CommitmentsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -56667,7 +57999,7 @@ class ConsistentHashLoadBalancerSettings {
   ConsistentHashLoadBalancerSettings.fromJson(core.Map _json) {
     if (_json.containsKey('httpCookie')) {
       httpCookie = ConsistentHashLoadBalancerSettingsHttpCookie.fromJson(
-          _json['httpCookie']);
+          _json['httpCookie'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpHeaderName')) {
       httpHeaderName = _json['httpHeaderName'] as core.String;
@@ -56714,7 +58046,8 @@ class ConsistentHashLoadBalancerSettingsHttpCookie {
       path = _json['path'] as core.String;
     }
     if (_json.containsKey('ttl')) {
-      ttl = Duration.fromJson(_json['ttl']);
+      ttl = Duration.fromJson(
+          _json['ttl'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -56904,8 +58237,8 @@ class CustomerEncryptionKeyProtectedDisk {
 
   CustomerEncryptionKeyProtectedDisk.fromJson(core.Map _json) {
     if (_json.containsKey('diskEncryptionKey')) {
-      diskEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['diskEncryptionKey']);
+      diskEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['diskEncryptionKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -57237,12 +58570,13 @@ class Disk {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('diskEncryptionKey')) {
-      diskEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['diskEncryptionKey']);
+      diskEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['diskEncryptionKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('guestOsFeatures')) {
       guestOsFeatures = (_json['guestOsFeatures'] as core.List)
-          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(value))
+          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -57256,7 +58590,8 @@ class Disk {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('lastAttachTimestamp')) {
@@ -57313,8 +58648,9 @@ class Disk {
       sourceImage = _json['sourceImage'] as core.String;
     }
     if (_json.containsKey('sourceImageEncryptionKey')) {
-      sourceImageEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceImageEncryptionKey']);
+      sourceImageEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceImageEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceImageId')) {
       sourceImageId = _json['sourceImageId'] as core.String;
@@ -57323,8 +58659,9 @@ class Disk {
       sourceSnapshot = _json['sourceSnapshot'] as core.String;
     }
     if (_json.containsKey('sourceSnapshotEncryptionKey')) {
-      sourceSnapshotEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceSnapshotEncryptionKey']);
+      sourceSnapshotEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceSnapshotEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceSnapshotId')) {
       sourceSnapshotId = _json['sourceSnapshotId'] as core.String;
@@ -57532,8 +58869,9 @@ class DiskAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DiskAggregatedListWarningData>(
-              (value) => DiskAggregatedListWarningData.fromJson(value))
+          .map<DiskAggregatedListWarningData>((value) =>
+              DiskAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -57591,8 +58929,10 @@ class DiskAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, DisksScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => DisksScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => DisksScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -57609,7 +58949,8 @@ class DiskAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = DiskAggregatedListWarning.fromJson(_json['warning']);
+      warning = DiskAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -57799,8 +59140,8 @@ class DiskListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DiskListWarningData>(
-              (value) => DiskListWarningData.fromJson(value))
+          .map<DiskListWarningData>((value) => DiskListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -57856,7 +59197,8 @@ class DiskList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Disk>((value) => Disk.fromJson(value))
+          .map<Disk>((value) =>
+              Disk.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -57869,7 +59211,8 @@ class DiskList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = DiskListWarning.fromJson(_json['warning']);
+      warning = DiskListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -58004,7 +59347,8 @@ class DiskType {
       defaultDiskSizeGb = _json['defaultDiskSizeGb'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -58154,8 +59498,9 @@ class DiskTypeAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DiskTypeAggregatedListWarningData>(
-              (value) => DiskTypeAggregatedListWarningData.fromJson(value))
+          .map<DiskTypeAggregatedListWarningData>((value) =>
+              DiskTypeAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -58212,8 +59557,10 @@ class DiskTypeAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, DiskTypesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => DiskTypesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => DiskTypesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -58230,7 +59577,8 @@ class DiskTypeAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = DiskTypeAggregatedListWarning.fromJson(_json['warning']);
+      warning = DiskTypeAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -58346,8 +59694,9 @@ class DiskTypeListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DiskTypeListWarningData>(
-              (value) => DiskTypeListWarningData.fromJson(value))
+          .map<DiskTypeListWarningData>((value) =>
+              DiskTypeListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -58403,7 +59752,8 @@ class DiskTypeList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<DiskType>((value) => DiskType.fromJson(value))
+          .map<DiskType>((value) =>
+              DiskType.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -58416,7 +59766,8 @@ class DiskTypeList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = DiskTypeListWarning.fromJson(_json['warning']);
+      warning = DiskTypeListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -58528,8 +59879,9 @@ class DiskTypesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DiskTypesScopedListWarningData>(
-              (value) => DiskTypesScopedListWarningData.fromJson(value))
+          .map<DiskTypesScopedListWarningData>((value) =>
+              DiskTypesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -58565,11 +59917,13 @@ class DiskTypesScopedList {
   DiskTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('diskTypes')) {
       diskTypes = (_json['diskTypes'] as core.List)
-          .map<DiskType>((value) => DiskType.fromJson(value))
+          .map<DiskType>((value) =>
+              DiskType.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = DiskTypesScopedListWarning.fromJson(_json['warning']);
+      warning = DiskTypesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -58737,8 +60091,9 @@ class DisksScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DisksScopedListWarningData>(
-              (value) => DisksScopedListWarningData.fromJson(value))
+          .map<DisksScopedListWarningData>((value) =>
+              DisksScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -58774,11 +60129,13 @@ class DisksScopedList {
   DisksScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
       disks = (_json['disks'] as core.List)
-          .map<Disk>((value) => Disk.fromJson(value))
+          .map<Disk>((value) =>
+              Disk.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = DisksScopedListWarning.fromJson(_json['warning']);
+      warning = DisksScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -58826,8 +60183,9 @@ class DistributionPolicy {
   DistributionPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('zones')) {
       zones = (_json['zones'] as core.List)
-          .map<DistributionPolicyZoneConfiguration>(
-              (value) => DistributionPolicyZoneConfiguration.fromJson(value))
+          .map<DistributionPolicyZoneConfiguration>((value) =>
+              DistributionPolicyZoneConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -59048,8 +60406,9 @@ class ExchangedPeeringRoutesListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ExchangedPeeringRoutesListWarningData>(
-              (value) => ExchangedPeeringRoutesListWarningData.fromJson(value))
+          .map<ExchangedPeeringRoutesListWarningData>((value) =>
+              ExchangedPeeringRoutesListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -59104,8 +60463,8 @@ class ExchangedPeeringRoutesList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ExchangedPeeringRoute>(
-              (value) => ExchangedPeeringRoute.fromJson(value))
+          .map<ExchangedPeeringRoute>((value) => ExchangedPeeringRoute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -59118,7 +60477,8 @@ class ExchangedPeeringRoutesList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ExchangedPeeringRoutesListWarning.fromJson(_json['warning']);
+      warning = ExchangedPeeringRoutesListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -59314,8 +60674,9 @@ class ExternalVpnGateway {
     }
     if (_json.containsKey('interfaces')) {
       interfaces = (_json['interfaces'] as core.List)
-          .map<ExternalVpnGatewayInterface>(
-              (value) => ExternalVpnGatewayInterface.fromJson(value))
+          .map<ExternalVpnGatewayInterface>((value) =>
+              ExternalVpnGatewayInterface.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -59326,7 +60687,8 @@ class ExternalVpnGateway {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -59496,8 +60858,9 @@ class ExternalVpnGatewayListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ExternalVpnGatewayListWarningData>(
-              (value) => ExternalVpnGatewayListWarningData.fromJson(value))
+          .map<ExternalVpnGatewayListWarningData>((value) =>
+              ExternalVpnGatewayListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -59558,8 +60921,8 @@ class ExternalVpnGatewayList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ExternalVpnGateway>(
-              (value) => ExternalVpnGateway.fromJson(value))
+          .map<ExternalVpnGateway>((value) => ExternalVpnGateway.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -59572,7 +60935,8 @@ class ExternalVpnGatewayList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ExternalVpnGatewayListWarning.fromJson(_json['warning']);
+      warning = ExternalVpnGatewayListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -59861,7 +61225,8 @@ class Firewall {
   Firewall.fromJson(core.Map _json) {
     if (_json.containsKey('allowed')) {
       allowed = (_json['allowed'] as core.List)
-          .map<FirewallAllowed>((value) => FirewallAllowed.fromJson(value))
+          .map<FirewallAllowed>((value) => FirewallAllowed.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('creationTimestamp')) {
@@ -59869,7 +61234,8 @@ class Firewall {
     }
     if (_json.containsKey('denied')) {
       denied = (_json['denied'] as core.List)
-          .map<FirewallDenied>((value) => FirewallDenied.fromJson(value))
+          .map<FirewallDenied>((value) => FirewallDenied.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -59893,7 +61259,8 @@ class Firewall {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('logConfig')) {
-      logConfig = FirewallLogConfig.fromJson(_json['logConfig']);
+      logConfig = FirewallLogConfig.fromJson(
+          _json['logConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -60080,8 +61447,9 @@ class FirewallListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<FirewallListWarningData>(
-              (value) => FirewallListWarningData.fromJson(value))
+          .map<FirewallListWarningData>((value) =>
+              FirewallListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -60137,7 +61505,8 @@ class FirewallList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Firewall>((value) => Firewall.fromJson(value))
+          .map<Firewall>((value) =>
+              Firewall.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -60150,7 +61519,8 @@ class FirewallList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = FirewallListWarning.fromJson(_json['warning']);
+      warning = FirewallListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -60604,7 +61974,8 @@ class ForwardingRule {
     }
     if (_json.containsKey('metadataFilters')) {
       metadataFilters = (_json['metadataFilters'] as core.List)
-          .map<MetadataFilter>((value) => MetadataFilter.fromJson(value))
+          .map<MetadataFilter>((value) => MetadataFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -60810,7 +62181,8 @@ class ForwardingRuleAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<ForwardingRuleAggregatedListWarningData>((value) =>
-              ForwardingRuleAggregatedListWarningData.fromJson(value))
+              ForwardingRuleAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -60868,8 +62240,10 @@ class ForwardingRuleAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, ForwardingRulesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => ForwardingRulesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ForwardingRulesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -60886,7 +62260,8 @@ class ForwardingRuleAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ForwardingRuleAggregatedListWarning.fromJson(_json['warning']);
+      warning = ForwardingRuleAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -61002,8 +62377,9 @@ class ForwardingRuleListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ForwardingRuleListWarningData>(
-              (value) => ForwardingRuleListWarningData.fromJson(value))
+          .map<ForwardingRuleListWarningData>((value) =>
+              ForwardingRuleListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -61058,7 +62434,8 @@ class ForwardingRuleList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ForwardingRule>((value) => ForwardingRule.fromJson(value))
+          .map<ForwardingRule>((value) => ForwardingRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -61071,7 +62448,8 @@ class ForwardingRuleList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ForwardingRuleListWarning.fromJson(_json['warning']);
+      warning = ForwardingRuleListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -61203,8 +62581,9 @@ class ForwardingRulesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ForwardingRulesScopedListWarningData>(
-              (value) => ForwardingRulesScopedListWarningData.fromJson(value))
+          .map<ForwardingRulesScopedListWarningData>((value) =>
+              ForwardingRulesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -61240,11 +62619,13 @@ class ForwardingRulesScopedList {
   ForwardingRulesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('forwardingRules')) {
       forwardingRules = (_json['forwardingRules'] as core.List)
-          .map<ForwardingRule>((value) => ForwardingRule.fromJson(value))
+          .map<ForwardingRule>((value) => ForwardingRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ForwardingRulesScopedListWarning.fromJson(_json['warning']);
+      warning = ForwardingRulesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -61343,7 +62724,8 @@ class GlobalNetworkEndpointGroupsAttachEndpointsRequest {
   GlobalNetworkEndpointGroupsAttachEndpointsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('networkEndpoints')) {
       networkEndpoints = (_json['networkEndpoints'] as core.List)
-          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -61367,7 +62749,8 @@ class GlobalNetworkEndpointGroupsDetachEndpointsRequest {
   GlobalNetworkEndpointGroupsDetachEndpointsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('networkEndpoints')) {
       networkEndpoints = (_json['networkEndpoints'] as core.List)
-          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -61415,7 +62798,8 @@ class GlobalSetLabelsRequest {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -61457,14 +62841,16 @@ class GlobalSetPolicyRequest {
   GlobalSetPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -61515,7 +62901,8 @@ class GuestAttributes {
       queryPath = _json['queryPath'] as core.String;
     }
     if (_json.containsKey('queryValue')) {
-      queryValue = GuestAttributesValue.fromJson(_json['queryValue']);
+      queryValue = GuestAttributesValue.fromJson(
+          _json['queryValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -61601,8 +62988,8 @@ class GuestAttributesValue {
   GuestAttributesValue.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<GuestAttributesEntry>(
-              (value) => GuestAttributesEntry.fromJson(value))
+          .map<GuestAttributesEntry>((value) => GuestAttributesEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -62045,19 +63432,23 @@ class HealthCheck {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('grpcHealthCheck')) {
-      grpcHealthCheck = GRPCHealthCheck.fromJson(_json['grpcHealthCheck']);
+      grpcHealthCheck = GRPCHealthCheck.fromJson(
+          _json['grpcHealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('healthyThreshold')) {
       healthyThreshold = _json['healthyThreshold'] as core.int;
     }
     if (_json.containsKey('http2HealthCheck')) {
-      http2HealthCheck = HTTP2HealthCheck.fromJson(_json['http2HealthCheck']);
+      http2HealthCheck = HTTP2HealthCheck.fromJson(
+          _json['http2HealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpHealthCheck')) {
-      httpHealthCheck = HTTPHealthCheck.fromJson(_json['httpHealthCheck']);
+      httpHealthCheck = HTTPHealthCheck.fromJson(
+          _json['httpHealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpsHealthCheck')) {
-      httpsHealthCheck = HTTPSHealthCheck.fromJson(_json['httpsHealthCheck']);
+      httpsHealthCheck = HTTPSHealthCheck.fromJson(
+          _json['httpsHealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -62075,10 +63466,12 @@ class HealthCheck {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('sslHealthCheck')) {
-      sslHealthCheck = SSLHealthCheck.fromJson(_json['sslHealthCheck']);
+      sslHealthCheck = SSLHealthCheck.fromJson(
+          _json['sslHealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tcpHealthCheck')) {
-      tcpHealthCheck = TCPHealthCheck.fromJson(_json['tcpHealthCheck']);
+      tcpHealthCheck = TCPHealthCheck.fromJson(
+          _json['tcpHealthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeoutSec')) {
       timeoutSec = _json['timeoutSec'] as core.int;
@@ -62234,8 +63627,9 @@ class HealthCheckListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HealthCheckListWarningData>(
-              (value) => HealthCheckListWarningData.fromJson(value))
+          .map<HealthCheckListWarningData>((value) =>
+              HealthCheckListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -62290,7 +63684,8 @@ class HealthCheckList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HealthCheck>((value) => HealthCheck.fromJson(value))
+          .map<HealthCheck>((value) => HealthCheck.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -62303,7 +63698,8 @@ class HealthCheckList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = HealthCheckListWarning.fromJson(_json['warning']);
+      warning = HealthCheckListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -62643,8 +64039,9 @@ class HealthCheckServicesListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HealthCheckServicesListWarningData>(
-              (value) => HealthCheckServicesListWarningData.fromJson(value))
+          .map<HealthCheckServicesListWarningData>((value) =>
+              HealthCheckServicesListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -62699,8 +64096,8 @@ class HealthCheckServicesList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HealthCheckService>(
-              (value) => HealthCheckService.fromJson(value))
+          .map<HealthCheckService>((value) => HealthCheckService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -62713,7 +64110,8 @@ class HealthCheckServicesList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = HealthCheckServicesListWarning.fromJson(_json['warning']);
+      warning = HealthCheckServicesListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -62824,8 +64222,9 @@ class HealthChecksAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HealthChecksAggregatedListWarningData>(
-              (value) => HealthChecksAggregatedListWarningData.fromJson(value))
+          .map<HealthChecksAggregatedListWarningData>((value) =>
+              HealthChecksAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -62882,8 +64281,10 @@ class HealthChecksAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, HealthChecksScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => HealthChecksScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => HealthChecksScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -62900,7 +64301,8 @@ class HealthChecksAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = HealthChecksAggregatedListWarning.fromJson(_json['warning']);
+      warning = HealthChecksAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -63017,8 +64419,9 @@ class HealthChecksScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HealthChecksScopedListWarningData>(
-              (value) => HealthChecksScopedListWarningData.fromJson(value))
+          .map<HealthChecksScopedListWarningData>((value) =>
+              HealthChecksScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -63054,11 +64457,13 @@ class HealthChecksScopedList {
   HealthChecksScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('healthChecks')) {
       healthChecks = (_json['healthChecks'] as core.List)
-          .map<HealthCheck>((value) => HealthCheck.fromJson(value))
+          .map<HealthCheck>((value) => HealthCheck.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = HealthChecksScopedListWarning.fromJson(_json['warning']);
+      warning = HealthChecksScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -63100,7 +64505,8 @@ class HealthStatus {
   HealthStatus.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = commons.mapMap<core.String, core.String>(
-          _json['annotations'].cast<core.String, core.String>(),
+          (_json['annotations'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('healthState')) {
@@ -63168,19 +64574,20 @@ class HealthStatusForNetworkEndpoint {
 
   HealthStatusForNetworkEndpoint.fromJson(core.Map _json) {
     if (_json.containsKey('backendService')) {
-      backendService =
-          BackendServiceReference.fromJson(_json['backendService']);
+      backendService = BackendServiceReference.fromJson(
+          _json['backendService'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('forwardingRule')) {
-      forwardingRule =
-          ForwardingRuleReference.fromJson(_json['forwardingRule']);
+      forwardingRule = ForwardingRuleReference.fromJson(
+          _json['forwardingRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('healthCheck')) {
-      healthCheck = HealthCheckReference.fromJson(_json['healthCheck']);
+      healthCheck = HealthCheckReference.fromJson(
+          _json['healthCheck'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('healthCheckService')) {
-      healthCheckService =
-          HealthCheckServiceReference.fromJson(_json['healthCheckService']);
+      healthCheckService = HealthCheckServiceReference.fromJson(
+          _json['healthCheckService'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('healthState')) {
       healthState = _json['healthState'] as core.String;
@@ -63307,7 +64714,8 @@ class HttpFaultDelay {
 
   HttpFaultDelay.fromJson(core.Map _json) {
     if (_json.containsKey('fixedDelay')) {
-      fixedDelay = Duration.fromJson(_json['fixedDelay']);
+      fixedDelay = Duration.fromJson(
+          _json['fixedDelay'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('percentage')) {
       percentage = (_json['percentage'] as core.num).toDouble();
@@ -63345,10 +64753,12 @@ class HttpFaultInjection {
 
   HttpFaultInjection.fromJson(core.Map _json) {
     if (_json.containsKey('abort')) {
-      abort = HttpFaultAbort.fromJson(_json['abort']);
+      abort = HttpFaultAbort.fromJson(
+          _json['abort'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('delay')) {
-      delay = HttpFaultDelay.fromJson(_json['delay']);
+      delay = HttpFaultDelay.fromJson(
+          _json['delay'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -63388,7 +64798,8 @@ class HttpHeaderAction {
   HttpHeaderAction.fromJson(core.Map _json) {
     if (_json.containsKey('requestHeadersToAdd')) {
       requestHeadersToAdd = (_json['requestHeadersToAdd'] as core.List)
-          .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(value))
+          .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('requestHeadersToRemove')) {
@@ -63398,7 +64809,8 @@ class HttpHeaderAction {
     }
     if (_json.containsKey('responseHeadersToAdd')) {
       responseHeadersToAdd = (_json['responseHeadersToAdd'] as core.List)
-          .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(value))
+          .map<HttpHeaderOption>((value) => HttpHeaderOption.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('responseHeadersToRemove')) {
@@ -63516,7 +64928,8 @@ class HttpHeaderMatch {
       presentMatch = _json['presentMatch'] as core.bool;
     }
     if (_json.containsKey('rangeMatch')) {
-      rangeMatch = Int64RangeMatch.fromJson(_json['rangeMatch']);
+      rangeMatch = Int64RangeMatch.fromJson(
+          _json['rangeMatch'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('regexMatch')) {
       regexMatch = _json['regexMatch'] as core.String;
@@ -63833,8 +65246,9 @@ class HttpHealthCheckListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HttpHealthCheckListWarningData>(
-              (value) => HttpHealthCheckListWarningData.fromJson(value))
+          .map<HttpHealthCheckListWarningData>((value) =>
+              HttpHealthCheckListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -63889,7 +65303,8 @@ class HttpHealthCheckList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HttpHealthCheck>((value) => HttpHealthCheck.fromJson(value))
+          .map<HttpHealthCheck>((value) => HttpHealthCheck.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -63902,7 +65317,8 @@ class HttpHealthCheckList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = HttpHealthCheckListWarning.fromJson(_json['warning']);
+      warning = HttpHealthCheckListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -64137,7 +65553,8 @@ class HttpRetryPolicy {
       numRetries = _json['numRetries'] as core.int;
     }
     if (_json.containsKey('perTryTimeout')) {
-      perTryTimeout = Duration.fromJson(_json['perTryTimeout']);
+      perTryTimeout = Duration.fromJson(
+          _json['perTryTimeout'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retryConditions')) {
       retryConditions = (_json['retryConditions'] as core.List)
@@ -64224,29 +65641,34 @@ class HttpRouteAction {
 
   HttpRouteAction.fromJson(core.Map _json) {
     if (_json.containsKey('corsPolicy')) {
-      corsPolicy = CorsPolicy.fromJson(_json['corsPolicy']);
+      corsPolicy = CorsPolicy.fromJson(
+          _json['corsPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faultInjectionPolicy')) {
-      faultInjectionPolicy =
-          HttpFaultInjection.fromJson(_json['faultInjectionPolicy']);
+      faultInjectionPolicy = HttpFaultInjection.fromJson(
+          _json['faultInjectionPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestMirrorPolicy')) {
-      requestMirrorPolicy =
-          RequestMirrorPolicy.fromJson(_json['requestMirrorPolicy']);
+      requestMirrorPolicy = RequestMirrorPolicy.fromJson(
+          _json['requestMirrorPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retryPolicy')) {
-      retryPolicy = HttpRetryPolicy.fromJson(_json['retryPolicy']);
+      retryPolicy = HttpRetryPolicy.fromJson(
+          _json['retryPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeout')) {
-      timeout = Duration.fromJson(_json['timeout']);
+      timeout = Duration.fromJson(
+          _json['timeout'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('urlRewrite')) {
-      urlRewrite = UrlRewrite.fromJson(_json['urlRewrite']);
+      urlRewrite = UrlRewrite.fromJson(
+          _json['urlRewrite'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('weightedBackendServices')) {
       weightedBackendServices = (_json['weightedBackendServices'] as core.List)
-          .map<WeightedBackendService>(
-              (value) => WeightedBackendService.fromJson(value))
+          .map<WeightedBackendService>((value) =>
+              WeightedBackendService.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -64354,25 +65776,28 @@ class HttpRouteRule {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('headerAction')) {
-      headerAction = HttpHeaderAction.fromJson(_json['headerAction']);
+      headerAction = HttpHeaderAction.fromJson(
+          _json['headerAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('matchRules')) {
       matchRules = (_json['matchRules'] as core.List)
-          .map<HttpRouteRuleMatch>(
-              (value) => HttpRouteRuleMatch.fromJson(value))
+          .map<HttpRouteRuleMatch>((value) => HttpRouteRuleMatch.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('priority')) {
       priority = _json['priority'] as core.int;
     }
     if (_json.containsKey('routeAction')) {
-      routeAction = HttpRouteAction.fromJson(_json['routeAction']);
+      routeAction = HttpRouteAction.fromJson(
+          _json['routeAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('service')) {
       service = _json['service'] as core.String;
     }
     if (_json.containsKey('urlRedirect')) {
-      urlRedirect = HttpRedirectAction.fromJson(_json['urlRedirect']);
+      urlRedirect = HttpRedirectAction.fromJson(
+          _json['urlRedirect'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -64473,7 +65898,8 @@ class HttpRouteRuleMatch {
     }
     if (_json.containsKey('headerMatches')) {
       headerMatches = (_json['headerMatches'] as core.List)
-          .map<HttpHeaderMatch>((value) => HttpHeaderMatch.fromJson(value))
+          .map<HttpHeaderMatch>((value) => HttpHeaderMatch.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ignoreCase')) {
@@ -64481,7 +65907,8 @@ class HttpRouteRuleMatch {
     }
     if (_json.containsKey('metadataFilters')) {
       metadataFilters = (_json['metadataFilters'] as core.List)
-          .map<MetadataFilter>((value) => MetadataFilter.fromJson(value))
+          .map<MetadataFilter>((value) => MetadataFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('prefixMatch')) {
@@ -64489,8 +65916,9 @@ class HttpRouteRuleMatch {
     }
     if (_json.containsKey('queryParameterMatches')) {
       queryParameterMatches = (_json['queryParameterMatches'] as core.List)
-          .map<HttpQueryParameterMatch>(
-              (value) => HttpQueryParameterMatch.fromJson(value))
+          .map<HttpQueryParameterMatch>((value) =>
+              HttpQueryParameterMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('regexMatch')) {
@@ -64761,8 +66189,9 @@ class HttpsHealthCheckListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<HttpsHealthCheckListWarningData>(
-              (value) => HttpsHealthCheckListWarningData.fromJson(value))
+          .map<HttpsHealthCheckListWarningData>((value) =>
+              HttpsHealthCheckListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -64817,7 +66246,8 @@ class HttpsHealthCheckList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HttpsHealthCheck>((value) => HttpsHealthCheck.fromJson(value))
+          .map<HttpsHealthCheck>((value) => HttpsHealthCheck.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -64830,7 +66260,8 @@ class HttpsHealthCheckList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = HttpsHealthCheckListWarning.fromJson(_json['warning']);
+      warning = HttpsHealthCheckListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -65094,7 +66525,8 @@ class Image {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -65107,15 +66539,16 @@ class Image {
     }
     if (_json.containsKey('guestOsFeatures')) {
       guestOsFeatures = (_json['guestOsFeatures'] as core.List)
-          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(value))
+          .map<GuestOsFeature>((value) => GuestOsFeature.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('imageEncryptionKey')) {
-      imageEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['imageEncryptionKey']);
+      imageEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['imageEncryptionKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -65125,7 +66558,8 @@ class Image {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('licenseCodes')) {
@@ -65142,21 +66576,24 @@ class Image {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('rawDisk')) {
-      rawDisk = ImageRawDisk.fromJson(_json['rawDisk']);
+      rawDisk = ImageRawDisk.fromJson(
+          _json['rawDisk'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceInitialState')) {
-      shieldedInstanceInitialState =
-          InitialStateConfig.fromJson(_json['shieldedInstanceInitialState']);
+      shieldedInstanceInitialState = InitialStateConfig.fromJson(
+          _json['shieldedInstanceInitialState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceDisk')) {
       sourceDisk = _json['sourceDisk'] as core.String;
     }
     if (_json.containsKey('sourceDiskEncryptionKey')) {
-      sourceDiskEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceDiskEncryptionKey']);
+      sourceDiskEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceDiskEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceDiskId')) {
       sourceDiskId = _json['sourceDiskId'] as core.String;
@@ -65165,8 +66602,9 @@ class Image {
       sourceImage = _json['sourceImage'] as core.String;
     }
     if (_json.containsKey('sourceImageEncryptionKey')) {
-      sourceImageEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceImageEncryptionKey']);
+      sourceImageEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceImageEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceImageId')) {
       sourceImageId = _json['sourceImageId'] as core.String;
@@ -65175,8 +66613,9 @@ class Image {
       sourceSnapshot = _json['sourceSnapshot'] as core.String;
     }
     if (_json.containsKey('sourceSnapshotEncryptionKey')) {
-      sourceSnapshotEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceSnapshotEncryptionKey']);
+      sourceSnapshotEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceSnapshotEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceSnapshotId')) {
       sourceSnapshotId = _json['sourceSnapshotId'] as core.String;
@@ -65376,8 +66815,8 @@ class ImageListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ImageListWarningData>(
-              (value) => ImageListWarningData.fromJson(value))
+          .map<ImageListWarningData>((value) => ImageListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -65432,7 +66871,8 @@ class ImageList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Image>((value) => Image.fromJson(value))
+          .map<Image>((value) =>
+              Image.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -65445,7 +66885,8 @@ class ImageList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ImageListWarning.fromJson(_json['warning']);
+      warning = ImageListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -65493,21 +66934,25 @@ class InitialStateConfig {
   InitialStateConfig.fromJson(core.Map _json) {
     if (_json.containsKey('dbs')) {
       dbs = (_json['dbs'] as core.List)
-          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(value))
+          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dbxs')) {
       dbxs = (_json['dbxs'] as core.List)
-          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(value))
+          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('keks')) {
       keks = (_json['keks'] as core.List)
-          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(value))
+          .map<FileContentBuffer>((value) => FileContentBuffer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pk')) {
-      pk = FileContentBuffer.fromJson(_json['pk']);
+      pk = FileContentBuffer.fromJson(
+          _json['pk'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -65733,7 +67178,8 @@ class Instance {
     }
     if (_json.containsKey('confidentialInstanceConfig')) {
       confidentialInstanceConfig = ConfidentialInstanceConfig.fromJson(
-          _json['confidentialInstanceConfig']);
+          _json['confidentialInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cpuPlatform')) {
       cpuPlatform = _json['cpuPlatform'] as core.String;
@@ -65749,18 +67195,21 @@ class Instance {
     }
     if (_json.containsKey('disks')) {
       disks = (_json['disks'] as core.List)
-          .map<AttachedDisk>((value) => AttachedDisk.fromJson(value))
+          .map<AttachedDisk>((value) => AttachedDisk.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('displayDevice')) {
-      displayDevice = DisplayDevice.fromJson(_json['displayDevice']);
+      displayDevice = DisplayDevice.fromJson(
+          _json['displayDevice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('guestAccelerators')) {
       guestAccelerators = (_json['guestAccelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('hostname')) {
@@ -65777,14 +67226,16 @@ class Instance {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = Metadata.fromJson(_json['metadata']);
+      metadata = Metadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
@@ -65794,15 +67245,16 @@ class Instance {
     }
     if (_json.containsKey('networkInterfaces')) {
       networkInterfaces = (_json['networkInterfaces'] as core.List)
-          .map<NetworkInterface>((value) => NetworkInterface.fromJson(value))
+          .map<NetworkInterface>((value) => NetworkInterface.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('privateIpv6GoogleAccess')) {
       privateIpv6GoogleAccess = _json['privateIpv6GoogleAccess'] as core.String;
     }
     if (_json.containsKey('reservationAffinity')) {
-      reservationAffinity =
-          ReservationAffinity.fromJson(_json['reservationAffinity']);
+      reservationAffinity = ReservationAffinity.fromJson(
+          _json['reservationAffinity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourcePolicies')) {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
@@ -65810,24 +67262,28 @@ class Instance {
           .toList();
     }
     if (_json.containsKey('scheduling')) {
-      scheduling = Scheduling.fromJson(_json['scheduling']);
+      scheduling = Scheduling.fromJson(
+          _json['scheduling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('serviceAccounts')) {
       serviceAccounts = (_json['serviceAccounts'] as core.List)
-          .map<ServiceAccount>((value) => ServiceAccount.fromJson(value))
+          .map<ServiceAccount>((value) => ServiceAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig =
-          ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']);
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shieldedInstanceIntegrityPolicy')) {
       shieldedInstanceIntegrityPolicy =
           ShieldedInstanceIntegrityPolicy.fromJson(
-              _json['shieldedInstanceIntegrityPolicy']);
+              _json['shieldedInstanceIntegrityPolicy']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startRestricted')) {
       startRestricted = _json['startRestricted'] as core.bool;
@@ -65839,7 +67295,8 @@ class Instance {
       statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('tags')) {
-      tags = Tags.fromJson(_json['tags']);
+      tags =
+          Tags.fromJson(_json['tags'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -66038,8 +67495,9 @@ class InstanceAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceAggregatedListWarningData>(
-              (value) => InstanceAggregatedListWarningData.fromJson(value))
+          .map<InstanceAggregatedListWarningData>((value) =>
+              InstanceAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -66097,8 +67555,10 @@ class InstanceAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, InstancesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => InstancesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InstancesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -66115,7 +67575,8 @@ class InstanceAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceAggregatedListWarning.fromJson(_json['warning']);
+      warning = InstanceAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -66257,7 +67718,8 @@ class InstanceGroup {
     }
     if (_json.containsKey('namedPorts')) {
       namedPorts = (_json['namedPorts'] as core.List)
-          .map<NamedPort>((value) => NamedPort.fromJson(value))
+          .map<NamedPort>((value) =>
+              NamedPort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('network')) {
@@ -66408,8 +67870,9 @@ class InstanceGroupAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceGroupAggregatedListWarningData>(
-              (value) => InstanceGroupAggregatedListWarningData.fromJson(value))
+          .map<InstanceGroupAggregatedListWarningData>((value) =>
+              InstanceGroupAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -66468,8 +67931,10 @@ class InstanceGroupAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, InstanceGroupsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => InstanceGroupsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InstanceGroupsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -66486,7 +67951,8 @@ class InstanceGroupAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceGroupAggregatedListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -66602,8 +68068,9 @@ class InstanceGroupListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceGroupListWarningData>(
-              (value) => InstanceGroupListWarningData.fromJson(value))
+          .map<InstanceGroupListWarningData>((value) =>
+              InstanceGroupListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -66659,7 +68126,8 @@ class InstanceGroupList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceGroup>((value) => InstanceGroup.fromJson(value))
+          .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -66672,7 +68140,8 @@ class InstanceGroupList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceGroupListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -66826,8 +68295,9 @@ class InstanceGroupManager {
   InstanceGroupManager.fromJson(core.Map _json) {
     if (_json.containsKey('autoHealingPolicies')) {
       autoHealingPolicies = (_json['autoHealingPolicies'] as core.List)
-          .map<InstanceGroupManagerAutoHealingPolicy>(
-              (value) => InstanceGroupManagerAutoHealingPolicy.fromJson(value))
+          .map<InstanceGroupManagerAutoHealingPolicy>((value) =>
+              InstanceGroupManagerAutoHealingPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('baseInstanceName')) {
@@ -66837,15 +68307,15 @@ class InstanceGroupManager {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('currentActions')) {
-      currentActions =
-          InstanceGroupManagerActionsSummary.fromJson(_json['currentActions']);
+      currentActions = InstanceGroupManagerActionsSummary.fromJson(
+          _json['currentActions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('distributionPolicy')) {
-      distributionPolicy =
-          DistributionPolicy.fromJson(_json['distributionPolicy']);
+      distributionPolicy = DistributionPolicy.fromJson(
+          _json['distributionPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
@@ -66867,7 +68337,8 @@ class InstanceGroupManager {
     }
     if (_json.containsKey('namedPorts')) {
       namedPorts = (_json['namedPorts'] as core.List)
-          .map<NamedPort>((value) => NamedPort.fromJson(value))
+          .map<NamedPort>((value) =>
+              NamedPort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('region')) {
@@ -66877,10 +68348,12 @@ class InstanceGroupManager {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('statefulPolicy')) {
-      statefulPolicy = StatefulPolicy.fromJson(_json['statefulPolicy']);
+      statefulPolicy = StatefulPolicy.fromJson(
+          _json['statefulPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = InstanceGroupManagerStatus.fromJson(_json['status']);
+      status = InstanceGroupManagerStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetPools')) {
       targetPools = (_json['targetPools'] as core.List)
@@ -66891,13 +68364,14 @@ class InstanceGroupManager {
       targetSize = _json['targetSize'] as core.int;
     }
     if (_json.containsKey('updatePolicy')) {
-      updatePolicy =
-          InstanceGroupManagerUpdatePolicy.fromJson(_json['updatePolicy']);
+      updatePolicy = InstanceGroupManagerUpdatePolicy.fromJson(
+          _json['updatePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
-          .map<InstanceGroupManagerVersion>(
-              (value) => InstanceGroupManagerVersion.fromJson(value))
+          .map<InstanceGroupManagerVersion>((value) =>
+              InstanceGroupManagerVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('zone')) {
@@ -67178,7 +68652,8 @@ class InstanceGroupManagerAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<InstanceGroupManagerAggregatedListWarningData>((value) =>
-              InstanceGroupManagerAggregatedListWarningData.fromJson(value))
+              InstanceGroupManagerAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -67237,8 +68712,10 @@ class InstanceGroupManagerAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, InstanceGroupManagersScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => InstanceGroupManagersScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InstanceGroupManagersScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -67255,8 +68732,8 @@ class InstanceGroupManagerAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          InstanceGroupManagerAggregatedListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupManagerAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -67407,8 +68884,9 @@ class InstanceGroupManagerListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceGroupManagerListWarningData>(
-              (value) => InstanceGroupManagerListWarningData.fromJson(value))
+          .map<InstanceGroupManagerListWarningData>((value) =>
+              InstanceGroupManagerListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -67464,8 +68942,8 @@ class InstanceGroupManagerList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceGroupManager>(
-              (value) => InstanceGroupManager.fromJson(value))
+          .map<InstanceGroupManager>((value) => InstanceGroupManager.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -67478,7 +68956,8 @@ class InstanceGroupManagerList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceGroupManagerListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupManagerListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -67536,11 +69015,12 @@ class InstanceGroupManagerStatus {
       isStable = _json['isStable'] as core.bool;
     }
     if (_json.containsKey('stateful')) {
-      stateful = InstanceGroupManagerStatusStateful.fromJson(_json['stateful']);
+      stateful = InstanceGroupManagerStatusStateful.fromJson(
+          _json['stateful'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('versionTarget')) {
       versionTarget = InstanceGroupManagerStatusVersionTarget.fromJson(
-          _json['versionTarget']);
+          _json['versionTarget'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -67583,7 +69063,8 @@ class InstanceGroupManagerStatusStateful {
     if (_json.containsKey('perInstanceConfigs')) {
       perInstanceConfigs =
           InstanceGroupManagerStatusStatefulPerInstanceConfigs.fromJson(
-              _json['perInstanceConfigs']);
+              _json['perInstanceConfigs']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -67724,10 +69205,12 @@ class InstanceGroupManagerUpdatePolicy {
           _json['instanceRedistributionType'] as core.String;
     }
     if (_json.containsKey('maxSurge')) {
-      maxSurge = FixedOrPercent.fromJson(_json['maxSurge']);
+      maxSurge = FixedOrPercent.fromJson(
+          _json['maxSurge'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxUnavailable')) {
-      maxUnavailable = FixedOrPercent.fromJson(_json['maxUnavailable']);
+      maxUnavailable = FixedOrPercent.fromJson(
+          _json['maxUnavailable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minimalAction')) {
       minimalAction = _json['minimalAction'] as core.String;
@@ -67797,7 +69280,8 @@ class InstanceGroupManagerVersion {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('targetSize')) {
-      targetSize = FixedOrPercent.fromJson(_json['targetSize']);
+      targetSize = FixedOrPercent.fromJson(
+          _json['targetSize'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -67921,7 +69405,8 @@ class InstanceGroupManagersCreateInstancesRequest {
   InstanceGroupManagersCreateInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -68000,8 +69485,9 @@ class InstanceGroupManagersListErrorsResponse {
   InstanceGroupManagersListErrorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceManagedByIgmError>(
-              (value) => InstanceManagedByIgmError.fromJson(value))
+          .map<InstanceManagedByIgmError>((value) =>
+              InstanceManagedByIgmError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -68037,7 +69523,8 @@ class InstanceGroupManagersListManagedInstancesResponse {
   InstanceGroupManagersListManagedInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('managedInstances')) {
       managedInstances = (_json['managedInstances'] as core.List)
-          .map<ManagedInstance>((value) => ManagedInstance.fromJson(value))
+          .map<ManagedInstance>((value) => ManagedInstance.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -68146,7 +69633,7 @@ class InstanceGroupManagersListPerInstanceConfigsRespWarning {
           .map<InstanceGroupManagersListPerInstanceConfigsRespWarningData>(
               (value) =>
                   InstanceGroupManagersListPerInstanceConfigsRespWarningData
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -68188,7 +69675,8 @@ class InstanceGroupManagersListPerInstanceConfigsResp {
   InstanceGroupManagersListPerInstanceConfigsResp.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -68196,7 +69684,7 @@ class InstanceGroupManagersListPerInstanceConfigsResp {
     }
     if (_json.containsKey('warning')) {
       warning = InstanceGroupManagersListPerInstanceConfigsRespWarning.fromJson(
-          _json['warning']);
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -68226,7 +69714,8 @@ class InstanceGroupManagersPatchPerInstanceConfigsReq {
   InstanceGroupManagersPatchPerInstanceConfigsReq.fromJson(core.Map _json) {
     if (_json.containsKey('perInstanceConfigs')) {
       perInstanceConfigs = (_json['perInstanceConfigs'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -68350,7 +69839,8 @@ class InstanceGroupManagersScopedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<InstanceGroupManagersScopedListWarningData>((value) =>
-              InstanceGroupManagersScopedListWarningData.fromJson(value))
+              InstanceGroupManagersScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -68387,13 +69877,13 @@ class InstanceGroupManagersScopedList {
   InstanceGroupManagersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('instanceGroupManagers')) {
       instanceGroupManagers = (_json['instanceGroupManagers'] as core.List)
-          .map<InstanceGroupManager>(
-              (value) => InstanceGroupManager.fromJson(value))
+          .map<InstanceGroupManager>((value) => InstanceGroupManager.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          InstanceGroupManagersScopedListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupManagersScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -68491,7 +69981,8 @@ class InstanceGroupManagersUpdatePerInstanceConfigsReq {
   InstanceGroupManagersUpdatePerInstanceConfigsReq.fromJson(core.Map _json) {
     if (_json.containsKey('perInstanceConfigs')) {
       perInstanceConfigs = (_json['perInstanceConfigs'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -68515,7 +70006,8 @@ class InstanceGroupsAddInstancesRequest {
   InstanceGroupsAddInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<InstanceReference>((value) => InstanceReference.fromJson(value))
+          .map<InstanceReference>((value) => InstanceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -68612,8 +70104,9 @@ class InstanceGroupsListInstancesWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceGroupsListInstancesWarningData>(
-              (value) => InstanceGroupsListInstancesWarningData.fromJson(value))
+          .map<InstanceGroupsListInstancesWarningData>((value) =>
+              InstanceGroupsListInstancesWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -68669,8 +70162,9 @@ class InstanceGroupsListInstances {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceWithNamedPorts>(
-              (value) => InstanceWithNamedPorts.fromJson(value))
+          .map<InstanceWithNamedPorts>((value) =>
+              InstanceWithNamedPorts.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -68683,7 +70177,8 @@ class InstanceGroupsListInstances {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceGroupsListInstancesWarning.fromJson(_json['warning']);
+      warning = InstanceGroupsListInstancesWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -68746,7 +70241,8 @@ class InstanceGroupsRemoveInstancesRequest {
   InstanceGroupsRemoveInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<InstanceReference>((value) => InstanceReference.fromJson(value))
+          .map<InstanceReference>((value) => InstanceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -68844,8 +70340,9 @@ class InstanceGroupsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceGroupsScopedListWarningData>(
-              (value) => InstanceGroupsScopedListWarningData.fromJson(value))
+          .map<InstanceGroupsScopedListWarningData>((value) =>
+              InstanceGroupsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -68882,11 +70379,13 @@ class InstanceGroupsScopedList {
   InstanceGroupsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('instanceGroups')) {
       instanceGroups = (_json['instanceGroups'] as core.List)
-          .map<InstanceGroup>((value) => InstanceGroup.fromJson(value))
+          .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceGroupsScopedListWarning.fromJson(_json['warning']);
+      warning = InstanceGroupsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -68931,7 +70430,8 @@ class InstanceGroupsSetNamedPortsRequest {
     }
     if (_json.containsKey('namedPorts')) {
       namedPorts = (_json['namedPorts'] as core.List)
-          .map<NamedPort>((value) => NamedPort.fromJson(value))
+          .map<NamedPort>((value) =>
+              NamedPort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -69031,8 +70531,9 @@ class InstanceListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceListWarningData>(
-              (value) => InstanceListWarningData.fromJson(value))
+          .map<InstanceListWarningData>((value) =>
+              InstanceListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -69088,7 +70589,8 @@ class InstanceList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Instance>((value) => Instance.fromJson(value))
+          .map<Instance>((value) =>
+              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -69101,7 +70603,8 @@ class InstanceList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceListWarning.fromJson(_json['warning']);
+      warning = InstanceListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -69212,8 +70715,9 @@ class InstanceListReferrersWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceListReferrersWarningData>(
-              (value) => InstanceListReferrersWarningData.fromJson(value))
+          .map<InstanceListReferrersWarningData>((value) =>
+              InstanceListReferrersWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -69269,7 +70773,8 @@ class InstanceListReferrers {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Reference>((value) => Reference.fromJson(value))
+          .map<Reference>((value) =>
+              Reference.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -69282,7 +70787,8 @@ class InstanceListReferrers {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceListReferrersWarning.fromJson(_json['warning']);
+      warning = InstanceListReferrersWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -69328,12 +70834,13 @@ class InstanceManagedByIgmError {
   InstanceManagedByIgmError.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
       error = InstanceManagedByIgmErrorManagedInstanceError.fromJson(
-          _json['error']);
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instanceActionDetails')) {
       instanceActionDetails =
           InstanceManagedByIgmErrorInstanceActionDetails.fromJson(
-              _json['instanceActionDetails']);
+              _json['instanceActionDetails']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestamp')) {
       timestamp = _json['timestamp'] as core.String;
@@ -69390,7 +70897,8 @@ class InstanceManagedByIgmErrorInstanceActionDetails {
       instance = _json['instance'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = ManagedInstanceVersion.fromJson(_json['version']);
+      version = ManagedInstanceVersion.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -69564,46 +71072,52 @@ class InstanceProperties {
     }
     if (_json.containsKey('confidentialInstanceConfig')) {
       confidentialInstanceConfig = ConfidentialInstanceConfig.fromJson(
-          _json['confidentialInstanceConfig']);
+          _json['confidentialInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('disks')) {
       disks = (_json['disks'] as core.List)
-          .map<AttachedDisk>((value) => AttachedDisk.fromJson(value))
+          .map<AttachedDisk>((value) => AttachedDisk.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('guestAccelerators')) {
       guestAccelerators = (_json['guestAccelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = Metadata.fromJson(_json['metadata']);
+      metadata = Metadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
     }
     if (_json.containsKey('networkInterfaces')) {
       networkInterfaces = (_json['networkInterfaces'] as core.List)
-          .map<NetworkInterface>((value) => NetworkInterface.fromJson(value))
+          .map<NetworkInterface>((value) => NetworkInterface.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('privateIpv6GoogleAccess')) {
       privateIpv6GoogleAccess = _json['privateIpv6GoogleAccess'] as core.String;
     }
     if (_json.containsKey('reservationAffinity')) {
-      reservationAffinity =
-          ReservationAffinity.fromJson(_json['reservationAffinity']);
+      reservationAffinity = ReservationAffinity.fromJson(
+          _json['reservationAffinity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourcePolicies')) {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
@@ -69611,19 +71125,23 @@ class InstanceProperties {
           .toList();
     }
     if (_json.containsKey('scheduling')) {
-      scheduling = Scheduling.fromJson(_json['scheduling']);
+      scheduling = Scheduling.fromJson(
+          _json['scheduling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serviceAccounts')) {
       serviceAccounts = (_json['serviceAccounts'] as core.List)
-          .map<ServiceAccount>((value) => ServiceAccount.fromJson(value))
+          .map<ServiceAccount>((value) => ServiceAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig =
-          ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']);
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tags')) {
-      tags = Tags.fromJson(_json['tags']);
+      tags =
+          Tags.fromJson(_json['tags'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -69776,7 +71294,8 @@ class InstanceTemplate {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = InstanceProperties.fromJson(_json['properties']);
+      properties = InstanceProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -69785,8 +71304,8 @@ class InstanceTemplate {
       sourceInstance = _json['sourceInstance'] as core.String;
     }
     if (_json.containsKey('sourceInstanceParams')) {
-      sourceInstanceParams =
-          SourceInstanceParams.fromJson(_json['sourceInstanceParams']);
+      sourceInstanceParams = SourceInstanceParams.fromJson(
+          _json['sourceInstanceParams'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -69906,8 +71425,9 @@ class InstanceTemplateListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstanceTemplateListWarningData>(
-              (value) => InstanceTemplateListWarningData.fromJson(value))
+          .map<InstanceTemplateListWarningData>((value) =>
+              InstanceTemplateListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -69963,7 +71483,8 @@ class InstanceTemplateList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceTemplate>((value) => InstanceTemplate.fromJson(value))
+          .map<InstanceTemplate>((value) => InstanceTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -69976,7 +71497,8 @@ class InstanceTemplateList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InstanceTemplateListWarning.fromJson(_json['warning']);
+      warning = InstanceTemplateListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -70033,7 +71555,8 @@ class InstanceWithNamedPorts {
     }
     if (_json.containsKey('namedPorts')) {
       namedPorts = (_json['namedPorts'] as core.List)
-          .map<NamedPort>((value) => NamedPort.fromJson(value))
+          .map<NamedPort>((value) =>
+              NamedPort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('status')) {
@@ -70186,8 +71709,9 @@ class InstancesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InstancesScopedListWarningData>(
-              (value) => InstancesScopedListWarningData.fromJson(value))
+          .map<InstancesScopedListWarningData>((value) =>
+              InstancesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -70223,11 +71747,13 @@ class InstancesScopedList {
   InstancesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<Instance>((value) => Instance.fromJson(value))
+          .map<Instance>((value) =>
+              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = InstancesScopedListWarning.fromJson(_json['warning']);
+      warning = InstancesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -70266,7 +71792,8 @@ class InstancesSetLabelsRequest {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -70293,7 +71820,8 @@ class InstancesSetMachineResourcesRequest {
   InstancesSetMachineResourcesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('guestAccelerators')) {
       guestAccelerators = (_json['guestAccelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -70400,8 +71928,9 @@ class InstancesStartWithEncryptionKeyRequest {
   InstancesStartWithEncryptionKeyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
       disks = (_json['disks'] as core.List)
-          .map<CustomerEncryptionKeyProtectedDisk>(
-              (value) => CustomerEncryptionKeyProtectedDisk.fromJson(value))
+          .map<CustomerEncryptionKeyProtectedDisk>((value) =>
+              CustomerEncryptionKeyProtectedDisk.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -70587,8 +72116,9 @@ class Interconnect {
     }
     if (_json.containsKey('circuitInfos')) {
       circuitInfos = (_json['circuitInfos'] as core.List)
-          .map<InterconnectCircuitInfo>(
-              (value) => InterconnectCircuitInfo.fromJson(value))
+          .map<InterconnectCircuitInfo>((value) =>
+              InterconnectCircuitInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('creationTimestamp')) {
@@ -70602,8 +72132,9 @@ class Interconnect {
     }
     if (_json.containsKey('expectedOutages')) {
       expectedOutages = (_json['expectedOutages'] as core.List)
-          .map<InterconnectOutageNotification>(
-              (value) => InterconnectOutageNotification.fromJson(value))
+          .map<InterconnectOutageNotification>((value) =>
+              InterconnectOutageNotification.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('googleIpAddress')) {
@@ -70986,11 +72517,12 @@ class InterconnectAttachment {
     }
     if (_json.containsKey('partnerMetadata')) {
       partnerMetadata = InterconnectAttachmentPartnerMetadata.fromJson(
-          _json['partnerMetadata']);
+          _json['partnerMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateInterconnectInfo')) {
       privateInterconnectInfo = InterconnectAttachmentPrivateInfo.fromJson(
-          _json['privateInterconnectInfo']);
+          _json['privateInterconnectInfo']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
@@ -71174,7 +72706,8 @@ class InterconnectAttachmentAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<InterconnectAttachmentAggregatedListWarningData>((value) =>
-              InterconnectAttachmentAggregatedListWarningData.fromJson(value))
+              InterconnectAttachmentAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -71233,8 +72766,10 @@ class InterconnectAttachmentAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, InterconnectAttachmentsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => InterconnectAttachmentsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InterconnectAttachmentsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -71252,7 +72787,7 @@ class InterconnectAttachmentAggregatedList {
     }
     if (_json.containsKey('warning')) {
       warning = InterconnectAttachmentAggregatedListWarning.fromJson(
-          _json['warning']);
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -71368,8 +72903,9 @@ class InterconnectAttachmentListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InterconnectAttachmentListWarningData>(
-              (value) => InterconnectAttachmentListWarningData.fromJson(value))
+          .map<InterconnectAttachmentListWarningData>((value) =>
+              InterconnectAttachmentListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -71426,8 +72962,9 @@ class InterconnectAttachmentList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InterconnectAttachment>(
-              (value) => InterconnectAttachment.fromJson(value))
+          .map<InterconnectAttachment>((value) =>
+              InterconnectAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -71440,7 +72977,8 @@ class InterconnectAttachmentList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InterconnectAttachmentListWarning.fromJson(_json['warning']);
+      warning = InterconnectAttachmentListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -71624,7 +73162,8 @@ class InterconnectAttachmentsScopedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<InterconnectAttachmentsScopedListWarningData>((value) =>
-              InterconnectAttachmentsScopedListWarningData.fromJson(value))
+              InterconnectAttachmentsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -71660,13 +73199,14 @@ class InterconnectAttachmentsScopedList {
   InterconnectAttachmentsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('interconnectAttachments')) {
       interconnectAttachments = (_json['interconnectAttachments'] as core.List)
-          .map<InterconnectAttachment>(
-              (value) => InterconnectAttachment.fromJson(value))
+          .map<InterconnectAttachment>((value) =>
+              InterconnectAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          InterconnectAttachmentsScopedListWarning.fromJson(_json['warning']);
+      warning = InterconnectAttachmentsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -71745,14 +73285,16 @@ class InterconnectDiagnostics {
   InterconnectDiagnostics.fromJson(core.Map _json) {
     if (_json.containsKey('arpCaches')) {
       arpCaches = (_json['arpCaches'] as core.List)
-          .map<InterconnectDiagnosticsARPEntry>(
-              (value) => InterconnectDiagnosticsARPEntry.fromJson(value))
+          .map<InterconnectDiagnosticsARPEntry>((value) =>
+              InterconnectDiagnosticsARPEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
-          .map<InterconnectDiagnosticsLinkStatus>(
-              (value) => InterconnectDiagnosticsLinkStatus.fromJson(value))
+          .map<InterconnectDiagnosticsLinkStatus>((value) =>
+              InterconnectDiagnosticsLinkStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('macAddress')) {
@@ -71923,8 +73465,9 @@ class InterconnectDiagnosticsLinkStatus {
   InterconnectDiagnosticsLinkStatus.fromJson(core.Map _json) {
     if (_json.containsKey('arpCaches')) {
       arpCaches = (_json['arpCaches'] as core.List)
-          .map<InterconnectDiagnosticsARPEntry>(
-              (value) => InterconnectDiagnosticsARPEntry.fromJson(value))
+          .map<InterconnectDiagnosticsARPEntry>((value) =>
+              InterconnectDiagnosticsARPEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('circuitId')) {
@@ -71934,17 +73477,19 @@ class InterconnectDiagnosticsLinkStatus {
       googleDemarc = _json['googleDemarc'] as core.String;
     }
     if (_json.containsKey('lacpStatus')) {
-      lacpStatus =
-          InterconnectDiagnosticsLinkLACPStatus.fromJson(_json['lacpStatus']);
+      lacpStatus = InterconnectDiagnosticsLinkLACPStatus.fromJson(
+          _json['lacpStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('receivingOpticalPower')) {
       receivingOpticalPower = InterconnectDiagnosticsLinkOpticalPower.fromJson(
-          _json['receivingOpticalPower']);
+          _json['receivingOpticalPower']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transmittingOpticalPower')) {
       transmittingOpticalPower =
           InterconnectDiagnosticsLinkOpticalPower.fromJson(
-              _json['transmittingOpticalPower']);
+              _json['transmittingOpticalPower']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -72055,8 +73600,9 @@ class InterconnectListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InterconnectListWarningData>(
-              (value) => InterconnectListWarningData.fromJson(value))
+          .map<InterconnectListWarningData>((value) =>
+              InterconnectListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -72112,7 +73658,8 @@ class InterconnectList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Interconnect>((value) => Interconnect.fromJson(value))
+          .map<Interconnect>((value) => Interconnect.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -72125,7 +73672,8 @@ class InterconnectList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InterconnectListWarning.fromJson(_json['warning']);
+      warning = InterconnectListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -72282,8 +73830,9 @@ class InterconnectLocation {
     }
     if (_json.containsKey('regionInfos')) {
       regionInfos = (_json['regionInfos'] as core.List)
-          .map<InterconnectLocationRegionInfo>(
-              (value) => InterconnectLocationRegionInfo.fromJson(value))
+          .map<InterconnectLocationRegionInfo>((value) =>
+              InterconnectLocationRegionInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -72429,8 +73978,9 @@ class InterconnectLocationListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<InterconnectLocationListWarningData>(
-              (value) => InterconnectLocationListWarningData.fromJson(value))
+          .map<InterconnectLocationListWarningData>((value) =>
+              InterconnectLocationListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -72486,8 +74036,8 @@ class InterconnectLocationList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InterconnectLocation>(
-              (value) => InterconnectLocation.fromJson(value))
+          .map<InterconnectLocation>((value) => InterconnectLocation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -72500,7 +74050,8 @@ class InterconnectLocationList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = InterconnectLocationListWarning.fromJson(_json['warning']);
+      warning = InterconnectLocationListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -72702,7 +74253,8 @@ class InterconnectsGetDiagnosticsResponse {
 
   InterconnectsGetDiagnosticsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = InterconnectDiagnostics.fromJson(_json['result']);
+      result = InterconnectDiagnostics.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -72781,8 +74333,8 @@ class License {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('resourceRequirements')) {
-      resourceRequirements =
-          LicenseResourceRequirements.fromJson(_json['resourceRequirements']);
+      resourceRequirements = LicenseResourceRequirements.fromJson(
+          _json['resourceRequirements'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -72889,8 +74441,9 @@ class LicenseCode {
     }
     if (_json.containsKey('licenseAlias')) {
       licenseAlias = (_json['licenseAlias'] as core.List)
-          .map<LicenseCodeLicenseAlias>(
-              (value) => LicenseCodeLicenseAlias.fromJson(value))
+          .map<LicenseCodeLicenseAlias>((value) =>
+              LicenseCodeLicenseAlias.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -73126,8 +74679,9 @@ class LicensesListResponseWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<LicensesListResponseWarningData>(
-              (value) => LicensesListResponseWarningData.fromJson(value))
+          .map<LicensesListResponseWarningData>((value) =>
+              LicensesListResponseWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -73178,7 +74732,8 @@ class LicensesListResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<License>((value) => License.fromJson(value))
+          .map<License>((value) =>
+              License.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -73188,7 +74743,8 @@ class LicensesListResponse {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = LicensesListResponseWarning.fromJson(_json['warning']);
+      warning = LicensesListResponseWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -73228,13 +74784,16 @@ class LogConfig {
 
   LogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('cloudAudit')) {
-      cloudAudit = LogConfigCloudAuditOptions.fromJson(_json['cloudAudit']);
+      cloudAudit = LogConfigCloudAuditOptions.fromJson(
+          _json['cloudAudit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('counter')) {
-      counter = LogConfigCounterOptions.fromJson(_json['counter']);
+      counter = LogConfigCounterOptions.fromJson(
+          _json['counter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataAccess')) {
-      dataAccess = LogConfigDataAccessOptions.fromJson(_json['dataAccess']);
+      dataAccess = LogConfigDataAccessOptions.fromJson(
+          _json['dataAccess'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -73270,7 +74829,8 @@ class LogConfigCloudAuditOptions {
   LogConfigCloudAuditOptions.fromJson(core.Map _json) {
     if (_json.containsKey('authorizationLoggingOptions')) {
       authorizationLoggingOptions = AuthorizationLoggingOptions.fromJson(
-          _json['authorizationLoggingOptions']);
+          _json['authorizationLoggingOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('logName')) {
       logName = _json['logName'] as core.String;
@@ -73324,8 +74884,9 @@ class LogConfigCounterOptions {
   LogConfigCounterOptions.fromJson(core.Map _json) {
     if (_json.containsKey('customFields')) {
       customFields = (_json['customFields'] as core.List)
-          .map<LogConfigCounterOptionsCustomField>(
-              (value) => LogConfigCounterOptionsCustomField.fromJson(value))
+          .map<LogConfigCounterOptionsCustomField>((value) =>
+              LogConfigCounterOptionsCustomField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('field')) {
@@ -73531,15 +75092,17 @@ class MachineType {
   MachineType.fromJson(core.Map _json) {
     if (_json.containsKey('accelerators')) {
       accelerators = (_json['accelerators'] as core.List)
-          .map<MachineTypeAccelerators>(
-              (value) => MachineTypeAccelerators.fromJson(value))
+          .map<MachineTypeAccelerators>((value) =>
+              MachineTypeAccelerators.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -73574,8 +75137,9 @@ class MachineType {
     }
     if (_json.containsKey('scratchDisks')) {
       scratchDisks = (_json['scratchDisks'] as core.List)
-          .map<MachineTypeScratchDisks>(
-              (value) => MachineTypeScratchDisks.fromJson(value))
+          .map<MachineTypeScratchDisks>((value) =>
+              MachineTypeScratchDisks.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -73725,8 +75289,9 @@ class MachineTypeAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<MachineTypeAggregatedListWarningData>(
-              (value) => MachineTypeAggregatedListWarningData.fromJson(value))
+          .map<MachineTypeAggregatedListWarningData>((value) =>
+              MachineTypeAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -73784,8 +75349,10 @@ class MachineTypeAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, MachineTypesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => MachineTypesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => MachineTypesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -73802,7 +75369,8 @@ class MachineTypeAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = MachineTypeAggregatedListWarning.fromJson(_json['warning']);
+      warning = MachineTypeAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -73918,8 +75486,9 @@ class MachineTypeListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<MachineTypeListWarningData>(
-              (value) => MachineTypeListWarningData.fromJson(value))
+          .map<MachineTypeListWarningData>((value) =>
+              MachineTypeListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -73975,7 +75544,8 @@ class MachineTypeList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<MachineType>((value) => MachineType.fromJson(value))
+          .map<MachineType>((value) => MachineType.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -73988,7 +75558,8 @@ class MachineTypeList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = MachineTypeListWarning.fromJson(_json['warning']);
+      warning = MachineTypeListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -74100,8 +75671,9 @@ class MachineTypesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<MachineTypesScopedListWarningData>(
-              (value) => MachineTypesScopedListWarningData.fromJson(value))
+          .map<MachineTypesScopedListWarningData>((value) =>
+              MachineTypesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -74137,11 +75709,13 @@ class MachineTypesScopedList {
   MachineTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('machineTypes')) {
       machineTypes = (_json['machineTypes'] as core.List)
-          .map<MachineType>((value) => MachineType.fromJson(value))
+          .map<MachineType>((value) => MachineType.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = MachineTypesScopedListWarning.fromJson(_json['warning']);
+      warning = MachineTypesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -74250,26 +75824,31 @@ class ManagedInstance {
     }
     if (_json.containsKey('instanceHealth')) {
       instanceHealth = (_json['instanceHealth'] as core.List)
-          .map<ManagedInstanceInstanceHealth>(
-              (value) => ManagedInstanceInstanceHealth.fromJson(value))
+          .map<ManagedInstanceInstanceHealth>((value) =>
+              ManagedInstanceInstanceHealth.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('instanceStatus')) {
       instanceStatus = _json['instanceStatus'] as core.String;
     }
     if (_json.containsKey('lastAttempt')) {
-      lastAttempt = ManagedInstanceLastAttempt.fromJson(_json['lastAttempt']);
+      lastAttempt = ManagedInstanceLastAttempt.fromJson(
+          _json['lastAttempt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('preservedStateFromConfig')) {
-      preservedStateFromConfig =
-          PreservedState.fromJson(_json['preservedStateFromConfig']);
+      preservedStateFromConfig = PreservedState.fromJson(
+          _json['preservedStateFromConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('preservedStateFromPolicy')) {
-      preservedStateFromPolicy =
-          PreservedState.fromJson(_json['preservedStateFromPolicy']);
+      preservedStateFromPolicy = PreservedState.fromJson(
+          _json['preservedStateFromPolicy']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
-      version = ManagedInstanceVersion.fromJson(_json['version']);
+      version = ManagedInstanceVersion.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -74396,8 +75975,9 @@ class ManagedInstanceLastAttemptErrors {
   ManagedInstanceLastAttemptErrors.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<ManagedInstanceLastAttemptErrorsErrors>(
-              (value) => ManagedInstanceLastAttemptErrorsErrors.fromJson(value))
+          .map<ManagedInstanceLastAttemptErrorsErrors>((value) =>
+              ManagedInstanceLastAttemptErrorsErrors.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -74420,7 +76000,8 @@ class ManagedInstanceLastAttempt {
 
   ManagedInstanceLastAttempt.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = ManagedInstanceLastAttemptErrors.fromJson(_json['errors']);
+      errors = ManagedInstanceLastAttemptErrors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -74535,7 +76116,8 @@ class Metadata {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<MetadataItems>((value) => MetadataItems.fromJson(value))
+          .map<MetadataItems>((value) => MetadataItems.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -74597,8 +76179,9 @@ class MetadataFilter {
   MetadataFilter.fromJson(core.Map _json) {
     if (_json.containsKey('filterLabels')) {
       filterLabels = (_json['filterLabels'] as core.List)
-          .map<MetadataFilterLabelMatch>(
-              (value) => MetadataFilterLabelMatch.fromJson(value))
+          .map<MetadataFilterLabelMatch>((value) =>
+              MetadataFilterLabelMatch.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filterMatchCriteria')) {
@@ -74788,11 +76371,13 @@ class Network {
     }
     if (_json.containsKey('peerings')) {
       peerings = (_json['peerings'] as core.List)
-          .map<NetworkPeering>((value) => NetworkPeering.fromJson(value))
+          .map<NetworkPeering>((value) => NetworkPeering.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('routingConfig')) {
-      routingConfig = NetworkRoutingConfig.fromJson(_json['routingConfig']);
+      routingConfig = NetworkRoutingConfig.fromJson(
+          _json['routingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -74883,7 +76468,8 @@ class NetworkEndpoint {
   NetworkEndpoint.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = commons.mapMap<core.String, core.String>(
-          _json['annotations'].cast<core.String, core.String>(),
+          (_json['annotations'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('fqdn')) {
@@ -75012,18 +76598,21 @@ class NetworkEndpointGroup {
   NetworkEndpointGroup.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = commons.mapMap<core.String, core.String>(
-          _json['annotations'].cast<core.String, core.String>(),
+          (_json['annotations'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('appEngine')) {
-      appEngine = NetworkEndpointGroupAppEngine.fromJson(_json['appEngine']);
+      appEngine = NetworkEndpointGroupAppEngine.fromJson(
+          _json['appEngine'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cloudFunction')) {
-      cloudFunction =
-          NetworkEndpointGroupCloudFunction.fromJson(_json['cloudFunction']);
+      cloudFunction = NetworkEndpointGroupCloudFunction.fromJson(
+          _json['cloudFunction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cloudRun')) {
-      cloudRun = NetworkEndpointGroupCloudRun.fromJson(_json['cloudRun']);
+      cloudRun = NetworkEndpointGroupCloudRun.fromJson(
+          _json['cloudRun'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -75207,7 +76796,8 @@ class NetworkEndpointGroupAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<NetworkEndpointGroupAggregatedListWarningData>((value) =>
-              NetworkEndpointGroupAggregatedListWarningData.fromJson(value))
+              NetworkEndpointGroupAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -75266,8 +76856,10 @@ class NetworkEndpointGroupAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, NetworkEndpointGroupsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => NetworkEndpointGroupsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NetworkEndpointGroupsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -75284,8 +76876,8 @@ class NetworkEndpointGroupAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          NetworkEndpointGroupAggregatedListWarning.fromJson(_json['warning']);
+      warning = NetworkEndpointGroupAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -75571,8 +77163,9 @@ class NetworkEndpointGroupListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NetworkEndpointGroupListWarningData>(
-              (value) => NetworkEndpointGroupListWarningData.fromJson(value))
+          .map<NetworkEndpointGroupListWarningData>((value) =>
+              NetworkEndpointGroupListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -75627,8 +77220,8 @@ class NetworkEndpointGroupList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NetworkEndpointGroup>(
-              (value) => NetworkEndpointGroup.fromJson(value))
+          .map<NetworkEndpointGroup>((value) => NetworkEndpointGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -75641,7 +77234,8 @@ class NetworkEndpointGroupList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NetworkEndpointGroupListWarning.fromJson(_json['warning']);
+      warning = NetworkEndpointGroupListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -75678,7 +77272,8 @@ class NetworkEndpointGroupsAttachEndpointsRequest {
   NetworkEndpointGroupsAttachEndpointsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('networkEndpoints')) {
       networkEndpoints = (_json['networkEndpoints'] as core.List)
-          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -75702,7 +77297,8 @@ class NetworkEndpointGroupsDetachEndpointsRequest {
   NetworkEndpointGroupsDetachEndpointsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('networkEndpoints')) {
       networkEndpoints = (_json['networkEndpoints'] as core.List)
-          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -75829,7 +77425,7 @@ class NetworkEndpointGroupsListNetworkEndpointsWarning {
       data = (_json['data'] as core.List)
           .map<NetworkEndpointGroupsListNetworkEndpointsWarningData>((value) =>
               NetworkEndpointGroupsListNetworkEndpointsWarningData.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -75882,8 +77478,9 @@ class NetworkEndpointGroupsListNetworkEndpoints {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NetworkEndpointWithHealthStatus>(
-              (value) => NetworkEndpointWithHealthStatus.fromJson(value))
+          .map<NetworkEndpointWithHealthStatus>((value) =>
+              NetworkEndpointWithHealthStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -75894,7 +77491,7 @@ class NetworkEndpointGroupsListNetworkEndpoints {
     }
     if (_json.containsKey('warning')) {
       warning = NetworkEndpointGroupsListNetworkEndpointsWarning.fromJson(
-          _json['warning']);
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -76004,7 +77601,8 @@ class NetworkEndpointGroupsScopedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<NetworkEndpointGroupsScopedListWarningData>((value) =>
-              NetworkEndpointGroupsScopedListWarningData.fromJson(value))
+              NetworkEndpointGroupsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -76041,13 +77639,13 @@ class NetworkEndpointGroupsScopedList {
   NetworkEndpointGroupsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('networkEndpointGroups')) {
       networkEndpointGroups = (_json['networkEndpointGroups'] as core.List)
-          .map<NetworkEndpointGroup>(
-              (value) => NetworkEndpointGroup.fromJson(value))
+          .map<NetworkEndpointGroup>((value) => NetworkEndpointGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          NetworkEndpointGroupsScopedListWarning.fromJson(_json['warning']);
+      warning = NetworkEndpointGroupsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -76076,12 +77674,14 @@ class NetworkEndpointWithHealthStatus {
   NetworkEndpointWithHealthStatus.fromJson(core.Map _json) {
     if (_json.containsKey('healths')) {
       healths = (_json['healths'] as core.List)
-          .map<HealthStatusForNetworkEndpoint>(
-              (value) => HealthStatusForNetworkEndpoint.fromJson(value))
+          .map<HealthStatusForNetworkEndpoint>((value) =>
+              HealthStatusForNetworkEndpoint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('networkEndpoint')) {
-      networkEndpoint = NetworkEndpoint.fromJson(_json['networkEndpoint']);
+      networkEndpoint = NetworkEndpoint.fromJson(
+          _json['networkEndpoint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -76167,12 +77767,14 @@ class NetworkInterface {
   NetworkInterface.fromJson(core.Map _json) {
     if (_json.containsKey('accessConfigs')) {
       accessConfigs = (_json['accessConfigs'] as core.List)
-          .map<AccessConfig>((value) => AccessConfig.fromJson(value))
+          .map<AccessConfig>((value) => AccessConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('aliasIpRanges')) {
       aliasIpRanges = (_json['aliasIpRanges'] as core.List)
-          .map<AliasIpRange>((value) => AliasIpRange.fromJson(value))
+          .map<AliasIpRange>((value) => AliasIpRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fingerprint')) {
@@ -76316,8 +77918,9 @@ class NetworkListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NetworkListWarningData>(
-              (value) => NetworkListWarningData.fromJson(value))
+          .map<NetworkListWarningData>((value) =>
+              NetworkListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -76373,7 +77976,8 @@ class NetworkList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Network>((value) => Network.fromJson(value))
+          .map<Network>((value) =>
+              Network.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -76386,7 +77990,8 @@ class NetworkList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NetworkListWarning.fromJson(_json['warning']);
+      warning = NetworkListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -76622,7 +78227,8 @@ class NetworksAddPeeringRequest {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkPeering')) {
-      networkPeering = NetworkPeering.fromJson(_json['networkPeering']);
+      networkPeering = NetworkPeering.fromJson(
+          _json['networkPeering'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('peerNetwork')) {
       peerNetwork = _json['peerNetwork'] as core.String;
@@ -76675,7 +78281,8 @@ class NetworksUpdatePeeringRequest {
 
   NetworksUpdatePeeringRequest.fromJson(core.Map _json) {
     if (_json.containsKey('networkPeering')) {
-      networkPeering = NetworkPeering.fromJson(_json['networkPeering']);
+      networkPeering = NetworkPeering.fromJson(
+          _json['networkPeering'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -76767,8 +78374,8 @@ class NodeGroup {
 
   NodeGroup.fromJson(core.Map _json) {
     if (_json.containsKey('autoscalingPolicy')) {
-      autoscalingPolicy =
-          NodeGroupAutoscalingPolicy.fromJson(_json['autoscalingPolicy']);
+      autoscalingPolicy = NodeGroupAutoscalingPolicy.fromJson(
+          _json['autoscalingPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -76936,8 +78543,9 @@ class NodeGroupAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeGroupAggregatedListWarningData>(
-              (value) => NodeGroupAggregatedListWarningData.fromJson(value))
+          .map<NodeGroupAggregatedListWarningData>((value) =>
+              NodeGroupAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -76995,8 +78603,10 @@ class NodeGroupAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, NodeGroupsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => NodeGroupsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NodeGroupsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -77013,7 +78623,8 @@ class NodeGroupAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeGroupAggregatedListWarning.fromJson(_json['warning']);
+      warning = NodeGroupAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -77174,8 +78785,9 @@ class NodeGroupListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeGroupListWarningData>(
-              (value) => NodeGroupListWarningData.fromJson(value))
+          .map<NodeGroupListWarningData>((value) =>
+              NodeGroupListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -77231,7 +78843,8 @@ class NodeGroupList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NodeGroup>((value) => NodeGroup.fromJson(value))
+          .map<NodeGroup>((value) =>
+              NodeGroup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -77244,7 +78857,8 @@ class NodeGroupList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NodeGroupListWarning.fromJson(_json['warning']);
+      warning = NodeGroupListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -77322,7 +78936,8 @@ class NodeGroupNode {
       nodeType = _json['nodeType'] as core.String;
     }
     if (_json.containsKey('serverBinding')) {
-      serverBinding = ServerBinding.fromJson(_json['serverBinding']);
+      serverBinding = ServerBinding.fromJson(
+          _json['serverBinding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverId')) {
       serverId = _json['serverId'] as core.String;
@@ -77486,8 +79101,9 @@ class NodeGroupsListNodesWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeGroupsListNodesWarningData>(
-              (value) => NodeGroupsListNodesWarningData.fromJson(value))
+          .map<NodeGroupsListNodesWarningData>((value) =>
+              NodeGroupsListNodesWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -77543,7 +79159,8 @@ class NodeGroupsListNodes {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NodeGroupNode>((value) => NodeGroupNode.fromJson(value))
+          .map<NodeGroupNode>((value) => NodeGroupNode.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -77556,7 +79173,8 @@ class NodeGroupsListNodes {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NodeGroupsListNodesWarning.fromJson(_json['warning']);
+      warning = NodeGroupsListNodesWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -77668,8 +79286,9 @@ class NodeGroupsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeGroupsScopedListWarningData>(
-              (value) => NodeGroupsScopedListWarningData.fromJson(value))
+          .map<NodeGroupsScopedListWarningData>((value) =>
+              NodeGroupsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -77705,11 +79324,13 @@ class NodeGroupsScopedList {
   NodeGroupsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('nodeGroups')) {
       nodeGroups = (_json['nodeGroups'] as core.List)
-          .map<NodeGroup>((value) => NodeGroup.fromJson(value))
+          .map<NodeGroup>((value) =>
+              NodeGroup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeGroupsScopedListWarning.fromJson(_json['warning']);
+      warning = NodeGroupsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -77850,7 +79471,8 @@ class NodeTemplate {
     }
     if (_json.containsKey('nodeAffinityLabels')) {
       nodeAffinityLabels = commons.mapMap<core.String, core.String>(
-          _json['nodeAffinityLabels'].cast<core.String, core.String>(),
+          (_json['nodeAffinityLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('nodeType')) {
@@ -77858,7 +79480,7 @@ class NodeTemplate {
     }
     if (_json.containsKey('nodeTypeFlexibility')) {
       nodeTypeFlexibility = NodeTemplateNodeTypeFlexibility.fromJson(
-          _json['nodeTypeFlexibility']);
+          _json['nodeTypeFlexibility'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
@@ -77867,7 +79489,8 @@ class NodeTemplate {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('serverBinding')) {
-      serverBinding = ServerBinding.fromJson(_json['serverBinding']);
+      serverBinding = ServerBinding.fromJson(
+          _json['serverBinding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -78008,8 +79631,9 @@ class NodeTemplateAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTemplateAggregatedListWarningData>(
-              (value) => NodeTemplateAggregatedListWarningData.fromJson(value))
+          .map<NodeTemplateAggregatedListWarningData>((value) =>
+              NodeTemplateAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -78067,8 +79691,10 @@ class NodeTemplateAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, NodeTemplatesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => NodeTemplatesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NodeTemplatesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -78085,7 +79711,8 @@ class NodeTemplateAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTemplateAggregatedListWarning.fromJson(_json['warning']);
+      warning = NodeTemplateAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -78201,8 +79828,9 @@ class NodeTemplateListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTemplateListWarningData>(
-              (value) => NodeTemplateListWarningData.fromJson(value))
+          .map<NodeTemplateListWarningData>((value) =>
+              NodeTemplateListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -78258,7 +79886,8 @@ class NodeTemplateList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NodeTemplate>((value) => NodeTemplate.fromJson(value))
+          .map<NodeTemplate>((value) => NodeTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -78271,7 +79900,8 @@ class NodeTemplateList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTemplateListWarning.fromJson(_json['warning']);
+      warning = NodeTemplateListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -78417,8 +80047,9 @@ class NodeTemplatesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTemplatesScopedListWarningData>(
-              (value) => NodeTemplatesScopedListWarningData.fromJson(value))
+          .map<NodeTemplatesScopedListWarningData>((value) =>
+              NodeTemplatesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -78454,11 +80085,13 @@ class NodeTemplatesScopedList {
   NodeTemplatesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('nodeTemplates')) {
       nodeTemplates = (_json['nodeTemplates'] as core.List)
-          .map<NodeTemplate>((value) => NodeTemplate.fromJson(value))
+          .map<NodeTemplate>((value) => NodeTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTemplatesScopedListWarning.fromJson(_json['warning']);
+      warning = NodeTemplatesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -78534,7 +80167,8 @@ class NodeType {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -78690,8 +80324,9 @@ class NodeTypeAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTypeAggregatedListWarningData>(
-              (value) => NodeTypeAggregatedListWarningData.fromJson(value))
+          .map<NodeTypeAggregatedListWarningData>((value) =>
+              NodeTypeAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -78749,8 +80384,10 @@ class NodeTypeAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, NodeTypesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => NodeTypesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NodeTypesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -78767,7 +80404,8 @@ class NodeTypeAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTypeAggregatedListWarning.fromJson(_json['warning']);
+      warning = NodeTypeAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -78883,8 +80521,9 @@ class NodeTypeListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTypeListWarningData>(
-              (value) => NodeTypeListWarningData.fromJson(value))
+          .map<NodeTypeListWarningData>((value) =>
+              NodeTypeListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -78940,7 +80579,8 @@ class NodeTypeList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NodeType>((value) => NodeType.fromJson(value))
+          .map<NodeType>((value) =>
+              NodeType.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -78953,7 +80593,8 @@ class NodeTypeList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTypeListWarning.fromJson(_json['warning']);
+      warning = NodeTypeListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -79065,8 +80706,9 @@ class NodeTypesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NodeTypesScopedListWarningData>(
-              (value) => NodeTypesScopedListWarningData.fromJson(value))
+          .map<NodeTypesScopedListWarningData>((value) =>
+              NodeTypesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -79102,11 +80744,13 @@ class NodeTypesScopedList {
   NodeTypesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('nodeTypes')) {
       nodeTypes = (_json['nodeTypes'] as core.List)
-          .map<NodeType>((value) => NodeType.fromJson(value))
+          .map<NodeType>((value) =>
+              NodeType.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = NodeTypesScopedListWarning.fromJson(_json['warning']);
+      warning = NodeTypesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -79179,8 +80823,8 @@ class NotificationEndpoint {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('grpcSettings')) {
-      grpcSettings =
-          NotificationEndpointGrpcSettings.fromJson(_json['grpcSettings']);
+      grpcSettings = NotificationEndpointGrpcSettings.fromJson(
+          _json['grpcSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -79269,7 +80913,8 @@ class NotificationEndpointGrpcSettings {
       payloadName = _json['payloadName'] as core.String;
     }
     if (_json.containsKey('resendInterval')) {
-      resendInterval = Duration.fromJson(_json['resendInterval']);
+      resendInterval = Duration.fromJson(
+          _json['resendInterval'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retryDurationSec')) {
       retryDurationSec = _json['retryDurationSec'] as core.int;
@@ -79380,8 +81025,9 @@ class NotificationEndpointListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<NotificationEndpointListWarningData>(
-              (value) => NotificationEndpointListWarningData.fromJson(value))
+          .map<NotificationEndpointListWarningData>((value) =>
+              NotificationEndpointListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -79436,8 +81082,8 @@ class NotificationEndpointList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<NotificationEndpoint>(
-              (value) => NotificationEndpoint.fromJson(value))
+          .map<NotificationEndpoint>((value) => NotificationEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -79450,7 +81096,8 @@ class NotificationEndpointList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = NotificationEndpointListWarning.fromJson(_json['warning']);
+      warning = NotificationEndpointListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -79530,8 +81177,8 @@ class OperationError {
   OperationError.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<OperationErrorErrors>(
-              (value) => OperationErrorErrors.fromJson(value))
+          .map<OperationErrorErrors>((value) => OperationErrorErrors.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -79627,8 +81274,8 @@ class OperationWarnings {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<OperationWarningsData>(
-              (value) => OperationWarningsData.fromJson(value))
+          .map<OperationWarningsData>((value) => OperationWarningsData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -79786,7 +81433,8 @@ class Operation {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('error')) {
-      error = OperationError.fromJson(_json['error']);
+      error = OperationError.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpErrorMessage')) {
       httpErrorMessage = _json['httpErrorMessage'] as core.String;
@@ -79838,7 +81486,8 @@ class Operation {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<OperationWarnings>((value) => OperationWarnings.fromJson(value))
+          .map<OperationWarnings>((value) => OperationWarnings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('zone')) {
@@ -80004,8 +81653,9 @@ class OperationAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<OperationAggregatedListWarningData>(
-              (value) => OperationAggregatedListWarningData.fromJson(value))
+          .map<OperationAggregatedListWarningData>((value) =>
+              OperationAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -80064,8 +81714,10 @@ class OperationAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, OperationsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => OperationsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => OperationsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -80082,7 +81734,8 @@ class OperationAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = OperationAggregatedListWarning.fromJson(_json['warning']);
+      warning = OperationAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -80198,8 +81851,9 @@ class OperationListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<OperationListWarningData>(
-              (value) => OperationListWarningData.fromJson(value))
+          .map<OperationListWarningData>((value) =>
+              OperationListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -80256,7 +81910,8 @@ class OperationList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -80269,7 +81924,8 @@ class OperationList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = OperationListWarning.fromJson(_json['warning']);
+      warning = OperationListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -80381,8 +82037,9 @@ class OperationsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<OperationsScopedListWarningData>(
-              (value) => OperationsScopedListWarningData.fromJson(value))
+          .map<OperationsScopedListWarningData>((value) =>
+              OperationsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -80418,11 +82075,13 @@ class OperationsScopedList {
   OperationsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = OperationsScopedListWarning.fromJson(_json['warning']);
+      warning = OperationsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -80506,7 +82165,8 @@ class OutlierDetection {
 
   OutlierDetection.fromJson(core.Map _json) {
     if (_json.containsKey('baseEjectionTime')) {
-      baseEjectionTime = Duration.fromJson(_json['baseEjectionTime']);
+      baseEjectionTime = Duration.fromJson(
+          _json['baseEjectionTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('consecutiveErrors')) {
       consecutiveErrors = _json['consecutiveErrors'] as core.int;
@@ -80527,7 +82187,8 @@ class OutlierDetection {
       enforcingSuccessRate = _json['enforcingSuccessRate'] as core.int;
     }
     if (_json.containsKey('interval')) {
-      interval = Duration.fromJson(_json['interval']);
+      interval = Duration.fromJson(
+          _json['interval'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxEjectionPercent')) {
       maxEjectionPercent = _json['maxEjectionPercent'] as core.int;
@@ -80660,8 +82321,8 @@ class PacketMirroring {
 
   PacketMirroring.fromJson(core.Map _json) {
     if (_json.containsKey('collectorIlb')) {
-      collectorIlb =
-          PacketMirroringForwardingRuleInfo.fromJson(_json['collectorIlb']);
+      collectorIlb = PacketMirroringForwardingRuleInfo.fromJson(
+          _json['collectorIlb'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -80673,7 +82334,8 @@ class PacketMirroring {
       enable = _json['enable'] as core.String;
     }
     if (_json.containsKey('filter')) {
-      filter = PacketMirroringFilter.fromJson(_json['filter']);
+      filter = PacketMirroringFilter.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -80683,13 +82345,14 @@ class PacketMirroring {
     }
     if (_json.containsKey('mirroredResources')) {
       mirroredResources = PacketMirroringMirroredResourceInfo.fromJson(
-          _json['mirroredResources']);
+          _json['mirroredResources'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('network')) {
-      network = PacketMirroringNetworkInfo.fromJson(_json['network']);
+      network = PacketMirroringNetworkInfo.fromJson(
+          _json['network'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('priority')) {
       priority = _json['priority'] as core.int;
@@ -80831,7 +82494,8 @@ class PacketMirroringAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<PacketMirroringAggregatedListWarningData>((value) =>
-              PacketMirroringAggregatedListWarningData.fromJson(value))
+              PacketMirroringAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -80889,8 +82553,10 @@ class PacketMirroringAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, PacketMirroringsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => PacketMirroringsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PacketMirroringsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -80907,7 +82573,8 @@ class PacketMirroringAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = PacketMirroringAggregatedListWarning.fromJson(_json['warning']);
+      warning = PacketMirroringAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -81096,8 +82763,9 @@ class PacketMirroringListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<PacketMirroringListWarningData>(
-              (value) => PacketMirroringListWarningData.fromJson(value))
+          .map<PacketMirroringListWarningData>((value) =>
+              PacketMirroringListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -81153,7 +82821,8 @@ class PacketMirroringList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PacketMirroring>((value) => PacketMirroring.fromJson(value))
+          .map<PacketMirroring>((value) => PacketMirroring.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -81166,7 +82835,8 @@ class PacketMirroringList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = PacketMirroringListWarning.fromJson(_json['warning']);
+      warning = PacketMirroringListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -81220,13 +82890,15 @@ class PacketMirroringMirroredResourceInfo {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
           .map<PacketMirroringMirroredResourceInfoInstanceInfo>((value) =>
-              PacketMirroringMirroredResourceInfoInstanceInfo.fromJson(value))
+              PacketMirroringMirroredResourceInfoInstanceInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subnetworks')) {
       subnetworks = (_json['subnetworks'] as core.List)
           .map<PacketMirroringMirroredResourceInfoSubnetInfo>((value) =>
-              PacketMirroringMirroredResourceInfoSubnetInfo.fromJson(value))
+              PacketMirroringMirroredResourceInfoSubnetInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tags')) {
@@ -81427,8 +83099,9 @@ class PacketMirroringsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<PacketMirroringsScopedListWarningData>(
-              (value) => PacketMirroringsScopedListWarningData.fromJson(value))
+          .map<PacketMirroringsScopedListWarningData>((value) =>
+              PacketMirroringsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -81464,11 +83137,13 @@ class PacketMirroringsScopedList {
   PacketMirroringsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('packetMirrorings')) {
       packetMirrorings = (_json['packetMirrorings'] as core.List)
-          .map<PacketMirroring>((value) => PacketMirroring.fromJson(value))
+          .map<PacketMirroring>((value) => PacketMirroring.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = PacketMirroringsScopedListWarning.fromJson(_json['warning']);
+      warning = PacketMirroringsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -81567,33 +83242,36 @@ class PathMatcher {
 
   PathMatcher.fromJson(core.Map _json) {
     if (_json.containsKey('defaultRouteAction')) {
-      defaultRouteAction =
-          HttpRouteAction.fromJson(_json['defaultRouteAction']);
+      defaultRouteAction = HttpRouteAction.fromJson(
+          _json['defaultRouteAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultService')) {
       defaultService = _json['defaultService'] as core.String;
     }
     if (_json.containsKey('defaultUrlRedirect')) {
-      defaultUrlRedirect =
-          HttpRedirectAction.fromJson(_json['defaultUrlRedirect']);
+      defaultUrlRedirect = HttpRedirectAction.fromJson(
+          _json['defaultUrlRedirect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('headerAction')) {
-      headerAction = HttpHeaderAction.fromJson(_json['headerAction']);
+      headerAction = HttpHeaderAction.fromJson(
+          _json['headerAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pathRules')) {
       pathRules = (_json['pathRules'] as core.List)
-          .map<PathRule>((value) => PathRule.fromJson(value))
+          .map<PathRule>((value) =>
+              PathRule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('routeRules')) {
       routeRules = (_json['routeRules'] as core.List)
-          .map<HttpRouteRule>((value) => HttpRouteRule.fromJson(value))
+          .map<HttpRouteRule>((value) => HttpRouteRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -81673,13 +83351,15 @@ class PathRule {
           .toList();
     }
     if (_json.containsKey('routeAction')) {
-      routeAction = HttpRouteAction.fromJson(_json['routeAction']);
+      routeAction = HttpRouteAction.fromJson(
+          _json['routeAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('service')) {
       service = _json['service'] as core.String;
     }
     if (_json.containsKey('urlRedirect')) {
-      urlRedirect = HttpRedirectAction.fromJson(_json['urlRedirect']);
+      urlRedirect = HttpRedirectAction.fromJson(
+          _json['urlRedirect'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -81748,7 +83428,8 @@ class PerInstanceConfig {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('preservedState')) {
-      preservedState = PreservedState.fromJson(_json['preservedState']);
+      preservedState = PreservedState.fromJson(
+          _json['preservedState'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -81887,12 +83568,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -81903,7 +83586,8 @@ class Policy {
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<Rule>((value) => Rule.fromJson(value))
+          .map<Rule>((value) =>
+              Rule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('version')) {
@@ -81945,7 +83629,8 @@ class PreconfiguredWafSet {
   PreconfiguredWafSet.fromJson(core.Map _json) {
     if (_json.containsKey('expressionSets')) {
       expressionSets = (_json['expressionSets'] as core.List)
-          .map<WafExpressionSet>((value) => WafExpressionSet.fromJson(value))
+          .map<WafExpressionSet>((value) => WafExpressionSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -81974,12 +83659,15 @@ class PreservedState {
   PreservedState.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
       disks = commons.mapMap<core.Map, PreservedStatePreservedDisk>(
-          _json['disks'].cast<core.String, core.Map>(),
-          (core.Map item) => PreservedStatePreservedDisk.fromJson(item));
+          (_json['disks'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PreservedStatePreservedDisk.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -82113,8 +83801,8 @@ class Project {
 
   Project.fromJson(core.Map _json) {
     if (_json.containsKey('commonInstanceMetadata')) {
-      commonInstanceMetadata =
-          Metadata.fromJson(_json['commonInstanceMetadata']);
+      commonInstanceMetadata = Metadata.fromJson(_json['commonInstanceMetadata']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTimestamp')) {
       creationTimestamp = _json['creationTimestamp'] as core.String;
@@ -82144,15 +83832,16 @@ class Project {
     }
     if (_json.containsKey('quotas')) {
       quotas = (_json['quotas'] as core.List)
-          .map<Quota>((value) => Quota.fromJson(value))
+          .map<Quota>((value) =>
+              Quota.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('usageExportLocation')) {
-      usageExportLocation =
-          UsageExportLocation.fromJson(_json['usageExportLocation']);
+      usageExportLocation = UsageExportLocation.fromJson(
+          _json['usageExportLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('xpnProjectStatus')) {
       xpnProjectStatus = _json['xpnProjectStatus'] as core.String;
@@ -82212,7 +83901,8 @@ class ProjectsDisableXpnResourceRequest {
 
   ProjectsDisableXpnResourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('xpnResource')) {
-      xpnResource = XpnResourceId.fromJson(_json['xpnResource']);
+      xpnResource = XpnResourceId.fromJson(
+          _json['xpnResource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -82233,7 +83923,8 @@ class ProjectsEnableXpnResourceRequest {
 
   ProjectsEnableXpnResourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('xpnResource')) {
-      xpnResource = XpnResourceId.fromJson(_json['xpnResource']);
+      xpnResource = XpnResourceId.fromJson(
+          _json['xpnResource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -82273,7 +83964,8 @@ class ProjectsGetXpnResources {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<XpnResourceId>((value) => XpnResourceId.fromJson(value))
+          .map<XpnResourceId>((value) => XpnResourceId.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -82597,7 +84289,8 @@ class Region {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -82613,7 +84306,8 @@ class Region {
     }
     if (_json.containsKey('quotas')) {
       quotas = (_json['quotas'] as core.List)
-          .map<Quota>((value) => Quota.fromJson(value))
+          .map<Quota>((value) =>
+              Quota.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -82748,8 +84442,9 @@ class RegionAutoscalerListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RegionAutoscalerListWarningData>(
-              (value) => RegionAutoscalerListWarningData.fromJson(value))
+          .map<RegionAutoscalerListWarningData>((value) =>
+              RegionAutoscalerListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -82804,7 +84499,8 @@ class RegionAutoscalerList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Autoscaler>((value) => Autoscaler.fromJson(value))
+          .map<Autoscaler>((value) =>
+              Autoscaler.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -82817,7 +84513,8 @@ class RegionAutoscalerList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RegionAutoscalerListWarning.fromJson(_json['warning']);
+      warning = RegionAutoscalerListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -82928,8 +84625,9 @@ class RegionDiskTypeListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RegionDiskTypeListWarningData>(
-              (value) => RegionDiskTypeListWarningData.fromJson(value))
+          .map<RegionDiskTypeListWarningData>((value) =>
+              RegionDiskTypeListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -82984,7 +84682,8 @@ class RegionDiskTypeList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<DiskType>((value) => DiskType.fromJson(value))
+          .map<DiskType>((value) =>
+              DiskType.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -82997,7 +84696,8 @@ class RegionDiskTypeList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RegionDiskTypeListWarning.fromJson(_json['warning']);
+      warning = RegionDiskTypeListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -83175,8 +84875,9 @@ class RegionInstanceGroupListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RegionInstanceGroupListWarningData>(
-              (value) => RegionInstanceGroupListWarningData.fromJson(value))
+          .map<RegionInstanceGroupListWarningData>((value) =>
+              RegionInstanceGroupListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -83231,7 +84932,8 @@ class RegionInstanceGroupList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceGroup>((value) => InstanceGroup.fromJson(value))
+          .map<InstanceGroup>((value) => InstanceGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -83244,7 +84946,8 @@ class RegionInstanceGroupList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RegionInstanceGroupListWarning.fromJson(_json['warning']);
+      warning = RegionInstanceGroupListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -83381,7 +85084,8 @@ class RegionInstanceGroupManagerListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<RegionInstanceGroupManagerListWarningData>((value) =>
-              RegionInstanceGroupManagerListWarningData.fromJson(value))
+              RegionInstanceGroupManagerListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -83438,8 +85142,8 @@ class RegionInstanceGroupManagerList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceGroupManager>(
-              (value) => InstanceGroupManager.fromJson(value))
+          .map<InstanceGroupManager>((value) => InstanceGroupManager.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -83452,8 +85156,8 @@ class RegionInstanceGroupManagerList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning =
-          RegionInstanceGroupManagerListWarning.fromJson(_json['warning']);
+      warning = RegionInstanceGroupManagerListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -83492,7 +85196,8 @@ class RegionInstanceGroupManagerPatchInstanceConfigReq {
   RegionInstanceGroupManagerPatchInstanceConfigReq.fromJson(core.Map _json) {
     if (_json.containsKey('perInstanceConfigs')) {
       perInstanceConfigs = (_json['perInstanceConfigs'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -83518,7 +85223,8 @@ class RegionInstanceGroupManagerUpdateInstanceConfigReq {
   RegionInstanceGroupManagerUpdateInstanceConfigReq.fromJson(core.Map _json) {
     if (_json.containsKey('perInstanceConfigs')) {
       perInstanceConfigs = (_json['perInstanceConfigs'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -83638,7 +85344,8 @@ class RegionInstanceGroupManagersCreateInstancesRequest {
   RegionInstanceGroupManagersCreateInstancesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -83692,8 +85399,9 @@ class RegionInstanceGroupManagersListErrorsResponse {
   RegionInstanceGroupManagersListErrorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceManagedByIgmError>(
-              (value) => InstanceManagedByIgmError.fromJson(value))
+          .map<InstanceManagedByIgmError>((value) =>
+              InstanceManagedByIgmError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -83801,7 +85509,7 @@ class RegionInstanceGroupManagersListInstanceConfigsRespWarning {
           .map<RegionInstanceGroupManagersListInstanceConfigsRespWarningData>(
               (value) =>
                   RegionInstanceGroupManagersListInstanceConfigsRespWarningData
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -83843,7 +85551,8 @@ class RegionInstanceGroupManagersListInstanceConfigsResp {
   RegionInstanceGroupManagersListInstanceConfigsResp.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(value))
+          .map<PerInstanceConfig>((value) => PerInstanceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -83852,7 +85561,7 @@ class RegionInstanceGroupManagersListInstanceConfigsResp {
     if (_json.containsKey('warning')) {
       warning =
           RegionInstanceGroupManagersListInstanceConfigsRespWarning.fromJson(
-              _json['warning']);
+              _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -83887,7 +85596,8 @@ class RegionInstanceGroupManagersListInstancesResponse {
   RegionInstanceGroupManagersListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('managedInstances')) {
       managedInstances = (_json['managedInstances'] as core.List)
-          .map<ManagedInstance>((value) => ManagedInstance.fromJson(value))
+          .map<ManagedInstance>((value) => ManagedInstance.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -84081,7 +85791,8 @@ class RegionInstanceGroupsListInstancesWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<RegionInstanceGroupsListInstancesWarningData>((value) =>
-              RegionInstanceGroupsListInstancesWarningData.fromJson(value))
+              RegionInstanceGroupsListInstancesWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -84135,8 +85846,9 @@ class RegionInstanceGroupsListInstances {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<InstanceWithNamedPorts>(
-              (value) => InstanceWithNamedPorts.fromJson(value))
+          .map<InstanceWithNamedPorts>((value) =>
+              InstanceWithNamedPorts.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -84149,8 +85861,8 @@ class RegionInstanceGroupsListInstances {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning =
-          RegionInstanceGroupsListInstancesWarning.fromJson(_json['warning']);
+      warning = RegionInstanceGroupsListInstancesWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -84241,7 +85953,8 @@ class RegionInstanceGroupsSetNamedPortsRequest {
     }
     if (_json.containsKey('namedPorts')) {
       namedPorts = (_json['namedPorts'] as core.List)
-          .map<NamedPort>((value) => NamedPort.fromJson(value))
+          .map<NamedPort>((value) =>
+              NamedPort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -84341,8 +86054,8 @@ class RegionListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RegionListWarningData>(
-              (value) => RegionListWarningData.fromJson(value))
+          .map<RegionListWarningData>((value) => RegionListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -84398,7 +86111,8 @@ class RegionList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Region>((value) => Region.fromJson(value))
+          .map<Region>((value) =>
+              Region.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -84411,7 +86125,8 @@ class RegionList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RegionListWarning.fromJson(_json['warning']);
+      warning = RegionListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -84466,7 +86181,8 @@ class RegionSetLabelsRequest {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -84508,14 +86224,16 @@ class RegionSetPolicyRequest {
   RegionSetPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -84567,7 +86285,8 @@ class RegionUrlMapsValidateRequest {
 
   RegionUrlMapsValidateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('resource')) {
-      resource = UrlMap.fromJson(_json['resource']);
+      resource = UrlMap.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -84688,7 +86407,7 @@ class Reservation {
     }
     if (_json.containsKey('specificReservation')) {
       specificReservation = AllocationSpecificSKUReservation.fromJson(
-          _json['specificReservation']);
+          _json['specificReservation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('specificReservationRequired')) {
       specificReservationRequired =
@@ -84875,8 +86594,9 @@ class ReservationAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ReservationAggregatedListWarningData>(
-              (value) => ReservationAggregatedListWarningData.fromJson(value))
+          .map<ReservationAggregatedListWarningData>((value) =>
+              ReservationAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -84934,8 +86654,10 @@ class ReservationAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, ReservationsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => ReservationsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ReservationsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -84952,7 +86674,8 @@ class ReservationAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ReservationAggregatedListWarning.fromJson(_json['warning']);
+      warning = ReservationAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -85068,8 +86791,9 @@ class ReservationListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ReservationListWarningData>(
-              (value) => ReservationListWarningData.fromJson(value))
+          .map<ReservationListWarningData>((value) =>
+              ReservationListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -85125,7 +86849,8 @@ class ReservationList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Reservation>((value) => Reservation.fromJson(value))
+          .map<Reservation>((value) => Reservation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -85138,7 +86863,8 @@ class ReservationList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ReservationListWarning.fromJson(_json['warning']);
+      warning = ReservationListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -85272,8 +86998,9 @@ class ReservationsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ReservationsScopedListWarningData>(
-              (value) => ReservationsScopedListWarningData.fromJson(value))
+          .map<ReservationsScopedListWarningData>((value) =>
+              ReservationsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -85309,11 +87036,13 @@ class ReservationsScopedList {
   ReservationsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('reservations')) {
       reservations = (_json['reservations'] as core.List)
-          .map<Reservation>((value) => Reservation.fromJson(value))
+          .map<Reservation>((value) => Reservation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ReservationsScopedListWarning.fromJson(_json['warning']);
+      warning = ReservationsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -85488,8 +87217,9 @@ class ResourcePoliciesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ResourcePoliciesScopedListWarningData>(
-              (value) => ResourcePoliciesScopedListWarningData.fromJson(value))
+          .map<ResourcePoliciesScopedListWarningData>((value) =>
+              ResourcePoliciesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -85525,11 +87255,13 @@ class ResourcePoliciesScopedList {
   ResourcePoliciesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('resourcePolicies')) {
       resourcePolicies = (_json['resourcePolicies'] as core.List)
-          .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(value))
+          .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ResourcePoliciesScopedListWarning.fromJson(_json['warning']);
+      warning = ResourcePoliciesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -85602,7 +87334,7 @@ class ResourcePolicy {
     }
     if (_json.containsKey('groupPlacementPolicy')) {
       groupPlacementPolicy = ResourcePolicyGroupPlacementPolicy.fromJson(
-          _json['groupPlacementPolicy']);
+          _json['groupPlacementPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -85621,7 +87353,8 @@ class ResourcePolicy {
     }
     if (_json.containsKey('snapshotSchedulePolicy')) {
       snapshotSchedulePolicy = ResourcePolicySnapshotSchedulePolicy.fromJson(
-          _json['snapshotSchedulePolicy']);
+          _json['snapshotSchedulePolicy']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -85748,7 +87481,8 @@ class ResourcePolicyAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<ResourcePolicyAggregatedListWarningData>((value) =>
-              ResourcePolicyAggregatedListWarningData.fromJson(value))
+              ResourcePolicyAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -85811,8 +87545,10 @@ class ResourcePolicyAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, ResourcePoliciesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => ResourcePoliciesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ResourcePoliciesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -85829,7 +87565,8 @@ class ResourcePolicyAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = ResourcePolicyAggregatedListWarning.fromJson(_json['warning']);
+      warning = ResourcePolicyAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -86081,8 +87818,9 @@ class ResourcePolicyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ResourcePolicyListWarningData>(
-              (value) => ResourcePolicyListWarningData.fromJson(value))
+          .map<ResourcePolicyListWarningData>((value) =>
+              ResourcePolicyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -86143,7 +87881,8 @@ class ResourcePolicyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(value))
+          .map<ResourcePolicy>((value) => ResourcePolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -86156,7 +87895,8 @@ class ResourcePolicyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ResourcePolicyListWarning.fromJson(_json['warning']);
+      warning = ResourcePolicyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -86209,16 +87949,17 @@ class ResourcePolicySnapshotSchedulePolicy {
     if (_json.containsKey('retentionPolicy')) {
       retentionPolicy =
           ResourcePolicySnapshotSchedulePolicyRetentionPolicy.fromJson(
-              _json['retentionPolicy']);
+              _json['retentionPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('schedule')) {
       schedule = ResourcePolicySnapshotSchedulePolicySchedule.fromJson(
-          _json['schedule']);
+          _json['schedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('snapshotProperties')) {
       snapshotProperties =
           ResourcePolicySnapshotSchedulePolicySnapshotProperties.fromJson(
-              _json['snapshotProperties']);
+              _json['snapshotProperties']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -86283,15 +88024,16 @@ class ResourcePolicySnapshotSchedulePolicySchedule {
 
   ResourcePolicySnapshotSchedulePolicySchedule.fromJson(core.Map _json) {
     if (_json.containsKey('dailySchedule')) {
-      dailySchedule = ResourcePolicyDailyCycle.fromJson(_json['dailySchedule']);
+      dailySchedule = ResourcePolicyDailyCycle.fromJson(
+          _json['dailySchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hourlySchedule')) {
-      hourlySchedule =
-          ResourcePolicyHourlyCycle.fromJson(_json['hourlySchedule']);
+      hourlySchedule = ResourcePolicyHourlyCycle.fromJson(
+          _json['hourlySchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('weeklySchedule')) {
-      weeklySchedule =
-          ResourcePolicyWeeklyCycle.fromJson(_json['weeklySchedule']);
+      weeklySchedule = ResourcePolicyWeeklyCycle.fromJson(
+          _json['weeklySchedule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -86333,7 +88075,8 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('storageLocations')) {
@@ -86368,8 +88111,9 @@ class ResourcePolicyWeeklyCycle {
   ResourcePolicyWeeklyCycle.fromJson(core.Map _json) {
     if (_json.containsKey('dayOfWeeks')) {
       dayOfWeeks = (_json['dayOfWeeks'] as core.List)
-          .map<ResourcePolicyWeeklyCycleDayOfWeek>(
-              (value) => ResourcePolicyWeeklyCycleDayOfWeek.fromJson(value))
+          .map<ResourcePolicyWeeklyCycleDayOfWeek>((value) =>
+              ResourcePolicyWeeklyCycleDayOfWeek.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -86517,7 +88261,8 @@ class RouteWarnings {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RouteWarningsData>((value) => RouteWarningsData.fromJson(value))
+          .map<RouteWarningsData>((value) => RouteWarningsData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -86685,7 +88430,8 @@ class Route {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<RouteWarnings>((value) => RouteWarnings.fromJson(value))
+          .map<RouteWarnings>((value) => RouteWarnings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -86833,8 +88579,8 @@ class RouteListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RouteListWarningData>(
-              (value) => RouteListWarningData.fromJson(value))
+          .map<RouteListWarningData>((value) => RouteListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -86889,7 +88635,8 @@ class RouteList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Route>((value) => Route.fromJson(value))
+          .map<Route>((value) =>
+              Route.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -86902,7 +88649,8 @@ class RouteList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RouteListWarning.fromJson(_json['warning']);
+      warning = RouteListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -86989,11 +88737,13 @@ class Router {
 
   Router.fromJson(core.Map _json) {
     if (_json.containsKey('bgp')) {
-      bgp = RouterBgp.fromJson(_json['bgp']);
+      bgp = RouterBgp.fromJson(
+          _json['bgp'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bgpPeers')) {
       bgpPeers = (_json['bgpPeers'] as core.List)
-          .map<RouterBgpPeer>((value) => RouterBgpPeer.fromJson(value))
+          .map<RouterBgpPeer>((value) => RouterBgpPeer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('creationTimestamp')) {
@@ -87007,7 +88757,8 @@ class Router {
     }
     if (_json.containsKey('interfaces')) {
       interfaces = (_json['interfaces'] as core.List)
-          .map<RouterInterface>((value) => RouterInterface.fromJson(value))
+          .map<RouterInterface>((value) => RouterInterface.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -87018,7 +88769,8 @@ class Router {
     }
     if (_json.containsKey('nats')) {
       nats = (_json['nats'] as core.List)
-          .map<RouterNat>((value) => RouterNat.fromJson(value))
+          .map<RouterNat>((value) =>
+              RouterNat.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('network')) {
@@ -87188,8 +88940,9 @@ class RouterAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RouterAggregatedListWarningData>(
-              (value) => RouterAggregatedListWarningData.fromJson(value))
+          .map<RouterAggregatedListWarningData>((value) =>
+              RouterAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -87247,8 +89000,10 @@ class RouterAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, RoutersScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => RoutersScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => RoutersScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -87265,7 +89020,8 @@ class RouterAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = RouterAggregatedListWarning.fromJson(_json['warning']);
+      warning = RouterAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -87338,8 +89094,9 @@ class RouterBgp {
     }
     if (_json.containsKey('advertisedIpRanges')) {
       advertisedIpRanges = (_json['advertisedIpRanges'] as core.List)
-          .map<RouterAdvertisedIpRange>(
-              (value) => RouterAdvertisedIpRange.fromJson(value))
+          .map<RouterAdvertisedIpRange>((value) =>
+              RouterAdvertisedIpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('asn')) {
@@ -87446,8 +89203,9 @@ class RouterBgpPeer {
     }
     if (_json.containsKey('advertisedIpRanges')) {
       advertisedIpRanges = (_json['advertisedIpRanges'] as core.List)
-          .map<RouterAdvertisedIpRange>(
-              (value) => RouterAdvertisedIpRange.fromJson(value))
+          .map<RouterAdvertisedIpRange>((value) =>
+              RouterAdvertisedIpRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('advertisedRoutePriority')) {
@@ -87673,8 +89431,8 @@ class RouterListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RouterListWarningData>(
-              (value) => RouterListWarningData.fromJson(value))
+          .map<RouterListWarningData>((value) => RouterListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -87729,7 +89487,8 @@ class RouterList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Router>((value) => Router.fromJson(value))
+          .map<Router>((value) =>
+              Router.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -87742,7 +89501,8 @@ class RouterList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = RouterListWarning.fromJson(_json['warning']);
+      warning = RouterListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -87859,7 +89619,8 @@ class RouterNat {
       icmpIdleTimeoutSec = _json['icmpIdleTimeoutSec'] as core.int;
     }
     if (_json.containsKey('logConfig')) {
-      logConfig = RouterNatLogConfig.fromJson(_json['logConfig']);
+      logConfig = RouterNatLogConfig.fromJson(
+          _json['logConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minPortsPerVm')) {
       minPortsPerVm = _json['minPortsPerVm'] as core.int;
@@ -87881,8 +89642,9 @@ class RouterNat {
     }
     if (_json.containsKey('subnetworks')) {
       subnetworks = (_json['subnetworks'] as core.List)
-          .map<RouterNatSubnetworkToNat>(
-              (value) => RouterNatSubnetworkToNat.fromJson(value))
+          .map<RouterNatSubnetworkToNat>((value) =>
+              RouterNatSubnetworkToNat.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tcpEstablishedIdleTimeoutSec')) {
@@ -88047,24 +89809,27 @@ class RouterStatus {
   RouterStatus.fromJson(core.Map _json) {
     if (_json.containsKey('bestRoutes')) {
       bestRoutes = (_json['bestRoutes'] as core.List)
-          .map<Route>((value) => Route.fromJson(value))
+          .map<Route>((value) =>
+              Route.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bestRoutesForRouter')) {
       bestRoutesForRouter = (_json['bestRoutesForRouter'] as core.List)
-          .map<Route>((value) => Route.fromJson(value))
+          .map<Route>((value) =>
+              Route.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bgpPeerStatus')) {
       bgpPeerStatus = (_json['bgpPeerStatus'] as core.List)
-          .map<RouterStatusBgpPeerStatus>(
-              (value) => RouterStatusBgpPeerStatus.fromJson(value))
+          .map<RouterStatusBgpPeerStatus>((value) =>
+              RouterStatusBgpPeerStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('natStatus')) {
       natStatus = (_json['natStatus'] as core.List)
-          .map<RouterStatusNatStatus>(
-              (value) => RouterStatusNatStatus.fromJson(value))
+          .map<RouterStatusNatStatus>((value) => RouterStatusNatStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('network')) {
@@ -88136,7 +89901,8 @@ class RouterStatusBgpPeerStatus {
   RouterStatusBgpPeerStatus.fromJson(core.Map _json) {
     if (_json.containsKey('advertisedRoutes')) {
       advertisedRoutes = (_json['advertisedRoutes'] as core.List)
-          .map<Route>((value) => Route.fromJson(value))
+          .map<Route>((value) =>
+              Route.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ipAddress')) {
@@ -88322,7 +90088,8 @@ class RouterStatusResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('result')) {
-      result = RouterStatus.fromJson(_json['result']);
+      result = RouterStatus.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -88346,7 +90113,8 @@ class RoutersPreviewResponse {
 
   RoutersPreviewResponse.fromJson(core.Map _json) {
     if (_json.containsKey('resource')) {
-      resource = Router.fromJson(_json['resource']);
+      resource = Router.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -88443,8 +90211,9 @@ class RoutersScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<RoutersScopedListWarningData>(
-              (value) => RoutersScopedListWarningData.fromJson(value))
+          .map<RoutersScopedListWarningData>((value) =>
+              RoutersScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -88480,11 +90249,13 @@ class RoutersScopedList {
   RoutersScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('routers')) {
       routers = (_json['routers'] as core.List)
-          .map<Router>((value) => Router.fromJson(value))
+          .map<Router>((value) =>
+              Router.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = RoutersScopedListWarning.fromJson(_json['warning']);
+      warning = RoutersScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -88544,7 +90315,8 @@ class Rule {
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -88557,7 +90329,8 @@ class Rule {
     }
     if (_json.containsKey('logConfigs')) {
       logConfigs = (_json['logConfigs'] as core.List)
-          .map<LogConfig>((value) => LogConfig.fromJson(value))
+          .map<LogConfig>((value) =>
+              LogConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notIns')) {
@@ -88737,8 +90510,9 @@ class Scheduling {
     }
     if (_json.containsKey('nodeAffinities')) {
       nodeAffinities = (_json['nodeAffinities'] as core.List)
-          .map<SchedulingNodeAffinity>(
-              (value) => SchedulingNodeAffinity.fromJson(value))
+          .map<SchedulingNodeAffinity>((value) =>
+              SchedulingNodeAffinity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('onHostMaintenance')) {
@@ -88860,7 +90634,8 @@ class SecurityPoliciesListPreconfiguredExpressionSetsResponse {
       core.Map _json) {
     if (_json.containsKey('preconfiguredExpressionSets')) {
       preconfiguredExpressionSets = SecurityPoliciesWafConfig.fromJson(
-          _json['preconfiguredExpressionSets']);
+          _json['preconfiguredExpressionSets']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -88881,7 +90656,8 @@ class SecurityPoliciesWafConfig {
 
   SecurityPoliciesWafConfig.fromJson(core.Map _json) {
     if (_json.containsKey('wafRules')) {
-      wafRules = PreconfiguredWafSet.fromJson(_json['wafRules']);
+      wafRules = PreconfiguredWafSet.fromJson(
+          _json['wafRules'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -88973,8 +90749,8 @@ class SecurityPolicy {
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<SecurityPolicyRule>(
-              (value) => SecurityPolicyRule.fromJson(value))
+          .map<SecurityPolicyRule>((value) => SecurityPolicyRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -89095,8 +90871,9 @@ class SecurityPolicyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SecurityPolicyListWarningData>(
-              (value) => SecurityPolicyListWarningData.fromJson(value))
+          .map<SecurityPolicyListWarningData>((value) =>
+              SecurityPolicyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -89148,7 +90925,8 @@ class SecurityPolicyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SecurityPolicy>((value) => SecurityPolicy.fromJson(value))
+          .map<SecurityPolicy>((value) => SecurityPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -89158,7 +90936,8 @@ class SecurityPolicyList {
       nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = SecurityPolicyListWarning.fromJson(_json['warning']);
+      warning = SecurityPolicyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -89245,7 +91024,8 @@ class SecurityPolicyRule {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('match')) {
-      match = SecurityPolicyRuleMatcher.fromJson(_json['match']);
+      match = SecurityPolicyRuleMatcher.fromJson(
+          _json['match'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('preview')) {
       preview = _json['preview'] as core.bool;
@@ -89304,10 +91084,12 @@ class SecurityPolicyRuleMatcher {
 
   SecurityPolicyRuleMatcher.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = SecurityPolicyRuleMatcherConfig.fromJson(_json['config']);
+      config = SecurityPolicyRuleMatcherConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('expr')) {
-      expr = Expr.fromJson(_json['expr']);
+      expr =
+          Expr.fromJson(_json['expr'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('versionedExpr')) {
       versionedExpr = _json['versionedExpr'] as core.String;
@@ -89537,14 +91319,15 @@ class ShieldedInstanceIdentity {
 
   ShieldedInstanceIdentity.fromJson(core.Map _json) {
     if (_json.containsKey('encryptionKey')) {
-      encryptionKey =
-          ShieldedInstanceIdentityEntry.fromJson(_json['encryptionKey']);
+      encryptionKey = ShieldedInstanceIdentityEntry.fromJson(
+          _json['encryptionKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('signingKey')) {
-      signingKey = ShieldedInstanceIdentityEntry.fromJson(_json['signingKey']);
+      signingKey = ShieldedInstanceIdentityEntry.fromJson(
+          _json['signingKey'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -89813,7 +91596,8 @@ class Snapshot {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('licenseCodes')) {
@@ -89833,15 +91617,17 @@ class Snapshot {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('snapshotEncryptionKey')) {
-      snapshotEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['snapshotEncryptionKey']);
+      snapshotEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['snapshotEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceDisk')) {
       sourceDisk = _json['sourceDisk'] as core.String;
     }
     if (_json.containsKey('sourceDiskEncryptionKey')) {
-      sourceDiskEncryptionKey =
-          CustomerEncryptionKey.fromJson(_json['sourceDiskEncryptionKey']);
+      sourceDiskEncryptionKey = CustomerEncryptionKey.fromJson(
+          _json['sourceDiskEncryptionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceDiskId')) {
       sourceDiskId = _json['sourceDiskId'] as core.String;
@@ -90014,8 +91800,9 @@ class SnapshotListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SnapshotListWarningData>(
-              (value) => SnapshotListWarningData.fromJson(value))
+          .map<SnapshotListWarningData>((value) =>
+              SnapshotListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -90070,7 +91857,8 @@ class SnapshotList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Snapshot>((value) => Snapshot.fromJson(value))
+          .map<Snapshot>((value) =>
+              Snapshot.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -90083,7 +91871,8 @@ class SnapshotList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = SnapshotListWarning.fromJson(_json['warning']);
+      warning = SnapshotListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -90125,8 +91914,9 @@ class SourceInstanceParams {
   SourceInstanceParams.fromJson(core.Map _json) {
     if (_json.containsKey('diskConfigs')) {
       diskConfigs = (_json['diskConfigs'] as core.List)
-          .map<DiskInstantiationConfig>(
-              (value) => DiskInstantiationConfig.fromJson(value))
+          .map<DiskInstantiationConfig>((value) =>
+              DiskInstantiationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -90250,7 +92040,8 @@ class SslCertificate {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('managed')) {
-      managed = SslCertificateManagedSslCertificate.fromJson(_json['managed']);
+      managed = SslCertificateManagedSslCertificate.fromJson(
+          _json['managed'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -90266,7 +92057,7 @@ class SslCertificate {
     }
     if (_json.containsKey('selfManaged')) {
       selfManaged = SslCertificateSelfManagedSslCertificate.fromJson(
-          _json['selfManaged']);
+          _json['selfManaged'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subjectAlternativeNames')) {
       subjectAlternativeNames = (_json['subjectAlternativeNames'] as core.List)
@@ -90410,7 +92201,8 @@ class SslCertificateAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<SslCertificateAggregatedListWarningData>((value) =>
-              SslCertificateAggregatedListWarningData.fromJson(value))
+              SslCertificateAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -90468,8 +92260,10 @@ class SslCertificateAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, SslCertificatesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => SslCertificatesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SslCertificatesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -90486,7 +92280,8 @@ class SslCertificateAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = SslCertificateAggregatedListWarning.fromJson(_json['warning']);
+      warning = SslCertificateAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -90602,8 +92397,9 @@ class SslCertificateListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SslCertificateListWarningData>(
-              (value) => SslCertificateListWarningData.fromJson(value))
+          .map<SslCertificateListWarningData>((value) =>
+              SslCertificateListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -90658,7 +92454,8 @@ class SslCertificateList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SslCertificate>((value) => SslCertificate.fromJson(value))
+          .map<SslCertificate>((value) => SslCertificate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -90671,7 +92468,8 @@ class SslCertificateList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = SslCertificateListWarning.fromJson(_json['warning']);
+      warning = SslCertificateListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -90724,7 +92522,8 @@ class SslCertificateManagedSslCertificate {
   SslCertificateManagedSslCertificate.fromJson(core.Map _json) {
     if (_json.containsKey('domainStatus')) {
       domainStatus = commons.mapMap<core.String, core.String>(
-          _json['domainStatus'].cast<core.String, core.String>(),
+          (_json['domainStatus'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('domains')) {
@@ -90870,8 +92669,9 @@ class SslCertificatesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SslCertificatesScopedListWarningData>(
-              (value) => SslCertificatesScopedListWarningData.fromJson(value))
+          .map<SslCertificatesScopedListWarningData>((value) =>
+              SslCertificatesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -90907,11 +92707,13 @@ class SslCertificatesScopedList {
   SslCertificatesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('sslCertificates')) {
       sslCertificates = (_json['sslCertificates'] as core.List)
-          .map<SslCertificate>((value) => SslCertificate.fromJson(value))
+          .map<SslCertificate>((value) => SslCertificate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = SslCertificatesScopedListWarning.fromJson(_json['warning']);
+      warning = SslCertificatesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -91011,8 +92813,9 @@ class SslPoliciesListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SslPoliciesListWarningData>(
-              (value) => SslPoliciesListWarningData.fromJson(value))
+          .map<SslPoliciesListWarningData>((value) =>
+              SslPoliciesListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -91067,7 +92870,8 @@ class SslPoliciesList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SslPolicy>((value) => SslPolicy.fromJson(value))
+          .map<SslPolicy>((value) =>
+              SslPolicy.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -91080,7 +92884,8 @@ class SslPoliciesList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = SslPoliciesListWarning.fromJson(_json['warning']);
+      warning = SslPoliciesListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -91212,8 +93017,8 @@ class SslPolicyWarnings {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SslPolicyWarningsData>(
-              (value) => SslPolicyWarningsData.fromJson(value))
+          .map<SslPolicyWarningsData>((value) => SslPolicyWarningsData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -91359,7 +93164,8 @@ class SslPolicy {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<SslPolicyWarnings>((value) => SslPolicyWarnings.fromJson(value))
+          .map<SslPolicyWarnings>((value) => SslPolicyWarnings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -91435,8 +93241,8 @@ class StatefulPolicy {
 
   StatefulPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('preservedState')) {
-      preservedState =
-          StatefulPolicyPreservedState.fromJson(_json['preservedState']);
+      preservedState = StatefulPolicyPreservedState.fromJson(
+          _json['preservedState'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -91460,9 +93266,10 @@ class StatefulPolicyPreservedState {
   StatefulPolicyPreservedState.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
       disks = commons.mapMap<core.Map, StatefulPolicyPreservedStateDiskDevice>(
-          _json['disks'].cast<core.String, core.Map>(),
-          (core.Map item) =>
-              StatefulPolicyPreservedStateDiskDevice.fromJson(item));
+          (_json['disks'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => StatefulPolicyPreservedStateDiskDevice.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -91682,7 +93489,8 @@ class Subnetwork {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('logConfig')) {
-      logConfig = SubnetworkLogConfig.fromJson(_json['logConfig']);
+      logConfig = SubnetworkLogConfig.fromJson(
+          _json['logConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -91707,8 +93515,9 @@ class Subnetwork {
     }
     if (_json.containsKey('secondaryIpRanges')) {
       secondaryIpRanges = (_json['secondaryIpRanges'] as core.List)
-          .map<SubnetworkSecondaryRange>(
-              (value) => SubnetworkSecondaryRange.fromJson(value))
+          .map<SubnetworkSecondaryRange>((value) =>
+              SubnetworkSecondaryRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -91869,8 +93678,9 @@ class SubnetworkAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SubnetworkAggregatedListWarningData>(
-              (value) => SubnetworkAggregatedListWarningData.fromJson(value))
+          .map<SubnetworkAggregatedListWarningData>((value) =>
+              SubnetworkAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -91928,8 +93738,10 @@ class SubnetworkAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, SubnetworksScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => SubnetworksScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SubnetworksScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -91946,7 +93758,8 @@ class SubnetworkAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = SubnetworkAggregatedListWarning.fromJson(_json['warning']);
+      warning = SubnetworkAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -92062,8 +93875,9 @@ class SubnetworkListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SubnetworkListWarningData>(
-              (value) => SubnetworkListWarningData.fromJson(value))
+          .map<SubnetworkListWarningData>((value) =>
+              SubnetworkListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -92119,7 +93933,8 @@ class SubnetworkList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Subnetwork>((value) => Subnetwork.fromJson(value))
+          .map<Subnetwork>((value) =>
+              Subnetwork.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -92132,7 +93947,8 @@ class SubnetworkList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = SubnetworkListWarning.fromJson(_json['warning']);
+      warning = SubnetworkListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -92397,8 +94213,9 @@ class SubnetworksScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<SubnetworksScopedListWarningData>(
-              (value) => SubnetworksScopedListWarningData.fromJson(value))
+          .map<SubnetworksScopedListWarningData>((value) =>
+              SubnetworksScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -92433,11 +94250,13 @@ class SubnetworksScopedList {
   SubnetworksScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('subnetworks')) {
       subnetworks = (_json['subnetworks'] as core.List)
-          .map<Subnetwork>((value) => Subnetwork.fromJson(value))
+          .map<Subnetwork>((value) =>
+              Subnetwork.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = SubnetworksScopedListWarning.fromJson(_json['warning']);
+      warning = SubnetworksScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -92836,8 +94655,9 @@ class TargetGrpcProxyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetGrpcProxyListWarningData>(
-              (value) => TargetGrpcProxyListWarningData.fromJson(value))
+          .map<TargetGrpcProxyListWarningData>((value) =>
+              TargetGrpcProxyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -92892,7 +94712,8 @@ class TargetGrpcProxyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetGrpcProxy>((value) => TargetGrpcProxy.fromJson(value))
+          .map<TargetGrpcProxy>((value) => TargetGrpcProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -92905,7 +94726,8 @@ class TargetGrpcProxyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetGrpcProxyListWarning.fromJson(_json['warning']);
+      warning = TargetGrpcProxyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -93017,8 +94839,9 @@ class TargetHttpProxiesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetHttpProxiesScopedListWarningData>(
-              (value) => TargetHttpProxiesScopedListWarningData.fromJson(value))
+          .map<TargetHttpProxiesScopedListWarningData>((value) =>
+              TargetHttpProxiesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -93054,11 +94877,13 @@ class TargetHttpProxiesScopedList {
   TargetHttpProxiesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('targetHttpProxies')) {
       targetHttpProxies = (_json['targetHttpProxies'] as core.List)
-          .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(value))
+          .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetHttpProxiesScopedListWarning.fromJson(_json['warning']);
+      warning = TargetHttpProxiesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -93240,8 +95065,10 @@ class TargetHttpProxyAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, TargetHttpProxiesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => TargetHttpProxiesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TargetHttpProxiesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -93368,8 +95195,9 @@ class TargetHttpProxyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetHttpProxyListWarningData>(
-              (value) => TargetHttpProxyListWarningData.fromJson(value))
+          .map<TargetHttpProxyListWarningData>((value) =>
+              TargetHttpProxyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -93425,7 +95253,8 @@ class TargetHttpProxyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(value))
+          .map<TargetHttpProxy>((value) => TargetHttpProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -93438,7 +95267,8 @@ class TargetHttpProxyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetHttpProxyListWarning.fromJson(_json['warning']);
+      warning = TargetHttpProxyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -93551,7 +95381,8 @@ class TargetHttpsProxiesScopedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<TargetHttpsProxiesScopedListWarningData>((value) =>
-              TargetHttpsProxiesScopedListWarningData.fromJson(value))
+              TargetHttpsProxiesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -93587,11 +95418,13 @@ class TargetHttpsProxiesScopedList {
   TargetHttpsProxiesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('targetHttpsProxies')) {
       targetHttpsProxies = (_json['targetHttpsProxies'] as core.List)
-          .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(value))
+          .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetHttpsProxiesScopedListWarning.fromJson(_json['warning']);
+      warning = TargetHttpsProxiesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -93904,7 +95737,8 @@ class TargetHttpsProxyAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<TargetHttpsProxyAggregatedListWarningData>((value) =>
-              TargetHttpsProxyAggregatedListWarningData.fromJson(value))
+              TargetHttpsProxyAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -93962,8 +95796,10 @@ class TargetHttpsProxyAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, TargetHttpsProxiesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => TargetHttpsProxiesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TargetHttpsProxiesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -93980,8 +95816,8 @@ class TargetHttpsProxyAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          TargetHttpsProxyAggregatedListWarning.fromJson(_json['warning']);
+      warning = TargetHttpsProxyAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -94097,8 +95933,9 @@ class TargetHttpsProxyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetHttpsProxyListWarningData>(
-              (value) => TargetHttpsProxyListWarningData.fromJson(value))
+          .map<TargetHttpsProxyListWarningData>((value) =>
+              TargetHttpsProxyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -94154,7 +95991,8 @@ class TargetHttpsProxyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(value))
+          .map<TargetHttpsProxy>((value) => TargetHttpsProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -94167,7 +96005,8 @@ class TargetHttpsProxyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetHttpsProxyListWarning.fromJson(_json['warning']);
+      warning = TargetHttpsProxyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -94399,7 +96238,8 @@ class TargetInstanceAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<TargetInstanceAggregatedListWarningData>((value) =>
-              TargetInstanceAggregatedListWarningData.fromJson(value))
+              TargetInstanceAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -94456,8 +96296,10 @@ class TargetInstanceAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, TargetInstancesScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => TargetInstancesScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TargetInstancesScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -94474,7 +96316,8 @@ class TargetInstanceAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetInstanceAggregatedListWarning.fromJson(_json['warning']);
+      warning = TargetInstanceAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -94590,8 +96433,9 @@ class TargetInstanceListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetInstanceListWarningData>(
-              (value) => TargetInstanceListWarningData.fromJson(value))
+          .map<TargetInstanceListWarningData>((value) =>
+              TargetInstanceListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -94646,7 +96490,8 @@ class TargetInstanceList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetInstance>((value) => TargetInstance.fromJson(value))
+          .map<TargetInstance>((value) => TargetInstance.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -94659,7 +96504,8 @@ class TargetInstanceList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetInstanceListWarning.fromJson(_json['warning']);
+      warning = TargetInstanceListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -94771,8 +96617,9 @@ class TargetInstancesScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetInstancesScopedListWarningData>(
-              (value) => TargetInstancesScopedListWarningData.fromJson(value))
+          .map<TargetInstancesScopedListWarningData>((value) =>
+              TargetInstancesScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -94808,11 +96655,13 @@ class TargetInstancesScopedList {
   TargetInstancesScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('targetInstances')) {
       targetInstances = (_json['targetInstances'] as core.List)
-          .map<TargetInstance>((value) => TargetInstance.fromJson(value))
+          .map<TargetInstance>((value) => TargetInstance.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetInstancesScopedListWarning.fromJson(_json['warning']);
+      warning = TargetInstancesScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -95096,8 +96945,9 @@ class TargetPoolAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetPoolAggregatedListWarningData>(
-              (value) => TargetPoolAggregatedListWarningData.fromJson(value))
+          .map<TargetPoolAggregatedListWarningData>((value) =>
+              TargetPoolAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -95155,8 +97005,10 @@ class TargetPoolAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, TargetPoolsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => TargetPoolsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TargetPoolsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -95173,7 +97025,8 @@ class TargetPoolAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetPoolAggregatedListWarning.fromJson(_json['warning']);
+      warning = TargetPoolAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -95218,7 +97071,8 @@ class TargetPoolInstanceHealth {
   TargetPoolInstanceHealth.fromJson(core.Map _json) {
     if (_json.containsKey('healthStatus')) {
       healthStatus = (_json['healthStatus'] as core.List)
-          .map<HealthStatus>((value) => HealthStatus.fromJson(value))
+          .map<HealthStatus>((value) => HealthStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -95322,8 +97176,9 @@ class TargetPoolListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetPoolListWarningData>(
-              (value) => TargetPoolListWarningData.fromJson(value))
+          .map<TargetPoolListWarningData>((value) =>
+              TargetPoolListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -95379,7 +97234,8 @@ class TargetPoolList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetPool>((value) => TargetPool.fromJson(value))
+          .map<TargetPool>((value) =>
+              TargetPool.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -95392,7 +97248,8 @@ class TargetPoolList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetPoolListWarning.fromJson(_json['warning']);
+      warning = TargetPoolListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -95429,8 +97286,8 @@ class TargetPoolsAddHealthCheckRequest {
   TargetPoolsAddHealthCheckRequest.fromJson(core.Map _json) {
     if (_json.containsKey('healthChecks')) {
       healthChecks = (_json['healthChecks'] as core.List)
-          .map<HealthCheckReference>(
-              (value) => HealthCheckReference.fromJson(value))
+          .map<HealthCheckReference>((value) => HealthCheckReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -95459,7 +97316,8 @@ class TargetPoolsAddInstanceRequest {
   TargetPoolsAddInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<InstanceReference>((value) => InstanceReference.fromJson(value))
+          .map<InstanceReference>((value) => InstanceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -95487,8 +97345,8 @@ class TargetPoolsRemoveHealthCheckRequest {
   TargetPoolsRemoveHealthCheckRequest.fromJson(core.Map _json) {
     if (_json.containsKey('healthChecks')) {
       healthChecks = (_json['healthChecks'] as core.List)
-          .map<HealthCheckReference>(
-              (value) => HealthCheckReference.fromJson(value))
+          .map<HealthCheckReference>((value) => HealthCheckReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -95512,7 +97370,8 @@ class TargetPoolsRemoveInstanceRequest {
   TargetPoolsRemoveInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<InstanceReference>((value) => InstanceReference.fromJson(value))
+          .map<InstanceReference>((value) => InstanceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -95610,8 +97469,9 @@ class TargetPoolsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetPoolsScopedListWarningData>(
-              (value) => TargetPoolsScopedListWarningData.fromJson(value))
+          .map<TargetPoolsScopedListWarningData>((value) =>
+              TargetPoolsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -95647,11 +97507,13 @@ class TargetPoolsScopedList {
   TargetPoolsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('targetPools')) {
       targetPools = (_json['targetPools'] as core.List)
-          .map<TargetPool>((value) => TargetPool.fromJson(value))
+          .map<TargetPool>((value) =>
+              TargetPool.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetPoolsScopedListWarning.fromJson(_json['warning']);
+      warning = TargetPoolsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -95968,8 +97830,9 @@ class TargetSslProxyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetSslProxyListWarningData>(
-              (value) => TargetSslProxyListWarningData.fromJson(value))
+          .map<TargetSslProxyListWarningData>((value) =>
+              TargetSslProxyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -96024,7 +97887,8 @@ class TargetSslProxyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetSslProxy>((value) => TargetSslProxy.fromJson(value))
+          .map<TargetSslProxy>((value) => TargetSslProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -96037,7 +97901,8 @@ class TargetSslProxyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetSslProxyListWarning.fromJson(_json['warning']);
+      warning = TargetSslProxyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -96298,8 +98163,9 @@ class TargetTcpProxyListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetTcpProxyListWarningData>(
-              (value) => TargetTcpProxyListWarningData.fromJson(value))
+          .map<TargetTcpProxyListWarningData>((value) =>
+              TargetTcpProxyListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -96354,7 +98220,8 @@ class TargetTcpProxyList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetTcpProxy>((value) => TargetTcpProxy.fromJson(value))
+          .map<TargetTcpProxy>((value) => TargetTcpProxy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -96367,7 +98234,8 @@ class TargetTcpProxyList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetTcpProxyListWarning.fromJson(_json['warning']);
+      warning = TargetTcpProxyListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -96621,7 +98489,8 @@ class TargetVpnGatewayAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<TargetVpnGatewayAggregatedListWarningData>((value) =>
-              TargetVpnGatewayAggregatedListWarningData.fromJson(value))
+              TargetVpnGatewayAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -96679,8 +98548,10 @@ class TargetVpnGatewayAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, TargetVpnGatewaysScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => TargetVpnGatewaysScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TargetVpnGatewaysScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -96697,8 +98568,8 @@ class TargetVpnGatewayAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning =
-          TargetVpnGatewayAggregatedListWarning.fromJson(_json['warning']);
+      warning = TargetVpnGatewayAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -96814,8 +98685,9 @@ class TargetVpnGatewayListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetVpnGatewayListWarningData>(
-              (value) => TargetVpnGatewayListWarningData.fromJson(value))
+          .map<TargetVpnGatewayListWarningData>((value) =>
+              TargetVpnGatewayListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -96871,7 +98743,8 @@ class TargetVpnGatewayList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(value))
+          .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -96884,7 +98757,8 @@ class TargetVpnGatewayList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = TargetVpnGatewayListWarning.fromJson(_json['warning']);
+      warning = TargetVpnGatewayListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -96996,8 +98870,9 @@ class TargetVpnGatewaysScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<TargetVpnGatewaysScopedListWarningData>(
-              (value) => TargetVpnGatewaysScopedListWarningData.fromJson(value))
+          .map<TargetVpnGatewaysScopedListWarningData>((value) =>
+              TargetVpnGatewaysScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -97033,11 +98908,13 @@ class TargetVpnGatewaysScopedList {
   TargetVpnGatewaysScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('targetVpnGateways')) {
       targetVpnGateways = (_json['targetVpnGateways'] as core.List)
-          .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(value))
+          .map<TargetVpnGateway>((value) => TargetVpnGateway.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = TargetVpnGatewaysScopedListWarning.fromJson(_json['warning']);
+      warning = TargetVpnGatewaysScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -97289,15 +99166,15 @@ class UrlMap {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('defaultRouteAction')) {
-      defaultRouteAction =
-          HttpRouteAction.fromJson(_json['defaultRouteAction']);
+      defaultRouteAction = HttpRouteAction.fromJson(
+          _json['defaultRouteAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultService')) {
       defaultService = _json['defaultService'] as core.String;
     }
     if (_json.containsKey('defaultUrlRedirect')) {
-      defaultUrlRedirect =
-          HttpRedirectAction.fromJson(_json['defaultUrlRedirect']);
+      defaultUrlRedirect = HttpRedirectAction.fromJson(
+          _json['defaultUrlRedirect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -97306,11 +99183,13 @@ class UrlMap {
       fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('headerAction')) {
-      headerAction = HttpHeaderAction.fromJson(_json['headerAction']);
+      headerAction = HttpHeaderAction.fromJson(
+          _json['headerAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hostRules')) {
       hostRules = (_json['hostRules'] as core.List)
-          .map<HostRule>((value) => HostRule.fromJson(value))
+          .map<HostRule>((value) =>
+              HostRule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -97324,7 +99203,8 @@ class UrlMap {
     }
     if (_json.containsKey('pathMatchers')) {
       pathMatchers = (_json['pathMatchers'] as core.List)
-          .map<PathMatcher>((value) => PathMatcher.fromJson(value))
+          .map<PathMatcher>((value) => PathMatcher.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('region')) {
@@ -97335,7 +99215,8 @@ class UrlMap {
     }
     if (_json.containsKey('tests')) {
       tests = (_json['tests'] as core.List)
-          .map<UrlMapTest>((value) => UrlMapTest.fromJson(value))
+          .map<UrlMapTest>((value) =>
+              UrlMapTest.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -97475,8 +99356,8 @@ class UrlMapListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<UrlMapListWarningData>(
-              (value) => UrlMapListWarningData.fromJson(value))
+          .map<UrlMapListWarningData>((value) => UrlMapListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -97531,7 +99412,8 @@ class UrlMapList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<UrlMap>((value) => UrlMap.fromJson(value))
+          .map<UrlMap>((value) =>
+              UrlMap.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -97544,7 +99426,8 @@ class UrlMapList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = UrlMapListWarning.fromJson(_json['warning']);
+      warning = UrlMapListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -97670,7 +99553,8 @@ class UrlMapValidationResult {
     }
     if (_json.containsKey('testFailures')) {
       testFailures = (_json['testFailures'] as core.List)
-          .map<TestFailure>((value) => TestFailure.fromJson(value))
+          .map<TestFailure>((value) => TestFailure.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('testPassed')) {
@@ -97780,8 +99664,9 @@ class UrlMapsAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<UrlMapsAggregatedListWarningData>(
-              (value) => UrlMapsAggregatedListWarningData.fromJson(value))
+          .map<UrlMapsAggregatedListWarningData>((value) =>
+              UrlMapsAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -97838,8 +99723,10 @@ class UrlMapsAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, UrlMapsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => UrlMapsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => UrlMapsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -97856,7 +99743,8 @@ class UrlMapsAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = UrlMapsAggregatedListWarning.fromJson(_json['warning']);
+      warning = UrlMapsAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -97973,8 +99861,9 @@ class UrlMapsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<UrlMapsScopedListWarningData>(
-              (value) => UrlMapsScopedListWarningData.fromJson(value))
+          .map<UrlMapsScopedListWarningData>((value) =>
+              UrlMapsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -98010,11 +99899,13 @@ class UrlMapsScopedList {
   UrlMapsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('urlMaps')) {
       urlMaps = (_json['urlMaps'] as core.List)
-          .map<UrlMap>((value) => UrlMap.fromJson(value))
+          .map<UrlMap>((value) =>
+              UrlMap.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = UrlMapsScopedListWarning.fromJson(_json['warning']);
+      warning = UrlMapsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -98038,7 +99929,8 @@ class UrlMapsValidateRequest {
 
   UrlMapsValidateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('resource')) {
-      resource = UrlMap.fromJson(_json['resource']);
+      resource = UrlMap.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -98058,7 +99950,8 @@ class UrlMapsValidateResponse {
 
   UrlMapsValidateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = UrlMapValidationResult.fromJson(_json['result']);
+      result = UrlMapValidationResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -98132,8 +100025,9 @@ class UsableSubnetwork {
     }
     if (_json.containsKey('secondaryIpRanges')) {
       secondaryIpRanges = (_json['secondaryIpRanges'] as core.List)
-          .map<UsableSubnetworkSecondaryRange>(
-              (value) => UsableSubnetworkSecondaryRange.fromJson(value))
+          .map<UsableSubnetworkSecondaryRange>((value) =>
+              UsableSubnetworkSecondaryRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subnetwork')) {
@@ -98277,7 +100171,8 @@ class UsableSubnetworksAggregatedListWarning {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
           .map<UsableSubnetworksAggregatedListWarningData>((value) =>
-              UsableSubnetworksAggregatedListWarningData.fromJson(value))
+              UsableSubnetworksAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -98334,7 +100229,8 @@ class UsableSubnetworksAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(value))
+          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -98347,8 +100243,8 @@ class UsableSubnetworksAggregatedList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning =
-          UsableSubnetworksAggregatedListWarning.fromJson(_json['warning']);
+      warning = UsableSubnetworksAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -98432,7 +100328,8 @@ class VmEndpointNatMappings {
     if (_json.containsKey('interfaceNatMappings')) {
       interfaceNatMappings = (_json['interfaceNatMappings'] as core.List)
           .map<VmEndpointNatMappingsInterfaceNatMappings>((value) =>
-              VmEndpointNatMappingsInterfaceNatMappings.fromJson(value))
+              VmEndpointNatMappingsInterfaceNatMappings.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -98612,8 +100509,9 @@ class VmEndpointNatMappingsListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VmEndpointNatMappingsListWarningData>(
-              (value) => VmEndpointNatMappingsListWarningData.fromJson(value))
+          .map<VmEndpointNatMappingsListWarningData>((value) =>
+              VmEndpointNatMappingsListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -98676,15 +100574,16 @@ class VmEndpointNatMappingsList {
     }
     if (_json.containsKey('result')) {
       result = (_json['result'] as core.List)
-          .map<VmEndpointNatMappings>(
-              (value) => VmEndpointNatMappings.fromJson(value))
+          .map<VmEndpointNatMappings>((value) => VmEndpointNatMappings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = VmEndpointNatMappingsListWarning.fromJson(_json['warning']);
+      warning = VmEndpointNatMappingsListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -98800,7 +100699,8 @@ class VpnGateway {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -98817,8 +100717,9 @@ class VpnGateway {
     }
     if (_json.containsKey('vpnInterfaces')) {
       vpnInterfaces = (_json['vpnInterfaces'] as core.List)
-          .map<VpnGatewayVpnGatewayInterface>(
-              (value) => VpnGatewayVpnGatewayInterface.fromJson(value))
+          .map<VpnGatewayVpnGatewayInterface>((value) =>
+              VpnGatewayVpnGatewayInterface.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -98946,8 +100847,9 @@ class VpnGatewayAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnGatewayAggregatedListWarningData>(
-              (value) => VpnGatewayAggregatedListWarningData.fromJson(value))
+          .map<VpnGatewayAggregatedListWarningData>((value) =>
+              VpnGatewayAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -99005,8 +100907,10 @@ class VpnGatewayAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, VpnGatewaysScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => VpnGatewaysScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => VpnGatewaysScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -99023,7 +100927,8 @@ class VpnGatewayAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = VpnGatewayAggregatedListWarning.fromJson(_json['warning']);
+      warning = VpnGatewayAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -99139,8 +101044,9 @@ class VpnGatewayListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnGatewayListWarningData>(
-              (value) => VpnGatewayListWarningData.fromJson(value))
+          .map<VpnGatewayListWarningData>((value) =>
+              VpnGatewayListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -99196,7 +101102,8 @@ class VpnGatewayList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<VpnGateway>((value) => VpnGateway.fromJson(value))
+          .map<VpnGateway>((value) =>
+              VpnGateway.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -99209,7 +101116,8 @@ class VpnGatewayList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = VpnGatewayListWarning.fromJson(_json['warning']);
+      warning = VpnGatewayListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -99246,8 +101154,9 @@ class VpnGatewayStatus {
   VpnGatewayStatus.fromJson(core.Map _json) {
     if (_json.containsKey('vpnConnections')) {
       vpnConnections = (_json['vpnConnections'] as core.List)
-          .map<VpnGatewayStatusVpnConnection>(
-              (value) => VpnGatewayStatusVpnConnection.fromJson(value))
+          .map<VpnGatewayStatusVpnConnection>((value) =>
+              VpnGatewayStatusVpnConnection.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -99374,12 +101283,13 @@ class VpnGatewayStatusVpnConnection {
     }
     if (_json.containsKey('state')) {
       state = VpnGatewayStatusHighAvailabilityRequirementState.fromJson(
-          _json['state']);
+          _json['state'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tunnels')) {
       tunnels = (_json['tunnels'] as core.List)
-          .map<VpnGatewayStatusTunnel>(
-              (value) => VpnGatewayStatusTunnel.fromJson(value))
+          .map<VpnGatewayStatusTunnel>((value) =>
+              VpnGatewayStatusTunnel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -99440,7 +101350,8 @@ class VpnGatewaysGetStatusResponse {
 
   VpnGatewaysGetStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = VpnGatewayStatus.fromJson(_json['result']);
+      result = VpnGatewayStatus.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -99537,8 +101448,9 @@ class VpnGatewaysScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnGatewaysScopedListWarningData>(
-              (value) => VpnGatewaysScopedListWarningData.fromJson(value))
+          .map<VpnGatewaysScopedListWarningData>((value) =>
+              VpnGatewaysScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -99574,11 +101486,13 @@ class VpnGatewaysScopedList {
   VpnGatewaysScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('vpnGateways')) {
       vpnGateways = (_json['vpnGateways'] as core.List)
-          .map<VpnGateway>((value) => VpnGateway.fromJson(value))
+          .map<VpnGateway>((value) =>
+              VpnGateway.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = VpnGatewaysScopedListWarning.fromJson(_json['warning']);
+      warning = VpnGatewaysScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -99967,8 +101881,9 @@ class VpnTunnelAggregatedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnTunnelAggregatedListWarningData>(
-              (value) => VpnTunnelAggregatedListWarningData.fromJson(value))
+          .map<VpnTunnelAggregatedListWarningData>((value) =>
+              VpnTunnelAggregatedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -100025,8 +101940,10 @@ class VpnTunnelAggregatedList {
     }
     if (_json.containsKey('items')) {
       items = commons.mapMap<core.Map, VpnTunnelsScopedList>(
-          _json['items'].cast<core.String, core.Map>(),
-          (core.Map item) => VpnTunnelsScopedList.fromJson(item));
+          (_json['items'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => VpnTunnelsScopedList.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -100043,7 +101960,8 @@ class VpnTunnelAggregatedList {
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = VpnTunnelAggregatedListWarning.fromJson(_json['warning']);
+      warning = VpnTunnelAggregatedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -100159,8 +102077,9 @@ class VpnTunnelListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnTunnelListWarningData>(
-              (value) => VpnTunnelListWarningData.fromJson(value))
+          .map<VpnTunnelListWarningData>((value) =>
+              VpnTunnelListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -100215,7 +102134,8 @@ class VpnTunnelList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<VpnTunnel>((value) => VpnTunnel.fromJson(value))
+          .map<VpnTunnel>((value) =>
+              VpnTunnel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -100228,7 +102148,8 @@ class VpnTunnelList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = VpnTunnelListWarning.fromJson(_json['warning']);
+      warning = VpnTunnelListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -100340,8 +102261,9 @@ class VpnTunnelsScopedListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<VpnTunnelsScopedListWarningData>(
-              (value) => VpnTunnelsScopedListWarningData.fromJson(value))
+          .map<VpnTunnelsScopedListWarningData>((value) =>
+              VpnTunnelsScopedListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -100377,11 +102299,13 @@ class VpnTunnelsScopedList {
   VpnTunnelsScopedList.fromJson(core.Map _json) {
     if (_json.containsKey('vpnTunnels')) {
       vpnTunnels = (_json['vpnTunnels'] as core.List)
-          .map<VpnTunnel>((value) => VpnTunnel.fromJson(value))
+          .map<VpnTunnel>((value) =>
+              VpnTunnel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warning')) {
-      warning = VpnTunnelsScopedListWarning.fromJson(_json['warning']);
+      warning = VpnTunnelsScopedListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -100421,8 +102345,9 @@ class WafExpressionSet {
     }
     if (_json.containsKey('expressions')) {
       expressions = (_json['expressions'] as core.List)
-          .map<WafExpressionSetExpression>(
-              (value) => WafExpressionSetExpression.fromJson(value))
+          .map<WafExpressionSetExpression>((value) =>
+              WafExpressionSetExpression.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -100508,7 +102433,8 @@ class WeightedBackendService {
       backendService = _json['backendService'] as core.String;
     }
     if (_json.containsKey('headerAction')) {
-      headerAction = HttpHeaderAction.fromJson(_json['headerAction']);
+      headerAction = HttpHeaderAction.fromJson(
+          _json['headerAction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('weight')) {
       weight = _json['weight'] as core.int;
@@ -100613,8 +102539,9 @@ class XpnHostListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<XpnHostListWarningData>(
-              (value) => XpnHostListWarningData.fromJson(value))
+          .map<XpnHostListWarningData>((value) =>
+              XpnHostListWarningData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -100669,7 +102596,8 @@ class XpnHostList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Project>((value) => Project.fromJson(value))
+          .map<Project>((value) =>
+              Project.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -100682,7 +102610,8 @@ class XpnHostList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = XpnHostListWarning.fromJson(_json['warning']);
+      warning = XpnHostListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -100799,7 +102728,8 @@ class Zone {
       creationTimestamp = _json['creationTimestamp'] as core.String;
     }
     if (_json.containsKey('deprecated')) {
-      deprecated = DeprecationStatus.fromJson(_json['deprecated']);
+      deprecated = DeprecationStatus.fromJson(
+          _json['deprecated'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -100943,8 +102873,8 @@ class ZoneListWarning {
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ZoneListWarningData>(
-              (value) => ZoneListWarningData.fromJson(value))
+          .map<ZoneListWarningData>((value) => ZoneListWarningData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -100999,7 +102929,8 @@ class ZoneList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Zone>((value) => Zone.fromJson(value))
+          .map<Zone>((value) =>
+              Zone.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -101012,7 +102943,8 @@ class ZoneList {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
-      warning = ZoneListWarning.fromJson(_json['warning']);
+      warning = ZoneListWarning.fromJson(
+          _json['warning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -101067,7 +102999,8 @@ class ZoneSetLabelsRequest {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -101109,14 +103042,16 @@ class ZoneSetPolicyRequest {
   ZoneSetPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 

@@ -125,8 +125,8 @@ core.List<api.Voice> buildUnnamed4543() {
 
 void checkUnnamed4543(core.List<api.Voice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVoice(o[0]);
-  checkVoice(o[1]);
+  checkVoice(o[0] as api.Voice);
+  checkVoice(o[1] as api.Voice);
 }
 
 core.int buildCounterListVoicesResponse = 0;
@@ -185,9 +185,9 @@ api.SynthesizeSpeechRequest buildSynthesizeSpeechRequest() {
 void checkSynthesizeSpeechRequest(api.SynthesizeSpeechRequest o) {
   buildCounterSynthesizeSpeechRequest++;
   if (buildCounterSynthesizeSpeechRequest < 3) {
-    checkAudioConfig(o.audioConfig);
-    checkSynthesisInput(o.input);
-    checkVoiceSelectionParams(o.voice);
+    checkAudioConfig(o.audioConfig as api.AudioConfig);
+    checkSynthesisInput(o.input as api.SynthesisInput);
+    checkVoiceSelectionParams(o.voice as api.VoiceSelectionParams);
   }
   buildCounterSynthesizeSpeechRequest--;
 }
@@ -277,7 +277,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAudioConfig();
       var od = api.AudioConfig.fromJson(o.toJson());
-      checkAudioConfig(od);
+      checkAudioConfig(od as api.AudioConfig);
     });
   });
 
@@ -285,7 +285,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListVoicesResponse();
       var od = api.ListVoicesResponse.fromJson(o.toJson());
-      checkListVoicesResponse(od);
+      checkListVoicesResponse(od as api.ListVoicesResponse);
     });
   });
 
@@ -293,7 +293,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSynthesisInput();
       var od = api.SynthesisInput.fromJson(o.toJson());
-      checkSynthesisInput(od);
+      checkSynthesisInput(od as api.SynthesisInput);
     });
   });
 
@@ -301,7 +301,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSynthesizeSpeechRequest();
       var od = api.SynthesizeSpeechRequest.fromJson(o.toJson());
-      checkSynthesizeSpeechRequest(od);
+      checkSynthesizeSpeechRequest(od as api.SynthesizeSpeechRequest);
     });
   });
 
@@ -309,7 +309,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSynthesizeSpeechResponse();
       var od = api.SynthesizeSpeechResponse.fromJson(o.toJson());
-      checkSynthesizeSpeechResponse(od);
+      checkSynthesizeSpeechResponse(od as api.SynthesizeSpeechResponse);
     });
   });
 
@@ -317,7 +317,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVoice();
       var od = api.Voice.fromJson(o.toJson());
-      checkVoice(od);
+      checkVoice(od as api.Voice);
     });
   });
 
@@ -325,7 +325,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVoiceSelectionParams();
       var od = api.VoiceSelectionParams.fromJson(o.toJson());
-      checkVoiceSelectionParams(od);
+      checkVoiceSelectionParams(od as api.VoiceSelectionParams);
     });
   });
 
@@ -336,8 +336,9 @@ void main() {
       var arg_request = buildSynthesizeSpeechRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SynthesizeSpeechRequest.fromJson(json);
-        checkSynthesizeSpeechRequest(obj);
+        var obj = api.SynthesizeSpeechRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSynthesizeSpeechRequest(obj as api.SynthesizeSpeechRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -376,7 +377,7 @@ void main() {
       res
           .synthesize(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSynthesizeSpeechResponse(response);
+        checkSynthesizeSpeechResponse(response as api.SynthesizeSpeechResponse);
       })));
     });
   });
@@ -427,7 +428,7 @@ void main() {
       res
           .list(languageCode: arg_languageCode, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVoicesResponse(response);
+        checkListVoicesResponse(response as api.ListVoicesResponse);
       })));
     });
   });

@@ -111,7 +111,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -179,7 +181,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -254,7 +259,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a queue. This command will delete the queue even if it has tasks
@@ -310,7 +317,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a queue.
@@ -360,7 +369,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a Queue. Returns an empty policy if the
@@ -422,7 +433,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists queues. Queues are returned in lexicographical order.
@@ -503,7 +516,10 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListQueuesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListQueuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a queue. This method creates the queue if it does not exist and
@@ -584,7 +600,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pauses the queue. If a queue is paused then the system will stop
@@ -643,7 +661,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Purges a queue by deleting all of its tasks. All tasks created before this
@@ -702,7 +722,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resume a queue. This method resumes a queue after it has been PAUSED or
@@ -764,7 +786,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Queue.fromJson(data));
+    return _response.then(
+      (data) => Queue.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy for a Queue. Replaces any existing policy.
@@ -828,7 +852,9 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on a Queue. If the resource does not
@@ -891,7 +917,10 @@ class ProjectsLocationsQueuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -957,7 +986,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a task. A task can be deleted if it is scheduled or dispatched. A
@@ -1010,7 +1041,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a task.
@@ -1083,7 +1116,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the tasks in a queue. By default, only the BASIC view is retrieved
@@ -1177,7 +1212,10 @@ class ProjectsLocationsQueuesTasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTasksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTasksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Forces a task to run now. When this method is called, Cloud Tasks will
@@ -1246,7 +1284,9 @@ class ProjectsLocationsQueuesTasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1357,14 +1397,16 @@ class AppEngineHttpRequest {
 
   AppEngineHttpRequest.fromJson(core.Map _json) {
     if (_json.containsKey('appEngineRouting')) {
-      appEngineRouting = AppEngineRouting.fromJson(_json['appEngineRouting']);
+      appEngineRouting = AppEngineRouting.fromJson(
+          _json['appEngineRouting'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('body')) {
       body = _json['body'] as core.String;
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
@@ -1509,7 +1551,8 @@ class Attempt {
       dispatchTime = _json['dispatchTime'] as core.String;
     }
     if (_json.containsKey('responseStatus')) {
-      responseStatus = Status.fromJson(_json['responseStatus']);
+      responseStatus = Status.fromJson(
+          _json['responseStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responseTime')) {
       responseTime = _json['responseTime'] as core.String;
@@ -1594,7 +1637,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1675,7 +1719,8 @@ class CreateTaskRequest {
       responseView = _json['responseView'] as core.String;
     }
     if (_json.containsKey('task')) {
-      task = Task.fromJson(_json['task']);
+      task =
+          Task.fromJson(_json['task'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1787,7 +1832,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1918,17 +1964,20 @@ class HttpRequest {
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
       httpMethod = _json['httpMethod'] as core.String;
     }
     if (_json.containsKey('oauthToken')) {
-      oauthToken = OAuthToken.fromJson(_json['oauthToken']);
+      oauthToken = OAuthToken.fromJson(
+          _json['oauthToken'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oidcToken')) {
-      oidcToken = OidcToken.fromJson(_json['oidcToken']);
+      oidcToken = OidcToken.fromJson(
+          _json['oidcToken'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -1972,7 +2021,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2011,7 +2061,8 @@ class ListQueuesResponse {
     }
     if (_json.containsKey('queues')) {
       queues = (_json['queues'] as core.List)
-          .map<Queue>((value) => Queue.fromJson(value))
+          .map<Queue>((value) =>
+              Queue.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2046,7 +2097,8 @@ class ListTasksResponse {
     }
     if (_json.containsKey('tasks')) {
       tasks = (_json['tasks'] as core.List)
-          .map<Task>((value) => Task.fromJson(value))
+          .map<Task>((value) =>
+              Task.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2095,7 +2147,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -2103,7 +2156,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2300,7 +2354,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2429,8 +2484,9 @@ class Queue {
 
   Queue.fromJson(core.Map _json) {
     if (_json.containsKey('appEngineRoutingOverride')) {
-      appEngineRoutingOverride =
-          AppEngineRouting.fromJson(_json['appEngineRoutingOverride']);
+      appEngineRoutingOverride = AppEngineRouting.fromJson(
+          _json['appEngineRoutingOverride']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2439,14 +2495,17 @@ class Queue {
       purgeTime = _json['purgeTime'] as core.String;
     }
     if (_json.containsKey('rateLimits')) {
-      rateLimits = RateLimits.fromJson(_json['rateLimits']);
+      rateLimits = RateLimits.fromJson(
+          _json['rateLimits'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retryConfig')) {
-      retryConfig = RetryConfig.fromJson(_json['retryConfig']);
+      retryConfig = RetryConfig.fromJson(
+          _json['retryConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stackdriverLoggingConfig')) {
-      stackdriverLoggingConfig =
-          StackdriverLoggingConfig.fromJson(_json['stackdriverLoggingConfig']);
+      stackdriverLoggingConfig = StackdriverLoggingConfig.fromJson(
+          _json['stackdriverLoggingConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -2710,7 +2769,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2781,7 +2841,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -2895,8 +2956,8 @@ class Task {
 
   Task.fromJson(core.Map _json) {
     if (_json.containsKey('appEngineHttpRequest')) {
-      appEngineHttpRequest =
-          AppEngineHttpRequest.fromJson(_json['appEngineHttpRequest']);
+      appEngineHttpRequest = AppEngineHttpRequest.fromJson(
+          _json['appEngineHttpRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -2908,13 +2969,16 @@ class Task {
       dispatchDeadline = _json['dispatchDeadline'] as core.String;
     }
     if (_json.containsKey('firstAttempt')) {
-      firstAttempt = Attempt.fromJson(_json['firstAttempt']);
+      firstAttempt = Attempt.fromJson(
+          _json['firstAttempt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpRequest')) {
-      httpRequest = HttpRequest.fromJson(_json['httpRequest']);
+      httpRequest = HttpRequest.fromJson(
+          _json['httpRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastAttempt')) {
-      lastAttempt = Attempt.fromJson(_json['lastAttempt']);
+      lastAttempt = Attempt.fromJson(
+          _json['lastAttempt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;

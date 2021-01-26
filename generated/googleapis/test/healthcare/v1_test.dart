@@ -83,8 +83,8 @@ core.List<api.AuditLogConfig> buildUnnamed2598() {
 
 void checkUnnamed2598(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -171,7 +171,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2600(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -226,7 +226,7 @@ api.CreateMessageRequest buildCreateMessageRequest() {
 void checkCreateMessageRequest(api.CreateMessageRequest o) {
   buildCounterCreateMessageRequest++;
   if (buildCounterCreateMessageRequest < 3) {
-    checkMessage(o.message);
+    checkMessage(o.message as api.Message);
   }
   buildCounterCreateMessageRequest--;
 }
@@ -307,10 +307,10 @@ api.DeidentifyConfig buildDeidentifyConfig() {
 void checkDeidentifyConfig(api.DeidentifyConfig o) {
   buildCounterDeidentifyConfig++;
   if (buildCounterDeidentifyConfig < 3) {
-    checkDicomConfig(o.dicom);
-    checkFhirConfig(o.fhir);
-    checkImageConfig(o.image);
-    checkTextConfig(o.text);
+    checkDicomConfig(o.dicom as api.DicomConfig);
+    checkFhirConfig(o.fhir as api.FhirConfig);
+    checkImageConfig(o.image as api.ImageConfig);
+    checkTextConfig(o.text as api.TextConfig);
   }
   buildCounterDeidentifyConfig--;
 }
@@ -330,7 +330,7 @@ api.DeidentifyDatasetRequest buildDeidentifyDatasetRequest() {
 void checkDeidentifyDatasetRequest(api.DeidentifyDatasetRequest o) {
   buildCounterDeidentifyDatasetRequest++;
   if (buildCounterDeidentifyDatasetRequest < 3) {
-    checkDeidentifyConfig(o.config);
+    checkDeidentifyConfig(o.config as api.DeidentifyConfig);
     unittest.expect(o.destinationDataset, unittest.equals('foo'));
   }
   buildCounterDeidentifyDatasetRequest--;
@@ -352,9 +352,9 @@ api.DeidentifyDicomStoreRequest buildDeidentifyDicomStoreRequest() {
 void checkDeidentifyDicomStoreRequest(api.DeidentifyDicomStoreRequest o) {
   buildCounterDeidentifyDicomStoreRequest++;
   if (buildCounterDeidentifyDicomStoreRequest < 3) {
-    checkDeidentifyConfig(o.config);
+    checkDeidentifyConfig(o.config as api.DeidentifyConfig);
     unittest.expect(o.destinationStore, unittest.equals('foo'));
-    checkDicomFilterConfig(o.filterConfig);
+    checkDicomFilterConfig(o.filterConfig as api.DicomFilterConfig);
   }
   buildCounterDeidentifyDicomStoreRequest--;
 }
@@ -375,9 +375,9 @@ api.DeidentifyFhirStoreRequest buildDeidentifyFhirStoreRequest() {
 void checkDeidentifyFhirStoreRequest(api.DeidentifyFhirStoreRequest o) {
   buildCounterDeidentifyFhirStoreRequest++;
   if (buildCounterDeidentifyFhirStoreRequest < 3) {
-    checkDeidentifyConfig(o.config);
+    checkDeidentifyConfig(o.config as api.DeidentifyConfig);
     unittest.expect(o.destinationStore, unittest.equals('foo'));
-    checkFhirFilter(o.resourceFilter);
+    checkFhirFilter(o.resourceFilter as api.FhirFilter);
   }
   buildCounterDeidentifyFhirStoreRequest--;
 }
@@ -415,8 +415,8 @@ void checkDicomConfig(api.DicomConfig o) {
   buildCounterDicomConfig++;
   if (buildCounterDicomConfig < 3) {
     unittest.expect(o.filterProfile, unittest.equals('foo'));
-    checkTagFilterList(o.keepList);
-    checkTagFilterList(o.removeList);
+    checkTagFilterList(o.keepList as api.TagFilterList);
+    checkTagFilterList(o.removeList as api.TagFilterList);
     unittest.expect(o.skipIdRedaction, unittest.isTrue);
   }
   buildCounterDicomConfig--;
@@ -472,7 +472,7 @@ void checkDicomStore(api.DicomStore o) {
   if (buildCounterDicomStore < 3) {
     checkUnnamed2601(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkNotificationConfig(o.notificationConfig);
+    checkNotificationConfig(o.notificationConfig as api.NotificationConfig);
   }
   buildCounterDicomStore--;
 }
@@ -508,8 +508,10 @@ api.ExportDicomDataRequest buildExportDicomDataRequest() {
 void checkExportDicomDataRequest(api.ExportDicomDataRequest o) {
   buildCounterExportDicomDataRequest++;
   if (buildCounterExportDicomDataRequest < 3) {
-    checkGoogleCloudHealthcareV1DicomBigQueryDestination(o.bigqueryDestination);
-    checkGoogleCloudHealthcareV1DicomGcsDestination(o.gcsDestination);
+    checkGoogleCloudHealthcareV1DicomBigQueryDestination(o.bigqueryDestination
+        as api.GoogleCloudHealthcareV1DicomBigQueryDestination);
+    checkGoogleCloudHealthcareV1DicomGcsDestination(
+        o.gcsDestination as api.GoogleCloudHealthcareV1DicomGcsDestination);
   }
   buildCounterExportDicomDataRequest--;
 }
@@ -545,8 +547,10 @@ api.ExportResourcesRequest buildExportResourcesRequest() {
 void checkExportResourcesRequest(api.ExportResourcesRequest o) {
   buildCounterExportResourcesRequest++;
   if (buildCounterExportResourcesRequest < 3) {
-    checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination);
-    checkGoogleCloudHealthcareV1FhirGcsDestination(o.gcsDestination);
+    checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination
+        as api.GoogleCloudHealthcareV1FhirBigQueryDestination);
+    checkGoogleCloudHealthcareV1FhirGcsDestination(
+        o.gcsDestination as api.GoogleCloudHealthcareV1FhirGcsDestination);
   }
   buildCounterExportResourcesRequest--;
 }
@@ -600,8 +604,8 @@ core.List<api.FieldMetadata> buildUnnamed2602() {
 
 void checkUnnamed2602(core.List<api.FieldMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFieldMetadata(o[0]);
-  checkFieldMetadata(o[1]);
+  checkFieldMetadata(o[0] as api.FieldMetadata);
+  checkFieldMetadata(o[1] as api.FieldMetadata);
 }
 
 core.int buildCounterFhirConfig = 0;
@@ -637,7 +641,7 @@ api.FhirFilter buildFhirFilter() {
 void checkFhirFilter(api.FhirFilter o) {
   buildCounterFhirFilter++;
   if (buildCounterFhirFilter < 3) {
-    checkResources(o.resources);
+    checkResources(o.resources as api.Resources);
   }
   buildCounterFhirFilter--;
 }
@@ -664,8 +668,8 @@ core.List<api.StreamConfig> buildUnnamed2604() {
 
 void checkUnnamed2604(core.List<api.StreamConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStreamConfig(o[0]);
-  checkStreamConfig(o[1]);
+  checkStreamConfig(o[0] as api.StreamConfig);
+  checkStreamConfig(o[1] as api.StreamConfig);
 }
 
 core.int buildCounterFhirStore = 0;
@@ -694,7 +698,7 @@ void checkFhirStore(api.FhirStore o) {
     unittest.expect(o.enableUpdateCreate, unittest.isTrue);
     checkUnnamed2603(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkNotificationConfig(o.notificationConfig);
+    checkNotificationConfig(o.notificationConfig as api.NotificationConfig);
     checkUnnamed2604(o.streamConfigs);
     unittest.expect(o.version, unittest.equals('foo'));
   }
@@ -863,7 +867,7 @@ void checkGoogleCloudHealthcareV1FhirBigQueryDestination(
   if (buildCounterGoogleCloudHealthcareV1FhirBigQueryDestination < 3) {
     unittest.expect(o.datasetUri, unittest.equals('foo'));
     unittest.expect(o.force, unittest.isTrue);
-    checkSchemaConfig(o.schemaConfig);
+    checkSchemaConfig(o.schemaConfig as api.SchemaConfig);
   }
   buildCounterGoogleCloudHealthcareV1FhirBigQueryDestination--;
 }
@@ -953,8 +957,8 @@ core.List<api.Hl7V2NotificationConfig> buildUnnamed2607() {
 
 void checkUnnamed2607(core.List<api.Hl7V2NotificationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHl7V2NotificationConfig(o[0]);
-  checkHl7V2NotificationConfig(o[1]);
+  checkHl7V2NotificationConfig(o[0] as api.Hl7V2NotificationConfig);
+  checkHl7V2NotificationConfig(o[1] as api.Hl7V2NotificationConfig);
 }
 
 core.int buildCounterHl7V2Store = 0;
@@ -978,7 +982,7 @@ void checkHl7V2Store(api.Hl7V2Store o) {
     checkUnnamed2606(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2607(o.notificationConfigs);
-    checkParserConfig(o.parserConfig);
+    checkParserConfig(o.parserConfig as api.ParserConfig);
     unittest.expect(o.rejectDuplicateMessage, unittest.isTrue);
   }
   buildCounterHl7V2Store--;
@@ -1082,7 +1086,8 @@ api.ImportDicomDataRequest buildImportDicomDataRequest() {
 void checkImportDicomDataRequest(api.ImportDicomDataRequest o) {
   buildCounterImportDicomDataRequest++;
   if (buildCounterImportDicomDataRequest < 3) {
-    checkGoogleCloudHealthcareV1DicomGcsSource(o.gcsSource);
+    checkGoogleCloudHealthcareV1DicomGcsSource(
+        o.gcsSource as api.GoogleCloudHealthcareV1DicomGcsSource);
   }
   buildCounterImportDicomDataRequest--;
 }
@@ -1118,7 +1123,8 @@ void checkImportResourcesRequest(api.ImportResourcesRequest o) {
   buildCounterImportResourcesRequest++;
   if (buildCounterImportResourcesRequest < 3) {
     unittest.expect(o.contentStructure, unittest.equals('foo'));
-    checkGoogleCloudHealthcareV1FhirGcsSource(o.gcsSource);
+    checkGoogleCloudHealthcareV1FhirGcsSource(
+        o.gcsSource as api.GoogleCloudHealthcareV1FhirGcsSource);
   }
   buildCounterImportResourcesRequest--;
 }
@@ -1170,12 +1176,13 @@ api.InfoTypeTransformation buildInfoTypeTransformation() {
 void checkInfoTypeTransformation(api.InfoTypeTransformation o) {
   buildCounterInfoTypeTransformation++;
   if (buildCounterInfoTypeTransformation < 3) {
-    checkCharacterMaskConfig(o.characterMaskConfig);
-    checkCryptoHashConfig(o.cryptoHashConfig);
-    checkDateShiftConfig(o.dateShiftConfig);
+    checkCharacterMaskConfig(o.characterMaskConfig as api.CharacterMaskConfig);
+    checkCryptoHashConfig(o.cryptoHashConfig as api.CryptoHashConfig);
+    checkDateShiftConfig(o.dateShiftConfig as api.DateShiftConfig);
     checkUnnamed2610(o.infoTypes);
-    checkRedactConfig(o.redactConfig);
-    checkReplaceWithInfoTypeConfig(o.replaceWithInfoTypeConfig);
+    checkRedactConfig(o.redactConfig as api.RedactConfig);
+    checkReplaceWithInfoTypeConfig(
+        o.replaceWithInfoTypeConfig as api.ReplaceWithInfoTypeConfig);
   }
   buildCounterInfoTypeTransformation--;
 }
@@ -1194,7 +1201,7 @@ api.IngestMessageRequest buildIngestMessageRequest() {
 void checkIngestMessageRequest(api.IngestMessageRequest o) {
   buildCounterIngestMessageRequest++;
   if (buildCounterIngestMessageRequest < 3) {
-    checkMessage(o.message);
+    checkMessage(o.message as api.Message);
   }
   buildCounterIngestMessageRequest--;
 }
@@ -1215,7 +1222,7 @@ void checkIngestMessageResponse(api.IngestMessageResponse o) {
   buildCounterIngestMessageResponse++;
   if (buildCounterIngestMessageResponse < 3) {
     unittest.expect(o.hl7Ack, unittest.equals('foo'));
-    checkMessage(o.message);
+    checkMessage(o.message as api.Message);
   }
   buildCounterIngestMessageResponse--;
 }
@@ -1229,8 +1236,8 @@ core.List<api.Dataset> buildUnnamed2611() {
 
 void checkUnnamed2611(core.List<api.Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataset(o[0]);
-  checkDataset(o[1]);
+  checkDataset(o[0] as api.Dataset);
+  checkDataset(o[1] as api.Dataset);
 }
 
 core.int buildCounterListDatasetsResponse = 0;
@@ -1263,8 +1270,8 @@ core.List<api.DicomStore> buildUnnamed2612() {
 
 void checkUnnamed2612(core.List<api.DicomStore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDicomStore(o[0]);
-  checkDicomStore(o[1]);
+  checkDicomStore(o[0] as api.DicomStore);
+  checkDicomStore(o[1] as api.DicomStore);
 }
 
 core.int buildCounterListDicomStoresResponse = 0;
@@ -1297,8 +1304,8 @@ core.List<api.FhirStore> buildUnnamed2613() {
 
 void checkUnnamed2613(core.List<api.FhirStore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFhirStore(o[0]);
-  checkFhirStore(o[1]);
+  checkFhirStore(o[0] as api.FhirStore);
+  checkFhirStore(o[1] as api.FhirStore);
 }
 
 core.int buildCounterListFhirStoresResponse = 0;
@@ -1331,8 +1338,8 @@ core.List<api.Hl7V2Store> buildUnnamed2614() {
 
 void checkUnnamed2614(core.List<api.Hl7V2Store> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHl7V2Store(o[0]);
-  checkHl7V2Store(o[1]);
+  checkHl7V2Store(o[0] as api.Hl7V2Store);
+  checkHl7V2Store(o[1] as api.Hl7V2Store);
 }
 
 core.int buildCounterListHl7V2StoresResponse = 0;
@@ -1365,8 +1372,8 @@ core.List<api.Location> buildUnnamed2615() {
 
 void checkUnnamed2615(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -1399,8 +1406,8 @@ core.List<api.Message> buildUnnamed2616() {
 
 void checkUnnamed2616(core.List<api.Message> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMessage(o[0]);
-  checkMessage(o[1]);
+  checkMessage(o[0] as api.Message);
+  checkMessage(o[1] as api.Message);
 }
 
 core.int buildCounterListMessagesResponse = 0;
@@ -1433,8 +1440,8 @@ core.List<api.Operation> buildUnnamed2617() {
 
 void checkUnnamed2617(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -1549,8 +1556,8 @@ core.List<api.PatientId> buildUnnamed2621() {
 
 void checkUnnamed2621(core.List<api.PatientId> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPatientId(o[0]);
-  checkPatientId(o[1]);
+  checkPatientId(o[0] as api.PatientId);
+  checkPatientId(o[1] as api.PatientId);
 }
 
 core.int buildCounterMessage = 0;
@@ -1580,7 +1587,7 @@ void checkMessage(api.Message o) {
     checkUnnamed2620(o.labels);
     unittest.expect(o.messageType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkParsedData(o.parsedData);
+    checkParsedData(o.parsedData as api.ParsedData);
     checkUnnamed2621(o.patientIds);
     unittest.expect(o.sendFacility, unittest.equals('foo'));
     unittest.expect(o.sendTime, unittest.equals('foo'));
@@ -1684,7 +1691,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed2622(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2623(o.response);
@@ -1713,7 +1720,7 @@ void checkOperationMetadata(api.OperationMetadata o) {
   if (buildCounterOperationMetadata < 3) {
     unittest.expect(o.apiMethodName, unittest.equals('foo'));
     unittest.expect(o.cancelRequested, unittest.isTrue);
-    checkProgressCounter(o.counter);
+    checkProgressCounter(o.counter as api.ProgressCounter);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.logsUrl, unittest.equals('foo'));
@@ -1730,8 +1737,8 @@ core.List<api.Segment> buildUnnamed2624() {
 
 void checkUnnamed2624(core.List<api.Segment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegment(o[0]);
-  checkSegment(o[1]);
+  checkSegment(o[0] as api.Segment);
+  checkSegment(o[1] as api.Segment);
 }
 
 core.int buildCounterParsedData = 0;
@@ -1804,8 +1811,8 @@ core.List<api.AuditConfig> buildUnnamed2625() {
 
 void checkUnnamed2625(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed2626() {
@@ -1817,8 +1824,8 @@ core.List<api.Binding> buildUnnamed2626() {
 
 void checkUnnamed2626(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -2022,7 +2029,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -2122,7 +2129,8 @@ api.StreamConfig buildStreamConfig() {
 void checkStreamConfig(api.StreamConfig o) {
   buildCounterStreamConfig++;
   if (buildCounterStreamConfig < 3) {
-    checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination);
+    checkGoogleCloudHealthcareV1FhirBigQueryDestination(o.bigqueryDestination
+        as api.GoogleCloudHealthcareV1FhirBigQueryDestination);
     checkUnnamed2631(o.resourceTypes);
   }
   buildCounterStreamConfig--;
@@ -2233,8 +2241,8 @@ core.List<api.InfoTypeTransformation> buildUnnamed2635() {
 
 void checkUnnamed2635(core.List<api.InfoTypeTransformation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInfoTypeTransformation(o[0]);
-  checkInfoTypeTransformation(o[1]);
+  checkInfoTypeTransformation(o[0] as api.InfoTypeTransformation);
+  checkInfoTypeTransformation(o[1] as api.InfoTypeTransformation);
 }
 
 core.int buildCounterTextConfig = 0;
@@ -2261,7 +2269,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -2269,7 +2277,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -2277,7 +2285,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -2285,7 +2293,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -2293,7 +2301,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCharacterMaskConfig();
       var od = api.CharacterMaskConfig.fromJson(o.toJson());
-      checkCharacterMaskConfig(od);
+      checkCharacterMaskConfig(od as api.CharacterMaskConfig);
     });
   });
 
@@ -2301,7 +2309,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateMessageRequest();
       var od = api.CreateMessageRequest.fromJson(o.toJson());
-      checkCreateMessageRequest(od);
+      checkCreateMessageRequest(od as api.CreateMessageRequest);
     });
   });
 
@@ -2309,7 +2317,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCryptoHashConfig();
       var od = api.CryptoHashConfig.fromJson(o.toJson());
-      checkCryptoHashConfig(od);
+      checkCryptoHashConfig(od as api.CryptoHashConfig);
     });
   });
 
@@ -2317,7 +2325,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataset();
       var od = api.Dataset.fromJson(o.toJson());
-      checkDataset(od);
+      checkDataset(od as api.Dataset);
     });
   });
 
@@ -2325,7 +2333,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDateShiftConfig();
       var od = api.DateShiftConfig.fromJson(o.toJson());
-      checkDateShiftConfig(od);
+      checkDateShiftConfig(od as api.DateShiftConfig);
     });
   });
 
@@ -2333,7 +2341,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeidentifyConfig();
       var od = api.DeidentifyConfig.fromJson(o.toJson());
-      checkDeidentifyConfig(od);
+      checkDeidentifyConfig(od as api.DeidentifyConfig);
     });
   });
 
@@ -2341,7 +2349,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeidentifyDatasetRequest();
       var od = api.DeidentifyDatasetRequest.fromJson(o.toJson());
-      checkDeidentifyDatasetRequest(od);
+      checkDeidentifyDatasetRequest(od as api.DeidentifyDatasetRequest);
     });
   });
 
@@ -2349,7 +2357,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeidentifyDicomStoreRequest();
       var od = api.DeidentifyDicomStoreRequest.fromJson(o.toJson());
-      checkDeidentifyDicomStoreRequest(od);
+      checkDeidentifyDicomStoreRequest(od as api.DeidentifyDicomStoreRequest);
     });
   });
 
@@ -2357,7 +2365,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeidentifyFhirStoreRequest();
       var od = api.DeidentifyFhirStoreRequest.fromJson(o.toJson());
-      checkDeidentifyFhirStoreRequest(od);
+      checkDeidentifyFhirStoreRequest(od as api.DeidentifyFhirStoreRequest);
     });
   });
 
@@ -2365,7 +2373,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeidentifySummary();
       var od = api.DeidentifySummary.fromJson(o.toJson());
-      checkDeidentifySummary(od);
+      checkDeidentifySummary(od as api.DeidentifySummary);
     });
   });
 
@@ -2373,7 +2381,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDicomConfig();
       var od = api.DicomConfig.fromJson(o.toJson());
-      checkDicomConfig(od);
+      checkDicomConfig(od as api.DicomConfig);
     });
   });
 
@@ -2381,7 +2389,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDicomFilterConfig();
       var od = api.DicomFilterConfig.fromJson(o.toJson());
-      checkDicomFilterConfig(od);
+      checkDicomFilterConfig(od as api.DicomFilterConfig);
     });
   });
 
@@ -2389,7 +2397,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDicomStore();
       var od = api.DicomStore.fromJson(o.toJson());
-      checkDicomStore(od);
+      checkDicomStore(od as api.DicomStore);
     });
   });
 
@@ -2397,7 +2405,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2405,7 +2413,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportDicomDataRequest();
       var od = api.ExportDicomDataRequest.fromJson(o.toJson());
-      checkExportDicomDataRequest(od);
+      checkExportDicomDataRequest(od as api.ExportDicomDataRequest);
     });
   });
 
@@ -2413,7 +2421,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportDicomDataResponse();
       var od = api.ExportDicomDataResponse.fromJson(o.toJson());
-      checkExportDicomDataResponse(od);
+      checkExportDicomDataResponse(od as api.ExportDicomDataResponse);
     });
   });
 
@@ -2421,7 +2429,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportResourcesRequest();
       var od = api.ExportResourcesRequest.fromJson(o.toJson());
-      checkExportResourcesRequest(od);
+      checkExportResourcesRequest(od as api.ExportResourcesRequest);
     });
   });
 
@@ -2429,7 +2437,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportResourcesResponse();
       var od = api.ExportResourcesResponse.fromJson(o.toJson());
-      checkExportResourcesResponse(od);
+      checkExportResourcesResponse(od as api.ExportResourcesResponse);
     });
   });
 
@@ -2437,7 +2445,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -2445,7 +2453,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFhirConfig();
       var od = api.FhirConfig.fromJson(o.toJson());
-      checkFhirConfig(od);
+      checkFhirConfig(od as api.FhirConfig);
     });
   });
 
@@ -2453,7 +2461,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFhirFilter();
       var od = api.FhirFilter.fromJson(o.toJson());
-      checkFhirFilter(od);
+      checkFhirFilter(od as api.FhirFilter);
     });
   });
 
@@ -2461,7 +2469,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFhirStore();
       var od = api.FhirStore.fromJson(o.toJson());
-      checkFhirStore(od);
+      checkFhirStore(od as api.FhirStore);
     });
   });
 
@@ -2469,7 +2477,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFieldMetadata();
       var od = api.FieldMetadata.fromJson(o.toJson());
-      checkFieldMetadata(od);
+      checkFieldMetadata(od as api.FieldMetadata);
     });
   });
 
@@ -2481,7 +2489,8 @@ void main() {
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary
           .fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary(od);
+      checkGoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary(od
+          as api.GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary);
     });
   });
 
@@ -2493,7 +2502,8 @@ void main() {
           buildGoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary();
       var od = api.GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary
           .fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary(od);
+      checkGoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary(od
+          as api.GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary);
     });
   });
 
@@ -2503,7 +2513,8 @@ void main() {
       var o = buildGoogleCloudHealthcareV1DicomBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
           o.toJson());
-      checkGoogleCloudHealthcareV1DicomBigQueryDestination(od);
+      checkGoogleCloudHealthcareV1DicomBigQueryDestination(
+          od as api.GoogleCloudHealthcareV1DicomBigQueryDestination);
     });
   });
 
@@ -2512,7 +2523,8 @@ void main() {
       var o = buildGoogleCloudHealthcareV1DicomGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1DicomGcsDestination.fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1DicomGcsDestination(od);
+      checkGoogleCloudHealthcareV1DicomGcsDestination(
+          od as api.GoogleCloudHealthcareV1DicomGcsDestination);
     });
   });
 
@@ -2520,7 +2532,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1DicomGcsSource();
       var od = api.GoogleCloudHealthcareV1DicomGcsSource.fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1DicomGcsSource(od);
+      checkGoogleCloudHealthcareV1DicomGcsSource(
+          od as api.GoogleCloudHealthcareV1DicomGcsSource);
     });
   });
 
@@ -2530,7 +2543,8 @@ void main() {
       var o = buildGoogleCloudHealthcareV1FhirBigQueryDestination();
       var od = api.GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
           o.toJson());
-      checkGoogleCloudHealthcareV1FhirBigQueryDestination(od);
+      checkGoogleCloudHealthcareV1FhirBigQueryDestination(
+          od as api.GoogleCloudHealthcareV1FhirBigQueryDestination);
     });
   });
 
@@ -2539,7 +2553,8 @@ void main() {
       var o = buildGoogleCloudHealthcareV1FhirGcsDestination();
       var od =
           api.GoogleCloudHealthcareV1FhirGcsDestination.fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1FhirGcsDestination(od);
+      checkGoogleCloudHealthcareV1FhirGcsDestination(
+          od as api.GoogleCloudHealthcareV1FhirGcsDestination);
     });
   });
 
@@ -2547,7 +2562,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudHealthcareV1FhirGcsSource();
       var od = api.GoogleCloudHealthcareV1FhirGcsSource.fromJson(o.toJson());
-      checkGoogleCloudHealthcareV1FhirGcsSource(od);
+      checkGoogleCloudHealthcareV1FhirGcsSource(
+          od as api.GoogleCloudHealthcareV1FhirGcsSource);
     });
   });
 
@@ -2555,7 +2571,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHl7V2NotificationConfig();
       var od = api.Hl7V2NotificationConfig.fromJson(o.toJson());
-      checkHl7V2NotificationConfig(od);
+      checkHl7V2NotificationConfig(od as api.Hl7V2NotificationConfig);
     });
   });
 
@@ -2563,7 +2579,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHl7V2Store();
       var od = api.Hl7V2Store.fromJson(o.toJson());
-      checkHl7V2Store(od);
+      checkHl7V2Store(od as api.Hl7V2Store);
     });
   });
 
@@ -2571,7 +2587,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpBody();
       var od = api.HttpBody.fromJson(o.toJson());
-      checkHttpBody(od);
+      checkHttpBody(od as api.HttpBody);
     });
   });
 
@@ -2579,7 +2595,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageConfig();
       var od = api.ImageConfig.fromJson(o.toJson());
-      checkImageConfig(od);
+      checkImageConfig(od as api.ImageConfig);
     });
   });
 
@@ -2587,7 +2603,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportDicomDataRequest();
       var od = api.ImportDicomDataRequest.fromJson(o.toJson());
-      checkImportDicomDataRequest(od);
+      checkImportDicomDataRequest(od as api.ImportDicomDataRequest);
     });
   });
 
@@ -2595,7 +2611,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportDicomDataResponse();
       var od = api.ImportDicomDataResponse.fromJson(o.toJson());
-      checkImportDicomDataResponse(od);
+      checkImportDicomDataResponse(od as api.ImportDicomDataResponse);
     });
   });
 
@@ -2603,7 +2619,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportResourcesRequest();
       var od = api.ImportResourcesRequest.fromJson(o.toJson());
-      checkImportResourcesRequest(od);
+      checkImportResourcesRequest(od as api.ImportResourcesRequest);
     });
   });
 
@@ -2611,7 +2627,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportResourcesResponse();
       var od = api.ImportResourcesResponse.fromJson(o.toJson());
-      checkImportResourcesResponse(od);
+      checkImportResourcesResponse(od as api.ImportResourcesResponse);
     });
   });
 
@@ -2619,7 +2635,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInfoTypeTransformation();
       var od = api.InfoTypeTransformation.fromJson(o.toJson());
-      checkInfoTypeTransformation(od);
+      checkInfoTypeTransformation(od as api.InfoTypeTransformation);
     });
   });
 
@@ -2627,7 +2643,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIngestMessageRequest();
       var od = api.IngestMessageRequest.fromJson(o.toJson());
-      checkIngestMessageRequest(od);
+      checkIngestMessageRequest(od as api.IngestMessageRequest);
     });
   });
 
@@ -2635,7 +2651,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIngestMessageResponse();
       var od = api.IngestMessageResponse.fromJson(o.toJson());
-      checkIngestMessageResponse(od);
+      checkIngestMessageResponse(od as api.IngestMessageResponse);
     });
   });
 
@@ -2643,7 +2659,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDatasetsResponse();
       var od = api.ListDatasetsResponse.fromJson(o.toJson());
-      checkListDatasetsResponse(od);
+      checkListDatasetsResponse(od as api.ListDatasetsResponse);
     });
   });
 
@@ -2651,7 +2667,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDicomStoresResponse();
       var od = api.ListDicomStoresResponse.fromJson(o.toJson());
-      checkListDicomStoresResponse(od);
+      checkListDicomStoresResponse(od as api.ListDicomStoresResponse);
     });
   });
 
@@ -2659,7 +2675,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFhirStoresResponse();
       var od = api.ListFhirStoresResponse.fromJson(o.toJson());
-      checkListFhirStoresResponse(od);
+      checkListFhirStoresResponse(od as api.ListFhirStoresResponse);
     });
   });
 
@@ -2667,7 +2683,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListHl7V2StoresResponse();
       var od = api.ListHl7V2StoresResponse.fromJson(o.toJson());
-      checkListHl7V2StoresResponse(od);
+      checkListHl7V2StoresResponse(od as api.ListHl7V2StoresResponse);
     });
   });
 
@@ -2675,7 +2691,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -2683,7 +2699,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListMessagesResponse();
       var od = api.ListMessagesResponse.fromJson(o.toJson());
-      checkListMessagesResponse(od);
+      checkListMessagesResponse(od as api.ListMessagesResponse);
     });
   });
 
@@ -2691,7 +2707,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -2699,7 +2715,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -2707,7 +2723,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
-      checkMessage(od);
+      checkMessage(od as api.Message);
     });
   });
 
@@ -2715,7 +2731,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotificationConfig();
       var od = api.NotificationConfig.fromJson(o.toJson());
-      checkNotificationConfig(od);
+      checkNotificationConfig(od as api.NotificationConfig);
     });
   });
 
@@ -2723,7 +2739,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -2731,7 +2747,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -2739,7 +2755,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParsedData();
       var od = api.ParsedData.fromJson(o.toJson());
-      checkParsedData(od);
+      checkParsedData(od as api.ParsedData);
     });
   });
 
@@ -2747,7 +2763,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParserConfig();
       var od = api.ParserConfig.fromJson(o.toJson());
-      checkParserConfig(od);
+      checkParserConfig(od as api.ParserConfig);
     });
   });
 
@@ -2755,7 +2771,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPatientId();
       var od = api.PatientId.fromJson(o.toJson());
-      checkPatientId(od);
+      checkPatientId(od as api.PatientId);
     });
   });
 
@@ -2763,7 +2779,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -2771,7 +2787,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProgressCounter();
       var od = api.ProgressCounter.fromJson(o.toJson());
-      checkProgressCounter(od);
+      checkProgressCounter(od as api.ProgressCounter);
     });
   });
 
@@ -2779,7 +2795,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRedactConfig();
       var od = api.RedactConfig.fromJson(o.toJson());
-      checkRedactConfig(od);
+      checkRedactConfig(od as api.RedactConfig);
     });
   });
 
@@ -2787,7 +2803,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceWithInfoTypeConfig();
       var od = api.ReplaceWithInfoTypeConfig.fromJson(o.toJson());
-      checkReplaceWithInfoTypeConfig(od);
+      checkReplaceWithInfoTypeConfig(od as api.ReplaceWithInfoTypeConfig);
     });
   });
 
@@ -2795,7 +2811,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResources();
       var od = api.Resources.fromJson(o.toJson());
-      checkResources(od);
+      checkResources(od as api.Resources);
     });
   });
 
@@ -2803,7 +2819,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSchemaConfig();
       var od = api.SchemaConfig.fromJson(o.toJson());
-      checkSchemaConfig(od);
+      checkSchemaConfig(od as api.SchemaConfig);
     });
   });
 
@@ -2811,7 +2827,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchResourcesRequest();
       var od = api.SearchResourcesRequest.fromJson(o.toJson());
-      checkSearchResourcesRequest(od);
+      checkSearchResourcesRequest(od as api.SearchResourcesRequest);
     });
   });
 
@@ -2819,7 +2835,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
-      checkSegment(od);
+      checkSegment(od as api.Segment);
     });
   });
 
@@ -2827,7 +2843,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -2835,7 +2851,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -2843,7 +2859,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStreamConfig();
       var od = api.StreamConfig.fromJson(o.toJson());
-      checkStreamConfig(od);
+      checkStreamConfig(od as api.StreamConfig);
     });
   });
 
@@ -2851,7 +2867,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTagFilterList();
       var od = api.TagFilterList.fromJson(o.toJson());
-      checkTagFilterList(od);
+      checkTagFilterList(od as api.TagFilterList);
     });
   });
 
@@ -2859,7 +2875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -2867,7 +2883,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -2875,7 +2891,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextConfig();
       var od = api.TextConfig.fromJson(o.toJson());
-      checkTextConfig(od);
+      checkTextConfig(od as api.TextConfig);
     });
   });
 
@@ -2924,7 +2940,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -2984,7 +3000,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -2998,8 +3014,9 @@ void main() {
       var arg_datasetId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Dataset.fromJson(json);
-        checkDataset(obj);
+        var obj =
+            api.Dataset.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDataset(obj as api.Dataset);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3042,7 +3059,7 @@ void main() {
           .create(arg_request, arg_parent,
               datasetId: arg_datasetId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3053,8 +3070,9 @@ void main() {
       var arg_sourceDataset = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeidentifyDatasetRequest.fromJson(json);
-        checkDeidentifyDatasetRequest(obj);
+        var obj = api.DeidentifyDatasetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeidentifyDatasetRequest(obj as api.DeidentifyDatasetRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3094,7 +3112,7 @@ void main() {
       res
           .deidentify(arg_request, arg_sourceDataset, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3142,7 +3160,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3190,7 +3208,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataset(response);
+        checkDataset(response as api.Dataset);
       })));
     });
 
@@ -3245,7 +3263,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3302,7 +3320,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDatasetsResponse(response);
+        checkListDatasetsResponse(response as api.ListDatasetsResponse);
       })));
     });
 
@@ -3314,8 +3332,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Dataset.fromJson(json);
-        checkDataset(obj);
+        var obj =
+            api.Dataset.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDataset(obj as api.Dataset);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3358,7 +3377,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataset(response);
+        checkDataset(response as api.Dataset);
       })));
     });
 
@@ -3369,8 +3388,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3410,7 +3430,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3421,8 +3441,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3462,7 +3483,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -3477,8 +3499,9 @@ void main() {
       var arg_dicomStoreId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DicomStore.fromJson(json);
-        checkDicomStore(obj);
+        var obj = api.DicomStore.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDicomStore(obj as api.DicomStore);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3521,7 +3544,7 @@ void main() {
           .create(arg_request, arg_parent,
               dicomStoreId: arg_dicomStoreId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response);
+        checkDicomStore(response as api.DicomStore);
       })));
     });
 
@@ -3532,8 +3555,10 @@ void main() {
       var arg_sourceStore = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeidentifyDicomStoreRequest.fromJson(json);
-        checkDeidentifyDicomStoreRequest(obj);
+        var obj = api.DeidentifyDicomStoreRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeidentifyDicomStoreRequest(
+            obj as api.DeidentifyDicomStoreRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3573,7 +3598,7 @@ void main() {
       res
           .deidentify(arg_request, arg_sourceStore, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3621,7 +3646,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3632,8 +3657,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExportDicomDataRequest.fromJson(json);
-        checkExportDicomDataRequest(obj);
+        var obj = api.ExportDicomDataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExportDicomDataRequest(obj as api.ExportDicomDataRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3673,7 +3699,7 @@ void main() {
       res
           .export(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3721,7 +3747,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response);
+        checkDicomStore(response as api.DicomStore);
       })));
     });
 
@@ -3776,7 +3802,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3787,8 +3813,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportDicomDataRequest.fromJson(json);
-        checkImportDicomDataRequest(obj);
+        var obj = api.ImportDicomDataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkImportDicomDataRequest(obj as api.ImportDicomDataRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3828,7 +3855,7 @@ void main() {
       res
           .import(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3888,7 +3915,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDicomStoresResponse(response);
+        checkListDicomStoresResponse(response as api.ListDicomStoresResponse);
       })));
     });
 
@@ -3900,8 +3927,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DicomStore.fromJson(json);
-        checkDicomStore(obj);
+        var obj = api.DicomStore.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDicomStore(obj as api.DicomStore);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3944,7 +3972,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDicomStore(response);
+        checkDicomStore(response as api.DicomStore);
       })));
     });
 
@@ -3994,7 +4022,7 @@ void main() {
           .searchForInstances(arg_parent, arg_dicomWebPath,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4043,7 +4071,7 @@ void main() {
       res
           .searchForSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4092,7 +4120,7 @@ void main() {
       res
           .searchForStudies(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4103,8 +4131,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4144,7 +4173,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -4156,8 +4185,9 @@ void main() {
       var arg_dicomWebPath = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4198,7 +4228,7 @@ void main() {
           .storeInstances(arg_request, arg_parent, arg_dicomWebPath,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4209,8 +4239,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4250,7 +4281,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -4307,7 +4339,7 @@ void main() {
       res
           .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4361,7 +4393,7 @@ void main() {
       res
           .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4415,7 +4447,7 @@ void main() {
       res
           .retrieveStudy(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4470,7 +4502,7 @@ void main() {
           .searchForInstances(arg_parent, arg_dicomWebPath,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4524,7 +4556,7 @@ void main() {
       res
           .searchForSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4541,8 +4573,9 @@ void main() {
       var arg_dicomWebPath = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4583,7 +4616,7 @@ void main() {
           .storeInstances(arg_request, arg_parent, arg_dicomWebPath,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -4642,7 +4675,7 @@ void main() {
       res
           .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4697,7 +4730,7 @@ void main() {
       res
           .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4752,7 +4785,7 @@ void main() {
       res
           .retrieveSeries(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4808,7 +4841,7 @@ void main() {
           .searchForInstances(arg_parent, arg_dicomWebPath,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -4868,7 +4901,7 @@ void main() {
       res
           .delete(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4924,7 +4957,7 @@ void main() {
       res
           .retrieveInstance(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -4980,7 +5013,7 @@ void main() {
       res
           .retrieveMetadata(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -5036,7 +5069,7 @@ void main() {
       res
           .retrieveRendered(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -5097,7 +5130,7 @@ void main() {
       res
           .retrieveFrames(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -5154,7 +5187,7 @@ void main() {
       res
           .retrieveRendered(arg_parent, arg_dicomWebPath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -5168,8 +5201,9 @@ void main() {
       var arg_fhirStoreId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FhirStore.fromJson(json);
-        checkFhirStore(obj);
+        var obj =
+            api.FhirStore.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFhirStore(obj as api.FhirStore);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5212,7 +5246,7 @@ void main() {
           .create(arg_request, arg_parent,
               fhirStoreId: arg_fhirStoreId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response);
+        checkFhirStore(response as api.FhirStore);
       })));
     });
 
@@ -5223,8 +5257,9 @@ void main() {
       var arg_sourceStore = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeidentifyFhirStoreRequest.fromJson(json);
-        checkDeidentifyFhirStoreRequest(obj);
+        var obj = api.DeidentifyFhirStoreRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeidentifyFhirStoreRequest(obj as api.DeidentifyFhirStoreRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5264,7 +5299,7 @@ void main() {
       res
           .deidentify(arg_request, arg_sourceStore, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -5312,7 +5347,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5323,8 +5358,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExportResourcesRequest.fromJson(json);
-        checkExportResourcesRequest(obj);
+        var obj = api.ExportResourcesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExportResourcesRequest(obj as api.ExportResourcesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5364,7 +5400,7 @@ void main() {
       res
           .export(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -5412,7 +5448,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response);
+        checkFhirStore(response as api.FhirStore);
       })));
     });
 
@@ -5467,7 +5503,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -5478,8 +5514,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportResourcesRequest.fromJson(json);
-        checkImportResourcesRequest(obj);
+        var obj = api.ImportResourcesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkImportResourcesRequest(obj as api.ImportResourcesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5519,7 +5556,7 @@ void main() {
       res
           .import(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -5579,7 +5616,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFhirStoresResponse(response);
+        checkListFhirStoresResponse(response as api.ListFhirStoresResponse);
       })));
     });
 
@@ -5591,8 +5628,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FhirStore.fromJson(json);
-        checkFhirStore(obj);
+        var obj =
+            api.FhirStore.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFhirStore(obj as api.FhirStore);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5635,7 +5673,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFhirStore(response);
+        checkFhirStore(response as api.FhirStore);
       })));
     });
 
@@ -5646,8 +5684,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5687,7 +5726,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -5698,8 +5737,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5739,7 +5779,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -5811,7 +5852,7 @@ void main() {
               start: arg_start,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -5859,7 +5900,7 @@ void main() {
       }), true);
       res.Resource_purge(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5908,7 +5949,7 @@ void main() {
       res
           .capabilities(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -5921,8 +5962,9 @@ void main() {
       var arg_type = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5962,7 +6004,7 @@ void main() {
       res
           .create(arg_request, arg_parent, arg_type, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6011,7 +6053,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6023,8 +6065,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6064,7 +6107,7 @@ void main() {
       res
           .executeBundle(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6128,7 +6171,7 @@ void main() {
               P_since: arg_P_since,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6140,8 +6183,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6181,7 +6225,7 @@ void main() {
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6230,7 +6274,7 @@ void main() {
       res
           .read(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6242,8 +6286,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchResourcesRequest.fromJson(json);
-        checkSearchResourcesRequest(obj);
+        var obj = api.SearchResourcesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchResourcesRequest(obj as api.SearchResourcesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6283,7 +6328,7 @@ void main() {
       res
           .search(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6295,8 +6340,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HttpBody.fromJson(json);
-        checkHttpBody(obj);
+        var obj =
+            api.HttpBody.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkHttpBody(obj as api.HttpBody);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6336,7 +6382,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -6385,7 +6431,7 @@ void main() {
       res
           .vread(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -6400,8 +6446,9 @@ void main() {
       var arg_hl7V2StoreId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Hl7V2Store.fromJson(json);
-        checkHl7V2Store(obj);
+        var obj = api.Hl7V2Store.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkHl7V2Store(obj as api.Hl7V2Store);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6444,7 +6491,7 @@ void main() {
           .create(arg_request, arg_parent,
               hl7V2StoreId: arg_hl7V2StoreId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response);
+        checkHl7V2Store(response as api.Hl7V2Store);
       })));
     });
 
@@ -6492,7 +6539,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6540,7 +6587,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response);
+        checkHl7V2Store(response as api.Hl7V2Store);
       })));
     });
 
@@ -6595,7 +6642,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -6655,7 +6702,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListHl7V2StoresResponse(response);
+        checkListHl7V2StoresResponse(response as api.ListHl7V2StoresResponse);
       })));
     });
 
@@ -6667,8 +6714,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Hl7V2Store.fromJson(json);
-        checkHl7V2Store(obj);
+        var obj = api.Hl7V2Store.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkHl7V2Store(obj as api.Hl7V2Store);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6711,7 +6759,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHl7V2Store(response);
+        checkHl7V2Store(response as api.Hl7V2Store);
       })));
     });
 
@@ -6722,8 +6770,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6763,7 +6812,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -6774,8 +6823,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6815,7 +6865,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -6834,8 +6885,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateMessageRequest.fromJson(json);
-        checkCreateMessageRequest(obj);
+        var obj = api.CreateMessageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateMessageRequest(obj as api.CreateMessageRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6875,7 +6927,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
 
@@ -6928,7 +6980,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6983,7 +7035,7 @@ void main() {
       res
           .get(arg_name, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
 
@@ -6999,8 +7051,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.IngestMessageRequest.fromJson(json);
-        checkIngestMessageRequest(obj);
+        var obj = api.IngestMessageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIngestMessageRequest(obj as api.IngestMessageRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7040,7 +7093,7 @@ void main() {
       res
           .ingest(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIngestMessageResponse(response);
+        checkIngestMessageResponse(response as api.IngestMessageResponse);
       })));
     });
 
@@ -7112,7 +7165,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListMessagesResponse(response);
+        checkListMessagesResponse(response as api.ListMessagesResponse);
       })));
     });
 
@@ -7129,8 +7182,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Message.fromJson(json);
-        checkMessage(obj);
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7173,7 +7227,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
   });
@@ -7186,8 +7240,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7227,7 +7282,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -7275,7 +7330,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -7335,7 +7390,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

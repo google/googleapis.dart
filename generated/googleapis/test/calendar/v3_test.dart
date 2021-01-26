@@ -83,8 +83,8 @@ core.List<api.AclRule> buildUnnamed3890() {
 
 void checkUnnamed3890(core.List<api.AclRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAclRule(o[0]);
-  checkAclRule(o[1]);
+  checkAclRule(o[0] as api.AclRule);
+  checkAclRule(o[1] as api.AclRule);
 }
 
 core.int buildCounterAcl = 0;
@@ -157,7 +157,7 @@ void checkAclRule(api.AclRule o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.role, unittest.equals('foo'));
-    checkAclRuleScope(o.scope);
+    checkAclRuleScope(o.scope as api.AclRuleScope);
   }
   buildCounterAclRule--;
 }
@@ -183,7 +183,8 @@ api.Calendar buildCalendar() {
 void checkCalendar(api.Calendar o) {
   buildCounterCalendar++;
   if (buildCounterCalendar < 3) {
-    checkConferenceProperties(o.conferenceProperties);
+    checkConferenceProperties(
+        o.conferenceProperties as api.ConferenceProperties);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -204,8 +205,8 @@ core.List<api.CalendarListEntry> buildUnnamed3891() {
 
 void checkUnnamed3891(core.List<api.CalendarListEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCalendarListEntry(o[0]);
-  checkCalendarListEntry(o[1]);
+  checkCalendarListEntry(o[0] as api.CalendarListEntry);
+  checkCalendarListEntry(o[1] as api.CalendarListEntry);
 }
 
 core.int buildCounterCalendarList = 0;
@@ -244,8 +245,8 @@ core.List<api.EventReminder> buildUnnamed3892() {
 
 void checkUnnamed3892(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventReminder(o[0]);
-  checkEventReminder(o[1]);
+  checkEventReminder(o[0] as api.EventReminder);
+  checkEventReminder(o[1] as api.EventReminder);
 }
 
 core.List<api.CalendarNotification> buildUnnamed3893() {
@@ -257,8 +258,8 @@ core.List<api.CalendarNotification> buildUnnamed3893() {
 
 void checkUnnamed3893(core.List<api.CalendarNotification> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCalendarNotification(o[0]);
-  checkCalendarNotification(o[1]);
+  checkCalendarNotification(o[0] as api.CalendarNotification);
+  checkCalendarNotification(o[1] as api.CalendarNotification);
 }
 
 core.int buildCounterCalendarListEntryNotificationSettings = 0;
@@ -317,7 +318,8 @@ void checkCalendarListEntry(api.CalendarListEntry o) {
     unittest.expect(o.accessRole, unittest.equals('foo'));
     unittest.expect(o.backgroundColor, unittest.equals('foo'));
     unittest.expect(o.colorId, unittest.equals('foo'));
-    checkConferenceProperties(o.conferenceProperties);
+    checkConferenceProperties(
+        o.conferenceProperties as api.ConferenceProperties);
     checkUnnamed3892(o.defaultReminders);
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.description, unittest.equals('foo'));
@@ -327,7 +329,8 @@ void checkCalendarListEntry(api.CalendarListEntry o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.location, unittest.equals('foo'));
-    checkCalendarListEntryNotificationSettings(o.notificationSettings);
+    checkCalendarListEntryNotificationSettings(
+        o.notificationSettings as api.CalendarListEntryNotificationSettings);
     unittest.expect(o.primary, unittest.isTrue);
     unittest.expect(o.selected, unittest.isTrue);
     unittest.expect(o.summary, unittest.equals('foo'));
@@ -438,8 +441,8 @@ core.Map<core.String, api.ColorDefinition> buildUnnamed3895() {
 
 void checkUnnamed3895(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorDefinition(o['x']);
-  checkColorDefinition(o['y']);
+  checkColorDefinition(o['x'] as api.ColorDefinition);
+  checkColorDefinition(o['y'] as api.ColorDefinition);
 }
 
 core.Map<core.String, api.ColorDefinition> buildUnnamed3896() {
@@ -451,8 +454,8 @@ core.Map<core.String, api.ColorDefinition> buildUnnamed3896() {
 
 void checkUnnamed3896(core.Map<core.String, api.ColorDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorDefinition(o['x']);
-  checkColorDefinition(o['y']);
+  checkColorDefinition(o['x'] as api.ColorDefinition);
+  checkColorDefinition(o['y'] as api.ColorDefinition);
 }
 
 core.int buildCounterColors = 0;
@@ -490,8 +493,8 @@ core.List<api.EntryPoint> buildUnnamed3897() {
 
 void checkUnnamed3897(core.List<api.EntryPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntryPoint(o[0]);
-  checkEntryPoint(o[1]);
+  checkEntryPoint(o[0] as api.EntryPoint);
+  checkEntryPoint(o[1] as api.EntryPoint);
 }
 
 core.int buildCounterConferenceData = 0;
@@ -515,11 +518,12 @@ void checkConferenceData(api.ConferenceData o) {
   buildCounterConferenceData++;
   if (buildCounterConferenceData < 3) {
     unittest.expect(o.conferenceId, unittest.equals('foo'));
-    checkConferenceSolution(o.conferenceSolution);
-    checkCreateConferenceRequest(o.createRequest);
+    checkConferenceSolution(o.conferenceSolution as api.ConferenceSolution);
+    checkCreateConferenceRequest(
+        o.createRequest as api.CreateConferenceRequest);
     checkUnnamed3897(o.entryPoints);
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkConferenceParameters(o.parameters);
+    checkConferenceParameters(o.parameters as api.ConferenceParameters);
     unittest.expect(o.signature, unittest.equals('foo'));
   }
   buildCounterConferenceData--;
@@ -539,7 +543,8 @@ api.ConferenceParameters buildConferenceParameters() {
 void checkConferenceParameters(api.ConferenceParameters o) {
   buildCounterConferenceParameters++;
   if (buildCounterConferenceParameters < 3) {
-    checkConferenceParametersAddOnParameters(o.addOnParameters);
+    checkConferenceParametersAddOnParameters(
+        o.addOnParameters as api.ConferenceParametersAddOnParameters);
   }
   buildCounterConferenceParameters--;
 }
@@ -646,7 +651,7 @@ void checkConferenceSolution(api.ConferenceSolution o) {
   buildCounterConferenceSolution++;
   if (buildCounterConferenceSolution < 3) {
     unittest.expect(o.iconUri, unittest.equals('foo'));
-    checkConferenceSolutionKey(o.key);
+    checkConferenceSolutionKey(o.key as api.ConferenceSolutionKey);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterConferenceSolution--;
@@ -687,9 +692,10 @@ api.CreateConferenceRequest buildCreateConferenceRequest() {
 void checkCreateConferenceRequest(api.CreateConferenceRequest o) {
   buildCounterCreateConferenceRequest++;
   if (buildCounterCreateConferenceRequest < 3) {
-    checkConferenceSolutionKey(o.conferenceSolutionKey);
+    checkConferenceSolutionKey(
+        o.conferenceSolutionKey as api.ConferenceSolutionKey);
     unittest.expect(o.requestId, unittest.equals('foo'));
-    checkConferenceRequestStatus(o.status);
+    checkConferenceRequestStatus(o.status as api.ConferenceRequestStatus);
   }
   buildCounterCreateConferenceRequest--;
 }
@@ -774,8 +780,8 @@ core.List<api.EventAttachment> buildUnnamed3901() {
 
 void checkUnnamed3901(core.List<api.EventAttachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventAttachment(o[0]);
-  checkEventAttachment(o[1]);
+  checkEventAttachment(o[0] as api.EventAttachment);
+  checkEventAttachment(o[1] as api.EventAttachment);
 }
 
 core.List<api.EventAttendee> buildUnnamed3902() {
@@ -787,8 +793,8 @@ core.List<api.EventAttendee> buildUnnamed3902() {
 
 void checkUnnamed3902(core.List<api.EventAttendee> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventAttendee(o[0]);
-  checkEventAttendee(o[1]);
+  checkEventAttendee(o[0] as api.EventAttendee);
+  checkEventAttendee(o[1] as api.EventAttendee);
 }
 
 core.int buildCounterEventCreator = 0;
@@ -956,8 +962,8 @@ core.List<api.EventReminder> buildUnnamed3907() {
 
 void checkUnnamed3907(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventReminder(o[0]);
-  checkEventReminder(o[1]);
+  checkEventReminder(o[0] as api.EventReminder);
+  checkEventReminder(o[1] as api.EventReminder);
 }
 
 core.int buildCounterEventReminders = 0;
@@ -1058,16 +1064,17 @@ void checkEvent(api.Event o) {
     checkUnnamed3902(o.attendees);
     unittest.expect(o.attendeesOmitted, unittest.isTrue);
     unittest.expect(o.colorId, unittest.equals('foo'));
-    checkConferenceData(o.conferenceData);
+    checkConferenceData(o.conferenceData as api.ConferenceData);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkEventCreator(o.creator);
+    checkEventCreator(o.creator as api.EventCreator);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkEventDateTime(o.end);
+    checkEventDateTime(o.end as api.EventDateTime);
     unittest.expect(o.endTimeUnspecified, unittest.isTrue);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkEventExtendedProperties(o.extendedProperties);
-    checkEventGadget(o.gadget);
+    checkEventExtendedProperties(
+        o.extendedProperties as api.EventExtendedProperties);
+    checkEventGadget(o.gadget as api.EventGadget);
     unittest.expect(o.guestsCanInviteOthers, unittest.isTrue);
     unittest.expect(o.guestsCanModify, unittest.isTrue);
     unittest.expect(o.guestsCanSeeOtherGuests, unittest.isTrue);
@@ -1078,15 +1085,15 @@ void checkEvent(api.Event o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.location, unittest.equals('foo'));
     unittest.expect(o.locked, unittest.isTrue);
-    checkEventOrganizer(o.organizer);
-    checkEventDateTime(o.originalStartTime);
+    checkEventOrganizer(o.organizer as api.EventOrganizer);
+    checkEventDateTime(o.originalStartTime as api.EventDateTime);
     unittest.expect(o.privateCopy, unittest.isTrue);
     checkUnnamed3906(o.recurrence);
     unittest.expect(o.recurringEventId, unittest.equals('foo'));
-    checkEventReminders(o.reminders);
+    checkEventReminders(o.reminders as api.EventReminders);
     unittest.expect(o.sequence, unittest.equals(42));
-    checkEventSource(o.source);
-    checkEventDateTime(o.start);
+    checkEventSource(o.source as api.EventSource);
+    checkEventDateTime(o.start as api.EventDateTime);
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.summary, unittest.equals('foo'));
     unittest.expect(o.transparency, unittest.equals('foo'));
@@ -1216,8 +1223,8 @@ core.List<api.EventReminder> buildUnnamed3908() {
 
 void checkUnnamed3908(core.List<api.EventReminder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventReminder(o[0]);
-  checkEventReminder(o[1]);
+  checkEventReminder(o[0] as api.EventReminder);
+  checkEventReminder(o[1] as api.EventReminder);
 }
 
 core.List<api.Event> buildUnnamed3909() {
@@ -1229,8 +1236,8 @@ core.List<api.Event> buildUnnamed3909() {
 
 void checkUnnamed3909(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEvent(o[0]);
-  checkEvent(o[1]);
+  checkEvent(o[0] as api.Event);
+  checkEvent(o[1] as api.Event);
 }
 
 core.int buildCounterEvents = 0;
@@ -1282,8 +1289,8 @@ core.List<api.TimePeriod> buildUnnamed3910() {
 
 void checkUnnamed3910(core.List<api.TimePeriod> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTimePeriod(o[0]);
-  checkTimePeriod(o[1]);
+  checkTimePeriod(o[0] as api.TimePeriod);
+  checkTimePeriod(o[1] as api.TimePeriod);
 }
 
 core.List<api.Error> buildUnnamed3911() {
@@ -1295,8 +1302,8 @@ core.List<api.Error> buildUnnamed3911() {
 
 void checkUnnamed3911(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkError(o[0]);
-  checkError(o[1]);
+  checkError(o[0] as api.Error);
+  checkError(o[1] as api.Error);
 }
 
 core.int buildCounterFreeBusyCalendar = 0;
@@ -1342,8 +1349,8 @@ core.List<api.Error> buildUnnamed3913() {
 
 void checkUnnamed3913(core.List<api.Error> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkError(o[0]);
-  checkError(o[1]);
+  checkError(o[0] as api.Error);
+  checkError(o[1] as api.Error);
 }
 
 core.int buildCounterFreeBusyGroup = 0;
@@ -1376,8 +1383,8 @@ core.List<api.FreeBusyRequestItem> buildUnnamed3914() {
 
 void checkUnnamed3914(core.List<api.FreeBusyRequestItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFreeBusyRequestItem(o[0]);
-  checkFreeBusyRequestItem(o[1]);
+  checkFreeBusyRequestItem(o[0] as api.FreeBusyRequestItem);
+  checkFreeBusyRequestItem(o[1] as api.FreeBusyRequestItem);
 }
 
 core.int buildCounterFreeBusyRequest = 0;
@@ -1439,8 +1446,8 @@ core.Map<core.String, api.FreeBusyCalendar> buildUnnamed3915() {
 
 void checkUnnamed3915(core.Map<core.String, api.FreeBusyCalendar> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFreeBusyCalendar(o['x']);
-  checkFreeBusyCalendar(o['y']);
+  checkFreeBusyCalendar(o['x'] as api.FreeBusyCalendar);
+  checkFreeBusyCalendar(o['y'] as api.FreeBusyCalendar);
 }
 
 core.Map<core.String, api.FreeBusyGroup> buildUnnamed3916() {
@@ -1452,8 +1459,8 @@ core.Map<core.String, api.FreeBusyGroup> buildUnnamed3916() {
 
 void checkUnnamed3916(core.Map<core.String, api.FreeBusyGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFreeBusyGroup(o['x']);
-  checkFreeBusyGroup(o['y']);
+  checkFreeBusyGroup(o['x'] as api.FreeBusyGroup);
+  checkFreeBusyGroup(o['y'] as api.FreeBusyGroup);
 }
 
 core.int buildCounterFreeBusyResponse = 0;
@@ -1519,8 +1526,8 @@ core.List<api.Setting> buildUnnamed3917() {
 
 void checkUnnamed3917(core.List<api.Setting> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSetting(o[0]);
-  checkSetting(o[1]);
+  checkSetting(o[0] as api.Setting);
+  checkSetting(o[1] as api.Setting);
 }
 
 core.int buildCounterSettings = 0;
@@ -1630,7 +1637,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAcl();
       var od = api.Acl.fromJson(o.toJson());
-      checkAcl(od);
+      checkAcl(od as api.Acl);
     });
   });
 
@@ -1638,7 +1645,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAclRuleScope();
       var od = api.AclRuleScope.fromJson(o.toJson());
-      checkAclRuleScope(od);
+      checkAclRuleScope(od as api.AclRuleScope);
     });
   });
 
@@ -1646,7 +1653,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAclRule();
       var od = api.AclRule.fromJson(o.toJson());
-      checkAclRule(od);
+      checkAclRule(od as api.AclRule);
     });
   });
 
@@ -1654,7 +1661,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendar();
       var od = api.Calendar.fromJson(o.toJson());
-      checkCalendar(od);
+      checkCalendar(od as api.Calendar);
     });
   });
 
@@ -1662,7 +1669,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendarList();
       var od = api.CalendarList.fromJson(o.toJson());
-      checkCalendarList(od);
+      checkCalendarList(od as api.CalendarList);
     });
   });
 
@@ -1670,7 +1677,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendarListEntryNotificationSettings();
       var od = api.CalendarListEntryNotificationSettings.fromJson(o.toJson());
-      checkCalendarListEntryNotificationSettings(od);
+      checkCalendarListEntryNotificationSettings(
+          od as api.CalendarListEntryNotificationSettings);
     });
   });
 
@@ -1678,7 +1686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendarListEntry();
       var od = api.CalendarListEntry.fromJson(o.toJson());
-      checkCalendarListEntry(od);
+      checkCalendarListEntry(od as api.CalendarListEntry);
     });
   });
 
@@ -1686,7 +1694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendarNotification();
       var od = api.CalendarNotification.fromJson(o.toJson());
-      checkCalendarNotification(od);
+      checkCalendarNotification(od as api.CalendarNotification);
     });
   });
 
@@ -1694,7 +1702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -1702,7 +1710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColorDefinition();
       var od = api.ColorDefinition.fromJson(o.toJson());
-      checkColorDefinition(od);
+      checkColorDefinition(od as api.ColorDefinition);
     });
   });
 
@@ -1710,7 +1718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColors();
       var od = api.Colors.fromJson(o.toJson());
-      checkColors(od);
+      checkColors(od as api.Colors);
     });
   });
 
@@ -1718,7 +1726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceData();
       var od = api.ConferenceData.fromJson(o.toJson());
-      checkConferenceData(od);
+      checkConferenceData(od as api.ConferenceData);
     });
   });
 
@@ -1726,7 +1734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceParameters();
       var od = api.ConferenceParameters.fromJson(o.toJson());
-      checkConferenceParameters(od);
+      checkConferenceParameters(od as api.ConferenceParameters);
     });
   });
 
@@ -1734,7 +1742,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceParametersAddOnParameters();
       var od = api.ConferenceParametersAddOnParameters.fromJson(o.toJson());
-      checkConferenceParametersAddOnParameters(od);
+      checkConferenceParametersAddOnParameters(
+          od as api.ConferenceParametersAddOnParameters);
     });
   });
 
@@ -1742,7 +1751,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceProperties();
       var od = api.ConferenceProperties.fromJson(o.toJson());
-      checkConferenceProperties(od);
+      checkConferenceProperties(od as api.ConferenceProperties);
     });
   });
 
@@ -1750,7 +1759,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceRequestStatus();
       var od = api.ConferenceRequestStatus.fromJson(o.toJson());
-      checkConferenceRequestStatus(od);
+      checkConferenceRequestStatus(od as api.ConferenceRequestStatus);
     });
   });
 
@@ -1758,7 +1767,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceSolution();
       var od = api.ConferenceSolution.fromJson(o.toJson());
-      checkConferenceSolution(od);
+      checkConferenceSolution(od as api.ConferenceSolution);
     });
   });
 
@@ -1766,7 +1775,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConferenceSolutionKey();
       var od = api.ConferenceSolutionKey.fromJson(o.toJson());
-      checkConferenceSolutionKey(od);
+      checkConferenceSolutionKey(od as api.ConferenceSolutionKey);
     });
   });
 
@@ -1774,7 +1783,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateConferenceRequest();
       var od = api.CreateConferenceRequest.fromJson(o.toJson());
-      checkCreateConferenceRequest(od);
+      checkCreateConferenceRequest(od as api.CreateConferenceRequest);
     });
   });
 
@@ -1782,7 +1791,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntryPoint();
       var od = api.EntryPoint.fromJson(o.toJson());
-      checkEntryPoint(od);
+      checkEntryPoint(od as api.EntryPoint);
     });
   });
 
@@ -1790,7 +1799,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildError();
       var od = api.Error.fromJson(o.toJson());
-      checkError(od);
+      checkError(od as api.Error);
     });
   });
 
@@ -1798,7 +1807,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventCreator();
       var od = api.EventCreator.fromJson(o.toJson());
-      checkEventCreator(od);
+      checkEventCreator(od as api.EventCreator);
     });
   });
 
@@ -1806,7 +1815,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventExtendedProperties();
       var od = api.EventExtendedProperties.fromJson(o.toJson());
-      checkEventExtendedProperties(od);
+      checkEventExtendedProperties(od as api.EventExtendedProperties);
     });
   });
 
@@ -1814,7 +1823,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventGadget();
       var od = api.EventGadget.fromJson(o.toJson());
-      checkEventGadget(od);
+      checkEventGadget(od as api.EventGadget);
     });
   });
 
@@ -1822,7 +1831,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventOrganizer();
       var od = api.EventOrganizer.fromJson(o.toJson());
-      checkEventOrganizer(od);
+      checkEventOrganizer(od as api.EventOrganizer);
     });
   });
 
@@ -1830,7 +1839,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventReminders();
       var od = api.EventReminders.fromJson(o.toJson());
-      checkEventReminders(od);
+      checkEventReminders(od as api.EventReminders);
     });
   });
 
@@ -1838,7 +1847,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventSource();
       var od = api.EventSource.fromJson(o.toJson());
-      checkEventSource(od);
+      checkEventSource(od as api.EventSource);
     });
   });
 
@@ -1846,7 +1855,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
-      checkEvent(od);
+      checkEvent(od as api.Event);
     });
   });
 
@@ -1854,7 +1863,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventAttachment();
       var od = api.EventAttachment.fromJson(o.toJson());
-      checkEventAttachment(od);
+      checkEventAttachment(od as api.EventAttachment);
     });
   });
 
@@ -1862,7 +1871,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventAttendee();
       var od = api.EventAttendee.fromJson(o.toJson());
-      checkEventAttendee(od);
+      checkEventAttendee(od as api.EventAttendee);
     });
   });
 
@@ -1870,7 +1879,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventDateTime();
       var od = api.EventDateTime.fromJson(o.toJson());
-      checkEventDateTime(od);
+      checkEventDateTime(od as api.EventDateTime);
     });
   });
 
@@ -1878,7 +1887,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventReminder();
       var od = api.EventReminder.fromJson(o.toJson());
-      checkEventReminder(od);
+      checkEventReminder(od as api.EventReminder);
     });
   });
 
@@ -1886,7 +1895,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEvents();
       var od = api.Events.fromJson(o.toJson());
-      checkEvents(od);
+      checkEvents(od as api.Events);
     });
   });
 
@@ -1894,7 +1903,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFreeBusyCalendar();
       var od = api.FreeBusyCalendar.fromJson(o.toJson());
-      checkFreeBusyCalendar(od);
+      checkFreeBusyCalendar(od as api.FreeBusyCalendar);
     });
   });
 
@@ -1902,7 +1911,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFreeBusyGroup();
       var od = api.FreeBusyGroup.fromJson(o.toJson());
-      checkFreeBusyGroup(od);
+      checkFreeBusyGroup(od as api.FreeBusyGroup);
     });
   });
 
@@ -1910,7 +1919,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFreeBusyRequest();
       var od = api.FreeBusyRequest.fromJson(o.toJson());
-      checkFreeBusyRequest(od);
+      checkFreeBusyRequest(od as api.FreeBusyRequest);
     });
   });
 
@@ -1918,7 +1927,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFreeBusyRequestItem();
       var od = api.FreeBusyRequestItem.fromJson(o.toJson());
-      checkFreeBusyRequestItem(od);
+      checkFreeBusyRequestItem(od as api.FreeBusyRequestItem);
     });
   });
 
@@ -1926,7 +1935,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFreeBusyResponse();
       var od = api.FreeBusyResponse.fromJson(o.toJson());
-      checkFreeBusyResponse(od);
+      checkFreeBusyResponse(od as api.FreeBusyResponse);
     });
   });
 
@@ -1934,7 +1943,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetting();
       var od = api.Setting.fromJson(o.toJson());
-      checkSetting(od);
+      checkSetting(od as api.Setting);
     });
   });
 
@@ -1942,7 +1951,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSettings();
       var od = api.Settings.fromJson(o.toJson());
-      checkSettings(od);
+      checkSettings(od as api.Settings);
     });
   });
 
@@ -1950,7 +1959,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimePeriod();
       var od = api.TimePeriod.fromJson(o.toJson());
-      checkTimePeriod(od);
+      checkTimePeriod(od as api.TimePeriod);
     });
   });
 
@@ -2075,7 +2084,7 @@ void main() {
       res
           .get(arg_calendarId, arg_ruleId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAclRule(response);
+        checkAclRule(response as api.AclRule);
       })));
     });
 
@@ -2087,8 +2096,9 @@ void main() {
       var arg_sendNotifications = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AclRule.fromJson(json);
-        checkAclRule(obj);
+        var obj =
+            api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAclRule(obj as api.AclRule);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2142,7 +2152,7 @@ void main() {
           .insert(arg_request, arg_calendarId,
               sendNotifications: arg_sendNotifications, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAclRule(response);
+        checkAclRule(response as api.AclRule);
       })));
     });
 
@@ -2218,7 +2228,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAcl(response);
+        checkAcl(response as api.Acl);
       })));
     });
 
@@ -2231,8 +2241,9 @@ void main() {
       var arg_sendNotifications = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AclRule.fromJson(json);
-        checkAclRule(obj);
+        var obj =
+            api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAclRule(obj as api.AclRule);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2289,7 +2300,7 @@ void main() {
           .patch(arg_request, arg_calendarId, arg_ruleId,
               sendNotifications: arg_sendNotifications, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAclRule(response);
+        checkAclRule(response as api.AclRule);
       })));
     });
 
@@ -2302,8 +2313,9 @@ void main() {
       var arg_sendNotifications = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AclRule.fromJson(json);
-        checkAclRule(obj);
+        var obj =
+            api.AclRule.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAclRule(obj as api.AclRule);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2360,7 +2372,7 @@ void main() {
           .update(arg_request, arg_calendarId, arg_ruleId,
               sendNotifications: arg_sendNotifications, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAclRule(response);
+        checkAclRule(response as api.AclRule);
       })));
     });
 
@@ -2375,8 +2387,9 @@ void main() {
       var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2440,7 +2453,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -2546,7 +2559,7 @@ void main() {
       res
           .get(arg_calendarId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response);
+        checkCalendarListEntry(response as api.CalendarListEntry);
       })));
     });
 
@@ -2557,8 +2570,9 @@ void main() {
       var arg_colorRgbFormat = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CalendarListEntry.fromJson(json);
-        checkCalendarListEntry(obj);
+        var obj = api.CalendarListEntry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCalendarListEntry(obj as api.CalendarListEntry);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2603,7 +2617,7 @@ void main() {
           .insert(arg_request,
               colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response);
+        checkCalendarListEntry(response as api.CalendarListEntry);
       })));
     });
 
@@ -2677,7 +2691,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendarList(response);
+        checkCalendarList(response as api.CalendarList);
       })));
     });
 
@@ -2689,8 +2703,9 @@ void main() {
       var arg_colorRgbFormat = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CalendarListEntry.fromJson(json);
-        checkCalendarListEntry(obj);
+        var obj = api.CalendarListEntry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCalendarListEntry(obj as api.CalendarListEntry);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2738,7 +2753,7 @@ void main() {
           .patch(arg_request, arg_calendarId,
               colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response);
+        checkCalendarListEntry(response as api.CalendarListEntry);
       })));
     });
 
@@ -2750,8 +2765,9 @@ void main() {
       var arg_colorRgbFormat = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CalendarListEntry.fromJson(json);
-        checkCalendarListEntry(obj);
+        var obj = api.CalendarListEntry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCalendarListEntry(obj as api.CalendarListEntry);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2799,7 +2815,7 @@ void main() {
           .update(arg_request, arg_calendarId,
               colorRgbFormat: arg_colorRgbFormat, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendarListEntry(response);
+        checkCalendarListEntry(response as api.CalendarListEntry);
       })));
     });
 
@@ -2815,8 +2831,9 @@ void main() {
       var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2877,7 +2894,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -3040,7 +3057,7 @@ void main() {
       res
           .get(arg_calendarId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendar(response);
+        checkCalendar(response as api.Calendar);
       })));
     });
 
@@ -3050,8 +3067,9 @@ void main() {
       var arg_request = buildCalendar();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Calendar.fromJson(json);
-        checkCalendar(obj);
+        var obj =
+            api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCalendar(obj as api.Calendar);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3093,7 +3111,7 @@ void main() {
       res
           .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendar(response);
+        checkCalendar(response as api.Calendar);
       })));
     });
 
@@ -3104,8 +3122,9 @@ void main() {
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Calendar.fromJson(json);
-        checkCalendar(obj);
+        var obj =
+            api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCalendar(obj as api.Calendar);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3150,7 +3169,7 @@ void main() {
       res
           .patch(arg_request, arg_calendarId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendar(response);
+        checkCalendar(response as api.Calendar);
       })));
     });
 
@@ -3161,8 +3180,9 @@ void main() {
       var arg_calendarId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Calendar.fromJson(json);
-        checkCalendar(obj);
+        var obj =
+            api.Calendar.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCalendar(obj as api.Calendar);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3207,7 +3227,7 @@ void main() {
       res
           .update(arg_request, arg_calendarId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCalendar(response);
+        checkCalendar(response as api.Calendar);
       })));
     });
   });
@@ -3219,8 +3239,9 @@ void main() {
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3309,7 +3330,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkColors(response);
+        checkColors(response as api.Colors);
       })));
     });
   });
@@ -3457,7 +3478,7 @@ void main() {
               timeZone: arg_timeZone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -3470,8 +3491,9 @@ void main() {
       var arg_supportsAttachments = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Event.fromJson(json);
-        checkEvent(obj);
+        var obj =
+            api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEvent(obj as api.Event);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3529,7 +3551,7 @@ void main() {
               supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -3545,8 +3567,9 @@ void main() {
       var arg_supportsAttachments = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Event.fromJson(json);
-        checkEvent(obj);
+        var obj =
+            api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEvent(obj as api.Event);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3613,7 +3636,7 @@ void main() {
               supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -3719,7 +3742,7 @@ void main() {
               timeZone: arg_timeZone,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvents(response);
+        checkEvents(response as api.Events);
       })));
     });
 
@@ -3846,7 +3869,7 @@ void main() {
               updatedMin: arg_updatedMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvents(response);
+        checkEvents(response as api.Events);
       })));
     });
 
@@ -3927,7 +3950,7 @@ void main() {
               sendUpdates: arg_sendUpdates,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -3945,8 +3968,9 @@ void main() {
       var arg_supportsAttachments = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Event.fromJson(json);
-        checkEvent(obj);
+        var obj =
+            api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEvent(obj as api.Event);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4019,7 +4043,7 @@ void main() {
               supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -4089,7 +4113,7 @@ void main() {
               sendUpdates: arg_sendUpdates,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -4107,8 +4131,9 @@ void main() {
       var arg_supportsAttachments = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Event.fromJson(json);
-        checkEvent(obj);
+        var obj =
+            api.Event.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEvent(obj as api.Event);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4181,7 +4206,7 @@ void main() {
               supportsAttachments: arg_supportsAttachments,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEvent(response);
+        checkEvent(response as api.Event);
       })));
     });
 
@@ -4209,8 +4234,9 @@ void main() {
       var arg_updatedMin = core.DateTime.parse("2002-02-27T14:01:02");
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4312,7 +4338,7 @@ void main() {
               updatedMin: arg_updatedMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -4324,8 +4350,9 @@ void main() {
       var arg_request = buildFreeBusyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FreeBusyRequest.fromJson(json);
-        checkFreeBusyRequest(obj);
+        var obj = api.FreeBusyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFreeBusyRequest(obj as api.FreeBusyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4367,7 +4394,7 @@ void main() {
       res
           .query(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFreeBusyResponse(response);
+        checkFreeBusyResponse(response as api.FreeBusyResponse);
       })));
     });
   });
@@ -4422,7 +4449,7 @@ void main() {
       res
           .get(arg_setting, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSetting(response);
+        checkSetting(response as api.Setting);
       })));
     });
 
@@ -4484,7 +4511,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSettings(response);
+        checkSettings(response as api.Settings);
       })));
     });
 
@@ -4497,8 +4524,9 @@ void main() {
       var arg_syncToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4550,7 +4578,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });

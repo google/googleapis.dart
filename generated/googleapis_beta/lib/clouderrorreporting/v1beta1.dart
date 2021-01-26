@@ -111,7 +111,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeleteEventsResponse.fromJson(data));
+    return _response.then(
+      (data) => DeleteEventsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -231,7 +234,10 @@ class ProjectsEventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListEventsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListEventsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Report an individual error event. This endpoint accepts **either** an
@@ -297,7 +303,10 @@ class ProjectsEventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReportErrorEventResponse.fromJson(data));
+    return _response.then(
+      (data) => ReportErrorEventResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -470,7 +479,10 @@ class ProjectsGroupStatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGroupStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGroupStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -529,7 +541,10 @@ class ProjectsGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ErrorGroup.fromJson(data));
+    return _response.then(
+      (data) =>
+          ErrorGroup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replace the data for the specified group. Fails if the group does not
@@ -586,7 +601,10 @@ class ProjectsGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ErrorGroup.fromJson(data));
+    return _response.then(
+      (data) =>
+          ErrorGroup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -633,14 +651,17 @@ class ErrorContext {
 
   ErrorContext.fromJson(core.Map _json) {
     if (_json.containsKey('httpRequest')) {
-      httpRequest = HttpRequestContext.fromJson(_json['httpRequest']);
+      httpRequest = HttpRequestContext.fromJson(
+          _json['httpRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reportLocation')) {
-      reportLocation = SourceLocation.fromJson(_json['reportLocation']);
+      reportLocation = SourceLocation.fromJson(
+          _json['reportLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceReferences')) {
       sourceReferences = (_json['sourceReferences'] as core.List)
-          .map<SourceReference>((value) => SourceReference.fromJson(value))
+          .map<SourceReference>((value) => SourceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('user')) {
@@ -687,7 +708,8 @@ class ErrorEvent {
 
   ErrorEvent.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = ErrorContext.fromJson(_json['context']);
+      context = ErrorContext.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('eventTime')) {
       eventTime = _json['eventTime'] as core.String;
@@ -696,7 +718,8 @@ class ErrorEvent {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('serviceContext')) {
-      serviceContext = ServiceContext.fromJson(_json['serviceContext']);
+      serviceContext = ServiceContext.fromJson(
+          _json['serviceContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -759,7 +782,8 @@ class ErrorGroup {
     }
     if (_json.containsKey('trackingIssues')) {
       trackingIssues = (_json['trackingIssues'] as core.List)
-          .map<TrackingIssue>((value) => TrackingIssue.fromJson(value))
+          .map<TrackingIssue>((value) => TrackingIssue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -840,7 +864,8 @@ class ErrorGroupStats {
   ErrorGroupStats.fromJson(core.Map _json) {
     if (_json.containsKey('affectedServices')) {
       affectedServices = (_json['affectedServices'] as core.List)
-          .map<ServiceContext>((value) => ServiceContext.fromJson(value))
+          .map<ServiceContext>((value) => ServiceContext.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('affectedUsersCount')) {
@@ -853,7 +878,8 @@ class ErrorGroupStats {
       firstSeenTime = _json['firstSeenTime'] as core.String;
     }
     if (_json.containsKey('group')) {
-      group = ErrorGroup.fromJson(_json['group']);
+      group = ErrorGroup.fromJson(
+          _json['group'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastSeenTime')) {
       lastSeenTime = _json['lastSeenTime'] as core.String;
@@ -862,11 +888,13 @@ class ErrorGroupStats {
       numAffectedServices = _json['numAffectedServices'] as core.int;
     }
     if (_json.containsKey('representative')) {
-      representative = ErrorEvent.fromJson(_json['representative']);
+      representative = ErrorEvent.fromJson(
+          _json['representative'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timedCounts')) {
       timedCounts = (_json['timedCounts'] as core.List)
-          .map<TimedCount>((value) => TimedCount.fromJson(value))
+          .map<TimedCount>((value) =>
+              TimedCount.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -996,7 +1024,8 @@ class ListEventsResponse {
   ListEventsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errorEvents')) {
       errorEvents = (_json['errorEvents'] as core.List)
-          .map<ErrorEvent>((value) => ErrorEvent.fromJson(value))
+          .map<ErrorEvent>((value) =>
+              ErrorEvent.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1044,7 +1073,8 @@ class ListGroupStatsResponse {
   ListGroupStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errorGroupStats')) {
       errorGroupStats = (_json['errorGroupStats'] as core.List)
-          .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(value))
+          .map<ErrorGroupStats>((value) => ErrorGroupStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1124,7 +1154,8 @@ class ReportedErrorEvent {
 
   ReportedErrorEvent.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = ErrorContext.fromJson(_json['context']);
+      context = ErrorContext.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('eventTime')) {
       eventTime = _json['eventTime'] as core.String;
@@ -1133,7 +1164,8 @@ class ReportedErrorEvent {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('serviceContext')) {
-      serviceContext = ServiceContext.fromJson(_json['serviceContext']);
+      serviceContext = ServiceContext.fromJson(
+          _json['serviceContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 

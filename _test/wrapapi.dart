@@ -73,7 +73,10 @@ class WrapApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WrapResponse.fromJson(data['data']));
+    return _response.then(
+      (data) => WrapResponse.fromJson(
+          data['data'] as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

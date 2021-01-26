@@ -138,11 +138,11 @@ api.Categories buildCategories() {
 void checkCategories(api.Categories o) {
   buildCounterCategories++;
   if (buildCounterCategories < 3) {
-    checkLighthouseCategoryV5(o.accessibility);
-    checkLighthouseCategoryV5(o.best_practices);
-    checkLighthouseCategoryV5(o.performance);
-    checkLighthouseCategoryV5(o.pwa);
-    checkLighthouseCategoryV5(o.seo);
+    checkLighthouseCategoryV5(o.accessibility as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.best_practices as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.performance as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.pwa as api.LighthouseCategoryV5);
+    checkLighthouseCategoryV5(o.seo as api.LighthouseCategoryV5);
   }
   buildCounterCategories--;
 }
@@ -238,7 +238,8 @@ api.I18n buildI18n() {
 void checkI18n(api.I18n o) {
   buildCounterI18n++;
   if (buildCounterI18n < 3) {
-    checkRendererFormattedStrings(o.rendererFormattedStrings);
+    checkRendererFormattedStrings(
+        o.rendererFormattedStrings as api.RendererFormattedStrings);
   }
   buildCounterI18n--;
 }
@@ -336,8 +337,8 @@ core.List<api.AuditRefs> buildUnnamed2490() {
 
 void checkUnnamed2490(core.List<api.AuditRefs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditRefs(o[0]);
-  checkAuditRefs(o[1]);
+  checkAuditRefs(o[0] as api.AuditRefs);
+  checkAuditRefs(o[1] as api.AuditRefs);
 }
 
 core.int buildCounterLighthouseCategoryV5 = 0;
@@ -386,8 +387,8 @@ core.Map<core.String, api.LighthouseAuditResultV5> buildUnnamed2491() {
 
 void checkUnnamed2491(core.Map<core.String, api.LighthouseAuditResultV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLighthouseAuditResultV5(o['x']);
-  checkLighthouseAuditResultV5(o['y']);
+  checkLighthouseAuditResultV5(o['x'] as api.LighthouseAuditResultV5);
+  checkLighthouseAuditResultV5(o['y'] as api.LighthouseAuditResultV5);
 }
 
 core.Map<core.String, api.CategoryGroupV5> buildUnnamed2492() {
@@ -399,8 +400,8 @@ core.Map<core.String, api.CategoryGroupV5> buildUnnamed2492() {
 
 void checkUnnamed2492(core.Map<core.String, api.CategoryGroupV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCategoryGroupV5(o['x']);
-  checkCategoryGroupV5(o['y']);
+  checkCategoryGroupV5(o['x'] as api.CategoryGroupV5);
+  checkCategoryGroupV5(o['y'] as api.CategoryGroupV5);
 }
 
 core.List<core.Object> buildUnnamed2493() {
@@ -441,8 +442,8 @@ core.List<api.StackPack> buildUnnamed2494() {
 
 void checkUnnamed2494(core.List<api.StackPack> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStackPack(o[0]);
-  checkStackPack(o[1]);
+  checkStackPack(o[0] as api.StackPack);
+  checkStackPack(o[1] as api.StackPack);
 }
 
 core.int buildCounterLighthouseResultV5 = 0;
@@ -474,19 +475,19 @@ void checkLighthouseResultV5(api.LighthouseResultV5 o) {
   buildCounterLighthouseResultV5++;
   if (buildCounterLighthouseResultV5 < 3) {
     checkUnnamed2491(o.audits);
-    checkCategories(o.categories);
+    checkCategories(o.categories as api.Categories);
     checkUnnamed2492(o.categoryGroups);
-    checkConfigSettings(o.configSettings);
-    checkEnvironment(o.environment);
+    checkConfigSettings(o.configSettings as api.ConfigSettings);
+    checkEnvironment(o.environment as api.Environment);
     unittest.expect(o.fetchTime, unittest.equals('foo'));
     unittest.expect(o.finalUrl, unittest.equals('foo'));
-    checkI18n(o.i18n);
+    checkI18n(o.i18n as api.I18n);
     unittest.expect(o.lighthouseVersion, unittest.equals('foo'));
     unittest.expect(o.requestedUrl, unittest.equals('foo'));
     checkUnnamed2493(o.runWarnings);
-    checkRuntimeError(o.runtimeError);
+    checkRuntimeError(o.runtimeError as api.RuntimeError);
     checkUnnamed2494(o.stackPacks);
-    checkTiming(o.timing);
+    checkTiming(o.timing as api.Timing);
     unittest.expect(o.userAgent, unittest.equals('foo'));
   }
   buildCounterLighthouseResultV5--;
@@ -501,8 +502,8 @@ core.Map<core.String, api.UserPageLoadMetricV5> buildUnnamed2495() {
 
 void checkUnnamed2495(core.Map<core.String, api.UserPageLoadMetricV5> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserPageLoadMetricV5(o['x']);
-  checkUserPageLoadMetricV5(o['y']);
+  checkUserPageLoadMetricV5(o['x'] as api.UserPageLoadMetricV5);
+  checkUserPageLoadMetricV5(o['y'] as api.UserPageLoadMetricV5);
 }
 
 core.int buildCounterPagespeedApiLoadingExperienceV5 = 0;
@@ -559,10 +560,12 @@ void checkPagespeedApiPagespeedResponseV5(
     unittest.expect(o.captchaResult, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLighthouseResultV5(o.lighthouseResult);
-    checkPagespeedApiLoadingExperienceV5(o.loadingExperience);
-    checkPagespeedApiLoadingExperienceV5(o.originLoadingExperience);
-    checkPagespeedVersion(o.version);
+    checkLighthouseResultV5(o.lighthouseResult as api.LighthouseResultV5);
+    checkPagespeedApiLoadingExperienceV5(
+        o.loadingExperience as api.PagespeedApiLoadingExperienceV5);
+    checkPagespeedApiLoadingExperienceV5(
+        o.originLoadingExperience as api.PagespeedApiLoadingExperienceV5);
+    checkPagespeedVersion(o.version as api.PagespeedVersion);
   }
   buildCounterPagespeedApiPagespeedResponseV5--;
 }
@@ -724,8 +727,8 @@ core.List<api.Bucket> buildUnnamed2497() {
 
 void checkUnnamed2497(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucket(o[0]);
-  checkBucket(o[1]);
+  checkBucket(o[0] as api.Bucket);
+  checkBucket(o[1] as api.Bucket);
 }
 
 core.int buildCounterUserPageLoadMetricV5 = 0;
@@ -775,7 +778,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditRefs();
       var od = api.AuditRefs.fromJson(o.toJson());
-      checkAuditRefs(od);
+      checkAuditRefs(od as api.AuditRefs);
     });
   });
 
@@ -783,7 +786,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucket();
       var od = api.Bucket.fromJson(o.toJson());
-      checkBucket(od);
+      checkBucket(od as api.Bucket);
     });
   });
 
@@ -791,7 +794,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategories();
       var od = api.Categories.fromJson(o.toJson());
-      checkCategories(od);
+      checkCategories(od as api.Categories);
     });
   });
 
@@ -799,7 +802,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategoryGroupV5();
       var od = api.CategoryGroupV5.fromJson(o.toJson());
-      checkCategoryGroupV5(od);
+      checkCategoryGroupV5(od as api.CategoryGroupV5);
     });
   });
 
@@ -807,7 +810,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConfigSettings();
       var od = api.ConfigSettings.fromJson(o.toJson());
-      checkConfigSettings(od);
+      checkConfigSettings(od as api.ConfigSettings);
     });
   });
 
@@ -815,7 +818,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
-      checkEnvironment(od);
+      checkEnvironment(od as api.Environment);
     });
   });
 
@@ -823,7 +826,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18n();
       var od = api.I18n.fromJson(o.toJson());
-      checkI18n(od);
+      checkI18n(od as api.I18n);
     });
   });
 
@@ -831,7 +834,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLighthouseAuditResultV5();
       var od = api.LighthouseAuditResultV5.fromJson(o.toJson());
-      checkLighthouseAuditResultV5(od);
+      checkLighthouseAuditResultV5(od as api.LighthouseAuditResultV5);
     });
   });
 
@@ -839,7 +842,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLighthouseCategoryV5();
       var od = api.LighthouseCategoryV5.fromJson(o.toJson());
-      checkLighthouseCategoryV5(od);
+      checkLighthouseCategoryV5(od as api.LighthouseCategoryV5);
     });
   });
 
@@ -847,7 +850,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLighthouseResultV5();
       var od = api.LighthouseResultV5.fromJson(o.toJson());
-      checkLighthouseResultV5(od);
+      checkLighthouseResultV5(od as api.LighthouseResultV5);
     });
   });
 
@@ -855,7 +858,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPagespeedApiLoadingExperienceV5();
       var od = api.PagespeedApiLoadingExperienceV5.fromJson(o.toJson());
-      checkPagespeedApiLoadingExperienceV5(od);
+      checkPagespeedApiLoadingExperienceV5(
+          od as api.PagespeedApiLoadingExperienceV5);
     });
   });
 
@@ -863,7 +867,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPagespeedApiPagespeedResponseV5();
       var od = api.PagespeedApiPagespeedResponseV5.fromJson(o.toJson());
-      checkPagespeedApiPagespeedResponseV5(od);
+      checkPagespeedApiPagespeedResponseV5(
+          od as api.PagespeedApiPagespeedResponseV5);
     });
   });
 
@@ -871,7 +876,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPagespeedVersion();
       var od = api.PagespeedVersion.fromJson(o.toJson());
-      checkPagespeedVersion(od);
+      checkPagespeedVersion(od as api.PagespeedVersion);
     });
   });
 
@@ -879,7 +884,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRendererFormattedStrings();
       var od = api.RendererFormattedStrings.fromJson(o.toJson());
-      checkRendererFormattedStrings(od);
+      checkRendererFormattedStrings(od as api.RendererFormattedStrings);
     });
   });
 
@@ -887,7 +892,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRuntimeError();
       var od = api.RuntimeError.fromJson(o.toJson());
-      checkRuntimeError(od);
+      checkRuntimeError(od as api.RuntimeError);
     });
   });
 
@@ -895,7 +900,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStackPack();
       var od = api.StackPack.fromJson(o.toJson());
-      checkStackPack(od);
+      checkStackPack(od as api.StackPack);
     });
   });
 
@@ -903,7 +908,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTiming();
       var od = api.Timing.fromJson(o.toJson());
-      checkTiming(od);
+      checkTiming(od as api.Timing);
     });
   });
 
@@ -911,7 +916,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserPageLoadMetricV5();
       var od = api.UserPageLoadMetricV5.fromJson(o.toJson());
-      checkUserPageLoadMetricV5(od);
+      checkUserPageLoadMetricV5(od as api.UserPageLoadMetricV5);
     });
   });
 
@@ -984,7 +989,8 @@ void main() {
               utmSource: arg_utmSource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPagespeedApiPagespeedResponseV5(response);
+        checkPagespeedApiPagespeedResponseV5(
+            response as api.PagespeedApiPagespeedResponseV5);
       })));
     });
   });

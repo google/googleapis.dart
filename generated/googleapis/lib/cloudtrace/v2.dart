@@ -127,7 +127,9 @@ class ProjectsTracesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -194,7 +196,9 @@ class ProjectsTracesSpansResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Span.fromJson(data));
+    return _response.then(
+      (data) => Span.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -212,10 +216,12 @@ class Annotation {
 
   Annotation.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = Attributes.fromJson(_json['attributes']);
+      attributes = Attributes.fromJson(
+          _json['attributes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
-      description = TruncatableString.fromJson(_json['description']);
+      description = TruncatableString.fromJson(
+          _json['description'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -252,7 +258,8 @@ class AttributeValue {
       intValue = _json['intValue'] as core.String;
     }
     if (_json.containsKey('stringValue')) {
-      stringValue = TruncatableString.fromJson(_json['stringValue']);
+      stringValue = TruncatableString.fromJson(
+          _json['stringValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -290,8 +297,10 @@ class Attributes {
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
       attributeMap = commons.mapMap<core.Map, AttributeValue>(
-          _json['attributeMap'].cast<core.String, core.Map>(),
-          (core.Map item) => AttributeValue.fromJson(item));
+          (_json['attributeMap'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => AttributeValue.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
@@ -323,7 +332,8 @@ class BatchWriteSpansRequest {
   BatchWriteSpansRequest.fromJson(core.Map _json) {
     if (_json.containsKey('spans')) {
       spans = (_json['spans'] as core.List)
-          .map<Span>((value) => Span.fromJson(value))
+          .map<Span>((value) =>
+              Span.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -381,7 +391,8 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = Attributes.fromJson(_json['attributes']);
+      attributes = Attributes.fromJson(
+          _json['attributes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spanId')) {
       spanId = _json['spanId'] as core.String;
@@ -430,7 +441,8 @@ class Links {
     }
     if (_json.containsKey('link')) {
       link = (_json['link'] as core.List)
-          .map<Link>((value) => Link.fromJson(value))
+          .map<Link>((value) =>
+              Link.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -517,10 +529,12 @@ class Module {
 
   Module.fromJson(core.Map _json) {
     if (_json.containsKey('buildId')) {
-      buildId = TruncatableString.fromJson(_json['buildId']);
+      buildId = TruncatableString.fromJson(
+          _json['buildId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('module')) {
-      module = TruncatableString.fromJson(_json['module']);
+      module = TruncatableString.fromJson(
+          _json['module'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -627,19 +641,22 @@ class Span {
 
   Span.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = Attributes.fromJson(_json['attributes']);
+      attributes = Attributes.fromJson(
+          _json['attributes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('childSpanCount')) {
       childSpanCount = _json['childSpanCount'] as core.int;
     }
     if (_json.containsKey('displayName')) {
-      displayName = TruncatableString.fromJson(_json['displayName']);
+      displayName = TruncatableString.fromJson(
+          _json['displayName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('links')) {
-      links = Links.fromJson(_json['links']);
+      links =
+          Links.fromJson(_json['links'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -657,16 +674,19 @@ class Span {
       spanKind = _json['spanKind'] as core.String;
     }
     if (_json.containsKey('stackTrace')) {
-      stackTrace = StackTrace.fromJson(_json['stackTrace']);
+      stackTrace = StackTrace.fromJson(
+          _json['stackTrace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = Status.fromJson(_json['status']);
+      status = Status.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeEvents')) {
-      timeEvents = TimeEvents.fromJson(_json['timeEvents']);
+      timeEvents = TimeEvents.fromJson(
+          _json['timeEvents'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -753,23 +773,27 @@ class StackFrame {
       columnNumber = _json['columnNumber'] as core.String;
     }
     if (_json.containsKey('fileName')) {
-      fileName = TruncatableString.fromJson(_json['fileName']);
+      fileName = TruncatableString.fromJson(
+          _json['fileName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('functionName')) {
-      functionName = TruncatableString.fromJson(_json['functionName']);
+      functionName = TruncatableString.fromJson(
+          _json['functionName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lineNumber')) {
       lineNumber = _json['lineNumber'] as core.String;
     }
     if (_json.containsKey('loadModule')) {
-      loadModule = Module.fromJson(_json['loadModule']);
+      loadModule = Module.fromJson(
+          _json['loadModule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('originalFunctionName')) {
-      originalFunctionName =
-          TruncatableString.fromJson(_json['originalFunctionName']);
+      originalFunctionName = TruncatableString.fromJson(
+          _json['originalFunctionName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceVersion')) {
-      sourceVersion = TruncatableString.fromJson(_json['sourceVersion']);
+      sourceVersion = TruncatableString.fromJson(
+          _json['sourceVersion'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -817,7 +841,8 @@ class StackFrames {
     }
     if (_json.containsKey('frame')) {
       frame = (_json['frame'] as core.List)
-          .map<StackFrame>((value) => StackFrame.fromJson(value))
+          .map<StackFrame>((value) =>
+              StackFrame.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -851,7 +876,8 @@ class StackTrace {
 
   StackTrace.fromJson(core.Map _json) {
     if (_json.containsKey('stackFrames')) {
-      stackFrames = StackFrames.fromJson(_json['stackFrames']);
+      stackFrames = StackFrames.fromJson(
+          _json['stackFrames'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stackTraceHashId')) {
       stackTraceHashId = _json['stackTraceHashId'] as core.String;
@@ -902,7 +928,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -941,10 +968,12 @@ class TimeEvent {
 
   TimeEvent.fromJson(core.Map _json) {
     if (_json.containsKey('annotation')) {
-      annotation = Annotation.fromJson(_json['annotation']);
+      annotation = Annotation.fromJson(
+          _json['annotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('messageEvent')) {
-      messageEvent = MessageEvent.fromJson(_json['messageEvent']);
+      messageEvent = MessageEvent.fromJson(
+          _json['messageEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('time')) {
       time = _json['time'] as core.String;
@@ -993,7 +1022,8 @@ class TimeEvents {
     }
     if (_json.containsKey('timeEvent')) {
       timeEvent = (_json['timeEvent'] as core.List)
-          .map<TimeEvent>((value) => TimeEvent.fromJson(value))
+          .map<TimeEvent>((value) =>
+              TimeEvent.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

@@ -139,7 +139,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Snapshot.fromJson(data));
+    return _response.then(
+      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes an existing snapshot. Snapshots are used in [Seek]
@@ -197,7 +199,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration details of a snapshot. Snapshots are used in Seek
@@ -250,7 +254,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Snapshot.fromJson(data));
+    return _response.then(
+      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -318,7 +324,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the existing snapshots. Snapshots are used in [Seek](
@@ -388,7 +396,10 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSnapshotsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSnapshotsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing snapshot. Snapshots are used in Seek operations, which
@@ -446,7 +457,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Snapshot.fromJson(data));
+    return _response.then(
+      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -507,7 +520,9 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -570,7 +585,10 @@ class ProjectsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -639,7 +657,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a subscription to a given topic. See the [resource name rules]
@@ -707,7 +727,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an existing subscription. All messages retained in the
@@ -761,7 +784,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detaches a subscription from this topic. All messages retained in the
@@ -816,7 +841,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DetachSubscriptionResponse.fromJson(data));
+    return _response.then(
+      (data) => DetachSubscriptionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration details of a subscription.
@@ -866,7 +894,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -934,7 +965,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists matching subscriptions.
@@ -1000,7 +1033,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSubscriptionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSubscriptionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the ack deadline for a specific message. This method is useful to
@@ -1062,7 +1098,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the `PushConfig` for a specified subscription. This may be used
@@ -1124,7 +1162,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing subscription. Note that certain properties of a
@@ -1185,7 +1225,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pulls messages from the server. The server may return `UNAVAILABLE` if
@@ -1245,7 +1288,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PullResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          PullResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Seeks an existing subscription to a point in time or to a given snapshot,
@@ -1308,7 +1354,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SeekResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SeekResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1369,7 +1418,9 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1432,7 +1483,10 @@ class ProjectsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1504,7 +1558,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the topic with the given name. Returns `NOT_FOUND` if the topic
@@ -1558,7 +1614,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration of a topic.
@@ -1608,7 +1666,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -1676,7 +1736,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists matching topics.
@@ -1741,7 +1803,10 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTopicsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTopicsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing topic. Note that certain properties of a topic are not
@@ -1802,7 +1867,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Topic.fromJson(data));
+    return _response.then(
+      (data) => Topic.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic
@@ -1859,7 +1926,10 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PublishResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          PublishResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1920,7 +1990,9 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1983,7 +2055,10 @@ class ProjectsTopicsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2059,7 +2134,10 @@ class ProjectsTopicsSnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTopicSnapshotsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTopicSnapshotsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2133,8 +2211,10 @@ class ProjectsTopicsSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListTopicSubscriptionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTopicSubscriptionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2221,7 +2301,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -2271,7 +2352,8 @@ class CreateSnapshotRequest {
   CreateSnapshotRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('subscription')) {
@@ -2483,7 +2565,8 @@ class ListSnapshotsResponse {
     }
     if (_json.containsKey('snapshots')) {
       snapshots = (_json['snapshots'] as core.List)
-          .map<Snapshot>((value) => Snapshot.fromJson(value))
+          .map<Snapshot>((value) =>
+              Snapshot.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2518,7 +2601,8 @@ class ListSubscriptionsResponse {
     }
     if (_json.containsKey('subscriptions')) {
       subscriptions = (_json['subscriptions'] as core.List)
-          .map<Subscription>((value) => Subscription.fromJson(value))
+          .map<Subscription>((value) => Subscription.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2623,7 +2707,8 @@ class ListTopicsResponse {
     }
     if (_json.containsKey('topics')) {
       topics = (_json['topics'] as core.List)
-          .map<Topic>((value) => Topic.fromJson(value))
+          .map<Topic>((value) =>
+              Topic.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2722,7 +2807,8 @@ class ModifyPushConfigRequest {
 
   ModifyPushConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey('pushConfig')) {
-      pushConfig = PushConfig.fromJson(_json['pushConfig']);
+      pushConfig = PushConfig.fromJson(
+          _json['pushConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2852,7 +2938,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2888,7 +2975,8 @@ class PublishRequest {
   PublishRequest.fromJson(core.Map _json) {
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<PubsubMessage>((value) => PubsubMessage.fromJson(value))
+          .map<PubsubMessage>((value) => PubsubMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2975,7 +3063,8 @@ class PubsubMessage {
   PubsubMessage.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
@@ -3065,7 +3154,8 @@ class PullResponse {
   PullResponse.fromJson(core.Map _json) {
     if (_json.containsKey('receivedMessages')) {
       receivedMessages = (_json['receivedMessages'] as core.List)
-          .map<ReceivedMessage>((value) => ReceivedMessage.fromJson(value))
+          .map<ReceivedMessage>((value) => ReceivedMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3111,11 +3201,13 @@ class PushConfig {
   PushConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('oidcToken')) {
-      oidcToken = OidcToken.fromJson(_json['oidcToken']);
+      oidcToken = OidcToken.fromJson(
+          _json['oidcToken'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pushEndpoint')) {
       pushEndpoint = _json['pushEndpoint'] as core.String;
@@ -3168,7 +3260,8 @@ class ReceivedMessage {
       deliveryAttempt = _json['deliveryAttempt'] as core.int;
     }
     if (_json.containsKey('message')) {
-      message = PubsubMessage.fromJson(_json['message']);
+      message = PubsubMessage.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3294,7 +3387,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3343,7 +3437,8 @@ class Snapshot {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -3476,7 +3571,8 @@ class Subscription {
       ackDeadlineSeconds = _json['ackDeadlineSeconds'] as core.int;
     }
     if (_json.containsKey('deadLetterPolicy')) {
-      deadLetterPolicy = DeadLetterPolicy.fromJson(_json['deadLetterPolicy']);
+      deadLetterPolicy = DeadLetterPolicy.fromJson(
+          _json['deadLetterPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detached')) {
       detached = _json['detached'] as core.bool;
@@ -3485,14 +3581,16 @@ class Subscription {
       enableMessageOrdering = _json['enableMessageOrdering'] as core.bool;
     }
     if (_json.containsKey('expirationPolicy')) {
-      expirationPolicy = ExpirationPolicy.fromJson(_json['expirationPolicy']);
+      expirationPolicy = ExpirationPolicy.fromJson(
+          _json['expirationPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filter')) {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('messageRetentionDuration')) {
@@ -3503,13 +3601,15 @@ class Subscription {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pushConfig')) {
-      pushConfig = PushConfig.fromJson(_json['pushConfig']);
+      pushConfig = PushConfig.fromJson(
+          _json['pushConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retainAckedMessages')) {
       retainAckedMessages = _json['retainAckedMessages'] as core.bool;
     }
     if (_json.containsKey('retryPolicy')) {
-      retryPolicy = RetryPolicy.fromJson(_json['retryPolicy']);
+      retryPolicy = RetryPolicy.fromJson(
+          _json['retryPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('topic')) {
       topic = _json['topic'] as core.String;
@@ -3645,12 +3745,13 @@ class Topic {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('messageStoragePolicy')) {
-      messageStoragePolicy =
-          MessageStoragePolicy.fromJson(_json['messageStoragePolicy']);
+      messageStoragePolicy = MessageStoragePolicy.fromJson(
+          _json['messageStoragePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3688,7 +3789,8 @@ class UpdateSnapshotRequest {
 
   UpdateSnapshotRequest.fromJson(core.Map _json) {
     if (_json.containsKey('snapshot')) {
-      snapshot = Snapshot.fromJson(_json['snapshot']);
+      snapshot = Snapshot.fromJson(
+          _json['snapshot'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -3720,7 +3822,8 @@ class UpdateSubscriptionRequest {
 
   UpdateSubscriptionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('subscription')) {
-      subscription = Subscription.fromJson(_json['subscription']);
+      subscription = Subscription.fromJson(
+          _json['subscription'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -3755,7 +3858,8 @@ class UpdateTopicRequest {
 
   UpdateTopicRequest.fromJson(core.Map _json) {
     if (_json.containsKey('topic')) {
-      topic = Topic.fromJson(_json['topic']);
+      topic =
+          Topic.fromJson(_json['topic'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

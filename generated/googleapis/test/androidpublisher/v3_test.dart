@@ -89,7 +89,7 @@ api.Apk buildApk() {
 void checkApk(api.Apk o) {
   buildCounterApk++;
   if (buildCounterApk < 3) {
-    checkApkBinary(o.binary);
+    checkApkBinary(o.binary as api.ApkBinary);
     unittest.expect(o.versionCode, unittest.equals(42));
   }
   buildCounterApk--;
@@ -130,7 +130,7 @@ api.ApksAddExternallyHostedRequest buildApksAddExternallyHostedRequest() {
 void checkApksAddExternallyHostedRequest(api.ApksAddExternallyHostedRequest o) {
   buildCounterApksAddExternallyHostedRequest++;
   if (buildCounterApksAddExternallyHostedRequest < 3) {
-    checkExternallyHostedApk(o.externallyHostedApk);
+    checkExternallyHostedApk(o.externallyHostedApk as api.ExternallyHostedApk);
   }
   buildCounterApksAddExternallyHostedRequest--;
 }
@@ -150,7 +150,7 @@ void checkApksAddExternallyHostedResponse(
     api.ApksAddExternallyHostedResponse o) {
   buildCounterApksAddExternallyHostedResponse++;
   if (buildCounterApksAddExternallyHostedResponse < 3) {
-    checkExternallyHostedApk(o.externallyHostedApk);
+    checkExternallyHostedApk(o.externallyHostedApk as api.ExternallyHostedApk);
   }
   buildCounterApksAddExternallyHostedResponse--;
 }
@@ -164,8 +164,8 @@ core.List<api.Apk> buildUnnamed1345() {
 
 void checkUnnamed1345(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApk(o[0]);
-  checkApk(o[1]);
+  checkApk(o[0] as api.Apk);
+  checkApk(o[1] as api.Apk);
 }
 
 core.int buildCounterApksListResponse = 0;
@@ -267,8 +267,8 @@ core.List<api.Bundle> buildUnnamed1346() {
 
 void checkUnnamed1346(core.List<api.Bundle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBundle(o[0]);
-  checkBundle(o[1]);
+  checkBundle(o[0] as api.Bundle);
+  checkBundle(o[1] as api.Bundle);
 }
 
 core.int buildCounterBundlesListResponse = 0;
@@ -307,8 +307,8 @@ api.Comment buildComment() {
 void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    checkDeveloperComment(o.developerComment);
-    checkUserComment(o.userComment);
+    checkDeveloperComment(o.developerComment as api.DeveloperComment);
+    checkUserComment(o.userComment as api.UserComment);
   }
   buildCounterComment--;
 }
@@ -381,7 +381,7 @@ void checkDeobfuscationFilesUploadResponse(
     api.DeobfuscationFilesUploadResponse o) {
   buildCounterDeobfuscationFilesUploadResponse++;
   if (buildCounterDeobfuscationFilesUploadResponse < 3) {
-    checkDeobfuscationFile(o.deobfuscationFile);
+    checkDeobfuscationFile(o.deobfuscationFile as api.DeobfuscationFile);
   }
   buildCounterDeobfuscationFilesUploadResponse--;
 }
@@ -401,7 +401,7 @@ api.DeveloperComment buildDeveloperComment() {
 void checkDeveloperComment(api.DeveloperComment o) {
   buildCounterDeveloperComment++;
   if (buildCounterDeveloperComment < 3) {
-    checkTimestamp(o.lastModified);
+    checkTimestamp(o.lastModified as api.Timestamp);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterDeveloperComment--;
@@ -530,7 +530,7 @@ api.ExpansionFilesUploadResponse buildExpansionFilesUploadResponse() {
 void checkExpansionFilesUploadResponse(api.ExpansionFilesUploadResponse o) {
   buildCounterExpansionFilesUploadResponse++;
   if (buildCounterExpansionFilesUploadResponse < 3) {
-    checkExpansionFile(o.expansionFile);
+    checkExpansionFile(o.expansionFile as api.ExpansionFile);
   }
   buildCounterExpansionFilesUploadResponse--;
 }
@@ -583,8 +583,8 @@ core.List<api.UsesPermission> buildUnnamed1353() {
 
 void checkUnnamed1353(core.List<api.UsesPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsesPermission(o[0]);
-  checkUsesPermission(o[1]);
+  checkUsesPermission(o[0] as api.UsesPermission);
+  checkUsesPermission(o[1] as api.UsesPermission);
 }
 
 core.int buildCounterExternallyHostedApk = 0;
@@ -668,8 +668,8 @@ core.List<api.Image> buildUnnamed1354() {
 
 void checkUnnamed1354(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImage(o[0]);
-  checkImage(o[1]);
+  checkImage(o[0] as api.Image);
+  checkImage(o[1] as api.Image);
 }
 
 core.int buildCounterImagesDeleteAllResponse = 0;
@@ -700,8 +700,8 @@ core.List<api.Image> buildUnnamed1355() {
 
 void checkUnnamed1355(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImage(o[0]);
-  checkImage(o[1]);
+  checkImage(o[0] as api.Image);
+  checkImage(o[1] as api.Image);
 }
 
 core.int buildCounterImagesListResponse = 0;
@@ -737,7 +737,7 @@ api.ImagesUploadResponse buildImagesUploadResponse() {
 void checkImagesUploadResponse(api.ImagesUploadResponse o) {
   buildCounterImagesUploadResponse++;
   if (buildCounterImagesUploadResponse < 3) {
-    checkImage(o.image);
+    checkImage(o.image as api.Image);
   }
   buildCounterImagesUploadResponse--;
 }
@@ -751,8 +751,8 @@ core.Map<core.String, api.InAppProductListing> buildUnnamed1356() {
 
 void checkUnnamed1356(core.Map<core.String, api.InAppProductListing> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInAppProductListing(o['x']);
-  checkInAppProductListing(o['y']);
+  checkInAppProductListing(o['x'] as api.InAppProductListing);
+  checkInAppProductListing(o['y'] as api.InAppProductListing);
 }
 
 core.Map<core.String, api.Price> buildUnnamed1357() {
@@ -764,8 +764,8 @@ core.Map<core.String, api.Price> buildUnnamed1357() {
 
 void checkUnnamed1357(core.Map<core.String, api.Price> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPrice(o['x']);
-  checkPrice(o['y']);
+  checkPrice(o['x'] as api.Price);
+  checkPrice(o['y'] as api.Price);
 }
 
 core.int buildCounterInAppProduct = 0;
@@ -793,7 +793,7 @@ void checkInAppProduct(api.InAppProduct o) {
   buildCounterInAppProduct++;
   if (buildCounterInAppProduct < 3) {
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
-    checkPrice(o.defaultPrice);
+    checkPrice(o.defaultPrice as api.Price);
     unittest.expect(o.gracePeriod, unittest.equals('foo'));
     checkUnnamed1356(o.listings);
     unittest.expect(o.packageName, unittest.equals('foo'));
@@ -852,8 +852,8 @@ core.List<api.InAppProduct> buildUnnamed1359() {
 
 void checkUnnamed1359(core.List<api.InAppProduct> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInAppProduct(o[0]);
-  checkInAppProduct(o[1]);
+  checkInAppProduct(o[0] as api.InAppProduct);
+  checkInAppProduct(o[1] as api.InAppProduct);
 }
 
 core.int buildCounterInappproductsListResponse = 0;
@@ -875,8 +875,8 @@ void checkInappproductsListResponse(api.InappproductsListResponse o) {
   if (buildCounterInappproductsListResponse < 3) {
     checkUnnamed1359(o.inappproduct);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
   }
   buildCounterInappproductsListResponse--;
 }
@@ -965,8 +965,8 @@ core.List<api.Listing> buildUnnamed1360() {
 
 void checkUnnamed1360(core.List<api.Listing> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkListing(o[0]);
-  checkListing(o[1]);
+  checkListing(o[0] as api.Listing);
+  checkListing(o[1] as api.Listing);
 }
 
 core.int buildCounterListingsListResponse = 0;
@@ -1130,8 +1130,8 @@ core.List<api.Comment> buildUnnamed1361() {
 
 void checkUnnamed1361(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterReview = 0;
@@ -1172,7 +1172,7 @@ api.ReviewReplyResult buildReviewReplyResult() {
 void checkReviewReplyResult(api.ReviewReplyResult o) {
   buildCounterReviewReplyResult++;
   if (buildCounterReviewReplyResult < 3) {
-    checkTimestamp(o.lastEdited);
+    checkTimestamp(o.lastEdited as api.Timestamp);
     unittest.expect(o.replyText, unittest.equals('foo'));
   }
   buildCounterReviewReplyResult--;
@@ -1187,8 +1187,8 @@ core.List<api.Review> buildUnnamed1362() {
 
 void checkUnnamed1362(core.List<api.Review> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReview(o[0]);
-  checkReview(o[1]);
+  checkReview(o[0] as api.Review);
+  checkReview(o[1] as api.Review);
 }
 
 core.int buildCounterReviewsListResponse = 0;
@@ -1207,9 +1207,9 @@ api.ReviewsListResponse buildReviewsListResponse() {
 void checkReviewsListResponse(api.ReviewsListResponse o) {
   buildCounterReviewsListResponse++;
   if (buildCounterReviewsListResponse < 3) {
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     checkUnnamed1362(o.reviews);
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
   }
   buildCounterReviewsListResponse--;
 }
@@ -1247,7 +1247,7 @@ api.ReviewsReplyResponse buildReviewsReplyResponse() {
 void checkReviewsReplyResponse(api.ReviewsReplyResponse o) {
   buildCounterReviewsReplyResponse++;
   if (buildCounterReviewsReplyResponse < 3) {
-    checkReviewReplyResult(o.result);
+    checkReviewReplyResult(o.result as api.ReviewReplyResult);
   }
   buildCounterReviewsReplyResponse--;
 }
@@ -1309,7 +1309,7 @@ api.SubscriptionPriceChange buildSubscriptionPriceChange() {
 void checkSubscriptionPriceChange(api.SubscriptionPriceChange o) {
   buildCounterSubscriptionPriceChange++;
   if (buildCounterSubscriptionPriceChange < 3) {
-    checkPrice(o.newPrice);
+    checkPrice(o.newPrice as api.Price);
     unittest.expect(o.state, unittest.equals(42));
   }
   buildCounterSubscriptionPriceChange--;
@@ -1361,7 +1361,8 @@ void checkSubscriptionPurchase(api.SubscriptionPurchase o) {
     unittest.expect(o.autoRenewing, unittest.isTrue);
     unittest.expect(o.autoResumeTimeMillis, unittest.equals('foo'));
     unittest.expect(o.cancelReason, unittest.equals(42));
-    checkSubscriptionCancelSurveyResult(o.cancelSurveyResult);
+    checkSubscriptionCancelSurveyResult(
+        o.cancelSurveyResult as api.SubscriptionCancelSurveyResult);
     unittest.expect(o.countryCode, unittest.equals('foo'));
     unittest.expect(o.developerPayload, unittest.equals('foo'));
     unittest.expect(o.emailAddress, unittest.equals('foo'));
@@ -1369,7 +1370,8 @@ void checkSubscriptionPurchase(api.SubscriptionPurchase o) {
     unittest.expect(o.externalAccountId, unittest.equals('foo'));
     unittest.expect(o.familyName, unittest.equals('foo'));
     unittest.expect(o.givenName, unittest.equals('foo'));
-    checkIntroductoryPriceInfo(o.introductoryPriceInfo);
+    checkIntroductoryPriceInfo(
+        o.introductoryPriceInfo as api.IntroductoryPriceInfo);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.linkedPurchaseToken, unittest.equals('foo'));
     unittest.expect(o.obfuscatedExternalAccountId, unittest.equals('foo'));
@@ -1377,7 +1379,7 @@ void checkSubscriptionPurchase(api.SubscriptionPurchase o) {
     unittest.expect(o.orderId, unittest.equals('foo'));
     unittest.expect(o.paymentState, unittest.equals(42));
     unittest.expect(o.priceAmountMicros, unittest.equals('foo'));
-    checkSubscriptionPriceChange(o.priceChange);
+    checkSubscriptionPriceChange(o.priceChange as api.SubscriptionPriceChange);
     unittest.expect(o.priceCurrencyCode, unittest.equals('foo'));
     unittest.expect(o.profileId, unittest.equals('foo'));
     unittest.expect(o.profileName, unittest.equals('foo'));
@@ -1426,7 +1428,8 @@ void checkSubscriptionPurchasesDeferRequest(
     api.SubscriptionPurchasesDeferRequest o) {
   buildCounterSubscriptionPurchasesDeferRequest++;
   if (buildCounterSubscriptionPurchasesDeferRequest < 3) {
-    checkSubscriptionDeferralInfo(o.deferralInfo);
+    checkSubscriptionDeferralInfo(
+        o.deferralInfo as api.SubscriptionDeferralInfo);
   }
   buildCounterSubscriptionPurchasesDeferRequest--;
 }
@@ -1461,8 +1464,8 @@ core.List<api.Variant> buildUnnamed1363() {
 
 void checkUnnamed1363(core.List<api.Variant> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariant(o[0]);
-  checkVariant(o[1]);
+  checkVariant(o[0] as api.Variant);
+  checkVariant(o[1] as api.Variant);
 }
 
 core.int buildCounterSystemApksListResponse = 0;
@@ -1567,8 +1570,8 @@ core.List<api.TrackRelease> buildUnnamed1365() {
 
 void checkUnnamed1365(core.List<api.TrackRelease> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrackRelease(o[0]);
-  checkTrackRelease(o[1]);
+  checkTrackRelease(o[0] as api.TrackRelease);
+  checkTrackRelease(o[1] as api.TrackRelease);
 }
 
 core.int buildCounterTrack = 0;
@@ -1601,8 +1604,8 @@ core.List<api.LocalizedText> buildUnnamed1366() {
 
 void checkUnnamed1366(core.List<api.LocalizedText> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedText(o[0]);
-  checkLocalizedText(o[1]);
+  checkLocalizedText(o[0] as api.LocalizedText);
+  checkLocalizedText(o[1] as api.LocalizedText);
 }
 
 core.List<core.String> buildUnnamed1367() {
@@ -1638,7 +1641,7 @@ api.TrackRelease buildTrackRelease() {
 void checkTrackRelease(api.TrackRelease o) {
   buildCounterTrackRelease++;
   if (buildCounterTrackRelease < 3) {
-    checkCountryTargeting(o.countryTargeting);
+    checkCountryTargeting(o.countryTargeting as api.CountryTargeting);
     unittest.expect(o.inAppUpdatePriority, unittest.equals(42));
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1366(o.releaseNotes);
@@ -1658,8 +1661,8 @@ core.List<api.Track> buildUnnamed1368() {
 
 void checkUnnamed1368(core.List<api.Track> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrack(o[0]);
-  checkTrack(o[1]);
+  checkTrack(o[0] as api.Track);
+  checkTrack(o[1] as api.Track);
 }
 
 core.int buildCounterTracksListResponse = 0;
@@ -1712,8 +1715,8 @@ void checkUserComment(api.UserComment o) {
     unittest.expect(o.appVersionCode, unittest.equals(42));
     unittest.expect(o.appVersionName, unittest.equals('foo'));
     unittest.expect(o.device, unittest.equals('foo'));
-    checkDeviceMetadata(o.deviceMetadata);
-    checkTimestamp(o.lastModified);
+    checkDeviceMetadata(o.deviceMetadata as api.DeviceMetadata);
+    checkTimestamp(o.lastModified as api.Timestamp);
     unittest.expect(o.originalText, unittest.equals('foo'));
     unittest.expect(o.reviewerLanguage, unittest.equals('foo'));
     unittest.expect(o.starRating, unittest.equals(42));
@@ -1760,7 +1763,7 @@ api.Variant buildVariant() {
 void checkVariant(api.Variant o) {
   buildCounterVariant++;
   if (buildCounterVariant < 3) {
-    checkDeviceSpec(o.deviceSpec);
+    checkDeviceSpec(o.deviceSpec as api.DeviceSpec);
     unittest.expect(o.variantId, unittest.equals(42));
   }
   buildCounterVariant--;
@@ -1806,8 +1809,8 @@ core.List<api.VoidedPurchase> buildUnnamed1369() {
 
 void checkUnnamed1369(core.List<api.VoidedPurchase> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVoidedPurchase(o[0]);
-  checkVoidedPurchase(o[1]);
+  checkVoidedPurchase(o[0] as api.VoidedPurchase);
+  checkVoidedPurchase(o[1] as api.VoidedPurchase);
 }
 
 core.int buildCounterVoidedPurchasesListResponse = 0;
@@ -1826,8 +1829,8 @@ api.VoidedPurchasesListResponse buildVoidedPurchasesListResponse() {
 void checkVoidedPurchasesListResponse(api.VoidedPurchasesListResponse o) {
   buildCounterVoidedPurchasesListResponse++;
   if (buildCounterVoidedPurchasesListResponse < 3) {
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     checkUnnamed1369(o.voidedPurchases);
   }
   buildCounterVoidedPurchasesListResponse--;
@@ -1838,7 +1841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApk();
       var od = api.Apk.fromJson(o.toJson());
-      checkApk(od);
+      checkApk(od as api.Apk);
     });
   });
 
@@ -1846,7 +1849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApkBinary();
       var od = api.ApkBinary.fromJson(o.toJson());
-      checkApkBinary(od);
+      checkApkBinary(od as api.ApkBinary);
     });
   });
 
@@ -1854,7 +1857,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApksAddExternallyHostedRequest();
       var od = api.ApksAddExternallyHostedRequest.fromJson(o.toJson());
-      checkApksAddExternallyHostedRequest(od);
+      checkApksAddExternallyHostedRequest(
+          od as api.ApksAddExternallyHostedRequest);
     });
   });
 
@@ -1862,7 +1866,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApksAddExternallyHostedResponse();
       var od = api.ApksAddExternallyHostedResponse.fromJson(o.toJson());
-      checkApksAddExternallyHostedResponse(od);
+      checkApksAddExternallyHostedResponse(
+          od as api.ApksAddExternallyHostedResponse);
     });
   });
 
@@ -1870,7 +1875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApksListResponse();
       var od = api.ApksListResponse.fromJson(o.toJson());
-      checkApksListResponse(od);
+      checkApksListResponse(od as api.ApksListResponse);
     });
   });
 
@@ -1878,7 +1883,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppDetails();
       var od = api.AppDetails.fromJson(o.toJson());
-      checkAppDetails(od);
+      checkAppDetails(od as api.AppDetails);
     });
   });
 
@@ -1886,7 +1891,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppEdit();
       var od = api.AppEdit.fromJson(o.toJson());
-      checkAppEdit(od);
+      checkAppEdit(od as api.AppEdit);
     });
   });
 
@@ -1894,7 +1899,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBundle();
       var od = api.Bundle.fromJson(o.toJson());
-      checkBundle(od);
+      checkBundle(od as api.Bundle);
     });
   });
 
@@ -1902,7 +1907,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBundlesListResponse();
       var od = api.BundlesListResponse.fromJson(o.toJson());
-      checkBundlesListResponse(od);
+      checkBundlesListResponse(od as api.BundlesListResponse);
     });
   });
 
@@ -1910,7 +1915,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
-      checkComment(od);
+      checkComment(od as api.Comment);
     });
   });
 
@@ -1918,7 +1923,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCountryTargeting();
       var od = api.CountryTargeting.fromJson(o.toJson());
-      checkCountryTargeting(od);
+      checkCountryTargeting(od as api.CountryTargeting);
     });
   });
 
@@ -1926,7 +1931,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeobfuscationFile();
       var od = api.DeobfuscationFile.fromJson(o.toJson());
-      checkDeobfuscationFile(od);
+      checkDeobfuscationFile(od as api.DeobfuscationFile);
     });
   });
 
@@ -1934,7 +1939,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeobfuscationFilesUploadResponse();
       var od = api.DeobfuscationFilesUploadResponse.fromJson(o.toJson());
-      checkDeobfuscationFilesUploadResponse(od);
+      checkDeobfuscationFilesUploadResponse(
+          od as api.DeobfuscationFilesUploadResponse);
     });
   });
 
@@ -1942,7 +1948,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeveloperComment();
       var od = api.DeveloperComment.fromJson(o.toJson());
-      checkDeveloperComment(od);
+      checkDeveloperComment(od as api.DeveloperComment);
     });
   });
 
@@ -1950,7 +1956,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceMetadata();
       var od = api.DeviceMetadata.fromJson(o.toJson());
-      checkDeviceMetadata(od);
+      checkDeviceMetadata(od as api.DeviceMetadata);
     });
   });
 
@@ -1958,7 +1964,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceSpec();
       var od = api.DeviceSpec.fromJson(o.toJson());
-      checkDeviceSpec(od);
+      checkDeviceSpec(od as api.DeviceSpec);
     });
   });
 
@@ -1966,7 +1972,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpansionFile();
       var od = api.ExpansionFile.fromJson(o.toJson());
-      checkExpansionFile(od);
+      checkExpansionFile(od as api.ExpansionFile);
     });
   });
 
@@ -1974,7 +1980,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpansionFilesUploadResponse();
       var od = api.ExpansionFilesUploadResponse.fromJson(o.toJson());
-      checkExpansionFilesUploadResponse(od);
+      checkExpansionFilesUploadResponse(od as api.ExpansionFilesUploadResponse);
     });
   });
 
@@ -1982,7 +1988,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExternallyHostedApk();
       var od = api.ExternallyHostedApk.fromJson(o.toJson());
-      checkExternallyHostedApk(od);
+      checkExternallyHostedApk(od as api.ExternallyHostedApk);
     });
   });
 
@@ -1990,7 +1996,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
-      checkImage(od);
+      checkImage(od as api.Image);
     });
   });
 
@@ -1998,7 +2004,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImagesDeleteAllResponse();
       var od = api.ImagesDeleteAllResponse.fromJson(o.toJson());
-      checkImagesDeleteAllResponse(od);
+      checkImagesDeleteAllResponse(od as api.ImagesDeleteAllResponse);
     });
   });
 
@@ -2006,7 +2012,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImagesListResponse();
       var od = api.ImagesListResponse.fromJson(o.toJson());
-      checkImagesListResponse(od);
+      checkImagesListResponse(od as api.ImagesListResponse);
     });
   });
 
@@ -2014,7 +2020,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImagesUploadResponse();
       var od = api.ImagesUploadResponse.fromJson(o.toJson());
-      checkImagesUploadResponse(od);
+      checkImagesUploadResponse(od as api.ImagesUploadResponse);
     });
   });
 
@@ -2022,7 +2028,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInAppProduct();
       var od = api.InAppProduct.fromJson(o.toJson());
-      checkInAppProduct(od);
+      checkInAppProduct(od as api.InAppProduct);
     });
   });
 
@@ -2030,7 +2036,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInAppProductListing();
       var od = api.InAppProductListing.fromJson(o.toJson());
-      checkInAppProductListing(od);
+      checkInAppProductListing(od as api.InAppProductListing);
     });
   });
 
@@ -2038,7 +2044,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInappproductsListResponse();
       var od = api.InappproductsListResponse.fromJson(o.toJson());
-      checkInappproductsListResponse(od);
+      checkInappproductsListResponse(od as api.InappproductsListResponse);
     });
   });
 
@@ -2046,7 +2052,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInternalAppSharingArtifact();
       var od = api.InternalAppSharingArtifact.fromJson(o.toJson());
-      checkInternalAppSharingArtifact(od);
+      checkInternalAppSharingArtifact(od as api.InternalAppSharingArtifact);
     });
   });
 
@@ -2054,7 +2060,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIntroductoryPriceInfo();
       var od = api.IntroductoryPriceInfo.fromJson(o.toJson());
-      checkIntroductoryPriceInfo(od);
+      checkIntroductoryPriceInfo(od as api.IntroductoryPriceInfo);
     });
   });
 
@@ -2062,7 +2068,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListing();
       var od = api.Listing.fromJson(o.toJson());
-      checkListing(od);
+      checkListing(od as api.Listing);
     });
   });
 
@@ -2070,7 +2076,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListingsListResponse();
       var od = api.ListingsListResponse.fromJson(o.toJson());
-      checkListingsListResponse(od);
+      checkListingsListResponse(od as api.ListingsListResponse);
     });
   });
 
@@ -2078,7 +2084,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizedText();
       var od = api.LocalizedText.fromJson(o.toJson());
-      checkLocalizedText(od);
+      checkLocalizedText(od as api.LocalizedText);
     });
   });
 
@@ -2086,7 +2092,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageInfo();
       var od = api.PageInfo.fromJson(o.toJson());
-      checkPageInfo(od);
+      checkPageInfo(od as api.PageInfo);
     });
   });
 
@@ -2094,7 +2100,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
-      checkPrice(od);
+      checkPrice(od as api.Price);
     });
   });
 
@@ -2102,7 +2108,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProductPurchase();
       var od = api.ProductPurchase.fromJson(o.toJson());
-      checkProductPurchase(od);
+      checkProductPurchase(od as api.ProductPurchase);
     });
   });
 
@@ -2110,7 +2116,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProductPurchasesAcknowledgeRequest();
       var od = api.ProductPurchasesAcknowledgeRequest.fromJson(o.toJson());
-      checkProductPurchasesAcknowledgeRequest(od);
+      checkProductPurchasesAcknowledgeRequest(
+          od as api.ProductPurchasesAcknowledgeRequest);
     });
   });
 
@@ -2118,7 +2125,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReview();
       var od = api.Review.fromJson(o.toJson());
-      checkReview(od);
+      checkReview(od as api.Review);
     });
   });
 
@@ -2126,7 +2133,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewReplyResult();
       var od = api.ReviewReplyResult.fromJson(o.toJson());
-      checkReviewReplyResult(od);
+      checkReviewReplyResult(od as api.ReviewReplyResult);
     });
   });
 
@@ -2134,7 +2141,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewsListResponse();
       var od = api.ReviewsListResponse.fromJson(o.toJson());
-      checkReviewsListResponse(od);
+      checkReviewsListResponse(od as api.ReviewsListResponse);
     });
   });
 
@@ -2142,7 +2149,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewsReplyRequest();
       var od = api.ReviewsReplyRequest.fromJson(o.toJson());
-      checkReviewsReplyRequest(od);
+      checkReviewsReplyRequest(od as api.ReviewsReplyRequest);
     });
   });
 
@@ -2150,7 +2157,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewsReplyResponse();
       var od = api.ReviewsReplyResponse.fromJson(o.toJson());
-      checkReviewsReplyResponse(od);
+      checkReviewsReplyResponse(od as api.ReviewsReplyResponse);
     });
   });
 
@@ -2158,7 +2165,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionCancelSurveyResult();
       var od = api.SubscriptionCancelSurveyResult.fromJson(o.toJson());
-      checkSubscriptionCancelSurveyResult(od);
+      checkSubscriptionCancelSurveyResult(
+          od as api.SubscriptionCancelSurveyResult);
     });
   });
 
@@ -2166,7 +2174,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionDeferralInfo();
       var od = api.SubscriptionDeferralInfo.fromJson(o.toJson());
-      checkSubscriptionDeferralInfo(od);
+      checkSubscriptionDeferralInfo(od as api.SubscriptionDeferralInfo);
     });
   });
 
@@ -2174,7 +2182,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPriceChange();
       var od = api.SubscriptionPriceChange.fromJson(o.toJson());
-      checkSubscriptionPriceChange(od);
+      checkSubscriptionPriceChange(od as api.SubscriptionPriceChange);
     });
   });
 
@@ -2182,7 +2190,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPurchase();
       var od = api.SubscriptionPurchase.fromJson(o.toJson());
-      checkSubscriptionPurchase(od);
+      checkSubscriptionPurchase(od as api.SubscriptionPurchase);
     });
   });
 
@@ -2190,7 +2198,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPurchasesAcknowledgeRequest();
       var od = api.SubscriptionPurchasesAcknowledgeRequest.fromJson(o.toJson());
-      checkSubscriptionPurchasesAcknowledgeRequest(od);
+      checkSubscriptionPurchasesAcknowledgeRequest(
+          od as api.SubscriptionPurchasesAcknowledgeRequest);
     });
   });
 
@@ -2198,7 +2207,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPurchasesDeferRequest();
       var od = api.SubscriptionPurchasesDeferRequest.fromJson(o.toJson());
-      checkSubscriptionPurchasesDeferRequest(od);
+      checkSubscriptionPurchasesDeferRequest(
+          od as api.SubscriptionPurchasesDeferRequest);
     });
   });
 
@@ -2206,7 +2216,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPurchasesDeferResponse();
       var od = api.SubscriptionPurchasesDeferResponse.fromJson(o.toJson());
-      checkSubscriptionPurchasesDeferResponse(od);
+      checkSubscriptionPurchasesDeferResponse(
+          od as api.SubscriptionPurchasesDeferResponse);
     });
   });
 
@@ -2214,7 +2225,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystemApksListResponse();
       var od = api.SystemApksListResponse.fromJson(o.toJson());
-      checkSystemApksListResponse(od);
+      checkSystemApksListResponse(od as api.SystemApksListResponse);
     });
   });
 
@@ -2222,7 +2233,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTesters();
       var od = api.Testers.fromJson(o.toJson());
-      checkTesters(od);
+      checkTesters(od as api.Testers);
     });
   });
 
@@ -2230,7 +2241,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimestamp();
       var od = api.Timestamp.fromJson(o.toJson());
-      checkTimestamp(od);
+      checkTimestamp(od as api.Timestamp);
     });
   });
 
@@ -2238,7 +2249,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTokenPagination();
       var od = api.TokenPagination.fromJson(o.toJson());
-      checkTokenPagination(od);
+      checkTokenPagination(od as api.TokenPagination);
     });
   });
 
@@ -2246,7 +2257,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrack();
       var od = api.Track.fromJson(o.toJson());
-      checkTrack(od);
+      checkTrack(od as api.Track);
     });
   });
 
@@ -2254,7 +2265,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrackRelease();
       var od = api.TrackRelease.fromJson(o.toJson());
-      checkTrackRelease(od);
+      checkTrackRelease(od as api.TrackRelease);
     });
   });
 
@@ -2262,7 +2273,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTracksListResponse();
       var od = api.TracksListResponse.fromJson(o.toJson());
-      checkTracksListResponse(od);
+      checkTracksListResponse(od as api.TracksListResponse);
     });
   });
 
@@ -2270,7 +2281,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserComment();
       var od = api.UserComment.fromJson(o.toJson());
-      checkUserComment(od);
+      checkUserComment(od as api.UserComment);
     });
   });
 
@@ -2278,7 +2289,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsesPermission();
       var od = api.UsesPermission.fromJson(o.toJson());
-      checkUsesPermission(od);
+      checkUsesPermission(od as api.UsesPermission);
     });
   });
 
@@ -2286,7 +2297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVariant();
       var od = api.Variant.fromJson(o.toJson());
-      checkVariant(od);
+      checkVariant(od as api.Variant);
     });
   });
 
@@ -2294,7 +2305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVoidedPurchase();
       var od = api.VoidedPurchase.fromJson(o.toJson());
-      checkVoidedPurchase(od);
+      checkVoidedPurchase(od as api.VoidedPurchase);
     });
   });
 
@@ -2302,7 +2313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVoidedPurchasesListResponse();
       var od = api.VoidedPurchasesListResponse.fromJson(o.toJson());
-      checkVoidedPurchasesListResponse(od);
+      checkVoidedPurchasesListResponse(od as api.VoidedPurchasesListResponse);
     });
   });
 
@@ -2369,7 +2380,7 @@ void main() {
       res
           .commit(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppEdit(response);
+        checkAppEdit(response as api.AppEdit);
       })));
     });
 
@@ -2487,7 +2498,7 @@ void main() {
       res
           .get(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppEdit(response);
+        checkAppEdit(response as api.AppEdit);
       })));
     });
 
@@ -2498,8 +2509,9 @@ void main() {
       var arg_packageName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AppEdit.fromJson(json);
-        checkAppEdit(obj);
+        var obj =
+            api.AppEdit.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAppEdit(obj as api.AppEdit);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2547,7 +2559,7 @@ void main() {
       res
           .insert(arg_request, arg_packageName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppEdit(response);
+        checkAppEdit(response as api.AppEdit);
       })));
     });
 
@@ -2613,7 +2625,7 @@ void main() {
       res
           .validate(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppEdit(response);
+        checkAppEdit(response as api.AppEdit);
       })));
     });
   });
@@ -2627,8 +2639,10 @@ void main() {
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApksAddExternallyHostedRequest.fromJson(json);
-        checkApksAddExternallyHostedRequest(obj);
+        var obj = api.ApksAddExternallyHostedRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkApksAddExternallyHostedRequest(
+            obj as api.ApksAddExternallyHostedRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2686,7 +2700,8 @@ void main() {
           .addexternallyhosted(arg_request, arg_packageName, arg_editId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApksAddExternallyHostedResponse(response);
+        checkApksAddExternallyHostedResponse(
+            response as api.ApksAddExternallyHostedResponse);
       })));
     });
 
@@ -2752,7 +2767,7 @@ void main() {
       res
           .list(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApksListResponse(response);
+        checkApksListResponse(response as api.ApksListResponse);
       })));
     });
 
@@ -2821,7 +2836,7 @@ void main() {
       res
           .upload(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApk(response);
+        checkApk(response as api.Apk);
       })));
     });
   });
@@ -2889,7 +2904,7 @@ void main() {
       res
           .list(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBundlesListResponse(response);
+        checkBundlesListResponse(response as api.BundlesListResponse);
       })));
     });
 
@@ -2963,7 +2978,7 @@ void main() {
               ackBundleInstallationWarning: arg_ackBundleInstallationWarning,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBundle(response);
+        checkBundle(response as api.Bundle);
       })));
     });
   });
@@ -3050,7 +3065,8 @@ void main() {
               arg_deobfuscationFileType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeobfuscationFilesUploadResponse(response);
+        checkDeobfuscationFilesUploadResponse(
+            response as api.DeobfuscationFilesUploadResponse);
       })));
     });
   });
@@ -3118,7 +3134,7 @@ void main() {
       res
           .get(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppDetails(response);
+        checkAppDetails(response as api.AppDetails);
       })));
     });
 
@@ -3130,8 +3146,9 @@ void main() {
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AppDetails.fromJson(json);
-        checkAppDetails(obj);
+        var obj = api.AppDetails.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAppDetails(obj as api.AppDetails);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3188,7 +3205,7 @@ void main() {
       res
           .patch(arg_request, arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppDetails(response);
+        checkAppDetails(response as api.AppDetails);
       })));
     });
 
@@ -3200,8 +3217,9 @@ void main() {
       var arg_editId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AppDetails.fromJson(json);
-        checkAppDetails(obj);
+        var obj = api.AppDetails.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAppDetails(obj as api.AppDetails);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3259,7 +3277,7 @@ void main() {
           .update(arg_request, arg_packageName, arg_editId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppDetails(response);
+        checkAppDetails(response as api.AppDetails);
       })));
     });
   });
@@ -3343,7 +3361,7 @@ void main() {
               arg_expansionFileType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExpansionFile(response);
+        checkExpansionFile(response as api.ExpansionFile);
       })));
     });
 
@@ -3357,8 +3375,9 @@ void main() {
       var arg_expansionFileType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExpansionFile.fromJson(json);
-        checkExpansionFile(obj);
+        var obj = api.ExpansionFile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExpansionFile(obj as api.ExpansionFile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3429,7 +3448,7 @@ void main() {
               arg_expansionFileType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExpansionFile(response);
+        checkExpansionFile(response as api.ExpansionFile);
       })));
     });
 
@@ -3443,8 +3462,9 @@ void main() {
       var arg_expansionFileType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExpansionFile.fromJson(json);
-        checkExpansionFile(obj);
+        var obj = api.ExpansionFile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExpansionFile(obj as api.ExpansionFile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3515,7 +3535,7 @@ void main() {
               arg_expansionFileType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExpansionFile(response);
+        checkExpansionFile(response as api.ExpansionFile);
       })));
     });
 
@@ -3600,7 +3620,8 @@ void main() {
               arg_expansionFileType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExpansionFilesUploadResponse(response);
+        checkExpansionFilesUploadResponse(
+            response as api.ExpansionFilesUploadResponse);
       })));
     });
   });
@@ -3773,7 +3794,7 @@ void main() {
           .deleteall(arg_packageName, arg_editId, arg_language, arg_imageType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImagesDeleteAllResponse(response);
+        checkImagesDeleteAllResponse(response as api.ImagesDeleteAllResponse);
       })));
     });
 
@@ -3854,7 +3875,7 @@ void main() {
           .list(arg_packageName, arg_editId, arg_language, arg_imageType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImagesListResponse(response);
+        checkImagesListResponse(response as api.ImagesListResponse);
       })));
     });
 
@@ -3938,7 +3959,7 @@ void main() {
           .upload(arg_packageName, arg_editId, arg_language, arg_imageType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImagesUploadResponse(response);
+        checkImagesUploadResponse(response as api.ImagesUploadResponse);
       })));
     });
   });
@@ -4143,7 +4164,7 @@ void main() {
       res
           .get(arg_packageName, arg_editId, arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListing(response);
+        checkListing(response as api.Listing);
       })));
     });
 
@@ -4209,7 +4230,7 @@ void main() {
       res
           .list(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListingsListResponse(response);
+        checkListingsListResponse(response as api.ListingsListResponse);
       })));
     });
 
@@ -4222,8 +4243,9 @@ void main() {
       var arg_language = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Listing.fromJson(json);
-        checkListing(obj);
+        var obj =
+            api.Listing.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkListing(obj as api.Listing);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4284,7 +4306,7 @@ void main() {
           .patch(arg_request, arg_packageName, arg_editId, arg_language,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListing(response);
+        checkListing(response as api.Listing);
       })));
     });
 
@@ -4297,8 +4319,9 @@ void main() {
       var arg_language = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Listing.fromJson(json);
-        checkListing(obj);
+        var obj =
+            api.Listing.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkListing(obj as api.Listing);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4359,7 +4382,7 @@ void main() {
           .update(arg_request, arg_packageName, arg_editId, arg_language,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListing(response);
+        checkListing(response as api.Listing);
       })));
     });
   });
@@ -4431,7 +4454,7 @@ void main() {
       res
           .get(arg_packageName, arg_editId, arg_track, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTesters(response);
+        checkTesters(response as api.Testers);
       })));
     });
 
@@ -4444,8 +4467,9 @@ void main() {
       var arg_track = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Testers.fromJson(json);
-        checkTesters(obj);
+        var obj =
+            api.Testers.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTesters(obj as api.Testers);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4506,7 +4530,7 @@ void main() {
           .patch(arg_request, arg_packageName, arg_editId, arg_track,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTesters(response);
+        checkTesters(response as api.Testers);
       })));
     });
 
@@ -4519,8 +4543,9 @@ void main() {
       var arg_track = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Testers.fromJson(json);
-        checkTesters(obj);
+        var obj =
+            api.Testers.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTesters(obj as api.Testers);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4581,7 +4606,7 @@ void main() {
           .update(arg_request, arg_packageName, arg_editId, arg_track,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTesters(response);
+        checkTesters(response as api.Testers);
       })));
     });
   });
@@ -4653,7 +4678,7 @@ void main() {
       res
           .get(arg_packageName, arg_editId, arg_track, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrack(response);
+        checkTrack(response as api.Track);
       })));
     });
 
@@ -4719,7 +4744,7 @@ void main() {
       res
           .list(arg_packageName, arg_editId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTracksListResponse(response);
+        checkTracksListResponse(response as api.TracksListResponse);
       })));
     });
 
@@ -4732,8 +4757,9 @@ void main() {
       var arg_track = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Track.fromJson(json);
-        checkTrack(obj);
+        var obj =
+            api.Track.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTrack(obj as api.Track);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4794,7 +4820,7 @@ void main() {
           .patch(arg_request, arg_packageName, arg_editId, arg_track,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrack(response);
+        checkTrack(response as api.Track);
       })));
     });
 
@@ -4807,8 +4833,9 @@ void main() {
       var arg_track = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Track.fromJson(json);
-        checkTrack(obj);
+        var obj =
+            api.Track.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTrack(obj as api.Track);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4869,7 +4896,7 @@ void main() {
           .update(arg_request, arg_packageName, arg_editId, arg_track,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrack(response);
+        checkTrack(response as api.Track);
       })));
     });
   });
@@ -4989,7 +5016,7 @@ void main() {
       res
           .get(arg_packageName, arg_sku, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInAppProduct(response);
+        checkInAppProduct(response as api.InAppProduct);
       })));
     });
 
@@ -5001,8 +5028,9 @@ void main() {
       var arg_autoConvertMissingPrices = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InAppProduct.fromJson(json);
-        checkInAppProduct(obj);
+        var obj = api.InAppProduct.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInAppProduct(obj as api.InAppProduct);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5054,7 +5082,7 @@ void main() {
               autoConvertMissingPrices: arg_autoConvertMissingPrices,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInAppProduct(response);
+        checkInAppProduct(response as api.InAppProduct);
       })));
     });
 
@@ -5122,7 +5150,8 @@ void main() {
               token: arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInappproductsListResponse(response);
+        checkInappproductsListResponse(
+            response as api.InappproductsListResponse);
       })));
     });
 
@@ -5135,8 +5164,9 @@ void main() {
       var arg_autoConvertMissingPrices = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InAppProduct.fromJson(json);
-        checkInAppProduct(obj);
+        var obj = api.InAppProduct.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInAppProduct(obj as api.InAppProduct);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5191,7 +5221,7 @@ void main() {
               autoConvertMissingPrices: arg_autoConvertMissingPrices,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInAppProduct(response);
+        checkInAppProduct(response as api.InAppProduct);
       })));
     });
 
@@ -5204,8 +5234,9 @@ void main() {
       var arg_autoConvertMissingPrices = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InAppProduct.fromJson(json);
-        checkInAppProduct(obj);
+        var obj = api.InAppProduct.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInAppProduct(obj as api.InAppProduct);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5260,7 +5291,7 @@ void main() {
               autoConvertMissingPrices: arg_autoConvertMissingPrices,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInAppProduct(response);
+        checkInAppProduct(response as api.InAppProduct);
       })));
     });
   });
@@ -5323,7 +5354,8 @@ void main() {
       res
           .uploadapk(arg_packageName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInternalAppSharingArtifact(response);
+        checkInternalAppSharingArtifact(
+            response as api.InternalAppSharingArtifact);
       })));
     });
 
@@ -5384,7 +5416,8 @@ void main() {
       res
           .uploadbundle(arg_packageName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInternalAppSharingArtifact(response);
+        checkInternalAppSharingArtifact(
+            response as api.InternalAppSharingArtifact);
       })));
     });
   });
@@ -5469,8 +5502,10 @@ void main() {
       var arg_token = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProductPurchasesAcknowledgeRequest.fromJson(json);
-        checkProductPurchasesAcknowledgeRequest(obj);
+        var obj = api.ProductPurchasesAcknowledgeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProductPurchasesAcknowledgeRequest(
+            obj as api.ProductPurchasesAcknowledgeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5605,7 +5640,7 @@ void main() {
       res
           .get(arg_packageName, arg_productId, arg_token, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProductPurchase(response);
+        checkProductPurchase(response as api.ProductPurchase);
       })));
     });
   });
@@ -5620,8 +5655,10 @@ void main() {
       var arg_token = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SubscriptionPurchasesAcknowledgeRequest.fromJson(json);
-        checkSubscriptionPurchasesAcknowledgeRequest(obj);
+        var obj = api.SubscriptionPurchasesAcknowledgeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSubscriptionPurchasesAcknowledgeRequest(
+            obj as api.SubscriptionPurchasesAcknowledgeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5764,8 +5801,10 @@ void main() {
       var arg_token = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SubscriptionPurchasesDeferRequest.fromJson(json);
-        checkSubscriptionPurchasesDeferRequest(obj);
+        var obj = api.SubscriptionPurchasesDeferRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSubscriptionPurchasesDeferRequest(
+            obj as api.SubscriptionPurchasesDeferRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5833,7 +5872,8 @@ void main() {
           .defer(arg_request, arg_packageName, arg_subscriptionId, arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscriptionPurchasesDeferResponse(response);
+        checkSubscriptionPurchasesDeferResponse(
+            response as api.SubscriptionPurchasesDeferResponse);
       })));
     });
 
@@ -5904,7 +5944,7 @@ void main() {
           .get(arg_packageName, arg_subscriptionId, arg_token,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscriptionPurchase(response);
+        checkSubscriptionPurchase(response as api.SubscriptionPurchase);
       })));
     });
 
@@ -6136,7 +6176,8 @@ void main() {
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVoidedPurchasesListResponse(response);
+        checkVoidedPurchasesListResponse(
+            response as api.VoidedPurchasesListResponse);
       })));
     });
   });
@@ -6203,7 +6244,7 @@ void main() {
               translationLanguage: arg_translationLanguage,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReview(response);
+        checkReview(response as api.Review);
       })));
     });
 
@@ -6275,7 +6316,7 @@ void main() {
               translationLanguage: arg_translationLanguage,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReviewsListResponse(response);
+        checkReviewsListResponse(response as api.ReviewsListResponse);
       })));
     });
 
@@ -6287,8 +6328,9 @@ void main() {
       var arg_reviewId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReviewsReplyRequest.fromJson(json);
-        checkReviewsReplyRequest(obj);
+        var obj = api.ReviewsReplyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReviewsReplyRequest(obj as api.ReviewsReplyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6346,7 +6388,7 @@ void main() {
           .reply(arg_request, arg_packageName, arg_reviewId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReviewsReplyResponse(response);
+        checkReviewsReplyResponse(response as api.ReviewsReplyResponse);
       })));
     });
   });
@@ -6360,8 +6402,9 @@ void main() {
       var arg_versionCode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Variant.fromJson(json);
-        checkVariant(obj);
+        var obj =
+            api.Variant.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVariant(obj as api.Variant);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6419,7 +6462,7 @@ void main() {
           .create(arg_request, arg_packageName, arg_versionCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVariant(response);
+        checkVariant(response as api.Variant);
       })));
     });
 
@@ -6568,7 +6611,7 @@ void main() {
           .get(arg_packageName, arg_versionCode, arg_variantId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVariant(response);
+        checkVariant(response as api.Variant);
       })));
     });
 
@@ -6634,7 +6677,7 @@ void main() {
       res
           .list(arg_packageName, arg_versionCode, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSystemApksListResponse(response);
+        checkSystemApksListResponse(response as api.SystemApksListResponse);
       })));
     });
   });

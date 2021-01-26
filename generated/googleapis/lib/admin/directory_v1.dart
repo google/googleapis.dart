@@ -238,7 +238,9 @@ class AspsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Get information about an ASP issued by a user.
@@ -296,7 +298,9 @@ class AspsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Asp.fromJson(data));
+    return _response.then(
+      (data) => Asp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List the ASPs issued by a user.
@@ -347,7 +351,9 @@ class AspsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Asps.fromJson(data));
+    return _response.then(
+      (data) => Asps.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -401,7 +407,9 @@ class ChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -471,7 +479,9 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve Chrome OS Device
@@ -539,7 +549,10 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChromeOsDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          ChromeOsDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all Chrome OS Devices of a customer (paginated)
@@ -652,7 +665,10 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChromeOsDevices.fromJson(data));
+    return _response.then(
+      (data) =>
+          ChromeOsDevices.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Move or insert multiple Chrome OS Devices to organizational unit
@@ -715,7 +731,9 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Patch Chrome OS Device
@@ -789,7 +807,10 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChromeOsDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          ChromeOsDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update Chrome OS Device
@@ -863,7 +884,10 @@ class ChromeosdevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChromeOsDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          ChromeOsDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -918,7 +942,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch Customers via Apiary Patch Orchestration
@@ -973,7 +999,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a customer.
@@ -1028,7 +1056,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1091,7 +1121,9 @@ class DomainAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a domain alias of the customer.
@@ -1148,7 +1180,10 @@ class DomainAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainAlias.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainAlias.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a domain alias of the customer.
@@ -1204,7 +1239,10 @@ class DomainAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainAlias.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainAlias.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the domain aliases of the customer.
@@ -1261,7 +1299,10 @@ class DomainAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainAliases.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainAliases.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1324,7 +1365,9 @@ class DomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a domain of the customer.
@@ -1381,7 +1424,9 @@ class DomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domains.fromJson(data));
+    return _response.then(
+      (data) => Domains.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a domain of the customer.
@@ -1437,7 +1482,9 @@ class DomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domains.fromJson(data));
+    return _response.then(
+      (data) => Domains.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the domains of the customer.
@@ -1487,7 +1534,9 @@ class DomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domains2.fromJson(data));
+    return _response.then(
+      (data) => Domains2.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1544,7 +1593,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve Group
@@ -1593,7 +1644,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create Group
@@ -1641,7 +1694,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all groups of a domain or of a user given a userKey (paginated)
@@ -1747,7 +1802,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Groups.fromJson(data));
+    return _response.then(
+      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch Groups via Apiary Patch Orchestration
@@ -1803,7 +1860,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update Group
@@ -1859,7 +1918,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1922,7 +1983,9 @@ class GroupsAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Add a alias for the group
@@ -1978,7 +2041,9 @@ class GroupsAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alias.fromJson(data));
+    return _response.then(
+      (data) => Alias.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all aliases for a group
@@ -2028,7 +2093,9 @@ class GroupsAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Aliases.fromJson(data));
+    return _response.then(
+      (data) => Aliases.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2091,7 +2158,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve Group Member
@@ -2148,7 +2217,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Member.fromJson(data));
+    return _response.then(
+      (data) => Member.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Checks whether the given user is a member of the group. Membership can be
@@ -2208,7 +2279,10 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MembersHasMember.fromJson(data));
+    return _response.then(
+      (data) => MembersHasMember.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Add user to the specified group.
@@ -2264,7 +2338,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Member.fromJson(data));
+    return _response.then(
+      (data) => Member.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all members in a group (paginated)
@@ -2342,7 +2418,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Members.fromJson(data));
+    return _response.then(
+      (data) => Members.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch Member via Apiary Patch Orchestration
@@ -2407,7 +2485,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Member.fromJson(data));
+    return _response.then(
+      (data) => Member.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update membership of a user in the specified group.
@@ -2472,7 +2552,9 @@ class MembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Member.fromJson(data));
+    return _response.then(
+      (data) => Member.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2542,7 +2624,9 @@ class MobiledevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Delete Mobile Device
@@ -2599,7 +2683,9 @@ class MobiledevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve Mobile Device
@@ -2667,7 +2753,10 @@ class MobiledevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MobileDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          MobileDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all Mobile Devices of a customer (paginated)
@@ -2776,7 +2865,10 @@ class MobiledevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MobileDevices.fromJson(data));
+    return _response.then(
+      (data) =>
+          MobileDevices.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2840,7 +2932,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve organizational unit
@@ -2898,7 +2992,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrgUnit.fromJson(data));
+    return _response.then(
+      (data) => OrgUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Add organizational unit
@@ -2954,7 +3050,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrgUnit.fromJson(data));
+    return _response.then(
+      (data) => OrgUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all organizational units
@@ -3021,7 +3119,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrgUnits.fromJson(data));
+    return _response.then(
+      (data) => OrgUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch organization unit via Apiary Patch Orchestration
@@ -3085,7 +3185,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrgUnit.fromJson(data));
+    return _response.then(
+      (data) => OrgUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update organizational unit
@@ -3149,7 +3251,9 @@ class OrgunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrgUnit.fromJson(data));
+    return _response.then(
+      (data) => OrgUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3205,7 +3309,10 @@ class PrivilegesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Privileges.fromJson(data));
+    return _response.then(
+      (data) =>
+          Privileges.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3284,7 +3391,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a building.
@@ -3343,7 +3452,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Building.fromJson(data));
+    return _response.then(
+      (data) => Building.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a building.
@@ -3416,7 +3527,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Building.fromJson(data));
+    return _response.then(
+      (data) => Building.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of buildings for an account.
@@ -3481,7 +3594,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Buildings.fromJson(data));
+    return _response.then(
+      (data) => Buildings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a building via Apiary Patch Orchestration.
@@ -3561,7 +3676,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Building.fromJson(data));
+    return _response.then(
+      (data) => Building.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a building.
@@ -3641,7 +3758,9 @@ class ResourcesBuildingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Building.fromJson(data));
+    return _response.then(
+      (data) => Building.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3707,7 +3826,9 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a calendar resource.
@@ -3766,7 +3887,10 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarResource.fromJson(data));
+    return _response.then(
+      (data) => CalendarResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a calendar resource.
@@ -3824,7 +3948,10 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarResource.fromJson(data));
+    return _response.then(
+      (data) => CalendarResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of calendar resources for an account.
@@ -3915,7 +4042,10 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarResources.fromJson(data));
+    return _response.then(
+      (data) => CalendarResources.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a calendar resource via Apiary Patch Orchestration.
@@ -3980,7 +4110,10 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarResource.fromJson(data));
+    return _response.then(
+      (data) => CalendarResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a calendar resource. This method supports patch semantics, meaning
@@ -4047,7 +4180,10 @@ class ResourcesCalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarResource.fromJson(data));
+    return _response.then(
+      (data) => CalendarResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4113,7 +4249,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a feature.
@@ -4172,7 +4310,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Feature.fromJson(data));
+    return _response.then(
+      (data) => Feature.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a feature.
@@ -4230,7 +4370,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Feature.fromJson(data));
+    return _response.then(
+      (data) => Feature.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of features for an account.
@@ -4295,7 +4437,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Features.fromJson(data));
+    return _response.then(
+      (data) => Features.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a feature via Apiary Patch Orchestration.
@@ -4360,7 +4504,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Feature.fromJson(data));
+    return _response.then(
+      (data) => Feature.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Renames a feature.
@@ -4426,7 +4572,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Updates a feature.
@@ -4491,7 +4639,9 @@ class ResourcesFeaturesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Feature.fromJson(data));
+    return _response.then(
+      (data) => Feature.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4554,7 +4704,9 @@ class RoleAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve a role assignment.
@@ -4611,7 +4763,10 @@ class RoleAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RoleAssignment.fromJson(data));
+    return _response.then(
+      (data) =>
+          RoleAssignment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a role assignment.
@@ -4667,7 +4822,10 @@ class RoleAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RoleAssignment.fromJson(data));
+    return _response.then(
+      (data) =>
+          RoleAssignment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a paginated list of all roleAssignments.
@@ -4745,7 +4903,10 @@ class RoleAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RoleAssignments.fromJson(data));
+    return _response.then(
+      (data) =>
+          RoleAssignments.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4808,7 +4969,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a role.
@@ -4865,7 +5028,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a role.
@@ -4921,7 +5086,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a paginated list of all the roles in a domain.
@@ -4984,7 +5151,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Roles.fromJson(data));
+    return _response.then(
+      (data) => Roles.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch role via Apiary Patch Orchestration
@@ -5047,7 +5216,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a role.
@@ -5110,7 +5281,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5173,7 +5346,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve schema
@@ -5230,7 +5405,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schema.fromJson(data));
+    return _response.then(
+      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create schema.
@@ -5286,7 +5463,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schema.fromJson(data));
+    return _response.then(
+      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve all schemas for a customer
@@ -5336,7 +5515,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schemas.fromJson(data));
+    return _response.then(
+      (data) => Schemas.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch Schema via Apiary Patch Orchestration
@@ -5399,7 +5580,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schema.fromJson(data));
+    return _response.then(
+      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update schema
@@ -5462,7 +5645,9 @@ class SchemasResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schema.fromJson(data));
+    return _response.then(
+      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5526,7 +5711,9 @@ class TokensResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Get information about an access token issued by a user.
@@ -5584,7 +5771,9 @@ class TokensResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Token.fromJson(data));
+    return _response.then(
+      (data) => Token.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the set of tokens specified user has issued to 3rd party
@@ -5636,7 +5825,9 @@ class TokensResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tokens.fromJson(data));
+    return _response.then(
+      (data) => Tokens.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5694,7 +5885,9 @@ class TwoStepVerificationResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -5752,7 +5945,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// retrieve user
@@ -5831,7 +6026,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// create user.
@@ -5879,7 +6076,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve either deleted users or all users in a domain (paginated)
@@ -6014,7 +6213,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Users.fromJson(data));
+    return _response.then(
+      (data) => Users.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// change admin status of a user
@@ -6070,7 +6271,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Patch Users via Apiary Patch Orchestration
@@ -6126,7 +6329,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sign a user out of all web and device sessions and reset their sign-in
@@ -6179,7 +6384,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Undelete a deleted user
@@ -6235,7 +6442,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// update user
@@ -6291,7 +6500,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes in users list
@@ -6445,7 +6656,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6508,7 +6721,9 @@ class UsersAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Add a alias for the user
@@ -6564,7 +6779,9 @@ class UsersAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alias.fromJson(data));
+    return _response.then(
+      (data) => Alias.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all aliases for a user
@@ -6614,7 +6831,9 @@ class UsersAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Aliases.fromJson(data));
+    return _response.then(
+      (data) => Aliases.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes in users list
@@ -6680,7 +6899,9 @@ class UsersAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6736,7 +6957,9 @@ class UsersPhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieve photo of a user
@@ -6786,7 +7009,9 @@ class UsersPhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPhoto.fromJson(data));
+    return _response.then(
+      (data) => UserPhoto.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch Photo via Apiary Patch Orchestration
@@ -6842,7 +7067,9 @@ class UsersPhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPhoto.fromJson(data));
+    return _response.then(
+      (data) => UserPhoto.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Add a photo for the user
@@ -6898,7 +7125,9 @@ class UsersPhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPhoto.fromJson(data));
+    return _response.then(
+      (data) => UserPhoto.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6955,7 +7184,9 @@ class VerificationCodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Invalidate the current backup verification codes for the user.
@@ -7005,7 +7236,9 @@ class VerificationCodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the current set of valid backup verification codes for the
@@ -7057,7 +7290,10 @@ class VerificationCodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VerificationCodes.fromJson(data));
+    return _response.then(
+      (data) => VerificationCodes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7252,7 +7488,8 @@ class Asps {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Asp>((value) => Asp.fromJson(value))
+          .map<Asp>((value) =>
+              Asp.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7311,7 +7548,8 @@ class Building {
 
   Building.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = BuildingAddress.fromJson(_json['address']);
+      address = BuildingAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('buildingId')) {
       buildingId = _json['buildingId'] as core.String;
@@ -7320,7 +7558,8 @@ class Building {
       buildingName = _json['buildingName'] as core.String;
     }
     if (_json.containsKey('coordinates')) {
-      coordinates = BuildingCoordinates.fromJson(_json['coordinates']);
+      coordinates = BuildingCoordinates.fromJson(
+          _json['coordinates'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -7501,7 +7740,8 @@ class Buildings {
   Buildings.fromJson(core.Map _json) {
     if (_json.containsKey('buildings')) {
       buildings = (_json['buildings'] as core.List)
-          .map<Building>((value) => Building.fromJson(value))
+          .map<Building>((value) =>
+              Building.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -7713,7 +7953,8 @@ class CalendarResources {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CalendarResource>((value) => CalendarResource.fromJson(value))
+          .map<CalendarResource>((value) => CalendarResource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7795,7 +8036,8 @@ class Channel {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.String, core.String>(
-          _json['params'].cast<core.String, core.String>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
@@ -7927,7 +8169,8 @@ class ChromeOsDeviceCpuStatusReports {
     if (_json.containsKey('cpuTemperatureInfo')) {
       cpuTemperatureInfo = (_json['cpuTemperatureInfo'] as core.List)
           .map<ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo>((value) =>
-              ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(value))
+              ChromeOsDeviceCpuStatusReportsCpuTemperatureInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cpuUtilizationPercentageInfo')) {
@@ -8054,7 +8297,8 @@ class ChromeOsDeviceDiskVolumeReports {
     if (_json.containsKey('volumeInfo')) {
       volumeInfo = (_json['volumeInfo'] as core.List)
           .map<ChromeOsDeviceDiskVolumeReportsVolumeInfo>((value) =>
-              ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(value))
+              ChromeOsDeviceDiskVolumeReportsVolumeInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8356,8 +8600,9 @@ class ChromeOsDevice {
   ChromeOsDevice.fromJson(core.Map _json) {
     if (_json.containsKey('activeTimeRanges')) {
       activeTimeRanges = (_json['activeTimeRanges'] as core.List)
-          .map<ChromeOsDeviceActiveTimeRanges>(
-              (value) => ChromeOsDeviceActiveTimeRanges.fromJson(value))
+          .map<ChromeOsDeviceActiveTimeRanges>((value) =>
+              ChromeOsDeviceActiveTimeRanges.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('annotatedAssetId')) {
@@ -8377,14 +8622,16 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('cpuStatusReports')) {
       cpuStatusReports = (_json['cpuStatusReports'] as core.List)
-          .map<ChromeOsDeviceCpuStatusReports>(
-              (value) => ChromeOsDeviceCpuStatusReports.fromJson(value))
+          .map<ChromeOsDeviceCpuStatusReports>((value) =>
+              ChromeOsDeviceCpuStatusReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deviceFiles')) {
       deviceFiles = (_json['deviceFiles'] as core.List)
-          .map<ChromeOsDeviceDeviceFiles>(
-              (value) => ChromeOsDeviceDeviceFiles.fromJson(value))
+          .map<ChromeOsDeviceDeviceFiles>((value) =>
+              ChromeOsDeviceDeviceFiles.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deviceId')) {
@@ -8392,8 +8639,9 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('diskVolumeReports')) {
       diskVolumeReports = (_json['diskVolumeReports'] as core.List)
-          .map<ChromeOsDeviceDiskVolumeReports>(
-              (value) => ChromeOsDeviceDiskVolumeReports.fromJson(value))
+          .map<ChromeOsDeviceDiskVolumeReports>((value) =>
+              ChromeOsDeviceDiskVolumeReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dockMacAddress')) {
@@ -8420,8 +8668,9 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('lastKnownNetwork')) {
       lastKnownNetwork = (_json['lastKnownNetwork'] as core.List)
-          .map<ChromeOsDeviceLastKnownNetwork>(
-              (value) => ChromeOsDeviceLastKnownNetwork.fromJson(value))
+          .map<ChromeOsDeviceLastKnownNetwork>((value) =>
+              ChromeOsDeviceLastKnownNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('lastSync')) {
@@ -8456,8 +8705,9 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('recentUsers')) {
       recentUsers = (_json['recentUsers'] as core.List)
-          .map<ChromeOsDeviceRecentUsers>(
-              (value) => ChromeOsDeviceRecentUsers.fromJson(value))
+          .map<ChromeOsDeviceRecentUsers>((value) =>
+              ChromeOsDeviceRecentUsers.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serialNumber')) {
@@ -8472,16 +8722,17 @@ class ChromeOsDevice {
     }
     if (_json.containsKey('systemRamFreeReports')) {
       systemRamFreeReports = (_json['systemRamFreeReports'] as core.List)
-          .map<ChromeOsDeviceSystemRamFreeReports>(
-              (value) => ChromeOsDeviceSystemRamFreeReports.fromJson(value))
+          .map<ChromeOsDeviceSystemRamFreeReports>((value) =>
+              ChromeOsDeviceSystemRamFreeReports.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('systemRamTotal')) {
       systemRamTotal = _json['systemRamTotal'] as core.String;
     }
     if (_json.containsKey('tpmVersionInfo')) {
-      tpmVersionInfo =
-          ChromeOsDeviceTpmVersionInfo.fromJson(_json['tpmVersionInfo']);
+      tpmVersionInfo = ChromeOsDeviceTpmVersionInfo.fromJson(
+          _json['tpmVersionInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('willAutoRenew')) {
       willAutoRenew = _json['willAutoRenew'] as core.bool;
@@ -8658,7 +8909,8 @@ class ChromeOsDevices {
   ChromeOsDevices.fromJson(core.Map _json) {
     if (_json.containsKey('chromeosdevices')) {
       chromeosdevices = (_json['chromeosdevices'] as core.List)
-          .map<ChromeOsDevice>((value) => ChromeOsDevice.fromJson(value))
+          .map<ChromeOsDevice>((value) => ChromeOsDevice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -8776,7 +9028,8 @@ class Customer {
       phoneNumber = _json['phoneNumber'] as core.String;
     }
     if (_json.containsKey('postalAddress')) {
-      postalAddress = CustomerPostalAddress.fromJson(_json['postalAddress']);
+      postalAddress = CustomerPostalAddress.fromJson(
+          _json['postalAddress'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8998,7 +9251,8 @@ class DomainAliases {
   DomainAliases.fromJson(core.Map _json) {
     if (_json.containsKey('domainAliases')) {
       domainAliases = (_json['domainAliases'] as core.List)
-          .map<DomainAlias>((value) => DomainAlias.fromJson(value))
+          .map<DomainAlias>((value) => DomainAlias.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -9055,7 +9309,8 @@ class Domains {
     }
     if (_json.containsKey('domainAliases')) {
       domainAliases = (_json['domainAliases'] as core.List)
-          .map<DomainAlias>((value) => DomainAlias.fromJson(value))
+          .map<DomainAlias>((value) => DomainAlias.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('domainName')) {
@@ -9118,7 +9373,8 @@ class Domains2 {
   Domains2.fromJson(core.Map _json) {
     if (_json.containsKey('domains')) {
       domains = (_json['domains'] as core.List)
-          .map<Domains>((value) => Domains.fromJson(value))
+          .map<Domains>((value) =>
+              Domains.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -9194,7 +9450,8 @@ class FeatureInstance {
 
   FeatureInstance.fromJson(core.Map _json) {
     if (_json.containsKey('feature')) {
-      feature = Feature.fromJson(_json['feature']);
+      feature = Feature.fromJson(
+          _json['feature'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9251,7 +9508,8 @@ class Features {
     }
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
-          .map<Feature>((value) => Feature.fromJson(value))
+          .map<Feature>((value) =>
+              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9413,7 +9671,8 @@ class Groups {
     }
     if (_json.containsKey('groups')) {
       groups = (_json['groups'] as core.List)
-          .map<Group>((value) => Group.fromJson(value))
+          .map<Group>((value) =>
+              Group.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9552,7 +9811,8 @@ class Members {
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
-          .map<Member>((value) => Member.fromJson(value))
+          .map<Member>((value) =>
+              Member.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -9792,8 +10052,9 @@ class MobileDevice {
     }
     if (_json.containsKey('applications')) {
       applications = (_json['applications'] as core.List)
-          .map<MobileDeviceApplications>(
-              (value) => MobileDeviceApplications.fromJson(value))
+          .map<MobileDeviceApplications>((value) =>
+              MobileDeviceApplications.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('basebandVersion')) {
@@ -10091,7 +10352,8 @@ class MobileDevices {
     }
     if (_json.containsKey('mobiledevices')) {
       mobiledevices = (_json['mobiledevices'] as core.List)
-          .map<MobileDevice>((value) => MobileDevice.fromJson(value))
+          .map<MobileDevice>((value) => MobileDevice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -10240,7 +10502,8 @@ class OrgUnits {
     }
     if (_json.containsKey('organizationUnits')) {
       organizationUnits = (_json['organizationUnits'] as core.List)
-          .map<OrgUnit>((value) => OrgUnit.fromJson(value))
+          .map<OrgUnit>((value) =>
+              OrgUnit.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10291,7 +10554,8 @@ class Privilege {
   Privilege.fromJson(core.Map _json) {
     if (_json.containsKey('childPrivileges')) {
       childPrivileges = (_json['childPrivileges'] as core.List)
-          .map<Privilege>((value) => Privilege.fromJson(value))
+          .map<Privilege>((value) =>
+              Privilege.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -10360,7 +10624,8 @@ class Privileges {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Privilege>((value) => Privilege.fromJson(value))
+          .map<Privilege>((value) =>
+              Privilege.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10465,8 +10730,8 @@ class Role {
     }
     if (_json.containsKey('rolePrivileges')) {
       rolePrivileges = (_json['rolePrivileges'] as core.List)
-          .map<RoleRolePrivileges>(
-              (value) => RoleRolePrivileges.fromJson(value))
+          .map<RoleRolePrivileges>((value) => RoleRolePrivileges.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10600,7 +10865,8 @@ class RoleAssignments {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<RoleAssignment>((value) => RoleAssignment.fromJson(value))
+          .map<RoleAssignment>((value) => RoleAssignment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10648,7 +10914,8 @@ class Roles {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Role>((value) => Role.fromJson(value))
+          .map<Role>((value) =>
+              Role.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10711,7 +10978,8 @@ class Schema {
     }
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<SchemaFieldSpec>((value) => SchemaFieldSpec.fromJson(value))
+          .map<SchemaFieldSpec>((value) => SchemaFieldSpec.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10853,7 +11121,7 @@ class SchemaFieldSpec {
     }
     if (_json.containsKey('numericIndexingSpec')) {
       numericIndexingSpec = SchemaFieldSpecNumericIndexingSpec.fromJson(
-          _json['numericIndexingSpec']);
+          _json['numericIndexingSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readAccessType')) {
       readAccessType = _json['readAccessType'] as core.String;
@@ -10921,7 +11189,8 @@ class Schemas {
     }
     if (_json.containsKey('schemas')) {
       schemas = (_json['schemas'] as core.List)
-          .map<Schema>((value) => Schema.fromJson(value))
+          .map<Schema>((value) =>
+              Schema.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11055,7 +11324,8 @@ class Tokens {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Token>((value) => Token.fromJson(value))
+          .map<Token>((value) =>
+              Token.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -11318,8 +11588,10 @@ class User {
     }
     if (_json.containsKey('customSchemas')) {
       customSchemas = commons.mapMap<core.Map, UserCustomProperties>(
-          _json['customSchemas'].cast<core.String, core.Map>(),
-          (core.Map item) => UserCustomProperties.fromJson(item));
+          (_json['customSchemas'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => UserCustomProperties.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('customerId')) {
       customerId = _json['customerId'] as core.String;
@@ -11387,7 +11659,8 @@ class User {
       locations = _json['locations'] as core.Object;
     }
     if (_json.containsKey('name')) {
-      name = UserName.fromJson(_json['name']);
+      name = UserName.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nonEditableAliases')) {
       nonEditableAliases = (_json['nonEditableAliases'] as core.List)
@@ -12788,7 +13061,8 @@ class Users {
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12890,7 +13164,8 @@ class VerificationCodes {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<VerificationCode>((value) => VerificationCode.fromJson(value))
+          .map<VerificationCode>((value) => VerificationCode.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

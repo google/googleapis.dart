@@ -26,8 +26,9 @@ class ClientObjectType extends ObjectType {
     }
 
     final fromJsonString = StringBuffer();
-    fromJsonString
-        .writeln('  static $className fromJson(${imports.core}.Map _json) {');
+    fromJsonString.writeln(
+      'static $className fromJson(${imports.core.ref()}Map _json) {',
+    );
     fromJsonString.writeln('    var message = $className();');
     for (var property in properties) {
       // The super variant fromJson() will call this subclass constructor
@@ -47,9 +48,10 @@ class ClientObjectType extends ObjectType {
     fromJsonString.writeln('  }');
 
     final toJsonString = StringBuffer();
-    toJsonString
-        .writeln('  static ${imports.core}.Map toJson($className message) {');
-    toJsonString.writeln('    var _json = {};');
+    toJsonString.writeln(
+      'static $_coreMapJsonType toJson($className message) {',
+    );
+    toJsonString.writeln('    var _json = $_coreMapJsonTypeArguments{};');
 
     for (var property in properties) {
       toJsonString.writeln('    if (message.${property.name} != null) {');
@@ -73,7 +75,14 @@ $toJsonString
   String jsonEncode(String value) => '${className}Factory.toJson($value)';
 
   @override
-  String jsonDecode(String json) => '${className}Factory.fromJson($json)';
+  String jsonDecode(String json) =>
+      '${className}Factory.fromJson($json as $_coreMapJsonType)';
+
+  String get _coreMapJsonTypeArguments =>
+      '<${imports.core.ref()}String, ${imports.core.ref()}dynamic>';
+
+  String get _coreMapJsonType =>
+      '${imports.core.ref()}Map$_coreMapJsonTypeArguments';
 }
 
 /// Parses all schemas in [description] and returns a [DartSchemaTypeDB].

@@ -92,8 +92,8 @@ api.AccessLevel buildAccessLevel() {
 void checkAccessLevel(api.AccessLevel o) {
   buildCounterAccessLevel++;
   if (buildCounterAccessLevel < 3) {
-    checkBasicLevel(o.basic);
-    checkCustomLevel(o.custom);
+    checkBasicLevel(o.basic as api.BasicLevel);
+    checkCustomLevel(o.custom as api.CustomLevel);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -135,8 +135,8 @@ core.List<api.Condition> buildUnnamed5518() {
 
 void checkUnnamed5518(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkCondition(o[0] as api.Condition);
+  checkCondition(o[1] as api.Condition);
 }
 
 core.int buildCounterBasicLevel = 0;
@@ -203,8 +203,8 @@ core.List<api.ServicePerimeter> buildUnnamed5519() {
 
 void checkUnnamed5519(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServicePerimeter(o[0]);
-  checkServicePerimeter(o[1]);
+  checkServicePerimeter(o[0] as api.ServicePerimeter);
+  checkServicePerimeter(o[1] as api.ServicePerimeter);
 }
 
 core.int buildCounterCommitServicePerimetersResponse = 0;
@@ -298,7 +298,7 @@ api.Condition buildCondition() {
 void checkCondition(api.Condition o) {
   buildCounterCondition++;
   if (buildCounterCondition < 3) {
-    checkDevicePolicy(o.devicePolicy);
+    checkDevicePolicy(o.devicePolicy as api.DevicePolicy);
     checkUnnamed5520(o.ipSubnetworks);
     checkUnnamed5521(o.members);
     unittest.expect(o.negate, unittest.isTrue);
@@ -322,7 +322,7 @@ api.CustomLevel buildCustomLevel() {
 void checkCustomLevel(api.CustomLevel o) {
   buildCounterCustomLevel++;
   if (buildCounterCustomLevel < 3) {
-    checkExpr(o.expr);
+    checkExpr(o.expr as api.Expr);
   }
   buildCounterCustomLevel--;
 }
@@ -362,8 +362,8 @@ core.List<api.OsConstraint> buildUnnamed5526() {
 
 void checkUnnamed5526(core.List<api.OsConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOsConstraint(o[0]);
-  checkOsConstraint(o[1]);
+  checkOsConstraint(o[0] as api.OsConstraint);
+  checkOsConstraint(o[1] as api.OsConstraint);
 }
 
 core.int buildCounterDevicePolicy = 0;
@@ -480,8 +480,8 @@ core.List<api.AccessLevel> buildUnnamed5528() {
 
 void checkUnnamed5528(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccessLevel(o[0]);
-  checkAccessLevel(o[1]);
+  checkAccessLevel(o[0] as api.AccessLevel);
+  checkAccessLevel(o[1] as api.AccessLevel);
 }
 
 core.int buildCounterListAccessLevelsResponse = 0;
@@ -514,8 +514,8 @@ core.List<api.AccessPolicy> buildUnnamed5529() {
 
 void checkUnnamed5529(core.List<api.AccessPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccessPolicy(o[0]);
-  checkAccessPolicy(o[1]);
+  checkAccessPolicy(o[0] as api.AccessPolicy);
+  checkAccessPolicy(o[1] as api.AccessPolicy);
 }
 
 core.int buildCounterListAccessPoliciesResponse = 0;
@@ -548,8 +548,8 @@ core.List<api.GcpUserAccessBinding> buildUnnamed5530() {
 
 void checkUnnamed5530(core.List<api.GcpUserAccessBinding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGcpUserAccessBinding(o[0]);
-  checkGcpUserAccessBinding(o[1]);
+  checkGcpUserAccessBinding(o[0] as api.GcpUserAccessBinding);
+  checkGcpUserAccessBinding(o[1] as api.GcpUserAccessBinding);
 }
 
 core.int buildCounterListGcpUserAccessBindingsResponse = 0;
@@ -583,8 +583,8 @@ core.List<api.Operation> buildUnnamed5531() {
 
 void checkUnnamed5531(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -617,8 +617,8 @@ core.List<api.ServicePerimeter> buildUnnamed5532() {
 
 void checkUnnamed5532(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServicePerimeter(o[0]);
-  checkServicePerimeter(o[1]);
+  checkServicePerimeter(o[0] as api.ServicePerimeter);
+  checkServicePerimeter(o[1] as api.ServicePerimeter);
 }
 
 core.int buildCounterListServicePerimetersResponse = 0;
@@ -719,7 +719,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5533(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5534(o.response);
@@ -759,8 +759,8 @@ core.List<api.AccessLevel> buildUnnamed5535() {
 
 void checkUnnamed5535(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccessLevel(o[0]);
-  checkAccessLevel(o[1]);
+  checkAccessLevel(o[0] as api.AccessLevel);
+  checkAccessLevel(o[1] as api.AccessLevel);
 }
 
 core.int buildCounterReplaceAccessLevelsRequest = 0;
@@ -793,8 +793,8 @@ core.List<api.AccessLevel> buildUnnamed5536() {
 
 void checkUnnamed5536(core.List<api.AccessLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccessLevel(o[0]);
-  checkAccessLevel(o[1]);
+  checkAccessLevel(o[0] as api.AccessLevel);
+  checkAccessLevel(o[1] as api.AccessLevel);
 }
 
 core.int buildCounterReplaceAccessLevelsResponse = 0;
@@ -825,8 +825,8 @@ core.List<api.ServicePerimeter> buildUnnamed5537() {
 
 void checkUnnamed5537(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServicePerimeter(o[0]);
-  checkServicePerimeter(o[1]);
+  checkServicePerimeter(o[0] as api.ServicePerimeter);
+  checkServicePerimeter(o[1] as api.ServicePerimeter);
 }
 
 core.int buildCounterReplaceServicePerimetersRequest = 0;
@@ -860,8 +860,8 @@ core.List<api.ServicePerimeter> buildUnnamed5538() {
 
 void checkUnnamed5538(core.List<api.ServicePerimeter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServicePerimeter(o[0]);
-  checkServicePerimeter(o[1]);
+  checkServicePerimeter(o[0] as api.ServicePerimeter);
+  checkServicePerimeter(o[1] as api.ServicePerimeter);
 }
 
 core.int buildCounterReplaceServicePerimetersResponse = 0;
@@ -907,8 +907,8 @@ void checkServicePerimeter(api.ServicePerimeter o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.perimeterType, unittest.equals('foo'));
-    checkServicePerimeterConfig(o.spec);
-    checkServicePerimeterConfig(o.status);
+    checkServicePerimeterConfig(o.spec as api.ServicePerimeterConfig);
+    checkServicePerimeterConfig(o.status as api.ServicePerimeterConfig);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.useExplicitDryRunSpec, unittest.isTrue);
   }
@@ -974,7 +974,8 @@ void checkServicePerimeterConfig(api.ServicePerimeterConfig o) {
     checkUnnamed5539(o.accessLevels);
     checkUnnamed5540(o.resources);
     checkUnnamed5541(o.restrictedServices);
-    checkVpcAccessibleServices(o.vpcAccessibleServices);
+    checkVpcAccessibleServices(
+        o.vpcAccessibleServices as api.VpcAccessibleServices);
   }
   buildCounterServicePerimeterConfig--;
 }
@@ -1083,7 +1084,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessLevel();
       var od = api.AccessLevel.fromJson(o.toJson());
-      checkAccessLevel(od);
+      checkAccessLevel(od as api.AccessLevel);
     });
   });
 
@@ -1091,7 +1092,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessPolicy();
       var od = api.AccessPolicy.fromJson(o.toJson());
-      checkAccessPolicy(od);
+      checkAccessPolicy(od as api.AccessPolicy);
     });
   });
 
@@ -1099,7 +1100,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBasicLevel();
       var od = api.BasicLevel.fromJson(o.toJson());
-      checkBasicLevel(od);
+      checkBasicLevel(od as api.BasicLevel);
     });
   });
 
@@ -1107,7 +1108,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1115,7 +1116,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitServicePerimetersRequest();
       var od = api.CommitServicePerimetersRequest.fromJson(o.toJson());
-      checkCommitServicePerimetersRequest(od);
+      checkCommitServicePerimetersRequest(
+          od as api.CommitServicePerimetersRequest);
     });
   });
 
@@ -1123,7 +1125,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitServicePerimetersResponse();
       var od = api.CommitServicePerimetersResponse.fromJson(o.toJson());
-      checkCommitServicePerimetersResponse(od);
+      checkCommitServicePerimetersResponse(
+          od as api.CommitServicePerimetersResponse);
     });
   });
 
@@ -1131,7 +1134,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
-      checkCondition(od);
+      checkCondition(od as api.Condition);
     });
   });
 
@@ -1139,7 +1142,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomLevel();
       var od = api.CustomLevel.fromJson(o.toJson());
-      checkCustomLevel(od);
+      checkCustomLevel(od as api.CustomLevel);
     });
   });
 
@@ -1147,7 +1150,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDevicePolicy();
       var od = api.DevicePolicy.fromJson(o.toJson());
-      checkDevicePolicy(od);
+      checkDevicePolicy(od as api.DevicePolicy);
     });
   });
 
@@ -1155,7 +1158,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1163,7 +1166,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1171,7 +1174,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcpUserAccessBinding();
       var od = api.GcpUserAccessBinding.fromJson(o.toJson());
-      checkGcpUserAccessBinding(od);
+      checkGcpUserAccessBinding(od as api.GcpUserAccessBinding);
     });
   });
 
@@ -1179,7 +1182,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAccessLevelsResponse();
       var od = api.ListAccessLevelsResponse.fromJson(o.toJson());
-      checkListAccessLevelsResponse(od);
+      checkListAccessLevelsResponse(od as api.ListAccessLevelsResponse);
     });
   });
 
@@ -1187,7 +1190,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAccessPoliciesResponse();
       var od = api.ListAccessPoliciesResponse.fromJson(o.toJson());
-      checkListAccessPoliciesResponse(od);
+      checkListAccessPoliciesResponse(od as api.ListAccessPoliciesResponse);
     });
   });
 
@@ -1195,7 +1198,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGcpUserAccessBindingsResponse();
       var od = api.ListGcpUserAccessBindingsResponse.fromJson(o.toJson());
-      checkListGcpUserAccessBindingsResponse(od);
+      checkListGcpUserAccessBindingsResponse(
+          od as api.ListGcpUserAccessBindingsResponse);
     });
   });
 
@@ -1203,7 +1207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1211,7 +1215,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListServicePerimetersResponse();
       var od = api.ListServicePerimetersResponse.fromJson(o.toJson());
-      checkListServicePerimetersResponse(od);
+      checkListServicePerimetersResponse(
+          od as api.ListServicePerimetersResponse);
     });
   });
 
@@ -1219,7 +1224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1227,7 +1232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOsConstraint();
       var od = api.OsConstraint.fromJson(o.toJson());
-      checkOsConstraint(od);
+      checkOsConstraint(od as api.OsConstraint);
     });
   });
 
@@ -1235,7 +1240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAccessLevelsRequest();
       var od = api.ReplaceAccessLevelsRequest.fromJson(o.toJson());
-      checkReplaceAccessLevelsRequest(od);
+      checkReplaceAccessLevelsRequest(od as api.ReplaceAccessLevelsRequest);
     });
   });
 
@@ -1243,7 +1248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAccessLevelsResponse();
       var od = api.ReplaceAccessLevelsResponse.fromJson(o.toJson());
-      checkReplaceAccessLevelsResponse(od);
+      checkReplaceAccessLevelsResponse(od as api.ReplaceAccessLevelsResponse);
     });
   });
 
@@ -1251,7 +1256,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceServicePerimetersRequest();
       var od = api.ReplaceServicePerimetersRequest.fromJson(o.toJson());
-      checkReplaceServicePerimetersRequest(od);
+      checkReplaceServicePerimetersRequest(
+          od as api.ReplaceServicePerimetersRequest);
     });
   });
 
@@ -1259,7 +1265,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceServicePerimetersResponse();
       var od = api.ReplaceServicePerimetersResponse.fromJson(o.toJson());
-      checkReplaceServicePerimetersResponse(od);
+      checkReplaceServicePerimetersResponse(
+          od as api.ReplaceServicePerimetersResponse);
     });
   });
 
@@ -1267,7 +1274,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServicePerimeter();
       var od = api.ServicePerimeter.fromJson(o.toJson());
-      checkServicePerimeter(od);
+      checkServicePerimeter(od as api.ServicePerimeter);
     });
   });
 
@@ -1275,7 +1282,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServicePerimeterConfig();
       var od = api.ServicePerimeterConfig.fromJson(o.toJson());
-      checkServicePerimeterConfig(od);
+      checkServicePerimeterConfig(od as api.ServicePerimeterConfig);
     });
   });
 
@@ -1283,7 +1290,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1291,7 +1298,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVpcAccessibleServices();
       var od = api.VpcAccessibleServices.fromJson(o.toJson());
-      checkVpcAccessibleServices(od);
+      checkVpcAccessibleServices(od as api.VpcAccessibleServices);
     });
   });
 
@@ -1302,8 +1309,9 @@ void main() {
       var arg_request = buildAccessPolicy();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessPolicy.fromJson(json);
-        checkAccessPolicy(obj);
+        var obj = api.AccessPolicy.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessPolicy(obj as api.AccessPolicy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1342,7 +1350,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1390,7 +1398,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1438,7 +1446,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessPolicy(response);
+        checkAccessPolicy(response as api.AccessPolicy);
       })));
     });
 
@@ -1496,7 +1504,8 @@ void main() {
               parent: arg_parent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAccessPoliciesResponse(response);
+        checkListAccessPoliciesResponse(
+            response as api.ListAccessPoliciesResponse);
       })));
     });
 
@@ -1508,8 +1517,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessPolicy.fromJson(json);
-        checkAccessPolicy(obj);
+        var obj = api.AccessPolicy.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessPolicy(obj as api.AccessPolicy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1552,7 +1562,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1565,8 +1575,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessLevel.fromJson(json);
-        checkAccessLevel(obj);
+        var obj = api.AccessLevel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessLevel(obj as api.AccessLevel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1606,7 +1617,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1654,7 +1665,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1706,7 +1717,7 @@ void main() {
           .get(arg_name,
               accessLevelFormat: arg_accessLevelFormat, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessLevel(response);
+        checkAccessLevel(response as api.AccessLevel);
       })));
     });
 
@@ -1767,7 +1778,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAccessLevelsResponse(response);
+        checkListAccessLevelsResponse(response as api.ListAccessLevelsResponse);
       })));
     });
 
@@ -1779,8 +1790,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessLevel.fromJson(json);
-        checkAccessLevel(obj);
+        var obj = api.AccessLevel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessLevel(obj as api.AccessLevel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1823,7 +1835,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1834,8 +1846,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReplaceAccessLevelsRequest.fromJson(json);
-        checkReplaceAccessLevelsRequest(obj);
+        var obj = api.ReplaceAccessLevelsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReplaceAccessLevelsRequest(obj as api.ReplaceAccessLevelsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1875,7 +1888,7 @@ void main() {
       res
           .replaceAll(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1889,8 +1902,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommitServicePerimetersRequest.fromJson(json);
-        checkCommitServicePerimetersRequest(obj);
+        var obj = api.CommitServicePerimetersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitServicePerimetersRequest(
+            obj as api.CommitServicePerimetersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1930,7 +1945,7 @@ void main() {
       res
           .commit(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1942,8 +1957,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ServicePerimeter.fromJson(json);
-        checkServicePerimeter(obj);
+        var obj = api.ServicePerimeter.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkServicePerimeter(obj as api.ServicePerimeter);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1983,7 +1999,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2032,7 +2048,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2081,7 +2097,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServicePerimeter(response);
+        checkServicePerimeter(response as api.ServicePerimeter);
       })));
     });
 
@@ -2139,7 +2155,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListServicePerimetersResponse(response);
+        checkListServicePerimetersResponse(
+            response as api.ListServicePerimetersResponse);
       })));
     });
 
@@ -2152,8 +2169,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ServicePerimeter.fromJson(json);
-        checkServicePerimeter(obj);
+        var obj = api.ServicePerimeter.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkServicePerimeter(obj as api.ServicePerimeter);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2196,7 +2214,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2208,8 +2226,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReplaceServicePerimetersRequest.fromJson(json);
-        checkReplaceServicePerimetersRequest(obj);
+        var obj = api.ReplaceServicePerimetersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReplaceServicePerimetersRequest(
+            obj as api.ReplaceServicePerimetersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2249,7 +2269,7 @@ void main() {
       res
           .replaceAll(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2262,8 +2282,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2303,7 +2324,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2351,7 +2372,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2399,7 +2420,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2459,7 +2480,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -2473,8 +2494,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GcpUserAccessBinding.fromJson(json);
-        checkGcpUserAccessBinding(obj);
+        var obj = api.GcpUserAccessBinding.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGcpUserAccessBinding(obj as api.GcpUserAccessBinding);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2514,7 +2536,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2563,7 +2585,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2612,7 +2634,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGcpUserAccessBinding(response);
+        checkGcpUserAccessBinding(response as api.GcpUserAccessBinding);
       })));
     });
 
@@ -2671,7 +2693,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGcpUserAccessBindingsResponse(response);
+        checkListGcpUserAccessBindingsResponse(
+            response as api.ListGcpUserAccessBindingsResponse);
       })));
     });
 
@@ -2684,8 +2707,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GcpUserAccessBinding.fromJson(json);
-        checkGcpUserAccessBinding(obj);
+        var obj = api.GcpUserAccessBinding.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGcpUserAccessBinding(obj as api.GcpUserAccessBinding);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2728,7 +2752,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

@@ -100,7 +100,10 @@ class AutnumResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -155,7 +158,9 @@ class DomainResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -210,7 +215,10 @@ class EntityResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -274,7 +282,10 @@ class IpResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -329,7 +340,10 @@ class NameserverResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -378,7 +392,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -421,7 +438,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get help information for the RDAP API, including links to documentation.
@@ -463,7 +483,9 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -506,7 +528,9 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// The RDAP API recognizes this command from the RDAP specification but does
@@ -549,7 +573,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RdapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RdapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -604,7 +631,8 @@ class HttpBody {
       extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -731,7 +759,8 @@ class Notice {
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
-          .map<Link>((value) => Link.fromJson(value))
+          .map<Link>((value) =>
+              Link.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('title')) {
@@ -796,14 +825,16 @@ class RdapResponse {
       errorCode = _json['errorCode'] as core.int;
     }
     if (_json.containsKey('jsonResponse')) {
-      jsonResponse = HttpBody.fromJson(_json['jsonResponse']);
+      jsonResponse = HttpBody.fromJson(
+          _json['jsonResponse'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lang')) {
       lang = _json['lang'] as core.String;
     }
     if (_json.containsKey('notices')) {
       notices = (_json['notices'] as core.List)
-          .map<Notice>((value) => Notice.fromJson(value))
+          .map<Notice>((value) =>
+              Notice.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rdapConformance')) {

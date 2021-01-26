@@ -127,8 +127,8 @@ core.List<api.Post> buildUnnamed148() {
 
 void checkUnnamed148(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPost(o[0]);
-  checkPost(o[1]);
+  checkPost(o[0] as api.Post);
+  checkPost(o[1] as api.Post);
 }
 
 core.int buildCounterBlogPosts = 0;
@@ -184,10 +184,10 @@ void checkBlog(api.Blog o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkBlogLocale(o.locale);
+    checkBlogLocale(o.locale as api.BlogLocale);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkBlogPages(o.pages);
-    checkBlogPosts(o.posts);
+    checkBlogPages(o.pages as api.BlogPages);
+    checkBlogPosts(o.posts as api.BlogPosts);
     unittest.expect(o.published, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -206,8 +206,8 @@ core.List<api.BlogUserInfo> buildUnnamed149() {
 
 void checkUnnamed149(core.List<api.BlogUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBlogUserInfo(o[0]);
-  checkBlogUserInfo(o[1]);
+  checkBlogUserInfo(o[0] as api.BlogUserInfo);
+  checkBlogUserInfo(o[1] as api.BlogUserInfo);
 }
 
 core.List<api.Blog> buildUnnamed150() {
@@ -219,8 +219,8 @@ core.List<api.Blog> buildUnnamed150() {
 
 void checkUnnamed150(core.List<api.Blog> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBlog(o[0]);
-  checkBlog(o[1]);
+  checkBlog(o[0] as api.Blog);
+  checkBlog(o[1] as api.Blog);
 }
 
 core.int buildCounterBlogList = 0;
@@ -291,8 +291,8 @@ api.BlogUserInfo buildBlogUserInfo() {
 void checkBlogUserInfo(api.BlogUserInfo o) {
   buildCounterBlogUserInfo++;
   if (buildCounterBlogUserInfo < 3) {
-    checkBlog(o.blog);
-    checkBlogPerUserInfo(o.blogUserInfo);
+    checkBlog(o.blog as api.Blog);
+    checkBlogPerUserInfo(o.blogUserInfo as api.BlogPerUserInfo);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterBlogUserInfo--;
@@ -336,7 +336,7 @@ void checkCommentAuthor(api.CommentAuthor o) {
   if (buildCounterCommentAuthor < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkCommentAuthorImage(o.image);
+    checkCommentAuthorImage(o.image as api.CommentAuthorImage);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterCommentAuthor--;
@@ -423,13 +423,13 @@ api.Comment buildComment() {
 void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    checkCommentAuthor(o.author);
-    checkCommentBlog(o.blog);
+    checkCommentAuthor(o.author as api.CommentAuthor);
+    checkCommentBlog(o.blog as api.CommentBlog);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkCommentInReplyTo(o.inReplyTo);
+    checkCommentInReplyTo(o.inReplyTo as api.CommentInReplyTo);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkCommentPost(o.post);
+    checkCommentPost(o.post as api.CommentPost);
     unittest.expect(o.published, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -447,8 +447,8 @@ core.List<api.Comment> buildUnnamed151() {
 
 void checkUnnamed151(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterCommentList = 0;
@@ -516,7 +516,7 @@ void checkPageAuthor(api.PageAuthor o) {
   if (buildCounterPageAuthor < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkPageAuthorImage(o.image);
+    checkPageAuthorImage(o.image as api.PageAuthorImage);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterPageAuthor--;
@@ -566,8 +566,8 @@ api.Page buildPage() {
 void checkPage(api.Page o) {
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    checkPageAuthor(o.author);
-    checkPageBlog(o.blog);
+    checkPageAuthor(o.author as api.PageAuthor);
+    checkPageBlog(o.blog as api.PageBlog);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -591,8 +591,8 @@ core.List<api.Page> buildUnnamed152() {
 
 void checkUnnamed152(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.int buildCounterPageList = 0;
@@ -650,8 +650,8 @@ core.List<api.PageviewsCounts> buildUnnamed153() {
 
 void checkUnnamed153(core.List<api.PageviewsCounts> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPageviewsCounts(o[0]);
-  checkPageviewsCounts(o[1]);
+  checkPageviewsCounts(o[0] as api.PageviewsCounts);
+  checkPageviewsCounts(o[1] as api.PageviewsCounts);
 }
 
 core.int buildCounterPageviews = 0;
@@ -715,7 +715,7 @@ void checkPostAuthor(api.PostAuthor o) {
   if (buildCounterPostAuthor < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkPostAuthorImage(o.image);
+    checkPostAuthorImage(o.image as api.PostAuthorImage);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterPostAuthor--;
@@ -768,8 +768,8 @@ core.List<api.PostImages> buildUnnamed154() {
 
 void checkUnnamed154(core.List<api.PostImages> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPostImages(o[0]);
-  checkPostImages(o[1]);
+  checkPostImages(o[0] as api.PostImages);
+  checkPostImages(o[1] as api.PostImages);
 }
 
 core.List<core.String> buildUnnamed155() {
@@ -819,8 +819,8 @@ core.List<api.Comment> buildUnnamed156() {
 
 void checkUnnamed156(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterPostReplies = 0;
@@ -878,8 +878,8 @@ api.Post buildPost() {
 void checkPost(api.Post o) {
   buildCounterPost++;
   if (buildCounterPost < 3) {
-    checkPostAuthor(o.author);
-    checkPostBlog(o.blog);
+    checkPostAuthor(o.author as api.PostAuthor);
+    checkPostBlog(o.blog as api.PostBlog);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.customMetaData, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
@@ -887,10 +887,10 @@ void checkPost(api.Post o) {
     checkUnnamed154(o.images);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed155(o.labels);
-    checkPostLocation(o.location);
+    checkPostLocation(o.location as api.PostLocation);
     unittest.expect(o.published, unittest.equals('foo'));
     unittest.expect(o.readerComments, unittest.equals('foo'));
-    checkPostReplies(o.replies);
+    checkPostReplies(o.replies as api.PostReplies);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -910,8 +910,8 @@ core.List<api.Post> buildUnnamed157() {
 
 void checkUnnamed157(core.List<api.Post> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPost(o[0]);
-  checkPost(o[1]);
+  checkPost(o[0] as api.Post);
+  checkPost(o[1] as api.Post);
 }
 
 core.int buildCounterPostList = 0;
@@ -985,8 +985,8 @@ void checkPostUserInfo(api.PostUserInfo o) {
   buildCounterPostUserInfo++;
   if (buildCounterPostUserInfo < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPost(o.post);
-    checkPostPerUserInfo(o.postUserInfo);
+    checkPost(o.post as api.Post);
+    checkPostPerUserInfo(o.postUserInfo as api.PostPerUserInfo);
   }
   buildCounterPostUserInfo--;
 }
@@ -1000,8 +1000,8 @@ core.List<api.PostUserInfo> buildUnnamed158() {
 
 void checkUnnamed158(core.List<api.PostUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPostUserInfo(o[0]);
-  checkPostUserInfo(o[1]);
+  checkPostUserInfo(o[0] as api.PostUserInfo);
+  checkPostUserInfo(o[1] as api.PostUserInfo);
 }
 
 core.int buildCounterPostUserInfosList = 0;
@@ -1092,12 +1092,12 @@ void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
     unittest.expect(o.about, unittest.equals('foo'));
-    checkUserBlogs(o.blogs);
+    checkUserBlogs(o.blogs as api.UserBlogs);
     unittest.expect(o.created, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUserLocale(o.locale);
+    checkUserLocale(o.locale as api.UserLocale);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
   }
@@ -1200,7 +1200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogLocale();
       var od = api.BlogLocale.fromJson(o.toJson());
-      checkBlogLocale(od);
+      checkBlogLocale(od as api.BlogLocale);
     });
   });
 
@@ -1208,7 +1208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogPages();
       var od = api.BlogPages.fromJson(o.toJson());
-      checkBlogPages(od);
+      checkBlogPages(od as api.BlogPages);
     });
   });
 
@@ -1216,7 +1216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogPosts();
       var od = api.BlogPosts.fromJson(o.toJson());
-      checkBlogPosts(od);
+      checkBlogPosts(od as api.BlogPosts);
     });
   });
 
@@ -1224,7 +1224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlog();
       var od = api.Blog.fromJson(o.toJson());
-      checkBlog(od);
+      checkBlog(od as api.Blog);
     });
   });
 
@@ -1232,7 +1232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogList();
       var od = api.BlogList.fromJson(o.toJson());
-      checkBlogList(od);
+      checkBlogList(od as api.BlogList);
     });
   });
 
@@ -1240,7 +1240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogPerUserInfo();
       var od = api.BlogPerUserInfo.fromJson(o.toJson());
-      checkBlogPerUserInfo(od);
+      checkBlogPerUserInfo(od as api.BlogPerUserInfo);
     });
   });
 
@@ -1248,7 +1248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBlogUserInfo();
       var od = api.BlogUserInfo.fromJson(o.toJson());
-      checkBlogUserInfo(od);
+      checkBlogUserInfo(od as api.BlogUserInfo);
     });
   });
 
@@ -1256,7 +1256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentAuthorImage();
       var od = api.CommentAuthorImage.fromJson(o.toJson());
-      checkCommentAuthorImage(od);
+      checkCommentAuthorImage(od as api.CommentAuthorImage);
     });
   });
 
@@ -1264,7 +1264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentAuthor();
       var od = api.CommentAuthor.fromJson(o.toJson());
-      checkCommentAuthor(od);
+      checkCommentAuthor(od as api.CommentAuthor);
     });
   });
 
@@ -1272,7 +1272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentBlog();
       var od = api.CommentBlog.fromJson(o.toJson());
-      checkCommentBlog(od);
+      checkCommentBlog(od as api.CommentBlog);
     });
   });
 
@@ -1280,7 +1280,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentInReplyTo();
       var od = api.CommentInReplyTo.fromJson(o.toJson());
-      checkCommentInReplyTo(od);
+      checkCommentInReplyTo(od as api.CommentInReplyTo);
     });
   });
 
@@ -1288,7 +1288,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentPost();
       var od = api.CommentPost.fromJson(o.toJson());
-      checkCommentPost(od);
+      checkCommentPost(od as api.CommentPost);
     });
   });
 
@@ -1296,7 +1296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
-      checkComment(od);
+      checkComment(od as api.Comment);
     });
   });
 
@@ -1304,7 +1304,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentList();
       var od = api.CommentList.fromJson(o.toJson());
-      checkCommentList(od);
+      checkCommentList(od as api.CommentList);
     });
   });
 
@@ -1312,7 +1312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageAuthorImage();
       var od = api.PageAuthorImage.fromJson(o.toJson());
-      checkPageAuthorImage(od);
+      checkPageAuthorImage(od as api.PageAuthorImage);
     });
   });
 
@@ -1320,7 +1320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageAuthor();
       var od = api.PageAuthor.fromJson(o.toJson());
-      checkPageAuthor(od);
+      checkPageAuthor(od as api.PageAuthor);
     });
   });
 
@@ -1328,7 +1328,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageBlog();
       var od = api.PageBlog.fromJson(o.toJson());
-      checkPageBlog(od);
+      checkPageBlog(od as api.PageBlog);
     });
   });
 
@@ -1336,7 +1336,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
-      checkPage(od);
+      checkPage(od as api.Page);
     });
   });
 
@@ -1344,7 +1344,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageList();
       var od = api.PageList.fromJson(o.toJson());
-      checkPageList(od);
+      checkPageList(od as api.PageList);
     });
   });
 
@@ -1352,7 +1352,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageviewsCounts();
       var od = api.PageviewsCounts.fromJson(o.toJson());
-      checkPageviewsCounts(od);
+      checkPageviewsCounts(od as api.PageviewsCounts);
     });
   });
 
@@ -1360,7 +1360,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageviews();
       var od = api.Pageviews.fromJson(o.toJson());
-      checkPageviews(od);
+      checkPageviews(od as api.Pageviews);
     });
   });
 
@@ -1368,7 +1368,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostAuthorImage();
       var od = api.PostAuthorImage.fromJson(o.toJson());
-      checkPostAuthorImage(od);
+      checkPostAuthorImage(od as api.PostAuthorImage);
     });
   });
 
@@ -1376,7 +1376,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostAuthor();
       var od = api.PostAuthor.fromJson(o.toJson());
-      checkPostAuthor(od);
+      checkPostAuthor(od as api.PostAuthor);
     });
   });
 
@@ -1384,7 +1384,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostBlog();
       var od = api.PostBlog.fromJson(o.toJson());
-      checkPostBlog(od);
+      checkPostBlog(od as api.PostBlog);
     });
   });
 
@@ -1392,7 +1392,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostImages();
       var od = api.PostImages.fromJson(o.toJson());
-      checkPostImages(od);
+      checkPostImages(od as api.PostImages);
     });
   });
 
@@ -1400,7 +1400,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostLocation();
       var od = api.PostLocation.fromJson(o.toJson());
-      checkPostLocation(od);
+      checkPostLocation(od as api.PostLocation);
     });
   });
 
@@ -1408,7 +1408,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostReplies();
       var od = api.PostReplies.fromJson(o.toJson());
-      checkPostReplies(od);
+      checkPostReplies(od as api.PostReplies);
     });
   });
 
@@ -1416,7 +1416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPost();
       var od = api.Post.fromJson(o.toJson());
-      checkPost(od);
+      checkPost(od as api.Post);
     });
   });
 
@@ -1424,7 +1424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostList();
       var od = api.PostList.fromJson(o.toJson());
-      checkPostList(od);
+      checkPostList(od as api.PostList);
     });
   });
 
@@ -1432,7 +1432,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostPerUserInfo();
       var od = api.PostPerUserInfo.fromJson(o.toJson());
-      checkPostPerUserInfo(od);
+      checkPostPerUserInfo(od as api.PostPerUserInfo);
     });
   });
 
@@ -1440,7 +1440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostUserInfo();
       var od = api.PostUserInfo.fromJson(o.toJson());
-      checkPostUserInfo(od);
+      checkPostUserInfo(od as api.PostUserInfo);
     });
   });
 
@@ -1448,7 +1448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostUserInfosList();
       var od = api.PostUserInfosList.fromJson(o.toJson());
-      checkPostUserInfosList(od);
+      checkPostUserInfosList(od as api.PostUserInfosList);
     });
   });
 
@@ -1456,7 +1456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserBlogs();
       var od = api.UserBlogs.fromJson(o.toJson());
-      checkUserBlogs(od);
+      checkUserBlogs(od as api.UserBlogs);
     });
   });
 
@@ -1464,7 +1464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserLocale();
       var od = api.UserLocale.fromJson(o.toJson());
-      checkUserLocale(od);
+      checkUserLocale(od as api.UserLocale);
     });
   });
 
@@ -1472,7 +1472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -1537,7 +1537,7 @@ void main() {
           .get(arg_userId, arg_blogId,
               maxPosts: arg_maxPosts, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBlogUserInfo(response);
+        checkBlogUserInfo(response as api.BlogUserInfo);
       })));
     });
   });
@@ -1595,7 +1595,7 @@ void main() {
           .get(arg_blogId,
               maxPosts: arg_maxPosts, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBlog(response);
+        checkBlog(response as api.Blog);
       })));
     });
 
@@ -1645,7 +1645,7 @@ void main() {
       res
           .getByUrl(arg_url, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBlog(response);
+        checkBlog(response as api.Blog);
       })));
     });
 
@@ -1715,7 +1715,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBlogList(response);
+        checkBlogList(response as api.BlogList);
       })));
     });
   });
@@ -1793,7 +1793,7 @@ void main() {
       res
           .approve(arg_blogId, arg_postId, arg_commentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -1934,7 +1934,7 @@ void main() {
           .get(arg_blogId, arg_postId, arg_commentId,
               view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -2027,7 +2027,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentList(response);
+        checkCommentList(response as api.CommentList);
       })));
     });
 
@@ -2107,7 +2107,7 @@ void main() {
               status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentList(response);
+        checkCommentList(response as api.CommentList);
       })));
     });
 
@@ -2184,7 +2184,7 @@ void main() {
           .markAsSpam(arg_blogId, arg_postId, arg_commentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -2261,7 +2261,7 @@ void main() {
           .removeContent(arg_blogId, arg_postId, arg_commentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
   });
@@ -2321,7 +2321,7 @@ void main() {
       res
           .get(arg_blogId, range: arg_range, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPageviews(response);
+        checkPageviews(response as api.Pageviews);
       })));
     });
   });
@@ -2443,7 +2443,7 @@ void main() {
       res
           .get(arg_blogId, arg_pageId, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -2455,8 +2455,9 @@ void main() {
       var arg_isDraft = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Page.fromJson(json);
-        checkPage(obj);
+        var obj =
+            api.Page.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPage(obj as api.Page);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2507,7 +2508,7 @@ void main() {
           .insert(arg_request, arg_blogId,
               isDraft: arg_isDraft, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -2582,7 +2583,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPageList(response);
+        checkPageList(response as api.PageList);
       })));
     });
 
@@ -2596,8 +2597,9 @@ void main() {
       var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Page.fromJson(json);
-        checkPage(obj);
+        var obj =
+            api.Page.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPage(obj as api.Page);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2655,7 +2657,7 @@ void main() {
               revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -2721,7 +2723,7 @@ void main() {
       res
           .publish(arg_blogId, arg_pageId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -2787,7 +2789,7 @@ void main() {
       res
           .revert(arg_blogId, arg_pageId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -2801,8 +2803,9 @@ void main() {
       var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Page.fromJson(json);
-        checkPage(obj);
+        var obj =
+            api.Page.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPage(obj as api.Page);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2860,7 +2863,7 @@ void main() {
               revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
   });
@@ -2936,7 +2939,7 @@ void main() {
           .get(arg_userId, arg_blogId, arg_postId,
               maxComments: arg_maxComments, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPostUserInfo(response);
+        checkPostUserInfo(response as api.PostUserInfo);
       })));
     });
 
@@ -3036,7 +3039,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPostUserInfosList(response);
+        checkPostUserInfosList(response as api.PostUserInfosList);
       })));
     });
   });
@@ -3172,7 +3175,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3238,7 +3241,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3252,8 +3255,9 @@ void main() {
       var arg_isDraft = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Post.fromJson(json);
-        checkPost(obj);
+        var obj =
+            api.Post.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPost(obj as api.Post);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3311,7 +3315,7 @@ void main() {
               isDraft: arg_isDraft,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3405,7 +3409,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPostList(response);
+        checkPostList(response as api.PostList);
       })));
     });
 
@@ -3422,8 +3426,9 @@ void main() {
       var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Post.fromJson(json);
-        checkPost(obj);
+        var obj =
+            api.Post.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPost(obj as api.Post);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3490,7 +3495,7 @@ void main() {
               revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3560,7 +3565,7 @@ void main() {
           .publish(arg_blogId, arg_postId,
               publishDate: arg_publishDate, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3626,7 +3631,7 @@ void main() {
       res
           .revert(arg_blogId, arg_postId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
 
@@ -3693,7 +3698,7 @@ void main() {
               orderBy: arg_orderBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPostList(response);
+        checkPostList(response as api.PostList);
       })));
     });
 
@@ -3710,8 +3715,9 @@ void main() {
       var arg_revert_1 = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Post.fromJson(json);
-        checkPost(obj);
+        var obj =
+            api.Post.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPost(obj as api.Post);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3778,7 +3784,7 @@ void main() {
               revert_1: arg_revert_1,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPost(response);
+        checkPost(response as api.Post);
       })));
     });
   });
@@ -3830,7 +3836,7 @@ void main() {
       res
           .get(arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUser(response);
+        checkUser(response as api.User);
       })));
     });
   });

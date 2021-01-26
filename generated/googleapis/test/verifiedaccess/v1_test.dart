@@ -89,8 +89,8 @@ api.Challenge buildChallenge() {
 void checkChallenge(api.Challenge o) {
   buildCounterChallenge++;
   if (buildCounterChallenge < 3) {
-    checkSignedData(o.alternativeChallenge);
-    checkSignedData(o.challenge);
+    checkSignedData(o.alternativeChallenge as api.SignedData);
+    checkSignedData(o.challenge as api.SignedData);
   }
   buildCounterChallenge--;
 }
@@ -146,7 +146,7 @@ api.VerifyChallengeResponseRequest buildVerifyChallengeResponseRequest() {
 void checkVerifyChallengeResponseRequest(api.VerifyChallengeResponseRequest o) {
   buildCounterVerifyChallengeResponseRequest++;
   if (buildCounterVerifyChallengeResponseRequest < 3) {
-    checkSignedData(o.challengeResponse);
+    checkSignedData(o.challengeResponse as api.SignedData);
     unittest.expect(o.expectedIdentity, unittest.equals('foo'));
   }
   buildCounterVerifyChallengeResponseRequest--;
@@ -182,7 +182,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChallenge();
       var od = api.Challenge.fromJson(o.toJson());
-      checkChallenge(od);
+      checkChallenge(od as api.Challenge);
     });
   });
 
@@ -190,7 +190,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -198,7 +198,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignedData();
       var od = api.SignedData.fromJson(o.toJson());
-      checkSignedData(od);
+      checkSignedData(od as api.SignedData);
     });
   });
 
@@ -206,7 +206,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVerifyChallengeResponseRequest();
       var od = api.VerifyChallengeResponseRequest.fromJson(o.toJson());
-      checkVerifyChallengeResponseRequest(od);
+      checkVerifyChallengeResponseRequest(
+          od as api.VerifyChallengeResponseRequest);
     });
   });
 
@@ -214,7 +215,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVerifyChallengeResponseResult();
       var od = api.VerifyChallengeResponseResult.fromJson(o.toJson());
-      checkVerifyChallengeResponseResult(od);
+      checkVerifyChallengeResponseResult(
+          od as api.VerifyChallengeResponseResult);
     });
   });
 
@@ -225,8 +227,9 @@ void main() {
       var arg_request = buildEmpty();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Empty.fromJson(json);
-        checkEmpty(obj);
+        var obj =
+            api.Empty.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEmpty(obj as api.Empty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -265,7 +268,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChallenge(response);
+        checkChallenge(response as api.Challenge);
       })));
     });
 
@@ -275,8 +278,10 @@ void main() {
       var arg_request = buildVerifyChallengeResponseRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.VerifyChallengeResponseRequest.fromJson(json);
-        checkVerifyChallengeResponseRequest(obj);
+        var obj = api.VerifyChallengeResponseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkVerifyChallengeResponseRequest(
+            obj as api.VerifyChallengeResponseRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -315,7 +320,8 @@ void main() {
       res
           .verify(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVerifyChallengeResponseResult(response);
+        checkVerifyChallengeResponseResult(
+            response as api.VerifyChallengeResponseResult);
       })));
     });
   });

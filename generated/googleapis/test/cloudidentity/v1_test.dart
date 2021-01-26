@@ -165,7 +165,8 @@ void checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse <
       3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser);
+    checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+        o.deviceUser as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse--;
 }
@@ -208,7 +209,8 @@ void checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser);
+    checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+        o.deviceUser as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse--;
 }
@@ -254,7 +256,8 @@ void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse <
       3) {
-    checkGoogleAppsCloudidentityDevicesV1Device(o.device);
+    checkGoogleAppsCloudidentityDevicesV1Device(
+        o.device as api.GoogleAppsCloudidentityDevicesV1Device);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse--;
 }
@@ -303,7 +306,8 @@ void checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse <
       3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser);
+    checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+        o.deviceUser as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse--;
 }
@@ -335,8 +339,10 @@ void checkUnnamed1516(
             api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(o['x']);
-  checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(o['y']);
+  checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
+      o['x'] as api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue);
+  checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
+      o['y'] as api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue);
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ClientState = 0;
@@ -478,7 +484,8 @@ void checkGoogleAppsCloudidentityDevicesV1Device(
   buildCounterGoogleAppsCloudidentityDevicesV1Device++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1Device < 3) {
     checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
-        o.androidSpecificAttributes);
+        o.androidSpecificAttributes
+            as api.GoogleAppsCloudidentityDevicesV1AndroidAttributes);
     unittest.expect(o.assetTag, unittest.equals('foo'));
     unittest.expect(o.basebandVersion, unittest.equals('foo'));
     unittest.expect(o.bootloaderVersion, unittest.equals('foo'));
@@ -559,8 +566,10 @@ core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> buildUnnamed1519() {
 void checkUnnamed1519(
     core.List<api.GoogleAppsCloudidentityDevicesV1ClientState> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCloudidentityDevicesV1ClientState(o[0]);
-  checkGoogleAppsCloudidentityDevicesV1ClientState(o[1]);
+  checkGoogleAppsCloudidentityDevicesV1ClientState(
+      o[0] as api.GoogleAppsCloudidentityDevicesV1ClientState);
+  checkGoogleAppsCloudidentityDevicesV1ClientState(
+      o[1] as api.GoogleAppsCloudidentityDevicesV1ClientState);
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListClientStatesResponse =
@@ -599,8 +608,10 @@ core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> buildUnnamed1520() {
 void checkUnnamed1520(
     core.List<api.GoogleAppsCloudidentityDevicesV1DeviceUser> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[0]);
-  checkGoogleAppsCloudidentityDevicesV1DeviceUser(o[1]);
+  checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+      o[0] as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
+  checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+      o[1] as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse =
@@ -636,8 +647,10 @@ core.List<api.GoogleAppsCloudidentityDevicesV1Device> buildUnnamed1521() {
 
 void checkUnnamed1521(core.List<api.GoogleAppsCloudidentityDevicesV1Device> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsCloudidentityDevicesV1Device(o[0]);
-  checkGoogleAppsCloudidentityDevicesV1Device(o[1]);
+  checkGoogleAppsCloudidentityDevicesV1Device(
+      o[0] as api.GoogleAppsCloudidentityDevicesV1Device);
+  checkGoogleAppsCloudidentityDevicesV1Device(
+      o[1] as api.GoogleAppsCloudidentityDevicesV1Device);
 }
 
 core.int buildCounterGoogleAppsCloudidentityDevicesV1ListDevicesResponse = 0;
@@ -742,7 +755,8 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1Device(o.device);
+    checkGoogleAppsCloudidentityDevicesV1Device(
+        o.device as api.GoogleAppsCloudidentityDevicesV1Device);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceResponse--;
 }
@@ -784,7 +798,8 @@ void checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
     api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse o) {
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse++;
   if (buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse < 3) {
-    checkGoogleAppsCloudidentityDevicesV1DeviceUser(o.deviceUser);
+    checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+        o.deviceUser as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
   }
   buildCounterGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse--;
 }
@@ -826,7 +841,7 @@ void checkGroup(api.Group o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkEntityKey(o.groupKey);
+    checkEntityKey(o.groupKey as api.EntityKey);
     checkUnnamed1523(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
@@ -844,8 +859,8 @@ core.List<api.Group> buildUnnamed1524() {
 
 void checkUnnamed1524(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGroup(o[0]);
-  checkGroup(o[1]);
+  checkGroup(o[0] as api.Group);
+  checkGroup(o[1] as api.Group);
 }
 
 core.int buildCounterListGroupsResponse = 0;
@@ -878,8 +893,8 @@ core.List<api.Membership> buildUnnamed1525() {
 
 void checkUnnamed1525(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembership(o[0]);
-  checkMembership(o[1]);
+  checkMembership(o[0] as api.Membership);
+  checkMembership(o[1] as api.Membership);
 }
 
 core.int buildCounterListMembershipsResponse = 0;
@@ -950,8 +965,8 @@ core.List<api.MembershipRole> buildUnnamed1526() {
 
 void checkUnnamed1526(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembershipRole(o[0]);
-  checkMembershipRole(o[1]);
+  checkMembershipRole(o[0] as api.MembershipRole);
+  checkMembershipRole(o[1] as api.MembershipRole);
 }
 
 core.int buildCounterMembership = 0;
@@ -975,7 +990,7 @@ void checkMembership(api.Membership o) {
   if (buildCounterMembership < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkEntityKey(o.preferredMemberKey);
+    checkEntityKey(o.preferredMemberKey as api.EntityKey);
     checkUnnamed1526(o.roles);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -1011,8 +1026,8 @@ core.List<api.MembershipRole> buildUnnamed1527() {
 
 void checkUnnamed1527(core.List<api.MembershipRole> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembershipRole(o[0]);
-  checkMembershipRole(o[1]);
+  checkMembershipRole(o[0] as api.MembershipRole);
+  checkMembershipRole(o[1] as api.MembershipRole);
 }
 
 core.List<core.String> buildUnnamed1528() {
@@ -1063,7 +1078,7 @@ api.ModifyMembershipRolesResponse buildModifyMembershipRolesResponse() {
 void checkModifyMembershipRolesResponse(api.ModifyMembershipRolesResponse o) {
   buildCounterModifyMembershipRolesResponse++;
   if (buildCounterModifyMembershipRolesResponse < 3) {
-    checkMembership(o.membership);
+    checkMembership(o.membership as api.Membership);
   }
   buildCounterModifyMembershipRolesResponse--;
 }
@@ -1145,7 +1160,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1529(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1530(o.response);
@@ -1162,8 +1177,8 @@ core.List<api.Group> buildUnnamed1531() {
 
 void checkUnnamed1531(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGroup(o[0]);
-  checkGroup(o[1]);
+  checkGroup(o[0] as api.Group);
+  checkGroup(o[1] as api.Group);
 }
 
 core.int buildCounterSearchGroupsResponse = 0;
@@ -1257,7 +1272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityKey();
       var od = api.EntityKey.fromJson(o.toJson());
-      checkEntityKey(od);
+      checkEntityKey(od as api.EntityKey);
     });
   });
 
@@ -1267,7 +1282,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1AndroidAttributes();
       var od = api.GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
           o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(od);
+      checkGoogleAppsCloudidentityDevicesV1AndroidAttributes(
+          od as api.GoogleAppsCloudidentityDevicesV1AndroidAttributes);
     });
   });
 
@@ -1279,7 +1295,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(
+          od as api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest);
     });
   });
 
@@ -1290,7 +1307,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse
           .fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse);
     });
   });
 
@@ -1301,7 +1319,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
+          od as api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest);
     });
   });
 
@@ -1312,7 +1331,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse);
     });
   });
 
@@ -1323,7 +1343,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
+          od as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest);
     });
   });
 
@@ -1335,7 +1356,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse);
     });
   });
 
@@ -1347,7 +1369,8 @@ void main() {
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest();
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
           .fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(od
+          as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest);
     });
   });
 
@@ -1359,7 +1382,8 @@ void main() {
           buildGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse
           .fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse(od
+          as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse);
     });
   });
 
@@ -1368,7 +1392,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1ClientState();
       var od =
           api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ClientState(od);
+      checkGoogleAppsCloudidentityDevicesV1ClientState(
+          od as api.GoogleAppsCloudidentityDevicesV1ClientState);
     });
   });
 
@@ -1379,7 +1404,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(od);
+      checkGoogleAppsCloudidentityDevicesV1CustomAttributeValue(
+          od as api.GoogleAppsCloudidentityDevicesV1CustomAttributeValue);
     });
   });
 
@@ -1387,7 +1413,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsCloudidentityDevicesV1Device();
       var od = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1Device(od);
+      checkGoogleAppsCloudidentityDevicesV1Device(
+          od as api.GoogleAppsCloudidentityDevicesV1Device);
     });
   });
 
@@ -1396,7 +1423,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1DeviceUser();
       var od =
           api.GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1DeviceUser(od);
+      checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+          od as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
     });
   });
 
@@ -1408,7 +1436,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse);
     });
   });
 
@@ -1419,7 +1448,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse);
     });
   });
 
@@ -1429,7 +1459,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1ListDevicesResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
           o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse);
     });
   });
 
@@ -1441,7 +1472,8 @@ void main() {
           buildGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
           .fromJson(o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(od
+          as api.GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse);
     });
   });
 
@@ -1451,7 +1483,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceRequest();
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
           o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
+          od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest);
     });
   });
 
@@ -1461,7 +1494,8 @@ void main() {
       var o = buildGoogleAppsCloudidentityDevicesV1WipeDeviceResponse();
       var od = api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(
           o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1WipeDeviceResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceResponse);
     });
   });
 
@@ -1472,7 +1506,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(od);
+      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
+          od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest);
     });
   });
 
@@ -1483,7 +1518,8 @@ void main() {
       var od =
           api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse.fromJson(
               o.toJson());
-      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(od);
+      checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse(
+          od as api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse);
     });
   });
 
@@ -1491,7 +1527,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
-      checkGroup(od);
+      checkGroup(od as api.Group);
     });
   });
 
@@ -1499,7 +1535,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
-      checkListGroupsResponse(od);
+      checkListGroupsResponse(od as api.ListGroupsResponse);
     });
   });
 
@@ -1507,7 +1543,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListMembershipsResponse();
       var od = api.ListMembershipsResponse.fromJson(o.toJson());
-      checkListMembershipsResponse(od);
+      checkListMembershipsResponse(od as api.ListMembershipsResponse);
     });
   });
 
@@ -1515,7 +1551,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLookupGroupNameResponse();
       var od = api.LookupGroupNameResponse.fromJson(o.toJson());
-      checkLookupGroupNameResponse(od);
+      checkLookupGroupNameResponse(od as api.LookupGroupNameResponse);
     });
   });
 
@@ -1523,7 +1559,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLookupMembershipNameResponse();
       var od = api.LookupMembershipNameResponse.fromJson(o.toJson());
-      checkLookupMembershipNameResponse(od);
+      checkLookupMembershipNameResponse(od as api.LookupMembershipNameResponse);
     });
   });
 
@@ -1531,7 +1567,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
-      checkMembership(od);
+      checkMembership(od as api.Membership);
     });
   });
 
@@ -1539,7 +1575,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipRole();
       var od = api.MembershipRole.fromJson(o.toJson());
-      checkMembershipRole(od);
+      checkMembershipRole(od as api.MembershipRole);
     });
   });
 
@@ -1547,7 +1583,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyMembershipRolesRequest();
       var od = api.ModifyMembershipRolesRequest.fromJson(o.toJson());
-      checkModifyMembershipRolesRequest(od);
+      checkModifyMembershipRolesRequest(od as api.ModifyMembershipRolesRequest);
     });
   });
 
@@ -1555,7 +1591,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyMembershipRolesResponse();
       var od = api.ModifyMembershipRolesResponse.fromJson(o.toJson());
-      checkModifyMembershipRolesResponse(od);
+      checkModifyMembershipRolesResponse(
+          od as api.ModifyMembershipRolesResponse);
     });
   });
 
@@ -1563,7 +1600,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1571,7 +1608,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchGroupsResponse();
       var od = api.SearchGroupsResponse.fromJson(o.toJson());
-      checkSearchGroupsResponse(od);
+      checkSearchGroupsResponse(od as api.SearchGroupsResponse);
     });
   });
 
@@ -1579,7 +1616,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1593,8 +1630,9 @@ void main() {
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest
-            .fromJson(json);
-        checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(obj);
+            .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest(
+            obj as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1634,7 +1672,7 @@ void main() {
       res
           .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1645,8 +1683,10 @@ void main() {
       var arg_customer = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(json);
-        checkGoogleAppsCloudidentityDevicesV1Device(obj);
+        var obj = api.GoogleAppsCloudidentityDevicesV1Device.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1Device(
+            obj as api.GoogleAppsCloudidentityDevicesV1Device);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1687,7 +1727,7 @@ void main() {
       res
           .create(arg_request, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1738,7 +1778,7 @@ void main() {
       res
           .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1790,7 +1830,8 @@ void main() {
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1Device(response);
+        checkGoogleAppsCloudidentityDevicesV1Device(
+            response as api.GoogleAppsCloudidentityDevicesV1Device);
       })));
     });
 
@@ -1860,7 +1901,8 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(response);
+        checkGoogleAppsCloudidentityDevicesV1ListDevicesResponse(response
+            as api.GoogleAppsCloudidentityDevicesV1ListDevicesResponse);
       })));
     });
 
@@ -1874,8 +1916,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest.fromJson(
-                json);
-        checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1WipeDeviceRequest(
+            obj as api.GoogleAppsCloudidentityDevicesV1WipeDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1915,7 +1958,7 @@ void main() {
       res
           .wipe(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1930,8 +1973,9 @@ void main() {
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj = api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest
-            .fromJson(json);
-        checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(obj);
+            .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest(obj
+            as api.GoogleAppsCloudidentityDevicesV1ApproveDeviceUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1971,7 +2015,7 @@ void main() {
       res
           .approve(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1985,8 +2029,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest.fromJson(
-                json);
-        checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest(
+            obj as api.GoogleAppsCloudidentityDevicesV1BlockDeviceUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2026,7 +2071,7 @@ void main() {
       res
           .block(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2040,8 +2085,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest
-                .fromJson(json);
-        checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(obj);
+                .fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest(obj
+            as api.GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2081,7 +2127,7 @@ void main() {
       res
           .cancelWipe(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2132,7 +2178,7 @@ void main() {
       res
           .delete(arg_name, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2184,7 +2230,8 @@ void main() {
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1DeviceUser(response);
+        checkGoogleAppsCloudidentityDevicesV1DeviceUser(
+            response as api.GoogleAppsCloudidentityDevicesV1DeviceUser);
       })));
     });
 
@@ -2253,7 +2300,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response);
+        checkGoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse(response
+            as api.GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse);
       })));
     });
 
@@ -2323,7 +2371,8 @@ void main() {
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
         checkGoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse(
-            response);
+            response as api
+                .GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse);
       })));
     });
 
@@ -2337,8 +2386,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest.fromJson(
-                json);
-        checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest(
+            obj as api.GoogleAppsCloudidentityDevicesV1WipeDeviceUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2378,7 +2428,7 @@ void main() {
       res
           .wipe(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2432,7 +2482,8 @@ void main() {
       res
           .get(arg_name, customer: arg_customer, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ClientState(response);
+        checkGoogleAppsCloudidentityDevicesV1ClientState(
+            response as api.GoogleAppsCloudidentityDevicesV1ClientState);
       })));
     });
 
@@ -2497,7 +2548,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response);
+        checkGoogleAppsCloudidentityDevicesV1ListClientStatesResponse(response
+            as api.GoogleAppsCloudidentityDevicesV1ListClientStatesResponse);
       })));
     });
 
@@ -2510,9 +2562,10 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(json);
-        checkGoogleAppsCloudidentityDevicesV1ClientState(obj);
+        var obj = api.GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleAppsCloudidentityDevicesV1ClientState(
+            obj as api.GoogleAppsCloudidentityDevicesV1ClientState);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2559,7 +2612,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2572,8 +2625,9 @@ void main() {
       var arg_initialGroupConfig = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Group.fromJson(json);
-        checkGroup(obj);
+        var obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj as api.Group);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2615,7 +2669,7 @@ void main() {
           .create(arg_request,
               initialGroupConfig: arg_initialGroupConfig, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2663,7 +2717,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2711,7 +2765,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroup(response);
+        checkGroup(response as api.Group);
       })));
     });
 
@@ -2772,7 +2826,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGroupsResponse(response);
+        checkListGroupsResponse(response as api.ListGroupsResponse);
       })));
     });
 
@@ -2827,7 +2881,7 @@ void main() {
               groupKey_namespace: arg_groupKey_namespace,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLookupGroupNameResponse(response);
+        checkLookupGroupNameResponse(response as api.LookupGroupNameResponse);
       })));
     });
 
@@ -2839,8 +2893,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Group.fromJson(json);
-        checkGroup(obj);
+        var obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj as api.Group);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2883,7 +2938,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2944,7 +2999,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchGroupsResponse(response);
+        checkSearchGroupsResponse(response as api.SearchGroupsResponse);
       })));
     });
   });
@@ -2957,8 +3012,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Membership.fromJson(json);
-        checkMembership(obj);
+        var obj = api.Membership.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMembership(obj as api.Membership);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2998,7 +3054,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3046,7 +3102,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3094,7 +3150,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMembership(response);
+        checkMembership(response as api.Membership);
       })));
     });
 
@@ -3154,7 +3210,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListMembershipsResponse(response);
+        checkListMembershipsResponse(response as api.ListMembershipsResponse);
       })));
     });
 
@@ -3211,7 +3267,8 @@ void main() {
               memberKey_namespace: arg_memberKey_namespace,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLookupMembershipNameResponse(response);
+        checkLookupMembershipNameResponse(
+            response as api.LookupMembershipNameResponse);
       })));
     });
 
@@ -3222,8 +3279,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyMembershipRolesRequest.fromJson(json);
-        checkModifyMembershipRolesRequest(obj);
+        var obj = api.ModifyMembershipRolesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyMembershipRolesRequest(
+            obj as api.ModifyMembershipRolesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3263,7 +3322,8 @@ void main() {
       res
           .modifyMembershipRoles(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkModifyMembershipRolesResponse(response);
+        checkModifyMembershipRolesResponse(
+            response as api.ModifyMembershipRolesResponse);
       })));
     });
   });

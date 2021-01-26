@@ -118,8 +118,10 @@ core.List<api.AboutAdditionalRoleInfoRoleSets> buildUnnamed2172() {
 
 void checkUnnamed2172(core.List<api.AboutAdditionalRoleInfoRoleSets> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutAdditionalRoleInfoRoleSets(o[0]);
-  checkAboutAdditionalRoleInfoRoleSets(o[1]);
+  checkAboutAdditionalRoleInfoRoleSets(
+      o[0] as api.AboutAdditionalRoleInfoRoleSets);
+  checkAboutAdditionalRoleInfoRoleSets(
+      o[1] as api.AboutAdditionalRoleInfoRoleSets);
 }
 
 core.int buildCounterAboutAdditionalRoleInfo = 0;
@@ -152,8 +154,8 @@ core.List<api.AboutAdditionalRoleInfo> buildUnnamed2173() {
 
 void checkUnnamed2173(core.List<api.AboutAdditionalRoleInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutAdditionalRoleInfo(o[0]);
-  checkAboutAdditionalRoleInfo(o[1]);
+  checkAboutAdditionalRoleInfo(o[0] as api.AboutAdditionalRoleInfo);
+  checkAboutAdditionalRoleInfo(o[1] as api.AboutAdditionalRoleInfo);
 }
 
 core.int buildCounterAboutDriveThemes = 0;
@@ -188,8 +190,8 @@ core.List<api.AboutDriveThemes> buildUnnamed2174() {
 
 void checkUnnamed2174(core.List<api.AboutDriveThemes> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutDriveThemes(o[0]);
-  checkAboutDriveThemes(o[1]);
+  checkAboutDriveThemes(o[0] as api.AboutDriveThemes);
+  checkAboutDriveThemes(o[1] as api.AboutDriveThemes);
 }
 
 core.List<core.String> buildUnnamed2175() {
@@ -235,8 +237,8 @@ core.List<api.AboutExportFormats> buildUnnamed2176() {
 
 void checkUnnamed2176(core.List<api.AboutExportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutExportFormats(o[0]);
-  checkAboutExportFormats(o[1]);
+  checkAboutExportFormats(o[0] as api.AboutExportFormats);
+  checkAboutExportFormats(o[1] as api.AboutExportFormats);
 }
 
 core.int buildCounterAboutFeatures = 0;
@@ -269,8 +271,8 @@ core.List<api.AboutFeatures> buildUnnamed2177() {
 
 void checkUnnamed2177(core.List<api.AboutFeatures> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutFeatures(o[0]);
-  checkAboutFeatures(o[1]);
+  checkAboutFeatures(o[0] as api.AboutFeatures);
+  checkAboutFeatures(o[1] as api.AboutFeatures);
 }
 
 core.List<core.String> buildUnnamed2178() {
@@ -329,8 +331,8 @@ core.List<api.AboutImportFormats> buildUnnamed2180() {
 
 void checkUnnamed2180(core.List<api.AboutImportFormats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutImportFormats(o[0]);
-  checkAboutImportFormats(o[1]);
+  checkAboutImportFormats(o[0] as api.AboutImportFormats);
+  checkAboutImportFormats(o[1] as api.AboutImportFormats);
 }
 
 core.int buildCounterAboutMaxUploadSizes = 0;
@@ -363,8 +365,8 @@ core.List<api.AboutMaxUploadSizes> buildUnnamed2181() {
 
 void checkUnnamed2181(core.List<api.AboutMaxUploadSizes> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutMaxUploadSizes(o[0]);
-  checkAboutMaxUploadSizes(o[1]);
+  checkAboutMaxUploadSizes(o[0] as api.AboutMaxUploadSizes);
+  checkAboutMaxUploadSizes(o[1] as api.AboutMaxUploadSizes);
 }
 
 core.int buildCounterAboutQuotaBytesByService = 0;
@@ -397,8 +399,8 @@ core.List<api.AboutQuotaBytesByService> buildUnnamed2182() {
 
 void checkUnnamed2182(core.List<api.AboutQuotaBytesByService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutQuotaBytesByService(o[0]);
-  checkAboutQuotaBytesByService(o[1]);
+  checkAboutQuotaBytesByService(o[0] as api.AboutQuotaBytesByService);
+  checkAboutQuotaBytesByService(o[1] as api.AboutQuotaBytesByService);
 }
 
 core.int buildCounterAboutTeamDriveThemes = 0;
@@ -433,8 +435,8 @@ core.List<api.AboutTeamDriveThemes> buildUnnamed2183() {
 
 void checkUnnamed2183(core.List<api.AboutTeamDriveThemes> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAboutTeamDriveThemes(o[0]);
-  checkAboutTeamDriveThemes(o[1]);
+  checkAboutTeamDriveThemes(o[0] as api.AboutTeamDriveThemes);
+  checkAboutTeamDriveThemes(o[1] as api.AboutTeamDriveThemes);
 }
 
 core.int buildCounterAbout = 0;
@@ -505,7 +507,7 @@ void checkAbout(api.About o) {
     unittest.expect(o.rootFolderId, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     checkUnnamed2183(o.teamDriveThemes);
-    checkUser(o.user);
+    checkUser(o.user as api.User);
   }
   buildCounterAbout--;
 }
@@ -542,8 +544,8 @@ core.List<api.AppIcons> buildUnnamed2184() {
 
 void checkUnnamed2184(core.List<api.AppIcons> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAppIcons(o[0]);
-  checkAppIcons(o[1]);
+  checkAppIcons(o[0] as api.AppIcons);
+  checkAppIcons(o[1] as api.AppIcons);
 }
 
 core.List<core.String> buildUnnamed2185() {
@@ -685,8 +687,8 @@ core.List<api.App> buildUnnamed2190() {
 
 void checkUnnamed2190(core.List<api.App> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApp(o[0]);
-  checkApp(o[1]);
+  checkApp(o[0] as api.App);
+  checkApp(o[1] as api.App);
 }
 
 core.int buildCounterAppList = 0;
@@ -744,16 +746,16 @@ void checkChange(api.Change o) {
   if (buildCounterChange < 3) {
     unittest.expect(o.changeType, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
-    checkDrive(o.drive);
+    checkDrive(o.drive as api.Drive);
     unittest.expect(o.driveId, unittest.equals('foo'));
-    checkFile(o.file);
+    checkFile(o.file as api.File);
     unittest.expect(o.fileId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.modificationDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkTeamDrive(o.teamDrive);
+    checkTeamDrive(o.teamDrive as api.TeamDrive);
     unittest.expect(o.teamDriveId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -769,8 +771,8 @@ core.List<api.Change> buildUnnamed2191() {
 
 void checkUnnamed2191(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChange(o[0]);
-  checkChange(o[1]);
+  checkChange(o[0] as api.Change);
+  checkChange(o[1] as api.Change);
 }
 
 core.int buildCounterChangeList = 0;
@@ -865,8 +867,8 @@ core.List<api.ChildReference> buildUnnamed2193() {
 
 void checkUnnamed2193(core.List<api.ChildReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChildReference(o[0]);
-  checkChildReference(o[1]);
+  checkChildReference(o[0] as api.ChildReference);
+  checkChildReference(o[1] as api.ChildReference);
 }
 
 core.int buildCounterChildList = 0;
@@ -953,8 +955,8 @@ core.List<api.CommentReply> buildUnnamed2194() {
 
 void checkUnnamed2194(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCommentReply(o[0]);
-  checkCommentReply(o[1]);
+  checkCommentReply(o[0] as api.CommentReply);
+  checkCommentReply(o[1] as api.CommentReply);
 }
 
 core.int buildCounterComment = 0;
@@ -986,10 +988,10 @@ void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
     unittest.expect(o.anchor, unittest.equals('foo'));
-    checkUser(o.author);
+    checkUser(o.author as api.User);
     unittest.expect(o.commentId, unittest.equals('foo'));
     unittest.expect(o.content, unittest.equals('foo'));
-    checkCommentContext(o.context);
+    checkCommentContext(o.context as api.CommentContext);
     unittest.expect(o.createdDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.deleted, unittest.isTrue);
@@ -1015,8 +1017,8 @@ core.List<api.Comment> buildUnnamed2195() {
 
 void checkUnnamed2195(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterCommentList = 0;
@@ -1068,7 +1070,7 @@ api.CommentReply buildCommentReply() {
 void checkCommentReply(api.CommentReply o) {
   buildCounterCommentReply++;
   if (buildCounterCommentReply < 3) {
-    checkUser(o.author);
+    checkUser(o.author as api.User);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.createdDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -1092,8 +1094,8 @@ core.List<api.CommentReply> buildUnnamed2196() {
 
 void checkUnnamed2196(core.List<api.CommentReply> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCommentReply(o[0]);
-  checkCommentReply(o[1]);
+  checkCommentReply(o[0] as api.CommentReply);
+  checkCommentReply(o[1] as api.CommentReply);
 }
 
 core.int buildCounterCommentReplyList = 0;
@@ -1143,7 +1145,7 @@ void checkContentRestriction(api.ContentRestriction o) {
   if (buildCounterContentRestriction < 3) {
     unittest.expect(o.readOnly, unittest.isTrue);
     unittest.expect(o.reason, unittest.equals('foo'));
-    checkUser(o.restrictingUser);
+    checkUser(o.restrictingUser as api.User);
     unittest.expect(o.restrictionDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -1279,9 +1281,10 @@ api.Drive buildDrive() {
 void checkDrive(api.Drive o) {
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
-    checkDriveBackgroundImageFile(o.backgroundImageFile);
+    checkDriveBackgroundImageFile(
+        o.backgroundImageFile as api.DriveBackgroundImageFile);
     unittest.expect(o.backgroundImageLink, unittest.equals('foo'));
-    checkDriveCapabilities(o.capabilities);
+    checkDriveCapabilities(o.capabilities as api.DriveCapabilities);
     unittest.expect(o.colorRgb, unittest.equals('foo'));
     unittest.expect(o.createdDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -1289,7 +1292,7 @@ void checkDrive(api.Drive o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkDriveRestrictions(o.restrictions);
+    checkDriveRestrictions(o.restrictions as api.DriveRestrictions);
     unittest.expect(o.themeId, unittest.equals('foo'));
   }
   buildCounterDrive--;
@@ -1304,8 +1307,8 @@ core.List<api.Drive> buildUnnamed2197() {
 
 void checkUnnamed2197(core.List<api.Drive> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDrive(o[0]);
-  checkDrive(o[1]);
+  checkDrive(o[0] as api.Drive);
+  checkDrive(o[1] as api.Drive);
 }
 
 core.int buildCounterDriveList = 0;
@@ -1425,8 +1428,8 @@ core.List<api.ContentRestriction> buildUnnamed2198() {
 
 void checkUnnamed2198(core.List<api.ContentRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContentRestriction(o[0]);
-  checkContentRestriction(o[1]);
+  checkContentRestriction(o[0] as api.ContentRestriction);
+  checkContentRestriction(o[1] as api.ContentRestriction);
 }
 
 core.Map<core.String, core.String> buildUnnamed2199() {
@@ -1512,7 +1515,8 @@ void checkFileImageMediaMetadata(api.FileImageMediaMetadata o) {
     unittest.expect(o.height, unittest.equals(42));
     unittest.expect(o.isoSpeed, unittest.equals(42));
     unittest.expect(o.lens, unittest.equals('foo'));
-    checkFileImageMediaMetadataLocation(o.location);
+    checkFileImageMediaMetadataLocation(
+        o.location as api.FileImageMediaMetadataLocation);
     unittest.expect(o.maxApertureValue, unittest.equals(42.0));
     unittest.expect(o.meteringMode, unittest.equals('foo'));
     unittest.expect(o.rotation, unittest.equals(42));
@@ -1607,8 +1611,8 @@ core.List<api.User> buildUnnamed2202() {
 
 void checkUnnamed2202(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUser(o[0]);
-  checkUser(o[1]);
+  checkUser(o[0] as api.User);
+  checkUser(o[1] as api.User);
 }
 
 core.List<api.ParentReference> buildUnnamed2203() {
@@ -1620,8 +1624,8 @@ core.List<api.ParentReference> buildUnnamed2203() {
 
 void checkUnnamed2203(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParentReference(o[0]);
-  checkParentReference(o[1]);
+  checkParentReference(o[0] as api.ParentReference);
+  checkParentReference(o[1] as api.ParentReference);
 }
 
 core.List<core.String> buildUnnamed2204() {
@@ -1646,8 +1650,8 @@ core.List<api.Permission> buildUnnamed2205() {
 
 void checkUnnamed2205(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0]);
-  checkPermission(o[1]);
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
 }
 
 core.List<api.Property> buildUnnamed2206() {
@@ -1659,8 +1663,8 @@ core.List<api.Property> buildUnnamed2206() {
 
 void checkUnnamed2206(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProperty(o[0]);
-  checkProperty(o[1]);
+  checkProperty(o[0] as api.Property);
+  checkProperty(o[1] as api.Property);
 }
 
 core.int buildCounterFileShortcutDetails = 0;
@@ -1828,7 +1832,7 @@ void checkFile(api.File o) {
     unittest.expect(o.appDataContents, unittest.isTrue);
     unittest.expect(o.canComment, unittest.isTrue);
     unittest.expect(o.canReadRevisions, unittest.isTrue);
-    checkFileCapabilities(o.capabilities);
+    checkFileCapabilities(o.capabilities as api.FileCapabilities);
     checkUnnamed2198(o.contentRestrictions);
     unittest.expect(o.copyRequiresWriterPermission, unittest.isTrue);
     unittest.expect(o.copyable, unittest.isTrue);
@@ -1852,12 +1856,13 @@ void checkFile(api.File o) {
     unittest.expect(o.headRevisionId, unittest.equals('foo'));
     unittest.expect(o.iconLink, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkFileImageMediaMetadata(o.imageMediaMetadata);
-    checkFileIndexableText(o.indexableText);
+    checkFileImageMediaMetadata(
+        o.imageMediaMetadata as api.FileImageMediaMetadata);
+    checkFileIndexableText(o.indexableText as api.FileIndexableText);
     unittest.expect(o.isAppAuthorized, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkFileLabels(o.labels);
-    checkUser(o.lastModifyingUser);
+    checkFileLabels(o.labels as api.FileLabels);
+    checkUser(o.lastModifyingUser as api.User);
     unittest.expect(o.lastModifyingUserName, unittest.equals('foo'));
     unittest.expect(o.lastViewedByMeDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -1884,20 +1889,21 @@ void checkFile(api.File o) {
     unittest.expect(o.shared, unittest.isTrue);
     unittest.expect(o.sharedWithMeDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUser(o.sharingUser);
-    checkFileShortcutDetails(o.shortcutDetails);
+    checkUser(o.sharingUser as api.User);
+    checkFileShortcutDetails(o.shortcutDetails as api.FileShortcutDetails);
     checkUnnamed2207(o.spaces);
     unittest.expect(o.teamDriveId, unittest.equals('foo'));
-    checkFileThumbnail(o.thumbnail);
+    checkFileThumbnail(o.thumbnail as api.FileThumbnail);
     unittest.expect(o.thumbnailLink, unittest.equals('foo'));
     unittest.expect(o.thumbnailVersion, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.trashedDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkUser(o.trashingUser);
-    checkPermission(o.userPermission);
+    checkUser(o.trashingUser as api.User);
+    checkPermission(o.userPermission as api.Permission);
     unittest.expect(o.version, unittest.equals('foo'));
-    checkFileVideoMediaMetadata(o.videoMediaMetadata);
+    checkFileVideoMediaMetadata(
+        o.videoMediaMetadata as api.FileVideoMediaMetadata);
     unittest.expect(o.webContentLink, unittest.equals('foo'));
     unittest.expect(o.webViewLink, unittest.equals('foo'));
     unittest.expect(o.writersCanShare, unittest.isTrue);
@@ -1914,8 +1920,8 @@ core.List<api.File> buildUnnamed2208() {
 
 void checkUnnamed2208(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFile(o[0]);
-  checkFile(o[1]);
+  checkFile(o[0] as api.File);
+  checkFile(o[1] as api.File);
 }
 
 core.int buildCounterFileList = 0;
@@ -1994,8 +2000,8 @@ core.List<api.ParentReference> buildUnnamed2210() {
 
 void checkUnnamed2210(core.List<api.ParentReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParentReference(o[0]);
-  checkParentReference(o[1]);
+  checkParentReference(o[0] as api.ParentReference);
+  checkParentReference(o[1] as api.ParentReference);
 }
 
 core.int buildCounterParentList = 0;
@@ -2112,8 +2118,8 @@ core.List<api.PermissionPermissionDetails> buildUnnamed2213() {
 
 void checkUnnamed2213(core.List<api.PermissionPermissionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermissionPermissionDetails(o[0]);
-  checkPermissionPermissionDetails(o[1]);
+  checkPermissionPermissionDetails(o[0] as api.PermissionPermissionDetails);
+  checkPermissionPermissionDetails(o[1] as api.PermissionPermissionDetails);
 }
 
 core.List<core.String> buildUnnamed2214() {
@@ -2167,8 +2173,10 @@ core.List<api.PermissionTeamDrivePermissionDetails> buildUnnamed2215() {
 
 void checkUnnamed2215(core.List<api.PermissionTeamDrivePermissionDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermissionTeamDrivePermissionDetails(o[0]);
-  checkPermissionTeamDrivePermissionDetails(o[1]);
+  checkPermissionTeamDrivePermissionDetails(
+      o[0] as api.PermissionTeamDrivePermissionDetails);
+  checkPermissionTeamDrivePermissionDetails(
+      o[1] as api.PermissionTeamDrivePermissionDetails);
 }
 
 core.int buildCounterPermission = 0;
@@ -2257,8 +2265,8 @@ core.List<api.Permission> buildUnnamed2216() {
 
 void checkUnnamed2216(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0]);
-  checkPermission(o[1]);
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
 }
 
 core.int buildCounterPermissionList = 0;
@@ -2326,8 +2334,8 @@ core.List<api.Property> buildUnnamed2217() {
 
 void checkUnnamed2217(core.List<api.Property> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProperty(o[0]);
-  checkProperty(o[1]);
+  checkProperty(o[0] as api.Property);
+  checkProperty(o[1] as api.Property);
 }
 
 core.int buildCounterPropertyList = 0;
@@ -2405,7 +2413,7 @@ void checkRevision(api.Revision o) {
     unittest.expect(o.fileSize, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUser(o.lastModifyingUser);
+    checkUser(o.lastModifyingUser as api.User);
     unittest.expect(o.lastModifyingUserName, unittest.equals('foo'));
     unittest.expect(o.md5Checksum, unittest.equals('foo'));
     unittest.expect(o.mimeType, unittest.equals('foo'));
@@ -2431,8 +2439,8 @@ core.List<api.Revision> buildUnnamed2219() {
 
 void checkUnnamed2219(core.List<api.Revision> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRevision(o[0]);
-  checkRevision(o[1]);
+  checkRevision(o[0] as api.Revision);
+  checkRevision(o[1] as api.Revision);
 }
 
 core.int buildCounterRevisionList = 0;
@@ -2612,16 +2620,17 @@ api.TeamDrive buildTeamDrive() {
 void checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
-    checkTeamDriveBackgroundImageFile(o.backgroundImageFile);
+    checkTeamDriveBackgroundImageFile(
+        o.backgroundImageFile as api.TeamDriveBackgroundImageFile);
     unittest.expect(o.backgroundImageLink, unittest.equals('foo'));
-    checkTeamDriveCapabilities(o.capabilities);
+    checkTeamDriveCapabilities(o.capabilities as api.TeamDriveCapabilities);
     unittest.expect(o.colorRgb, unittest.equals('foo'));
     unittest.expect(o.createdDate,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkTeamDriveRestrictions(o.restrictions);
+    checkTeamDriveRestrictions(o.restrictions as api.TeamDriveRestrictions);
     unittest.expect(o.themeId, unittest.equals('foo'));
   }
   buildCounterTeamDrive--;
@@ -2636,8 +2645,8 @@ core.List<api.TeamDrive> buildUnnamed2220() {
 
 void checkUnnamed2220(core.List<api.TeamDrive> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTeamDrive(o[0]);
-  checkTeamDrive(o[1]);
+  checkTeamDrive(o[0] as api.TeamDrive);
+  checkTeamDrive(o[1] as api.TeamDrive);
 }
 
 core.int buildCounterTeamDriveList = 0;
@@ -2706,7 +2715,7 @@ void checkUser(api.User o) {
     unittest.expect(o.isAuthenticatedUser, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.permissionId, unittest.equals('foo'));
-    checkUserPicture(o.picture);
+    checkUserPicture(o.picture as api.UserPicture);
   }
   buildCounterUser--;
 }
@@ -2716,7 +2725,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutAdditionalRoleInfoRoleSets();
       var od = api.AboutAdditionalRoleInfoRoleSets.fromJson(o.toJson());
-      checkAboutAdditionalRoleInfoRoleSets(od);
+      checkAboutAdditionalRoleInfoRoleSets(
+          od as api.AboutAdditionalRoleInfoRoleSets);
     });
   });
 
@@ -2724,7 +2734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutAdditionalRoleInfo();
       var od = api.AboutAdditionalRoleInfo.fromJson(o.toJson());
-      checkAboutAdditionalRoleInfo(od);
+      checkAboutAdditionalRoleInfo(od as api.AboutAdditionalRoleInfo);
     });
   });
 
@@ -2732,7 +2742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutDriveThemes();
       var od = api.AboutDriveThemes.fromJson(o.toJson());
-      checkAboutDriveThemes(od);
+      checkAboutDriveThemes(od as api.AboutDriveThemes);
     });
   });
 
@@ -2740,7 +2750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutExportFormats();
       var od = api.AboutExportFormats.fromJson(o.toJson());
-      checkAboutExportFormats(od);
+      checkAboutExportFormats(od as api.AboutExportFormats);
     });
   });
 
@@ -2748,7 +2758,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutFeatures();
       var od = api.AboutFeatures.fromJson(o.toJson());
-      checkAboutFeatures(od);
+      checkAboutFeatures(od as api.AboutFeatures);
     });
   });
 
@@ -2756,7 +2766,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutImportFormats();
       var od = api.AboutImportFormats.fromJson(o.toJson());
-      checkAboutImportFormats(od);
+      checkAboutImportFormats(od as api.AboutImportFormats);
     });
   });
 
@@ -2764,7 +2774,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutMaxUploadSizes();
       var od = api.AboutMaxUploadSizes.fromJson(o.toJson());
-      checkAboutMaxUploadSizes(od);
+      checkAboutMaxUploadSizes(od as api.AboutMaxUploadSizes);
     });
   });
 
@@ -2772,7 +2782,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutQuotaBytesByService();
       var od = api.AboutQuotaBytesByService.fromJson(o.toJson());
-      checkAboutQuotaBytesByService(od);
+      checkAboutQuotaBytesByService(od as api.AboutQuotaBytesByService);
     });
   });
 
@@ -2780,7 +2790,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAboutTeamDriveThemes();
       var od = api.AboutTeamDriveThemes.fromJson(o.toJson());
-      checkAboutTeamDriveThemes(od);
+      checkAboutTeamDriveThemes(od as api.AboutTeamDriveThemes);
     });
   });
 
@@ -2788,7 +2798,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAbout();
       var od = api.About.fromJson(o.toJson());
-      checkAbout(od);
+      checkAbout(od as api.About);
     });
   });
 
@@ -2796,7 +2806,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppIcons();
       var od = api.AppIcons.fromJson(o.toJson());
-      checkAppIcons(od);
+      checkAppIcons(od as api.AppIcons);
     });
   });
 
@@ -2804,7 +2814,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApp();
       var od = api.App.fromJson(o.toJson());
-      checkApp(od);
+      checkApp(od as api.App);
     });
   });
 
@@ -2812,7 +2822,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppList();
       var od = api.AppList.fromJson(o.toJson());
-      checkAppList(od);
+      checkAppList(od as api.AppList);
     });
   });
 
@@ -2820,7 +2830,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
-      checkChange(od);
+      checkChange(od as api.Change);
     });
   });
 
@@ -2828,7 +2838,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChangeList();
       var od = api.ChangeList.fromJson(o.toJson());
-      checkChangeList(od);
+      checkChangeList(od as api.ChangeList);
     });
   });
 
@@ -2836,7 +2846,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -2844,7 +2854,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChildList();
       var od = api.ChildList.fromJson(o.toJson());
-      checkChildList(od);
+      checkChildList(od as api.ChildList);
     });
   });
 
@@ -2852,7 +2862,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChildReference();
       var od = api.ChildReference.fromJson(o.toJson());
-      checkChildReference(od);
+      checkChildReference(od as api.ChildReference);
     });
   });
 
@@ -2860,7 +2870,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentContext();
       var od = api.CommentContext.fromJson(o.toJson());
-      checkCommentContext(od);
+      checkCommentContext(od as api.CommentContext);
     });
   });
 
@@ -2868,7 +2878,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
-      checkComment(od);
+      checkComment(od as api.Comment);
     });
   });
 
@@ -2876,7 +2886,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentList();
       var od = api.CommentList.fromJson(o.toJson());
-      checkCommentList(od);
+      checkCommentList(od as api.CommentList);
     });
   });
 
@@ -2884,7 +2894,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentReply();
       var od = api.CommentReply.fromJson(o.toJson());
-      checkCommentReply(od);
+      checkCommentReply(od as api.CommentReply);
     });
   });
 
@@ -2892,7 +2902,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentReplyList();
       var od = api.CommentReplyList.fromJson(o.toJson());
-      checkCommentReplyList(od);
+      checkCommentReplyList(od as api.CommentReplyList);
     });
   });
 
@@ -2900,7 +2910,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContentRestriction();
       var od = api.ContentRestriction.fromJson(o.toJson());
-      checkContentRestriction(od);
+      checkContentRestriction(od as api.ContentRestriction);
     });
   });
 
@@ -2908,7 +2918,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveBackgroundImageFile();
       var od = api.DriveBackgroundImageFile.fromJson(o.toJson());
-      checkDriveBackgroundImageFile(od);
+      checkDriveBackgroundImageFile(od as api.DriveBackgroundImageFile);
     });
   });
 
@@ -2916,7 +2926,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveCapabilities();
       var od = api.DriveCapabilities.fromJson(o.toJson());
-      checkDriveCapabilities(od);
+      checkDriveCapabilities(od as api.DriveCapabilities);
     });
   });
 
@@ -2924,7 +2934,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveRestrictions();
       var od = api.DriveRestrictions.fromJson(o.toJson());
-      checkDriveRestrictions(od);
+      checkDriveRestrictions(od as api.DriveRestrictions);
     });
   });
 
@@ -2932,7 +2942,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDrive();
       var od = api.Drive.fromJson(o.toJson());
-      checkDrive(od);
+      checkDrive(od as api.Drive);
     });
   });
 
@@ -2940,7 +2950,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveList();
       var od = api.DriveList.fromJson(o.toJson());
-      checkDriveList(od);
+      checkDriveList(od as api.DriveList);
     });
   });
 
@@ -2948,7 +2958,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileCapabilities();
       var od = api.FileCapabilities.fromJson(o.toJson());
-      checkFileCapabilities(od);
+      checkFileCapabilities(od as api.FileCapabilities);
     });
   });
 
@@ -2956,7 +2966,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileImageMediaMetadataLocation();
       var od = api.FileImageMediaMetadataLocation.fromJson(o.toJson());
-      checkFileImageMediaMetadataLocation(od);
+      checkFileImageMediaMetadataLocation(
+          od as api.FileImageMediaMetadataLocation);
     });
   });
 
@@ -2964,7 +2975,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileImageMediaMetadata();
       var od = api.FileImageMediaMetadata.fromJson(o.toJson());
-      checkFileImageMediaMetadata(od);
+      checkFileImageMediaMetadata(od as api.FileImageMediaMetadata);
     });
   });
 
@@ -2972,7 +2983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileIndexableText();
       var od = api.FileIndexableText.fromJson(o.toJson());
-      checkFileIndexableText(od);
+      checkFileIndexableText(od as api.FileIndexableText);
     });
   });
 
@@ -2980,7 +2991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileLabels();
       var od = api.FileLabels.fromJson(o.toJson());
-      checkFileLabels(od);
+      checkFileLabels(od as api.FileLabels);
     });
   });
 
@@ -2988,7 +2999,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileShortcutDetails();
       var od = api.FileShortcutDetails.fromJson(o.toJson());
-      checkFileShortcutDetails(od);
+      checkFileShortcutDetails(od as api.FileShortcutDetails);
     });
   });
 
@@ -2996,7 +3007,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileThumbnail();
       var od = api.FileThumbnail.fromJson(o.toJson());
-      checkFileThumbnail(od);
+      checkFileThumbnail(od as api.FileThumbnail);
     });
   });
 
@@ -3004,7 +3015,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileVideoMediaMetadata();
       var od = api.FileVideoMediaMetadata.fromJson(o.toJson());
-      checkFileVideoMediaMetadata(od);
+      checkFileVideoMediaMetadata(od as api.FileVideoMediaMetadata);
     });
   });
 
@@ -3012,7 +3023,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
-      checkFile(od);
+      checkFile(od as api.File);
     });
   });
 
@@ -3020,7 +3031,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileList();
       var od = api.FileList.fromJson(o.toJson());
-      checkFileList(od);
+      checkFileList(od as api.FileList);
     });
   });
 
@@ -3028,7 +3039,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeneratedIds();
       var od = api.GeneratedIds.fromJson(o.toJson());
-      checkGeneratedIds(od);
+      checkGeneratedIds(od as api.GeneratedIds);
     });
   });
 
@@ -3036,7 +3047,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParentList();
       var od = api.ParentList.fromJson(o.toJson());
-      checkParentList(od);
+      checkParentList(od as api.ParentList);
     });
   });
 
@@ -3044,7 +3055,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParentReference();
       var od = api.ParentReference.fromJson(o.toJson());
-      checkParentReference(od);
+      checkParentReference(od as api.ParentReference);
     });
   });
 
@@ -3052,7 +3063,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionPermissionDetails();
       var od = api.PermissionPermissionDetails.fromJson(o.toJson());
-      checkPermissionPermissionDetails(od);
+      checkPermissionPermissionDetails(od as api.PermissionPermissionDetails);
     });
   });
 
@@ -3060,7 +3071,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionTeamDrivePermissionDetails();
       var od = api.PermissionTeamDrivePermissionDetails.fromJson(o.toJson());
-      checkPermissionTeamDrivePermissionDetails(od);
+      checkPermissionTeamDrivePermissionDetails(
+          od as api.PermissionTeamDrivePermissionDetails);
     });
   });
 
@@ -3068,7 +3080,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
-      checkPermission(od);
+      checkPermission(od as api.Permission);
     });
   });
 
@@ -3076,7 +3088,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionId();
       var od = api.PermissionId.fromJson(o.toJson());
-      checkPermissionId(od);
+      checkPermissionId(od as api.PermissionId);
     });
   });
 
@@ -3084,7 +3096,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionList();
       var od = api.PermissionList.fromJson(o.toJson());
-      checkPermissionList(od);
+      checkPermissionList(od as api.PermissionList);
     });
   });
 
@@ -3092,7 +3104,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProperty();
       var od = api.Property.fromJson(o.toJson());
-      checkProperty(od);
+      checkProperty(od as api.Property);
     });
   });
 
@@ -3100,7 +3112,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPropertyList();
       var od = api.PropertyList.fromJson(o.toJson());
-      checkPropertyList(od);
+      checkPropertyList(od as api.PropertyList);
     });
   });
 
@@ -3108,7 +3120,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRevision();
       var od = api.Revision.fromJson(o.toJson());
-      checkRevision(od);
+      checkRevision(od as api.Revision);
     });
   });
 
@@ -3116,7 +3128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRevisionList();
       var od = api.RevisionList.fromJson(o.toJson());
-      checkRevisionList(od);
+      checkRevisionList(od as api.RevisionList);
     });
   });
 
@@ -3124,7 +3136,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartPageToken();
       var od = api.StartPageToken.fromJson(o.toJson());
-      checkStartPageToken(od);
+      checkStartPageToken(od as api.StartPageToken);
     });
   });
 
@@ -3132,7 +3144,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDriveBackgroundImageFile();
       var od = api.TeamDriveBackgroundImageFile.fromJson(o.toJson());
-      checkTeamDriveBackgroundImageFile(od);
+      checkTeamDriveBackgroundImageFile(od as api.TeamDriveBackgroundImageFile);
     });
   });
 
@@ -3140,7 +3152,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDriveCapabilities();
       var od = api.TeamDriveCapabilities.fromJson(o.toJson());
-      checkTeamDriveCapabilities(od);
+      checkTeamDriveCapabilities(od as api.TeamDriveCapabilities);
     });
   });
 
@@ -3148,7 +3160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDriveRestrictions();
       var od = api.TeamDriveRestrictions.fromJson(o.toJson());
-      checkTeamDriveRestrictions(od);
+      checkTeamDriveRestrictions(od as api.TeamDriveRestrictions);
     });
   });
 
@@ -3156,7 +3168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDrive();
       var od = api.TeamDrive.fromJson(o.toJson());
-      checkTeamDrive(od);
+      checkTeamDrive(od as api.TeamDrive);
     });
   });
 
@@ -3164,7 +3176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDriveList();
       var od = api.TeamDriveList.fromJson(o.toJson());
-      checkTeamDriveList(od);
+      checkTeamDriveList(od as api.TeamDriveList);
     });
   });
 
@@ -3172,7 +3184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserPicture();
       var od = api.UserPicture.fromJson(o.toJson());
-      checkUserPicture(od);
+      checkUserPicture(od as api.UserPicture);
     });
   });
 
@@ -3180,7 +3192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -3243,7 +3255,7 @@ void main() {
               startChangeId: arg_startChangeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAbout(response);
+        checkAbout(response as api.About);
       })));
     });
   });
@@ -3298,7 +3310,7 @@ void main() {
       res
           .get(arg_appId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApp(response);
+        checkApp(response as api.App);
       })));
     });
 
@@ -3360,7 +3372,7 @@ void main() {
               languageCode: arg_languageCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppList(response);
+        checkAppList(response as api.AppList);
       })));
     });
   });
@@ -3432,7 +3444,7 @@ void main() {
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChange(response);
+        checkChange(response as api.Change);
       })));
     });
 
@@ -3498,7 +3510,7 @@ void main() {
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStartPageToken(response);
+        checkStartPageToken(response as api.StartPageToken);
       })));
     });
 
@@ -3603,7 +3615,7 @@ void main() {
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChangeList(response);
+        checkChangeList(response as api.ChangeList);
       })));
     });
 
@@ -3627,8 +3639,9 @@ void main() {
       var arg_teamDriveId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3712,7 +3725,7 @@ void main() {
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -3724,8 +3737,9 @@ void main() {
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3896,7 +3910,7 @@ void main() {
       res
           .get(arg_folderId, arg_childId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChildReference(response);
+        checkChildReference(response as api.ChildReference);
       })));
     });
 
@@ -3910,8 +3924,9 @@ void main() {
       var arg_supportsTeamDrives = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ChildReference.fromJson(json);
-        checkChildReference(obj);
+        var obj = api.ChildReference.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChildReference(obj as api.ChildReference);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3972,7 +3987,7 @@ void main() {
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChildReference(response);
+        checkChildReference(response as api.ChildReference);
       })));
     });
 
@@ -4047,7 +4062,7 @@ void main() {
               q: arg_q,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChildList(response);
+        checkChildList(response as api.ChildList);
       })));
     });
   });
@@ -4177,7 +4192,7 @@ void main() {
           .get(arg_fileId, arg_commentId,
               includeDeleted: arg_includeDeleted, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -4188,8 +4203,9 @@ void main() {
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Comment.fromJson(json);
-        checkComment(obj);
+        var obj =
+            api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkComment(obj as api.Comment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4240,7 +4256,7 @@ void main() {
       res
           .insert(arg_request, arg_fileId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -4316,7 +4332,7 @@ void main() {
               updatedMin: arg_updatedMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentList(response);
+        checkCommentList(response as api.CommentList);
       })));
     });
 
@@ -4328,8 +4344,9 @@ void main() {
       var arg_commentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Comment.fromJson(json);
-        checkComment(obj);
+        var obj =
+            api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkComment(obj as api.Comment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4383,7 +4400,7 @@ void main() {
       res
           .patch(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -4395,8 +4412,9 @@ void main() {
       var arg_commentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Comment.fromJson(json);
-        checkComment(obj);
+        var obj =
+            api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkComment(obj as api.Comment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4450,7 +4468,7 @@ void main() {
       res
           .update(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
   });
@@ -4561,7 +4579,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDrive(response);
+        checkDrive(response as api.Drive);
       })));
     });
 
@@ -4620,7 +4638,7 @@ void main() {
       res
           .hide(arg_driveId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDrive(response);
+        checkDrive(response as api.Drive);
       })));
     });
 
@@ -4631,8 +4649,9 @@ void main() {
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Drive.fromJson(json);
-        checkDrive(obj);
+        var obj =
+            api.Drive.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDrive(obj as api.Drive);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4676,7 +4695,7 @@ void main() {
       res
           .insert(arg_request, arg_requestId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDrive(response);
+        checkDrive(response as api.Drive);
       })));
     });
 
@@ -4741,7 +4760,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDriveList(response);
+        checkDriveList(response as api.DriveList);
       })));
     });
 
@@ -4800,7 +4819,7 @@ void main() {
       res
           .unhide(arg_driveId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDrive(response);
+        checkDrive(response as api.Drive);
       })));
     });
 
@@ -4812,8 +4831,9 @@ void main() {
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Drive.fromJson(json);
-        checkDrive(obj);
+        var obj =
+            api.Drive.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDrive(obj as api.Drive);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4862,7 +4882,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDrive(response);
+        checkDrive(response as api.Drive);
       })));
     });
   });
@@ -4886,8 +4906,9 @@ void main() {
       var arg_visibility = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.File.fromJson(json);
-        checkFile(obj);
+        var obj =
+            api.File.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFile(obj as api.File);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4971,7 +4992,7 @@ void main() {
               visibility: arg_visibility,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5207,7 +5228,7 @@ void main() {
               space: arg_space,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGeneratedIds(response);
+        checkGeneratedIds(response as api.GeneratedIds);
       })));
     });
 
@@ -5292,7 +5313,7 @@ void main() {
               updateViewedDate: arg_updateViewedDate,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5317,8 +5338,9 @@ void main() {
       var arg_visibility = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.File.fromJson(json);
-        checkFile(obj);
+        var obj =
+            api.File.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFile(obj as api.File);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5396,7 +5418,7 @@ void main() {
               visibility: arg_visibility,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5503,7 +5525,7 @@ void main() {
               teamDriveId: arg_teamDriveId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFileList(response);
+        checkFileList(response as api.FileList);
       })));
     });
 
@@ -5531,8 +5553,9 @@ void main() {
       var arg_useContentAsIndexableText = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.File.fromJson(json);
-        checkFile(obj);
+        var obj =
+            api.File.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFile(obj as api.File);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5628,7 +5651,7 @@ void main() {
               useContentAsIndexableText: arg_useContentAsIndexableText,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5700,7 +5723,7 @@ void main() {
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5772,7 +5795,7 @@ void main() {
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5844,7 +5867,7 @@ void main() {
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5875,8 +5898,9 @@ void main() {
       var arg_useContentAsIndexableText = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.File.fromJson(json);
-        checkFile(obj);
+        var obj =
+            api.File.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFile(obj as api.File);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5972,7 +5996,7 @@ void main() {
               useContentAsIndexableText: arg_useContentAsIndexableText,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFile(response);
+        checkFile(response as api.File);
       })));
     });
 
@@ -5993,8 +6017,9 @@ void main() {
       var arg_updateViewedDate = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6067,7 +6092,7 @@ void main() {
               updateViewedDate: arg_updateViewedDate,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -6198,7 +6223,7 @@ void main() {
       res
           .get(arg_fileId, arg_parentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkParentReference(response);
+        checkParentReference(response as api.ParentReference);
       })));
     });
 
@@ -6212,8 +6237,9 @@ void main() {
       var arg_supportsTeamDrives = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ParentReference.fromJson(json);
-        checkParentReference(obj);
+        var obj = api.ParentReference.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkParentReference(obj as api.ParentReference);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6274,7 +6300,7 @@ void main() {
               supportsTeamDrives: arg_supportsTeamDrives,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkParentReference(response);
+        checkParentReference(response as api.ParentReference);
       })));
     });
 
@@ -6333,7 +6359,7 @@ void main() {
       res
           .list(arg_fileId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkParentList(response);
+        checkParentList(response as api.ParentList);
       })));
     });
   });
@@ -6485,7 +6511,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermission(response);
+        checkPermission(response as api.Permission);
       })));
     });
 
@@ -6538,7 +6564,7 @@ void main() {
       res
           .getIdForEmail(arg_email, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermissionId(response);
+        checkPermissionId(response as api.PermissionId);
       })));
     });
 
@@ -6556,8 +6582,9 @@ void main() {
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Permission.fromJson(json);
-        checkPermission(obj);
+        var obj = api.Permission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPermission(obj as api.Permission);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6630,7 +6657,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermission(response);
+        checkPermission(response as api.Permission);
       })));
     });
 
@@ -6714,7 +6741,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermissionList(response);
+        checkPermissionList(response as api.PermissionList);
       })));
     });
 
@@ -6731,8 +6758,9 @@ void main() {
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Permission.fromJson(json);
-        checkPermission(obj);
+        var obj = api.Permission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPermission(obj as api.Permission);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6802,7 +6830,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermission(response);
+        checkPermission(response as api.Permission);
       })));
     });
 
@@ -6819,8 +6847,9 @@ void main() {
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Permission.fromJson(json);
-        checkPermission(obj);
+        var obj = api.Permission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPermission(obj as api.Permission);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6890,7 +6919,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPermission(response);
+        checkPermission(response as api.Permission);
       })));
     });
   });
@@ -7024,7 +7053,7 @@ void main() {
           .get(arg_fileId, arg_propertyKey,
               visibility: arg_visibility, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProperty(response);
+        checkProperty(response as api.Property);
       })));
     });
 
@@ -7035,8 +7064,9 @@ void main() {
       var arg_fileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Property.fromJson(json);
-        checkProperty(obj);
+        var obj =
+            api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProperty(obj as api.Property);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7087,7 +7117,7 @@ void main() {
       res
           .insert(arg_request, arg_fileId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProperty(response);
+        checkProperty(response as api.Property);
       })));
     });
 
@@ -7146,7 +7176,7 @@ void main() {
       res
           .list(arg_fileId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPropertyList(response);
+        checkPropertyList(response as api.PropertyList);
       })));
     });
 
@@ -7159,8 +7189,9 @@ void main() {
       var arg_visibility = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Property.fromJson(json);
-        checkProperty(obj);
+        var obj =
+            api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProperty(obj as api.Property);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7217,7 +7248,7 @@ void main() {
           .patch(arg_request, arg_fileId, arg_propertyKey,
               visibility: arg_visibility, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProperty(response);
+        checkProperty(response as api.Property);
       })));
     });
 
@@ -7230,8 +7261,9 @@ void main() {
       var arg_visibility = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Property.fromJson(json);
-        checkProperty(obj);
+        var obj =
+            api.Property.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProperty(obj as api.Property);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7288,7 +7320,7 @@ void main() {
           .update(arg_request, arg_fileId, arg_propertyKey,
               visibility: arg_visibility, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProperty(response);
+        checkProperty(response as api.Property);
       })));
     });
   });
@@ -7438,7 +7470,7 @@ void main() {
           .get(arg_fileId, arg_commentId, arg_replyId,
               includeDeleted: arg_includeDeleted, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response);
+        checkCommentReply(response as api.CommentReply);
       })));
     });
 
@@ -7450,8 +7482,9 @@ void main() {
       var arg_commentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommentReply.fromJson(json);
-        checkCommentReply(obj);
+        var obj = api.CommentReply.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommentReply(obj as api.CommentReply);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7511,7 +7544,7 @@ void main() {
       res
           .insert(arg_request, arg_fileId, arg_commentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response);
+        checkCommentReply(response as api.CommentReply);
       })));
     });
 
@@ -7593,7 +7626,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentReplyList(response);
+        checkCommentReplyList(response as api.CommentReplyList);
       })));
     });
 
@@ -7606,8 +7639,9 @@ void main() {
       var arg_replyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommentReply.fromJson(json);
-        checkCommentReply(obj);
+        var obj = api.CommentReply.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommentReply(obj as api.CommentReply);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7671,7 +7705,7 @@ void main() {
           .patch(arg_request, arg_fileId, arg_commentId, arg_replyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response);
+        checkCommentReply(response as api.CommentReply);
       })));
     });
 
@@ -7684,8 +7718,9 @@ void main() {
       var arg_replyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommentReply.fromJson(json);
-        checkCommentReply(obj);
+        var obj = api.CommentReply.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommentReply(obj as api.CommentReply);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7749,7 +7784,7 @@ void main() {
           .update(arg_request, arg_fileId, arg_commentId, arg_replyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentReply(response);
+        checkCommentReply(response as api.CommentReply);
       })));
     });
   });
@@ -7875,7 +7910,7 @@ void main() {
       res
           .get(arg_fileId, arg_revisionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRevision(response);
+        checkRevision(response as api.Revision);
       })));
     });
 
@@ -7943,7 +7978,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRevisionList(response);
+        checkRevisionList(response as api.RevisionList);
       })));
     });
 
@@ -7955,8 +7990,9 @@ void main() {
       var arg_revisionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Revision.fromJson(json);
-        checkRevision(obj);
+        var obj =
+            api.Revision.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRevision(obj as api.Revision);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8010,7 +8046,7 @@ void main() {
       res
           .patch(arg_request, arg_fileId, arg_revisionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRevision(response);
+        checkRevision(response as api.Revision);
       })));
     });
 
@@ -8022,8 +8058,9 @@ void main() {
       var arg_revisionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Revision.fromJson(json);
-        checkRevision(obj);
+        var obj =
+            api.Revision.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRevision(obj as api.Revision);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8077,7 +8114,7 @@ void main() {
       res
           .update(arg_request, arg_fileId, arg_revisionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRevision(response);
+        checkRevision(response as api.Revision);
       })));
     });
   });
@@ -8188,7 +8225,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response);
+        checkTeamDrive(response as api.TeamDrive);
       })));
     });
 
@@ -8199,8 +8236,9 @@ void main() {
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TeamDrive.fromJson(json);
-        checkTeamDrive(obj);
+        var obj =
+            api.TeamDrive.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTeamDrive(obj as api.TeamDrive);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8244,7 +8282,7 @@ void main() {
       res
           .insert(arg_request, arg_requestId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response);
+        checkTeamDrive(response as api.TeamDrive);
       })));
     });
 
@@ -8309,7 +8347,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeamDriveList(response);
+        checkTeamDriveList(response as api.TeamDriveList);
       })));
     });
 
@@ -8321,8 +8359,9 @@ void main() {
       var arg_useDomainAdminAccess = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TeamDrive.fromJson(json);
-        checkTeamDrive(obj);
+        var obj =
+            api.TeamDrive.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTeamDrive(obj as api.TeamDrive);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8371,7 +8410,7 @@ void main() {
               useDomainAdminAccess: arg_useDomainAdminAccess,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeamDrive(response);
+        checkTeamDrive(response as api.TeamDrive);
       })));
     });
   });

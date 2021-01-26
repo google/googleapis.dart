@@ -117,8 +117,8 @@ core.List<api.DataSourceParameter> buildUnnamed2265() {
 
 void checkUnnamed2265(core.List<api.DataSourceParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataSourceParameter(o[0]);
-  checkDataSourceParameter(o[1]);
+  checkDataSourceParameter(o[0] as api.DataSourceParameter);
+  checkDataSourceParameter(o[1] as api.DataSourceParameter);
 }
 
 core.List<core.String> buildUnnamed2266() {
@@ -209,8 +209,8 @@ core.List<api.DataSourceParameter> buildUnnamed2268() {
 
 void checkUnnamed2268(core.List<api.DataSourceParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataSourceParameter(o[0]);
-  checkDataSourceParameter(o[1]);
+  checkDataSourceParameter(o[0] as api.DataSourceParameter);
+  checkDataSourceParameter(o[1] as api.DataSourceParameter);
 }
 
 core.int buildCounterDataSourceParameter = 0;
@@ -305,8 +305,8 @@ core.List<api.DataSource> buildUnnamed2269() {
 
 void checkUnnamed2269(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataSource(o[0]);
-  checkDataSource(o[1]);
+  checkDataSource(o[0] as api.DataSource);
+  checkDataSource(o[1] as api.DataSource);
 }
 
 core.int buildCounterListDataSourcesResponse = 0;
@@ -339,8 +339,8 @@ core.List<api.Location> buildUnnamed2270() {
 
 void checkUnnamed2270(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -373,8 +373,8 @@ core.List<api.TransferConfig> buildUnnamed2271() {
 
 void checkUnnamed2271(core.List<api.TransferConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransferConfig(o[0]);
-  checkTransferConfig(o[1]);
+  checkTransferConfig(o[0] as api.TransferConfig);
+  checkTransferConfig(o[1] as api.TransferConfig);
 }
 
 core.int buildCounterListTransferConfigsResponse = 0;
@@ -407,8 +407,8 @@ core.List<api.TransferMessage> buildUnnamed2272() {
 
 void checkUnnamed2272(core.List<api.TransferMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransferMessage(o[0]);
-  checkTransferMessage(o[1]);
+  checkTransferMessage(o[0] as api.TransferMessage);
+  checkTransferMessage(o[1] as api.TransferMessage);
 }
 
 core.int buildCounterListTransferLogsResponse = 0;
@@ -441,8 +441,8 @@ core.List<api.TransferRun> buildUnnamed2273() {
 
 void checkUnnamed2273(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransferRun(o[0]);
-  checkTransferRun(o[1]);
+  checkTransferRun(o[0] as api.TransferRun);
+  checkTransferRun(o[1] as api.TransferRun);
 }
 
 core.int buildCounterListTransferRunsResponse = 0;
@@ -588,8 +588,8 @@ core.List<api.TransferRun> buildUnnamed2276() {
 
 void checkUnnamed2276(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransferRun(o[0]);
-  checkTransferRun(o[1]);
+  checkTransferRun(o[0] as api.TransferRun);
+  checkTransferRun(o[1] as api.TransferRun);
 }
 
 core.int buildCounterScheduleTransferRunsResponse = 0;
@@ -627,7 +627,7 @@ void checkStartManualTransferRunsRequest(api.StartManualTransferRunsRequest o) {
   buildCounterStartManualTransferRunsRequest++;
   if (buildCounterStartManualTransferRunsRequest < 3) {
     unittest.expect(o.requestedRunTime, unittest.equals('foo'));
-    checkTimeRange(o.requestedTimeRange);
+    checkTimeRange(o.requestedTimeRange as api.TimeRange);
   }
   buildCounterStartManualTransferRunsRequest--;
 }
@@ -641,8 +641,8 @@ core.List<api.TransferRun> buildUnnamed2277() {
 
 void checkUnnamed2277(core.List<api.TransferRun> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTransferRun(o[0]);
-  checkTransferRun(o[1]);
+  checkTransferRun(o[0] as api.TransferRun);
+  checkTransferRun(o[1] as api.TransferRun);
 }
 
 core.int buildCounterStartManualTransferRunsResponse = 0;
@@ -815,13 +815,13 @@ void checkTransferConfig(api.TransferConfig o) {
     unittest.expect(o.destinationDatasetId, unittest.equals('foo'));
     unittest.expect(o.disabled, unittest.isTrue);
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkEmailPreferences(o.emailPreferences);
+    checkEmailPreferences(o.emailPreferences as api.EmailPreferences);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nextRunTime, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic, unittest.equals('foo'));
     checkUnnamed2280(o.params);
     unittest.expect(o.schedule, unittest.equals('foo'));
-    checkScheduleOptions(o.scheduleOptions);
+    checkScheduleOptions(o.scheduleOptions as api.ScheduleOptions);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
@@ -911,9 +911,9 @@ void checkTransferRun(api.TransferRun o) {
   if (buildCounterTransferRun < 3) {
     unittest.expect(o.dataSourceId, unittest.equals('foo'));
     unittest.expect(o.destinationDatasetId, unittest.equals('foo'));
-    checkEmailPreferences(o.emailPreferences);
+    checkEmailPreferences(o.emailPreferences as api.EmailPreferences);
     unittest.expect(o.endTime, unittest.equals('foo'));
-    checkStatus(o.errorStatus);
+    checkStatus(o.errorStatus as api.Status);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notificationPubsubTopic, unittest.equals('foo'));
     checkUnnamed2281(o.params);
@@ -1011,7 +1011,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCheckValidCredsRequest();
       var od = api.CheckValidCredsRequest.fromJson(o.toJson());
-      checkCheckValidCredsRequest(od);
+      checkCheckValidCredsRequest(od as api.CheckValidCredsRequest);
     });
   });
 
@@ -1019,7 +1019,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCheckValidCredsResponse();
       var od = api.CheckValidCredsResponse.fromJson(o.toJson());
-      checkCheckValidCredsResponse(od);
+      checkCheckValidCredsResponse(od as api.CheckValidCredsResponse);
     });
   });
 
@@ -1027,7 +1027,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataSource();
       var od = api.DataSource.fromJson(o.toJson());
-      checkDataSource(od);
+      checkDataSource(od as api.DataSource);
     });
   });
 
@@ -1035,7 +1035,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataSourceParameter();
       var od = api.DataSourceParameter.fromJson(o.toJson());
-      checkDataSourceParameter(od);
+      checkDataSourceParameter(od as api.DataSourceParameter);
     });
   });
 
@@ -1043,7 +1043,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmailPreferences();
       var od = api.EmailPreferences.fromJson(o.toJson());
-      checkEmailPreferences(od);
+      checkEmailPreferences(od as api.EmailPreferences);
     });
   });
 
@@ -1051,7 +1051,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1059,7 +1059,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDataSourcesResponse();
       var od = api.ListDataSourcesResponse.fromJson(o.toJson());
-      checkListDataSourcesResponse(od);
+      checkListDataSourcesResponse(od as api.ListDataSourcesResponse);
     });
   });
 
@@ -1067,7 +1067,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1075,7 +1075,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTransferConfigsResponse();
       var od = api.ListTransferConfigsResponse.fromJson(o.toJson());
-      checkListTransferConfigsResponse(od);
+      checkListTransferConfigsResponse(od as api.ListTransferConfigsResponse);
     });
   });
 
@@ -1083,7 +1083,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTransferLogsResponse();
       var od = api.ListTransferLogsResponse.fromJson(o.toJson());
-      checkListTransferLogsResponse(od);
+      checkListTransferLogsResponse(od as api.ListTransferLogsResponse);
     });
   });
 
@@ -1091,7 +1091,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTransferRunsResponse();
       var od = api.ListTransferRunsResponse.fromJson(o.toJson());
-      checkListTransferRunsResponse(od);
+      checkListTransferRunsResponse(od as api.ListTransferRunsResponse);
     });
   });
 
@@ -1099,7 +1099,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1107,7 +1107,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScheduleOptions();
       var od = api.ScheduleOptions.fromJson(o.toJson());
-      checkScheduleOptions(od);
+      checkScheduleOptions(od as api.ScheduleOptions);
     });
   });
 
@@ -1115,7 +1115,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScheduleTransferRunsRequest();
       var od = api.ScheduleTransferRunsRequest.fromJson(o.toJson());
-      checkScheduleTransferRunsRequest(od);
+      checkScheduleTransferRunsRequest(od as api.ScheduleTransferRunsRequest);
     });
   });
 
@@ -1123,7 +1123,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScheduleTransferRunsResponse();
       var od = api.ScheduleTransferRunsResponse.fromJson(o.toJson());
-      checkScheduleTransferRunsResponse(od);
+      checkScheduleTransferRunsResponse(od as api.ScheduleTransferRunsResponse);
     });
   });
 
@@ -1131,7 +1131,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartManualTransferRunsRequest();
       var od = api.StartManualTransferRunsRequest.fromJson(o.toJson());
-      checkStartManualTransferRunsRequest(od);
+      checkStartManualTransferRunsRequest(
+          od as api.StartManualTransferRunsRequest);
     });
   });
 
@@ -1139,7 +1140,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartManualTransferRunsResponse();
       var od = api.StartManualTransferRunsResponse.fromJson(o.toJson());
-      checkStartManualTransferRunsResponse(od);
+      checkStartManualTransferRunsResponse(
+          od as api.StartManualTransferRunsResponse);
     });
   });
 
@@ -1147,7 +1149,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1155,7 +1157,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
-      checkTimeRange(od);
+      checkTimeRange(od as api.TimeRange);
     });
   });
 
@@ -1163,7 +1165,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransferConfig();
       var od = api.TransferConfig.fromJson(o.toJson());
-      checkTransferConfig(od);
+      checkTransferConfig(od as api.TransferConfig);
     });
   });
 
@@ -1171,7 +1173,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransferMessage();
       var od = api.TransferMessage.fromJson(o.toJson());
-      checkTransferMessage(od);
+      checkTransferMessage(od as api.TransferMessage);
     });
   });
 
@@ -1179,7 +1181,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransferRun();
       var od = api.TransferRun.fromJson(o.toJson());
-      checkTransferRun(od);
+      checkTransferRun(od as api.TransferRun);
     });
   });
 
@@ -1191,8 +1193,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CheckValidCredsRequest.fromJson(json);
-        checkCheckValidCredsRequest(obj);
+        var obj = api.CheckValidCredsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCheckValidCredsRequest(obj as api.CheckValidCredsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1232,7 +1235,7 @@ void main() {
       res
           .checkValidCreds(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCheckValidCredsResponse(response);
+        checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
       })));
     });
 
@@ -1280,7 +1283,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
 
@@ -1337,7 +1340,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response);
+        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
       })));
     });
   });
@@ -1387,7 +1390,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1447,7 +1450,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1461,8 +1464,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CheckValidCredsRequest.fromJson(json);
-        checkCheckValidCredsRequest(obj);
+        var obj = api.CheckValidCredsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCheckValidCredsRequest(obj as api.CheckValidCredsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1502,7 +1506,7 @@ void main() {
       res
           .checkValidCreds(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCheckValidCredsResponse(response);
+        checkCheckValidCredsResponse(response as api.CheckValidCredsResponse);
       })));
     });
 
@@ -1551,7 +1555,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
 
@@ -1609,7 +1613,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response);
+        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
       })));
     });
   });
@@ -1626,8 +1630,9 @@ void main() {
       var arg_versionInfo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TransferConfig.fromJson(json);
-        checkTransferConfig(obj);
+        var obj = api.TransferConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferConfig(obj as api.TransferConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1677,7 +1682,7 @@ void main() {
               versionInfo: arg_versionInfo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -1726,7 +1731,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1775,7 +1780,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -1837,7 +1842,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferConfigsResponse(response);
+        checkListTransferConfigsResponse(
+            response as api.ListTransferConfigsResponse);
       })));
     });
 
@@ -1853,8 +1859,9 @@ void main() {
       var arg_versionInfo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TransferConfig.fromJson(json);
-        checkTransferConfig(obj);
+        var obj = api.TransferConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferConfig(obj as api.TransferConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1907,7 +1914,7 @@ void main() {
               versionInfo: arg_versionInfo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -1919,8 +1926,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ScheduleTransferRunsRequest.fromJson(json);
-        checkScheduleTransferRunsRequest(obj);
+        var obj = api.ScheduleTransferRunsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkScheduleTransferRunsRequest(
+            obj as api.ScheduleTransferRunsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1960,7 +1969,8 @@ void main() {
       res
           .scheduleRuns(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScheduleTransferRunsResponse(response);
+        checkScheduleTransferRunsResponse(
+            response as api.ScheduleTransferRunsResponse);
       })));
     });
 
@@ -1972,8 +1982,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StartManualTransferRunsRequest.fromJson(json);
-        checkStartManualTransferRunsRequest(obj);
+        var obj = api.StartManualTransferRunsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStartManualTransferRunsRequest(
+            obj as api.StartManualTransferRunsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2013,7 +2025,8 @@ void main() {
       res
           .startManualRuns(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStartManualTransferRunsResponse(response);
+        checkStartManualTransferRunsResponse(
+            response as api.StartManualTransferRunsResponse);
       })));
     });
   });
@@ -2068,7 +2081,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2120,7 +2133,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferRun(response);
+        checkTransferRun(response as api.TransferRun);
       })));
     });
 
@@ -2188,7 +2201,7 @@ void main() {
               states: arg_states,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferRunsResponse(response);
+        checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
       })));
     });
   });
@@ -2258,7 +2271,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferLogsResponse(response);
+        checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
       })));
     });
   });
@@ -2274,8 +2287,9 @@ void main() {
       var arg_versionInfo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TransferConfig.fromJson(json);
-        checkTransferConfig(obj);
+        var obj = api.TransferConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferConfig(obj as api.TransferConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2325,7 +2339,7 @@ void main() {
               versionInfo: arg_versionInfo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -2373,7 +2387,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2421,7 +2435,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -2482,7 +2496,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferConfigsResponse(response);
+        checkListTransferConfigsResponse(
+            response as api.ListTransferConfigsResponse);
       })));
     });
 
@@ -2497,8 +2512,9 @@ void main() {
       var arg_versionInfo = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TransferConfig.fromJson(json);
-        checkTransferConfig(obj);
+        var obj = api.TransferConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTransferConfig(obj as api.TransferConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2551,7 +2567,7 @@ void main() {
               versionInfo: arg_versionInfo,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferConfig(response);
+        checkTransferConfig(response as api.TransferConfig);
       })));
     });
 
@@ -2562,8 +2578,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ScheduleTransferRunsRequest.fromJson(json);
-        checkScheduleTransferRunsRequest(obj);
+        var obj = api.ScheduleTransferRunsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkScheduleTransferRunsRequest(
+            obj as api.ScheduleTransferRunsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2603,7 +2621,8 @@ void main() {
       res
           .scheduleRuns(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScheduleTransferRunsResponse(response);
+        checkScheduleTransferRunsResponse(
+            response as api.ScheduleTransferRunsResponse);
       })));
     });
 
@@ -2614,8 +2633,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StartManualTransferRunsRequest.fromJson(json);
-        checkStartManualTransferRunsRequest(obj);
+        var obj = api.StartManualTransferRunsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStartManualTransferRunsRequest(
+            obj as api.StartManualTransferRunsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2655,7 +2676,8 @@ void main() {
       res
           .startManualRuns(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStartManualTransferRunsResponse(response);
+        checkStartManualTransferRunsResponse(
+            response as api.StartManualTransferRunsResponse);
       })));
     });
   });
@@ -2705,7 +2727,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2753,7 +2775,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTransferRun(response);
+        checkTransferRun(response as api.TransferRun);
       })));
     });
 
@@ -2817,7 +2839,7 @@ void main() {
               states: arg_states,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferRunsResponse(response);
+        checkListTransferRunsResponse(response as api.ListTransferRunsResponse);
       })));
     });
   });
@@ -2885,7 +2907,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTransferLogsResponse(response);
+        checkListTransferLogsResponse(response as api.ListTransferLogsResponse);
       })));
     });
   });

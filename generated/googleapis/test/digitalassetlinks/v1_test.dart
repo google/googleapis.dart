@@ -89,7 +89,7 @@ api.AndroidAppAsset buildAndroidAppAsset() {
 void checkAndroidAppAsset(api.AndroidAppAsset o) {
   buildCounterAndroidAppAsset++;
   if (buildCounterAndroidAppAsset < 3) {
-    checkCertificateInfo(o.certificate);
+    checkCertificateInfo(o.certificate as api.CertificateInfo);
     unittest.expect(o.packageName, unittest.equals('foo'));
   }
   buildCounterAndroidAppAsset--;
@@ -110,8 +110,8 @@ api.Asset buildAsset() {
 void checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkAndroidAppAsset(o.androidApp);
-    checkWebAsset(o.web);
+    checkAndroidAppAsset(o.androidApp as api.AndroidAppAsset);
+    checkWebAsset(o.web as api.WebAsset);
   }
   buildCounterAsset--;
 }
@@ -195,8 +195,8 @@ core.List<api.Statement> buildUnnamed2774() {
 
 void checkUnnamed2774(core.List<api.Statement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatement(o[0]);
-  checkStatement(o[1]);
+  checkStatement(o[0] as api.Statement);
+  checkStatement(o[1] as api.Statement);
 }
 
 core.int buildCounterListResponse = 0;
@@ -241,8 +241,8 @@ void checkStatement(api.Statement o) {
   buildCounterStatement++;
   if (buildCounterStatement < 3) {
     unittest.expect(o.relation, unittest.equals('foo'));
-    checkAsset(o.source);
-    checkAsset(o.target);
+    checkAsset(o.source as api.Asset);
+    checkAsset(o.target as api.Asset);
   }
   buildCounterStatement--;
 }
@@ -271,7 +271,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidAppAsset();
       var od = api.AndroidAppAsset.fromJson(o.toJson());
-      checkAndroidAppAsset(od);
+      checkAndroidAppAsset(od as api.AndroidAppAsset);
     });
   });
 
@@ -279,7 +279,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
-      checkAsset(od);
+      checkAsset(od as api.Asset);
     });
   });
 
@@ -287,7 +287,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCertificateInfo();
       var od = api.CertificateInfo.fromJson(o.toJson());
-      checkCertificateInfo(od);
+      checkCertificateInfo(od as api.CertificateInfo);
     });
   });
 
@@ -295,7 +295,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCheckResponse();
       var od = api.CheckResponse.fromJson(o.toJson());
-      checkCheckResponse(od);
+      checkCheckResponse(od as api.CheckResponse);
     });
   });
 
@@ -303,7 +303,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListResponse();
       var od = api.ListResponse.fromJson(o.toJson());
-      checkListResponse(od);
+      checkListResponse(od as api.ListResponse);
     });
   });
 
@@ -311,7 +311,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatement();
       var od = api.Statement.fromJson(o.toJson());
-      checkStatement(od);
+      checkStatement(od as api.Statement);
     });
   });
 
@@ -319,7 +319,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebAsset();
       var od = api.WebAsset.fromJson(o.toJson());
-      checkWebAsset(od);
+      checkWebAsset(od as api.WebAsset);
     });
   });
 
@@ -401,7 +401,7 @@ void main() {
               target_web_site: arg_target_web_site,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCheckResponse(response);
+        checkCheckResponse(response as api.CheckResponse);
       })));
     });
   });
@@ -469,7 +469,7 @@ void main() {
               source_web_site: arg_source_web_site,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListResponse(response);
+        checkListResponse(response as api.ListResponse);
       })));
     });
   });

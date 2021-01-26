@@ -137,7 +137,9 @@ class AboutResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => About.fromJson(data));
+    return _response.then(
+      (data) => About.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -211,7 +213,10 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StartPageToken.fromJson(data));
+    return _response.then(
+      (data) =>
+          StartPageToken.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the changes for a user or shared drive.
@@ -352,7 +357,10 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChangeList.fromJson(data));
+    return _response.then(
+      (data) =>
+          ChangeList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Subscribes to changes for a user.
@@ -499,7 +507,9 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -553,7 +563,9 @@ class ChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -613,7 +625,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a comment.
@@ -670,7 +684,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a comment by ID.
@@ -734,7 +750,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists a file's comments.
@@ -811,7 +829,10 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommentList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a comment with patch semantics.
@@ -874,7 +895,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -939,7 +962,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Drive.fromJson(data));
+    return _response.then(
+      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a shared drive for which the user is an organizer. The
@@ -988,7 +1013,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a shared drive's metadata by ID.
@@ -1044,7 +1071,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Drive.fromJson(data));
+    return _response.then(
+      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Hides a shared drive from the default view.
@@ -1092,7 +1121,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Drive.fromJson(data));
+    return _response.then(
+      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the user's shared drives.
@@ -1161,7 +1192,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DriveList.fromJson(data));
+    return _response.then(
+      (data) => DriveList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores a shared drive to the default view.
@@ -1209,7 +1242,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Drive.fromJson(data));
+    return _response.then(
+      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the metadate for a shared drive.
@@ -1271,7 +1306,9 @@ class DrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Drive.fromJson(data));
+    return _response.then(
+      (data) => Drive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1387,7 +1424,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => File.fromJson(data));
+    return _response.then(
+      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new file.
@@ -1516,7 +1555,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => File.fromJson(data));
+    return _response.then(
+      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a file owned by the user without moving it to the
@@ -1590,7 +1631,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Permanently deletes all of the user's trashed files.
@@ -1642,7 +1685,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Exports a Google Doc to the requested MIME type and returns the exported
@@ -1705,7 +1750,9 @@ class FilesResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => null);
+      return _response.then(
+        (data) => null,
+      );
     } else {
       return _response;
     }
@@ -1765,7 +1812,10 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GeneratedIds.fromJson(data));
+    return _response.then(
+      (data) =>
+          GeneratedIds.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a file's metadata or content by ID.
@@ -1854,7 +1904,9 @@ class FilesResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => File.fromJson(data));
+      return _response.then(
+        (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -2014,7 +2066,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FileList.fromJson(data));
+    return _response.then(
+      (data) => FileList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a file's metadata and/or content. This method supports patch
@@ -2157,7 +2211,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => File.fromJson(data));
+    return _response.then(
+      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Subscribes to changes to a file
@@ -2252,7 +2308,9 @@ class FilesResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => Channel.fromJson(data));
+      return _response.then(
+        (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -2382,7 +2440,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Permission.fromJson(data));
+    return _response.then(
+      (data) =>
+          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a permission.
@@ -2461,7 +2522,9 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a permission by ID.
@@ -2540,7 +2603,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Permission.fromJson(data));
+    return _response.then(
+      (data) =>
+          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists a file's or shared drive's permissions.
@@ -2635,7 +2701,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PermissionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          PermissionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a permission with patch semantics.
@@ -2734,7 +2803,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Permission.fromJson(data));
+    return _response.then(
+      (data) =>
+          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2804,7 +2876,9 @@ class RepliesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reply.fromJson(data));
+    return _response.then(
+      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a reply.
@@ -2869,7 +2943,9 @@ class RepliesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a reply by ID.
@@ -2941,7 +3017,9 @@ class RepliesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reply.fromJson(data));
+    return _response.then(
+      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists a comment's replies.
@@ -3021,7 +3099,9 @@ class RepliesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReplyList.fromJson(data));
+    return _response.then(
+      (data) => ReplyList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a reply with patch semantics.
@@ -3092,7 +3172,9 @@ class RepliesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reply.fromJson(data));
+    return _response.then(
+      (data) => Reply.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3158,7 +3240,9 @@ class RevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a revision's metadata or content by ID.
@@ -3236,7 +3320,10 @@ class RevisionsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => Revision.fromJson(data));
+      return _response.then(
+        (data) =>
+            Revision.fromJson(data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -3302,7 +3389,10 @@ class RevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevisionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          RevisionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a revision with patch semantics.
@@ -3365,7 +3455,9 @@ class RevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Revision.fromJson(data));
+    return _response.then(
+      (data) => Revision.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3430,7 +3522,9 @@ class TeamdrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TeamDrive.fromJson(data));
+    return _response.then(
+      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deprecated use drives.delete instead.
@@ -3478,7 +3572,9 @@ class TeamdrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Deprecated use drives.get instead.
@@ -3534,7 +3630,9 @@ class TeamdrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TeamDrive.fromJson(data));
+    return _response.then(
+      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deprecated use drives.list instead.
@@ -3603,7 +3701,10 @@ class TeamdrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TeamDriveList.fromJson(data));
+    return _response.then(
+      (data) =>
+          TeamDriveList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deprecated use drives.update instead
@@ -3665,7 +3766,9 @@ class TeamdrivesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TeamDrive.fromJson(data));
+    return _response.then(
+      (data) => TeamDrive.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3854,12 +3957,14 @@ class About {
     }
     if (_json.containsKey('driveThemes')) {
       driveThemes = (_json['driveThemes'] as core.List)
-          .map<AboutDriveThemes>((value) => AboutDriveThemes.fromJson(value))
+          .map<AboutDriveThemes>((value) => AboutDriveThemes.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('exportFormats')) {
       exportFormats = commons.mapMap<core.List, core.List<core.String>>(
-          _json['exportFormats'].cast<core.String, core.List>(),
+          (_json['exportFormats'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.List>(),
           (core.List item) => (item as core.List)
               .map<core.String>((value) => value as core.String)
               .toList());
@@ -3871,7 +3976,8 @@ class About {
     }
     if (_json.containsKey('importFormats')) {
       importFormats = commons.mapMap<core.List, core.List<core.String>>(
-          _json['importFormats'].cast<core.String, core.List>(),
+          (_json['importFormats'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.List>(),
           (core.List item) => (item as core.List)
               .map<core.String>((value) => value as core.String)
               .toList());
@@ -3881,23 +3987,26 @@ class About {
     }
     if (_json.containsKey('maxImportSizes')) {
       maxImportSizes = commons.mapMap<core.String, core.String>(
-          _json['maxImportSizes'].cast<core.String, core.String>(),
+          (_json['maxImportSizes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('maxUploadSize')) {
       maxUploadSize = _json['maxUploadSize'] as core.String;
     }
     if (_json.containsKey('storageQuota')) {
-      storageQuota = AboutStorageQuota.fromJson(_json['storageQuota']);
+      storageQuota = AboutStorageQuota.fromJson(
+          _json['storageQuota'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teamDriveThemes')) {
       teamDriveThemes = (_json['teamDriveThemes'] as core.List)
-          .map<AboutTeamDriveThemes>(
-              (value) => AboutTeamDriveThemes.fromJson(value))
+          .map<AboutTeamDriveThemes>((value) => AboutTeamDriveThemes.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3995,13 +4104,15 @@ class Change {
       changeType = _json['changeType'] as core.String;
     }
     if (_json.containsKey('drive')) {
-      drive = Drive.fromJson(_json['drive']);
+      drive =
+          Drive.fromJson(_json['drive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveId')) {
       driveId = _json['driveId'] as core.String;
     }
     if (_json.containsKey('file')) {
-      file = File.fromJson(_json['file']);
+      file =
+          File.fromJson(_json['file'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileId')) {
       fileId = _json['fileId'] as core.String;
@@ -4013,7 +4124,8 @@ class Change {
       removed = _json['removed'] as core.bool;
     }
     if (_json.containsKey('teamDrive')) {
-      teamDrive = TeamDrive.fromJson(_json['teamDrive']);
+      teamDrive = TeamDrive.fromJson(
+          _json['teamDrive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teamDriveId')) {
       teamDriveId = _json['teamDriveId'] as core.String;
@@ -4090,7 +4202,8 @@ class ChangeList {
   ChangeList.fromJson(core.Map _json) {
     if (_json.containsKey('changes')) {
       changes = (_json['changes'] as core.List)
-          .map<Change>((value) => Change.fromJson(value))
+          .map<Change>((value) =>
+              Change.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4175,7 +4288,8 @@ class Channel {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.String, core.String>(
-          _json['params'].cast<core.String, core.String>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
@@ -4318,7 +4432,8 @@ class Comment {
       anchor = _json['anchor'] as core.String;
     }
     if (_json.containsKey('author')) {
-      author = User.fromJson(_json['author']);
+      author =
+          User.fromJson(_json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -4342,12 +4457,13 @@ class Comment {
       modifiedTime = core.DateTime.parse(_json['modifiedTime'] as core.String);
     }
     if (_json.containsKey('quotedFileContent')) {
-      quotedFileContent =
-          CommentQuotedFileContent.fromJson(_json['quotedFileContent']);
+      quotedFileContent = CommentQuotedFileContent.fromJson(
+          _json['quotedFileContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
-          .map<Reply>((value) => Reply.fromJson(value))
+          .map<Reply>((value) =>
+              Reply.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resolved')) {
@@ -4418,7 +4534,8 @@ class CommentList {
   CommentList.fromJson(core.Map _json) {
     if (_json.containsKey('comments')) {
       comments = (_json['comments'] as core.List)
-          .map<Comment>((value) => Comment.fromJson(value))
+          .map<Comment>((value) =>
+              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4477,7 +4594,8 @@ class ContentRestriction {
       reason = _json['reason'] as core.String;
     }
     if (_json.containsKey('restrictingUser')) {
-      restrictingUser = User.fromJson(_json['restrictingUser']);
+      restrictingUser = User.fromJson(
+          _json['restrictingUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('restrictionTime')) {
       restrictionTime =
@@ -4875,14 +4993,15 @@ class Drive {
 
   Drive.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundImageFile')) {
-      backgroundImageFile =
-          DriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
+      backgroundImageFile = DriveBackgroundImageFile.fromJson(
+          _json['backgroundImageFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundImageLink')) {
       backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('capabilities')) {
-      capabilities = DriveCapabilities.fromJson(_json['capabilities']);
+      capabilities = DriveCapabilities.fromJson(
+          _json['capabilities'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorRgb')) {
       colorRgb = _json['colorRgb'] as core.String;
@@ -4903,7 +5022,8 @@ class Drive {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('restrictions')) {
-      restrictions = DriveRestrictions.fromJson(_json['restrictions']);
+      restrictions = DriveRestrictions.fromJson(
+          _json['restrictions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('themeId')) {
       themeId = _json['themeId'] as core.String;
@@ -4970,7 +5090,8 @@ class DriveList {
   DriveList.fromJson(core.Map _json) {
     if (_json.containsKey('drives')) {
       drives = (_json['drives'] as core.List)
-          .map<Drive>((value) => Drive.fromJson(value))
+          .map<Drive>((value) =>
+              Drive.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5410,7 +5531,8 @@ class FileContentHints {
       indexableText = _json['indexableText'] as core.String;
     }
     if (_json.containsKey('thumbnail')) {
-      thumbnail = FileContentHintsThumbnail.fromJson(_json['thumbnail']);
+      thumbnail = FileContentHintsThumbnail.fromJson(
+          _json['thumbnail'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5573,7 +5695,8 @@ class FileImageMediaMetadata {
       lens = _json['lens'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = FileImageMediaMetadataLocation.fromJson(_json['location']);
+      location = FileImageMediaMetadataLocation.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxApertureValue')) {
       maxApertureValue = (_json['maxApertureValue'] as core.num).toDouble();
@@ -5987,19 +6110,22 @@ class File {
   File.fromJson(core.Map _json) {
     if (_json.containsKey('appProperties')) {
       appProperties = commons.mapMap<core.String, core.String>(
-          _json['appProperties'].cast<core.String, core.String>(),
+          (_json['appProperties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('capabilities')) {
-      capabilities = FileCapabilities.fromJson(_json['capabilities']);
+      capabilities = FileCapabilities.fromJson(
+          _json['capabilities'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentHints')) {
-      contentHints = FileContentHints.fromJson(_json['contentHints']);
+      contentHints = FileContentHints.fromJson(
+          _json['contentHints'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentRestrictions')) {
       contentRestrictions = (_json['contentRestrictions'] as core.List)
-          .map<ContentRestriction>(
-              (value) => ContentRestriction.fromJson(value))
+          .map<ContentRestriction>((value) => ContentRestriction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('copyRequiresWriterPermission')) {
@@ -6020,7 +6146,8 @@ class File {
     }
     if (_json.containsKey('exportLinks')) {
       exportLinks = commons.mapMap<core.String, core.String>(
-          _json['exportLinks'].cast<core.String, core.String>(),
+          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('fileExtension')) {
@@ -6048,8 +6175,8 @@ class File {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('imageMediaMetadata')) {
-      imageMediaMetadata =
-          FileImageMediaMetadata.fromJson(_json['imageMediaMetadata']);
+      imageMediaMetadata = FileImageMediaMetadata.fromJson(
+          _json['imageMediaMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isAppAuthorized')) {
       isAppAuthorized = _json['isAppAuthorized'] as core.bool;
@@ -6058,7 +6185,8 @@ class File {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastModifyingUser')) {
-      lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
+      lastModifyingUser = User.fromJson(
+          _json['lastModifyingUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('md5Checksum')) {
       md5Checksum = _json['md5Checksum'] as core.String;
@@ -6087,7 +6215,8 @@ class File {
     }
     if (_json.containsKey('owners')) {
       owners = (_json['owners'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parents')) {
@@ -6102,12 +6231,14 @@ class File {
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
-          .map<Permission>((value) => Permission.fromJson(value))
+          .map<Permission>((value) =>
+              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('quotaBytesUsed')) {
@@ -6121,10 +6252,12 @@ class File {
           core.DateTime.parse(_json['sharedWithMeTime'] as core.String);
     }
     if (_json.containsKey('sharingUser')) {
-      sharingUser = User.fromJson(_json['sharingUser']);
+      sharingUser = User.fromJson(
+          _json['sharingUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shortcutDetails')) {
-      shortcutDetails = FileShortcutDetails.fromJson(_json['shortcutDetails']);
+      shortcutDetails = FileShortcutDetails.fromJson(
+          _json['shortcutDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('size')) {
       size = _json['size'] as core.String;
@@ -6153,14 +6286,15 @@ class File {
       trashedTime = core.DateTime.parse(_json['trashedTime'] as core.String);
     }
     if (_json.containsKey('trashingUser')) {
-      trashingUser = User.fromJson(_json['trashingUser']);
+      trashingUser = User.fromJson(
+          _json['trashingUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
     }
     if (_json.containsKey('videoMediaMetadata')) {
-      videoMediaMetadata =
-          FileVideoMediaMetadata.fromJson(_json['videoMediaMetadata']);
+      videoMediaMetadata = FileVideoMediaMetadata.fromJson(
+          _json['videoMediaMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('viewedByMe')) {
       viewedByMe = _json['viewedByMe'] as core.bool;
@@ -6391,7 +6525,8 @@ class FileList {
   FileList.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<File>((value) => File.fromJson(value))
+          .map<File>((value) =>
+              File.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('incompleteSearch')) {
@@ -6680,8 +6815,9 @@ class Permission {
     }
     if (_json.containsKey('permissionDetails')) {
       permissionDetails = (_json['permissionDetails'] as core.List)
-          .map<PermissionPermissionDetails>(
-              (value) => PermissionPermissionDetails.fromJson(value))
+          .map<PermissionPermissionDetails>((value) =>
+              PermissionPermissionDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('photoLink')) {
@@ -6691,11 +6827,12 @@ class Permission {
       role = _json['role'] as core.String;
     }
     if (_json.containsKey('teamDrivePermissionDetails')) {
-      teamDrivePermissionDetails = (_json['teamDrivePermissionDetails']
-              as core.List)
-          .map<PermissionTeamDrivePermissionDetails>(
-              (value) => PermissionTeamDrivePermissionDetails.fromJson(value))
-          .toList();
+      teamDrivePermissionDetails =
+          (_json['teamDrivePermissionDetails'] as core.List)
+              .map<PermissionTeamDrivePermissionDetails>((value) =>
+                  PermissionTeamDrivePermissionDetails.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -6782,7 +6919,8 @@ class PermissionList {
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
-          .map<Permission>((value) => Permission.fromJson(value))
+          .map<Permission>((value) =>
+              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6845,7 +6983,8 @@ class Reply {
       action = _json['action'] as core.String;
     }
     if (_json.containsKey('author')) {
-      author = User.fromJson(_json['author']);
+      author =
+          User.fromJson(_json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -6930,7 +7069,8 @@ class ReplyList {
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
-          .map<Reply>((value) => Reply.fromJson(value))
+          .map<Reply>((value) =>
+              Reply.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7010,7 +7150,8 @@ class Revision {
   Revision.fromJson(core.Map _json) {
     if (_json.containsKey('exportLinks')) {
       exportLinks = commons.mapMap<core.String, core.String>(
-          _json['exportLinks'].cast<core.String, core.String>(),
+          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('id')) {
@@ -7023,7 +7164,8 @@ class Revision {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastModifyingUser')) {
-      lastModifyingUser = User.fromJson(_json['lastModifyingUser']);
+      lastModifyingUser = User.fromJson(
+          _json['lastModifyingUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('md5Checksum')) {
       md5Checksum = _json['md5Checksum'] as core.String;
@@ -7129,7 +7271,8 @@ class RevisionList {
     }
     if (_json.containsKey('revisions')) {
       revisions = (_json['revisions'] as core.List)
-          .map<Revision>((value) => Revision.fromJson(value))
+          .map<Revision>((value) =>
+              Revision.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7553,14 +7696,15 @@ class TeamDrive {
 
   TeamDrive.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundImageFile')) {
-      backgroundImageFile =
-          TeamDriveBackgroundImageFile.fromJson(_json['backgroundImageFile']);
+      backgroundImageFile = TeamDriveBackgroundImageFile.fromJson(
+          _json['backgroundImageFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundImageLink')) {
       backgroundImageLink = _json['backgroundImageLink'] as core.String;
     }
     if (_json.containsKey('capabilities')) {
-      capabilities = TeamDriveCapabilities.fromJson(_json['capabilities']);
+      capabilities = TeamDriveCapabilities.fromJson(
+          _json['capabilities'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorRgb')) {
       colorRgb = _json['colorRgb'] as core.String;
@@ -7578,7 +7722,8 @@ class TeamDrive {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('restrictions')) {
-      restrictions = TeamDriveRestrictions.fromJson(_json['restrictions']);
+      restrictions = TeamDriveRestrictions.fromJson(
+          _json['restrictions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('themeId')) {
       themeId = _json['themeId'] as core.String;
@@ -7648,7 +7793,8 @@ class TeamDriveList {
     }
     if (_json.containsKey('teamDrives')) {
       teamDrives = (_json['teamDrives'] as core.List)
-          .map<TeamDrive>((value) => TeamDrive.fromJson(value))
+          .map<TeamDrive>((value) =>
+              TeamDrive.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

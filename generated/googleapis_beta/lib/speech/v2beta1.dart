@@ -120,7 +120,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -197,7 +199,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -217,7 +222,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -303,8 +309,9 @@ class LongRunningRecognizeResponse {
   LongRunningRecognizeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<SpeechRecognitionResult>(
-              (value) => SpeechRecognitionResult.fromJson(value))
+          .map<SpeechRecognitionResult>((value) =>
+              SpeechRecognitionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -362,11 +369,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -374,7 +383,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -430,7 +440,8 @@ class SpeechRecognitionAlternative {
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<WordInfo>((value) => WordInfo.fromJson(value))
+          .map<WordInfo>((value) =>
+              WordInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -474,8 +485,9 @@ class SpeechRecognitionResult {
   SpeechRecognitionResult.fromJson(core.Map _json) {
     if (_json.containsKey('alternatives')) {
       alternatives = (_json['alternatives'] as core.List)
-          .map<SpeechRecognitionAlternative>(
-              (value) => SpeechRecognitionAlternative.fromJson(value))
+          .map<SpeechRecognitionAlternative>((value) =>
+              SpeechRecognitionAlternative.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('channelTag')) {
@@ -534,7 +546,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

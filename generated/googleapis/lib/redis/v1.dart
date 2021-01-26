@@ -113,7 +113,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -181,7 +183,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -263,7 +268,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a specific Redis instance. Instance stops serving and data is
@@ -316,7 +323,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Export Redis instance data into a Redis RDB format file in Cloud Storage.
@@ -377,7 +386,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Initiates a failover of the primary node to current replica node for a
@@ -436,7 +447,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a specific Redis instance.
@@ -488,7 +501,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Instance.fromJson(data));
+    return _response.then(
+      (data) => Instance.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Import a Redis RDB snapshot file from Cloud Storage into a Redis instance.
@@ -550,7 +565,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Redis instances owned by a project in either the specified
@@ -623,7 +640,10 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListInstancesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListInstancesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the metadata and configuration of a specific Redis instance.
@@ -698,7 +718,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Upgrades Redis instance to the newer Redis version specified in the
@@ -757,7 +779,9 @@ class ProjectsLocationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -822,7 +846,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -875,7 +901,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -927,7 +955,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1003,7 +1033,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1034,7 +1067,8 @@ class ExportInstanceRequest {
 
   ExportInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1141,8 +1175,10 @@ class GoogleCloudRedisV1LocationMetadata {
   GoogleCloudRedisV1LocationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('availableZones')) {
       availableZones = commons.mapMap<core.Map, GoogleCloudRedisV1ZoneMetadata>(
-          _json['availableZones'].cast<core.String, core.Map>(),
-          (core.Map item) => GoogleCloudRedisV1ZoneMetadata.fromJson(item));
+          (_json['availableZones'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => GoogleCloudRedisV1ZoneMetadata.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -1257,7 +1293,8 @@ class ImportInstanceRequest {
 
   ImportInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inputConfig')) {
-      inputConfig = InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1279,7 +1316,8 @@ class InputConfig {
 
   InputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsSource')) {
-      gcsSource = GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1439,7 +1477,8 @@ class Instance {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1459,7 +1498,8 @@ class Instance {
     }
     if (_json.containsKey('redisConfigs')) {
       redisConfigs = commons.mapMap<core.String, core.String>(
-          _json['redisConfigs'].cast<core.String, core.String>(),
+          (_json['redisConfigs'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('redisVersion')) {
@@ -1567,7 +1607,8 @@ class ListInstancesResponse {
   ListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<Instance>((value) => Instance.fromJson(value))
+          .map<Instance>((value) =>
+              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1608,7 +1649,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1644,7 +1686,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1695,7 +1738,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1703,7 +1747,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1780,11 +1825,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1792,7 +1839,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1827,7 +1875,8 @@ class OutputConfig {
 
   OutputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsDestination')) {
-      gcsDestination = GcsDestination.fromJson(_json['gcsDestination']);
+      gcsDestination = GcsDestination.fromJson(
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1872,7 +1921,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

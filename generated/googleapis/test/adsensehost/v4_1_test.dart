@@ -108,8 +108,8 @@ core.List<api.Account> buildUnnamed4306() {
 
 void checkUnnamed4306(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterAccounts = 0;
@@ -171,8 +171,8 @@ core.List<api.AdClient> buildUnnamed4307() {
 
 void checkUnnamed4307(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdClient(o[0]);
-  checkAdClient(o[1]);
+  checkAdClient(o[0] as api.AdClient);
+  checkAdClient(o[1] as api.AdClient);
 }
 
 core.int buildCounterAdClients = 0;
@@ -286,9 +286,9 @@ api.AdStyle buildAdStyle() {
 void checkAdStyle(api.AdStyle o) {
   buildCounterAdStyle++;
   if (buildCounterAdStyle < 3) {
-    checkAdStyleColors(o.colors);
+    checkAdStyleColors(o.colors as api.AdStyleColors);
     unittest.expect(o.corners, unittest.equals('foo'));
-    checkAdStyleFont(o.font);
+    checkAdStyleFont(o.font as api.AdStyleFont);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAdStyle--;
@@ -335,7 +335,8 @@ api.AdUnitContentAdsSettings buildAdUnitContentAdsSettings() {
 void checkAdUnitContentAdsSettings(api.AdUnitContentAdsSettings o) {
   buildCounterAdUnitContentAdsSettings++;
   if (buildCounterAdUnitContentAdsSettings < 3) {
-    checkAdUnitContentAdsSettingsBackupOption(o.backupOption);
+    checkAdUnitContentAdsSettingsBackupOption(
+        o.backupOption as api.AdUnitContentAdsSettingsBackupOption);
     unittest.expect(o.size, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -389,11 +390,13 @@ void checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit++;
   if (buildCounterAdUnit < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkAdUnitContentAdsSettings(o.contentAdsSettings);
-    checkAdStyle(o.customStyle);
+    checkAdUnitContentAdsSettings(
+        o.contentAdsSettings as api.AdUnitContentAdsSettings);
+    checkAdStyle(o.customStyle as api.AdStyle);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkAdUnitMobileContentAdsSettings(o.mobileContentAdsSettings);
+    checkAdUnitMobileContentAdsSettings(
+        o.mobileContentAdsSettings as api.AdUnitMobileContentAdsSettings);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
   }
@@ -409,8 +412,8 @@ core.List<api.AdUnit> buildUnnamed4308() {
 
 void checkUnnamed4308(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdUnit(o[0]);
-  checkAdUnit(o[1]);
+  checkAdUnit(o[0] as api.AdUnit);
+  checkAdUnit(o[1] as api.AdUnit);
 }
 
 core.int buildCounterAdUnits = 0;
@@ -520,8 +523,8 @@ core.List<api.CustomChannel> buildUnnamed4310() {
 
 void checkUnnamed4310(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomChannel(o[0]);
-  checkCustomChannel(o[1]);
+  checkCustomChannel(o[0] as api.CustomChannel);
+  checkCustomChannel(o[1] as api.CustomChannel);
 }
 
 core.int buildCounterCustomChannels = 0;
@@ -594,8 +597,8 @@ core.List<api.ReportHeaders> buildUnnamed4312() {
 
 void checkUnnamed4312(core.List<api.ReportHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportHeaders(o[0]);
-  checkReportHeaders(o[1]);
+  checkReportHeaders(o[0] as api.ReportHeaders);
+  checkReportHeaders(o[1] as api.ReportHeaders);
 }
 
 core.List<core.String> buildUnnamed4313() {
@@ -713,8 +716,8 @@ core.List<api.UrlChannel> buildUnnamed4317() {
 
 void checkUnnamed4317(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUrlChannel(o[0]);
-  checkUrlChannel(o[1]);
+  checkUrlChannel(o[0] as api.UrlChannel);
+  checkUrlChannel(o[1] as api.UrlChannel);
 }
 
 core.int buildCounterUrlChannels = 0;
@@ -890,7 +893,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -898,7 +901,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccounts();
       var od = api.Accounts.fromJson(o.toJson());
-      checkAccounts(od);
+      checkAccounts(od as api.Accounts);
     });
   });
 
@@ -906,7 +909,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdClient();
       var od = api.AdClient.fromJson(o.toJson());
-      checkAdClient(od);
+      checkAdClient(od as api.AdClient);
     });
   });
 
@@ -914,7 +917,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdClients();
       var od = api.AdClients.fromJson(o.toJson());
-      checkAdClients(od);
+      checkAdClients(od as api.AdClients);
     });
   });
 
@@ -922,7 +925,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdCode();
       var od = api.AdCode.fromJson(o.toJson());
-      checkAdCode(od);
+      checkAdCode(od as api.AdCode);
     });
   });
 
@@ -930,7 +933,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyleColors();
       var od = api.AdStyleColors.fromJson(o.toJson());
-      checkAdStyleColors(od);
+      checkAdStyleColors(od as api.AdStyleColors);
     });
   });
 
@@ -938,7 +941,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyleFont();
       var od = api.AdStyleFont.fromJson(o.toJson());
-      checkAdStyleFont(od);
+      checkAdStyleFont(od as api.AdStyleFont);
     });
   });
 
@@ -946,7 +949,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyle();
       var od = api.AdStyle.fromJson(o.toJson());
-      checkAdStyle(od);
+      checkAdStyle(od as api.AdStyle);
     });
   });
 
@@ -954,7 +957,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettingsBackupOption();
       var od = api.AdUnitContentAdsSettingsBackupOption.fromJson(o.toJson());
-      checkAdUnitContentAdsSettingsBackupOption(od);
+      checkAdUnitContentAdsSettingsBackupOption(
+          od as api.AdUnitContentAdsSettingsBackupOption);
     });
   });
 
@@ -962,7 +966,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettings();
       var od = api.AdUnitContentAdsSettings.fromJson(o.toJson());
-      checkAdUnitContentAdsSettings(od);
+      checkAdUnitContentAdsSettings(od as api.AdUnitContentAdsSettings);
     });
   });
 
@@ -970,7 +974,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitMobileContentAdsSettings();
       var od = api.AdUnitMobileContentAdsSettings.fromJson(o.toJson());
-      checkAdUnitMobileContentAdsSettings(od);
+      checkAdUnitMobileContentAdsSettings(
+          od as api.AdUnitMobileContentAdsSettings);
     });
   });
 
@@ -978,7 +983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnit();
       var od = api.AdUnit.fromJson(o.toJson());
-      checkAdUnit(od);
+      checkAdUnit(od as api.AdUnit);
     });
   });
 
@@ -986,7 +991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnits();
       var od = api.AdUnits.fromJson(o.toJson());
-      checkAdUnits(od);
+      checkAdUnits(od as api.AdUnits);
     });
   });
 
@@ -994,7 +999,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssociationSession();
       var od = api.AssociationSession.fromJson(o.toJson());
-      checkAssociationSession(od);
+      checkAssociationSession(od as api.AssociationSession);
     });
   });
 
@@ -1002,7 +1007,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomChannel();
       var od = api.CustomChannel.fromJson(o.toJson());
-      checkCustomChannel(od);
+      checkCustomChannel(od as api.CustomChannel);
     });
   });
 
@@ -1010,7 +1015,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomChannels();
       var od = api.CustomChannels.fromJson(o.toJson());
-      checkCustomChannels(od);
+      checkCustomChannels(od as api.CustomChannels);
     });
   });
 
@@ -1018,7 +1023,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportHeaders();
       var od = api.ReportHeaders.fromJson(o.toJson());
-      checkReportHeaders(od);
+      checkReportHeaders(od as api.ReportHeaders);
     });
   });
 
@@ -1026,7 +1031,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
-      checkReport(od);
+      checkReport(od as api.Report);
     });
   });
 
@@ -1034,7 +1039,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlChannel();
       var od = api.UrlChannel.fromJson(o.toJson());
-      checkUrlChannel(od);
+      checkUrlChannel(od as api.UrlChannel);
     });
   });
 
@@ -1042,7 +1047,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlChannels();
       var od = api.UrlChannels.fromJson(o.toJson());
-      checkUrlChannels(od);
+      checkUrlChannels(od as api.UrlChannels);
     });
   });
 
@@ -1096,7 +1101,7 @@ void main() {
       res
           .get(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
 
@@ -1148,7 +1153,7 @@ void main() {
       res
           .list(arg_filterAdClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccounts(response);
+        checkAccounts(response as api.Accounts);
       })));
     });
   });
@@ -1213,7 +1218,7 @@ void main() {
       res
           .get(arg_accountId, arg_adClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClient(response);
+        checkAdClient(response as api.AdClient);
       })));
     });
 
@@ -1281,7 +1286,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClients(response);
+        checkAdClients(response as api.AdClients);
       })));
     });
   });
@@ -1357,7 +1362,7 @@ void main() {
           .delete(arg_accountId, arg_adClientId, arg_adUnitId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -1431,7 +1436,7 @@ void main() {
           .get(arg_accountId, arg_adClientId, arg_adUnitId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -1515,7 +1520,7 @@ void main() {
               hostCustomChannelId: arg_hostCustomChannelId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdCode(response);
+        checkAdCode(response as api.AdCode);
       })));
     });
 
@@ -1527,8 +1532,9 @@ void main() {
       var arg_adClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AdUnit.fromJson(json);
-        checkAdUnit(obj);
+        var obj =
+            api.AdUnit.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAdUnit(obj as api.AdUnit);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1589,7 +1595,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_adClientId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -1671,7 +1677,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnits(response);
+        checkAdUnits(response as api.AdUnits);
       })));
     });
 
@@ -1684,8 +1690,9 @@ void main() {
       var arg_adUnitId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AdUnit.fromJson(json);
-        checkAdUnit(obj);
+        var obj =
+            api.AdUnit.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAdUnit(obj as api.AdUnit);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1748,7 +1755,7 @@ void main() {
           .patch(arg_request, arg_accountId, arg_adClientId, arg_adUnitId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -1760,8 +1767,9 @@ void main() {
       var arg_adClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AdUnit.fromJson(json);
-        checkAdUnit(obj);
+        var obj =
+            api.AdUnit.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAdUnit(obj as api.AdUnit);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1822,7 +1830,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_adClientId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
   });
@@ -1913,7 +1921,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
   });
@@ -1968,7 +1976,7 @@ void main() {
       res
           .get(arg_adClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClient(response);
+        checkAdClient(response as api.AdClient);
       })));
     });
 
@@ -2026,7 +2034,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClients(response);
+        checkAdClients(response as api.AdClients);
       })));
     });
   });
@@ -2096,7 +2104,7 @@ void main() {
               websiteLocale: arg_websiteLocale,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssociationSession(response);
+        checkAssociationSession(response as api.AssociationSession);
       })));
     });
 
@@ -2147,7 +2155,7 @@ void main() {
       res
           .verify(arg_token, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssociationSession(response);
+        checkAssociationSession(response as api.AssociationSession);
       })));
     });
   });
@@ -2212,7 +2220,7 @@ void main() {
       res
           .delete(arg_adClientId, arg_customChannelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -2275,7 +2283,7 @@ void main() {
       res
           .get(arg_adClientId, arg_customChannelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -2286,8 +2294,9 @@ void main() {
       var arg_adClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomChannel.fromJson(json);
-        checkCustomChannel(obj);
+        var obj = api.CustomChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomChannel(obj as api.CustomChannel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2338,7 +2347,7 @@ void main() {
       res
           .insert(arg_request, arg_adClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -2406,7 +2415,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannels(response);
+        checkCustomChannels(response as api.CustomChannels);
       })));
     });
 
@@ -2418,8 +2427,9 @@ void main() {
       var arg_customChannelId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomChannel.fromJson(json);
-        checkCustomChannel(obj);
+        var obj = api.CustomChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomChannel(obj as api.CustomChannel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2473,7 +2483,7 @@ void main() {
           .patch(arg_request, arg_adClientId, arg_customChannelId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -2484,8 +2494,9 @@ void main() {
       var arg_adClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomChannel.fromJson(json);
-        checkCustomChannel(obj);
+        var obj = api.CustomChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomChannel(obj as api.CustomChannel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2536,7 +2547,7 @@ void main() {
       res
           .update(arg_request, arg_adClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
   });
@@ -2617,7 +2628,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
   });
@@ -2682,7 +2693,7 @@ void main() {
       res
           .delete(arg_adClientId, arg_urlChannelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlChannel(response);
+        checkUrlChannel(response as api.UrlChannel);
       })));
     });
 
@@ -2693,8 +2704,9 @@ void main() {
       var arg_adClientId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UrlChannel.fromJson(json);
-        checkUrlChannel(obj);
+        var obj = api.UrlChannel.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUrlChannel(obj as api.UrlChannel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2745,7 +2757,7 @@ void main() {
       res
           .insert(arg_request, arg_adClientId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlChannel(response);
+        checkUrlChannel(response as api.UrlChannel);
       })));
     });
 
@@ -2813,7 +2825,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlChannels(response);
+        checkUrlChannels(response as api.UrlChannels);
       })));
     });
   });

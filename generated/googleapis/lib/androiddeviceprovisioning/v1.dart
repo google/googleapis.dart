@@ -110,8 +110,10 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CustomerListCustomersResponse.fromJson(data));
+    return _response.then(
+      (data) => CustomerListCustomersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -177,7 +179,10 @@ class CustomersConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Configuration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an unused configuration. The API call fails if the customer has
@@ -229,7 +234,9 @@ class CustomersConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a configuration.
@@ -279,7 +286,10 @@ class CustomersConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Configuration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists a customer's configurations.
@@ -331,8 +341,10 @@ class CustomersConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CustomerListConfigurationsResponse.fromJson(data));
+    return _response.then(
+      (data) => CustomerListConfigurationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a configuration's field values.
@@ -399,7 +411,10 @@ class CustomersConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Configuration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -467,7 +482,9 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a device.
@@ -517,7 +534,9 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists a customer's devices.
@@ -581,7 +600,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomerListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => CustomerListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a configuration from device.
@@ -639,7 +661,9 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -699,7 +723,9 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -756,7 +782,10 @@ class CustomersDpcsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomerListDpcsResponse.fromJson(data));
+    return _response.then(
+      (data) => CustomerListDpcsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -813,7 +842,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -894,7 +925,9 @@ class PartnersCustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Company.fromJson(data));
+    return _response.then(
+      (data) => Company.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the customers that are enrolled to the reseller identified by the
@@ -961,7 +994,10 @@ class PartnersCustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCustomersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCustomersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1026,7 +1062,10 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ClaimDeviceResponse.fromJson(data));
+    return _response.then(
+      (data) => ClaimDeviceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Claims a batch of devices for a customer asynchronously. Adds the devices
@@ -1085,7 +1124,9 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds devices by hardware identifiers, such as IMEI.
@@ -1142,8 +1183,10 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => FindDevicesByDeviceIdentifierResponse.fromJson(data));
+    return _response.then(
+      (data) => FindDevicesByDeviceIdentifierResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds devices claimed for customers. The results only contain devices
@@ -1203,7 +1246,10 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FindDevicesByOwnerResponse.fromJson(data));
+    return _response.then(
+      (data) => FindDevicesByOwnerResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a device.
@@ -1253,7 +1299,9 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates reseller metadata associated with the device.
@@ -1320,7 +1368,10 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceMetadata.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unclaims a device from a customer and removes it from zero-touch
@@ -1378,7 +1429,9 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unclaims a batch of devices for a customer asynchronously. Removes the
@@ -1437,7 +1490,9 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the reseller metadata attached to a batch of devices. This method
@@ -1497,7 +1552,9 @@ class PartnersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1570,7 +1627,10 @@ class PartnersVendorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVendorsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVendorsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1641,7 +1701,10 @@ class PartnersVendorsCustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVendorCustomersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVendorCustomersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1670,10 +1733,12 @@ class ClaimDeviceRequest {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionType')) {
       sectionType = _json['sectionType'] as core.String;
@@ -1742,7 +1807,8 @@ class ClaimDevicesRequest {
   ClaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('claims')) {
       claims = (_json['claims'] as core.List)
-          .map<PartnerClaim>((value) => PartnerClaim.fromJson(value))
+          .map<PartnerClaim>((value) => PartnerClaim.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1987,7 +2053,8 @@ class CreateCustomerRequest {
 
   CreateCustomerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('customer')) {
-      customer = Company.fromJson(_json['customer']);
+      customer = Company.fromJson(
+          _json['customer'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2016,7 +2083,8 @@ class CustomerApplyConfigurationRequest {
       configuration = _json['configuration'] as core.String;
     }
     if (_json.containsKey('device')) {
-      device = DeviceReference.fromJson(_json['device']);
+      device = DeviceReference.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2042,7 +2110,8 @@ class CustomerListConfigurationsResponse {
   CustomerListConfigurationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('configurations')) {
       configurations = (_json['configurations'] as core.List)
-          .map<Configuration>((value) => Configuration.fromJson(value))
+          .map<Configuration>((value) => Configuration.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2071,7 +2140,8 @@ class CustomerListCustomersResponse {
   CustomerListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('customers')) {
       customers = (_json['customers'] as core.List)
-          .map<Company>((value) => Company.fromJson(value))
+          .map<Company>((value) =>
+              Company.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2105,7 +2175,8 @@ class CustomerListDevicesResponse {
   CustomerListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2136,7 +2207,8 @@ class CustomerListDpcsResponse {
   CustomerListDpcsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dpcs')) {
       dpcs = (_json['dpcs'] as core.List)
-          .map<Dpc>((value) => Dpc.fromJson(value))
+          .map<Dpc>((value) =>
+              Dpc.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2159,7 +2231,8 @@ class CustomerRemoveConfigurationRequest {
 
   CustomerRemoveConfigurationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('device')) {
-      device = DeviceReference.fromJson(_json['device']);
+      device = DeviceReference.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2181,7 +2254,8 @@ class CustomerUnclaimDeviceRequest {
 
   CustomerUnclaimDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('device')) {
-      device = DeviceReference.fromJson(_json['device']);
+      device = DeviceReference.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2227,7 +2301,8 @@ class Device {
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('claims')) {
       claims = (_json['claims'] as core.List)
-          .map<DeviceClaim>((value) => DeviceClaim.fromJson(value))
+          .map<DeviceClaim>((value) => DeviceClaim.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('configuration')) {
@@ -2237,10 +2312,12 @@ class Device {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2415,7 +2492,8 @@ class DeviceMetadata {
   DeviceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = commons.mapMap<core.String, core.String>(
-          _json['entries'].cast<core.String, core.String>(),
+          (_json['entries'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -2450,7 +2528,8 @@ class DeviceReference {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2537,8 +2616,8 @@ class DevicesLongRunningOperationResponse {
   DevicesLongRunningOperationResponse.fromJson(core.Map _json) {
     if (_json.containsKey('perDeviceStatus')) {
       perDeviceStatus = (_json['perDeviceStatus'] as core.List)
-          .map<OperationPerDevice>(
-              (value) => OperationPerDevice.fromJson(value))
+          .map<OperationPerDevice>((value) => OperationPerDevice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('successCount')) {
@@ -2643,7 +2722,8 @@ class FindDevicesByDeviceIdentifierRequest {
 
   FindDevicesByDeviceIdentifierRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('limit')) {
       limit = _json['limit'] as core.String;
@@ -2685,7 +2765,8 @@ class FindDevicesByDeviceIdentifierResponse {
   FindDevicesByDeviceIdentifierResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2784,7 +2865,8 @@ class FindDevicesByOwnerResponse {
   FindDevicesByOwnerResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2827,7 +2909,8 @@ class ListCustomersResponse {
   ListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('customers')) {
       customers = (_json['customers'] as core.List)
-          .map<Company>((value) => Company.fromJson(value))
+          .map<Company>((value) =>
+              Company.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2870,7 +2953,8 @@ class ListVendorCustomersResponse {
   ListVendorCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('customers')) {
       customers = (_json['customers'] as core.List)
-          .map<Company>((value) => Company.fromJson(value))
+          .map<Company>((value) =>
+              Company.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2920,7 +3004,8 @@ class ListVendorsResponse {
     }
     if (_json.containsKey('vendors')) {
       vendors = (_json['vendors'] as core.List)
-          .map<Company>((value) => Company.fromJson(value))
+          .map<Company>((value) =>
+              Company.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2982,11 +3067,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2994,7 +3081,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -3039,17 +3127,20 @@ class OperationPerDevice {
 
   OperationPerDevice.fromJson(core.Map _json) {
     if (_json.containsKey('claim')) {
-      claim = PartnerClaim.fromJson(_json['claim']);
+      claim = PartnerClaim.fromJson(
+          _json['claim'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('result')) {
-      result = PerDeviceStatusInBatch.fromJson(_json['result']);
+      result = PerDeviceStatusInBatch.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unclaim')) {
-      unclaim = PartnerUnclaim.fromJson(_json['unclaim']);
+      unclaim = PartnerUnclaim.fromJson(
+          _json['unclaim'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMetadata')) {
-      updateMetadata =
-          UpdateMetadataArguments.fromJson(_json['updateMetadata']);
+      updateMetadata = UpdateMetadataArguments.fromJson(
+          _json['updateMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3096,10 +3187,12 @@ class PartnerClaim {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionType')) {
       sectionType = _json['sectionType'] as core.String;
@@ -3153,7 +3246,8 @@ class PartnerUnclaim {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionType')) {
       sectionType = _json['sectionType'] as core.String;
@@ -3281,7 +3375,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -3334,7 +3429,8 @@ class UnclaimDeviceRequest {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionType')) {
       sectionType = _json['sectionType'] as core.String;
@@ -3378,7 +3474,8 @@ class UnclaimDevicesRequest {
   UnclaimDevicesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('unclaims')) {
       unclaims = (_json['unclaims'] as core.List)
-          .map<PartnerUnclaim>((value) => PartnerUnclaim.fromJson(value))
+          .map<PartnerUnclaim>((value) => PartnerUnclaim.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3402,8 +3499,9 @@ class UpdateDeviceMetadataInBatchRequest {
   UpdateDeviceMetadataInBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('updates')) {
       updates = (_json['updates'] as core.List)
-          .map<UpdateMetadataArguments>(
-              (value) => UpdateMetadataArguments.fromJson(value))
+          .map<UpdateMetadataArguments>((value) =>
+              UpdateMetadataArguments.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3426,7 +3524,8 @@ class UpdateDeviceMetadataRequest {
 
   UpdateDeviceMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3457,10 +3556,12 @@ class UpdateMetadataArguments {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('deviceIdentifier')) {
-      deviceIdentifier = DeviceIdentifier.fromJson(_json['deviceIdentifier']);
+      deviceIdentifier = DeviceIdentifier.fromJson(
+          _json['deviceIdentifier'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 

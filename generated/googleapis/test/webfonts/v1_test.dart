@@ -155,8 +155,8 @@ core.List<api.Webfont> buildUnnamed1373() {
 
 void checkUnnamed1373(core.List<api.Webfont> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebfont(o[0]);
-  checkWebfont(o[1]);
+  checkWebfont(o[0] as api.Webfont);
+  checkWebfont(o[1] as api.Webfont);
 }
 
 core.int buildCounterWebfontList = 0;
@@ -185,7 +185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebfont();
       var od = api.Webfont.fromJson(o.toJson());
-      checkWebfont(od);
+      checkWebfont(od as api.Webfont);
     });
   });
 
@@ -193,7 +193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebfontList();
       var od = api.WebfontList.fromJson(o.toJson());
-      checkWebfontList(od);
+      checkWebfontList(od as api.WebfontList);
     });
   });
 
@@ -242,7 +242,7 @@ void main() {
       res
           .list(sort: arg_sort, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebfontList(response);
+        checkWebfontList(response as api.WebfontList);
       })));
     });
   });

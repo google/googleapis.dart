@@ -98,8 +98,8 @@ core.List<api.Model> buildUnnamed6295() {
 
 void checkUnnamed6295(core.List<api.Model> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkModel(o[0]);
-  checkModel(o[1]);
+  checkModel(o[0] as api.Model);
+  checkModel(o[1] as api.Model);
 }
 
 core.int buildCounterListModelsResponse = 0;
@@ -132,8 +132,8 @@ core.List<api.Operation> buildUnnamed6296() {
 
 void checkUnnamed6296(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.List<core.String> buildUnnamed6297() {
@@ -178,9 +178,9 @@ void checkModel(api.Model o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.modelHash, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkModelState(o.state);
+    checkModelState(o.state as api.ModelState);
     checkUnnamed6297(o.tags);
-    checkTfLiteModel(o.tfliteModel);
+    checkTfLiteModel(o.tfliteModel as api.TfLiteModel);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterModel--;
@@ -223,7 +223,7 @@ void checkModelState(api.ModelState o) {
   buildCounterModelState++;
   if (buildCounterModelState < 3) {
     unittest.expect(o.published, unittest.isTrue);
-    checkStatus(o.validationError);
+    checkStatus(o.validationError as api.Status);
   }
   buildCounterModelState--;
 }
@@ -305,7 +305,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed6298(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6299(o.response);
@@ -406,7 +406,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -414,7 +414,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListModelsResponse();
       var od = api.ListModelsResponse.fromJson(o.toJson());
-      checkListModelsResponse(od);
+      checkListModelsResponse(od as api.ListModelsResponse);
     });
   });
 
@@ -422,7 +422,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModel();
       var od = api.Model.fromJson(o.toJson());
-      checkModel(od);
+      checkModel(od as api.Model);
     });
   });
 
@@ -430,7 +430,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModelOperationMetadata();
       var od = api.ModelOperationMetadata.fromJson(o.toJson());
-      checkModelOperationMetadata(od);
+      checkModelOperationMetadata(od as api.ModelOperationMetadata);
     });
   });
 
@@ -438,7 +438,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModelState();
       var od = api.ModelState.fromJson(o.toJson());
-      checkModelState(od);
+      checkModelState(od as api.ModelState);
     });
   });
 
@@ -446,7 +446,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -454,7 +454,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -462,7 +462,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTfLiteModel();
       var od = api.TfLiteModel.fromJson(o.toJson());
-      checkTfLiteModel(od);
+      checkTfLiteModel(od as api.TfLiteModel);
     });
   });
 
@@ -474,8 +474,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Model.fromJson(json);
-        checkModel(obj);
+        var obj =
+            api.Model.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkModel(obj as api.Model);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -515,7 +516,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -563,7 +564,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -611,7 +612,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkModel(response);
+        checkModel(response as api.Model);
       })));
     });
 
@@ -671,7 +672,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListModelsResponse(response);
+        checkListModelsResponse(response as api.ListModelsResponse);
       })));
     });
 
@@ -683,8 +684,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Model.fromJson(json);
-        checkModel(obj);
+        var obj =
+            api.Model.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkModel(obj as api.Model);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -727,7 +729,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -777,7 +779,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

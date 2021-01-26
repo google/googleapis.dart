@@ -110,8 +110,10 @@ class CatalogResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1SearchCatalogResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -185,8 +187,10 @@ class EntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -293,8 +297,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an EntryGroup. Only entry groups that do not contain entries can
@@ -355,7 +361,9 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an EntryGroup.
@@ -413,8 +421,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -483,7 +493,9 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists entry groups.
@@ -550,8 +562,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an EntryGroup. The user should enable the Data Catalog API in the
@@ -621,8 +635,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy for a resource. Replaces any existing
@@ -689,7 +705,9 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -755,7 +773,10 @@ class ProjectsLocationsEntryGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -838,8 +859,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an existing entry. Only entries created through CreateEntry method
@@ -894,7 +917,9 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an entry.
@@ -945,8 +970,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -1015,7 +1042,9 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists entries.
@@ -1092,8 +1121,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing entry. Users should enable the Data Catalog API in the
@@ -1170,8 +1201,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Entry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -1237,7 +1270,10 @@ class ProjectsLocationsEntryGroupsEntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1311,8 +1347,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a tag.
@@ -1363,7 +1401,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the tags on an Entry.
@@ -1432,7 +1472,9 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing tag.
@@ -1499,8 +1541,10 @@ class ProjectsLocationsEntryGroupsEntriesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1573,8 +1617,10 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a tag.
@@ -1625,7 +1671,9 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the tags on an Entry.
@@ -1694,7 +1742,9 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1ListTagsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing tag.
@@ -1761,8 +1811,10 @@ class ProjectsLocationsEntryGroupsTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Tag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1841,7 +1893,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a tag template and all tags using the template. Users should
@@ -1904,7 +1958,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a tag template.
@@ -1956,7 +2012,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. A `NOT_FOUND` error is
@@ -2025,7 +2083,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a tag template. This method cannot be used to update the fields of
@@ -2099,7 +2159,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy for a resource. Replaces any existing
@@ -2166,7 +2228,9 @@ class ProjectsLocationsTagTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the caller's permissions on a resource. If the resource does not
@@ -2232,7 +2296,10 @@ class ProjectsLocationsTagTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2318,7 +2385,9 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a field in a tag template and all uses of that field. Users should
@@ -2382,7 +2451,9 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a field in a tag template. This method cannot be used to update
@@ -2457,7 +2528,9 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Renames a field in a tag template. The user should enable the Data Catalog
@@ -2520,7 +2593,9 @@ class ProjectsLocationsTagTemplatesFieldsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2589,7 +2664,9 @@ class ProjectsLocationsTagTemplatesFieldsEnumValuesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(data));
+      (data) => GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2657,8 +2734,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a taxonomy. This operation will also delete all policy tags in
@@ -2710,7 +2789,9 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Exports all taxonomies and their policy tags in a project. This method
@@ -2776,8 +2857,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a taxonomy.
@@ -2827,8 +2910,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -2888,7 +2973,9 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports all taxonomies and their policy tags to a project as new
@@ -2948,8 +3035,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all taxonomies in a project in a particular location that the caller
@@ -3016,8 +3105,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a taxonomy.
@@ -3083,8 +3174,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -3144,7 +3237,9 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -3205,7 +3300,10 @@ class ProjectsLocationsTaxonomiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3271,8 +3369,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a policy tag. Also deletes all of its descendant policy tags.
@@ -3323,7 +3423,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a policy tag.
@@ -3373,8 +3475,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM policy for a taxonomy or a policy tag.
@@ -3434,7 +3538,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all policy tags in a taxonomy.
@@ -3501,8 +3607,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a policy tag.
@@ -3571,8 +3679,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM policy for a taxonomy or a policy tag.
@@ -3632,7 +3742,9 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the permissions that a caller has on the specified taxonomy or
@@ -3693,7 +3805,10 @@ class ProjectsLocationsTaxonomiesPolicyTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3754,7 +3869,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -3880,7 +3996,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3993,12 +4110,12 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
       tableSourceType = _json['tableSourceType'] as core.String;
     }
     if (_json.containsKey('tableSpec')) {
-      tableSpec =
-          GoogleCloudDatacatalogV1beta1TableSpec.fromJson(_json['tableSpec']);
+      tableSpec = GoogleCloudDatacatalogV1beta1TableSpec.fromJson(
+          _json['tableSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('viewSpec')) {
-      viewSpec =
-          GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(_json['viewSpec']);
+      viewSpec = GoogleCloudDatacatalogV1beta1ViewSpec.fromJson(
+          _json['viewSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4053,7 +4170,8 @@ class GoogleCloudDatacatalogV1beta1ColumnSchema {
     if (_json.containsKey('subcolumns')) {
       subcolumns = (_json['subcolumns'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
-              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
+              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -4184,12 +4302,14 @@ class GoogleCloudDatacatalogV1beta1Entry {
     if (_json.containsKey('bigqueryDateShardedSpec')) {
       bigqueryDateShardedSpec =
           GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec.fromJson(
-              _json['bigqueryDateShardedSpec']);
+              _json['bigqueryDateShardedSpec']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bigqueryTableSpec')) {
       bigqueryTableSpec =
           GoogleCloudDatacatalogV1beta1BigQueryTableSpec.fromJson(
-              _json['bigqueryTableSpec']);
+              _json['bigqueryTableSpec']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -4199,7 +4319,7 @@ class GoogleCloudDatacatalogV1beta1Entry {
     }
     if (_json.containsKey('gcsFilesetSpec')) {
       gcsFilesetSpec = GoogleCloudDatacatalogV1beta1GcsFilesetSpec.fromJson(
-          _json['gcsFilesetSpec']);
+          _json['gcsFilesetSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('integratedSystem')) {
       integratedSystem = _json['integratedSystem'] as core.String;
@@ -4211,12 +4331,14 @@ class GoogleCloudDatacatalogV1beta1Entry {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('schema')) {
-      schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(_json['schema']);
+      schema = GoogleCloudDatacatalogV1beta1Schema.fromJson(
+          _json['schema'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceSystemTimestamps')) {
       sourceSystemTimestamps =
           GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-              _json['sourceSystemTimestamps']);
+              _json['sourceSystemTimestamps']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -4302,7 +4424,8 @@ class GoogleCloudDatacatalogV1beta1EntryGroup {
     if (_json.containsKey('dataCatalogTimestamps')) {
       dataCatalogTimestamps =
           GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-              _json['dataCatalogTimestamps']);
+              _json['dataCatalogTimestamps']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -4345,7 +4468,8 @@ class GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
     if (_json.containsKey('taxonomies')) {
       taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
-              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
+              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4378,7 +4502,7 @@ class GoogleCloudDatacatalogV1beta1FieldType {
   GoogleCloudDatacatalogV1beta1FieldType.fromJson(core.Map _json) {
     if (_json.containsKey('enumType')) {
       enumType = GoogleCloudDatacatalogV1beta1FieldTypeEnumType.fromJson(
-          _json['enumType']);
+          _json['enumType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('primitiveType')) {
       primitiveType = _json['primitiveType'] as core.String;
@@ -4418,7 +4542,7 @@ class GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
       allowedValues = (_json['allowedValues'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>(
               (value) => GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4474,7 +4598,7 @@ class GoogleCloudDatacatalogV1beta1GcsFileSpec {
     }
     if (_json.containsKey('gcsTimestamps')) {
       gcsTimestamps = GoogleCloudDatacatalogV1beta1SystemTimestamps.fromJson(
-          _json['gcsTimestamps']);
+          _json['gcsTimestamps'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sizeBytes')) {
       sizeBytes = _json['sizeBytes'] as core.String;
@@ -4533,7 +4657,8 @@ class GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
     if (_json.containsKey('sampleGcsFileSpecs')) {
       sampleGcsFileSpecs = (_json['sampleGcsFileSpecs'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1GcsFileSpec>((value) =>
-              GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(value))
+              GoogleCloudDatacatalogV1beta1GcsFileSpec.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4562,7 +4687,7 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
       core.Map _json) {
     if (_json.containsKey('inlineSource')) {
       inlineSource = GoogleCloudDatacatalogV1beta1InlineSource.fromJson(
-          _json['inlineSource']);
+          _json['inlineSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4586,8 +4711,9 @@ class GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
       core.Map _json) {
     if (_json.containsKey('taxonomies')) {
       taxonomies = (_json['taxonomies'] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
-              (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Taxonomy>((value) =>
+              GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4612,7 +4738,8 @@ class GoogleCloudDatacatalogV1beta1InlineSource {
     if (_json.containsKey('taxonomies')) {
       taxonomies = (_json['taxonomies'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>((value) =>
-              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(value))
+              GoogleCloudDatacatalogV1beta1SerializedTaxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4640,8 +4767,9 @@ class GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   GoogleCloudDatacatalogV1beta1ListEntriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Entry>(
-              (value) => GoogleCloudDatacatalogV1beta1Entry.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Entry>((value) =>
+              GoogleCloudDatacatalogV1beta1Entry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4677,7 +4805,8 @@ class GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
     if (_json.containsKey('entryGroups')) {
       entryGroups = (_json['entryGroups'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1EntryGroup>((value) =>
-              GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(value))
+              GoogleCloudDatacatalogV1beta1EntryGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4715,8 +4844,9 @@ class GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
     }
     if (_json.containsKey('policyTags')) {
       policyTags = (_json['policyTags'] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1PolicyTag>(
-              (value) => GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1PolicyTag>((value) =>
+              GoogleCloudDatacatalogV1beta1PolicyTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4750,8 +4880,9 @@ class GoogleCloudDatacatalogV1beta1ListTagsResponse {
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Tag>(
-              (value) => GoogleCloudDatacatalogV1beta1Tag.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Tag>((value) =>
+              GoogleCloudDatacatalogV1beta1Tag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4785,8 +4916,9 @@ class GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
     }
     if (_json.containsKey('taxonomies')) {
       taxonomies = (_json['taxonomies'] as core.List)
-          .map<GoogleCloudDatacatalogV1beta1Taxonomy>(
-              (value) => GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(value))
+          .map<GoogleCloudDatacatalogV1beta1Taxonomy>((value) =>
+              GoogleCloudDatacatalogV1beta1Taxonomy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4938,7 +5070,8 @@ class GoogleCloudDatacatalogV1beta1Schema {
     if (_json.containsKey('columns')) {
       columns = (_json['columns'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1ColumnSchema>((value) =>
-              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(value))
+              GoogleCloudDatacatalogV1beta1ColumnSchema.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5004,7 +5137,7 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
     }
     if (_json.containsKey('scope')) {
       scope = GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope.fromJson(
-          _json['scope']);
+          _json['scope'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5127,7 +5260,8 @@ class GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SearchCatalogResult>((value) =>
-              GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(value))
+              GoogleCloudDatacatalogV1beta1SearchCatalogResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unreachable')) {
@@ -5240,7 +5374,8 @@ class GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
     if (_json.containsKey('childPolicyTags')) {
       childPolicyTags = (_json['childPolicyTags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
-              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
+              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -5300,7 +5435,8 @@ class GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
     if (_json.containsKey('policyTags')) {
       policyTags = (_json['policyTags'] as core.List)
           .map<GoogleCloudDatacatalogV1beta1SerializedPolicyTag>((value) =>
-              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(value))
+              GoogleCloudDatacatalogV1beta1SerializedPolicyTag.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5426,9 +5562,10 @@ class GoogleCloudDatacatalogV1beta1Tag {
     }
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagField>(
-          _json['fields'].cast<core.String, core.Map>(),
-          (core.Map item) =>
-              GoogleCloudDatacatalogV1beta1TagField.fromJson(item));
+          (_json['fields'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => GoogleCloudDatacatalogV1beta1TagField.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5505,7 +5642,7 @@ class GoogleCloudDatacatalogV1beta1TagField {
     }
     if (_json.containsKey('enumValue')) {
       enumValue = GoogleCloudDatacatalogV1beta1TagFieldEnumValue.fromJson(
-          _json['enumValue']);
+          _json['enumValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('order')) {
       order = _json['order'] as core.int;
@@ -5603,9 +5740,11 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
     if (_json.containsKey('fields')) {
       fields = commons
           .mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagTemplateField>(
-              _json['fields'].cast<core.String, core.Map>(),
+              (_json['fields'] as core.Map<core.String, core.dynamic>)
+                  .cast<core.String, core.Map>(),
               (core.Map item) =>
-                  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(item));
+                  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+                      item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5672,7 +5811,8 @@ class GoogleCloudDatacatalogV1beta1TagTemplateField {
       order = _json['order'] as core.int;
     }
     if (_json.containsKey('type')) {
-      type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(_json['type']);
+      type = GoogleCloudDatacatalogV1beta1FieldType.fromJson(
+          _json['type'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5857,7 +5997,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -5895,7 +6036,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 

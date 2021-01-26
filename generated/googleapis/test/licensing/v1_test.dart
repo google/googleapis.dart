@@ -135,8 +135,8 @@ core.List<api.LicenseAssignment> buildUnnamed2876() {
 
 void checkUnnamed2876(core.List<api.LicenseAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLicenseAssignment(o[0]);
-  checkLicenseAssignment(o[1]);
+  checkLicenseAssignment(o[0] as api.LicenseAssignment);
+  checkLicenseAssignment(o[1] as api.LicenseAssignment);
 }
 
 core.int buildCounterLicenseAssignmentList = 0;
@@ -169,7 +169,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignment();
       var od = api.LicenseAssignment.fromJson(o.toJson());
-      checkLicenseAssignment(od);
+      checkLicenseAssignment(od as api.LicenseAssignment);
     });
   });
 
@@ -177,7 +177,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignmentInsert();
       var od = api.LicenseAssignmentInsert.fromJson(o.toJson());
-      checkLicenseAssignmentInsert(od);
+      checkLicenseAssignmentInsert(od as api.LicenseAssignmentInsert);
     });
   });
 
@@ -185,7 +185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLicenseAssignmentList();
       var od = api.LicenseAssignmentList.fromJson(o.toJson());
-      checkLicenseAssignmentList(od);
+      checkLicenseAssignmentList(od as api.LicenseAssignmentList);
     });
   });
 
@@ -324,7 +324,7 @@ void main() {
       res
           .get(arg_productId, arg_skuId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response);
+        checkLicenseAssignment(response as api.LicenseAssignment);
       })));
     });
 
@@ -336,8 +336,9 @@ void main() {
       var arg_skuId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LicenseAssignmentInsert.fromJson(json);
-        checkLicenseAssignmentInsert(obj);
+        var obj = api.LicenseAssignmentInsert.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLicenseAssignmentInsert(obj as api.LicenseAssignmentInsert);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -394,7 +395,7 @@ void main() {
       res
           .insert(arg_request, arg_productId, arg_skuId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response);
+        checkLicenseAssignment(response as api.LicenseAssignment);
       })));
     });
 
@@ -462,7 +463,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignmentList(response);
+        checkLicenseAssignmentList(response as api.LicenseAssignmentList);
       })));
     });
 
@@ -540,7 +541,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignmentList(response);
+        checkLicenseAssignmentList(response as api.LicenseAssignmentList);
       })));
     });
 
@@ -553,8 +554,9 @@ void main() {
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LicenseAssignment.fromJson(json);
-        checkLicenseAssignment(obj);
+        var obj = api.LicenseAssignment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLicenseAssignment(obj as api.LicenseAssignment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -615,7 +617,7 @@ void main() {
           .patch(arg_request, arg_productId, arg_skuId, arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response);
+        checkLicenseAssignment(response as api.LicenseAssignment);
       })));
     });
 
@@ -628,8 +630,9 @@ void main() {
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LicenseAssignment.fromJson(json);
-        checkLicenseAssignment(obj);
+        var obj = api.LicenseAssignment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLicenseAssignment(obj as api.LicenseAssignment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -690,7 +693,7 @@ void main() {
           .update(arg_request, arg_productId, arg_skuId, arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLicenseAssignment(response);
+        checkLicenseAssignment(response as api.LicenseAssignment);
       })));
     });
   });

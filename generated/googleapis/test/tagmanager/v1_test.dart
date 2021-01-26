@@ -140,8 +140,8 @@ core.List<api.Parameter> buildUnnamed1853() {
 
 void checkUnnamed1853(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.int buildCounterCondition = 0;
@@ -286,8 +286,8 @@ core.List<api.Folder> buildUnnamed1858() {
 
 void checkUnnamed1858(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFolder(o[0]);
-  checkFolder(o[1]);
+  checkFolder(o[0] as api.Folder);
+  checkFolder(o[1] as api.Folder);
 }
 
 core.List<api.Macro> buildUnnamed1859() {
@@ -299,8 +299,8 @@ core.List<api.Macro> buildUnnamed1859() {
 
 void checkUnnamed1859(core.List<api.Macro> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMacro(o[0]);
-  checkMacro(o[1]);
+  checkMacro(o[0] as api.Macro);
+  checkMacro(o[1] as api.Macro);
 }
 
 core.List<api.Rule> buildUnnamed1860() {
@@ -312,8 +312,8 @@ core.List<api.Rule> buildUnnamed1860() {
 
 void checkUnnamed1860(core.List<api.Rule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRule(o[0]);
-  checkRule(o[1]);
+  checkRule(o[0] as api.Rule);
+  checkRule(o[1] as api.Rule);
 }
 
 core.List<api.Tag> buildUnnamed1861() {
@@ -325,8 +325,8 @@ core.List<api.Tag> buildUnnamed1861() {
 
 void checkUnnamed1861(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTag(o[0]);
-  checkTag(o[1]);
+  checkTag(o[0] as api.Tag);
+  checkTag(o[1] as api.Tag);
 }
 
 core.List<api.Trigger> buildUnnamed1862() {
@@ -338,8 +338,8 @@ core.List<api.Trigger> buildUnnamed1862() {
 
 void checkUnnamed1862(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrigger(o[0]);
-  checkTrigger(o[1]);
+  checkTrigger(o[0] as api.Trigger);
+  checkTrigger(o[1] as api.Trigger);
 }
 
 core.List<api.Variable> buildUnnamed1863() {
@@ -351,8 +351,8 @@ core.List<api.Variable> buildUnnamed1863() {
 
 void checkUnnamed1863(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterContainerVersion = 0;
@@ -383,7 +383,7 @@ void checkContainerVersion(api.ContainerVersion o) {
   buildCounterContainerVersion++;
   if (buildCounterContainerVersion < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkContainer(o.container);
+    checkContainer(o.container as api.Container);
     unittest.expect(o.containerId, unittest.equals('foo'));
     unittest.expect(o.containerVersionId, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
@@ -478,7 +478,7 @@ void checkCreateContainerVersionResponse(api.CreateContainerVersionResponse o) {
   buildCounterCreateContainerVersionResponse++;
   if (buildCounterCreateContainerVersionResponse < 3) {
     unittest.expect(o.compilerError, unittest.isTrue);
-    checkContainerVersion(o.containerVersion);
+    checkContainerVersion(o.containerVersion as api.ContainerVersion);
   }
   buildCounterCreateContainerVersionResponse--;
 }
@@ -560,8 +560,8 @@ core.List<api.Tag> buildUnnamed1864() {
 
 void checkUnnamed1864(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTag(o[0]);
-  checkTag(o[1]);
+  checkTag(o[0] as api.Tag);
+  checkTag(o[1] as api.Tag);
 }
 
 core.List<api.Trigger> buildUnnamed1865() {
@@ -573,8 +573,8 @@ core.List<api.Trigger> buildUnnamed1865() {
 
 void checkUnnamed1865(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrigger(o[0]);
-  checkTrigger(o[1]);
+  checkTrigger(o[0] as api.Trigger);
+  checkTrigger(o[1] as api.Trigger);
 }
 
 core.List<api.Variable> buildUnnamed1866() {
@@ -586,8 +586,8 @@ core.List<api.Variable> buildUnnamed1866() {
 
 void checkUnnamed1866(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterFolderEntities = 0;
@@ -622,8 +622,8 @@ core.List<api.UserAccess> buildUnnamed1867() {
 
 void checkUnnamed1867(core.List<api.UserAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserAccess(o[0]);
-  checkUserAccess(o[1]);
+  checkUserAccess(o[0] as api.UserAccess);
+  checkUserAccess(o[1] as api.UserAccess);
 }
 
 core.int buildCounterListAccountUsersResponse = 0;
@@ -654,8 +654,8 @@ core.List<api.Account> buildUnnamed1868() {
 
 void checkUnnamed1868(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterListAccountsResponse = 0;
@@ -686,8 +686,8 @@ core.List<api.ContainerVersion> buildUnnamed1869() {
 
 void checkUnnamed1869(core.List<api.ContainerVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContainerVersion(o[0]);
-  checkContainerVersion(o[1]);
+  checkContainerVersion(o[0] as api.ContainerVersion);
+  checkContainerVersion(o[1] as api.ContainerVersion);
 }
 
 core.List<api.ContainerVersionHeader> buildUnnamed1870() {
@@ -699,8 +699,8 @@ core.List<api.ContainerVersionHeader> buildUnnamed1870() {
 
 void checkUnnamed1870(core.List<api.ContainerVersionHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContainerVersionHeader(o[0]);
-  checkContainerVersionHeader(o[1]);
+  checkContainerVersionHeader(o[0] as api.ContainerVersionHeader);
+  checkContainerVersionHeader(o[1] as api.ContainerVersionHeader);
 }
 
 core.int buildCounterListContainerVersionsResponse = 0;
@@ -733,8 +733,8 @@ core.List<api.Container> buildUnnamed1871() {
 
 void checkUnnamed1871(core.List<api.Container> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContainer(o[0]);
-  checkContainer(o[1]);
+  checkContainer(o[0] as api.Container);
+  checkContainer(o[1] as api.Container);
 }
 
 core.int buildCounterListContainersResponse = 0;
@@ -765,8 +765,8 @@ core.List<api.Environment> buildUnnamed1872() {
 
 void checkUnnamed1872(core.List<api.Environment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnvironment(o[0]);
-  checkEnvironment(o[1]);
+  checkEnvironment(o[0] as api.Environment);
+  checkEnvironment(o[1] as api.Environment);
 }
 
 core.int buildCounterListEnvironmentsResponse = 0;
@@ -797,8 +797,8 @@ core.List<api.Folder> buildUnnamed1873() {
 
 void checkUnnamed1873(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFolder(o[0]);
-  checkFolder(o[1]);
+  checkFolder(o[0] as api.Folder);
+  checkFolder(o[1] as api.Folder);
 }
 
 core.int buildCounterListFoldersResponse = 0;
@@ -829,8 +829,8 @@ core.List<api.Tag> buildUnnamed1874() {
 
 void checkUnnamed1874(core.List<api.Tag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTag(o[0]);
-  checkTag(o[1]);
+  checkTag(o[0] as api.Tag);
+  checkTag(o[1] as api.Tag);
 }
 
 core.int buildCounterListTagsResponse = 0;
@@ -861,8 +861,8 @@ core.List<api.Trigger> buildUnnamed1875() {
 
 void checkUnnamed1875(core.List<api.Trigger> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrigger(o[0]);
-  checkTrigger(o[1]);
+  checkTrigger(o[0] as api.Trigger);
+  checkTrigger(o[1] as api.Trigger);
 }
 
 core.int buildCounterListTriggersResponse = 0;
@@ -893,8 +893,8 @@ core.List<api.Variable> buildUnnamed1876() {
 
 void checkUnnamed1876(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterListVariablesResponse = 0;
@@ -951,8 +951,8 @@ core.List<api.Parameter> buildUnnamed1879() {
 
 void checkUnnamed1879(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.int buildCounterMacro = 0;
@@ -1007,8 +1007,8 @@ core.List<api.Parameter> buildUnnamed1880() {
 
 void checkUnnamed1880(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.List<api.Parameter> buildUnnamed1881() {
@@ -1020,8 +1020,8 @@ core.List<api.Parameter> buildUnnamed1881() {
 
 void checkUnnamed1881(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.int buildCounterParameter = 0;
@@ -1068,7 +1068,7 @@ void checkPublishContainerVersionResponse(
   buildCounterPublishContainerVersionResponse++;
   if (buildCounterPublishContainerVersionResponse < 3) {
     unittest.expect(o.compilerError, unittest.isTrue);
-    checkContainerVersion(o.containerVersion);
+    checkContainerVersion(o.containerVersion as api.ContainerVersion);
   }
   buildCounterPublishContainerVersionResponse--;
 }
@@ -1082,8 +1082,8 @@ core.List<api.Condition> buildUnnamed1882() {
 
 void checkUnnamed1882(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkCondition(o[0] as api.Condition);
+  checkCondition(o[1] as api.Condition);
 }
 
 core.int buildCounterRule = 0;
@@ -1199,8 +1199,8 @@ core.List<api.Parameter> buildUnnamed1887() {
 
 void checkUnnamed1887(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.List<api.SetupTag> buildUnnamed1888() {
@@ -1212,8 +1212,8 @@ core.List<api.SetupTag> buildUnnamed1888() {
 
 void checkUnnamed1888(core.List<api.SetupTag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSetupTag(o[0]);
-  checkSetupTag(o[1]);
+  checkSetupTag(o[0] as api.SetupTag);
+  checkSetupTag(o[1] as api.SetupTag);
 }
 
 core.List<api.TeardownTag> buildUnnamed1889() {
@@ -1225,8 +1225,8 @@ core.List<api.TeardownTag> buildUnnamed1889() {
 
 void checkUnnamed1889(core.List<api.TeardownTag> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTeardownTag(o[0]);
-  checkTeardownTag(o[1]);
+  checkTeardownTag(o[0] as api.TeardownTag);
+  checkTeardownTag(o[1] as api.TeardownTag);
 }
 
 core.int buildCounterTag = 0;
@@ -1276,7 +1276,7 @@ void checkTag(api.Tag o) {
     checkUnnamed1887(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
     unittest.expect(o.paused, unittest.isTrue);
-    checkParameter(o.priority);
+    checkParameter(o.priority as api.Parameter);
     unittest.expect(o.scheduleEndMs, unittest.equals('foo'));
     unittest.expect(o.scheduleStartMs, unittest.equals('foo'));
     checkUnnamed1888(o.setupTag);
@@ -1318,8 +1318,8 @@ core.List<api.Condition> buildUnnamed1890() {
 
 void checkUnnamed1890(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkCondition(o[0] as api.Condition);
+  checkCondition(o[1] as api.Condition);
 }
 
 core.List<api.Condition> buildUnnamed1891() {
@@ -1331,8 +1331,8 @@ core.List<api.Condition> buildUnnamed1891() {
 
 void checkUnnamed1891(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkCondition(o[0] as api.Condition);
+  checkCondition(o[1] as api.Condition);
 }
 
 core.List<api.Condition> buildUnnamed1892() {
@@ -1344,8 +1344,8 @@ core.List<api.Condition> buildUnnamed1892() {
 
 void checkUnnamed1892(core.List<api.Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCondition(o[0]);
-  checkCondition(o[1]);
+  checkCondition(o[0] as api.Condition);
+  checkCondition(o[1] as api.Condition);
 }
 
 core.List<api.Parameter> buildUnnamed1893() {
@@ -1357,8 +1357,8 @@ core.List<api.Parameter> buildUnnamed1893() {
 
 void checkUnnamed1893(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.int buildCounterTrigger = 0;
@@ -1404,32 +1404,32 @@ void checkTrigger(api.Trigger o) {
   if (buildCounterTrigger < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     checkUnnamed1890(o.autoEventFilter);
-    checkParameter(o.checkValidation);
+    checkParameter(o.checkValidation as api.Parameter);
     unittest.expect(o.containerId, unittest.equals('foo'));
-    checkParameter(o.continuousTimeMinMilliseconds);
+    checkParameter(o.continuousTimeMinMilliseconds as api.Parameter);
     checkUnnamed1891(o.customEventFilter);
-    checkParameter(o.eventName);
+    checkParameter(o.eventName as api.Parameter);
     checkUnnamed1892(o.filter);
     unittest.expect(o.fingerprint, unittest.equals('foo'));
-    checkParameter(o.horizontalScrollPercentageList);
-    checkParameter(o.interval);
-    checkParameter(o.intervalSeconds);
-    checkParameter(o.limit);
-    checkParameter(o.maxTimerLengthSeconds);
+    checkParameter(o.horizontalScrollPercentageList as api.Parameter);
+    checkParameter(o.interval as api.Parameter);
+    checkParameter(o.intervalSeconds as api.Parameter);
+    checkParameter(o.limit as api.Parameter);
+    checkParameter(o.maxTimerLengthSeconds as api.Parameter);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1893(o.parameter);
     unittest.expect(o.parentFolderId, unittest.equals('foo'));
-    checkParameter(o.selector);
-    checkParameter(o.totalTimeMinMilliseconds);
+    checkParameter(o.selector as api.Parameter);
+    checkParameter(o.totalTimeMinMilliseconds as api.Parameter);
     unittest.expect(o.triggerId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
-    checkParameter(o.uniqueTriggerId);
-    checkParameter(o.verticalScrollPercentageList);
-    checkParameter(o.visibilitySelector);
-    checkParameter(o.visiblePercentageMax);
-    checkParameter(o.visiblePercentageMin);
-    checkParameter(o.waitForTags);
-    checkParameter(o.waitForTagsTimeout);
+    checkParameter(o.uniqueTriggerId as api.Parameter);
+    checkParameter(o.verticalScrollPercentageList as api.Parameter);
+    checkParameter(o.visibilitySelector as api.Parameter);
+    checkParameter(o.visiblePercentageMax as api.Parameter);
+    checkParameter(o.visiblePercentageMin as api.Parameter);
+    checkParameter(o.waitForTags as api.Parameter);
+    checkParameter(o.waitForTagsTimeout as api.Parameter);
   }
   buildCounterTrigger--;
 }
@@ -1443,8 +1443,8 @@ core.List<api.ContainerAccess> buildUnnamed1894() {
 
 void checkUnnamed1894(core.List<api.ContainerAccess> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContainerAccess(o[0]);
-  checkContainerAccess(o[1]);
+  checkContainerAccess(o[0] as api.ContainerAccess);
+  checkContainerAccess(o[1] as api.ContainerAccess);
 }
 
 core.int buildCounterUserAccess = 0;
@@ -1465,7 +1465,7 @@ api.UserAccess buildUserAccess() {
 void checkUserAccess(api.UserAccess o) {
   buildCounterUserAccess++;
   if (buildCounterUserAccess < 3) {
-    checkAccountAccess(o.accountAccess);
+    checkAccountAccess(o.accountAccess as api.AccountAccess);
     unittest.expect(o.accountId, unittest.equals('foo'));
     checkUnnamed1894(o.containerAccess);
     unittest.expect(o.emailAddress, unittest.equals('foo'));
@@ -1509,8 +1509,8 @@ core.List<api.Parameter> buildUnnamed1897() {
 
 void checkUnnamed1897(core.List<api.Parameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkParameter(o[0]);
-  checkParameter(o[1]);
+  checkParameter(o[0] as api.Parameter);
+  checkParameter(o[1] as api.Parameter);
 }
 
 core.int buildCounterVariable = 0;
@@ -1600,7 +1600,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -1608,7 +1608,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountAccess();
       var od = api.AccountAccess.fromJson(o.toJson());
-      checkAccountAccess(od);
+      checkAccountAccess(od as api.AccountAccess);
     });
   });
 
@@ -1616,7 +1616,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCondition();
       var od = api.Condition.fromJson(o.toJson());
-      checkCondition(od);
+      checkCondition(od as api.Condition);
     });
   });
 
@@ -1624,7 +1624,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainer();
       var od = api.Container.fromJson(o.toJson());
-      checkContainer(od);
+      checkContainer(od as api.Container);
     });
   });
 
@@ -1632,7 +1632,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerAccess();
       var od = api.ContainerAccess.fromJson(o.toJson());
-      checkContainerAccess(od);
+      checkContainerAccess(od as api.ContainerAccess);
     });
   });
 
@@ -1640,7 +1640,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerVersion();
       var od = api.ContainerVersion.fromJson(o.toJson());
-      checkContainerVersion(od);
+      checkContainerVersion(od as api.ContainerVersion);
     });
   });
 
@@ -1648,7 +1648,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerVersionHeader();
       var od = api.ContainerVersionHeader.fromJson(o.toJson());
-      checkContainerVersionHeader(od);
+      checkContainerVersionHeader(od as api.ContainerVersionHeader);
     });
   });
 
@@ -1657,7 +1657,8 @@ void main() {
       var o = buildCreateContainerVersionRequestVersionOptions();
       var od =
           api.CreateContainerVersionRequestVersionOptions.fromJson(o.toJson());
-      checkCreateContainerVersionRequestVersionOptions(od);
+      checkCreateContainerVersionRequestVersionOptions(
+          od as api.CreateContainerVersionRequestVersionOptions);
     });
   });
 
@@ -1665,7 +1666,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateContainerVersionResponse();
       var od = api.CreateContainerVersionResponse.fromJson(o.toJson());
-      checkCreateContainerVersionResponse(od);
+      checkCreateContainerVersionResponse(
+          od as api.CreateContainerVersionResponse);
     });
   });
 
@@ -1673,7 +1675,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
-      checkEnvironment(od);
+      checkEnvironment(od as api.Environment);
     });
   });
 
@@ -1681,7 +1683,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
-      checkFolder(od);
+      checkFolder(od as api.Folder);
     });
   });
 
@@ -1689,7 +1691,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolderEntities();
       var od = api.FolderEntities.fromJson(o.toJson());
-      checkFolderEntities(od);
+      checkFolderEntities(od as api.FolderEntities);
     });
   });
 
@@ -1697,7 +1699,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAccountUsersResponse();
       var od = api.ListAccountUsersResponse.fromJson(o.toJson());
-      checkListAccountUsersResponse(od);
+      checkListAccountUsersResponse(od as api.ListAccountUsersResponse);
     });
   });
 
@@ -1705,7 +1707,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAccountsResponse();
       var od = api.ListAccountsResponse.fromJson(o.toJson());
-      checkListAccountsResponse(od);
+      checkListAccountsResponse(od as api.ListAccountsResponse);
     });
   });
 
@@ -1713,7 +1715,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListContainerVersionsResponse();
       var od = api.ListContainerVersionsResponse.fromJson(o.toJson());
-      checkListContainerVersionsResponse(od);
+      checkListContainerVersionsResponse(
+          od as api.ListContainerVersionsResponse);
     });
   });
 
@@ -1721,7 +1724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListContainersResponse();
       var od = api.ListContainersResponse.fromJson(o.toJson());
-      checkListContainersResponse(od);
+      checkListContainersResponse(od as api.ListContainersResponse);
     });
   });
 
@@ -1729,7 +1732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListEnvironmentsResponse();
       var od = api.ListEnvironmentsResponse.fromJson(o.toJson());
-      checkListEnvironmentsResponse(od);
+      checkListEnvironmentsResponse(od as api.ListEnvironmentsResponse);
     });
   });
 
@@ -1737,7 +1740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
-      checkListFoldersResponse(od);
+      checkListFoldersResponse(od as api.ListFoldersResponse);
     });
   });
 
@@ -1745,7 +1748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTagsResponse();
       var od = api.ListTagsResponse.fromJson(o.toJson());
-      checkListTagsResponse(od);
+      checkListTagsResponse(od as api.ListTagsResponse);
     });
   });
 
@@ -1753,7 +1756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTriggersResponse();
       var od = api.ListTriggersResponse.fromJson(o.toJson());
-      checkListTriggersResponse(od);
+      checkListTriggersResponse(od as api.ListTriggersResponse);
     });
   });
 
@@ -1761,7 +1764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListVariablesResponse();
       var od = api.ListVariablesResponse.fromJson(o.toJson());
-      checkListVariablesResponse(od);
+      checkListVariablesResponse(od as api.ListVariablesResponse);
     });
   });
 
@@ -1769,7 +1772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMacro();
       var od = api.Macro.fromJson(o.toJson());
-      checkMacro(od);
+      checkMacro(od as api.Macro);
     });
   });
 
@@ -1777,7 +1780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParameter();
       var od = api.Parameter.fromJson(o.toJson());
-      checkParameter(od);
+      checkParameter(od as api.Parameter);
     });
   });
 
@@ -1785,7 +1788,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublishContainerVersionResponse();
       var od = api.PublishContainerVersionResponse.fromJson(o.toJson());
-      checkPublishContainerVersionResponse(od);
+      checkPublishContainerVersionResponse(
+          od as api.PublishContainerVersionResponse);
     });
   });
 
@@ -1793,7 +1797,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRule();
       var od = api.Rule.fromJson(o.toJson());
-      checkRule(od);
+      checkRule(od as api.Rule);
     });
   });
 
@@ -1801,7 +1805,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetupTag();
       var od = api.SetupTag.fromJson(o.toJson());
-      checkSetupTag(od);
+      checkSetupTag(od as api.SetupTag);
     });
   });
 
@@ -1809,7 +1813,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTag();
       var od = api.Tag.fromJson(o.toJson());
-      checkTag(od);
+      checkTag(od as api.Tag);
     });
   });
 
@@ -1817,7 +1821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeardownTag();
       var od = api.TeardownTag.fromJson(o.toJson());
-      checkTeardownTag(od);
+      checkTeardownTag(od as api.TeardownTag);
     });
   });
 
@@ -1825,7 +1829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrigger();
       var od = api.Trigger.fromJson(o.toJson());
-      checkTrigger(od);
+      checkTrigger(od as api.Trigger);
     });
   });
 
@@ -1833,7 +1837,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserAccess();
       var od = api.UserAccess.fromJson(o.toJson());
-      checkUserAccess(od);
+      checkUserAccess(od as api.UserAccess);
     });
   });
 
@@ -1841,7 +1845,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
-      checkVariable(od);
+      checkVariable(od as api.Variable);
     });
   });
 
@@ -1892,7 +1896,7 @@ void main() {
       res
           .get(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
 
@@ -1936,7 +1940,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkListAccountsResponse(response);
+        checkListAccountsResponse(response as api.ListAccountsResponse);
       })));
     });
 
@@ -1948,8 +1952,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Account.fromJson(json);
-        checkAccount(obj);
+        var obj =
+            api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAccount(obj as api.Account);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1994,7 +1999,7 @@ void main() {
           .update(arg_request, arg_accountId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
   });
@@ -2007,8 +2012,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Container.fromJson(json);
-        checkContainer(obj);
+        var obj =
+            api.Container.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkContainer(obj as api.Container);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2056,7 +2062,7 @@ void main() {
       res
           .create(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainer(response);
+        checkContainer(response as api.Container);
       })));
     });
 
@@ -2174,7 +2180,7 @@ void main() {
       res
           .get(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainer(response);
+        checkContainer(response as api.Container);
       })));
     });
 
@@ -2230,7 +2236,7 @@ void main() {
       res
           .list(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListContainersResponse(response);
+        checkListContainersResponse(response as api.ListContainersResponse);
       })));
     });
 
@@ -2243,8 +2249,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Container.fromJson(json);
-        checkContainer(obj);
+        var obj =
+            api.Container.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkContainer(obj as api.Container);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2298,7 +2305,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_containerId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainer(response);
+        checkContainer(response as api.Container);
       })));
     });
   });
@@ -2312,8 +2319,9 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Environment.fromJson(json);
-        checkEnvironment(obj);
+        var obj = api.Environment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnvironment(obj as api.Environment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2371,7 +2379,7 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
 
@@ -2511,7 +2519,7 @@ void main() {
           .get(arg_accountId, arg_containerId, arg_environmentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
 
@@ -2577,7 +2585,7 @@ void main() {
       res
           .list(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListEnvironmentsResponse(response);
+        checkListEnvironmentsResponse(response as api.ListEnvironmentsResponse);
       })));
     });
 
@@ -2591,8 +2599,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Environment.fromJson(json);
-        checkEnvironment(obj);
+        var obj = api.Environment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnvironment(obj as api.Environment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2656,7 +2665,7 @@ void main() {
               arg_request, arg_accountId, arg_containerId, arg_environmentId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
   });
@@ -2670,8 +2679,9 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Folder.fromJson(json);
-        checkFolder(obj);
+        var obj =
+            api.Folder.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFolder(obj as api.Folder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2729,7 +2739,7 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
 
@@ -2869,7 +2879,7 @@ void main() {
           .get(arg_accountId, arg_containerId, arg_folderId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
 
@@ -2935,7 +2945,7 @@ void main() {
       res
           .list(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFoldersResponse(response);
+        checkListFoldersResponse(response as api.ListFoldersResponse);
       })));
     });
 
@@ -2949,8 +2959,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Folder.fromJson(json);
-        checkFolder(obj);
+        var obj =
+            api.Folder.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFolder(obj as api.Folder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3013,7 +3024,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_containerId, arg_folderId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
   });
@@ -3092,7 +3103,7 @@ void main() {
           .list(arg_accountId, arg_containerId, arg_folderId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolderEntities(response);
+        checkFolderEntities(response as api.FolderEntities);
       })));
     });
   });
@@ -3110,8 +3121,9 @@ void main() {
       var arg_variableId = buildUnnamed1900();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Folder.fromJson(json);
-        checkFolder(obj);
+        var obj =
+            api.Folder.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFolder(obj as api.Folder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3194,8 +3206,9 @@ void main() {
       var arg_environmentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Environment.fromJson(json);
-        checkEnvironment(obj);
+        var obj = api.Environment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnvironment(obj as api.Environment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3257,7 +3270,7 @@ void main() {
               arg_request, arg_accountId, arg_containerId, arg_environmentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEnvironment(response);
+        checkEnvironment(response as api.Environment);
       })));
     });
   });
@@ -3271,8 +3284,8 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Tag.fromJson(json);
-        checkTag(obj);
+        var obj = api.Tag.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTag(obj as api.Tag);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3330,7 +3343,7 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTag(response);
+        checkTag(response as api.Tag);
       })));
     });
 
@@ -3469,7 +3482,7 @@ void main() {
       res
           .get(arg_accountId, arg_containerId, arg_tagId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTag(response);
+        checkTag(response as api.Tag);
       })));
     });
 
@@ -3535,7 +3548,7 @@ void main() {
       res
           .list(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTagsResponse(response);
+        checkListTagsResponse(response as api.ListTagsResponse);
       })));
     });
 
@@ -3549,8 +3562,8 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Tag.fromJson(json);
-        checkTag(obj);
+        var obj = api.Tag.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTag(obj as api.Tag);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3613,7 +3626,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_containerId, arg_tagId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTag(response);
+        checkTag(response as api.Tag);
       })));
     });
   });
@@ -3627,8 +3640,9 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Trigger.fromJson(json);
-        checkTrigger(obj);
+        var obj =
+            api.Trigger.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTrigger(obj as api.Trigger);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3686,7 +3700,7 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrigger(response);
+        checkTrigger(response as api.Trigger);
       })));
     });
 
@@ -3826,7 +3840,7 @@ void main() {
           .get(arg_accountId, arg_containerId, arg_triggerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrigger(response);
+        checkTrigger(response as api.Trigger);
       })));
     });
 
@@ -3892,7 +3906,7 @@ void main() {
       res
           .list(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTriggersResponse(response);
+        checkListTriggersResponse(response as api.ListTriggersResponse);
       })));
     });
 
@@ -3906,8 +3920,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Trigger.fromJson(json);
-        checkTrigger(obj);
+        var obj =
+            api.Trigger.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTrigger(obj as api.Trigger);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3970,7 +3985,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_containerId, arg_triggerId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTrigger(response);
+        checkTrigger(response as api.Trigger);
       })));
     });
   });
@@ -3984,8 +3999,9 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Variable.fromJson(json);
-        checkVariable(obj);
+        var obj =
+            api.Variable.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVariable(obj as api.Variable);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4043,7 +4059,7 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVariable(response);
+        checkVariable(response as api.Variable);
       })));
     });
 
@@ -4183,7 +4199,7 @@ void main() {
           .get(arg_accountId, arg_containerId, arg_variableId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVariable(response);
+        checkVariable(response as api.Variable);
       })));
     });
 
@@ -4249,7 +4265,7 @@ void main() {
       res
           .list(arg_accountId, arg_containerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVariablesResponse(response);
+        checkListVariablesResponse(response as api.ListVariablesResponse);
       })));
     });
 
@@ -4263,8 +4279,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Variable.fromJson(json);
-        checkVariable(obj);
+        var obj =
+            api.Variable.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVariable(obj as api.Variable);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4327,7 +4344,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_containerId, arg_variableId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVariable(response);
+        checkVariable(response as api.Variable);
       })));
     });
   });
@@ -4341,9 +4358,10 @@ void main() {
       var arg_containerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.CreateContainerVersionRequestVersionOptions.fromJson(json);
-        checkCreateContainerVersionRequestVersionOptions(obj);
+        var obj = api.CreateContainerVersionRequestVersionOptions.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateContainerVersionRequestVersionOptions(
+            obj as api.CreateContainerVersionRequestVersionOptions);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4401,7 +4419,8 @@ void main() {
           .create(arg_request, arg_accountId, arg_containerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreateContainerVersionResponse(response);
+        checkCreateContainerVersionResponse(
+            response as api.CreateContainerVersionResponse);
       })));
     });
 
@@ -4541,7 +4560,7 @@ void main() {
           .get(arg_accountId, arg_containerId, arg_containerVersionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response);
+        checkContainerVersion(response as api.ContainerVersion);
       })));
     });
 
@@ -4616,7 +4635,8 @@ void main() {
               includeDeleted: arg_includeDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListContainerVersionsResponse(response);
+        checkListContainerVersionsResponse(
+            response as api.ListContainerVersionsResponse);
       })));
     });
 
@@ -4696,7 +4716,8 @@ void main() {
           .publish(arg_accountId, arg_containerId, arg_containerVersionId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPublishContainerVersionResponse(response);
+        checkPublishContainerVersionResponse(
+            response as api.PublishContainerVersionResponse);
       })));
     });
 
@@ -4773,7 +4794,7 @@ void main() {
           .restore(arg_accountId, arg_containerId, arg_containerVersionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response);
+        checkContainerVersion(response as api.ContainerVersion);
       })));
     });
 
@@ -4850,7 +4871,7 @@ void main() {
           .undelete(arg_accountId, arg_containerId, arg_containerVersionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response);
+        checkContainerVersion(response as api.ContainerVersion);
       })));
     });
 
@@ -4864,8 +4885,9 @@ void main() {
       var arg_fingerprint = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ContainerVersion.fromJson(json);
-        checkContainerVersion(obj);
+        var obj = api.ContainerVersion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkContainerVersion(obj as api.ContainerVersion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4929,7 +4951,7 @@ void main() {
               arg_containerVersionId,
               fingerprint: arg_fingerprint, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContainerVersion(response);
+        checkContainerVersion(response as api.ContainerVersion);
       })));
     });
   });
@@ -4942,8 +4964,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UserAccess.fromJson(json);
-        checkUserAccess(obj);
+        var obj = api.UserAccess.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserAccess(obj as api.UserAccess);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4991,7 +5014,7 @@ void main() {
       res
           .create(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUserAccess(response);
+        checkUserAccess(response as api.UserAccess);
       })));
     });
 
@@ -5109,7 +5132,7 @@ void main() {
       res
           .get(arg_accountId, arg_permissionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUserAccess(response);
+        checkUserAccess(response as api.UserAccess);
       })));
     });
 
@@ -5165,7 +5188,7 @@ void main() {
       res
           .list(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAccountUsersResponse(response);
+        checkListAccountUsersResponse(response as api.ListAccountUsersResponse);
       })));
     });
 
@@ -5177,8 +5200,9 @@ void main() {
       var arg_permissionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UserAccess.fromJson(json);
-        checkUserAccess(obj);
+        var obj = api.UserAccess.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserAccess(obj as api.UserAccess);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5230,7 +5254,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_permissionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUserAccess(response);
+        checkUserAccess(response as api.UserAccess);
       })));
     });
   });

@@ -123,7 +123,10 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchCreateNotesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchCreateNotesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new note.
@@ -187,7 +190,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Note.fromJson(data));
+    return _response.then(
+      (data) => Note.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified note.
@@ -237,7 +242,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified note.
@@ -287,7 +294,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Note.fromJson(data));
+    return _response.then(
+      (data) => Note.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a note or an occurrence resource.
@@ -351,7 +360,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists notes for the specified project.
@@ -422,7 +433,10 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNotesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNotesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified note.
@@ -484,7 +498,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Note.fromJson(data));
+    return _response.then(
+      (data) => Note.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified note or occurrence.
@@ -548,7 +564,9 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the permissions that a caller has on the specified note or
@@ -611,7 +629,10 @@ class ProjectsNotesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -690,7 +711,10 @@ class ProjectsNotesOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNoteOccurrencesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNoteOccurrencesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -755,8 +779,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BatchCreateOccurrencesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchCreateOccurrencesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new occurrence.
@@ -814,7 +840,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Occurrence.fromJson(data));
+    return _response.then(
+      (data) =>
+          Occurrence.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified occurrence. For example, use this method to delete
@@ -866,7 +895,9 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified occurrence.
@@ -916,7 +947,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Occurrence.fromJson(data));
+    return _response.then(
+      (data) =>
+          Occurrence.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a note or an occurrence resource.
@@ -980,7 +1014,9 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the note attached to the specified occurrence. Consumer projects can
@@ -1032,7 +1068,9 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Note.fromJson(data));
+    return _response.then(
+      (data) => Note.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a summary of the number and severity of occurrences.
@@ -1090,8 +1128,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => VulnerabilityOccurrencesSummary.fromJson(data));
+    return _response.then(
+      (data) => VulnerabilityOccurrencesSummary.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists occurrences for the specified project.
@@ -1163,7 +1203,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOccurrencesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOccurrencesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified occurrence.
@@ -1225,7 +1268,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Occurrence.fromJson(data));
+    return _response.then(
+      (data) =>
+          Occurrence.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified note or occurrence.
@@ -1289,7 +1335,9 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the permissions that a caller has on the specified note or
@@ -1352,7 +1400,10 @@ class ProjectsOccurrencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1409,7 +1460,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists scan configurations for the specified project.
@@ -1479,7 +1533,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListScanConfigsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListScanConfigsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified scan configuration.
@@ -1535,7 +1592,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1686,12 +1746,13 @@ class Attestation {
 
   Attestation.fromJson(core.Map _json) {
     if (_json.containsKey('genericSignedAttestation')) {
-      genericSignedAttestation =
-          GenericSignedAttestation.fromJson(_json['genericSignedAttestation']);
+      genericSignedAttestation = GenericSignedAttestation.fromJson(
+          _json['genericSignedAttestation']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pgpSignedAttestation')) {
-      pgpSignedAttestation =
-          PgpSignedAttestation.fromJson(_json['pgpSignedAttestation']);
+      pgpSignedAttestation = PgpSignedAttestation.fromJson(
+          _json['pgpSignedAttestation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1723,7 +1784,8 @@ class Authority {
 
   Authority.fromJson(core.Map _json) {
     if (_json.containsKey('hint')) {
-      hint = Hint.fromJson(_json['hint']);
+      hint =
+          Hint.fromJson(_json['hint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1751,7 +1813,8 @@ class Basis {
 
   Basis.fromJson(core.Map _json) {
     if (_json.containsKey('fingerprint')) {
-      fingerprint = Fingerprint.fromJson(_json['fingerprint']);
+      fingerprint = Fingerprint.fromJson(
+          _json['fingerprint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceUrl')) {
       resourceUrl = _json['resourceUrl'] as core.String;
@@ -1780,8 +1843,10 @@ class BatchCreateNotesRequest {
   BatchCreateNotesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('notes')) {
       notes = commons.mapMap<core.Map, Note>(
-          _json['notes'].cast<core.String, core.Map>(),
-          (core.Map item) => Note.fromJson(item));
+          (_json['notes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Note.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -1805,7 +1870,8 @@ class BatchCreateNotesResponse {
   BatchCreateNotesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('notes')) {
       notes = (_json['notes'] as core.List)
-          .map<Note>((value) => Note.fromJson(value))
+          .map<Note>((value) =>
+              Note.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1829,7 +1895,8 @@ class BatchCreateOccurrencesRequest {
   BatchCreateOccurrencesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('occurrences')) {
       occurrences = (_json['occurrences'] as core.List)
-          .map<Occurrence>((value) => Occurrence.fromJson(value))
+          .map<Occurrence>((value) =>
+              Occurrence.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1854,7 +1921,8 @@ class BatchCreateOccurrencesResponse {
   BatchCreateOccurrencesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('occurrences')) {
       occurrences = (_json['occurrences'] as core.List)
-          .map<Occurrence>((value) => Occurrence.fromJson(value))
+          .map<Occurrence>((value) =>
+              Occurrence.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1926,7 +1994,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1973,7 +2042,8 @@ class Build {
       builderVersion = _json['builderVersion'] as core.String;
     }
     if (_json.containsKey('signature')) {
-      signature = BuildSignature.fromJson(_json['signature']);
+      signature = BuildSignature.fromJson(
+          _json['signature'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2039,7 +2109,8 @@ class BuildProvenance {
   BuildProvenance.fromJson(core.Map _json) {
     if (_json.containsKey('buildOptions')) {
       buildOptions = commons.mapMap<core.String, core.String>(
-          _json['buildOptions'].cast<core.String, core.String>(),
+          (_json['buildOptions'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('builderVersion')) {
@@ -2047,12 +2118,14 @@ class BuildProvenance {
     }
     if (_json.containsKey('builtArtifacts')) {
       builtArtifacts = (_json['builtArtifacts'] as core.List)
-          .map<Artifact>((value) => Artifact.fromJson(value))
+          .map<Artifact>((value) =>
+              Artifact.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('commands')) {
       commands = (_json['commands'] as core.List)
-          .map<Command>((value) => Command.fromJson(value))
+          .map<Command>((value) =>
+              Command.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('createTime')) {
@@ -2074,7 +2147,8 @@ class BuildProvenance {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('sourceProvenance')) {
-      sourceProvenance = Source.fromJson(_json['sourceProvenance']);
+      sourceProvenance = Source.fromJson(
+          _json['sourceProvenance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -2213,7 +2287,8 @@ class ByProducts {
   ByProducts.fromJson(core.Map _json) {
     if (_json.containsKey('customValues')) {
       customValues = commons.mapMap<core.String, core.String>(
-          _json['customValues'].cast<core.String, core.String>(),
+          (_json['customValues'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -2392,10 +2467,12 @@ class CloudRepoSourceContext {
 
   CloudRepoSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(_json['aliasContext']);
+      aliasContext = AliasContext.fromJson(
+          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('repoId')) {
-      repoId = RepoId.fromJson(_json['repoId']);
+      repoId = RepoId.fromJson(
+          _json['repoId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('revisionId')) {
       revisionId = _json['revisionId'] as core.String;
@@ -2630,11 +2707,13 @@ class Derived {
       distance = _json['distance'] as core.int;
     }
     if (_json.containsKey('fingerprint')) {
-      fingerprint = Fingerprint.fromJson(_json['fingerprint']);
+      fingerprint = Fingerprint.fromJson(
+          _json['fingerprint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('layerInfo')) {
       layerInfo = (_json['layerInfo'] as core.List)
-          .map<Layer>((value) => Layer.fromJson(value))
+          .map<Layer>((value) =>
+              Layer.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2707,16 +2786,19 @@ class Detail {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('fixedLocation')) {
-      fixedLocation = VulnerabilityLocation.fromJson(_json['fixedLocation']);
+      fixedLocation = VulnerabilityLocation.fromJson(
+          _json['fixedLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isObsolete')) {
       isObsolete = _json['isObsolete'] as core.bool;
     }
     if (_json.containsKey('maxAffectedVersion')) {
-      maxAffectedVersion = Version.fromJson(_json['maxAffectedVersion']);
+      maxAffectedVersion = Version.fromJson(
+          _json['maxAffectedVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minAffectedVersion')) {
-      minAffectedVersion = Version.fromJson(_json['minAffectedVersion']);
+      minAffectedVersion = Version.fromJson(
+          _json['minAffectedVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('package')) {
       package = _json['package'] as core.String;
@@ -2777,7 +2859,8 @@ class Details {
 
   Details.fromJson(core.Map _json) {
     if (_json.containsKey('attestation')) {
-      attestation = Attestation.fromJson(_json['attestation']);
+      attestation = Attestation.fromJson(
+          _json['attestation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2826,7 +2909,8 @@ class Discovered {
       analysisStatus = _json['analysisStatus'] as core.String;
     }
     if (_json.containsKey('analysisStatusError')) {
-      analysisStatusError = Status.fromJson(_json['analysisStatusError']);
+      analysisStatusError = Status.fromJson(
+          _json['analysisStatusError'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('continuousAnalysis')) {
       continuousAnalysis = _json['continuousAnalysis'] as core.String;
@@ -2933,7 +3017,8 @@ class Distribution {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('latestVersion')) {
-      latestVersion = Version.fromJson(_json['latestVersion']);
+      latestVersion = Version.fromJson(
+          _json['latestVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maintainer')) {
       maintainer = _json['maintainer'] as core.String;
@@ -2995,7 +3080,8 @@ class Environment {
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('customValues')) {
       customValues = commons.mapMap<core.String, core.String>(
-          _json['customValues'].cast<core.String, core.String>(),
+          (_json['customValues'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -3088,7 +3174,8 @@ class FileHashes {
   FileHashes.fromJson(core.Map _json) {
     if (_json.containsKey('fileHash')) {
       fileHash = (_json['fileHash'] as core.List)
-          .map<Hash>((value) => Hash.fromJson(value))
+          .map<Hash>((value) =>
+              Hash.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3176,7 +3263,8 @@ class FixableTotalByDigest {
       fixableCount = _json['fixableCount'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = Resource.fromJson(_json['resource']);
+      resource = Resource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('severity')) {
       severity = _json['severity'] as core.String;
@@ -3250,7 +3338,8 @@ class GenericSignedAttestation {
     }
     if (_json.containsKey('signatures')) {
       signatures = (_json['signatures'] as core.List)
-          .map<Signature>((value) => Signature.fromJson(value))
+          .map<Signature>((value) =>
+              Signature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3290,7 +3379,8 @@ class GerritSourceContext {
 
   GerritSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(_json['aliasContext']);
+      aliasContext = AliasContext.fromJson(
+          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gerritProject')) {
       gerritProject = _json['gerritProject'] as core.String;
@@ -3331,7 +3421,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3457,7 +3548,8 @@ class GrafeasV1beta1BuildDetails {
 
   GrafeasV1beta1BuildDetails.fromJson(core.Map _json) {
     if (_json.containsKey('provenance')) {
-      provenance = BuildProvenance.fromJson(_json['provenance']);
+      provenance = BuildProvenance.fromJson(
+          _json['provenance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('provenanceBytes')) {
       provenanceBytes = _json['provenanceBytes'] as core.String;
@@ -3485,7 +3577,8 @@ class GrafeasV1beta1DeploymentDetails {
 
   GrafeasV1beta1DeploymentDetails.fromJson(core.Map _json) {
     if (_json.containsKey('deployment')) {
-      deployment = Deployment.fromJson(_json['deployment']);
+      deployment = Deployment.fromJson(
+          _json['deployment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3507,7 +3600,8 @@ class GrafeasV1beta1DiscoveryDetails {
 
   GrafeasV1beta1DiscoveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey('discovered')) {
-      discovered = Discovered.fromJson(_json['discovered']);
+      discovered = Discovered.fromJson(
+          _json['discovered'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3529,7 +3623,8 @@ class GrafeasV1beta1ImageDetails {
 
   GrafeasV1beta1ImageDetails.fromJson(core.Map _json) {
     if (_json.containsKey('derivedImage')) {
-      derivedImage = Derived.fromJson(_json['derivedImage']);
+      derivedImage = Derived.fromJson(
+          _json['derivedImage'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3550,7 +3645,8 @@ class GrafeasV1beta1IntotoArtifact {
 
   GrafeasV1beta1IntotoArtifact.fromJson(core.Map _json) {
     if (_json.containsKey('hashes')) {
-      hashes = ArtifactHashes.fromJson(_json['hashes']);
+      hashes = ArtifactHashes.fromJson(
+          _json['hashes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceUri')) {
       resourceUri = _json['resourceUri'] as core.String;
@@ -3581,12 +3677,14 @@ class GrafeasV1beta1IntotoDetails {
   GrafeasV1beta1IntotoDetails.fromJson(core.Map _json) {
     if (_json.containsKey('signatures')) {
       signatures = (_json['signatures'] as core.List)
-          .map<GrafeasV1beta1IntotoSignature>(
-              (value) => GrafeasV1beta1IntotoSignature.fromJson(value))
+          .map<GrafeasV1beta1IntotoSignature>((value) =>
+              GrafeasV1beta1IntotoSignature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('signed')) {
-      signed = Link.fromJson(_json['signed']);
+      signed =
+          Link.fromJson(_json['signed'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3639,7 +3737,8 @@ class GrafeasV1beta1PackageDetails {
 
   GrafeasV1beta1PackageDetails.fromJson(core.Map _json) {
     if (_json.containsKey('installation')) {
-      installation = Installation.fromJson(_json['installation']);
+      installation = Installation.fromJson(
+          _json['installation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3712,12 +3811,14 @@ class GrafeasV1beta1VulnerabilityDetails {
     }
     if (_json.containsKey('packageIssue')) {
       packageIssue = (_json['packageIssue'] as core.List)
-          .map<PackageIssue>((value) => PackageIssue.fromJson(value))
+          .map<PackageIssue>((value) => PackageIssue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('relatedUrls')) {
       relatedUrls = (_json['relatedUrls'] as core.List)
-          .map<RelatedUrl>((value) => RelatedUrl.fromJson(value))
+          .map<RelatedUrl>((value) =>
+              RelatedUrl.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('severity')) {
@@ -3865,17 +3966,20 @@ class InToto {
     }
     if (_json.containsKey('expectedMaterials')) {
       expectedMaterials = (_json['expectedMaterials'] as core.List)
-          .map<ArtifactRule>((value) => ArtifactRule.fromJson(value))
+          .map<ArtifactRule>((value) => ArtifactRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('expectedProducts')) {
       expectedProducts = (_json['expectedProducts'] as core.List)
-          .map<ArtifactRule>((value) => ArtifactRule.fromJson(value))
+          .map<ArtifactRule>((value) => ArtifactRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('signingKeys')) {
       signingKeys = (_json['signingKeys'] as core.List)
-          .map<SigningKey>((value) => SigningKey.fromJson(value))
+          .map<SigningKey>((value) =>
+              SigningKey.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('stepName')) {
@@ -3928,7 +4032,8 @@ class Installation {
   Installation.fromJson(core.Map _json) {
     if (_json.containsKey('location')) {
       location = (_json['location'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -4066,7 +4171,8 @@ class Link {
 
   Link.fromJson(core.Map _json) {
     if (_json.containsKey('byproducts')) {
-      byproducts = ByProducts.fromJson(_json['byproducts']);
+      byproducts = ByProducts.fromJson(
+          _json['byproducts'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('command')) {
       command = (_json['command'] as core.List)
@@ -4074,18 +4180,21 @@ class Link {
           .toList();
     }
     if (_json.containsKey('environment')) {
-      environment = Environment.fromJson(_json['environment']);
+      environment = Environment.fromJson(
+          _json['environment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('materials')) {
       materials = (_json['materials'] as core.List)
-          .map<GrafeasV1beta1IntotoArtifact>(
-              (value) => GrafeasV1beta1IntotoArtifact.fromJson(value))
+          .map<GrafeasV1beta1IntotoArtifact>((value) =>
+              GrafeasV1beta1IntotoArtifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<GrafeasV1beta1IntotoArtifact>(
-              (value) => GrafeasV1beta1IntotoArtifact.fromJson(value))
+          .map<GrafeasV1beta1IntotoArtifact>((value) =>
+              GrafeasV1beta1IntotoArtifact.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4127,7 +4236,8 @@ class ListNoteOccurrencesResponse {
     }
     if (_json.containsKey('occurrences')) {
       occurrences = (_json['occurrences'] as core.List)
-          .map<Occurrence>((value) => Occurrence.fromJson(value))
+          .map<Occurrence>((value) =>
+              Occurrence.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4163,7 +4273,8 @@ class ListNotesResponse {
     }
     if (_json.containsKey('notes')) {
       notes = (_json['notes'] as core.List)
-          .map<Note>((value) => Note.fromJson(value))
+          .map<Note>((value) =>
+              Note.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4198,7 +4309,8 @@ class ListOccurrencesResponse {
     }
     if (_json.containsKey('occurrences')) {
       occurrences = (_json['occurrences'] as core.List)
-          .map<Occurrence>((value) => Occurrence.fromJson(value))
+          .map<Occurrence>((value) =>
+              Occurrence.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4234,7 +4346,8 @@ class ListScanConfigsResponse {
     }
     if (_json.containsKey('scanConfigs')) {
       scanConfigs = (_json['scanConfigs'] as core.List)
-          .map<ScanConfig>((value) => ScanConfig.fromJson(value))
+          .map<ScanConfig>((value) =>
+              ScanConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4276,7 +4389,8 @@ class Location {
       path = _json['path'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = Version.fromJson(_json['version']);
+      version = Version.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4369,28 +4483,34 @@ class Note {
 
   Note.fromJson(core.Map _json) {
     if (_json.containsKey('attestationAuthority')) {
-      attestationAuthority = Authority.fromJson(_json['attestationAuthority']);
+      attestationAuthority = Authority.fromJson(
+          _json['attestationAuthority'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('baseImage')) {
-      baseImage = Basis.fromJson(_json['baseImage']);
+      baseImage = Basis.fromJson(
+          _json['baseImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('build')) {
-      build = Build.fromJson(_json['build']);
+      build =
+          Build.fromJson(_json['build'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('deployable')) {
-      deployable = Deployable.fromJson(_json['deployable']);
+      deployable = Deployable.fromJson(
+          _json['deployable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('discovery')) {
-      discovery = Discovery.fromJson(_json['discovery']);
+      discovery = Discovery.fromJson(
+          _json['discovery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('expirationTime')) {
       expirationTime = _json['expirationTime'] as core.String;
     }
     if (_json.containsKey('intoto')) {
-      intoto = InToto.fromJson(_json['intoto']);
+      intoto = InToto.fromJson(
+          _json['intoto'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -4402,7 +4522,8 @@ class Note {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('package')) {
-      package = Package.fromJson(_json['package']);
+      package = Package.fromJson(
+          _json['package'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('relatedNoteNames')) {
       relatedNoteNames = (_json['relatedNoteNames'] as core.List)
@@ -4411,7 +4532,8 @@ class Note {
     }
     if (_json.containsKey('relatedUrl')) {
       relatedUrl = (_json['relatedUrl'] as core.List)
-          .map<RelatedUrl>((value) => RelatedUrl.fromJson(value))
+          .map<RelatedUrl>((value) =>
+              RelatedUrl.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shortDescription')) {
@@ -4421,7 +4543,8 @@ class Note {
       updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('vulnerability')) {
-      vulnerability = Vulnerability.fromJson(_json['vulnerability']);
+      vulnerability = Vulnerability.fromJson(
+          _json['vulnerability'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4550,30 +4673,35 @@ class Occurrence {
 
   Occurrence.fromJson(core.Map _json) {
     if (_json.containsKey('attestation')) {
-      attestation = Details.fromJson(_json['attestation']);
+      attestation = Details.fromJson(
+          _json['attestation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('build')) {
-      build = GrafeasV1beta1BuildDetails.fromJson(_json['build']);
+      build = GrafeasV1beta1BuildDetails.fromJson(
+          _json['build'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('deployment')) {
-      deployment =
-          GrafeasV1beta1DeploymentDetails.fromJson(_json['deployment']);
+      deployment = GrafeasV1beta1DeploymentDetails.fromJson(
+          _json['deployment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('derivedImage')) {
-      derivedImage = GrafeasV1beta1ImageDetails.fromJson(_json['derivedImage']);
+      derivedImage = GrafeasV1beta1ImageDetails.fromJson(
+          _json['derivedImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('discovered')) {
-      discovered = GrafeasV1beta1DiscoveryDetails.fromJson(_json['discovered']);
+      discovered = GrafeasV1beta1DiscoveryDetails.fromJson(
+          _json['discovered'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('installation')) {
-      installation =
-          GrafeasV1beta1PackageDetails.fromJson(_json['installation']);
+      installation = GrafeasV1beta1PackageDetails.fromJson(
+          _json['installation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intoto')) {
-      intoto = GrafeasV1beta1IntotoDetails.fromJson(_json['intoto']);
+      intoto = GrafeasV1beta1IntotoDetails.fromJson(
+          _json['intoto'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -4588,14 +4716,15 @@ class Occurrence {
       remediation = _json['remediation'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = Resource.fromJson(_json['resource']);
+      resource = Resource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('vulnerability')) {
-      vulnerability =
-          GrafeasV1beta1VulnerabilityDetails.fromJson(_json['vulnerability']);
+      vulnerability = GrafeasV1beta1VulnerabilityDetails.fromJson(
+          _json['vulnerability'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4665,7 +4794,8 @@ class Package {
   Package.fromJson(core.Map _json) {
     if (_json.containsKey('distribution')) {
       distribution = (_json['distribution'] as core.List)
-          .map<Distribution>((value) => Distribution.fromJson(value))
+          .map<Distribution>((value) => Distribution.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -4703,11 +4833,12 @@ class PackageIssue {
 
   PackageIssue.fromJson(core.Map _json) {
     if (_json.containsKey('affectedLocation')) {
-      affectedLocation =
-          VulnerabilityLocation.fromJson(_json['affectedLocation']);
+      affectedLocation = VulnerabilityLocation.fromJson(
+          _json['affectedLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fixedLocation')) {
-      fixedLocation = VulnerabilityLocation.fromJson(_json['fixedLocation']);
+      fixedLocation = VulnerabilityLocation.fromJson(
+          _json['fixedLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('severityName')) {
       severityName = _json['severityName'] as core.String;
@@ -4875,7 +5006,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -4976,7 +5108,8 @@ class RepoId {
 
   RepoId.fromJson(core.Map _json) {
     if (_json.containsKey('projectRepoId')) {
-      projectRepoId = ProjectRepoId.fromJson(_json['projectRepoId']);
+      projectRepoId = ProjectRepoId.fromJson(
+          _json['projectRepoId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uid')) {
       uid = _json['uid'] as core.String;
@@ -5013,7 +5146,8 @@ class Resource {
 
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey('contentHash')) {
-      contentHash = Hash.fromJson(_json['contentHash']);
+      contentHash = Hash.fromJson(
+          _json['contentHash'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5112,7 +5246,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5279,7 +5414,8 @@ class Source {
   Source.fromJson(core.Map _json) {
     if (_json.containsKey('additionalContexts')) {
       additionalContexts = (_json['additionalContexts'] as core.List)
-          .map<SourceContext>((value) => SourceContext.fromJson(value))
+          .map<SourceContext>((value) => SourceContext.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('artifactStorageSourceUri')) {
@@ -5287,12 +5423,15 @@ class Source {
           _json['artifactStorageSourceUri'] as core.String;
     }
     if (_json.containsKey('context')) {
-      context = SourceContext.fromJson(_json['context']);
+      context = SourceContext.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileHashes')) {
       fileHashes = commons.mapMap<core.Map, FileHashes>(
-          _json['fileHashes'].cast<core.String, core.Map>(),
-          (core.Map item) => FileHashes.fromJson(item));
+          (_json['fileHashes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              FileHashes.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -5336,17 +5475,21 @@ class SourceContext {
 
   SourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('cloudRepo')) {
-      cloudRepo = CloudRepoSourceContext.fromJson(_json['cloudRepo']);
+      cloudRepo = CloudRepoSourceContext.fromJson(
+          _json['cloudRepo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gerrit')) {
-      gerrit = GerritSourceContext.fromJson(_json['gerrit']);
+      gerrit = GerritSourceContext.fromJson(
+          _json['gerrit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('git')) {
-      git = GitSourceContext.fromJson(_json['git']);
+      git = GitSourceContext.fromJson(
+          _json['git'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -5401,7 +5544,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -5574,11 +5718,13 @@ class Vulnerability {
       cvssScore = (_json['cvssScore'] as core.num).toDouble();
     }
     if (_json.containsKey('cvssV3')) {
-      cvssV3 = CVSSv3.fromJson(_json['cvssV3']);
+      cvssV3 = CVSSv3.fromJson(
+          _json['cvssV3'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<Detail>((value) => Detail.fromJson(value))
+          .map<Detail>((value) =>
+              Detail.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('severity')) {
@@ -5589,7 +5735,8 @@ class Vulnerability {
     }
     if (_json.containsKey('windowsDetails')) {
       windowsDetails = (_json['windowsDetails'] as core.List)
-          .map<WindowsDetail>((value) => WindowsDetail.fromJson(value))
+          .map<WindowsDetail>((value) => WindowsDetail.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5642,7 +5789,8 @@ class VulnerabilityLocation {
       package = _json['package'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = Version.fromJson(_json['version']);
+      version = Version.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5672,8 +5820,8 @@ class VulnerabilityOccurrencesSummary {
   VulnerabilityOccurrencesSummary.fromJson(core.Map _json) {
     if (_json.containsKey('counts')) {
       counts = (_json['counts'] as core.List)
-          .map<FixableTotalByDigest>(
-              (value) => FixableTotalByDigest.fromJson(value))
+          .map<FixableTotalByDigest>((value) => FixableTotalByDigest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5716,7 +5864,8 @@ class WindowsDetail {
     }
     if (_json.containsKey('fixingKbs')) {
       fixingKbs = (_json['fixingKbs'] as core.List)
-          .map<KnowledgeBase>((value) => KnowledgeBase.fromJson(value))
+          .map<KnowledgeBase>((value) => KnowledgeBase.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {

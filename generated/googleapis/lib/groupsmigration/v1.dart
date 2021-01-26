@@ -119,7 +119,9 @@ class ArchiveResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Groups.fromJson(data));
+    return _response.then(
+      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

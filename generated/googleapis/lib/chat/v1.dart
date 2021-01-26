@@ -118,7 +118,9 @@ class MediaResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => Media.fromJson(data));
+      return _response.then(
+        (data) => Media.fromJson(data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -181,7 +183,9 @@ class SpacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Space.fromJson(data));
+    return _response.then(
+      (data) => Space.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists spaces the caller is a member of.
@@ -238,7 +242,10 @@ class SpacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSpacesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSpacesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -295,7 +302,10 @@ class SpacesMembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Membership.fromJson(data));
+    return _response.then(
+      (data) =>
+          Membership.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists human memberships in a space.
@@ -362,7 +372,10 @@ class SpacesMembersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListMembershipsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListMembershipsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -441,7 +454,9 @@ class SpacesMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a message.
@@ -492,7 +507,9 @@ class SpacesMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a message.
@@ -543,7 +560,9 @@ class SpacesMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a message.
@@ -606,7 +625,9 @@ class SpacesMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -664,7 +685,10 @@ class SpacesMessagesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Attachment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Attachment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -775,7 +799,8 @@ class Annotation {
       length = _json['length'] as core.int;
     }
     if (_json.containsKey('slashCommand')) {
-      slashCommand = SlashCommandMetadata.fromJson(_json['slashCommand']);
+      slashCommand = SlashCommandMetadata.fromJson(
+          _json['slashCommand'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
@@ -784,7 +809,8 @@ class Annotation {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('userMention')) {
-      userMention = UserMentionMetadata.fromJson(_json['userMention']);
+      userMention = UserMentionMetadata.fromJson(
+          _json['userMention'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -849,8 +875,8 @@ class Attachment {
 
   Attachment.fromJson(core.Map _json) {
     if (_json.containsKey('attachmentDataRef')) {
-      attachmentDataRef =
-          AttachmentDataRef.fromJson(_json['attachmentDataRef']);
+      attachmentDataRef = AttachmentDataRef.fromJson(
+          _json['attachmentDataRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentName')) {
       contentName = _json['contentName'] as core.String;
@@ -862,7 +888,8 @@ class Attachment {
       downloadUri = _json['downloadUri'] as core.String;
     }
     if (_json.containsKey('driveDataRef')) {
-      driveDataRef = DriveDataRef.fromJson(_json['driveDataRef']);
+      driveDataRef = DriveDataRef.fromJson(
+          _json['driveDataRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -940,10 +967,12 @@ class Button {
 
   Button.fromJson(core.Map _json) {
     if (_json.containsKey('imageButton')) {
-      imageButton = ImageButton.fromJson(_json['imageButton']);
+      imageButton = ImageButton.fromJson(
+          _json['imageButton'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textButton')) {
-      textButton = TextButton.fromJson(_json['textButton']);
+      textButton = TextButton.fromJson(
+          _json['textButton'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -978,18 +1007,21 @@ class Card {
   Card.fromJson(core.Map _json) {
     if (_json.containsKey('cardActions')) {
       cardActions = (_json['cardActions'] as core.List)
-          .map<CardAction>((value) => CardAction.fromJson(value))
+          .map<CardAction>((value) =>
+              CardAction.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('header')) {
-      header = CardHeader.fromJson(_json['header']);
+      header = CardHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('sections')) {
       sections = (_json['sections'] as core.List)
-          .map<Section>((value) => Section.fromJson(value))
+          .map<Section>((value) =>
+              Section.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1030,7 +1062,8 @@ class CardAction {
       actionLabel = _json['actionLabel'] as core.String;
     }
     if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(_json['onClick']);
+      onClick = OnClick.fromJson(
+          _json['onClick'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1149,7 +1182,8 @@ class DeprecatedEvent {
 
   DeprecatedEvent.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = FormAction.fromJson(_json['action']);
+      action = FormAction.fromJson(
+          _json['action'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('configCompleteRedirectUrl')) {
       configCompleteRedirectUrl =
@@ -1159,10 +1193,12 @@ class DeprecatedEvent {
       eventTime = _json['eventTime'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('space')) {
-      space = Space.fromJson(_json['space']);
+      space =
+          Space.fromJson(_json['space'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('threadKey')) {
       threadKey = _json['threadKey'] as core.String;
@@ -1174,7 +1210,8 @@ class DeprecatedEvent {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1271,7 +1308,8 @@ class FormAction {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<ActionParameter>((value) => ActionParameter.fromJson(value))
+          .map<ActionParameter>((value) => ActionParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1312,7 +1350,8 @@ class Image {
       imageUrl = _json['imageUrl'] as core.String;
     }
     if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(_json['onClick']);
+      onClick = OnClick.fromJson(
+          _json['onClick'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1392,7 +1431,8 @@ class ImageButton {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(_json['onClick']);
+      onClick = OnClick.fromJson(
+          _json['onClick'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1482,7 +1522,8 @@ class KeyValue {
       bottomLabel = _json['bottomLabel'] as core.String;
     }
     if (_json.containsKey('button')) {
-      button = Button.fromJson(_json['button']);
+      button = Button.fromJson(
+          _json['button'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -1497,7 +1538,8 @@ class KeyValue {
       iconUrl = _json['iconUrl'] as core.String;
     }
     if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(_json['onClick']);
+      onClick = OnClick.fromJson(
+          _json['onClick'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('topLabel')) {
       topLabel = _json['topLabel'] as core.String;
@@ -1547,7 +1589,8 @@ class ListMembershipsResponse {
   ListMembershipsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('memberships')) {
       memberships = (_json['memberships'] as core.List)
-          .map<Membership>((value) => Membership.fromJson(value))
+          .map<Membership>((value) =>
+              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1585,7 +1628,8 @@ class ListSpacesResponse {
     }
     if (_json.containsKey('spaces')) {
       spaces = (_json['spaces'] as core.List)
-          .map<Space>((value) => Space.fromJson(value))
+          .map<Space>((value) =>
+              Space.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1651,7 +1695,8 @@ class Membership {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('member')) {
-      member = User.fromJson(_json['member']);
+      member =
+          User.fromJson(_json['member'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1735,11 +1780,13 @@ class Message {
 
   Message.fromJson(core.Map _json) {
     if (_json.containsKey('actionResponse')) {
-      actionResponse = ActionResponse.fromJson(_json['actionResponse']);
+      actionResponse = ActionResponse.fromJson(
+          _json['actionResponse'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('annotations')) {
       annotations = (_json['annotations'] as core.List)
-          .map<Annotation>((value) => Annotation.fromJson(value))
+          .map<Annotation>((value) =>
+              Annotation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('argumentText')) {
@@ -1747,12 +1794,14 @@ class Message {
     }
     if (_json.containsKey('attachment')) {
       attachment = (_json['attachment'] as core.List)
-          .map<Attachment>((value) => Attachment.fromJson(value))
+          .map<Attachment>((value) =>
+              Attachment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cards')) {
       cards = (_json['cards'] as core.List)
-          .map<Card>((value) => Card.fromJson(value))
+          .map<Card>((value) =>
+              Card.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('createTime')) {
@@ -1768,19 +1817,23 @@ class Message {
       previewText = _json['previewText'] as core.String;
     }
     if (_json.containsKey('sender')) {
-      sender = User.fromJson(_json['sender']);
+      sender =
+          User.fromJson(_json['sender'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('slashCommand')) {
-      slashCommand = SlashCommand.fromJson(_json['slashCommand']);
+      slashCommand = SlashCommand.fromJson(
+          _json['slashCommand'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('space')) {
-      space = Space.fromJson(_json['space']);
+      space =
+          Space.fromJson(_json['space'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
     }
     if (_json.containsKey('thread')) {
-      thread = Thread.fromJson(_json['thread']);
+      thread = Thread.fromJson(
+          _json['thread'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1845,10 +1898,12 @@ class OnClick {
 
   OnClick.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = FormAction.fromJson(_json['action']);
+      action = FormAction.fromJson(
+          _json['action'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('openLink')) {
-      openLink = OpenLink.fromJson(_json['openLink']);
+      openLink = OpenLink.fromJson(
+          _json['openLink'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1905,7 +1960,8 @@ class Section {
     }
     if (_json.containsKey('widgets')) {
       widgets = (_json['widgets'] as core.List)
-          .map<WidgetMarkup>((value) => WidgetMarkup.fromJson(value))
+          .map<WidgetMarkup>((value) => WidgetMarkup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1969,7 +2025,7 @@ class SlashCommandMetadata {
 
   SlashCommandMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('bot')) {
-      bot = User.fromJson(_json['bot']);
+      bot = User.fromJson(_json['bot'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('commandId')) {
       commandId = _json['commandId'] as core.String;
@@ -2084,7 +2140,8 @@ class TextButton {
 
   TextButton.fromJson(core.Map _json) {
     if (_json.containsKey('onClick')) {
-      onClick = OnClick.fromJson(_json['onClick']);
+      onClick = OnClick.fromJson(
+          _json['onClick'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -2219,7 +2276,8 @@ class UserMentionMetadata {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2255,17 +2313,21 @@ class WidgetMarkup {
   WidgetMarkup.fromJson(core.Map _json) {
     if (_json.containsKey('buttons')) {
       buttons = (_json['buttons'] as core.List)
-          .map<Button>((value) => Button.fromJson(value))
+          .map<Button>((value) =>
+              Button.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('image')) {
-      image = Image.fromJson(_json['image']);
+      image =
+          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('keyValue')) {
-      keyValue = KeyValue.fromJson(_json['keyValue']);
+      keyValue = KeyValue.fromJson(
+          _json['keyValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textParagraph')) {
-      textParagraph = TextParagraph.fromJson(_json['textParagraph']);
+      textParagraph = TextParagraph.fromJson(
+          _json['textParagraph'] as core.Map<core.String, core.dynamic>);
     }
   }
 

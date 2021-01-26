@@ -88,7 +88,7 @@ api.EmptyResponse buildEmptyResponse() {
 void checkEmptyResponse(api.EmptyResponse o) {
   buildCounterEmptyResponse++;
   if (buildCounterEmptyResponse < 3) {
-    checkErrors(o.errors);
+    checkErrors(o.errors as api.Errors);
   }
   buildCounterEmptyResponse--;
 }
@@ -146,8 +146,8 @@ core.List<api.ErrorProto> buildUnnamed4837() {
 
 void checkUnnamed4837(core.List<api.ErrorProto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkErrorProto(o[0]);
-  checkErrorProto(o[1]);
+  checkErrorProto(o[0] as api.ErrorProto);
+  checkErrorProto(o[1] as api.ErrorProto);
 }
 
 core.int buildCounterErrors = 0;
@@ -192,12 +192,12 @@ api.Group buildGroup() {
 void checkGroup(api.Group o) {
   buildCounterGroup++;
   if (buildCounterGroup < 3) {
-    checkGroupContentDetails(o.contentDetails);
-    checkErrors(o.errors);
+    checkGroupContentDetails(o.contentDetails as api.GroupContentDetails);
+    checkErrors(o.errors as api.Errors);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkGroupSnippet(o.snippet);
+    checkGroupSnippet(o.snippet as api.GroupSnippet);
   }
   buildCounterGroup--;
 }
@@ -242,12 +242,12 @@ api.GroupItem buildGroupItem() {
 void checkGroupItem(api.GroupItem o) {
   buildCounterGroupItem++;
   if (buildCounterGroupItem < 3) {
-    checkErrors(o.errors);
+    checkErrors(o.errors as api.Errors);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.groupId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkGroupItemResource(o.resource);
+    checkGroupItemResource(o.resource as api.GroupItemResource);
   }
   buildCounterGroupItem--;
 }
@@ -303,8 +303,8 @@ core.List<api.GroupItem> buildUnnamed4838() {
 
 void checkUnnamed4838(core.List<api.GroupItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGroupItem(o[0]);
-  checkGroupItem(o[1]);
+  checkGroupItem(o[0] as api.GroupItem);
+  checkGroupItem(o[1] as api.GroupItem);
 }
 
 core.int buildCounterListGroupItemsResponse = 0;
@@ -324,7 +324,7 @@ api.ListGroupItemsResponse buildListGroupItemsResponse() {
 void checkListGroupItemsResponse(api.ListGroupItemsResponse o) {
   buildCounterListGroupItemsResponse++;
   if (buildCounterListGroupItemsResponse < 3) {
-    checkErrors(o.errors);
+    checkErrors(o.errors as api.Errors);
     unittest.expect(o.etag, unittest.equals('foo'));
     checkUnnamed4838(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -341,8 +341,8 @@ core.List<api.Group> buildUnnamed4839() {
 
 void checkUnnamed4839(core.List<api.Group> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGroup(o[0]);
-  checkGroup(o[1]);
+  checkGroup(o[0] as api.Group);
+  checkGroup(o[1] as api.Group);
 }
 
 core.int buildCounterListGroupsResponse = 0;
@@ -363,7 +363,7 @@ api.ListGroupsResponse buildListGroupsResponse() {
 void checkListGroupsResponse(api.ListGroupsResponse o) {
   buildCounterListGroupsResponse++;
   if (buildCounterListGroupsResponse < 3) {
-    checkErrors(o.errors);
+    checkErrors(o.errors as api.Errors);
     unittest.expect(o.etag, unittest.equals('foo'));
     checkUnnamed4839(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -381,8 +381,8 @@ core.List<api.ResultTableColumnHeader> buildUnnamed4840() {
 
 void checkUnnamed4840(core.List<api.ResultTableColumnHeader> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResultTableColumnHeader(o[0]);
-  checkResultTableColumnHeader(o[1]);
+  checkResultTableColumnHeader(o[0] as api.ResultTableColumnHeader);
+  checkResultTableColumnHeader(o[1] as api.ResultTableColumnHeader);
 }
 
 core.List<core.Object> buildUnnamed4841() {
@@ -445,7 +445,7 @@ void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
     checkUnnamed4840(o.columnHeaders);
-    checkErrors(o.errors);
+    checkErrors(o.errors as api.Errors);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed4842(o.rows);
   }
@@ -480,7 +480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmptyResponse();
       var od = api.EmptyResponse.fromJson(o.toJson());
-      checkEmptyResponse(od);
+      checkEmptyResponse(od as api.EmptyResponse);
     });
   });
 
@@ -488,7 +488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildErrorProto();
       var od = api.ErrorProto.fromJson(o.toJson());
-      checkErrorProto(od);
+      checkErrorProto(od as api.ErrorProto);
     });
   });
 
@@ -496,7 +496,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildErrors();
       var od = api.Errors.fromJson(o.toJson());
-      checkErrors(od);
+      checkErrors(od as api.Errors);
     });
   });
 
@@ -504,7 +504,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
-      checkGroup(od);
+      checkGroup(od as api.Group);
     });
   });
 
@@ -512,7 +512,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupContentDetails();
       var od = api.GroupContentDetails.fromJson(o.toJson());
-      checkGroupContentDetails(od);
+      checkGroupContentDetails(od as api.GroupContentDetails);
     });
   });
 
@@ -520,7 +520,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupItem();
       var od = api.GroupItem.fromJson(o.toJson());
-      checkGroupItem(od);
+      checkGroupItem(od as api.GroupItem);
     });
   });
 
@@ -528,7 +528,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupItemResource();
       var od = api.GroupItemResource.fromJson(o.toJson());
-      checkGroupItemResource(od);
+      checkGroupItemResource(od as api.GroupItemResource);
     });
   });
 
@@ -536,7 +536,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupSnippet();
       var od = api.GroupSnippet.fromJson(o.toJson());
-      checkGroupSnippet(od);
+      checkGroupSnippet(od as api.GroupSnippet);
     });
   });
 
@@ -544,7 +544,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGroupItemsResponse();
       var od = api.ListGroupItemsResponse.fromJson(o.toJson());
-      checkListGroupItemsResponse(od);
+      checkListGroupItemsResponse(od as api.ListGroupItemsResponse);
     });
   });
 
@@ -552,7 +552,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGroupsResponse();
       var od = api.ListGroupsResponse.fromJson(o.toJson());
-      checkListGroupsResponse(od);
+      checkListGroupsResponse(od as api.ListGroupsResponse);
     });
   });
 
@@ -560,7 +560,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
-      checkQueryResponse(od);
+      checkQueryResponse(od as api.QueryResponse);
     });
   });
 
@@ -568,7 +568,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResultTableColumnHeader();
       var od = api.ResultTableColumnHeader.fromJson(o.toJson());
-      checkResultTableColumnHeader(od);
+      checkResultTableColumnHeader(od as api.ResultTableColumnHeader);
     });
   });
 
@@ -623,7 +623,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmptyResponse(response);
+        checkEmptyResponse(response as api.EmptyResponse);
       })));
     });
 
@@ -634,8 +634,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GroupItem.fromJson(json);
-        checkGroupItem(obj);
+        var obj =
+            api.GroupItem.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroupItem(obj as api.GroupItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -678,7 +679,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroupItem(response);
+        checkGroupItem(response as api.GroupItem);
       })));
     });
 
@@ -733,7 +734,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGroupItemsResponse(response);
+        checkListGroupItemsResponse(response as api.ListGroupItemsResponse);
       })));
     });
   });
@@ -789,7 +790,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmptyResponse(response);
+        checkEmptyResponse(response as api.EmptyResponse);
       })));
     });
 
@@ -800,8 +801,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Group.fromJson(json);
-        checkGroup(obj);
+        var obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj as api.Group);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -844,7 +846,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroup(response);
+        checkGroup(response as api.Group);
       })));
     });
 
@@ -905,7 +907,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGroupsResponse(response);
+        checkListGroupsResponse(response as api.ListGroupsResponse);
       })));
     });
 
@@ -916,8 +918,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Group.fromJson(json);
-        checkGroup(obj);
+        var obj =
+            api.Group.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroup(obj as api.Group);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -960,7 +963,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroup(response);
+        checkGroup(response as api.Group);
       })));
     });
   });
@@ -1051,7 +1054,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryResponse(response);
+        checkQueryResponse(response as api.QueryResponse);
       })));
     });
   });

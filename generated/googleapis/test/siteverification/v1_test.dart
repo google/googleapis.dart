@@ -114,7 +114,8 @@ void checkSiteVerificationWebResourceGettokenRequest(
     api.SiteVerificationWebResourceGettokenRequest o) {
   buildCounterSiteVerificationWebResourceGettokenRequest++;
   if (buildCounterSiteVerificationWebResourceGettokenRequest < 3) {
-    checkSiteVerificationWebResourceGettokenRequestSite(o.site);
+    checkSiteVerificationWebResourceGettokenRequestSite(
+        o.site as api.SiteVerificationWebResourceGettokenRequestSite);
     unittest.expect(o.verificationMethod, unittest.equals('foo'));
   }
   buildCounterSiteVerificationWebResourceGettokenRequest--;
@@ -152,8 +153,10 @@ core.List<api.SiteVerificationWebResourceResource> buildUnnamed4336() {
 
 void checkUnnamed4336(core.List<api.SiteVerificationWebResourceResource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSiteVerificationWebResourceResource(o[0]);
-  checkSiteVerificationWebResourceResource(o[1]);
+  checkSiteVerificationWebResourceResource(
+      o[0] as api.SiteVerificationWebResourceResource);
+  checkSiteVerificationWebResourceResource(
+      o[1] as api.SiteVerificationWebResourceResource);
 }
 
 core.int buildCounterSiteVerificationWebResourceListResponse = 0;
@@ -233,7 +236,8 @@ void checkSiteVerificationWebResourceResource(
   if (buildCounterSiteVerificationWebResourceResource < 3) {
     unittest.expect(o.id, unittest.equals('foo'));
     checkUnnamed4337(o.owners);
-    checkSiteVerificationWebResourceResourceSite(o.site);
+    checkSiteVerificationWebResourceResourceSite(
+        o.site as api.SiteVerificationWebResourceResourceSite);
   }
   buildCounterSiteVerificationWebResourceResource--;
 }
@@ -245,7 +249,8 @@ void main() {
       var o = buildSiteVerificationWebResourceGettokenRequestSite();
       var od = api.SiteVerificationWebResourceGettokenRequestSite.fromJson(
           o.toJson());
-      checkSiteVerificationWebResourceGettokenRequestSite(od);
+      checkSiteVerificationWebResourceGettokenRequestSite(
+          od as api.SiteVerificationWebResourceGettokenRequestSite);
     });
   });
 
@@ -254,7 +259,8 @@ void main() {
       var o = buildSiteVerificationWebResourceGettokenRequest();
       var od =
           api.SiteVerificationWebResourceGettokenRequest.fromJson(o.toJson());
-      checkSiteVerificationWebResourceGettokenRequest(od);
+      checkSiteVerificationWebResourceGettokenRequest(
+          od as api.SiteVerificationWebResourceGettokenRequest);
     });
   });
 
@@ -263,7 +269,8 @@ void main() {
       var o = buildSiteVerificationWebResourceGettokenResponse();
       var od =
           api.SiteVerificationWebResourceGettokenResponse.fromJson(o.toJson());
-      checkSiteVerificationWebResourceGettokenResponse(od);
+      checkSiteVerificationWebResourceGettokenResponse(
+          od as api.SiteVerificationWebResourceGettokenResponse);
     });
   });
 
@@ -271,7 +278,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceListResponse();
       var od = api.SiteVerificationWebResourceListResponse.fromJson(o.toJson());
-      checkSiteVerificationWebResourceListResponse(od);
+      checkSiteVerificationWebResourceListResponse(
+          od as api.SiteVerificationWebResourceListResponse);
     });
   });
 
@@ -279,7 +287,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceResourceSite();
       var od = api.SiteVerificationWebResourceResourceSite.fromJson(o.toJson());
-      checkSiteVerificationWebResourceResourceSite(od);
+      checkSiteVerificationWebResourceResourceSite(
+          od as api.SiteVerificationWebResourceResourceSite);
     });
   });
 
@@ -287,7 +296,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSiteVerificationWebResourceResource();
       var od = api.SiteVerificationWebResourceResource.fromJson(o.toJson());
-      checkSiteVerificationWebResourceResource(od);
+      checkSiteVerificationWebResourceResource(
+          od as api.SiteVerificationWebResourceResource);
     });
   });
 
@@ -393,7 +403,8 @@ void main() {
       res
           .get(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(response);
+        checkSiteVerificationWebResourceResource(
+            response as api.SiteVerificationWebResourceResource);
       })));
     });
 
@@ -403,8 +414,10 @@ void main() {
       var arg_request = buildSiteVerificationWebResourceGettokenRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(json);
-        checkSiteVerificationWebResourceGettokenRequest(obj);
+        var obj = api.SiteVerificationWebResourceGettokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteVerificationWebResourceGettokenRequest(
+            obj as api.SiteVerificationWebResourceGettokenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -447,7 +460,8 @@ void main() {
       res
           .getToken(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceGettokenResponse(response);
+        checkSiteVerificationWebResourceGettokenResponse(
+            response as api.SiteVerificationWebResourceGettokenResponse);
       })));
     });
 
@@ -458,8 +472,10 @@ void main() {
       var arg_verificationMethod = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
-        checkSiteVerificationWebResourceResource(obj);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteVerificationWebResourceResource(
+            obj as api.SiteVerificationWebResourceResource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -504,7 +520,8 @@ void main() {
       res
           .insert(arg_request, arg_verificationMethod, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(response);
+        checkSiteVerificationWebResourceResource(
+            response as api.SiteVerificationWebResourceResource);
       })));
     });
 
@@ -552,7 +569,8 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceListResponse(response);
+        checkSiteVerificationWebResourceListResponse(
+            response as api.SiteVerificationWebResourceListResponse);
       })));
     });
 
@@ -563,8 +581,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
-        checkSiteVerificationWebResourceResource(obj);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteVerificationWebResourceResource(
+            obj as api.SiteVerificationWebResourceResource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -610,7 +630,8 @@ void main() {
       res
           .patch(arg_request, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(response);
+        checkSiteVerificationWebResourceResource(
+            response as api.SiteVerificationWebResourceResource);
       })));
     });
 
@@ -621,8 +642,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteVerificationWebResourceResource.fromJson(json);
-        checkSiteVerificationWebResourceResource(obj);
+        var obj = api.SiteVerificationWebResourceResource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteVerificationWebResourceResource(
+            obj as api.SiteVerificationWebResourceResource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -668,7 +691,8 @@ void main() {
       res
           .update(arg_request, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteVerificationWebResourceResource(response);
+        checkSiteVerificationWebResourceResource(
+            response as api.SiteVerificationWebResourceResource);
       })));
     });
   });

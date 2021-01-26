@@ -83,8 +83,8 @@ core.List<api.ResourceRecordSet> buildUnnamed1787() {
 
 void checkUnnamed1787(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResourceRecordSet(o[0]);
-  checkResourceRecordSet(o[1]);
+  checkResourceRecordSet(o[0] as api.ResourceRecordSet);
+  checkResourceRecordSet(o[1] as api.ResourceRecordSet);
 }
 
 core.List<api.ResourceRecordSet> buildUnnamed1788() {
@@ -96,8 +96,8 @@ core.List<api.ResourceRecordSet> buildUnnamed1788() {
 
 void checkUnnamed1788(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResourceRecordSet(o[0]);
-  checkResourceRecordSet(o[1]);
+  checkResourceRecordSet(o[0] as api.ResourceRecordSet);
+  checkResourceRecordSet(o[1] as api.ResourceRecordSet);
 }
 
 core.int buildCounterChange = 0;
@@ -140,8 +140,8 @@ core.List<api.Change> buildUnnamed1789() {
 
 void checkUnnamed1789(core.List<api.Change> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChange(o[0]);
-  checkChange(o[1]);
+  checkChange(o[0] as api.Change);
+  checkChange(o[1] as api.Change);
 }
 
 core.int buildCounterChangesListResponse = 0;
@@ -162,7 +162,7 @@ void checkChangesListResponse(api.ChangesListResponse o) {
   buildCounterChangesListResponse++;
   if (buildCounterChangesListResponse < 3) {
     checkUnnamed1789(o.changes);
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -178,8 +178,8 @@ core.List<api.DnsKeyDigest> buildUnnamed1790() {
 
 void checkUnnamed1790(core.List<api.DnsKeyDigest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDnsKeyDigest(o[0]);
-  checkDnsKeyDigest(o[1]);
+  checkDnsKeyDigest(o[0] as api.DnsKeyDigest);
+  checkDnsKeyDigest(o[1] as api.DnsKeyDigest);
 }
 
 core.int buildCounterDnsKey = 0;
@@ -276,8 +276,8 @@ core.List<api.DnsKey> buildUnnamed1791() {
 
 void checkUnnamed1791(core.List<api.DnsKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDnsKey(o[0]);
-  checkDnsKey(o[1]);
+  checkDnsKey(o[0] as api.DnsKey);
+  checkDnsKey(o[1] as api.DnsKey);
 }
 
 core.int buildCounterDnsKeysListResponse = 0;
@@ -298,7 +298,7 @@ void checkDnsKeysListResponse(api.DnsKeysListResponse o) {
   buildCounterDnsKeysListResponse++;
   if (buildCounterDnsKeysListResponse < 3) {
     checkUnnamed1791(o.dnsKeys);
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
@@ -362,17 +362,21 @@ void checkManagedZone(api.ManagedZone o) {
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.dnsName, unittest.equals('foo'));
-    checkManagedZoneDnsSecConfig(o.dnssecConfig);
-    checkManagedZoneForwardingConfig(o.forwardingConfig);
+    checkManagedZoneDnsSecConfig(o.dnssecConfig as api.ManagedZoneDnsSecConfig);
+    checkManagedZoneForwardingConfig(
+        o.forwardingConfig as api.ManagedZoneForwardingConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed1792(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nameServerSet, unittest.equals('foo'));
     checkUnnamed1793(o.nameServers);
-    checkManagedZonePeeringConfig(o.peeringConfig);
-    checkManagedZonePrivateVisibilityConfig(o.privateVisibilityConfig);
-    checkManagedZoneReverseLookupConfig(o.reverseLookupConfig);
+    checkManagedZonePeeringConfig(
+        o.peeringConfig as api.ManagedZonePeeringConfig);
+    checkManagedZonePrivateVisibilityConfig(
+        o.privateVisibilityConfig as api.ManagedZonePrivateVisibilityConfig);
+    checkManagedZoneReverseLookupConfig(
+        o.reverseLookupConfig as api.ManagedZoneReverseLookupConfig);
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
   buildCounterManagedZone--;
@@ -387,8 +391,8 @@ core.List<api.DnsKeySpec> buildUnnamed1794() {
 
 void checkUnnamed1794(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDnsKeySpec(o[0]);
-  checkDnsKeySpec(o[1]);
+  checkDnsKeySpec(o[0] as api.DnsKeySpec);
+  checkDnsKeySpec(o[1] as api.DnsKeySpec);
 }
 
 core.int buildCounterManagedZoneDnsSecConfig = 0;
@@ -426,8 +430,10 @@ core.List<api.ManagedZoneForwardingConfigNameServerTarget> buildUnnamed1795() {
 void checkUnnamed1795(
     core.List<api.ManagedZoneForwardingConfigNameServerTarget> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkManagedZoneForwardingConfigNameServerTarget(o[0]);
-  checkManagedZoneForwardingConfigNameServerTarget(o[1]);
+  checkManagedZoneForwardingConfigNameServerTarget(
+      o[0] as api.ManagedZoneForwardingConfigNameServerTarget);
+  checkManagedZoneForwardingConfigNameServerTarget(
+      o[1] as api.ManagedZoneForwardingConfigNameServerTarget);
 }
 
 core.int buildCounterManagedZoneForwardingConfig = 0;
@@ -485,8 +491,8 @@ core.List<api.Operation> buildUnnamed1796() {
 
 void checkUnnamed1796(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterManagedZoneOperationsListResponse = 0;
@@ -507,7 +513,7 @@ void checkManagedZoneOperationsListResponse(
     api.ManagedZoneOperationsListResponse o) {
   buildCounterManagedZoneOperationsListResponse++;
   if (buildCounterManagedZoneOperationsListResponse < 3) {
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkUnnamed1796(o.operations);
@@ -531,7 +537,8 @@ void checkManagedZonePeeringConfig(api.ManagedZonePeeringConfig o) {
   buildCounterManagedZonePeeringConfig++;
   if (buildCounterManagedZonePeeringConfig < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkManagedZonePeeringConfigTargetNetwork(o.targetNetwork);
+    checkManagedZonePeeringConfigTargetNetwork(
+        o.targetNetwork as api.ManagedZonePeeringConfigTargetNetwork);
   }
   buildCounterManagedZonePeeringConfig--;
 }
@@ -571,8 +578,10 @@ core.List<api.ManagedZonePrivateVisibilityConfigNetwork> buildUnnamed1797() {
 void checkUnnamed1797(
     core.List<api.ManagedZonePrivateVisibilityConfigNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkManagedZonePrivateVisibilityConfigNetwork(o[0]);
-  checkManagedZonePrivateVisibilityConfigNetwork(o[1]);
+  checkManagedZonePrivateVisibilityConfigNetwork(
+      o[0] as api.ManagedZonePrivateVisibilityConfigNetwork);
+  checkManagedZonePrivateVisibilityConfigNetwork(
+      o[1] as api.ManagedZonePrivateVisibilityConfigNetwork);
 }
 
 core.int buildCounterManagedZonePrivateVisibilityConfig = 0;
@@ -649,8 +658,8 @@ core.List<api.ManagedZone> buildUnnamed1798() {
 
 void checkUnnamed1798(core.List<api.ManagedZone> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkManagedZone(o[0]);
-  checkManagedZone(o[1]);
+  checkManagedZone(o[0] as api.ManagedZone);
+  checkManagedZone(o[1] as api.ManagedZone);
 }
 
 core.int buildCounterManagedZonesListResponse = 0;
@@ -670,7 +679,7 @@ api.ManagedZonesListResponse buildManagedZonesListResponse() {
 void checkManagedZonesListResponse(api.ManagedZonesListResponse o) {
   buildCounterManagedZonesListResponse++;
   if (buildCounterManagedZonesListResponse < 3) {
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed1798(o.managedZones);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
@@ -699,14 +708,15 @@ api.Operation buildOperation() {
 void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
-    checkOperationDnsKeyContext(o.dnsKeyContext);
+    checkOperationDnsKeyContext(o.dnsKeyContext as api.OperationDnsKeyContext);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.user, unittest.equals('foo'));
-    checkOperationManagedZoneContext(o.zoneContext);
+    checkOperationManagedZoneContext(
+        o.zoneContext as api.OperationManagedZoneContext);
   }
   buildCounterOperation--;
 }
@@ -726,8 +736,8 @@ api.OperationDnsKeyContext buildOperationDnsKeyContext() {
 void checkOperationDnsKeyContext(api.OperationDnsKeyContext o) {
   buildCounterOperationDnsKeyContext++;
   if (buildCounterOperationDnsKeyContext < 3) {
-    checkDnsKey(o.newValue);
-    checkDnsKey(o.oldValue);
+    checkDnsKey(o.newValue as api.DnsKey);
+    checkDnsKey(o.oldValue as api.DnsKey);
   }
   buildCounterOperationDnsKeyContext--;
 }
@@ -747,8 +757,8 @@ api.OperationManagedZoneContext buildOperationManagedZoneContext() {
 void checkOperationManagedZoneContext(api.OperationManagedZoneContext o) {
   buildCounterOperationManagedZoneContext++;
   if (buildCounterOperationManagedZoneContext < 3) {
-    checkManagedZone(o.newValue);
-    checkManagedZone(o.oldValue);
+    checkManagedZone(o.newValue as api.ManagedZone);
+    checkManagedZone(o.oldValue as api.ManagedZone);
   }
   buildCounterOperationManagedZoneContext--;
 }
@@ -762,8 +772,8 @@ core.List<api.Policy> buildUnnamed1799() {
 
 void checkUnnamed1799(core.List<api.Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPolicy(o[0]);
-  checkPolicy(o[1]);
+  checkPolicy(o[0] as api.Policy);
+  checkPolicy(o[1] as api.Policy);
 }
 
 core.int buildCounterPoliciesListResponse = 0;
@@ -783,7 +793,7 @@ api.PoliciesListResponse buildPoliciesListResponse() {
 void checkPoliciesListResponse(api.PoliciesListResponse o) {
   buildCounterPoliciesListResponse++;
   if (buildCounterPoliciesListResponse < 3) {
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkUnnamed1799(o.policies);
@@ -806,8 +816,8 @@ api.PoliciesPatchResponse buildPoliciesPatchResponse() {
 void checkPoliciesPatchResponse(api.PoliciesPatchResponse o) {
   buildCounterPoliciesPatchResponse++;
   if (buildCounterPoliciesPatchResponse < 3) {
-    checkResponseHeader(o.header);
-    checkPolicy(o.policy);
+    checkResponseHeader(o.header as api.ResponseHeader);
+    checkPolicy(o.policy as api.Policy);
   }
   buildCounterPoliciesPatchResponse--;
 }
@@ -827,8 +837,8 @@ api.PoliciesUpdateResponse buildPoliciesUpdateResponse() {
 void checkPoliciesUpdateResponse(api.PoliciesUpdateResponse o) {
   buildCounterPoliciesUpdateResponse++;
   if (buildCounterPoliciesUpdateResponse < 3) {
-    checkResponseHeader(o.header);
-    checkPolicy(o.policy);
+    checkResponseHeader(o.header as api.ResponseHeader);
+    checkPolicy(o.policy as api.Policy);
   }
   buildCounterPoliciesUpdateResponse--;
 }
@@ -842,8 +852,8 @@ core.List<api.PolicyNetwork> buildUnnamed1800() {
 
 void checkUnnamed1800(core.List<api.PolicyNetwork> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPolicyNetwork(o[0]);
-  checkPolicyNetwork(o[1]);
+  checkPolicyNetwork(o[0] as api.PolicyNetwork);
+  checkPolicyNetwork(o[1] as api.PolicyNetwork);
 }
 
 core.int buildCounterPolicy = 0;
@@ -867,7 +877,8 @@ api.Policy buildPolicy() {
 void checkPolicy(api.Policy o) {
   buildCounterPolicy++;
   if (buildCounterPolicy < 3) {
-    checkPolicyAlternativeNameServerConfig(o.alternativeNameServerConfig);
+    checkPolicyAlternativeNameServerConfig(
+        o.alternativeNameServerConfig as api.PolicyAlternativeNameServerConfig);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.enableInboundForwarding, unittest.isTrue);
     unittest.expect(o.enableLogging, unittest.isTrue);
@@ -890,8 +901,10 @@ core.List<api.PolicyAlternativeNameServerConfigTargetNameServer>
 void checkUnnamed1801(
     core.List<api.PolicyAlternativeNameServerConfigTargetNameServer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPolicyAlternativeNameServerConfigTargetNameServer(o[0]);
-  checkPolicyAlternativeNameServerConfigTargetNameServer(o[1]);
+  checkPolicyAlternativeNameServerConfigTargetNameServer(
+      o[0] as api.PolicyAlternativeNameServerConfigTargetNameServer);
+  checkPolicyAlternativeNameServerConfigTargetNameServer(
+      o[1] as api.PolicyAlternativeNameServerConfigTargetNameServer);
 }
 
 core.int buildCounterPolicyAlternativeNameServerConfig = 0;
@@ -982,7 +995,7 @@ void checkProject(api.Project o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.number, unittest.equals('foo'));
-    checkQuota(o.quota);
+    checkQuota(o.quota as api.Quota);
   }
   buildCounterProject--;
 }
@@ -996,8 +1009,8 @@ core.List<api.DnsKeySpec> buildUnnamed1802() {
 
 void checkUnnamed1802(core.List<api.DnsKeySpec> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDnsKeySpec(o[0]);
-  checkDnsKeySpec(o[1]);
+  checkDnsKeySpec(o[0] as api.DnsKeySpec);
+  checkDnsKeySpec(o[1] as api.DnsKeySpec);
 }
 
 core.int buildCounterQuota = 0;
@@ -1111,8 +1124,8 @@ core.List<api.ResourceRecordSet> buildUnnamed1805() {
 
 void checkUnnamed1805(core.List<api.ResourceRecordSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResourceRecordSet(o[0]);
-  checkResourceRecordSet(o[1]);
+  checkResourceRecordSet(o[0] as api.ResourceRecordSet);
+  checkResourceRecordSet(o[1] as api.ResourceRecordSet);
 }
 
 core.int buildCounterResourceRecordSetsListResponse = 0;
@@ -1132,7 +1145,7 @@ api.ResourceRecordSetsListResponse buildResourceRecordSetsListResponse() {
 void checkResourceRecordSetsListResponse(api.ResourceRecordSetsListResponse o) {
   buildCounterResourceRecordSetsListResponse++;
   if (buildCounterResourceRecordSetsListResponse < 3) {
-    checkResponseHeader(o.header);
+    checkResponseHeader(o.header as api.ResponseHeader);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     checkUnnamed1805(o.rrsets);
@@ -1164,7 +1177,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChange();
       var od = api.Change.fromJson(o.toJson());
-      checkChange(od);
+      checkChange(od as api.Change);
     });
   });
 
@@ -1172,7 +1185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChangesListResponse();
       var od = api.ChangesListResponse.fromJson(o.toJson());
-      checkChangesListResponse(od);
+      checkChangesListResponse(od as api.ChangesListResponse);
     });
   });
 
@@ -1180,7 +1193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDnsKey();
       var od = api.DnsKey.fromJson(o.toJson());
-      checkDnsKey(od);
+      checkDnsKey(od as api.DnsKey);
     });
   });
 
@@ -1188,7 +1201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDnsKeyDigest();
       var od = api.DnsKeyDigest.fromJson(o.toJson());
-      checkDnsKeyDigest(od);
+      checkDnsKeyDigest(od as api.DnsKeyDigest);
     });
   });
 
@@ -1196,7 +1209,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDnsKeySpec();
       var od = api.DnsKeySpec.fromJson(o.toJson());
-      checkDnsKeySpec(od);
+      checkDnsKeySpec(od as api.DnsKeySpec);
     });
   });
 
@@ -1204,7 +1217,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDnsKeysListResponse();
       var od = api.DnsKeysListResponse.fromJson(o.toJson());
-      checkDnsKeysListResponse(od);
+      checkDnsKeysListResponse(od as api.DnsKeysListResponse);
     });
   });
 
@@ -1212,7 +1225,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZone();
       var od = api.ManagedZone.fromJson(o.toJson());
-      checkManagedZone(od);
+      checkManagedZone(od as api.ManagedZone);
     });
   });
 
@@ -1220,7 +1233,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZoneDnsSecConfig();
       var od = api.ManagedZoneDnsSecConfig.fromJson(o.toJson());
-      checkManagedZoneDnsSecConfig(od);
+      checkManagedZoneDnsSecConfig(od as api.ManagedZoneDnsSecConfig);
     });
   });
 
@@ -1228,7 +1241,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZoneForwardingConfig();
       var od = api.ManagedZoneForwardingConfig.fromJson(o.toJson());
-      checkManagedZoneForwardingConfig(od);
+      checkManagedZoneForwardingConfig(od as api.ManagedZoneForwardingConfig);
     });
   });
 
@@ -1237,7 +1250,8 @@ void main() {
       var o = buildManagedZoneForwardingConfigNameServerTarget();
       var od =
           api.ManagedZoneForwardingConfigNameServerTarget.fromJson(o.toJson());
-      checkManagedZoneForwardingConfigNameServerTarget(od);
+      checkManagedZoneForwardingConfigNameServerTarget(
+          od as api.ManagedZoneForwardingConfigNameServerTarget);
     });
   });
 
@@ -1245,7 +1259,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZoneOperationsListResponse();
       var od = api.ManagedZoneOperationsListResponse.fromJson(o.toJson());
-      checkManagedZoneOperationsListResponse(od);
+      checkManagedZoneOperationsListResponse(
+          od as api.ManagedZoneOperationsListResponse);
     });
   });
 
@@ -1253,7 +1268,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZonePeeringConfig();
       var od = api.ManagedZonePeeringConfig.fromJson(o.toJson());
-      checkManagedZonePeeringConfig(od);
+      checkManagedZonePeeringConfig(od as api.ManagedZonePeeringConfig);
     });
   });
 
@@ -1261,7 +1276,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZonePeeringConfigTargetNetwork();
       var od = api.ManagedZonePeeringConfigTargetNetwork.fromJson(o.toJson());
-      checkManagedZonePeeringConfigTargetNetwork(od);
+      checkManagedZonePeeringConfigTargetNetwork(
+          od as api.ManagedZonePeeringConfigTargetNetwork);
     });
   });
 
@@ -1269,7 +1285,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZonePrivateVisibilityConfig();
       var od = api.ManagedZonePrivateVisibilityConfig.fromJson(o.toJson());
-      checkManagedZonePrivateVisibilityConfig(od);
+      checkManagedZonePrivateVisibilityConfig(
+          od as api.ManagedZonePrivateVisibilityConfig);
     });
   });
 
@@ -1278,7 +1295,8 @@ void main() {
       var o = buildManagedZonePrivateVisibilityConfigNetwork();
       var od =
           api.ManagedZonePrivateVisibilityConfigNetwork.fromJson(o.toJson());
-      checkManagedZonePrivateVisibilityConfigNetwork(od);
+      checkManagedZonePrivateVisibilityConfigNetwork(
+          od as api.ManagedZonePrivateVisibilityConfigNetwork);
     });
   });
 
@@ -1286,7 +1304,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZoneReverseLookupConfig();
       var od = api.ManagedZoneReverseLookupConfig.fromJson(o.toJson());
-      checkManagedZoneReverseLookupConfig(od);
+      checkManagedZoneReverseLookupConfig(
+          od as api.ManagedZoneReverseLookupConfig);
     });
   });
 
@@ -1294,7 +1313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManagedZonesListResponse();
       var od = api.ManagedZonesListResponse.fromJson(o.toJson());
-      checkManagedZonesListResponse(od);
+      checkManagedZonesListResponse(od as api.ManagedZonesListResponse);
     });
   });
 
@@ -1302,7 +1321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1310,7 +1329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationDnsKeyContext();
       var od = api.OperationDnsKeyContext.fromJson(o.toJson());
-      checkOperationDnsKeyContext(od);
+      checkOperationDnsKeyContext(od as api.OperationDnsKeyContext);
     });
   });
 
@@ -1318,7 +1337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationManagedZoneContext();
       var od = api.OperationManagedZoneContext.fromJson(o.toJson());
-      checkOperationManagedZoneContext(od);
+      checkOperationManagedZoneContext(od as api.OperationManagedZoneContext);
     });
   });
 
@@ -1326,7 +1345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPoliciesListResponse();
       var od = api.PoliciesListResponse.fromJson(o.toJson());
-      checkPoliciesListResponse(od);
+      checkPoliciesListResponse(od as api.PoliciesListResponse);
     });
   });
 
@@ -1334,7 +1353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPoliciesPatchResponse();
       var od = api.PoliciesPatchResponse.fromJson(o.toJson());
-      checkPoliciesPatchResponse(od);
+      checkPoliciesPatchResponse(od as api.PoliciesPatchResponse);
     });
   });
 
@@ -1342,7 +1361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPoliciesUpdateResponse();
       var od = api.PoliciesUpdateResponse.fromJson(o.toJson());
-      checkPoliciesUpdateResponse(od);
+      checkPoliciesUpdateResponse(od as api.PoliciesUpdateResponse);
     });
   });
 
@@ -1350,7 +1369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1358,7 +1377,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyAlternativeNameServerConfig();
       var od = api.PolicyAlternativeNameServerConfig.fromJson(o.toJson());
-      checkPolicyAlternativeNameServerConfig(od);
+      checkPolicyAlternativeNameServerConfig(
+          od as api.PolicyAlternativeNameServerConfig);
     });
   });
 
@@ -1368,7 +1388,8 @@ void main() {
       var o = buildPolicyAlternativeNameServerConfigTargetNameServer();
       var od = api.PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
           o.toJson());
-      checkPolicyAlternativeNameServerConfigTargetNameServer(od);
+      checkPolicyAlternativeNameServerConfigTargetNameServer(
+          od as api.PolicyAlternativeNameServerConfigTargetNameServer);
     });
   });
 
@@ -1376,7 +1397,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyNetwork();
       var od = api.PolicyNetwork.fromJson(o.toJson());
-      checkPolicyNetwork(od);
+      checkPolicyNetwork(od as api.PolicyNetwork);
     });
   });
 
@@ -1384,7 +1405,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
-      checkProject(od);
+      checkProject(od as api.Project);
     });
   });
 
@@ -1392,7 +1413,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuota();
       var od = api.Quota.fromJson(o.toJson());
-      checkQuota(od);
+      checkQuota(od as api.Quota);
     });
   });
 
@@ -1400,7 +1421,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceRecordSet();
       var od = api.ResourceRecordSet.fromJson(o.toJson());
-      checkResourceRecordSet(od);
+      checkResourceRecordSet(od as api.ResourceRecordSet);
     });
   });
 
@@ -1408,7 +1429,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceRecordSetsListResponse();
       var od = api.ResourceRecordSetsListResponse.fromJson(o.toJson());
-      checkResourceRecordSetsListResponse(od);
+      checkResourceRecordSetsListResponse(
+          od as api.ResourceRecordSetsListResponse);
     });
   });
 
@@ -1416,7 +1438,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResponseHeader();
       var od = api.ResponseHeader.fromJson(o.toJson());
-      checkResponseHeader(od);
+      checkResponseHeader(od as api.ResponseHeader);
     });
   });
 
@@ -1430,8 +1452,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Change.fromJson(json);
-        checkChange(obj);
+        var obj =
+            api.Change.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChange(obj as api.Change);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1491,7 +1514,7 @@ void main() {
           .create(arg_request, arg_project, arg_managedZone,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChange(response);
+        checkChange(response as api.Change);
       })));
     });
 
@@ -1565,7 +1588,7 @@ void main() {
           .get(arg_project, arg_managedZone, arg_changeId,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChange(response);
+        checkChange(response as api.Change);
       })));
     });
 
@@ -1647,7 +1670,7 @@ void main() {
               sortOrder: arg_sortOrder,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChangesListResponse(response);
+        checkChangesListResponse(response as api.ChangesListResponse);
       })));
     });
   });
@@ -1728,7 +1751,7 @@ void main() {
               digestType: arg_digestType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDnsKey(response);
+        checkDnsKey(response as api.DnsKey);
       })));
     });
 
@@ -1807,7 +1830,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDnsKeysListResponse(response);
+        checkDnsKeysListResponse(response as api.DnsKeysListResponse);
       })));
     });
   });
@@ -1883,7 +1906,7 @@ void main() {
           .get(arg_project, arg_managedZone, arg_operation,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1962,7 +1985,8 @@ void main() {
               sortBy: arg_sortBy,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkManagedZoneOperationsListResponse(response);
+        checkManagedZoneOperationsListResponse(
+            response as api.ManagedZoneOperationsListResponse);
       })));
     });
   });
@@ -1976,8 +2000,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ManagedZone.fromJson(json);
-        checkManagedZone(obj);
+        var obj = api.ManagedZone.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkManagedZone(obj as api.ManagedZone);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2028,7 +2053,7 @@ void main() {
           .create(arg_request, arg_project,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkManagedZone(response);
+        checkManagedZone(response as api.ManagedZone);
       })));
     });
 
@@ -2154,7 +2179,7 @@ void main() {
           .get(arg_project, arg_managedZone,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkManagedZone(response);
+        checkManagedZone(response as api.ManagedZone);
       })));
     });
 
@@ -2223,7 +2248,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkManagedZonesListResponse(response);
+        checkManagedZonesListResponse(response as api.ManagedZonesListResponse);
       })));
     });
 
@@ -2236,8 +2261,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ManagedZone.fromJson(json);
-        checkManagedZone(obj);
+        var obj = api.ManagedZone.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkManagedZone(obj as api.ManagedZone);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2291,7 +2317,7 @@ void main() {
           .patch(arg_request, arg_project, arg_managedZone,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2304,8 +2330,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ManagedZone.fromJson(json);
-        checkManagedZone(obj);
+        var obj = api.ManagedZone.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkManagedZone(obj as api.ManagedZone);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2359,7 +2386,7 @@ void main() {
           .update(arg_request, arg_project, arg_managedZone,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2373,8 +2400,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2425,7 +2453,7 @@ void main() {
           .create(arg_request, arg_project,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2551,7 +2579,7 @@ void main() {
           .get(arg_project, arg_policy,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2616,7 +2644,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPoliciesListResponse(response);
+        checkPoliciesListResponse(response as api.PoliciesListResponse);
       })));
     });
 
@@ -2629,8 +2657,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2684,7 +2713,7 @@ void main() {
           .patch(arg_request, arg_project, arg_policy,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPoliciesPatchResponse(response);
+        checkPoliciesPatchResponse(response as api.PoliciesPatchResponse);
       })));
     });
 
@@ -2697,8 +2726,9 @@ void main() {
       var arg_clientOperationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2752,7 +2782,7 @@ void main() {
           .update(arg_request, arg_project, arg_policy,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPoliciesUpdateResponse(response);
+        checkPoliciesUpdateResponse(response as api.PoliciesUpdateResponse);
       })));
     });
   });
@@ -2808,7 +2838,7 @@ void main() {
           .get(arg_project,
               clientOperationId: arg_clientOperationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProject(response);
+        checkProject(response as api.Project);
       })));
     });
   });
@@ -2891,7 +2921,8 @@ void main() {
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResourceRecordSetsListResponse(response);
+        checkResourceRecordSetsListResponse(
+            response as api.ResourceRecordSetsListResponse);
       })));
     });
   });

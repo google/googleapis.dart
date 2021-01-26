@@ -106,7 +106,10 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Application.fromJson(data));
+    return _response.then(
+      (data) =>
+          Application.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the applications available for data transfer for a customer.
@@ -167,7 +170,10 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApplicationsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ApplicationsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -223,7 +229,10 @@ class TransfersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataTransfer.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataTransfer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a data transfer request.
@@ -271,7 +280,10 @@ class TransfersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataTransfer.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataTransfer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the transfers for a customer by source user, destination user, or
@@ -351,7 +363,10 @@ class TransfersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataTransfersListResponse.fromJson(data));
+    return _response.then(
+      (data) => DataTransfersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -394,8 +409,9 @@ class Application {
     }
     if (_json.containsKey('transferParams')) {
       transferParams = (_json['transferParams'] as core.List)
-          .map<ApplicationTransferParam>(
-              (value) => ApplicationTransferParam.fromJson(value))
+          .map<ApplicationTransferParam>((value) =>
+              ApplicationTransferParam.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -443,8 +459,9 @@ class ApplicationDataTransfer {
     if (_json.containsKey('applicationTransferParams')) {
       applicationTransferParams =
           (_json['applicationTransferParams'] as core.List)
-              .map<ApplicationTransferParam>(
-                  (value) => ApplicationTransferParam.fromJson(value))
+              .map<ApplicationTransferParam>((value) =>
+                  ApplicationTransferParam.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('applicationTransferStatus')) {
@@ -526,7 +543,8 @@ class ApplicationsListResponse {
   ApplicationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('applications')) {
       applications = (_json['applications'] as core.List)
-          .map<Application>((value) => Application.fromJson(value))
+          .map<Application>((value) => Application.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -597,8 +615,9 @@ class DataTransfer {
     if (_json.containsKey('applicationDataTransfers')) {
       applicationDataTransfers =
           (_json['applicationDataTransfers'] as core.List)
-              .map<ApplicationDataTransfer>(
-                  (value) => ApplicationDataTransfer.fromJson(value))
+              .map<ApplicationDataTransfer>((value) =>
+                  ApplicationDataTransfer.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('etag')) {
@@ -678,7 +697,8 @@ class DataTransfersListResponse {
   DataTransfersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataTransfers')) {
       dataTransfers = (_json['dataTransfers'] as core.List)
-          .map<DataTransfer>((value) => DataTransfer.fromJson(value))
+          .map<DataTransfer>((value) => DataTransfer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {

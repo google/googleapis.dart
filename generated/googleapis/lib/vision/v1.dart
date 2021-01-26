@@ -112,7 +112,10 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -165,7 +168,9 @@ class FilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -219,7 +224,10 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateImagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -273,7 +281,9 @@ class ImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -340,7 +350,9 @@ class LocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -409,7 +421,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -461,7 +475,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -512,7 +528,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -587,7 +605,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -672,7 +693,10 @@ class ProjectsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -738,7 +762,9 @@ class ProjectsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -805,7 +831,10 @@ class ProjectsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateImagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -872,7 +901,9 @@ class ProjectsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -963,7 +994,10 @@ class ProjectsLocationsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of generic
@@ -1029,7 +1063,9 @@ class ProjectsLocationsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1097,7 +1133,10 @@ class ProjectsLocationsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchAnnotateImagesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchAnnotateImagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Run asynchronous image detection and annotation for a list of images.
@@ -1164,7 +1203,9 @@ class ProjectsLocationsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1223,7 +1264,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1294,7 +1337,9 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates and returns a new ProductSet resource. Possible errors: * Returns
@@ -1363,7 +1408,10 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a ProductSet. Products and ReferenceImages in the
@@ -1416,7 +1464,9 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information associated with a ProductSet. Possible errors: * Returns
@@ -1468,7 +1518,10 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Asynchronous API that imports a list of reference images to specified
@@ -1533,7 +1586,9 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists ProductSets in an unspecified order. Possible errors: * Returns
@@ -1600,7 +1655,10 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListProductSetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProductSetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Makes changes to a ProductSet resource. Only display_name can be updated
@@ -1669,7 +1727,10 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a Product from the specified ProductSet.
@@ -1728,7 +1789,9 @@ class ProjectsLocationsProductSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1804,8 +1867,10 @@ class ProjectsLocationsProductSetsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListProductsInProductSetResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProductsInProductSetResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1885,7 +1950,9 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a product and its reference images. Metadata of the
@@ -1938,7 +2005,9 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information associated with a Product. Possible errors: * Returns
@@ -1989,7 +2058,9 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists products in an unspecified order. Possible errors: * Returns
@@ -2055,7 +2126,10 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListProductsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProductsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Makes changes to a Product resource. Only the `display_name`,
@@ -2128,7 +2202,9 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Asynchronous API to delete all Products in a ProductSet or all Products
@@ -2202,7 +2278,9 @@ class ProjectsLocationsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2290,7 +2368,10 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReferenceImage.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReferenceImage.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a reference image. The image metadata will be deleted
@@ -2345,7 +2426,9 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information associated with a ReferenceImage. Possible errors: *
@@ -2398,7 +2481,10 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReferenceImage.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReferenceImage.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists reference images. Possible errors: * Returns NOT_FOUND if the parent
@@ -2468,7 +2554,10 @@ class ProjectsLocationsProductsReferenceImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReferenceImagesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReferenceImagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2526,7 +2615,9 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2579,14 +2670,17 @@ class AnnotateFileRequest {
   AnnotateFileRequest.fromJson(core.Map _json) {
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
-          .map<Feature>((value) => Feature.fromJson(value))
+          .map<Feature>((value) =>
+              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('imageContext')) {
-      imageContext = ImageContext.fromJson(_json['imageContext']);
+      imageContext = ImageContext.fromJson(
+          _json['imageContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig = InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
@@ -2634,15 +2728,17 @@ class AnnotateFileResponse {
 
   AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig = InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<AnnotateImageResponse>(
-              (value) => AnnotateImageResponse.fromJson(value))
+          .map<AnnotateImageResponse>((value) => AnnotateImageResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPages')) {
@@ -2685,14 +2781,17 @@ class AnnotateImageRequest {
   AnnotateImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
-          .map<Feature>((value) => Feature.fromJson(value))
+          .map<Feature>((value) =>
+              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('image')) {
-      image = Image.fromJson(_json['image']);
+      image =
+          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageContext')) {
-      imageContext = ImageContext.fromJson(_json['imageContext']);
+      imageContext = ImageContext.fromJson(
+          _json['imageContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2765,64 +2864,75 @@ class AnnotateImageResponse {
 
   AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = ImageAnnotationContext.fromJson(_json['context']);
+      context = ImageAnnotationContext.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cropHintsAnnotation')) {
-      cropHintsAnnotation =
-          CropHintsAnnotation.fromJson(_json['cropHintsAnnotation']);
+      cropHintsAnnotation = CropHintsAnnotation.fromJson(
+          _json['cropHintsAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faceAnnotations')) {
       faceAnnotations = (_json['faceAnnotations'] as core.List)
-          .map<FaceAnnotation>((value) => FaceAnnotation.fromJson(value))
+          .map<FaceAnnotation>((value) => FaceAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullTextAnnotation')) {
-      fullTextAnnotation = TextAnnotation.fromJson(_json['fullTextAnnotation']);
+      fullTextAnnotation = TextAnnotation.fromJson(
+          _json['fullTextAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesAnnotation')) {
-      imagePropertiesAnnotation =
-          ImageProperties.fromJson(_json['imagePropertiesAnnotation']);
+      imagePropertiesAnnotation = ImageProperties.fromJson(
+          _json['imagePropertiesAnnotation']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelAnnotations')) {
       labelAnnotations = (_json['labelAnnotations'] as core.List)
-          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('landmarkAnnotations')) {
       landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
-          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localizedObjectAnnotations')) {
       localizedObjectAnnotations =
           (_json['localizedObjectAnnotations'] as core.List)
-              .map<LocalizedObjectAnnotation>(
-                  (value) => LocalizedObjectAnnotation.fromJson(value))
+              .map<LocalizedObjectAnnotation>((value) =>
+                  LocalizedObjectAnnotation.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('logoAnnotations')) {
       logoAnnotations = (_json['logoAnnotations'] as core.List)
-          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productSearchResults')) {
-      productSearchResults =
-          ProductSearchResults.fromJson(_json['productSearchResults']);
+      productSearchResults = ProductSearchResults.fromJson(
+          _json['productSearchResults'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('safeSearchAnnotation')) {
-      safeSearchAnnotation =
-          SafeSearchAnnotation.fromJson(_json['safeSearchAnnotation']);
+      safeSearchAnnotation = SafeSearchAnnotation.fromJson(
+          _json['safeSearchAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textAnnotations')) {
       textAnnotations = (_json['textAnnotations'] as core.List)
-          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(value))
+          .map<EntityAnnotation>((value) => EntityAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webDetection')) {
-      webDetection = WebDetection.fromJson(_json['webDetection']);
+      webDetection = WebDetection.fromJson(
+          _json['webDetection'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2899,17 +3009,21 @@ class AsyncAnnotateFileRequest {
   AsyncAnnotateFileRequest.fromJson(core.Map _json) {
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
-          .map<Feature>((value) => Feature.fromJson(value))
+          .map<Feature>((value) =>
+              Feature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('imageContext')) {
-      imageContext = ImageContext.fromJson(_json['imageContext']);
+      imageContext = ImageContext.fromJson(
+          _json['imageContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig = InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2940,7 +3054,8 @@ class AsyncAnnotateFileResponse {
 
   AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2974,8 +3089,9 @@ class AsyncBatchAnnotateFilesRequest {
     }
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<AsyncAnnotateFileRequest>(
-              (value) => AsyncAnnotateFileRequest.fromJson(value))
+          .map<AsyncAnnotateFileRequest>((value) =>
+              AsyncAnnotateFileRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3003,8 +3119,9 @@ class AsyncBatchAnnotateFilesResponse {
   AsyncBatchAnnotateFilesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<AsyncAnnotateFileResponse>(
-              (value) => AsyncAnnotateFileResponse.fromJson(value))
+          .map<AsyncAnnotateFileResponse>((value) =>
+              AsyncAnnotateFileResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3037,15 +3154,16 @@ class AsyncBatchAnnotateImagesRequest {
 
   AsyncBatchAnnotateImagesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parent')) {
       parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<AnnotateImageRequest>(
-              (value) => AnnotateImageRequest.fromJson(value))
+          .map<AnnotateImageRequest>((value) => AnnotateImageRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3074,7 +3192,8 @@ class AsyncBatchAnnotateImagesResponse {
 
   AsyncBatchAnnotateImagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3108,8 +3227,8 @@ class BatchAnnotateFilesRequest {
     }
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<AnnotateFileRequest>(
-              (value) => AnnotateFileRequest.fromJson(value))
+          .map<AnnotateFileRequest>((value) => AnnotateFileRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3137,8 +3256,8 @@ class BatchAnnotateFilesResponse {
   BatchAnnotateFilesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<AnnotateFileResponse>(
-              (value) => AnnotateFileResponse.fromJson(value))
+          .map<AnnotateFileResponse>((value) => AnnotateFileResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3172,8 +3291,8 @@ class BatchAnnotateImagesRequest {
     }
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<AnnotateImageRequest>(
-              (value) => AnnotateImageRequest.fromJson(value))
+          .map<AnnotateImageRequest>((value) => AnnotateImageRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3200,8 +3319,8 @@ class BatchAnnotateImagesResponse {
   BatchAnnotateImagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<AnnotateImageResponse>(
-              (value) => AnnotateImageResponse.fromJson(value))
+          .map<AnnotateImageResponse>((value) => AnnotateImageResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3306,18 +3425,21 @@ class Block {
       blockType = _json['blockType'] as core.String;
     }
     if (_json.containsKey('boundingBox')) {
-      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('paragraphs')) {
       paragraphs = (_json['paragraphs'] as core.List)
-          .map<Paragraph>((value) => Paragraph.fromJson(value))
+          .map<Paragraph>((value) =>
+              Paragraph.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('property')) {
-      property = TextProperty.fromJson(_json['property']);
+      property = TextProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3355,12 +3477,14 @@ class BoundingPoly {
   BoundingPoly.fromJson(core.Map _json) {
     if (_json.containsKey('normalizedVertices')) {
       normalizedVertices = (_json['normalizedVertices'] as core.List)
-          .map<NormalizedVertex>((value) => NormalizedVertex.fromJson(value))
+          .map<NormalizedVertex>((value) => NormalizedVertex.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('vertices')) {
       vertices = (_json['vertices'] as core.List)
-          .map<Vertex>((value) => Vertex.fromJson(value))
+          .map<Vertex>((value) =>
+              Vertex.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3513,7 +3637,8 @@ class ColorInfo {
 
   ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pixelFraction')) {
       pixelFraction = (_json['pixelFraction'] as core.num).toDouble();
@@ -3555,7 +3680,8 @@ class CropHint {
 
   CropHint.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -3590,7 +3716,8 @@ class CropHintsAnnotation {
   CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('cropHints')) {
       cropHints = (_json['cropHints'] as core.List)
-          .map<CropHint>((value) => CropHint.fromJson(value))
+          .map<CropHint>((value) =>
+              CropHint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3714,7 +3841,8 @@ class DominantColorsAnnotation {
   DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
       colors = (_json['colors'] as core.List)
-          .map<ColorInfo>((value) => ColorInfo.fromJson(value))
+          .map<ColorInfo>((value) =>
+              ColorInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3794,7 +3922,8 @@ class EntityAnnotation {
 
   EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -3807,7 +3936,8 @@ class EntityAnnotation {
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<LocationInfo>((value) => LocationInfo.fromJson(value))
+          .map<LocationInfo>((value) => LocationInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mid')) {
@@ -3815,7 +3945,8 @@ class EntityAnnotation {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<Property>((value) => Property.fromJson(value))
+          .map<Property>((value) =>
+              Property.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -3980,14 +4111,16 @@ class FaceAnnotation {
       blurredLikelihood = _json['blurredLikelihood'] as core.String;
     }
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectionConfidence')) {
       detectionConfidence =
           (_json['detectionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('fdBoundingPoly')) {
-      fdBoundingPoly = BoundingPoly.fromJson(_json['fdBoundingPoly']);
+      fdBoundingPoly = BoundingPoly.fromJson(
+          _json['fdBoundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headwearLikelihood')) {
       headwearLikelihood = _json['headwearLikelihood'] as core.String;
@@ -4001,7 +4134,8 @@ class FaceAnnotation {
     }
     if (_json.containsKey('landmarks')) {
       landmarks = (_json['landmarks'] as core.List)
-          .map<Landmark>((value) => Landmark.fromJson(value))
+          .map<Landmark>((value) =>
+              Landmark.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('panAngle')) {
@@ -4219,16 +4353,18 @@ class GoogleCloudVisionV1p1beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p1beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig =
-          GoogleCloudVisionV1p1beta1InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = GoogleCloudVisionV1p1beta1InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p1beta1AnnotateImageResponse>((value) =>
-              GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(value))
+              GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPages')) {
@@ -4310,41 +4446,47 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
   GoogleCloudVisionV1p1beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p1beta1ImageAnnotationContext.fromJson(
-          _json['context']);
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(
-              _json['cropHintsAnnotation']);
+              _json['cropHintsAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faceAnnotations')) {
       faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotation>((value) =>
-              GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1FaceAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(
-          _json['fullTextAnnotation']);
+          _json['fullTextAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p1beta1ImageProperties.fromJson(
-              _json['imagePropertiesAnnotation']);
+              _json['imagePropertiesAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelAnnotations')) {
       labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('landmarkAnnotations')) {
       landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localizedObjectAnnotations')) {
@@ -4352,34 +4494,38 @@ class GoogleCloudVisionV1p1beta1AnnotateImageResponse {
               as core.List)
           .map<GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('logoAnnotations')) {
       logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p1beta1ProductSearchResults.fromJson(
-              _json['productSearchResults']);
+              _json['productSearchResults']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p1beta1SafeSearchAnnotation.fromJson(
-              _json['safeSearchAnnotation']);
+              _json['safeSearchAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textAnnotations')) {
       textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p1beta1WebDetection.fromJson(
-          _json['webDetection']);
+          _json['webDetection'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4447,7 +4593,7 @@ class GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p1beta1OutputConfig.fromJson(
-          _json['outputConfig']);
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4474,7 +4620,7 @@ class GoogleCloudVisionV1p1beta1AsyncBatchAnnotateFilesResponse {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p1beta1AsyncAnnotateFileResponse.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4525,21 +4671,22 @@ class GoogleCloudVisionV1p1beta1Block {
       blockType = _json['blockType'] as core.String;
     }
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('paragraphs')) {
       paragraphs = (_json['paragraphs'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Paragraph>(
-              (value) => GoogleCloudVisionV1p1beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Paragraph>((value) =>
+              GoogleCloudVisionV1p1beta1Paragraph.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4578,13 +4725,15 @@ class GoogleCloudVisionV1p1beta1BoundingPoly {
     if (_json.containsKey('normalizedVertices')) {
       normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p1beta1NormalizedVertex>((value) =>
-              GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p1beta1NormalizedVertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('vertices')) {
       vertices = (_json['vertices'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Vertex>(
-              (value) => GoogleCloudVisionV1p1beta1Vertex.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Vertex>((value) =>
+              GoogleCloudVisionV1p1beta1Vertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4619,7 +4768,8 @@ class GoogleCloudVisionV1p1beta1ColorInfo {
 
   GoogleCloudVisionV1p1beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pixelFraction')) {
       pixelFraction = (_json['pixelFraction'] as core.num).toDouble();
@@ -4662,7 +4812,7 @@ class GoogleCloudVisionV1p1beta1CropHint {
   GoogleCloudVisionV1p1beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -4697,8 +4847,9 @@ class GoogleCloudVisionV1p1beta1CropHintsAnnotation {
   GoogleCloudVisionV1p1beta1CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('cropHints')) {
       cropHints = (_json['cropHints'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1CropHint>(
-              (value) => GoogleCloudVisionV1p1beta1CropHint.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1CropHint>((value) =>
+              GoogleCloudVisionV1p1beta1CropHint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4722,8 +4873,9 @@ class GoogleCloudVisionV1p1beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
       colors = (_json['colors'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1ColorInfo>(
-              (value) => GoogleCloudVisionV1p1beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1ColorInfo>((value) =>
+              GoogleCloudVisionV1p1beta1ColorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4786,7 +4938,7 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
   GoogleCloudVisionV1p1beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -4799,8 +4951,9 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1LocationInfo>(
-              (value) => GoogleCloudVisionV1p1beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1LocationInfo>((value) =>
+              GoogleCloudVisionV1p1beta1LocationInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mid')) {
@@ -4808,8 +4961,9 @@ class GoogleCloudVisionV1p1beta1EntityAnnotation {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Property>(
-              (value) => GoogleCloudVisionV1p1beta1Property.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Property>((value) =>
+              GoogleCloudVisionV1p1beta1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -4975,7 +5129,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     }
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectionConfidence')) {
       detectionConfidence =
@@ -4983,7 +5137,7 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     }
     if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['fdBoundingPoly']);
+          _json['fdBoundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headwearLikelihood')) {
       headwearLikelihood = _json['headwearLikelihood'] as core.String;
@@ -4998,7 +5152,8 @@ class GoogleCloudVisionV1p1beta1FaceAnnotation {
     if (_json.containsKey('landmarks')) {
       landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p1beta1FaceAnnotationLandmark>((value) =>
-              GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(value))
+              GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('panAngle')) {
@@ -5123,7 +5278,8 @@ class GoogleCloudVisionV1p1beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p1beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = GoogleCloudVisionV1p1beta1Position.fromJson(_json['position']);
+      position = GoogleCloudVisionV1p1beta1Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -5245,7 +5401,7 @@ class GoogleCloudVisionV1p1beta1ImageProperties {
     if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p1beta1DominantColorsAnnotation.fromJson(
-              _json['dominantColors']);
+              _json['dominantColors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5287,8 +5443,8 @@ class GoogleCloudVisionV1p1beta1InputConfig {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudVisionV1p1beta1GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudVisionV1p1beta1GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -5334,7 +5490,7 @@ class GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p1beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -5380,7 +5536,8 @@ class GoogleCloudVisionV1p1beta1LocationInfo {
 
   GoogleCloudVisionV1p1beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(_json['latLng']);
+      latLng = LatLng.fromJson(
+          _json['latLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5494,7 +5651,7 @@ class GoogleCloudVisionV1p1beta1OutputConfig {
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p1beta1GcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5534,8 +5691,9 @@ class GoogleCloudVisionV1p1beta1Page {
   GoogleCloudVisionV1p1beta1Page.fromJson(core.Map _json) {
     if (_json.containsKey('blocks')) {
       blocks = (_json['blocks'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Block>(
-              (value) => GoogleCloudVisionV1p1beta1Block.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Block>((value) =>
+              GoogleCloudVisionV1p1beta1Block.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('confidence')) {
@@ -5546,7 +5704,7 @@ class GoogleCloudVisionV1p1beta1Page {
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
       width = _json['width'] as core.int;
@@ -5599,20 +5757,21 @@ class GoogleCloudVisionV1p1beta1Paragraph {
 
   GoogleCloudVisionV1p1beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Word>(
-              (value) => GoogleCloudVisionV1p1beta1Word.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Word>((value) =>
+              GoogleCloudVisionV1p1beta1Word.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5728,7 +5887,8 @@ class GoogleCloudVisionV1p1beta1Product {
     if (_json.containsKey('productLabels')) {
       productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductKeyValue>((value) =>
-              GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p1beta1ProductKeyValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5816,14 +5976,14 @@ class GoogleCloudVisionV1p1beta1ProductSearchResults {
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5862,21 +6022,21 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsGroupedResult {
       core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectAnnotations')) {
       objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p1beta1ProductSearchResultsObjectAnnotation
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p1beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p1beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5970,7 +6130,8 @@ class GoogleCloudVisionV1p1beta1ProductSearchResultsResult {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = GoogleCloudVisionV1p1beta1Product.fromJson(_json['product']);
+      product = GoogleCloudVisionV1p1beta1Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('score')) {
       score = (_json['score'] as core.num).toDouble();
@@ -6157,15 +6318,15 @@ class GoogleCloudVisionV1p1beta1Symbol {
 
   GoogleCloudVisionV1p1beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -6209,8 +6370,9 @@ class GoogleCloudVisionV1p1beta1TextAnnotation {
   GoogleCloudVisionV1p1beta1TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Page>(
-              (value) => GoogleCloudVisionV1p1beta1Page.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Page>((value) =>
+              GoogleCloudVisionV1p1beta1Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -6320,14 +6482,14 @@ class GoogleCloudVisionV1p1beta1TextAnnotationTextProperty {
     if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p1beta1TextAnnotationDetectedBreak.fromJson(
-              _json['detectedBreak']);
+              _json['detectedBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectedLanguages')) {
       detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p1beta1TextAnnotationDetectedLanguage
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6410,37 +6572,43 @@ class GoogleCloudVisionV1p1beta1WebDetection {
     if (_json.containsKey('bestGuessLabels')) {
       bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebLabel>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pagesWithMatchingImages')) {
       pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebPage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('visuallySimilarImages')) {
       visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webEntities')) {
       webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebEntity>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6607,7 +6775,8 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageTitle')) {
@@ -6616,7 +6785,8 @@ class GoogleCloudVisionV1p1beta1WebDetectionWebPage {
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p1beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p1beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -6675,20 +6845,21 @@ class GoogleCloudVisionV1p1beta1Word {
 
   GoogleCloudVisionV1p1beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p1beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p1beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symbols')) {
       symbols = (_json['symbols'] as core.List)
-          .map<GoogleCloudVisionV1p1beta1Symbol>(
-              (value) => GoogleCloudVisionV1p1beta1Symbol.fromJson(value))
+          .map<GoogleCloudVisionV1p1beta1Symbol>((value) =>
+              GoogleCloudVisionV1p1beta1Symbol.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6732,16 +6903,18 @@ class GoogleCloudVisionV1p2beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p2beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig =
-          GoogleCloudVisionV1p2beta1InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = GoogleCloudVisionV1p2beta1InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p2beta1AnnotateImageResponse>((value) =>
-              GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(value))
+              GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPages')) {
@@ -6823,41 +6996,47 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
   GoogleCloudVisionV1p2beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p2beta1ImageAnnotationContext.fromJson(
-          _json['context']);
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(
-              _json['cropHintsAnnotation']);
+              _json['cropHintsAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faceAnnotations')) {
       faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotation>((value) =>
-              GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1FaceAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(
-          _json['fullTextAnnotation']);
+          _json['fullTextAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p2beta1ImageProperties.fromJson(
-              _json['imagePropertiesAnnotation']);
+              _json['imagePropertiesAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelAnnotations')) {
       labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('landmarkAnnotations')) {
       landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localizedObjectAnnotations')) {
@@ -6865,34 +7044,38 @@ class GoogleCloudVisionV1p2beta1AnnotateImageResponse {
               as core.List)
           .map<GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('logoAnnotations')) {
       logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p2beta1ProductSearchResults.fromJson(
-              _json['productSearchResults']);
+              _json['productSearchResults']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p2beta1SafeSearchAnnotation.fromJson(
-              _json['safeSearchAnnotation']);
+              _json['safeSearchAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textAnnotations')) {
       textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p2beta1WebDetection.fromJson(
-          _json['webDetection']);
+          _json['webDetection'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6960,7 +7143,7 @@ class GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p2beta1OutputConfig.fromJson(
-          _json['outputConfig']);
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6987,7 +7170,7 @@ class GoogleCloudVisionV1p2beta1AsyncBatchAnnotateFilesResponse {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p2beta1AsyncAnnotateFileResponse.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7038,21 +7221,22 @@ class GoogleCloudVisionV1p2beta1Block {
       blockType = _json['blockType'] as core.String;
     }
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('paragraphs')) {
       paragraphs = (_json['paragraphs'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Paragraph>(
-              (value) => GoogleCloudVisionV1p2beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Paragraph>((value) =>
+              GoogleCloudVisionV1p2beta1Paragraph.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7091,13 +7275,15 @@ class GoogleCloudVisionV1p2beta1BoundingPoly {
     if (_json.containsKey('normalizedVertices')) {
       normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p2beta1NormalizedVertex>((value) =>
-              GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p2beta1NormalizedVertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('vertices')) {
       vertices = (_json['vertices'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Vertex>(
-              (value) => GoogleCloudVisionV1p2beta1Vertex.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Vertex>((value) =>
+              GoogleCloudVisionV1p2beta1Vertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7132,7 +7318,8 @@ class GoogleCloudVisionV1p2beta1ColorInfo {
 
   GoogleCloudVisionV1p2beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pixelFraction')) {
       pixelFraction = (_json['pixelFraction'] as core.num).toDouble();
@@ -7175,7 +7362,7 @@ class GoogleCloudVisionV1p2beta1CropHint {
   GoogleCloudVisionV1p2beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -7210,8 +7397,9 @@ class GoogleCloudVisionV1p2beta1CropHintsAnnotation {
   GoogleCloudVisionV1p2beta1CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('cropHints')) {
       cropHints = (_json['cropHints'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1CropHint>(
-              (value) => GoogleCloudVisionV1p2beta1CropHint.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1CropHint>((value) =>
+              GoogleCloudVisionV1p2beta1CropHint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7235,8 +7423,9 @@ class GoogleCloudVisionV1p2beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
       colors = (_json['colors'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1ColorInfo>(
-              (value) => GoogleCloudVisionV1p2beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1ColorInfo>((value) =>
+              GoogleCloudVisionV1p2beta1ColorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7299,7 +7488,7 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
   GoogleCloudVisionV1p2beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -7312,8 +7501,9 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1LocationInfo>(
-              (value) => GoogleCloudVisionV1p2beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1LocationInfo>((value) =>
+              GoogleCloudVisionV1p2beta1LocationInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mid')) {
@@ -7321,8 +7511,9 @@ class GoogleCloudVisionV1p2beta1EntityAnnotation {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Property>(
-              (value) => GoogleCloudVisionV1p2beta1Property.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Property>((value) =>
+              GoogleCloudVisionV1p2beta1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -7488,7 +7679,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     }
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectionConfidence')) {
       detectionConfidence =
@@ -7496,7 +7687,7 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     }
     if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['fdBoundingPoly']);
+          _json['fdBoundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headwearLikelihood')) {
       headwearLikelihood = _json['headwearLikelihood'] as core.String;
@@ -7511,7 +7702,8 @@ class GoogleCloudVisionV1p2beta1FaceAnnotation {
     if (_json.containsKey('landmarks')) {
       landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p2beta1FaceAnnotationLandmark>((value) =>
-              GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(value))
+              GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('panAngle')) {
@@ -7636,7 +7828,8 @@ class GoogleCloudVisionV1p2beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p2beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = GoogleCloudVisionV1p2beta1Position.fromJson(_json['position']);
+      position = GoogleCloudVisionV1p2beta1Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -7758,7 +7951,7 @@ class GoogleCloudVisionV1p2beta1ImageProperties {
     if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p2beta1DominantColorsAnnotation.fromJson(
-              _json['dominantColors']);
+              _json['dominantColors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7800,8 +7993,8 @@ class GoogleCloudVisionV1p2beta1InputConfig {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudVisionV1p2beta1GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudVisionV1p2beta1GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -7847,7 +8040,7 @@ class GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p2beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -7893,7 +8086,8 @@ class GoogleCloudVisionV1p2beta1LocationInfo {
 
   GoogleCloudVisionV1p2beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(_json['latLng']);
+      latLng = LatLng.fromJson(
+          _json['latLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8007,7 +8201,7 @@ class GoogleCloudVisionV1p2beta1OutputConfig {
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p2beta1GcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8047,8 +8241,9 @@ class GoogleCloudVisionV1p2beta1Page {
   GoogleCloudVisionV1p2beta1Page.fromJson(core.Map _json) {
     if (_json.containsKey('blocks')) {
       blocks = (_json['blocks'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Block>(
-              (value) => GoogleCloudVisionV1p2beta1Block.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Block>((value) =>
+              GoogleCloudVisionV1p2beta1Block.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('confidence')) {
@@ -8059,7 +8254,7 @@ class GoogleCloudVisionV1p2beta1Page {
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
       width = _json['width'] as core.int;
@@ -8112,20 +8307,21 @@ class GoogleCloudVisionV1p2beta1Paragraph {
 
   GoogleCloudVisionV1p2beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Word>(
-              (value) => GoogleCloudVisionV1p2beta1Word.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Word>((value) =>
+              GoogleCloudVisionV1p2beta1Word.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8241,7 +8437,8 @@ class GoogleCloudVisionV1p2beta1Product {
     if (_json.containsKey('productLabels')) {
       productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductKeyValue>((value) =>
-              GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p2beta1ProductKeyValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8329,14 +8526,14 @@ class GoogleCloudVisionV1p2beta1ProductSearchResults {
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8375,21 +8572,21 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsGroupedResult {
       core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectAnnotations')) {
       objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p2beta1ProductSearchResultsObjectAnnotation
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p2beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p2beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8483,7 +8680,8 @@ class GoogleCloudVisionV1p2beta1ProductSearchResultsResult {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = GoogleCloudVisionV1p2beta1Product.fromJson(_json['product']);
+      product = GoogleCloudVisionV1p2beta1Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('score')) {
       score = (_json['score'] as core.num).toDouble();
@@ -8670,15 +8868,15 @@ class GoogleCloudVisionV1p2beta1Symbol {
 
   GoogleCloudVisionV1p2beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -8722,8 +8920,9 @@ class GoogleCloudVisionV1p2beta1TextAnnotation {
   GoogleCloudVisionV1p2beta1TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Page>(
-              (value) => GoogleCloudVisionV1p2beta1Page.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Page>((value) =>
+              GoogleCloudVisionV1p2beta1Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -8833,14 +9032,14 @@ class GoogleCloudVisionV1p2beta1TextAnnotationTextProperty {
     if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p2beta1TextAnnotationDetectedBreak.fromJson(
-              _json['detectedBreak']);
+              _json['detectedBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectedLanguages')) {
       detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p2beta1TextAnnotationDetectedLanguage
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8923,37 +9122,43 @@ class GoogleCloudVisionV1p2beta1WebDetection {
     if (_json.containsKey('bestGuessLabels')) {
       bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebLabel>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pagesWithMatchingImages')) {
       pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebPage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('visuallySimilarImages')) {
       visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webEntities')) {
       webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebEntity>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9120,7 +9325,8 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageTitle')) {
@@ -9129,7 +9335,8 @@ class GoogleCloudVisionV1p2beta1WebDetectionWebPage {
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p2beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p2beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -9188,20 +9395,21 @@ class GoogleCloudVisionV1p2beta1Word {
 
   GoogleCloudVisionV1p2beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p2beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p2beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symbols')) {
       symbols = (_json['symbols'] as core.List)
-          .map<GoogleCloudVisionV1p2beta1Symbol>(
-              (value) => GoogleCloudVisionV1p2beta1Symbol.fromJson(value))
+          .map<GoogleCloudVisionV1p2beta1Symbol>((value) =>
+              GoogleCloudVisionV1p2beta1Symbol.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9245,16 +9453,18 @@ class GoogleCloudVisionV1p3beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p3beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig =
-          GoogleCloudVisionV1p3beta1InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = GoogleCloudVisionV1p3beta1InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p3beta1AnnotateImageResponse>((value) =>
-              GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(value))
+              GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPages')) {
@@ -9336,41 +9546,47 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
   GoogleCloudVisionV1p3beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p3beta1ImageAnnotationContext.fromJson(
-          _json['context']);
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(
-              _json['cropHintsAnnotation']);
+              _json['cropHintsAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faceAnnotations')) {
       faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotation>((value) =>
-              GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1FaceAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(
-          _json['fullTextAnnotation']);
+          _json['fullTextAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p3beta1ImageProperties.fromJson(
-              _json['imagePropertiesAnnotation']);
+              _json['imagePropertiesAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelAnnotations')) {
       labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('landmarkAnnotations')) {
       landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localizedObjectAnnotations')) {
@@ -9378,34 +9594,38 @@ class GoogleCloudVisionV1p3beta1AnnotateImageResponse {
               as core.List)
           .map<GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('logoAnnotations')) {
       logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p3beta1ProductSearchResults.fromJson(
-              _json['productSearchResults']);
+              _json['productSearchResults']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p3beta1SafeSearchAnnotation.fromJson(
-              _json['safeSearchAnnotation']);
+              _json['safeSearchAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textAnnotations')) {
       textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p3beta1WebDetection.fromJson(
-          _json['webDetection']);
+          _json['webDetection'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9473,7 +9693,7 @@ class GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p3beta1OutputConfig.fromJson(
-          _json['outputConfig']);
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9500,7 +9720,7 @@ class GoogleCloudVisionV1p3beta1AsyncBatchAnnotateFilesResponse {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p3beta1AsyncAnnotateFileResponse.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9605,21 +9825,22 @@ class GoogleCloudVisionV1p3beta1Block {
       blockType = _json['blockType'] as core.String;
     }
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('paragraphs')) {
       paragraphs = (_json['paragraphs'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Paragraph>(
-              (value) => GoogleCloudVisionV1p3beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Paragraph>((value) =>
+              GoogleCloudVisionV1p3beta1Paragraph.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9658,13 +9879,15 @@ class GoogleCloudVisionV1p3beta1BoundingPoly {
     if (_json.containsKey('normalizedVertices')) {
       normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p3beta1NormalizedVertex>((value) =>
-              GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p3beta1NormalizedVertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('vertices')) {
       vertices = (_json['vertices'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Vertex>(
-              (value) => GoogleCloudVisionV1p3beta1Vertex.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Vertex>((value) =>
+              GoogleCloudVisionV1p3beta1Vertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9699,7 +9922,8 @@ class GoogleCloudVisionV1p3beta1ColorInfo {
 
   GoogleCloudVisionV1p3beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pixelFraction')) {
       pixelFraction = (_json['pixelFraction'] as core.num).toDouble();
@@ -9742,7 +9966,7 @@ class GoogleCloudVisionV1p3beta1CropHint {
   GoogleCloudVisionV1p3beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -9777,8 +10001,9 @@ class GoogleCloudVisionV1p3beta1CropHintsAnnotation {
   GoogleCloudVisionV1p3beta1CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('cropHints')) {
       cropHints = (_json['cropHints'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1CropHint>(
-              (value) => GoogleCloudVisionV1p3beta1CropHint.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1CropHint>((value) =>
+              GoogleCloudVisionV1p3beta1CropHint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9802,8 +10027,9 @@ class GoogleCloudVisionV1p3beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
       colors = (_json['colors'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1ColorInfo>(
-              (value) => GoogleCloudVisionV1p3beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1ColorInfo>((value) =>
+              GoogleCloudVisionV1p3beta1ColorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9866,7 +10092,7 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
   GoogleCloudVisionV1p3beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -9879,8 +10105,9 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1LocationInfo>(
-              (value) => GoogleCloudVisionV1p3beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1LocationInfo>((value) =>
+              GoogleCloudVisionV1p3beta1LocationInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mid')) {
@@ -9888,8 +10115,9 @@ class GoogleCloudVisionV1p3beta1EntityAnnotation {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Property>(
-              (value) => GoogleCloudVisionV1p3beta1Property.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Property>((value) =>
+              GoogleCloudVisionV1p3beta1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -10055,7 +10283,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     }
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectionConfidence')) {
       detectionConfidence =
@@ -10063,7 +10291,7 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     }
     if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['fdBoundingPoly']);
+          _json['fdBoundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headwearLikelihood')) {
       headwearLikelihood = _json['headwearLikelihood'] as core.String;
@@ -10078,7 +10306,8 @@ class GoogleCloudVisionV1p3beta1FaceAnnotation {
     if (_json.containsKey('landmarks')) {
       landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p3beta1FaceAnnotationLandmark>((value) =>
-              GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(value))
+              GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('panAngle')) {
@@ -10203,7 +10432,8 @@ class GoogleCloudVisionV1p3beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p3beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = GoogleCloudVisionV1p3beta1Position.fromJson(_json['position']);
+      position = GoogleCloudVisionV1p3beta1Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -10325,7 +10555,7 @@ class GoogleCloudVisionV1p3beta1ImageProperties {
     if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p3beta1DominantColorsAnnotation.fromJson(
-              _json['dominantColors']);
+              _json['dominantColors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10357,12 +10587,14 @@ class GoogleCloudVisionV1p3beta1ImportProductSetsResponse {
     if (_json.containsKey('referenceImages')) {
       referenceImages = (_json['referenceImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ReferenceImage>((value) =>
-              GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statuses')) {
       statuses = (_json['statuses'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10409,8 +10641,8 @@ class GoogleCloudVisionV1p3beta1InputConfig {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudVisionV1p3beta1GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudVisionV1p3beta1GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -10456,7 +10688,7 @@ class GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p3beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -10502,7 +10734,8 @@ class GoogleCloudVisionV1p3beta1LocationInfo {
 
   GoogleCloudVisionV1p3beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(_json['latLng']);
+      latLng = LatLng.fromJson(
+          _json['latLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10616,7 +10849,7 @@ class GoogleCloudVisionV1p3beta1OutputConfig {
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p3beta1GcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10656,8 +10889,9 @@ class GoogleCloudVisionV1p3beta1Page {
   GoogleCloudVisionV1p3beta1Page.fromJson(core.Map _json) {
     if (_json.containsKey('blocks')) {
       blocks = (_json['blocks'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Block>(
-              (value) => GoogleCloudVisionV1p3beta1Block.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Block>((value) =>
+              GoogleCloudVisionV1p3beta1Block.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('confidence')) {
@@ -10668,7 +10902,7 @@ class GoogleCloudVisionV1p3beta1Page {
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
       width = _json['width'] as core.int;
@@ -10721,20 +10955,21 @@ class GoogleCloudVisionV1p3beta1Paragraph {
 
   GoogleCloudVisionV1p3beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Word>(
-              (value) => GoogleCloudVisionV1p3beta1Word.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Word>((value) =>
+              GoogleCloudVisionV1p3beta1Word.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10850,7 +11085,8 @@ class GoogleCloudVisionV1p3beta1Product {
     if (_json.containsKey('productLabels')) {
       productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductKeyValue>((value) =>
-              GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p3beta1ProductKeyValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10938,14 +11174,14 @@ class GoogleCloudVisionV1p3beta1ProductSearchResults {
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10984,21 +11220,21 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsGroupedResult {
       core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectAnnotations')) {
       objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p3beta1ProductSearchResultsObjectAnnotation
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p3beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p3beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11092,7 +11328,8 @@ class GoogleCloudVisionV1p3beta1ProductSearchResultsResult {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = GoogleCloudVisionV1p3beta1Product.fromJson(_json['product']);
+      product = GoogleCloudVisionV1p3beta1Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('score')) {
       score = (_json['score'] as core.num).toDouble();
@@ -11179,8 +11416,9 @@ class GoogleCloudVisionV1p3beta1ReferenceImage {
   GoogleCloudVisionV1p3beta1ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPolys')) {
       boundingPolys = (_json['boundingPolys'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1BoundingPoly>(
-              (value) => GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1BoundingPoly>((value) =>
+              GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -11332,15 +11570,15 @@ class GoogleCloudVisionV1p3beta1Symbol {
 
   GoogleCloudVisionV1p3beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -11384,8 +11622,9 @@ class GoogleCloudVisionV1p3beta1TextAnnotation {
   GoogleCloudVisionV1p3beta1TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Page>(
-              (value) => GoogleCloudVisionV1p3beta1Page.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Page>((value) =>
+              GoogleCloudVisionV1p3beta1Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -11495,14 +11734,14 @@ class GoogleCloudVisionV1p3beta1TextAnnotationTextProperty {
     if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p3beta1TextAnnotationDetectedBreak.fromJson(
-              _json['detectedBreak']);
+              _json['detectedBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectedLanguages')) {
       detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p3beta1TextAnnotationDetectedLanguage
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11585,37 +11824,43 @@ class GoogleCloudVisionV1p3beta1WebDetection {
     if (_json.containsKey('bestGuessLabels')) {
       bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebLabel>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pagesWithMatchingImages')) {
       pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebPage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('visuallySimilarImages')) {
       visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webEntities')) {
       webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebEntity>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11782,7 +12027,8 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageTitle')) {
@@ -11791,7 +12037,8 @@ class GoogleCloudVisionV1p3beta1WebDetectionWebPage {
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p3beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p3beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -11850,20 +12097,21 @@ class GoogleCloudVisionV1p3beta1Word {
 
   GoogleCloudVisionV1p3beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p3beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p3beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symbols')) {
       symbols = (_json['symbols'] as core.List)
-          .map<GoogleCloudVisionV1p3beta1Symbol>(
-              (value) => GoogleCloudVisionV1p3beta1Symbol.fromJson(value))
+          .map<GoogleCloudVisionV1p3beta1Symbol>((value) =>
+              GoogleCloudVisionV1p3beta1Symbol.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11907,16 +12155,18 @@ class GoogleCloudVisionV1p4beta1AnnotateFileResponse {
 
   GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig =
-          GoogleCloudVisionV1p4beta1InputConfig.fromJson(_json['inputConfig']);
+      inputConfig = GoogleCloudVisionV1p4beta1InputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateImageResponse>((value) =>
-              GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(value))
+              GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPages')) {
@@ -11998,41 +12248,47 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
   GoogleCloudVisionV1p4beta1AnnotateImageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
       context = GoogleCloudVisionV1p4beta1ImageAnnotationContext.fromJson(
-          _json['context']);
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cropHintsAnnotation')) {
       cropHintsAnnotation =
           GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(
-              _json['cropHintsAnnotation']);
+              _json['cropHintsAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('faceAnnotations')) {
       faceAnnotations = (_json['faceAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotation>((value) =>
-              GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1FaceAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullTextAnnotation')) {
       fullTextAnnotation = GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(
-          _json['fullTextAnnotation']);
+          _json['fullTextAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesAnnotation')) {
       imagePropertiesAnnotation =
           GoogleCloudVisionV1p4beta1ImageProperties.fromJson(
-              _json['imagePropertiesAnnotation']);
+              _json['imagePropertiesAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelAnnotations')) {
       labelAnnotations = (_json['labelAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('landmarkAnnotations')) {
       landmarkAnnotations = (_json['landmarkAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('localizedObjectAnnotations')) {
@@ -12040,34 +12296,38 @@ class GoogleCloudVisionV1p4beta1AnnotateImageResponse {
               as core.List)
           .map<GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation>((value) =>
               GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('logoAnnotations')) {
       logoAnnotations = (_json['logoAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productSearchResults')) {
       productSearchResults =
           GoogleCloudVisionV1p4beta1ProductSearchResults.fromJson(
-              _json['productSearchResults']);
+              _json['productSearchResults']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('safeSearchAnnotation')) {
       safeSearchAnnotation =
           GoogleCloudVisionV1p4beta1SafeSearchAnnotation.fromJson(
-              _json['safeSearchAnnotation']);
+              _json['safeSearchAnnotation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textAnnotations')) {
       textAnnotations = (_json['textAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1EntityAnnotation>((value) =>
-              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(value))
+              GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webDetection')) {
       webDetection = GoogleCloudVisionV1p4beta1WebDetection.fromJson(
-          _json['webDetection']);
+          _json['webDetection'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12135,7 +12395,7 @@ class GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse {
   GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
-          _json['outputConfig']);
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12162,7 +12422,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateFilesResponse {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse>((value) =>
               GoogleCloudVisionV1p4beta1AsyncAnnotateFileResponse.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12187,7 +12447,7 @@ class GoogleCloudVisionV1p4beta1AsyncBatchAnnotateImagesResponse {
       core.Map _json) {
     if (_json.containsKey('outputConfig')) {
       outputConfig = GoogleCloudVisionV1p4beta1OutputConfig.fromJson(
-          _json['outputConfig']);
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12213,7 +12473,8 @@ class GoogleCloudVisionV1p4beta1BatchAnnotateFilesResponse {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
           .map<GoogleCloudVisionV1p4beta1AnnotateFileResponse>((value) =>
-              GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(value))
+              GoogleCloudVisionV1p4beta1AnnotateFileResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12318,21 +12579,22 @@ class GoogleCloudVisionV1p4beta1Block {
       blockType = _json['blockType'] as core.String;
     }
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('paragraphs')) {
       paragraphs = (_json['paragraphs'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Paragraph>(
-              (value) => GoogleCloudVisionV1p4beta1Paragraph.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Paragraph>((value) =>
+              GoogleCloudVisionV1p4beta1Paragraph.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12371,13 +12633,15 @@ class GoogleCloudVisionV1p4beta1BoundingPoly {
     if (_json.containsKey('normalizedVertices')) {
       normalizedVertices = (_json['normalizedVertices'] as core.List)
           .map<GoogleCloudVisionV1p4beta1NormalizedVertex>((value) =>
-              GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(value))
+              GoogleCloudVisionV1p4beta1NormalizedVertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('vertices')) {
       vertices = (_json['vertices'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Vertex>(
-              (value) => GoogleCloudVisionV1p4beta1Vertex.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Vertex>((value) =>
+              GoogleCloudVisionV1p4beta1Vertex.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12453,7 +12717,8 @@ class GoogleCloudVisionV1p4beta1ColorInfo {
 
   GoogleCloudVisionV1p4beta1ColorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pixelFraction')) {
       pixelFraction = (_json['pixelFraction'] as core.num).toDouble();
@@ -12496,7 +12761,7 @@ class GoogleCloudVisionV1p4beta1CropHint {
   GoogleCloudVisionV1p4beta1CropHint.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -12531,8 +12796,9 @@ class GoogleCloudVisionV1p4beta1CropHintsAnnotation {
   GoogleCloudVisionV1p4beta1CropHintsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('cropHints')) {
       cropHints = (_json['cropHints'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1CropHint>(
-              (value) => GoogleCloudVisionV1p4beta1CropHint.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1CropHint>((value) =>
+              GoogleCloudVisionV1p4beta1CropHint.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12556,8 +12822,9 @@ class GoogleCloudVisionV1p4beta1DominantColorsAnnotation {
   GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
       colors = (_json['colors'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1ColorInfo>(
-              (value) => GoogleCloudVisionV1p4beta1ColorInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1ColorInfo>((value) =>
+              GoogleCloudVisionV1p4beta1ColorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12620,7 +12887,7 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
   GoogleCloudVisionV1p4beta1EntityAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -12633,8 +12900,9 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     }
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1LocationInfo>(
-              (value) => GoogleCloudVisionV1p4beta1LocationInfo.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1LocationInfo>((value) =>
+              GoogleCloudVisionV1p4beta1LocationInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mid')) {
@@ -12642,8 +12910,9 @@ class GoogleCloudVisionV1p4beta1EntityAnnotation {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Property>(
-              (value) => GoogleCloudVisionV1p4beta1Property.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Property>((value) =>
+              GoogleCloudVisionV1p4beta1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -12815,7 +13084,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     }
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectionConfidence')) {
       detectionConfidence =
@@ -12823,7 +13092,7 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     }
     if (_json.containsKey('fdBoundingPoly')) {
       fdBoundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['fdBoundingPoly']);
+          _json['fdBoundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headwearLikelihood')) {
       headwearLikelihood = _json['headwearLikelihood'] as core.String;
@@ -12838,7 +13107,8 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     if (_json.containsKey('landmarks')) {
       landmarks = (_json['landmarks'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceAnnotationLandmark>((value) =>
-              GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(value))
+              GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('panAngle')) {
@@ -12847,7 +13117,8 @@ class GoogleCloudVisionV1p4beta1FaceAnnotation {
     if (_json.containsKey('recognitionResult')) {
       recognitionResult = (_json['recognitionResult'] as core.List)
           .map<GoogleCloudVisionV1p4beta1FaceRecognitionResult>((value) =>
-              GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(value))
+              GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rollAngle')) {
@@ -12973,7 +13244,8 @@ class GoogleCloudVisionV1p4beta1FaceAnnotationLandmark {
 
   GoogleCloudVisionV1p4beta1FaceAnnotationLandmark.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = GoogleCloudVisionV1p4beta1Position.fromJson(_json['position']);
+      position = GoogleCloudVisionV1p4beta1Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -13004,8 +13276,8 @@ class GoogleCloudVisionV1p4beta1FaceRecognitionResult {
 
   GoogleCloudVisionV1p4beta1FaceRecognitionResult.fromJson(core.Map _json) {
     if (_json.containsKey('celebrity')) {
-      celebrity =
-          GoogleCloudVisionV1p4beta1Celebrity.fromJson(_json['celebrity']);
+      celebrity = GoogleCloudVisionV1p4beta1Celebrity.fromJson(
+          _json['celebrity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
@@ -13127,7 +13399,7 @@ class GoogleCloudVisionV1p4beta1ImageProperties {
     if (_json.containsKey('dominantColors')) {
       dominantColors =
           GoogleCloudVisionV1p4beta1DominantColorsAnnotation.fromJson(
-              _json['dominantColors']);
+              _json['dominantColors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13159,12 +13431,14 @@ class GoogleCloudVisionV1p4beta1ImportProductSetsResponse {
     if (_json.containsKey('referenceImages')) {
       referenceImages = (_json['referenceImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ReferenceImage>((value) =>
-              GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statuses')) {
       statuses = (_json['statuses'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13211,8 +13485,8 @@ class GoogleCloudVisionV1p4beta1InputConfig {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudVisionV1p4beta1GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudVisionV1p4beta1GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -13258,7 +13532,7 @@ class GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation {
   GoogleCloudVisionV1p4beta1LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -13304,7 +13578,8 @@ class GoogleCloudVisionV1p4beta1LocationInfo {
 
   GoogleCloudVisionV1p4beta1LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(_json['latLng']);
+      latLng = LatLng.fromJson(
+          _json['latLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13418,7 +13693,7 @@ class GoogleCloudVisionV1p4beta1OutputConfig {
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudVisionV1p4beta1GcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13458,8 +13733,9 @@ class GoogleCloudVisionV1p4beta1Page {
   GoogleCloudVisionV1p4beta1Page.fromJson(core.Map _json) {
     if (_json.containsKey('blocks')) {
       blocks = (_json['blocks'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Block>(
-              (value) => GoogleCloudVisionV1p4beta1Block.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Block>((value) =>
+              GoogleCloudVisionV1p4beta1Block.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('confidence')) {
@@ -13470,7 +13746,7 @@ class GoogleCloudVisionV1p4beta1Page {
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
       width = _json['width'] as core.int;
@@ -13523,20 +13799,21 @@ class GoogleCloudVisionV1p4beta1Paragraph {
 
   GoogleCloudVisionV1p4beta1Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Word>(
-              (value) => GoogleCloudVisionV1p4beta1Word.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Word>((value) =>
+              GoogleCloudVisionV1p4beta1Word.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13652,7 +13929,8 @@ class GoogleCloudVisionV1p4beta1Product {
     if (_json.containsKey('productLabels')) {
       productLabels = (_json['productLabels'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductKeyValue>((value) =>
-              GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(value))
+              GoogleCloudVisionV1p4beta1ProductKeyValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13740,14 +14018,14 @@ class GoogleCloudVisionV1p4beta1ProductSearchResults {
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult>(
               (value) =>
                   GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13786,21 +14064,21 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsGroupedResult {
       core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
       boundingPoly = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
-          _json['boundingPoly']);
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectAnnotations')) {
       objectAnnotations = (_json['objectAnnotations'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation>(
               (value) =>
                   GoogleCloudVisionV1p4beta1ProductSearchResultsObjectAnnotation
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
           .map<GoogleCloudVisionV1p4beta1ProductSearchResultsResult>((value) =>
               GoogleCloudVisionV1p4beta1ProductSearchResultsResult.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13894,7 +14172,8 @@ class GoogleCloudVisionV1p4beta1ProductSearchResultsResult {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = GoogleCloudVisionV1p4beta1Product.fromJson(_json['product']);
+      product = GoogleCloudVisionV1p4beta1Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('score')) {
       score = (_json['score'] as core.num).toDouble();
@@ -13981,8 +14260,9 @@ class GoogleCloudVisionV1p4beta1ReferenceImage {
   GoogleCloudVisionV1p4beta1ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPolys')) {
       boundingPolys = (_json['boundingPolys'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1BoundingPoly>(
-              (value) => GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1BoundingPoly>((value) =>
+              GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -14134,15 +14414,15 @@ class GoogleCloudVisionV1p4beta1Symbol {
 
   GoogleCloudVisionV1p4beta1Symbol.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -14186,8 +14466,9 @@ class GoogleCloudVisionV1p4beta1TextAnnotation {
   GoogleCloudVisionV1p4beta1TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Page>(
-              (value) => GoogleCloudVisionV1p4beta1Page.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Page>((value) =>
+              GoogleCloudVisionV1p4beta1Page.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -14297,14 +14578,14 @@ class GoogleCloudVisionV1p4beta1TextAnnotationTextProperty {
     if (_json.containsKey('detectedBreak')) {
       detectedBreak =
           GoogleCloudVisionV1p4beta1TextAnnotationDetectedBreak.fromJson(
-              _json['detectedBreak']);
+              _json['detectedBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectedLanguages')) {
       detectedLanguages = (_json['detectedLanguages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage>(
               (value) =>
                   GoogleCloudVisionV1p4beta1TextAnnotationDetectedLanguage
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14387,37 +14668,43 @@ class GoogleCloudVisionV1p4beta1WebDetection {
     if (_json.containsKey('bestGuessLabels')) {
       bestGuessLabels = (_json['bestGuessLabels'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebLabel>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pagesWithMatchingImages')) {
       pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebPage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('visuallySimilarImages')) {
       visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webEntities')) {
       webEntities = (_json['webEntities'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebEntity>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14584,7 +14871,8 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageTitle')) {
@@ -14593,7 +14881,8 @@ class GoogleCloudVisionV1p4beta1WebDetectionWebPage {
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
           .map<GoogleCloudVisionV1p4beta1WebDetectionWebImage>((value) =>
-              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(value))
+              GoogleCloudVisionV1p4beta1WebDetectionWebImage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -14652,20 +14941,21 @@ class GoogleCloudVisionV1p4beta1Word {
 
   GoogleCloudVisionV1p4beta1Word.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox =
-          GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = GoogleCloudVisionV1p4beta1BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
       property = GoogleCloudVisionV1p4beta1TextAnnotationTextProperty.fromJson(
-          _json['property']);
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symbols')) {
       symbols = (_json['symbols'] as core.List)
-          .map<GoogleCloudVisionV1p4beta1Symbol>(
-              (value) => GoogleCloudVisionV1p4beta1Symbol.fromJson(value))
+          .map<GoogleCloudVisionV1p4beta1Symbol>((value) =>
+              GoogleCloudVisionV1p4beta1Symbol.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14703,16 +14993,19 @@ class GroupedResult {
 
   GroupedResult.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectAnnotations')) {
       objectAnnotations = (_json['objectAnnotations'] as core.List)
-          .map<ObjectAnnotation>((value) => ObjectAnnotation.fromJson(value))
+          .map<ObjectAnnotation>((value) => ObjectAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<Result>((value) => Result.fromJson(value))
+          .map<Result>((value) =>
+              Result.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14760,7 +15053,8 @@ class Image {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = ImageSource.fromJson(_json['source']);
+      source = ImageSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14837,7 +15131,8 @@ class ImageContext {
 
   ImageContext.fromJson(core.Map _json) {
     if (_json.containsKey('cropHintsParams')) {
-      cropHintsParams = CropHintsParams.fromJson(_json['cropHintsParams']);
+      cropHintsParams = CropHintsParams.fromJson(
+          _json['cropHintsParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageHints')) {
       languageHints = (_json['languageHints'] as core.List)
@@ -14845,15 +15140,16 @@ class ImageContext {
           .toList();
     }
     if (_json.containsKey('latLongRect')) {
-      latLongRect = LatLongRect.fromJson(_json['latLongRect']);
+      latLongRect = LatLongRect.fromJson(
+          _json['latLongRect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productSearchParams')) {
-      productSearchParams =
-          ProductSearchParams.fromJson(_json['productSearchParams']);
+      productSearchParams = ProductSearchParams.fromJson(
+          _json['productSearchParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webDetectionParams')) {
-      webDetectionParams =
-          WebDetectionParams.fromJson(_json['webDetectionParams']);
+      webDetectionParams = WebDetectionParams.fromJson(
+          _json['webDetectionParams'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14887,8 +15183,8 @@ class ImageProperties {
 
   ImageProperties.fromJson(core.Map _json) {
     if (_json.containsKey('dominantColors')) {
-      dominantColors =
-          DominantColorsAnnotation.fromJson(_json['dominantColors']);
+      dominantColors = DominantColorsAnnotation.fromJson(
+          _json['dominantColors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15011,7 +15307,8 @@ class ImportProductSetsInputConfig {
 
   ImportProductSetsInputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsSource')) {
-      gcsSource = ImportProductSetsGcsSource.fromJson(_json['gcsSource']);
+      gcsSource = ImportProductSetsGcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15033,7 +15330,8 @@ class ImportProductSetsRequest {
 
   ImportProductSetsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inputConfig')) {
-      inputConfig = ImportProductSetsInputConfig.fromJson(_json['inputConfig']);
+      inputConfig = ImportProductSetsInputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15064,12 +15362,14 @@ class ImportProductSetsResponse {
   ImportProductSetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('referenceImages')) {
       referenceImages = (_json['referenceImages'] as core.List)
-          .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
+          .map<ReferenceImage>((value) => ReferenceImage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statuses')) {
       statuses = (_json['statuses'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15116,7 +15416,8 @@ class InputConfig {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource = GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -15222,7 +15523,8 @@ class Landmark {
 
   Landmark.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = Position.fromJson(_json['position']);
+      position = Position.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -15287,10 +15589,12 @@ class LatLongRect {
 
   LatLongRect.fromJson(core.Map _json) {
     if (_json.containsKey('maxLatLng')) {
-      maxLatLng = LatLng.fromJson(_json['maxLatLng']);
+      maxLatLng = LatLng.fromJson(
+          _json['maxLatLng'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minLatLng')) {
-      minLatLng = LatLng.fromJson(_json['minLatLng']);
+      minLatLng = LatLng.fromJson(
+          _json['minLatLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15322,7 +15626,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15356,7 +15661,8 @@ class ListProductSetsResponse {
     }
     if (_json.containsKey('productSets')) {
       productSets = (_json['productSets'] as core.List)
-          .map<ProductSet>((value) => ProductSet.fromJson(value))
+          .map<ProductSet>((value) =>
+              ProductSet.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15391,7 +15697,8 @@ class ListProductsInProductSetResponse {
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<Product>((value) => Product.fromJson(value))
+          .map<Product>((value) =>
+              Product.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15425,7 +15732,8 @@ class ListProductsResponse {
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<Product>((value) => Product.fromJson(value))
+          .map<Product>((value) =>
+              Product.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15464,7 +15772,8 @@ class ListReferenceImagesResponse {
     }
     if (_json.containsKey('referenceImages')) {
       referenceImages = (_json['referenceImages'] as core.List)
-          .map<ReferenceImage>((value) => ReferenceImage.fromJson(value))
+          .map<ReferenceImage>((value) => ReferenceImage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15508,7 +15817,8 @@ class LocalizedObjectAnnotation {
 
   LocalizedObjectAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -15554,7 +15864,8 @@ class LocationInfo {
 
   LocationInfo.fromJson(core.Map _json) {
     if (_json.containsKey('latLng')) {
-      latLng = LatLng.fromJson(_json['latLng']);
+      latLng = LatLng.fromJson(
+          _json['latLng'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15694,11 +16005,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -15706,7 +16019,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -15800,7 +16114,8 @@ class OutputConfig {
       batchSize = _json['batchSize'] as core.int;
     }
     if (_json.containsKey('gcsDestination')) {
-      gcsDestination = GcsDestination.fromJson(_json['gcsDestination']);
+      gcsDestination = GcsDestination.fromJson(
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15840,7 +16155,8 @@ class Page {
   Page.fromJson(core.Map _json) {
     if (_json.containsKey('blocks')) {
       blocks = (_json['blocks'] as core.List)
-          .map<Block>((value) => Block.fromJson(value))
+          .map<Block>((value) =>
+              Block.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('confidence')) {
@@ -15850,7 +16166,8 @@ class Page {
       height = _json['height'] as core.int;
     }
     if (_json.containsKey('property')) {
-      property = TextProperty.fromJson(_json['property']);
+      property = TextProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
       width = _json['width'] as core.int;
@@ -15903,17 +16220,20 @@ class Paragraph {
 
   Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
-      property = TextProperty.fromJson(_json['property']);
+      property = TextProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<Word>((value) => Word.fromJson(value))
+          .map<Word>((value) =>
+              Word.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16028,7 +16348,8 @@ class Product {
     }
     if (_json.containsKey('productLabels')) {
       productLabels = (_json['productLabels'] as core.List)
-          .map<KeyValue>((value) => KeyValue.fromJson(value))
+          .map<KeyValue>((value) =>
+              KeyValue.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16088,7 +16409,8 @@ class ProductSearchParams {
 
   ProductSearchParams.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPoly')) {
-      boundingPoly = BoundingPoly.fromJson(_json['boundingPoly']);
+      boundingPoly = BoundingPoly.fromJson(
+          _json['boundingPoly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filter')) {
       filter = _json['filter'] as core.String;
@@ -16145,12 +16467,14 @@ class ProductSearchResults {
     }
     if (_json.containsKey('productGroupedResults')) {
       productGroupedResults = (_json['productGroupedResults'] as core.List)
-          .map<GroupedResult>((value) => GroupedResult.fromJson(value))
+          .map<GroupedResult>((value) => GroupedResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<Result>((value) => Result.fromJson(value))
+          .map<Result>((value) =>
+              Result.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16201,7 +16525,8 @@ class ProductSet {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('indexError')) {
-      indexError = Status.fromJson(_json['indexError']);
+      indexError = Status.fromJson(
+          _json['indexError'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indexTime')) {
       indexTime = _json['indexTime'] as core.String;
@@ -16316,8 +16641,9 @@ class PurgeProductsRequest {
       force = _json['force'] as core.bool;
     }
     if (_json.containsKey('productSetPurgeConfig')) {
-      productSetPurgeConfig =
-          ProductSetPurgeConfig.fromJson(_json['productSetPurgeConfig']);
+      productSetPurgeConfig = ProductSetPurgeConfig.fromJson(
+          _json['productSetPurgeConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16361,7 +16687,8 @@ class ReferenceImage {
   ReferenceImage.fromJson(core.Map _json) {
     if (_json.containsKey('boundingPolys')) {
       boundingPolys = (_json['boundingPolys'] as core.List)
-          .map<BoundingPoly>((value) => BoundingPoly.fromJson(value))
+          .map<BoundingPoly>((value) => BoundingPoly.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -16432,7 +16759,8 @@ class Result {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = Product.fromJson(_json['product']);
+      product = Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('score')) {
       score = (_json['score'] as core.num).toDouble();
@@ -16586,7 +16914,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -16635,13 +16964,15 @@ class Symbol {
 
   Symbol.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
-      property = TextProperty.fromJson(_json['property']);
+      property = TextProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -16685,7 +17016,8 @@ class TextAnnotation {
   TextAnnotation.fromJson(core.Map _json) {
     if (_json.containsKey('pages')) {
       pages = (_json['pages'] as core.List)
-          .map<Page>((value) => Page.fromJson(value))
+          .map<Page>((value) =>
+              Page.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -16717,11 +17049,13 @@ class TextProperty {
 
   TextProperty.fromJson(core.Map _json) {
     if (_json.containsKey('detectedBreak')) {
-      detectedBreak = DetectedBreak.fromJson(_json['detectedBreak']);
+      detectedBreak = DetectedBreak.fromJson(
+          _json['detectedBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detectedLanguages')) {
       detectedLanguages = (_json['detectedLanguages'] as core.List)
-          .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(value))
+          .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16800,32 +17134,38 @@ class WebDetection {
   WebDetection.fromJson(core.Map _json) {
     if (_json.containsKey('bestGuessLabels')) {
       bestGuessLabels = (_json['bestGuessLabels'] as core.List)
-          .map<WebLabel>((value) => WebLabel.fromJson(value))
+          .map<WebLabel>((value) =>
+              WebLabel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
-          .map<WebImage>((value) => WebImage.fromJson(value))
+          .map<WebImage>((value) =>
+              WebImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pagesWithMatchingImages')) {
       pagesWithMatchingImages = (_json['pagesWithMatchingImages'] as core.List)
-          .map<WebPage>((value) => WebPage.fromJson(value))
+          .map<WebPage>((value) =>
+              WebPage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
-          .map<WebImage>((value) => WebImage.fromJson(value))
+          .map<WebImage>((value) =>
+              WebImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('visuallySimilarImages')) {
       visuallySimilarImages = (_json['visuallySimilarImages'] as core.List)
-          .map<WebImage>((value) => WebImage.fromJson(value))
+          .map<WebImage>((value) =>
+              WebImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webEntities')) {
       webEntities = (_json['webEntities'] as core.List)
-          .map<WebEntity>((value) => WebEntity.fromJson(value))
+          .map<WebEntity>((value) =>
+              WebEntity.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17012,7 +17352,8 @@ class WebPage {
   WebPage.fromJson(core.Map _json) {
     if (_json.containsKey('fullMatchingImages')) {
       fullMatchingImages = (_json['fullMatchingImages'] as core.List)
-          .map<WebImage>((value) => WebImage.fromJson(value))
+          .map<WebImage>((value) =>
+              WebImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageTitle')) {
@@ -17020,7 +17361,8 @@ class WebPage {
     }
     if (_json.containsKey('partialMatchingImages')) {
       partialMatchingImages = (_json['partialMatchingImages'] as core.List)
-          .map<WebImage>((value) => WebImage.fromJson(value))
+          .map<WebImage>((value) =>
+              WebImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('score')) {
@@ -17079,17 +17421,20 @@ class Word {
 
   Word.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBox')) {
-      boundingBox = BoundingPoly.fromJson(_json['boundingBox']);
+      boundingBox = BoundingPoly.fromJson(
+          _json['boundingBox'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('confidence')) {
       confidence = (_json['confidence'] as core.num).toDouble();
     }
     if (_json.containsKey('property')) {
-      property = TextProperty.fromJson(_json['property']);
+      property = TextProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('symbols')) {
       symbols = (_json['symbols'] as core.List)
-          .map<Symbol>((value) => Symbol.fromJson(value))
+          .map<Symbol>((value) =>
+              Symbol.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

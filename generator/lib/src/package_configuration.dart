@@ -242,8 +242,13 @@ package.
   ) {
     final packages = <String, Package>{};
     for (var package in configPackages) {
-      package.forEach((String name, YamlMap values) {
-        packages[name] = _packageFromYaml(name, values, configFile, allApis);
+      package.forEach((name, values) {
+        packages[name as String] = _packageFromYaml(
+          name as String,
+          values as YamlMap,
+          configFile,
+          allApis,
+        );
       });
     }
 

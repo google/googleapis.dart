@@ -107,7 +107,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementResetResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementResetResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets all achievements for the currently authenticated player for your
@@ -151,7 +154,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementResetAllResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementResetAllResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets all draft achievements for all players. This method is only
@@ -194,7 +200,9 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets the achievement with the given ID for all players. This method is
@@ -246,7 +254,9 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets achievements with the given IDs for all players. This method is
@@ -296,7 +306,9 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -368,7 +380,10 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HiddenPlayerList.fromJson(data));
+    return _response.then(
+      (data) => HiddenPlayerList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -426,7 +441,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets all player progress on all events for the currently authenticated
@@ -470,7 +487,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets all draft events for all players. This method is only available to
@@ -513,7 +532,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets the event with the given ID for all players. This method is only
@@ -565,7 +586,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets events with the given IDs for all players. This method is only
@@ -615,7 +638,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -681,7 +706,9 @@ class PlayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Unhide the given player's leaderboard scores from the given application.
@@ -741,7 +768,9 @@ class PlayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -799,7 +828,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerScoreResetResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerScoreResetResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets all scores for all leaderboards for the currently authenticated
@@ -843,7 +875,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerScoreResetAllResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerScoreResetAllResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets scores for all draft leaderboards for all players. This method is
@@ -886,7 +921,9 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets scores for the leaderboard with the given ID for all players. This
@@ -938,7 +975,9 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Resets scores for the leaderboards with the given IDs for all players.
@@ -988,7 +1027,9 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -1009,8 +1050,9 @@ class AchievementResetAllResponse {
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<AchievementResetResponse>(
-              (value) => AchievementResetResponse.fromJson(value))
+          .map<AchievementResetResponse>((value) =>
+              AchievementResetResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1170,14 +1212,16 @@ class GamesPlayerExperienceInfoResource {
       currentExperiencePoints = _json['currentExperiencePoints'] as core.String;
     }
     if (_json.containsKey('currentLevel')) {
-      currentLevel = GamesPlayerLevelResource.fromJson(_json['currentLevel']);
+      currentLevel = GamesPlayerLevelResource.fromJson(
+          _json['currentLevel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastLevelUpTimestampMillis')) {
       lastLevelUpTimestampMillis =
           _json['lastLevelUpTimestampMillis'] as core.String;
     }
     if (_json.containsKey('nextLevel')) {
-      nextLevel = GamesPlayerLevelResource.fromJson(_json['nextLevel']);
+      nextLevel = GamesPlayerLevelResource.fromJson(
+          _json['nextLevel'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1261,7 +1305,8 @@ class HiddenPlayer {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('player')) {
-      player = Player.fromJson(_json['player']);
+      player = Player.fromJson(
+          _json['player'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1297,7 +1342,8 @@ class HiddenPlayerList {
   HiddenPlayerList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HiddenPlayer>((value) => HiddenPlayer.fromJson(value))
+          .map<HiddenPlayer>((value) => HiddenPlayer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1414,14 +1460,15 @@ class Player {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('experienceInfo')) {
-      experienceInfo =
-          GamesPlayerExperienceInfoResource.fromJson(_json['experienceInfo']);
+      experienceInfo = GamesPlayerExperienceInfoResource.fromJson(
+          _json['experienceInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = PlayerName.fromJson(_json['name']);
+      name = PlayerName.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('originalPlayerId')) {
       originalPlayerId = _json['originalPlayerId'] as core.String;
@@ -1430,7 +1477,8 @@ class Player {
       playerId = _json['playerId'] as core.String;
     }
     if (_json.containsKey('profileSettings')) {
-      profileSettings = ProfileSettings.fromJson(_json['profileSettings']);
+      profileSettings = ProfileSettings.fromJson(
+          _json['profileSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -1493,8 +1541,9 @@ class PlayerScoreResetAllResponse {
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<PlayerScoreResetResponse>(
-              (value) => PlayerScoreResetResponse.fromJson(value))
+          .map<PlayerScoreResetResponse>((value) =>
+              PlayerScoreResetResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

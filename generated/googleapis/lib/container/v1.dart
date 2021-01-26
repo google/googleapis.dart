@@ -151,8 +151,10 @@ class ProjectsAggregatedUsableSubnetworksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListUsableSubnetworksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUsableSubnetworksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -233,7 +235,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServerConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServerConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -304,7 +309,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -369,7 +376,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -447,7 +456,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a specific cluster.
@@ -521,7 +532,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Cluster.fromJson(data));
+    return _response.then(
+      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the public component of the cluster signing keys in JSON Web Key
@@ -573,7 +586,10 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetJSONWebKeysResponse.fromJson(data));
+    return _response.then(
+      (data) => GetJSONWebKeysResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -643,7 +659,10 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListClustersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListClustersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the addons for a specific cluster.
@@ -701,7 +720,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -760,7 +781,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the locations for a specific cluster. Deprecated. Use
@@ -821,7 +844,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the logging service for a specific cluster.
@@ -879,7 +904,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -938,7 +965,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets master auth materials. Currently supports changing the admin password
@@ -998,7 +1027,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -1057,7 +1088,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -1116,7 +1149,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets labels on a cluster.
@@ -1175,7 +1210,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts master IP rotation.
@@ -1234,7 +1271,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the settings of a specific cluster.
@@ -1290,7 +1329,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the master for a specific cluster.
@@ -1348,7 +1389,9 @@ class ProjectsLocationsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1413,7 +1456,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a node pool from a cluster.
@@ -1497,7 +1542,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the requested node pool.
@@ -1581,7 +1628,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodePool.fromJson(data));
+    return _response.then(
+      (data) => NodePool.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the node pools for a cluster.
@@ -1658,7 +1707,10 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNodePoolsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNodePoolsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade. This makes no
@@ -1717,7 +1769,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the autoscaling settings for the specified node pool.
@@ -1777,7 +1831,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -1837,7 +1893,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the size for a specific node pool.
@@ -1895,7 +1953,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -1953,7 +2013,9 @@ class ProjectsLocationsClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2017,7 +2079,10 @@ class ProjectsLocationsClustersWell_knownResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetOpenIDConfigResponse.fromJson(data));
+    return _response.then(
+      (data) => GetOpenIDConfigResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2082,7 +2147,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified operation.
@@ -2158,7 +2225,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -2228,7 +2297,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2309,7 +2381,10 @@ class ProjectsZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServerConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServerConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2397,7 +2472,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Completes master IP rotation.
@@ -2476,7 +2553,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a cluster, consisting of the specified number and type of Google
@@ -2553,7 +2632,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the cluster, including the Kubernetes endpoint and all worker
@@ -2635,7 +2716,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a specific cluster.
@@ -2713,7 +2796,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Cluster.fromJson(data));
+    return _response.then(
+      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables or disables the ABAC authorization mechanism on a cluster.
@@ -2791,7 +2876,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all clusters owned by a project in either the specified zone or all
@@ -2863,7 +2950,10 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListClustersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListClustersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the locations for a specific cluster. Deprecated. Use
@@ -2943,7 +3033,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the logging service for a specific cluster.
@@ -3021,7 +3113,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the master for a specific cluster.
@@ -3099,7 +3193,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the monitoring service for a specific cluster.
@@ -3177,7 +3273,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets labels on a cluster.
@@ -3256,7 +3354,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the maintenance policy for a cluster.
@@ -3331,7 +3431,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets master auth materials. Currently supports changing the admin password
@@ -3411,7 +3513,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables or disables Network Policy for a cluster.
@@ -3490,7 +3594,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts master IP rotation.
@@ -3569,7 +3675,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the settings of a specific cluster.
@@ -3646,7 +3754,9 @@ class ProjectsZonesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3740,7 +3850,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a node pool for a cluster.
@@ -3819,7 +3931,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a node pool from a cluster.
@@ -3908,7 +4022,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the requested node pool.
@@ -3997,7 +4113,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NodePool.fromJson(data));
+    return _response.then(
+      (data) => NodePool.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the node pools for a cluster.
@@ -4078,7 +4196,10 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNodePoolsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNodePoolsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rolls back a previously Aborted or Failed NodePool upgrade. This makes no
@@ -4166,7 +4287,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the NodeManagement options for a node pool.
@@ -4253,7 +4376,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the size for a specific node pool.
@@ -4340,7 +4465,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the version and/or image type for the specified node pool.
@@ -4427,7 +4554,9 @@ class ProjectsZonesClustersNodePoolsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4512,7 +4641,9 @@ class ProjectsZonesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified operation.
@@ -4591,7 +4722,9 @@ class ProjectsZonesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all operations in a project in a specific zone or all zones.
@@ -4662,7 +4795,10 @@ class ProjectsZonesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4737,30 +4873,34 @@ class AddonsConfig {
 
   AddonsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('cloudRunConfig')) {
-      cloudRunConfig = CloudRunConfig.fromJson(_json['cloudRunConfig']);
+      cloudRunConfig = CloudRunConfig.fromJson(
+          _json['cloudRunConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('configConnectorConfig')) {
-      configConnectorConfig =
-          ConfigConnectorConfig.fromJson(_json['configConnectorConfig']);
+      configConnectorConfig = ConfigConnectorConfig.fromJson(
+          _json['configConnectorConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dnsCacheConfig')) {
-      dnsCacheConfig = DnsCacheConfig.fromJson(_json['dnsCacheConfig']);
+      dnsCacheConfig = DnsCacheConfig.fromJson(
+          _json['dnsCacheConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('horizontalPodAutoscaling')) {
-      horizontalPodAutoscaling =
-          HorizontalPodAutoscaling.fromJson(_json['horizontalPodAutoscaling']);
+      horizontalPodAutoscaling = HorizontalPodAutoscaling.fromJson(
+          _json['horizontalPodAutoscaling']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('httpLoadBalancing')) {
-      httpLoadBalancing =
-          HttpLoadBalancing.fromJson(_json['httpLoadBalancing']);
+      httpLoadBalancing = HttpLoadBalancing.fromJson(
+          _json['httpLoadBalancing'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kubernetesDashboard')) {
-      kubernetesDashboard =
-          KubernetesDashboard.fromJson(_json['kubernetesDashboard']);
+      kubernetesDashboard = KubernetesDashboard.fromJson(
+          _json['kubernetesDashboard'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('networkPolicyConfig')) {
-      networkPolicyConfig =
-          NetworkPolicyConfig.fromJson(_json['networkPolicyConfig']);
+      networkPolicyConfig = NetworkPolicyConfig.fromJson(
+          _json['networkPolicyConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4915,7 +5055,8 @@ class AutoprovisioningNodePoolDefaults {
       diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(_json['management']);
+      management = NodeManagement.fromJson(
+          _json['management'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
@@ -4929,11 +5070,13 @@ class AutoprovisioningNodePoolDefaults {
       serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig =
-          ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']);
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(_json['upgradeSettings']);
+      upgradeSettings = UpgradeSettings.fromJson(
+          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5425,25 +5568,29 @@ class Cluster {
 
   Cluster.fromJson(core.Map _json) {
     if (_json.containsKey('addonsConfig')) {
-      addonsConfig = AddonsConfig.fromJson(_json['addonsConfig']);
+      addonsConfig = AddonsConfig.fromJson(
+          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('authenticatorGroupsConfig')) {
       authenticatorGroupsConfig = AuthenticatorGroupsConfig.fromJson(
-          _json['authenticatorGroupsConfig']);
+          _json['authenticatorGroupsConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('autoscaling')) {
-      autoscaling = ClusterAutoscaling.fromJson(_json['autoscaling']);
+      autoscaling = ClusterAutoscaling.fromJson(
+          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('binaryAuthorization')) {
-      binaryAuthorization =
-          BinaryAuthorization.fromJson(_json['binaryAuthorization']);
+      binaryAuthorization = BinaryAuthorization.fromJson(
+          _json['binaryAuthorization'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clusterIpv4Cidr')) {
       clusterIpv4Cidr = _json['clusterIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('createTime')) {
@@ -5459,12 +5606,13 @@ class Cluster {
       currentNodeVersion = _json['currentNodeVersion'] as core.String;
     }
     if (_json.containsKey('databaseEncryption')) {
-      databaseEncryption =
-          DatabaseEncryption.fromJson(_json['databaseEncryption']);
+      databaseEncryption = DatabaseEncryption.fromJson(
+          _json['databaseEncryption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultMaxPodsConstraint')) {
-      defaultMaxPodsConstraint =
-          MaxPodsConstraint.fromJson(_json['defaultMaxPodsConstraint']);
+      defaultMaxPodsConstraint = MaxPodsConstraint.fromJson(
+          _json['defaultMaxPodsConstraint']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -5493,14 +5641,15 @@ class Cluster {
           .toList();
     }
     if (_json.containsKey('ipAllocationPolicy')) {
-      ipAllocationPolicy =
-          IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']);
+      ipAllocationPolicy = IPAllocationPolicy.fromJson(
+          _json['ipAllocationPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labelFingerprint')) {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('legacyAbac')) {
-      legacyAbac = LegacyAbac.fromJson(_json['legacyAbac']);
+      legacyAbac = LegacyAbac.fromJson(
+          _json['legacyAbac'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -5514,15 +5663,17 @@ class Cluster {
       loggingService = _json['loggingService'] as core.String;
     }
     if (_json.containsKey('maintenancePolicy')) {
-      maintenancePolicy =
-          MaintenancePolicy.fromJson(_json['maintenancePolicy']);
+      maintenancePolicy = MaintenancePolicy.fromJson(
+          _json['maintenancePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('masterAuth')) {
-      masterAuth = MasterAuth.fromJson(_json['masterAuth']);
+      masterAuth = MasterAuth.fromJson(
+          _json['masterAuth'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('masterAuthorizedNetworksConfig')) {
       masterAuthorizedNetworksConfig = MasterAuthorizedNetworksConfig.fromJson(
-          _json['masterAuthorizedNetworksConfig']);
+          _json['masterAuthorizedNetworksConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('monitoringService')) {
       monitoringService = _json['monitoringService'] as core.String;
@@ -5534,37 +5685,44 @@ class Cluster {
       network = _json['network'] as core.String;
     }
     if (_json.containsKey('networkConfig')) {
-      networkConfig = NetworkConfig.fromJson(_json['networkConfig']);
+      networkConfig = NetworkConfig.fromJson(
+          _json['networkConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('networkPolicy')) {
-      networkPolicy = NetworkPolicy.fromJson(_json['networkPolicy']);
+      networkPolicy = NetworkPolicy.fromJson(
+          _json['networkPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeConfig')) {
-      nodeConfig = NodeConfig.fromJson(_json['nodeConfig']);
+      nodeConfig = NodeConfig.fromJson(
+          _json['nodeConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeIpv4CidrSize')) {
       nodeIpv4CidrSize = _json['nodeIpv4CidrSize'] as core.int;
     }
     if (_json.containsKey('nodePools')) {
       nodePools = (_json['nodePools'] as core.List)
-          .map<NodePool>((value) => NodePool.fromJson(value))
+          .map<NodePool>((value) =>
+              NodePool.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('privateClusterConfig')) {
-      privateClusterConfig =
-          PrivateClusterConfig.fromJson(_json['privateClusterConfig']);
+      privateClusterConfig = PrivateClusterConfig.fromJson(
+          _json['privateClusterConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('releaseChannel')) {
-      releaseChannel = ReleaseChannel.fromJson(_json['releaseChannel']);
+      releaseChannel = ReleaseChannel.fromJson(
+          _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceLabels')) {
       resourceLabels = commons.mapMap<core.String, core.String>(
-          _json['resourceLabels'].cast<core.String, core.String>(),
+          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('resourceUsageExportConfig')) {
       resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
-          _json['resourceUsageExportConfig']);
+          _json['resourceUsageExportConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -5573,7 +5731,8 @@ class Cluster {
       servicesIpv4Cidr = _json['servicesIpv4Cidr'] as core.String;
     }
     if (_json.containsKey('shieldedNodes')) {
-      shieldedNodes = ShieldedNodes.fromJson(_json['shieldedNodes']);
+      shieldedNodes = ShieldedNodes.fromJson(
+          _json['shieldedNodes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -5588,12 +5747,14 @@ class Cluster {
       tpuIpv4CidrBlock = _json['tpuIpv4CidrBlock'] as core.String;
     }
     if (_json.containsKey('verticalPodAutoscaling')) {
-      verticalPodAutoscaling =
-          VerticalPodAutoscaling.fromJson(_json['verticalPodAutoscaling']);
+      verticalPodAutoscaling = VerticalPodAutoscaling.fromJson(
+          _json['verticalPodAutoscaling']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workloadIdentityConfig')) {
-      workloadIdentityConfig =
-          WorkloadIdentityConfig.fromJson(_json['workloadIdentityConfig']);
+      workloadIdentityConfig = WorkloadIdentityConfig.fromJson(
+          _json['workloadIdentityConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -5792,7 +5953,8 @@ class ClusterAutoscaling {
     if (_json.containsKey('autoprovisioningNodePoolDefaults')) {
       autoprovisioningNodePoolDefaults =
           AutoprovisioningNodePoolDefaults.fromJson(
-              _json['autoprovisioningNodePoolDefaults']);
+              _json['autoprovisioningNodePoolDefaults']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enableNodeAutoprovisioning')) {
       enableNodeAutoprovisioning =
@@ -5800,7 +5962,8 @@ class ClusterAutoscaling {
     }
     if (_json.containsKey('resourceLimits')) {
       resourceLimits = (_json['resourceLimits'] as core.List)
-          .map<ResourceLimit>((value) => ResourceLimit.fromJson(value))
+          .map<ResourceLimit>((value) => ResourceLimit.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5934,30 +6097,36 @@ class ClusterUpdate {
 
   ClusterUpdate.fromJson(core.Map _json) {
     if (_json.containsKey('desiredAddonsConfig')) {
-      desiredAddonsConfig = AddonsConfig.fromJson(_json['desiredAddonsConfig']);
+      desiredAddonsConfig = AddonsConfig.fromJson(
+          _json['desiredAddonsConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredBinaryAuthorization')) {
-      desiredBinaryAuthorization =
-          BinaryAuthorization.fromJson(_json['desiredBinaryAuthorization']);
+      desiredBinaryAuthorization = BinaryAuthorization.fromJson(
+          _json['desiredBinaryAuthorization']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredClusterAutoscaling')) {
-      desiredClusterAutoscaling =
-          ClusterAutoscaling.fromJson(_json['desiredClusterAutoscaling']);
+      desiredClusterAutoscaling = ClusterAutoscaling.fromJson(
+          _json['desiredClusterAutoscaling']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredDatabaseEncryption')) {
-      desiredDatabaseEncryption =
-          DatabaseEncryption.fromJson(_json['desiredDatabaseEncryption']);
+      desiredDatabaseEncryption = DatabaseEncryption.fromJson(
+          _json['desiredDatabaseEncryption']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredDefaultSnatStatus')) {
-      desiredDefaultSnatStatus =
-          DefaultSnatStatus.fromJson(_json['desiredDefaultSnatStatus']);
+      desiredDefaultSnatStatus = DefaultSnatStatus.fromJson(
+          _json['desiredDefaultSnatStatus']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredImageType')) {
       desiredImageType = _json['desiredImageType'] as core.String;
     }
     if (_json.containsKey('desiredIntraNodeVisibilityConfig')) {
       desiredIntraNodeVisibilityConfig = IntraNodeVisibilityConfig.fromJson(
-          _json['desiredIntraNodeVisibilityConfig']);
+          _json['desiredIntraNodeVisibilityConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredLocations')) {
       desiredLocations = (_json['desiredLocations'] as core.List)
@@ -5970,7 +6139,8 @@ class ClusterUpdate {
     if (_json.containsKey('desiredMasterAuthorizedNetworksConfig')) {
       desiredMasterAuthorizedNetworksConfig =
           MasterAuthorizedNetworksConfig.fromJson(
-              _json['desiredMasterAuthorizedNetworksConfig']);
+              _json['desiredMasterAuthorizedNetworksConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredMasterVersion')) {
       desiredMasterVersion = _json['desiredMasterVersion'] as core.String;
@@ -5980,8 +6150,9 @@ class ClusterUpdate {
           _json['desiredMonitoringService'] as core.String;
     }
     if (_json.containsKey('desiredNodePoolAutoscaling')) {
-      desiredNodePoolAutoscaling =
-          NodePoolAutoscaling.fromJson(_json['desiredNodePoolAutoscaling']);
+      desiredNodePoolAutoscaling = NodePoolAutoscaling.fromJson(
+          _json['desiredNodePoolAutoscaling']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredNodePoolId')) {
       desiredNodePoolId = _json['desiredNodePoolId'] as core.String;
@@ -5990,28 +6161,33 @@ class ClusterUpdate {
       desiredNodeVersion = _json['desiredNodeVersion'] as core.String;
     }
     if (_json.containsKey('desiredPrivateClusterConfig')) {
-      desiredPrivateClusterConfig =
-          PrivateClusterConfig.fromJson(_json['desiredPrivateClusterConfig']);
+      desiredPrivateClusterConfig = PrivateClusterConfig.fromJson(
+          _json['desiredPrivateClusterConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredReleaseChannel')) {
-      desiredReleaseChannel =
-          ReleaseChannel.fromJson(_json['desiredReleaseChannel']);
+      desiredReleaseChannel = ReleaseChannel.fromJson(
+          _json['desiredReleaseChannel']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredResourceUsageExportConfig')) {
       desiredResourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
-          _json['desiredResourceUsageExportConfig']);
+          _json['desiredResourceUsageExportConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredShieldedNodes')) {
-      desiredShieldedNodes =
-          ShieldedNodes.fromJson(_json['desiredShieldedNodes']);
+      desiredShieldedNodes = ShieldedNodes.fromJson(
+          _json['desiredShieldedNodes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredVerticalPodAutoscaling')) {
       desiredVerticalPodAutoscaling = VerticalPodAutoscaling.fromJson(
-          _json['desiredVerticalPodAutoscaling']);
+          _json['desiredVerticalPodAutoscaling']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desiredWorkloadIdentityConfig')) {
       desiredWorkloadIdentityConfig = WorkloadIdentityConfig.fromJson(
-          _json['desiredWorkloadIdentityConfig']);
+          _json['desiredWorkloadIdentityConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6218,7 +6394,8 @@ class CreateClusterRequest {
 
   CreateClusterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cluster')) {
-      cluster = Cluster.fromJson(_json['cluster']);
+      cluster = Cluster.fromJson(
+          _json['cluster'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parent')) {
       parent = _json['parent'] as core.String;
@@ -6281,7 +6458,8 @@ class CreateNodePoolRequest {
       clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('nodePool')) {
-      nodePool = NodePool.fromJson(_json['nodePool']);
+      nodePool = NodePool.fromJson(
+          _json['nodePool'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parent')) {
       parent = _json['parent'] as core.String;
@@ -6464,12 +6642,13 @@ class GetJSONWebKeysResponse {
 
   GetJSONWebKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cacheHeader')) {
-      cacheHeader =
-          HttpCacheControlResponseHeader.fromJson(_json['cacheHeader']);
+      cacheHeader = HttpCacheControlResponseHeader.fromJson(
+          _json['cacheHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<Jwk>((value) => Jwk.fromJson(value))
+          .map<Jwk>((value) =>
+              Jwk.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6518,8 +6697,8 @@ class GetOpenIDConfigResponse {
 
   GetOpenIDConfigResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cacheHeader')) {
-      cacheHeader =
-          HttpCacheControlResponseHeader.fromJson(_json['cacheHeader']);
+      cacheHeader = HttpCacheControlResponseHeader.fromJson(
+          _json['cacheHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('claims_supported')) {
       claimsSupported = (_json['claims_supported'] as core.List)
@@ -7037,7 +7216,8 @@ class ListClustersResponse {
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
       clusters = (_json['clusters'] as core.List)
-          .map<Cluster>((value) => Cluster.fromJson(value))
+          .map<Cluster>((value) =>
+              Cluster.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('missingZones')) {
@@ -7069,7 +7249,8 @@ class ListNodePoolsResponse {
   ListNodePoolsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('nodePools')) {
       nodePools = (_json['nodePools'] as core.List)
-          .map<NodePool>((value) => NodePool.fromJson(value))
+          .map<NodePool>((value) =>
+              NodePool.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7102,7 +7283,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7139,7 +7321,8 @@ class ListUsableSubnetworksResponse {
     }
     if (_json.containsKey('subnetworks')) {
       subnetworks = (_json['subnetworks'] as core.List)
-          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(value))
+          .map<UsableSubnetwork>((value) => UsableSubnetwork.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7176,7 +7359,8 @@ class MaintenancePolicy {
       resourceVersion = _json['resourceVersion'] as core.String;
     }
     if (_json.containsKey('window')) {
-      window = MaintenanceWindow.fromJson(_json['window']);
+      window = MaintenanceWindow.fromJson(
+          _json['window'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7210,16 +7394,21 @@ class MaintenanceWindow {
 
   MaintenanceWindow.fromJson(core.Map _json) {
     if (_json.containsKey('dailyMaintenanceWindow')) {
-      dailyMaintenanceWindow =
-          DailyMaintenanceWindow.fromJson(_json['dailyMaintenanceWindow']);
+      dailyMaintenanceWindow = DailyMaintenanceWindow.fromJson(
+          _json['dailyMaintenanceWindow']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maintenanceExclusions')) {
       maintenanceExclusions = commons.mapMap<core.Map, TimeWindow>(
-          _json['maintenanceExclusions'].cast<core.String, core.Map>(),
-          (core.Map item) => TimeWindow.fromJson(item));
+          (_json['maintenanceExclusions']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('recurringWindow')) {
-      recurringWindow = RecurringTimeWindow.fromJson(_json['recurringWindow']);
+      recurringWindow = RecurringTimeWindow.fromJson(
+          _json['recurringWindow'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7286,8 +7475,9 @@ class MasterAuth {
       clientCertificate = _json['clientCertificate'] as core.String;
     }
     if (_json.containsKey('clientCertificateConfig')) {
-      clientCertificateConfig =
-          ClientCertificateConfig.fromJson(_json['clientCertificateConfig']);
+      clientCertificateConfig = ClientCertificateConfig.fromJson(
+          _json['clientCertificateConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clientKey')) {
       clientKey = _json['clientKey'] as core.String;
@@ -7344,7 +7534,8 @@ class MasterAuthorizedNetworksConfig {
   MasterAuthorizedNetworksConfig.fromJson(core.Map _json) {
     if (_json.containsKey('cidrBlocks')) {
       cidrBlocks = (_json['cidrBlocks'] as core.List)
-          .map<CidrBlock>((value) => CidrBlock.fromJson(value))
+          .map<CidrBlock>((value) =>
+              CidrBlock.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('enabled')) {
@@ -7463,8 +7654,8 @@ class NetworkConfig {
 
   NetworkConfig.fromJson(core.Map _json) {
     if (_json.containsKey('defaultSnatStatus')) {
-      defaultSnatStatus =
-          DefaultSnatStatus.fromJson(_json['defaultSnatStatus']);
+      defaultSnatStatus = DefaultSnatStatus.fromJson(
+          _json['defaultSnatStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enableIntraNodeVisibility')) {
       enableIntraNodeVisibility =
@@ -7686,7 +7877,8 @@ class NodeConfig {
   NodeConfig.fromJson(core.Map _json) {
     if (_json.containsKey('accelerators')) {
       accelerators = (_json['accelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bootDiskKmsKey')) {
@@ -7703,7 +7895,8 @@ class NodeConfig {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('localSsdCount')) {
@@ -7714,7 +7907,8 @@ class NodeConfig {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('minCpuPlatform')) {
@@ -7732,18 +7926,20 @@ class NodeConfig {
       preemptible = _json['preemptible'] as core.bool;
     }
     if (_json.containsKey('reservationAffinity')) {
-      reservationAffinity =
-          ReservationAffinity.fromJson(_json['reservationAffinity']);
+      reservationAffinity = ReservationAffinity.fromJson(
+          _json['reservationAffinity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sandboxConfig')) {
-      sandboxConfig = SandboxConfig.fromJson(_json['sandboxConfig']);
+      sandboxConfig = SandboxConfig.fromJson(
+          _json['sandboxConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('shieldedInstanceConfig')) {
-      shieldedInstanceConfig =
-          ShieldedInstanceConfig.fromJson(_json['shieldedInstanceConfig']);
+      shieldedInstanceConfig = ShieldedInstanceConfig.fromJson(
+          _json['shieldedInstanceConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
@@ -7752,12 +7948,14 @@ class NodeConfig {
     }
     if (_json.containsKey('taints')) {
       taints = (_json['taints'] as core.List)
-          .map<NodeTaint>((value) => NodeTaint.fromJson(value))
+          .map<NodeTaint>((value) =>
+              NodeTaint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('workloadMetadataConfig')) {
-      workloadMetadataConfig =
-          WorkloadMetadataConfig.fromJson(_json['workloadMetadataConfig']);
+      workloadMetadataConfig = WorkloadMetadataConfig.fromJson(
+          _json['workloadMetadataConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7855,7 +8053,8 @@ class NodeManagement {
       autoUpgrade = _json['autoUpgrade'] as core.bool;
     }
     if (_json.containsKey('upgradeOptions')) {
-      upgradeOptions = AutoUpgradeOptions.fromJson(_json['upgradeOptions']);
+      upgradeOptions = AutoUpgradeOptions.fromJson(
+          _json['upgradeOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7957,15 +8156,18 @@ class NodePool {
 
   NodePool.fromJson(core.Map _json) {
     if (_json.containsKey('autoscaling')) {
-      autoscaling = NodePoolAutoscaling.fromJson(_json['autoscaling']);
+      autoscaling = NodePoolAutoscaling.fromJson(
+          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('config')) {
-      config = NodeConfig.fromJson(_json['config']);
+      config = NodeConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('initialNodeCount')) {
       initialNodeCount = _json['initialNodeCount'] as core.int;
@@ -7981,11 +8183,12 @@ class NodePool {
           .toList();
     }
     if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(_json['management']);
+      management = NodeManagement.fromJson(
+          _json['management'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxPodsConstraint')) {
-      maxPodsConstraint =
-          MaxPodsConstraint.fromJson(_json['maxPodsConstraint']);
+      maxPodsConstraint = MaxPodsConstraint.fromJson(
+          _json['maxPodsConstraint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8003,7 +8206,8 @@ class NodePool {
       statusMessage = _json['statusMessage'] as core.String;
     }
     if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(_json['upgradeSettings']);
+      upgradeSettings = UpgradeSettings.fromJson(
+          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
@@ -8244,7 +8448,8 @@ class Operation {
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('clusterConditions')) {
       clusterConditions = (_json['clusterConditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('detail')) {
@@ -8261,14 +8466,16 @@ class Operation {
     }
     if (_json.containsKey('nodepoolConditions')) {
       nodepoolConditions = (_json['nodepoolConditions'] as core.List)
-          .map<StatusCondition>((value) => StatusCondition.fromJson(value))
+          .map<StatusCondition>((value) => StatusCondition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('progress')) {
-      progress = OperationProgress.fromJson(_json['progress']);
+      progress = OperationProgress.fromJson(
+          _json['progress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -8369,7 +8576,8 @@ class OperationProgress {
   OperationProgress.fromJson(core.Map _json) {
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<Metric>((value) => Metric.fromJson(value))
+          .map<Metric>((value) =>
+              Metric.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -8377,7 +8585,8 @@ class OperationProgress {
     }
     if (_json.containsKey('stages')) {
       stages = (_json['stages'] as core.List)
-          .map<OperationProgress>((value) => OperationProgress.fromJson(value))
+          .map<OperationProgress>((value) => OperationProgress.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('status')) {
@@ -8443,7 +8652,8 @@ class PrivateClusterConfig {
     if (_json.containsKey('masterGlobalAccessConfig')) {
       masterGlobalAccessConfig =
           PrivateClusterMasterGlobalAccessConfig.fromJson(
-              _json['masterGlobalAccessConfig']);
+              _json['masterGlobalAccessConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('masterIpv4CidrBlock')) {
       masterIpv4CidrBlock = _json['masterIpv4CidrBlock'] as core.String;
@@ -8538,7 +8748,8 @@ class RecurringTimeWindow {
       recurrence = _json['recurrence'] as core.String;
     }
     if (_json.containsKey('window')) {
-      window = TimeWindow.fromJson(_json['window']);
+      window = TimeWindow.fromJson(
+          _json['window'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8752,12 +8963,13 @@ class ResourceUsageExportConfig {
 
   ResourceUsageExportConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bigqueryDestination')) {
-      bigqueryDestination =
-          BigQueryDestination.fromJson(_json['bigqueryDestination']);
+      bigqueryDestination = BigQueryDestination.fromJson(
+          _json['bigqueryDestination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('consumptionMeteringConfig')) {
       consumptionMeteringConfig = ConsumptionMeteringConfig.fromJson(
-          _json['consumptionMeteringConfig']);
+          _json['consumptionMeteringConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enableNetworkEgressMetering')) {
       enableNetworkEgressMetering =
@@ -8899,8 +9111,8 @@ class ServerConfig {
   ServerConfig.fromJson(core.Map _json) {
     if (_json.containsKey('channels')) {
       channels = (_json['channels'] as core.List)
-          .map<ReleaseChannelConfig>(
-              (value) => ReleaseChannelConfig.fromJson(value))
+          .map<ReleaseChannelConfig>((value) => ReleaseChannelConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('defaultClusterVersion')) {
@@ -8979,7 +9191,8 @@ class SetAddonsConfigRequest {
 
   SetAddonsConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey('addonsConfig')) {
-      addonsConfig = AddonsConfig.fromJson(_json['addonsConfig']);
+      addonsConfig = AddonsConfig.fromJson(
+          _json['addonsConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clusterId')) {
       clusterId = _json['clusterId'] as core.String;
@@ -9067,7 +9280,8 @@ class SetLabelsRequest {
     }
     if (_json.containsKey('resourceLabels')) {
       resourceLabels = commons.mapMap<core.String, core.String>(
-          _json['resourceLabels'].cast<core.String, core.String>(),
+          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('zone')) {
@@ -9340,8 +9554,8 @@ class SetMaintenancePolicyRequest {
       clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('maintenancePolicy')) {
-      maintenancePolicy =
-          MaintenancePolicy.fromJson(_json['maintenancePolicy']);
+      maintenancePolicy = MaintenancePolicy.fromJson(
+          _json['maintenancePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -9426,7 +9640,8 @@ class SetMasterAuthRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('update')) {
-      update = MasterAuth.fromJson(_json['update']);
+      update = MasterAuth.fromJson(
+          _json['update'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -9564,7 +9779,8 @@ class SetNetworkPolicyRequest {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('networkPolicy')) {
-      networkPolicy = NetworkPolicy.fromJson(_json['networkPolicy']);
+      networkPolicy = NetworkPolicy.fromJson(
+          _json['networkPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
@@ -9628,7 +9844,8 @@ class SetNodePoolAutoscalingRequest {
 
   SetNodePoolAutoscalingRequest.fromJson(core.Map _json) {
     if (_json.containsKey('autoscaling')) {
-      autoscaling = NodePoolAutoscaling.fromJson(_json['autoscaling']);
+      autoscaling = NodePoolAutoscaling.fromJson(
+          _json['autoscaling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clusterId')) {
       clusterId = _json['clusterId'] as core.String;
@@ -9708,7 +9925,8 @@ class SetNodePoolManagementRequest {
       clusterId = _json['clusterId'] as core.String;
     }
     if (_json.containsKey('management')) {
-      management = NodeManagement.fromJson(_json['management']);
+      management = NodeManagement.fromJson(
+          _json['management'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -10064,7 +10282,8 @@ class UpdateClusterRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('update')) {
-      update = ClusterUpdate.fromJson(_json['update']);
+      update = ClusterUpdate.fromJson(
+          _json['update'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -10241,11 +10460,13 @@ class UpdateNodePoolRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('upgradeSettings')) {
-      upgradeSettings = UpgradeSettings.fromJson(_json['upgradeSettings']);
+      upgradeSettings = UpgradeSettings.fromJson(
+          _json['upgradeSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workloadMetadataConfig')) {
-      workloadMetadataConfig =
-          WorkloadMetadataConfig.fromJson(_json['workloadMetadataConfig']);
+      workloadMetadataConfig = WorkloadMetadataConfig.fromJson(
+          _json['workloadMetadataConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -10443,8 +10664,9 @@ class UsableSubnetwork {
     }
     if (_json.containsKey('secondaryIpRanges')) {
       secondaryIpRanges = (_json['secondaryIpRanges'] as core.List)
-          .map<UsableSubnetworkSecondaryRange>(
-              (value) => UsableSubnetworkSecondaryRange.fromJson(value))
+          .map<UsableSubnetworkSecondaryRange>((value) =>
+              UsableSubnetworkSecondaryRange.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statusMessage')) {

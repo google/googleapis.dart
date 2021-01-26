@@ -108,8 +108,8 @@ core.List<api.PromotionBodyLines> buildUnnamed3956() {
 
 void checkUnnamed3956(core.List<api.PromotionBodyLines> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPromotionBodyLines(o[0]);
-  checkPromotionBodyLines(o[1]);
+  checkPromotionBodyLines(o[0] as api.PromotionBodyLines);
+  checkPromotionBodyLines(o[1] as api.PromotionBodyLines);
 }
 
 core.int buildCounterPromotionImage = 0;
@@ -157,7 +157,7 @@ void checkPromotion(api.Promotion o) {
     checkUnnamed3956(o.bodyLines);
     unittest.expect(o.displayLink, unittest.equals('foo'));
     unittest.expect(o.htmlTitle, unittest.equals('foo'));
-    checkPromotionImage(o.image);
+    checkPromotionImage(o.image as api.PromotionImage);
     unittest.expect(o.link, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
@@ -227,8 +227,8 @@ core.List<api.ResultLabels> buildUnnamed3957() {
 
 void checkUnnamed3957(core.List<api.ResultLabels> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResultLabels(o[0]);
-  checkResultLabels(o[1]);
+  checkResultLabels(o[0] as api.ResultLabels);
+  checkResultLabels(o[1] as api.ResultLabels);
 }
 
 core.Map<core.String, core.Object> buildUnnamed3958() {
@@ -295,7 +295,7 @@ void checkResult(api.Result o) {
     unittest.expect(o.htmlFormattedUrl, unittest.equals('foo'));
     unittest.expect(o.htmlSnippet, unittest.equals('foo'));
     unittest.expect(o.htmlTitle, unittest.equals('foo'));
-    checkResultImage(o.image);
+    checkResultImage(o.image as api.ResultImage);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed3957(o.labels);
     unittest.expect(o.link, unittest.equals('foo'));
@@ -345,8 +345,8 @@ core.List<api.Result> buildUnnamed3960() {
 
 void checkUnnamed3960(core.List<api.Result> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResult(o[0]);
-  checkResult(o[1]);
+  checkResult(o[0] as api.Result);
+  checkResult(o[1] as api.Result);
 }
 
 core.List<api.Promotion> buildUnnamed3961() {
@@ -358,8 +358,8 @@ core.List<api.Promotion> buildUnnamed3961() {
 
 void checkUnnamed3961(core.List<api.Promotion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPromotion(o[0]);
-  checkPromotion(o[1]);
+  checkPromotion(o[0] as api.Promotion);
+  checkPromotion(o[1] as api.Promotion);
 }
 
 core.int buildCounterSearchQueriesNextPage = 0;
@@ -460,8 +460,8 @@ core.List<api.SearchQueriesNextPage> buildUnnamed3962() {
 
 void checkUnnamed3962(core.List<api.SearchQueriesNextPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSearchQueriesNextPage(o[0]);
-  checkSearchQueriesNextPage(o[1]);
+  checkSearchQueriesNextPage(o[0] as api.SearchQueriesNextPage);
+  checkSearchQueriesNextPage(o[1] as api.SearchQueriesNextPage);
 }
 
 core.int buildCounterSearchQueriesPreviousPage = 0;
@@ -562,8 +562,8 @@ core.List<api.SearchQueriesPreviousPage> buildUnnamed3963() {
 
 void checkUnnamed3963(core.List<api.SearchQueriesPreviousPage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSearchQueriesPreviousPage(o[0]);
-  checkSearchQueriesPreviousPage(o[1]);
+  checkSearchQueriesPreviousPage(o[0] as api.SearchQueriesPreviousPage);
+  checkSearchQueriesPreviousPage(o[1] as api.SearchQueriesPreviousPage);
 }
 
 core.int buildCounterSearchQueriesRequest = 0;
@@ -664,8 +664,8 @@ core.List<api.SearchQueriesRequest> buildUnnamed3964() {
 
 void checkUnnamed3964(core.List<api.SearchQueriesRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSearchQueriesRequest(o[0]);
-  checkSearchQueriesRequest(o[1]);
+  checkSearchQueriesRequest(o[0] as api.SearchQueriesRequest);
+  checkSearchQueriesRequest(o[1] as api.SearchQueriesRequest);
 }
 
 core.int buildCounterSearchQueries = 0;
@@ -783,10 +783,11 @@ void checkSearch(api.Search o) {
     checkUnnamed3960(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed3961(o.promotions);
-    checkSearchQueries(o.queries);
-    checkSearchSearchInformation(o.searchInformation);
-    checkSearchSpelling(o.spelling);
-    checkSearchUrl(o.url);
+    checkSearchQueries(o.queries as api.SearchQueries);
+    checkSearchSearchInformation(
+        o.searchInformation as api.SearchSearchInformation);
+    checkSearchSpelling(o.spelling as api.SearchSpelling);
+    checkSearchUrl(o.url as api.SearchUrl);
   }
   buildCounterSearch--;
 }
@@ -796,7 +797,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPromotionBodyLines();
       var od = api.PromotionBodyLines.fromJson(o.toJson());
-      checkPromotionBodyLines(od);
+      checkPromotionBodyLines(od as api.PromotionBodyLines);
     });
   });
 
@@ -804,7 +805,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPromotionImage();
       var od = api.PromotionImage.fromJson(o.toJson());
-      checkPromotionImage(od);
+      checkPromotionImage(od as api.PromotionImage);
     });
   });
 
@@ -812,7 +813,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPromotion();
       var od = api.Promotion.fromJson(o.toJson());
-      checkPromotion(od);
+      checkPromotion(od as api.Promotion);
     });
   });
 
@@ -820,7 +821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResultImage();
       var od = api.ResultImage.fromJson(o.toJson());
-      checkResultImage(od);
+      checkResultImage(od as api.ResultImage);
     });
   });
 
@@ -828,7 +829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResultLabels();
       var od = api.ResultLabels.fromJson(o.toJson());
-      checkResultLabels(od);
+      checkResultLabels(od as api.ResultLabels);
     });
   });
 
@@ -836,7 +837,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResult();
       var od = api.Result.fromJson(o.toJson());
-      checkResult(od);
+      checkResult(od as api.Result);
     });
   });
 
@@ -844,7 +845,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesNextPage();
       var od = api.SearchQueriesNextPage.fromJson(o.toJson());
-      checkSearchQueriesNextPage(od);
+      checkSearchQueriesNextPage(od as api.SearchQueriesNextPage);
     });
   });
 
@@ -852,7 +853,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesPreviousPage();
       var od = api.SearchQueriesPreviousPage.fromJson(o.toJson());
-      checkSearchQueriesPreviousPage(od);
+      checkSearchQueriesPreviousPage(od as api.SearchQueriesPreviousPage);
     });
   });
 
@@ -860,7 +861,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchQueriesRequest();
       var od = api.SearchQueriesRequest.fromJson(o.toJson());
-      checkSearchQueriesRequest(od);
+      checkSearchQueriesRequest(od as api.SearchQueriesRequest);
     });
   });
 
@@ -868,7 +869,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchQueries();
       var od = api.SearchQueries.fromJson(o.toJson());
-      checkSearchQueries(od);
+      checkSearchQueries(od as api.SearchQueries);
     });
   });
 
@@ -876,7 +877,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchSearchInformation();
       var od = api.SearchSearchInformation.fromJson(o.toJson());
-      checkSearchSearchInformation(od);
+      checkSearchSearchInformation(od as api.SearchSearchInformation);
     });
   });
 
@@ -884,7 +885,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchSpelling();
       var od = api.SearchSpelling.fromJson(o.toJson());
-      checkSearchSpelling(od);
+      checkSearchSpelling(od as api.SearchSpelling);
     });
   });
 
@@ -892,7 +893,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchUrl();
       var od = api.SearchUrl.fromJson(o.toJson());
-      checkSearchUrl(od);
+      checkSearchUrl(od as api.SearchUrl);
     });
   });
 
@@ -900,7 +901,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearch();
       var od = api.Search.fromJson(o.toJson());
-      checkSearch(od);
+      checkSearch(od as api.Search);
     });
   });
 
@@ -1060,7 +1061,7 @@ void main() {
               start: arg_start,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearch(response);
+        checkSearch(response as api.Search);
       })));
     });
   });
@@ -1221,7 +1222,7 @@ void main() {
               start: arg_start,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearch(response);
+        checkSearch(response as api.Search);
       })));
     });
   });

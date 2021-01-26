@@ -111,7 +111,10 @@ class IamPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LintPolicyResponse.fromJson(data));
+    return _response.then(
+      (data) => LintPolicyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of services that allow you to opt into audit logs that are
@@ -161,8 +164,10 @@ class IamPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => QueryAuditableServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => QueryAuditableServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -247,7 +252,9 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a custom Role. When you delete a custom role, the following
@@ -325,7 +332,9 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the definition of a Role.
@@ -395,7 +404,9 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -497,7 +508,10 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRolesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRolesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the definition of a custom Role.
@@ -574,7 +588,9 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a custom Role.
@@ -645,7 +661,9 @@ class OrganizationsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -701,8 +719,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => QueryTestablePermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => QueryTestablePermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -787,7 +807,9 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a custom Role. When you delete a custom role, the following
@@ -865,7 +887,9 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the definition of a Role.
@@ -935,7 +959,9 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -1037,7 +1063,10 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRolesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRolesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the definition of a custom Role.
@@ -1114,7 +1143,9 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a custom Role.
@@ -1185,7 +1216,9 @@ class ProjectsRolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1253,7 +1286,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a ServiceAccount. **Warning:** After you delete a service account,
@@ -1316,7 +1352,9 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Disables a ServiceAccount immediately. If an application uses the service
@@ -1386,7 +1424,9 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enables a ServiceAccount that was disabled by DisableServiceAccount. If
@@ -1449,7 +1489,9 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a ServiceAccount.
@@ -1502,7 +1544,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM policy that is attached to a ServiceAccount. This IAM policy
@@ -1576,7 +1621,9 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists every ServiceAccount that belongs to a specific project.
@@ -1644,7 +1691,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListServiceAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServiceAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a ServiceAccount.
@@ -1710,7 +1760,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM policy that is attached to a ServiceAccount. Use this method
@@ -1779,7 +1832,9 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
@@ -1847,7 +1902,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignBlobResponse.fromJson(data));
+    return _response.then(
+      (data) => SignBlobResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// **Note:** This method is deprecated and will stop working on July 1, 2021.
@@ -1915,7 +1973,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignJwtResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SignJwtResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests whether the caller has the specified permissions on a
@@ -1975,7 +2036,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores a deleted ServiceAccount. **Important:** It is not always
@@ -2036,8 +2100,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => UndeleteServiceAccountResponse.fromJson(data));
+    return _response.then(
+      (data) => UndeleteServiceAccountResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// **Note:** We are in the process of deprecating this method. Use
@@ -2105,7 +2171,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2171,7 +2240,10 @@ class ProjectsServiceAccountsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccountKey.fromJson(data));
+    return _response.then(
+      (data) => ServiceAccountKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a ServiceAccountKey. Deleting a service account key does not
@@ -2228,7 +2300,9 @@ class ProjectsServiceAccountsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a ServiceAccountKey.
@@ -2294,7 +2368,10 @@ class ProjectsServiceAccountsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccountKey.fromJson(data));
+    return _response.then(
+      (data) => ServiceAccountKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists every ServiceAccountKey for a service account.
@@ -2355,8 +2432,10 @@ class ProjectsServiceAccountsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListServiceAccountKeysResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServiceAccountKeysResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a ServiceAccountKey, using a public key that you provide.
@@ -2416,7 +2495,10 @@ class ProjectsServiceAccountsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccountKey.fromJson(data));
+    return _response.then(
+      (data) => ServiceAccountKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2492,7 +2574,9 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Role.fromJson(data));
+    return _response.then(
+      (data) => Role.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists every predefined Role that IAM supports, or every custom role that
@@ -2593,7 +2677,10 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRolesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRolesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists roles that can be granted on a Google Cloud resource. A role is
@@ -2643,7 +2730,10 @@ class RolesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => QueryGrantableRolesResponse.fromJson(data));
+    return _response.then(
+      (data) => QueryGrantableRolesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2658,7 +2748,8 @@ class AdminAuditData {
 
   AdminAuditData.fromJson(core.Map _json) {
     if (_json.containsKey('permissionDelta')) {
-      permissionDelta = PermissionDelta.fromJson(_json['permissionDelta']);
+      permissionDelta = PermissionDelta.fromJson(
+          _json['permissionDelta'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2701,7 +2792,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -2732,7 +2824,8 @@ class AuditData {
 
   AuditData.fromJson(core.Map _json) {
     if (_json.containsKey('policyDelta')) {
-      policyDelta = PolicyDelta.fromJson(_json['policyDelta']);
+      policyDelta = PolicyDelta.fromJson(
+          _json['policyDelta'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2868,7 +2961,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -2926,7 +3020,8 @@ class BindingDelta {
       action = _json['action'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('member')) {
       member = _json['member'] as core.String;
@@ -2968,7 +3063,8 @@ class CreateRoleRequest {
 
   CreateRoleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('role')) {
-      role = Role.fromJson(_json['role']);
+      role =
+          Role.fromJson(_json['role'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('roleId')) {
       roleId = _json['roleId'] as core.String;
@@ -3051,7 +3147,8 @@ class CreateServiceAccountRequest {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('serviceAccount')) {
-      serviceAccount = ServiceAccount.fromJson(_json['serviceAccount']);
+      serviceAccount = ServiceAccount.fromJson(
+          _json['serviceAccount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3199,7 +3296,8 @@ class LintPolicyRequest {
 
   LintPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fullResourceName')) {
       fullResourceName = _json['fullResourceName'] as core.String;
@@ -3229,7 +3327,8 @@ class LintPolicyResponse {
   LintPolicyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('lintResults')) {
       lintResults = (_json['lintResults'] as core.List)
-          .map<LintResult>((value) => LintResult.fromJson(value))
+          .map<LintResult>((value) =>
+              LintResult.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3361,7 +3460,8 @@ class ListRolesResponse {
     }
     if (_json.containsKey('roles')) {
       roles = (_json['roles'] as core.List)
-          .map<Role>((value) => Role.fromJson(value))
+          .map<Role>((value) =>
+              Role.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3388,7 +3488,8 @@ class ListServiceAccountKeysResponse {
   ListServiceAccountKeysResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<ServiceAccountKey>((value) => ServiceAccountKey.fromJson(value))
+          .map<ServiceAccountKey>((value) => ServiceAccountKey.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3416,7 +3517,8 @@ class ListServiceAccountsResponse {
   ListServiceAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accounts')) {
       accounts = (_json['accounts'] as core.List)
-          .map<ServiceAccount>((value) => ServiceAccount.fromJson(value))
+          .map<ServiceAccount>((value) => ServiceAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3449,7 +3551,8 @@ class PatchServiceAccountRequest {
 
   PatchServiceAccountRequest.fromJson(core.Map _json) {
     if (_json.containsKey('serviceAccount')) {
-      serviceAccount = ServiceAccount.fromJson(_json['serviceAccount']);
+      serviceAccount = ServiceAccount.fromJson(
+          _json['serviceAccount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -3678,12 +3781,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -3723,7 +3828,8 @@ class PolicyDelta {
   PolicyDelta.fromJson(core.Map _json) {
     if (_json.containsKey('bindingDeltas')) {
       bindingDeltas = (_json['bindingDeltas'] as core.List)
-          .map<BindingDelta>((value) => BindingDelta.fromJson(value))
+          .map<BindingDelta>((value) => BindingDelta.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3773,7 +3879,8 @@ class QueryAuditableServicesResponse {
   QueryAuditableServicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
-          .map<AuditableService>((value) => AuditableService.fromJson(value))
+          .map<AuditableService>((value) => AuditableService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3862,7 +3969,8 @@ class QueryGrantableRolesResponse {
     }
     if (_json.containsKey('roles')) {
       roles = (_json['roles'] as core.List)
-          .map<Role>((value) => Role.fromJson(value))
+          .map<Role>((value) =>
+              Role.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3941,7 +4049,8 @@ class QueryTestablePermissionsResponse {
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
-          .map<Permission>((value) => Permission.fromJson(value))
+          .map<Permission>((value) =>
+              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4351,7 +4460,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -4617,7 +4727,8 @@ class UndeleteServiceAccountResponse {
 
   UndeleteServiceAccountResponse.fromJson(core.Map _json) {
     if (_json.containsKey('restoredAccount')) {
-      restoredAccount = ServiceAccount.fromJson(_json['restoredAccount']);
+      restoredAccount = ServiceAccount.fromJson(
+          _json['restoredAccount'] as core.Map<core.String, core.dynamic>);
     }
   }
 

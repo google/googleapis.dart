@@ -133,7 +133,7 @@ api.AsymmetricSignRequest buildAsymmetricSignRequest() {
 void checkAsymmetricSignRequest(api.AsymmetricSignRequest o) {
   buildCounterAsymmetricSignRequest++;
   if (buildCounterAsymmetricSignRequest < 3) {
-    checkDigest(o.digest);
+    checkDigest(o.digest as api.Digest);
     unittest.expect(o.digestCrc32c, unittest.equals('foo'));
   }
   buildCounterAsymmetricSignRequest--;
@@ -173,8 +173,8 @@ core.List<api.AuditLogConfig> buildUnnamed4708() {
 
 void checkUnnamed4708(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -263,7 +263,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed4710(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -370,10 +370,11 @@ void checkCryptoKey(api.CryptoKey o) {
     checkUnnamed4714(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.nextRotationTime, unittest.equals('foo'));
-    checkCryptoKeyVersion(o.primary);
+    checkCryptoKeyVersion(o.primary as api.CryptoKeyVersion);
     unittest.expect(o.purpose, unittest.equals('foo'));
     unittest.expect(o.rotationPeriod, unittest.equals('foo'));
-    checkCryptoKeyVersionTemplate(o.versionTemplate);
+    checkCryptoKeyVersionTemplate(
+        o.versionTemplate as api.CryptoKeyVersionTemplate);
   }
   buildCounterCryptoKey--;
 }
@@ -405,11 +406,12 @@ void checkCryptoKeyVersion(api.CryptoKeyVersion o) {
   buildCounterCryptoKeyVersion++;
   if (buildCounterCryptoKeyVersion < 3) {
     unittest.expect(o.algorithm, unittest.equals('foo'));
-    checkKeyOperationAttestation(o.attestation);
+    checkKeyOperationAttestation(o.attestation as api.KeyOperationAttestation);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.destroyEventTime, unittest.equals('foo'));
     unittest.expect(o.destroyTime, unittest.equals('foo'));
-    checkExternalProtectionLevelOptions(o.externalProtectionLevelOptions);
+    checkExternalProtectionLevelOptions(
+        o.externalProtectionLevelOptions as api.ExternalProtectionLevelOptions);
     unittest.expect(o.generateTime, unittest.equals('foo'));
     unittest.expect(o.importFailureReason, unittest.equals('foo'));
     unittest.expect(o.importJob, unittest.equals('foo'));
@@ -671,7 +673,7 @@ api.ImportJob buildImportJob() {
 void checkImportJob(api.ImportJob o) {
   buildCounterImportJob++;
   if (buildCounterImportJob < 3) {
-    checkKeyOperationAttestation(o.attestation);
+    checkKeyOperationAttestation(o.attestation as api.KeyOperationAttestation);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.expireEventTime, unittest.equals('foo'));
     unittest.expect(o.expireTime, unittest.equals('foo'));
@@ -679,7 +681,7 @@ void checkImportJob(api.ImportJob o) {
     unittest.expect(o.importMethod, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.protectionLevel, unittest.equals('foo'));
-    checkWrappingPublicKey(o.publicKey);
+    checkWrappingPublicKey(o.publicKey as api.WrappingPublicKey);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterImportJob--;
@@ -701,7 +703,7 @@ api.KeyOperationAttestation buildKeyOperationAttestation() {
 void checkKeyOperationAttestation(api.KeyOperationAttestation o) {
   buildCounterKeyOperationAttestation++;
   if (buildCounterKeyOperationAttestation < 3) {
-    checkCertificateChains(o.certChains);
+    checkCertificateChains(o.certChains as api.CertificateChains);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
   }
@@ -738,8 +740,8 @@ core.List<api.CryptoKeyVersion> buildUnnamed4715() {
 
 void checkUnnamed4715(core.List<api.CryptoKeyVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCryptoKeyVersion(o[0]);
-  checkCryptoKeyVersion(o[1]);
+  checkCryptoKeyVersion(o[0] as api.CryptoKeyVersion);
+  checkCryptoKeyVersion(o[1] as api.CryptoKeyVersion);
 }
 
 core.int buildCounterListCryptoKeyVersionsResponse = 0;
@@ -774,8 +776,8 @@ core.List<api.CryptoKey> buildUnnamed4716() {
 
 void checkUnnamed4716(core.List<api.CryptoKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCryptoKey(o[0]);
-  checkCryptoKey(o[1]);
+  checkCryptoKey(o[0] as api.CryptoKey);
+  checkCryptoKey(o[1] as api.CryptoKey);
 }
 
 core.int buildCounterListCryptoKeysResponse = 0;
@@ -810,8 +812,8 @@ core.List<api.ImportJob> buildUnnamed4717() {
 
 void checkUnnamed4717(core.List<api.ImportJob> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImportJob(o[0]);
-  checkImportJob(o[1]);
+  checkImportJob(o[0] as api.ImportJob);
+  checkImportJob(o[1] as api.ImportJob);
 }
 
 core.int buildCounterListImportJobsResponse = 0;
@@ -846,8 +848,8 @@ core.List<api.KeyRing> buildUnnamed4718() {
 
 void checkUnnamed4718(core.List<api.KeyRing> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKeyRing(o[0]);
-  checkKeyRing(o[1]);
+  checkKeyRing(o[0] as api.KeyRing);
+  checkKeyRing(o[1] as api.KeyRing);
 }
 
 core.int buildCounterListKeyRingsResponse = 0;
@@ -882,8 +884,8 @@ core.List<api.Location> buildUnnamed4719() {
 
 void checkUnnamed4719(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -1006,8 +1008,8 @@ core.List<api.AuditConfig> buildUnnamed4722() {
 
 void checkUnnamed4722(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed4723() {
@@ -1019,8 +1021,8 @@ core.List<api.Binding> buildUnnamed4723() {
 
 void checkUnnamed4723(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1103,7 +1105,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1218,7 +1220,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsymmetricDecryptRequest();
       var od = api.AsymmetricDecryptRequest.fromJson(o.toJson());
-      checkAsymmetricDecryptRequest(od);
+      checkAsymmetricDecryptRequest(od as api.AsymmetricDecryptRequest);
     });
   });
 
@@ -1226,7 +1228,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsymmetricDecryptResponse();
       var od = api.AsymmetricDecryptResponse.fromJson(o.toJson());
-      checkAsymmetricDecryptResponse(od);
+      checkAsymmetricDecryptResponse(od as api.AsymmetricDecryptResponse);
     });
   });
 
@@ -1234,7 +1236,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsymmetricSignRequest();
       var od = api.AsymmetricSignRequest.fromJson(o.toJson());
-      checkAsymmetricSignRequest(od);
+      checkAsymmetricSignRequest(od as api.AsymmetricSignRequest);
     });
   });
 
@@ -1242,7 +1244,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsymmetricSignResponse();
       var od = api.AsymmetricSignResponse.fromJson(o.toJson());
-      checkAsymmetricSignResponse(od);
+      checkAsymmetricSignResponse(od as api.AsymmetricSignResponse);
     });
   });
 
@@ -1250,7 +1252,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1258,7 +1260,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1266,7 +1268,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1274,7 +1276,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCertificateChains();
       var od = api.CertificateChains.fromJson(o.toJson());
-      checkCertificateChains(od);
+      checkCertificateChains(od as api.CertificateChains);
     });
   });
 
@@ -1282,7 +1284,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCryptoKey();
       var od = api.CryptoKey.fromJson(o.toJson());
-      checkCryptoKey(od);
+      checkCryptoKey(od as api.CryptoKey);
     });
   });
 
@@ -1290,7 +1292,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCryptoKeyVersion();
       var od = api.CryptoKeyVersion.fromJson(o.toJson());
-      checkCryptoKeyVersion(od);
+      checkCryptoKeyVersion(od as api.CryptoKeyVersion);
     });
   });
 
@@ -1298,7 +1300,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCryptoKeyVersionTemplate();
       var od = api.CryptoKeyVersionTemplate.fromJson(o.toJson());
-      checkCryptoKeyVersionTemplate(od);
+      checkCryptoKeyVersionTemplate(od as api.CryptoKeyVersionTemplate);
     });
   });
 
@@ -1306,7 +1308,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDecryptRequest();
       var od = api.DecryptRequest.fromJson(o.toJson());
-      checkDecryptRequest(od);
+      checkDecryptRequest(od as api.DecryptRequest);
     });
   });
 
@@ -1314,7 +1316,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDecryptResponse();
       var od = api.DecryptResponse.fromJson(o.toJson());
-      checkDecryptResponse(od);
+      checkDecryptResponse(od as api.DecryptResponse);
     });
   });
 
@@ -1322,7 +1324,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDestroyCryptoKeyVersionRequest();
       var od = api.DestroyCryptoKeyVersionRequest.fromJson(o.toJson());
-      checkDestroyCryptoKeyVersionRequest(od);
+      checkDestroyCryptoKeyVersionRequest(
+          od as api.DestroyCryptoKeyVersionRequest);
     });
   });
 
@@ -1330,7 +1333,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDigest();
       var od = api.Digest.fromJson(o.toJson());
-      checkDigest(od);
+      checkDigest(od as api.Digest);
     });
   });
 
@@ -1338,7 +1341,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEncryptRequest();
       var od = api.EncryptRequest.fromJson(o.toJson());
-      checkEncryptRequest(od);
+      checkEncryptRequest(od as api.EncryptRequest);
     });
   });
 
@@ -1346,7 +1349,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEncryptResponse();
       var od = api.EncryptResponse.fromJson(o.toJson());
-      checkEncryptResponse(od);
+      checkEncryptResponse(od as api.EncryptResponse);
     });
   });
 
@@ -1354,7 +1357,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1362,7 +1365,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExternalProtectionLevelOptions();
       var od = api.ExternalProtectionLevelOptions.fromJson(o.toJson());
-      checkExternalProtectionLevelOptions(od);
+      checkExternalProtectionLevelOptions(
+          od as api.ExternalProtectionLevelOptions);
     });
   });
 
@@ -1370,7 +1374,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportCryptoKeyVersionRequest();
       var od = api.ImportCryptoKeyVersionRequest.fromJson(o.toJson());
-      checkImportCryptoKeyVersionRequest(od);
+      checkImportCryptoKeyVersionRequest(
+          od as api.ImportCryptoKeyVersionRequest);
     });
   });
 
@@ -1378,7 +1383,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportJob();
       var od = api.ImportJob.fromJson(o.toJson());
-      checkImportJob(od);
+      checkImportJob(od as api.ImportJob);
     });
   });
 
@@ -1386,7 +1391,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKeyOperationAttestation();
       var od = api.KeyOperationAttestation.fromJson(o.toJson());
-      checkKeyOperationAttestation(od);
+      checkKeyOperationAttestation(od as api.KeyOperationAttestation);
     });
   });
 
@@ -1394,7 +1399,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKeyRing();
       var od = api.KeyRing.fromJson(o.toJson());
-      checkKeyRing(od);
+      checkKeyRing(od as api.KeyRing);
     });
   });
 
@@ -1402,7 +1407,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCryptoKeyVersionsResponse();
       var od = api.ListCryptoKeyVersionsResponse.fromJson(o.toJson());
-      checkListCryptoKeyVersionsResponse(od);
+      checkListCryptoKeyVersionsResponse(
+          od as api.ListCryptoKeyVersionsResponse);
     });
   });
 
@@ -1410,7 +1416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCryptoKeysResponse();
       var od = api.ListCryptoKeysResponse.fromJson(o.toJson());
-      checkListCryptoKeysResponse(od);
+      checkListCryptoKeysResponse(od as api.ListCryptoKeysResponse);
     });
   });
 
@@ -1418,7 +1424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListImportJobsResponse();
       var od = api.ListImportJobsResponse.fromJson(o.toJson());
-      checkListImportJobsResponse(od);
+      checkListImportJobsResponse(od as api.ListImportJobsResponse);
     });
   });
 
@@ -1426,7 +1432,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListKeyRingsResponse();
       var od = api.ListKeyRingsResponse.fromJson(o.toJson());
-      checkListKeyRingsResponse(od);
+      checkListKeyRingsResponse(od as api.ListKeyRingsResponse);
     });
   });
 
@@ -1434,7 +1440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1442,7 +1448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1450,7 +1456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocationMetadata();
       var od = api.LocationMetadata.fromJson(o.toJson());
-      checkLocationMetadata(od);
+      checkLocationMetadata(od as api.LocationMetadata);
     });
   });
 
@@ -1458,7 +1464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1466,7 +1472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublicKey();
       var od = api.PublicKey.fromJson(o.toJson());
-      checkPublicKey(od);
+      checkPublicKey(od as api.PublicKey);
     });
   });
 
@@ -1474,7 +1480,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestoreCryptoKeyVersionRequest();
       var od = api.RestoreCryptoKeyVersionRequest.fromJson(o.toJson());
-      checkRestoreCryptoKeyVersionRequest(od);
+      checkRestoreCryptoKeyVersionRequest(
+          od as api.RestoreCryptoKeyVersionRequest);
     });
   });
 
@@ -1482,7 +1489,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1490,7 +1497,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1498,7 +1505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1506,7 +1513,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateCryptoKeyPrimaryVersionRequest();
       var od = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(o.toJson());
-      checkUpdateCryptoKeyPrimaryVersionRequest(od);
+      checkUpdateCryptoKeyPrimaryVersionRequest(
+          od as api.UpdateCryptoKeyPrimaryVersionRequest);
     });
   });
 
@@ -1514,7 +1522,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWrappingPublicKey();
       var od = api.WrappingPublicKey.fromJson(o.toJson());
-      checkWrappingPublicKey(od);
+      checkWrappingPublicKey(od as api.WrappingPublicKey);
     });
   });
 
@@ -1563,7 +1571,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1623,7 +1631,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1637,8 +1645,9 @@ void main() {
       var arg_keyRingId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.KeyRing.fromJson(json);
-        checkKeyRing(obj);
+        var obj =
+            api.KeyRing.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkKeyRing(obj as api.KeyRing);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1681,7 +1690,7 @@ void main() {
           .create(arg_request, arg_parent,
               keyRingId: arg_keyRingId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkKeyRing(response);
+        checkKeyRing(response as api.KeyRing);
       })));
     });
 
@@ -1729,7 +1738,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkKeyRing(response);
+        checkKeyRing(response as api.KeyRing);
       })));
     });
 
@@ -1784,7 +1793,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1848,7 +1857,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListKeyRingsResponse(response);
+        checkListKeyRingsResponse(response as api.ListKeyRingsResponse);
       })));
     });
 
@@ -1859,8 +1868,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1900,7 +1910,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1911,8 +1921,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1952,7 +1963,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -1967,8 +1979,9 @@ void main() {
       var arg_skipInitialVersionCreation = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CryptoKey.fromJson(json);
-        checkCryptoKey(obj);
+        var obj =
+            api.CryptoKey.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCryptoKey(obj as api.CryptoKey);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2015,7 +2028,7 @@ void main() {
               skipInitialVersionCreation: arg_skipInitialVersionCreation,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response);
+        checkCryptoKey(response as api.CryptoKey);
       })));
     });
 
@@ -2026,8 +2039,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DecryptRequest.fromJson(json);
-        checkDecryptRequest(obj);
+        var obj = api.DecryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDecryptRequest(obj as api.DecryptRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2067,7 +2081,7 @@ void main() {
       res
           .decrypt(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDecryptResponse(response);
+        checkDecryptResponse(response as api.DecryptResponse);
       })));
     });
 
@@ -2078,8 +2092,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EncryptRequest.fromJson(json);
-        checkEncryptRequest(obj);
+        var obj = api.EncryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEncryptRequest(obj as api.EncryptRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2119,7 +2134,7 @@ void main() {
       res
           .encrypt(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEncryptResponse(response);
+        checkEncryptResponse(response as api.EncryptResponse);
       })));
     });
 
@@ -2167,7 +2182,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response);
+        checkCryptoKey(response as api.CryptoKey);
       })));
     });
 
@@ -2222,7 +2237,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2290,7 +2305,7 @@ void main() {
               versionView: arg_versionView,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCryptoKeysResponse(response);
+        checkListCryptoKeysResponse(response as api.ListCryptoKeysResponse);
       })));
     });
 
@@ -2302,8 +2317,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CryptoKey.fromJson(json);
-        checkCryptoKey(obj);
+        var obj =
+            api.CryptoKey.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCryptoKey(obj as api.CryptoKey);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2346,7 +2362,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response);
+        checkCryptoKey(response as api.CryptoKey);
       })));
     });
 
@@ -2357,8 +2373,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2398,7 +2415,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2409,8 +2426,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2450,7 +2468,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -2461,8 +2480,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(json);
-        checkUpdateCryptoKeyPrimaryVersionRequest(obj);
+        var obj = api.UpdateCryptoKeyPrimaryVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateCryptoKeyPrimaryVersionRequest(
+            obj as api.UpdateCryptoKeyPrimaryVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2502,7 +2523,7 @@ void main() {
       res
           .updatePrimaryVersion(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKey(response);
+        checkCryptoKey(response as api.CryptoKey);
       })));
     });
   });
@@ -2522,8 +2543,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsymmetricDecryptRequest.fromJson(json);
-        checkAsymmetricDecryptRequest(obj);
+        var obj = api.AsymmetricDecryptRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAsymmetricDecryptRequest(obj as api.AsymmetricDecryptRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2563,7 +2585,8 @@ void main() {
       res
           .asymmetricDecrypt(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAsymmetricDecryptResponse(response);
+        checkAsymmetricDecryptResponse(
+            response as api.AsymmetricDecryptResponse);
       })));
     });
 
@@ -2579,8 +2602,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AsymmetricSignRequest.fromJson(json);
-        checkAsymmetricSignRequest(obj);
+        var obj = api.AsymmetricSignRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAsymmetricSignRequest(obj as api.AsymmetricSignRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2620,7 +2644,7 @@ void main() {
       res
           .asymmetricSign(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAsymmetricSignResponse(response);
+        checkAsymmetricSignResponse(response as api.AsymmetricSignResponse);
       })));
     });
 
@@ -2636,8 +2660,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CryptoKeyVersion.fromJson(json);
-        checkCryptoKeyVersion(obj);
+        var obj = api.CryptoKeyVersion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCryptoKeyVersion(obj as api.CryptoKeyVersion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2677,7 +2702,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
 
@@ -2693,8 +2718,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DestroyCryptoKeyVersionRequest.fromJson(json);
-        checkDestroyCryptoKeyVersionRequest(obj);
+        var obj = api.DestroyCryptoKeyVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDestroyCryptoKeyVersionRequest(
+            obj as api.DestroyCryptoKeyVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2734,7 +2761,7 @@ void main() {
       res
           .destroy(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
 
@@ -2787,7 +2814,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
 
@@ -2840,7 +2867,7 @@ void main() {
       res
           .getPublicKey(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPublicKey(response);
+        checkPublicKey(response as api.PublicKey);
       })));
     });
 
@@ -2856,8 +2883,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportCryptoKeyVersionRequest.fromJson(json);
-        checkImportCryptoKeyVersionRequest(obj);
+        var obj = api.ImportCryptoKeyVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkImportCryptoKeyVersionRequest(
+            obj as api.ImportCryptoKeyVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2897,7 +2926,7 @@ void main() {
       res
           .import(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
 
@@ -2969,7 +2998,8 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCryptoKeyVersionsResponse(response);
+        checkListCryptoKeyVersionsResponse(
+            response as api.ListCryptoKeyVersionsResponse);
       })));
     });
 
@@ -2986,8 +3016,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CryptoKeyVersion.fromJson(json);
-        checkCryptoKeyVersion(obj);
+        var obj = api.CryptoKeyVersion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCryptoKeyVersion(obj as api.CryptoKeyVersion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3030,7 +3061,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
 
@@ -3046,8 +3077,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RestoreCryptoKeyVersionRequest.fromJson(json);
-        checkRestoreCryptoKeyVersionRequest(obj);
+        var obj = api.RestoreCryptoKeyVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreCryptoKeyVersionRequest(
+            obj as api.RestoreCryptoKeyVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3087,7 +3120,7 @@ void main() {
       res
           .restore(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCryptoKeyVersion(response);
+        checkCryptoKeyVersion(response as api.CryptoKeyVersion);
       })));
     });
   });
@@ -3101,8 +3134,9 @@ void main() {
       var arg_importJobId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportJob.fromJson(json);
-        checkImportJob(obj);
+        var obj =
+            api.ImportJob.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkImportJob(obj as api.ImportJob);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3145,7 +3179,7 @@ void main() {
           .create(arg_request, arg_parent,
               importJobId: arg_importJobId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImportJob(response);
+        checkImportJob(response as api.ImportJob);
       })));
     });
 
@@ -3193,7 +3227,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkImportJob(response);
+        checkImportJob(response as api.ImportJob);
       })));
     });
 
@@ -3248,7 +3282,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3312,7 +3346,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListImportJobsResponse(response);
+        checkListImportJobsResponse(response as api.ListImportJobsResponse);
       })));
     });
 
@@ -3323,8 +3357,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3364,7 +3399,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3375,8 +3410,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3416,7 +3452,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });

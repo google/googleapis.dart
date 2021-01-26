@@ -122,7 +122,9 @@ class ProjectsMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -193,17 +195,20 @@ class AndroidConfig {
     }
     if (_json.containsKey('data')) {
       data = commons.mapMap<core.String, core.String>(
-          _json['data'].cast<core.String, core.String>(),
+          (_json['data'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('directBootOk')) {
       directBootOk = _json['directBootOk'] as core.bool;
     }
     if (_json.containsKey('fcmOptions')) {
-      fcmOptions = AndroidFcmOptions.fromJson(_json['fcmOptions']);
+      fcmOptions = AndroidFcmOptions.fromJson(
+          _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('notification')) {
-      notification = AndroidNotification.fromJson(_json['notification']);
+      notification = AndroidNotification.fromJson(
+          _json['notification'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('priority')) {
       priority = _json['priority'] as core.String;
@@ -492,7 +497,8 @@ class AndroidNotification {
       image = _json['image'] as core.String;
     }
     if (_json.containsKey('lightSettings')) {
-      lightSettings = LightSettings.fromJson(_json['lightSettings']);
+      lightSettings = LightSettings.fromJson(
+          _json['lightSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('localOnly')) {
       localOnly = _json['localOnly'] as core.bool;
@@ -642,16 +648,19 @@ class ApnsConfig {
 
   ApnsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('fcmOptions')) {
-      fcmOptions = ApnsFcmOptions.fromJson(_json['fcmOptions']);
+      fcmOptions = ApnsFcmOptions.fromJson(
+          _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -850,7 +859,8 @@ class LightSettings {
 
   LightSettings.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lightOffDuration')) {
       lightOffDuration = _json['lightOffDuration'] as core.String;
@@ -919,27 +929,32 @@ class Message {
 
   Message.fromJson(core.Map _json) {
     if (_json.containsKey('android')) {
-      android = AndroidConfig.fromJson(_json['android']);
+      android = AndroidConfig.fromJson(
+          _json['android'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('apns')) {
-      apns = ApnsConfig.fromJson(_json['apns']);
+      apns = ApnsConfig.fromJson(
+          _json['apns'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('condition')) {
       condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('data')) {
       data = commons.mapMap<core.String, core.String>(
-          _json['data'].cast<core.String, core.String>(),
+          (_json['data'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('fcmOptions')) {
-      fcmOptions = FcmOptions.fromJson(_json['fcmOptions']);
+      fcmOptions = FcmOptions.fromJson(
+          _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('notification')) {
-      notification = Notification.fromJson(_json['notification']);
+      notification = Notification.fromJson(
+          _json['notification'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('token')) {
       token = _json['token'] as core.String;
@@ -948,7 +963,8 @@ class Message {
       topic = _json['topic'] as core.String;
     }
     if (_json.containsKey('webpush')) {
-      webpush = WebpushConfig.fromJson(_json['webpush']);
+      webpush = WebpushConfig.fromJson(
+          _json['webpush'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1045,7 +1061,8 @@ class SendMessageRequest {
 
   SendMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('validateOnly')) {
       validateOnly = _json['validateOnly'] as core.bool;
@@ -1094,20 +1111,24 @@ class WebpushConfig {
   WebpushConfig.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
       data = commons.mapMap<core.String, core.String>(
-          _json['data'].cast<core.String, core.String>(),
+          (_json['data'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('fcmOptions')) {
-      fcmOptions = WebpushFcmOptions.fromJson(_json['fcmOptions']);
+      fcmOptions = WebpushFcmOptions.fromJson(
+          _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('notification')) {
       notification = commons.mapMap<core.Object, core.Object>(
-          _json['notification'].cast<core.String, core.Object>(),
+          (_json['notification'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }

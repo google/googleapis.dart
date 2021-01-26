@@ -152,8 +152,8 @@ core.List<api.StreamMapping> buildUnnamed6366() {
 
 void checkUnnamed6366(core.List<api.StreamMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStreamMapping(o[0]);
-  checkStreamMapping(o[1]);
+  checkStreamMapping(o[0] as api.StreamMapping);
+  checkStreamMapping(o[1] as api.StreamMapping);
 }
 
 core.int buildCounterAnalyticsDetails = 0;
@@ -171,7 +171,7 @@ api.AnalyticsDetails buildAnalyticsDetails() {
 void checkAnalyticsDetails(api.AnalyticsDetails o) {
   buildCounterAnalyticsDetails++;
   if (buildCounterAnalyticsDetails < 3) {
-    checkAnalyticsProperty(o.analyticsProperty);
+    checkAnalyticsProperty(o.analyticsProperty as api.AnalyticsProperty);
     checkUnnamed6366(o.streamMappings);
   }
   buildCounterAnalyticsDetails--;
@@ -355,7 +355,7 @@ void checkFirebaseProject(api.FirebaseProject o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.projectNumber, unittest.equals('foo'));
-    checkDefaultResources(o.resources);
+    checkDefaultResources(o.resources as api.DefaultResources);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterFirebaseProject--;
@@ -420,8 +420,8 @@ core.List<api.AndroidApp> buildUnnamed6367() {
 
 void checkUnnamed6367(core.List<api.AndroidApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidApp(o[0]);
-  checkAndroidApp(o[1]);
+  checkAndroidApp(o[0] as api.AndroidApp);
+  checkAndroidApp(o[1] as api.AndroidApp);
 }
 
 core.int buildCounterListAndroidAppsResponse = 0;
@@ -454,8 +454,8 @@ core.List<api.Location> buildUnnamed6368() {
 
 void checkUnnamed6368(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListAvailableLocationsResponse = 0;
@@ -488,8 +488,8 @@ core.List<api.ProjectInfo> buildUnnamed6369() {
 
 void checkUnnamed6369(core.List<api.ProjectInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProjectInfo(o[0]);
-  checkProjectInfo(o[1]);
+  checkProjectInfo(o[0] as api.ProjectInfo);
+  checkProjectInfo(o[1] as api.ProjectInfo);
 }
 
 core.int buildCounterListAvailableProjectsResponse = 0;
@@ -522,8 +522,8 @@ core.List<api.FirebaseProject> buildUnnamed6370() {
 
 void checkUnnamed6370(core.List<api.FirebaseProject> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirebaseProject(o[0]);
-  checkFirebaseProject(o[1]);
+  checkFirebaseProject(o[0] as api.FirebaseProject);
+  checkFirebaseProject(o[1] as api.FirebaseProject);
 }
 
 core.int buildCounterListFirebaseProjectsResponse = 0;
@@ -556,8 +556,8 @@ core.List<api.IosApp> buildUnnamed6371() {
 
 void checkUnnamed6371(core.List<api.IosApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosApp(o[0]);
-  checkIosApp(o[1]);
+  checkIosApp(o[0] as api.IosApp);
+  checkIosApp(o[1] as api.IosApp);
 }
 
 core.int buildCounterListIosAppsResponse = 0;
@@ -590,8 +590,8 @@ core.List<api.ShaCertificate> buildUnnamed6372() {
 
 void checkUnnamed6372(core.List<api.ShaCertificate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkShaCertificate(o[0]);
-  checkShaCertificate(o[1]);
+  checkShaCertificate(o[0] as api.ShaCertificate);
+  checkShaCertificate(o[1] as api.ShaCertificate);
 }
 
 core.int buildCounterListShaCertificatesResponse = 0;
@@ -622,8 +622,8 @@ core.List<api.WebApp> buildUnnamed6373() {
 
 void checkUnnamed6373(core.List<api.WebApp> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebApp(o[0]);
-  checkWebApp(o[1]);
+  checkWebApp(o[0] as api.WebApp);
+  checkWebApp(o[1] as api.WebApp);
 }
 
 core.int buildCounterListWebAppsResponse = 0;
@@ -775,7 +775,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed6375(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6376(o.response);
@@ -834,8 +834,8 @@ core.List<api.FirebaseAppInfo> buildUnnamed6377() {
 
 void checkUnnamed6377(core.List<api.FirebaseAppInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirebaseAppInfo(o[0]);
-  checkFirebaseAppInfo(o[1]);
+  checkFirebaseAppInfo(o[0] as api.FirebaseAppInfo);
+  checkFirebaseAppInfo(o[1] as api.FirebaseAppInfo);
 }
 
 core.int buildCounterSearchFirebaseAppsResponse = 0;
@@ -968,7 +968,7 @@ void checkStatusProto(api.StatusProto o) {
     unittest.expect(o.canonicalCode, unittest.equals(42));
     unittest.expect(o.code, unittest.equals(42));
     unittest.expect(o.message, unittest.equals('foo'));
-    checkMessageSet(o.messageSet);
+    checkMessageSet(o.messageSet as api.MessageSet);
     unittest.expect(o.space, unittest.equals('foo'));
   }
   buildCounterStatusProto--;
@@ -1079,7 +1079,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddFirebaseRequest();
       var od = api.AddFirebaseRequest.fromJson(o.toJson());
-      checkAddFirebaseRequest(od);
+      checkAddFirebaseRequest(od as api.AddFirebaseRequest);
     });
   });
 
@@ -1087,7 +1087,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddGoogleAnalyticsRequest();
       var od = api.AddGoogleAnalyticsRequest.fromJson(o.toJson());
-      checkAddGoogleAnalyticsRequest(od);
+      checkAddGoogleAnalyticsRequest(od as api.AddGoogleAnalyticsRequest);
     });
   });
 
@@ -1095,7 +1095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdminSdkConfig();
       var od = api.AdminSdkConfig.fromJson(o.toJson());
-      checkAdminSdkConfig(od);
+      checkAdminSdkConfig(od as api.AdminSdkConfig);
     });
   });
 
@@ -1103,7 +1103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyticsDetails();
       var od = api.AnalyticsDetails.fromJson(o.toJson());
-      checkAnalyticsDetails(od);
+      checkAnalyticsDetails(od as api.AnalyticsDetails);
     });
   });
 
@@ -1111,7 +1111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyticsProperty();
       var od = api.AnalyticsProperty.fromJson(o.toJson());
-      checkAnalyticsProperty(od);
+      checkAnalyticsProperty(od as api.AnalyticsProperty);
     });
   });
 
@@ -1119,7 +1119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidApp();
       var od = api.AndroidApp.fromJson(o.toJson());
-      checkAndroidApp(od);
+      checkAndroidApp(od as api.AndroidApp);
     });
   });
 
@@ -1127,7 +1127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidAppConfig();
       var od = api.AndroidAppConfig.fromJson(o.toJson());
-      checkAndroidAppConfig(od);
+      checkAndroidAppConfig(od as api.AndroidAppConfig);
     });
   });
 
@@ -1135,7 +1135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDefaultResources();
       var od = api.DefaultResources.fromJson(o.toJson());
-      checkDefaultResources(od);
+      checkDefaultResources(od as api.DefaultResources);
     });
   });
 
@@ -1143,7 +1143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1151,7 +1151,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFinalizeDefaultLocationRequest();
       var od = api.FinalizeDefaultLocationRequest.fromJson(o.toJson());
-      checkFinalizeDefaultLocationRequest(od);
+      checkFinalizeDefaultLocationRequest(
+          od as api.FinalizeDefaultLocationRequest);
     });
   });
 
@@ -1159,7 +1160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFirebaseAppInfo();
       var od = api.FirebaseAppInfo.fromJson(o.toJson());
-      checkFirebaseAppInfo(od);
+      checkFirebaseAppInfo(od as api.FirebaseAppInfo);
     });
   });
 
@@ -1167,7 +1168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFirebaseProject();
       var od = api.FirebaseProject.fromJson(o.toJson());
-      checkFirebaseProject(od);
+      checkFirebaseProject(od as api.FirebaseProject);
     });
   });
 
@@ -1175,7 +1176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosApp();
       var od = api.IosApp.fromJson(o.toJson());
-      checkIosApp(od);
+      checkIosApp(od as api.IosApp);
     });
   });
 
@@ -1183,7 +1184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosAppConfig();
       var od = api.IosAppConfig.fromJson(o.toJson());
-      checkIosAppConfig(od);
+      checkIosAppConfig(od as api.IosAppConfig);
     });
   });
 
@@ -1191,7 +1192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAndroidAppsResponse();
       var od = api.ListAndroidAppsResponse.fromJson(o.toJson());
-      checkListAndroidAppsResponse(od);
+      checkListAndroidAppsResponse(od as api.ListAndroidAppsResponse);
     });
   });
 
@@ -1199,7 +1200,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAvailableLocationsResponse();
       var od = api.ListAvailableLocationsResponse.fromJson(o.toJson());
-      checkListAvailableLocationsResponse(od);
+      checkListAvailableLocationsResponse(
+          od as api.ListAvailableLocationsResponse);
     });
   });
 
@@ -1207,7 +1209,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAvailableProjectsResponse();
       var od = api.ListAvailableProjectsResponse.fromJson(o.toJson());
-      checkListAvailableProjectsResponse(od);
+      checkListAvailableProjectsResponse(
+          od as api.ListAvailableProjectsResponse);
     });
   });
 
@@ -1215,7 +1218,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFirebaseProjectsResponse();
       var od = api.ListFirebaseProjectsResponse.fromJson(o.toJson());
-      checkListFirebaseProjectsResponse(od);
+      checkListFirebaseProjectsResponse(od as api.ListFirebaseProjectsResponse);
     });
   });
 
@@ -1223,7 +1226,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListIosAppsResponse();
       var od = api.ListIosAppsResponse.fromJson(o.toJson());
-      checkListIosAppsResponse(od);
+      checkListIosAppsResponse(od as api.ListIosAppsResponse);
     });
   });
 
@@ -1231,7 +1234,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListShaCertificatesResponse();
       var od = api.ListShaCertificatesResponse.fromJson(o.toJson());
-      checkListShaCertificatesResponse(od);
+      checkListShaCertificatesResponse(od as api.ListShaCertificatesResponse);
     });
   });
 
@@ -1239,7 +1242,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListWebAppsResponse();
       var od = api.ListWebAppsResponse.fromJson(o.toJson());
-      checkListWebAppsResponse(od);
+      checkListWebAppsResponse(od as api.ListWebAppsResponse);
     });
   });
 
@@ -1247,7 +1250,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1255,7 +1258,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMessageSet();
       var od = api.MessageSet.fromJson(o.toJson());
-      checkMessageSet(od);
+      checkMessageSet(od as api.MessageSet);
     });
   });
 
@@ -1263,7 +1266,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1271,7 +1274,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjectInfo();
       var od = api.ProjectInfo.fromJson(o.toJson());
-      checkProjectInfo(od);
+      checkProjectInfo(od as api.ProjectInfo);
     });
   });
 
@@ -1279,7 +1282,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemoveAnalyticsRequest();
       var od = api.RemoveAnalyticsRequest.fromJson(o.toJson());
-      checkRemoveAnalyticsRequest(od);
+      checkRemoveAnalyticsRequest(od as api.RemoveAnalyticsRequest);
     });
   });
 
@@ -1287,7 +1290,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchFirebaseAppsResponse();
       var od = api.SearchFirebaseAppsResponse.fromJson(o.toJson());
-      checkSearchFirebaseAppsResponse(od);
+      checkSearchFirebaseAppsResponse(od as api.SearchFirebaseAppsResponse);
     });
   });
 
@@ -1295,7 +1298,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShaCertificate();
       var od = api.ShaCertificate.fromJson(o.toJson());
-      checkShaCertificate(od);
+      checkShaCertificate(od as api.ShaCertificate);
     });
   });
 
@@ -1303,7 +1306,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1311,7 +1314,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatusProto();
       var od = api.StatusProto.fromJson(o.toJson());
-      checkStatusProto(od);
+      checkStatusProto(od as api.StatusProto);
     });
   });
 
@@ -1319,7 +1322,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStreamMapping();
       var od = api.StreamMapping.fromJson(o.toJson());
-      checkStreamMapping(od);
+      checkStreamMapping(od as api.StreamMapping);
     });
   });
 
@@ -1327,7 +1330,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebApp();
       var od = api.WebApp.fromJson(o.toJson());
-      checkWebApp(od);
+      checkWebApp(od as api.WebApp);
     });
   });
 
@@ -1335,7 +1338,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebAppConfig();
       var od = api.WebAppConfig.fromJson(o.toJson());
-      checkWebAppConfig(od);
+      checkWebAppConfig(od as api.WebAppConfig);
     });
   });
 
@@ -1391,7 +1394,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAvailableProjectsResponse(response);
+        checkListAvailableProjectsResponse(
+            response as api.ListAvailableProjectsResponse);
       })));
     });
   });
@@ -1441,7 +1445,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1454,8 +1458,9 @@ void main() {
       var arg_project = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddFirebaseRequest.fromJson(json);
-        checkAddFirebaseRequest(obj);
+        var obj = api.AddFirebaseRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddFirebaseRequest(obj as api.AddFirebaseRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1495,7 +1500,7 @@ void main() {
       res
           .addFirebase(arg_request, arg_project, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1506,8 +1511,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddGoogleAnalyticsRequest.fromJson(json);
-        checkAddGoogleAnalyticsRequest(obj);
+        var obj = api.AddGoogleAnalyticsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddGoogleAnalyticsRequest(obj as api.AddGoogleAnalyticsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1547,7 +1553,7 @@ void main() {
       res
           .addGoogleAnalytics(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1595,7 +1601,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFirebaseProject(response);
+        checkFirebaseProject(response as api.FirebaseProject);
       })));
     });
 
@@ -1643,7 +1649,7 @@ void main() {
       res
           .getAdminSdkConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdminSdkConfig(response);
+        checkAdminSdkConfig(response as api.AdminSdkConfig);
       })));
     });
 
@@ -1691,7 +1697,7 @@ void main() {
       res
           .getAnalyticsDetails(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnalyticsDetails(response);
+        checkAnalyticsDetails(response as api.AnalyticsDetails);
       })));
     });
 
@@ -1746,7 +1752,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFirebaseProjectsResponse(response);
+        checkListFirebaseProjectsResponse(
+            response as api.ListFirebaseProjectsResponse);
       })));
     });
 
@@ -1758,8 +1765,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FirebaseProject.fromJson(json);
-        checkFirebaseProject(obj);
+        var obj = api.FirebaseProject.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFirebaseProject(obj as api.FirebaseProject);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1802,7 +1810,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFirebaseProject(response);
+        checkFirebaseProject(response as api.FirebaseProject);
       })));
     });
 
@@ -1813,8 +1821,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemoveAnalyticsRequest.fromJson(json);
-        checkRemoveAnalyticsRequest(obj);
+        var obj = api.RemoveAnalyticsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemoveAnalyticsRequest(obj as api.RemoveAnalyticsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1854,7 +1863,7 @@ void main() {
       res
           .removeAnalytics(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1914,7 +1923,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchFirebaseAppsResponse(response);
+        checkSearchFirebaseAppsResponse(
+            response as api.SearchFirebaseAppsResponse);
       })));
     });
   });
@@ -1927,8 +1937,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AndroidApp.fromJson(json);
-        checkAndroidApp(obj);
+        var obj = api.AndroidApp.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAndroidApp(obj as api.AndroidApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1968,7 +1979,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2016,7 +2027,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAndroidApp(response);
+        checkAndroidApp(response as api.AndroidApp);
       })));
     });
 
@@ -2064,7 +2075,7 @@ void main() {
       res
           .getConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAndroidAppConfig(response);
+        checkAndroidAppConfig(response as api.AndroidAppConfig);
       })));
     });
 
@@ -2121,7 +2132,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAndroidAppsResponse(response);
+        checkListAndroidAppsResponse(response as api.ListAndroidAppsResponse);
       })));
     });
 
@@ -2133,8 +2144,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AndroidApp.fromJson(json);
-        checkAndroidApp(obj);
+        var obj = api.AndroidApp.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAndroidApp(obj as api.AndroidApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2177,7 +2189,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAndroidApp(response);
+        checkAndroidApp(response as api.AndroidApp);
       })));
     });
   });
@@ -2190,8 +2202,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ShaCertificate.fromJson(json);
-        checkShaCertificate(obj);
+        var obj = api.ShaCertificate.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkShaCertificate(obj as api.ShaCertificate);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2231,7 +2244,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkShaCertificate(response);
+        checkShaCertificate(response as api.ShaCertificate);
       })));
     });
 
@@ -2279,7 +2292,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2327,7 +2340,8 @@ void main() {
       res
           .list(arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListShaCertificatesResponse(response);
+        checkListShaCertificatesResponse(
+            response as api.ListShaCertificatesResponse);
       })));
     });
   });
@@ -2386,7 +2400,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAvailableLocationsResponse(response);
+        checkListAvailableLocationsResponse(
+            response as api.ListAvailableLocationsResponse);
       })));
     });
   });
@@ -2399,8 +2414,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FinalizeDefaultLocationRequest.fromJson(json);
-        checkFinalizeDefaultLocationRequest(obj);
+        var obj = api.FinalizeDefaultLocationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFinalizeDefaultLocationRequest(
+            obj as api.FinalizeDefaultLocationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2440,7 +2457,7 @@ void main() {
       res
           .finalize(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2453,8 +2470,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.IosApp.fromJson(json);
-        checkIosApp(obj);
+        var obj =
+            api.IosApp.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkIosApp(obj as api.IosApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2494,7 +2512,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2542,7 +2560,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIosApp(response);
+        checkIosApp(response as api.IosApp);
       })));
     });
 
@@ -2590,7 +2608,7 @@ void main() {
       res
           .getConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIosAppConfig(response);
+        checkIosAppConfig(response as api.IosAppConfig);
       })));
     });
 
@@ -2647,7 +2665,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListIosAppsResponse(response);
+        checkListIosAppsResponse(response as api.ListIosAppsResponse);
       })));
     });
 
@@ -2659,8 +2677,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.IosApp.fromJson(json);
-        checkIosApp(obj);
+        var obj =
+            api.IosApp.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkIosApp(obj as api.IosApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2703,7 +2722,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIosApp(response);
+        checkIosApp(response as api.IosApp);
       })));
     });
   });
@@ -2716,8 +2735,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WebApp.fromJson(json);
-        checkWebApp(obj);
+        var obj =
+            api.WebApp.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkWebApp(obj as api.WebApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2757,7 +2777,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2805,7 +2825,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebApp(response);
+        checkWebApp(response as api.WebApp);
       })));
     });
 
@@ -2853,7 +2873,7 @@ void main() {
       res
           .getConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebAppConfig(response);
+        checkWebAppConfig(response as api.WebAppConfig);
       })));
     });
 
@@ -2910,7 +2930,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListWebAppsResponse(response);
+        checkListWebAppsResponse(response as api.ListWebAppsResponse);
       })));
     });
 
@@ -2922,8 +2942,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WebApp.fromJson(json);
-        checkWebApp(obj);
+        var obj =
+            api.WebApp.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkWebApp(obj as api.WebApp);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2966,7 +2987,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebApp(response);
+        checkWebApp(response as api.WebApp);
       })));
     });
   });

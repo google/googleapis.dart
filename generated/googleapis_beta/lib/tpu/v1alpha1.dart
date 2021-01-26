@@ -117,7 +117,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -186,7 +188,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -243,7 +248,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AcceleratorType.fromJson(data));
+    return _response.then(
+      (data) =>
+          AcceleratorType.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists accelerator types supported by this API.
@@ -319,8 +327,10 @@ class ProjectsLocationsAcceleratorTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAcceleratorTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAcceleratorTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -390,7 +400,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a node.
@@ -439,7 +451,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a node.
@@ -488,7 +502,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Node.fromJson(data));
+    return _response.then(
+      (data) => Node.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes.
@@ -552,7 +568,10 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNodesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNodesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reimages a node's OS.
@@ -609,7 +628,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts a node.
@@ -665,7 +686,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stops a node.
@@ -721,7 +744,9 @@ class ProjectsLocationsNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -788,7 +813,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -841,7 +868,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -893,7 +922,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -970,7 +1001,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1027,7 +1061,10 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TensorFlowVersion.fromJson(data));
+    return _response.then(
+      (data) => TensorFlowVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists TensorFlow versions supported by this API.
@@ -1103,8 +1140,10 @@ class ProjectsLocationsTensorflowVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListTensorFlowVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTensorFlowVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1173,7 +1212,8 @@ class ListAcceleratorTypesResponse {
   ListAcceleratorTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('acceleratorTypes')) {
       acceleratorTypes = (_json['acceleratorTypes'] as core.List)
-          .map<AcceleratorType>((value) => AcceleratorType.fromJson(value))
+          .map<AcceleratorType>((value) => AcceleratorType.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1215,7 +1255,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1254,7 +1295,8 @@ class ListNodesResponse {
     }
     if (_json.containsKey('nodes')) {
       nodes = (_json['nodes'] as core.List)
-          .map<Node>((value) => Node.fromJson(value))
+          .map<Node>((value) =>
+              Node.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unreachable')) {
@@ -1295,7 +1337,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1331,7 +1374,8 @@ class ListTensorFlowVersionsResponse {
     }
     if (_json.containsKey('tensorflowVersions')) {
       tensorflowVersions = (_json['tensorflowVersions'] as core.List)
-          .map<TensorFlowVersion>((value) => TensorFlowVersion.fromJson(value))
+          .map<TensorFlowVersion>((value) => TensorFlowVersion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unreachable')) {
@@ -1389,7 +1433,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1397,7 +1442,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1586,7 +1632,8 @@ class Node {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -1597,14 +1644,16 @@ class Node {
     }
     if (_json.containsKey('networkEndpoints')) {
       networkEndpoints = (_json['networkEndpoints'] as core.List)
-          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(value))
+          .map<NetworkEndpoint>((value) => NetworkEndpoint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('port')) {
       port = _json['port'] as core.String;
     }
     if (_json.containsKey('schedulingConfig')) {
-      schedulingConfig = SchedulingConfig.fromJson(_json['schedulingConfig']);
+      schedulingConfig = SchedulingConfig.fromJson(
+          _json['schedulingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = _json['serviceAccount'] as core.String;
@@ -1614,7 +1663,8 @@ class Node {
     }
     if (_json.containsKey('symptoms')) {
       symptoms = (_json['symptoms'] as core.List)
-          .map<Symptom>((value) => Symptom.fromJson(value))
+          .map<Symptom>((value) =>
+              Symptom.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tensorflowVersion')) {
@@ -1730,11 +1780,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1742,7 +1794,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1947,7 +2000,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

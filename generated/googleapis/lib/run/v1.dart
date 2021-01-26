@@ -135,8 +135,10 @@ class NamespacesAuthorizeddomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAuthorizedDomainsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAuthorizedDomainsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -194,7 +196,10 @@ class NamespacesConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Configuration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List configurations.
@@ -294,7 +299,10 @@ class NamespacesConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListConfigurationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListConfigurationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -360,7 +368,10 @@ class NamespacesDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainMapping.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainMapping.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a domain mapping.
@@ -432,7 +443,9 @@ class NamespacesDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a domain mapping.
@@ -483,7 +496,10 @@ class NamespacesDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainMapping.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainMapping.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List domain mappings.
@@ -583,7 +599,10 @@ class NamespacesDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDomainMappingsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDomainMappingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -662,7 +681,9 @@ class NamespacesRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a revision.
@@ -713,7 +734,9 @@ class NamespacesRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Revision.fromJson(data));
+    return _response.then(
+      (data) => Revision.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List revisions.
@@ -813,7 +836,10 @@ class NamespacesRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRevisionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRevisionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -871,7 +897,9 @@ class NamespacesRoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Route.fromJson(data));
+    return _response.then(
+      (data) => Route.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List routes.
@@ -970,7 +998,10 @@ class NamespacesRoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRoutesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRoutesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1035,7 +1066,9 @@ class NamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a service. This will cause the Service to stop serving traffic and
@@ -1108,7 +1141,9 @@ class NamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a service.
@@ -1159,7 +1194,9 @@ class NamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List services.
@@ -1259,7 +1296,10 @@ class NamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replace a service. Only the spec and metadata labels and annotations are
@@ -1319,7 +1359,9 @@ class NamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1401,8 +1443,10 @@ class ProjectsAuthorizeddomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAuthorizedDomainsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAuthorizedDomainsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1490,7 +1534,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1561,8 +1608,10 @@ class ProjectsLocationsAuthorizeddomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAuthorizedDomainsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAuthorizedDomainsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1620,7 +1669,10 @@ class ProjectsLocationsConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Configuration.fromJson(data));
+    return _response.then(
+      (data) =>
+          Configuration.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List configurations.
@@ -1720,7 +1772,10 @@ class ProjectsLocationsConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListConfigurationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListConfigurationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1786,7 +1841,10 @@ class ProjectsLocationsDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainMapping.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainMapping.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a domain mapping.
@@ -1858,7 +1916,9 @@ class ProjectsLocationsDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a domain mapping.
@@ -1909,7 +1969,10 @@ class ProjectsLocationsDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DomainMapping.fromJson(data));
+    return _response.then(
+      (data) =>
+          DomainMapping.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List domain mappings.
@@ -2009,7 +2072,10 @@ class ProjectsLocationsDomainmappingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDomainMappingsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDomainMappingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2088,7 +2154,9 @@ class ProjectsLocationsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a revision.
@@ -2139,7 +2207,9 @@ class ProjectsLocationsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Revision.fromJson(data));
+    return _response.then(
+      (data) => Revision.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List revisions.
@@ -2238,7 +2308,10 @@ class ProjectsLocationsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRevisionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRevisionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2295,7 +2368,9 @@ class ProjectsLocationsRoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Route.fromJson(data));
+    return _response.then(
+      (data) => Route.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List routes.
@@ -2392,7 +2467,10 @@ class ProjectsLocationsRoutesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRoutesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRoutesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2456,7 +2534,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a service. This will cause the Service to stop serving traffic and
@@ -2528,7 +2608,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Status.fromJson(data));
+    return _response.then(
+      (data) => Status.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get information about a service.
@@ -2578,7 +2660,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the IAM Access Control policy currently in effect for the given Cloud
@@ -2646,7 +2730,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List services.
@@ -2745,7 +2831,10 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replace a service. Only the spec and metadata labels and annotations are
@@ -2804,7 +2893,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM Access control policy for the specified Service. Overwrites
@@ -2864,7 +2955,9 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified Project. There are
@@ -2924,7 +3017,10 @@ class ProjectsLocationsServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2979,7 +3075,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -3127,7 +3224,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -3175,8 +3273,8 @@ class ConfigMapEnvSource {
 
   ConfigMapEnvSource.fromJson(core.Map _json) {
     if (_json.containsKey('localObjectReference')) {
-      localObjectReference =
-          LocalObjectReference.fromJson(_json['localObjectReference']);
+      localObjectReference = LocalObjectReference.fromJson(
+          _json['localObjectReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3227,8 +3325,8 @@ class ConfigMapKeySelector {
       key = _json['key'] as core.String;
     }
     if (_json.containsKey('localObjectReference')) {
-      localObjectReference =
-          LocalObjectReference.fromJson(_json['localObjectReference']);
+      localObjectReference = LocalObjectReference.fromJson(
+          _json['localObjectReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3295,7 +3393,8 @@ class ConfigMapVolumeSource {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<KeyToPath>((value) => KeyToPath.fromJson(value))
+          .map<KeyToPath>((value) =>
+              KeyToPath.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -3358,13 +3457,16 @@ class Configuration {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = ConfigurationSpec.fromJson(_json['spec']);
+      spec = ConfigurationSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = ConfigurationStatus.fromJson(_json['status']);
+      status = ConfigurationStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3408,7 +3510,8 @@ class ConfigurationSpec {
 
   ConfigurationSpec.fromJson(core.Map _json) {
     if (_json.containsKey('template')) {
-      template = RevisionTemplate.fromJson(_json['template']);
+      template = RevisionTemplate.fromJson(
+          _json['template'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3450,8 +3553,9 @@ class ConfigurationStatus {
   ConfigurationStatus.fromJson(core.Map _json) {
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GoogleCloudRunV1Condition>(
-              (value) => GoogleCloudRunV1Condition.fromJson(value))
+          .map<GoogleCloudRunV1Condition>((value) =>
+              GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('latestCreatedRevisionName')) {
@@ -3603,12 +3707,14 @@ class Container {
     }
     if (_json.containsKey('env')) {
       env = (_json['env'] as core.List)
-          .map<EnvVar>((value) => EnvVar.fromJson(value))
+          .map<EnvVar>((value) =>
+              EnvVar.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('envFrom')) {
       envFrom = (_json['envFrom'] as core.List)
-          .map<EnvFromSource>((value) => EnvFromSource.fromJson(value))
+          .map<EnvFromSource>((value) => EnvFromSource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('image')) {
@@ -3618,24 +3724,29 @@ class Container {
       imagePullPolicy = _json['imagePullPolicy'] as core.String;
     }
     if (_json.containsKey('livenessProbe')) {
-      livenessProbe = Probe.fromJson(_json['livenessProbe']);
+      livenessProbe = Probe.fromJson(
+          _json['livenessProbe'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('ports')) {
       ports = (_json['ports'] as core.List)
-          .map<ContainerPort>((value) => ContainerPort.fromJson(value))
+          .map<ContainerPort>((value) => ContainerPort.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('readinessProbe')) {
-      readinessProbe = Probe.fromJson(_json['readinessProbe']);
+      readinessProbe = Probe.fromJson(
+          _json['readinessProbe'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resources')) {
-      resources = ResourceRequirements.fromJson(_json['resources']);
+      resources = ResourceRequirements.fromJson(
+          _json['resources'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('securityContext')) {
-      securityContext = SecurityContext.fromJson(_json['securityContext']);
+      securityContext = SecurityContext.fromJson(
+          _json['securityContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('terminationMessagePath')) {
       terminationMessagePath = _json['terminationMessagePath'] as core.String;
@@ -3646,7 +3757,8 @@ class Container {
     }
     if (_json.containsKey('volumeMounts')) {
       volumeMounts = (_json['volumeMounts'] as core.List)
-          .map<VolumeMount>((value) => VolumeMount.fromJson(value))
+          .map<VolumeMount>((value) => VolumeMount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('workingDir')) {
@@ -3780,13 +3892,16 @@ class DomainMapping {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = DomainMappingSpec.fromJson(_json['spec']);
+      spec = DomainMappingSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = DomainMappingStatus.fromJson(_json['status']);
+      status = DomainMappingStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3889,8 +4004,9 @@ class DomainMappingStatus {
   DomainMappingStatus.fromJson(core.Map _json) {
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GoogleCloudRunV1Condition>(
-              (value) => GoogleCloudRunV1Condition.fromJson(value))
+          .map<GoogleCloudRunV1Condition>((value) =>
+              GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mappedRouteName')) {
@@ -3901,7 +4017,8 @@ class DomainMappingStatus {
     }
     if (_json.containsKey('resourceRecords')) {
       resourceRecords = (_json['resourceRecords'] as core.List)
-          .map<ResourceRecord>((value) => ResourceRecord.fromJson(value))
+          .map<ResourceRecord>((value) => ResourceRecord.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('url')) {
@@ -3951,13 +4068,15 @@ class EnvFromSource {
 
   EnvFromSource.fromJson(core.Map _json) {
     if (_json.containsKey('configMapRef')) {
-      configMapRef = ConfigMapEnvSource.fromJson(_json['configMapRef']);
+      configMapRef = ConfigMapEnvSource.fromJson(
+          _json['configMapRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('prefix')) {
       prefix = _json['prefix'] as core.String;
     }
     if (_json.containsKey('secretRef')) {
-      secretRef = SecretEnvSource.fromJson(_json['secretRef']);
+      secretRef = SecretEnvSource.fromJson(
+          _json['secretRef'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4004,7 +4123,8 @@ class EnvVar {
       value = _json['value'] as core.String;
     }
     if (_json.containsKey('valueFrom')) {
-      valueFrom = EnvVarSource.fromJson(_json['valueFrom']);
+      valueFrom = EnvVarSource.fromJson(
+          _json['valueFrom'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4038,10 +4158,12 @@ class EnvVarSource {
 
   EnvVarSource.fromJson(core.Map _json) {
     if (_json.containsKey('configMapKeyRef')) {
-      configMapKeyRef = ConfigMapKeySelector.fromJson(_json['configMapKeyRef']);
+      configMapKeyRef = ConfigMapKeySelector.fromJson(
+          _json['configMapKeyRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secretKeyRef')) {
-      secretKeyRef = SecretKeySelector.fromJson(_json['secretKeyRef']);
+      secretKeyRef = SecretKeySelector.fromJson(
+          _json['secretKeyRef'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4258,7 +4380,8 @@ class HTTPGetAction {
     }
     if (_json.containsKey('httpHeaders')) {
       httpHeaders = (_json['httpHeaders'] as core.List)
-          .map<HTTPHeader>((value) => HTTPHeader.fromJson(value))
+          .map<HTTPHeader>((value) =>
+              HTTPHeader.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('path')) {
@@ -4383,7 +4506,8 @@ class ListAuthorizedDomainsResponse {
   ListAuthorizedDomainsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('domains')) {
       domains = (_json['domains'] as core.List)
-          .map<AuthorizedDomain>((value) => AuthorizedDomain.fromJson(value))
+          .map<AuthorizedDomain>((value) => AuthorizedDomain.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4428,14 +4552,16 @@ class ListConfigurationsResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Configuration>((value) => Configuration.fromJson(value))
+          .map<Configuration>((value) => Configuration.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unreachable')) {
       unreachable = (_json['unreachable'] as core.List)
@@ -4490,14 +4616,16 @@ class ListDomainMappingsResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<DomainMapping>((value) => DomainMapping.fromJson(value))
+          .map<DomainMapping>((value) => DomainMapping.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unreachable')) {
       unreachable = (_json['unreachable'] as core.List)
@@ -4540,7 +4668,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4640,14 +4769,16 @@ class ListRevisionsResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Revision>((value) => Revision.fromJson(value))
+          .map<Revision>((value) =>
+              Revision.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unreachable')) {
       unreachable = (_json['unreachable'] as core.List)
@@ -4702,14 +4833,16 @@ class ListRoutesResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Route>((value) => Route.fromJson(value))
+          .map<Route>((value) =>
+              Route.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unreachable')) {
       unreachable = (_json['unreachable'] as core.List)
@@ -4764,14 +4897,16 @@ class ListServicesResponse {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Service>((value) => Service.fromJson(value))
+          .map<Service>((value) =>
+              Service.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unreachable')) {
       unreachable = (_json['unreachable'] as core.List)
@@ -4859,7 +4994,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -4867,7 +5003,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -5026,7 +5163,8 @@ class ObjectMeta {
   ObjectMeta.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = commons.mapMap<core.String, core.String>(
-          _json['annotations'].cast<core.String, core.String>(),
+          (_json['annotations'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('clusterName')) {
@@ -5055,7 +5193,8 @@ class ObjectMeta {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -5066,7 +5205,8 @@ class ObjectMeta {
     }
     if (_json.containsKey('ownerReferences')) {
       ownerReferences = (_json['ownerReferences'] as core.List)
-          .map<OwnerReference>((value) => OwnerReference.fromJson(value))
+          .map<OwnerReference>((value) => OwnerReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resourceVersion')) {
@@ -5287,12 +5427,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -5373,13 +5515,15 @@ class Probe {
 
   Probe.fromJson(core.Map _json) {
     if (_json.containsKey('exec')) {
-      exec = ExecAction.fromJson(_json['exec']);
+      exec = ExecAction.fromJson(
+          _json['exec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('failureThreshold')) {
       failureThreshold = _json['failureThreshold'] as core.int;
     }
     if (_json.containsKey('httpGet')) {
-      httpGet = HTTPGetAction.fromJson(_json['httpGet']);
+      httpGet = HTTPGetAction.fromJson(
+          _json['httpGet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('initialDelaySeconds')) {
       initialDelaySeconds = _json['initialDelaySeconds'] as core.int;
@@ -5391,7 +5535,8 @@ class Probe {
       successThreshold = _json['successThreshold'] as core.int;
     }
     if (_json.containsKey('tcpSocket')) {
-      tcpSocket = TCPSocketAction.fromJson(_json['tcpSocket']);
+      tcpSocket = TCPSocketAction.fromJson(
+          _json['tcpSocket'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeoutSeconds')) {
       timeoutSeconds = _json['timeoutSeconds'] as core.int;
@@ -5499,12 +5644,14 @@ class ResourceRequirements {
   ResourceRequirements.fromJson(core.Map _json) {
     if (_json.containsKey('limits')) {
       limits = commons.mapMap<core.String, core.String>(
-          _json['limits'].cast<core.String, core.String>(),
+          (_json['limits'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('requests')) {
       requests = commons.mapMap<core.String, core.String>(
-          _json['requests'].cast<core.String, core.String>(),
+          (_json['requests'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -5553,13 +5700,16 @@ class Revision {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = RevisionSpec.fromJson(_json['spec']);
+      spec = RevisionSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = RevisionStatus.fromJson(_json['status']);
+      status = RevisionStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5623,7 +5773,8 @@ class RevisionSpec {
     }
     if (_json.containsKey('containers')) {
       containers = (_json['containers'] as core.List)
-          .map<Container>((value) => Container.fromJson(value))
+          .map<Container>((value) =>
+              Container.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serviceAccountName')) {
@@ -5634,7 +5785,8 @@ class RevisionSpec {
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5696,8 +5848,9 @@ class RevisionStatus {
   RevisionStatus.fromJson(core.Map _json) {
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GoogleCloudRunV1Condition>(
-              (value) => GoogleCloudRunV1Condition.fromJson(value))
+          .map<GoogleCloudRunV1Condition>((value) =>
+              GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('imageDigest')) {
@@ -5755,10 +5908,12 @@ class RevisionTemplate {
 
   RevisionTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = RevisionSpec.fromJson(_json['spec']);
+      spec = RevisionSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5810,13 +5965,16 @@ class Route {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = RouteSpec.fromJson(_json['spec']);
+      spec = RouteSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = RouteStatus.fromJson(_json['status']);
+      status = RouteStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5853,7 +6011,8 @@ class RouteSpec {
   RouteSpec.fromJson(core.Map _json) {
     if (_json.containsKey('traffic')) {
       traffic = (_json['traffic'] as core.List)
-          .map<TrafficTarget>((value) => TrafficTarget.fromJson(value))
+          .map<TrafficTarget>((value) => TrafficTarget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5903,12 +6062,14 @@ class RouteStatus {
 
   RouteStatus.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = Addressable.fromJson(_json['address']);
+      address = Addressable.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GoogleCloudRunV1Condition>(
-              (value) => GoogleCloudRunV1Condition.fromJson(value))
+          .map<GoogleCloudRunV1Condition>((value) =>
+              GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('observedGeneration')) {
@@ -5916,7 +6077,8 @@ class RouteStatus {
     }
     if (_json.containsKey('traffic')) {
       traffic = (_json['traffic'] as core.List)
-          .map<TrafficTarget>((value) => TrafficTarget.fromJson(value))
+          .map<TrafficTarget>((value) => TrafficTarget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('url')) {
@@ -5966,8 +6128,8 @@ class SecretEnvSource {
 
   SecretEnvSource.fromJson(core.Map _json) {
     if (_json.containsKey('localObjectReference')) {
-      localObjectReference =
-          LocalObjectReference.fromJson(_json['localObjectReference']);
+      localObjectReference = LocalObjectReference.fromJson(
+          _json['localObjectReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -6018,8 +6180,8 @@ class SecretKeySelector {
       key = _json['key'] as core.String;
     }
     if (_json.containsKey('localObjectReference')) {
-      localObjectReference =
-          LocalObjectReference.fromJson(_json['localObjectReference']);
+      localObjectReference = LocalObjectReference.fromJson(
+          _json['localObjectReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -6086,7 +6248,8 @@ class SecretVolumeSource {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<KeyToPath>((value) => KeyToPath.fromJson(value))
+          .map<KeyToPath>((value) =>
+              KeyToPath.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('optional')) {
@@ -6183,13 +6346,16 @@ class Service {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ObjectMeta.fromJson(_json['metadata']);
+      metadata = ObjectMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = ServiceSpec.fromJson(_json['spec']);
+      spec = ServiceSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = ServiceStatus.fromJson(_json['status']);
+      status = ServiceStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6229,11 +6395,13 @@ class ServiceSpec {
 
   ServiceSpec.fromJson(core.Map _json) {
     if (_json.containsKey('template')) {
-      template = RevisionTemplate.fromJson(_json['template']);
+      template = RevisionTemplate.fromJson(
+          _json['template'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('traffic')) {
       traffic = (_json['traffic'] as core.List)
-          .map<TrafficTarget>((value) => TrafficTarget.fromJson(value))
+          .map<TrafficTarget>((value) => TrafficTarget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6295,12 +6463,14 @@ class ServiceStatus {
 
   ServiceStatus.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = Addressable.fromJson(_json['address']);
+      address = Addressable.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GoogleCloudRunV1Condition>(
-              (value) => GoogleCloudRunV1Condition.fromJson(value))
+          .map<GoogleCloudRunV1Condition>((value) =>
+              GoogleCloudRunV1Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('latestCreatedRevisionName')) {
@@ -6315,7 +6485,8 @@ class ServiceStatus {
     }
     if (_json.containsKey('traffic')) {
       traffic = (_json['traffic'] as core.List)
-          .map<TrafficTarget>((value) => TrafficTarget.fromJson(value))
+          .map<TrafficTarget>((value) => TrafficTarget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('url')) {
@@ -6367,7 +6538,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -6422,13 +6594,15 @@ class Status {
       code = _json['code'] as core.int;
     }
     if (_json.containsKey('details')) {
-      details = StatusDetails.fromJson(_json['details']);
+      details = StatusDetails.fromJson(
+          _json['details'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('message')) {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ListMeta.fromJson(_json['metadata']);
+      metadata = ListMeta.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reason')) {
       reason = _json['reason'] as core.String;
@@ -6551,7 +6725,8 @@ class StatusDetails {
   StatusDetails.fromJson(core.Map _json) {
     if (_json.containsKey('causes')) {
       causes = (_json['causes'] as core.List)
-          .map<StatusCause>((value) => StatusCause.fromJson(value))
+          .map<StatusCause>((value) => StatusCause.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('group')) {
@@ -6784,13 +6959,15 @@ class Volume {
 
   Volume.fromJson(core.Map _json) {
     if (_json.containsKey('configMap')) {
-      configMap = ConfigMapVolumeSource.fromJson(_json['configMap']);
+      configMap = ConfigMapVolumeSource.fromJson(
+          _json['configMap'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('secret')) {
-      secret = SecretVolumeSource.fromJson(_json['secret']);
+      secret = SecretVolumeSource.fromJson(
+          _json['secret'] as core.Map<core.String, core.dynamic>);
     }
   }
 

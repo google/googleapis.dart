@@ -101,7 +101,10 @@ class WebfontsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebfontList.fromJson(data));
+    return _response.then(
+      (data) =>
+          WebfontList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -143,7 +146,8 @@ class Webfont {
     }
     if (_json.containsKey('files')) {
       files = commons.mapMap<core.String, core.String>(
-          _json['files'].cast<core.String, core.String>(),
+          (_json['files'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('kind')) {
@@ -211,7 +215,8 @@ class WebfontList {
   WebfontList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Webfont>((value) => Webfont.fromJson(value))
+          .map<Webfont>((value) =>
+              Webfont.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

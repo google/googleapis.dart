@@ -115,7 +115,10 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MatterPermission.fromJson(data));
+    return _response.then(
+      (data) => MatterPermission.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Closes the specified matter. Returns matter with updated state.
@@ -170,7 +173,10 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CloseMatterResponse.fromJson(data));
+    return _response.then(
+      (data) => CloseMatterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new matter with the given name and description. The initial
@@ -220,7 +226,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Matter.fromJson(data));
+    return _response.then(
+      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified matter. Returns matter with updated state.
@@ -268,7 +276,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Matter.fromJson(data));
+    return _response.then(
+      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified matter.
@@ -328,7 +338,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Matter.fromJson(data));
+    return _response.then(
+      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists matters the user has access to.
@@ -407,7 +419,10 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListMattersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListMattersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes an account as a matter collaborator.
@@ -463,7 +478,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reopens the specified matter. Returns matter with updated state.
@@ -518,7 +535,10 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReopenMatterResponse.fromJson(data));
+    return _response.then(
+      (data) => ReopenMatterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes the specified matter. Returns matter with updated state.
@@ -574,7 +594,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Matter.fromJson(data));
+    return _response.then(
+      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified matter. This updates only the name and description
@@ -630,7 +652,9 @@ class MattersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Matter.fromJson(data));
+    return _response.then(
+      (data) => Matter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -691,7 +715,9 @@ class MattersExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Export.fromJson(data));
+    return _response.then(
+      (data) => Export.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an Export.
@@ -748,7 +774,9 @@ class MattersExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an Export.
@@ -805,7 +833,9 @@ class MattersExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Export.fromJson(data));
+    return _response.then(
+      (data) => Export.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Exports.
@@ -866,7 +896,10 @@ class MattersExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExportsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExportsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -941,7 +974,10 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AddHeldAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => AddHeldAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a hold in the given matter.
@@ -996,7 +1032,9 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hold.fromJson(data));
+    return _response.then(
+      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a hold by ID. This will release any HeldAccounts on this Hold.
@@ -1053,7 +1091,9 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a hold by ID.
@@ -1124,7 +1164,9 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hold.fromJson(data));
+    return _response.then(
+      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists holds within a matter. An empty page token in ListHoldsResponse
@@ -1203,7 +1245,10 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListHoldsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListHoldsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes HeldAccounts from a hold. Returns a list of statuses in the same
@@ -1269,7 +1314,10 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemoveHeldAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => RemoveHeldAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the OU and/or query parameters of a hold. You cannot add accounts
@@ -1334,7 +1382,9 @@ class MattersHoldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hold.fromJson(data));
+    return _response.then(
+      (data) => Hold.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1407,7 +1457,10 @@ class MattersHoldsAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HeldAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          HeldAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a HeldAccount from a hold. If this request leaves the hold with no
@@ -1473,7 +1526,9 @@ class MattersHoldsAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists HeldAccounts for a hold. This will only list individually specified
@@ -1533,7 +1588,10 @@ class MattersHoldsAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListHeldAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListHeldAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1597,7 +1655,10 @@ class MattersSavedQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedQuery.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedQuery.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a saved query by Id.
@@ -1655,7 +1716,9 @@ class MattersSavedQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a saved query by Id.
@@ -1713,7 +1776,10 @@ class MattersSavedQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedQuery.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedQuery.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists saved queries within a matter. An empty page token in
@@ -1778,7 +1844,10 @@ class MattersSavedQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSavedQueriesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSavedQueriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1836,7 +1905,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1877,10 +1948,12 @@ class AddHeldAccountResult {
 
   AddHeldAccountResult.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
-      account = HeldAccount.fromJson(_json['account']);
+      account = HeldAccount.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = Status.fromJson(_json['status']);
+      status = Status.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1943,8 +2016,8 @@ class AddHeldAccountsResponse {
   AddHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<AddHeldAccountResult>(
-              (value) => AddHeldAccountResult.fromJson(value))
+          .map<AddHeldAccountResult>((value) => AddHeldAccountResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1979,7 +2052,8 @@ class AddMatterPermissionsRequest {
       ccMe = _json['ccMe'] as core.bool;
     }
     if (_json.containsKey('matterPermission')) {
-      matterPermission = MatterPermission.fromJson(_json['matterPermission']);
+      matterPermission = MatterPermission.fromJson(
+          _json['matterPermission'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sendEmails')) {
       sendEmails = _json['sendEmails'] as core.bool;
@@ -2024,7 +2098,8 @@ class CloseMatterResponse {
 
   CloseMatterResponse.fromJson(core.Map _json) {
     if (_json.containsKey('matter')) {
-      matter = Matter.fromJson(_json['matter']);
+      matter = Matter.fromJson(
+          _json['matter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2099,7 +2174,8 @@ class CloudStorageSink {
   CloudStorageSink.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(value))
+          .map<CloudStorageFile>((value) => CloudStorageFile.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2132,17 +2208,20 @@ class CorpusQuery {
 
   CorpusQuery.fromJson(core.Map _json) {
     if (_json.containsKey('driveQuery')) {
-      driveQuery = HeldDriveQuery.fromJson(_json['driveQuery']);
+      driveQuery = HeldDriveQuery.fromJson(
+          _json['driveQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupsQuery')) {
-      groupsQuery = HeldGroupsQuery.fromJson(_json['groupsQuery']);
+      groupsQuery = HeldGroupsQuery.fromJson(
+          _json['groupsQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hangoutsChatQuery')) {
-      hangoutsChatQuery =
-          HeldHangoutsChatQuery.fromJson(_json['hangoutsChatQuery']);
+      hangoutsChatQuery = HeldHangoutsChatQuery.fromJson(
+          _json['hangoutsChatQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mailQuery')) {
-      mailQuery = HeldMailQuery.fromJson(_json['mailQuery']);
+      mailQuery = HeldMailQuery.fromJson(
+          _json['mailQuery'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2287,13 +2366,15 @@ class Export {
 
   Export.fromJson(core.Map _json) {
     if (_json.containsKey('cloudStorageSink')) {
-      cloudStorageSink = CloudStorageSink.fromJson(_json['cloudStorageSink']);
+      cloudStorageSink = CloudStorageSink.fromJson(
+          _json['cloudStorageSink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('exportOptions')) {
-      exportOptions = ExportOptions.fromJson(_json['exportOptions']);
+      exportOptions = ExportOptions.fromJson(
+          _json['exportOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2305,13 +2386,16 @@ class Export {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('query')) {
-      query = Query.fromJson(_json['query']);
+      query =
+          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requester')) {
-      requester = UserInfo.fromJson(_json['requester']);
+      requester = UserInfo.fromJson(
+          _json['requester'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stats')) {
-      stats = ExportStats.fromJson(_json['stats']);
+      stats = ExportStats.fromJson(
+          _json['stats'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -2381,17 +2465,20 @@ class ExportOptions {
 
   ExportOptions.fromJson(core.Map _json) {
     if (_json.containsKey('driveOptions')) {
-      driveOptions = DriveExportOptions.fromJson(_json['driveOptions']);
+      driveOptions = DriveExportOptions.fromJson(
+          _json['driveOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupsOptions')) {
-      groupsOptions = GroupsExportOptions.fromJson(_json['groupsOptions']);
+      groupsOptions = GroupsExportOptions.fromJson(
+          _json['groupsOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hangoutsChatOptions')) {
-      hangoutsChatOptions =
-          HangoutsChatExportOptions.fromJson(_json['hangoutsChatOptions']);
+      hangoutsChatOptions = HangoutsChatExportOptions.fromJson(
+          _json['hangoutsChatOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mailOptions')) {
-      mailOptions = MailExportOptions.fromJson(_json['mailOptions']);
+      mailOptions = MailExportOptions.fromJson(
+          _json['mailOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
@@ -2826,7 +2913,8 @@ class Hold {
   Hold.fromJson(core.Map _json) {
     if (_json.containsKey('accounts')) {
       accounts = (_json['accounts'] as core.List)
-          .map<HeldAccount>((value) => HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => HeldAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('corpus')) {
@@ -2839,10 +2927,12 @@ class Hold {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('orgUnit')) {
-      orgUnit = HeldOrgUnit.fromJson(_json['orgUnit']);
+      orgUnit = HeldOrgUnit.fromJson(
+          _json['orgUnit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = CorpusQuery.fromJson(_json['query']);
+      query = CorpusQuery.fromJson(
+          _json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -2889,7 +2979,8 @@ class ListExportsResponse {
   ListExportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('exports')) {
       exports = (_json['exports'] as core.List)
-          .map<Export>((value) => Export.fromJson(value))
+          .map<Export>((value) =>
+              Export.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2919,7 +3010,8 @@ class ListHeldAccountsResponse {
   ListHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accounts')) {
       accounts = (_json['accounts'] as core.List)
-          .map<HeldAccount>((value) => HeldAccount.fromJson(value))
+          .map<HeldAccount>((value) => HeldAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2947,7 +3039,8 @@ class ListHoldsResponse {
   ListHoldsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('holds')) {
       holds = (_json['holds'] as core.List)
-          .map<Hold>((value) => Hold.fromJson(value))
+          .map<Hold>((value) =>
+              Hold.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2980,7 +3073,8 @@ class ListMattersResponse {
   ListMattersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('matters')) {
       matters = (_json['matters'] as core.List)
-          .map<Matter>((value) => Matter.fromJson(value))
+          .map<Matter>((value) =>
+              Matter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3017,7 +3111,8 @@ class ListSavedQueriesResponse {
     }
     if (_json.containsKey('savedQueries')) {
       savedQueries = (_json['savedQueries'] as core.List)
-          .map<SavedQuery>((value) => SavedQuery.fromJson(value))
+          .map<SavedQuery>((value) =>
+              SavedQuery.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3128,7 +3223,8 @@ class Matter {
     }
     if (_json.containsKey('matterPermissions')) {
       matterPermissions = (_json['matterPermissions'] as core.List)
-          .map<MatterPermission>((value) => MatterPermission.fromJson(value))
+          .map<MatterPermission>((value) => MatterPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -3324,7 +3420,8 @@ class Query {
 
   Query.fromJson(core.Map _json) {
     if (_json.containsKey('accountInfo')) {
-      accountInfo = AccountInfo.fromJson(_json['accountInfo']);
+      accountInfo = AccountInfo.fromJson(
+          _json['accountInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('corpus')) {
       corpus = _json['corpus'] as core.String;
@@ -3333,38 +3430,44 @@ class Query {
       dataScope = _json['dataScope'] as core.String;
     }
     if (_json.containsKey('driveOptions')) {
-      driveOptions = DriveOptions.fromJson(_json['driveOptions']);
+      driveOptions = DriveOptions.fromJson(
+          _json['driveOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('hangoutsChatInfo')) {
-      hangoutsChatInfo = HangoutsChatInfo.fromJson(_json['hangoutsChatInfo']);
+      hangoutsChatInfo = HangoutsChatInfo.fromJson(
+          _json['hangoutsChatInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hangoutsChatOptions')) {
-      hangoutsChatOptions =
-          HangoutsChatOptions.fromJson(_json['hangoutsChatOptions']);
+      hangoutsChatOptions = HangoutsChatOptions.fromJson(
+          _json['hangoutsChatOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mailOptions')) {
-      mailOptions = MailOptions.fromJson(_json['mailOptions']);
+      mailOptions = MailOptions.fromJson(
+          _json['mailOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('method')) {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('orgUnitInfo')) {
-      orgUnitInfo = OrgUnitInfo.fromJson(_json['orgUnitInfo']);
+      orgUnitInfo = OrgUnitInfo.fromJson(
+          _json['orgUnitInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchMethod')) {
       searchMethod = _json['searchMethod'] as core.String;
     }
     if (_json.containsKey('sharedDriveInfo')) {
-      sharedDriveInfo = SharedDriveInfo.fromJson(_json['sharedDriveInfo']);
+      sharedDriveInfo = SharedDriveInfo.fromJson(
+          _json['sharedDriveInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('teamDriveInfo')) {
-      teamDriveInfo = TeamDriveInfo.fromJson(_json['teamDriveInfo']);
+      teamDriveInfo = TeamDriveInfo.fromJson(
+          _json['teamDriveInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('terms')) {
       terms = _json['terms'] as core.String;
@@ -3463,7 +3566,8 @@ class RemoveHeldAccountsResponse {
   RemoveHeldAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('statuses')) {
       statuses = (_json['statuses'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3522,7 +3626,8 @@ class ReopenMatterResponse {
 
   ReopenMatterResponse.fromJson(core.Map _json) {
     if (_json.containsKey('matter')) {
-      matter = Matter.fromJson(_json['matter']);
+      matter = Matter.fromJson(
+          _json['matter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3568,7 +3673,8 @@ class SavedQuery {
       matterId = _json['matterId'] as core.String;
     }
     if (_json.containsKey('query')) {
-      query = Query.fromJson(_json['query']);
+      query =
+          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('savedQueryId')) {
       savedQueryId = _json['savedQueryId'] as core.String;
@@ -3652,7 +3758,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

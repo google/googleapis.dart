@@ -132,7 +132,9 @@ class ProjectsProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// CreateOfflineProfile creates a new profile resource in the offline mode.
@@ -191,7 +193,9 @@ class ProjectsProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// UpdateProfile updates the profile bytes and labels on the profile resource
@@ -258,7 +262,9 @@ class ProjectsProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -277,7 +283,8 @@ class CreateProfileRequest {
 
   CreateProfileRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deployment')) {
-      deployment = Deployment.fromJson(_json['deployment']);
+      deployment = Deployment.fromJson(
+          _json['deployment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profileType')) {
       profileType = (_json['profileType'] as core.List)
@@ -327,7 +334,8 @@ class Deployment {
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('projectId')) {
@@ -408,14 +416,16 @@ class Profile {
 
   Profile.fromJson(core.Map _json) {
     if (_json.containsKey('deployment')) {
-      deployment = Deployment.fromJson(_json['deployment']);
+      deployment = Deployment.fromJson(
+          _json['deployment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('duration')) {
       duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {

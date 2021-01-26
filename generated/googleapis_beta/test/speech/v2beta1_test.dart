@@ -83,8 +83,8 @@ core.List<api.Operation> buildUnnamed6276() {
 
 void checkUnnamed6276(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -142,8 +142,8 @@ core.List<api.SpeechRecognitionResult> buildUnnamed6277() {
 
 void checkUnnamed6277(core.List<api.SpeechRecognitionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechRecognitionResult(o[0]);
-  checkSpeechRecognitionResult(o[1]);
+  checkSpeechRecognitionResult(o[0] as api.SpeechRecognitionResult);
+  checkSpeechRecognitionResult(o[1] as api.SpeechRecognitionResult);
 }
 
 core.int buildCounterLongRunningRecognizeResponse = 0;
@@ -242,7 +242,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed6278(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6279(o.response);
@@ -259,8 +259,8 @@ core.List<api.WordInfo> buildUnnamed6280() {
 
 void checkUnnamed6280(core.List<api.WordInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWordInfo(o[0]);
-  checkWordInfo(o[1]);
+  checkWordInfo(o[0] as api.WordInfo);
+  checkWordInfo(o[1] as api.WordInfo);
 }
 
 core.int buildCounterSpeechRecognitionAlternative = 0;
@@ -295,8 +295,8 @@ core.List<api.SpeechRecognitionAlternative> buildUnnamed6281() {
 
 void checkUnnamed6281(core.List<api.SpeechRecognitionAlternative> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpeechRecognitionAlternative(o[0]);
-  checkSpeechRecognitionAlternative(o[1]);
+  checkSpeechRecognitionAlternative(o[0] as api.SpeechRecognitionAlternative);
+  checkSpeechRecognitionAlternative(o[1] as api.SpeechRecognitionAlternative);
 }
 
 core.int buildCounterSpeechRecognitionResult = 0;
@@ -419,7 +419,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -427,7 +427,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLongRunningRecognizeMetadata();
       var od = api.LongRunningRecognizeMetadata.fromJson(o.toJson());
-      checkLongRunningRecognizeMetadata(od);
+      checkLongRunningRecognizeMetadata(od as api.LongRunningRecognizeMetadata);
     });
   });
 
@@ -435,7 +435,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLongRunningRecognizeResponse();
       var od = api.LongRunningRecognizeResponse.fromJson(o.toJson());
-      checkLongRunningRecognizeResponse(od);
+      checkLongRunningRecognizeResponse(od as api.LongRunningRecognizeResponse);
     });
   });
 
@@ -443,7 +443,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -451,7 +451,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSpeechRecognitionAlternative();
       var od = api.SpeechRecognitionAlternative.fromJson(o.toJson());
-      checkSpeechRecognitionAlternative(od);
+      checkSpeechRecognitionAlternative(od as api.SpeechRecognitionAlternative);
     });
   });
 
@@ -459,7 +459,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSpeechRecognitionResult();
       var od = api.SpeechRecognitionResult.fromJson(o.toJson());
-      checkSpeechRecognitionResult(od);
+      checkSpeechRecognitionResult(od as api.SpeechRecognitionResult);
     });
   });
 
@@ -467,7 +467,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -475,7 +475,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWordInfo();
       var od = api.WordInfo.fromJson(o.toJson());
-      checkWordInfo(od);
+      checkWordInfo(od as api.WordInfo);
     });
   });
 
@@ -524,7 +524,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -584,7 +584,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

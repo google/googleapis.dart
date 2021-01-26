@@ -83,8 +83,8 @@ core.List<api.File> buildUnnamed1458() {
 
 void checkUnnamed1458(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFile(o[0]);
-  checkFile(o[1]);
+  checkFile(o[0] as api.File);
+  checkFile(o[1] as api.File);
 }
 
 core.int buildCounterContent = 0;
@@ -138,8 +138,8 @@ core.List<api.EntryPoint> buildUnnamed1459() {
 
 void checkUnnamed1459(core.List<api.EntryPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntryPoint(o[0]);
-  checkEntryPoint(o[1]);
+  checkEntryPoint(o[0] as api.EntryPoint);
+  checkEntryPoint(o[1] as api.EntryPoint);
 }
 
 core.int buildCounterDeployment = 0;
@@ -159,7 +159,7 @@ api.Deployment buildDeployment() {
 void checkDeployment(api.Deployment o) {
   buildCounterDeployment++;
   if (buildCounterDeployment < 3) {
-    checkDeploymentConfig(o.deploymentConfig);
+    checkDeploymentConfig(o.deploymentConfig as api.DeploymentConfig);
     unittest.expect(o.deploymentId, unittest.equals('foo'));
     checkUnnamed1459(o.entryPoints);
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -224,10 +224,13 @@ api.EntryPoint buildEntryPoint() {
 void checkEntryPoint(api.EntryPoint o) {
   buildCounterEntryPoint++;
   if (buildCounterEntryPoint < 3) {
-    checkGoogleAppsScriptTypeAddOnEntryPoint(o.addOn);
+    checkGoogleAppsScriptTypeAddOnEntryPoint(
+        o.addOn as api.GoogleAppsScriptTypeAddOnEntryPoint);
     unittest.expect(o.entryPointType, unittest.equals('foo'));
-    checkGoogleAppsScriptTypeExecutionApiEntryPoint(o.executionApi);
-    checkGoogleAppsScriptTypeWebAppEntryPoint(o.webApp);
+    checkGoogleAppsScriptTypeExecutionApiEntryPoint(
+        o.executionApi as api.GoogleAppsScriptTypeExecutionApiEntryPoint);
+    checkGoogleAppsScriptTypeWebAppEntryPoint(
+        o.webApp as api.GoogleAppsScriptTypeWebAppEntryPoint);
   }
   buildCounterEntryPoint--;
 }
@@ -246,7 +249,7 @@ api.ExecuteStreamResponse buildExecuteStreamResponse() {
 void checkExecuteStreamResponse(api.ExecuteStreamResponse o) {
   buildCounterExecuteStreamResponse++;
   if (buildCounterExecuteStreamResponse < 3) {
-    checkScriptExecutionResult(o.result);
+    checkScriptExecutionResult(o.result as api.ScriptExecutionResult);
   }
   buildCounterExecuteStreamResponse--;
 }
@@ -260,8 +263,8 @@ core.List<api.ScriptStackTraceElement> buildUnnamed1460() {
 
 void checkUnnamed1460(core.List<api.ScriptStackTraceElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkScriptStackTraceElement(o[0]);
-  checkScriptStackTraceElement(o[1]);
+  checkScriptStackTraceElement(o[0] as api.ScriptStackTraceElement);
+  checkScriptStackTraceElement(o[1] as api.ScriptStackTraceElement);
 }
 
 core.int buildCounterExecutionError = 0;
@@ -389,8 +392,10 @@ void checkFile(api.File o) {
   buildCounterFile++;
   if (buildCounterFile < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkGoogleAppsScriptTypeFunctionSet(o.functionSet);
-    checkGoogleAppsScriptTypeUser(o.lastModifyUser);
+    checkGoogleAppsScriptTypeFunctionSet(
+        o.functionSet as api.GoogleAppsScriptTypeFunctionSet);
+    checkGoogleAppsScriptTypeUser(
+        o.lastModifyUser as api.GoogleAppsScriptTypeUser);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -467,7 +472,8 @@ void checkGoogleAppsScriptTypeExecutionApiEntryPoint(
     api.GoogleAppsScriptTypeExecutionApiEntryPoint o) {
   buildCounterGoogleAppsScriptTypeExecutionApiEntryPoint++;
   if (buildCounterGoogleAppsScriptTypeExecutionApiEntryPoint < 3) {
-    checkGoogleAppsScriptTypeExecutionApiConfig(o.entryPointConfig);
+    checkGoogleAppsScriptTypeExecutionApiConfig(
+        o.entryPointConfig as api.GoogleAppsScriptTypeExecutionApiConfig);
   }
   buildCounterGoogleAppsScriptTypeExecutionApiEntryPoint--;
 }
@@ -500,8 +506,8 @@ core.List<api.GoogleAppsScriptTypeFunction> buildUnnamed1462() {
 
 void checkUnnamed1462(core.List<api.GoogleAppsScriptTypeFunction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsScriptTypeFunction(o[0]);
-  checkGoogleAppsScriptTypeFunction(o[1]);
+  checkGoogleAppsScriptTypeFunction(o[0] as api.GoogleAppsScriptTypeFunction);
+  checkGoogleAppsScriptTypeFunction(o[1] as api.GoogleAppsScriptTypeFunction);
 }
 
 core.int buildCounterGoogleAppsScriptTypeFunctionSet = 0;
@@ -619,7 +625,8 @@ void checkGoogleAppsScriptTypeWebAppEntryPoint(
     api.GoogleAppsScriptTypeWebAppEntryPoint o) {
   buildCounterGoogleAppsScriptTypeWebAppEntryPoint++;
   if (buildCounterGoogleAppsScriptTypeWebAppEntryPoint < 3) {
-    checkGoogleAppsScriptTypeWebAppConfig(o.entryPointConfig);
+    checkGoogleAppsScriptTypeWebAppConfig(
+        o.entryPointConfig as api.GoogleAppsScriptTypeWebAppConfig);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterGoogleAppsScriptTypeWebAppEntryPoint--;
@@ -634,8 +641,8 @@ core.List<api.Deployment> buildUnnamed1463() {
 
 void checkUnnamed1463(core.List<api.Deployment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeployment(o[0]);
-  checkDeployment(o[1]);
+  checkDeployment(o[0] as api.Deployment);
+  checkDeployment(o[1] as api.Deployment);
 }
 
 core.int buildCounterListDeploymentsResponse = 0;
@@ -668,8 +675,8 @@ core.List<api.GoogleAppsScriptTypeProcess> buildUnnamed1464() {
 
 void checkUnnamed1464(core.List<api.GoogleAppsScriptTypeProcess> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsScriptTypeProcess(o[0]);
-  checkGoogleAppsScriptTypeProcess(o[1]);
+  checkGoogleAppsScriptTypeProcess(o[0] as api.GoogleAppsScriptTypeProcess);
+  checkGoogleAppsScriptTypeProcess(o[1] as api.GoogleAppsScriptTypeProcess);
 }
 
 core.int buildCounterListScriptProcessesResponse = 0;
@@ -702,8 +709,8 @@ core.List<api.GoogleAppsScriptTypeProcess> buildUnnamed1465() {
 
 void checkUnnamed1465(core.List<api.GoogleAppsScriptTypeProcess> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAppsScriptTypeProcess(o[0]);
-  checkGoogleAppsScriptTypeProcess(o[1]);
+  checkGoogleAppsScriptTypeProcess(o[0] as api.GoogleAppsScriptTypeProcess);
+  checkGoogleAppsScriptTypeProcess(o[1] as api.GoogleAppsScriptTypeProcess);
 }
 
 core.int buildCounterListUserProcessesResponse = 0;
@@ -736,8 +743,8 @@ core.List<api.Value> buildUnnamed1466() {
 
 void checkUnnamed1466(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterListValue = 0;
@@ -768,8 +775,8 @@ core.List<api.Version> buildUnnamed1467() {
 
 void checkUnnamed1467(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVersion(o[0]);
-  checkVersion(o[1]);
+  checkVersion(o[0] as api.Version);
+  checkVersion(o[1] as api.Version);
 }
 
 core.int buildCounterListVersionsResponse = 0;
@@ -802,8 +809,8 @@ core.List<api.MetricsValue> buildUnnamed1468() {
 
 void checkUnnamed1468(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricsValue(o[0]);
-  checkMetricsValue(o[1]);
+  checkMetricsValue(o[0] as api.MetricsValue);
+  checkMetricsValue(o[1] as api.MetricsValue);
 }
 
 core.List<api.MetricsValue> buildUnnamed1469() {
@@ -815,8 +822,8 @@ core.List<api.MetricsValue> buildUnnamed1469() {
 
 void checkUnnamed1469(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricsValue(o[0]);
-  checkMetricsValue(o[1]);
+  checkMetricsValue(o[0] as api.MetricsValue);
+  checkMetricsValue(o[1] as api.MetricsValue);
 }
 
 core.List<api.MetricsValue> buildUnnamed1470() {
@@ -828,8 +835,8 @@ core.List<api.MetricsValue> buildUnnamed1470() {
 
 void checkUnnamed1470(core.List<api.MetricsValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetricsValue(o[0]);
-  checkMetricsValue(o[1]);
+  checkMetricsValue(o[0] as api.MetricsValue);
+  checkMetricsValue(o[1] as api.MetricsValue);
 }
 
 core.int buildCounterMetrics = 0;
@@ -924,7 +931,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1471(o.response);
   }
   buildCounterOperation--;
@@ -951,8 +958,9 @@ void checkProject(api.Project o) {
   buildCounterProject++;
   if (buildCounterProject < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkGoogleAppsScriptTypeUser(o.creator);
-    checkGoogleAppsScriptTypeUser(o.lastModifyUser);
+    checkGoogleAppsScriptTypeUser(o.creator as api.GoogleAppsScriptTypeUser);
+    checkGoogleAppsScriptTypeUser(
+        o.lastModifyUser as api.GoogleAppsScriptTypeUser);
     unittest.expect(o.parentId, unittest.equals('foo'));
     unittest.expect(o.scriptId, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -975,7 +983,7 @@ api.ScriptExecutionResult buildScriptExecutionResult() {
 void checkScriptExecutionResult(api.ScriptExecutionResult o) {
   buildCounterScriptExecutionResult++;
   if (buildCounterScriptExecutionResult < 3) {
-    checkValue(o.returnValue);
+    checkValue(o.returnValue as api.Value);
   }
   buildCounterScriptExecutionResult--;
 }
@@ -1075,8 +1083,8 @@ core.Map<core.String, api.Value> buildUnnamed1474() {
 
 void checkUnnamed1474(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o['x']);
-  checkValue(o['y']);
+  checkValue(o['x'] as api.Value);
+  checkValue(o['y'] as api.Value);
 }
 
 core.int buildCounterStruct = 0;
@@ -1112,7 +1120,7 @@ api.UpdateDeploymentRequest buildUpdateDeploymentRequest() {
 void checkUpdateDeploymentRequest(api.UpdateDeploymentRequest o) {
   buildCounterUpdateDeploymentRequest++;
   if (buildCounterUpdateDeploymentRequest < 3) {
-    checkDeploymentConfig(o.deploymentConfig);
+    checkDeploymentConfig(o.deploymentConfig as api.DeploymentConfig);
   }
   buildCounterUpdateDeploymentRequest--;
 }
@@ -1171,12 +1179,12 @@ void checkValue(api.Value o) {
     unittest.expect(o.boolValue, unittest.isTrue);
     unittest.expect(o.bytesValue, unittest.equals('foo'));
     unittest.expect(o.dateValue, unittest.equals('foo'));
-    checkListValue(o.listValue);
+    checkListValue(o.listValue as api.ListValue);
     unittest.expect(o.nullValue, unittest.equals('foo'));
     unittest.expect(o.numberValue, unittest.equals(42.0));
     checkUnnamed1475(o.protoValue);
     unittest.expect(o.stringValue, unittest.equals('foo'));
-    checkStruct(o.structValue);
+    checkStruct(o.structValue as api.Struct);
   }
   buildCounterValue--;
 }
@@ -1289,7 +1297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContent();
       var od = api.Content.fromJson(o.toJson());
-      checkContent(od);
+      checkContent(od as api.Content);
     });
   });
 
@@ -1297,7 +1305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateProjectRequest();
       var od = api.CreateProjectRequest.fromJson(o.toJson());
-      checkCreateProjectRequest(od);
+      checkCreateProjectRequest(od as api.CreateProjectRequest);
     });
   });
 
@@ -1305,7 +1313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
-      checkDeployment(od);
+      checkDeployment(od as api.Deployment);
     });
   });
 
@@ -1313,7 +1321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeploymentConfig();
       var od = api.DeploymentConfig.fromJson(o.toJson());
-      checkDeploymentConfig(od);
+      checkDeploymentConfig(od as api.DeploymentConfig);
     });
   });
 
@@ -1321,7 +1329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1329,7 +1337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntryPoint();
       var od = api.EntryPoint.fromJson(o.toJson());
-      checkEntryPoint(od);
+      checkEntryPoint(od as api.EntryPoint);
     });
   });
 
@@ -1337,7 +1345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExecuteStreamResponse();
       var od = api.ExecuteStreamResponse.fromJson(o.toJson());
-      checkExecuteStreamResponse(od);
+      checkExecuteStreamResponse(od as api.ExecuteStreamResponse);
     });
   });
 
@@ -1345,7 +1353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExecutionError();
       var od = api.ExecutionError.fromJson(o.toJson());
-      checkExecutionError(od);
+      checkExecutionError(od as api.ExecutionError);
     });
   });
 
@@ -1353,7 +1361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExecutionRequest();
       var od = api.ExecutionRequest.fromJson(o.toJson());
-      checkExecutionRequest(od);
+      checkExecutionRequest(od as api.ExecutionRequest);
     });
   });
 
@@ -1361,7 +1369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExecutionResponse();
       var od = api.ExecutionResponse.fromJson(o.toJson());
-      checkExecutionResponse(od);
+      checkExecutionResponse(od as api.ExecutionResponse);
     });
   });
 
@@ -1369,7 +1377,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
-      checkFile(od);
+      checkFile(od as api.File);
     });
   });
 
@@ -1377,7 +1385,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeAddOnEntryPoint();
       var od = api.GoogleAppsScriptTypeAddOnEntryPoint.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeAddOnEntryPoint(od);
+      checkGoogleAppsScriptTypeAddOnEntryPoint(
+          od as api.GoogleAppsScriptTypeAddOnEntryPoint);
     });
   });
 
@@ -1385,7 +1394,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeExecutionApiConfig();
       var od = api.GoogleAppsScriptTypeExecutionApiConfig.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeExecutionApiConfig(od);
+      checkGoogleAppsScriptTypeExecutionApiConfig(
+          od as api.GoogleAppsScriptTypeExecutionApiConfig);
     });
   });
 
@@ -1394,7 +1404,8 @@ void main() {
       var o = buildGoogleAppsScriptTypeExecutionApiEntryPoint();
       var od =
           api.GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeExecutionApiEntryPoint(od);
+      checkGoogleAppsScriptTypeExecutionApiEntryPoint(
+          od as api.GoogleAppsScriptTypeExecutionApiEntryPoint);
     });
   });
 
@@ -1402,7 +1413,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeFunction();
       var od = api.GoogleAppsScriptTypeFunction.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeFunction(od);
+      checkGoogleAppsScriptTypeFunction(od as api.GoogleAppsScriptTypeFunction);
     });
   });
 
@@ -1410,7 +1421,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeFunctionSet();
       var od = api.GoogleAppsScriptTypeFunctionSet.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeFunctionSet(od);
+      checkGoogleAppsScriptTypeFunctionSet(
+          od as api.GoogleAppsScriptTypeFunctionSet);
     });
   });
 
@@ -1418,7 +1430,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeProcess();
       var od = api.GoogleAppsScriptTypeProcess.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeProcess(od);
+      checkGoogleAppsScriptTypeProcess(od as api.GoogleAppsScriptTypeProcess);
     });
   });
 
@@ -1426,7 +1438,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeUser();
       var od = api.GoogleAppsScriptTypeUser.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeUser(od);
+      checkGoogleAppsScriptTypeUser(od as api.GoogleAppsScriptTypeUser);
     });
   });
 
@@ -1434,7 +1446,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeWebAppConfig();
       var od = api.GoogleAppsScriptTypeWebAppConfig.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeWebAppConfig(od);
+      checkGoogleAppsScriptTypeWebAppConfig(
+          od as api.GoogleAppsScriptTypeWebAppConfig);
     });
   });
 
@@ -1442,7 +1455,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAppsScriptTypeWebAppEntryPoint();
       var od = api.GoogleAppsScriptTypeWebAppEntryPoint.fromJson(o.toJson());
-      checkGoogleAppsScriptTypeWebAppEntryPoint(od);
+      checkGoogleAppsScriptTypeWebAppEntryPoint(
+          od as api.GoogleAppsScriptTypeWebAppEntryPoint);
     });
   });
 
@@ -1450,7 +1464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDeploymentsResponse();
       var od = api.ListDeploymentsResponse.fromJson(o.toJson());
-      checkListDeploymentsResponse(od);
+      checkListDeploymentsResponse(od as api.ListDeploymentsResponse);
     });
   });
 
@@ -1458,7 +1472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListScriptProcessesResponse();
       var od = api.ListScriptProcessesResponse.fromJson(o.toJson());
-      checkListScriptProcessesResponse(od);
+      checkListScriptProcessesResponse(od as api.ListScriptProcessesResponse);
     });
   });
 
@@ -1466,7 +1480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListUserProcessesResponse();
       var od = api.ListUserProcessesResponse.fromJson(o.toJson());
-      checkListUserProcessesResponse(od);
+      checkListUserProcessesResponse(od as api.ListUserProcessesResponse);
     });
   });
 
@@ -1474,7 +1488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListValue();
       var od = api.ListValue.fromJson(o.toJson());
-      checkListValue(od);
+      checkListValue(od as api.ListValue);
     });
   });
 
@@ -1482,7 +1496,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListVersionsResponse();
       var od = api.ListVersionsResponse.fromJson(o.toJson());
-      checkListVersionsResponse(od);
+      checkListVersionsResponse(od as api.ListVersionsResponse);
     });
   });
 
@@ -1490,7 +1504,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetrics();
       var od = api.Metrics.fromJson(o.toJson());
-      checkMetrics(od);
+      checkMetrics(od as api.Metrics);
     });
   });
 
@@ -1498,7 +1512,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricsValue();
       var od = api.MetricsValue.fromJson(o.toJson());
-      checkMetricsValue(od);
+      checkMetricsValue(od as api.MetricsValue);
     });
   });
 
@@ -1506,7 +1520,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1514,7 +1528,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
-      checkProject(od);
+      checkProject(od as api.Project);
     });
   });
 
@@ -1522,7 +1536,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScriptExecutionResult();
       var od = api.ScriptExecutionResult.fromJson(o.toJson());
-      checkScriptExecutionResult(od);
+      checkScriptExecutionResult(od as api.ScriptExecutionResult);
     });
   });
 
@@ -1530,7 +1544,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScriptStackTraceElement();
       var od = api.ScriptStackTraceElement.fromJson(o.toJson());
-      checkScriptStackTraceElement(od);
+      checkScriptStackTraceElement(od as api.ScriptStackTraceElement);
     });
   });
 
@@ -1538,7 +1552,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1546,7 +1560,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStruct();
       var od = api.Struct.fromJson(o.toJson());
-      checkStruct(od);
+      checkStruct(od as api.Struct);
     });
   });
 
@@ -1554,7 +1568,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateDeploymentRequest();
       var od = api.UpdateDeploymentRequest.fromJson(o.toJson());
-      checkUpdateDeploymentRequest(od);
+      checkUpdateDeploymentRequest(od as api.UpdateDeploymentRequest);
     });
   });
 
@@ -1562,7 +1576,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
-      checkValue(od);
+      checkValue(od as api.Value);
     });
   });
 
@@ -1570,7 +1584,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
-      checkVersion(od);
+      checkVersion(od as api.Version);
     });
   });
 
@@ -1665,7 +1679,8 @@ void main() {
                   arg_userProcessFilter_userAccessLevels,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListUserProcessesResponse(response);
+        checkListUserProcessesResponse(
+            response as api.ListUserProcessesResponse);
       })));
     });
 
@@ -1755,7 +1770,8 @@ void main() {
                   arg_scriptProcessFilter_userAccessLevels,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListScriptProcessesResponse(response);
+        checkListScriptProcessesResponse(
+            response as api.ListScriptProcessesResponse);
       })));
     });
   });
@@ -1767,8 +1783,9 @@ void main() {
       var arg_request = buildCreateProjectRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateProjectRequest.fromJson(json);
-        checkCreateProjectRequest(obj);
+        var obj = api.CreateProjectRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateProjectRequest(obj as api.CreateProjectRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1807,7 +1824,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProject(response);
+        checkProject(response as api.Project);
       })));
     });
 
@@ -1857,7 +1874,7 @@ void main() {
       res
           .get(arg_scriptId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProject(response);
+        checkProject(response as api.Project);
       })));
     });
 
@@ -1917,7 +1934,7 @@ void main() {
           .getContent(arg_scriptId,
               versionNumber: arg_versionNumber, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContent(response);
+        checkContent(response as api.Content);
       })));
     });
 
@@ -1982,7 +1999,7 @@ void main() {
               metricsGranularity: arg_metricsGranularity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMetrics(response);
+        checkMetrics(response as api.Metrics);
       })));
     });
 
@@ -1993,8 +2010,9 @@ void main() {
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Content.fromJson(json);
-        checkContent(obj);
+        var obj =
+            api.Content.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkContent(obj as api.Content);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2042,7 +2060,7 @@ void main() {
       res
           .updateContent(arg_request, arg_scriptId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContent(response);
+        checkContent(response as api.Content);
       })));
     });
   });
@@ -2055,8 +2073,9 @@ void main() {
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeploymentConfig.fromJson(json);
-        checkDeploymentConfig(obj);
+        var obj = api.DeploymentConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeploymentConfig(obj as api.DeploymentConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2104,7 +2123,7 @@ void main() {
       res
           .create(arg_request, arg_scriptId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeployment(response);
+        checkDeployment(response as api.Deployment);
       })));
     });
 
@@ -2164,7 +2183,7 @@ void main() {
       res
           .delete(arg_scriptId, arg_deploymentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2224,7 +2243,7 @@ void main() {
       res
           .get(arg_scriptId, arg_deploymentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeployment(response);
+        checkDeployment(response as api.Deployment);
       })));
     });
 
@@ -2289,7 +2308,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDeploymentsResponse(response);
+        checkListDeploymentsResponse(response as api.ListDeploymentsResponse);
       })));
     });
 
@@ -2301,8 +2320,9 @@ void main() {
       var arg_deploymentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateDeploymentRequest.fromJson(json);
-        checkUpdateDeploymentRequest(obj);
+        var obj = api.UpdateDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateDeploymentRequest(obj as api.UpdateDeploymentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2354,7 +2374,7 @@ void main() {
           .update(arg_request, arg_scriptId, arg_deploymentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeployment(response);
+        checkDeployment(response as api.Deployment);
       })));
     });
   });
@@ -2367,8 +2387,9 @@ void main() {
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Version.fromJson(json);
-        checkVersion(obj);
+        var obj =
+            api.Version.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVersion(obj as api.Version);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2416,7 +2437,7 @@ void main() {
       res
           .create(arg_request, arg_scriptId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -2476,7 +2497,7 @@ void main() {
       res
           .get(arg_scriptId, arg_versionNumber, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -2541,7 +2562,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVersionsResponse(response);
+        checkListVersionsResponse(response as api.ListVersionsResponse);
       })));
     });
   });
@@ -2554,8 +2575,9 @@ void main() {
       var arg_scriptId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExecutionRequest.fromJson(json);
-        checkExecutionRequest(obj);
+        var obj = api.ExecutionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExecutionRequest(obj as api.ExecutionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2603,7 +2625,7 @@ void main() {
       res
           .run(arg_request, arg_scriptId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

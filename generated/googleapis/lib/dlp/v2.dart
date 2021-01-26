@@ -127,8 +127,10 @@ class InfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -218,8 +220,10 @@ class LocationsInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -313,8 +317,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -367,7 +373,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -420,8 +429,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DeidentifyTemplates. See
@@ -518,8 +529,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -578,8 +591,10 @@ class OrganizationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -658,8 +673,10 @@ class OrganizationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an InspectTemplate. See
@@ -712,7 +729,10 @@ class OrganizationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an InspectTemplate. See
@@ -765,8 +785,10 @@ class OrganizationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists InspectTemplates. See
@@ -863,8 +885,10 @@ class OrganizationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the InspectTemplate. See
@@ -922,8 +946,10 @@ class OrganizationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1018,8 +1044,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -1073,7 +1101,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -1127,8 +1158,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DeidentifyTemplates. See
@@ -1225,8 +1258,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -1286,8 +1321,10 @@ class OrganizationsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1366,8 +1403,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an InspectTemplate. See
@@ -1421,7 +1460,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an InspectTemplate. See
@@ -1475,8 +1517,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists InspectTemplates. See
@@ -1573,8 +1617,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the InspectTemplate. See
@@ -1633,8 +1679,10 @@ class OrganizationsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1712,8 +1760,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a stored infoType. See
@@ -1767,7 +1817,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a stored infoType. See
@@ -1820,8 +1873,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists stored infoTypes. See
@@ -1920,7 +1975,9 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -1980,8 +2037,10 @@ class OrganizationsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2059,8 +2118,10 @@ class OrganizationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a stored infoType. See
@@ -2113,7 +2174,10 @@ class OrganizationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a stored infoType. See
@@ -2165,8 +2229,10 @@ class OrganizationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists stored infoTypes. See
@@ -2265,7 +2331,9 @@ class OrganizationsStoredInfoTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -2324,8 +2392,10 @@ class OrganizationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2425,7 +2495,9 @@ class ProjectsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds potentially sensitive info in content. This method has limits on
@@ -2498,7 +2570,9 @@ class ProjectsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Re-identifies content that has been de-identified. See
@@ -2567,7 +2641,9 @@ class ProjectsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2646,8 +2722,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -2700,7 +2778,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -2753,8 +2834,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DeidentifyTemplates. See
@@ -2851,8 +2934,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -2911,8 +2996,10 @@ class ProjectsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2976,7 +3063,10 @@ class ProjectsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics. See
@@ -3046,7 +3136,10 @@ class ProjectsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running DlpJob. This method indicates that the client is no
@@ -3098,7 +3191,10 @@ class ProjectsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running DlpJob. See
@@ -3149,7 +3245,10 @@ class ProjectsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DlpJobs that match the specified filter in the request. See
@@ -3273,8 +3372,10 @@ class ProjectsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3351,8 +3452,10 @@ class ProjectsImageResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3431,8 +3534,10 @@ class ProjectsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an InspectTemplate. See
@@ -3485,7 +3590,10 @@ class ProjectsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an InspectTemplate. See
@@ -3538,8 +3646,10 @@ class ProjectsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists InspectTemplates. See
@@ -3636,8 +3746,10 @@ class ProjectsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the InspectTemplate. See
@@ -3695,8 +3807,10 @@ class ProjectsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3760,7 +3874,10 @@ class ProjectsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -3828,8 +3945,10 @@ class ProjectsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a job trigger. See
@@ -3880,7 +3999,10 @@ class ProjectsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a job trigger. See
@@ -3931,8 +4053,10 @@ class ProjectsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists job triggers. See
@@ -4048,7 +4172,9 @@ class ProjectsJobTriggersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a job trigger. See
@@ -4105,8 +4231,10 @@ class ProjectsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4207,7 +4335,9 @@ class ProjectsLocationsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds potentially sensitive info in content. This method has limits on
@@ -4280,7 +4410,9 @@ class ProjectsLocationsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2InspectContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Re-identifies content that has been de-identified. See
@@ -4349,7 +4481,9 @@ class ProjectsLocationsContentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4428,8 +4562,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a DeidentifyTemplate. See
@@ -4483,7 +4619,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a DeidentifyTemplate. See
@@ -4537,8 +4676,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DeidentifyTemplates. See
@@ -4635,8 +4776,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the DeidentifyTemplate. See
@@ -4696,8 +4839,10 @@ class ProjectsLocationsDeidentifyTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4762,7 +4907,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new job to inspect storage or calculate risk metrics. See
@@ -4832,7 +4980,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running DlpJob. This method indicates that the client is no
@@ -4884,7 +5035,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finish a running hybrid DlpJob. Triggers the finalization steps and
@@ -4943,7 +5097,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running DlpJob. See
@@ -4994,7 +5151,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inspect hybrid content and store findings to a job. To review the findings
@@ -5056,8 +5216,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists DlpJobs that match the specified filter in the request. See
@@ -5181,8 +5343,10 @@ class ProjectsLocationsDlpJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5260,8 +5424,10 @@ class ProjectsLocationsImageResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2RedactImageResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5340,8 +5506,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an InspectTemplate. See
@@ -5395,7 +5563,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an InspectTemplate. See
@@ -5449,8 +5620,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists InspectTemplates. See
@@ -5547,8 +5720,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the InspectTemplate. See
@@ -5607,8 +5782,10 @@ class ProjectsLocationsInspectTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2InspectTemplate.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2InspectTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5673,7 +5850,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GooglePrivacyDlpV2DlpJob.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2DlpJob.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a job trigger to run DLP actions such as scanning storage for
@@ -5741,8 +5921,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a job trigger. See
@@ -5794,7 +5976,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a job trigger. See
@@ -5846,8 +6031,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inspect hybrid content and store findings to a trigger. The inspection
@@ -5910,8 +6097,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2HybridInspectResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists job triggers. See
@@ -6027,7 +6216,9 @@ class ProjectsLocationsJobTriggersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a job trigger. See
@@ -6085,8 +6276,10 @@ class ProjectsLocationsJobTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2JobTrigger.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2JobTrigger.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6164,8 +6357,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a stored infoType. See
@@ -6219,7 +6414,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a stored infoType. See
@@ -6272,8 +6470,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists stored infoTypes. See
@@ -6372,7 +6572,9 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -6432,8 +6634,10 @@ class ProjectsLocationsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6511,8 +6715,10 @@ class ProjectsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a stored infoType. See
@@ -6565,7 +6771,10 @@ class ProjectsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a stored infoType. See
@@ -6617,8 +6826,10 @@ class ProjectsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists stored infoTypes. See
@@ -6717,7 +6928,9 @@ class ProjectsStoredInfoTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(data));
+      (data) => GooglePrivacyDlpV2ListStoredInfoTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the stored infoType by creating a new version. The existing
@@ -6776,8 +6989,10 @@ class ProjectsStoredInfoTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GooglePrivacyDlpV2StoredInfoType.fromJson(data));
+    return _response.then(
+      (data) => GooglePrivacyDlpV2StoredInfoType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6809,27 +7024,30 @@ class GooglePrivacyDlpV2Action {
   GooglePrivacyDlpV2Action.fromJson(core.Map _json) {
     if (_json.containsKey('jobNotificationEmails')) {
       jobNotificationEmails = GooglePrivacyDlpV2JobNotificationEmails.fromJson(
-          _json['jobNotificationEmails']);
+          _json['jobNotificationEmails']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pubSub')) {
-      pubSub = GooglePrivacyDlpV2PublishToPubSub.fromJson(_json['pubSub']);
+      pubSub = GooglePrivacyDlpV2PublishToPubSub.fromJson(
+          _json['pubSub'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishFindingsToCloudDataCatalog')) {
       publishFindingsToCloudDataCatalog =
           GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog.fromJson(
-              _json['publishFindingsToCloudDataCatalog']);
+              _json['publishFindingsToCloudDataCatalog']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishSummaryToCscc')) {
       publishSummaryToCscc = GooglePrivacyDlpV2PublishSummaryToCscc.fromJson(
-          _json['publishSummaryToCscc']);
+          _json['publishSummaryToCscc'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publishToStackdriver')) {
       publishToStackdriver = GooglePrivacyDlpV2PublishToStackdriver.fromJson(
-          _json['publishToStackdriver']);
+          _json['publishToStackdriver'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('saveFindings')) {
-      saveFindings =
-          GooglePrivacyDlpV2SaveFindings.fromJson(_json['saveFindings']);
+      saveFindings = GooglePrivacyDlpV2SaveFindings.fromJson(
+          _json['saveFindings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6907,41 +7125,44 @@ class GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
     if (_json.containsKey('categoricalStatsResult')) {
       categoricalStatsResult =
           GooglePrivacyDlpV2CategoricalStatsResult.fromJson(
-              _json['categoricalStatsResult']);
+              _json['categoricalStatsResult']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deltaPresenceEstimationResult')) {
       deltaPresenceEstimationResult =
           GooglePrivacyDlpV2DeltaPresenceEstimationResult.fromJson(
-              _json['deltaPresenceEstimationResult']);
+              _json['deltaPresenceEstimationResult']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kAnonymityResult')) {
       kAnonymityResult = GooglePrivacyDlpV2KAnonymityResult.fromJson(
-          _json['kAnonymityResult']);
+          _json['kAnonymityResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kMapEstimationResult')) {
       kMapEstimationResult = GooglePrivacyDlpV2KMapEstimationResult.fromJson(
-          _json['kMapEstimationResult']);
+          _json['kMapEstimationResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lDiversityResult')) {
       lDiversityResult = GooglePrivacyDlpV2LDiversityResult.fromJson(
-          _json['lDiversityResult']);
+          _json['lDiversityResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('numericalStatsResult')) {
       numericalStatsResult = GooglePrivacyDlpV2NumericalStatsResult.fromJson(
-          _json['numericalStatsResult']);
+          _json['numericalStatsResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedOptions')) {
       requestedOptions =
           GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(
-              _json['requestedOptions']);
+              _json['requestedOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedPrivacyMetric')) {
       requestedPrivacyMetric = GooglePrivacyDlpV2PrivacyMetric.fromJson(
-          _json['requestedPrivacyMetric']);
+          _json['requestedPrivacyMetric']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedSourceTable')) {
       requestedSourceTable = GooglePrivacyDlpV2BigQueryTable.fromJson(
-          _json['requestedSourceTable']);
+          _json['requestedSourceTable'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7001,16 +7222,18 @@ class GooglePrivacyDlpV2AuxiliaryTable {
   GooglePrivacyDlpV2AuxiliaryTable.fromJson(core.Map _json) {
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2QuasiIdField>(
-              (value) => GooglePrivacyDlpV2QuasiIdField.fromJson(value))
+          .map<GooglePrivacyDlpV2QuasiIdField>((value) =>
+              GooglePrivacyDlpV2QuasiIdField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('relativeFrequency')) {
-      relativeFrequency =
-          GooglePrivacyDlpV2FieldId.fromJson(_json['relativeFrequency']);
+      relativeFrequency = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['relativeFrequency'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('table')) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['table'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7041,10 +7264,12 @@ class GooglePrivacyDlpV2BigQueryField {
 
   GooglePrivacyDlpV2BigQueryField.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('table')) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['table'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7079,8 +7304,8 @@ class GooglePrivacyDlpV2BigQueryKey {
       rowNumber = _json['rowNumber'] as core.String;
     }
     if (_json.containsKey('tableReference')) {
-      tableReference =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['tableReference']);
+      tableReference = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['tableReference'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7139,14 +7364,16 @@ class GooglePrivacyDlpV2BigQueryOptions {
   GooglePrivacyDlpV2BigQueryOptions.fromJson(core.Map _json) {
     if (_json.containsKey('excludedFields')) {
       excludedFields = (_json['excludedFields'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('identifyingFields')) {
       identifyingFields = (_json['identifyingFields'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowsLimit')) {
@@ -7159,8 +7386,8 @@ class GooglePrivacyDlpV2BigQueryOptions {
       sampleMethod = _json['sampleMethod'] as core.String;
     }
     if (_json.containsKey('tableReference')) {
-      tableReference =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['tableReference']);
+      tableReference = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['tableReference'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7298,14 +7525,16 @@ class GooglePrivacyDlpV2Bucket {
 
   GooglePrivacyDlpV2Bucket.fromJson(core.Map _json) {
     if (_json.containsKey('max')) {
-      max = GooglePrivacyDlpV2Value.fromJson(_json['max']);
+      max = GooglePrivacyDlpV2Value.fromJson(
+          _json['max'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('min')) {
-      min = GooglePrivacyDlpV2Value.fromJson(_json['min']);
+      min = GooglePrivacyDlpV2Value.fromJson(
+          _json['min'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replacementValue')) {
-      replacementValue =
-          GooglePrivacyDlpV2Value.fromJson(_json['replacementValue']);
+      replacementValue = GooglePrivacyDlpV2Value.fromJson(
+          _json['replacementValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7341,8 +7570,9 @@ class GooglePrivacyDlpV2BucketingConfig {
   GooglePrivacyDlpV2BucketingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('buckets')) {
       buckets = (_json['buckets'] as core.List)
-          .map<GooglePrivacyDlpV2Bucket>(
-              (value) => GooglePrivacyDlpV2Bucket.fromJson(value))
+          .map<GooglePrivacyDlpV2Bucket>((value) =>
+              GooglePrivacyDlpV2Bucket.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7432,7 +7662,8 @@ class GooglePrivacyDlpV2CategoricalStatsConfig {
 
   GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7474,8 +7705,9 @@ class GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
     }
     if (_json.containsKey('bucketValues')) {
       bucketValues = (_json['bucketValues'] as core.List)
-          .map<GooglePrivacyDlpV2ValueFrequency>(
-              (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
+          .map<GooglePrivacyDlpV2ValueFrequency>((value) =>
+              GooglePrivacyDlpV2ValueFrequency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('valueFrequencyLowerBound')) {
@@ -7520,11 +7752,12 @@ class GooglePrivacyDlpV2CategoricalStatsResult {
 
   GooglePrivacyDlpV2CategoricalStatsResult.fromJson(core.Map _json) {
     if (_json.containsKey('valueFrequencyHistogramBuckets')) {
-      valueFrequencyHistogramBuckets = (_json['valueFrequencyHistogramBuckets']
-              as core.List)
-          .map<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>((value) =>
-              GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(value))
-          .toList();
+      valueFrequencyHistogramBuckets =
+          (_json['valueFrequencyHistogramBuckets'] as core.List)
+              .map<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>((value) =>
+                  GooglePrivacyDlpV2CategoricalStatsHistogramBucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
     }
   }
 
@@ -7574,8 +7807,9 @@ class GooglePrivacyDlpV2CharacterMaskConfig {
   GooglePrivacyDlpV2CharacterMaskConfig.fromJson(core.Map _json) {
     if (_json.containsKey('charactersToIgnore')) {
       charactersToIgnore = (_json['charactersToIgnore'] as core.List)
-          .map<GooglePrivacyDlpV2CharsToIgnore>(
-              (value) => GooglePrivacyDlpV2CharsToIgnore.fromJson(value))
+          .map<GooglePrivacyDlpV2CharsToIgnore>((value) =>
+              GooglePrivacyDlpV2CharsToIgnore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maskingCharacter')) {
@@ -7720,7 +7954,8 @@ class GooglePrivacyDlpV2CloudStorageOptions {
       bytesLimitPerFilePercent = _json['bytesLimitPerFilePercent'] as core.int;
     }
     if (_json.containsKey('fileSet')) {
-      fileSet = GooglePrivacyDlpV2FileSet.fromJson(_json['fileSet']);
+      fileSet = GooglePrivacyDlpV2FileSet.fromJson(
+          _json['fileSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileTypes')) {
       fileTypes = (_json['fileTypes'] as core.List)
@@ -7931,13 +8166,15 @@ class GooglePrivacyDlpV2Condition {
 
   GooglePrivacyDlpV2Condition.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('operator')) {
       operator = _json['operator'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = GooglePrivacyDlpV2Value.fromJson(_json['value']);
+      value = GooglePrivacyDlpV2Value.fromJson(
+          _json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7966,8 +8203,9 @@ class GooglePrivacyDlpV2Conditions {
   GooglePrivacyDlpV2Conditions.fromJson(core.Map _json) {
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<GooglePrivacyDlpV2Condition>(
-              (value) => GooglePrivacyDlpV2Condition.fromJson(value))
+          .map<GooglePrivacyDlpV2Condition>((value) =>
+              GooglePrivacyDlpV2Condition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8087,10 +8325,12 @@ class GooglePrivacyDlpV2ContentItem {
 
   GooglePrivacyDlpV2ContentItem.fromJson(core.Map _json) {
     if (_json.containsKey('byteItem')) {
-      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json['byteItem']);
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(
+          _json['byteItem'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('table')) {
-      table = GooglePrivacyDlpV2Table.fromJson(_json['table']);
+      table = GooglePrivacyDlpV2Table.fromJson(
+          _json['table'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('value')) {
       value = _json['value'] as core.String;
@@ -8159,19 +8399,19 @@ class GooglePrivacyDlpV2ContentLocation {
     }
     if (_json.containsKey('documentLocation')) {
       documentLocation = GooglePrivacyDlpV2DocumentLocation.fromJson(
-          _json['documentLocation']);
+          _json['documentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageLocation')) {
-      imageLocation =
-          GooglePrivacyDlpV2ImageLocation.fromJson(_json['imageLocation']);
+      imageLocation = GooglePrivacyDlpV2ImageLocation.fromJson(
+          _json['imageLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadataLocation')) {
       metadataLocation = GooglePrivacyDlpV2MetadataLocation.fromJson(
-          _json['metadataLocation']);
+          _json['metadataLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recordLocation')) {
-      recordLocation =
-          GooglePrivacyDlpV2RecordLocation.fromJson(_json['recordLocation']);
+      recordLocation = GooglePrivacyDlpV2RecordLocation.fromJson(
+          _json['recordLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8221,7 +8461,7 @@ class GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
   GooglePrivacyDlpV2CreateDeidentifyTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deidentifyTemplate')) {
       deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          _json['deidentifyTemplate']);
+          _json['deidentifyTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -8268,8 +8508,8 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
 
   GooglePrivacyDlpV2CreateDlpJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inspectJob')) {
-      inspectJob =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['inspectJob']);
+      inspectJob = GooglePrivacyDlpV2InspectJobConfig.fromJson(
+          _json['inspectJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('jobId')) {
       jobId = _json['jobId'] as core.String;
@@ -8278,8 +8518,8 @@ class GooglePrivacyDlpV2CreateDlpJobRequest {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('riskJob')) {
-      riskJob =
-          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json['riskJob']);
+      riskJob = GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
+          _json['riskJob'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8319,8 +8559,8 @@ class GooglePrivacyDlpV2CreateInspectTemplateRequest {
 
   GooglePrivacyDlpV2CreateInspectTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inspectTemplate')) {
-      inspectTemplate =
-          GooglePrivacyDlpV2InspectTemplate.fromJson(_json['inspectTemplate']);
+      inspectTemplate = GooglePrivacyDlpV2InspectTemplate.fromJson(
+          _json['inspectTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -8363,7 +8603,8 @@ class GooglePrivacyDlpV2CreateJobTriggerRequest {
 
   GooglePrivacyDlpV2CreateJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('jobTrigger')) {
-      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json['jobTrigger']);
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(
+          _json['jobTrigger'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -8406,7 +8647,8 @@ class GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
 
   GooglePrivacyDlpV2CreateStoredInfoTypeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -8480,14 +8722,16 @@ class GooglePrivacyDlpV2CryptoDeterministicConfig {
 
   GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
+      context = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoKey')) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(
+          _json['cryptoKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('surrogateInfoType')) {
-      surrogateInfoType =
-          GooglePrivacyDlpV2InfoType.fromJson(_json['surrogateInfoType']);
+      surrogateInfoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['surrogateInfoType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8520,7 +8764,8 @@ class GooglePrivacyDlpV2CryptoHashConfig {
 
   GooglePrivacyDlpV2CryptoHashConfig.fromJson(core.Map _json) {
     if (_json.containsKey('cryptoKey')) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(
+          _json['cryptoKey'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8551,16 +8796,16 @@ class GooglePrivacyDlpV2CryptoKey {
 
   GooglePrivacyDlpV2CryptoKey.fromJson(core.Map _json) {
     if (_json.containsKey('kmsWrapped')) {
-      kmsWrapped =
-          GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(_json['kmsWrapped']);
+      kmsWrapped = GooglePrivacyDlpV2KmsWrappedCryptoKey.fromJson(
+          _json['kmsWrapped'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transient')) {
-      transient =
-          GooglePrivacyDlpV2TransientCryptoKey.fromJson(_json['transient']);
+      transient = GooglePrivacyDlpV2TransientCryptoKey.fromJson(
+          _json['transient'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unwrapped')) {
-      unwrapped =
-          GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(_json['unwrapped']);
+      unwrapped = GooglePrivacyDlpV2UnwrappedCryptoKey.fromJson(
+          _json['unwrapped'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8659,10 +8904,12 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
       commonAlphabet = _json['commonAlphabet'] as core.String;
     }
     if (_json.containsKey('context')) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
+      context = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoKey')) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(
+          _json['cryptoKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customAlphabet')) {
       customAlphabet = _json['customAlphabet'] as core.String;
@@ -8671,8 +8918,8 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
       radix = _json['radix'] as core.int;
     }
     if (_json.containsKey('surrogateInfoType')) {
-      surrogateInfoType =
-          GooglePrivacyDlpV2InfoType.fromJson(_json['surrogateInfoType']);
+      surrogateInfoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['surrogateInfoType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8756,31 +9003,36 @@ class GooglePrivacyDlpV2CustomInfoType {
   GooglePrivacyDlpV2CustomInfoType.fromJson(core.Map _json) {
     if (_json.containsKey('detectionRules')) {
       detectionRules = (_json['detectionRules'] as core.List)
-          .map<GooglePrivacyDlpV2DetectionRule>(
-              (value) => GooglePrivacyDlpV2DetectionRule.fromJson(value))
+          .map<GooglePrivacyDlpV2DetectionRule>((value) =>
+              GooglePrivacyDlpV2DetectionRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dictionary')) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(
+          _json['dictionary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('exclusionType')) {
       exclusionType = _json['exclusionType'] as core.String;
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('likelihood')) {
       likelihood = _json['likelihood'] as core.String;
     }
     if (_json.containsKey('regex')) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
+      regex = GooglePrivacyDlpV2Regex.fromJson(
+          _json['regex'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('storedType')) {
-      storedType = GooglePrivacyDlpV2StoredType.fromJson(_json['storedType']);
+      storedType = GooglePrivacyDlpV2StoredType.fromJson(
+          _json['storedType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('surrogateType')) {
-      surrogateType =
-          GooglePrivacyDlpV2SurrogateType.fromJson(_json['surrogateType']);
+      surrogateType = GooglePrivacyDlpV2SurrogateType.fromJson(
+          _json['surrogateType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8824,7 +9076,8 @@ class GooglePrivacyDlpV2DatastoreKey {
 
   GooglePrivacyDlpV2DatastoreKey.fromJson(core.Map _json) {
     if (_json.containsKey('entityKey')) {
-      entityKey = GooglePrivacyDlpV2Key.fromJson(_json['entityKey']);
+      entityKey = GooglePrivacyDlpV2Key.fromJson(
+          _json['entityKey'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8850,11 +9103,12 @@ class GooglePrivacyDlpV2DatastoreOptions {
 
   GooglePrivacyDlpV2DatastoreOptions.fromJson(core.Map _json) {
     if (_json.containsKey('kind')) {
-      kind = GooglePrivacyDlpV2KindExpression.fromJson(_json['kind']);
+      kind = GooglePrivacyDlpV2KindExpression.fromJson(
+          _json['kind'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('partitionId')) {
-      partitionId =
-          GooglePrivacyDlpV2PartitionId.fromJson(_json['partitionId']);
+      partitionId = GooglePrivacyDlpV2PartitionId.fromJson(
+          _json['partitionId'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8898,10 +9152,12 @@ class GooglePrivacyDlpV2DateShiftConfig {
 
   GooglePrivacyDlpV2DateShiftConfig.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = GooglePrivacyDlpV2FieldId.fromJson(_json['context']);
+      context = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoKey')) {
-      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(_json['cryptoKey']);
+      cryptoKey = GooglePrivacyDlpV2CryptoKey.fromJson(
+          _json['cryptoKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lowerBoundDays')) {
       lowerBoundDays = _json['lowerBoundDays'] as core.int;
@@ -8957,16 +9213,19 @@ class GooglePrivacyDlpV2DateTime {
 
   GooglePrivacyDlpV2DateTime.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = GoogleTypeDate.fromJson(_json['date']);
+      date = GoogleTypeDate.fromJson(
+          _json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dayOfWeek')) {
       dayOfWeek = _json['dayOfWeek'] as core.String;
     }
     if (_json.containsKey('time')) {
-      time = GoogleTypeTimeOfDay.fromJson(_json['time']);
+      time = GoogleTypeTimeOfDay.fromJson(
+          _json['time'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = GooglePrivacyDlpV2TimeZone.fromJson(_json['timeZone']);
+      timeZone = GooglePrivacyDlpV2TimeZone.fromJson(
+          _json['timeZone'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9009,16 +9268,19 @@ class GooglePrivacyDlpV2DeidentifyConfig {
     if (_json.containsKey('infoTypeTransformations')) {
       infoTypeTransformations =
           GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
-              _json['infoTypeTransformations']);
+              _json['infoTypeTransformations']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recordTransformations')) {
       recordTransformations = GooglePrivacyDlpV2RecordTransformations.fromJson(
-          _json['recordTransformations']);
+          _json['recordTransformations']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transformationErrorHandling')) {
       transformationErrorHandling =
           GooglePrivacyDlpV2TransformationErrorHandling.fromJson(
-              _json['transformationErrorHandling']);
+              _json['transformationErrorHandling']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9074,20 +9336,21 @@ class GooglePrivacyDlpV2DeidentifyContentRequest {
   GooglePrivacyDlpV2DeidentifyContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deidentifyConfig')) {
       deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json['deidentifyConfig']);
+          _json['deidentifyConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deidentifyTemplateName')) {
       deidentifyTemplateName = _json['deidentifyTemplateName'] as core.String;
     }
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inspectTemplateName')) {
       inspectTemplateName = _json['inspectTemplateName'] as core.String;
     }
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -9130,11 +9393,12 @@ class GooglePrivacyDlpV2DeidentifyContentResponse {
 
   GooglePrivacyDlpV2DeidentifyContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('overview')) {
-      overview =
-          GooglePrivacyDlpV2TransformationOverview.fromJson(_json['overview']);
+      overview = GooglePrivacyDlpV2TransformationOverview.fromJson(
+          _json['overview'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9181,7 +9445,7 @@ class GooglePrivacyDlpV2DeidentifyTemplate {
     }
     if (_json.containsKey('deidentifyConfig')) {
       deidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json['deidentifyConfig']);
+          _json['deidentifyConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -9245,14 +9509,16 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auxiliaryTables')) {
       auxiliaryTables = (_json['auxiliaryTables'] as core.List)
-          .map<GooglePrivacyDlpV2StatisticalTable>(
-              (value) => GooglePrivacyDlpV2StatisticalTable.fromJson(value))
+          .map<GooglePrivacyDlpV2StatisticalTable>((value) =>
+              GooglePrivacyDlpV2StatisticalTable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2QuasiId>(
-              (value) => GooglePrivacyDlpV2QuasiId.fromJson(value))
+          .map<GooglePrivacyDlpV2QuasiId>((value) =>
+              GooglePrivacyDlpV2QuasiId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('regionCode')) {
@@ -9313,7 +9579,7 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
       bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>(
               (value) => GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxProbability')) {
@@ -9371,8 +9637,9 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
     }
     if (_json.containsKey('quasiIdsValues')) {
       quasiIdsValues = (_json['quasiIdsValues'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9412,7 +9679,8 @@ class GooglePrivacyDlpV2DeltaPresenceEstimationResult {
               .map<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>(
                   (value) =>
                       GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket
-                          .fromJson(value))
+                          .fromJson(
+                              value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -9441,8 +9709,8 @@ class GooglePrivacyDlpV2DetectionRule {
 
   GooglePrivacyDlpV2DetectionRule.fromJson(core.Map _json) {
     if (_json.containsKey('hotwordRule')) {
-      hotwordRule =
-          GooglePrivacyDlpV2HotwordRule.fromJson(_json['hotwordRule']);
+      hotwordRule = GooglePrivacyDlpV2HotwordRule.fromJson(
+          _json['hotwordRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9487,10 +9755,11 @@ class GooglePrivacyDlpV2Dictionary {
   GooglePrivacyDlpV2Dictionary.fromJson(core.Map _json) {
     if (_json.containsKey('cloudStoragePath')) {
       cloudStoragePath = GooglePrivacyDlpV2CloudStoragePath.fromJson(
-          _json['cloudStoragePath']);
+          _json['cloudStoragePath'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('wordList')) {
-      wordList = GooglePrivacyDlpV2WordList.fromJson(_json['wordList']);
+      wordList = GooglePrivacyDlpV2WordList.fromJson(
+          _json['wordList'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9566,13 +9835,14 @@ class GooglePrivacyDlpV2DlpJob {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<GooglePrivacyDlpV2Error>(
-              (value) => GooglePrivacyDlpV2Error.fromJson(value))
+          .map<GooglePrivacyDlpV2Error>((value) =>
+              GooglePrivacyDlpV2Error.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inspectDetails')) {
       inspectDetails = GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(
-          _json['inspectDetails']);
+          _json['inspectDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('jobTriggerName')) {
       jobTriggerName = _json['jobTriggerName'] as core.String;
@@ -9582,7 +9852,7 @@ class GooglePrivacyDlpV2DlpJob {
     }
     if (_json.containsKey('riskDetails')) {
       riskDetails = GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails.fromJson(
-          _json['riskDetails']);
+          _json['riskDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -9667,7 +9937,8 @@ class GooglePrivacyDlpV2EntityId {
 
   GooglePrivacyDlpV2EntityId.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9693,7 +9964,8 @@ class GooglePrivacyDlpV2Error {
 
   GooglePrivacyDlpV2Error.fromJson(core.Map _json) {
     if (_json.containsKey('details')) {
-      details = GoogleRpcStatus.fromJson(_json['details']);
+      details = GoogleRpcStatus.fromJson(
+          _json['details'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestamps')) {
       timestamps = (_json['timestamps'] as core.List)
@@ -9730,8 +10002,9 @@ class GooglePrivacyDlpV2ExcludeInfoTypes {
   GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(core.Map _json) {
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2InfoType>(
-              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoType>((value) =>
+              GooglePrivacyDlpV2InfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9777,17 +10050,19 @@ class GooglePrivacyDlpV2ExclusionRule {
 
   GooglePrivacyDlpV2ExclusionRule.fromJson(core.Map _json) {
     if (_json.containsKey('dictionary')) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(
+          _json['dictionary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('excludeInfoTypes')) {
       excludeInfoTypes = GooglePrivacyDlpV2ExcludeInfoTypes.fromJson(
-          _json['excludeInfoTypes']);
+          _json['excludeInfoTypes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('matchingType')) {
       matchingType = _json['matchingType'] as core.String;
     }
     if (_json.containsKey('regex')) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
+      regex = GooglePrivacyDlpV2Regex.fromJson(
+          _json['regex'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9825,7 +10100,8 @@ class GooglePrivacyDlpV2Expressions {
 
   GooglePrivacyDlpV2Expressions.fromJson(core.Map _json) {
     if (_json.containsKey('conditions')) {
-      conditions = GooglePrivacyDlpV2Conditions.fromJson(_json['conditions']);
+      conditions = GooglePrivacyDlpV2Conditions.fromJson(
+          _json['conditions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('logicalOperator')) {
       logicalOperator = _json['logicalOperator'] as core.String;
@@ -9890,24 +10166,27 @@ class GooglePrivacyDlpV2FieldTransformation {
 
   GooglePrivacyDlpV2FieldTransformation.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition =
-          GooglePrivacyDlpV2RecordCondition.fromJson(_json['condition']);
+      condition = GooglePrivacyDlpV2RecordCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('infoTypeTransformations')) {
       infoTypeTransformations =
           GooglePrivacyDlpV2InfoTypeTransformations.fromJson(
-              _json['infoTypeTransformations']);
+              _json['infoTypeTransformations']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('primitiveTransformation')) {
       primitiveTransformation =
           GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-              _json['primitiveTransformation']);
+              _json['primitiveTransformation']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9949,7 +10228,7 @@ class GooglePrivacyDlpV2FileSet {
   GooglePrivacyDlpV2FileSet.fromJson(core.Map _json) {
     if (_json.containsKey('regexFileSet')) {
       regexFileSet = GooglePrivacyDlpV2CloudStorageRegexFileSet.fromJson(
-          _json['regexFileSet']);
+          _json['regexFileSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -10034,7 +10313,8 @@ class GooglePrivacyDlpV2Finding {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('jobCreateTime')) {
       jobCreateTime = _json['jobCreateTime'] as core.String;
@@ -10044,14 +10324,16 @@ class GooglePrivacyDlpV2Finding {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('likelihood')) {
       likelihood = _json['likelihood'] as core.String;
     }
     if (_json.containsKey('location')) {
-      location = GooglePrivacyDlpV2Location.fromJson(_json['location']);
+      location = GooglePrivacyDlpV2Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -10060,7 +10342,8 @@ class GooglePrivacyDlpV2Finding {
       quote = _json['quote'] as core.String;
     }
     if (_json.containsKey('quoteInfo')) {
-      quoteInfo = GooglePrivacyDlpV2QuoteInfo.fromJson(_json['quoteInfo']);
+      quoteInfo = GooglePrivacyDlpV2QuoteInfo.fromJson(
+          _json['quoteInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceName')) {
       resourceName = _json['resourceName'] as core.String;
@@ -10133,8 +10416,9 @@ class GooglePrivacyDlpV2FindingLimits {
   GooglePrivacyDlpV2FindingLimits.fromJson(core.Map _json) {
     if (_json.containsKey('maxFindingsPerInfoType')) {
       maxFindingsPerInfoType = (_json['maxFindingsPerInfoType'] as core.List)
-          .map<GooglePrivacyDlpV2InfoTypeLimit>(
-              (value) => GooglePrivacyDlpV2InfoTypeLimit.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoTypeLimit>((value) =>
+              GooglePrivacyDlpV2InfoTypeLimit.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxFindingsPerItem')) {
@@ -10211,10 +10495,12 @@ class GooglePrivacyDlpV2FixedSizeBucketingConfig {
       bucketSize = (_json['bucketSize'] as core.num).toDouble();
     }
     if (_json.containsKey('lowerBound')) {
-      lowerBound = GooglePrivacyDlpV2Value.fromJson(_json['lowerBound']);
+      lowerBound = GooglePrivacyDlpV2Value.fromJson(
+          _json['lowerBound'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('upperBound')) {
-      upperBound = GooglePrivacyDlpV2Value.fromJson(_json['upperBound']);
+      upperBound = GooglePrivacyDlpV2Value.fromJson(
+          _json['upperBound'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10256,14 +10542,16 @@ class GooglePrivacyDlpV2HotwordRule {
 
   GooglePrivacyDlpV2HotwordRule.fromJson(core.Map _json) {
     if (_json.containsKey('hotwordRegex')) {
-      hotwordRegex = GooglePrivacyDlpV2Regex.fromJson(_json['hotwordRegex']);
+      hotwordRegex = GooglePrivacyDlpV2Regex.fromJson(
+          _json['hotwordRegex'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('likelihoodAdjustment')) {
       likelihoodAdjustment = GooglePrivacyDlpV2LikelihoodAdjustment.fromJson(
-          _json['likelihoodAdjustment']);
+          _json['likelihoodAdjustment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('proximity')) {
-      proximity = GooglePrivacyDlpV2Proximity.fromJson(_json['proximity']);
+      proximity = GooglePrivacyDlpV2Proximity.fromJson(
+          _json['proximity'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10296,10 +10584,11 @@ class GooglePrivacyDlpV2HybridContentItem {
   GooglePrivacyDlpV2HybridContentItem.fromJson(core.Map _json) {
     if (_json.containsKey('findingDetails')) {
       findingDetails = GooglePrivacyDlpV2HybridFindingDetails.fromJson(
-          _json['findingDetails']);
+          _json['findingDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10353,23 +10642,24 @@ class GooglePrivacyDlpV2HybridFindingDetails {
 
   GooglePrivacyDlpV2HybridFindingDetails.fromJson(core.Map _json) {
     if (_json.containsKey('containerDetails')) {
-      containerDetails =
-          GooglePrivacyDlpV2Container.fromJson(_json['containerDetails']);
+      containerDetails = GooglePrivacyDlpV2Container.fromJson(
+          _json['containerDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileOffset')) {
       fileOffset = _json['fileOffset'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('rowOffset')) {
       rowOffset = _json['rowOffset'] as core.String;
     }
     if (_json.containsKey('tableOptions')) {
-      tableOptions =
-          GooglePrivacyDlpV2TableOptions.fromJson(_json['tableOptions']);
+      tableOptions = GooglePrivacyDlpV2TableOptions.fromJson(
+          _json['tableOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10403,8 +10693,8 @@ class GooglePrivacyDlpV2HybridInspectDlpJobRequest {
 
   GooglePrivacyDlpV2HybridInspectDlpJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('hybridItem')) {
-      hybridItem =
-          GooglePrivacyDlpV2HybridContentItem.fromJson(_json['hybridItem']);
+      hybridItem = GooglePrivacyDlpV2HybridContentItem.fromJson(
+          _json['hybridItem'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10426,8 +10716,8 @@ class GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
 
   GooglePrivacyDlpV2HybridInspectJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('hybridItem')) {
-      hybridItem =
-          GooglePrivacyDlpV2HybridContentItem.fromJson(_json['hybridItem']);
+      hybridItem = GooglePrivacyDlpV2HybridContentItem.fromJson(
+          _json['hybridItem'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10534,7 +10824,8 @@ class GooglePrivacyDlpV2HybridOptions {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('requiredFindingLabelKeys')) {
@@ -10544,8 +10835,8 @@ class GooglePrivacyDlpV2HybridOptions {
               .toList();
     }
     if (_json.containsKey('tableOptions')) {
-      tableOptions =
-          GooglePrivacyDlpV2TableOptions.fromJson(_json['tableOptions']);
+      tableOptions = GooglePrivacyDlpV2TableOptions.fromJson(
+          _json['tableOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10578,8 +10869,9 @@ class GooglePrivacyDlpV2ImageLocation {
   GooglePrivacyDlpV2ImageLocation.fromJson(core.Map _json) {
     if (_json.containsKey('boundingBoxes')) {
       boundingBoxes = (_json['boundingBoxes'] as core.List)
-          .map<GooglePrivacyDlpV2BoundingBox>(
-              (value) => GooglePrivacyDlpV2BoundingBox.fromJson(value))
+          .map<GooglePrivacyDlpV2BoundingBox>((value) =>
+              GooglePrivacyDlpV2BoundingBox.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10614,14 +10906,15 @@ class GooglePrivacyDlpV2ImageRedactionConfig {
 
   GooglePrivacyDlpV2ImageRedactionConfig.fromJson(core.Map _json) {
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('redactAllText')) {
       redactAllText = _json['redactAllText'] as core.bool;
     }
     if (_json.containsKey('redactionColor')) {
-      redactionColor =
-          GooglePrivacyDlpV2Color.fromJson(_json['redactionColor']);
+      redactionColor = GooglePrivacyDlpV2Color.fromJson(
+          _json['redactionColor'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10734,7 +11027,8 @@ class GooglePrivacyDlpV2InfoTypeLimit {
 
   GooglePrivacyDlpV2InfoTypeLimit.fromJson(core.Map _json) {
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxFindings')) {
       maxFindings = _json['maxFindings'] as core.int;
@@ -10768,7 +11062,8 @@ class GooglePrivacyDlpV2InfoTypeStats {
       count = _json['count'] as core.String;
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10800,14 +11095,16 @@ class GooglePrivacyDlpV2InfoTypeTransformation {
   GooglePrivacyDlpV2InfoTypeTransformation.fromJson(core.Map _json) {
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2InfoType>(
-              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoType>((value) =>
+              GooglePrivacyDlpV2InfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('primitiveTransformation')) {
       primitiveTransformation =
           GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-              _json['primitiveTransformation']);
+              _json['primitiveTransformation']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10837,7 +11134,8 @@ class GooglePrivacyDlpV2InfoTypeTransformations {
     if (_json.containsKey('transformations')) {
       transformations = (_json['transformations'] as core.List)
           .map<GooglePrivacyDlpV2InfoTypeTransformation>((value) =>
-              GooglePrivacyDlpV2InfoTypeTransformation.fromJson(value))
+              GooglePrivacyDlpV2InfoTypeTransformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10910,8 +11208,9 @@ class GooglePrivacyDlpV2InspectConfig {
     }
     if (_json.containsKey('customInfoTypes')) {
       customInfoTypes = (_json['customInfoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2CustomInfoType>(
-              (value) => GooglePrivacyDlpV2CustomInfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2CustomInfoType>((value) =>
+              GooglePrivacyDlpV2CustomInfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('excludeInfoTypes')) {
@@ -10922,20 +11221,23 @@ class GooglePrivacyDlpV2InspectConfig {
     }
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2InfoType>(
-              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoType>((value) =>
+              GooglePrivacyDlpV2InfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('limits')) {
-      limits = GooglePrivacyDlpV2FindingLimits.fromJson(_json['limits']);
+      limits = GooglePrivacyDlpV2FindingLimits.fromJson(
+          _json['limits'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minLikelihood')) {
       minLikelihood = _json['minLikelihood'] as core.String;
     }
     if (_json.containsKey('ruleSet')) {
       ruleSet = (_json['ruleSet'] as core.List)
-          .map<GooglePrivacyDlpV2InspectionRuleSet>(
-              (value) => GooglePrivacyDlpV2InspectionRuleSet.fromJson(value))
+          .map<GooglePrivacyDlpV2InspectionRuleSet>((value) =>
+              GooglePrivacyDlpV2InspectionRuleSet.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10994,14 +11296,15 @@ class GooglePrivacyDlpV2InspectContentRequest {
 
   GooglePrivacyDlpV2InspectContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inspectTemplateName')) {
       inspectTemplateName = _json['inspectTemplateName'] as core.String;
     }
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -11035,7 +11338,8 @@ class GooglePrivacyDlpV2InspectContentResponse {
 
   GooglePrivacyDlpV2InspectContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = GooglePrivacyDlpV2InspectResult.fromJson(_json['result']);
+      result = GooglePrivacyDlpV2InspectResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11061,10 +11365,11 @@ class GooglePrivacyDlpV2InspectDataSourceDetails {
   GooglePrivacyDlpV2InspectDataSourceDetails.fromJson(core.Map _json) {
     if (_json.containsKey('requestedOptions')) {
       requestedOptions = GooglePrivacyDlpV2RequestedOptions.fromJson(
-          _json['requestedOptions']);
+          _json['requestedOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('result')) {
-      result = GooglePrivacyDlpV2Result.fromJson(_json['result']);
+      result = GooglePrivacyDlpV2Result.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11101,20 +11406,21 @@ class GooglePrivacyDlpV2InspectJobConfig {
   GooglePrivacyDlpV2InspectJobConfig.fromJson(core.Map _json) {
     if (_json.containsKey('actions')) {
       actions = (_json['actions'] as core.List)
-          .map<GooglePrivacyDlpV2Action>(
-              (value) => GooglePrivacyDlpV2Action.fromJson(value))
+          .map<GooglePrivacyDlpV2Action>((value) =>
+              GooglePrivacyDlpV2Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inspectTemplateName')) {
       inspectTemplateName = _json['inspectTemplateName'] as core.String;
     }
     if (_json.containsKey('storageConfig')) {
-      storageConfig =
-          GooglePrivacyDlpV2StorageConfig.fromJson(_json['storageConfig']);
+      storageConfig = GooglePrivacyDlpV2StorageConfig.fromJson(
+          _json['storageConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11154,8 +11460,9 @@ class GooglePrivacyDlpV2InspectResult {
   GooglePrivacyDlpV2InspectResult.fromJson(core.Map _json) {
     if (_json.containsKey('findings')) {
       findings = (_json['findings'] as core.List)
-          .map<GooglePrivacyDlpV2Finding>(
-              (value) => GooglePrivacyDlpV2Finding.fromJson(value))
+          .map<GooglePrivacyDlpV2Finding>((value) =>
+              GooglePrivacyDlpV2Finding.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('findingsTruncated')) {
@@ -11213,8 +11520,8 @@ class GooglePrivacyDlpV2InspectTemplate {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -11261,12 +11568,12 @@ class GooglePrivacyDlpV2InspectionRule {
 
   GooglePrivacyDlpV2InspectionRule.fromJson(core.Map _json) {
     if (_json.containsKey('exclusionRule')) {
-      exclusionRule =
-          GooglePrivacyDlpV2ExclusionRule.fromJson(_json['exclusionRule']);
+      exclusionRule = GooglePrivacyDlpV2ExclusionRule.fromJson(
+          _json['exclusionRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hotwordRule')) {
-      hotwordRule =
-          GooglePrivacyDlpV2HotwordRule.fromJson(_json['hotwordRule']);
+      hotwordRule = GooglePrivacyDlpV2HotwordRule.fromJson(
+          _json['hotwordRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11297,14 +11604,16 @@ class GooglePrivacyDlpV2InspectionRuleSet {
   GooglePrivacyDlpV2InspectionRuleSet.fromJson(core.Map _json) {
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2InfoType>(
-              (value) => GooglePrivacyDlpV2InfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoType>((value) =>
+              GooglePrivacyDlpV2InfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<GooglePrivacyDlpV2InspectionRule>(
-              (value) => GooglePrivacyDlpV2InspectionRule.fromJson(value))
+          .map<GooglePrivacyDlpV2InspectionRule>((value) =>
+              GooglePrivacyDlpV2InspectionRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11395,13 +11704,14 @@ class GooglePrivacyDlpV2JobTrigger {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<GooglePrivacyDlpV2Error>(
-              (value) => GooglePrivacyDlpV2Error.fromJson(value))
+          .map<GooglePrivacyDlpV2Error>((value) =>
+              GooglePrivacyDlpV2Error.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inspectJob')) {
-      inspectJob =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['inspectJob']);
+      inspectJob = GooglePrivacyDlpV2InspectJobConfig.fromJson(
+          _json['inspectJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastRunTime')) {
       lastRunTime = _json['lastRunTime'] as core.String;
@@ -11414,8 +11724,9 @@ class GooglePrivacyDlpV2JobTrigger {
     }
     if (_json.containsKey('triggers')) {
       triggers = (_json['triggers'] as core.List)
-          .map<GooglePrivacyDlpV2Trigger>(
-              (value) => GooglePrivacyDlpV2Trigger.fromJson(value))
+          .map<GooglePrivacyDlpV2Trigger>((value) =>
+              GooglePrivacyDlpV2Trigger.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {
@@ -11482,12 +11793,14 @@ class GooglePrivacyDlpV2KAnonymityConfig {
 
   GooglePrivacyDlpV2KAnonymityConfig.fromJson(core.Map _json) {
     if (_json.containsKey('entityId')) {
-      entityId = GooglePrivacyDlpV2EntityId.fromJson(_json['entityId']);
+      entityId = GooglePrivacyDlpV2EntityId.fromJson(
+          _json['entityId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11523,8 +11836,9 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClass {
     }
     if (_json.containsKey('quasiIdsValues')) {
       quasiIdsValues = (_json['quasiIdsValues'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11572,7 +11886,8 @@ class GooglePrivacyDlpV2KAnonymityHistogramBucket {
     if (_json.containsKey('bucketValues')) {
       bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2KAnonymityEquivalenceClass>((value) =>
-              GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(value))
+              GooglePrivacyDlpV2KAnonymityEquivalenceClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('equivalenceClassSizeLowerBound')) {
@@ -11620,7 +11935,8 @@ class GooglePrivacyDlpV2KAnonymityResult {
       equivalenceClassHistogramBuckets =
           (_json['equivalenceClassHistogramBuckets'] as core.List)
               .map<GooglePrivacyDlpV2KAnonymityHistogramBucket>((value) =>
-                  GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(value))
+                  GooglePrivacyDlpV2KAnonymityHistogramBucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -11663,14 +11979,16 @@ class GooglePrivacyDlpV2KMapEstimationConfig {
   GooglePrivacyDlpV2KMapEstimationConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auxiliaryTables')) {
       auxiliaryTables = (_json['auxiliaryTables'] as core.List)
-          .map<GooglePrivacyDlpV2AuxiliaryTable>(
-              (value) => GooglePrivacyDlpV2AuxiliaryTable.fromJson(value))
+          .map<GooglePrivacyDlpV2AuxiliaryTable>((value) =>
+              GooglePrivacyDlpV2AuxiliaryTable.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2TaggedField>(
-              (value) => GooglePrivacyDlpV2TaggedField.fromJson(value))
+          .map<GooglePrivacyDlpV2TaggedField>((value) =>
+              GooglePrivacyDlpV2TaggedField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('regionCode')) {
@@ -11729,7 +12047,8 @@ class GooglePrivacyDlpV2KMapEstimationHistogramBucket {
     if (_json.containsKey('bucketValues')) {
       bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>((value) =>
-              GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(value))
+              GooglePrivacyDlpV2KMapEstimationQuasiIdValues.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxAnonymity')) {
@@ -11778,8 +12097,9 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
     }
     if (_json.containsKey('quasiIdsValues')) {
       quasiIdsValues = (_json['quasiIdsValues'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11815,7 +12135,8 @@ class GooglePrivacyDlpV2KMapEstimationResult {
     if (_json.containsKey('kMapEstimationHistogram')) {
       kMapEstimationHistogram = (_json['kMapEstimationHistogram'] as core.List)
           .map<GooglePrivacyDlpV2KMapEstimationHistogramBucket>((value) =>
-              GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(value))
+              GooglePrivacyDlpV2KMapEstimationHistogramBucket.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11852,13 +12173,14 @@ class GooglePrivacyDlpV2Key {
 
   GooglePrivacyDlpV2Key.fromJson(core.Map _json) {
     if (_json.containsKey('partitionId')) {
-      partitionId =
-          GooglePrivacyDlpV2PartitionId.fromJson(_json['partitionId']);
+      partitionId = GooglePrivacyDlpV2PartitionId.fromJson(
+          _json['partitionId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('path')) {
       path = (_json['path'] as core.List)
-          .map<GooglePrivacyDlpV2PathElement>(
-              (value) => GooglePrivacyDlpV2PathElement.fromJson(value))
+          .map<GooglePrivacyDlpV2PathElement>((value) =>
+              GooglePrivacyDlpV2PathElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11953,13 +12275,14 @@ class GooglePrivacyDlpV2LDiversityConfig {
   GooglePrivacyDlpV2LDiversityConfig.fromJson(core.Map _json) {
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sensitiveAttribute')) {
-      sensitiveAttribute =
-          GooglePrivacyDlpV2FieldId.fromJson(_json['sensitiveAttribute']);
+      sensitiveAttribute = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['sensitiveAttribute'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12002,14 +12325,16 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClass {
     }
     if (_json.containsKey('quasiIdsValues')) {
       quasiIdsValues = (_json['quasiIdsValues'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('topSensitiveValues')) {
       topSensitiveValues = (_json['topSensitiveValues'] as core.List)
-          .map<GooglePrivacyDlpV2ValueFrequency>(
-              (value) => GooglePrivacyDlpV2ValueFrequency.fromJson(value))
+          .map<GooglePrivacyDlpV2ValueFrequency>((value) =>
+              GooglePrivacyDlpV2ValueFrequency.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12066,7 +12391,8 @@ class GooglePrivacyDlpV2LDiversityHistogramBucket {
     if (_json.containsKey('bucketValues')) {
       bucketValues = (_json['bucketValues'] as core.List)
           .map<GooglePrivacyDlpV2LDiversityEquivalenceClass>((value) =>
-              GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(value))
+              GooglePrivacyDlpV2LDiversityEquivalenceClass.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sensitiveValueFrequencyLowerBound')) {
@@ -12116,7 +12442,8 @@ class GooglePrivacyDlpV2LDiversityResult {
       sensitiveValueFrequencyHistogramBuckets =
           (_json['sensitiveValueFrequencyHistogramBuckets'] as core.List)
               .map<GooglePrivacyDlpV2LDiversityHistogramBucket>((value) =>
-                  GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(value))
+                  GooglePrivacyDlpV2LDiversityHistogramBucket.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -12156,16 +12483,16 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfig {
 
   GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bigQueryField')) {
-      bigQueryField =
-          GooglePrivacyDlpV2BigQueryField.fromJson(_json['bigQueryField']);
+      bigQueryField = GooglePrivacyDlpV2BigQueryField.fromJson(
+          _json['bigQueryField'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cloudStorageFileSet')) {
       cloudStorageFileSet = GooglePrivacyDlpV2CloudStorageFileSet.fromJson(
-          _json['cloudStorageFileSet']);
+          _json['cloudStorageFileSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputPath')) {
-      outputPath =
-          GooglePrivacyDlpV2CloudStoragePath.fromJson(_json['outputPath']);
+      outputPath = GooglePrivacyDlpV2CloudStoragePath.fromJson(
+          _json['outputPath'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12283,8 +12610,9 @@ class GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   GooglePrivacyDlpV2ListDeidentifyTemplatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deidentifyTemplates')) {
       deidentifyTemplates = (_json['deidentifyTemplates'] as core.List)
-          .map<GooglePrivacyDlpV2DeidentifyTemplate>(
-              (value) => GooglePrivacyDlpV2DeidentifyTemplate.fromJson(value))
+          .map<GooglePrivacyDlpV2DeidentifyTemplate>((value) =>
+              GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -12318,8 +12646,9 @@ class GooglePrivacyDlpV2ListDlpJobsResponse {
   GooglePrivacyDlpV2ListDlpJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('jobs')) {
       jobs = (_json['jobs'] as core.List)
-          .map<GooglePrivacyDlpV2DlpJob>(
-              (value) => GooglePrivacyDlpV2DlpJob.fromJson(value))
+          .map<GooglePrivacyDlpV2DlpJob>((value) =>
+              GooglePrivacyDlpV2DlpJob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -12349,8 +12678,9 @@ class GooglePrivacyDlpV2ListInfoTypesResponse {
   GooglePrivacyDlpV2ListInfoTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2InfoTypeDescription>(
-              (value) => GooglePrivacyDlpV2InfoTypeDescription.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoTypeDescription>((value) =>
+              GooglePrivacyDlpV2InfoTypeDescription.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12378,8 +12708,9 @@ class GooglePrivacyDlpV2ListInspectTemplatesResponse {
   GooglePrivacyDlpV2ListInspectTemplatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('inspectTemplates')) {
       inspectTemplates = (_json['inspectTemplates'] as core.List)
-          .map<GooglePrivacyDlpV2InspectTemplate>(
-              (value) => GooglePrivacyDlpV2InspectTemplate.fromJson(value))
+          .map<GooglePrivacyDlpV2InspectTemplate>((value) =>
+              GooglePrivacyDlpV2InspectTemplate.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -12414,8 +12745,9 @@ class GooglePrivacyDlpV2ListJobTriggersResponse {
   GooglePrivacyDlpV2ListJobTriggersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('jobTriggers')) {
       jobTriggers = (_json['jobTriggers'] as core.List)
-          .map<GooglePrivacyDlpV2JobTrigger>(
-              (value) => GooglePrivacyDlpV2JobTrigger.fromJson(value))
+          .map<GooglePrivacyDlpV2JobTrigger>((value) =>
+              GooglePrivacyDlpV2JobTrigger.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -12453,8 +12785,9 @@ class GooglePrivacyDlpV2ListStoredInfoTypesResponse {
     }
     if (_json.containsKey('storedInfoTypes')) {
       storedInfoTypes = (_json['storedInfoTypes'] as core.List)
-          .map<GooglePrivacyDlpV2StoredInfoType>(
-              (value) => GooglePrivacyDlpV2StoredInfoType.fromJson(value))
+          .map<GooglePrivacyDlpV2StoredInfoType>((value) =>
+              GooglePrivacyDlpV2StoredInfoType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12495,19 +12828,22 @@ class GooglePrivacyDlpV2Location {
 
   GooglePrivacyDlpV2Location.fromJson(core.Map _json) {
     if (_json.containsKey('byteRange')) {
-      byteRange = GooglePrivacyDlpV2Range.fromJson(_json['byteRange']);
+      byteRange = GooglePrivacyDlpV2Range.fromJson(
+          _json['byteRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('codepointRange')) {
-      codepointRange =
-          GooglePrivacyDlpV2Range.fromJson(_json['codepointRange']);
+      codepointRange = GooglePrivacyDlpV2Range.fromJson(
+          _json['codepointRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('container')) {
-      container = GooglePrivacyDlpV2Container.fromJson(_json['container']);
+      container = GooglePrivacyDlpV2Container.fromJson(
+          _json['container'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentLocations')) {
       contentLocations = (_json['contentLocations'] as core.List)
-          .map<GooglePrivacyDlpV2ContentLocation>(
-              (value) => GooglePrivacyDlpV2ContentLocation.fromJson(value))
+          .map<GooglePrivacyDlpV2ContentLocation>((value) =>
+              GooglePrivacyDlpV2ContentLocation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12562,7 +12898,7 @@ class GooglePrivacyDlpV2MetadataLocation {
   GooglePrivacyDlpV2MetadataLocation.fromJson(core.Map _json) {
     if (_json.containsKey('storageLabel')) {
       storageLabel = GooglePrivacyDlpV2StorageMetadataLabel.fromJson(
-          _json['storageLabel']);
+          _json['storageLabel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -12592,7 +12928,8 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
 
   GooglePrivacyDlpV2NumericalStatsConfig.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12621,15 +12958,18 @@ class GooglePrivacyDlpV2NumericalStatsResult {
 
   GooglePrivacyDlpV2NumericalStatsResult.fromJson(core.Map _json) {
     if (_json.containsKey('maxValue')) {
-      maxValue = GooglePrivacyDlpV2Value.fromJson(_json['maxValue']);
+      maxValue = GooglePrivacyDlpV2Value.fromJson(
+          _json['maxValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minValue')) {
-      minValue = GooglePrivacyDlpV2Value.fromJson(_json['minValue']);
+      minValue = GooglePrivacyDlpV2Value.fromJson(
+          _json['minValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantileValues')) {
       quantileValues = (_json['quantileValues'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12693,7 +13033,8 @@ class GooglePrivacyDlpV2OutputStorageConfig {
       outputSchema = _json['outputSchema'] as core.String;
     }
     if (_json.containsKey('table')) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['table'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12828,52 +13169,56 @@ class GooglePrivacyDlpV2PrimitiveTransformation {
 
   GooglePrivacyDlpV2PrimitiveTransformation.fromJson(core.Map _json) {
     if (_json.containsKey('bucketingConfig')) {
-      bucketingConfig =
-          GooglePrivacyDlpV2BucketingConfig.fromJson(_json['bucketingConfig']);
+      bucketingConfig = GooglePrivacyDlpV2BucketingConfig.fromJson(
+          _json['bucketingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('characterMaskConfig')) {
       characterMaskConfig = GooglePrivacyDlpV2CharacterMaskConfig.fromJson(
-          _json['characterMaskConfig']);
+          _json['characterMaskConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoDeterministicConfig')) {
       cryptoDeterministicConfig =
           GooglePrivacyDlpV2CryptoDeterministicConfig.fromJson(
-              _json['cryptoDeterministicConfig']);
+              _json['cryptoDeterministicConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoHashConfig')) {
       cryptoHashConfig = GooglePrivacyDlpV2CryptoHashConfig.fromJson(
-          _json['cryptoHashConfig']);
+          _json['cryptoHashConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoReplaceFfxFpeConfig')) {
       cryptoReplaceFfxFpeConfig =
           GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig.fromJson(
-              _json['cryptoReplaceFfxFpeConfig']);
+              _json['cryptoReplaceFfxFpeConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dateShiftConfig')) {
-      dateShiftConfig =
-          GooglePrivacyDlpV2DateShiftConfig.fromJson(_json['dateShiftConfig']);
+      dateShiftConfig = GooglePrivacyDlpV2DateShiftConfig.fromJson(
+          _json['dateShiftConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fixedSizeBucketingConfig')) {
       fixedSizeBucketingConfig =
           GooglePrivacyDlpV2FixedSizeBucketingConfig.fromJson(
-              _json['fixedSizeBucketingConfig']);
+              _json['fixedSizeBucketingConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('redactConfig')) {
-      redactConfig =
-          GooglePrivacyDlpV2RedactConfig.fromJson(_json['redactConfig']);
+      redactConfig = GooglePrivacyDlpV2RedactConfig.fromJson(
+          _json['redactConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceConfig')) {
-      replaceConfig =
-          GooglePrivacyDlpV2ReplaceValueConfig.fromJson(_json['replaceConfig']);
+      replaceConfig = GooglePrivacyDlpV2ReplaceValueConfig.fromJson(
+          _json['replaceConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceWithInfoTypeConfig')) {
       replaceWithInfoTypeConfig =
           GooglePrivacyDlpV2ReplaceWithInfoTypeConfig.fromJson(
-              _json['replaceWithInfoTypeConfig']);
+              _json['replaceWithInfoTypeConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timePartConfig')) {
-      timePartConfig =
-          GooglePrivacyDlpV2TimePartConfig.fromJson(_json['timePartConfig']);
+      timePartConfig = GooglePrivacyDlpV2TimePartConfig.fromJson(
+          _json['timePartConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12942,28 +13287,30 @@ class GooglePrivacyDlpV2PrivacyMetric {
     if (_json.containsKey('categoricalStatsConfig')) {
       categoricalStatsConfig =
           GooglePrivacyDlpV2CategoricalStatsConfig.fromJson(
-              _json['categoricalStatsConfig']);
+              _json['categoricalStatsConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deltaPresenceEstimationConfig')) {
       deltaPresenceEstimationConfig =
           GooglePrivacyDlpV2DeltaPresenceEstimationConfig.fromJson(
-              _json['deltaPresenceEstimationConfig']);
+              _json['deltaPresenceEstimationConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kAnonymityConfig')) {
       kAnonymityConfig = GooglePrivacyDlpV2KAnonymityConfig.fromJson(
-          _json['kAnonymityConfig']);
+          _json['kAnonymityConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kMapEstimationConfig')) {
       kMapEstimationConfig = GooglePrivacyDlpV2KMapEstimationConfig.fromJson(
-          _json['kMapEstimationConfig']);
+          _json['kMapEstimationConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lDiversityConfig')) {
       lDiversityConfig = GooglePrivacyDlpV2LDiversityConfig.fromJson(
-          _json['lDiversityConfig']);
+          _json['lDiversityConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('numericalStatsConfig')) {
       numericalStatsConfig = GooglePrivacyDlpV2NumericalStatsConfig.fromJson(
-          _json['numericalStatsConfig']);
+          _json['numericalStatsConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13140,13 +13487,16 @@ class GooglePrivacyDlpV2QuasiId {
       customTag = _json['customTag'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inferred')) {
-      inferred = GoogleProtobufEmpty.fromJson(_json['inferred']);
+      inferred = GoogleProtobufEmpty.fromJson(
+          _json['inferred'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13184,7 +13534,8 @@ class GooglePrivacyDlpV2QuasiIdField {
       customTag = _json['customTag'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13218,7 +13569,8 @@ class GooglePrivacyDlpV2QuasiIdentifierField {
       customTag = _json['customTag'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13243,7 +13595,8 @@ class GooglePrivacyDlpV2QuoteInfo {
 
   GooglePrivacyDlpV2QuoteInfo.fromJson(core.Map _json) {
     if (_json.containsKey('dateTime')) {
-      dateTime = GooglePrivacyDlpV2DateTime.fromJson(_json['dateTime']);
+      dateTime = GooglePrivacyDlpV2DateTime.fromJson(
+          _json['dateTime'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13297,8 +13650,8 @@ class GooglePrivacyDlpV2RecordCondition {
 
   GooglePrivacyDlpV2RecordCondition.fromJson(core.Map _json) {
     if (_json.containsKey('expressions')) {
-      expressions =
-          GooglePrivacyDlpV2Expressions.fromJson(_json['expressions']);
+      expressions = GooglePrivacyDlpV2Expressions.fromJson(
+          _json['expressions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13324,12 +13677,12 @@ class GooglePrivacyDlpV2RecordKey {
 
   GooglePrivacyDlpV2RecordKey.fromJson(core.Map _json) {
     if (_json.containsKey('bigQueryKey')) {
-      bigQueryKey =
-          GooglePrivacyDlpV2BigQueryKey.fromJson(_json['bigQueryKey']);
+      bigQueryKey = GooglePrivacyDlpV2BigQueryKey.fromJson(
+          _json['bigQueryKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('datastoreKey')) {
-      datastoreKey =
-          GooglePrivacyDlpV2DatastoreKey.fromJson(_json['datastoreKey']);
+      datastoreKey = GooglePrivacyDlpV2DatastoreKey.fromJson(
+          _json['datastoreKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('idValues')) {
       idValues = (_json['idValues'] as core.List)
@@ -13368,14 +13721,16 @@ class GooglePrivacyDlpV2RecordLocation {
 
   GooglePrivacyDlpV2RecordLocation.fromJson(core.Map _json) {
     if (_json.containsKey('fieldId')) {
-      fieldId = GooglePrivacyDlpV2FieldId.fromJson(_json['fieldId']);
+      fieldId = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['fieldId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recordKey')) {
-      recordKey = GooglePrivacyDlpV2RecordKey.fromJson(_json['recordKey']);
+      recordKey = GooglePrivacyDlpV2RecordKey.fromJson(
+          _json['recordKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableLocation')) {
-      tableLocation =
-          GooglePrivacyDlpV2TableLocation.fromJson(_json['tableLocation']);
+      tableLocation = GooglePrivacyDlpV2TableLocation.fromJson(
+          _json['tableLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13405,8 +13760,8 @@ class GooglePrivacyDlpV2RecordSuppression {
 
   GooglePrivacyDlpV2RecordSuppression.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition =
-          GooglePrivacyDlpV2RecordCondition.fromJson(_json['condition']);
+      condition = GooglePrivacyDlpV2RecordCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13434,14 +13789,16 @@ class GooglePrivacyDlpV2RecordTransformations {
   GooglePrivacyDlpV2RecordTransformations.fromJson(core.Map _json) {
     if (_json.containsKey('fieldTransformations')) {
       fieldTransformations = (_json['fieldTransformations'] as core.List)
-          .map<GooglePrivacyDlpV2FieldTransformation>(
-              (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldTransformation>((value) =>
+              GooglePrivacyDlpV2FieldTransformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('recordSuppressions')) {
       recordSuppressions = (_json['recordSuppressions'] as core.List)
-          .map<GooglePrivacyDlpV2RecordSuppression>(
-              (value) => GooglePrivacyDlpV2RecordSuppression.fromJson(value))
+          .map<GooglePrivacyDlpV2RecordSuppression>((value) =>
+              GooglePrivacyDlpV2RecordSuppression.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13499,20 +13856,22 @@ class GooglePrivacyDlpV2RedactImageRequest {
 
   GooglePrivacyDlpV2RedactImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('byteItem')) {
-      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(_json['byteItem']);
+      byteItem = GooglePrivacyDlpV2ByteContentItem.fromJson(
+          _json['byteItem'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageRedactionConfigs')) {
       imageRedactionConfigs = (_json['imageRedactionConfigs'] as core.List)
-          .map<GooglePrivacyDlpV2ImageRedactionConfig>(
-              (value) => GooglePrivacyDlpV2ImageRedactionConfig.fromJson(value))
+          .map<GooglePrivacyDlpV2ImageRedactionConfig>((value) =>
+              GooglePrivacyDlpV2ImageRedactionConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('includeFindings')) {
       includeFindings = _json['includeFindings'] as core.bool;
     }
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
@@ -13568,8 +13927,8 @@ class GooglePrivacyDlpV2RedactImageResponse {
       extractedText = _json['extractedText'] as core.String;
     }
     if (_json.containsKey('inspectResult')) {
-      inspectResult =
-          GooglePrivacyDlpV2InspectResult.fromJson(_json['inspectResult']);
+      inspectResult = GooglePrivacyDlpV2InspectResult.fromJson(
+          _json['inspectResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('redactedImage')) {
       redactedImage = _json['redactedImage'] as core.String;
@@ -13668,21 +14027,22 @@ class GooglePrivacyDlpV2ReidentifyContentRequest {
 
   GooglePrivacyDlpV2ReidentifyContentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inspectConfig')) {
-      inspectConfig =
-          GooglePrivacyDlpV2InspectConfig.fromJson(_json['inspectConfig']);
+      inspectConfig = GooglePrivacyDlpV2InspectConfig.fromJson(
+          _json['inspectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inspectTemplateName')) {
       inspectTemplateName = _json['inspectTemplateName'] as core.String;
     }
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('reidentifyConfig')) {
       reidentifyConfig = GooglePrivacyDlpV2DeidentifyConfig.fromJson(
-          _json['reidentifyConfig']);
+          _json['reidentifyConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reidentifyTemplateName')) {
       reidentifyTemplateName = _json['reidentifyTemplateName'] as core.String;
@@ -13725,11 +14085,12 @@ class GooglePrivacyDlpV2ReidentifyContentResponse {
 
   GooglePrivacyDlpV2ReidentifyContentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('item')) {
-      item = GooglePrivacyDlpV2ContentItem.fromJson(_json['item']);
+      item = GooglePrivacyDlpV2ContentItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('overview')) {
-      overview =
-          GooglePrivacyDlpV2TransformationOverview.fromJson(_json['overview']);
+      overview = GooglePrivacyDlpV2TransformationOverview.fromJson(
+          _json['overview'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13754,7 +14115,8 @@ class GooglePrivacyDlpV2ReplaceValueConfig {
 
   GooglePrivacyDlpV2ReplaceValueConfig.fromJson(core.Map _json) {
     if (_json.containsKey('newValue')) {
-      newValue = GooglePrivacyDlpV2Value.fromJson(_json['newValue']);
+      newValue = GooglePrivacyDlpV2Value.fromJson(
+          _json['newValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13794,12 +14156,13 @@ class GooglePrivacyDlpV2RequestedOptions {
 
   GooglePrivacyDlpV2RequestedOptions.fromJson(core.Map _json) {
     if (_json.containsKey('jobConfig')) {
-      jobConfig =
-          GooglePrivacyDlpV2InspectJobConfig.fromJson(_json['jobConfig']);
+      jobConfig = GooglePrivacyDlpV2InspectJobConfig.fromJson(
+          _json['jobConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('snapshotInspectTemplate')) {
       snapshotInspectTemplate = GooglePrivacyDlpV2InspectTemplate.fromJson(
-          _json['snapshotInspectTemplate']);
+          _json['snapshotInspectTemplate']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13824,8 +14187,8 @@ class GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
 
   GooglePrivacyDlpV2RequestedRiskAnalysisOptions.fromJson(core.Map _json) {
     if (_json.containsKey('jobConfig')) {
-      jobConfig =
-          GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(_json['jobConfig']);
+      jobConfig = GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(
+          _json['jobConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13861,12 +14224,13 @@ class GooglePrivacyDlpV2Result {
   GooglePrivacyDlpV2Result.fromJson(core.Map _json) {
     if (_json.containsKey('hybridStats')) {
       hybridStats = GooglePrivacyDlpV2HybridInspectStatistics.fromJson(
-          _json['hybridStats']);
+          _json['hybridStats'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('infoTypeStats')) {
       infoTypeStats = (_json['infoTypeStats'] as core.List)
-          .map<GooglePrivacyDlpV2InfoTypeStats>(
-              (value) => GooglePrivacyDlpV2InfoTypeStats.fromJson(value))
+          .map<GooglePrivacyDlpV2InfoTypeStats>((value) =>
+              GooglePrivacyDlpV2InfoTypeStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('processedBytes')) {
@@ -13914,17 +14278,18 @@ class GooglePrivacyDlpV2RiskAnalysisJobConfig {
   GooglePrivacyDlpV2RiskAnalysisJobConfig.fromJson(core.Map _json) {
     if (_json.containsKey('actions')) {
       actions = (_json['actions'] as core.List)
-          .map<GooglePrivacyDlpV2Action>(
-              (value) => GooglePrivacyDlpV2Action.fromJson(value))
+          .map<GooglePrivacyDlpV2Action>((value) =>
+              GooglePrivacyDlpV2Action.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('privacyMetric')) {
-      privacyMetric =
-          GooglePrivacyDlpV2PrivacyMetric.fromJson(_json['privacyMetric']);
+      privacyMetric = GooglePrivacyDlpV2PrivacyMetric.fromJson(
+          _json['privacyMetric'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceTable')) {
-      sourceTable =
-          GooglePrivacyDlpV2BigQueryTable.fromJson(_json['sourceTable']);
+      sourceTable = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['sourceTable'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13953,8 +14318,9 @@ class GooglePrivacyDlpV2Row {
   GooglePrivacyDlpV2Row.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<GooglePrivacyDlpV2Value>(
-              (value) => GooglePrivacyDlpV2Value.fromJson(value))
+          .map<GooglePrivacyDlpV2Value>((value) =>
+              GooglePrivacyDlpV2Value.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13979,8 +14345,8 @@ class GooglePrivacyDlpV2SaveFindings {
 
   GooglePrivacyDlpV2SaveFindings.fromJson(core.Map _json) {
     if (_json.containsKey('outputConfig')) {
-      outputConfig =
-          GooglePrivacyDlpV2OutputStorageConfig.fromJson(_json['outputConfig']);
+      outputConfig = GooglePrivacyDlpV2OutputStorageConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14042,16 +14408,18 @@ class GooglePrivacyDlpV2StatisticalTable {
   GooglePrivacyDlpV2StatisticalTable.fromJson(core.Map _json) {
     if (_json.containsKey('quasiIds')) {
       quasiIds = (_json['quasiIds'] as core.List)
-          .map<GooglePrivacyDlpV2QuasiIdentifierField>(
-              (value) => GooglePrivacyDlpV2QuasiIdentifierField.fromJson(value))
+          .map<GooglePrivacyDlpV2QuasiIdentifierField>((value) =>
+              GooglePrivacyDlpV2QuasiIdentifierField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('relativeFrequency')) {
-      relativeFrequency =
-          GooglePrivacyDlpV2FieldId.fromJson(_json['relativeFrequency']);
+      relativeFrequency = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['relativeFrequency'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('table')) {
-      table = GooglePrivacyDlpV2BigQueryTable.fromJson(_json['table']);
+      table = GooglePrivacyDlpV2BigQueryTable.fromJson(
+          _json['table'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14091,24 +14459,24 @@ class GooglePrivacyDlpV2StorageConfig {
 
   GooglePrivacyDlpV2StorageConfig.fromJson(core.Map _json) {
     if (_json.containsKey('bigQueryOptions')) {
-      bigQueryOptions =
-          GooglePrivacyDlpV2BigQueryOptions.fromJson(_json['bigQueryOptions']);
+      bigQueryOptions = GooglePrivacyDlpV2BigQueryOptions.fromJson(
+          _json['bigQueryOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cloudStorageOptions')) {
       cloudStorageOptions = GooglePrivacyDlpV2CloudStorageOptions.fromJson(
-          _json['cloudStorageOptions']);
+          _json['cloudStorageOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('datastoreOptions')) {
       datastoreOptions = GooglePrivacyDlpV2DatastoreOptions.fromJson(
-          _json['datastoreOptions']);
+          _json['datastoreOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hybridOptions')) {
-      hybridOptions =
-          GooglePrivacyDlpV2HybridOptions.fromJson(_json['hybridOptions']);
+      hybridOptions = GooglePrivacyDlpV2HybridOptions.fromJson(
+          _json['hybridOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timespanConfig')) {
-      timespanConfig =
-          GooglePrivacyDlpV2TimespanConfig.fromJson(_json['timespanConfig']);
+      timespanConfig = GooglePrivacyDlpV2TimespanConfig.fromJson(
+          _json['timespanConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14172,7 +14540,7 @@ class GooglePrivacyDlpV2StoredInfoType {
   GooglePrivacyDlpV2StoredInfoType.fromJson(core.Map _json) {
     if (_json.containsKey('currentVersion')) {
       currentVersion = GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
-          _json['currentVersion']);
+          _json['currentVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -14180,7 +14548,8 @@ class GooglePrivacyDlpV2StoredInfoType {
     if (_json.containsKey('pendingVersions')) {
       pendingVersions = (_json['pendingVersions'] as core.List)
           .map<GooglePrivacyDlpV2StoredInfoTypeVersion>((value) =>
-              GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(value))
+              GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14227,7 +14596,8 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('dictionary')) {
-      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(_json['dictionary']);
+      dictionary = GooglePrivacyDlpV2Dictionary.fromJson(
+          _json['dictionary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
@@ -14235,10 +14605,12 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
     if (_json.containsKey('largeCustomDictionary')) {
       largeCustomDictionary =
           GooglePrivacyDlpV2LargeCustomDictionaryConfig.fromJson(
-              _json['largeCustomDictionary']);
+              _json['largeCustomDictionary']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('regex')) {
-      regex = GooglePrivacyDlpV2Regex.fromJson(_json['regex']);
+      regex = GooglePrivacyDlpV2Regex.fromJson(
+          _json['regex'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14274,7 +14646,8 @@ class GooglePrivacyDlpV2StoredInfoTypeStats {
     if (_json.containsKey('largeCustomDictionary')) {
       largeCustomDictionary =
           GooglePrivacyDlpV2LargeCustomDictionaryStats.fromJson(
-              _json['largeCustomDictionary']);
+              _json['largeCustomDictionary']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14330,22 +14703,25 @@ class GooglePrivacyDlpV2StoredInfoTypeVersion {
 
   GooglePrivacyDlpV2StoredInfoTypeVersion.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<GooglePrivacyDlpV2Error>(
-              (value) => GooglePrivacyDlpV2Error.fromJson(value))
+          .map<GooglePrivacyDlpV2Error>((value) =>
+              GooglePrivacyDlpV2Error.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('stats')) {
-      stats = GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(_json['stats']);
+      stats = GooglePrivacyDlpV2StoredInfoTypeStats.fromJson(
+          _json['stats'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14485,14 +14861,15 @@ class GooglePrivacyDlpV2Table {
   GooglePrivacyDlpV2Table.fromJson(core.Map _json) {
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<GooglePrivacyDlpV2Row>(
-              (value) => GooglePrivacyDlpV2Row.fromJson(value))
+          .map<GooglePrivacyDlpV2Row>((value) => GooglePrivacyDlpV2Row.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14549,8 +14926,9 @@ class GooglePrivacyDlpV2TableOptions {
   GooglePrivacyDlpV2TableOptions.fromJson(core.Map _json) {
     if (_json.containsKey('identifyingFields')) {
       identifyingFields = (_json['identifyingFields'] as core.List)
-          .map<GooglePrivacyDlpV2FieldId>(
-              (value) => GooglePrivacyDlpV2FieldId.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldId>((value) =>
+              GooglePrivacyDlpV2FieldId.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14593,13 +14971,16 @@ class GooglePrivacyDlpV2TaggedField {
       customTag = _json['customTag'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inferred')) {
-      inferred = GoogleProtobufEmpty.fromJson(_json['inferred']);
+      inferred = GoogleProtobufEmpty.fromJson(
+          _json['inferred'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14730,8 +15111,8 @@ class GooglePrivacyDlpV2TimespanConfig {
       startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('timestampField')) {
-      timestampField =
-          GooglePrivacyDlpV2FieldId.fromJson(_json['timestampField']);
+      timestampField = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['timestampField'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14773,10 +15154,11 @@ class GooglePrivacyDlpV2TransformationErrorHandling {
   GooglePrivacyDlpV2TransformationErrorHandling.fromJson(core.Map _json) {
     if (_json.containsKey('leaveUntransformed')) {
       leaveUntransformed = GooglePrivacyDlpV2LeaveUntransformed.fromJson(
-          _json['leaveUntransformed']);
+          _json['leaveUntransformed'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('throwError')) {
-      throwError = GooglePrivacyDlpV2ThrowError.fromJson(_json['throwError']);
+      throwError = GooglePrivacyDlpV2ThrowError.fromJson(
+          _json['throwError'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14806,7 +15188,8 @@ class GooglePrivacyDlpV2TransformationOverview {
     if (_json.containsKey('transformationSummaries')) {
       transformationSummaries = (_json['transformationSummaries'] as core.List)
           .map<GooglePrivacyDlpV2TransformationSummary>((value) =>
-              GooglePrivacyDlpV2TransformationSummary.fromJson(value))
+              GooglePrivacyDlpV2TransformationSummary.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('transformedBytes')) {
@@ -14857,30 +15240,34 @@ class GooglePrivacyDlpV2TransformationSummary {
 
   GooglePrivacyDlpV2TransformationSummary.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = GooglePrivacyDlpV2FieldId.fromJson(_json['field']);
+      field = GooglePrivacyDlpV2FieldId.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fieldTransformations')) {
       fieldTransformations = (_json['fieldTransformations'] as core.List)
-          .map<GooglePrivacyDlpV2FieldTransformation>(
-              (value) => GooglePrivacyDlpV2FieldTransformation.fromJson(value))
+          .map<GooglePrivacyDlpV2FieldTransformation>((value) =>
+              GooglePrivacyDlpV2FieldTransformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('infoType')) {
-      infoType = GooglePrivacyDlpV2InfoType.fromJson(_json['infoType']);
+      infoType = GooglePrivacyDlpV2InfoType.fromJson(
+          _json['infoType'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recordSuppress')) {
-      recordSuppress =
-          GooglePrivacyDlpV2RecordSuppression.fromJson(_json['recordSuppress']);
+      recordSuppress = GooglePrivacyDlpV2RecordSuppression.fromJson(
+          _json['recordSuppress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<GooglePrivacyDlpV2SummaryResult>(
-              (value) => GooglePrivacyDlpV2SummaryResult.fromJson(value))
+          .map<GooglePrivacyDlpV2SummaryResult>((value) =>
+              GooglePrivacyDlpV2SummaryResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('transformation')) {
       transformation = GooglePrivacyDlpV2PrimitiveTransformation.fromJson(
-          _json['transformation']);
+          _json['transformation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transformedBytes')) {
       transformedBytes = _json['transformedBytes'] as core.String;
@@ -14958,10 +15345,12 @@ class GooglePrivacyDlpV2Trigger {
 
   GooglePrivacyDlpV2Trigger.fromJson(core.Map _json) {
     if (_json.containsKey('manual')) {
-      manual = GooglePrivacyDlpV2Manual.fromJson(_json['manual']);
+      manual = GooglePrivacyDlpV2Manual.fromJson(
+          _json['manual'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('schedule')) {
-      schedule = GooglePrivacyDlpV2Schedule.fromJson(_json['schedule']);
+      schedule = GooglePrivacyDlpV2Schedule.fromJson(
+          _json['schedule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15019,7 +15408,7 @@ class GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deidentifyTemplate')) {
       deidentifyTemplate = GooglePrivacyDlpV2DeidentifyTemplate.fromJson(
-          _json['deidentifyTemplate']);
+          _json['deidentifyTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -15050,8 +15439,8 @@ class GooglePrivacyDlpV2UpdateInspectTemplateRequest {
 
   GooglePrivacyDlpV2UpdateInspectTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('inspectTemplate')) {
-      inspectTemplate =
-          GooglePrivacyDlpV2InspectTemplate.fromJson(_json['inspectTemplate']);
+      inspectTemplate = GooglePrivacyDlpV2InspectTemplate.fromJson(
+          _json['inspectTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -15082,7 +15471,8 @@ class GooglePrivacyDlpV2UpdateJobTriggerRequest {
 
   GooglePrivacyDlpV2UpdateJobTriggerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('jobTrigger')) {
-      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(_json['jobTrigger']);
+      jobTrigger = GooglePrivacyDlpV2JobTrigger.fromJson(
+          _json['jobTrigger'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -15115,7 +15505,8 @@ class GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
 
   GooglePrivacyDlpV2UpdateStoredInfoTypeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(_json['config']);
+      config = GooglePrivacyDlpV2StoredInfoTypeConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -15180,7 +15571,8 @@ class GooglePrivacyDlpV2Value {
       booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('dateValue')) {
-      dateValue = GoogleTypeDate.fromJson(_json['dateValue']);
+      dateValue = GoogleTypeDate.fromJson(
+          _json['dateValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dayOfWeekValue')) {
       dayOfWeekValue = _json['dayOfWeekValue'] as core.String;
@@ -15195,7 +15587,8 @@ class GooglePrivacyDlpV2Value {
       stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('timeValue')) {
-      timeValue = GoogleTypeTimeOfDay.fromJson(_json['timeValue']);
+      timeValue = GoogleTypeTimeOfDay.fromJson(
+          _json['timeValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestampValue')) {
       timestampValue = _json['timestampValue'] as core.String;
@@ -15247,7 +15640,8 @@ class GooglePrivacyDlpV2ValueFrequency {
       count = _json['count'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = GooglePrivacyDlpV2Value.fromJson(_json['value']);
+      value = GooglePrivacyDlpV2Value.fromJson(
+          _json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15339,7 +15733,8 @@ class GoogleRpcStatus {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

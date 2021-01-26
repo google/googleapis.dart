@@ -119,7 +119,10 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BillingAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information about a billing account. The current authenticated user
@@ -171,7 +174,10 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BillingAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a billing account. The caller must have
@@ -241,7 +247,9 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the billing accounts that the current authenticated user has
@@ -312,7 +320,10 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBillingAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBillingAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a billing account's fields. Currently the only field that can be
@@ -378,7 +389,10 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BillingAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          BillingAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy for a billing account. Replaces any
@@ -440,7 +454,9 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests the access control policy for a billing account. This method takes
@@ -501,7 +517,10 @@ class BillingAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -578,8 +597,10 @@ class BillingAccountsProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListProjectBillingInfoResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProjectBillingInfoResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -639,7 +660,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProjectBillingInfo.fromJson(data));
+    return _response.then(
+      (data) => ProjectBillingInfo.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets or updates the billing account associated with a project. You specify
@@ -721,7 +745,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProjectBillingInfo.fromJson(data));
+    return _response.then(
+      (data) => ProjectBillingInfo.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -785,7 +812,10 @@ class ServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -885,7 +915,10 @@ class ServicesSkusResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSkusResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSkusResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -968,7 +1001,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -1143,7 +1177,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1346,7 +1381,8 @@ class ListBillingAccountsResponse {
   ListBillingAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('billingAccounts')) {
       billingAccounts = (_json['billingAccounts'] as core.List)
-          .map<BillingAccount>((value) => BillingAccount.fromJson(value))
+          .map<BillingAccount>((value) => BillingAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1386,8 +1422,8 @@ class ListProjectBillingInfoResponse {
     }
     if (_json.containsKey('projectBillingInfo')) {
       projectBillingInfo = (_json['projectBillingInfo'] as core.List)
-          .map<ProjectBillingInfo>(
-              (value) => ProjectBillingInfo.fromJson(value))
+          .map<ProjectBillingInfo>((value) => ProjectBillingInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1423,7 +1459,8 @@ class ListServicesResponse {
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
-          .map<Service>((value) => Service.fromJson(value))
+          .map<Service>((value) =>
+              Service.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1458,7 +1495,8 @@ class ListSkusResponse {
     }
     if (_json.containsKey('skus')) {
       skus = (_json['skus'] as core.List)
-          .map<Sku>((value) => Sku.fromJson(value))
+          .map<Sku>((value) =>
+              Sku.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1600,12 +1638,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1694,7 +1734,8 @@ class PricingExpression {
     }
     if (_json.containsKey('tieredRates')) {
       tieredRates = (_json['tieredRates'] as core.List)
-          .map<TierRate>((value) => TierRate.fromJson(value))
+          .map<TierRate>((value) =>
+              TierRate.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('usageUnit')) {
@@ -1764,7 +1805,8 @@ class PricingInfo {
 
   PricingInfo.fromJson(core.Map _json) {
     if (_json.containsKey('aggregationInfo')) {
-      aggregationInfo = AggregationInfo.fromJson(_json['aggregationInfo']);
+      aggregationInfo = AggregationInfo.fromJson(
+          _json['aggregationInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('currencyConversionRate')) {
       currencyConversionRate =
@@ -1774,8 +1816,8 @@ class PricingInfo {
       effectiveTime = _json['effectiveTime'] as core.String;
     }
     if (_json.containsKey('pricingExpression')) {
-      pricingExpression =
-          PricingExpression.fromJson(_json['pricingExpression']);
+      pricingExpression = PricingExpression.fromJson(
+          _json['pricingExpression'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('summary')) {
       summary = _json['summary'] as core.String;
@@ -1930,7 +1972,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -1983,20 +2026,23 @@ class Sku {
 
   Sku.fromJson(core.Map _json) {
     if (_json.containsKey('category')) {
-      category = Category.fromJson(_json['category']);
+      category = Category.fromJson(
+          _json['category'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('geoTaxonomy')) {
-      geoTaxonomy = GeoTaxonomy.fromJson(_json['geoTaxonomy']);
+      geoTaxonomy = GeoTaxonomy.fromJson(
+          _json['geoTaxonomy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pricingInfo')) {
       pricingInfo = (_json['pricingInfo'] as core.List)
-          .map<PricingInfo>((value) => PricingInfo.fromJson(value))
+          .map<PricingInfo>((value) => PricingInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serviceProviderName')) {
@@ -2113,7 +2159,8 @@ class TierRate {
       startUsageAmount = (_json['startUsageAmount'] as core.num).toDouble();
     }
     if (_json.containsKey('unitPrice')) {
-      unitPrice = Money.fromJson(_json['unitPrice']);
+      unitPrice = Money.fromJson(
+          _json['unitPrice'] as core.Map<core.String, core.dynamic>);
     }
   }
 

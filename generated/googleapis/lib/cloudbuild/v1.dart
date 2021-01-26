@@ -113,7 +113,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -164,7 +166,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -246,7 +250,9 @@ class ProjectsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Build.fromJson(data));
+    return _response.then(
+      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts a build with the specified configuration. This method returns a
@@ -312,7 +318,9 @@ class ProjectsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a previously requested build. The `Build` that
@@ -378,7 +386,9 @@ class ProjectsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Build.fromJson(data));
+    return _response.then(
+      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists previously requested builds. Previously requested builds may still
@@ -454,7 +464,10 @@ class ProjectsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBuildsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBuildsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new build based on the specified build. This method creates a
@@ -533,7 +546,9 @@ class ProjectsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -608,7 +623,9 @@ class ProjectsLocationsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Build.fromJson(data));
+    return _response.then(
+      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts a build with the specified configuration. This method returns a
@@ -673,7 +690,9 @@ class ProjectsLocationsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a previously requested build. The `Build` that
@@ -737,7 +756,9 @@ class ProjectsLocationsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Build.fromJson(data));
+    return _response.then(
+      (data) => Build.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists previously requested builds. Previously requested builds may still
@@ -812,7 +833,10 @@ class ProjectsLocationsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBuildsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBuildsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new build based on the specified build. This method creates a
@@ -883,7 +907,9 @@ class ProjectsLocationsBuildsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -954,7 +980,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1006,7 +1034,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1070,7 +1100,10 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BuildTrigger.fromJson(data));
+    return _response.then(
+      (data) =>
+          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a `BuildTrigger` by its project ID and trigger ID. This API is
@@ -1128,7 +1161,9 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a `BuildTrigger`. This API is experimental.
@@ -1186,7 +1221,10 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BuildTrigger.fromJson(data));
+    return _response.then(
+      (data) =>
+          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists existing `BuildTrigger`s. This API is experimental.
@@ -1248,7 +1286,10 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBuildTriggersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBuildTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a `BuildTrigger` by its project ID and trigger ID. This API is
@@ -1312,7 +1353,10 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BuildTrigger.fromJson(data));
+    return _response.then(
+      (data) =>
+          BuildTrigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Runs a `BuildTrigger` at a particular source revision.
@@ -1376,7 +1420,9 @@ class ProjectsTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1408,7 +1454,8 @@ class ArtifactObjects {
           .toList();
     }
     if (_json.containsKey('timing')) {
-      timing = TimeSpan.fromJson(_json['timing']);
+      timing = TimeSpan.fromJson(
+          _json['timing'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1443,7 +1490,8 @@ class ArtifactResult {
   ArtifactResult.fromJson(core.Map _json) {
     if (_json.containsKey('fileHash')) {
       fileHash = (_json['fileHash'] as core.List)
-          .map<FileHashes>((value) => FileHashes.fromJson(value))
+          .map<FileHashes>((value) =>
+              FileHashes.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('location')) {
@@ -1490,7 +1538,8 @@ class Artifacts {
           .toList();
     }
     if (_json.containsKey('objects')) {
-      objects = ArtifactObjects.fromJson(_json['objects']);
+      objects = ArtifactObjects.fromJson(
+          _json['objects'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1631,7 +1680,8 @@ class Build {
 
   Build.fromJson(core.Map _json) {
     if (_json.containsKey('artifacts')) {
-      artifacts = Artifacts.fromJson(_json['artifacts']);
+      artifacts = Artifacts.fromJson(
+          _json['artifacts'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('buildTriggerId')) {
       buildTriggerId = _json['buildTriggerId'] as core.String;
@@ -1660,7 +1710,8 @@ class Build {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('options')) {
-      options = BuildOptions.fromJson(_json['options']);
+      options = BuildOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
@@ -1669,21 +1720,25 @@ class Build {
       queueTtl = _json['queueTtl'] as core.String;
     }
     if (_json.containsKey('results')) {
-      results = Results.fromJson(_json['results']);
+      results = Results.fromJson(
+          _json['results'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secrets')) {
       secrets = (_json['secrets'] as core.List)
-          .map<Secret>((value) => Secret.fromJson(value))
+          .map<Secret>((value) =>
+              Secret.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = _json['serviceAccount'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceProvenance')) {
-      sourceProvenance = SourceProvenance.fromJson(_json['sourceProvenance']);
+      sourceProvenance = SourceProvenance.fromJson(
+          _json['sourceProvenance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -1696,12 +1751,14 @@ class Build {
     }
     if (_json.containsKey('steps')) {
       steps = (_json['steps'] as core.List)
-          .map<BuildStep>((value) => BuildStep.fromJson(value))
+          .map<BuildStep>((value) =>
+              BuildStep.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('substitutions')) {
       substitutions = commons.mapMap<core.String, core.String>(
-          _json['substitutions'].cast<core.String, core.String>(),
+          (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('tags')) {
@@ -1714,8 +1771,10 @@ class Build {
     }
     if (_json.containsKey('timing')) {
       timing = commons.mapMap<core.Map, TimeSpan>(
-          _json['timing'].cast<core.String, core.Map>(),
-          (core.Map item) => TimeSpan.fromJson(item));
+          (_json['timing'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              TimeSpan.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -1811,7 +1870,8 @@ class BuildOperationMetadata {
 
   BuildOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('build')) {
-      build = Build.fromJson(_json['build']);
+      build =
+          Build.fromJson(_json['build'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1956,7 +2016,8 @@ class BuildOptions {
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('workerPool')) {
@@ -2124,7 +2185,8 @@ class BuildStep {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pullTiming')) {
-      pullTiming = TimeSpan.fromJson(_json['pullTiming']);
+      pullTiming = TimeSpan.fromJson(
+          _json['pullTiming'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secretEnv')) {
       secretEnv = (_json['secretEnv'] as core.List)
@@ -2138,11 +2200,13 @@ class BuildStep {
       timeout = _json['timeout'] as core.String;
     }
     if (_json.containsKey('timing')) {
-      timing = TimeSpan.fromJson(_json['timing']);
+      timing = TimeSpan.fromJson(
+          _json['timing'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('waitFor')) {
@@ -2264,7 +2328,8 @@ class BuildTrigger {
 
   BuildTrigger.fromJson(core.Map _json) {
     if (_json.containsKey('build')) {
-      build = Build.fromJson(_json['build']);
+      build =
+          Build.fromJson(_json['build'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -2279,7 +2344,8 @@ class BuildTrigger {
       filename = _json['filename'] as core.String;
     }
     if (_json.containsKey('github')) {
-      github = GitHubEventsConfig.fromJson(_json['github']);
+      github = GitHubEventsConfig.fromJson(
+          _json['github'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2299,7 +2365,8 @@ class BuildTrigger {
     }
     if (_json.containsKey('substitutions')) {
       substitutions = commons.mapMap<core.String, core.String>(
-          _json['substitutions'].cast<core.String, core.String>(),
+          (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('tags')) {
@@ -2308,7 +2375,8 @@ class BuildTrigger {
           .toList();
     }
     if (_json.containsKey('triggerTemplate')) {
-      triggerTemplate = RepoSource.fromJson(_json['triggerTemplate']);
+      triggerTemplate = RepoSource.fromJson(
+          _json['triggerTemplate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2379,7 +2447,8 @@ class BuiltImage {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pushTiming')) {
-      pushTiming = TimeSpan.fromJson(_json['pushTiming']);
+      pushTiming = TimeSpan.fromJson(
+          _json['pushTiming'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2482,7 +2551,8 @@ class FileHashes {
   FileHashes.fromJson(core.Map _json) {
     if (_json.containsKey('fileHash')) {
       fileHash = (_json['fileHash'] as core.List)
-          .map<Hash>((value) => Hash.fromJson(value))
+          .map<Hash>((value) =>
+              Hash.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2530,10 +2600,12 @@ class GitHubEventsConfig {
       owner = _json['owner'] as core.String;
     }
     if (_json.containsKey('pullRequest')) {
-      pullRequest = PullRequestFilter.fromJson(_json['pullRequest']);
+      pullRequest = PullRequestFilter.fromJson(
+          _json['pullRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('push')) {
-      push = PushFilter.fromJson(_json['push']);
+      push = PushFilter.fromJson(
+          _json['push'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2637,7 +2709,8 @@ class ListBuildTriggersResponse {
     }
     if (_json.containsKey('triggers')) {
       triggers = (_json['triggers'] as core.List)
-          .map<BuildTrigger>((value) => BuildTrigger.fromJson(value))
+          .map<BuildTrigger>((value) => BuildTrigger.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2667,7 +2740,8 @@ class ListBuildsResponse {
   ListBuildsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('builds')) {
       builds = (_json['builds'] as core.List)
-          .map<Build>((value) => Build.fromJson(value))
+          .map<Build>((value) =>
+              Build.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2717,17 +2791,21 @@ class Notification {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('httpDelivery')) {
-      httpDelivery = HTTPDelivery.fromJson(_json['httpDelivery']);
+      httpDelivery = HTTPDelivery.fromJson(
+          _json['httpDelivery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('slackDelivery')) {
-      slackDelivery = SlackDelivery.fromJson(_json['slackDelivery']);
+      slackDelivery = SlackDelivery.fromJson(
+          _json['slackDelivery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('smtpDelivery')) {
-      smtpDelivery = SMTPDelivery.fromJson(_json['smtpDelivery']);
+      smtpDelivery = SMTPDelivery.fromJson(
+          _json['smtpDelivery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('structDelivery')) {
       structDelivery = commons.mapMap<core.Object, core.Object>(
-          _json['structDelivery'].cast<core.String, core.Object>(),
+          (_json['structDelivery'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2777,10 +2855,12 @@ class NotifierConfig {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = NotifierMetadata.fromJson(_json['metadata']);
+      metadata = NotifierMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = NotifierSpec.fromJson(_json['spec']);
+      spec = NotifierSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2909,11 +2989,13 @@ class NotifierSpec {
 
   NotifierSpec.fromJson(core.Map _json) {
     if (_json.containsKey('notification')) {
-      notification = Notification.fromJson(_json['notification']);
+      notification = Notification.fromJson(
+          _json['notification'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secrets')) {
       secrets = (_json['secrets'] as core.List)
-          .map<NotifierSecret>((value) => NotifierSecret.fromJson(value))
+          .map<NotifierSecret>((value) => NotifierSecret.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2974,11 +3056,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2986,7 +3070,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -3167,7 +3252,8 @@ class RepoSource {
     }
     if (_json.containsKey('substitutions')) {
       substitutions = commons.mapMap<core.String, core.String>(
-          _json['substitutions'].cast<core.String, core.String>(),
+          (_json['substitutions'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('tagName')) {
@@ -3237,7 +3323,8 @@ class Results {
       artifactManifest = _json['artifactManifest'] as core.String;
     }
     if (_json.containsKey('artifactTiming')) {
-      artifactTiming = TimeSpan.fromJson(_json['artifactTiming']);
+      artifactTiming = TimeSpan.fromJson(
+          _json['artifactTiming'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('buildStepImages')) {
       buildStepImages = (_json['buildStepImages'] as core.List)
@@ -3251,7 +3338,8 @@ class Results {
     }
     if (_json.containsKey('images')) {
       images = (_json['images'] as core.List)
-          .map<BuiltImage>((value) => BuiltImage.fromJson(value))
+          .map<BuiltImage>((value) =>
+              BuiltImage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('numArtifacts')) {
@@ -3353,7 +3441,8 @@ class SMTPDelivery {
       fromAddress = _json['fromAddress'] as core.String;
     }
     if (_json.containsKey('password')) {
-      password = NotifierSecretRef.fromJson(_json['password']);
+      password = NotifierSecretRef.fromJson(
+          _json['password'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('port')) {
       port = _json['port'] as core.String;
@@ -3416,7 +3505,8 @@ class Secret {
     }
     if (_json.containsKey('secretEnv')) {
       secretEnv = commons.mapMap<core.String, core.String>(
-          _json['secretEnv'].cast<core.String, core.String>(),
+          (_json['secretEnv'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -3445,7 +3535,8 @@ class SlackDelivery {
 
   SlackDelivery.fromJson(core.Map _json) {
     if (_json.containsKey('webhookUri')) {
-      webhookUri = NotifierSecretRef.fromJson(_json['webhookUri']);
+      webhookUri = NotifierSecretRef.fromJson(
+          _json['webhookUri'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3471,10 +3562,12 @@ class Source {
 
   Source.fromJson(core.Map _json) {
     if (_json.containsKey('repoSource')) {
-      repoSource = RepoSource.fromJson(_json['repoSource']);
+      repoSource = RepoSource.fromJson(
+          _json['repoSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('storageSource')) {
-      storageSource = StorageSource.fromJson(_json['storageSource']);
+      storageSource = StorageSource.fromJson(
+          _json['storageSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3515,15 +3608,19 @@ class SourceProvenance {
   SourceProvenance.fromJson(core.Map _json) {
     if (_json.containsKey('fileHashes')) {
       fileHashes = commons.mapMap<core.Map, FileHashes>(
-          _json['fileHashes'].cast<core.String, core.Map>(),
-          (core.Map item) => FileHashes.fromJson(item));
+          (_json['fileHashes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              FileHashes.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('resolvedRepoSource')) {
-      resolvedRepoSource = RepoSource.fromJson(_json['resolvedRepoSource']);
+      resolvedRepoSource = RepoSource.fromJson(
+          _json['resolvedRepoSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resolvedStorageSource')) {
-      resolvedStorageSource =
-          StorageSource.fromJson(_json['resolvedStorageSource']);
+      resolvedStorageSource = StorageSource.fromJson(
+          _json['resolvedStorageSource']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3576,7 +3673,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

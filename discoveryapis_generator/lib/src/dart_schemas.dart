@@ -208,6 +208,12 @@ abstract class DartSchemaType {
 
   /// Whether this value needs a JSON decoding or not.
   bool get needsJsonDecoding => jsonDecode('foo') != 'foo';
+
+  String get coreMapJsonTypeArguments =>
+      '<${imports.core.ref()}String, ${imports.core.ref()}dynamic>';
+
+  String get coreMapJsonType =>
+      '${imports.core.ref()}Map$coreMapJsonTypeArguments';
 }
 
 /// Placeholder type for forward references.
@@ -584,7 +590,8 @@ $encode
   }
 
   @override
-  String jsonDecode(String json) => '$className.fromJson($json)';
+  String jsonDecode(String json) =>
+      '$className.fromJson($json as ${imports.core.ref()}List)';
 }
 
 /// Represents an unnamed Map<F, T> type with given types `F` and `T`.
@@ -646,7 +653,8 @@ class UnnamedMapType extends ComplexDartSchemaType {
           : toType.jsonType.baseDeclaration;
       return '${imports.commons}.mapMap'
           '<$toTypeJsonDeclaration, ${toType.declaration}>'
-          '($json.cast<${fromType.jsonType.baseDeclaration}, '
+          '(($json as $coreMapJsonType)'
+          '.cast<${fromType.jsonType.baseDeclaration}, '
           '$toTypeJsonDeclaration>(), '
           // More precise about generics in null safe mode, so just infer the
           // type.
@@ -655,7 +663,7 @@ class UnnamedMapType extends ComplexDartSchemaType {
     } else {
       // NOTE: The Map returned from JSON.decode() transfers ownership to the
       // user (i.e. we don't need to make a copy of it).
-      return '($json as ${imports.core.ref()}Map)'
+      return '($json as $coreMapJsonType)'
           '.cast<${fromType.declaration}, ${toType.declaration}>()';
     }
   }
@@ -754,7 +762,8 @@ $encode
   }
 
   @override
-  String jsonDecode(String json) => '$className.fromJson($json)';
+  String jsonDecode(String json) =>
+      '$className.fromJson($json as $coreMapJsonType)';
 }
 
 /// Represents a named custom dart class with a number of properties.
@@ -884,7 +893,8 @@ $toJsonString
   String jsonEncode(String value) => '$value.toJson()';
 
   @override
-  String jsonDecode(String json) => '$className.fromJson($json)';
+  String jsonDecode(String json) =>
+      '$className.fromJson($json as $coreMapJsonType)';
 
   bool isVariantDiscriminator(DartClassProperty prop) =>
       superVariantType != null &&

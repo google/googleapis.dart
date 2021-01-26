@@ -106,8 +106,8 @@ core.List<api.AccountBidderLocation> buildUnnamed1680() {
 
 void checkUnnamed1680(core.List<api.AccountBidderLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountBidderLocation(o[0]);
-  checkAccountBidderLocation(o[1]);
+  checkAccountBidderLocation(o[0] as api.AccountBidderLocation);
+  checkAccountBidderLocation(o[1] as api.AccountBidderLocation);
 }
 
 core.int buildCounterAccount = 0;
@@ -152,8 +152,8 @@ core.List<api.Account> buildUnnamed1681() {
 
 void checkUnnamed1681(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterAccountsList = 0;
@@ -224,8 +224,8 @@ core.List<api.BillingInfo> buildUnnamed1683() {
 
 void checkUnnamed1683(core.List<api.BillingInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBillingInfo(o[0]);
-  checkBillingInfo(o[1]);
+  checkBillingInfo(o[0] as api.BillingInfo);
+  checkBillingInfo(o[1] as api.BillingInfo);
 }
 
 core.int buildCounterBillingInfoList = 0;
@@ -394,8 +394,8 @@ core.List<api.CreativeCorrections> buildUnnamed1689() {
 
 void checkUnnamed1689(core.List<api.CreativeCorrections> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeCorrections(o[0]);
-  checkCreativeCorrections(o[1]);
+  checkCreativeCorrections(o[0] as api.CreativeCorrections);
+  checkCreativeCorrections(o[1] as api.CreativeCorrections);
 }
 
 core.List<core.String> buildUnnamed1690() {
@@ -441,8 +441,8 @@ core.List<api.CreativeDisapprovalReasons> buildUnnamed1691() {
 
 void checkUnnamed1691(core.List<api.CreativeDisapprovalReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeDisapprovalReasons(o[0]);
-  checkCreativeDisapprovalReasons(o[1]);
+  checkCreativeDisapprovalReasons(o[0] as api.CreativeDisapprovalReasons);
+  checkCreativeDisapprovalReasons(o[1] as api.CreativeDisapprovalReasons);
 }
 
 core.int buildCounterCreativeFilteringReasonsReasons = 0;
@@ -476,8 +476,10 @@ core.List<api.CreativeFilteringReasonsReasons> buildUnnamed1692() {
 
 void checkUnnamed1692(core.List<api.CreativeFilteringReasonsReasons> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeFilteringReasonsReasons(o[0]);
-  checkCreativeFilteringReasonsReasons(o[1]);
+  checkCreativeFilteringReasonsReasons(
+      o[0] as api.CreativeFilteringReasonsReasons);
+  checkCreativeFilteringReasonsReasons(
+      o[1] as api.CreativeFilteringReasonsReasons);
 }
 
 core.int buildCounterCreativeFilteringReasons = 0;
@@ -621,14 +623,14 @@ void checkCreativeNativeAd(api.CreativeNativeAd o) {
   buildCounterCreativeNativeAd++;
   if (buildCounterCreativeNativeAd < 3) {
     unittest.expect(o.advertiser, unittest.equals('foo'));
-    checkCreativeNativeAdAppIcon(o.appIcon);
+    checkCreativeNativeAdAppIcon(o.appIcon as api.CreativeNativeAdAppIcon);
     unittest.expect(o.body, unittest.equals('foo'));
     unittest.expect(o.callToAction, unittest.equals('foo'));
     unittest.expect(o.clickTrackingUrl, unittest.equals('foo'));
     unittest.expect(o.headline, unittest.equals('foo'));
-    checkCreativeNativeAdImage(o.image);
+    checkCreativeNativeAdImage(o.image as api.CreativeNativeAdImage);
     checkUnnamed1694(o.impressionTrackingUrl);
-    checkCreativeNativeAdLogo(o.logo);
+    checkCreativeNativeAdLogo(o.logo as api.CreativeNativeAdLogo);
     unittest.expect(o.price, unittest.equals('foo'));
     unittest.expect(o.starRating, unittest.equals(42.0));
   }
@@ -727,7 +729,8 @@ void checkCreative(api.Creative o) {
   if (buildCounterCreative < 3) {
     unittest.expect(o.HTMLSnippet, unittest.equals('foo'));
     unittest.expect(o.accountId, unittest.equals(42));
-    checkCreativeAdTechnologyProviders(o.adTechnologyProviders);
+    checkCreativeAdTechnologyProviders(
+        o.adTechnologyProviders as api.CreativeAdTechnologyProviders);
     checkUnnamed1685(o.advertiserId);
     unittest.expect(o.advertiserName, unittest.equals('foo'));
     unittest.expect(o.agencyId, unittest.equals('foo'));
@@ -738,11 +741,12 @@ void checkCreative(api.Creative o) {
     checkUnnamed1687(o.clickThroughUrl);
     checkUnnamed1689(o.corrections);
     checkUnnamed1691(o.disapprovalReasons);
-    checkCreativeFilteringReasons(o.filteringReasons);
+    checkCreativeFilteringReasons(
+        o.filteringReasons as api.CreativeFilteringReasons);
     unittest.expect(o.height, unittest.equals(42));
     checkUnnamed1693(o.impressionTrackingUrl);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkCreativeNativeAd(o.nativeAd);
+    checkCreativeNativeAd(o.nativeAd as api.CreativeNativeAd);
     checkUnnamed1695(o.productCategories);
     checkUnnamed1696(o.restrictedCategories);
     checkUnnamed1697(o.sensitiveCategories);
@@ -764,8 +768,8 @@ core.List<api.Creative> buildUnnamed1699() {
 
 void checkUnnamed1699(core.List<api.Creative> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreative(o[0]);
-  checkCreative(o[1]);
+  checkCreative(o[0] as api.Creative);
+  checkCreative(o[1] as api.Creative);
 }
 
 core.int buildCounterCreativesList = 0;
@@ -847,8 +851,8 @@ core.List<api.DirectDeal> buildUnnamed1700() {
 
 void checkUnnamed1700(core.List<api.DirectDeal> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDirectDeal(o[0]);
-  checkDirectDeal(o[1]);
+  checkDirectDeal(o[0] as api.DirectDeal);
+  checkDirectDeal(o[1] as api.DirectDeal);
 }
 
 core.int buildCounterDirectDealsList = 0;
@@ -1058,8 +1062,8 @@ core.List<api.PerformanceReport> buildUnnamed1705() {
 
 void checkUnnamed1705(core.List<api.PerformanceReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerformanceReport(o[0]);
-  checkPerformanceReport(o[1]);
+  checkPerformanceReport(o[0] as api.PerformanceReport);
+  checkPerformanceReport(o[1] as api.PerformanceReport);
 }
 
 core.int buildCounterPerformanceReportList = 0;
@@ -1126,8 +1130,8 @@ core.List<api.PretargetingConfigDimensions> buildUnnamed1707() {
 
 void checkUnnamed1707(core.List<api.PretargetingConfigDimensions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigDimensions(o[0]);
-  checkPretargetingConfigDimensions(o[1]);
+  checkPretargetingConfigDimensions(o[0] as api.PretargetingConfigDimensions);
+  checkPretargetingConfigDimensions(o[1] as api.PretargetingConfigDimensions);
 }
 
 core.List<core.String> buildUnnamed1708() {
@@ -1188,8 +1192,10 @@ core.List<api.PretargetingConfigExcludedPlacements> buildUnnamed1710() {
 
 void checkUnnamed1710(core.List<api.PretargetingConfigExcludedPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigExcludedPlacements(o[0]);
-  checkPretargetingConfigExcludedPlacements(o[1]);
+  checkPretargetingConfigExcludedPlacements(
+      o[0] as api.PretargetingConfigExcludedPlacements);
+  checkPretargetingConfigExcludedPlacements(
+      o[1] as api.PretargetingConfigExcludedPlacements);
 }
 
 core.List<core.String> buildUnnamed1711() {
@@ -1313,8 +1319,8 @@ core.List<api.PretargetingConfigPlacements> buildUnnamed1718() {
 
 void checkUnnamed1718(core.List<api.PretargetingConfigPlacements> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfigPlacements(o[0]);
-  checkPretargetingConfigPlacements(o[1]);
+  checkPretargetingConfigPlacements(o[0] as api.PretargetingConfigPlacements);
+  checkPretargetingConfigPlacements(o[1] as api.PretargetingConfigPlacements);
 }
 
 core.List<core.String> buildUnnamed1719() {
@@ -1456,8 +1462,8 @@ core.List<api.PretargetingConfig> buildUnnamed1724() {
 
 void checkUnnamed1724(core.List<api.PretargetingConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPretargetingConfig(o[0]);
-  checkPretargetingConfig(o[1]);
+  checkPretargetingConfig(o[0] as api.PretargetingConfig);
+  checkPretargetingConfig(o[1] as api.PretargetingConfig);
 }
 
 core.int buildCounterPretargetingConfigList = 0;
@@ -1512,7 +1518,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountBidderLocation();
       var od = api.AccountBidderLocation.fromJson(o.toJson());
-      checkAccountBidderLocation(od);
+      checkAccountBidderLocation(od as api.AccountBidderLocation);
     });
   });
 
@@ -1520,7 +1526,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -1528,7 +1534,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountsList();
       var od = api.AccountsList.fromJson(o.toJson());
-      checkAccountsList(od);
+      checkAccountsList(od as api.AccountsList);
     });
   });
 
@@ -1536,7 +1542,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBillingInfo();
       var od = api.BillingInfo.fromJson(o.toJson());
-      checkBillingInfo(od);
+      checkBillingInfo(od as api.BillingInfo);
     });
   });
 
@@ -1544,7 +1550,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBillingInfoList();
       var od = api.BillingInfoList.fromJson(o.toJson());
-      checkBillingInfoList(od);
+      checkBillingInfoList(od as api.BillingInfoList);
     });
   });
 
@@ -1552,7 +1558,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBudget();
       var od = api.Budget.fromJson(o.toJson());
-      checkBudget(od);
+      checkBudget(od as api.Budget);
     });
   });
 
@@ -1560,7 +1566,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeAdTechnologyProviders();
       var od = api.CreativeAdTechnologyProviders.fromJson(o.toJson());
-      checkCreativeAdTechnologyProviders(od);
+      checkCreativeAdTechnologyProviders(
+          od as api.CreativeAdTechnologyProviders);
     });
   });
 
@@ -1568,7 +1575,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeCorrections();
       var od = api.CreativeCorrections.fromJson(o.toJson());
-      checkCreativeCorrections(od);
+      checkCreativeCorrections(od as api.CreativeCorrections);
     });
   });
 
@@ -1576,7 +1583,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeDisapprovalReasons();
       var od = api.CreativeDisapprovalReasons.fromJson(o.toJson());
-      checkCreativeDisapprovalReasons(od);
+      checkCreativeDisapprovalReasons(od as api.CreativeDisapprovalReasons);
     });
   });
 
@@ -1584,7 +1591,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeFilteringReasonsReasons();
       var od = api.CreativeFilteringReasonsReasons.fromJson(o.toJson());
-      checkCreativeFilteringReasonsReasons(od);
+      checkCreativeFilteringReasonsReasons(
+          od as api.CreativeFilteringReasonsReasons);
     });
   });
 
@@ -1592,7 +1600,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeFilteringReasons();
       var od = api.CreativeFilteringReasons.fromJson(o.toJson());
-      checkCreativeFilteringReasons(od);
+      checkCreativeFilteringReasons(od as api.CreativeFilteringReasons);
     });
   });
 
@@ -1600,7 +1608,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdAppIcon();
       var od = api.CreativeNativeAdAppIcon.fromJson(o.toJson());
-      checkCreativeNativeAdAppIcon(od);
+      checkCreativeNativeAdAppIcon(od as api.CreativeNativeAdAppIcon);
     });
   });
 
@@ -1608,7 +1616,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdImage();
       var od = api.CreativeNativeAdImage.fromJson(o.toJson());
-      checkCreativeNativeAdImage(od);
+      checkCreativeNativeAdImage(od as api.CreativeNativeAdImage);
     });
   });
 
@@ -1616,7 +1624,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAdLogo();
       var od = api.CreativeNativeAdLogo.fromJson(o.toJson());
-      checkCreativeNativeAdLogo(od);
+      checkCreativeNativeAdLogo(od as api.CreativeNativeAdLogo);
     });
   });
 
@@ -1624,7 +1632,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeNativeAd();
       var od = api.CreativeNativeAd.fromJson(o.toJson());
-      checkCreativeNativeAd(od);
+      checkCreativeNativeAd(od as api.CreativeNativeAd);
     });
   });
 
@@ -1632,7 +1640,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
-      checkCreative(od);
+      checkCreative(od as api.Creative);
     });
   });
 
@@ -1640,7 +1648,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativesList();
       var od = api.CreativesList.fromJson(o.toJson());
-      checkCreativesList(od);
+      checkCreativesList(od as api.CreativesList);
     });
   });
 
@@ -1648,7 +1656,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDirectDeal();
       var od = api.DirectDeal.fromJson(o.toJson());
-      checkDirectDeal(od);
+      checkDirectDeal(od as api.DirectDeal);
     });
   });
 
@@ -1656,7 +1664,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDirectDealsList();
       var od = api.DirectDealsList.fromJson(o.toJson());
-      checkDirectDealsList(od);
+      checkDirectDealsList(od as api.DirectDealsList);
     });
   });
 
@@ -1664,7 +1672,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPerformanceReport();
       var od = api.PerformanceReport.fromJson(o.toJson());
-      checkPerformanceReport(od);
+      checkPerformanceReport(od as api.PerformanceReport);
     });
   });
 
@@ -1672,7 +1680,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPerformanceReportList();
       var od = api.PerformanceReportList.fromJson(o.toJson());
-      checkPerformanceReportList(od);
+      checkPerformanceReportList(od as api.PerformanceReportList);
     });
   });
 
@@ -1680,7 +1688,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigDimensions();
       var od = api.PretargetingConfigDimensions.fromJson(o.toJson());
-      checkPretargetingConfigDimensions(od);
+      checkPretargetingConfigDimensions(od as api.PretargetingConfigDimensions);
     });
   });
 
@@ -1688,7 +1696,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigExcludedPlacements();
       var od = api.PretargetingConfigExcludedPlacements.fromJson(o.toJson());
-      checkPretargetingConfigExcludedPlacements(od);
+      checkPretargetingConfigExcludedPlacements(
+          od as api.PretargetingConfigExcludedPlacements);
     });
   });
 
@@ -1696,7 +1705,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigPlacements();
       var od = api.PretargetingConfigPlacements.fromJson(o.toJson());
-      checkPretargetingConfigPlacements(od);
+      checkPretargetingConfigPlacements(od as api.PretargetingConfigPlacements);
     });
   });
 
@@ -1704,7 +1713,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfig();
       var od = api.PretargetingConfig.fromJson(o.toJson());
-      checkPretargetingConfig(od);
+      checkPretargetingConfig(od as api.PretargetingConfig);
     });
   });
 
@@ -1712,7 +1721,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPretargetingConfigList();
       var od = api.PretargetingConfigList.fromJson(o.toJson());
-      checkPretargetingConfigList(od);
+      checkPretargetingConfigList(od as api.PretargetingConfigList);
     });
   });
 
@@ -1766,7 +1775,7 @@ void main() {
       res
           .get(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
 
@@ -1813,7 +1822,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkAccountsList(response);
+        checkAccountsList(response as api.AccountsList);
       })));
     });
 
@@ -1824,8 +1833,9 @@ void main() {
       var arg_id = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Account.fromJson(json);
-        checkAccount(obj);
+        var obj =
+            api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAccount(obj as api.Account);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1870,7 +1880,7 @@ void main() {
       res
           .patch(arg_request, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
 
@@ -1881,8 +1891,9 @@ void main() {
       var arg_id = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Account.fromJson(json);
-        checkAccount(obj);
+        var obj =
+            api.Account.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAccount(obj as api.Account);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1927,7 +1938,7 @@ void main() {
       res
           .update(arg_request, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
   });
@@ -1982,7 +1993,7 @@ void main() {
       res
           .get(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBillingInfo(response);
+        checkBillingInfo(response as api.BillingInfo);
       })));
     });
 
@@ -2029,7 +2040,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkBillingInfoList(response);
+        checkBillingInfoList(response as api.BillingInfoList);
       })));
     });
   });
@@ -2094,7 +2105,7 @@ void main() {
       res
           .get(arg_accountId, arg_billingId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBudget(response);
+        checkBudget(response as api.Budget);
       })));
     });
 
@@ -2106,8 +2117,9 @@ void main() {
       var arg_billingId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Budget.fromJson(json);
-        checkBudget(obj);
+        var obj =
+            api.Budget.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBudget(obj as api.Budget);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2162,7 +2174,7 @@ void main() {
           .patch(arg_request, arg_accountId, arg_billingId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBudget(response);
+        checkBudget(response as api.Budget);
       })));
     });
 
@@ -2174,8 +2186,9 @@ void main() {
       var arg_billingId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Budget.fromJson(json);
-        checkBudget(obj);
+        var obj =
+            api.Budget.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBudget(obj as api.Budget);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2230,7 +2243,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_billingId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBudget(response);
+        checkBudget(response as api.Budget);
       })));
     });
   });
@@ -2295,7 +2308,7 @@ void main() {
       res
           .get(arg_accountId, arg_buyerCreativeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreative(response);
+        checkCreative(response as api.Creative);
       })));
     });
 
@@ -2305,8 +2318,9 @@ void main() {
       var arg_request = buildCreative();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Creative.fromJson(json);
-        checkCreative(obj);
+        var obj =
+            api.Creative.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCreative(obj as api.Creative);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2348,7 +2362,7 @@ void main() {
       res
           .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreative(response);
+        checkCreative(response as api.Creative);
       })));
     });
 
@@ -2418,7 +2432,7 @@ void main() {
               statusFilter: arg_statusFilter,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreativesList(response);
+        checkCreativesList(response as api.CreativesList);
       })));
     });
   });
@@ -2473,7 +2487,7 @@ void main() {
       res
           .get(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDirectDeal(response);
+        checkDirectDeal(response as api.DirectDeal);
       })));
     });
 
@@ -2520,7 +2534,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkDirectDealsList(response);
+        checkDirectDealsList(response as api.DirectDealsList);
       })));
     });
   });
@@ -2589,7 +2603,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPerformanceReportList(response);
+        checkPerformanceReportList(response as api.PerformanceReportList);
       })));
     });
   });
@@ -2715,7 +2729,7 @@ void main() {
       res
           .get(arg_accountId, arg_configId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response);
+        checkPretargetingConfig(response as api.PretargetingConfig);
       })));
     });
 
@@ -2726,8 +2740,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(json);
-        checkPretargetingConfig(obj);
+        var obj = api.PretargetingConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPretargetingConfig(obj as api.PretargetingConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2772,7 +2787,7 @@ void main() {
       res
           .insert(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response);
+        checkPretargetingConfig(response as api.PretargetingConfig);
       })));
     });
 
@@ -2825,7 +2840,7 @@ void main() {
       res
           .list(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfigList(response);
+        checkPretargetingConfigList(response as api.PretargetingConfigList);
       })));
     });
 
@@ -2837,8 +2852,9 @@ void main() {
       var arg_configId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(json);
-        checkPretargetingConfig(obj);
+        var obj = api.PretargetingConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPretargetingConfig(obj as api.PretargetingConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2892,7 +2908,7 @@ void main() {
       res
           .patch(arg_request, arg_accountId, arg_configId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response);
+        checkPretargetingConfig(response as api.PretargetingConfig);
       })));
     });
 
@@ -2904,8 +2920,9 @@ void main() {
       var arg_configId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PretargetingConfig.fromJson(json);
-        checkPretargetingConfig(obj);
+        var obj = api.PretargetingConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPretargetingConfig(obj as api.PretargetingConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2960,7 +2977,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_configId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPretargetingConfig(response);
+        checkPretargetingConfig(response as api.PretargetingConfig);
       })));
     });
   });

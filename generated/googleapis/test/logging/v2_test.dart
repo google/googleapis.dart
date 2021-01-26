@@ -111,9 +111,9 @@ api.BucketOptions buildBucketOptions() {
 void checkBucketOptions(api.BucketOptions o) {
   buildCounterBucketOptions++;
   if (buildCounterBucketOptions < 3) {
-    checkExplicit(o.explicitBuckets);
-    checkExponential(o.exponentialBuckets);
-    checkLinear(o.linearBuckets);
+    checkExplicit(o.explicitBuckets as api.Explicit);
+    checkExponential(o.exponentialBuckets as api.Exponential);
+    checkLinear(o.linearBuckets as api.Linear);
   }
   buildCounterBucketOptions--;
 }
@@ -313,8 +313,8 @@ core.List<api.LogBucket> buildUnnamed1814() {
 
 void checkUnnamed1814(core.List<api.LogBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogBucket(o[0]);
-  checkLogBucket(o[1]);
+  checkLogBucket(o[0] as api.LogBucket);
+  checkLogBucket(o[1] as api.LogBucket);
 }
 
 core.int buildCounterListBucketsResponse = 0;
@@ -347,8 +347,8 @@ core.List<api.LogExclusion> buildUnnamed1815() {
 
 void checkUnnamed1815(core.List<api.LogExclusion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogExclusion(o[0]);
-  checkLogExclusion(o[1]);
+  checkLogExclusion(o[0] as api.LogExclusion);
+  checkLogExclusion(o[1] as api.LogExclusion);
 }
 
 core.int buildCounterListExclusionsResponse = 0;
@@ -436,8 +436,8 @@ core.List<api.LogEntry> buildUnnamed1818() {
 
 void checkUnnamed1818(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogEntry(o[0]);
-  checkLogEntry(o[1]);
+  checkLogEntry(o[0] as api.LogEntry);
+  checkLogEntry(o[1] as api.LogEntry);
 }
 
 core.int buildCounterListLogEntriesResponse = 0;
@@ -470,8 +470,8 @@ core.List<api.LogMetric> buildUnnamed1819() {
 
 void checkUnnamed1819(core.List<api.LogMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogMetric(o[0]);
-  checkLogMetric(o[1]);
+  checkLogMetric(o[0] as api.LogMetric);
+  checkLogMetric(o[1] as api.LogMetric);
 }
 
 core.int buildCounterListLogMetricsResponse = 0;
@@ -538,8 +538,8 @@ core.List<api.MonitoredResourceDescriptor> buildUnnamed1821() {
 
 void checkUnnamed1821(core.List<api.MonitoredResourceDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMonitoredResourceDescriptor(o[0]);
-  checkMonitoredResourceDescriptor(o[1]);
+  checkMonitoredResourceDescriptor(o[0] as api.MonitoredResourceDescriptor);
+  checkMonitoredResourceDescriptor(o[1] as api.MonitoredResourceDescriptor);
 }
 
 core.int buildCounterListMonitoredResourceDescriptorsResponse = 0;
@@ -574,8 +574,8 @@ core.List<api.LogSink> buildUnnamed1822() {
 
 void checkUnnamed1822(core.List<api.LogSink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogSink(o[0]);
-  checkLogSink(o[1]);
+  checkLogSink(o[0] as api.LogSink);
+  checkLogSink(o[1] as api.LogSink);
 }
 
 core.int buildCounterListSinksResponse = 0;
@@ -731,18 +731,18 @@ api.LogEntry buildLogEntry() {
 void checkLogEntry(api.LogEntry o) {
   buildCounterLogEntry++;
   if (buildCounterLogEntry < 3) {
-    checkHttpRequest(o.httpRequest);
+    checkHttpRequest(o.httpRequest as api.HttpRequest);
     unittest.expect(o.insertId, unittest.equals('foo'));
     checkUnnamed1823(o.jsonPayload);
     checkUnnamed1824(o.labels);
     unittest.expect(o.logName, unittest.equals('foo'));
-    checkMonitoredResourceMetadata(o.metadata);
-    checkLogEntryOperation(o.operation);
+    checkMonitoredResourceMetadata(o.metadata as api.MonitoredResourceMetadata);
+    checkLogEntryOperation(o.operation as api.LogEntryOperation);
     checkUnnamed1825(o.protoPayload);
     unittest.expect(o.receiveTimestamp, unittest.equals('foo'));
-    checkMonitoredResource(o.resource);
+    checkMonitoredResource(o.resource as api.MonitoredResource);
     unittest.expect(o.severity, unittest.equals('foo'));
-    checkLogEntrySourceLocation(o.sourceLocation);
+    checkLogEntrySourceLocation(o.sourceLocation as api.LogEntrySourceLocation);
     unittest.expect(o.spanId, unittest.equals('foo'));
     unittest.expect(o.textPayload, unittest.equals('foo'));
     unittest.expect(o.timestamp, unittest.equals('foo'));
@@ -848,7 +848,7 @@ void checkLogLine(api.LogLine o) {
   if (buildCounterLogLine < 3) {
     unittest.expect(o.logMessage, unittest.equals('foo'));
     unittest.expect(o.severity, unittest.equals('foo'));
-    checkSourceLocation(o.sourceLocation);
+    checkSourceLocation(o.sourceLocation as api.SourceLocation);
     unittest.expect(o.time, unittest.equals('foo'));
   }
   buildCounterLogLine--;
@@ -890,12 +890,12 @@ api.LogMetric buildLogMetric() {
 void checkLogMetric(api.LogMetric o) {
   buildCounterLogMetric++;
   if (buildCounterLogMetric < 3) {
-    checkBucketOptions(o.bucketOptions);
+    checkBucketOptions(o.bucketOptions as api.BucketOptions);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.filter, unittest.equals('foo'));
     checkUnnamed1826(o.labelExtractors);
-    checkMetricDescriptor(o.metricDescriptor);
+    checkMetricDescriptor(o.metricDescriptor as api.MetricDescriptor);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.valueExtractor, unittest.equals('foo'));
@@ -913,8 +913,8 @@ core.List<api.LogExclusion> buildUnnamed1827() {
 
 void checkUnnamed1827(core.List<api.LogExclusion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogExclusion(o[0]);
-  checkLogExclusion(o[1]);
+  checkLogExclusion(o[0] as api.LogExclusion);
+  checkLogExclusion(o[1] as api.LogExclusion);
 }
 
 core.int buildCounterLogSink = 0;
@@ -942,7 +942,7 @@ api.LogSink buildLogSink() {
 void checkLogSink(api.LogSink o) {
   buildCounterLogSink++;
   if (buildCounterLogSink < 3) {
-    checkBigQueryOptions(o.bigqueryOptions);
+    checkBigQueryOptions(o.bigqueryOptions as api.BigQueryOptions);
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.destination, unittest.equals('foo'));
@@ -967,8 +967,8 @@ core.List<api.LabelDescriptor> buildUnnamed1828() {
 
 void checkUnnamed1828(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabelDescriptor(o[0]);
-  checkLabelDescriptor(o[1]);
+  checkLabelDescriptor(o[0] as api.LabelDescriptor);
+  checkLabelDescriptor(o[1] as api.LabelDescriptor);
 }
 
 core.List<core.String> buildUnnamed1829() {
@@ -1012,7 +1012,7 @@ void checkMetricDescriptor(api.MetricDescriptor o) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkUnnamed1828(o.labels);
     unittest.expect(o.launchStage, unittest.equals('foo'));
-    checkMetricDescriptorMetadata(o.metadata);
+    checkMetricDescriptorMetadata(o.metadata as api.MetricDescriptorMetadata);
     unittest.expect(o.metricKind, unittest.equals('foo'));
     checkUnnamed1829(o.monitoredResourceTypes);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1089,8 +1089,8 @@ core.List<api.LabelDescriptor> buildUnnamed1831() {
 
 void checkUnnamed1831(core.List<api.LabelDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLabelDescriptor(o[0]);
-  checkLabelDescriptor(o[1]);
+  checkLabelDescriptor(o[0] as api.LabelDescriptor);
+  checkLabelDescriptor(o[1] as api.LabelDescriptor);
 }
 
 core.int buildCounterMonitoredResourceDescriptor = 0;
@@ -1194,8 +1194,8 @@ core.List<api.LogLine> buildUnnamed1834() {
 
 void checkUnnamed1834(core.List<api.LogLine> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogLine(o[0]);
-  checkLogLine(o[1]);
+  checkLogLine(o[0] as api.LogLine);
+  checkLogLine(o[1] as api.LogLine);
 }
 
 core.List<api.SourceReference> buildUnnamed1835() {
@@ -1207,8 +1207,8 @@ core.List<api.SourceReference> buildUnnamed1835() {
 
 void checkUnnamed1835(core.List<api.SourceReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSourceReference(o[0]);
-  checkSourceReference(o[1]);
+  checkSourceReference(o[0] as api.SourceReference);
+  checkSourceReference(o[1] as api.SourceReference);
 }
 
 core.int buildCounterRequestLog = 0;
@@ -1362,8 +1362,8 @@ core.List<api.LogEntry> buildUnnamed1836() {
 
 void checkUnnamed1836(core.List<api.LogEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLogEntry(o[0]);
-  checkLogEntry(o[1]);
+  checkLogEntry(o[0] as api.LogEntry);
+  checkLogEntry(o[1] as api.LogEntry);
 }
 
 core.Map<core.String, core.String> buildUnnamed1837() {
@@ -1403,7 +1403,7 @@ void checkWriteLogEntriesRequest(api.WriteLogEntriesRequest o) {
     checkUnnamed1837(o.labels);
     unittest.expect(o.logName, unittest.equals('foo'));
     unittest.expect(o.partialSuccess, unittest.isTrue);
-    checkMonitoredResource(o.resource);
+    checkMonitoredResource(o.resource as api.MonitoredResource);
   }
   buildCounterWriteLogEntriesRequest--;
 }
@@ -1428,7 +1428,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBigQueryOptions();
       var od = api.BigQueryOptions.fromJson(o.toJson());
-      checkBigQueryOptions(od);
+      checkBigQueryOptions(od as api.BigQueryOptions);
     });
   });
 
@@ -1436,7 +1436,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketOptions();
       var od = api.BucketOptions.fromJson(o.toJson());
-      checkBucketOptions(od);
+      checkBucketOptions(od as api.BucketOptions);
     });
   });
 
@@ -1444,7 +1444,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCmekSettings();
       var od = api.CmekSettings.fromJson(o.toJson());
-      checkCmekSettings(od);
+      checkCmekSettings(od as api.CmekSettings);
     });
   });
 
@@ -1452,7 +1452,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1460,7 +1460,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExplicit();
       var od = api.Explicit.fromJson(o.toJson());
-      checkExplicit(od);
+      checkExplicit(od as api.Explicit);
     });
   });
 
@@ -1468,7 +1468,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExponential();
       var od = api.Exponential.fromJson(o.toJson());
-      checkExponential(od);
+      checkExponential(od as api.Exponential);
     });
   });
 
@@ -1476,7 +1476,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpRequest();
       var od = api.HttpRequest.fromJson(o.toJson());
-      checkHttpRequest(od);
+      checkHttpRequest(od as api.HttpRequest);
     });
   });
 
@@ -1484,7 +1484,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLabelDescriptor();
       var od = api.LabelDescriptor.fromJson(o.toJson());
-      checkLabelDescriptor(od);
+      checkLabelDescriptor(od as api.LabelDescriptor);
     });
   });
 
@@ -1492,7 +1492,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLinear();
       var od = api.Linear.fromJson(o.toJson());
-      checkLinear(od);
+      checkLinear(od as api.Linear);
     });
   });
 
@@ -1500,7 +1500,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListBucketsResponse();
       var od = api.ListBucketsResponse.fromJson(o.toJson());
-      checkListBucketsResponse(od);
+      checkListBucketsResponse(od as api.ListBucketsResponse);
     });
   });
 
@@ -1508,7 +1508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListExclusionsResponse();
       var od = api.ListExclusionsResponse.fromJson(o.toJson());
-      checkListExclusionsResponse(od);
+      checkListExclusionsResponse(od as api.ListExclusionsResponse);
     });
   });
 
@@ -1516,7 +1516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLogEntriesRequest();
       var od = api.ListLogEntriesRequest.fromJson(o.toJson());
-      checkListLogEntriesRequest(od);
+      checkListLogEntriesRequest(od as api.ListLogEntriesRequest);
     });
   });
 
@@ -1524,7 +1524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLogEntriesResponse();
       var od = api.ListLogEntriesResponse.fromJson(o.toJson());
-      checkListLogEntriesResponse(od);
+      checkListLogEntriesResponse(od as api.ListLogEntriesResponse);
     });
   });
 
@@ -1532,7 +1532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLogMetricsResponse();
       var od = api.ListLogMetricsResponse.fromJson(o.toJson());
-      checkListLogMetricsResponse(od);
+      checkListLogMetricsResponse(od as api.ListLogMetricsResponse);
     });
   });
 
@@ -1540,7 +1540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLogsResponse();
       var od = api.ListLogsResponse.fromJson(o.toJson());
-      checkListLogsResponse(od);
+      checkListLogsResponse(od as api.ListLogsResponse);
     });
   });
 
@@ -1549,7 +1549,8 @@ void main() {
       var o = buildListMonitoredResourceDescriptorsResponse();
       var od =
           api.ListMonitoredResourceDescriptorsResponse.fromJson(o.toJson());
-      checkListMonitoredResourceDescriptorsResponse(od);
+      checkListMonitoredResourceDescriptorsResponse(
+          od as api.ListMonitoredResourceDescriptorsResponse);
     });
   });
 
@@ -1557,7 +1558,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSinksResponse();
       var od = api.ListSinksResponse.fromJson(o.toJson());
-      checkListSinksResponse(od);
+      checkListSinksResponse(od as api.ListSinksResponse);
     });
   });
 
@@ -1565,7 +1566,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogBucket();
       var od = api.LogBucket.fromJson(o.toJson());
-      checkLogBucket(od);
+      checkLogBucket(od as api.LogBucket);
     });
   });
 
@@ -1573,7 +1574,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogEntry();
       var od = api.LogEntry.fromJson(o.toJson());
-      checkLogEntry(od);
+      checkLogEntry(od as api.LogEntry);
     });
   });
 
@@ -1581,7 +1582,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogEntryOperation();
       var od = api.LogEntryOperation.fromJson(o.toJson());
-      checkLogEntryOperation(od);
+      checkLogEntryOperation(od as api.LogEntryOperation);
     });
   });
 
@@ -1589,7 +1590,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogEntrySourceLocation();
       var od = api.LogEntrySourceLocation.fromJson(o.toJson());
-      checkLogEntrySourceLocation(od);
+      checkLogEntrySourceLocation(od as api.LogEntrySourceLocation);
     });
   });
 
@@ -1597,7 +1598,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogExclusion();
       var od = api.LogExclusion.fromJson(o.toJson());
-      checkLogExclusion(od);
+      checkLogExclusion(od as api.LogExclusion);
     });
   });
 
@@ -1605,7 +1606,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogLine();
       var od = api.LogLine.fromJson(o.toJson());
-      checkLogLine(od);
+      checkLogLine(od as api.LogLine);
     });
   });
 
@@ -1613,7 +1614,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogMetric();
       var od = api.LogMetric.fromJson(o.toJson());
-      checkLogMetric(od);
+      checkLogMetric(od as api.LogMetric);
     });
   });
 
@@ -1621,7 +1622,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLogSink();
       var od = api.LogSink.fromJson(o.toJson());
-      checkLogSink(od);
+      checkLogSink(od as api.LogSink);
     });
   });
 
@@ -1629,7 +1630,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricDescriptor();
       var od = api.MetricDescriptor.fromJson(o.toJson());
-      checkMetricDescriptor(od);
+      checkMetricDescriptor(od as api.MetricDescriptor);
     });
   });
 
@@ -1637,7 +1638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetricDescriptorMetadata();
       var od = api.MetricDescriptorMetadata.fromJson(o.toJson());
-      checkMetricDescriptorMetadata(od);
+      checkMetricDescriptorMetadata(od as api.MetricDescriptorMetadata);
     });
   });
 
@@ -1645,7 +1646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoredResource();
       var od = api.MonitoredResource.fromJson(o.toJson());
-      checkMonitoredResource(od);
+      checkMonitoredResource(od as api.MonitoredResource);
     });
   });
 
@@ -1653,7 +1654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoredResourceDescriptor();
       var od = api.MonitoredResourceDescriptor.fromJson(o.toJson());
-      checkMonitoredResourceDescriptor(od);
+      checkMonitoredResourceDescriptor(od as api.MonitoredResourceDescriptor);
     });
   });
 
@@ -1661,7 +1662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitoredResourceMetadata();
       var od = api.MonitoredResourceMetadata.fromJson(o.toJson());
-      checkMonitoredResourceMetadata(od);
+      checkMonitoredResourceMetadata(od as api.MonitoredResourceMetadata);
     });
   });
 
@@ -1669,7 +1670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequestLog();
       var od = api.RequestLog.fromJson(o.toJson());
-      checkRequestLog(od);
+      checkRequestLog(od as api.RequestLog);
     });
   });
 
@@ -1677,7 +1678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceLocation();
       var od = api.SourceLocation.fromJson(o.toJson());
-      checkSourceLocation(od);
+      checkSourceLocation(od as api.SourceLocation);
     });
   });
 
@@ -1685,7 +1686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceReference();
       var od = api.SourceReference.fromJson(o.toJson());
-      checkSourceReference(od);
+      checkSourceReference(od as api.SourceReference);
     });
   });
 
@@ -1693,7 +1694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteBucketRequest();
       var od = api.UndeleteBucketRequest.fromJson(o.toJson());
-      checkUndeleteBucketRequest(od);
+      checkUndeleteBucketRequest(od as api.UndeleteBucketRequest);
     });
   });
 
@@ -1701,7 +1702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteLogEntriesRequest();
       var od = api.WriteLogEntriesRequest.fromJson(o.toJson());
-      checkWriteLogEntriesRequest(od);
+      checkWriteLogEntriesRequest(od as api.WriteLogEntriesRequest);
     });
   });
 
@@ -1709,7 +1710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteLogEntriesResponse();
       var od = api.WriteLogEntriesResponse.fromJson(o.toJson());
-      checkWriteLogEntriesResponse(od);
+      checkWriteLogEntriesResponse(od as api.WriteLogEntriesResponse);
     });
   });
 
@@ -1758,7 +1759,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
   });
@@ -1771,8 +1772,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1812,7 +1814,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -1860,7 +1862,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1908,7 +1910,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -1965,7 +1967,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response);
+        checkListExclusionsResponse(response as api.ListExclusionsResponse);
       })));
     });
 
@@ -1977,8 +1979,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2021,7 +2024,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
   });
@@ -2035,8 +2038,9 @@ void main() {
       var arg_bucketId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2079,7 +2083,7 @@ void main() {
           .create(arg_request, arg_parent,
               bucketId: arg_bucketId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -2127,7 +2131,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2184,7 +2188,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response);
+        checkListBucketsResponse(response as api.ListBucketsResponse);
       })));
     });
 
@@ -2196,8 +2200,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2240,7 +2245,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -2251,8 +2256,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteBucketRequest.fromJson(json);
-        checkUndeleteBucketRequest(obj);
+        var obj = api.UndeleteBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteBucketRequest(obj as api.UndeleteBucketRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2292,7 +2298,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -2342,7 +2348,7 @@ void main() {
       res
           .delete(arg_logName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2399,7 +2405,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response);
+        checkListLogsResponse(response as api.ListLogsResponse);
       })));
     });
   });
@@ -2413,8 +2419,9 @@ void main() {
       var arg_uniqueWriterIdentity = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2458,7 +2465,7 @@ void main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -2506,7 +2513,7 @@ void main() {
       res
           .delete(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2554,7 +2561,7 @@ void main() {
       res
           .get(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -2611,7 +2618,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response);
+        checkListSinksResponse(response as api.ListSinksResponse);
       })));
     });
 
@@ -2624,8 +2631,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2672,7 +2680,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -2685,8 +2693,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2733,7 +2742,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
   });
@@ -2745,8 +2754,9 @@ void main() {
       var arg_request = buildListLogEntriesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListLogEntriesRequest.fromJson(json);
-        checkListLogEntriesRequest(obj);
+        var obj = api.ListLogEntriesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListLogEntriesRequest(obj as api.ListLogEntriesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2785,7 +2795,7 @@ void main() {
       res
           .list(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogEntriesResponse(response);
+        checkListLogEntriesResponse(response as api.ListLogEntriesResponse);
       })));
     });
 
@@ -2795,8 +2805,9 @@ void main() {
       var arg_request = buildWriteLogEntriesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WriteLogEntriesRequest.fromJson(json);
-        checkWriteLogEntriesRequest(obj);
+        var obj = api.WriteLogEntriesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWriteLogEntriesRequest(obj as api.WriteLogEntriesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2835,7 +2846,7 @@ void main() {
       res
           .write(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWriteLogEntriesResponse(response);
+        checkWriteLogEntriesResponse(response as api.WriteLogEntriesResponse);
       })));
     });
   });
@@ -2848,8 +2859,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2889,7 +2901,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -2937,7 +2949,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2985,7 +2997,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -3042,7 +3054,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response);
+        checkListExclusionsResponse(response as api.ListExclusionsResponse);
       })));
     });
 
@@ -3054,8 +3066,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3098,7 +3111,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
   });
@@ -3111,8 +3124,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3152,7 +3166,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -3200,7 +3214,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3248,7 +3262,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -3305,7 +3319,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response);
+        checkListExclusionsResponse(response as api.ListExclusionsResponse);
       })));
     });
 
@@ -3317,8 +3331,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3361,7 +3376,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
   });
@@ -3375,8 +3390,9 @@ void main() {
       var arg_bucketId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3419,7 +3435,7 @@ void main() {
           .create(arg_request, arg_parent,
               bucketId: arg_bucketId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -3467,7 +3483,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3515,7 +3531,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -3572,7 +3588,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response);
+        checkListBucketsResponse(response as api.ListBucketsResponse);
       })));
     });
 
@@ -3584,8 +3600,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3628,7 +3645,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -3639,8 +3656,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteBucketRequest.fromJson(json);
-        checkUndeleteBucketRequest(obj);
+        var obj = api.UndeleteBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteBucketRequest(obj as api.UndeleteBucketRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3680,7 +3698,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -3730,7 +3748,7 @@ void main() {
       res
           .delete(arg_logName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3787,7 +3805,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response);
+        checkListLogsResponse(response as api.ListLogsResponse);
       })));
     });
   });
@@ -3801,8 +3819,9 @@ void main() {
       var arg_uniqueWriterIdentity = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3846,7 +3865,7 @@ void main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -3894,7 +3913,7 @@ void main() {
       res
           .delete(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3942,7 +3961,7 @@ void main() {
       res
           .get(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -3999,7 +4018,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response);
+        checkListSinksResponse(response as api.ListSinksResponse);
       })));
     });
 
@@ -4012,8 +4031,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4060,7 +4080,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -4073,8 +4093,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4121,7 +4142,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
   });
@@ -4135,8 +4156,9 @@ void main() {
       var arg_bucketId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4179,7 +4201,7 @@ void main() {
           .create(arg_request, arg_parent,
               bucketId: arg_bucketId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -4227,7 +4249,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4275,7 +4297,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -4332,7 +4354,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response);
+        checkListBucketsResponse(response as api.ListBucketsResponse);
       })));
     });
 
@@ -4344,8 +4366,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4388,7 +4411,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -4399,8 +4422,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteBucketRequest.fromJson(json);
-        checkUndeleteBucketRequest(obj);
+        var obj = api.UndeleteBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteBucketRequest(obj as api.UndeleteBucketRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4440,7 +4464,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -4490,7 +4514,7 @@ void main() {
       res
           .delete(arg_logName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4547,7 +4571,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response);
+        checkListLogsResponse(response as api.ListLogsResponse);
       })));
     });
   });
@@ -4605,7 +4629,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListMonitoredResourceDescriptorsResponse(response);
+        checkListMonitoredResourceDescriptorsResponse(
+            response as api.ListMonitoredResourceDescriptorsResponse);
       })));
     });
   });
@@ -4655,7 +4680,7 @@ void main() {
       res
           .getCmekSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response);
+        checkCmekSettings(response as api.CmekSettings);
       })));
     });
 
@@ -4667,8 +4692,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CmekSettings.fromJson(json);
-        checkCmekSettings(obj);
+        var obj = api.CmekSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCmekSettings(obj as api.CmekSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4711,7 +4737,7 @@ void main() {
           .updateCmekSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response);
+        checkCmekSettings(response as api.CmekSettings);
       })));
     });
   });
@@ -4724,8 +4750,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4765,7 +4792,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -4813,7 +4840,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4861,7 +4888,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -4918,7 +4945,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response);
+        checkListExclusionsResponse(response as api.ListExclusionsResponse);
       })));
     });
 
@@ -4930,8 +4957,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4974,7 +5002,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
   });
@@ -4988,8 +5016,9 @@ void main() {
       var arg_bucketId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5032,7 +5061,7 @@ void main() {
           .create(arg_request, arg_parent,
               bucketId: arg_bucketId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -5080,7 +5109,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5128,7 +5157,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -5185,7 +5214,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response);
+        checkListBucketsResponse(response as api.ListBucketsResponse);
       })));
     });
 
@@ -5197,8 +5226,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5241,7 +5271,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -5252,8 +5282,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteBucketRequest.fromJson(json);
-        checkUndeleteBucketRequest(obj);
+        var obj = api.UndeleteBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteBucketRequest(obj as api.UndeleteBucketRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5293,7 +5324,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -5343,7 +5374,7 @@ void main() {
       res
           .delete(arg_logName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5400,7 +5431,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response);
+        checkListLogsResponse(response as api.ListLogsResponse);
       })));
     });
   });
@@ -5414,8 +5445,9 @@ void main() {
       var arg_uniqueWriterIdentity = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5459,7 +5491,7 @@ void main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -5507,7 +5539,7 @@ void main() {
       res
           .delete(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5555,7 +5587,7 @@ void main() {
       res
           .get(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -5612,7 +5644,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response);
+        checkListSinksResponse(response as api.ListSinksResponse);
       })));
     });
 
@@ -5625,8 +5657,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5673,7 +5706,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -5686,8 +5719,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5734,7 +5768,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
   });
@@ -5747,8 +5781,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5788,7 +5823,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -5836,7 +5871,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5884,7 +5919,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
 
@@ -5941,7 +5976,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListExclusionsResponse(response);
+        checkListExclusionsResponse(response as api.ListExclusionsResponse);
       })));
     });
 
@@ -5953,8 +5988,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogExclusion.fromJson(json);
-        checkLogExclusion(obj);
+        var obj = api.LogExclusion.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLogExclusion(obj as api.LogExclusion);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5997,7 +6033,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogExclusion(response);
+        checkLogExclusion(response as api.LogExclusion);
       })));
     });
   });
@@ -6011,8 +6047,9 @@ void main() {
       var arg_bucketId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6055,7 +6092,7 @@ void main() {
           .create(arg_request, arg_parent,
               bucketId: arg_bucketId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -6103,7 +6140,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6151,7 +6188,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -6208,7 +6245,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBucketsResponse(response);
+        checkListBucketsResponse(response as api.ListBucketsResponse);
       })));
     });
 
@@ -6220,8 +6257,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogBucket.fromJson(json);
-        checkLogBucket(obj);
+        var obj =
+            api.LogBucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogBucket(obj as api.LogBucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6264,7 +6302,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogBucket(response);
+        checkLogBucket(response as api.LogBucket);
       })));
     });
 
@@ -6275,8 +6313,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteBucketRequest.fromJson(json);
-        checkUndeleteBucketRequest(obj);
+        var obj = api.UndeleteBucketRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteBucketRequest(obj as api.UndeleteBucketRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6316,7 +6355,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -6366,7 +6405,7 @@ void main() {
       res
           .delete(arg_logName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6423,7 +6462,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogsResponse(response);
+        checkListLogsResponse(response as api.ListLogsResponse);
       })));
     });
   });
@@ -6436,8 +6475,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogMetric.fromJson(json);
-        checkLogMetric(obj);
+        var obj =
+            api.LogMetric.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogMetric(obj as api.LogMetric);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6477,7 +6517,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response);
+        checkLogMetric(response as api.LogMetric);
       })));
     });
 
@@ -6525,7 +6565,7 @@ void main() {
       res
           .delete(arg_metricName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6573,7 +6613,7 @@ void main() {
       res
           .get(arg_metricName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response);
+        checkLogMetric(response as api.LogMetric);
       })));
     });
 
@@ -6630,7 +6670,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLogMetricsResponse(response);
+        checkListLogMetricsResponse(response as api.ListLogMetricsResponse);
       })));
     });
 
@@ -6641,8 +6681,9 @@ void main() {
       var arg_metricName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogMetric.fromJson(json);
-        checkLogMetric(obj);
+        var obj =
+            api.LogMetric.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogMetric(obj as api.LogMetric);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6682,7 +6723,7 @@ void main() {
       res
           .update(arg_request, arg_metricName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogMetric(response);
+        checkLogMetric(response as api.LogMetric);
       })));
     });
   });
@@ -6696,8 +6737,9 @@ void main() {
       var arg_uniqueWriterIdentity = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6741,7 +6783,7 @@ void main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -6789,7 +6831,7 @@ void main() {
       res
           .delete(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6837,7 +6879,7 @@ void main() {
       res
           .get(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -6894,7 +6936,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response);
+        checkListSinksResponse(response as api.ListSinksResponse);
       })));
     });
 
@@ -6907,8 +6949,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6955,7 +6998,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -6968,8 +7011,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7016,7 +7060,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
   });
@@ -7030,8 +7074,9 @@ void main() {
       var arg_uniqueWriterIdentity = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7075,7 +7120,7 @@ void main() {
               uniqueWriterIdentity: arg_uniqueWriterIdentity,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -7123,7 +7168,7 @@ void main() {
       res
           .delete(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -7171,7 +7216,7 @@ void main() {
       res
           .get(arg_sinkName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
 
@@ -7228,7 +7273,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSinksResponse(response);
+        checkListSinksResponse(response as api.ListSinksResponse);
       })));
     });
 
@@ -7241,8 +7286,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LogSink.fromJson(json);
-        checkLogSink(obj);
+        var obj =
+            api.LogSink.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLogSink(obj as api.LogSink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7289,7 +7335,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLogSink(response);
+        checkLogSink(response as api.LogSink);
       })));
     });
   });
@@ -7339,7 +7385,7 @@ void main() {
       res
           .getCmekSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response);
+        checkCmekSettings(response as api.CmekSettings);
       })));
     });
 
@@ -7351,8 +7397,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CmekSettings.fromJson(json);
-        checkCmekSettings(obj);
+        var obj = api.CmekSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCmekSettings(obj as api.CmekSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7395,7 +7442,7 @@ void main() {
           .updateCmekSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCmekSettings(response);
+        checkCmekSettings(response as api.CmekSettings);
       })));
     });
   });

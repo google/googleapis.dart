@@ -116,7 +116,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AllocateIdsResponse.fromJson(data));
+    return _response.then(
+      (data) => AllocateIdsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Begins a new transaction.
@@ -173,7 +176,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BeginTransactionResponse.fromJson(data));
+    return _response.then(
+      (data) => BeginTransactionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Commits a transaction, optionally creating, deleting or modifying some
@@ -231,7 +237,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommitResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommitResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Exports a copy of all or a subset of entities from Google Cloud Datastore
@@ -294,7 +303,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports entities into Google Cloud Datastore. Existing entities with the
@@ -354,7 +366,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up entities by key.
@@ -411,7 +426,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LookupResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          LookupResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Prevents the supplied keys' IDs from being auto-allocated by Cloud
@@ -469,7 +487,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReserveIdsResponse.fromJson(data));
+    return _response.then(
+      (data) => ReserveIdsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rolls back a transaction.
@@ -526,7 +547,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RollbackResponse.fromJson(data));
+    return _response.then(
+      (data) => RollbackResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Queries for entities.
@@ -583,7 +607,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RunQueryResponse.fromJson(data));
+    return _response.then(
+      (data) => RunQueryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -652,7 +679,10 @@ class ProjectsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an existing index. An index can only be deleted if it is in a
@@ -715,7 +745,10 @@ class ProjectsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an index.
@@ -772,7 +805,10 @@ class ProjectsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleDatastoreAdminV1Index.fromJson(data));
+    return _response.then(
+      (data) => GoogleDatastoreAdminV1Index.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the indexes that match the specified filters. Datastore uses an
@@ -845,7 +881,9 @@ class ProjectsIndexesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleDatastoreAdminV1ListIndexesResponse.fromJson(data));
+      (data) => GoogleDatastoreAdminV1ListIndexesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -909,7 +947,9 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -961,7 +1001,9 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1012,7 +1054,10 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1088,8 +1133,10 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1104,7 +1151,8 @@ class AllocateIdsRequest {
   AllocateIdsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<Key>((value) => Key.fromJson(value))
+          .map<Key>((value) =>
+              Key.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1129,7 +1177,8 @@ class AllocateIdsResponse {
   AllocateIdsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<Key>((value) => Key.fromJson(value))
+          .map<Key>((value) =>
+              Key.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1154,7 +1203,8 @@ class ArrayValue {
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1177,8 +1227,8 @@ class BeginTransactionRequest {
 
   BeginTransactionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('transactionOptions')) {
-      transactionOptions =
-          TransactionOptions.fromJson(_json['transactionOptions']);
+      transactionOptions = TransactionOptions.fromJson(
+          _json['transactionOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1260,7 +1310,8 @@ class CommitRequest {
     }
     if (_json.containsKey('mutations')) {
       mutations = (_json['mutations'] as core.List)
-          .map<Mutation>((value) => Mutation.fromJson(value))
+          .map<Mutation>((value) =>
+              Mutation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('transaction')) {
@@ -1301,7 +1352,8 @@ class CommitResponse {
     }
     if (_json.containsKey('mutationResults')) {
       mutationResults = (_json['mutationResults'] as core.List)
-          .map<MutationResult>((value) => MutationResult.fromJson(value))
+          .map<MutationResult>((value) => MutationResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1336,7 +1388,8 @@ class CompositeFilter {
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<Filter>((value) => Filter.fromJson(value))
+          .map<Filter>((value) =>
+              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('op')) {
@@ -1394,12 +1447,14 @@ class Entity {
 
   Entity.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = Key.fromJson(_json['key']);
+      key = Key.fromJson(_json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.Map, Value>(
-          _json['properties'].cast<core.String, core.Map>(),
-          (core.Map item) => Value.fromJson(item));
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Value.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -1446,7 +1501,8 @@ class EntityResult {
       cursor = _json['cursor'] as core.String;
     }
     if (_json.containsKey('entity')) {
-      entity = Entity.fromJson(_json['entity']);
+      entity = Entity.fromJson(
+          _json['entity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
@@ -1480,10 +1536,12 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey('compositeFilter')) {
-      compositeFilter = CompositeFilter.fromJson(_json['compositeFilter']);
+      compositeFilter = CompositeFilter.fromJson(
+          _json['compositeFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('propertyFilter')) {
-      propertyFilter = PropertyFilter.fromJson(_json['propertyFilter']);
+      propertyFilter = PropertyFilter.fromJson(
+          _json['propertyFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1545,7 +1603,8 @@ class GoogleDatastoreAdminV1CommonMetadata {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('operationType')) {
@@ -1652,22 +1711,23 @@ class GoogleDatastoreAdminV1ExportEntitiesMetadata {
 
   GoogleDatastoreAdminV1ExportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(_json['common']);
+      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityFilter')) {
-      entityFilter =
-          GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
+      entityFilter = GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputUrlPrefix')) {
       outputUrlPrefix = _json['outputUrlPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleDatastoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleDatastoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressEntities')) {
-      progressEntities =
-          GoogleDatastoreAdminV1Progress.fromJson(_json['progressEntities']);
+      progressEntities = GoogleDatastoreAdminV1Progress.fromJson(
+          _json['progressEntities'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1720,12 +1780,13 @@ class GoogleDatastoreAdminV1ExportEntitiesRequest {
 
   GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entityFilter')) {
-      entityFilter =
-          GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
+      entityFilter = GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('outputUrlPrefix')) {
@@ -1795,22 +1856,23 @@ class GoogleDatastoreAdminV1ImportEntitiesMetadata {
 
   GoogleDatastoreAdminV1ImportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(_json['common']);
+      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityFilter')) {
-      entityFilter =
-          GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
+      entityFilter = GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputUrl')) {
       inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleDatastoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleDatastoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressEntities')) {
-      progressEntities =
-          GoogleDatastoreAdminV1Progress.fromJson(_json['progressEntities']);
+      progressEntities = GoogleDatastoreAdminV1Progress.fromJson(
+          _json['progressEntities'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1864,15 +1926,16 @@ class GoogleDatastoreAdminV1ImportEntitiesRequest {
 
   GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entityFilter')) {
-      entityFilter =
-          GoogleDatastoreAdminV1EntityFilter.fromJson(_json['entityFilter']);
+      entityFilter = GoogleDatastoreAdminV1EntityFilter.fromJson(
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputUrl')) {
       inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -1951,8 +2014,9 @@ class GoogleDatastoreAdminV1Index {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleDatastoreAdminV1IndexedProperty>(
-              (value) => GoogleDatastoreAdminV1IndexedProperty.fromJson(value))
+          .map<GoogleDatastoreAdminV1IndexedProperty>((value) =>
+              GoogleDatastoreAdminV1IndexedProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
@@ -1999,14 +2063,15 @@ class GoogleDatastoreAdminV1IndexOperationMetadata {
 
   GoogleDatastoreAdminV1IndexOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(_json['common']);
+      common = GoogleDatastoreAdminV1CommonMetadata.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indexId')) {
       indexId = _json['indexId'] as core.String;
     }
     if (_json.containsKey('progressEntities')) {
-      progressEntities =
-          GoogleDatastoreAdminV1Progress.fromJson(_json['progressEntities']);
+      progressEntities = GoogleDatastoreAdminV1Progress.fromJson(
+          _json['progressEntities'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2076,8 +2141,9 @@ class GoogleDatastoreAdminV1ListIndexesResponse {
   GoogleDatastoreAdminV1ListIndexesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('indexes')) {
       indexes = (_json['indexes'] as core.List)
-          .map<GoogleDatastoreAdminV1Index>(
-              (value) => GoogleDatastoreAdminV1Index.fromJson(value))
+          .map<GoogleDatastoreAdminV1Index>((value) =>
+              GoogleDatastoreAdminV1Index.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2174,7 +2240,8 @@ class GoogleDatastoreAdminV1beta1CommonMetadata {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('operationType')) {
@@ -2281,23 +2348,23 @@ class GoogleDatastoreAdminV1beta1ExportEntitiesMetadata {
 
   GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common =
-          GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json['common']);
+      common = GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityFilter')) {
       entityFilter = GoogleDatastoreAdminV1beta1EntityFilter.fromJson(
-          _json['entityFilter']);
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputUrlPrefix')) {
       outputUrlPrefix = _json['outputUrlPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleDatastoreAdminV1beta1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressEntities')) {
       progressEntities = GoogleDatastoreAdminV1beta1Progress.fromJson(
-          _json['progressEntities']);
+          _json['progressEntities'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2371,23 +2438,23 @@ class GoogleDatastoreAdminV1beta1ImportEntitiesMetadata {
 
   GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common =
-          GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(_json['common']);
+      common = GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityFilter')) {
       entityFilter = GoogleDatastoreAdminV1beta1EntityFilter.fromJson(
-          _json['entityFilter']);
+          _json['entityFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputUrl')) {
       inputUrl = _json['inputUrl'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleDatastoreAdminV1beta1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleDatastoreAdminV1beta1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressEntities')) {
       progressEntities = GoogleDatastoreAdminV1beta1Progress.fromJson(
-          _json['progressEntities']);
+          _json['progressEntities'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2461,8 +2528,9 @@ class GoogleLongrunningListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>(
-              (value) => GoogleLongrunningOperation.fromJson(value))
+          .map<GoogleLongrunningOperation>((value) =>
+              GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2523,11 +2591,13 @@ class GoogleLongrunningOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2535,7 +2605,8 @@ class GoogleLongrunningOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2593,12 +2664,15 @@ class GqlQuery {
     }
     if (_json.containsKey('namedBindings')) {
       namedBindings = commons.mapMap<core.Map, GqlQueryParameter>(
-          _json['namedBindings'].cast<core.String, core.Map>(),
-          (core.Map item) => GqlQueryParameter.fromJson(item));
+          (_json['namedBindings'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => GqlQueryParameter.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('positionalBindings')) {
       positionalBindings = (_json['positionalBindings'] as core.List)
-          .map<GqlQueryParameter>((value) => GqlQueryParameter.fromJson(value))
+          .map<GqlQueryParameter>((value) => GqlQueryParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('queryString')) {
@@ -2648,7 +2722,8 @@ class GqlQueryParameter {
       cursor = _json['cursor'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = Value.fromJson(_json['value']);
+      value =
+          Value.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2690,11 +2765,13 @@ class Key {
 
   Key.fromJson(core.Map _json) {
     if (_json.containsKey('partitionId')) {
-      partitionId = PartitionId.fromJson(_json['partitionId']);
+      partitionId = PartitionId.fromJson(
+          _json['partitionId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('path')) {
       path = (_json['path'] as core.List)
-          .map<PathElement>((value) => PathElement.fromJson(value))
+          .map<PathElement>((value) => PathElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2780,11 +2857,13 @@ class LookupRequest {
   LookupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<Key>((value) => Key.fromJson(value))
+          .map<Key>((value) =>
+              Key.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('readOptions')) {
-      readOptions = ReadOptions.fromJson(_json['readOptions']);
+      readOptions = ReadOptions.fromJson(
+          _json['readOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2822,17 +2901,20 @@ class LookupResponse {
   LookupResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deferred')) {
       deferred = (_json['deferred'] as core.List)
-          .map<Key>((value) => Key.fromJson(value))
+          .map<Key>((value) =>
+              Key.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('found')) {
       found = (_json['found'] as core.List)
-          .map<EntityResult>((value) => EntityResult.fromJson(value))
+          .map<EntityResult>((value) => EntityResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('missing')) {
       missing = (_json['missing'] as core.List)
-          .map<EntityResult>((value) => EntityResult.fromJson(value))
+          .map<EntityResult>((value) => EntityResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2881,16 +2963,20 @@ class Mutation {
       baseVersion = _json['baseVersion'] as core.String;
     }
     if (_json.containsKey('delete')) {
-      delete = Key.fromJson(_json['delete']);
+      delete =
+          Key.fromJson(_json['delete'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insert')) {
-      insert = Entity.fromJson(_json['insert']);
+      insert = Entity.fromJson(
+          _json['insert'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('update')) {
-      update = Entity.fromJson(_json['update']);
+      update = Entity.fromJson(
+          _json['update'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('upsert')) {
-      upsert = Entity.fromJson(_json['upsert']);
+      upsert = Entity.fromJson(
+          _json['upsert'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2939,7 +3025,7 @@ class MutationResult {
       conflictDetected = _json['conflictDetected'] as core.bool;
     }
     if (_json.containsKey('key')) {
-      key = Key.fromJson(_json['key']);
+      key = Key.fromJson(_json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
@@ -3056,7 +3142,8 @@ class Projection {
 
   Projection.fromJson(core.Map _json) {
     if (_json.containsKey('property')) {
-      property = PropertyReference.fromJson(_json['property']);
+      property = PropertyReference.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3095,10 +3182,12 @@ class PropertyFilter {
       op = _json['op'] as core.String;
     }
     if (_json.containsKey('property')) {
-      property = PropertyReference.fromJson(_json['property']);
+      property = PropertyReference.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('value')) {
-      value = Value.fromJson(_json['value']);
+      value =
+          Value.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3136,7 +3225,8 @@ class PropertyOrder {
       direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('property')) {
-      property = PropertyReference.fromJson(_json['property']);
+      property = PropertyReference.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3232,18 +3322,21 @@ class Query {
   Query.fromJson(core.Map _json) {
     if (_json.containsKey('distinctOn')) {
       distinctOn = (_json['distinctOn'] as core.List)
-          .map<PropertyReference>((value) => PropertyReference.fromJson(value))
+          .map<PropertyReference>((value) => PropertyReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('endCursor')) {
       endCursor = _json['endCursor'] as core.String;
     }
     if (_json.containsKey('filter')) {
-      filter = Filter.fromJson(_json['filter']);
+      filter = Filter.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = (_json['kind'] as core.List)
-          .map<KindExpression>((value) => KindExpression.fromJson(value))
+          .map<KindExpression>((value) => KindExpression.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('limit')) {
@@ -3254,12 +3347,14 @@ class Query {
     }
     if (_json.containsKey('order')) {
       order = (_json['order'] as core.List)
-          .map<PropertyOrder>((value) => PropertyOrder.fromJson(value))
+          .map<PropertyOrder>((value) => PropertyOrder.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('projection')) {
       projection = (_json['projection'] as core.List)
-          .map<Projection>((value) => Projection.fromJson(value))
+          .map<Projection>((value) =>
+              Projection.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('startCursor')) {
@@ -3371,7 +3466,8 @@ class QueryResultBatch {
     }
     if (_json.containsKey('entityResults')) {
       entityResults = (_json['entityResults'] as core.List)
-          .map<EntityResult>((value) => EntityResult.fromJson(value))
+          .map<EntityResult>((value) => EntityResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('moreResults')) {
@@ -3521,7 +3617,8 @@ class ReserveIdsRequest {
     }
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
-          .map<Key>((value) => Key.fromJson(value))
+          .map<Key>((value) =>
+              Key.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3616,16 +3713,20 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('gqlQuery')) {
-      gqlQuery = GqlQuery.fromJson(_json['gqlQuery']);
+      gqlQuery = GqlQuery.fromJson(
+          _json['gqlQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('partitionId')) {
-      partitionId = PartitionId.fromJson(_json['partitionId']);
+      partitionId = PartitionId.fromJson(
+          _json['partitionId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = Query.fromJson(_json['query']);
+      query =
+          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readOptions')) {
-      readOptions = ReadOptions.fromJson(_json['readOptions']);
+      readOptions = ReadOptions.fromJson(
+          _json['readOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3659,10 +3760,12 @@ class RunQueryResponse {
 
   RunQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('batch')) {
-      batch = QueryResultBatch.fromJson(_json['batch']);
+      batch = QueryResultBatch.fromJson(
+          _json['batch'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = Query.fromJson(_json['query']);
+      query =
+          Query.fromJson(_json['query'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3710,7 +3813,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -3748,10 +3852,12 @@ class TransactionOptions {
 
   TransactionOptions.fromJson(core.Map _json) {
     if (_json.containsKey('readOnly')) {
-      readOnly = ReadOnly.fromJson(_json['readOnly']);
+      readOnly = ReadOnly.fromJson(
+          _json['readOnly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readWrite')) {
-      readWrite = ReadWrite.fromJson(_json['readWrite']);
+      readWrite = ReadWrite.fromJson(
+          _json['readWrite'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3830,7 +3936,8 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey('arrayValue')) {
-      arrayValue = ArrayValue.fromJson(_json['arrayValue']);
+      arrayValue = ArrayValue.fromJson(
+          _json['arrayValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blobValue')) {
       blobValue = _json['blobValue'] as core.String;
@@ -3842,19 +3949,22 @@ class Value {
       doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('entityValue')) {
-      entityValue = Entity.fromJson(_json['entityValue']);
+      entityValue = Entity.fromJson(
+          _json['entityValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('excludeFromIndexes')) {
       excludeFromIndexes = _json['excludeFromIndexes'] as core.bool;
     }
     if (_json.containsKey('geoPointValue')) {
-      geoPointValue = LatLng.fromJson(_json['geoPointValue']);
+      geoPointValue = LatLng.fromJson(
+          _json['geoPointValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('integerValue')) {
       integerValue = _json['integerValue'] as core.String;
     }
     if (_json.containsKey('keyValue')) {
-      keyValue = Key.fromJson(_json['keyValue']);
+      keyValue = Key.fromJson(
+          _json['keyValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('meaning')) {
       meaning = _json['meaning'] as core.int;

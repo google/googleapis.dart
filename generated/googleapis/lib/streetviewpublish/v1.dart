@@ -111,7 +111,9 @@ class PhotoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Photo.fromJson(data));
+    return _response.then(
+      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Photo and its metadata. This method returns the following error
@@ -162,7 +164,9 @@ class PhotoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the metadata of the specified Photo. This method returns the
@@ -236,7 +240,9 @@ class PhotoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Photo.fromJson(data));
+    return _response.then(
+      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an upload session to start uploading photo bytes. The method uses
@@ -296,7 +302,9 @@ class PhotoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UploadRef.fromJson(data));
+    return _response.then(
+      (data) => UploadRef.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the metadata of a Photo, such as pose, place association,
@@ -374,7 +382,9 @@ class PhotoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Photo.fromJson(data));
+    return _response.then(
+      (data) => Photo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -433,7 +443,10 @@ class PhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchDeletePhotosResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchDeletePhotosResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the metadata of the specified Photo batch. Note that if
@@ -509,7 +522,10 @@ class PhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchGetPhotosResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchGetPhotosResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the metadata of Photos, such as pose, place association,
@@ -569,7 +585,10 @@ class PhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchUpdatePhotosResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUpdatePhotosResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the Photos that belong to the user. *Note:* Recently created
@@ -659,7 +678,10 @@ class PhotosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListPhotosResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPhotosResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -699,7 +721,8 @@ class BatchDeletePhotosResponse {
   BatchDeletePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey('status')) {
       status = (_json['status'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -724,7 +747,8 @@ class BatchGetPhotosResponse {
   BatchGetPhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -749,8 +773,8 @@ class BatchUpdatePhotosRequest {
   BatchUpdatePhotosRequest.fromJson(core.Map _json) {
     if (_json.containsKey('updatePhotoRequests')) {
       updatePhotoRequests = (_json['updatePhotoRequests'] as core.List)
-          .map<UpdatePhotoRequest>(
-              (value) => UpdatePhotoRequest.fromJson(value))
+          .map<UpdatePhotoRequest>((value) => UpdatePhotoRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -776,7 +800,8 @@ class BatchUpdatePhotosResponse {
   BatchUpdatePhotosResponse.fromJson(core.Map _json) {
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<PhotoResponse>((value) => PhotoResponse.fromJson(value))
+          .map<PhotoResponse>((value) => PhotoResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -800,7 +825,8 @@ class Connection {
 
   Connection.fromJson(core.Map _json) {
     if (_json.containsKey('target')) {
-      target = PhotoId.fromJson(_json['target']);
+      target = PhotoId.fromJson(
+          _json['target'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -918,7 +944,8 @@ class ListPhotosResponse {
     }
     if (_json.containsKey('photos')) {
       photos = (_json['photos'] as core.List)
-          .map<Photo>((value) => Photo.fromJson(value))
+          .map<Photo>((value) =>
+              Photo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -979,11 +1006,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -991,7 +1020,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1086,7 +1116,8 @@ class Photo {
     }
     if (_json.containsKey('connections')) {
       connections = (_json['connections'] as core.List)
-          .map<Connection>((value) => Connection.fromJson(value))
+          .map<Connection>((value) =>
+              Connection.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('downloadUrl')) {
@@ -1096,15 +1127,18 @@ class Photo {
       mapsPublishStatus = _json['mapsPublishStatus'] as core.String;
     }
     if (_json.containsKey('photoId')) {
-      photoId = PhotoId.fromJson(_json['photoId']);
+      photoId = PhotoId.fromJson(
+          _json['photoId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('places')) {
       places = (_json['places'] as core.List)
-          .map<Place>((value) => Place.fromJson(value))
+          .map<Place>((value) =>
+              Place.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pose')) {
-      pose = Pose.fromJson(_json['pose']);
+      pose =
+          Pose.fromJson(_json['pose'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shareLink')) {
       shareLink = _json['shareLink'] as core.String;
@@ -1116,7 +1150,8 @@ class Photo {
       transferStatus = _json['transferStatus'] as core.String;
     }
     if (_json.containsKey('uploadReference')) {
-      uploadReference = UploadRef.fromJson(_json['uploadReference']);
+      uploadReference = UploadRef.fromJson(
+          _json['uploadReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('viewCount')) {
       viewCount = _json['viewCount'] as core.String;
@@ -1202,10 +1237,12 @@ class PhotoResponse {
 
   PhotoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('photo')) {
-      photo = Photo.fromJson(_json['photo']);
+      photo =
+          Photo.fromJson(_json['photo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = Status.fromJson(_json['status']);
+      status = Status.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1316,10 +1353,12 @@ class Pose {
       heading = (_json['heading'] as core.num).toDouble();
     }
     if (_json.containsKey('latLngPair')) {
-      latLngPair = LatLng.fromJson(_json['latLngPair']);
+      latLngPair = LatLng.fromJson(
+          _json['latLngPair'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('level')) {
-      level = Level.fromJson(_json['level']);
+      level =
+          Level.fromJson(_json['level'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pitch')) {
       pitch = (_json['pitch'] as core.num).toDouble();
@@ -1388,7 +1427,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -1435,7 +1475,8 @@ class UpdatePhotoRequest {
 
   UpdatePhotoRequest.fromJson(core.Map _json) {
     if (_json.containsKey('photo')) {
-      photo = Photo.fromJson(_json['photo']);
+      photo =
+          Photo.fromJson(_json['photo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

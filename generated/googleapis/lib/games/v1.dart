@@ -132,8 +132,10 @@ class AchievementDefinitionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AchievementDefinitionsListResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementDefinitionsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -205,8 +207,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AchievementIncrementResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementIncrementResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the progress for all your application's achievements for the
@@ -292,8 +296,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PlayerAchievementListResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerAchievementListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the state of the achievement with the given ID to `REVEALED` for the
@@ -344,7 +350,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementRevealResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementRevealResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the steps for the currently authenticated player towards unlocking an
@@ -404,8 +413,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AchievementSetStepsAtLeastResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementSetStepsAtLeastResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unlocks this achievement for the currently authenticated player.
@@ -455,7 +466,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementUnlockResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementUnlockResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates multiple achievements for the currently authenticated player.
@@ -503,8 +517,10 @@ class AchievementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AchievementUpdateMultipleResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementUpdateMultipleResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -581,7 +597,10 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Application.fromJson(data));
+    return _response.then(
+      (data) =>
+          Application.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Indicate that the currently authenticated user is playing your
@@ -624,7 +643,9 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Verifies the auth token provided with this request is for the application
@@ -677,7 +698,10 @@ class ApplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApplicationVerifyResponse.fromJson(data));
+    return _response.then(
+      (data) => ApplicationVerifyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -747,7 +771,10 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerEventListResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerEventListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of the event definitions in this application.
@@ -810,7 +837,10 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EventDefinitionListResponse.fromJson(data));
+    return _response.then(
+      (data) => EventDefinitionListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Records a batch of changes to the number of times events have occurred for
@@ -866,7 +896,10 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EventUpdateResponse.fromJson(data));
+    return _response.then(
+      (data) => EventUpdateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -928,7 +961,10 @@ class LeaderboardsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Leaderboard.fromJson(data));
+    return _response.then(
+      (data) =>
+          Leaderboard.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the leaderboard metadata for your application.
@@ -991,7 +1027,10 @@ class LeaderboardsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardListResponse.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1039,7 +1078,10 @@ class MetagameResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MetagameConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          MetagameConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List play data aggregated per category for the player corresponding to
@@ -1123,7 +1165,10 @@ class MetagameResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CategoryListResponse.fromJson(data));
+    return _response.then(
+      (data) => CategoryListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1186,7 +1231,9 @@ class PlayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Player.fromJson(data));
+    return _response.then(
+      (data) => Player.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the collection of players for the currently authenticated user.
@@ -1263,7 +1310,10 @@ class PlayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerListResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1322,7 +1372,10 @@ class RevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevisionCheckResponse.fromJson(data));
+    return _response.then(
+      (data) => RevisionCheckResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1442,8 +1495,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PlayerLeaderboardScoreListResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerLeaderboardScoreListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the scores in a leaderboard, starting from the top.
@@ -1538,7 +1593,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardScores.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardScores.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the scores in a leaderboard around (and including) a player's score.
@@ -1649,7 +1707,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardScores.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardScores.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submits a score to the specified leaderboard.
@@ -1727,7 +1788,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerScoreResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerScoreResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submits multiple scores to leaderboards.
@@ -1782,7 +1846,10 @@ class ScoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PlayerScoreListResponse.fromJson(data));
+    return _response.then(
+      (data) => PlayerScoreListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1843,7 +1910,9 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Snapshot.fromJson(data));
+    return _response.then(
+      (data) => Snapshot.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of snapshots created by your application for the player
@@ -1916,7 +1985,10 @@ class SnapshotsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SnapshotListResponse.fromJson(data));
+    return _response.then(
+      (data) => SnapshotListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1965,7 +2037,10 @@ class StatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StatsResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          StatsResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2128,8 +2203,8 @@ class AchievementDefinitionsListResponse {
   AchievementDefinitionsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AchievementDefinition>(
-              (value) => AchievementDefinition.fromJson(value))
+          .map<AchievementDefinition>((value) => AchievementDefinition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2326,8 +2401,9 @@ class AchievementUpdateMultipleRequest {
     }
     if (_json.containsKey('updates')) {
       updates = (_json['updates'] as core.List)
-          .map<AchievementUpdateRequest>(
-              (value) => AchievementUpdateRequest.fromJson(value))
+          .map<AchievementUpdateRequest>((value) =>
+              AchievementUpdateRequest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2361,8 +2437,9 @@ class AchievementUpdateMultipleResponse {
     }
     if (_json.containsKey('updatedAchievements')) {
       updatedAchievements = (_json['updatedAchievements'] as core.List)
-          .map<AchievementUpdateResponse>(
-              (value) => AchievementUpdateResponse.fromJson(value))
+          .map<AchievementUpdateResponse>((value) =>
+              AchievementUpdateResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2414,15 +2491,16 @@ class AchievementUpdateRequest {
       achievementId = _json['achievementId'] as core.String;
     }
     if (_json.containsKey('incrementPayload')) {
-      incrementPayload =
-          GamesAchievementIncrement.fromJson(_json['incrementPayload']);
+      incrementPayload = GamesAchievementIncrement.fromJson(
+          _json['incrementPayload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('setStepsAtLeastPayload')) {
       setStepsAtLeastPayload = GamesAchievementSetStepsAtLeast.fromJson(
-          _json['setStepsAtLeastPayload']);
+          _json['setStepsAtLeastPayload']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateType')) {
       updateType = _json['updateType'] as core.String;
@@ -2575,14 +2653,16 @@ class Application {
     }
     if (_json.containsKey('assets')) {
       assets = (_json['assets'] as core.List)
-          .map<ImageAsset>((value) => ImageAsset.fromJson(value))
+          .map<ImageAsset>((value) =>
+              ImageAsset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('author')) {
       author = _json['author'] as core.String;
     }
     if (_json.containsKey('category')) {
-      category = ApplicationCategory.fromJson(_json['category']);
+      category = ApplicationCategory.fromJson(
+          _json['category'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -2597,7 +2677,8 @@ class Application {
     }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<Instance>((value) => Instance.fromJson(value))
+          .map<Instance>((value) =>
+              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2803,7 +2884,8 @@ class CategoryListResponse {
   CategoryListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Category>((value) => Category.fromJson(value))
+          .map<Category>((value) =>
+              Category.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2865,7 +2947,8 @@ class EventBatchRecordFailure {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = EventPeriodRange.fromJson(_json['range']);
+      range = EventPeriodRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2954,7 +3037,8 @@ class EventDefinition {
   EventDefinition.fromJson(core.Map _json) {
     if (_json.containsKey('childEvents')) {
       childEvents = (_json['childEvents'] as core.List)
-          .map<EventChild>((value) => EventChild.fromJson(value))
+          .map<EventChild>((value) =>
+              EventChild.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -3028,7 +3112,8 @@ class EventDefinitionListResponse {
   EventDefinitionListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<EventDefinition>((value) => EventDefinition.fromJson(value))
+          .map<EventDefinition>((value) => EventDefinition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3116,12 +3201,13 @@ class EventPeriodUpdate {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('timePeriod')) {
-      timePeriod = EventPeriodRange.fromJson(_json['timePeriod']);
+      timePeriod = EventPeriodRange.fromJson(
+          _json['timePeriod'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updates')) {
       updates = (_json['updates'] as core.List)
-          .map<EventUpdateRequest>(
-              (value) => EventUpdateRequest.fromJson(value))
+          .map<EventUpdateRequest>((value) => EventUpdateRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3218,7 +3304,8 @@ class EventRecordRequest {
     }
     if (_json.containsKey('timePeriods')) {
       timePeriods = (_json['timePeriods'] as core.List)
-          .map<EventPeriodUpdate>((value) => EventPeriodUpdate.fromJson(value))
+          .map<EventPeriodUpdate>((value) => EventPeriodUpdate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3303,14 +3390,15 @@ class EventUpdateResponse {
   EventUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('batchFailures')) {
       batchFailures = (_json['batchFailures'] as core.List)
-          .map<EventBatchRecordFailure>(
-              (value) => EventBatchRecordFailure.fromJson(value))
+          .map<EventBatchRecordFailure>((value) =>
+              EventBatchRecordFailure.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('eventFailures')) {
       eventFailures = (_json['eventFailures'] as core.List)
-          .map<EventRecordFailure>(
-              (value) => EventRecordFailure.fromJson(value))
+          .map<EventRecordFailure>((value) => EventRecordFailure.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3318,7 +3406,8 @@ class EventUpdateResponse {
     }
     if (_json.containsKey('playerEvents')) {
       playerEvents = (_json['playerEvents'] as core.List)
-          .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => PlayerEvent.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3518,11 +3607,12 @@ class Instance {
       acquisitionUri = _json['acquisitionUri'] as core.String;
     }
     if (_json.containsKey('androidInstance')) {
-      androidInstance =
-          InstanceAndroidDetails.fromJson(_json['androidInstance']);
+      androidInstance = InstanceAndroidDetails.fromJson(
+          _json['androidInstance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('iosInstance')) {
-      iosInstance = InstanceIosDetails.fromJson(_json['iosInstance']);
+      iosInstance = InstanceIosDetails.fromJson(
+          _json['iosInstance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3540,7 +3630,8 @@ class Instance {
       turnBasedPlay = _json['turnBasedPlay'] as core.bool;
     }
     if (_json.containsKey('webInstance')) {
-      webInstance = InstanceWebDetails.fromJson(_json['webInstance']);
+      webInstance = InstanceWebDetails.fromJson(
+          _json['webInstance'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3872,7 +3963,8 @@ class LeaderboardEntry {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('player')) {
-      player = Player.fromJson(_json['player']);
+      player = Player.fromJson(
+          _json['player'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scoreRank')) {
       scoreRank = _json['scoreRank'] as core.String;
@@ -3941,7 +4033,8 @@ class LeaderboardListResponse {
   LeaderboardListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Leaderboard>((value) => Leaderboard.fromJson(value))
+          .map<Leaderboard>((value) => Leaderboard.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4056,7 +4149,8 @@ class LeaderboardScores {
   LeaderboardScores.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<LeaderboardEntry>((value) => LeaderboardEntry.fromJson(value))
+          .map<LeaderboardEntry>((value) => LeaderboardEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4069,7 +4163,8 @@ class LeaderboardScores {
       numScores = _json['numScores'] as core.String;
     }
     if (_json.containsKey('playerScore')) {
-      playerScore = LeaderboardEntry.fromJson(_json['playerScore']);
+      playerScore = LeaderboardEntry.fromJson(
+          _json['playerScore'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('prevPageToken')) {
       prevPageToken = _json['prevPageToken'] as core.String;
@@ -4124,7 +4219,8 @@ class MetagameConfig {
     }
     if (_json.containsKey('playerLevels')) {
       playerLevels = (_json['playerLevels'] as core.List)
-          .map<PlayerLevel>((value) => PlayerLevel.fromJson(value))
+          .map<PlayerLevel>((value) => PlayerLevel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4242,7 +4338,8 @@ class Player {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('experienceInfo')) {
-      experienceInfo = PlayerExperienceInfo.fromJson(_json['experienceInfo']);
+      experienceInfo = PlayerExperienceInfo.fromJson(
+          _json['experienceInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('friendStatus')) {
       friendStatus = _json['friendStatus'] as core.String;
@@ -4251,7 +4348,8 @@ class Player {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = PlayerName.fromJson(_json['name']);
+      name = PlayerName.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('originalPlayerId')) {
       originalPlayerId = _json['originalPlayerId'] as core.String;
@@ -4260,7 +4358,8 @@ class Player {
       playerId = _json['playerId'] as core.String;
     }
     if (_json.containsKey('profileSettings')) {
-      profileSettings = ProfileSettings.fromJson(_json['profileSettings']);
+      profileSettings = ProfileSettings.fromJson(
+          _json['profileSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -4411,7 +4510,8 @@ class PlayerAchievementListResponse {
   PlayerAchievementListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PlayerAchievement>((value) => PlayerAchievement.fromJson(value))
+          .map<PlayerAchievement>((value) => PlayerAchievement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4515,7 +4615,8 @@ class PlayerEventListResponse {
   PlayerEventListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PlayerEvent>((value) => PlayerEvent.fromJson(value))
+          .map<PlayerEvent>((value) => PlayerEvent.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4568,7 +4669,8 @@ class PlayerExperienceInfo {
       currentExperiencePoints = _json['currentExperiencePoints'] as core.String;
     }
     if (_json.containsKey('currentLevel')) {
-      currentLevel = PlayerLevel.fromJson(_json['currentLevel']);
+      currentLevel = PlayerLevel.fromJson(
+          _json['currentLevel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -4578,7 +4680,8 @@ class PlayerExperienceInfo {
           _json['lastLevelUpTimestampMillis'] as core.String;
     }
     if (_json.containsKey('nextLevel')) {
-      nextLevel = PlayerLevel.fromJson(_json['nextLevel']);
+      nextLevel = PlayerLevel.fromJson(
+          _json['nextLevel'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4648,7 +4751,8 @@ class PlayerLeaderboardScore {
 
   PlayerLeaderboardScore.fromJson(core.Map _json) {
     if (_json.containsKey('friendsRank')) {
-      friendsRank = LeaderboardScoreRank.fromJson(_json['friendsRank']);
+      friendsRank = LeaderboardScoreRank.fromJson(
+          _json['friendsRank'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -4657,7 +4761,8 @@ class PlayerLeaderboardScore {
       leaderboardId = _json['leaderboard_id'] as core.String;
     }
     if (_json.containsKey('publicRank')) {
-      publicRank = LeaderboardScoreRank.fromJson(_json['publicRank']);
+      publicRank = LeaderboardScoreRank.fromJson(
+          _json['publicRank'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scoreString')) {
       scoreString = _json['scoreString'] as core.String;
@@ -4669,7 +4774,8 @@ class PlayerLeaderboardScore {
       scoreValue = _json['scoreValue'] as core.String;
     }
     if (_json.containsKey('socialRank')) {
-      socialRank = LeaderboardScoreRank.fromJson(_json['socialRank']);
+      socialRank = LeaderboardScoreRank.fromJson(
+          _json['socialRank'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeSpan')) {
       timeSpan = _json['timeSpan'] as core.String;
@@ -4735,8 +4841,9 @@ class PlayerLeaderboardScoreListResponse {
   PlayerLeaderboardScoreListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PlayerLeaderboardScore>(
-              (value) => PlayerLeaderboardScore.fromJson(value))
+          .map<PlayerLeaderboardScore>((value) =>
+              PlayerLeaderboardScore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4746,7 +4853,8 @@ class PlayerLeaderboardScoreListResponse {
       nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('player')) {
-      player = Player.fromJson(_json['player']);
+      player = Player.fromJson(
+          _json['player'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4835,7 +4943,8 @@ class PlayerListResponse {
   PlayerListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Player>((value) => Player.fromJson(value))
+          .map<Player>((value) =>
+              Player.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4943,8 +5052,8 @@ class PlayerScoreListResponse {
     }
     if (_json.containsKey('submittedScores')) {
       submittedScores = (_json['submittedScores'] as core.List)
-          .map<PlayerScoreResponse>(
-              (value) => PlayerScoreResponse.fromJson(value))
+          .map<PlayerScoreResponse>((value) => PlayerScoreResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5009,7 +5118,8 @@ class PlayerScoreResponse {
     }
     if (_json.containsKey('unbeatenScores')) {
       unbeatenScores = (_json['unbeatenScores'] as core.List)
-          .map<PlayerScore>((value) => PlayerScore.fromJson(value))
+          .map<PlayerScore>((value) => PlayerScore.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5056,7 +5166,8 @@ class PlayerScoreSubmissionList {
     }
     if (_json.containsKey('scores')) {
       scores = (_json['scores'] as core.List)
-          .map<ScoreSubmission>((value) => ScoreSubmission.fromJson(value))
+          .map<ScoreSubmission>((value) => ScoreSubmission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5281,7 +5392,8 @@ class Snapshot {
 
   Snapshot.fromJson(core.Map _json) {
     if (_json.containsKey('coverImage')) {
-      coverImage = SnapshotImage.fromJson(_json['coverImage']);
+      coverImage = SnapshotImage.fromJson(
+          _json['coverImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -5432,7 +5544,8 @@ class SnapshotListResponse {
   SnapshotListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Snapshot>((value) => Snapshot.fromJson(value))
+          .map<Snapshot>((value) =>
+              Snapshot.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

@@ -181,8 +181,8 @@ core.List<api.AgentOtherDeviceId> buildUnnamed1164() {
 
 void checkUnnamed1164(core.List<api.AgentOtherDeviceId> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAgentOtherDeviceId(o[0]);
-  checkAgentOtherDeviceId(o[1]);
+  checkAgentOtherDeviceId(o[0] as api.AgentOtherDeviceId);
+  checkAgentOtherDeviceId(o[1] as api.AgentOtherDeviceId);
 }
 
 core.List<core.String> buildUnnamed1165() {
@@ -225,9 +225,9 @@ void checkDevice(api.Device o) {
   if (buildCounterDevice < 3) {
     checkUnnamed1162(o.attributes);
     checkUnnamed1163(o.customData);
-    checkDeviceInfo(o.deviceInfo);
+    checkDeviceInfo(o.deviceInfo as api.DeviceInfo);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkDeviceNames(o.name);
+    checkDeviceNames(o.name as api.DeviceNames);
     unittest.expect(o.notificationSupportedByAgent, unittest.isTrue);
     checkUnnamed1164(o.otherDeviceIds);
     unittest.expect(o.roomHint, unittest.equals('foo'));
@@ -337,8 +337,8 @@ core.List<api.QueryRequestInput> buildUnnamed1168() {
 
 void checkUnnamed1168(core.List<api.QueryRequestInput> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkQueryRequestInput(o[0]);
-  checkQueryRequestInput(o[1]);
+  checkQueryRequestInput(o[0] as api.QueryRequestInput);
+  checkQueryRequestInput(o[1] as api.QueryRequestInput);
 }
 
 core.int buildCounterQueryRequest = 0;
@@ -378,7 +378,7 @@ api.QueryRequestInput buildQueryRequestInput() {
 void checkQueryRequestInput(api.QueryRequestInput o) {
   buildCounterQueryRequestInput++;
   if (buildCounterQueryRequestInput < 3) {
-    checkQueryRequestPayload(o.payload);
+    checkQueryRequestPayload(o.payload as api.QueryRequestPayload);
   }
   buildCounterQueryRequestInput--;
 }
@@ -392,8 +392,8 @@ core.List<api.AgentDeviceId> buildUnnamed1169() {
 
 void checkUnnamed1169(core.List<api.AgentDeviceId> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAgentDeviceId(o[0]);
-  checkAgentDeviceId(o[1]);
+  checkAgentDeviceId(o[0] as api.AgentDeviceId);
+  checkAgentDeviceId(o[1] as api.AgentDeviceId);
 }
 
 core.int buildCounterQueryRequestPayload = 0;
@@ -430,7 +430,7 @@ api.QueryResponse buildQueryResponse() {
 void checkQueryResponse(api.QueryResponse o) {
   buildCounterQueryResponse++;
   if (buildCounterQueryResponse < 3) {
-    checkQueryResponsePayload(o.payload);
+    checkQueryResponsePayload(o.payload as api.QueryResponsePayload);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterQueryResponse--;
@@ -600,7 +600,8 @@ void checkReportStateAndNotificationRequest(
     unittest.expect(o.agentUserId, unittest.equals('foo'));
     unittest.expect(o.eventId, unittest.equals('foo'));
     unittest.expect(o.followUpToken, unittest.equals('foo'));
-    checkStateAndNotificationPayload(o.payload);
+    checkStateAndNotificationPayload(
+        o.payload as api.StateAndNotificationPayload);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterReportStateAndNotificationRequest--;
@@ -677,7 +678,8 @@ api.StateAndNotificationPayload buildStateAndNotificationPayload() {
 void checkStateAndNotificationPayload(api.StateAndNotificationPayload o) {
   buildCounterStateAndNotificationPayload++;
   if (buildCounterStateAndNotificationPayload < 3) {
-    checkReportStateAndNotificationDevice(o.devices);
+    checkReportStateAndNotificationDevice(
+        o.devices as api.ReportStateAndNotificationDevice);
   }
   buildCounterStateAndNotificationPayload--;
 }
@@ -718,7 +720,7 @@ api.SyncResponse buildSyncResponse() {
 void checkSyncResponse(api.SyncResponse o) {
   buildCounterSyncResponse++;
   if (buildCounterSyncResponse < 3) {
-    checkSyncResponsePayload(o.payload);
+    checkSyncResponsePayload(o.payload as api.SyncResponsePayload);
     unittest.expect(o.requestId, unittest.equals('foo'));
   }
   buildCounterSyncResponse--;
@@ -733,8 +735,8 @@ core.List<api.Device> buildUnnamed1174() {
 
 void checkUnnamed1174(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDevice(o[0]);
-  checkDevice(o[1]);
+  checkDevice(o[0] as api.Device);
+  checkDevice(o[1] as api.Device);
 }
 
 core.int buildCounterSyncResponsePayload = 0;
@@ -763,7 +765,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAgentDeviceId();
       var od = api.AgentDeviceId.fromJson(o.toJson());
-      checkAgentDeviceId(od);
+      checkAgentDeviceId(od as api.AgentDeviceId);
     });
   });
 
@@ -771,7 +773,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAgentOtherDeviceId();
       var od = api.AgentOtherDeviceId.fromJson(o.toJson());
-      checkAgentOtherDeviceId(od);
+      checkAgentOtherDeviceId(od as api.AgentOtherDeviceId);
     });
   });
 
@@ -779,7 +781,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
-      checkDevice(od);
+      checkDevice(od as api.Device);
     });
   });
 
@@ -787,7 +789,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
-      checkDeviceInfo(od);
+      checkDeviceInfo(od as api.DeviceInfo);
     });
   });
 
@@ -795,7 +797,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceNames();
       var od = api.DeviceNames.fromJson(o.toJson());
-      checkDeviceNames(od);
+      checkDeviceNames(od as api.DeviceNames);
     });
   });
 
@@ -803,7 +805,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -811,7 +813,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryRequest();
       var od = api.QueryRequest.fromJson(o.toJson());
-      checkQueryRequest(od);
+      checkQueryRequest(od as api.QueryRequest);
     });
   });
 
@@ -819,7 +821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryRequestInput();
       var od = api.QueryRequestInput.fromJson(o.toJson());
-      checkQueryRequestInput(od);
+      checkQueryRequestInput(od as api.QueryRequestInput);
     });
   });
 
@@ -827,7 +829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryRequestPayload();
       var od = api.QueryRequestPayload.fromJson(o.toJson());
-      checkQueryRequestPayload(od);
+      checkQueryRequestPayload(od as api.QueryRequestPayload);
     });
   });
 
@@ -835,7 +837,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryResponse();
       var od = api.QueryResponse.fromJson(o.toJson());
-      checkQueryResponse(od);
+      checkQueryResponse(od as api.QueryResponse);
     });
   });
 
@@ -843,7 +845,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryResponsePayload();
       var od = api.QueryResponsePayload.fromJson(o.toJson());
-      checkQueryResponsePayload(od);
+      checkQueryResponsePayload(od as api.QueryResponsePayload);
     });
   });
 
@@ -851,7 +853,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationDevice();
       var od = api.ReportStateAndNotificationDevice.fromJson(o.toJson());
-      checkReportStateAndNotificationDevice(od);
+      checkReportStateAndNotificationDevice(
+          od as api.ReportStateAndNotificationDevice);
     });
   });
 
@@ -859,7 +862,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationRequest();
       var od = api.ReportStateAndNotificationRequest.fromJson(o.toJson());
-      checkReportStateAndNotificationRequest(od);
+      checkReportStateAndNotificationRequest(
+          od as api.ReportStateAndNotificationRequest);
     });
   });
 
@@ -867,7 +871,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportStateAndNotificationResponse();
       var od = api.ReportStateAndNotificationResponse.fromJson(o.toJson());
-      checkReportStateAndNotificationResponse(od);
+      checkReportStateAndNotificationResponse(
+          od as api.ReportStateAndNotificationResponse);
     });
   });
 
@@ -875,7 +880,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequestSyncDevicesRequest();
       var od = api.RequestSyncDevicesRequest.fromJson(o.toJson());
-      checkRequestSyncDevicesRequest(od);
+      checkRequestSyncDevicesRequest(od as api.RequestSyncDevicesRequest);
     });
   });
 
@@ -883,7 +888,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequestSyncDevicesResponse();
       var od = api.RequestSyncDevicesResponse.fromJson(o.toJson());
-      checkRequestSyncDevicesResponse(od);
+      checkRequestSyncDevicesResponse(od as api.RequestSyncDevicesResponse);
     });
   });
 
@@ -891,7 +896,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStateAndNotificationPayload();
       var od = api.StateAndNotificationPayload.fromJson(o.toJson());
-      checkStateAndNotificationPayload(od);
+      checkStateAndNotificationPayload(od as api.StateAndNotificationPayload);
     });
   });
 
@@ -899,7 +904,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSyncRequest();
       var od = api.SyncRequest.fromJson(o.toJson());
-      checkSyncRequest(od);
+      checkSyncRequest(od as api.SyncRequest);
     });
   });
 
@@ -907,7 +912,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSyncResponse();
       var od = api.SyncResponse.fromJson(o.toJson());
-      checkSyncResponse(od);
+      checkSyncResponse(od as api.SyncResponse);
     });
   });
 
@@ -915,7 +920,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSyncResponsePayload();
       var od = api.SyncResponsePayload.fromJson(o.toJson());
-      checkSyncResponsePayload(od);
+      checkSyncResponsePayload(od as api.SyncResponsePayload);
     });
   });
 
@@ -968,7 +973,7 @@ void main() {
           .delete(arg_agentUserId,
               requestId: arg_requestId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -980,8 +985,9 @@ void main() {
       var arg_request = buildQueryRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryRequest.fromJson(json);
-        checkQueryRequest(obj);
+        var obj = api.QueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryRequest(obj as api.QueryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1020,7 +1026,7 @@ void main() {
       res
           .query(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryResponse(response);
+        checkQueryResponse(response as api.QueryResponse);
       })));
     });
 
@@ -1030,8 +1036,10 @@ void main() {
       var arg_request = buildReportStateAndNotificationRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReportStateAndNotificationRequest.fromJson(json);
-        checkReportStateAndNotificationRequest(obj);
+        var obj = api.ReportStateAndNotificationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReportStateAndNotificationRequest(
+            obj as api.ReportStateAndNotificationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1071,7 +1079,8 @@ void main() {
       res
           .reportStateAndNotification(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReportStateAndNotificationResponse(response);
+        checkReportStateAndNotificationResponse(
+            response as api.ReportStateAndNotificationResponse);
       })));
     });
 
@@ -1081,8 +1090,9 @@ void main() {
       var arg_request = buildRequestSyncDevicesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RequestSyncDevicesRequest.fromJson(json);
-        checkRequestSyncDevicesRequest(obj);
+        var obj = api.RequestSyncDevicesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRequestSyncDevicesRequest(obj as api.RequestSyncDevicesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1121,7 +1131,8 @@ void main() {
       res
           .requestSync(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRequestSyncDevicesResponse(response);
+        checkRequestSyncDevicesResponse(
+            response as api.RequestSyncDevicesResponse);
       })));
     });
 
@@ -1131,8 +1142,9 @@ void main() {
       var arg_request = buildSyncRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SyncRequest.fromJson(json);
-        checkSyncRequest(obj);
+        var obj = api.SyncRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSyncRequest(obj as api.SyncRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1171,7 +1183,7 @@ void main() {
       res
           .sync(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSyncResponse(response);
+        checkSyncResponse(response as api.SyncResponse);
       })));
     });
   });

@@ -101,7 +101,9 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Get the most current data for a website or domain.
@@ -149,8 +151,10 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SiteVerificationWebResourceResource.fromJson(data));
+    return _response.then(
+      (data) => SiteVerificationWebResourceResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a verification token for placing on a website or domain.
@@ -199,7 +203,9 @@ class WebResourceResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => SiteVerificationWebResourceGettokenResponse.fromJson(data));
+      (data) => SiteVerificationWebResourceGettokenResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Attempt verification of a website or domain.
@@ -254,8 +260,10 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SiteVerificationWebResourceResource.fromJson(data));
+    return _response.then(
+      (data) => SiteVerificationWebResourceResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the list of your verified websites and domains.
@@ -297,8 +305,10 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SiteVerificationWebResourceListResponse.fromJson(data));
+    return _response.then(
+      (data) => SiteVerificationWebResourceListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modify the list of owners for your website or domain. This method supports
@@ -353,8 +363,10 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SiteVerificationWebResourceResource.fromJson(data));
+    return _response.then(
+      (data) => SiteVerificationWebResourceResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modify the list of owners for your website or domain.
@@ -408,8 +420,10 @@ class WebResourceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SiteVerificationWebResourceResource.fromJson(data));
+    return _response.then(
+      (data) => SiteVerificationWebResourceResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -459,7 +473,7 @@ class SiteVerificationWebResourceGettokenRequest {
   SiteVerificationWebResourceGettokenRequest.fromJson(core.Map _json) {
     if (_json.containsKey('site')) {
       site = SiteVerificationWebResourceGettokenRequestSite.fromJson(
-          _json['site']);
+          _json['site'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('verificationMethod')) {
       verificationMethod = _json['verificationMethod'] as core.String;
@@ -522,8 +536,9 @@ class SiteVerificationWebResourceListResponse {
   SiteVerificationWebResourceListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SiteVerificationWebResourceResource>(
-              (value) => SiteVerificationWebResourceResource.fromJson(value))
+          .map<SiteVerificationWebResourceResource>((value) =>
+              SiteVerificationWebResourceResource.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -592,7 +607,8 @@ class SiteVerificationWebResourceResource {
           .toList();
     }
     if (_json.containsKey('site')) {
-      site = SiteVerificationWebResourceResourceSite.fromJson(_json['site']);
+      site = SiteVerificationWebResourceResourceSite.fromJson(
+          _json['site'] as core.Map<core.String, core.dynamic>);
     }
   }
 

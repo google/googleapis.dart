@@ -129,7 +129,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Accounts that a user has access to.
@@ -177,7 +179,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Account.
@@ -239,7 +244,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -313,7 +320,9 @@ class AccountsContainersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Container.fromJson(data));
+    return _response.then(
+      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Container.
@@ -363,7 +372,9 @@ class AccountsContainersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a Container.
@@ -413,7 +424,9 @@ class AccountsContainersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Container.fromJson(data));
+    return _response.then(
+      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Containers that belongs to a GTM Account.
@@ -471,7 +484,10 @@ class AccountsContainersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListContainersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListContainersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a Container.
@@ -534,7 +550,9 @@ class AccountsContainersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Container.fromJson(data));
+    return _response.then(
+      (data) => Container.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -599,7 +617,10 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Environment.
@@ -650,7 +671,9 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Environment.
@@ -701,7 +724,10 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Environments of a GTM Container.
@@ -759,7 +785,10 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListEnvironmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListEnvironmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Re-generates the authorization code for a GTM Environment.
@@ -818,7 +847,10 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Environment.
@@ -882,7 +914,10 @@ class AccountsContainersEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -941,7 +976,10 @@ class AccountsContainersVersionHeadersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersionHeader.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersionHeader.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Container Versions of a GTM Container.
@@ -1005,8 +1043,10 @@ class AccountsContainersVersionHeadersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListContainerVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListContainerVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1064,7 +1104,9 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a Container Version.
@@ -1122,7 +1164,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersion.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the live (i.e. published) container version
@@ -1174,7 +1219,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersion.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Publishes a Container Version.
@@ -1234,8 +1282,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PublishContainerVersionResponse.fromJson(data));
+    return _response.then(
+      (data) => PublishContainerVersionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the latest version used for synchronization of workspaces when
@@ -1289,7 +1339,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersion.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a Container Version.
@@ -1342,7 +1395,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersion.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a Container Version.
@@ -1406,7 +1462,10 @@ class AccountsContainersVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ContainerVersion.fromJson(data));
+    return _response.then(
+      (data) => ContainerVersion.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1487,7 +1546,9 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Workspace.fromJson(data));
+    return _response.then(
+      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Container Version from the entities present in the workspace,
@@ -1548,8 +1609,10 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CreateContainerVersionResponse.fromJson(data));
+    return _response.then(
+      (data) => CreateContainerVersionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Workspace.
@@ -1600,7 +1663,9 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a Workspace.
@@ -1651,7 +1716,9 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Workspace.fromJson(data));
+    return _response.then(
+      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds conflicting and modified entities in the workspace.
@@ -1704,7 +1771,10 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetWorkspaceStatusResponse.fromJson(data));
+    return _response.then(
+      (data) => GetWorkspaceStatusResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Workspaces that belong to a GTM Container.
@@ -1762,7 +1832,10 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListWorkspacesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListWorkspacesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Quick previews a workspace by creating a fake container version from all
@@ -1816,7 +1889,10 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => QuickPreviewResponse.fromJson(data));
+    return _response.then(
+      (data) => QuickPreviewResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resolves a merge conflict for a workspace entity by updating it to the
@@ -1883,7 +1959,9 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Syncs a workspace to the latest container version by updating all
@@ -1938,7 +2016,10 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SyncWorkspaceResponse.fromJson(data));
+    return _response.then(
+      (data) => SyncWorkspaceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a Workspace.
@@ -2002,7 +2083,9 @@ class AccountsContainersWorkspacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Workspace.fromJson(data));
+    return _response.then(
+      (data) => Workspace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2069,8 +2152,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CreateBuiltInVariableResponse.fromJson(data));
+    return _response.then(
+      (data) => CreateBuiltInVariableResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes one or more GTM Built-In Variables.
@@ -2127,7 +2212,9 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Lists all the enabled Built-In Variables of a GTM Container.
@@ -2186,8 +2273,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListEnabledBuiltInVariablesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListEnabledBuiltInVariablesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Built-In Variables in a GTM Workspace.
@@ -2357,8 +2446,10 @@ class AccountsContainersWorkspacesBuiltInVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => RevertBuiltInVariableResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertBuiltInVariableResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2424,7 +2515,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Folder.fromJson(data));
+    return _response.then(
+      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Folder.
@@ -2475,7 +2568,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// List all entities in a GTM Folder.
@@ -2534,7 +2629,10 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FolderEntities.fromJson(data));
+    return _response.then(
+      (data) =>
+          FolderEntities.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a GTM Folder.
@@ -2585,7 +2683,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Folder.fromJson(data));
+    return _response.then(
+      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Folders of a Container.
@@ -2644,7 +2744,10 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListFoldersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFoldersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves entities to a GTM Folder.
@@ -2721,7 +2824,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Reverts changes to a GTM Folder in a GTM Workspace.
@@ -2781,7 +2886,10 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertFolderResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertFolderResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Folder.
@@ -2845,7 +2953,9 @@ class AccountsContainersWorkspacesFoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Folder.fromJson(data));
+    return _response.then(
+      (data) => Folder.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2911,7 +3021,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Tag.
@@ -2962,7 +3074,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Tag.
@@ -3013,7 +3127,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Tags of a Container.
@@ -3072,7 +3188,10 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTagsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTagsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Tag in a GTM Workspace.
@@ -3132,7 +3251,10 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertTagResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertTagResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Tag.
@@ -3196,7 +3318,9 @@ class AccountsContainersWorkspacesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3262,7 +3386,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomTemplate.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Template.
@@ -3313,7 +3440,9 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Template.
@@ -3364,7 +3493,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomTemplate.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Templates of a GTM container workspace.
@@ -3423,7 +3555,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Template in a GTM Workspace.
@@ -3483,7 +3618,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertTemplateResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertTemplateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Template.
@@ -3547,7 +3685,10 @@ class AccountsContainersWorkspacesTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomTemplate.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomTemplate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3613,7 +3754,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Trigger.fromJson(data));
+    return _response.then(
+      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Trigger.
@@ -3664,7 +3807,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Trigger.
@@ -3715,7 +3860,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Trigger.fromJson(data));
+    return _response.then(
+      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Triggers of a Container.
@@ -3774,7 +3921,10 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTriggersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTriggersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Trigger in a GTM Workspace.
@@ -3834,7 +3984,10 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertTriggerResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertTriggerResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Trigger.
@@ -3898,7 +4051,9 @@ class AccountsContainersWorkspacesTriggersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Trigger.fromJson(data));
+    return _response.then(
+      (data) => Trigger.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3964,7 +4119,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Variable.fromJson(data));
+    return _response.then(
+      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Variable.
@@ -4015,7 +4172,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Variable.
@@ -4066,7 +4225,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Variable.fromJson(data));
+    return _response.then(
+      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Variables of a Container.
@@ -4125,7 +4286,10 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVariablesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVariablesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Variable in a GTM Workspace.
@@ -4185,7 +4349,10 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertVariableResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertVariableResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Variable.
@@ -4249,7 +4416,9 @@ class AccountsContainersWorkspacesVariablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Variable.fromJson(data));
+    return _response.then(
+      (data) => Variable.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4315,7 +4484,9 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Zone.fromJson(data));
+    return _response.then(
+      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GTM Zone.
@@ -4366,7 +4537,9 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a GTM Zone.
@@ -4417,7 +4590,9 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Zone.fromJson(data));
+    return _response.then(
+      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GTM Zones of a GTM container workspace.
@@ -4476,7 +4651,10 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListZonesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListZonesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts changes to a GTM Zone in a GTM Workspace.
@@ -4536,7 +4714,10 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RevertZoneResponse.fromJson(data));
+    return _response.then(
+      (data) => RevertZoneResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GTM Zone.
@@ -4600,7 +4781,9 @@ class AccountsContainersWorkspacesZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Zone.fromJson(data));
+    return _response.then(
+      (data) => Zone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4664,7 +4847,10 @@ class AccountsUserPermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPermission.fromJson(data));
+    return _response.then(
+      (data) =>
+          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a user from the account, revoking access to it and all of its
@@ -4715,7 +4901,9 @@ class AccountsUserPermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a user's Account & Container access.
@@ -4765,7 +4953,10 @@ class AccountsUserPermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPermission.fromJson(data));
+    return _response.then(
+      (data) =>
+          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all users that have access to the account along with Account and
@@ -4824,7 +5015,10 @@ class AccountsUserPermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListUserPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUserPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a user's Account & Container access.
@@ -4880,7 +5074,10 @@ class AccountsUserPermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserPermission.fromJson(data));
+    return _response.then(
+      (data) =>
+          UserPermission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5238,7 +5435,8 @@ class Client {
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
@@ -5341,7 +5539,8 @@ class Condition {
   Condition.fromJson(core.Map _json) {
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -5584,16 +5783,19 @@ class ContainerVersion {
     }
     if (_json.containsKey('builtInVariable')) {
       builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('client')) {
       client = (_json['client'] as core.List)
-          .map<Client>((value) => Client.fromJson(value))
+          .map<Client>((value) =>
+              Client.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('container')) {
-      container = Container.fromJson(_json['container']);
+      container = Container.fromJson(
+          _json['container'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('containerId')) {
       containerId = _json['containerId'] as core.String;
@@ -5603,7 +5805,8 @@ class ContainerVersion {
     }
     if (_json.containsKey('customTemplate')) {
       customTemplate = (_json['customTemplate'] as core.List)
-          .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
+          .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deleted')) {
@@ -5617,7 +5820,8 @@ class ContainerVersion {
     }
     if (_json.containsKey('folder')) {
       folder = (_json['folder'] as core.List)
-          .map<Folder>((value) => Folder.fromJson(value))
+          .map<Folder>((value) =>
+              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -5628,7 +5832,8 @@ class ContainerVersion {
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
-          .map<Tag>((value) => Tag.fromJson(value))
+          .map<Tag>((value) =>
+              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tagManagerUrl')) {
@@ -5636,17 +5841,20 @@ class ContainerVersion {
     }
     if (_json.containsKey('trigger')) {
       trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) => Trigger.fromJson(value))
+          .map<Trigger>((value) =>
+              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('variable')) {
       variable = (_json['variable'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('zone')) {
       zone = (_json['zone'] as core.List)
-          .map<Zone>((value) => Zone.fromJson(value))
+          .map<Zone>((value) =>
+              Zone.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5852,7 +6060,8 @@ class CreateBuiltInVariableResponse {
   CreateBuiltInVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey('builtInVariable')) {
       builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5922,13 +6131,15 @@ class CreateContainerVersionResponse {
       compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
+      containerVersion = ContainerVersion.fromJson(
+          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('newWorkspacePath')) {
       newWorkspacePath = _json['newWorkspacePath'] as core.String;
     }
     if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
+      syncStatus = SyncStatus.fromJson(
+          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5996,7 +6207,8 @@ class CustomTemplate {
       fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('galleryReference')) {
-      galleryReference = GalleryReference.fromJson(_json['galleryReference']);
+      galleryReference = GalleryReference.fromJson(
+          _json['galleryReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -6085,16 +6297,19 @@ class Entity {
       changeStatus = _json['changeStatus'] as core.String;
     }
     if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(_json['folder']);
+      folder = Folder.fromJson(
+          _json['folder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tag')) {
-      tag = Tag.fromJson(_json['tag']);
+      tag = Tag.fromJson(_json['tag'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('trigger')) {
-      trigger = Trigger.fromJson(_json['trigger']);
+      trigger = Trigger.fromJson(
+          _json['trigger'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('variable')) {
-      variable = Variable.fromJson(_json['variable']);
+      variable = Variable.fromJson(
+          _json['variable'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6405,17 +6620,20 @@ class FolderEntities {
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
-          .map<Tag>((value) => Tag.fromJson(value))
+          .map<Tag>((value) =>
+              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('trigger')) {
       trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) => Trigger.fromJson(value))
+          .map<Trigger>((value) =>
+              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('variable')) {
       variable = (_json['variable'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6522,12 +6740,14 @@ class GetWorkspaceStatusResponse {
   GetWorkspaceStatusResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mergeConflict')) {
       mergeConflict = (_json['mergeConflict'] as core.List)
-          .map<MergeConflict>((value) => MergeConflict.fromJson(value))
+          .map<MergeConflict>((value) => MergeConflict.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('workspaceChange')) {
       workspaceChange = (_json['workspaceChange'] as core.List)
-          .map<Entity>((value) => Entity.fromJson(value))
+          .map<Entity>((value) =>
+              Entity.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6559,7 +6779,8 @@ class ListAccountsResponse {
   ListAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
       account = (_json['account'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6592,8 +6813,9 @@ class ListContainerVersionsResponse {
   ListContainerVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('containerVersionHeader')) {
       containerVersionHeader = (_json['containerVersionHeader'] as core.List)
-          .map<ContainerVersionHeader>(
-              (value) => ContainerVersionHeader.fromJson(value))
+          .map<ContainerVersionHeader>((value) =>
+              ContainerVersionHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6627,7 +6849,8 @@ class ListContainersResponse {
   ListContainersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('container')) {
       container = (_json['container'] as core.List)
-          .map<Container>((value) => Container.fromJson(value))
+          .map<Container>((value) =>
+              Container.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6660,7 +6883,8 @@ class ListEnabledBuiltInVariablesResponse {
   ListEnabledBuiltInVariablesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('builtInVariable')) {
       builtInVariable = (_json['builtInVariable'] as core.List)
-          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(value))
+          .map<BuiltInVariable>((value) => BuiltInVariable.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6694,7 +6918,8 @@ class ListEnvironmentsResponse {
   ListEnvironmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('environment')) {
       environment = (_json['environment'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(value))
+          .map<Environment>((value) => Environment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6728,7 +6953,8 @@ class ListFoldersResponse {
   ListFoldersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('folder')) {
       folder = (_json['folder'] as core.List)
-          .map<Folder>((value) => Folder.fromJson(value))
+          .map<Folder>((value) =>
+              Folder.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6764,7 +6990,8 @@ class ListTagsResponse {
     }
     if (_json.containsKey('tag')) {
       tag = (_json['tag'] as core.List)
-          .map<Tag>((value) => Tag.fromJson(value))
+          .map<Tag>((value) =>
+              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6796,7 +7023,8 @@ class ListTemplatesResponse {
     }
     if (_json.containsKey('template')) {
       template = (_json['template'] as core.List)
-          .map<CustomTemplate>((value) => CustomTemplate.fromJson(value))
+          .map<CustomTemplate>((value) => CustomTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6829,7 +7057,8 @@ class ListTriggersResponse {
     }
     if (_json.containsKey('trigger')) {
       trigger = (_json['trigger'] as core.List)
-          .map<Trigger>((value) => Trigger.fromJson(value))
+          .map<Trigger>((value) =>
+              Trigger.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6862,7 +7091,8 @@ class ListUserPermissionsResponse {
     }
     if (_json.containsKey('userPermission')) {
       userPermission = (_json['userPermission'] as core.List)
-          .map<UserPermission>((value) => UserPermission.fromJson(value))
+          .map<UserPermission>((value) => UserPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6896,7 +7126,8 @@ class ListVariablesResponse {
     }
     if (_json.containsKey('variable')) {
       variable = (_json['variable'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6929,7 +7160,8 @@ class ListWorkspacesResponse {
     }
     if (_json.containsKey('workspace')) {
       workspace = (_json['workspace'] as core.List)
-          .map<Workspace>((value) => Workspace.fromJson(value))
+          .map<Workspace>((value) =>
+              Workspace.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6961,7 +7193,8 @@ class ListZonesResponse {
     }
     if (_json.containsKey('zone')) {
       zone = (_json['zone'] as core.List)
-          .map<Zone>((value) => Zone.fromJson(value))
+          .map<Zone>((value) =>
+              Zone.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6994,10 +7227,12 @@ class MergeConflict {
 
   MergeConflict.fromJson(core.Map _json) {
     if (_json.containsKey('entityInBaseVersion')) {
-      entityInBaseVersion = Entity.fromJson(_json['entityInBaseVersion']);
+      entityInBaseVersion = Entity.fromJson(
+          _json['entityInBaseVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityInWorkspace')) {
-      entityInWorkspace = Entity.fromJson(_json['entityInWorkspace']);
+      entityInWorkspace = Entity.fromJson(
+          _json['entityInWorkspace'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7087,12 +7322,14 @@ class Parameter {
     }
     if (_json.containsKey('list')) {
       list = (_json['list'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('map')) {
       map = (_json['map'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -7139,7 +7376,8 @@ class PublishContainerVersionResponse {
       compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
+      containerVersion = ContainerVersion.fromJson(
+          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7174,10 +7412,12 @@ class QuickPreviewResponse {
       compilerError = _json['compilerError'] as core.bool;
     }
     if (_json.containsKey('containerVersion')) {
-      containerVersion = ContainerVersion.fromJson(_json['containerVersion']);
+      containerVersion = ContainerVersion.fromJson(
+          _json['containerVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
+      syncStatus = SyncStatus.fromJson(
+          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7229,7 +7469,8 @@ class RevertFolderResponse {
 
   RevertFolderResponse.fromJson(core.Map _json) {
     if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(_json['folder']);
+      folder = Folder.fromJson(
+          _json['folder'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7253,7 +7494,7 @@ class RevertTagResponse {
 
   RevertTagResponse.fromJson(core.Map _json) {
     if (_json.containsKey('tag')) {
-      tag = Tag.fromJson(_json['tag']);
+      tag = Tag.fromJson(_json['tag'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7277,7 +7518,8 @@ class RevertTemplateResponse {
 
   RevertTemplateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('template')) {
-      template = CustomTemplate.fromJson(_json['template']);
+      template = CustomTemplate.fromJson(
+          _json['template'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7301,7 +7543,8 @@ class RevertTriggerResponse {
 
   RevertTriggerResponse.fromJson(core.Map _json) {
     if (_json.containsKey('trigger')) {
-      trigger = Trigger.fromJson(_json['trigger']);
+      trigger = Trigger.fromJson(
+          _json['trigger'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7325,7 +7568,8 @@ class RevertVariableResponse {
 
   RevertVariableResponse.fromJson(core.Map _json) {
     if (_json.containsKey('variable')) {
-      variable = Variable.fromJson(_json['variable']);
+      variable = Variable.fromJson(
+          _json['variable'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7349,7 +7593,8 @@ class RevertZoneResponse {
 
   RevertZoneResponse.fromJson(core.Map _json) {
     if (_json.containsKey('zone')) {
-      zone = Zone.fromJson(_json['zone']);
+      zone =
+          Zone.fromJson(_json['zone'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7443,11 +7688,13 @@ class SyncWorkspaceResponse {
   SyncWorkspaceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mergeConflict')) {
       mergeConflict = (_json['mergeConflict'] as core.List)
-          .map<MergeConflict>((value) => MergeConflict.fromJson(value))
+          .map<MergeConflict>((value) => MergeConflict.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('syncStatus')) {
-      syncStatus = SyncStatus.fromJson(_json['syncStatus']);
+      syncStatus = SyncStatus.fromJson(
+          _json['syncStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7628,7 +7875,8 @@ class Tag {
       liveOnly = _json['liveOnly'] as core.bool;
     }
     if (_json.containsKey('monitoringMetadata')) {
-      monitoringMetadata = Parameter.fromJson(_json['monitoringMetadata']);
+      monitoringMetadata = Parameter.fromJson(
+          _json['monitoringMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('monitoringMetadataTagNameKey')) {
       monitoringMetadataTagNameKey =
@@ -7642,7 +7890,8 @@ class Tag {
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
@@ -7655,7 +7904,8 @@ class Tag {
       paused = _json['paused'] as core.bool;
     }
     if (_json.containsKey('priority')) {
-      priority = Parameter.fromJson(_json['priority']);
+      priority = Parameter.fromJson(
+          _json['priority'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scheduleEndMs')) {
       scheduleEndMs = _json['scheduleEndMs'] as core.String;
@@ -7665,7 +7915,8 @@ class Tag {
     }
     if (_json.containsKey('setupTag')) {
       setupTag = (_json['setupTag'] as core.List)
-          .map<SetupTag>((value) => SetupTag.fromJson(value))
+          .map<SetupTag>((value) =>
+              SetupTag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tagFiringOption')) {
@@ -7679,7 +7930,8 @@ class Tag {
     }
     if (_json.containsKey('teardownTag')) {
       teardownTag = (_json['teardownTag'] as core.List)
-          .map<TeardownTag>((value) => TeardownTag.fromJson(value))
+          .map<TeardownTag>((value) => TeardownTag.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -8024,51 +8276,61 @@ class Trigger {
     }
     if (_json.containsKey('autoEventFilter')) {
       autoEventFilter = (_json['autoEventFilter'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('checkValidation')) {
-      checkValidation = Parameter.fromJson(_json['checkValidation']);
+      checkValidation = Parameter.fromJson(
+          _json['checkValidation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('containerId')) {
       containerId = _json['containerId'] as core.String;
     }
     if (_json.containsKey('continuousTimeMinMilliseconds')) {
-      continuousTimeMinMilliseconds =
-          Parameter.fromJson(_json['continuousTimeMinMilliseconds']);
+      continuousTimeMinMilliseconds = Parameter.fromJson(
+          _json['continuousTimeMinMilliseconds']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customEventFilter')) {
       customEventFilter = (_json['customEventFilter'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('eventName')) {
-      eventName = Parameter.fromJson(_json['eventName']);
+      eventName = Parameter.fromJson(
+          _json['eventName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filter')) {
       filter = (_json['filter'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fingerprint')) {
       fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('horizontalScrollPercentageList')) {
-      horizontalScrollPercentageList =
-          Parameter.fromJson(_json['horizontalScrollPercentageList']);
+      horizontalScrollPercentageList = Parameter.fromJson(
+          _json['horizontalScrollPercentageList']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('interval')) {
-      interval = Parameter.fromJson(_json['interval']);
+      interval = Parameter.fromJson(
+          _json['interval'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intervalSeconds')) {
-      intervalSeconds = Parameter.fromJson(_json['intervalSeconds']);
+      intervalSeconds = Parameter.fromJson(
+          _json['intervalSeconds'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('limit')) {
-      limit = Parameter.fromJson(_json['limit']);
+      limit = Parameter.fromJson(
+          _json['limit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxTimerLengthSeconds')) {
-      maxTimerLengthSeconds =
-          Parameter.fromJson(_json['maxTimerLengthSeconds']);
+      maxTimerLengthSeconds = Parameter.fromJson(_json['maxTimerLengthSeconds']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8078,7 +8340,8 @@ class Trigger {
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
@@ -8088,14 +8351,16 @@ class Trigger {
       path = _json['path'] as core.String;
     }
     if (_json.containsKey('selector')) {
-      selector = Parameter.fromJson(_json['selector']);
+      selector = Parameter.fromJson(
+          _json['selector'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tagManagerUrl')) {
       tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('totalTimeMinMilliseconds')) {
-      totalTimeMinMilliseconds =
-          Parameter.fromJson(_json['totalTimeMinMilliseconds']);
+      totalTimeMinMilliseconds = Parameter.fromJson(
+          _json['totalTimeMinMilliseconds']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('triggerId')) {
       triggerId = _json['triggerId'] as core.String;
@@ -8104,26 +8369,33 @@ class Trigger {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('uniqueTriggerId')) {
-      uniqueTriggerId = Parameter.fromJson(_json['uniqueTriggerId']);
+      uniqueTriggerId = Parameter.fromJson(
+          _json['uniqueTriggerId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('verticalScrollPercentageList')) {
-      verticalScrollPercentageList =
-          Parameter.fromJson(_json['verticalScrollPercentageList']);
+      verticalScrollPercentageList = Parameter.fromJson(
+          _json['verticalScrollPercentageList']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visibilitySelector')) {
-      visibilitySelector = Parameter.fromJson(_json['visibilitySelector']);
+      visibilitySelector = Parameter.fromJson(
+          _json['visibilitySelector'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visiblePercentageMax')) {
-      visiblePercentageMax = Parameter.fromJson(_json['visiblePercentageMax']);
+      visiblePercentageMax = Parameter.fromJson(
+          _json['visiblePercentageMax'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visiblePercentageMin')) {
-      visiblePercentageMin = Parameter.fromJson(_json['visiblePercentageMin']);
+      visiblePercentageMin = Parameter.fromJson(
+          _json['visiblePercentageMin'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('waitForTags')) {
-      waitForTags = Parameter.fromJson(_json['waitForTags']);
+      waitForTags = Parameter.fromJson(
+          _json['waitForTags'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('waitForTagsTimeout')) {
-      waitForTagsTimeout = Parameter.fromJson(_json['waitForTagsTimeout']);
+      waitForTagsTimeout = Parameter.fromJson(
+          _json['waitForTagsTimeout'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workspaceId')) {
       workspaceId = _json['workspaceId'] as core.String;
@@ -8262,14 +8534,16 @@ class UserPermission {
 
   UserPermission.fromJson(core.Map _json) {
     if (_json.containsKey('accountAccess')) {
-      accountAccess = AccountAccess.fromJson(_json['accountAccess']);
+      accountAccess = AccountAccess.fromJson(
+          _json['accountAccess'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('accountId')) {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('containerAccess')) {
       containerAccess = (_json['containerAccess'] as core.List)
-          .map<ContainerAccess>((value) => ContainerAccess.fromJson(value))
+          .map<ContainerAccess>((value) => ContainerAccess.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('emailAddress')) {
@@ -8400,7 +8674,8 @@ class Variable {
       fingerprint = _json['fingerprint'] as core.String;
     }
     if (_json.containsKey('formatValue')) {
-      formatValue = VariableFormatValue.fromJson(_json['formatValue']);
+      formatValue = VariableFormatValue.fromJson(
+          _json['formatValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8410,7 +8685,8 @@ class Variable {
     }
     if (_json.containsKey('parameter')) {
       parameter = (_json['parameter'] as core.List)
-          .map<Parameter>((value) => Parameter.fromJson(value))
+          .map<Parameter>((value) =>
+              Parameter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFolderId')) {
@@ -8524,17 +8800,21 @@ class VariableFormatValue {
       caseConversionType = _json['caseConversionType'] as core.String;
     }
     if (_json.containsKey('convertFalseToValue')) {
-      convertFalseToValue = Parameter.fromJson(_json['convertFalseToValue']);
+      convertFalseToValue = Parameter.fromJson(
+          _json['convertFalseToValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('convertNullToValue')) {
-      convertNullToValue = Parameter.fromJson(_json['convertNullToValue']);
+      convertNullToValue = Parameter.fromJson(
+          _json['convertNullToValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('convertTrueToValue')) {
-      convertTrueToValue = Parameter.fromJson(_json['convertTrueToValue']);
+      convertTrueToValue = Parameter.fromJson(
+          _json['convertTrueToValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('convertUndefinedToValue')) {
-      convertUndefinedToValue =
-          Parameter.fromJson(_json['convertUndefinedToValue']);
+      convertUndefinedToValue = Parameter.fromJson(
+          _json['convertUndefinedToValue']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8695,12 +8975,13 @@ class Zone {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('boundary')) {
-      boundary = ZoneBoundary.fromJson(_json['boundary']);
+      boundary = ZoneBoundary.fromJson(
+          _json['boundary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('childContainer')) {
       childContainer = (_json['childContainer'] as core.List)
-          .map<ZoneChildContainer>(
-              (value) => ZoneChildContainer.fromJson(value))
+          .map<ZoneChildContainer>((value) => ZoneChildContainer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('containerId')) {
@@ -8722,7 +9003,8 @@ class Zone {
       tagManagerUrl = _json['tagManagerUrl'] as core.String;
     }
     if (_json.containsKey('typeRestriction')) {
-      typeRestriction = ZoneTypeRestriction.fromJson(_json['typeRestriction']);
+      typeRestriction = ZoneTypeRestriction.fromJson(
+          _json['typeRestriction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workspaceId')) {
       workspaceId = _json['workspaceId'] as core.String;
@@ -8789,7 +9071,8 @@ class ZoneBoundary {
   ZoneBoundary.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
       condition = (_json['condition'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('customEvaluationTriggerId')) {

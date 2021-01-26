@@ -83,8 +83,8 @@ core.List<api.Account> buildUnnamed3638() {
 
 void checkUnnamed3638(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterAccount = 0;
@@ -127,8 +127,8 @@ core.List<api.Account> buildUnnamed3639() {
 
 void checkUnnamed3639(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterAccounts = 0;
@@ -192,8 +192,8 @@ core.List<api.AdClient> buildUnnamed3640() {
 
 void checkUnnamed3640(core.List<api.AdClient> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdClient(o[0]);
-  checkAdClient(o[1]);
+  checkAdClient(o[0] as api.AdClient);
+  checkAdClient(o[1] as api.AdClient);
 }
 
 core.int buildCounterAdClients = 0;
@@ -311,9 +311,9 @@ api.AdStyle buildAdStyle() {
 void checkAdStyle(api.AdStyle o) {
   buildCounterAdStyle++;
   if (buildCounterAdStyle < 3) {
-    checkAdStyleColors(o.colors);
+    checkAdStyleColors(o.colors as api.AdStyleColors);
     unittest.expect(o.corners, unittest.equals('foo'));
-    checkAdStyleFont(o.font);
+    checkAdStyleFont(o.font as api.AdStyleFont);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterAdStyle--;
@@ -360,7 +360,8 @@ api.AdUnitContentAdsSettings buildAdUnitContentAdsSettings() {
 void checkAdUnitContentAdsSettings(api.AdUnitContentAdsSettings o) {
   buildCounterAdUnitContentAdsSettings++;
   if (buildCounterAdUnitContentAdsSettings < 3) {
-    checkAdUnitContentAdsSettingsBackupOption(o.backupOption);
+    checkAdUnitContentAdsSettingsBackupOption(
+        o.backupOption as api.AdUnitContentAdsSettingsBackupOption);
     unittest.expect(o.size, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -441,12 +442,14 @@ void checkAdUnit(api.AdUnit o) {
   buildCounterAdUnit++;
   if (buildCounterAdUnit < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
-    checkAdUnitContentAdsSettings(o.contentAdsSettings);
-    checkAdStyle(o.customStyle);
-    checkAdUnitFeedAdsSettings(o.feedAdsSettings);
+    checkAdUnitContentAdsSettings(
+        o.contentAdsSettings as api.AdUnitContentAdsSettings);
+    checkAdStyle(o.customStyle as api.AdStyle);
+    checkAdUnitFeedAdsSettings(o.feedAdsSettings as api.AdUnitFeedAdsSettings);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkAdUnitMobileContentAdsSettings(o.mobileContentAdsSettings);
+    checkAdUnitMobileContentAdsSettings(
+        o.mobileContentAdsSettings as api.AdUnitMobileContentAdsSettings);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.savedStyleId, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
@@ -463,8 +466,8 @@ core.List<api.AdUnit> buildUnnamed3641() {
 
 void checkUnnamed3641(core.List<api.AdUnit> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdUnit(o[0]);
-  checkAdUnit(o[1]);
+  checkAdUnit(o[0] as api.AdUnit);
+  checkAdUnit(o[1] as api.AdUnit);
 }
 
 core.int buildCounterAdUnits = 0;
@@ -539,8 +542,10 @@ core.List<api.AdsenseReportsGenerateResponseHeaders> buildUnnamed3643() {
 
 void checkUnnamed3643(core.List<api.AdsenseReportsGenerateResponseHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdsenseReportsGenerateResponseHeaders(o[0]);
-  checkAdsenseReportsGenerateResponseHeaders(o[1]);
+  checkAdsenseReportsGenerateResponseHeaders(
+      o[0] as api.AdsenseReportsGenerateResponseHeaders);
+  checkAdsenseReportsGenerateResponseHeaders(
+      o[1] as api.AdsenseReportsGenerateResponseHeaders);
 }
 
 core.List<core.String> buildUnnamed3644() {
@@ -668,8 +673,8 @@ core.List<api.Alert> buildUnnamed3648() {
 
 void checkUnnamed3648(core.List<api.Alert> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAlert(o[0]);
-  checkAlert(o[1]);
+  checkAlert(o[0] as api.Alert);
+  checkAlert(o[1] as api.Alert);
 }
 
 core.int buildCounterAlerts = 0;
@@ -740,7 +745,8 @@ void checkCustomChannel(api.CustomChannel o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkCustomChannelTargetingInfo(o.targetingInfo);
+    checkCustomChannelTargetingInfo(
+        o.targetingInfo as api.CustomChannelTargetingInfo);
   }
   buildCounterCustomChannel--;
 }
@@ -754,8 +760,8 @@ core.List<api.CustomChannel> buildUnnamed3649() {
 
 void checkUnnamed3649(core.List<api.CustomChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomChannel(o[0]);
-  checkCustomChannel(o[1]);
+  checkCustomChannel(o[0] as api.CustomChannel);
+  checkCustomChannel(o[1] as api.CustomChannel);
 }
 
 core.int buildCounterCustomChannels = 0;
@@ -792,8 +798,8 @@ core.List<api.ReportingMetadataEntry> buildUnnamed3650() {
 
 void checkUnnamed3650(core.List<api.ReportingMetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportingMetadataEntry(o[0]);
-  checkReportingMetadataEntry(o[1]);
+  checkReportingMetadataEntry(o[0] as api.ReportingMetadataEntry);
+  checkReportingMetadataEntry(o[1] as api.ReportingMetadataEntry);
 }
 
 core.int buildCounterMetadata = 0;
@@ -853,8 +859,8 @@ core.List<api.Payment> buildUnnamed3651() {
 
 void checkUnnamed3651(core.List<api.Payment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPayment(o[0]);
-  checkPayment(o[1]);
+  checkPayment(o[0] as api.Payment);
+  checkPayment(o[1] as api.Payment);
 }
 
 core.int buildCounterPayments = 0;
@@ -991,7 +997,7 @@ api.SavedAdStyle buildSavedAdStyle() {
 void checkSavedAdStyle(api.SavedAdStyle o) {
   buildCounterSavedAdStyle++;
   if (buildCounterSavedAdStyle < 3) {
-    checkAdStyle(o.adStyle);
+    checkAdStyle(o.adStyle as api.AdStyle);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1008,8 +1014,8 @@ core.List<api.SavedAdStyle> buildUnnamed3657() {
 
 void checkUnnamed3657(core.List<api.SavedAdStyle> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSavedAdStyle(o[0]);
-  checkSavedAdStyle(o[1]);
+  checkSavedAdStyle(o[0] as api.SavedAdStyle);
+  checkSavedAdStyle(o[1] as api.SavedAdStyle);
 }
 
 core.int buildCounterSavedAdStyles = 0;
@@ -1069,8 +1075,8 @@ core.List<api.SavedReport> buildUnnamed3658() {
 
 void checkUnnamed3658(core.List<api.SavedReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSavedReport(o[0]);
-  checkSavedReport(o[1]);
+  checkSavedReport(o[0] as api.SavedReport);
+  checkSavedReport(o[1] as api.SavedReport);
 }
 
 core.int buildCounterSavedReports = 0;
@@ -1130,8 +1136,8 @@ core.List<api.UrlChannel> buildUnnamed3659() {
 
 void checkUnnamed3659(core.List<api.UrlChannel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUrlChannel(o[0]);
-  checkUrlChannel(o[1]);
+  checkUrlChannel(o[0] as api.UrlChannel);
+  checkUrlChannel(o[1] as api.UrlChannel);
 }
 
 core.int buildCounterUrlChannels = 0;
@@ -1281,7 +1287,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -1289,7 +1295,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccounts();
       var od = api.Accounts.fromJson(o.toJson());
-      checkAccounts(od);
+      checkAccounts(od as api.Accounts);
     });
   });
 
@@ -1297,7 +1303,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdClient();
       var od = api.AdClient.fromJson(o.toJson());
-      checkAdClient(od);
+      checkAdClient(od as api.AdClient);
     });
   });
 
@@ -1305,7 +1311,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdClients();
       var od = api.AdClients.fromJson(o.toJson());
-      checkAdClients(od);
+      checkAdClients(od as api.AdClients);
     });
   });
 
@@ -1313,7 +1319,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdCode();
       var od = api.AdCode.fromJson(o.toJson());
-      checkAdCode(od);
+      checkAdCode(od as api.AdCode);
     });
   });
 
@@ -1321,7 +1327,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyleColors();
       var od = api.AdStyleColors.fromJson(o.toJson());
-      checkAdStyleColors(od);
+      checkAdStyleColors(od as api.AdStyleColors);
     });
   });
 
@@ -1329,7 +1335,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyleFont();
       var od = api.AdStyleFont.fromJson(o.toJson());
-      checkAdStyleFont(od);
+      checkAdStyleFont(od as api.AdStyleFont);
     });
   });
 
@@ -1337,7 +1343,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdStyle();
       var od = api.AdStyle.fromJson(o.toJson());
-      checkAdStyle(od);
+      checkAdStyle(od as api.AdStyle);
     });
   });
 
@@ -1345,7 +1351,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettingsBackupOption();
       var od = api.AdUnitContentAdsSettingsBackupOption.fromJson(o.toJson());
-      checkAdUnitContentAdsSettingsBackupOption(od);
+      checkAdUnitContentAdsSettingsBackupOption(
+          od as api.AdUnitContentAdsSettingsBackupOption);
     });
   });
 
@@ -1353,7 +1360,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitContentAdsSettings();
       var od = api.AdUnitContentAdsSettings.fromJson(o.toJson());
-      checkAdUnitContentAdsSettings(od);
+      checkAdUnitContentAdsSettings(od as api.AdUnitContentAdsSettings);
     });
   });
 
@@ -1361,7 +1368,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitFeedAdsSettings();
       var od = api.AdUnitFeedAdsSettings.fromJson(o.toJson());
-      checkAdUnitFeedAdsSettings(od);
+      checkAdUnitFeedAdsSettings(od as api.AdUnitFeedAdsSettings);
     });
   });
 
@@ -1369,7 +1376,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnitMobileContentAdsSettings();
       var od = api.AdUnitMobileContentAdsSettings.fromJson(o.toJson());
-      checkAdUnitMobileContentAdsSettings(od);
+      checkAdUnitMobileContentAdsSettings(
+          od as api.AdUnitMobileContentAdsSettings);
     });
   });
 
@@ -1377,7 +1385,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnit();
       var od = api.AdUnit.fromJson(o.toJson());
-      checkAdUnit(od);
+      checkAdUnit(od as api.AdUnit);
     });
   });
 
@@ -1385,7 +1393,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdUnits();
       var od = api.AdUnits.fromJson(o.toJson());
-      checkAdUnits(od);
+      checkAdUnits(od as api.AdUnits);
     });
   });
 
@@ -1393,7 +1401,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdsenseReportsGenerateResponseHeaders();
       var od = api.AdsenseReportsGenerateResponseHeaders.fromJson(o.toJson());
-      checkAdsenseReportsGenerateResponseHeaders(od);
+      checkAdsenseReportsGenerateResponseHeaders(
+          od as api.AdsenseReportsGenerateResponseHeaders);
     });
   });
 
@@ -1401,7 +1410,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdsenseReportsGenerateResponse();
       var od = api.AdsenseReportsGenerateResponse.fromJson(o.toJson());
-      checkAdsenseReportsGenerateResponse(od);
+      checkAdsenseReportsGenerateResponse(
+          od as api.AdsenseReportsGenerateResponse);
     });
   });
 
@@ -1409,7 +1419,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAlert();
       var od = api.Alert.fromJson(o.toJson());
-      checkAlert(od);
+      checkAlert(od as api.Alert);
     });
   });
 
@@ -1417,7 +1427,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAlerts();
       var od = api.Alerts.fromJson(o.toJson());
-      checkAlerts(od);
+      checkAlerts(od as api.Alerts);
     });
   });
 
@@ -1425,7 +1435,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomChannelTargetingInfo();
       var od = api.CustomChannelTargetingInfo.fromJson(o.toJson());
-      checkCustomChannelTargetingInfo(od);
+      checkCustomChannelTargetingInfo(od as api.CustomChannelTargetingInfo);
     });
   });
 
@@ -1433,7 +1443,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomChannel();
       var od = api.CustomChannel.fromJson(o.toJson());
-      checkCustomChannel(od);
+      checkCustomChannel(od as api.CustomChannel);
     });
   });
 
@@ -1441,7 +1451,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomChannels();
       var od = api.CustomChannels.fromJson(o.toJson());
-      checkCustomChannels(od);
+      checkCustomChannels(od as api.CustomChannels);
     });
   });
 
@@ -1449,7 +1459,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
-      checkMetadata(od);
+      checkMetadata(od as api.Metadata);
     });
   });
 
@@ -1457,7 +1467,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPayment();
       var od = api.Payment.fromJson(o.toJson());
-      checkPayment(od);
+      checkPayment(od as api.Payment);
     });
   });
 
@@ -1465,7 +1475,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPayments();
       var od = api.Payments.fromJson(o.toJson());
-      checkPayments(od);
+      checkPayments(od as api.Payments);
     });
   });
 
@@ -1473,7 +1483,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportingMetadataEntry();
       var od = api.ReportingMetadataEntry.fromJson(o.toJson());
-      checkReportingMetadataEntry(od);
+      checkReportingMetadataEntry(od as api.ReportingMetadataEntry);
     });
   });
 
@@ -1481,7 +1491,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedAdStyle();
       var od = api.SavedAdStyle.fromJson(o.toJson());
-      checkSavedAdStyle(od);
+      checkSavedAdStyle(od as api.SavedAdStyle);
     });
   });
 
@@ -1489,7 +1499,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedAdStyles();
       var od = api.SavedAdStyles.fromJson(o.toJson());
-      checkSavedAdStyles(od);
+      checkSavedAdStyles(od as api.SavedAdStyles);
     });
   });
 
@@ -1497,7 +1507,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedReport();
       var od = api.SavedReport.fromJson(o.toJson());
-      checkSavedReport(od);
+      checkSavedReport(od as api.SavedReport);
     });
   });
 
@@ -1505,7 +1515,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedReports();
       var od = api.SavedReports.fromJson(o.toJson());
-      checkSavedReports(od);
+      checkSavedReports(od as api.SavedReports);
     });
   });
 
@@ -1513,7 +1523,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlChannel();
       var od = api.UrlChannel.fromJson(o.toJson());
-      checkUrlChannel(od);
+      checkUrlChannel(od as api.UrlChannel);
     });
   });
 
@@ -1521,7 +1531,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlChannels();
       var od = api.UrlChannels.fromJson(o.toJson());
-      checkUrlChannels(od);
+      checkUrlChannels(od as api.UrlChannels);
     });
   });
 
@@ -1577,7 +1587,7 @@ void main() {
       res
           .get(arg_accountId, tree: arg_tree, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccount(response);
+        checkAccount(response as api.Account);
       })));
     });
 
@@ -1635,7 +1645,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccounts(response);
+        checkAccounts(response as api.Accounts);
       })));
     });
   });
@@ -1710,7 +1720,7 @@ void main() {
           .getAdCode(arg_accountId, arg_adClientId,
               tagPartner: arg_tagPartner, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdCode(response);
+        checkAdCode(response as api.AdCode);
       })));
     });
 
@@ -1778,7 +1788,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClients(response);
+        checkAdClients(response as api.AdClients);
       })));
     });
   });
@@ -1854,7 +1864,7 @@ void main() {
           .get(arg_accountId, arg_adClientId, arg_adUnitId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -1934,7 +1944,7 @@ void main() {
           .getAdCode(arg_accountId, arg_adClientId, arg_adUnitId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdCode(response);
+        checkAdCode(response as api.AdCode);
       })));
     });
 
@@ -2016,7 +2026,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnits(response);
+        checkAdUnits(response as api.AdUnits);
       })));
     });
   });
@@ -2106,7 +2116,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannels(response);
+        checkCustomChannels(response as api.CustomChannels);
       })));
     });
   });
@@ -2230,7 +2240,7 @@ void main() {
       res
           .list(arg_accountId, locale: arg_locale, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAlerts(response);
+        checkAlerts(response as api.Alerts);
       })));
     });
   });
@@ -2306,7 +2316,7 @@ void main() {
           .get(arg_accountId, arg_adClientId, arg_customChannelId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -2384,7 +2394,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannels(response);
+        checkCustomChannels(response as api.CustomChannels);
       })));
     });
   });
@@ -2478,7 +2488,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnits(response);
+        checkAdUnits(response as api.AdUnits);
       })));
     });
   });
@@ -2539,7 +2549,7 @@ void main() {
       res
           .list(arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPayments(response);
+        checkPayments(response as api.Payments);
       })));
     });
   });
@@ -2641,7 +2651,8 @@ void main() {
               useTimezoneReporting: arg_useTimezoneReporting,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdsenseReportsGenerateResponse(response);
+        checkAdsenseReportsGenerateResponse(
+            response as api.AdsenseReportsGenerateResponse);
       })));
     });
   });
@@ -2718,7 +2729,8 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdsenseReportsGenerateResponse(response);
+        checkAdsenseReportsGenerateResponse(
+            response as api.AdsenseReportsGenerateResponse);
       })));
     });
 
@@ -2786,7 +2798,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedReports(response);
+        checkSavedReports(response as api.SavedReports);
       })));
     });
   });
@@ -2851,7 +2863,7 @@ void main() {
       res
           .get(arg_accountId, arg_savedAdStyleId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedAdStyle(response);
+        checkSavedAdStyle(response as api.SavedAdStyle);
       })));
     });
 
@@ -2919,7 +2931,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedAdStyles(response);
+        checkSavedAdStyles(response as api.SavedAdStyles);
       })));
     });
   });
@@ -2999,7 +3011,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlChannels(response);
+        checkUrlChannels(response as api.UrlChannels);
       })));
     });
   });
@@ -3059,7 +3071,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdClients(response);
+        checkAdClients(response as api.AdClients);
       })));
     });
   });
@@ -3124,7 +3136,7 @@ void main() {
       res
           .get(arg_adClientId, arg_adUnitId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnit(response);
+        checkAdUnit(response as api.AdUnit);
       })));
     });
 
@@ -3193,7 +3205,7 @@ void main() {
       res
           .getAdCode(arg_adClientId, arg_adUnitId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdCode(response);
+        checkAdCode(response as api.AdCode);
       })));
     });
 
@@ -3265,7 +3277,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnits(response);
+        checkAdUnits(response as api.AdUnits);
       })));
     });
   });
@@ -3345,7 +3357,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannels(response);
+        checkCustomChannels(response as api.CustomChannels);
       })));
     });
   });
@@ -3449,7 +3461,7 @@ void main() {
       res
           .list(locale: arg_locale, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAlerts(response);
+        checkAlerts(response as api.Alerts);
       })));
     });
   });
@@ -3514,7 +3526,7 @@ void main() {
       res
           .get(arg_adClientId, arg_customChannelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannel(response);
+        checkCustomChannel(response as api.CustomChannel);
       })));
     });
 
@@ -3582,7 +3594,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomChannels(response);
+        checkCustomChannels(response as api.CustomChannels);
       })));
     });
   });
@@ -3666,7 +3678,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdUnits(response);
+        checkAdUnits(response as api.AdUnits);
       })));
     });
   });
@@ -3715,7 +3727,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkMetadata(response);
+        checkMetadata(response as api.Metadata);
       })));
     });
   });
@@ -3764,7 +3776,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkMetadata(response);
+        checkMetadata(response as api.Metadata);
       })));
     });
   });
@@ -3813,7 +3825,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkPayments(response);
+        checkPayments(response as api.Payments);
       })));
     });
   });
@@ -3908,7 +3920,8 @@ void main() {
               useTimezoneReporting: arg_useTimezoneReporting,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdsenseReportsGenerateResponse(response);
+        checkAdsenseReportsGenerateResponse(
+            response as api.AdsenseReportsGenerateResponse);
       })));
     });
   });
@@ -3975,7 +3988,8 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdsenseReportsGenerateResponse(response);
+        checkAdsenseReportsGenerateResponse(
+            response as api.AdsenseReportsGenerateResponse);
       })));
     });
 
@@ -4033,7 +4047,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedReports(response);
+        checkSavedReports(response as api.SavedReports);
       })));
     });
   });
@@ -4088,7 +4102,7 @@ void main() {
       res
           .get(arg_savedAdStyleId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedAdStyle(response);
+        checkSavedAdStyle(response as api.SavedAdStyle);
       })));
     });
 
@@ -4146,7 +4160,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedAdStyles(response);
+        checkSavedAdStyles(response as api.SavedAdStyles);
       })));
     });
   });
@@ -4216,7 +4230,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlChannels(response);
+        checkUrlChannels(response as api.UrlChannels);
       })));
     });
   });

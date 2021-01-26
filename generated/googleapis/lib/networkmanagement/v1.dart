@@ -112,7 +112,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -180,7 +182,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -277,7 +282,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a specific `ConnectivityTest`.
@@ -328,7 +335,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details of a specific Connectivity Test.
@@ -379,7 +388,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ConnectivityTest.fromJson(data));
+    return _response.then(
+      (data) => ConnectivityTest.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -448,7 +460,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Connectivity Tests owned by a project.
@@ -534,8 +548,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListConnectivityTestsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListConnectivityTestsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the configuration of an existing `ConnectivityTest`. After you
@@ -609,7 +625,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rerun an existing `ConnectivityTest`. After the user triggers the rerun,
@@ -674,7 +692,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -736,7 +756,9 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -800,7 +822,10 @@ class ProjectsLocationsGlobalConnectivityTestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -871,7 +896,9 @@ class ProjectsLocationsGlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -924,7 +951,9 @@ class ProjectsLocationsGlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -976,7 +1005,9 @@ class ProjectsLocationsGlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1052,7 +1083,10 @@ class ProjectsLocationsGlobalOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1143,7 +1177,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -1257,7 +1292,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1371,14 +1407,16 @@ class ConnectivityTest {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('destination')) {
-      destination = Endpoint.fromJson(_json['destination']);
+      destination = Endpoint.fromJson(
+          _json['destination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -1388,8 +1426,8 @@ class ConnectivityTest {
       protocol = _json['protocol'] as core.String;
     }
     if (_json.containsKey('reachabilityDetails')) {
-      reachabilityDetails =
-          ReachabilityDetails.fromJson(_json['reachabilityDetails']);
+      reachabilityDetails = ReachabilityDetails.fromJson(
+          _json['reachabilityDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('relatedProjects')) {
       relatedProjects = (_json['relatedProjects'] as core.List)
@@ -1397,7 +1435,8 @@ class ConnectivityTest {
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = Endpoint.fromJson(_json['source']);
+      source = Endpoint.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -2117,7 +2156,8 @@ class ListConnectivityTestsResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ConnectivityTest>((value) => ConnectivityTest.fromJson(value))
+          .map<ConnectivityTest>((value) => ConnectivityTest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unreachable')) {
@@ -2155,7 +2195,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2191,7 +2232,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2324,8 +2366,8 @@ class LoadBalancerInfo {
     }
     if (_json.containsKey('backends')) {
       backends = (_json['backends'] as core.List)
-          .map<LoadBalancerBackend>(
-              (value) => LoadBalancerBackend.fromJson(value))
+          .map<LoadBalancerBackend>((value) => LoadBalancerBackend.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('healthCheckUri')) {
@@ -2389,7 +2431,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -2397,7 +2440,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2510,11 +2554,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2522,7 +2568,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2704,12 +2751,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2776,14 +2825,16 @@ class ReachabilityDetails {
 
   ReachabilityDetails.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('result')) {
       result = _json['result'] as core.String;
     }
     if (_json.containsKey('traces')) {
       traces = (_json['traces'] as core.List)
-          .map<Trace>((value) => Trace.fromJson(value))
+          .map<Trace>((value) =>
+              Trace.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('verifyTime')) {
@@ -2965,7 +3016,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -3016,7 +3068,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -3139,55 +3192,68 @@ class Step {
 
   Step.fromJson(core.Map _json) {
     if (_json.containsKey('abort')) {
-      abort = AbortInfo.fromJson(_json['abort']);
+      abort = AbortInfo.fromJson(
+          _json['abort'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('causesDrop')) {
       causesDrop = _json['causesDrop'] as core.bool;
     }
     if (_json.containsKey('deliver')) {
-      deliver = DeliverInfo.fromJson(_json['deliver']);
+      deliver = DeliverInfo.fromJson(
+          _json['deliver'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('drop')) {
-      drop = DropInfo.fromJson(_json['drop']);
+      drop = DropInfo.fromJson(
+          _json['drop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endpoint')) {
-      endpoint = EndpointInfo.fromJson(_json['endpoint']);
+      endpoint = EndpointInfo.fromJson(
+          _json['endpoint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('firewall')) {
-      firewall = FirewallInfo.fromJson(_json['firewall']);
+      firewall = FirewallInfo.fromJson(
+          _json['firewall'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('forward')) {
-      forward = ForwardInfo.fromJson(_json['forward']);
+      forward = ForwardInfo.fromJson(
+          _json['forward'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('forwardingRule')) {
-      forwardingRule = ForwardingRuleInfo.fromJson(_json['forwardingRule']);
+      forwardingRule = ForwardingRuleInfo.fromJson(
+          _json['forwardingRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instance')) {
-      instance = InstanceInfo.fromJson(_json['instance']);
+      instance = InstanceInfo.fromJson(
+          _json['instance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('loadBalancer')) {
-      loadBalancer = LoadBalancerInfo.fromJson(_json['loadBalancer']);
+      loadBalancer = LoadBalancerInfo.fromJson(
+          _json['loadBalancer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('network')) {
-      network = NetworkInfo.fromJson(_json['network']);
+      network = NetworkInfo.fromJson(
+          _json['network'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('route')) {
-      route = RouteInfo.fromJson(_json['route']);
+      route = RouteInfo.fromJson(
+          _json['route'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('vpnGateway')) {
-      vpnGateway = VpnGatewayInfo.fromJson(_json['vpnGateway']);
+      vpnGateway = VpnGatewayInfo.fromJson(
+          _json['vpnGateway'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('vpnTunnel')) {
-      vpnTunnel = VpnTunnelInfo.fromJson(_json['vpnTunnel']);
+      vpnTunnel = VpnTunnelInfo.fromJson(
+          _json['vpnTunnel'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3325,11 +3391,13 @@ class Trace {
 
   Trace.fromJson(core.Map _json) {
     if (_json.containsKey('endpointInfo')) {
-      endpointInfo = EndpointInfo.fromJson(_json['endpointInfo']);
+      endpointInfo = EndpointInfo.fromJson(
+          _json['endpointInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('steps')) {
       steps = (_json['steps'] as core.List)
-          .map<Step>((value) => Step.fromJson(value))
+          .map<Step>((value) =>
+              Step.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

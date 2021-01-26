@@ -138,7 +138,10 @@ class ProjectsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CheckValidCredsResponse.fromJson(data));
+    return _response.then(
+      (data) => CheckValidCredsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a supported data source and returns its settings, which can be
@@ -190,7 +193,10 @@ class ProjectsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists supported data sources and returns their settings, which can be used
@@ -260,7 +266,10 @@ class ProjectsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDataSourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDataSourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -321,7 +330,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -389,7 +400,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -460,7 +474,10 @@ class ProjectsLocationsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CheckValidCredsResponse.fromJson(data));
+    return _response.then(
+      (data) => CheckValidCredsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a supported data source and returns its settings, which can be
@@ -513,7 +530,10 @@ class ProjectsLocationsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists supported data sources and returns their settings, which can be used
@@ -583,7 +603,10 @@ class ProjectsLocationsDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDataSourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDataSourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -693,7 +716,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -746,7 +772,9 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a data transfer config.
@@ -798,7 +826,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about all data transfers in the project.
@@ -874,7 +905,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferConfigsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferConfigsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a data transfer configuration. All fields must be set, even if
@@ -984,7 +1018,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates transfer runs for a time range [start_time, end_time]. For each
@@ -1047,8 +1084,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ScheduleTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => ScheduleTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -1111,8 +1150,10 @@ class ProjectsLocationsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => StartManualTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => StartManualTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1177,7 +1218,9 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about the particular transfer run.
@@ -1230,7 +1273,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferRun.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about running and completed jobs.
@@ -1315,7 +1361,10 @@ class ProjectsLocationsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1400,7 +1449,10 @@ class ProjectsLocationsTransferConfigsRunsTransferLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1510,7 +1562,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a data transfer configuration, including any associated transfer
@@ -1562,7 +1617,9 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a data transfer config.
@@ -1613,7 +1670,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about all data transfers in the project.
@@ -1689,7 +1749,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferConfigsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferConfigsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a data transfer configuration. All fields must be set, even if
@@ -1798,7 +1861,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates transfer runs for a time range [start_time, end_time]. For each
@@ -1860,8 +1926,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ScheduleTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => ScheduleTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Start manual transfer runs to be executed now with schedule_time equal to
@@ -1923,8 +1991,10 @@ class ProjectsTransferConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => StartManualTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => StartManualTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1987,7 +2057,9 @@ class ProjectsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about the particular transfer run.
@@ -2040,7 +2112,10 @@ class ProjectsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TransferRun.fromJson(data));
+    return _response.then(
+      (data) =>
+          TransferRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about running and completed jobs.
@@ -2124,7 +2199,10 @@ class ProjectsTransferConfigsRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2209,7 +2287,10 @@ class ProjectsTransferConfigsRunsTransferLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTransferLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTransferLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2389,8 +2470,8 @@ class DataSource {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<DataSourceParameter>(
-              (value) => DataSourceParameter.fromJson(value))
+          .map<DataSourceParameter>((value) => DataSourceParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('scopes')) {
@@ -2557,8 +2638,8 @@ class DataSourceParameter {
     }
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<DataSourceParameter>(
-              (value) => DataSourceParameter.fromJson(value))
+          .map<DataSourceParameter>((value) => DataSourceParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('immutable')) {
@@ -2706,7 +2787,8 @@ class ListDataSourcesResponse {
   ListDataSourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataSources')) {
       dataSources = (_json['dataSources'] as core.List)
-          .map<DataSource>((value) => DataSource.fromJson(value))
+          .map<DataSource>((value) =>
+              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2740,7 +2822,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2778,7 +2861,8 @@ class ListTransferConfigsResponse {
     }
     if (_json.containsKey('transferConfigs')) {
       transferConfigs = (_json['transferConfigs'] as core.List)
-          .map<TransferConfig>((value) => TransferConfig.fromJson(value))
+          .map<TransferConfig>((value) => TransferConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2814,7 +2898,8 @@ class ListTransferLogsResponse {
     }
     if (_json.containsKey('transferMessages')) {
       transferMessages = (_json['transferMessages'] as core.List)
-          .map<TransferMessage>((value) => TransferMessage.fromJson(value))
+          .map<TransferMessage>((value) => TransferMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2850,7 +2935,8 @@ class ListTransferRunsResponse {
     }
     if (_json.containsKey('transferRuns')) {
       transferRuns = (_json['transferRuns'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(value))
+          .map<TransferRun>((value) => TransferRun.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2900,7 +2986,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -2908,7 +2995,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -3030,7 +3118,8 @@ class ScheduleTransferRunsResponse {
   ScheduleTransferRunsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('runs')) {
       runs = (_json['runs'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(value))
+          .map<TransferRun>((value) => TransferRun.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3060,7 +3149,8 @@ class StartManualTransferRunsRequest {
       requestedRunTime = _json['requestedRunTime'] as core.String;
     }
     if (_json.containsKey('requestedTimeRange')) {
-      requestedTimeRange = TimeRange.fromJson(_json['requestedTimeRange']);
+      requestedTimeRange = TimeRange.fromJson(
+          _json['requestedTimeRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3086,7 +3176,8 @@ class StartManualTransferRunsResponse {
   StartManualTransferRunsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('runs')) {
       runs = (_json['runs'] as core.List)
-          .map<TransferRun>((value) => TransferRun.fromJson(value))
+          .map<TransferRun>((value) => TransferRun.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3132,7 +3223,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -3302,7 +3394,8 @@ class TransferConfig {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('emailPreferences')) {
-      emailPreferences = EmailPreferences.fromJson(_json['emailPreferences']);
+      emailPreferences = EmailPreferences.fromJson(
+          _json['emailPreferences'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3315,14 +3408,16 @@ class TransferConfig {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.Object, core.Object>(
-          _json['params'].cast<core.String, core.Object>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('schedule')) {
       schedule = _json['schedule'] as core.String;
     }
     if (_json.containsKey('scheduleOptions')) {
-      scheduleOptions = ScheduleOptions.fromJson(_json['scheduleOptions']);
+      scheduleOptions = ScheduleOptions.fromJson(
+          _json['scheduleOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -3514,13 +3609,15 @@ class TransferRun {
       destinationDatasetId = _json['destinationDatasetId'] as core.String;
     }
     if (_json.containsKey('emailPreferences')) {
-      emailPreferences = EmailPreferences.fromJson(_json['emailPreferences']);
+      emailPreferences = EmailPreferences.fromJson(
+          _json['emailPreferences'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('errorStatus')) {
-      errorStatus = Status.fromJson(_json['errorStatus']);
+      errorStatus = Status.fromJson(
+          _json['errorStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3530,7 +3627,8 @@ class TransferRun {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.Object, core.Object>(
-          _json['params'].cast<core.String, core.Object>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('runTime')) {

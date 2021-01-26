@@ -125,7 +125,10 @@ class BlogUserInfosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BlogUserInfo.fromJson(data));
+    return _response.then(
+      (data) =>
+          BlogUserInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -196,7 +199,9 @@ class BlogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Blog.fromJson(data));
+    return _response.then(
+      (data) => Blog.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a blog by url.
@@ -256,7 +261,9 @@ class BlogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Blog.fromJson(data));
+    return _response.then(
+      (data) => Blog.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists blogs by user.
@@ -333,7 +340,9 @@ class BlogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BlogList.fromJson(data));
+    return _response.then(
+      (data) => BlogList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -405,7 +414,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a comment by blog id, post id and comment id.
@@ -470,7 +481,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a comment by id.
@@ -546,7 +559,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists comments.
@@ -656,7 +671,10 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommentList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists comments by blog.
@@ -740,7 +758,10 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommentList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommentList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Marks a comment as spam by blog id, post id and comment id.
@@ -806,7 +827,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes the content of a comment by blog id, post id and comment id.
@@ -872,7 +895,9 @@ class CommentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Comment.fromJson(data));
+    return _response.then(
+      (data) => Comment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -933,7 +958,9 @@ class PageViewsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Pageviews.fromJson(data));
+    return _response.then(
+      (data) => Pageviews.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -996,7 +1023,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a page by blog id and page id.
@@ -1064,7 +1093,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a page.
@@ -1124,7 +1155,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists pages.
@@ -1207,7 +1240,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PageList.fromJson(data));
+    return _response.then(
+      (data) => PageList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a page.
@@ -1282,7 +1317,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Publishes a page.
@@ -1340,7 +1377,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts a published or scheduled page to draft state.
@@ -1398,7 +1437,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a page by blog id and page id.
@@ -1473,7 +1514,9 @@ class PagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Page.fromJson(data));
+    return _response.then(
+      (data) => Page.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1550,7 +1593,10 @@ class PostUserInfosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PostUserInfo.fromJson(data));
+    return _response.then(
+      (data) =>
+          PostUserInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists post and user info pairs.
@@ -1671,7 +1717,10 @@ class PostUserInfosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PostUserInfosList.fromJson(data));
+    return _response.then(
+      (data) => PostUserInfosList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1734,7 +1783,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a post by blog id and post id
@@ -1820,7 +1871,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a post by path.
@@ -1894,7 +1947,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a post.
@@ -1966,7 +2021,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists posts.
@@ -2083,7 +2140,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PostList.fromJson(data));
+    return _response.then(
+      (data) => PostList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a post.
@@ -2176,7 +2235,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Publishes a post.
@@ -2240,7 +2301,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reverts a published or scheduled post to draft state.
@@ -2298,7 +2361,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Searches for posts matching given query terms in the specified blog.
@@ -2371,7 +2436,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PostList.fromJson(data));
+    return _response.then(
+      (data) => PostList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a post by blog id and post id.
@@ -2464,7 +2531,9 @@ class PostsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Post.fromJson(data));
+    return _response.then(
+      (data) => Post.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2518,7 +2587,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2609,7 +2680,8 @@ class BlogPosts {
   BlogPosts.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Post>((value) => Post.fromJson(value))
+          .map<Post>((value) =>
+              Post.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -2694,16 +2766,19 @@ class Blog {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locale')) {
-      locale = BlogLocale.fromJson(_json['locale']);
+      locale = BlogLocale.fromJson(
+          _json['locale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pages')) {
-      pages = BlogPages.fromJson(_json['pages']);
+      pages = BlogPages.fromJson(
+          _json['pages'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('posts')) {
-      posts = BlogPosts.fromJson(_json['posts']);
+      posts = BlogPosts.fromJson(
+          _json['posts'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('published')) {
       published = _json['published'] as core.String;
@@ -2782,12 +2857,14 @@ class BlogList {
   BlogList.fromJson(core.Map _json) {
     if (_json.containsKey('blogUserInfos')) {
       blogUserInfos = (_json['blogUserInfos'] as core.List)
-          .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(value))
+          .map<BlogUserInfo>((value) => BlogUserInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Blog>((value) => Blog.fromJson(value))
+          .map<Blog>((value) =>
+              Blog.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2897,10 +2974,12 @@ class BlogUserInfo {
 
   BlogUserInfo.fromJson(core.Map _json) {
     if (_json.containsKey('blog')) {
-      blog = Blog.fromJson(_json['blog']);
+      blog =
+          Blog.fromJson(_json['blog'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blog_user_info')) {
-      blogUserInfo = BlogPerUserInfo.fromJson(_json['blog_user_info']);
+      blogUserInfo = BlogPerUserInfo.fromJson(
+          _json['blog_user_info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2968,7 +3047,8 @@ class CommentAuthor {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = CommentAuthorImage.fromJson(_json['image']);
+      image = CommentAuthorImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -3102,10 +3182,12 @@ class Comment {
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = CommentAuthor.fromJson(_json['author']);
+      author = CommentAuthor.fromJson(
+          _json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blog')) {
-      blog = CommentBlog.fromJson(_json['blog']);
+      blog = CommentBlog.fromJson(
+          _json['blog'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -3114,13 +3196,15 @@ class Comment {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('inReplyTo')) {
-      inReplyTo = CommentInReplyTo.fromJson(_json['inReplyTo']);
+      inReplyTo = CommentInReplyTo.fromJson(
+          _json['inReplyTo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('post')) {
-      post = CommentPost.fromJson(_json['post']);
+      post = CommentPost.fromJson(
+          _json['post'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('published')) {
       published = _json['published'] as core.String;
@@ -3199,7 +3283,8 @@ class CommentList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Comment>((value) => Comment.fromJson(value))
+          .map<Comment>((value) =>
+              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3280,7 +3365,8 @@ class PageAuthor {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = PageAuthorImage.fromJson(_json['image']);
+      image = PageAuthorImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -3372,10 +3458,12 @@ class Page {
 
   Page.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = PageAuthor.fromJson(_json['author']);
+      author = PageAuthor.fromJson(
+          _json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blog')) {
-      blog = PageBlog.fromJson(_json['blog']);
+      blog = PageBlog.fromJson(
+          _json['blog'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -3472,7 +3560,8 @@ class PageList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Page>((value) => Page.fromJson(value))
+          .map<Page>((value) =>
+              Page.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3553,7 +3642,8 @@ class Pageviews {
     }
     if (_json.containsKey('counts')) {
       counts = (_json['counts'] as core.List)
-          .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(value))
+          .map<PageviewsCounts>((value) => PageviewsCounts.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3622,7 +3712,8 @@ class PostAuthor {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = PostAuthorImage.fromJson(_json['image']);
+      image = PostAuthorImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -3754,7 +3845,8 @@ class PostReplies {
   PostReplies.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Comment>((value) => Comment.fromJson(value))
+          .map<Comment>((value) =>
+              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selfLink')) {
@@ -3850,10 +3942,12 @@ class Post {
 
   Post.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = PostAuthor.fromJson(_json['author']);
+      author = PostAuthor.fromJson(
+          _json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blog')) {
-      blog = PostBlog.fromJson(_json['blog']);
+      blog = PostBlog.fromJson(
+          _json['blog'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -3869,7 +3963,8 @@ class Post {
     }
     if (_json.containsKey('images')) {
       images = (_json['images'] as core.List)
-          .map<PostImages>((value) => PostImages.fromJson(value))
+          .map<PostImages>((value) =>
+              PostImages.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3881,7 +3976,8 @@ class Post {
           .toList();
     }
     if (_json.containsKey('location')) {
-      location = PostLocation.fromJson(_json['location']);
+      location = PostLocation.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('published')) {
       published = _json['published'] as core.String;
@@ -3890,7 +3986,8 @@ class Post {
       readerComments = _json['readerComments'] as core.String;
     }
     if (_json.containsKey('replies')) {
-      replies = PostReplies.fromJson(_json['replies']);
+      replies = PostReplies.fromJson(
+          _json['replies'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -3999,7 +4096,8 @@ class PostList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Post>((value) => Post.fromJson(value))
+          .map<Post>((value) =>
+              Post.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4108,10 +4206,12 @@ class PostUserInfo {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('post')) {
-      post = Post.fromJson(_json['post']);
+      post =
+          Post.fromJson(_json['post'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('post_user_info')) {
-      postUserInfo = PostPerUserInfo.fromJson(_json['post_user_info']);
+      postUserInfo = PostPerUserInfo.fromJson(
+          _json['post_user_info'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4145,7 +4245,8 @@ class PostUserInfosList {
   PostUserInfosList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PostUserInfo>((value) => PostUserInfo.fromJson(value))
+          .map<PostUserInfo>((value) => PostUserInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4268,7 +4369,8 @@ class User {
       about = _json['about'] as core.String;
     }
     if (_json.containsKey('blogs')) {
-      blogs = UserBlogs.fromJson(_json['blogs']);
+      blogs = UserBlogs.fromJson(
+          _json['blogs'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = _json['created'] as core.String;
@@ -4283,7 +4385,8 @@ class User {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locale')) {
-      locale = UserLocale.fromJson(_json['locale']);
+      locale = UserLocale.fromJson(
+          _json['locale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;

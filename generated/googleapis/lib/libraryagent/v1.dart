@@ -99,8 +99,10 @@ class ShelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleExampleLibraryagentV1Shelf.fromJson(data));
+    return _response.then(
+      (data) => GoogleExampleLibraryagentV1Shelf.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists shelves. The order is unspecified but deterministic. Newly created
@@ -159,8 +161,10 @@ class ShelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -218,8 +222,10 @@ class ShelvesBooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
+    return _response.then(
+      (data) => GoogleExampleLibraryagentV1Book.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a book. Returns NOT_FOUND if the book does not exist.
@@ -268,8 +274,10 @@ class ShelvesBooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
+    return _response.then(
+      (data) => GoogleExampleLibraryagentV1Book.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists books in a shelf. The order is unspecified but deterministic. Newly
@@ -336,7 +344,9 @@ class ShelvesBooksResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleExampleLibraryagentV1ListBooksResponse.fromJson(data));
+      (data) => GoogleExampleLibraryagentV1ListBooksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Return a book to the library. Returns the book if it is returned to the
@@ -387,8 +397,10 @@ class ShelvesBooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleExampleLibraryagentV1Book.fromJson(data));
+    return _response.then(
+      (data) => GoogleExampleLibraryagentV1Book.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -458,8 +470,9 @@ class GoogleExampleLibraryagentV1ListBooksResponse {
   GoogleExampleLibraryagentV1ListBooksResponse.fromJson(core.Map _json) {
     if (_json.containsKey('books')) {
       books = (_json['books'] as core.List)
-          .map<GoogleExampleLibraryagentV1Book>(
-              (value) => GoogleExampleLibraryagentV1Book.fromJson(value))
+          .map<GoogleExampleLibraryagentV1Book>((value) =>
+              GoogleExampleLibraryagentV1Book.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -497,8 +510,9 @@ class GoogleExampleLibraryagentV1ListShelvesResponse {
     }
     if (_json.containsKey('shelves')) {
       shelves = (_json['shelves'] as core.List)
-          .map<GoogleExampleLibraryagentV1Shelf>(
-              (value) => GoogleExampleLibraryagentV1Shelf.fromJson(value))
+          .map<GoogleExampleLibraryagentV1Shelf>((value) =>
+              GoogleExampleLibraryagentV1Shelf.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

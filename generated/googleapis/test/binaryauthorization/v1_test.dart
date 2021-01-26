@@ -138,8 +138,8 @@ core.List<api.Jwt> buildUnnamed3628() {
 
 void checkUnnamed3628(core.List<api.Jwt> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJwt(o[0]);
-  checkJwt(o[1]);
+  checkJwt(o[0] as api.Jwt);
+  checkJwt(o[1] as api.Jwt);
 }
 
 core.List<api.Signature> buildUnnamed3629() {
@@ -151,8 +151,8 @@ core.List<api.Signature> buildUnnamed3629() {
 
 void checkUnnamed3629(core.List<api.Signature> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSignature(o[0]);
-  checkSignature(o[1]);
+  checkSignature(o[0] as api.Signature);
+  checkSignature(o[1] as api.Signature);
 }
 
 core.int buildCounterAttestationOccurrence = 0;
@@ -198,7 +198,8 @@ void checkAttestor(api.Attestor o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
-    checkUserOwnedGrafeasNote(o.userOwnedGrafeasNote);
+    checkUserOwnedGrafeasNote(
+        o.userOwnedGrafeasNote as api.UserOwnedGrafeasNote);
   }
   buildCounterAttestor--;
 }
@@ -223,7 +224,7 @@ void checkAttestorPublicKey(api.AttestorPublicKey o) {
     unittest.expect(o.asciiArmoredPgpPublicKey, unittest.equals('foo'));
     unittest.expect(o.comment, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkPkixPublicKey(o.pkixPublicKey);
+    checkPkixPublicKey(o.pkixPublicKey as api.PkixPublicKey);
   }
   buildCounterAttestorPublicKey--;
 }
@@ -259,7 +260,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed3630(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -315,8 +316,8 @@ core.List<api.Binding> buildUnnamed3631() {
 
 void checkUnnamed3631(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterIamPolicy = 0;
@@ -370,8 +371,8 @@ core.List<api.Attestor> buildUnnamed3632() {
 
 void checkUnnamed3632(core.List<api.Attestor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttestor(o[0]);
-  checkAttestor(o[1]);
+  checkAttestor(o[0] as api.Attestor);
+  checkAttestor(o[1] as api.Attestor);
 }
 
 core.int buildCounterListAttestorsResponse = 0;
@@ -425,8 +426,8 @@ core.List<api.AdmissionWhitelistPattern> buildUnnamed3633() {
 
 void checkUnnamed3633(core.List<api.AdmissionWhitelistPattern> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdmissionWhitelistPattern(o[0]);
-  checkAdmissionWhitelistPattern(o[1]);
+  checkAdmissionWhitelistPattern(o[0] as api.AdmissionWhitelistPattern);
+  checkAdmissionWhitelistPattern(o[1] as api.AdmissionWhitelistPattern);
 }
 
 core.Map<core.String, api.AdmissionRule> buildUnnamed3634() {
@@ -438,8 +439,8 @@ core.Map<core.String, api.AdmissionRule> buildUnnamed3634() {
 
 void checkUnnamed3634(core.Map<core.String, api.AdmissionRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdmissionRule(o['x']);
-  checkAdmissionRule(o['y']);
+  checkAdmissionRule(o['x'] as api.AdmissionRule);
+  checkAdmissionRule(o['y'] as api.AdmissionRule);
 }
 
 core.int buildCounterPolicy = 0;
@@ -464,7 +465,7 @@ void checkPolicy(api.Policy o) {
   if (buildCounterPolicy < 3) {
     checkUnnamed3633(o.admissionWhitelistPatterns);
     checkUnnamed3634(o.clusterAdmissionRules);
-    checkAdmissionRule(o.defaultAdmissionRule);
+    checkAdmissionRule(o.defaultAdmissionRule as api.AdmissionRule);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.globalPolicyEvaluationMode, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -487,7 +488,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkIamPolicy(o.policy);
+    checkIamPolicy(o.policy as api.IamPolicy);
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -586,8 +587,8 @@ core.List<api.AttestorPublicKey> buildUnnamed3637() {
 
 void checkUnnamed3637(core.List<api.AttestorPublicKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttestorPublicKey(o[0]);
-  checkAttestorPublicKey(o[1]);
+  checkAttestorPublicKey(o[0] as api.AttestorPublicKey);
+  checkAttestorPublicKey(o[1] as api.AttestorPublicKey);
 }
 
 core.int buildCounterUserOwnedGrafeasNote = 0;
@@ -631,7 +632,7 @@ void checkValidateAttestationOccurrenceRequest(
     api.ValidateAttestationOccurrenceRequest o) {
   buildCounterValidateAttestationOccurrenceRequest++;
   if (buildCounterValidateAttestationOccurrenceRequest < 3) {
-    checkAttestationOccurrence(o.attestation);
+    checkAttestationOccurrence(o.attestation as api.AttestationOccurrence);
     unittest.expect(o.occurrenceNote, unittest.equals('foo'));
     unittest.expect(o.occurrenceResourceUri, unittest.equals('foo'));
   }
@@ -666,7 +667,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdmissionRule();
       var od = api.AdmissionRule.fromJson(o.toJson());
-      checkAdmissionRule(od);
+      checkAdmissionRule(od as api.AdmissionRule);
     });
   });
 
@@ -674,7 +675,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdmissionWhitelistPattern();
       var od = api.AdmissionWhitelistPattern.fromJson(o.toJson());
-      checkAdmissionWhitelistPattern(od);
+      checkAdmissionWhitelistPattern(od as api.AdmissionWhitelistPattern);
     });
   });
 
@@ -682,7 +683,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttestationOccurrence();
       var od = api.AttestationOccurrence.fromJson(o.toJson());
-      checkAttestationOccurrence(od);
+      checkAttestationOccurrence(od as api.AttestationOccurrence);
     });
   });
 
@@ -690,7 +691,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttestor();
       var od = api.Attestor.fromJson(o.toJson());
-      checkAttestor(od);
+      checkAttestor(od as api.Attestor);
     });
   });
 
@@ -698,7 +699,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttestorPublicKey();
       var od = api.AttestorPublicKey.fromJson(o.toJson());
-      checkAttestorPublicKey(od);
+      checkAttestorPublicKey(od as api.AttestorPublicKey);
     });
   });
 
@@ -706,7 +707,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -714,7 +715,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -722,7 +723,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -730,7 +731,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIamPolicy();
       var od = api.IamPolicy.fromJson(o.toJson());
-      checkIamPolicy(od);
+      checkIamPolicy(od as api.IamPolicy);
     });
   });
 
@@ -738,7 +739,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJwt();
       var od = api.Jwt.fromJson(o.toJson());
-      checkJwt(od);
+      checkJwt(od as api.Jwt);
     });
   });
 
@@ -746,7 +747,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAttestorsResponse();
       var od = api.ListAttestorsResponse.fromJson(o.toJson());
-      checkListAttestorsResponse(od);
+      checkListAttestorsResponse(od as api.ListAttestorsResponse);
     });
   });
 
@@ -754,7 +755,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPkixPublicKey();
       var od = api.PkixPublicKey.fromJson(o.toJson());
-      checkPkixPublicKey(od);
+      checkPkixPublicKey(od as api.PkixPublicKey);
     });
   });
 
@@ -762,7 +763,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -770,7 +771,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -778,7 +779,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignature();
       var od = api.Signature.fromJson(o.toJson());
-      checkSignature(od);
+      checkSignature(od as api.Signature);
     });
   });
 
@@ -786,7 +787,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -794,7 +795,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -802,7 +803,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserOwnedGrafeasNote();
       var od = api.UserOwnedGrafeasNote.fromJson(o.toJson());
-      checkUserOwnedGrafeasNote(od);
+      checkUserOwnedGrafeasNote(od as api.UserOwnedGrafeasNote);
     });
   });
 
@@ -810,7 +811,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValidateAttestationOccurrenceRequest();
       var od = api.ValidateAttestationOccurrenceRequest.fromJson(o.toJson());
-      checkValidateAttestationOccurrenceRequest(od);
+      checkValidateAttestationOccurrenceRequest(
+          od as api.ValidateAttestationOccurrenceRequest);
     });
   });
 
@@ -818,7 +820,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValidateAttestationOccurrenceResponse();
       var od = api.ValidateAttestationOccurrenceResponse.fromJson(o.toJson());
-      checkValidateAttestationOccurrenceResponse(od);
+      checkValidateAttestationOccurrenceResponse(
+          od as api.ValidateAttestationOccurrenceResponse);
     });
   });
 
@@ -867,7 +870,7 @@ void main() {
       res
           .getPolicy(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -878,8 +881,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -919,7 +923,7 @@ void main() {
       res
           .updatePolicy(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
   });
@@ -933,8 +937,9 @@ void main() {
       var arg_attestorId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Attestor.fromJson(json);
-        checkAttestor(obj);
+        var obj =
+            api.Attestor.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAttestor(obj as api.Attestor);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -977,7 +982,7 @@ void main() {
           .create(arg_request, arg_parent,
               attestorId: arg_attestorId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAttestor(response);
+        checkAttestor(response as api.Attestor);
       })));
     });
 
@@ -1025,7 +1030,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1073,7 +1078,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAttestor(response);
+        checkAttestor(response as api.Attestor);
       })));
     });
 
@@ -1128,7 +1133,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response);
+        checkIamPolicy(response as api.IamPolicy);
       })));
     });
 
@@ -1185,7 +1190,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAttestorsResponse(response);
+        checkListAttestorsResponse(response as api.ListAttestorsResponse);
       })));
     });
 
@@ -1196,8 +1201,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1237,7 +1243,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response);
+        checkIamPolicy(response as api.IamPolicy);
       })));
     });
 
@@ -1248,8 +1254,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1289,7 +1296,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -1300,8 +1308,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Attestor.fromJson(json);
-        checkAttestor(obj);
+        var obj =
+            api.Attestor.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkAttestor(obj as api.Attestor);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1341,7 +1350,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAttestor(response);
+        checkAttestor(response as api.Attestor);
       })));
     });
 
@@ -1352,8 +1361,10 @@ void main() {
       var arg_attestor = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ValidateAttestationOccurrenceRequest.fromJson(json);
-        checkValidateAttestationOccurrenceRequest(obj);
+        var obj = api.ValidateAttestationOccurrenceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkValidateAttestationOccurrenceRequest(
+            obj as api.ValidateAttestationOccurrenceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1395,7 +1406,8 @@ void main() {
           .validateAttestationOccurrence(arg_request, arg_attestor,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkValidateAttestationOccurrenceResponse(response);
+        checkValidateAttestationOccurrenceResponse(
+            response as api.ValidateAttestationOccurrenceResponse);
       })));
     });
   });
@@ -1452,7 +1464,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response);
+        checkIamPolicy(response as api.IamPolicy);
       })));
     });
 
@@ -1463,8 +1475,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1504,7 +1517,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIamPolicy(response);
+        checkIamPolicy(response as api.IamPolicy);
       })));
     });
 
@@ -1515,8 +1528,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1556,7 +1570,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });

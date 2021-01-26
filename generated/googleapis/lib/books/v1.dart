@@ -130,7 +130,9 @@ class BookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bookshelf.fromJson(data));
+    return _response.then(
+      (data) => Bookshelf.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of public bookshelves for the specified user.
@@ -186,7 +188,10 @@ class BookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bookshelves.fromJson(data));
+    return _response.then(
+      (data) =>
+          Bookshelves.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -276,7 +281,9 @@ class BookshelvesVolumesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -351,7 +358,10 @@ class CloudloadingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BooksCloudloadingResource.fromJson(data));
+    return _response.then(
+      (data) => BooksCloudloadingResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Remove the book and its contents
@@ -399,7 +409,9 @@ class CloudloadingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a user-upload volume.
@@ -447,7 +459,10 @@ class CloudloadingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BooksCloudloadingResource.fromJson(data));
+    return _response.then(
+      (data) => BooksCloudloadingResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -501,7 +516,9 @@ class DictionaryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Metadata.fromJson(data));
+    return _response.then(
+      (data) => Metadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -555,7 +572,10 @@ class FamilysharingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FamilyInfo.fromJson(data));
+    return _response.then(
+      (data) =>
+          FamilyInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Initiates sharing of the content with the user's family. Empty response
@@ -616,7 +636,9 @@ class FamilysharingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Initiates revoking content that has already been shared with the user's
@@ -677,7 +699,9 @@ class FamilysharingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -757,7 +781,10 @@ class LayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Layersummary.fromJson(data));
+    return _response.then(
+      (data) =>
+          Layersummary.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List the layer summaries for a volume.
@@ -831,7 +858,10 @@ class LayersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Layersummaries.fromJson(data));
+    return _response.then(
+      (data) =>
+          Layersummaries.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -950,7 +980,10 @@ class LayersAnnotationDataResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DictionaryAnnotationdata.fromJson(data));
+    return _response.then(
+      (data) => DictionaryAnnotationdata.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the annotation data for a volume and layer.
@@ -1080,7 +1113,10 @@ class LayersAnnotationDataResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Annotationsdata.fromJson(data));
+    return _response.then(
+      (data) =>
+          Annotationsdata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1165,7 +1201,10 @@ class LayersVolumeAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumeannotation.fromJson(data));
+    return _response.then(
+      (data) => Volumeannotation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the volume annotations for a volume and layer.
@@ -1305,7 +1344,10 @@ class LayersVolumeAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumeannotations.fromJson(data));
+    return _response.then(
+      (data) => Volumeannotations.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1360,7 +1402,10 @@ class MyconfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Usersettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          Usersettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Release downloaded content access restriction.
@@ -1427,7 +1472,10 @@ class MyconfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DownloadAccesses.fromJson(data));
+    return _response.then(
+      (data) => DownloadAccesses.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request concurrent and download access restrictions.
@@ -1512,7 +1560,10 @@ class MyconfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RequestAccessData.fromJson(data));
+    return _response.then(
+      (data) => RequestAccessData.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request downloaded content access for specified volumes on the My eBooks
@@ -1606,7 +1657,9 @@ class MyconfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the settings for the user. If a sub-object is specified, it will
@@ -1656,7 +1709,10 @@ class MyconfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Usersettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          Usersettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1731,7 +1787,9 @@ class MylibraryAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a new annotation.
@@ -1806,7 +1864,10 @@ class MylibraryAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Annotation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Annotation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of annotations, possibly filtered.
@@ -1911,7 +1972,10 @@ class MylibraryAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Annotations.fromJson(data));
+    return _response.then(
+      (data) =>
+          Annotations.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the summary of specified layers.
@@ -1965,7 +2029,10 @@ class MylibraryAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AnnotationsSummary.fromJson(data));
+    return _response.then(
+      (data) => AnnotationsSummary.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing annotation.
@@ -2026,7 +2093,10 @@ class MylibraryAnnotationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Annotation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Annotation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2109,7 +2179,9 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Clears all volumes from a bookshelf.
@@ -2165,7 +2237,9 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves metadata for a specific bookshelf belonging to the authenticated
@@ -2221,7 +2295,9 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bookshelf.fromJson(data));
+    return _response.then(
+      (data) => Bookshelf.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of bookshelves belonging to the authenticated user.
@@ -2269,7 +2345,10 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bookshelves.fromJson(data));
+    return _response.then(
+      (data) =>
+          Bookshelves.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a volume within a bookshelf.
@@ -2339,7 +2418,9 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a volume from a bookshelf.
@@ -2410,7 +2491,9 @@ class MylibraryBookshelvesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2514,7 +2597,9 @@ class MylibraryBookshelvesVolumesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2583,7 +2668,10 @@ class MylibraryReadingpositionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReadingPosition.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReadingPosition.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets my reading position information for a volume.
@@ -2679,7 +2767,9 @@ class MylibraryReadingpositionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2746,7 +2836,10 @@ class NotificationResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Notification.fromJson(data));
+    return _response.then(
+      (data) =>
+          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2801,7 +2894,9 @@ class OnboardingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Category.fromJson(data));
+    return _response.then(
+      (data) => Category.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List available volumes under categories for onboarding experience.
@@ -2880,7 +2975,9 @@ class OnboardingResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volume2.fromJson(data));
+    return _response.then(
+      (data) => Volume2.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2954,7 +3051,10 @@ class PersonalizedstreamResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Discoveryclusters.fromJson(data));
+    return _response.then(
+      (data) => Discoveryclusters.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3050,7 +3150,9 @@ class PromoofferResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Marks the promo offer as dismissed.
@@ -3134,7 +3236,9 @@ class PromoofferResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of promo offers available to the user
@@ -3212,7 +3316,9 @@ class PromoofferResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Offers.fromJson(data));
+    return _response.then(
+      (data) => Offers.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3269,7 +3375,9 @@ class SeriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Series.fromJson(data));
+    return _response.then(
+      (data) => Series.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3337,7 +3445,10 @@ class SeriesMembershipResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Seriesmembership.fromJson(data));
+    return _response.then(
+      (data) => Seriesmembership.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3443,7 +3554,9 @@ class VolumesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volume.fromJson(data));
+    return _response.then(
+      (data) => Volume.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Performs a book search.
@@ -3603,7 +3716,9 @@ class VolumesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3696,7 +3811,9 @@ class VolumesAssociatedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3789,7 +3906,9 @@ class VolumesMybooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3863,7 +3982,9 @@ class VolumesRecommendedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rate a recommended book for the current user.
@@ -3934,8 +4055,10 @@ class VolumesRecommendedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BooksVolumesRecommendedRateResponse.fromJson(data));
+    return _response.then(
+      (data) => BooksVolumesRecommendedRateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4023,7 +4146,9 @@ class VolumesUseruploadedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Volumes.fromJson(data));
+    return _response.then(
+      (data) => Volumes.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4048,19 +4173,23 @@ class AnnotationClientVersionRanges {
 
   AnnotationClientVersionRanges.fromJson(core.Map _json) {
     if (_json.containsKey('cfiRange')) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
+      cfiRange = BooksAnnotationsRange.fromJson(
+          _json['cfiRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentVersion')) {
       contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
+      gbImageRange = BooksAnnotationsRange.fromJson(
+          _json['gbImageRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gbTextRange')) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
+      gbTextRange = BooksAnnotationsRange.fromJson(
+          _json['gbTextRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageCfiRange')) {
-      imageCfiRange = BooksAnnotationsRange.fromJson(_json['imageCfiRange']);
+      imageCfiRange = BooksAnnotationsRange.fromJson(
+          _json['imageCfiRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4106,19 +4235,23 @@ class AnnotationCurrentVersionRanges {
 
   AnnotationCurrentVersionRanges.fromJson(core.Map _json) {
     if (_json.containsKey('cfiRange')) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
+      cfiRange = BooksAnnotationsRange.fromJson(
+          _json['cfiRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentVersion')) {
       contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
+      gbImageRange = BooksAnnotationsRange.fromJson(
+          _json['gbImageRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gbTextRange')) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
+      gbTextRange = BooksAnnotationsRange.fromJson(
+          _json['gbTextRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageCfiRange')) {
-      imageCfiRange = BooksAnnotationsRange.fromJson(_json['imageCfiRange']);
+      imageCfiRange = BooksAnnotationsRange.fromJson(
+          _json['imageCfiRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4246,15 +4379,15 @@ class Annotation {
       beforeSelectedText = _json['beforeSelectedText'] as core.String;
     }
     if (_json.containsKey('clientVersionRanges')) {
-      clientVersionRanges =
-          AnnotationClientVersionRanges.fromJson(_json['clientVersionRanges']);
+      clientVersionRanges = AnnotationClientVersionRanges.fromJson(
+          _json['clientVersionRanges'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = _json['created'] as core.String;
     }
     if (_json.containsKey('currentVersionRanges')) {
       currentVersionRanges = AnnotationCurrentVersionRanges.fromJson(
-          _json['currentVersionRanges']);
+          _json['currentVersionRanges'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('data')) {
       data = _json['data'] as core.String;
@@ -4275,7 +4408,8 @@ class Annotation {
       layerId = _json['layerId'] as core.String;
     }
     if (_json.containsKey('layerSummary')) {
-      layerSummary = AnnotationLayerSummary.fromJson(_json['layerSummary']);
+      layerSummary = AnnotationLayerSummary.fromJson(
+          _json['layerSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageIds')) {
       pageIds = (_json['pageIds'] as core.List)
@@ -4373,7 +4507,8 @@ class Annotations {
   Annotations.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Annotation>((value) => Annotation.fromJson(value))
+          .map<Annotation>((value) =>
+              Annotation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4465,8 +4600,9 @@ class AnnotationsSummary {
     }
     if (_json.containsKey('layers')) {
       layers = (_json['layers'] as core.List)
-          .map<AnnotationsSummaryLayers>(
-              (value) => AnnotationsSummaryLayers.fromJson(value))
+          .map<AnnotationsSummaryLayers>((value) =>
+              AnnotationsSummaryLayers.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4502,7 +4638,8 @@ class Annotationsdata {
   Annotationsdata.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<GeoAnnotationdata>((value) => GeoAnnotationdata.fromJson(value))
+          .map<GeoAnnotationdata>((value) => GeoAnnotationdata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4760,7 +4897,8 @@ class Bookshelves {
   Bookshelves.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Bookshelf>((value) => Bookshelf.fromJson(value))
+          .map<Bookshelf>((value) =>
+              Bookshelf.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4826,7 +4964,8 @@ class Category {
   Category.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CategoryItems>((value) => CategoryItems.fromJson(value))
+          .map<CategoryItems>((value) => CategoryItems.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5002,7 +5141,8 @@ class DictionaryAnnotationdata {
       annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = Dictlayerdata.fromJson(_json['data']);
+      data = Dictlayerdata.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('encodedData')) {
       encodedData = _json['encodedData'] as core.String;
@@ -5145,8 +5285,8 @@ class DictlayerdataDictWordsDerivatives {
 
   DictlayerdataDictWordsDerivatives.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
-      source =
-          DictlayerdataDictWordsDerivativesSource.fromJson(_json['source']);
+      source = DictlayerdataDictWordsDerivativesSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -5200,7 +5340,8 @@ class DictlayerdataDictWordsExamples {
 
   DictlayerdataDictWordsExamples.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
-      source = DictlayerdataDictWordsExamplesSource.fromJson(_json['source']);
+      source = DictlayerdataDictWordsExamplesSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -5283,7 +5424,7 @@ class DictlayerdataDictWordsSensesDefinitionsExamples {
   DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
       source = DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
-          _json['source']);
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -5315,7 +5456,8 @@ class DictlayerdataDictWordsSensesDefinitions {
     if (_json.containsKey('examples')) {
       examples = (_json['examples'] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitionsExamples>((value) =>
-              DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(value))
+              DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5394,8 +5536,8 @@ class DictlayerdataDictWordsSensesSynonyms {
 
   DictlayerdataDictWordsSensesSynonyms.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
-      source =
-          DictlayerdataDictWordsSensesSynonymsSource.fromJson(_json['source']);
+      source = DictlayerdataDictWordsSensesSynonymsSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -5430,13 +5572,15 @@ class DictlayerdataDictWordsSenses {
     if (_json.containsKey('conjugations')) {
       conjugations = (_json['conjugations'] as core.List)
           .map<DictlayerdataDictWordsSensesConjugations>((value) =>
-              DictlayerdataDictWordsSensesConjugations.fromJson(value))
+              DictlayerdataDictWordsSensesConjugations.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('definitions')) {
       definitions = (_json['definitions'] as core.List)
           .map<DictlayerdataDictWordsSensesDefinitions>((value) =>
-              DictlayerdataDictWordsSensesDefinitions.fromJson(value))
+              DictlayerdataDictWordsSensesDefinitions.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('partOfSpeech')) {
@@ -5449,15 +5593,17 @@ class DictlayerdataDictWordsSenses {
       pronunciationUrl = _json['pronunciationUrl'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = DictlayerdataDictWordsSensesSource.fromJson(_json['source']);
+      source = DictlayerdataDictWordsSensesSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('syllabification')) {
       syllabification = _json['syllabification'] as core.String;
     }
     if (_json.containsKey('synonyms')) {
       synonyms = (_json['synonyms'] as core.List)
-          .map<DictlayerdataDictWordsSensesSynonyms>(
-              (value) => DictlayerdataDictWordsSensesSynonyms.fromJson(value))
+          .map<DictlayerdataDictWordsSensesSynonyms>((value) =>
+              DictlayerdataDictWordsSensesSynonyms.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5537,24 +5683,28 @@ class DictlayerdataDictWords {
   DictlayerdataDictWords.fromJson(core.Map _json) {
     if (_json.containsKey('derivatives')) {
       derivatives = (_json['derivatives'] as core.List)
-          .map<DictlayerdataDictWordsDerivatives>(
-              (value) => DictlayerdataDictWordsDerivatives.fromJson(value))
+          .map<DictlayerdataDictWordsDerivatives>((value) =>
+              DictlayerdataDictWordsDerivatives.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('examples')) {
       examples = (_json['examples'] as core.List)
-          .map<DictlayerdataDictWordsExamples>(
-              (value) => DictlayerdataDictWordsExamples.fromJson(value))
+          .map<DictlayerdataDictWordsExamples>((value) =>
+              DictlayerdataDictWordsExamples.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('senses')) {
       senses = (_json['senses'] as core.List)
-          .map<DictlayerdataDictWordsSenses>(
-              (value) => DictlayerdataDictWordsSenses.fromJson(value))
+          .map<DictlayerdataDictWordsSenses>((value) =>
+              DictlayerdataDictWordsSenses.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = DictlayerdataDictWordsSource.fromJson(_json['source']);
+      source = DictlayerdataDictWordsSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5586,12 +5736,14 @@ class DictlayerdataDict {
 
   DictlayerdataDict.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
-      source = DictlayerdataDictSource.fromJson(_json['source']);
+      source = DictlayerdataDictSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('words')) {
       words = (_json['words'] as core.List)
-          .map<DictlayerdataDictWords>(
-              (value) => DictlayerdataDictWords.fromJson(value))
+          .map<DictlayerdataDictWords>((value) =>
+              DictlayerdataDictWords.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5617,10 +5769,12 @@ class Dictlayerdata {
 
   Dictlayerdata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common = DictlayerdataCommon.fromJson(_json['common']);
+      common = DictlayerdataCommon.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dict')) {
-      dict = DictlayerdataDict.fromJson(_json['dict']);
+      dict = DictlayerdataDict.fromJson(
+          _json['dict'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -5712,7 +5866,8 @@ class DiscoveryclustersClusters {
     if (_json.containsKey('banner_with_content_container')) {
       bannerWithContentContainer =
           DiscoveryclustersClustersBannerWithContentContainer.fromJson(
-              _json['banner_with_content_container']);
+              _json['banner_with_content_container']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subTitle')) {
       subTitle = _json['subTitle'] as core.String;
@@ -5728,7 +5883,8 @@ class DiscoveryclustersClusters {
     }
     if (_json.containsKey('volumes')) {
       volumes = (_json['volumes'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5770,8 +5926,9 @@ class Discoveryclusters {
   Discoveryclusters.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
       clusters = (_json['clusters'] as core.List)
-          .map<DiscoveryclustersClusters>(
-              (value) => DiscoveryclustersClusters.fromJson(value))
+          .map<DiscoveryclustersClusters>((value) =>
+              DiscoveryclustersClusters.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5934,8 +6091,9 @@ class DownloadAccesses {
   DownloadAccesses.fromJson(core.Map _json) {
     if (_json.containsKey('downloadAccessList')) {
       downloadAccessList = (_json['downloadAccessList'] as core.List)
-          .map<DownloadAccessRestriction>(
-              (value) => DownloadAccessRestriction.fromJson(value))
+          .map<DownloadAccessRestriction>((value) =>
+              DownloadAccessRestriction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6044,7 +6202,8 @@ class FamilyInfo {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('membership')) {
-      membership = FamilyInfoMembership.fromJson(_json['membership']);
+      membership = FamilyInfoMembership.fromJson(
+          _json['membership'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6104,7 +6263,8 @@ class GeoAnnotationdata {
       annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = Geolayerdata.fromJson(_json['data']);
+      data = Geolayerdata.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('encodedData')) {
       encodedData = _json['encodedData'] as core.String;
@@ -6284,10 +6444,12 @@ class GeolayerdataGeoViewport {
 
   GeolayerdataGeoViewport.fromJson(core.Map _json) {
     if (_json.containsKey('hi')) {
-      hi = GeolayerdataGeoViewportHi.fromJson(_json['hi']);
+      hi = GeolayerdataGeoViewportHi.fromJson(
+          _json['hi'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lo')) {
-      lo = GeolayerdataGeoViewportLo.fromJson(_json['lo']);
+      lo = GeolayerdataGeoViewportLo.fromJson(
+          _json['lo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6358,7 +6520,8 @@ class GeolayerdataGeo {
       mapType = _json['mapType'] as core.String;
     }
     if (_json.containsKey('viewport')) {
-      viewport = GeolayerdataGeoViewport.fromJson(_json['viewport']);
+      viewport = GeolayerdataGeoViewport.fromJson(
+          _json['viewport'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zoom')) {
       zoom = _json['zoom'] as core.int;
@@ -6404,10 +6567,12 @@ class Geolayerdata {
 
   Geolayerdata.fromJson(core.Map _json) {
     if (_json.containsKey('common')) {
-      common = GeolayerdataCommon.fromJson(_json['common']);
+      common = GeolayerdataCommon.fromJson(
+          _json['common'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('geo')) {
-      geo = GeolayerdataGeo.fromJson(_json['geo']);
+      geo = GeolayerdataGeo.fromJson(
+          _json['geo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -6444,7 +6609,8 @@ class Layersummaries {
   Layersummaries.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Layersummary>((value) => Layersummary.fromJson(value))
+          .map<Layersummary>((value) => Layersummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6665,7 +6831,8 @@ class Metadata {
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<MetadataItems>((value) => MetadataItems.fromJson(value))
+          .map<MetadataItems>((value) => MetadataItems.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6893,7 +7060,8 @@ class OffersItems {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<OffersItemsItems>((value) => OffersItemsItems.fromJson(value))
+          .map<OffersItemsItems>((value) => OffersItemsItems.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6928,7 +7096,8 @@ class Offers {
   Offers.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<OffersItems>((value) => OffersItems.fromJson(value))
+          .map<OffersItems>((value) => OffersItems.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7038,12 +7207,12 @@ class RequestAccessData {
 
   RequestAccessData.fromJson(core.Map _json) {
     if (_json.containsKey('concurrentAccess')) {
-      concurrentAccess =
-          ConcurrentAccessRestriction.fromJson(_json['concurrentAccess']);
+      concurrentAccess = ConcurrentAccessRestriction.fromJson(
+          _json['concurrentAccess'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('downloadAccess')) {
-      downloadAccess =
-          DownloadAccessRestriction.fromJson(_json['downloadAccess']);
+      downloadAccess = DownloadAccessRestriction.fromJson(
+          _json['downloadAccess'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -7166,7 +7335,8 @@ class Review {
 
   Review.fromJson(core.Map _json) {
     if (_json.containsKey('author')) {
-      author = ReviewAuthor.fromJson(_json['author']);
+      author = ReviewAuthor.fromJson(
+          _json['author'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
       content = _json['content'] as core.String;
@@ -7184,7 +7354,8 @@ class Review {
       rating = _json['rating'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = ReviewSource.fromJson(_json['source']);
+      source = ReviewSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -7333,12 +7504,13 @@ class SeriesSeriesSeriesSubscriptionReleaseInfo {
     if (_json.containsKey('currentReleaseInfo')) {
       currentReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo.fromJson(
-              _json['currentReleaseInfo']);
+              _json['currentReleaseInfo']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nextReleaseInfo')) {
       nextReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
-              _json['nextReleaseInfo']);
+              _json['nextReleaseInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('seriesSubscriptionType')) {
       seriesSubscriptionType = _json['seriesSubscriptionType'] as core.String;
@@ -7399,7 +7571,8 @@ class SeriesSeries {
     if (_json.containsKey('seriesSubscriptionReleaseInfo')) {
       seriesSubscriptionReleaseInfo =
           SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(
-              _json['seriesSubscriptionReleaseInfo']);
+              _json['seriesSubscriptionReleaseInfo']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('seriesType')) {
       seriesType = _json['seriesType'] as core.String;
@@ -7462,7 +7635,8 @@ class Series {
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
-          .map<SeriesSeries>((value) => SeriesSeries.fromJson(value))
+          .map<SeriesSeries>((value) => SeriesSeries.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7493,7 +7667,8 @@ class Seriesmembership {
     }
     if (_json.containsKey('member')) {
       member = (_json['member'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7656,23 +7831,23 @@ class UsersettingsNotification {
   UsersettingsNotification.fromJson(core.Map _json) {
     if (_json.containsKey('matchMyInterests')) {
       matchMyInterests = UsersettingsNotificationMatchMyInterests.fromJson(
-          _json['matchMyInterests']);
+          _json['matchMyInterests'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('moreFromAuthors')) {
       moreFromAuthors = UsersettingsNotificationMoreFromAuthors.fromJson(
-          _json['moreFromAuthors']);
+          _json['moreFromAuthors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('moreFromSeries')) {
       moreFromSeries = UsersettingsNotificationMoreFromSeries.fromJson(
-          _json['moreFromSeries']);
+          _json['moreFromSeries'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('priceDrop')) {
-      priceDrop =
-          UsersettingsNotificationPriceDrop.fromJson(_json['priceDrop']);
+      priceDrop = UsersettingsNotificationPriceDrop.fromJson(
+          _json['priceDrop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rewardExpirations')) {
       rewardExpirations = UsersettingsNotificationRewardExpirations.fromJson(
-          _json['rewardExpirations']);
+          _json['rewardExpirations'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7712,10 +7887,12 @@ class Usersettings {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('notesExport')) {
-      notesExport = UsersettingsNotesExport.fromJson(_json['notesExport']);
+      notesExport = UsersettingsNotesExport.fromJson(
+          _json['notesExport'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('notification')) {
-      notification = UsersettingsNotification.fromJson(_json['notification']);
+      notification = UsersettingsNotification.fromJson(
+          _json['notification'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7887,8 +8064,8 @@ class VolumeAccessInfo {
       country = _json['country'] as core.String;
     }
     if (_json.containsKey('downloadAccess')) {
-      downloadAccess =
-          DownloadAccessRestriction.fromJson(_json['downloadAccess']);
+      downloadAccess = DownloadAccessRestriction.fromJson(
+          _json['downloadAccess'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveImportedContentLink')) {
       driveImportedContentLink =
@@ -7898,14 +8075,16 @@ class VolumeAccessInfo {
       embeddable = _json['embeddable'] as core.bool;
     }
     if (_json.containsKey('epub')) {
-      epub = VolumeAccessInfoEpub.fromJson(_json['epub']);
+      epub = VolumeAccessInfoEpub.fromJson(
+          _json['epub'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('explicitOfflineLicenseManagement')) {
       explicitOfflineLicenseManagement =
           _json['explicitOfflineLicenseManagement'] as core.bool;
     }
     if (_json.containsKey('pdf')) {
-      pdf = VolumeAccessInfoPdf.fromJson(_json['pdf']);
+      pdf = VolumeAccessInfoPdf.fromJson(
+          _json['pdf'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('publicDomain')) {
       publicDomain = _json['publicDomain'] as core.bool;
@@ -8019,8 +8198,8 @@ class VolumeLayerInfo {
   VolumeLayerInfo.fromJson(core.Map _json) {
     if (_json.containsKey('layers')) {
       layers = (_json['layers'] as core.List)
-          .map<VolumeLayerInfoLayers>(
-              (value) => VolumeLayerInfoLayers.fromJson(value))
+          .map<VolumeLayerInfoLayers>((value) => VolumeLayerInfoLayers.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8197,15 +8376,16 @@ class VolumeSaleInfoOffers {
       giftable = _json['giftable'] as core.bool;
     }
     if (_json.containsKey('listPrice')) {
-      listPrice = VolumeSaleInfoOffersListPrice.fromJson(_json['listPrice']);
+      listPrice = VolumeSaleInfoOffersListPrice.fromJson(
+          _json['listPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rentalDuration')) {
-      rentalDuration =
-          VolumeSaleInfoOffersRentalDuration.fromJson(_json['rentalDuration']);
+      rentalDuration = VolumeSaleInfoOffersRentalDuration.fromJson(
+          _json['rentalDuration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retailPrice')) {
-      retailPrice =
-          VolumeSaleInfoOffersRetailPrice.fromJson(_json['retailPrice']);
+      retailPrice = VolumeSaleInfoOffersRetailPrice.fromJson(
+          _json['retailPrice'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8312,19 +8492,21 @@ class VolumeSaleInfo {
       isEbook = _json['isEbook'] as core.bool;
     }
     if (_json.containsKey('listPrice')) {
-      listPrice = VolumeSaleInfoListPrice.fromJson(_json['listPrice']);
+      listPrice = VolumeSaleInfoListPrice.fromJson(
+          _json['listPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('offers')) {
       offers = (_json['offers'] as core.List)
-          .map<VolumeSaleInfoOffers>(
-              (value) => VolumeSaleInfoOffers.fromJson(value))
+          .map<VolumeSaleInfoOffers>((value) => VolumeSaleInfoOffers.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('onSaleDate')) {
       onSaleDate = _json['onSaleDate'] as core.String;
     }
     if (_json.containsKey('retailPrice')) {
-      retailPrice = VolumeSaleInfoRetailPrice.fromJson(_json['retailPrice']);
+      retailPrice = VolumeSaleInfoRetailPrice.fromJson(
+          _json['retailPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('saleability')) {
       saleability = _json['saleability'] as core.String;
@@ -8591,14 +8773,15 @@ class VolumeUserInfo {
       acquisitionType = _json['acquisitionType'] as core.int;
     }
     if (_json.containsKey('copy')) {
-      copy = VolumeUserInfoCopy.fromJson(_json['copy']);
+      copy = VolumeUserInfoCopy.fromJson(
+          _json['copy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entitlementType')) {
       entitlementType = _json['entitlementType'] as core.int;
     }
     if (_json.containsKey('familySharing')) {
-      familySharing =
-          VolumeUserInfoFamilySharing.fromJson(_json['familySharing']);
+      familySharing = VolumeUserInfoFamilySharing.fromJson(
+          _json['familySharing'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isFamilySharedFromUser')) {
       isFamilySharedFromUser = _json['isFamilySharedFromUser'] as core.bool;
@@ -8626,23 +8809,27 @@ class VolumeUserInfo {
       isUploaded = _json['isUploaded'] as core.bool;
     }
     if (_json.containsKey('readingPosition')) {
-      readingPosition = ReadingPosition.fromJson(_json['readingPosition']);
+      readingPosition = ReadingPosition.fromJson(
+          _json['readingPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rentalPeriod')) {
-      rentalPeriod = VolumeUserInfoRentalPeriod.fromJson(_json['rentalPeriod']);
+      rentalPeriod = VolumeUserInfoRentalPeriod.fromJson(
+          _json['rentalPeriod'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rentalState')) {
       rentalState = _json['rentalState'] as core.String;
     }
     if (_json.containsKey('review')) {
-      review = Review.fromJson(_json['review']);
+      review = Review.fromJson(
+          _json['review'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updated')) {
       updated = _json['updated'] as core.String;
     }
     if (_json.containsKey('userUploadedVolumeInfo')) {
       userUploadedVolumeInfo = VolumeUserInfoUserUploadedVolumeInfo.fromJson(
-          _json['userUploadedVolumeInfo']);
+          _json['userUploadedVolumeInfo']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9041,15 +9228,18 @@ class VolumeVolumeInfo {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = VolumeVolumeInfoDimensions.fromJson(_json['dimensions']);
+      dimensions = VolumeVolumeInfoDimensions.fromJson(
+          _json['dimensions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageLinks')) {
-      imageLinks = VolumeVolumeInfoImageLinks.fromJson(_json['imageLinks']);
+      imageLinks = VolumeVolumeInfoImageLinks.fromJson(
+          _json['imageLinks'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('industryIdentifiers')) {
       industryIdentifiers = (_json['industryIdentifiers'] as core.List)
-          .map<VolumeVolumeInfoIndustryIdentifiers>(
-              (value) => VolumeVolumeInfoIndustryIdentifiers.fromJson(value))
+          .map<VolumeVolumeInfoIndustryIdentifiers>((value) =>
+              VolumeVolumeInfoIndustryIdentifiers.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('infoLink')) {
@@ -9069,7 +9259,7 @@ class VolumeVolumeInfo {
     }
     if (_json.containsKey('panelizationSummary')) {
       panelizationSummary = VolumeVolumeInfoPanelizationSummary.fromJson(
-          _json['panelizationSummary']);
+          _json['panelizationSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('previewLink')) {
       previewLink = _json['previewLink'] as core.String;
@@ -9090,14 +9280,15 @@ class VolumeVolumeInfo {
       ratingsCount = _json['ratingsCount'] as core.int;
     }
     if (_json.containsKey('readingModes')) {
-      readingModes =
-          VolumeVolumeInfoReadingModes.fromJson(_json['readingModes']);
+      readingModes = VolumeVolumeInfoReadingModes.fromJson(
+          _json['readingModes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('samplePageCount')) {
       samplePageCount = _json['samplePageCount'] as core.int;
     }
     if (_json.containsKey('seriesInfo')) {
-      seriesInfo = Volumeseriesinfo.fromJson(_json['seriesInfo']);
+      seriesInfo = Volumeseriesinfo.fromJson(
+          _json['seriesInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtitle')) {
       subtitle = _json['subtitle'] as core.String;
@@ -9243,7 +9434,8 @@ class Volume {
 
   Volume.fromJson(core.Map _json) {
     if (_json.containsKey('accessInfo')) {
-      accessInfo = VolumeAccessInfo.fromJson(_json['accessInfo']);
+      accessInfo = VolumeAccessInfo.fromJson(
+          _json['accessInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -9255,26 +9447,31 @@ class Volume {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('layerInfo')) {
-      layerInfo = VolumeLayerInfo.fromJson(_json['layerInfo']);
+      layerInfo = VolumeLayerInfo.fromJson(
+          _json['layerInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recommendedInfo')) {
-      recommendedInfo =
-          VolumeRecommendedInfo.fromJson(_json['recommendedInfo']);
+      recommendedInfo = VolumeRecommendedInfo.fromJson(
+          _json['recommendedInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('saleInfo')) {
-      saleInfo = VolumeSaleInfo.fromJson(_json['saleInfo']);
+      saleInfo = VolumeSaleInfo.fromJson(
+          _json['saleInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchInfo')) {
-      searchInfo = VolumeSearchInfo.fromJson(_json['searchInfo']);
+      searchInfo = VolumeSearchInfo.fromJson(
+          _json['searchInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('userInfo')) {
-      userInfo = VolumeUserInfo.fromJson(_json['userInfo']);
+      userInfo = VolumeUserInfo.fromJson(
+          _json['userInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('volumeInfo')) {
-      volumeInfo = VolumeVolumeInfo.fromJson(_json['volumeInfo']);
+      volumeInfo = VolumeVolumeInfo.fromJson(
+          _json['volumeInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9330,7 +9527,8 @@ class Volume2 {
   Volume2.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9374,16 +9572,19 @@ class VolumeannotationContentRanges {
 
   VolumeannotationContentRanges.fromJson(core.Map _json) {
     if (_json.containsKey('cfiRange')) {
-      cfiRange = BooksAnnotationsRange.fromJson(_json['cfiRange']);
+      cfiRange = BooksAnnotationsRange.fromJson(
+          _json['cfiRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentVersion')) {
       contentVersion = _json['contentVersion'] as core.String;
     }
     if (_json.containsKey('gbImageRange')) {
-      gbImageRange = BooksAnnotationsRange.fromJson(_json['gbImageRange']);
+      gbImageRange = BooksAnnotationsRange.fromJson(
+          _json['gbImageRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gbTextRange')) {
-      gbTextRange = BooksAnnotationsRange.fromJson(_json['gbTextRange']);
+      gbTextRange = BooksAnnotationsRange.fromJson(
+          _json['gbTextRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9462,8 +9663,8 @@ class Volumeannotation {
       annotationType = _json['annotationType'] as core.String;
     }
     if (_json.containsKey('contentRanges')) {
-      contentRanges =
-          VolumeannotationContentRanges.fromJson(_json['contentRanges']);
+      contentRanges = VolumeannotationContentRanges.fromJson(
+          _json['contentRanges'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('data')) {
       data = _json['data'] as core.String;
@@ -9572,7 +9773,8 @@ class Volumeannotations {
   Volumeannotations.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Volumeannotation>((value) => Volumeannotation.fromJson(value))
+          .map<Volumeannotation>((value) => Volumeannotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9626,7 +9828,8 @@ class Volumes {
   Volumes.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Volume>((value) => Volume.fromJson(value))
+          .map<Volume>((value) =>
+              Volume.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9698,8 +9901,9 @@ class VolumeseriesinfoVolumeSeries {
   VolumeseriesinfoVolumeSeries.fromJson(core.Map _json) {
     if (_json.containsKey('issue')) {
       issue = (_json['issue'] as core.List)
-          .map<VolumeseriesinfoVolumeSeriesIssue>(
-              (value) => VolumeseriesinfoVolumeSeriesIssue.fromJson(value))
+          .map<VolumeseriesinfoVolumeSeriesIssue>((value) =>
+              VolumeseriesinfoVolumeSeriesIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('orderNumber')) {
@@ -9757,8 +9961,9 @@ class Volumeseriesinfo {
     }
     if (_json.containsKey('volumeSeries')) {
       volumeSeries = (_json['volumeSeries'] as core.List)
-          .map<VolumeseriesinfoVolumeSeries>(
-              (value) => VolumeseriesinfoVolumeSeries.fromJson(value))
+          .map<VolumeseriesinfoVolumeSeries>((value) =>
+              VolumeseriesinfoVolumeSeries.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

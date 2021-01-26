@@ -88,7 +88,7 @@ api.AdminAuditData buildAdminAuditData() {
 void checkAdminAuditData(api.AdminAuditData o) {
   buildCounterAdminAuditData++;
   if (buildCounterAdminAuditData < 3) {
-    checkPermissionDelta(o.permissionDelta);
+    checkPermissionDelta(o.permissionDelta as api.PermissionDelta);
   }
   buildCounterAdminAuditData--;
 }
@@ -102,8 +102,8 @@ core.List<api.AuditLogConfig> buildUnnamed5687() {
 
 void checkUnnamed5687(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -141,7 +141,7 @@ api.AuditData buildAuditData() {
 void checkAuditData(api.AuditData o) {
   buildCounterAuditData++;
   if (buildCounterAuditData < 3) {
-    checkPolicyDelta(o.policyDelta);
+    checkPolicyDelta(o.policyDelta as api.PolicyDelta);
   }
   buildCounterAuditData--;
 }
@@ -230,7 +230,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed5689(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -255,7 +255,7 @@ void checkBindingDelta(api.BindingDelta o) {
   buildCounterBindingDelta++;
   if (buildCounterBindingDelta < 3) {
     unittest.expect(o.action, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     unittest.expect(o.member, unittest.equals('foo'));
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -277,7 +277,7 @@ api.CreateRoleRequest buildCreateRoleRequest() {
 void checkCreateRoleRequest(api.CreateRoleRequest o) {
   buildCounterCreateRoleRequest++;
   if (buildCounterCreateRoleRequest < 3) {
-    checkRole(o.role);
+    checkRole(o.role as api.Role);
     unittest.expect(o.roleId, unittest.equals('foo'));
   }
   buildCounterCreateRoleRequest--;
@@ -320,7 +320,7 @@ void checkCreateServiceAccountRequest(api.CreateServiceAccountRequest o) {
   buildCounterCreateServiceAccountRequest++;
   if (buildCounterCreateServiceAccountRequest < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkServiceAccount(o.serviceAccount);
+    checkServiceAccount(o.serviceAccount as api.ServiceAccount);
   }
   buildCounterCreateServiceAccountRequest--;
 }
@@ -410,7 +410,7 @@ api.LintPolicyRequest buildLintPolicyRequest() {
 void checkLintPolicyRequest(api.LintPolicyRequest o) {
   buildCounterLintPolicyRequest++;
   if (buildCounterLintPolicyRequest < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     unittest.expect(o.fullResourceName, unittest.equals('foo'));
   }
   buildCounterLintPolicyRequest--;
@@ -425,8 +425,8 @@ core.List<api.LintResult> buildUnnamed5690() {
 
 void checkUnnamed5690(core.List<api.LintResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLintResult(o[0]);
-  checkLintResult(o[1]);
+  checkLintResult(o[0] as api.LintResult);
+  checkLintResult(o[1] as api.LintResult);
 }
 
 core.int buildCounterLintPolicyResponse = 0;
@@ -486,8 +486,8 @@ core.List<api.Role> buildUnnamed5691() {
 
 void checkUnnamed5691(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRole(o[0]);
-  checkRole(o[1]);
+  checkRole(o[0] as api.Role);
+  checkRole(o[1] as api.Role);
 }
 
 core.int buildCounterListRolesResponse = 0;
@@ -520,8 +520,8 @@ core.List<api.ServiceAccountKey> buildUnnamed5692() {
 
 void checkUnnamed5692(core.List<api.ServiceAccountKey> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServiceAccountKey(o[0]);
-  checkServiceAccountKey(o[1]);
+  checkServiceAccountKey(o[0] as api.ServiceAccountKey);
+  checkServiceAccountKey(o[1] as api.ServiceAccountKey);
 }
 
 core.int buildCounterListServiceAccountKeysResponse = 0;
@@ -552,8 +552,8 @@ core.List<api.ServiceAccount> buildUnnamed5693() {
 
 void checkUnnamed5693(core.List<api.ServiceAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkServiceAccount(o[0]);
-  checkServiceAccount(o[1]);
+  checkServiceAccount(o[0] as api.ServiceAccount);
+  checkServiceAccount(o[1] as api.ServiceAccount);
 }
 
 core.int buildCounterListServiceAccountsResponse = 0;
@@ -592,7 +592,7 @@ api.PatchServiceAccountRequest buildPatchServiceAccountRequest() {
 void checkPatchServiceAccountRequest(api.PatchServiceAccountRequest o) {
   buildCounterPatchServiceAccountRequest++;
   if (buildCounterPatchServiceAccountRequest < 3) {
-    checkServiceAccount(o.serviceAccount);
+    checkServiceAccount(o.serviceAccount as api.ServiceAccount);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterPatchServiceAccountRequest--;
@@ -687,8 +687,8 @@ core.List<api.AuditConfig> buildUnnamed5696() {
 
 void checkUnnamed5696(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed5697() {
@@ -700,8 +700,8 @@ core.List<api.Binding> buildUnnamed5697() {
 
 void checkUnnamed5697(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -738,8 +738,8 @@ core.List<api.BindingDelta> buildUnnamed5698() {
 
 void checkUnnamed5698(core.List<api.BindingDelta> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBindingDelta(o[0]);
-  checkBindingDelta(o[1]);
+  checkBindingDelta(o[0] as api.BindingDelta);
+  checkBindingDelta(o[1] as api.BindingDelta);
 }
 
 core.int buildCounterPolicyDelta = 0;
@@ -789,8 +789,8 @@ core.List<api.AuditableService> buildUnnamed5699() {
 
 void checkUnnamed5699(core.List<api.AuditableService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditableService(o[0]);
-  checkAuditableService(o[1]);
+  checkAuditableService(o[0] as api.AuditableService);
+  checkAuditableService(o[1] as api.AuditableService);
 }
 
 core.int buildCounterQueryAuditableServicesResponse = 0;
@@ -846,8 +846,8 @@ core.List<api.Role> buildUnnamed5700() {
 
 void checkUnnamed5700(core.List<api.Role> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRole(o[0]);
-  checkRole(o[1]);
+  checkRole(o[0] as api.Role);
+  checkRole(o[1] as api.Role);
 }
 
 core.int buildCounterQueryGrantableRolesResponse = 0;
@@ -904,8 +904,8 @@ core.List<api.Permission> buildUnnamed5701() {
 
 void checkUnnamed5701(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0]);
-  checkPermission(o[1]);
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
 }
 
 core.int buildCounterQueryTestablePermissionsResponse = 0;
@@ -1059,7 +1059,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1257,7 +1257,7 @@ api.UndeleteServiceAccountResponse buildUndeleteServiceAccountResponse() {
 void checkUndeleteServiceAccountResponse(api.UndeleteServiceAccountResponse o) {
   buildCounterUndeleteServiceAccountResponse++;
   if (buildCounterUndeleteServiceAccountResponse < 3) {
-    checkServiceAccount(o.restoredAccount);
+    checkServiceAccount(o.restoredAccount as api.ServiceAccount);
   }
   buildCounterUndeleteServiceAccountResponse--;
 }
@@ -1299,7 +1299,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdminAuditData();
       var od = api.AdminAuditData.fromJson(o.toJson());
-      checkAdminAuditData(od);
+      checkAdminAuditData(od as api.AdminAuditData);
     });
   });
 
@@ -1307,7 +1307,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1315,7 +1315,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditData();
       var od = api.AuditData.fromJson(o.toJson());
-      checkAuditData(od);
+      checkAuditData(od as api.AuditData);
     });
   });
 
@@ -1323,7 +1323,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1331,7 +1331,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditableService();
       var od = api.AuditableService.fromJson(o.toJson());
-      checkAuditableService(od);
+      checkAuditableService(od as api.AuditableService);
     });
   });
 
@@ -1339,7 +1339,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1347,7 +1347,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBindingDelta();
       var od = api.BindingDelta.fromJson(o.toJson());
-      checkBindingDelta(od);
+      checkBindingDelta(od as api.BindingDelta);
     });
   });
 
@@ -1355,7 +1355,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateRoleRequest();
       var od = api.CreateRoleRequest.fromJson(o.toJson());
-      checkCreateRoleRequest(od);
+      checkCreateRoleRequest(od as api.CreateRoleRequest);
     });
   });
 
@@ -1363,7 +1363,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateServiceAccountKeyRequest();
       var od = api.CreateServiceAccountKeyRequest.fromJson(o.toJson());
-      checkCreateServiceAccountKeyRequest(od);
+      checkCreateServiceAccountKeyRequest(
+          od as api.CreateServiceAccountKeyRequest);
     });
   });
 
@@ -1371,7 +1372,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateServiceAccountRequest();
       var od = api.CreateServiceAccountRequest.fromJson(o.toJson());
-      checkCreateServiceAccountRequest(od);
+      checkCreateServiceAccountRequest(od as api.CreateServiceAccountRequest);
     });
   });
 
@@ -1379,7 +1380,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDisableServiceAccountRequest();
       var od = api.DisableServiceAccountRequest.fromJson(o.toJson());
-      checkDisableServiceAccountRequest(od);
+      checkDisableServiceAccountRequest(od as api.DisableServiceAccountRequest);
     });
   });
 
@@ -1387,7 +1388,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1395,7 +1396,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnableServiceAccountRequest();
       var od = api.EnableServiceAccountRequest.fromJson(o.toJson());
-      checkEnableServiceAccountRequest(od);
+      checkEnableServiceAccountRequest(od as api.EnableServiceAccountRequest);
     });
   });
 
@@ -1403,7 +1404,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1411,7 +1412,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLintPolicyRequest();
       var od = api.LintPolicyRequest.fromJson(o.toJson());
-      checkLintPolicyRequest(od);
+      checkLintPolicyRequest(od as api.LintPolicyRequest);
     });
   });
 
@@ -1419,7 +1420,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLintPolicyResponse();
       var od = api.LintPolicyResponse.fromJson(o.toJson());
-      checkLintPolicyResponse(od);
+      checkLintPolicyResponse(od as api.LintPolicyResponse);
     });
   });
 
@@ -1427,7 +1428,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLintResult();
       var od = api.LintResult.fromJson(o.toJson());
-      checkLintResult(od);
+      checkLintResult(od as api.LintResult);
     });
   });
 
@@ -1435,7 +1436,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListRolesResponse();
       var od = api.ListRolesResponse.fromJson(o.toJson());
-      checkListRolesResponse(od);
+      checkListRolesResponse(od as api.ListRolesResponse);
     });
   });
 
@@ -1443,7 +1444,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListServiceAccountKeysResponse();
       var od = api.ListServiceAccountKeysResponse.fromJson(o.toJson());
-      checkListServiceAccountKeysResponse(od);
+      checkListServiceAccountKeysResponse(
+          od as api.ListServiceAccountKeysResponse);
     });
   });
 
@@ -1451,7 +1453,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListServiceAccountsResponse();
       var od = api.ListServiceAccountsResponse.fromJson(o.toJson());
-      checkListServiceAccountsResponse(od);
+      checkListServiceAccountsResponse(od as api.ListServiceAccountsResponse);
     });
   });
 
@@ -1459,7 +1461,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPatchServiceAccountRequest();
       var od = api.PatchServiceAccountRequest.fromJson(o.toJson());
-      checkPatchServiceAccountRequest(od);
+      checkPatchServiceAccountRequest(od as api.PatchServiceAccountRequest);
     });
   });
 
@@ -1467,7 +1469,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
-      checkPermission(od);
+      checkPermission(od as api.Permission);
     });
   });
 
@@ -1475,7 +1477,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionDelta();
       var od = api.PermissionDelta.fromJson(o.toJson());
-      checkPermissionDelta(od);
+      checkPermissionDelta(od as api.PermissionDelta);
     });
   });
 
@@ -1483,7 +1485,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1491,7 +1493,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyDelta();
       var od = api.PolicyDelta.fromJson(o.toJson());
-      checkPolicyDelta(od);
+      checkPolicyDelta(od as api.PolicyDelta);
     });
   });
 
@@ -1499,7 +1501,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryAuditableServicesRequest();
       var od = api.QueryAuditableServicesRequest.fromJson(o.toJson());
-      checkQueryAuditableServicesRequest(od);
+      checkQueryAuditableServicesRequest(
+          od as api.QueryAuditableServicesRequest);
     });
   });
 
@@ -1507,7 +1510,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryAuditableServicesResponse();
       var od = api.QueryAuditableServicesResponse.fromJson(o.toJson());
-      checkQueryAuditableServicesResponse(od);
+      checkQueryAuditableServicesResponse(
+          od as api.QueryAuditableServicesResponse);
     });
   });
 
@@ -1515,7 +1519,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryGrantableRolesRequest();
       var od = api.QueryGrantableRolesRequest.fromJson(o.toJson());
-      checkQueryGrantableRolesRequest(od);
+      checkQueryGrantableRolesRequest(od as api.QueryGrantableRolesRequest);
     });
   });
 
@@ -1523,7 +1527,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryGrantableRolesResponse();
       var od = api.QueryGrantableRolesResponse.fromJson(o.toJson());
-      checkQueryGrantableRolesResponse(od);
+      checkQueryGrantableRolesResponse(od as api.QueryGrantableRolesResponse);
     });
   });
 
@@ -1531,7 +1535,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryTestablePermissionsRequest();
       var od = api.QueryTestablePermissionsRequest.fromJson(o.toJson());
-      checkQueryTestablePermissionsRequest(od);
+      checkQueryTestablePermissionsRequest(
+          od as api.QueryTestablePermissionsRequest);
     });
   });
 
@@ -1539,7 +1544,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryTestablePermissionsResponse();
       var od = api.QueryTestablePermissionsResponse.fromJson(o.toJson());
-      checkQueryTestablePermissionsResponse(od);
+      checkQueryTestablePermissionsResponse(
+          od as api.QueryTestablePermissionsResponse);
     });
   });
 
@@ -1547,7 +1553,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRole();
       var od = api.Role.fromJson(o.toJson());
-      checkRole(od);
+      checkRole(od as api.Role);
     });
   });
 
@@ -1555,7 +1561,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
-      checkServiceAccount(od);
+      checkServiceAccount(od as api.ServiceAccount);
     });
   });
 
@@ -1563,7 +1569,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServiceAccountKey();
       var od = api.ServiceAccountKey.fromJson(o.toJson());
-      checkServiceAccountKey(od);
+      checkServiceAccountKey(od as api.ServiceAccountKey);
     });
   });
 
@@ -1571,7 +1577,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1579,7 +1585,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignBlobRequest();
       var od = api.SignBlobRequest.fromJson(o.toJson());
-      checkSignBlobRequest(od);
+      checkSignBlobRequest(od as api.SignBlobRequest);
     });
   });
 
@@ -1587,7 +1593,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignBlobResponse();
       var od = api.SignBlobResponse.fromJson(o.toJson());
-      checkSignBlobResponse(od);
+      checkSignBlobResponse(od as api.SignBlobResponse);
     });
   });
 
@@ -1595,7 +1601,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignJwtRequest();
       var od = api.SignJwtRequest.fromJson(o.toJson());
-      checkSignJwtRequest(od);
+      checkSignJwtRequest(od as api.SignJwtRequest);
     });
   });
 
@@ -1603,7 +1609,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignJwtResponse();
       var od = api.SignJwtResponse.fromJson(o.toJson());
-      checkSignJwtResponse(od);
+      checkSignJwtResponse(od as api.SignJwtResponse);
     });
   });
 
@@ -1611,7 +1617,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1619,7 +1625,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1627,7 +1633,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteRoleRequest();
       var od = api.UndeleteRoleRequest.fromJson(o.toJson());
-      checkUndeleteRoleRequest(od);
+      checkUndeleteRoleRequest(od as api.UndeleteRoleRequest);
     });
   });
 
@@ -1635,7 +1641,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteServiceAccountRequest();
       var od = api.UndeleteServiceAccountRequest.fromJson(o.toJson());
-      checkUndeleteServiceAccountRequest(od);
+      checkUndeleteServiceAccountRequest(
+          od as api.UndeleteServiceAccountRequest);
     });
   });
 
@@ -1643,7 +1650,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteServiceAccountResponse();
       var od = api.UndeleteServiceAccountResponse.fromJson(o.toJson());
-      checkUndeleteServiceAccountResponse(od);
+      checkUndeleteServiceAccountResponse(
+          od as api.UndeleteServiceAccountResponse);
     });
   });
 
@@ -1651,7 +1659,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUploadServiceAccountKeyRequest();
       var od = api.UploadServiceAccountKeyRequest.fromJson(o.toJson());
-      checkUploadServiceAccountKeyRequest(od);
+      checkUploadServiceAccountKeyRequest(
+          od as api.UploadServiceAccountKeyRequest);
     });
   });
 
@@ -1662,8 +1671,9 @@ void main() {
       var arg_request = buildLintPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LintPolicyRequest.fromJson(json);
-        checkLintPolicyRequest(obj);
+        var obj = api.LintPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLintPolicyRequest(obj as api.LintPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1702,7 +1712,7 @@ void main() {
       res
           .lintPolicy(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLintPolicyResponse(response);
+        checkLintPolicyResponse(response as api.LintPolicyResponse);
       })));
     });
 
@@ -1712,8 +1722,10 @@ void main() {
       var arg_request = buildQueryAuditableServicesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryAuditableServicesRequest.fromJson(json);
-        checkQueryAuditableServicesRequest(obj);
+        var obj = api.QueryAuditableServicesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryAuditableServicesRequest(
+            obj as api.QueryAuditableServicesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1752,7 +1764,8 @@ void main() {
       res
           .queryAuditableServices(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryAuditableServicesResponse(response);
+        checkQueryAuditableServicesResponse(
+            response as api.QueryAuditableServicesResponse);
       })));
     });
   });
@@ -1765,8 +1778,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateRoleRequest.fromJson(json);
-        checkCreateRoleRequest(obj);
+        var obj = api.CreateRoleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateRoleRequest(obj as api.CreateRoleRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1806,7 +1820,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -1856,7 +1870,7 @@ void main() {
       res
           .delete(arg_name, etag: arg_etag, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -1904,7 +1918,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -1968,7 +1982,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response);
+        checkListRolesResponse(response as api.ListRolesResponse);
       })));
     });
 
@@ -1980,8 +1994,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Role.fromJson(json);
-        checkRole(obj);
+        var obj =
+            api.Role.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRole(obj as api.Role);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2024,7 +2039,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -2035,8 +2050,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteRoleRequest.fromJson(json);
-        checkUndeleteRoleRequest(obj);
+        var obj = api.UndeleteRoleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteRoleRequest(obj as api.UndeleteRoleRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2076,7 +2092,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
   });
@@ -2088,8 +2104,10 @@ void main() {
       var arg_request = buildQueryTestablePermissionsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryTestablePermissionsRequest.fromJson(json);
-        checkQueryTestablePermissionsRequest(obj);
+        var obj = api.QueryTestablePermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryTestablePermissionsRequest(
+            obj as api.QueryTestablePermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2128,7 +2146,8 @@ void main() {
       res
           .queryTestablePermissions(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryTestablePermissionsResponse(response);
+        checkQueryTestablePermissionsResponse(
+            response as api.QueryTestablePermissionsResponse);
       })));
     });
   });
@@ -2141,8 +2160,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateRoleRequest.fromJson(json);
-        checkCreateRoleRequest(obj);
+        var obj = api.CreateRoleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateRoleRequest(obj as api.CreateRoleRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2182,7 +2202,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -2232,7 +2252,7 @@ void main() {
       res
           .delete(arg_name, etag: arg_etag, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -2280,7 +2300,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -2344,7 +2364,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response);
+        checkListRolesResponse(response as api.ListRolesResponse);
       })));
     });
 
@@ -2356,8 +2376,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Role.fromJson(json);
-        checkRole(obj);
+        var obj =
+            api.Role.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRole(obj as api.Role);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2400,7 +2421,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -2411,8 +2432,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteRoleRequest.fromJson(json);
-        checkUndeleteRoleRequest(obj);
+        var obj = api.UndeleteRoleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteRoleRequest(obj as api.UndeleteRoleRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2452,7 +2474,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
   });
@@ -2465,8 +2487,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateServiceAccountRequest.fromJson(json);
-        checkCreateServiceAccountRequest(obj);
+        var obj = api.CreateServiceAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateServiceAccountRequest(
+            obj as api.CreateServiceAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2506,7 +2530,7 @@ void main() {
       res
           .create(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response);
+        checkServiceAccount(response as api.ServiceAccount);
       })));
     });
 
@@ -2554,7 +2578,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2565,8 +2589,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DisableServiceAccountRequest.fromJson(json);
-        checkDisableServiceAccountRequest(obj);
+        var obj = api.DisableServiceAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDisableServiceAccountRequest(
+            obj as api.DisableServiceAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2606,7 +2632,7 @@ void main() {
       res
           .disable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2617,8 +2643,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EnableServiceAccountRequest.fromJson(json);
-        checkEnableServiceAccountRequest(obj);
+        var obj = api.EnableServiceAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnableServiceAccountRequest(
+            obj as api.EnableServiceAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2658,7 +2686,7 @@ void main() {
       res
           .enable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2706,7 +2734,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response);
+        checkServiceAccount(response as api.ServiceAccount);
       })));
     });
 
@@ -2761,7 +2789,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2818,7 +2846,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListServiceAccountsResponse(response);
+        checkListServiceAccountsResponse(
+            response as api.ListServiceAccountsResponse);
       })));
     });
 
@@ -2829,8 +2858,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PatchServiceAccountRequest.fromJson(json);
-        checkPatchServiceAccountRequest(obj);
+        var obj = api.PatchServiceAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPatchServiceAccountRequest(obj as api.PatchServiceAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2870,7 +2900,7 @@ void main() {
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response);
+        checkServiceAccount(response as api.ServiceAccount);
       })));
     });
 
@@ -2881,8 +2911,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2922,7 +2953,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2933,8 +2964,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignBlobRequest.fromJson(json);
-        checkSignBlobRequest(obj);
+        var obj = api.SignBlobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSignBlobRequest(obj as api.SignBlobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2974,7 +3006,7 @@ void main() {
       res
           .signBlob(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSignBlobResponse(response);
+        checkSignBlobResponse(response as api.SignBlobResponse);
       })));
     });
 
@@ -2985,8 +3017,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignJwtRequest.fromJson(json);
-        checkSignJwtRequest(obj);
+        var obj = api.SignJwtRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSignJwtRequest(obj as api.SignJwtRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3026,7 +3059,7 @@ void main() {
       res
           .signJwt(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSignJwtResponse(response);
+        checkSignJwtResponse(response as api.SignJwtResponse);
       })));
     });
 
@@ -3037,8 +3070,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3078,7 +3112,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -3089,8 +3124,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteServiceAccountRequest.fromJson(json);
-        checkUndeleteServiceAccountRequest(obj);
+        var obj = api.UndeleteServiceAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteServiceAccountRequest(
+            obj as api.UndeleteServiceAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3130,7 +3167,8 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUndeleteServiceAccountResponse(response);
+        checkUndeleteServiceAccountResponse(
+            response as api.UndeleteServiceAccountResponse);
       })));
     });
 
@@ -3141,8 +3179,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ServiceAccount.fromJson(json);
-        checkServiceAccount(obj);
+        var obj = api.ServiceAccount.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkServiceAccount(obj as api.ServiceAccount);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3182,7 +3221,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response);
+        checkServiceAccount(response as api.ServiceAccount);
       })));
     });
   });
@@ -3195,8 +3234,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateServiceAccountKeyRequest.fromJson(json);
-        checkCreateServiceAccountKeyRequest(obj);
+        var obj = api.CreateServiceAccountKeyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateServiceAccountKeyRequest(
+            obj as api.CreateServiceAccountKeyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3236,7 +3277,7 @@ void main() {
       res
           .create(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response);
+        checkServiceAccountKey(response as api.ServiceAccountKey);
       })));
     });
 
@@ -3284,7 +3325,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3335,7 +3376,7 @@ void main() {
       res
           .get(arg_name, publicKeyType: arg_publicKeyType, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response);
+        checkServiceAccountKey(response as api.ServiceAccountKey);
       })));
     });
 
@@ -3385,7 +3426,8 @@ void main() {
       res
           .list(arg_name, keyTypes: arg_keyTypes, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListServiceAccountKeysResponse(response);
+        checkListServiceAccountKeysResponse(
+            response as api.ListServiceAccountKeysResponse);
       })));
     });
 
@@ -3396,8 +3438,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UploadServiceAccountKeyRequest.fromJson(json);
-        checkUploadServiceAccountKeyRequest(obj);
+        var obj = api.UploadServiceAccountKeyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUploadServiceAccountKeyRequest(
+            obj as api.UploadServiceAccountKeyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3437,7 +3481,7 @@ void main() {
       res
           .upload(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccountKey(response);
+        checkServiceAccountKey(response as api.ServiceAccountKey);
       })));
     });
   });
@@ -3487,7 +3531,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRole(response);
+        checkRole(response as api.Role);
       })));
     });
 
@@ -3552,7 +3596,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListRolesResponse(response);
+        checkListRolesResponse(response as api.ListRolesResponse);
       })));
     });
 
@@ -3562,8 +3606,9 @@ void main() {
       var arg_request = buildQueryGrantableRolesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryGrantableRolesRequest.fromJson(json);
-        checkQueryGrantableRolesRequest(obj);
+        var obj = api.QueryGrantableRolesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryGrantableRolesRequest(obj as api.QueryGrantableRolesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3602,7 +3647,8 @@ void main() {
       res
           .queryGrantableRoles(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryGrantableRolesResponse(response);
+        checkQueryGrantableRolesResponse(
+            response as api.QueryGrantableRolesResponse);
       })));
     });
   });

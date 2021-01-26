@@ -100,7 +100,9 @@ class AssetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Asset.fromJson(data));
+    return _response.then(
+      (data) => Asset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all public, remixable assets. These are assets with an access level
@@ -218,7 +220,10 @@ class AssetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAssetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -338,7 +343,10 @@ class UsersAssetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListUserAssetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUserAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -434,7 +442,10 @@ class UsersLikedassetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLikedAssetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLikedAssetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -536,7 +547,8 @@ class Asset {
     }
     if (_json.containsKey('formats')) {
       formats = (_json['formats'] as core.List)
-          .map<Format>((value) => Format.fromJson(value))
+          .map<Format>((value) =>
+              Format.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('isCurated')) {
@@ -552,14 +564,16 @@ class Asset {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('presentationParams')) {
-      presentationParams =
-          PresentationParams.fromJson(_json['presentationParams']);
+      presentationParams = PresentationParams.fromJson(
+          _json['presentationParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('remixInfo')) {
-      remixInfo = RemixInfo.fromJson(_json['remixInfo']);
+      remixInfo = RemixInfo.fromJson(
+          _json['remixInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('thumbnail')) {
-      thumbnail = File.fromJson(_json['thumbnail']);
+      thumbnail = File.fromJson(
+          _json['thumbnail'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -672,10 +686,12 @@ class AssetImportMessage {
       filePath = _json['filePath'] as core.String;
     }
     if (_json.containsKey('imageError')) {
-      imageError = ImageError.fromJson(_json['imageError']);
+      imageError = ImageError.fromJson(
+          _json['imageError'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objParseError')) {
-      objParseError = ObjParseError.fromJson(_json['objParseError']);
+      objParseError = ObjParseError.fromJson(
+          _json['objParseError'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -774,18 +790,21 @@ class Format {
 
   Format.fromJson(core.Map _json) {
     if (_json.containsKey('formatComplexity')) {
-      formatComplexity = FormatComplexity.fromJson(_json['formatComplexity']);
+      formatComplexity = FormatComplexity.fromJson(
+          _json['formatComplexity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('formatType')) {
       formatType = _json['formatType'] as core.String;
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<File>((value) => File.fromJson(value))
+          .map<File>((value) =>
+              File.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('root')) {
-      root = File.fromJson(_json['root']);
+      root =
+          File.fromJson(_json['root'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -898,7 +917,8 @@ class ListAssetsResponse {
   ListAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assets')) {
       assets = (_json['assets'] as core.List)
-          .map<Asset>((value) => Asset.fromJson(value))
+          .map<Asset>((value) =>
+              Asset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -943,7 +963,8 @@ class ListLikedAssetsResponse {
   ListLikedAssetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assets')) {
       assets = (_json['assets'] as core.List)
-          .map<Asset>((value) => Asset.fromJson(value))
+          .map<Asset>((value) =>
+              Asset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -994,7 +1015,8 @@ class ListUserAssetsResponse {
     }
     if (_json.containsKey('userAssets')) {
       userAssets = (_json['userAssets'] as core.List)
-          .map<UserAsset>((value) => UserAsset.fromJson(value))
+          .map<UserAsset>((value) =>
+              UserAsset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1173,7 +1195,8 @@ class PresentationParams {
       colorSpace = _json['colorSpace'] as core.String;
     }
     if (_json.containsKey('orientingRotation')) {
-      orientingRotation = Quaternion.fromJson(_json['orientingRotation']);
+      orientingRotation = Quaternion.fromJson(
+          _json['orientingRotation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1299,8 +1322,8 @@ class StartAssetImportResponse {
     }
     if (_json.containsKey('assetImportMessages')) {
       assetImportMessages = (_json['assetImportMessages'] as core.List)
-          .map<AssetImportMessage>(
-              (value) => AssetImportMessage.fromJson(value))
+          .map<AssetImportMessage>((value) => AssetImportMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('publishUrl')) {
@@ -1336,7 +1359,8 @@ class UserAsset {
 
   UserAsset.fromJson(core.Map _json) {
     if (_json.containsKey('asset')) {
-      asset = Asset.fromJson(_json['asset']);
+      asset =
+          Asset.fromJson(_json['asset'] as core.Map<core.String, core.dynamic>);
     }
   }
 

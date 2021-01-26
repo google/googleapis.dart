@@ -137,7 +137,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BindDeviceToGatewayResponse.fromJson(data));
+    return _response.then(
+      (data) => BindDeviceToGatewayResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a device registry that contains devices.
@@ -196,7 +199,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceRegistry.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a device registry configuration.
@@ -247,7 +253,9 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a device registry configuration.
@@ -298,7 +306,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceRegistry.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -359,7 +370,9 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists device registries.
@@ -429,8 +442,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListDeviceRegistriesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDeviceRegistriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a device registry configuration.
@@ -497,7 +512,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceRegistry.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceRegistry.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -558,7 +576,9 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -620,7 +640,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the association between the device and the gateway.
@@ -679,8 +702,10 @@ class ProjectsLocationsRegistriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => UnbindDeviceFromGatewayResponse.fromJson(data));
+    return _response.then(
+      (data) => UnbindDeviceFromGatewayResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -753,7 +778,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a device.
@@ -806,7 +833,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details about a device.
@@ -866,7 +895,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List devices in a device registry.
@@ -997,7 +1028,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the configuration for the device, which is eventually sent from
@@ -1060,7 +1094,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a device.
@@ -1129,7 +1166,9 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends a command to the specified device. In order for a device to be able
@@ -1201,7 +1240,10 @@ class ProjectsLocationsRegistriesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SendCommandToDeviceResponse.fromJson(data));
+    return _response.then(
+      (data) => SendCommandToDeviceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1274,8 +1316,10 @@ class ProjectsLocationsRegistriesDevicesConfigVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListDeviceConfigVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDeviceConfigVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1345,7 +1389,10 @@ class ProjectsLocationsRegistriesDevicesStatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDeviceStatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDeviceStatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1416,7 +1463,9 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1477,7 +1526,9 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1539,7 +1590,10 @@ class ProjectsLocationsRegistriesGroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1678,7 +1732,10 @@ class ProjectsLocationsRegistriesGroupsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1787,7 +1844,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1927,15 +1985,18 @@ class Device {
       blocked = _json['blocked'] as core.bool;
     }
     if (_json.containsKey('config')) {
-      config = DeviceConfig.fromJson(_json['config']);
+      config = DeviceConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
-          .map<DeviceCredential>((value) => DeviceCredential.fromJson(value))
+          .map<DeviceCredential>((value) => DeviceCredential.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('gatewayConfig')) {
-      gatewayConfig = GatewayConfig.fromJson(_json['gatewayConfig']);
+      gatewayConfig = GatewayConfig.fromJson(
+          _json['gatewayConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -1947,7 +2008,8 @@ class Device {
       lastConfigSendTime = _json['lastConfigSendTime'] as core.String;
     }
     if (_json.containsKey('lastErrorStatus')) {
-      lastErrorStatus = Status.fromJson(_json['lastErrorStatus']);
+      lastErrorStatus = Status.fromJson(
+          _json['lastErrorStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastErrorTime')) {
       lastErrorTime = _json['lastErrorTime'] as core.String;
@@ -1966,7 +2028,8 @@ class Device {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -1976,7 +2039,8 @@ class Device {
       numId = _json['numId'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = DeviceState.fromJson(_json['state']);
+      state = DeviceState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2132,7 +2196,8 @@ class DeviceCredential {
       expirationTime = _json['expirationTime'] as core.String;
     }
     if (_json.containsKey('publicKey')) {
-      publicKey = PublicKeyCredential.fromJson(_json['publicKey']);
+      publicKey = PublicKeyCredential.fromJson(
+          _json['publicKey'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2212,19 +2277,21 @@ class DeviceRegistry {
   DeviceRegistry.fromJson(core.Map _json) {
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
-          .map<RegistryCredential>(
-              (value) => RegistryCredential.fromJson(value))
+          .map<RegistryCredential>((value) => RegistryCredential.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('eventNotificationConfigs')) {
       eventNotificationConfigs =
           (_json['eventNotificationConfigs'] as core.List)
-              .map<EventNotificationConfig>(
-                  (value) => EventNotificationConfig.fromJson(value))
+              .map<EventNotificationConfig>((value) =>
+                  EventNotificationConfig.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('httpConfig')) {
-      httpConfig = HttpConfig.fromJson(_json['httpConfig']);
+      httpConfig = HttpConfig.fromJson(
+          _json['httpConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2233,14 +2300,16 @@ class DeviceRegistry {
       logLevel = _json['logLevel'] as core.String;
     }
     if (_json.containsKey('mqttConfig')) {
-      mqttConfig = MqttConfig.fromJson(_json['mqttConfig']);
+      mqttConfig = MqttConfig.fromJson(
+          _json['mqttConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('stateNotificationConfig')) {
-      stateNotificationConfig =
-          StateNotificationConfig.fromJson(_json['stateNotificationConfig']);
+      stateNotificationConfig = StateNotificationConfig.fromJson(
+          _json['stateNotificationConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2512,7 +2581,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2593,7 +2663,8 @@ class ListDeviceConfigVersionsResponse {
   ListDeviceConfigVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deviceConfigs')) {
       deviceConfigs = (_json['deviceConfigs'] as core.List)
-          .map<DeviceConfig>((value) => DeviceConfig.fromJson(value))
+          .map<DeviceConfig>((value) => DeviceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2623,7 +2694,8 @@ class ListDeviceRegistriesResponse {
   ListDeviceRegistriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deviceRegistries')) {
       deviceRegistries = (_json['deviceRegistries'] as core.List)
-          .map<DeviceRegistry>((value) => DeviceRegistry.fromJson(value))
+          .map<DeviceRegistry>((value) => DeviceRegistry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2655,7 +2727,8 @@ class ListDeviceStatesResponse {
   ListDeviceStatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deviceStates')) {
       deviceStates = (_json['deviceStates'] as core.List)
-          .map<DeviceState>((value) => DeviceState.fromJson(value))
+          .map<DeviceState>((value) => DeviceState.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2684,7 +2757,8 @@ class ListDevicesResponse {
   ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2850,7 +2924,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2903,7 +2978,8 @@ class PublicKeyCertificate {
       format = _json['format'] as core.String;
     }
     if (_json.containsKey('x509Details')) {
-      x509Details = X509CertificateDetails.fromJson(_json['x509Details']);
+      x509Details = X509CertificateDetails.fromJson(
+          _json['x509Details'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2981,8 +3057,8 @@ class RegistryCredential {
 
   RegistryCredential.fromJson(core.Map _json) {
     if (_json.containsKey('publicKeyCertificate')) {
-      publicKeyCertificate =
-          PublicKeyCertificate.fromJson(_json['publicKeyCertificate']);
+      publicKeyCertificate = PublicKeyCertificate.fromJson(
+          _json['publicKeyCertificate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3064,7 +3140,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3132,7 +3209,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

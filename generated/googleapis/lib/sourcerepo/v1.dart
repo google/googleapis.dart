@@ -113,7 +113,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProjectConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProjectConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the Cloud Source Repositories configuration of the project.
@@ -169,7 +172,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProjectConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProjectConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -232,7 +238,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Repo.fromJson(data));
+    return _response.then(
+      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a repo.
@@ -282,7 +290,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about a repo.
@@ -332,7 +342,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Repo.fromJson(data));
+    return _response.then(
+      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -400,7 +412,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all repos belonging to a project. The sizes of the repos are not
@@ -466,7 +480,10 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReposResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReposResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates information about a repo.
@@ -522,7 +539,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Repo.fromJson(data));
+    return _response.then(
+      (data) => Repo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -582,7 +601,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Synchronize a connected repo. The response contains SyncRepoMetadata in
@@ -639,7 +660,9 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -700,7 +723,10 @@ class ProjectsReposResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -734,7 +760,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -848,7 +875,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -979,7 +1007,8 @@ class ListReposResponse {
     }
     if (_json.containsKey('repos')) {
       repos = (_json['repos'] as core.List)
-          .map<Repo>((value) => Repo.fromJson(value))
+          .map<Repo>((value) =>
+              Repo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1086,11 +1115,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1098,7 +1129,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1203,12 +1235,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1261,8 +1295,10 @@ class ProjectConfig {
     }
     if (_json.containsKey('pubsubConfigs')) {
       pubsubConfigs = commons.mapMap<core.Map, PubsubConfig>(
-          _json['pubsubConfigs'].cast<core.String, core.Map>(),
-          (core.Map item) => PubsubConfig.fromJson(item));
+          (_json['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PubsubConfig.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -1359,15 +1395,18 @@ class Repo {
 
   Repo.fromJson(core.Map _json) {
     if (_json.containsKey('mirrorConfig')) {
-      mirrorConfig = MirrorConfig.fromJson(_json['mirrorConfig']);
+      mirrorConfig = MirrorConfig.fromJson(
+          _json['mirrorConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pubsubConfigs')) {
       pubsubConfigs = commons.mapMap<core.Map, PubsubConfig>(
-          _json['pubsubConfigs'].cast<core.String, core.Map>(),
-          (core.Map item) => PubsubConfig.fromJson(item));
+          (_json['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PubsubConfig.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('size')) {
       size = _json['size'] as core.String;
@@ -1417,7 +1456,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -1468,7 +1508,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -1622,7 +1663,8 @@ class UpdateProjectConfigRequest {
 
   UpdateProjectConfigRequest.fromJson(core.Map _json) {
     if (_json.containsKey('projectConfig')) {
-      projectConfig = ProjectConfig.fromJson(_json['projectConfig']);
+      projectConfig = ProjectConfig.fromJson(
+          _json['projectConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -1655,7 +1697,8 @@ class UpdateRepoRequest {
 
   UpdateRepoRequest.fromJson(core.Map _json) {
     if (_json.containsKey('repo')) {
-      repo = Repo.fromJson(_json['repo']);
+      repo =
+          Repo.fromJson(_json['repo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

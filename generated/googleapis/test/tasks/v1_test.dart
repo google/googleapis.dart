@@ -106,8 +106,8 @@ core.List<api.TaskLinks> buildUnnamed5840() {
 
 void checkUnnamed5840(core.List<api.TaskLinks> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTaskLinks(o[0]);
-  checkTaskLinks(o[1]);
+  checkTaskLinks(o[0] as api.TaskLinks);
+  checkTaskLinks(o[1] as api.TaskLinks);
 }
 
 core.int buildCounterTask = 0;
@@ -195,8 +195,8 @@ core.List<api.TaskList> buildUnnamed5841() {
 
 void checkUnnamed5841(core.List<api.TaskList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTaskList(o[0]);
-  checkTaskList(o[1]);
+  checkTaskList(o[0] as api.TaskList);
+  checkTaskList(o[1] as api.TaskList);
 }
 
 core.int buildCounterTaskLists = 0;
@@ -233,8 +233,8 @@ core.List<api.Task> buildUnnamed5842() {
 
 void checkUnnamed5842(core.List<api.Task> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTask(o[0]);
-  checkTask(o[1]);
+  checkTask(o[0] as api.Task);
+  checkTask(o[1] as api.Task);
 }
 
 core.int buildCounterTasks = 0;
@@ -267,7 +267,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTaskLinks();
       var od = api.TaskLinks.fromJson(o.toJson());
-      checkTaskLinks(od);
+      checkTaskLinks(od as api.TaskLinks);
     });
   });
 
@@ -275,7 +275,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTask();
       var od = api.Task.fromJson(o.toJson());
-      checkTask(od);
+      checkTask(od as api.Task);
     });
   });
 
@@ -283,7 +283,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTaskList();
       var od = api.TaskList.fromJson(o.toJson());
-      checkTaskList(od);
+      checkTaskList(od as api.TaskList);
     });
   });
 
@@ -291,7 +291,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTaskLists();
       var od = api.TaskLists.fromJson(o.toJson());
-      checkTaskLists(od);
+      checkTaskLists(od as api.TaskLists);
     });
   });
 
@@ -299,7 +299,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTasks();
       var od = api.Tasks.fromJson(o.toJson());
-      checkTasks(od);
+      checkTasks(od as api.Tasks);
     });
   });
 
@@ -398,7 +398,7 @@ void main() {
       res
           .get(arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTaskList(response);
+        checkTaskList(response as api.TaskList);
       })));
     });
 
@@ -408,8 +408,9 @@ void main() {
       var arg_request = buildTaskList();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TaskList.fromJson(json);
-        checkTaskList(obj);
+        var obj =
+            api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTaskList(obj as api.TaskList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -448,7 +449,7 @@ void main() {
       res
           .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTaskList(response);
+        checkTaskList(response as api.TaskList);
       })));
     });
 
@@ -503,7 +504,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTaskLists(response);
+        checkTaskLists(response as api.TaskLists);
       })));
     });
 
@@ -514,8 +515,9 @@ void main() {
       var arg_tasklist = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TaskList.fromJson(json);
-        checkTaskList(obj);
+        var obj =
+            api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTaskList(obj as api.TaskList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -557,7 +559,7 @@ void main() {
       res
           .patch(arg_request, arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTaskList(response);
+        checkTaskList(response as api.TaskList);
       })));
     });
 
@@ -568,8 +570,9 @@ void main() {
       var arg_tasklist = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TaskList.fromJson(json);
-        checkTaskList(obj);
+        var obj =
+            api.TaskList.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTaskList(obj as api.TaskList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -611,7 +614,7 @@ void main() {
       res
           .update(arg_request, arg_tasklist, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTaskList(response);
+        checkTaskList(response as api.TaskList);
       })));
     });
   });
@@ -785,7 +788,7 @@ void main() {
       res
           .get(arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTask(response);
+        checkTask(response as api.Task);
       })));
     });
 
@@ -798,8 +801,9 @@ void main() {
       var arg_previous = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Task.fromJson(json);
-        checkTask(obj);
+        var obj =
+            api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTask(obj as api.Task);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -851,7 +855,7 @@ void main() {
           .insert(arg_request, arg_tasklist,
               parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTask(response);
+        checkTask(response as api.Task);
       })));
     });
 
@@ -946,7 +950,7 @@ void main() {
               updatedMin: arg_updatedMin,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTasks(response);
+        checkTasks(response as api.Tasks);
       })));
     });
 
@@ -1018,7 +1022,7 @@ void main() {
           .move(arg_tasklist, arg_task,
               parent: arg_parent, previous: arg_previous, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTask(response);
+        checkTask(response as api.Task);
       })));
     });
 
@@ -1030,8 +1034,9 @@ void main() {
       var arg_task = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Task.fromJson(json);
-        checkTask(obj);
+        var obj =
+            api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTask(obj as api.Task);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1082,7 +1087,7 @@ void main() {
       res
           .patch(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTask(response);
+        checkTask(response as api.Task);
       })));
     });
 
@@ -1094,8 +1099,9 @@ void main() {
       var arg_task = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Task.fromJson(json);
-        checkTask(obj);
+        var obj =
+            api.Task.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTask(obj as api.Task);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1146,7 +1152,7 @@ void main() {
       res
           .update(arg_request, arg_tasklist, arg_task, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTask(response);
+        checkTask(response as api.Task);
       })));
     });
   });

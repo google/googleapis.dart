@@ -133,7 +133,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a device. Only company-owned device may be created.
@@ -192,7 +194,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified device.
@@ -255,7 +259,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified device.
@@ -319,8 +325,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleAppsCloudidentityDevicesV1Device.fromJson(data));
+    return _response.then(
+      (data) => GoogleAppsCloudidentityDevicesV1Device.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists/Searches devices.
@@ -424,8 +432,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Wipes all data on the specified device.
@@ -484,7 +494,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -553,7 +565,9 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Blocks device from accessing user data
@@ -612,7 +626,9 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Cancels an unfinished user account wipe. This operation can be used to
@@ -674,7 +690,9 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified DeviceUser. This also revokes the user's access to
@@ -739,7 +757,9 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified DeviceUser
@@ -804,7 +824,9 @@ class DevicesDeviceUsersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(data));
+      (data) => GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists/Searches DeviceUsers.
@@ -899,8 +921,11 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse.fromJson(
+              data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up resource names of the DeviceUsers associated with the caller's
@@ -1005,9 +1030,10 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse.fromJson(
-            data));
+    return _response.then(
+      (data) => GoogleAppsCloudidentityDevicesV1LookupSelfDeviceUsersResponse
+          .fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Wipes the user's account on a device. Other data on the device that is not
@@ -1072,7 +1098,9 @@ class DevicesDeviceUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1147,7 +1175,9 @@ class DevicesDeviceUsersClientStatesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleAppsCloudidentityDevicesV1ClientState.fromJson(data));
+      (data) => GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the client states for the given search query.
@@ -1236,9 +1266,11 @@ class DevicesDeviceUsersClientStatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
-            data));
+    return _response.then(
+      (data) =>
+          GoogleAppsCloudidentityDevicesV1ListClientStatesResponse.fromJson(
+              data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the client state for the device user
@@ -1328,7 +1360,9 @@ class DevicesDeviceUsersClientStatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1398,7 +1432,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Group.
@@ -1450,7 +1486,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a Group.
@@ -1502,7 +1540,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists groups within a customer or a domain.
@@ -1574,7 +1614,10 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGroupsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up [resource
@@ -1635,7 +1678,10 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LookupGroupNameResponse.fromJson(data));
+    return _response.then(
+      (data) => LookupGroupNameResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a Group.
@@ -1699,7 +1745,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Searches for Groups.
@@ -1774,7 +1822,10 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchGroupsResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1841,7 +1892,9 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Membership.
@@ -1895,7 +1948,9 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a Membership.
@@ -1949,7 +2004,10 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Membership.fromJson(data));
+    return _response.then(
+      (data) =>
+          Membership.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Memberships within a Group.
@@ -2027,7 +2085,10 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListMembershipsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListMembershipsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up [resource
@@ -2100,8 +2161,10 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LookupMembershipNameResponse.fromJson(data));
+    return _response.then(
+      (data) => LookupMembershipNameResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the `MembershipRole`s of a `Membership`.
@@ -2161,8 +2224,10 @@ class GroupsMembershipsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ModifyMembershipRolesResponse.fromJson(data));
+    return _response.then(
+      (data) => ModifyMembershipRolesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2303,7 +2368,7 @@ class GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
       core.Map _json) {
     if (_json.containsKey('deviceUser')) {
       deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser']);
+          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2355,7 +2420,7 @@ class GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
       core.Map _json) {
     if (_json.containsKey('deviceUser')) {
       deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser']);
+          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2407,7 +2472,8 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('device')) {
-      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(_json['device']);
+      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2459,7 +2525,7 @@ class GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
       core.Map _json) {
     if (_json.containsKey('deviceUser')) {
       deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser']);
+          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2584,10 +2650,11 @@ class GoogleAppsCloudidentityDevicesV1ClientState {
     if (_json.containsKey('keyValuePairs')) {
       keyValuePairs = commons.mapMap<core.Map,
               GoogleAppsCloudidentityDevicesV1CustomAttributeValue>(
-          _json['keyValuePairs'].cast<core.String, core.Map>(),
+          (_json['keyValuePairs'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
           (core.Map item) =>
               GoogleAppsCloudidentityDevicesV1CustomAttributeValue.fromJson(
-                  item));
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('lastUpdateTime')) {
       lastUpdateTime = _json['lastUpdateTime'] as core.String;
@@ -2830,7 +2897,8 @@ class GoogleAppsCloudidentityDevicesV1Device {
     if (_json.containsKey('androidSpecificAttributes')) {
       androidSpecificAttributes =
           GoogleAppsCloudidentityDevicesV1AndroidAttributes.fromJson(
-              _json['androidSpecificAttributes']);
+              _json['androidSpecificAttributes']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('assetTag')) {
       assetTag = _json['assetTag'] as core.String;
@@ -3151,7 +3219,8 @@ class GoogleAppsCloudidentityDevicesV1ListClientStatesResponse {
     if (_json.containsKey('clientStates')) {
       clientStates = (_json['clientStates'] as core.List)
           .map<GoogleAppsCloudidentityDevicesV1ClientState>((value) =>
-              GoogleAppsCloudidentityDevicesV1ClientState.fromJson(value))
+              GoogleAppsCloudidentityDevicesV1ClientState.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3188,7 +3257,8 @@ class GoogleAppsCloudidentityDevicesV1ListDeviceUsersResponse {
     if (_json.containsKey('deviceUsers')) {
       deviceUsers = (_json['deviceUsers'] as core.List)
           .map<GoogleAppsCloudidentityDevicesV1DeviceUser>((value) =>
-              GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(value))
+              GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3223,8 +3293,9 @@ class GoogleAppsCloudidentityDevicesV1ListDevicesResponse {
   GoogleAppsCloudidentityDevicesV1ListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<GoogleAppsCloudidentityDevicesV1Device>(
-              (value) => GoogleAppsCloudidentityDevicesV1Device.fromJson(value))
+          .map<GoogleAppsCloudidentityDevicesV1Device>((value) =>
+              GoogleAppsCloudidentityDevicesV1Device.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3331,7 +3402,8 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
 
   GoogleAppsCloudidentityDevicesV1WipeDeviceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('device')) {
-      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(_json['device']);
+      device = GoogleAppsCloudidentityDevicesV1Device.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3383,7 +3455,7 @@ class GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
       core.Map _json) {
     if (_json.containsKey('deviceUser')) {
       deviceUser = GoogleAppsCloudidentityDevicesV1DeviceUser.fromJson(
-          _json['deviceUser']);
+          _json['deviceUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3446,11 +3518,13 @@ class Group {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('groupKey')) {
-      groupKey = EntityKey.fromJson(_json['groupKey']);
+      groupKey = EntityKey.fromJson(
+          _json['groupKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -3508,7 +3582,8 @@ class ListGroupsResponse {
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('groups')) {
       groups = (_json['groups'] as core.List)
-          .map<Group>((value) => Group.fromJson(value))
+          .map<Group>((value) =>
+              Group.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3541,7 +3616,8 @@ class ListMembershipsResponse {
   ListMembershipsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('memberships')) {
       memberships = (_json['memberships'] as core.List)
-          .map<Membership>((value) => Membership.fromJson(value))
+          .map<Membership>((value) =>
+              Membership.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3654,11 +3730,13 @@ class Membership {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('preferredMemberKey')) {
-      preferredMemberKey = EntityKey.fromJson(_json['preferredMemberKey']);
+      preferredMemberKey = EntityKey.fromJson(
+          _json['preferredMemberKey'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('roles')) {
       roles = (_json['roles'] as core.List)
-          .map<MembershipRole>((value) => MembershipRole.fromJson(value))
+          .map<MembershipRole>((value) => MembershipRole.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('type')) {
@@ -3735,7 +3813,8 @@ class ModifyMembershipRolesRequest {
   ModifyMembershipRolesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('addRoles')) {
       addRoles = (_json['addRoles'] as core.List)
-          .map<MembershipRole>((value) => MembershipRole.fromJson(value))
+          .map<MembershipRole>((value) => MembershipRole.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('removeRoles')) {
@@ -3766,7 +3845,8 @@ class ModifyMembershipRolesResponse {
 
   ModifyMembershipRolesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('membership')) {
-      membership = Membership.fromJson(_json['membership']);
+      membership = Membership.fromJson(
+          _json['membership'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3823,11 +3903,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -3835,7 +3917,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -3874,7 +3957,8 @@ class SearchGroupsResponse {
   SearchGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('groups')) {
       groups = (_json['groups'] as core.List)
-          .map<Group>((value) => Group.fromJson(value))
+          .map<Group>((value) =>
+              Group.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3926,7 +4010,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

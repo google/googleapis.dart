@@ -135,7 +135,10 @@ class EntitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SearchResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

@@ -132,8 +132,10 @@ class AvailableProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAvailableProjectsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAvailableProjectsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -190,7 +192,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -294,7 +298,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Links the specified FirebaseProject with an existing [Google Analytics
@@ -389,7 +395,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified FirebaseProject.
@@ -441,7 +449,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FirebaseProject.fromJson(data));
+    return _response.then(
+      (data) =>
+          FirebaseProject.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration artifact associated with the specified
@@ -497,7 +508,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdminSdkConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          AdminSdkConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the Google Analytics details currently associated with the specified
@@ -551,7 +565,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AnalyticsDetails.fromJson(data));
+    return _response.then(
+      (data) => AnalyticsDetails.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists each FirebaseProject accessible to the caller. The elements are
@@ -617,8 +634,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListFirebaseProjectsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFirebaseProjectsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the attributes of the specified FirebaseProject. All [query
@@ -689,7 +708,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FirebaseProject.fromJson(data));
+    return _response.then(
+      (data) =>
+          FirebaseProject.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unlinks the specified FirebaseProject from its Google Analytics account.
@@ -760,7 +782,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all available Apps for the specified FirebaseProject. This is a
@@ -844,7 +868,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchFirebaseAppsResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchFirebaseAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -918,7 +945,9 @@ class ProjectsAndroidAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified AndroidApp.
@@ -972,7 +1001,10 @@ class ProjectsAndroidAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AndroidApp.fromJson(data));
+    return _response.then(
+      (data) =>
+          AndroidApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration artifact associated with the specified AndroidApp.
@@ -1027,7 +1059,10 @@ class ProjectsAndroidAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AndroidAppConfig.fromJson(data));
+    return _response.then(
+      (data) => AndroidAppConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists each AndroidApp associated with the specified FirebaseProject. The
@@ -1100,7 +1135,10 @@ class ProjectsAndroidAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAndroidAppsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAndroidAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the attributes of the specified AndroidApp.
@@ -1172,7 +1210,10 @@ class ProjectsAndroidAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AndroidApp.fromJson(data));
+    return _response.then(
+      (data) =>
+          AndroidApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1241,7 +1282,10 @@ class ProjectsAndroidAppsShaResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ShaCertificate.fromJson(data));
+    return _response.then(
+      (data) =>
+          ShaCertificate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes a ShaCertificate from the specified AndroidApp.
@@ -1297,7 +1341,9 @@ class ProjectsAndroidAppsShaResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the SHA-1 and SHA-256 certificates for the specified AndroidApp.
@@ -1353,7 +1399,10 @@ class ProjectsAndroidAppsShaResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListShaCertificatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListShaCertificatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1449,8 +1498,10 @@ class ProjectsAvailableLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAvailableLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAvailableLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1545,7 +1596,9 @@ class ProjectsDefaultLocationResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1614,7 +1667,9 @@ class ProjectsIosAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified IosApp.
@@ -1668,7 +1723,9 @@ class ProjectsIosAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IosApp.fromJson(data));
+    return _response.then(
+      (data) => IosApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration artifact associated with the specified IosApp.
@@ -1722,7 +1779,10 @@ class ProjectsIosAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IosAppConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          IosAppConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists each IosApp associated with the specified FirebaseProject. The
@@ -1795,7 +1855,10 @@ class ProjectsIosAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListIosAppsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListIosAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the attributes of the specified IosApp.
@@ -1867,7 +1930,9 @@ class ProjectsIosAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IosApp.fromJson(data));
+    return _response.then(
+      (data) => IosApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1936,7 +2001,9 @@ class ProjectsWebAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified WebApp.
@@ -1990,7 +2057,9 @@ class ProjectsWebAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebApp.fromJson(data));
+    return _response.then(
+      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration artifact associated with the specified WebApp.
@@ -2044,7 +2113,10 @@ class ProjectsWebAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebAppConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          WebAppConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists each WebApp associated with the specified FirebaseProject. The
@@ -2117,7 +2189,10 @@ class ProjectsWebAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListWebAppsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListWebAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the attributes of the specified WebApp.
@@ -2189,7 +2264,9 @@ class ProjectsWebAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebApp.fromJson(data));
+    return _response.then(
+      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2355,12 +2432,13 @@ class AnalyticsDetails {
 
   AnalyticsDetails.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsProperty')) {
-      analyticsProperty =
-          AnalyticsProperty.fromJson(_json['analyticsProperty']);
+      analyticsProperty = AnalyticsProperty.fromJson(
+          _json['analyticsProperty'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('streamMappings')) {
       streamMappings = (_json['streamMappings'] as core.List)
-          .map<StreamMapping>((value) => StreamMapping.fromJson(value))
+          .map<StreamMapping>((value) => StreamMapping.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2777,7 +2855,8 @@ class FirebaseProject {
       projectNumber = _json['projectNumber'] as core.String;
     }
     if (_json.containsKey('resources')) {
-      resources = DefaultResources.fromJson(_json['resources']);
+      resources = DefaultResources.fromJson(
+          _json['resources'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -2945,7 +3024,8 @@ class ListAndroidAppsResponse {
   ListAndroidAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apps')) {
       apps = (_json['apps'] as core.List)
-          .map<AndroidApp>((value) => AndroidApp.fromJson(value))
+          .map<AndroidApp>((value) =>
+              AndroidApp.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2981,7 +3061,8 @@ class ListAvailableLocationsResponse {
   ListAvailableLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3021,7 +3102,8 @@ class ListAvailableProjectsResponse {
     }
     if (_json.containsKey('projectInfo')) {
       projectInfo = (_json['projectInfo'] as core.List)
-          .map<ProjectInfo>((value) => ProjectInfo.fromJson(value))
+          .map<ProjectInfo>((value) => ProjectInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3058,7 +3140,8 @@ class ListFirebaseProjectsResponse {
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<FirebaseProject>((value) => FirebaseProject.fromJson(value))
+          .map<FirebaseProject>((value) => FirebaseProject.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3091,7 +3174,8 @@ class ListIosAppsResponse {
   ListIosAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apps')) {
       apps = (_json['apps'] as core.List)
-          .map<IosApp>((value) => IosApp.fromJson(value))
+          .map<IosApp>((value) =>
+              IosApp.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3120,7 +3204,8 @@ class ListShaCertificatesResponse {
   ListShaCertificatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('certificates')) {
       certificates = (_json['certificates'] as core.List)
-          .map<ShaCertificate>((value) => ShaCertificate.fromJson(value))
+          .map<ShaCertificate>((value) => ShaCertificate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3151,7 +3236,8 @@ class ListWebAppsResponse {
   ListWebAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apps')) {
       apps = (_json['apps'] as core.List)
-          .map<WebApp>((value) => WebApp.fromJson(value))
+          .map<WebApp>((value) =>
+              WebApp.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3284,11 +3370,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -3296,7 +3384,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -3413,7 +3502,8 @@ class SearchFirebaseAppsResponse {
   SearchFirebaseAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apps')) {
       apps = (_json['apps'] as core.List)
-          .map<FirebaseAppInfo>((value) => FirebaseAppInfo.fromJson(value))
+          .map<FirebaseAppInfo>((value) => FirebaseAppInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3522,7 +3612,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -3580,7 +3671,8 @@ class StatusProto {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('messageSet')) {
-      messageSet = MessageSet.fromJson(_json['messageSet']);
+      messageSet = MessageSet.fromJson(
+          _json['messageSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('space')) {
       space = _json['space'] as core.String;

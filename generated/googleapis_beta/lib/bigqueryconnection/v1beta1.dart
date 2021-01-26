@@ -137,7 +137,10 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Connection.fromJson(data));
+    return _response.then(
+      (data) =>
+          Connection.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes connection and associated credential.
@@ -188,7 +191,9 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns specified connection.
@@ -239,7 +244,10 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Connection.fromJson(data));
+    return _response.then(
+      (data) =>
+          Connection.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -300,7 +308,9 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of connections in the given project.
@@ -364,7 +374,10 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListConnectionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListConnectionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified connection. For security reasons, also resets
@@ -429,7 +442,10 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Connection.fromJson(data));
+    return _response.then(
+      (data) =>
+          Connection.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -491,7 +507,9 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -555,7 +573,10 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the credential for the specified connection.
@@ -612,7 +633,9 @@ class ProjectsLocationsConnectionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -646,7 +669,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -760,7 +784,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -840,7 +865,8 @@ class CloudSqlProperties {
 
   CloudSqlProperties.fromJson(core.Map _json) {
     if (_json.containsKey('credential')) {
-      credential = CloudSqlCredential.fromJson(_json['credential']);
+      credential = CloudSqlCredential.fromJson(
+          _json['credential'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('database')) {
       database = _json['database'] as core.String;
@@ -900,7 +926,8 @@ class Connection {
 
   Connection.fromJson(core.Map _json) {
     if (_json.containsKey('cloudSql')) {
-      cloudSql = CloudSqlProperties.fromJson(_json['cloudSql']);
+      cloudSql = CloudSqlProperties.fromJson(
+          _json['cloudSql'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationTime')) {
       creationTime = _json['creationTime'] as core.String;
@@ -958,7 +985,8 @@ class ConnectionCredential {
 
   ConnectionCredential.fromJson(core.Map _json) {
     if (_json.containsKey('cloudSql')) {
-      cloudSql = CloudSqlCredential.fromJson(_json['cloudSql']);
+      cloudSql = CloudSqlCredential.fromJson(
+          _json['cloudSql'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1067,7 +1095,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1121,7 +1150,8 @@ class ListConnectionsResponse {
   ListConnectionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('connections')) {
       connections = (_json['connections'] as core.List)
-          .map<Connection>((value) => Connection.fromJson(value))
+          .map<Connection>((value) =>
+              Connection.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1221,12 +1251,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1273,7 +1305,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

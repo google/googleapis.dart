@@ -114,8 +114,8 @@ core.List<api.SiteSummaryResponse> buildUnnamed4861() {
 
 void checkUnnamed4861(core.List<api.SiteSummaryResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSiteSummaryResponse(o[0]);
-  checkSiteSummaryResponse(o[1]);
+  checkSiteSummaryResponse(o[0] as api.SiteSummaryResponse);
+  checkSiteSummaryResponse(o[1] as api.SiteSummaryResponse);
 }
 
 core.int buildCounterViolatingSitesResponse = 0;
@@ -142,7 +142,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSiteSummaryResponse();
       var od = api.SiteSummaryResponse.fromJson(o.toJson());
-      checkSiteSummaryResponse(od);
+      checkSiteSummaryResponse(od as api.SiteSummaryResponse);
     });
   });
 
@@ -150,7 +150,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildViolatingSitesResponse();
       var od = api.ViolatingSitesResponse.fromJson(o.toJson());
-      checkViolatingSitesResponse(od);
+      checkViolatingSitesResponse(od as api.ViolatingSitesResponse);
     });
   });
 
@@ -199,7 +199,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteSummaryResponse(response);
+        checkSiteSummaryResponse(response as api.SiteSummaryResponse);
       })));
     });
   });
@@ -245,7 +245,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkViolatingSitesResponse(response);
+        checkViolatingSitesResponse(response as api.ViolatingSitesResponse);
       })));
     });
   });

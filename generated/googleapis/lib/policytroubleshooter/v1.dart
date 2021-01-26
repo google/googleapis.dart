@@ -99,9 +99,10 @@ class IamResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse.fromJson(
-            data));
+    return _response.then(
+      (data) => GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse
+          .fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -242,15 +243,17 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
       access = _json['access'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(_json['condition']);
+      condition = GoogleTypeExpr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
       memberships = commons.mapMap<core.Map,
               GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>(
-          _json['memberships'].cast<core.String, core.Map>(),
+          (_json['memberships'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
           (core.Map item) =>
               GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                  .fromJson(item));
+                  .fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -407,14 +410,15 @@ class GoogleCloudPolicytroubleshooterV1ExplainedPolicy {
       bindingExplanations = (_json['bindingExplanations'] as core.List)
           .map<GoogleCloudPolicytroubleshooterV1BindingExplanation>((value) =>
               GoogleCloudPolicytroubleshooterV1BindingExplanation.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fullResourceName')) {
       fullResourceName = _json['fullResourceName'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = GoogleIamV1Policy.fromJson(_json['policy']);
+      policy = GoogleIamV1Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -455,7 +459,7 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyRequest {
       core.Map _json) {
     if (_json.containsKey('accessTuple')) {
       accessTuple = GoogleCloudPolicytroubleshooterV1AccessTuple.fromJson(
-          _json['accessTuple']);
+          _json['accessTuple'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -502,7 +506,8 @@ class GoogleCloudPolicytroubleshooterV1TroubleshootIamPolicyResponse {
     if (_json.containsKey('explainedPolicies')) {
       explainedPolicies = (_json['explainedPolicies'] as core.List)
           .map<GoogleCloudPolicytroubleshooterV1ExplainedPolicy>((value) =>
-              GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(value))
+              GoogleCloudPolicytroubleshooterV1ExplainedPolicy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -550,8 +555,9 @@ class GoogleIamV1AuditConfig {
   GoogleIamV1AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<GoogleIamV1AuditLogConfig>(
-              (value) => GoogleIamV1AuditLogConfig.fromJson(value))
+          .map<GoogleIamV1AuditLogConfig>((value) =>
+              GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -665,7 +671,8 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(_json['condition']);
+      condition = GoogleTypeExpr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -771,14 +778,15 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<GoogleIamV1AuditConfig>(
-              (value) => GoogleIamV1AuditConfig.fromJson(value))
+          .map<GoogleIamV1AuditConfig>((value) =>
+              GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<GoogleIamV1Binding>(
-              (value) => GoogleIamV1Binding.fromJson(value))
+          .map<GoogleIamV1Binding>((value) => GoogleIamV1Binding.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {

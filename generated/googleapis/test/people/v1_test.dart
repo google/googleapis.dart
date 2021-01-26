@@ -105,7 +105,7 @@ void checkAddress(api.Address o) {
     unittest.expect(o.extendedAddress, unittest.equals('foo'));
     unittest.expect(o.formattedType, unittest.equals('foo'));
     unittest.expect(o.formattedValue, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.poBox, unittest.equals('foo'));
     unittest.expect(o.postalCode, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
@@ -131,7 +131,7 @@ void checkAgeRangeType(api.AgeRangeType o) {
   buildCounterAgeRangeType++;
   if (buildCounterAgeRangeType < 3) {
     unittest.expect(o.ageRange, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
   }
   buildCounterAgeRangeType--;
 }
@@ -145,8 +145,8 @@ core.List<api.ContactGroupResponse> buildUnnamed4862() {
 
 void checkUnnamed4862(core.List<api.ContactGroupResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContactGroupResponse(o[0]);
-  checkContactGroupResponse(o[1]);
+  checkContactGroupResponse(o[0] as api.ContactGroupResponse);
+  checkContactGroupResponse(o[1] as api.ContactGroupResponse);
 }
 
 core.int buildCounterBatchGetContactGroupsResponse = 0;
@@ -185,7 +185,7 @@ void checkBiography(api.Biography o) {
   buildCounterBiography++;
   if (buildCounterBiography < 3) {
     unittest.expect(o.contentType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterBiography--;
@@ -207,8 +207,8 @@ api.Birthday buildBirthday() {
 void checkBirthday(api.Birthday o) {
   buildCounterBirthday++;
   if (buildCounterBirthday < 3) {
-    checkDate(o.date);
-    checkFieldMetadata(o.metadata);
+    checkDate(o.date as api.Date);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterBirthday--;
@@ -229,7 +229,7 @@ api.BraggingRights buildBraggingRights() {
 void checkBraggingRights(api.BraggingRights o) {
   buildCounterBraggingRights++;
   if (buildCounterBraggingRights < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterBraggingRights--;
@@ -253,7 +253,7 @@ void checkCalendarUrl(api.CalendarUrl o) {
   buildCounterCalendarUrl++;
   if (buildCounterCalendarUrl < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
   }
@@ -277,7 +277,7 @@ void checkClientData(api.ClientData o) {
   buildCounterClientData++;
   if (buildCounterClientData < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterClientData--;
@@ -322,7 +322,7 @@ void checkContactGroup(api.ContactGroup o) {
     unittest.expect(o.groupType, unittest.equals('foo'));
     unittest.expect(o.memberCount, unittest.equals(42));
     checkUnnamed4863(o.memberResourceNames);
-    checkContactGroupMetadata(o.metadata);
+    checkContactGroupMetadata(o.metadata as api.ContactGroupMetadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.resourceName, unittest.equals('foo'));
   }
@@ -387,9 +387,9 @@ api.ContactGroupResponse buildContactGroupResponse() {
 void checkContactGroupResponse(api.ContactGroupResponse o) {
   buildCounterContactGroupResponse++;
   if (buildCounterContactGroupResponse < 3) {
-    checkContactGroup(o.contactGroup);
+    checkContactGroup(o.contactGroup as api.ContactGroup);
     unittest.expect(o.requestedResourceName, unittest.equals('foo'));
-    checkStatus(o.status);
+    checkStatus(o.status as api.Status);
   }
   buildCounterContactGroupResponse--;
 }
@@ -449,7 +449,7 @@ void checkCoverPhoto(api.CoverPhoto o) {
   buildCounterCoverPhoto++;
   if (buildCounterCoverPhoto < 3) {
     unittest.expect(o.default_, unittest.isTrue);
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterCoverPhoto--;
@@ -469,7 +469,7 @@ api.CreateContactGroupRequest buildCreateContactGroupRequest() {
 void checkCreateContactGroupRequest(api.CreateContactGroupRequest o) {
   buildCounterCreateContactGroupRequest++;
   if (buildCounterCreateContactGroupRequest < 3) {
-    checkContactGroup(o.contactGroup);
+    checkContactGroup(o.contactGroup as api.ContactGroup);
   }
   buildCounterCreateContactGroupRequest--;
 }
@@ -511,7 +511,7 @@ api.DeleteContactPhotoResponse buildDeleteContactPhotoResponse() {
 void checkDeleteContactPhotoResponse(api.DeleteContactPhotoResponse o) {
   buildCounterDeleteContactPhotoResponse++;
   if (buildCounterDeleteContactPhotoResponse < 3) {
-    checkPerson(o.person);
+    checkPerson(o.person as api.Person);
   }
   buildCounterDeleteContactPhotoResponse--;
 }
@@ -555,7 +555,7 @@ void checkEmailAddress(api.EmailAddress o) {
   if (buildCounterEmailAddress < 3) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -594,9 +594,9 @@ api.Event buildEvent() {
 void checkEvent(api.Event o) {
   buildCounterEvent++;
   if (buildCounterEvent < 3) {
-    checkDate(o.date);
+    checkDate(o.date as api.Date);
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterEvent--;
@@ -620,7 +620,7 @@ void checkExternalId(api.ExternalId o) {
   buildCounterExternalId++;
   if (buildCounterExternalId < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -644,7 +644,7 @@ void checkFieldMetadata(api.FieldMetadata o) {
   buildCounterFieldMetadata++;
   if (buildCounterFieldMetadata < 3) {
     unittest.expect(o.primary, unittest.isTrue);
-    checkSource(o.source);
+    checkSource(o.source as api.Source);
     unittest.expect(o.verified, unittest.isTrue);
   }
   buildCounterFieldMetadata--;
@@ -665,7 +665,7 @@ api.FileAs buildFileAs() {
 void checkFileAs(api.FileAs o) {
   buildCounterFileAs++;
   if (buildCounterFileAs < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterFileAs--;
@@ -690,7 +690,7 @@ void checkGender(api.Gender o) {
   if (buildCounterGender < 3) {
     unittest.expect(o.addressMeAs, unittest.equals('foo'));
     unittest.expect(o.formattedValue, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterGender--;
@@ -705,8 +705,8 @@ core.List<api.PersonResponse> buildUnnamed4865() {
 
 void checkUnnamed4865(core.List<api.PersonResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPersonResponse(o[0]);
-  checkPersonResponse(o[1]);
+  checkPersonResponse(o[0] as api.PersonResponse);
+  checkPersonResponse(o[1] as api.PersonResponse);
 }
 
 core.int buildCounterGetPeopleResponse = 0;
@@ -749,7 +749,7 @@ void checkImClient(api.ImClient o) {
   if (buildCounterImClient < 3) {
     unittest.expect(o.formattedProtocol, unittest.equals('foo'));
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.protocol, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.username, unittest.equals('foo'));
@@ -772,7 +772,7 @@ api.Interest buildInterest() {
 void checkInterest(api.Interest o) {
   buildCounterInterest++;
   if (buildCounterInterest < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterInterest--;
@@ -787,8 +787,8 @@ core.List<api.Person> buildUnnamed4866() {
 
 void checkUnnamed4866(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerson(o[0]);
-  checkPerson(o[1]);
+  checkPerson(o[0] as api.Person);
+  checkPerson(o[1] as api.Person);
 }
 
 core.int buildCounterListConnectionsResponse = 0;
@@ -827,8 +827,8 @@ core.List<api.ContactGroup> buildUnnamed4867() {
 
 void checkUnnamed4867(core.List<api.ContactGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkContactGroup(o[0]);
-  checkContactGroup(o[1]);
+  checkContactGroup(o[0] as api.ContactGroup);
+  checkContactGroup(o[1] as api.ContactGroup);
 }
 
 core.int buildCounterListContactGroupsResponse = 0;
@@ -865,8 +865,8 @@ core.List<api.Person> buildUnnamed4868() {
 
 void checkUnnamed4868(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerson(o[0]);
-  checkPerson(o[1]);
+  checkPerson(o[0] as api.Person);
+  checkPerson(o[1] as api.Person);
 }
 
 core.int buildCounterListDirectoryPeopleResponse = 0;
@@ -901,8 +901,8 @@ core.List<api.Person> buildUnnamed4869() {
 
 void checkUnnamed4869(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerson(o[0]);
-  checkPerson(o[1]);
+  checkPerson(o[0] as api.Person);
+  checkPerson(o[1] as api.Person);
 }
 
 core.int buildCounterListOtherContactsResponse = 0;
@@ -943,7 +943,7 @@ api.Locale buildLocale() {
 void checkLocale(api.Locale o) {
   buildCounterLocale++;
   if (buildCounterLocale < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterLocale--;
@@ -975,7 +975,7 @@ void checkLocation(api.Location o) {
     unittest.expect(o.deskCode, unittest.equals('foo'));
     unittest.expect(o.floor, unittest.equals('foo'));
     unittest.expect(o.floorSection, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -998,9 +998,10 @@ api.Membership buildMembership() {
 void checkMembership(api.Membership o) {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
-    checkContactGroupMembership(o.contactGroupMembership);
-    checkDomainMembership(o.domainMembership);
-    checkFieldMetadata(o.metadata);
+    checkContactGroupMembership(
+        o.contactGroupMembership as api.ContactGroupMembership);
+    checkDomainMembership(o.domainMembership as api.DomainMembership);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
   }
   buildCounterMembership--;
 }
@@ -1023,7 +1024,7 @@ void checkMiscKeyword(api.MiscKeyword o) {
   buildCounterMiscKeyword++;
   if (buildCounterMiscKeyword < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -1160,7 +1161,7 @@ void checkName(api.Name o) {
     unittest.expect(o.givenName, unittest.equals('foo'));
     unittest.expect(o.honorificPrefix, unittest.equals('foo'));
     unittest.expect(o.honorificSuffix, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.middleName, unittest.equals('foo'));
     unittest.expect(o.phoneticFamilyName, unittest.equals('foo'));
     unittest.expect(o.phoneticFullName, unittest.equals('foo'));
@@ -1189,7 +1190,7 @@ api.Nickname buildNickname() {
 void checkNickname(api.Nickname o) {
   buildCounterNickname++;
   if (buildCounterNickname < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -1211,7 +1212,7 @@ api.Occupation buildOccupation() {
 void checkOccupation(api.Occupation o) {
   buildCounterOccupation++;
   if (buildCounterOccupation < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterOccupation--;
@@ -1247,14 +1248,14 @@ void checkOrganization(api.Organization o) {
     unittest.expect(o.current, unittest.isTrue);
     unittest.expect(o.department, unittest.equals('foo'));
     unittest.expect(o.domain, unittest.equals('foo'));
-    checkDate(o.endDate);
+    checkDate(o.endDate as api.Date);
     unittest.expect(o.formattedType, unittest.equals('foo'));
     unittest.expect(o.jobDescription, unittest.equals('foo'));
     unittest.expect(o.location, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.phoneticName, unittest.equals('foo'));
-    checkDate(o.startDate);
+    checkDate(o.startDate as api.Date);
     unittest.expect(o.symbol, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -1271,8 +1272,8 @@ core.List<api.Address> buildUnnamed4874() {
 
 void checkUnnamed4874(core.List<api.Address> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAddress(o[0]);
-  checkAddress(o[1]);
+  checkAddress(o[0] as api.Address);
+  checkAddress(o[1] as api.Address);
 }
 
 core.List<api.AgeRangeType> buildUnnamed4875() {
@@ -1284,8 +1285,8 @@ core.List<api.AgeRangeType> buildUnnamed4875() {
 
 void checkUnnamed4875(core.List<api.AgeRangeType> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAgeRangeType(o[0]);
-  checkAgeRangeType(o[1]);
+  checkAgeRangeType(o[0] as api.AgeRangeType);
+  checkAgeRangeType(o[1] as api.AgeRangeType);
 }
 
 core.List<api.Biography> buildUnnamed4876() {
@@ -1297,8 +1298,8 @@ core.List<api.Biography> buildUnnamed4876() {
 
 void checkUnnamed4876(core.List<api.Biography> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBiography(o[0]);
-  checkBiography(o[1]);
+  checkBiography(o[0] as api.Biography);
+  checkBiography(o[1] as api.Biography);
 }
 
 core.List<api.Birthday> buildUnnamed4877() {
@@ -1310,8 +1311,8 @@ core.List<api.Birthday> buildUnnamed4877() {
 
 void checkUnnamed4877(core.List<api.Birthday> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBirthday(o[0]);
-  checkBirthday(o[1]);
+  checkBirthday(o[0] as api.Birthday);
+  checkBirthday(o[1] as api.Birthday);
 }
 
 core.List<api.BraggingRights> buildUnnamed4878() {
@@ -1323,8 +1324,8 @@ core.List<api.BraggingRights> buildUnnamed4878() {
 
 void checkUnnamed4878(core.List<api.BraggingRights> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBraggingRights(o[0]);
-  checkBraggingRights(o[1]);
+  checkBraggingRights(o[0] as api.BraggingRights);
+  checkBraggingRights(o[1] as api.BraggingRights);
 }
 
 core.List<api.CalendarUrl> buildUnnamed4879() {
@@ -1336,8 +1337,8 @@ core.List<api.CalendarUrl> buildUnnamed4879() {
 
 void checkUnnamed4879(core.List<api.CalendarUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCalendarUrl(o[0]);
-  checkCalendarUrl(o[1]);
+  checkCalendarUrl(o[0] as api.CalendarUrl);
+  checkCalendarUrl(o[1] as api.CalendarUrl);
 }
 
 core.List<api.ClientData> buildUnnamed4880() {
@@ -1349,8 +1350,8 @@ core.List<api.ClientData> buildUnnamed4880() {
 
 void checkUnnamed4880(core.List<api.ClientData> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClientData(o[0]);
-  checkClientData(o[1]);
+  checkClientData(o[0] as api.ClientData);
+  checkClientData(o[1] as api.ClientData);
 }
 
 core.List<api.CoverPhoto> buildUnnamed4881() {
@@ -1362,8 +1363,8 @@ core.List<api.CoverPhoto> buildUnnamed4881() {
 
 void checkUnnamed4881(core.List<api.CoverPhoto> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCoverPhoto(o[0]);
-  checkCoverPhoto(o[1]);
+  checkCoverPhoto(o[0] as api.CoverPhoto);
+  checkCoverPhoto(o[1] as api.CoverPhoto);
 }
 
 core.List<api.EmailAddress> buildUnnamed4882() {
@@ -1375,8 +1376,8 @@ core.List<api.EmailAddress> buildUnnamed4882() {
 
 void checkUnnamed4882(core.List<api.EmailAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEmailAddress(o[0]);
-  checkEmailAddress(o[1]);
+  checkEmailAddress(o[0] as api.EmailAddress);
+  checkEmailAddress(o[1] as api.EmailAddress);
 }
 
 core.List<api.Event> buildUnnamed4883() {
@@ -1388,8 +1389,8 @@ core.List<api.Event> buildUnnamed4883() {
 
 void checkUnnamed4883(core.List<api.Event> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEvent(o[0]);
-  checkEvent(o[1]);
+  checkEvent(o[0] as api.Event);
+  checkEvent(o[1] as api.Event);
 }
 
 core.List<api.ExternalId> buildUnnamed4884() {
@@ -1401,8 +1402,8 @@ core.List<api.ExternalId> buildUnnamed4884() {
 
 void checkUnnamed4884(core.List<api.ExternalId> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExternalId(o[0]);
-  checkExternalId(o[1]);
+  checkExternalId(o[0] as api.ExternalId);
+  checkExternalId(o[1] as api.ExternalId);
 }
 
 core.List<api.FileAs> buildUnnamed4885() {
@@ -1414,8 +1415,8 @@ core.List<api.FileAs> buildUnnamed4885() {
 
 void checkUnnamed4885(core.List<api.FileAs> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFileAs(o[0]);
-  checkFileAs(o[1]);
+  checkFileAs(o[0] as api.FileAs);
+  checkFileAs(o[1] as api.FileAs);
 }
 
 core.List<api.Gender> buildUnnamed4886() {
@@ -1427,8 +1428,8 @@ core.List<api.Gender> buildUnnamed4886() {
 
 void checkUnnamed4886(core.List<api.Gender> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGender(o[0]);
-  checkGender(o[1]);
+  checkGender(o[0] as api.Gender);
+  checkGender(o[1] as api.Gender);
 }
 
 core.List<api.ImClient> buildUnnamed4887() {
@@ -1440,8 +1441,8 @@ core.List<api.ImClient> buildUnnamed4887() {
 
 void checkUnnamed4887(core.List<api.ImClient> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImClient(o[0]);
-  checkImClient(o[1]);
+  checkImClient(o[0] as api.ImClient);
+  checkImClient(o[1] as api.ImClient);
 }
 
 core.List<api.Interest> buildUnnamed4888() {
@@ -1453,8 +1454,8 @@ core.List<api.Interest> buildUnnamed4888() {
 
 void checkUnnamed4888(core.List<api.Interest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInterest(o[0]);
-  checkInterest(o[1]);
+  checkInterest(o[0] as api.Interest);
+  checkInterest(o[1] as api.Interest);
 }
 
 core.List<api.Locale> buildUnnamed4889() {
@@ -1466,8 +1467,8 @@ core.List<api.Locale> buildUnnamed4889() {
 
 void checkUnnamed4889(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocale(o[0]);
-  checkLocale(o[1]);
+  checkLocale(o[0] as api.Locale);
+  checkLocale(o[1] as api.Locale);
 }
 
 core.List<api.Location> buildUnnamed4890() {
@@ -1479,8 +1480,8 @@ core.List<api.Location> buildUnnamed4890() {
 
 void checkUnnamed4890(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.List<api.Membership> buildUnnamed4891() {
@@ -1492,8 +1493,8 @@ core.List<api.Membership> buildUnnamed4891() {
 
 void checkUnnamed4891(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembership(o[0]);
-  checkMembership(o[1]);
+  checkMembership(o[0] as api.Membership);
+  checkMembership(o[1] as api.Membership);
 }
 
 core.List<api.MiscKeyword> buildUnnamed4892() {
@@ -1505,8 +1506,8 @@ core.List<api.MiscKeyword> buildUnnamed4892() {
 
 void checkUnnamed4892(core.List<api.MiscKeyword> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMiscKeyword(o[0]);
-  checkMiscKeyword(o[1]);
+  checkMiscKeyword(o[0] as api.MiscKeyword);
+  checkMiscKeyword(o[1] as api.MiscKeyword);
 }
 
 core.List<api.Name> buildUnnamed4893() {
@@ -1518,8 +1519,8 @@ core.List<api.Name> buildUnnamed4893() {
 
 void checkUnnamed4893(core.List<api.Name> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkName(o[0]);
-  checkName(o[1]);
+  checkName(o[0] as api.Name);
+  checkName(o[1] as api.Name);
 }
 
 core.List<api.Nickname> buildUnnamed4894() {
@@ -1531,8 +1532,8 @@ core.List<api.Nickname> buildUnnamed4894() {
 
 void checkUnnamed4894(core.List<api.Nickname> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNickname(o[0]);
-  checkNickname(o[1]);
+  checkNickname(o[0] as api.Nickname);
+  checkNickname(o[1] as api.Nickname);
 }
 
 core.List<api.Occupation> buildUnnamed4895() {
@@ -1544,8 +1545,8 @@ core.List<api.Occupation> buildUnnamed4895() {
 
 void checkUnnamed4895(core.List<api.Occupation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOccupation(o[0]);
-  checkOccupation(o[1]);
+  checkOccupation(o[0] as api.Occupation);
+  checkOccupation(o[1] as api.Occupation);
 }
 
 core.List<api.Organization> buildUnnamed4896() {
@@ -1557,8 +1558,8 @@ core.List<api.Organization> buildUnnamed4896() {
 
 void checkUnnamed4896(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrganization(o[0]);
-  checkOrganization(o[1]);
+  checkOrganization(o[0] as api.Organization);
+  checkOrganization(o[1] as api.Organization);
 }
 
 core.List<api.PhoneNumber> buildUnnamed4897() {
@@ -1570,8 +1571,8 @@ core.List<api.PhoneNumber> buildUnnamed4897() {
 
 void checkUnnamed4897(core.List<api.PhoneNumber> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPhoneNumber(o[0]);
-  checkPhoneNumber(o[1]);
+  checkPhoneNumber(o[0] as api.PhoneNumber);
+  checkPhoneNumber(o[1] as api.PhoneNumber);
 }
 
 core.List<api.Photo> buildUnnamed4898() {
@@ -1583,8 +1584,8 @@ core.List<api.Photo> buildUnnamed4898() {
 
 void checkUnnamed4898(core.List<api.Photo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPhoto(o[0]);
-  checkPhoto(o[1]);
+  checkPhoto(o[0] as api.Photo);
+  checkPhoto(o[1] as api.Photo);
 }
 
 core.List<api.Relation> buildUnnamed4899() {
@@ -1596,8 +1597,8 @@ core.List<api.Relation> buildUnnamed4899() {
 
 void checkUnnamed4899(core.List<api.Relation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelation(o[0]);
-  checkRelation(o[1]);
+  checkRelation(o[0] as api.Relation);
+  checkRelation(o[1] as api.Relation);
 }
 
 core.List<api.RelationshipInterest> buildUnnamed4900() {
@@ -1609,8 +1610,8 @@ core.List<api.RelationshipInterest> buildUnnamed4900() {
 
 void checkUnnamed4900(core.List<api.RelationshipInterest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelationshipInterest(o[0]);
-  checkRelationshipInterest(o[1]);
+  checkRelationshipInterest(o[0] as api.RelationshipInterest);
+  checkRelationshipInterest(o[1] as api.RelationshipInterest);
 }
 
 core.List<api.RelationshipStatus> buildUnnamed4901() {
@@ -1622,8 +1623,8 @@ core.List<api.RelationshipStatus> buildUnnamed4901() {
 
 void checkUnnamed4901(core.List<api.RelationshipStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelationshipStatus(o[0]);
-  checkRelationshipStatus(o[1]);
+  checkRelationshipStatus(o[0] as api.RelationshipStatus);
+  checkRelationshipStatus(o[1] as api.RelationshipStatus);
 }
 
 core.List<api.Residence> buildUnnamed4902() {
@@ -1635,8 +1636,8 @@ core.List<api.Residence> buildUnnamed4902() {
 
 void checkUnnamed4902(core.List<api.Residence> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResidence(o[0]);
-  checkResidence(o[1]);
+  checkResidence(o[0] as api.Residence);
+  checkResidence(o[1] as api.Residence);
 }
 
 core.List<api.SipAddress> buildUnnamed4903() {
@@ -1648,8 +1649,8 @@ core.List<api.SipAddress> buildUnnamed4903() {
 
 void checkUnnamed4903(core.List<api.SipAddress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSipAddress(o[0]);
-  checkSipAddress(o[1]);
+  checkSipAddress(o[0] as api.SipAddress);
+  checkSipAddress(o[1] as api.SipAddress);
 }
 
 core.List<api.Skill> buildUnnamed4904() {
@@ -1661,8 +1662,8 @@ core.List<api.Skill> buildUnnamed4904() {
 
 void checkUnnamed4904(core.List<api.Skill> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSkill(o[0]);
-  checkSkill(o[1]);
+  checkSkill(o[0] as api.Skill);
+  checkSkill(o[1] as api.Skill);
 }
 
 core.List<api.Tagline> buildUnnamed4905() {
@@ -1674,8 +1675,8 @@ core.List<api.Tagline> buildUnnamed4905() {
 
 void checkUnnamed4905(core.List<api.Tagline> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTagline(o[0]);
-  checkTagline(o[1]);
+  checkTagline(o[0] as api.Tagline);
+  checkTagline(o[1] as api.Tagline);
 }
 
 core.List<api.Url> buildUnnamed4906() {
@@ -1687,8 +1688,8 @@ core.List<api.Url> buildUnnamed4906() {
 
 void checkUnnamed4906(core.List<api.Url> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUrl(o[0]);
-  checkUrl(o[1]);
+  checkUrl(o[0] as api.Url);
+  checkUrl(o[1] as api.Url);
 }
 
 core.List<api.UserDefined> buildUnnamed4907() {
@@ -1700,8 +1701,8 @@ core.List<api.UserDefined> buildUnnamed4907() {
 
 void checkUnnamed4907(core.List<api.UserDefined> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserDefined(o[0]);
-  checkUserDefined(o[1]);
+  checkUserDefined(o[0] as api.UserDefined);
+  checkUserDefined(o[1] as api.UserDefined);
 }
 
 core.int buildCounterPerson = 0;
@@ -1775,7 +1776,7 @@ void checkPerson(api.Person o) {
     checkUnnamed4889(o.locales);
     checkUnnamed4890(o.locations);
     checkUnnamed4891(o.memberships);
-    checkPersonMetadata(o.metadata);
+    checkPersonMetadata(o.metadata as api.PersonMetadata);
     checkUnnamed4892(o.miscKeywords);
     checkUnnamed4893(o.names);
     checkUnnamed4894(o.nicknames);
@@ -1832,8 +1833,8 @@ core.List<api.Source> buildUnnamed4910() {
 
 void checkUnnamed4910(core.List<api.Source> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSource(o[0]);
-  checkSource(o[1]);
+  checkSource(o[0] as api.Source);
+  checkSource(o[1] as api.Source);
 }
 
 core.int buildCounterPersonMetadata = 0;
@@ -1881,9 +1882,9 @@ void checkPersonResponse(api.PersonResponse o) {
   buildCounterPersonResponse++;
   if (buildCounterPersonResponse < 3) {
     unittest.expect(o.httpStatusCode, unittest.equals(42));
-    checkPerson(o.person);
+    checkPerson(o.person as api.Person);
     unittest.expect(o.requestedResourceName, unittest.equals('foo'));
-    checkStatus(o.status);
+    checkStatus(o.status as api.Status);
   }
   buildCounterPersonResponse--;
 }
@@ -1908,7 +1909,7 @@ void checkPhoneNumber(api.PhoneNumber o) {
   if (buildCounterPhoneNumber < 3) {
     unittest.expect(o.canonicalForm, unittest.equals('foo'));
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -1932,7 +1933,7 @@ void checkPhoto(api.Photo o) {
   buildCounterPhoto++;
   if (buildCounterPhoto < 3) {
     unittest.expect(o.default_, unittest.isTrue);
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterPhoto--;
@@ -1990,7 +1991,7 @@ void checkRelation(api.Relation o) {
   buildCounterRelation++;
   if (buildCounterRelation < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.person, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -2014,7 +2015,7 @@ void checkRelationshipInterest(api.RelationshipInterest o) {
   buildCounterRelationshipInterest++;
   if (buildCounterRelationshipInterest < 3) {
     unittest.expect(o.formattedValue, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterRelationshipInterest--;
@@ -2037,7 +2038,7 @@ void checkRelationshipStatus(api.RelationshipStatus o) {
   buildCounterRelationshipStatus++;
   if (buildCounterRelationshipStatus < 3) {
     unittest.expect(o.formattedValue, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterRelationshipStatus--;
@@ -2060,7 +2061,7 @@ void checkResidence(api.Residence o) {
   buildCounterResidence++;
   if (buildCounterResidence < 3) {
     unittest.expect(o.current, unittest.isTrue);
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterResidence--;
@@ -2075,8 +2076,8 @@ core.List<api.Person> buildUnnamed4912() {
 
 void checkUnnamed4912(core.List<api.Person> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPerson(o[0]);
-  checkPerson(o[1]);
+  checkPerson(o[0] as api.Person);
+  checkPerson(o[1] as api.Person);
 }
 
 core.int buildCounterSearchDirectoryPeopleResponse = 0;
@@ -2120,7 +2121,7 @@ void checkSipAddress(api.SipAddress o) {
   buildCounterSipAddress++;
   if (buildCounterSipAddress < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -2142,7 +2143,7 @@ api.Skill buildSkill() {
 void checkSkill(api.Skill o) {
   buildCounterSkill++;
   if (buildCounterSkill < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterSkill--;
@@ -2168,7 +2169,7 @@ void checkSource(api.Source o) {
   if (buildCounterSource < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkProfileMetadata(o.profileMetadata);
+    checkProfileMetadata(o.profileMetadata as api.ProfileMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -2255,7 +2256,7 @@ api.Tagline buildTagline() {
 void checkTagline(api.Tagline o) {
   buildCounterTagline++;
   if (buildCounterTagline < 3) {
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterTagline--;
@@ -2275,7 +2276,7 @@ api.UpdateContactGroupRequest buildUpdateContactGroupRequest() {
 void checkUpdateContactGroupRequest(api.UpdateContactGroupRequest o) {
   buildCounterUpdateContactGroupRequest++;
   if (buildCounterUpdateContactGroupRequest < 3) {
-    checkContactGroup(o.contactGroup);
+    checkContactGroup(o.contactGroup as api.ContactGroup);
   }
   buildCounterUpdateContactGroupRequest--;
 }
@@ -2330,7 +2331,7 @@ api.UpdateContactPhotoResponse buildUpdateContactPhotoResponse() {
 void checkUpdateContactPhotoResponse(api.UpdateContactPhotoResponse o) {
   buildCounterUpdateContactPhotoResponse++;
   if (buildCounterUpdateContactPhotoResponse < 3) {
-    checkPerson(o.person);
+    checkPerson(o.person as api.Person);
   }
   buildCounterUpdateContactPhotoResponse--;
 }
@@ -2353,7 +2354,7 @@ void checkUrl(api.Url o) {
   buildCounterUrl++;
   if (buildCounterUrl < 3) {
     unittest.expect(o.formattedType, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
   }
@@ -2377,7 +2378,7 @@ void checkUserDefined(api.UserDefined o) {
   buildCounterUserDefined++;
   if (buildCounterUserDefined < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkFieldMetadata(o.metadata);
+    checkFieldMetadata(o.metadata as api.FieldMetadata);
     unittest.expect(o.value, unittest.equals('foo'));
   }
   buildCounterUserDefined--;
@@ -2544,7 +2545,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
-      checkAddress(od);
+      checkAddress(od as api.Address);
     });
   });
 
@@ -2552,7 +2553,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAgeRangeType();
       var od = api.AgeRangeType.fromJson(o.toJson());
-      checkAgeRangeType(od);
+      checkAgeRangeType(od as api.AgeRangeType);
     });
   });
 
@@ -2560,7 +2561,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetContactGroupsResponse();
       var od = api.BatchGetContactGroupsResponse.fromJson(o.toJson());
-      checkBatchGetContactGroupsResponse(od);
+      checkBatchGetContactGroupsResponse(
+          od as api.BatchGetContactGroupsResponse);
     });
   });
 
@@ -2568,7 +2570,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBiography();
       var od = api.Biography.fromJson(o.toJson());
-      checkBiography(od);
+      checkBiography(od as api.Biography);
     });
   });
 
@@ -2576,7 +2578,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBirthday();
       var od = api.Birthday.fromJson(o.toJson());
-      checkBirthday(od);
+      checkBirthday(od as api.Birthday);
     });
   });
 
@@ -2584,7 +2586,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBraggingRights();
       var od = api.BraggingRights.fromJson(o.toJson());
-      checkBraggingRights(od);
+      checkBraggingRights(od as api.BraggingRights);
     });
   });
 
@@ -2592,7 +2594,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCalendarUrl();
       var od = api.CalendarUrl.fromJson(o.toJson());
-      checkCalendarUrl(od);
+      checkCalendarUrl(od as api.CalendarUrl);
     });
   });
 
@@ -2600,7 +2602,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClientData();
       var od = api.ClientData.fromJson(o.toJson());
-      checkClientData(od);
+      checkClientData(od as api.ClientData);
     });
   });
 
@@ -2608,7 +2610,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContactGroup();
       var od = api.ContactGroup.fromJson(o.toJson());
-      checkContactGroup(od);
+      checkContactGroup(od as api.ContactGroup);
     });
   });
 
@@ -2616,7 +2618,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContactGroupMembership();
       var od = api.ContactGroupMembership.fromJson(o.toJson());
-      checkContactGroupMembership(od);
+      checkContactGroupMembership(od as api.ContactGroupMembership);
     });
   });
 
@@ -2624,7 +2626,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContactGroupMetadata();
       var od = api.ContactGroupMetadata.fromJson(o.toJson());
-      checkContactGroupMetadata(od);
+      checkContactGroupMetadata(od as api.ContactGroupMetadata);
     });
   });
 
@@ -2632,7 +2634,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContactGroupResponse();
       var od = api.ContactGroupResponse.fromJson(o.toJson());
-      checkContactGroupResponse(od);
+      checkContactGroupResponse(od as api.ContactGroupResponse);
     });
   });
 
@@ -2641,7 +2643,8 @@ void main() {
       var o = buildCopyOtherContactToMyContactsGroupRequest();
       var od =
           api.CopyOtherContactToMyContactsGroupRequest.fromJson(o.toJson());
-      checkCopyOtherContactToMyContactsGroupRequest(od);
+      checkCopyOtherContactToMyContactsGroupRequest(
+          od as api.CopyOtherContactToMyContactsGroupRequest);
     });
   });
 
@@ -2649,7 +2652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCoverPhoto();
       var od = api.CoverPhoto.fromJson(o.toJson());
-      checkCoverPhoto(od);
+      checkCoverPhoto(od as api.CoverPhoto);
     });
   });
 
@@ -2657,7 +2660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateContactGroupRequest();
       var od = api.CreateContactGroupRequest.fromJson(o.toJson());
-      checkCreateContactGroupRequest(od);
+      checkCreateContactGroupRequest(od as api.CreateContactGroupRequest);
     });
   });
 
@@ -2665,7 +2668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -2673,7 +2676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteContactPhotoResponse();
       var od = api.DeleteContactPhotoResponse.fromJson(o.toJson());
-      checkDeleteContactPhotoResponse(od);
+      checkDeleteContactPhotoResponse(od as api.DeleteContactPhotoResponse);
     });
   });
 
@@ -2681,7 +2684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomainMembership();
       var od = api.DomainMembership.fromJson(o.toJson());
-      checkDomainMembership(od);
+      checkDomainMembership(od as api.DomainMembership);
     });
   });
 
@@ -2689,7 +2692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmailAddress();
       var od = api.EmailAddress.fromJson(o.toJson());
-      checkEmailAddress(od);
+      checkEmailAddress(od as api.EmailAddress);
     });
   });
 
@@ -2697,7 +2700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2705,7 +2708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
-      checkEvent(od);
+      checkEvent(od as api.Event);
     });
   });
 
@@ -2713,7 +2716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExternalId();
       var od = api.ExternalId.fromJson(o.toJson());
-      checkExternalId(od);
+      checkExternalId(od as api.ExternalId);
     });
   });
 
@@ -2721,7 +2724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFieldMetadata();
       var od = api.FieldMetadata.fromJson(o.toJson());
-      checkFieldMetadata(od);
+      checkFieldMetadata(od as api.FieldMetadata);
     });
   });
 
@@ -2729,7 +2732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileAs();
       var od = api.FileAs.fromJson(o.toJson());
-      checkFileAs(od);
+      checkFileAs(od as api.FileAs);
     });
   });
 
@@ -2737,7 +2740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGender();
       var od = api.Gender.fromJson(o.toJson());
-      checkGender(od);
+      checkGender(od as api.Gender);
     });
   });
 
@@ -2745,7 +2748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPeopleResponse();
       var od = api.GetPeopleResponse.fromJson(o.toJson());
-      checkGetPeopleResponse(od);
+      checkGetPeopleResponse(od as api.GetPeopleResponse);
     });
   });
 
@@ -2753,7 +2756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImClient();
       var od = api.ImClient.fromJson(o.toJson());
-      checkImClient(od);
+      checkImClient(od as api.ImClient);
     });
   });
 
@@ -2761,7 +2764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInterest();
       var od = api.Interest.fromJson(o.toJson());
-      checkInterest(od);
+      checkInterest(od as api.Interest);
     });
   });
 
@@ -2769,7 +2772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListConnectionsResponse();
       var od = api.ListConnectionsResponse.fromJson(o.toJson());
-      checkListConnectionsResponse(od);
+      checkListConnectionsResponse(od as api.ListConnectionsResponse);
     });
   });
 
@@ -2777,7 +2780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListContactGroupsResponse();
       var od = api.ListContactGroupsResponse.fromJson(o.toJson());
-      checkListContactGroupsResponse(od);
+      checkListContactGroupsResponse(od as api.ListContactGroupsResponse);
     });
   });
 
@@ -2785,7 +2788,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDirectoryPeopleResponse();
       var od = api.ListDirectoryPeopleResponse.fromJson(o.toJson());
-      checkListDirectoryPeopleResponse(od);
+      checkListDirectoryPeopleResponse(od as api.ListDirectoryPeopleResponse);
     });
   });
 
@@ -2793,7 +2796,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOtherContactsResponse();
       var od = api.ListOtherContactsResponse.fromJson(o.toJson());
-      checkListOtherContactsResponse(od);
+      checkListOtherContactsResponse(od as api.ListOtherContactsResponse);
     });
   });
 
@@ -2801,7 +2804,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocale();
       var od = api.Locale.fromJson(o.toJson());
-      checkLocale(od);
+      checkLocale(od as api.Locale);
     });
   });
 
@@ -2809,7 +2812,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -2817,7 +2820,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
-      checkMembership(od);
+      checkMembership(od as api.Membership);
     });
   });
 
@@ -2825,7 +2828,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMiscKeyword();
       var od = api.MiscKeyword.fromJson(o.toJson());
-      checkMiscKeyword(od);
+      checkMiscKeyword(od as api.MiscKeyword);
     });
   });
 
@@ -2833,7 +2836,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyContactGroupMembersRequest();
       var od = api.ModifyContactGroupMembersRequest.fromJson(o.toJson());
-      checkModifyContactGroupMembersRequest(od);
+      checkModifyContactGroupMembersRequest(
+          od as api.ModifyContactGroupMembersRequest);
     });
   });
 
@@ -2841,7 +2845,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyContactGroupMembersResponse();
       var od = api.ModifyContactGroupMembersResponse.fromJson(o.toJson());
-      checkModifyContactGroupMembersResponse(od);
+      checkModifyContactGroupMembersResponse(
+          od as api.ModifyContactGroupMembersResponse);
     });
   });
 
@@ -2849,7 +2854,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildName();
       var od = api.Name.fromJson(o.toJson());
-      checkName(od);
+      checkName(od as api.Name);
     });
   });
 
@@ -2857,7 +2862,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNickname();
       var od = api.Nickname.fromJson(o.toJson());
-      checkNickname(od);
+      checkNickname(od as api.Nickname);
     });
   });
 
@@ -2865,7 +2870,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOccupation();
       var od = api.Occupation.fromJson(o.toJson());
-      checkOccupation(od);
+      checkOccupation(od as api.Occupation);
     });
   });
 
@@ -2873,7 +2878,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrganization();
       var od = api.Organization.fromJson(o.toJson());
-      checkOrganization(od);
+      checkOrganization(od as api.Organization);
     });
   });
 
@@ -2881,7 +2886,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPerson();
       var od = api.Person.fromJson(o.toJson());
-      checkPerson(od);
+      checkPerson(od as api.Person);
     });
   });
 
@@ -2889,7 +2894,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPersonMetadata();
       var od = api.PersonMetadata.fromJson(o.toJson());
-      checkPersonMetadata(od);
+      checkPersonMetadata(od as api.PersonMetadata);
     });
   });
 
@@ -2897,7 +2902,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPersonResponse();
       var od = api.PersonResponse.fromJson(o.toJson());
-      checkPersonResponse(od);
+      checkPersonResponse(od as api.PersonResponse);
     });
   });
 
@@ -2905,7 +2910,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPhoneNumber();
       var od = api.PhoneNumber.fromJson(o.toJson());
-      checkPhoneNumber(od);
+      checkPhoneNumber(od as api.PhoneNumber);
     });
   });
 
@@ -2913,7 +2918,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPhoto();
       var od = api.Photo.fromJson(o.toJson());
-      checkPhoto(od);
+      checkPhoto(od as api.Photo);
     });
   });
 
@@ -2921,7 +2926,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileMetadata();
       var od = api.ProfileMetadata.fromJson(o.toJson());
-      checkProfileMetadata(od);
+      checkProfileMetadata(od as api.ProfileMetadata);
     });
   });
 
@@ -2929,7 +2934,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelation();
       var od = api.Relation.fromJson(o.toJson());
-      checkRelation(od);
+      checkRelation(od as api.Relation);
     });
   });
 
@@ -2937,7 +2942,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelationshipInterest();
       var od = api.RelationshipInterest.fromJson(o.toJson());
-      checkRelationshipInterest(od);
+      checkRelationshipInterest(od as api.RelationshipInterest);
     });
   });
 
@@ -2945,7 +2950,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelationshipStatus();
       var od = api.RelationshipStatus.fromJson(o.toJson());
-      checkRelationshipStatus(od);
+      checkRelationshipStatus(od as api.RelationshipStatus);
     });
   });
 
@@ -2953,7 +2958,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResidence();
       var od = api.Residence.fromJson(o.toJson());
-      checkResidence(od);
+      checkResidence(od as api.Residence);
     });
   });
 
@@ -2961,7 +2966,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchDirectoryPeopleResponse();
       var od = api.SearchDirectoryPeopleResponse.fromJson(o.toJson());
-      checkSearchDirectoryPeopleResponse(od);
+      checkSearchDirectoryPeopleResponse(
+          od as api.SearchDirectoryPeopleResponse);
     });
   });
 
@@ -2969,7 +2975,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSipAddress();
       var od = api.SipAddress.fromJson(o.toJson());
-      checkSipAddress(od);
+      checkSipAddress(od as api.SipAddress);
     });
   });
 
@@ -2977,7 +2983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSkill();
       var od = api.Skill.fromJson(o.toJson());
-      checkSkill(od);
+      checkSkill(od as api.Skill);
     });
   });
 
@@ -2985,7 +2991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSource();
       var od = api.Source.fromJson(o.toJson());
-      checkSource(od);
+      checkSource(od as api.Source);
     });
   });
 
@@ -2993,7 +2999,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -3001,7 +3007,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTagline();
       var od = api.Tagline.fromJson(o.toJson());
-      checkTagline(od);
+      checkTagline(od as api.Tagline);
     });
   });
 
@@ -3009,7 +3015,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateContactGroupRequest();
       var od = api.UpdateContactGroupRequest.fromJson(o.toJson());
-      checkUpdateContactGroupRequest(od);
+      checkUpdateContactGroupRequest(od as api.UpdateContactGroupRequest);
     });
   });
 
@@ -3017,7 +3023,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateContactPhotoRequest();
       var od = api.UpdateContactPhotoRequest.fromJson(o.toJson());
-      checkUpdateContactPhotoRequest(od);
+      checkUpdateContactPhotoRequest(od as api.UpdateContactPhotoRequest);
     });
   });
 
@@ -3025,7 +3031,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateContactPhotoResponse();
       var od = api.UpdateContactPhotoResponse.fromJson(o.toJson());
-      checkUpdateContactPhotoResponse(od);
+      checkUpdateContactPhotoResponse(od as api.UpdateContactPhotoResponse);
     });
   });
 
@@ -3033,7 +3039,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrl();
       var od = api.Url.fromJson(o.toJson());
-      checkUrl(od);
+      checkUrl(od as api.Url);
     });
   });
 
@@ -3041,7 +3047,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserDefined();
       var od = api.UserDefined.fromJson(o.toJson());
-      checkUserDefined(od);
+      checkUserDefined(od as api.UserDefined);
     });
   });
 
@@ -3097,7 +3103,8 @@ void main() {
               resourceNames: arg_resourceNames,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetContactGroupsResponse(response);
+        checkBatchGetContactGroupsResponse(
+            response as api.BatchGetContactGroupsResponse);
       })));
     });
 
@@ -3107,8 +3114,9 @@ void main() {
       var arg_request = buildCreateContactGroupRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateContactGroupRequest.fromJson(json);
-        checkCreateContactGroupRequest(obj);
+        var obj = api.CreateContactGroupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateContactGroupRequest(obj as api.CreateContactGroupRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3147,7 +3155,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response);
+        checkContactGroup(response as api.ContactGroup);
       })));
     });
 
@@ -3199,7 +3207,7 @@ void main() {
           .delete(arg_resourceName,
               deleteContacts: arg_deleteContacts, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3251,7 +3259,7 @@ void main() {
           .get(arg_resourceName,
               maxMembers: arg_maxMembers, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response);
+        checkContactGroup(response as api.ContactGroup);
       })));
     });
 
@@ -3310,7 +3318,8 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListContactGroupsResponse(response);
+        checkListContactGroupsResponse(
+            response as api.ListContactGroupsResponse);
       })));
     });
 
@@ -3321,8 +3330,9 @@ void main() {
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateContactGroupRequest.fromJson(json);
-        checkUpdateContactGroupRequest(obj);
+        var obj = api.UpdateContactGroupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateContactGroupRequest(obj as api.UpdateContactGroupRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3362,7 +3372,7 @@ void main() {
       res
           .update(arg_request, arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkContactGroup(response);
+        checkContactGroup(response as api.ContactGroup);
       })));
     });
   });
@@ -3375,8 +3385,10 @@ void main() {
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyContactGroupMembersRequest.fromJson(json);
-        checkModifyContactGroupMembersRequest(obj);
+        var obj = api.ModifyContactGroupMembersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyContactGroupMembersRequest(
+            obj as api.ModifyContactGroupMembersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3417,7 +3429,8 @@ void main() {
       res
           .modify(arg_request, arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkModifyContactGroupMembersResponse(response);
+        checkModifyContactGroupMembersResponse(
+            response as api.ModifyContactGroupMembersResponse);
       })));
     });
   });
@@ -3430,8 +3443,10 @@ void main() {
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CopyOtherContactToMyContactsGroupRequest.fromJson(json);
-        checkCopyOtherContactToMyContactsGroupRequest(obj);
+        var obj = api.CopyOtherContactToMyContactsGroupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCopyOtherContactToMyContactsGroupRequest(
+            obj as api.CopyOtherContactToMyContactsGroupRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3472,7 +3487,7 @@ void main() {
           .copyOtherContactToMyContactsGroup(arg_request, arg_resourceName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPerson(response);
+        checkPerson(response as api.Person);
       })));
     });
 
@@ -3539,7 +3554,8 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOtherContactsResponse(response);
+        checkListOtherContactsResponse(
+            response as api.ListOtherContactsResponse);
       })));
     });
   });
@@ -3553,8 +3569,9 @@ void main() {
       var arg_sources = buildUnnamed4917();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Person.fromJson(json);
-        checkPerson(obj);
+        var obj =
+            api.Person.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPerson(obj as api.Person);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3599,7 +3616,7 @@ void main() {
               sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPerson(response);
+        checkPerson(response as api.Person);
       })));
     });
 
@@ -3647,7 +3664,7 @@ void main() {
       res
           .deleteContact(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3703,7 +3720,8 @@ void main() {
               sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeleteContactPhotoResponse(response);
+        checkDeleteContactPhotoResponse(
+            response as api.DeleteContactPhotoResponse);
       })));
     });
 
@@ -3763,7 +3781,7 @@ void main() {
               sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPerson(response);
+        checkPerson(response as api.Person);
       })));
     });
 
@@ -3825,7 +3843,7 @@ void main() {
               sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetPeopleResponse(response);
+        checkGetPeopleResponse(response as api.GetPeopleResponse);
       })));
     });
 
@@ -3899,7 +3917,8 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDirectoryPeopleResponse(response);
+        checkListDirectoryPeopleResponse(
+            response as api.ListDirectoryPeopleResponse);
       })));
     });
 
@@ -3968,7 +3987,8 @@ void main() {
               sources: arg_sources,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchDirectoryPeopleResponse(response);
+        checkSearchDirectoryPeopleResponse(
+            response as api.SearchDirectoryPeopleResponse);
       })));
     });
 
@@ -3982,8 +4002,9 @@ void main() {
       var arg_updatePersonFields = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Person.fromJson(json);
-        checkPerson(obj);
+        var obj =
+            api.Person.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPerson(obj as api.Person);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4032,7 +4053,7 @@ void main() {
               updatePersonFields: arg_updatePersonFields,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPerson(response);
+        checkPerson(response as api.Person);
       })));
     });
 
@@ -4043,8 +4064,9 @@ void main() {
       var arg_resourceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateContactPhotoRequest.fromJson(json);
-        checkUpdateContactPhotoRequest(obj);
+        var obj = api.UpdateContactPhotoRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateContactPhotoRequest(obj as api.UpdateContactPhotoRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4085,7 +4107,8 @@ void main() {
           .updateContactPhoto(arg_request, arg_resourceName,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUpdateContactPhotoResponse(response);
+        checkUpdateContactPhotoResponse(
+            response as api.UpdateContactPhotoResponse);
       })));
     });
   });
@@ -4167,7 +4190,7 @@ void main() {
               syncToken: arg_syncToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListConnectionsResponse(response);
+        checkListConnectionsResponse(response as api.ListConnectionsResponse);
       })));
     });
   });

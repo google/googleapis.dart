@@ -108,7 +108,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates or updates a project's policy, and returns a copy of the new
@@ -168,7 +170,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -239,7 +243,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Attestor.fromJson(data));
+    return _response.then(
+      (data) => Attestor.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an attestor. Returns NOT_FOUND if the attestor does not exist.
@@ -289,7 +295,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an attestor. Returns NOT_FOUND if the attestor does not exist.
@@ -339,7 +347,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Attestor.fromJson(data));
+    return _response.then(
+      (data) => Attestor.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -407,7 +417,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IamPolicy.fromJson(data));
+    return _response.then(
+      (data) => IamPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists attestors. Returns INVALID_ARGUMENT if the project does not exist.
@@ -474,7 +486,10 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAttestorsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAttestorsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -535,7 +550,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IamPolicy.fromJson(data));
+    return _response.then(
+      (data) => IamPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -598,7 +615,10 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an attestor. Returns NOT_FOUND if the attestor does not exist.
@@ -654,7 +674,9 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Attestor.fromJson(data));
+    return _response.then(
+      (data) => Attestor.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns whether the given Attestation for the given image URI was signed
@@ -714,8 +736,10 @@ class ProjectsAttestorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ValidateAttestationOccurrenceResponse.fromJson(data));
+    return _response.then(
+      (data) => ValidateAttestationOccurrenceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -789,7 +813,9 @@ class ProjectsPolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IamPolicy.fromJson(data));
+    return _response.then(
+      (data) => IamPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -850,7 +876,9 @@ class ProjectsPolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IamPolicy.fromJson(data));
+    return _response.then(
+      (data) => IamPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -913,7 +941,10 @@ class ProjectsPolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1049,7 +1080,8 @@ class AttestationOccurrence {
   AttestationOccurrence.fromJson(core.Map _json) {
     if (_json.containsKey('jwts')) {
       jwts = (_json['jwts'] as core.List)
-          .map<Jwt>((value) => Jwt.fromJson(value))
+          .map<Jwt>((value) =>
+              Jwt.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('serializedPayload')) {
@@ -1057,7 +1089,8 @@ class AttestationOccurrence {
     }
     if (_json.containsKey('signatures')) {
       signatures = (_json['signatures'] as core.List)
-          .map<Signature>((value) => Signature.fromJson(value))
+          .map<Signature>((value) =>
+              Signature.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1108,8 +1141,8 @@ class Attestor {
       updateTime = _json['updateTime'] as core.String;
     }
     if (_json.containsKey('userOwnedGrafeasNote')) {
-      userOwnedGrafeasNote =
-          UserOwnedGrafeasNote.fromJson(_json['userOwnedGrafeasNote']);
+      userOwnedGrafeasNote = UserOwnedGrafeasNote.fromJson(
+          _json['userOwnedGrafeasNote'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1173,7 +1206,8 @@ class AttestorPublicKey {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('pkixPublicKey')) {
-      pkixPublicKey = PkixPublicKey.fromJson(_json['pkixPublicKey']);
+      pkixPublicKey = PkixPublicKey.fromJson(
+          _json['pkixPublicKey'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1252,7 +1286,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1444,7 +1479,8 @@ class IamPolicy {
   IamPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1508,7 +1544,8 @@ class ListAttestorsResponse {
   ListAttestorsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('attestors')) {
       attestors = (_json['attestors'] as core.List)
-          .map<Attestor>((value) => Attestor.fromJson(value))
+          .map<Attestor>((value) =>
+              Attestor.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1636,18 +1673,22 @@ class Policy {
     if (_json.containsKey('admissionWhitelistPatterns')) {
       admissionWhitelistPatterns =
           (_json['admissionWhitelistPatterns'] as core.List)
-              .map<AdmissionWhitelistPattern>(
-                  (value) => AdmissionWhitelistPattern.fromJson(value))
+              .map<AdmissionWhitelistPattern>((value) =>
+                  AdmissionWhitelistPattern.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('clusterAdmissionRules')) {
       clusterAdmissionRules = commons.mapMap<core.Map, AdmissionRule>(
-          _json['clusterAdmissionRules'].cast<core.String, core.Map>(),
-          (core.Map item) => AdmissionRule.fromJson(item));
+          (_json['clusterAdmissionRules']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => AdmissionRule.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('defaultAdmissionRule')) {
-      defaultAdmissionRule =
-          AdmissionRule.fromJson(_json['defaultAdmissionRule']);
+      defaultAdmissionRule = AdmissionRule.fromJson(
+          _json['defaultAdmissionRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -1706,7 +1747,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = IamPolicy.fromJson(_json['policy']);
+      policy = IamPolicy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1878,7 +1920,8 @@ class UserOwnedGrafeasNote {
     }
     if (_json.containsKey('publicKeys')) {
       publicKeys = (_json['publicKeys'] as core.List)
-          .map<AttestorPublicKey>((value) => AttestorPublicKey.fromJson(value))
+          .map<AttestorPublicKey>((value) => AttestorPublicKey.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1917,7 +1960,8 @@ class ValidateAttestationOccurrenceRequest {
 
   ValidateAttestationOccurrenceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('attestation')) {
-      attestation = AttestationOccurrence.fromJson(_json['attestation']);
+      attestation = AttestationOccurrence.fromJson(
+          _json['attestation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('occurrenceNote')) {
       occurrenceNote = _json['occurrenceNote'] as core.String;

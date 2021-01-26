@@ -101,7 +101,10 @@ class ActivityResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => QueryDriveActivityResponse.fromJson(data));
+    return _response.then(
+      (data) => QueryDriveActivityResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -128,16 +131,20 @@ class Action {
 
   Action.fromJson(core.Map _json) {
     if (_json.containsKey('actor')) {
-      actor = Actor.fromJson(_json['actor']);
+      actor =
+          Actor.fromJson(_json['actor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('detail')) {
-      detail = ActionDetail.fromJson(_json['detail']);
+      detail = ActionDetail.fromJson(
+          _json['detail'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('target')) {
-      target = Target.fromJson(_json['target']);
+      target = Target.fromJson(
+          _json['target'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeRange')) {
-      timeRange = TimeRange.fromJson(_json['timeRange']);
+      timeRange = TimeRange.fromJson(
+          _json['timeRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestamp')) {
       timestamp = _json['timestamp'] as core.String;
@@ -204,37 +211,48 @@ class ActionDetail {
 
   ActionDetail.fromJson(core.Map _json) {
     if (_json.containsKey('comment')) {
-      comment = Comment.fromJson(_json['comment']);
+      comment = Comment.fromJson(
+          _json['comment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('create')) {
-      create = Create.fromJson(_json['create']);
+      create = Create.fromJson(
+          _json['create'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('delete')) {
-      delete = Delete.fromJson(_json['delete']);
+      delete = Delete.fromJson(
+          _json['delete'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dlpChange')) {
-      dlpChange = DataLeakPreventionChange.fromJson(_json['dlpChange']);
+      dlpChange = DataLeakPreventionChange.fromJson(
+          _json['dlpChange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('edit')) {
-      edit = Edit.fromJson(_json['edit']);
+      edit =
+          Edit.fromJson(_json['edit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('move')) {
-      move = Move.fromJson(_json['move']);
+      move =
+          Move.fromJson(_json['move'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('permissionChange')) {
-      permissionChange = PermissionChange.fromJson(_json['permissionChange']);
+      permissionChange = PermissionChange.fromJson(
+          _json['permissionChange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reference')) {
-      reference = ApplicationReference.fromJson(_json['reference']);
+      reference = ApplicationReference.fromJson(
+          _json['reference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rename')) {
-      rename = Rename.fromJson(_json['rename']);
+      rename = Rename.fromJson(
+          _json['rename'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('restore')) {
-      restore = Restore.fromJson(_json['restore']);
+      restore = Restore.fromJson(
+          _json['restore'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('settingsChange')) {
-      settingsChange = SettingsChange.fromJson(_json['settingsChange']);
+      settingsChange = SettingsChange.fromJson(
+          _json['settingsChange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -298,19 +316,24 @@ class Actor {
 
   Actor.fromJson(core.Map _json) {
     if (_json.containsKey('administrator')) {
-      administrator = Administrator.fromJson(_json['administrator']);
+      administrator = Administrator.fromJson(
+          _json['administrator'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('anonymous')) {
-      anonymous = AnonymousUser.fromJson(_json['anonymous']);
+      anonymous = AnonymousUser.fromJson(
+          _json['anonymous'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('impersonation')) {
-      impersonation = Impersonation.fromJson(_json['impersonation']);
+      impersonation = Impersonation.fromJson(
+          _json['impersonation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('system')) {
-      system = SystemEvent.fromJson(_json['system']);
+      system = SystemEvent.fromJson(
+          _json['system'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -425,7 +448,8 @@ class Assignment {
 
   Assignment.fromJson(core.Map _json) {
     if (_json.containsKey('assignedUser')) {
-      assignedUser = User.fromJson(_json['assignedUser']);
+      assignedUser = User.fromJson(
+          _json['assignedUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtype')) {
       subtype = _json['subtype'] as core.String;
@@ -462,18 +486,22 @@ class Comment {
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey('assignment')) {
-      assignment = Assignment.fromJson(_json['assignment']);
+      assignment = Assignment.fromJson(
+          _json['assignment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mentionedUsers')) {
       mentionedUsers = (_json['mentionedUsers'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('post')) {
-      post = Post.fromJson(_json['post']);
+      post =
+          Post.fromJson(_json['post'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestion')) {
-      suggestion = Suggestion.fromJson(_json['suggestion']);
+      suggestion = Suggestion.fromJson(
+          _json['suggestion'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -512,10 +540,12 @@ class ConsolidationStrategy {
 
   ConsolidationStrategy.fromJson(core.Map _json) {
     if (_json.containsKey('legacy')) {
-      legacy = Legacy.fromJson(_json['legacy']);
+      legacy = Legacy.fromJson(
+          _json['legacy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('none')) {
-      none = NoConsolidation.fromJson(_json['none']);
+      none = NoConsolidation.fromJson(
+          _json['none'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -540,7 +570,8 @@ class Copy {
 
   Copy.fromJson(core.Map _json) {
     if (_json.containsKey('originalObject')) {
-      originalObject = TargetReference.fromJson(_json['originalObject']);
+      originalObject = TargetReference.fromJson(
+          _json['originalObject'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -571,13 +602,15 @@ class Create {
 
   Create.fromJson(core.Map _json) {
     if (_json.containsKey('copy')) {
-      copy = Copy.fromJson(_json['copy']);
+      copy =
+          Copy.fromJson(_json['copy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('new')) {
-      new_ = New.fromJson(_json['new']);
+      new_ = New.fromJson(_json['new'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('upload')) {
-      upload = Upload.fromJson(_json['upload']);
+      upload = Upload.fromJson(
+          _json['upload'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -715,7 +748,8 @@ class Drive {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('root')) {
-      root = DriveItem.fromJson(_json['root']);
+      root = DriveItem.fromJson(
+          _json['root'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -771,24 +805,29 @@ class DriveActivity {
   DriveActivity.fromJson(core.Map _json) {
     if (_json.containsKey('actions')) {
       actions = (_json['actions'] as core.List)
-          .map<Action>((value) => Action.fromJson(value))
+          .map<Action>((value) =>
+              Action.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('actors')) {
       actors = (_json['actors'] as core.List)
-          .map<Actor>((value) => Actor.fromJson(value))
+          .map<Actor>((value) =>
+              Actor.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('primaryActionDetail')) {
-      primaryActionDetail = ActionDetail.fromJson(_json['primaryActionDetail']);
+      primaryActionDetail = ActionDetail.fromJson(
+          _json['primaryActionDetail'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targets')) {
       targets = (_json['targets'] as core.List)
-          .map<Target>((value) => Target.fromJson(value))
+          .map<Target>((value) =>
+              Target.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timeRange')) {
-      timeRange = TimeRange.fromJson(_json['timeRange']);
+      timeRange = TimeRange.fromJson(
+          _json['timeRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestamp')) {
       timestamp = _json['timestamp'] as core.String;
@@ -891,16 +930,20 @@ class DriveItem {
 
   DriveItem.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(_json['driveFile']);
+      driveFile = DriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveFolder')) {
-      driveFolder = DriveFolder.fromJson(_json['driveFolder']);
+      driveFolder = DriveFolder.fromJson(
+          _json['driveFolder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('file')) {
-      file = File.fromJson(_json['file']);
+      file =
+          File.fromJson(_json['file'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(_json['folder']);
+      folder = Folder.fromJson(
+          _json['folder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -909,7 +952,8 @@ class DriveItem {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = Owner.fromJson(_json['owner']);
+      owner =
+          Owner.fromJson(_json['owner'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -970,16 +1014,20 @@ class DriveItemReference {
 
   DriveItemReference.fromJson(core.Map _json) {
     if (_json.containsKey('driveFile')) {
-      driveFile = DriveFile.fromJson(_json['driveFile']);
+      driveFile = DriveFile.fromJson(
+          _json['driveFile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveFolder')) {
-      driveFolder = DriveFolder.fromJson(_json['driveFolder']);
+      driveFolder = DriveFolder.fromJson(
+          _json['driveFolder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('file')) {
-      file = File.fromJson(_json['file']);
+      file =
+          File.fromJson(_json['file'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('folder')) {
-      folder = Folder.fromJson(_json['folder']);
+      folder = Folder.fromJson(
+          _json['folder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1107,7 +1155,8 @@ class FileComment {
       linkToDiscussion = _json['linkToDiscussion'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = DriveItem.fromJson(_json['parent']);
+      parent = DriveItem.fromJson(
+          _json['parent'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1201,7 +1250,8 @@ class Impersonation {
 
   Impersonation.fromJson(core.Map _json) {
     if (_json.containsKey('impersonatedUser')) {
-      impersonatedUser = User.fromJson(_json['impersonatedUser']);
+      impersonatedUser = User.fromJson(
+          _json['impersonatedUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1278,12 +1328,14 @@ class Move {
   Move.fromJson(core.Map _json) {
     if (_json.containsKey('addedParents')) {
       addedParents = (_json['addedParents'] as core.List)
-          .map<TargetReference>((value) => TargetReference.fromJson(value))
+          .map<TargetReference>((value) => TargetReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('removedParents')) {
       removedParents = (_json['removedParents'] as core.List)
-          .map<TargetReference>((value) => TargetReference.fromJson(value))
+          .map<TargetReference>((value) => TargetReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1348,16 +1400,20 @@ class Owner {
 
   Owner.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = Domain.fromJson(_json['domain']);
+      domain = Domain.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('drive')) {
-      drive = DriveReference.fromJson(_json['drive']);
+      drive = DriveReference.fromJson(
+          _json['drive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teamDrive')) {
-      teamDrive = TeamDriveReference.fromJson(_json['teamDrive']);
+      teamDrive = TeamDriveReference.fromJson(
+          _json['teamDrive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1424,19 +1480,23 @@ class Permission {
       allowDiscovery = _json['allowDiscovery'] as core.bool;
     }
     if (_json.containsKey('anyone')) {
-      anyone = Anyone.fromJson(_json['anyone']);
+      anyone = Anyone.fromJson(
+          _json['anyone'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('domain')) {
-      domain = Domain.fromJson(_json['domain']);
+      domain = Domain.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('group')) {
-      group = Group.fromJson(_json['group']);
+      group =
+          Group.fromJson(_json['group'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1477,12 +1537,14 @@ class PermissionChange {
   PermissionChange.fromJson(core.Map _json) {
     if (_json.containsKey('addedPermissions')) {
       addedPermissions = (_json['addedPermissions'] as core.List)
-          .map<Permission>((value) => Permission.fromJson(value))
+          .map<Permission>((value) =>
+              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('removedPermissions')) {
       removedPermissions = (_json['removedPermissions'] as core.List)
-          .map<Permission>((value) => Permission.fromJson(value))
+          .map<Permission>((value) =>
+              Permission.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1575,8 +1637,9 @@ class QueryDriveActivityRequest {
       ancestorName = _json['ancestorName'] as core.String;
     }
     if (_json.containsKey('consolidationStrategy')) {
-      consolidationStrategy =
-          ConsolidationStrategy.fromJson(_json['consolidationStrategy']);
+      consolidationStrategy = ConsolidationStrategy.fromJson(
+          _json['consolidationStrategy']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filter')) {
       filter = _json['filter'] as core.String;
@@ -1630,7 +1693,8 @@ class QueryDriveActivityResponse {
   QueryDriveActivityResponse.fromJson(core.Map _json) {
     if (_json.containsKey('activities')) {
       activities = (_json['activities'] as core.List)
-          .map<DriveActivity>((value) => DriveActivity.fromJson(value))
+          .map<DriveActivity>((value) => DriveActivity.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1762,7 +1826,8 @@ class SettingsChange {
   SettingsChange.fromJson(core.Map _json) {
     if (_json.containsKey('restrictionChanges')) {
       restrictionChanges = (_json['restrictionChanges'] as core.List)
-          .map<RestrictionChange>((value) => RestrictionChange.fromJson(value))
+          .map<RestrictionChange>((value) => RestrictionChange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1855,16 +1920,20 @@ class Target {
 
   Target.fromJson(core.Map _json) {
     if (_json.containsKey('drive')) {
-      drive = Drive.fromJson(_json['drive']);
+      drive =
+          Drive.fromJson(_json['drive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveItem')) {
-      driveItem = DriveItem.fromJson(_json['driveItem']);
+      driveItem = DriveItem.fromJson(
+          _json['driveItem'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileComment')) {
-      fileComment = FileComment.fromJson(_json['fileComment']);
+      fileComment = FileComment.fromJson(
+          _json['fileComment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teamDrive')) {
-      teamDrive = TeamDrive.fromJson(_json['teamDrive']);
+      teamDrive = TeamDrive.fromJson(
+          _json['teamDrive'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1901,13 +1970,16 @@ class TargetReference {
 
   TargetReference.fromJson(core.Map _json) {
     if (_json.containsKey('drive')) {
-      drive = DriveReference.fromJson(_json['drive']);
+      drive = DriveReference.fromJson(
+          _json['drive'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveItem')) {
-      driveItem = DriveItemReference.fromJson(_json['driveItem']);
+      driveItem = DriveItemReference.fromJson(
+          _json['driveItem'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('teamDrive')) {
-      teamDrive = TeamDriveReference.fromJson(_json['teamDrive']);
+      teamDrive = TeamDriveReference.fromJson(
+          _json['teamDrive'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1944,7 +2016,8 @@ class TeamDrive {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('root')) {
-      root = DriveItem.fromJson(_json['root']);
+      root = DriveItem.fromJson(
+          _json['root'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -2071,13 +2144,16 @@ class User {
 
   User.fromJson(core.Map _json) {
     if (_json.containsKey('deletedUser')) {
-      deletedUser = DeletedUser.fromJson(_json['deletedUser']);
+      deletedUser = DeletedUser.fromJson(
+          _json['deletedUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('knownUser')) {
-      knownUser = KnownUser.fromJson(_json['knownUser']);
+      knownUser = KnownUser.fromJson(
+          _json['knownUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unknownUser')) {
-      unknownUser = UnknownUser.fromJson(_json['unknownUser']);
+      unknownUser = UnknownUser.fromJson(
+          _json['unknownUser'] as core.Map<core.String, core.dynamic>);
     }
   }
 

@@ -83,8 +83,8 @@ core.List<api.Format> buildUnnamed4329() {
 
 void checkUnnamed4329(core.List<api.Format> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFormat(o[0]);
-  checkFormat(o[1]);
+  checkFormat(o[0] as api.Format);
+  checkFormat(o[1] as api.Format);
 }
 
 core.int buildCounterAsset = 0;
@@ -123,9 +123,9 @@ void checkAsset(api.Asset o) {
     unittest.expect(o.license, unittest.equals('foo'));
     unittest.expect(o.metadata, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkPresentationParams(o.presentationParams);
-    checkRemixInfo(o.remixInfo);
-    checkFile(o.thumbnail);
+    checkPresentationParams(o.presentationParams as api.PresentationParams);
+    checkRemixInfo(o.remixInfo as api.RemixInfo);
+    checkFile(o.thumbnail as api.File);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.visibility, unittest.equals('foo'));
   }
@@ -151,8 +151,8 @@ void checkAssetImportMessage(api.AssetImportMessage o) {
   if (buildCounterAssetImportMessage < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
     unittest.expect(o.filePath, unittest.equals('foo'));
-    checkImageError(o.imageError);
-    checkObjParseError(o.objParseError);
+    checkImageError(o.imageError as api.ImageError);
+    checkObjParseError(o.objParseError as api.ObjParseError);
   }
   buildCounterAssetImportMessage--;
 }
@@ -189,8 +189,8 @@ core.List<api.File> buildUnnamed4330() {
 
 void checkUnnamed4330(core.List<api.File> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFile(o[0]);
-  checkFile(o[1]);
+  checkFile(o[0] as api.File);
+  checkFile(o[1] as api.File);
 }
 
 core.int buildCounterFormat = 0;
@@ -210,10 +210,10 @@ api.Format buildFormat() {
 void checkFormat(api.Format o) {
   buildCounterFormat++;
   if (buildCounterFormat < 3) {
-    checkFormatComplexity(o.formatComplexity);
+    checkFormatComplexity(o.formatComplexity as api.FormatComplexity);
     unittest.expect(o.formatType, unittest.equals('foo'));
     checkUnnamed4330(o.resources);
-    checkFile(o.root);
+    checkFile(o.root as api.File);
   }
   buildCounterFormat--;
 }
@@ -269,8 +269,8 @@ core.List<api.Asset> buildUnnamed4331() {
 
 void checkUnnamed4331(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAsset(o[0]);
-  checkAsset(o[1]);
+  checkAsset(o[0] as api.Asset);
+  checkAsset(o[1] as api.Asset);
 }
 
 core.int buildCounterListAssetsResponse = 0;
@@ -305,8 +305,8 @@ core.List<api.Asset> buildUnnamed4332() {
 
 void checkUnnamed4332(core.List<api.Asset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAsset(o[0]);
-  checkAsset(o[1]);
+  checkAsset(o[0] as api.Asset);
+  checkAsset(o[1] as api.Asset);
 }
 
 core.int buildCounterListLikedAssetsResponse = 0;
@@ -341,8 +341,8 @@ core.List<api.UserAsset> buildUnnamed4333() {
 
 void checkUnnamed4333(core.List<api.UserAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserAsset(o[0]);
-  checkUserAsset(o[1]);
+  checkUserAsset(o[0] as api.UserAsset);
+  checkUserAsset(o[1] as api.UserAsset);
 }
 
 core.int buildCounterListUserAssetsResponse = 0;
@@ -415,7 +415,7 @@ void checkPresentationParams(api.PresentationParams o) {
   if (buildCounterPresentationParams < 3) {
     unittest.expect(o.backgroundColor, unittest.equals('foo'));
     unittest.expect(o.colorSpace, unittest.equals('foo'));
-    checkQuaternion(o.orientingRotation);
+    checkQuaternion(o.orientingRotation as api.Quaternion);
   }
   buildCounterPresentationParams--;
 }
@@ -486,8 +486,8 @@ core.List<api.AssetImportMessage> buildUnnamed4335() {
 
 void checkUnnamed4335(core.List<api.AssetImportMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssetImportMessage(o[0]);
-  checkAssetImportMessage(o[1]);
+  checkAssetImportMessage(o[0] as api.AssetImportMessage);
+  checkAssetImportMessage(o[1] as api.AssetImportMessage);
 }
 
 core.int buildCounterStartAssetImportResponse = 0;
@@ -529,7 +529,7 @@ api.UserAsset buildUserAsset() {
 void checkUserAsset(api.UserAsset o) {
   buildCounterUserAsset++;
   if (buildCounterUserAsset < 3) {
-    checkAsset(o.asset);
+    checkAsset(o.asset as api.Asset);
   }
   buildCounterUserAsset--;
 }
@@ -539,7 +539,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
-      checkAsset(od);
+      checkAsset(od as api.Asset);
     });
   });
 
@@ -547,7 +547,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssetImportMessage();
       var od = api.AssetImportMessage.fromJson(o.toJson());
-      checkAssetImportMessage(od);
+      checkAssetImportMessage(od as api.AssetImportMessage);
     });
   });
 
@@ -555,7 +555,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
-      checkFile(od);
+      checkFile(od as api.File);
     });
   });
 
@@ -563,7 +563,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFormat();
       var od = api.Format.fromJson(o.toJson());
-      checkFormat(od);
+      checkFormat(od as api.Format);
     });
   });
 
@@ -571,7 +571,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFormatComplexity();
       var od = api.FormatComplexity.fromJson(o.toJson());
-      checkFormatComplexity(od);
+      checkFormatComplexity(od as api.FormatComplexity);
     });
   });
 
@@ -579,7 +579,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageError();
       var od = api.ImageError.fromJson(o.toJson());
-      checkImageError(od);
+      checkImageError(od as api.ImageError);
     });
   });
 
@@ -587,7 +587,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAssetsResponse();
       var od = api.ListAssetsResponse.fromJson(o.toJson());
-      checkListAssetsResponse(od);
+      checkListAssetsResponse(od as api.ListAssetsResponse);
     });
   });
 
@@ -595,7 +595,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLikedAssetsResponse();
       var od = api.ListLikedAssetsResponse.fromJson(o.toJson());
-      checkListLikedAssetsResponse(od);
+      checkListLikedAssetsResponse(od as api.ListLikedAssetsResponse);
     });
   });
 
@@ -603,7 +603,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListUserAssetsResponse();
       var od = api.ListUserAssetsResponse.fromJson(o.toJson());
-      checkListUserAssetsResponse(od);
+      checkListUserAssetsResponse(od as api.ListUserAssetsResponse);
     });
   });
 
@@ -611,7 +611,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjParseError();
       var od = api.ObjParseError.fromJson(o.toJson());
-      checkObjParseError(od);
+      checkObjParseError(od as api.ObjParseError);
     });
   });
 
@@ -619,7 +619,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPresentationParams();
       var od = api.PresentationParams.fromJson(o.toJson());
-      checkPresentationParams(od);
+      checkPresentationParams(od as api.PresentationParams);
     });
   });
 
@@ -627,7 +627,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuaternion();
       var od = api.Quaternion.fromJson(o.toJson());
-      checkQuaternion(od);
+      checkQuaternion(od as api.Quaternion);
     });
   });
 
@@ -635,7 +635,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemixInfo();
       var od = api.RemixInfo.fromJson(o.toJson());
-      checkRemixInfo(od);
+      checkRemixInfo(od as api.RemixInfo);
     });
   });
 
@@ -643,7 +643,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartAssetImportResponse();
       var od = api.StartAssetImportResponse.fromJson(o.toJson());
-      checkStartAssetImportResponse(od);
+      checkStartAssetImportResponse(od as api.StartAssetImportResponse);
     });
   });
 
@@ -651,7 +651,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserAsset();
       var od = api.UserAsset.fromJson(o.toJson());
-      checkUserAsset(od);
+      checkUserAsset(od as api.UserAsset);
     });
   });
 
@@ -700,7 +700,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAsset(response);
+        checkAsset(response as api.Asset);
       })));
     });
 
@@ -778,7 +778,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAssetsResponse(response);
+        checkListAssetsResponse(response as api.ListAssetsResponse);
       })));
     });
   });
@@ -848,7 +848,7 @@ void main() {
               visibility: arg_visibility,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListUserAssetsResponse(response);
+        checkListUserAssetsResponse(response as api.ListUserAssetsResponse);
       })));
     });
   });
@@ -914,7 +914,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLikedAssetsResponse(response);
+        checkListLikedAssetsResponse(response as api.ListLikedAssetsResponse);
       })));
     });
   });

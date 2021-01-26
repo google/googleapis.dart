@@ -149,13 +149,13 @@ api.Account buildAccount() {
 void checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkAccountChildLink(o.childLink);
+    checkAccountChildLink(o.childLink as api.AccountChildLink);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkAccountPermissions(o.permissions);
+    checkAccountPermissions(o.permissions as api.AccountPermissions);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.starred, unittest.isTrue);
     unittest.expect(
@@ -198,8 +198,8 @@ core.List<api.AccountSummary> buildUnnamed4483() {
 
 void checkUnnamed4483(core.List<api.AccountSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccountSummary(o[0]);
-  checkAccountSummary(o[1]);
+  checkAccountSummary(o[0] as api.AccountSummary);
+  checkAccountSummary(o[1] as api.AccountSummary);
 }
 
 core.int buildCounterAccountSummaries = 0;
@@ -244,8 +244,8 @@ core.List<api.WebPropertySummary> buildUnnamed4484() {
 
 void checkUnnamed4484(core.List<api.WebPropertySummary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebPropertySummary(o[0]);
-  checkWebPropertySummary(o[1]);
+  checkWebPropertySummary(o[0] as api.WebPropertySummary);
+  checkWebPropertySummary(o[1] as api.WebPropertySummary);
 }
 
 core.int buildCounterAccountSummary = 0;
@@ -294,12 +294,12 @@ api.AccountTicket buildAccountTicket() {
 void checkAccountTicket(api.AccountTicket o) {
   buildCounterAccountTicket++;
   if (buildCounterAccountTicket < 3) {
-    checkAccount(o.account);
+    checkAccount(o.account as api.Account);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkProfile(o.profile);
+    checkProfile(o.profile as api.Profile);
     unittest.expect(o.redirectUri, unittest.equals('foo'));
-    checkWebproperty(o.webproperty);
+    checkWebproperty(o.webproperty as api.Webproperty);
   }
   buildCounterAccountTicket--;
 }
@@ -350,10 +350,10 @@ api.AccountTreeResponse buildAccountTreeResponse() {
 void checkAccountTreeResponse(api.AccountTreeResponse o) {
   buildCounterAccountTreeResponse++;
   if (buildCounterAccountTreeResponse < 3) {
-    checkAccount(o.account);
+    checkAccount(o.account as api.Account);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkProfile(o.profile);
-    checkWebproperty(o.webproperty);
+    checkProfile(o.profile as api.Profile);
+    checkWebproperty(o.webproperty as api.Webproperty);
   }
   buildCounterAccountTreeResponse--;
 }
@@ -367,8 +367,8 @@ core.List<api.Account> buildUnnamed4485() {
 
 void checkUnnamed4485(core.List<api.Account> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAccount(o[0]);
-  checkAccount(o[1]);
+  checkAccount(o[0] as api.Account);
+  checkAccount(o[1] as api.Account);
 }
 
 core.int buildCounterAccounts = 0;
@@ -519,8 +519,8 @@ core.List<api.Column> buildUnnamed4489() {
 
 void checkUnnamed4489(core.List<api.Column> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColumn(o[0]);
-  checkColumn(o[1]);
+  checkColumn(o[0] as api.Column);
+  checkColumn(o[1] as api.Column);
 }
 
 core.int buildCounterColumns = 0;
@@ -648,7 +648,8 @@ void checkCustomDataSource(api.CustomDataSource o) {
   buildCounterCustomDataSource++;
   if (buildCounterCustomDataSource < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkCustomDataSourceChildLink(o.childLink);
+    checkCustomDataSourceChildLink(
+        o.childLink as api.CustomDataSourceChildLink);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.description, unittest.equals('foo'));
@@ -656,7 +657,8 @@ void checkCustomDataSource(api.CustomDataSource o) {
     unittest.expect(o.importBehavior, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkCustomDataSourceParentLink(o.parentLink);
+    checkCustomDataSourceParentLink(
+        o.parentLink as api.CustomDataSourceParentLink);
     checkUnnamed4490(o.profilesLinked);
     checkUnnamed4491(o.schema);
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -678,8 +680,8 @@ core.List<api.CustomDataSource> buildUnnamed4492() {
 
 void checkUnnamed4492(core.List<api.CustomDataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomDataSource(o[0]);
-  checkCustomDataSource(o[1]);
+  checkCustomDataSource(o[0] as api.CustomDataSource);
+  checkCustomDataSource(o[1] as api.CustomDataSource);
 }
 
 core.int buildCounterCustomDataSources = 0;
@@ -769,7 +771,8 @@ void checkCustomDimension(api.CustomDimension o) {
     unittest.expect(o.index, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkCustomDimensionParentLink(o.parentLink);
+    checkCustomDimensionParentLink(
+        o.parentLink as api.CustomDimensionParentLink);
     unittest.expect(o.scope, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(
@@ -788,8 +791,8 @@ core.List<api.CustomDimension> buildUnnamed4493() {
 
 void checkUnnamed4493(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomDimension(o[0]);
-  checkCustomDimension(o[1]);
+  checkCustomDimension(o[0] as api.CustomDimension);
+  checkCustomDimension(o[1] as api.CustomDimension);
 }
 
 core.int buildCounterCustomDimensions = 0;
@@ -884,7 +887,7 @@ void checkCustomMetric(api.CustomMetric o) {
     unittest.expect(o.maxValue, unittest.equals('foo'));
     unittest.expect(o.minValue, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkCustomMetricParentLink(o.parentLink);
+    checkCustomMetricParentLink(o.parentLink as api.CustomMetricParentLink);
     unittest.expect(o.scope, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -904,8 +907,8 @@ core.List<api.CustomMetric> buildUnnamed4494() {
 
 void checkUnnamed4494(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomMetric(o[0]);
-  checkCustomMetric(o[1]);
+  checkCustomMetric(o[0] as api.CustomMetric);
+  checkCustomMetric(o[1] as api.CustomMetric);
 }
 
 core.int buildCounterCustomMetrics = 0;
@@ -950,8 +953,8 @@ core.List<api.AdWordsAccount> buildUnnamed4495() {
 
 void checkUnnamed4495(core.List<api.AdWordsAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdWordsAccount(o[0]);
-  checkAdWordsAccount(o[1]);
+  checkAdWordsAccount(o[0] as api.AdWordsAccount);
+  checkAdWordsAccount(o[1] as api.AdWordsAccount);
 }
 
 core.int buildCounterEntityAdWordsLinkEntity = 0;
@@ -968,7 +971,7 @@ api.EntityAdWordsLinkEntity buildEntityAdWordsLinkEntity() {
 void checkEntityAdWordsLinkEntity(api.EntityAdWordsLinkEntity o) {
   buildCounterEntityAdWordsLinkEntity++;
   if (buildCounterEntityAdWordsLinkEntity < 3) {
-    checkWebPropertyRef(o.webPropertyRef);
+    checkWebPropertyRef(o.webPropertyRef as api.WebPropertyRef);
   }
   buildCounterEntityAdWordsLinkEntity--;
 }
@@ -1007,7 +1010,7 @@ void checkEntityAdWordsLink(api.EntityAdWordsLink o) {
   buildCounterEntityAdWordsLink++;
   if (buildCounterEntityAdWordsLink < 3) {
     checkUnnamed4495(o.adWordsAccounts);
-    checkEntityAdWordsLinkEntity(o.entity);
+    checkEntityAdWordsLinkEntity(o.entity as api.EntityAdWordsLinkEntity);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -1026,8 +1029,8 @@ core.List<api.EntityAdWordsLink> buildUnnamed4497() {
 
 void checkUnnamed4497(core.List<api.EntityAdWordsLink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityAdWordsLink(o[0]);
-  checkEntityAdWordsLink(o[1]);
+  checkEntityAdWordsLink(o[0] as api.EntityAdWordsLink);
+  checkEntityAdWordsLink(o[1] as api.EntityAdWordsLink);
 }
 
 core.int buildCounterEntityAdWordsLinks = 0;
@@ -1077,9 +1080,9 @@ api.EntityUserLinkEntity buildEntityUserLinkEntity() {
 void checkEntityUserLinkEntity(api.EntityUserLinkEntity o) {
   buildCounterEntityUserLinkEntity++;
   if (buildCounterEntityUserLinkEntity < 3) {
-    checkAccountRef(o.accountRef);
-    checkProfileRef(o.profileRef);
-    checkWebPropertyRef(o.webPropertyRef);
+    checkAccountRef(o.accountRef as api.AccountRef);
+    checkProfileRef(o.profileRef as api.ProfileRef);
+    checkWebPropertyRef(o.webPropertyRef as api.WebPropertyRef);
   }
   buildCounterEntityUserLinkEntity--;
 }
@@ -1150,12 +1153,13 @@ api.EntityUserLink buildEntityUserLink() {
 void checkEntityUserLink(api.EntityUserLink o) {
   buildCounterEntityUserLink++;
   if (buildCounterEntityUserLink < 3) {
-    checkEntityUserLinkEntity(o.entity);
+    checkEntityUserLinkEntity(o.entity as api.EntityUserLinkEntity);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkEntityUserLinkPermissions(o.permissions);
+    checkEntityUserLinkPermissions(
+        o.permissions as api.EntityUserLinkPermissions);
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkUserRef(o.userRef);
+    checkUserRef(o.userRef as api.UserRef);
   }
   buildCounterEntityUserLink--;
 }
@@ -1169,8 +1173,8 @@ core.List<api.EntityUserLink> buildUnnamed4500() {
 
 void checkUnnamed4500(core.List<api.EntityUserLink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityUserLink(o[0]);
-  checkEntityUserLink(o[1]);
+  checkEntityUserLink(o[0] as api.EntityUserLink);
+  checkEntityUserLink(o[1] as api.EntityUserLink);
 }
 
 core.int buildCounterEntityUserLinks = 0;
@@ -1261,8 +1265,8 @@ core.List<api.ExperimentVariations> buildUnnamed4501() {
 
 void checkUnnamed4501(core.List<api.ExperimentVariations> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExperimentVariations(o[0]);
-  checkExperimentVariations(o[1]);
+  checkExperimentVariations(o[0] as api.ExperimentVariations);
+  checkExperimentVariations(o[1] as api.ExperimentVariations);
 }
 
 core.int buildCounterExperiment = 0;
@@ -1321,7 +1325,7 @@ void checkExperiment(api.Experiment o) {
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.objectiveMetric, unittest.equals('foo'));
     unittest.expect(o.optimizationType, unittest.equals('foo'));
-    checkExperimentParentLink(o.parentLink);
+    checkExperimentParentLink(o.parentLink as api.ExperimentParentLink);
     unittest.expect(o.profileId, unittest.equals('foo'));
     unittest.expect(o.reasonExperimentEnded, unittest.equals('foo'));
     unittest.expect(o.rewriteVariationUrlsAsOriginal, unittest.isTrue);
@@ -1351,8 +1355,8 @@ core.List<api.Experiment> buildUnnamed4502() {
 
 void checkUnnamed4502(core.List<api.Experiment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExperiment(o[0]);
-  checkExperiment(o[1]);
+  checkExperiment(o[0] as api.Experiment);
+  checkExperiment(o[1] as api.Experiment);
 }
 
 core.int buildCounterExperiments = 0;
@@ -1550,22 +1554,25 @@ void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkFilterAdvancedDetails(o.advancedDetails);
+    checkFilterAdvancedDetails(o.advancedDetails as api.FilterAdvancedDetails);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkFilterExpression(o.excludeDetails);
+    checkFilterExpression(o.excludeDetails as api.FilterExpression);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkFilterExpression(o.includeDetails);
+    checkFilterExpression(o.includeDetails as api.FilterExpression);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkFilterLowercaseDetails(o.lowercaseDetails);
+    checkFilterLowercaseDetails(
+        o.lowercaseDetails as api.FilterLowercaseDetails);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkFilterParentLink(o.parentLink);
-    checkFilterSearchAndReplaceDetails(o.searchAndReplaceDetails);
+    checkFilterParentLink(o.parentLink as api.FilterParentLink);
+    checkFilterSearchAndReplaceDetails(
+        o.searchAndReplaceDetails as api.FilterSearchAndReplaceDetails);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(
         o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkFilterUppercaseDetails(o.uppercaseDetails);
+    checkFilterUppercaseDetails(
+        o.uppercaseDetails as api.FilterUppercaseDetails);
   }
   buildCounterFilter--;
 }
@@ -1635,8 +1642,8 @@ core.List<api.Filter> buildUnnamed4503() {
 
 void checkUnnamed4503(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFilter(o[0]);
-  checkFilter(o[1]);
+  checkFilter(o[0] as api.Filter);
+  checkFilter(o[1] as api.Filter);
 }
 
 core.int buildCounterFilters = 0;
@@ -1704,8 +1711,8 @@ core.List<api.GaDataColumnHeaders> buildUnnamed4504() {
 
 void checkUnnamed4504(core.List<api.GaDataColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGaDataColumnHeaders(o[0]);
-  checkGaDataColumnHeaders(o[1]);
+  checkGaDataColumnHeaders(o[0] as api.GaDataColumnHeaders);
+  checkGaDataColumnHeaders(o[1] as api.GaDataColumnHeaders);
 }
 
 core.int buildCounterGaDataDataTableCols = 0;
@@ -1740,8 +1747,8 @@ core.List<api.GaDataDataTableCols> buildUnnamed4505() {
 
 void checkUnnamed4505(core.List<api.GaDataDataTableCols> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGaDataDataTableCols(o[0]);
-  checkGaDataDataTableCols(o[1]);
+  checkGaDataDataTableCols(o[0] as api.GaDataDataTableCols);
+  checkGaDataDataTableCols(o[1] as api.GaDataDataTableCols);
 }
 
 core.int buildCounterGaDataDataTableRowsC = 0;
@@ -1772,8 +1779,8 @@ core.List<api.GaDataDataTableRowsC> buildUnnamed4506() {
 
 void checkUnnamed4506(core.List<api.GaDataDataTableRowsC> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGaDataDataTableRowsC(o[0]);
-  checkGaDataDataTableRowsC(o[1]);
+  checkGaDataDataTableRowsC(o[0] as api.GaDataDataTableRowsC);
+  checkGaDataDataTableRowsC(o[1] as api.GaDataDataTableRowsC);
 }
 
 core.int buildCounterGaDataDataTableRows = 0;
@@ -1804,8 +1811,8 @@ core.List<api.GaDataDataTableRows> buildUnnamed4507() {
 
 void checkUnnamed4507(core.List<api.GaDataDataTableRows> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGaDataDataTableRows(o[0]);
-  checkGaDataDataTableRows(o[1]);
+  checkGaDataDataTableRows(o[0] as api.GaDataDataTableRows);
+  checkGaDataDataTableRows(o[1] as api.GaDataDataTableRows);
 }
 
 core.int buildCounterGaDataDataTable = 0;
@@ -1995,14 +2002,14 @@ void checkGaData(api.GaData o) {
     checkUnnamed4504(o.columnHeaders);
     unittest.expect(o.containsSampledData, unittest.isTrue);
     unittest.expect(o.dataLastRefreshed, unittest.equals('foo'));
-    checkGaDataDataTable(o.dataTable);
+    checkGaDataDataTable(o.dataTable as api.GaDataDataTable);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.itemsPerPage, unittest.equals(42));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.previousLink, unittest.equals('foo'));
-    checkGaDataProfileInfo(o.profileInfo);
-    checkGaDataQuery(o.query);
+    checkGaDataProfileInfo(o.profileInfo as api.GaDataProfileInfo);
+    checkGaDataQuery(o.query as api.GaDataQuery);
     checkUnnamed4511(o.rows);
     unittest.expect(o.sampleSize, unittest.equals('foo'));
     unittest.expect(o.sampleSpace, unittest.equals('foo'));
@@ -2050,8 +2057,10 @@ core.List<api.GoalEventDetailsEventConditions> buildUnnamed4513() {
 
 void checkUnnamed4513(core.List<api.GoalEventDetailsEventConditions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoalEventDetailsEventConditions(o[0]);
-  checkGoalEventDetailsEventConditions(o[1]);
+  checkGoalEventDetailsEventConditions(
+      o[0] as api.GoalEventDetailsEventConditions);
+  checkGoalEventDetailsEventConditions(
+      o[1] as api.GoalEventDetailsEventConditions);
 }
 
 core.int buildCounterGoalEventDetails = 0;
@@ -2128,8 +2137,10 @@ core.List<api.GoalUrlDestinationDetailsSteps> buildUnnamed4514() {
 
 void checkUnnamed4514(core.List<api.GoalUrlDestinationDetailsSteps> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoalUrlDestinationDetailsSteps(o[0]);
-  checkGoalUrlDestinationDetailsSteps(o[1]);
+  checkGoalUrlDestinationDetailsSteps(
+      o[0] as api.GoalUrlDestinationDetailsSteps);
+  checkGoalUrlDestinationDetailsSteps(
+      o[1] as api.GoalUrlDestinationDetailsSteps);
 }
 
 core.int buildCounterGoalUrlDestinationDetails = 0;
@@ -2236,21 +2247,24 @@ void checkGoal(api.Goal o) {
     unittest.expect(o.active, unittest.isTrue);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkGoalEventDetails(o.eventDetails);
+    checkGoalEventDetails(o.eventDetails as api.GoalEventDetails);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.internalWebPropertyId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkGoalParentLink(o.parentLink);
+    checkGoalParentLink(o.parentLink as api.GoalParentLink);
     unittest.expect(o.profileId, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(
         o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkGoalUrlDestinationDetails(o.urlDestinationDetails);
+    checkGoalUrlDestinationDetails(
+        o.urlDestinationDetails as api.GoalUrlDestinationDetails);
     unittest.expect(o.value, unittest.equals(42.0));
-    checkGoalVisitNumPagesDetails(o.visitNumPagesDetails);
-    checkGoalVisitTimeOnSiteDetails(o.visitTimeOnSiteDetails);
+    checkGoalVisitNumPagesDetails(
+        o.visitNumPagesDetails as api.GoalVisitNumPagesDetails);
+    checkGoalVisitTimeOnSiteDetails(
+        o.visitTimeOnSiteDetails as api.GoalVisitTimeOnSiteDetails);
     unittest.expect(o.webPropertyId, unittest.equals('foo'));
   }
   buildCounterGoal--;
@@ -2265,8 +2279,8 @@ core.List<api.Goal> buildUnnamed4515() {
 
 void checkUnnamed4515(core.List<api.Goal> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoal(o[0]);
-  checkGoal(o[1]);
+  checkGoal(o[0] as api.Goal);
+  checkGoal(o[1] as api.Goal);
 }
 
 core.int buildCounterGoals = 0;
@@ -2446,8 +2460,8 @@ core.List<api.McfDataColumnHeaders> buildUnnamed4516() {
 
 void checkUnnamed4516(core.List<api.McfDataColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMcfDataColumnHeaders(o[0]);
-  checkMcfDataColumnHeaders(o[1]);
+  checkMcfDataColumnHeaders(o[0] as api.McfDataColumnHeaders);
+  checkMcfDataColumnHeaders(o[1] as api.McfDataColumnHeaders);
 }
 
 core.int buildCounterMcfDataProfileInfo = 0;
@@ -2574,8 +2588,10 @@ core.List<api.McfDataRowsConversionPathValue> buildUnnamed4519() {
 
 void checkUnnamed4519(core.List<api.McfDataRowsConversionPathValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMcfDataRowsConversionPathValue(o[0]);
-  checkMcfDataRowsConversionPathValue(o[1]);
+  checkMcfDataRowsConversionPathValue(
+      o[0] as api.McfDataRowsConversionPathValue);
+  checkMcfDataRowsConversionPathValue(
+      o[1] as api.McfDataRowsConversionPathValue);
 }
 
 core.int buildCounterMcfDataRows = 0;
@@ -2608,8 +2624,8 @@ core.List<api.McfDataRows> buildUnnamed4520() {
 
 void checkUnnamed4520(core.List<api.McfDataRows> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMcfDataRows(o[0]);
-  checkMcfDataRows(o[1]);
+  checkMcfDataRows(o[0] as api.McfDataRows);
+  checkMcfDataRows(o[1] as api.McfDataRows);
 }
 
 core.List<core.List<api.McfDataRows>> buildUnnamed4521() {
@@ -2673,8 +2689,8 @@ void checkMcfData(api.McfData o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextLink, unittest.equals('foo'));
     unittest.expect(o.previousLink, unittest.equals('foo'));
-    checkMcfDataProfileInfo(o.profileInfo);
-    checkMcfDataQuery(o.query);
+    checkMcfDataProfileInfo(o.profileInfo as api.McfDataProfileInfo);
+    checkMcfDataQuery(o.query as api.McfDataQuery);
     checkUnnamed4521(o.rows);
     unittest.expect(o.sampleSize, unittest.equals('foo'));
     unittest.expect(o.sampleSpace, unittest.equals('foo'));
@@ -2800,7 +2816,7 @@ void checkProfile(api.Profile o) {
   if (buildCounterProfile < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     unittest.expect(o.botFilteringEnabled, unittest.isTrue);
-    checkProfileChildLink(o.childLink);
+    checkProfileChildLink(o.childLink as api.ProfileChildLink);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.currency, unittest.equals('foo'));
@@ -2812,8 +2828,8 @@ void checkProfile(api.Profile o) {
     unittest.expect(o.internalWebPropertyId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkProfileParentLink(o.parentLink);
-    checkProfilePermissions(o.permissions);
+    checkProfileParentLink(o.parentLink as api.ProfileParentLink);
+    checkProfilePermissions(o.permissions as api.ProfilePermissions);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.siteSearchCategoryParameters, unittest.equals('foo'));
     unittest.expect(o.siteSearchQueryParameters, unittest.equals('foo'));
@@ -2849,10 +2865,10 @@ api.ProfileFilterLink buildProfileFilterLink() {
 void checkProfileFilterLink(api.ProfileFilterLink o) {
   buildCounterProfileFilterLink++;
   if (buildCounterProfileFilterLink < 3) {
-    checkFilterRef(o.filterRef);
+    checkFilterRef(o.filterRef as api.FilterRef);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkProfileRef(o.profileRef);
+    checkProfileRef(o.profileRef as api.ProfileRef);
     unittest.expect(o.rank, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -2868,8 +2884,8 @@ core.List<api.ProfileFilterLink> buildUnnamed4524() {
 
 void checkUnnamed4524(core.List<api.ProfileFilterLink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProfileFilterLink(o[0]);
-  checkProfileFilterLink(o[1]);
+  checkProfileFilterLink(o[0] as api.ProfileFilterLink);
+  checkProfileFilterLink(o[1] as api.ProfileFilterLink);
 }
 
 core.int buildCounterProfileFilterLinks = 0;
@@ -2972,8 +2988,8 @@ core.List<api.Profile> buildUnnamed4525() {
 
 void checkUnnamed4525(core.List<api.Profile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProfile(o[0]);
-  checkProfile(o[1]);
+  checkProfile(o[0] as api.Profile);
+  checkProfile(o[1] as api.Profile);
 }
 
 core.int buildCounterProfiles = 0;
@@ -3041,8 +3057,8 @@ core.List<api.RealtimeDataColumnHeaders> buildUnnamed4526() {
 
 void checkUnnamed4526(core.List<api.RealtimeDataColumnHeaders> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRealtimeDataColumnHeaders(o[0]);
-  checkRealtimeDataColumnHeaders(o[1]);
+  checkRealtimeDataColumnHeaders(o[0] as api.RealtimeDataColumnHeaders);
+  checkRealtimeDataColumnHeaders(o[1] as api.RealtimeDataColumnHeaders);
 }
 
 core.int buildCounterRealtimeDataProfileInfo = 0;
@@ -3193,8 +3209,8 @@ void checkRealtimeData(api.RealtimeData o) {
     checkUnnamed4526(o.columnHeaders);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkRealtimeDataProfileInfo(o.profileInfo);
-    checkRealtimeDataQuery(o.query);
+    checkRealtimeDataProfileInfo(o.profileInfo as api.RealtimeDataProfileInfo);
+    checkRealtimeDataQuery(o.query as api.RealtimeDataQuery);
     checkUnnamed4530(o.rows);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.totalResults, unittest.equals(42));
@@ -3219,7 +3235,7 @@ void checkRemarketingAudienceAudienceDefinition(
     api.RemarketingAudienceAudienceDefinition o) {
   buildCounterRemarketingAudienceAudienceDefinition++;
   if (buildCounterRemarketingAudienceAudienceDefinition < 3) {
-    checkIncludeConditions(o.includeConditions);
+    checkIncludeConditions(o.includeConditions as api.IncludeConditions);
   }
   buildCounterRemarketingAudienceAudienceDefinition--;
 }
@@ -3233,8 +3249,8 @@ core.List<api.LinkedForeignAccount> buildUnnamed4532() {
 
 void checkUnnamed4532(core.List<api.LinkedForeignAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLinkedForeignAccount(o[0]);
-  checkLinkedForeignAccount(o[1]);
+  checkLinkedForeignAccount(o[0] as api.LinkedForeignAccount);
+  checkLinkedForeignAccount(o[1] as api.LinkedForeignAccount);
 }
 
 core.List<core.String> buildUnnamed4533() {
@@ -3297,8 +3313,9 @@ void checkRemarketingAudienceStateBasedAudienceDefinition(
   buildCounterRemarketingAudienceStateBasedAudienceDefinition++;
   if (buildCounterRemarketingAudienceStateBasedAudienceDefinition < 3) {
     checkRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions(
-        o.excludeConditions);
-    checkIncludeConditions(o.includeConditions);
+        o.excludeConditions as api
+            .RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions);
+    checkIncludeConditions(o.includeConditions as api.IncludeConditions);
   }
   buildCounterRemarketingAudienceStateBasedAudienceDefinition--;
 }
@@ -3332,7 +3349,8 @@ void checkRemarketingAudience(api.RemarketingAudience o) {
   buildCounterRemarketingAudience++;
   if (buildCounterRemarketingAudience < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkRemarketingAudienceAudienceDefinition(o.audienceDefinition);
+    checkRemarketingAudienceAudienceDefinition(
+        o.audienceDefinition as api.RemarketingAudienceAudienceDefinition);
     unittest.expect(o.audienceType, unittest.equals('foo'));
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
@@ -3344,7 +3362,8 @@ void checkRemarketingAudience(api.RemarketingAudience o) {
     checkUnnamed4533(o.linkedViews);
     unittest.expect(o.name, unittest.equals('foo'));
     checkRemarketingAudienceStateBasedAudienceDefinition(
-        o.stateBasedAudienceDefinition);
+        o.stateBasedAudienceDefinition
+            as api.RemarketingAudienceStateBasedAudienceDefinition);
     unittest.expect(
         o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.webPropertyId, unittest.equals('foo'));
@@ -3361,8 +3380,8 @@ core.List<api.RemarketingAudience> buildUnnamed4534() {
 
 void checkUnnamed4534(core.List<api.RemarketingAudience> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRemarketingAudience(o[0]);
-  checkRemarketingAudience(o[1]);
+  checkRemarketingAudience(o[0] as api.RemarketingAudience);
+  checkRemarketingAudience(o[1] as api.RemarketingAudience);
 }
 
 core.int buildCounterRemarketingAudiences = 0;
@@ -3444,8 +3463,8 @@ core.List<api.Segment> buildUnnamed4535() {
 
 void checkUnnamed4535(core.List<api.Segment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSegment(o[0]);
-  checkSegment(o[1]);
+  checkSegment(o[0] as api.Segment);
+  checkSegment(o[1] as api.Segment);
 }
 
 core.int buildCounterSegments = 0;
@@ -3560,12 +3579,14 @@ void checkUnsampledReport(api.UnsampledReport o) {
   if (buildCounterUnsampledReport < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
     checkUnsampledReportCloudStorageDownloadDetails(
-        o.cloudStorageDownloadDetails);
+        o.cloudStorageDownloadDetails
+            as api.UnsampledReportCloudStorageDownloadDetails);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.dimensions, unittest.equals('foo'));
     unittest.expect(o.downloadType, unittest.equals('foo'));
-    checkUnsampledReportDriveDownloadDetails(o.driveDownloadDetails);
+    checkUnsampledReportDriveDownloadDetails(
+        o.driveDownloadDetails as api.UnsampledReportDriveDownloadDetails);
     unittest.expect(o.end_date, unittest.equals('foo'));
     unittest.expect(o.filters, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -3593,8 +3614,8 @@ core.List<api.UnsampledReport> buildUnnamed4536() {
 
 void checkUnnamed4536(core.List<api.UnsampledReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUnsampledReport(o[0]);
-  checkUnsampledReport(o[1]);
+  checkUnsampledReport(o[0] as api.UnsampledReport);
+  checkUnsampledReport(o[1] as api.UnsampledReport);
 }
 
 core.int buildCounterUnsampledReports = 0;
@@ -3684,8 +3705,8 @@ core.List<api.Upload> buildUnnamed4538() {
 
 void checkUnnamed4538(core.List<api.Upload> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUpload(o[0]);
-  checkUpload(o[1]);
+  checkUpload(o[0] as api.Upload);
+  checkUpload(o[1] as api.Upload);
 }
 
 core.int buildCounterUploads = 0;
@@ -3762,7 +3783,7 @@ void checkUserDeletionRequest(api.UserDeletionRequest o) {
     unittest.expect(o.deletionRequestTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.firebaseProjectId, unittest.equals('foo'));
-    checkUserDeletionRequestId(o.id);
+    checkUserDeletionRequestId(o.id as api.UserDeletionRequestId);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.propertyId, unittest.equals('foo'));
     unittest.expect(o.webPropertyId, unittest.equals('foo'));
@@ -3831,8 +3852,8 @@ core.List<api.ProfileSummary> buildUnnamed4539() {
 
 void checkUnnamed4539(core.List<api.ProfileSummary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProfileSummary(o[0]);
-  checkProfileSummary(o[1]);
+  checkProfileSummary(o[0] as api.ProfileSummary);
+  checkProfileSummary(o[1] as api.ProfileSummary);
 }
 
 core.int buildCounterWebPropertySummary = 0;
@@ -3877,8 +3898,8 @@ core.List<api.Webproperty> buildUnnamed4540() {
 
 void checkUnnamed4540(core.List<api.Webproperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWebproperty(o[0]);
-  checkWebproperty(o[1]);
+  checkWebproperty(o[0] as api.Webproperty);
+  checkWebproperty(o[1] as api.Webproperty);
 }
 
 core.int buildCounterWebproperties = 0;
@@ -4021,7 +4042,7 @@ void checkWebproperty(api.Webproperty o) {
   buildCounterWebproperty++;
   if (buildCounterWebproperty < 3) {
     unittest.expect(o.accountId, unittest.equals('foo'));
-    checkWebpropertyChildLink(o.childLink);
+    checkWebpropertyChildLink(o.childLink as api.WebpropertyChildLink);
     unittest.expect(
         o.created, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.dataRetentionResetOnNewActivity, unittest.isTrue);
@@ -4033,8 +4054,8 @@ void checkWebproperty(api.Webproperty o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.level, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkWebpropertyParentLink(o.parentLink);
-    checkWebpropertyPermissions(o.permissions);
+    checkWebpropertyParentLink(o.parentLink as api.WebpropertyParentLink);
+    checkWebpropertyPermissions(o.permissions as api.WebpropertyPermissions);
     unittest.expect(o.profileCount, unittest.equals(42));
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.starred, unittest.isTrue);
@@ -4050,7 +4071,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountChildLink();
       var od = api.AccountChildLink.fromJson(o.toJson());
-      checkAccountChildLink(od);
+      checkAccountChildLink(od as api.AccountChildLink);
     });
   });
 
@@ -4058,7 +4079,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountPermissions();
       var od = api.AccountPermissions.fromJson(o.toJson());
-      checkAccountPermissions(od);
+      checkAccountPermissions(od as api.AccountPermissions);
     });
   });
 
@@ -4066,7 +4087,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -4074,7 +4095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountRef();
       var od = api.AccountRef.fromJson(o.toJson());
-      checkAccountRef(od);
+      checkAccountRef(od as api.AccountRef);
     });
   });
 
@@ -4082,7 +4103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountSummaries();
       var od = api.AccountSummaries.fromJson(o.toJson());
-      checkAccountSummaries(od);
+      checkAccountSummaries(od as api.AccountSummaries);
     });
   });
 
@@ -4090,7 +4111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountSummary();
       var od = api.AccountSummary.fromJson(o.toJson());
-      checkAccountSummary(od);
+      checkAccountSummary(od as api.AccountSummary);
     });
   });
 
@@ -4098,7 +4119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountTicket();
       var od = api.AccountTicket.fromJson(o.toJson());
-      checkAccountTicket(od);
+      checkAccountTicket(od as api.AccountTicket);
     });
   });
 
@@ -4106,7 +4127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountTreeRequest();
       var od = api.AccountTreeRequest.fromJson(o.toJson());
-      checkAccountTreeRequest(od);
+      checkAccountTreeRequest(od as api.AccountTreeRequest);
     });
   });
 
@@ -4114,7 +4135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccountTreeResponse();
       var od = api.AccountTreeResponse.fromJson(o.toJson());
-      checkAccountTreeResponse(od);
+      checkAccountTreeResponse(od as api.AccountTreeResponse);
     });
   });
 
@@ -4122,7 +4143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccounts();
       var od = api.Accounts.fromJson(o.toJson());
-      checkAccounts(od);
+      checkAccounts(od as api.Accounts);
     });
   });
 
@@ -4130,7 +4151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdWordsAccount();
       var od = api.AdWordsAccount.fromJson(o.toJson());
-      checkAdWordsAccount(od);
+      checkAdWordsAccount(od as api.AdWordsAccount);
     });
   });
 
@@ -4139,7 +4160,8 @@ void main() {
       var o = buildAnalyticsDataimportDeleteUploadDataRequest();
       var od =
           api.AnalyticsDataimportDeleteUploadDataRequest.fromJson(o.toJson());
-      checkAnalyticsDataimportDeleteUploadDataRequest(od);
+      checkAnalyticsDataimportDeleteUploadDataRequest(
+          od as api.AnalyticsDataimportDeleteUploadDataRequest);
     });
   });
 
@@ -4147,7 +4169,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColumn();
       var od = api.Column.fromJson(o.toJson());
-      checkColumn(od);
+      checkColumn(od as api.Column);
     });
   });
 
@@ -4155,7 +4177,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColumns();
       var od = api.Columns.fromJson(o.toJson());
-      checkColumns(od);
+      checkColumns(od as api.Columns);
     });
   });
 
@@ -4163,7 +4185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDataSourceChildLink();
       var od = api.CustomDataSourceChildLink.fromJson(o.toJson());
-      checkCustomDataSourceChildLink(od);
+      checkCustomDataSourceChildLink(od as api.CustomDataSourceChildLink);
     });
   });
 
@@ -4171,7 +4193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDataSourceParentLink();
       var od = api.CustomDataSourceParentLink.fromJson(o.toJson());
-      checkCustomDataSourceParentLink(od);
+      checkCustomDataSourceParentLink(od as api.CustomDataSourceParentLink);
     });
   });
 
@@ -4179,7 +4201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDataSource();
       var od = api.CustomDataSource.fromJson(o.toJson());
-      checkCustomDataSource(od);
+      checkCustomDataSource(od as api.CustomDataSource);
     });
   });
 
@@ -4187,7 +4209,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDataSources();
       var od = api.CustomDataSources.fromJson(o.toJson());
-      checkCustomDataSources(od);
+      checkCustomDataSources(od as api.CustomDataSources);
     });
   });
 
@@ -4195,7 +4217,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDimensionParentLink();
       var od = api.CustomDimensionParentLink.fromJson(o.toJson());
-      checkCustomDimensionParentLink(od);
+      checkCustomDimensionParentLink(od as api.CustomDimensionParentLink);
     });
   });
 
@@ -4203,7 +4225,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
-      checkCustomDimension(od);
+      checkCustomDimension(od as api.CustomDimension);
     });
   });
 
@@ -4211,7 +4233,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDimensions();
       var od = api.CustomDimensions.fromJson(o.toJson());
-      checkCustomDimensions(od);
+      checkCustomDimensions(od as api.CustomDimensions);
     });
   });
 
@@ -4219,7 +4241,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomMetricParentLink();
       var od = api.CustomMetricParentLink.fromJson(o.toJson());
-      checkCustomMetricParentLink(od);
+      checkCustomMetricParentLink(od as api.CustomMetricParentLink);
     });
   });
 
@@ -4227,7 +4249,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomMetric();
       var od = api.CustomMetric.fromJson(o.toJson());
-      checkCustomMetric(od);
+      checkCustomMetric(od as api.CustomMetric);
     });
   });
 
@@ -4235,7 +4257,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomMetrics();
       var od = api.CustomMetrics.fromJson(o.toJson());
-      checkCustomMetrics(od);
+      checkCustomMetrics(od as api.CustomMetrics);
     });
   });
 
@@ -4243,7 +4265,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityAdWordsLinkEntity();
       var od = api.EntityAdWordsLinkEntity.fromJson(o.toJson());
-      checkEntityAdWordsLinkEntity(od);
+      checkEntityAdWordsLinkEntity(od as api.EntityAdWordsLinkEntity);
     });
   });
 
@@ -4251,7 +4273,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityAdWordsLink();
       var od = api.EntityAdWordsLink.fromJson(o.toJson());
-      checkEntityAdWordsLink(od);
+      checkEntityAdWordsLink(od as api.EntityAdWordsLink);
     });
   });
 
@@ -4259,7 +4281,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityAdWordsLinks();
       var od = api.EntityAdWordsLinks.fromJson(o.toJson());
-      checkEntityAdWordsLinks(od);
+      checkEntityAdWordsLinks(od as api.EntityAdWordsLinks);
     });
   });
 
@@ -4267,7 +4289,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityUserLinkEntity();
       var od = api.EntityUserLinkEntity.fromJson(o.toJson());
-      checkEntityUserLinkEntity(od);
+      checkEntityUserLinkEntity(od as api.EntityUserLinkEntity);
     });
   });
 
@@ -4275,7 +4297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityUserLinkPermissions();
       var od = api.EntityUserLinkPermissions.fromJson(o.toJson());
-      checkEntityUserLinkPermissions(od);
+      checkEntityUserLinkPermissions(od as api.EntityUserLinkPermissions);
     });
   });
 
@@ -4283,7 +4305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityUserLink();
       var od = api.EntityUserLink.fromJson(o.toJson());
-      checkEntityUserLink(od);
+      checkEntityUserLink(od as api.EntityUserLink);
     });
   });
 
@@ -4291,7 +4313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityUserLinks();
       var od = api.EntityUserLinks.fromJson(o.toJson());
-      checkEntityUserLinks(od);
+      checkEntityUserLinks(od as api.EntityUserLinks);
     });
   });
 
@@ -4299,7 +4321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExperimentParentLink();
       var od = api.ExperimentParentLink.fromJson(o.toJson());
-      checkExperimentParentLink(od);
+      checkExperimentParentLink(od as api.ExperimentParentLink);
     });
   });
 
@@ -4307,7 +4329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExperimentVariations();
       var od = api.ExperimentVariations.fromJson(o.toJson());
-      checkExperimentVariations(od);
+      checkExperimentVariations(od as api.ExperimentVariations);
     });
   });
 
@@ -4315,7 +4337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExperiment();
       var od = api.Experiment.fromJson(o.toJson());
-      checkExperiment(od);
+      checkExperiment(od as api.Experiment);
     });
   });
 
@@ -4323,7 +4345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExperiments();
       var od = api.Experiments.fromJson(o.toJson());
-      checkExperiments(od);
+      checkExperiments(od as api.Experiments);
     });
   });
 
@@ -4331,7 +4353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterAdvancedDetails();
       var od = api.FilterAdvancedDetails.fromJson(o.toJson());
-      checkFilterAdvancedDetails(od);
+      checkFilterAdvancedDetails(od as api.FilterAdvancedDetails);
     });
   });
 
@@ -4339,7 +4361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterLowercaseDetails();
       var od = api.FilterLowercaseDetails.fromJson(o.toJson());
-      checkFilterLowercaseDetails(od);
+      checkFilterLowercaseDetails(od as api.FilterLowercaseDetails);
     });
   });
 
@@ -4347,7 +4369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterParentLink();
       var od = api.FilterParentLink.fromJson(o.toJson());
-      checkFilterParentLink(od);
+      checkFilterParentLink(od as api.FilterParentLink);
     });
   });
 
@@ -4355,7 +4377,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterSearchAndReplaceDetails();
       var od = api.FilterSearchAndReplaceDetails.fromJson(o.toJson());
-      checkFilterSearchAndReplaceDetails(od);
+      checkFilterSearchAndReplaceDetails(
+          od as api.FilterSearchAndReplaceDetails);
     });
   });
 
@@ -4363,7 +4386,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterUppercaseDetails();
       var od = api.FilterUppercaseDetails.fromJson(o.toJson());
-      checkFilterUppercaseDetails(od);
+      checkFilterUppercaseDetails(od as api.FilterUppercaseDetails);
     });
   });
 
@@ -4371,7 +4394,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
-      checkFilter(od);
+      checkFilter(od as api.Filter);
     });
   });
 
@@ -4379,7 +4402,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterExpression();
       var od = api.FilterExpression.fromJson(o.toJson());
-      checkFilterExpression(od);
+      checkFilterExpression(od as api.FilterExpression);
     });
   });
 
@@ -4387,7 +4410,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilterRef();
       var od = api.FilterRef.fromJson(o.toJson());
-      checkFilterRef(od);
+      checkFilterRef(od as api.FilterRef);
     });
   });
 
@@ -4395,7 +4418,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilters();
       var od = api.Filters.fromJson(o.toJson());
-      checkFilters(od);
+      checkFilters(od as api.Filters);
     });
   });
 
@@ -4403,7 +4426,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataColumnHeaders();
       var od = api.GaDataColumnHeaders.fromJson(o.toJson());
-      checkGaDataColumnHeaders(od);
+      checkGaDataColumnHeaders(od as api.GaDataColumnHeaders);
     });
   });
 
@@ -4411,7 +4434,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataDataTableCols();
       var od = api.GaDataDataTableCols.fromJson(o.toJson());
-      checkGaDataDataTableCols(od);
+      checkGaDataDataTableCols(od as api.GaDataDataTableCols);
     });
   });
 
@@ -4419,7 +4442,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataDataTableRowsC();
       var od = api.GaDataDataTableRowsC.fromJson(o.toJson());
-      checkGaDataDataTableRowsC(od);
+      checkGaDataDataTableRowsC(od as api.GaDataDataTableRowsC);
     });
   });
 
@@ -4427,7 +4450,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataDataTableRows();
       var od = api.GaDataDataTableRows.fromJson(o.toJson());
-      checkGaDataDataTableRows(od);
+      checkGaDataDataTableRows(od as api.GaDataDataTableRows);
     });
   });
 
@@ -4435,7 +4458,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataDataTable();
       var od = api.GaDataDataTable.fromJson(o.toJson());
-      checkGaDataDataTable(od);
+      checkGaDataDataTable(od as api.GaDataDataTable);
     });
   });
 
@@ -4443,7 +4466,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataProfileInfo();
       var od = api.GaDataProfileInfo.fromJson(o.toJson());
-      checkGaDataProfileInfo(od);
+      checkGaDataProfileInfo(od as api.GaDataProfileInfo);
     });
   });
 
@@ -4451,7 +4474,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaDataQuery();
       var od = api.GaDataQuery.fromJson(o.toJson());
-      checkGaDataQuery(od);
+      checkGaDataQuery(od as api.GaDataQuery);
     });
   });
 
@@ -4459,7 +4482,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGaData();
       var od = api.GaData.fromJson(o.toJson());
-      checkGaData(od);
+      checkGaData(od as api.GaData);
     });
   });
 
@@ -4467,7 +4490,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalEventDetailsEventConditions();
       var od = api.GoalEventDetailsEventConditions.fromJson(o.toJson());
-      checkGoalEventDetailsEventConditions(od);
+      checkGoalEventDetailsEventConditions(
+          od as api.GoalEventDetailsEventConditions);
     });
   });
 
@@ -4475,7 +4499,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalEventDetails();
       var od = api.GoalEventDetails.fromJson(o.toJson());
-      checkGoalEventDetails(od);
+      checkGoalEventDetails(od as api.GoalEventDetails);
     });
   });
 
@@ -4483,7 +4507,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalParentLink();
       var od = api.GoalParentLink.fromJson(o.toJson());
-      checkGoalParentLink(od);
+      checkGoalParentLink(od as api.GoalParentLink);
     });
   });
 
@@ -4491,7 +4515,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalUrlDestinationDetailsSteps();
       var od = api.GoalUrlDestinationDetailsSteps.fromJson(o.toJson());
-      checkGoalUrlDestinationDetailsSteps(od);
+      checkGoalUrlDestinationDetailsSteps(
+          od as api.GoalUrlDestinationDetailsSteps);
     });
   });
 
@@ -4499,7 +4524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalUrlDestinationDetails();
       var od = api.GoalUrlDestinationDetails.fromJson(o.toJson());
-      checkGoalUrlDestinationDetails(od);
+      checkGoalUrlDestinationDetails(od as api.GoalUrlDestinationDetails);
     });
   });
 
@@ -4507,7 +4532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalVisitNumPagesDetails();
       var od = api.GoalVisitNumPagesDetails.fromJson(o.toJson());
-      checkGoalVisitNumPagesDetails(od);
+      checkGoalVisitNumPagesDetails(od as api.GoalVisitNumPagesDetails);
     });
   });
 
@@ -4515,7 +4540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoalVisitTimeOnSiteDetails();
       var od = api.GoalVisitTimeOnSiteDetails.fromJson(o.toJson());
-      checkGoalVisitTimeOnSiteDetails(od);
+      checkGoalVisitTimeOnSiteDetails(od as api.GoalVisitTimeOnSiteDetails);
     });
   });
 
@@ -4523,7 +4548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoal();
       var od = api.Goal.fromJson(o.toJson());
-      checkGoal(od);
+      checkGoal(od as api.Goal);
     });
   });
 
@@ -4531,7 +4556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoals();
       var od = api.Goals.fromJson(o.toJson());
-      checkGoals(od);
+      checkGoals(od as api.Goals);
     });
   });
 
@@ -4539,7 +4564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHashClientIdRequest();
       var od = api.HashClientIdRequest.fromJson(o.toJson());
-      checkHashClientIdRequest(od);
+      checkHashClientIdRequest(od as api.HashClientIdRequest);
     });
   });
 
@@ -4547,7 +4572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHashClientIdResponse();
       var od = api.HashClientIdResponse.fromJson(o.toJson());
-      checkHashClientIdResponse(od);
+      checkHashClientIdResponse(od as api.HashClientIdResponse);
     });
   });
 
@@ -4555,7 +4580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIncludeConditions();
       var od = api.IncludeConditions.fromJson(o.toJson());
-      checkIncludeConditions(od);
+      checkIncludeConditions(od as api.IncludeConditions);
     });
   });
 
@@ -4563,7 +4588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLinkedForeignAccount();
       var od = api.LinkedForeignAccount.fromJson(o.toJson());
-      checkLinkedForeignAccount(od);
+      checkLinkedForeignAccount(od as api.LinkedForeignAccount);
     });
   });
 
@@ -4571,7 +4596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfDataColumnHeaders();
       var od = api.McfDataColumnHeaders.fromJson(o.toJson());
-      checkMcfDataColumnHeaders(od);
+      checkMcfDataColumnHeaders(od as api.McfDataColumnHeaders);
     });
   });
 
@@ -4579,7 +4604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfDataProfileInfo();
       var od = api.McfDataProfileInfo.fromJson(o.toJson());
-      checkMcfDataProfileInfo(od);
+      checkMcfDataProfileInfo(od as api.McfDataProfileInfo);
     });
   });
 
@@ -4587,7 +4612,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfDataQuery();
       var od = api.McfDataQuery.fromJson(o.toJson());
-      checkMcfDataQuery(od);
+      checkMcfDataQuery(od as api.McfDataQuery);
     });
   });
 
@@ -4595,7 +4620,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfDataRowsConversionPathValue();
       var od = api.McfDataRowsConversionPathValue.fromJson(o.toJson());
-      checkMcfDataRowsConversionPathValue(od);
+      checkMcfDataRowsConversionPathValue(
+          od as api.McfDataRowsConversionPathValue);
     });
   });
 
@@ -4603,7 +4629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfDataRows();
       var od = api.McfDataRows.fromJson(o.toJson());
-      checkMcfDataRows(od);
+      checkMcfDataRows(od as api.McfDataRows);
     });
   });
 
@@ -4611,7 +4637,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMcfData();
       var od = api.McfData.fromJson(o.toJson());
-      checkMcfData(od);
+      checkMcfData(od as api.McfData);
     });
   });
 
@@ -4619,7 +4645,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileChildLink();
       var od = api.ProfileChildLink.fromJson(o.toJson());
-      checkProfileChildLink(od);
+      checkProfileChildLink(od as api.ProfileChildLink);
     });
   });
 
@@ -4627,7 +4653,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileParentLink();
       var od = api.ProfileParentLink.fromJson(o.toJson());
-      checkProfileParentLink(od);
+      checkProfileParentLink(od as api.ProfileParentLink);
     });
   });
 
@@ -4635,7 +4661,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfilePermissions();
       var od = api.ProfilePermissions.fromJson(o.toJson());
-      checkProfilePermissions(od);
+      checkProfilePermissions(od as api.ProfilePermissions);
     });
   });
 
@@ -4643,7 +4669,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
-      checkProfile(od);
+      checkProfile(od as api.Profile);
     });
   });
 
@@ -4651,7 +4677,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileFilterLink();
       var od = api.ProfileFilterLink.fromJson(o.toJson());
-      checkProfileFilterLink(od);
+      checkProfileFilterLink(od as api.ProfileFilterLink);
     });
   });
 
@@ -4659,7 +4685,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileFilterLinks();
       var od = api.ProfileFilterLinks.fromJson(o.toJson());
-      checkProfileFilterLinks(od);
+      checkProfileFilterLinks(od as api.ProfileFilterLinks);
     });
   });
 
@@ -4667,7 +4693,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileRef();
       var od = api.ProfileRef.fromJson(o.toJson());
-      checkProfileRef(od);
+      checkProfileRef(od as api.ProfileRef);
     });
   });
 
@@ -4675,7 +4701,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileSummary();
       var od = api.ProfileSummary.fromJson(o.toJson());
-      checkProfileSummary(od);
+      checkProfileSummary(od as api.ProfileSummary);
     });
   });
 
@@ -4683,7 +4709,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfiles();
       var od = api.Profiles.fromJson(o.toJson());
-      checkProfiles(od);
+      checkProfiles(od as api.Profiles);
     });
   });
 
@@ -4691,7 +4717,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRealtimeDataColumnHeaders();
       var od = api.RealtimeDataColumnHeaders.fromJson(o.toJson());
-      checkRealtimeDataColumnHeaders(od);
+      checkRealtimeDataColumnHeaders(od as api.RealtimeDataColumnHeaders);
     });
   });
 
@@ -4699,7 +4725,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRealtimeDataProfileInfo();
       var od = api.RealtimeDataProfileInfo.fromJson(o.toJson());
-      checkRealtimeDataProfileInfo(od);
+      checkRealtimeDataProfileInfo(od as api.RealtimeDataProfileInfo);
     });
   });
 
@@ -4707,7 +4733,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRealtimeDataQuery();
       var od = api.RealtimeDataQuery.fromJson(o.toJson());
-      checkRealtimeDataQuery(od);
+      checkRealtimeDataQuery(od as api.RealtimeDataQuery);
     });
   });
 
@@ -4715,7 +4741,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRealtimeData();
       var od = api.RealtimeData.fromJson(o.toJson());
-      checkRealtimeData(od);
+      checkRealtimeData(od as api.RealtimeData);
     });
   });
 
@@ -4723,7 +4749,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemarketingAudienceAudienceDefinition();
       var od = api.RemarketingAudienceAudienceDefinition.fromJson(o.toJson());
-      checkRemarketingAudienceAudienceDefinition(od);
+      checkRemarketingAudienceAudienceDefinition(
+          od as api.RemarketingAudienceAudienceDefinition);
     });
   });
 
@@ -4736,7 +4763,9 @@ void main() {
       var od =
           api.RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
               .fromJson(o.toJson());
-      checkRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions(od);
+      checkRemarketingAudienceStateBasedAudienceDefinitionExcludeConditions(od
+          as api
+              .RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions);
     });
   });
 
@@ -4746,7 +4775,8 @@ void main() {
       var o = buildRemarketingAudienceStateBasedAudienceDefinition();
       var od = api.RemarketingAudienceStateBasedAudienceDefinition.fromJson(
           o.toJson());
-      checkRemarketingAudienceStateBasedAudienceDefinition(od);
+      checkRemarketingAudienceStateBasedAudienceDefinition(
+          od as api.RemarketingAudienceStateBasedAudienceDefinition);
     });
   });
 
@@ -4754,7 +4784,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemarketingAudience();
       var od = api.RemarketingAudience.fromJson(o.toJson());
-      checkRemarketingAudience(od);
+      checkRemarketingAudience(od as api.RemarketingAudience);
     });
   });
 
@@ -4762,7 +4792,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRemarketingAudiences();
       var od = api.RemarketingAudiences.fromJson(o.toJson());
-      checkRemarketingAudiences(od);
+      checkRemarketingAudiences(od as api.RemarketingAudiences);
     });
   });
 
@@ -4770,7 +4800,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegment();
       var od = api.Segment.fromJson(o.toJson());
-      checkSegment(od);
+      checkSegment(od as api.Segment);
     });
   });
 
@@ -4778,7 +4808,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSegments();
       var od = api.Segments.fromJson(o.toJson());
-      checkSegments(od);
+      checkSegments(od as api.Segments);
     });
   });
 
@@ -4787,7 +4817,8 @@ void main() {
       var o = buildUnsampledReportCloudStorageDownloadDetails();
       var od =
           api.UnsampledReportCloudStorageDownloadDetails.fromJson(o.toJson());
-      checkUnsampledReportCloudStorageDownloadDetails(od);
+      checkUnsampledReportCloudStorageDownloadDetails(
+          od as api.UnsampledReportCloudStorageDownloadDetails);
     });
   });
 
@@ -4795,7 +4826,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnsampledReportDriveDownloadDetails();
       var od = api.UnsampledReportDriveDownloadDetails.fromJson(o.toJson());
-      checkUnsampledReportDriveDownloadDetails(od);
+      checkUnsampledReportDriveDownloadDetails(
+          od as api.UnsampledReportDriveDownloadDetails);
     });
   });
 
@@ -4803,7 +4835,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnsampledReport();
       var od = api.UnsampledReport.fromJson(o.toJson());
-      checkUnsampledReport(od);
+      checkUnsampledReport(od as api.UnsampledReport);
     });
   });
 
@@ -4811,7 +4843,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnsampledReports();
       var od = api.UnsampledReports.fromJson(o.toJson());
-      checkUnsampledReports(od);
+      checkUnsampledReports(od as api.UnsampledReports);
     });
   });
 
@@ -4819,7 +4851,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpload();
       var od = api.Upload.fromJson(o.toJson());
-      checkUpload(od);
+      checkUpload(od as api.Upload);
     });
   });
 
@@ -4827,7 +4859,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUploads();
       var od = api.Uploads.fromJson(o.toJson());
-      checkUploads(od);
+      checkUploads(od as api.Uploads);
     });
   });
 
@@ -4835,7 +4867,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserDeletionRequestId();
       var od = api.UserDeletionRequestId.fromJson(o.toJson());
-      checkUserDeletionRequestId(od);
+      checkUserDeletionRequestId(od as api.UserDeletionRequestId);
     });
   });
 
@@ -4843,7 +4875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserDeletionRequest();
       var od = api.UserDeletionRequest.fromJson(o.toJson());
-      checkUserDeletionRequest(od);
+      checkUserDeletionRequest(od as api.UserDeletionRequest);
     });
   });
 
@@ -4851,7 +4883,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserRef();
       var od = api.UserRef.fromJson(o.toJson());
-      checkUserRef(od);
+      checkUserRef(od as api.UserRef);
     });
   });
 
@@ -4859,7 +4891,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebPropertyRef();
       var od = api.WebPropertyRef.fromJson(o.toJson());
-      checkWebPropertyRef(od);
+      checkWebPropertyRef(od as api.WebPropertyRef);
     });
   });
 
@@ -4867,7 +4899,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebPropertySummary();
       var od = api.WebPropertySummary.fromJson(o.toJson());
-      checkWebPropertySummary(od);
+      checkWebPropertySummary(od as api.WebPropertySummary);
     });
   });
 
@@ -4875,7 +4907,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebproperties();
       var od = api.Webproperties.fromJson(o.toJson());
-      checkWebproperties(od);
+      checkWebproperties(od as api.Webproperties);
     });
   });
 
@@ -4883,7 +4915,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebpropertyChildLink();
       var od = api.WebpropertyChildLink.fromJson(o.toJson());
-      checkWebpropertyChildLink(od);
+      checkWebpropertyChildLink(od as api.WebpropertyChildLink);
     });
   });
 
@@ -4891,7 +4923,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebpropertyParentLink();
       var od = api.WebpropertyParentLink.fromJson(o.toJson());
-      checkWebpropertyParentLink(od);
+      checkWebpropertyParentLink(od as api.WebpropertyParentLink);
     });
   });
 
@@ -4899,7 +4931,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebpropertyPermissions();
       var od = api.WebpropertyPermissions.fromJson(o.toJson());
-      checkWebpropertyPermissions(od);
+      checkWebpropertyPermissions(od as api.WebpropertyPermissions);
     });
   });
 
@@ -4907,7 +4939,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebproperty();
       var od = api.Webproperty.fromJson(o.toJson());
-      checkWebproperty(od);
+      checkWebproperty(od as api.Webproperty);
     });
   });
 
@@ -5003,7 +5035,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGaData(response);
+        checkGaData(response as api.GaData);
       })));
     });
   });
@@ -5089,7 +5121,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMcfData(response);
+        checkMcfData(response as api.McfData);
       })));
     });
   });
@@ -5161,7 +5193,7 @@ void main() {
               sort: arg_sort,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRealtimeData(response);
+        checkRealtimeData(response as api.RealtimeData);
       })));
     });
   });
@@ -5221,7 +5253,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccountSummaries(response);
+        checkAccountSummaries(response as api.AccountSummaries);
       })));
     });
   });
@@ -5295,8 +5327,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5347,7 +5380,7 @@ void main() {
       res
           .insert(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
 
@@ -5415,7 +5448,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response);
+        checkEntityUserLinks(response as api.EntityUserLinks);
       })));
     });
 
@@ -5427,8 +5460,9 @@ void main() {
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5482,7 +5516,7 @@ void main() {
       res
           .update(arg_request, arg_accountId, arg_linkId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
   });
@@ -5542,7 +5576,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccounts(response);
+        checkAccounts(response as api.Accounts);
       })));
     });
   });
@@ -5554,8 +5588,9 @@ void main() {
       var arg_request = buildHashClientIdRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HashClientIdRequest.fromJson(json);
-        checkHashClientIdRequest(obj);
+        var obj = api.HashClientIdRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkHashClientIdRequest(obj as api.HashClientIdRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5597,7 +5632,7 @@ void main() {
       res
           .hashClientId(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHashClientIdResponse(response);
+        checkHashClientIdResponse(response as api.HashClientIdResponse);
       })));
     });
   });
@@ -5677,7 +5712,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDataSources(response);
+        checkCustomDataSources(response as api.CustomDataSources);
       })));
     });
   });
@@ -5753,7 +5788,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_customDimensionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response);
+        checkCustomDimension(response as api.CustomDimension);
       })));
     });
 
@@ -5765,8 +5800,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomDimension.fromJson(json);
-        checkCustomDimension(obj);
+        var obj = api.CustomDimension.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomDimension(obj as api.CustomDimension);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5827,7 +5863,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response);
+        checkCustomDimension(response as api.CustomDimension);
       })));
     });
 
@@ -5905,7 +5941,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDimensions(response);
+        checkCustomDimensions(response as api.CustomDimensions);
       })));
     });
 
@@ -5919,8 +5955,9 @@ void main() {
       var arg_ignoreCustomDataSourceLinks = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomDimension.fromJson(json);
-        checkCustomDimension(obj);
+        var obj = api.CustomDimension.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomDimension(obj as api.CustomDimension);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5988,7 +6025,7 @@ void main() {
               ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response);
+        checkCustomDimension(response as api.CustomDimension);
       })));
     });
 
@@ -6002,8 +6039,9 @@ void main() {
       var arg_ignoreCustomDataSourceLinks = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomDimension.fromJson(json);
-        checkCustomDimension(obj);
+        var obj = api.CustomDimension.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomDimension(obj as api.CustomDimension);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6071,7 +6109,7 @@ void main() {
               ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomDimension(response);
+        checkCustomDimension(response as api.CustomDimension);
       })));
     });
   });
@@ -6147,7 +6185,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_customMetricId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response);
+        checkCustomMetric(response as api.CustomMetric);
       })));
     });
 
@@ -6159,8 +6197,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomMetric.fromJson(json);
-        checkCustomMetric(obj);
+        var obj = api.CustomMetric.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomMetric(obj as api.CustomMetric);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6221,7 +6260,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response);
+        checkCustomMetric(response as api.CustomMetric);
       })));
     });
 
@@ -6299,7 +6338,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomMetrics(response);
+        checkCustomMetrics(response as api.CustomMetrics);
       })));
     });
 
@@ -6313,8 +6352,9 @@ void main() {
       var arg_ignoreCustomDataSourceLinks = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomMetric.fromJson(json);
-        checkCustomMetric(obj);
+        var obj = api.CustomMetric.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomMetric(obj as api.CustomMetric);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6382,7 +6422,7 @@ void main() {
               ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response);
+        checkCustomMetric(response as api.CustomMetric);
       })));
     });
 
@@ -6396,8 +6436,9 @@ void main() {
       var arg_ignoreCustomDataSourceLinks = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CustomMetric.fromJson(json);
-        checkCustomMetric(obj);
+        var obj = api.CustomMetric.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCustomMetric(obj as api.CustomMetric);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6465,7 +6506,7 @@ void main() {
               ignoreCustomDataSourceLinks: arg_ignoreCustomDataSourceLinks,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomMetric(response);
+        checkCustomMetric(response as api.CustomMetric);
       })));
     });
   });
@@ -6635,7 +6676,7 @@ void main() {
               arg_accountId, arg_webPropertyId, arg_profileId, arg_experimentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExperiment(response);
+        checkExperiment(response as api.Experiment);
       })));
     });
 
@@ -6648,8 +6689,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Experiment.fromJson(json);
-        checkExperiment(obj);
+        var obj = api.Experiment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExperiment(obj as api.Experiment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6719,7 +6761,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExperiment(response);
+        checkExperiment(response as api.Experiment);
       })));
     });
 
@@ -6807,7 +6849,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExperiments(response);
+        checkExperiments(response as api.Experiments);
       })));
     });
 
@@ -6821,8 +6863,9 @@ void main() {
       var arg_experimentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Experiment.fromJson(json);
-        checkExperiment(obj);
+        var obj = api.Experiment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExperiment(obj as api.Experiment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6896,7 +6939,7 @@ void main() {
               arg_experimentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExperiment(response);
+        checkExperiment(response as api.Experiment);
       })));
     });
 
@@ -6910,8 +6953,9 @@ void main() {
       var arg_experimentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Experiment.fromJson(json);
-        checkExperiment(obj);
+        var obj = api.Experiment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExperiment(obj as api.Experiment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6985,7 +7029,7 @@ void main() {
               arg_experimentId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkExperiment(response);
+        checkExperiment(response as api.Experiment);
       })));
     });
   });
@@ -7050,7 +7094,7 @@ void main() {
       res
           .delete(arg_accountId, arg_filterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilter(response);
+        checkFilter(response as api.Filter);
       })));
     });
 
@@ -7113,7 +7157,7 @@ void main() {
       res
           .get(arg_accountId, arg_filterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilter(response);
+        checkFilter(response as api.Filter);
       })));
     });
 
@@ -7124,8 +7168,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Filter.fromJson(json);
-        checkFilter(obj);
+        var obj =
+            api.Filter.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFilter(obj as api.Filter);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7176,7 +7221,7 @@ void main() {
       res
           .insert(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilter(response);
+        checkFilter(response as api.Filter);
       })));
     });
 
@@ -7244,7 +7289,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilters(response);
+        checkFilters(response as api.Filters);
       })));
     });
 
@@ -7256,8 +7301,9 @@ void main() {
       var arg_filterId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Filter.fromJson(json);
-        checkFilter(obj);
+        var obj =
+            api.Filter.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFilter(obj as api.Filter);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7311,7 +7357,7 @@ void main() {
       res
           .patch(arg_request, arg_accountId, arg_filterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilter(response);
+        checkFilter(response as api.Filter);
       })));
     });
 
@@ -7323,8 +7369,9 @@ void main() {
       var arg_filterId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Filter.fromJson(json);
-        checkFilter(obj);
+        var obj =
+            api.Filter.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFilter(obj as api.Filter);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7379,7 +7426,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_filterId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFilter(response);
+        checkFilter(response as api.Filter);
       })));
     });
   });
@@ -7465,7 +7512,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_profileId, arg_goalId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoal(response);
+        checkGoal(response as api.Goal);
       })));
     });
 
@@ -7478,8 +7525,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Goal.fromJson(json);
-        checkGoal(obj);
+        var obj =
+            api.Goal.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoal(obj as api.Goal);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7549,7 +7597,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoal(response);
+        checkGoal(response as api.Goal);
       })));
     });
 
@@ -7637,7 +7685,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoals(response);
+        checkGoals(response as api.Goals);
       })));
     });
 
@@ -7651,8 +7699,9 @@ void main() {
       var arg_goalId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Goal.fromJson(json);
-        checkGoal(obj);
+        var obj =
+            api.Goal.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoal(obj as api.Goal);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7726,7 +7775,7 @@ void main() {
               arg_goalId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoal(response);
+        checkGoal(response as api.Goal);
       })));
     });
 
@@ -7740,8 +7789,9 @@ void main() {
       var arg_goalId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Goal.fromJson(json);
-        checkGoal(obj);
+        var obj =
+            api.Goal.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGoal(obj as api.Goal);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -7815,7 +7865,7 @@ void main() {
               arg_goalId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoal(response);
+        checkGoal(response as api.Goal);
       })));
     });
   });
@@ -7983,7 +8033,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_profileId, arg_linkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response);
+        checkProfileFilterLink(response as api.ProfileFilterLink);
       })));
     });
 
@@ -7996,8 +8046,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProfileFilterLink.fromJson(json);
-        checkProfileFilterLink(obj);
+        var obj = api.ProfileFilterLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProfileFilterLink(obj as api.ProfileFilterLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8067,7 +8118,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response);
+        checkProfileFilterLink(response as api.ProfileFilterLink);
       })));
     });
 
@@ -8155,7 +8206,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLinks(response);
+        checkProfileFilterLinks(response as api.ProfileFilterLinks);
       })));
     });
 
@@ -8169,8 +8220,9 @@ void main() {
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProfileFilterLink.fromJson(json);
-        checkProfileFilterLink(obj);
+        var obj = api.ProfileFilterLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProfileFilterLink(obj as api.ProfileFilterLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8244,7 +8296,7 @@ void main() {
               arg_linkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response);
+        checkProfileFilterLink(response as api.ProfileFilterLink);
       })));
     });
 
@@ -8258,8 +8310,9 @@ void main() {
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ProfileFilterLink.fromJson(json);
-        checkProfileFilterLink(obj);
+        var obj = api.ProfileFilterLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkProfileFilterLink(obj as api.ProfileFilterLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8333,7 +8386,7 @@ void main() {
               arg_linkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfileFilterLink(response);
+        checkProfileFilterLink(response as api.ProfileFilterLink);
       })));
     });
   });
@@ -8430,8 +8483,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8501,7 +8555,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
 
@@ -8589,7 +8643,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response);
+        checkEntityUserLinks(response as api.EntityUserLinks);
       })));
     });
 
@@ -8603,8 +8657,9 @@ void main() {
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8678,7 +8733,7 @@ void main() {
               arg_linkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
   });
@@ -8826,7 +8881,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
 
@@ -8838,8 +8893,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Profile.fromJson(json);
-        checkProfile(obj);
+        var obj =
+            api.Profile.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProfile(obj as api.Profile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8900,7 +8956,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
 
@@ -8978,7 +9034,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfiles(response);
+        checkProfiles(response as api.Profiles);
       })));
     });
 
@@ -8991,8 +9047,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Profile.fromJson(json);
-        checkProfile(obj);
+        var obj =
+            api.Profile.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProfile(obj as api.Profile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9056,7 +9113,7 @@ void main() {
           .patch(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
 
@@ -9069,8 +9126,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Profile.fromJson(json);
-        checkProfile(obj);
+        var obj =
+            api.Profile.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProfile(obj as api.Profile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9134,7 +9192,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
   });
@@ -9282,7 +9340,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_remarketingAudienceId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response);
+        checkRemarketingAudience(response as api.RemarketingAudience);
       })));
     });
 
@@ -9294,8 +9352,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemarketingAudience.fromJson(json);
-        checkRemarketingAudience(obj);
+        var obj = api.RemarketingAudience.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemarketingAudience(obj as api.RemarketingAudience);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9356,7 +9415,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response);
+        checkRemarketingAudience(response as api.RemarketingAudience);
       })));
     });
 
@@ -9437,7 +9496,7 @@ void main() {
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudiences(response);
+        checkRemarketingAudiences(response as api.RemarketingAudiences);
       })));
     });
 
@@ -9450,8 +9509,9 @@ void main() {
       var arg_remarketingAudienceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemarketingAudience.fromJson(json);
-        checkRemarketingAudience(obj);
+        var obj = api.RemarketingAudience.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemarketingAudience(obj as api.RemarketingAudience);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9516,7 +9576,7 @@ void main() {
               arg_remarketingAudienceId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response);
+        checkRemarketingAudience(response as api.RemarketingAudience);
       })));
     });
 
@@ -9529,8 +9589,9 @@ void main() {
       var arg_remarketingAudienceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RemarketingAudience.fromJson(json);
-        checkRemarketingAudience(obj);
+        var obj = api.RemarketingAudience.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRemarketingAudience(obj as api.RemarketingAudience);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9595,7 +9656,7 @@ void main() {
               arg_remarketingAudienceId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRemarketingAudience(response);
+        checkRemarketingAudience(response as api.RemarketingAudience);
       })));
     });
   });
@@ -9655,7 +9716,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSegments(response);
+        checkSegments(response as api.Segments);
       })));
     });
   });
@@ -9825,7 +9886,7 @@ void main() {
               arg_unsampledReportId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUnsampledReport(response);
+        checkUnsampledReport(response as api.UnsampledReport);
       })));
     });
 
@@ -9838,8 +9899,9 @@ void main() {
       var arg_profileId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UnsampledReport.fromJson(json);
-        checkUnsampledReport(obj);
+        var obj = api.UnsampledReport.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUnsampledReport(obj as api.UnsampledReport);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9909,7 +9971,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId, arg_profileId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUnsampledReport(response);
+        checkUnsampledReport(response as api.UnsampledReport);
       })));
     });
 
@@ -9997,7 +10059,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUnsampledReports(response);
+        checkUnsampledReports(response as api.UnsampledReports);
       })));
     });
   });
@@ -10012,8 +10074,10 @@ void main() {
       var arg_customDataSourceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnalyticsDataimportDeleteUploadDataRequest.fromJson(json);
-        checkAnalyticsDataimportDeleteUploadDataRequest(obj);
+        var obj = api.AnalyticsDataimportDeleteUploadDataRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnalyticsDataimportDeleteUploadDataRequest(
+            obj as api.AnalyticsDataimportDeleteUploadDataRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10167,7 +10231,7 @@ void main() {
               arg_uploadId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUpload(response);
+        checkUpload(response as api.Upload);
       })));
     });
 
@@ -10255,7 +10319,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUploads(response);
+        checkUploads(response as api.Uploads);
       })));
     });
 
@@ -10338,7 +10402,7 @@ void main() {
           .uploadData(arg_accountId, arg_webPropertyId, arg_customDataSourceId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUpload(response);
+        checkUpload(response as api.Upload);
       })));
     });
   });
@@ -10489,7 +10553,7 @@ void main() {
           .get(arg_accountId, arg_webPropertyId, arg_webPropertyAdWordsLinkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response);
+        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
       })));
     });
 
@@ -10501,8 +10565,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityAdWordsLink.fromJson(json);
-        checkEntityAdWordsLink(obj);
+        var obj = api.EntityAdWordsLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityAdWordsLink(obj as api.EntityAdWordsLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10563,7 +10628,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response);
+        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
       })));
     });
 
@@ -10641,7 +10706,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLinks(response);
+        checkEntityAdWordsLinks(response as api.EntityAdWordsLinks);
       })));
     });
 
@@ -10654,8 +10719,9 @@ void main() {
       var arg_webPropertyAdWordsLinkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityAdWordsLink.fromJson(json);
-        checkEntityAdWordsLink(obj);
+        var obj = api.EntityAdWordsLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityAdWordsLink(obj as api.EntityAdWordsLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10721,7 +10787,7 @@ void main() {
               arg_webPropertyAdWordsLinkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response);
+        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
       })));
     });
 
@@ -10734,8 +10800,9 @@ void main() {
       var arg_webPropertyAdWordsLinkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityAdWordsLink.fromJson(json);
-        checkEntityAdWordsLink(obj);
+        var obj = api.EntityAdWordsLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityAdWordsLink(obj as api.EntityAdWordsLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10801,7 +10868,7 @@ void main() {
               arg_webPropertyAdWordsLinkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityAdWordsLink(response);
+        checkEntityAdWordsLink(response as api.EntityAdWordsLink);
       })));
     });
   });
@@ -10866,7 +10933,7 @@ void main() {
       res
           .get(arg_accountId, arg_webPropertyId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response);
+        checkWebproperty(response as api.Webproperty);
       })));
     });
 
@@ -10877,8 +10944,9 @@ void main() {
       var arg_accountId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Webproperty.fromJson(json);
-        checkWebproperty(obj);
+        var obj = api.Webproperty.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWebproperty(obj as api.Webproperty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10929,7 +10997,7 @@ void main() {
       res
           .insert(arg_request, arg_accountId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response);
+        checkWebproperty(response as api.Webproperty);
       })));
     });
 
@@ -10997,7 +11065,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebproperties(response);
+        checkWebproperties(response as api.Webproperties);
       })));
     });
 
@@ -11009,8 +11077,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Webproperty.fromJson(json);
-        checkWebproperty(obj);
+        var obj = api.Webproperty.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWebproperty(obj as api.Webproperty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11065,7 +11134,7 @@ void main() {
           .patch(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response);
+        checkWebproperty(response as api.Webproperty);
       })));
     });
 
@@ -11077,8 +11146,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Webproperty.fromJson(json);
-        checkWebproperty(obj);
+        var obj = api.Webproperty.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWebproperty(obj as api.Webproperty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11133,7 +11203,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWebproperty(response);
+        checkWebproperty(response as api.Webproperty);
       })));
     });
   });
@@ -11219,8 +11289,9 @@ void main() {
       var arg_webPropertyId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11281,7 +11352,7 @@ void main() {
           .insert(arg_request, arg_accountId, arg_webPropertyId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
 
@@ -11359,7 +11430,7 @@ void main() {
               start_index: arg_start_index,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLinks(response);
+        checkEntityUserLinks(response as api.EntityUserLinks);
       })));
     });
 
@@ -11372,8 +11443,9 @@ void main() {
       var arg_linkId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EntityUserLink.fromJson(json);
-        checkEntityUserLink(obj);
+        var obj = api.EntityUserLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEntityUserLink(obj as api.EntityUserLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11437,7 +11509,7 @@ void main() {
           .update(arg_request, arg_accountId, arg_webPropertyId, arg_linkId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEntityUserLink(response);
+        checkEntityUserLink(response as api.EntityUserLink);
       })));
     });
   });
@@ -11498,7 +11570,7 @@ void main() {
       res
           .list(arg_reportType, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkColumns(response);
+        checkColumns(response as api.Columns);
       })));
     });
   });
@@ -11510,8 +11582,9 @@ void main() {
       var arg_request = buildAccountTicket();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountTicket.fromJson(json);
-        checkAccountTicket(obj);
+        var obj = api.AccountTicket.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccountTicket(obj as api.AccountTicket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11553,7 +11626,7 @@ void main() {
       res
           .createAccountTicket(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccountTicket(response);
+        checkAccountTicket(response as api.AccountTicket);
       })));
     });
 
@@ -11563,8 +11636,9 @@ void main() {
       var arg_request = buildAccountTreeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccountTreeRequest.fromJson(json);
-        checkAccountTreeRequest(obj);
+        var obj = api.AccountTreeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccountTreeRequest(obj as api.AccountTreeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11606,7 +11680,7 @@ void main() {
       res
           .createAccountTree(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccountTreeResponse(response);
+        checkAccountTreeResponse(response as api.AccountTreeResponse);
       })));
     });
   });
@@ -11618,8 +11692,9 @@ void main() {
       var arg_request = buildUserDeletionRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UserDeletionRequest.fromJson(json);
-        checkUserDeletionRequest(obj);
+        var obj = api.UserDeletionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUserDeletionRequest(obj as api.UserDeletionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11661,7 +11736,7 @@ void main() {
       res
           .upsert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUserDeletionRequest(response);
+        checkUserDeletionRequest(response as api.UserDeletionRequest);
       })));
     });
   });

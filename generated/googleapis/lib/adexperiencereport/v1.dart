@@ -97,7 +97,10 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteSummaryResponse.fromJson(data));
+    return _response.then(
+      (data) => SiteSummaryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -146,7 +149,10 @@ class ViolatingSitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ViolatingSitesResponse.fromJson(data));
+    return _response.then(
+      (data) => ViolatingSitesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -264,10 +270,12 @@ class SiteSummaryResponse {
 
   SiteSummaryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('desktopSummary')) {
-      desktopSummary = PlatformSummary.fromJson(_json['desktopSummary']);
+      desktopSummary = PlatformSummary.fromJson(
+          _json['desktopSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mobileSummary')) {
-      mobileSummary = PlatformSummary.fromJson(_json['mobileSummary']);
+      mobileSummary = PlatformSummary.fromJson(
+          _json['mobileSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reviewedSite')) {
       reviewedSite = _json['reviewedSite'] as core.String;
@@ -299,8 +307,8 @@ class ViolatingSitesResponse {
   ViolatingSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('violatingSites')) {
       violatingSites = (_json['violatingSites'] as core.List)
-          .map<SiteSummaryResponse>(
-              (value) => SiteSummaryResponse.fromJson(value))
+          .map<SiteSummaryResponse>((value) => SiteSummaryResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

@@ -111,7 +111,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List hosted accounts associated with this AdSense account by ad client id.
@@ -160,7 +162,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Accounts.fromJson(data));
+    return _response.then(
+      (data) => Accounts.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -225,7 +229,9 @@ class AccountsAdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClient.fromJson(data));
+    return _response.then(
+      (data) => AdClient.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all hosted ad clients in the specified hosted account.
@@ -291,7 +297,9 @@ class AccountsAdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClients.fromJson(data));
+    return _response.then(
+      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -362,7 +370,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the specified host ad unit in this AdSense account.
@@ -427,7 +437,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get ad code for the specified ad unit, attaching the specified host custom
@@ -500,7 +512,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdCode.fromJson(data));
+    return _response.then(
+      (data) => AdCode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert the supplied ad unit into the specified publisher AdSense account.
@@ -564,7 +578,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all ad units in the specified publisher's AdSense account.
@@ -644,7 +660,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnits.fromJson(data));
+    return _response.then(
+      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -716,7 +734,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the supplied ad unit in the specified publisher AdSense account.
@@ -780,7 +800,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -909,7 +931,9 @@ class AccountsReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Report.fromJson(data));
+    return _response.then(
+      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -963,7 +987,9 @@ class AdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClient.fromJson(data));
+    return _response.then(
+      (data) => AdClient.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all host ad clients in this AdSense account.
@@ -1021,7 +1047,9 @@ class AdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClients.fromJson(data));
+    return _response.then(
+      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1105,7 +1133,10 @@ class AssociationsessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AssociationSession.fromJson(data));
+    return _response.then(
+      (data) => AssociationSession.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verify an association session after the association callback returns from
@@ -1155,7 +1186,10 @@ class AssociationsessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AssociationSession.fromJson(data));
+    return _response.then(
+      (data) => AssociationSession.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1218,7 +1252,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a specific custom channel from the host AdSense account.
@@ -1275,7 +1312,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Add a new custom channel to the host AdSense account.
@@ -1331,7 +1371,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all host custom channels in this AdSense account.
@@ -1397,7 +1440,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a custom channel in the host AdSense account. This method supports
@@ -1461,7 +1507,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a custom channel in the host AdSense account.
@@ -1517,7 +1566,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1639,7 +1691,9 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Report.fromJson(data));
+    return _response.then(
+      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1702,7 +1756,10 @@ class UrlchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Add a new URL channel to the host AdSense account.
@@ -1758,7 +1815,10 @@ class UrlchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all host URL channels in the host AdSense account.
@@ -1824,7 +1884,10 @@ class UrlchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1894,7 +1957,8 @@ class Accounts {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1997,7 +2061,8 @@ class AdClients {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AdClient>((value) => AdClient.fromJson(value))
+          .map<AdClient>((value) =>
+              AdClient.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2166,13 +2231,15 @@ class AdStyle {
 
   AdStyle.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
-      colors = AdStyleColors.fromJson(_json['colors']);
+      colors = AdStyleColors.fromJson(
+          _json['colors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('corners')) {
       corners = _json['corners'] as core.String;
     }
     if (_json.containsKey('font')) {
-      font = AdStyleFont.fromJson(_json['font']);
+      font = AdStyleFont.fromJson(
+          _json['font'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2256,8 +2323,8 @@ class AdUnitContentAdsSettings {
 
   AdUnitContentAdsSettings.fromJson(core.Map _json) {
     if (_json.containsKey('backupOption')) {
-      backupOption =
-          AdUnitContentAdsSettingsBackupOption.fromJson(_json['backupOption']);
+      backupOption = AdUnitContentAdsSettingsBackupOption.fromJson(
+          _json['backupOption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('size')) {
       size = _json['size'] as core.String;
@@ -2373,11 +2440,12 @@ class AdUnit {
       code = _json['code'] as core.String;
     }
     if (_json.containsKey('contentAdsSettings')) {
-      contentAdsSettings =
-          AdUnitContentAdsSettings.fromJson(_json['contentAdsSettings']);
+      contentAdsSettings = AdUnitContentAdsSettings.fromJson(
+          _json['contentAdsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customStyle')) {
-      customStyle = AdStyle.fromJson(_json['customStyle']);
+      customStyle = AdStyle.fromJson(
+          _json['customStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2387,7 +2455,8 @@ class AdUnit {
     }
     if (_json.containsKey('mobileContentAdsSettings')) {
       mobileContentAdsSettings = AdUnitMobileContentAdsSettings.fromJson(
-          _json['mobileContentAdsSettings']);
+          _json['mobileContentAdsSettings']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2449,7 +2518,8 @@ class AdUnits {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AdUnit>((value) => AdUnit.fromJson(value))
+          .map<AdUnit>((value) =>
+              AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2650,7 +2720,8 @@ class CustomChannels {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CustomChannel>((value) => CustomChannel.fromJson(value))
+          .map<CustomChannel>((value) => CustomChannel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2760,7 +2831,8 @@ class Report {
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<ReportHeaders>((value) => ReportHeaders.fromJson(value))
+          .map<ReportHeaders>((value) => ReportHeaders.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2878,7 +2950,8 @@ class UrlChannels {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<UrlChannel>((value) => UrlChannel.fromJson(value))
+          .map<UrlChannel>((value) =>
+              UrlChannel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

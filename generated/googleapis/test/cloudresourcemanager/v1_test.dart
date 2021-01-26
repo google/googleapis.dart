@@ -88,7 +88,7 @@ api.Ancestor buildAncestor() {
 void checkAncestor(api.Ancestor o) {
   buildCounterAncestor++;
   if (buildCounterAncestor < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterAncestor--;
 }
@@ -102,8 +102,8 @@ core.List<api.AuditLogConfig> buildUnnamed2855() {
 
 void checkUnnamed2855(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -192,7 +192,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2857(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -274,11 +274,11 @@ api.Constraint buildConstraint() {
 void checkConstraint(api.Constraint o) {
   buildCounterConstraint++;
   if (buildCounterConstraint < 3) {
-    checkBooleanConstraint(o.booleanConstraint);
+    checkBooleanConstraint(o.booleanConstraint as api.BooleanConstraint);
     unittest.expect(o.constraintDefault, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkListConstraint(o.listConstraint);
+    checkListConstraint(o.listConstraint as api.ListConstraint);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -393,8 +393,8 @@ core.List<api.Ancestor> buildUnnamed2858() {
 
 void checkUnnamed2858(core.List<api.Ancestor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAncestor(o[0]);
-  checkAncestor(o[1]);
+  checkAncestor(o[0] as api.Ancestor);
+  checkAncestor(o[1] as api.Ancestor);
 }
 
 core.int buildCounterGetAncestryResponse = 0;
@@ -449,7 +449,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -566,8 +566,8 @@ core.List<api.Constraint> buildUnnamed2860() {
 
 void checkUnnamed2860(core.List<api.Constraint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkConstraint(o[0]);
-  checkConstraint(o[1]);
+  checkConstraint(o[0] as api.Constraint);
+  checkConstraint(o[1] as api.Constraint);
 }
 
 core.int buildCounterListAvailableOrgPolicyConstraintsResponse = 0;
@@ -623,8 +623,8 @@ core.List<api.Lien> buildUnnamed2861() {
 
 void checkUnnamed2861(core.List<api.Lien> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLien(o[0]);
-  checkLien(o[1]);
+  checkLien(o[0] as api.Lien);
+  checkLien(o[1] as api.Lien);
 }
 
 core.int buildCounterListLiensResponse = 0;
@@ -678,8 +678,8 @@ core.List<api.OrgPolicy> buildUnnamed2862() {
 
 void checkUnnamed2862(core.List<api.OrgPolicy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrgPolicy(o[0]);
-  checkOrgPolicy(o[1]);
+  checkOrgPolicy(o[0] as api.OrgPolicy);
+  checkOrgPolicy(o[1] as api.OrgPolicy);
 }
 
 core.int buildCounterListOrgPoliciesResponse = 0;
@@ -765,8 +765,8 @@ core.List<api.Project> buildUnnamed2865() {
 
 void checkUnnamed2865(core.List<api.Project> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProject(o[0]);
-  checkProject(o[1]);
+  checkProject(o[0] as api.Project);
+  checkProject(o[1] as api.Project);
 }
 
 core.int buildCounterListProjectsResponse = 0;
@@ -867,7 +867,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed2866(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2867(o.response);
@@ -895,11 +895,11 @@ api.OrgPolicy buildOrgPolicy() {
 void checkOrgPolicy(api.OrgPolicy o) {
   buildCounterOrgPolicy++;
   if (buildCounterOrgPolicy < 3) {
-    checkBooleanPolicy(o.booleanPolicy);
+    checkBooleanPolicy(o.booleanPolicy as api.BooleanPolicy);
     unittest.expect(o.constraint, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkListPolicy(o.listPolicy);
-    checkRestoreDefault(o.restoreDefault);
+    checkListPolicy(o.listPolicy as api.ListPolicy);
+    checkRestoreDefault(o.restoreDefault as api.RestoreDefault);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -928,7 +928,7 @@ void checkOrganization(api.Organization o) {
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOrganizationOwner(o.owner);
+    checkOrganizationOwner(o.owner as api.OrganizationOwner);
   }
   buildCounterOrganization--;
 }
@@ -961,8 +961,8 @@ core.List<api.AuditConfig> buildUnnamed2868() {
 
 void checkUnnamed2868(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed2869() {
@@ -974,8 +974,8 @@ core.List<api.Binding> buildUnnamed2869() {
 
 void checkUnnamed2869(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1040,7 +1040,7 @@ void checkProject(api.Project o) {
     checkUnnamed2870(o.labels);
     unittest.expect(o.lifecycleState, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkResourceId(o.parent);
+    checkResourceId(o.parent as api.ResourceId);
     unittest.expect(o.projectId, unittest.equals('foo'));
     unittest.expect(o.projectNumber, unittest.equals('foo'));
   }
@@ -1138,8 +1138,8 @@ core.List<api.Organization> buildUnnamed2871() {
 
 void checkUnnamed2871(core.List<api.Organization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrganization(o[0]);
-  checkOrganization(o[1]);
+  checkOrganization(o[0] as api.Organization);
+  checkOrganization(o[1] as api.Organization);
 }
 
 core.int buildCounterSearchOrganizationsResponse = 0;
@@ -1178,7 +1178,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1198,7 +1198,7 @@ api.SetOrgPolicyRequest buildSetOrgPolicyRequest() {
 void checkSetOrgPolicyRequest(api.SetOrgPolicyRequest o) {
   buildCounterSetOrgPolicyRequest++;
   if (buildCounterSetOrgPolicyRequest < 3) {
-    checkOrgPolicy(o.policy);
+    checkOrgPolicy(o.policy as api.OrgPolicy);
   }
   buildCounterSetOrgPolicyRequest--;
 }
@@ -1352,7 +1352,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAncestor();
       var od = api.Ancestor.fromJson(o.toJson());
-      checkAncestor(od);
+      checkAncestor(od as api.Ancestor);
     });
   });
 
@@ -1360,7 +1360,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1368,7 +1368,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1376,7 +1376,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1384,7 +1384,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBooleanConstraint();
       var od = api.BooleanConstraint.fromJson(o.toJson());
-      checkBooleanConstraint(od);
+      checkBooleanConstraint(od as api.BooleanConstraint);
     });
   });
 
@@ -1392,7 +1392,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBooleanPolicy();
       var od = api.BooleanPolicy.fromJson(o.toJson());
-      checkBooleanPolicy(od);
+      checkBooleanPolicy(od as api.BooleanPolicy);
     });
   });
 
@@ -1400,7 +1400,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClearOrgPolicyRequest();
       var od = api.ClearOrgPolicyRequest.fromJson(o.toJson());
-      checkClearOrgPolicyRequest(od);
+      checkClearOrgPolicyRequest(od as api.ClearOrgPolicyRequest);
     });
   });
 
@@ -1408,7 +1408,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConstraint();
       var od = api.Constraint.fromJson(o.toJson());
-      checkConstraint(od);
+      checkConstraint(od as api.Constraint);
     });
   });
 
@@ -1416,7 +1416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1424,7 +1424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1432,7 +1432,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolderOperation();
       var od = api.FolderOperation.fromJson(o.toJson());
-      checkFolderOperation(od);
+      checkFolderOperation(od as api.FolderOperation);
     });
   });
 
@@ -1440,7 +1440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolderOperationError();
       var od = api.FolderOperationError.fromJson(o.toJson());
-      checkFolderOperationError(od);
+      checkFolderOperationError(od as api.FolderOperationError);
     });
   });
 
@@ -1448,7 +1448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetAncestryRequest();
       var od = api.GetAncestryRequest.fromJson(o.toJson());
-      checkGetAncestryRequest(od);
+      checkGetAncestryRequest(od as api.GetAncestryRequest);
     });
   });
 
@@ -1456,7 +1456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetAncestryResponse();
       var od = api.GetAncestryResponse.fromJson(o.toJson());
-      checkGetAncestryResponse(od);
+      checkGetAncestryResponse(od as api.GetAncestryResponse);
     });
   });
 
@@ -1464,7 +1464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetEffectiveOrgPolicyRequest();
       var od = api.GetEffectiveOrgPolicyRequest.fromJson(o.toJson());
-      checkGetEffectiveOrgPolicyRequest(od);
+      checkGetEffectiveOrgPolicyRequest(od as api.GetEffectiveOrgPolicyRequest);
     });
   });
 
@@ -1472,7 +1472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -1480,7 +1480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetOrgPolicyRequest();
       var od = api.GetOrgPolicyRequest.fromJson(o.toJson());
-      checkGetOrgPolicyRequest(od);
+      checkGetOrgPolicyRequest(od as api.GetOrgPolicyRequest);
     });
   });
 
@@ -1488,7 +1488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -1496,7 +1496,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLien();
       var od = api.Lien.fromJson(o.toJson());
-      checkLien(od);
+      checkLien(od as api.Lien);
     });
   });
 
@@ -1505,7 +1505,8 @@ void main() {
       var o = buildListAvailableOrgPolicyConstraintsRequest();
       var od =
           api.ListAvailableOrgPolicyConstraintsRequest.fromJson(o.toJson());
-      checkListAvailableOrgPolicyConstraintsRequest(od);
+      checkListAvailableOrgPolicyConstraintsRequest(
+          od as api.ListAvailableOrgPolicyConstraintsRequest);
     });
   });
 
@@ -1514,7 +1515,8 @@ void main() {
       var o = buildListAvailableOrgPolicyConstraintsResponse();
       var od =
           api.ListAvailableOrgPolicyConstraintsResponse.fromJson(o.toJson());
-      checkListAvailableOrgPolicyConstraintsResponse(od);
+      checkListAvailableOrgPolicyConstraintsResponse(
+          od as api.ListAvailableOrgPolicyConstraintsResponse);
     });
   });
 
@@ -1522,7 +1524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListConstraint();
       var od = api.ListConstraint.fromJson(o.toJson());
-      checkListConstraint(od);
+      checkListConstraint(od as api.ListConstraint);
     });
   });
 
@@ -1530,7 +1532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLiensResponse();
       var od = api.ListLiensResponse.fromJson(o.toJson());
-      checkListLiensResponse(od);
+      checkListLiensResponse(od as api.ListLiensResponse);
     });
   });
 
@@ -1538,7 +1540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOrgPoliciesRequest();
       var od = api.ListOrgPoliciesRequest.fromJson(o.toJson());
-      checkListOrgPoliciesRequest(od);
+      checkListOrgPoliciesRequest(od as api.ListOrgPoliciesRequest);
     });
   });
 
@@ -1546,7 +1548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOrgPoliciesResponse();
       var od = api.ListOrgPoliciesResponse.fromJson(o.toJson());
-      checkListOrgPoliciesResponse(od);
+      checkListOrgPoliciesResponse(od as api.ListOrgPoliciesResponse);
     });
   });
 
@@ -1554,7 +1556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListPolicy();
       var od = api.ListPolicy.fromJson(o.toJson());
-      checkListPolicy(od);
+      checkListPolicy(od as api.ListPolicy);
     });
   });
 
@@ -1562,7 +1564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListProjectsResponse();
       var od = api.ListProjectsResponse.fromJson(o.toJson());
-      checkListProjectsResponse(od);
+      checkListProjectsResponse(od as api.ListProjectsResponse);
     });
   });
 
@@ -1570,7 +1572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1578,7 +1580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrgPolicy();
       var od = api.OrgPolicy.fromJson(o.toJson());
-      checkOrgPolicy(od);
+      checkOrgPolicy(od as api.OrgPolicy);
     });
   });
 
@@ -1586,7 +1588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrganization();
       var od = api.Organization.fromJson(o.toJson());
-      checkOrganization(od);
+      checkOrganization(od as api.Organization);
     });
   });
 
@@ -1594,7 +1596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrganizationOwner();
       var od = api.OrganizationOwner.fromJson(o.toJson());
-      checkOrganizationOwner(od);
+      checkOrganizationOwner(od as api.OrganizationOwner);
     });
   });
 
@@ -1602,7 +1604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1610,7 +1612,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProject();
       var od = api.Project.fromJson(o.toJson());
-      checkProject(od);
+      checkProject(od as api.Project);
     });
   });
 
@@ -1618,7 +1620,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjectCreationStatus();
       var od = api.ProjectCreationStatus.fromJson(o.toJson());
-      checkProjectCreationStatus(od);
+      checkProjectCreationStatus(od as api.ProjectCreationStatus);
     });
   });
 
@@ -1626,7 +1628,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceId();
       var od = api.ResourceId.fromJson(o.toJson());
-      checkResourceId(od);
+      checkResourceId(od as api.ResourceId);
     });
   });
 
@@ -1634,7 +1636,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestoreDefault();
       var od = api.RestoreDefault.fromJson(o.toJson());
-      checkRestoreDefault(od);
+      checkRestoreDefault(od as api.RestoreDefault);
     });
   });
 
@@ -1642,7 +1644,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchOrganizationsRequest();
       var od = api.SearchOrganizationsRequest.fromJson(o.toJson());
-      checkSearchOrganizationsRequest(od);
+      checkSearchOrganizationsRequest(od as api.SearchOrganizationsRequest);
     });
   });
 
@@ -1650,7 +1652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchOrganizationsResponse();
       var od = api.SearchOrganizationsResponse.fromJson(o.toJson());
-      checkSearchOrganizationsResponse(od);
+      checkSearchOrganizationsResponse(od as api.SearchOrganizationsResponse);
     });
   });
 
@@ -1658,7 +1660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1666,7 +1668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetOrgPolicyRequest();
       var od = api.SetOrgPolicyRequest.fromJson(o.toJson());
-      checkSetOrgPolicyRequest(od);
+      checkSetOrgPolicyRequest(od as api.SetOrgPolicyRequest);
     });
   });
 
@@ -1674,7 +1676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1682,7 +1684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1690,7 +1692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1698,7 +1700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteProjectRequest();
       var od = api.UndeleteProjectRequest.fromJson(o.toJson());
-      checkUndeleteProjectRequest(od);
+      checkUndeleteProjectRequest(od as api.UndeleteProjectRequest);
     });
   });
 
@@ -1710,8 +1712,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ClearOrgPolicyRequest.fromJson(json);
-        checkClearOrgPolicyRequest(obj);
+        var obj = api.ClearOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkClearOrgPolicyRequest(obj as api.ClearOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1751,7 +1754,7 @@ void main() {
       res
           .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1762,8 +1765,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(json);
-        checkGetEffectiveOrgPolicyRequest(obj);
+        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetEffectiveOrgPolicyRequest(
+            obj as api.GetEffectiveOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1804,7 +1809,7 @@ void main() {
           .getEffectiveOrgPolicy(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -1815,8 +1820,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetOrgPolicyRequest.fromJson(json);
-        checkGetOrgPolicyRequest(obj);
+        var obj = api.GetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetOrgPolicyRequest(obj as api.GetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1856,7 +1862,7 @@ void main() {
       res
           .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -1867,8 +1873,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
-        checkListAvailableOrgPolicyConstraintsRequest(obj);
+        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListAvailableOrgPolicyConstraintsRequest(
+            obj as api.ListAvailableOrgPolicyConstraintsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1910,7 +1918,8 @@ void main() {
           .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(response);
+        checkListAvailableOrgPolicyConstraintsResponse(
+            response as api.ListAvailableOrgPolicyConstraintsResponse);
       })));
     });
 
@@ -1921,8 +1930,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOrgPoliciesRequest.fromJson(json);
-        checkListOrgPoliciesRequest(obj);
+        var obj = api.ListOrgPoliciesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListOrgPoliciesRequest(obj as api.ListOrgPoliciesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1962,7 +1972,7 @@ void main() {
       res
           .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response);
+        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
       })));
     });
 
@@ -1973,8 +1983,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetOrgPolicyRequest.fromJson(json);
-        checkSetOrgPolicyRequest(obj);
+        var obj = api.SetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetOrgPolicyRequest(obj as api.SetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2014,7 +2025,7 @@ void main() {
       res
           .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
   });
@@ -2026,8 +2037,9 @@ void main() {
       var arg_request = buildLien();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Lien.fromJson(json);
-        checkLien(obj);
+        var obj =
+            api.Lien.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLien(obj as api.Lien);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2066,7 +2078,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLien(response);
+        checkLien(response as api.Lien);
       })));
     });
 
@@ -2114,7 +2126,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2162,7 +2174,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLien(response);
+        checkLien(response as api.Lien);
       })));
     });
 
@@ -2220,7 +2232,7 @@ void main() {
               parent: arg_parent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLiensResponse(response);
+        checkListLiensResponse(response as api.ListLiensResponse);
       })));
     });
   });
@@ -2270,7 +2282,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2283,8 +2295,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ClearOrgPolicyRequest.fromJson(json);
-        checkClearOrgPolicyRequest(obj);
+        var obj = api.ClearOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkClearOrgPolicyRequest(obj as api.ClearOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2324,7 +2337,7 @@ void main() {
       res
           .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2372,7 +2385,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrganization(response);
+        checkOrganization(response as api.Organization);
       })));
     });
 
@@ -2383,8 +2396,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(json);
-        checkGetEffectiveOrgPolicyRequest(obj);
+        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetEffectiveOrgPolicyRequest(
+            obj as api.GetEffectiveOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2425,7 +2440,7 @@ void main() {
           .getEffectiveOrgPolicy(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -2436,8 +2451,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2477,7 +2493,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2488,8 +2504,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetOrgPolicyRequest.fromJson(json);
-        checkGetOrgPolicyRequest(obj);
+        var obj = api.GetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetOrgPolicyRequest(obj as api.GetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2529,7 +2546,7 @@ void main() {
       res
           .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -2540,8 +2557,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
-        checkListAvailableOrgPolicyConstraintsRequest(obj);
+        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListAvailableOrgPolicyConstraintsRequest(
+            obj as api.ListAvailableOrgPolicyConstraintsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2583,7 +2602,8 @@ void main() {
           .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(response);
+        checkListAvailableOrgPolicyConstraintsResponse(
+            response as api.ListAvailableOrgPolicyConstraintsResponse);
       })));
     });
 
@@ -2594,8 +2614,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOrgPoliciesRequest.fromJson(json);
-        checkListOrgPoliciesRequest(obj);
+        var obj = api.ListOrgPoliciesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListOrgPoliciesRequest(obj as api.ListOrgPoliciesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2635,7 +2656,7 @@ void main() {
       res
           .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response);
+        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
       })));
     });
 
@@ -2645,8 +2666,9 @@ void main() {
       var arg_request = buildSearchOrganizationsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchOrganizationsRequest.fromJson(json);
-        checkSearchOrganizationsRequest(obj);
+        var obj = api.SearchOrganizationsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchOrganizationsRequest(obj as api.SearchOrganizationsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2685,7 +2707,8 @@ void main() {
       res
           .search(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchOrganizationsResponse(response);
+        checkSearchOrganizationsResponse(
+            response as api.SearchOrganizationsResponse);
       })));
     });
 
@@ -2696,8 +2719,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2737,7 +2761,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2748,8 +2772,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetOrgPolicyRequest.fromJson(json);
-        checkSetOrgPolicyRequest(obj);
+        var obj = api.SetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetOrgPolicyRequest(obj as api.SetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2789,7 +2814,7 @@ void main() {
       res
           .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -2800,8 +2825,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2841,7 +2867,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -2854,8 +2881,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ClearOrgPolicyRequest.fromJson(json);
-        checkClearOrgPolicyRequest(obj);
+        var obj = api.ClearOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkClearOrgPolicyRequest(obj as api.ClearOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2895,7 +2923,7 @@ void main() {
       res
           .clearOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2905,8 +2933,9 @@ void main() {
       var arg_request = buildProject();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Project.fromJson(json);
-        checkProject(obj);
+        var obj =
+            api.Project.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProject(obj as api.Project);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2945,7 +2974,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2995,7 +3024,7 @@ void main() {
       res
           .delete(arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3045,7 +3074,7 @@ void main() {
       res
           .get(arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProject(response);
+        checkProject(response as api.Project);
       })));
     });
 
@@ -3056,8 +3085,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetAncestryRequest.fromJson(json);
-        checkGetAncestryRequest(obj);
+        var obj = api.GetAncestryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetAncestryRequest(obj as api.GetAncestryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3105,7 +3135,7 @@ void main() {
       res
           .getAncestry(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetAncestryResponse(response);
+        checkGetAncestryResponse(response as api.GetAncestryResponse);
       })));
     });
 
@@ -3116,8 +3146,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(json);
-        checkGetEffectiveOrgPolicyRequest(obj);
+        var obj = api.GetEffectiveOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetEffectiveOrgPolicyRequest(
+            obj as api.GetEffectiveOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3158,7 +3190,7 @@ void main() {
           .getEffectiveOrgPolicy(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -3169,8 +3201,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3218,7 +3251,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3229,8 +3262,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetOrgPolicyRequest.fromJson(json);
-        checkGetOrgPolicyRequest(obj);
+        var obj = api.GetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetOrgPolicyRequest(obj as api.GetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3270,7 +3304,7 @@ void main() {
       res
           .getOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -3328,7 +3362,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListProjectsResponse(response);
+        checkListProjectsResponse(response as api.ListProjectsResponse);
       })));
     });
 
@@ -3339,8 +3373,10 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(json);
-        checkListAvailableOrgPolicyConstraintsRequest(obj);
+        var obj = api.ListAvailableOrgPolicyConstraintsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListAvailableOrgPolicyConstraintsRequest(
+            obj as api.ListAvailableOrgPolicyConstraintsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3382,7 +3418,8 @@ void main() {
           .listAvailableOrgPolicyConstraints(arg_request, arg_resource,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAvailableOrgPolicyConstraintsResponse(response);
+        checkListAvailableOrgPolicyConstraintsResponse(
+            response as api.ListAvailableOrgPolicyConstraintsResponse);
       })));
     });
 
@@ -3393,8 +3430,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOrgPoliciesRequest.fromJson(json);
-        checkListOrgPoliciesRequest(obj);
+        var obj = api.ListOrgPoliciesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListOrgPoliciesRequest(obj as api.ListOrgPoliciesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3434,7 +3472,7 @@ void main() {
       res
           .listOrgPolicies(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOrgPoliciesResponse(response);
+        checkListOrgPoliciesResponse(response as api.ListOrgPoliciesResponse);
       })));
     });
 
@@ -3445,8 +3483,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3494,7 +3533,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3505,8 +3544,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetOrgPolicyRequest.fromJson(json);
-        checkSetOrgPolicyRequest(obj);
+        var obj = api.SetOrgPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetOrgPolicyRequest(obj as api.SetOrgPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3546,7 +3586,7 @@ void main() {
       res
           .setOrgPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOrgPolicy(response);
+        checkOrgPolicy(response as api.OrgPolicy);
       })));
     });
 
@@ -3557,8 +3597,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3606,7 +3647,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -3617,8 +3659,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteProjectRequest.fromJson(json);
-        checkUndeleteProjectRequest(obj);
+        var obj = api.UndeleteProjectRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteProjectRequest(obj as api.UndeleteProjectRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3666,7 +3709,7 @@ void main() {
       res
           .undelete(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3677,8 +3720,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Project.fromJson(json);
-        checkProject(obj);
+        var obj =
+            api.Project.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProject(obj as api.Project);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3720,7 +3764,7 @@ void main() {
       res
           .update(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProject(response);
+        checkProject(response as api.Project);
       })));
     });
   });

@@ -84,8 +84,8 @@ core.Map<core.String, api.TranslateTextGlossaryConfig> buildUnnamed5103() {
 void checkUnnamed5103(
     core.Map<core.String, api.TranslateTextGlossaryConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTranslateTextGlossaryConfig(o['x']);
-  checkTranslateTextGlossaryConfig(o['y']);
+  checkTranslateTextGlossaryConfig(o['x'] as api.TranslateTextGlossaryConfig);
+  checkTranslateTextGlossaryConfig(o['y'] as api.TranslateTextGlossaryConfig);
 }
 
 core.List<api.InputConfig> buildUnnamed5104() {
@@ -97,8 +97,8 @@ core.List<api.InputConfig> buildUnnamed5104() {
 
 void checkUnnamed5104(core.List<api.InputConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInputConfig(o[0]);
-  checkInputConfig(o[1]);
+  checkInputConfig(o[0] as api.InputConfig);
+  checkInputConfig(o[1] as api.InputConfig);
 }
 
 core.Map<core.String, core.String> buildUnnamed5105() {
@@ -164,7 +164,7 @@ void checkBatchTranslateTextRequest(api.BatchTranslateTextRequest o) {
     checkUnnamed5104(o.inputConfigs);
     checkUnnamed5105(o.labels);
     checkUnnamed5106(o.models);
-    checkOutputConfig(o.outputConfig);
+    checkOutputConfig(o.outputConfig as api.OutputConfig);
     unittest.expect(o.sourceLanguageCode, unittest.equals('foo'));
     checkUnnamed5107(o.targetLanguageCodes);
   }
@@ -233,8 +233,8 @@ core.List<api.DetectedLanguage> buildUnnamed5109() {
 
 void checkUnnamed5109(core.List<api.DetectedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDetectedLanguage(o[0]);
-  checkDetectedLanguage(o[1]);
+  checkDetectedLanguage(o[0] as api.DetectedLanguage);
+  checkDetectedLanguage(o[1] as api.DetectedLanguage);
 }
 
 core.int buildCounterDetectLanguageResponse = 0;
@@ -352,9 +352,9 @@ void checkGlossary(api.Glossary o) {
   if (buildCounterGlossary < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.entryCount, unittest.equals(42));
-    checkGlossaryInputConfig(o.inputConfig);
-    checkLanguageCodesSet(o.languageCodesSet);
-    checkLanguageCodePair(o.languagePair);
+    checkGlossaryInputConfig(o.inputConfig as api.GlossaryInputConfig);
+    checkLanguageCodesSet(o.languageCodesSet as api.LanguageCodesSet);
+    checkLanguageCodePair(o.languagePair as api.LanguageCodePair);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.submitTime, unittest.equals('foo'));
   }
@@ -375,7 +375,7 @@ api.GlossaryInputConfig buildGlossaryInputConfig() {
 void checkGlossaryInputConfig(api.GlossaryInputConfig o) {
   buildCounterGlossaryInputConfig++;
   if (buildCounterGlossaryInputConfig < 3) {
-    checkGcsSource(o.gcsSource);
+    checkGcsSource(o.gcsSource as api.GcsSource);
   }
   buildCounterGlossaryInputConfig--;
 }
@@ -395,7 +395,7 @@ api.InputConfig buildInputConfig() {
 void checkInputConfig(api.InputConfig o) {
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
-    checkGcsSource(o.gcsSource);
+    checkGcsSource(o.gcsSource as api.GcsSource);
     unittest.expect(o.mimeType, unittest.equals('foo'));
   }
   buildCounterInputConfig--;
@@ -463,8 +463,8 @@ core.List<api.Glossary> buildUnnamed5111() {
 
 void checkUnnamed5111(core.List<api.Glossary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGlossary(o[0]);
-  checkGlossary(o[1]);
+  checkGlossary(o[0] as api.Glossary);
+  checkGlossary(o[1] as api.Glossary);
 }
 
 core.int buildCounterListGlossariesResponse = 0;
@@ -497,8 +497,8 @@ core.List<api.Location> buildUnnamed5112() {
 
 void checkUnnamed5112(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -531,8 +531,8 @@ core.List<api.Operation> buildUnnamed5113() {
 
 void checkUnnamed5113(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -702,7 +702,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5116(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5117(o.response);
@@ -724,7 +724,7 @@ api.OutputConfig buildOutputConfig() {
 void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
-    checkGcsDestination(o.gcsDestination);
+    checkGcsDestination(o.gcsDestination as api.GcsDestination);
   }
   buildCounterOutputConfig--;
 }
@@ -828,8 +828,8 @@ core.List<api.SupportedLanguage> buildUnnamed5120() {
 
 void checkUnnamed5120(core.List<api.SupportedLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSupportedLanguage(o[0]);
-  checkSupportedLanguage(o[1]);
+  checkSupportedLanguage(o[0] as api.SupportedLanguage);
+  checkSupportedLanguage(o[1] as api.SupportedLanguage);
 }
 
 core.int buildCounterSupportedLanguages = 0;
@@ -919,7 +919,8 @@ void checkTranslateTextRequest(api.TranslateTextRequest o) {
   buildCounterTranslateTextRequest++;
   if (buildCounterTranslateTextRequest < 3) {
     checkUnnamed5121(o.contents);
-    checkTranslateTextGlossaryConfig(o.glossaryConfig);
+    checkTranslateTextGlossaryConfig(
+        o.glossaryConfig as api.TranslateTextGlossaryConfig);
     checkUnnamed5122(o.labels);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.model, unittest.equals('foo'));
@@ -938,8 +939,8 @@ core.List<api.Translation> buildUnnamed5123() {
 
 void checkUnnamed5123(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTranslation(o[0]);
-  checkTranslation(o[1]);
+  checkTranslation(o[0] as api.Translation);
+  checkTranslation(o[1] as api.Translation);
 }
 
 core.List<api.Translation> buildUnnamed5124() {
@@ -951,8 +952,8 @@ core.List<api.Translation> buildUnnamed5124() {
 
 void checkUnnamed5124(core.List<api.Translation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTranslation(o[0]);
-  checkTranslation(o[1]);
+  checkTranslation(o[0] as api.Translation);
+  checkTranslation(o[1] as api.Translation);
 }
 
 core.int buildCounterTranslateTextResponse = 0;
@@ -994,7 +995,8 @@ void checkTranslation(api.Translation o) {
   buildCounterTranslation++;
   if (buildCounterTranslation < 3) {
     unittest.expect(o.detectedLanguageCode, unittest.equals('foo'));
-    checkTranslateTextGlossaryConfig(o.glossaryConfig);
+    checkTranslateTextGlossaryConfig(
+        o.glossaryConfig as api.TranslateTextGlossaryConfig);
     unittest.expect(o.model, unittest.equals('foo'));
     unittest.expect(o.translatedText, unittest.equals('foo'));
   }
@@ -1025,7 +1027,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchTranslateTextRequest();
       var od = api.BatchTranslateTextRequest.fromJson(o.toJson());
-      checkBatchTranslateTextRequest(od);
+      checkBatchTranslateTextRequest(od as api.BatchTranslateTextRequest);
     });
   });
 
@@ -1033,7 +1035,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1041,7 +1043,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDetectLanguageRequest();
       var od = api.DetectLanguageRequest.fromJson(o.toJson());
-      checkDetectLanguageRequest(od);
+      checkDetectLanguageRequest(od as api.DetectLanguageRequest);
     });
   });
 
@@ -1049,7 +1051,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDetectLanguageResponse();
       var od = api.DetectLanguageResponse.fromJson(o.toJson());
-      checkDetectLanguageResponse(od);
+      checkDetectLanguageResponse(od as api.DetectLanguageResponse);
     });
   });
 
@@ -1057,7 +1059,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDetectedLanguage();
       var od = api.DetectedLanguage.fromJson(o.toJson());
-      checkDetectedLanguage(od);
+      checkDetectedLanguage(od as api.DetectedLanguage);
     });
   });
 
@@ -1065,7 +1067,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1073,7 +1075,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
-      checkGcsDestination(od);
+      checkGcsDestination(od as api.GcsDestination);
     });
   });
 
@@ -1081,7 +1083,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
-      checkGcsSource(od);
+      checkGcsSource(od as api.GcsSource);
     });
   });
 
@@ -1089,7 +1091,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGlossary();
       var od = api.Glossary.fromJson(o.toJson());
-      checkGlossary(od);
+      checkGlossary(od as api.Glossary);
     });
   });
 
@@ -1097,7 +1099,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGlossaryInputConfig();
       var od = api.GlossaryInputConfig.fromJson(o.toJson());
-      checkGlossaryInputConfig(od);
+      checkGlossaryInputConfig(od as api.GlossaryInputConfig);
     });
   });
 
@@ -1105,7 +1107,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
-      checkInputConfig(od);
+      checkInputConfig(od as api.InputConfig);
     });
   });
 
@@ -1113,7 +1115,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLanguageCodePair();
       var od = api.LanguageCodePair.fromJson(o.toJson());
-      checkLanguageCodePair(od);
+      checkLanguageCodePair(od as api.LanguageCodePair);
     });
   });
 
@@ -1121,7 +1123,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLanguageCodesSet();
       var od = api.LanguageCodesSet.fromJson(o.toJson());
-      checkLanguageCodesSet(od);
+      checkLanguageCodesSet(od as api.LanguageCodesSet);
     });
   });
 
@@ -1129,7 +1131,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGlossariesResponse();
       var od = api.ListGlossariesResponse.fromJson(o.toJson());
-      checkListGlossariesResponse(od);
+      checkListGlossariesResponse(od as api.ListGlossariesResponse);
     });
   });
 
@@ -1137,7 +1139,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1145,7 +1147,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1153,7 +1155,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1161,7 +1163,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1169,7 +1171,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
-      checkOutputConfig(od);
+      checkOutputConfig(od as api.OutputConfig);
     });
   });
 
@@ -1177,7 +1179,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1185,7 +1187,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSupportedLanguage();
       var od = api.SupportedLanguage.fromJson(o.toJson());
-      checkSupportedLanguage(od);
+      checkSupportedLanguage(od as api.SupportedLanguage);
     });
   });
 
@@ -1193,7 +1195,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSupportedLanguages();
       var od = api.SupportedLanguages.fromJson(o.toJson());
-      checkSupportedLanguages(od);
+      checkSupportedLanguages(od as api.SupportedLanguages);
     });
   });
 
@@ -1201,7 +1203,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTranslateTextGlossaryConfig();
       var od = api.TranslateTextGlossaryConfig.fromJson(o.toJson());
-      checkTranslateTextGlossaryConfig(od);
+      checkTranslateTextGlossaryConfig(od as api.TranslateTextGlossaryConfig);
     });
   });
 
@@ -1209,7 +1211,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTranslateTextRequest();
       var od = api.TranslateTextRequest.fromJson(o.toJson());
-      checkTranslateTextRequest(od);
+      checkTranslateTextRequest(od as api.TranslateTextRequest);
     });
   });
 
@@ -1217,7 +1219,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTranslateTextResponse();
       var od = api.TranslateTextResponse.fromJson(o.toJson());
-      checkTranslateTextResponse(od);
+      checkTranslateTextResponse(od as api.TranslateTextResponse);
     });
   });
 
@@ -1225,7 +1227,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTranslation();
       var od = api.Translation.fromJson(o.toJson());
-      checkTranslation(od);
+      checkTranslation(od as api.Translation);
     });
   });
 
@@ -1233,7 +1235,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWaitOperationRequest();
       var od = api.WaitOperationRequest.fromJson(o.toJson());
-      checkWaitOperationRequest(od);
+      checkWaitOperationRequest(od as api.WaitOperationRequest);
     });
   });
 
@@ -1245,8 +1247,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DetectLanguageRequest.fromJson(json);
-        checkDetectLanguageRequest(obj);
+        var obj = api.DetectLanguageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDetectLanguageRequest(obj as api.DetectLanguageRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1286,7 +1289,7 @@ void main() {
       res
           .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDetectLanguageResponse(response);
+        checkDetectLanguageResponse(response as api.DetectLanguageResponse);
       })));
     });
 
@@ -1342,7 +1345,7 @@ void main() {
               model: arg_model,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSupportedLanguages(response);
+        checkSupportedLanguages(response as api.SupportedLanguages);
       })));
     });
 
@@ -1353,8 +1356,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TranslateTextRequest.fromJson(json);
-        checkTranslateTextRequest(obj);
+        var obj = api.TranslateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTranslateTextRequest(obj as api.TranslateTextRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1394,7 +1398,7 @@ void main() {
       res
           .translateText(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTranslateTextResponse(response);
+        checkTranslateTextResponse(response as api.TranslateTextResponse);
       })));
     });
   });
@@ -1407,8 +1411,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchTranslateTextRequest.fromJson(json);
-        checkBatchTranslateTextRequest(obj);
+        var obj = api.BatchTranslateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchTranslateTextRequest(obj as api.BatchTranslateTextRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1448,7 +1453,7 @@ void main() {
       res
           .batchTranslateText(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1459,8 +1464,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DetectLanguageRequest.fromJson(json);
-        checkDetectLanguageRequest(obj);
+        var obj = api.DetectLanguageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDetectLanguageRequest(obj as api.DetectLanguageRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1500,7 +1506,7 @@ void main() {
       res
           .detectLanguage(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDetectLanguageResponse(response);
+        checkDetectLanguageResponse(response as api.DetectLanguageResponse);
       })));
     });
 
@@ -1548,7 +1554,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1604,7 +1610,7 @@ void main() {
               model: arg_model,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSupportedLanguages(response);
+        checkSupportedLanguages(response as api.SupportedLanguages);
       })));
     });
 
@@ -1664,7 +1670,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
 
@@ -1675,8 +1681,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TranslateTextRequest.fromJson(json);
-        checkTranslateTextRequest(obj);
+        var obj = api.TranslateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTranslateTextRequest(obj as api.TranslateTextRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1716,7 +1723,7 @@ void main() {
       res
           .translateText(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTranslateTextResponse(response);
+        checkTranslateTextResponse(response as api.TranslateTextResponse);
       })));
     });
   });
@@ -1729,8 +1736,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Glossary.fromJson(json);
-        checkGlossary(obj);
+        var obj =
+            api.Glossary.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGlossary(obj as api.Glossary);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1770,7 +1778,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1818,7 +1826,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1866,7 +1874,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGlossary(response);
+        checkGlossary(response as api.Glossary);
       })));
     });
 
@@ -1926,7 +1934,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGlossariesResponse(response);
+        checkListGlossariesResponse(response as api.ListGlossariesResponse);
       })));
     });
   });
@@ -1939,8 +1947,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1980,7 +1989,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2028,7 +2037,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2076,7 +2085,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2136,7 +2145,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
 
@@ -2147,8 +2156,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WaitOperationRequest.fromJson(json);
-        checkWaitOperationRequest(obj);
+        var obj = api.WaitOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWaitOperationRequest(obj as api.WaitOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2188,7 +2198,7 @@ void main() {
       res
           .wait(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

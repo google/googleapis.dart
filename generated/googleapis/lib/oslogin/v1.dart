@@ -120,7 +120,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LoginProfile.fromJson(data));
+    return _response.then(
+      (data) =>
+          LoginProfile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds an SSH public key and returns the profile information. Default POSIX
@@ -185,7 +188,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImportSshPublicKeyResponse.fromJson(data));
+    return _response.then(
+      (data) => ImportSshPublicKeyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -243,7 +249,9 @@ class UsersProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -301,7 +309,9 @@ class UsersSshPublicKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an SSH public key.
@@ -352,7 +362,10 @@ class UsersSshPublicKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SshPublicKey.fromJson(data));
+    return _response.then(
+      (data) =>
+          SshPublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an SSH public key and returns the profile information. This method
@@ -417,7 +430,10 @@ class UsersSshPublicKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SshPublicKey.fromJson(data));
+    return _response.then(
+      (data) =>
+          SshPublicKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -454,7 +470,8 @@ class ImportSshPublicKeyResponse {
       details = _json['details'] as core.String;
     }
     if (_json.containsKey('loginProfile')) {
-      loginProfile = LoginProfile.fromJson(_json['loginProfile']);
+      loginProfile = LoginProfile.fromJson(
+          _json['loginProfile'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -490,13 +507,16 @@ class LoginProfile {
     }
     if (_json.containsKey('posixAccounts')) {
       posixAccounts = (_json['posixAccounts'] as core.List)
-          .map<PosixAccount>((value) => PosixAccount.fromJson(value))
+          .map<PosixAccount>((value) => PosixAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sshPublicKeys')) {
       sshPublicKeys = commons.mapMap<core.Map, SshPublicKey>(
-          _json['sshPublicKeys'].cast<core.String, core.Map>(),
-          (core.Map item) => SshPublicKey.fromJson(item));
+          (_json['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SshPublicKey.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 

@@ -113,7 +113,9 @@ class AchievementConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the metadata of the achievement configuration with the given ID.
@@ -162,7 +164,10 @@ class AchievementConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementConfiguration.fromJson(data));
+    return _response.then(
+      (data) => AchievementConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert a new achievement configuration in this application.
@@ -219,7 +224,10 @@ class AchievementConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementConfiguration.fromJson(data));
+    return _response.then(
+      (data) => AchievementConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of the achievement configurations in this application.
@@ -284,8 +292,10 @@ class AchievementConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AchievementConfigurationListResponse.fromJson(data));
+    return _response.then(
+      (data) => AchievementConfigurationListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the metadata of the achievement configuration with the given ID.
@@ -340,7 +350,10 @@ class AchievementConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AchievementConfiguration.fromJson(data));
+    return _response.then(
+      (data) => AchievementConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -421,7 +434,10 @@ class ImageConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImageConfiguration.fromJson(data));
+    return _response.then(
+      (data) => ImageConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -477,7 +493,9 @@ class LeaderboardConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the metadata of the leaderboard configuration with the given ID.
@@ -526,7 +544,10 @@ class LeaderboardConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert a new leaderboard configuration in this application.
@@ -583,7 +604,10 @@ class LeaderboardConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of the leaderboard configurations in this application.
@@ -648,8 +672,10 @@ class LeaderboardConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LeaderboardConfigurationListResponse.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardConfigurationListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the metadata of the leaderboard configuration with the given ID.
@@ -704,7 +730,10 @@ class LeaderboardConfigurationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LeaderboardConfiguration.fromJson(data));
+    return _response.then(
+      (data) => LeaderboardConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -750,7 +779,8 @@ class AchievementConfiguration {
       achievementType = _json['achievementType'] as core.String;
     }
     if (_json.containsKey('draft')) {
-      draft = AchievementConfigurationDetail.fromJson(_json['draft']);
+      draft = AchievementConfigurationDetail.fromJson(
+          _json['draft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -762,7 +792,8 @@ class AchievementConfiguration {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('published')) {
-      published = AchievementConfigurationDetail.fromJson(_json['published']);
+      published = AchievementConfigurationDetail.fromJson(
+          _json['published'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stepsToUnlock')) {
       stepsToUnlock = _json['stepsToUnlock'] as core.int;
@@ -827,7 +858,8 @@ class AchievementConfigurationDetail {
 
   AchievementConfigurationDetail.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = LocalizedStringBundle.fromJson(_json['description']);
+      description = LocalizedStringBundle.fromJson(
+          _json['description'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('iconUrl')) {
       iconUrl = _json['iconUrl'] as core.String;
@@ -836,7 +868,8 @@ class AchievementConfigurationDetail {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = LocalizedStringBundle.fromJson(_json['name']);
+      name = LocalizedStringBundle.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pointValue')) {
       pointValue = _json['pointValue'] as core.int;
@@ -887,8 +920,9 @@ class AchievementConfigurationListResponse {
   AchievementConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AchievementConfiguration>(
-              (value) => AchievementConfiguration.fromJson(value))
+          .map<AchievementConfiguration>((value) =>
+              AchievementConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -946,22 +980,28 @@ class GamesNumberAffixConfiguration {
 
   GamesNumberAffixConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('few')) {
-      few = LocalizedStringBundle.fromJson(_json['few']);
+      few = LocalizedStringBundle.fromJson(
+          _json['few'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('many')) {
-      many = LocalizedStringBundle.fromJson(_json['many']);
+      many = LocalizedStringBundle.fromJson(
+          _json['many'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('one')) {
-      one = LocalizedStringBundle.fromJson(_json['one']);
+      one = LocalizedStringBundle.fromJson(
+          _json['one'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('other')) {
-      other = LocalizedStringBundle.fromJson(_json['other']);
+      other = LocalizedStringBundle.fromJson(
+          _json['other'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('two')) {
-      two = LocalizedStringBundle.fromJson(_json['two']);
+      two = LocalizedStringBundle.fromJson(
+          _json['two'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zero')) {
-      zero = LocalizedStringBundle.fromJson(_json['zero']);
+      zero = LocalizedStringBundle.fromJson(
+          _json['zero'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1025,7 +1065,8 @@ class GamesNumberFormatConfiguration {
       numberFormatType = _json['numberFormatType'] as core.String;
     }
     if (_json.containsKey('suffix')) {
-      suffix = GamesNumberAffixConfiguration.fromJson(_json['suffix']);
+      suffix = GamesNumberAffixConfiguration.fromJson(
+          _json['suffix'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1136,7 +1177,8 @@ class LeaderboardConfiguration {
 
   LeaderboardConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('draft')) {
-      draft = LeaderboardConfigurationDetail.fromJson(_json['draft']);
+      draft = LeaderboardConfigurationDetail.fromJson(
+          _json['draft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -1145,7 +1187,8 @@ class LeaderboardConfiguration {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('published')) {
-      published = LeaderboardConfigurationDetail.fromJson(_json['published']);
+      published = LeaderboardConfigurationDetail.fromJson(
+          _json['published'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scoreMax')) {
       scoreMax = _json['scoreMax'] as core.String;
@@ -1219,11 +1262,12 @@ class LeaderboardConfigurationDetail {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = LocalizedStringBundle.fromJson(_json['name']);
+      name = LocalizedStringBundle.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scoreFormat')) {
-      scoreFormat =
-          GamesNumberFormatConfiguration.fromJson(_json['scoreFormat']);
+      scoreFormat = GamesNumberFormatConfiguration.fromJson(
+          _json['scoreFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortRank')) {
       sortRank = _json['sortRank'] as core.int;
@@ -1268,8 +1312,9 @@ class LeaderboardConfigurationListResponse {
   LeaderboardConfigurationListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<LeaderboardConfiguration>(
-              (value) => LeaderboardConfiguration.fromJson(value))
+          .map<LeaderboardConfiguration>((value) =>
+              LeaderboardConfiguration.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1353,7 +1398,8 @@ class LocalizedStringBundle {
     }
     if (_json.containsKey('translations')) {
       translations = (_json['translations'] as core.List)
-          .map<LocalizedString>((value) => LocalizedString.fromJson(value))
+          .map<LocalizedString>((value) => LocalizedString.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

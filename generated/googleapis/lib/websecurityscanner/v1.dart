@@ -121,7 +121,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an existing ScanConfig and its child resources.
@@ -172,7 +175,9 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a ScanConfig.
@@ -223,7 +228,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists ScanConfigs under a given project.
@@ -291,7 +299,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListScanConfigsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListScanConfigsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a ScanConfig. This method support partial update of a ScanConfig.
@@ -356,7 +367,10 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          ScanConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Start a ScanRun according to the given ScanConfig.
@@ -413,7 +427,9 @@ class ProjectsScanConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanRun.fromJson(data));
+    return _response.then(
+      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -479,7 +495,9 @@ class ProjectsScanConfigsScanRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanRun.fromJson(data));
+    return _response.then(
+      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists ScanRuns under a given ScanConfig, in descending order of ScanRun
@@ -548,7 +566,10 @@ class ProjectsScanConfigsScanRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListScanRunsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListScanRunsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stops a ScanRun. The stopped ScanRun is returned.
@@ -606,7 +627,9 @@ class ProjectsScanConfigsScanRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ScanRun.fromJson(data));
+    return _response.then(
+      (data) => ScanRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -683,7 +706,10 @@ class ProjectsScanConfigsScanRunsCrawledUrlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCrawledUrlsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCrawledUrlsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -745,8 +771,10 @@ class ProjectsScanConfigsScanRunsFindingTypeStatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListFindingTypeStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFindingTypeStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -805,7 +833,9 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Finding.fromJson(data));
+    return _response.then(
+      (data) => Finding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List Findings under a given ScanRun.
@@ -881,7 +911,10 @@ class ProjectsScanConfigsScanRunsFindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListFindingsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -900,13 +933,16 @@ class Authentication {
 
   Authentication.fromJson(core.Map _json) {
     if (_json.containsKey('customAccount')) {
-      customAccount = CustomAccount.fromJson(_json['customAccount']);
+      customAccount = CustomAccount.fromJson(
+          _json['customAccount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('googleAccount')) {
-      googleAccount = GoogleAccount.fromJson(_json['googleAccount']);
+      googleAccount = GoogleAccount.fromJson(
+          _json['googleAccount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('iapCredential')) {
-      iapCredential = IapCredential.fromJson(_json['iapCredential']);
+      iapCredential = IapCredential.fromJson(
+          _json['iapCredential'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1120,7 +1156,8 @@ class Finding {
       findingType = _json['findingType'] as core.String;
     }
     if (_json.containsKey('form')) {
-      form = Form.fromJson(_json['form']);
+      form =
+          Form.fromJson(_json['form'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('frameUrl')) {
       frameUrl = _json['frameUrl'] as core.String;
@@ -1135,7 +1172,8 @@ class Finding {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('outdatedLibrary')) {
-      outdatedLibrary = OutdatedLibrary.fromJson(_json['outdatedLibrary']);
+      outdatedLibrary = OutdatedLibrary.fromJson(
+          _json['outdatedLibrary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reproductionUrl')) {
       reproductionUrl = _json['reproductionUrl'] as core.String;
@@ -1147,19 +1185,19 @@ class Finding {
       trackingId = _json['trackingId'] as core.String;
     }
     if (_json.containsKey('violatingResource')) {
-      violatingResource =
-          ViolatingResource.fromJson(_json['violatingResource']);
+      violatingResource = ViolatingResource.fromJson(
+          _json['violatingResource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('vulnerableHeaders')) {
-      vulnerableHeaders =
-          VulnerableHeaders.fromJson(_json['vulnerableHeaders']);
+      vulnerableHeaders = VulnerableHeaders.fromJson(
+          _json['vulnerableHeaders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('vulnerableParameters')) {
-      vulnerableParameters =
-          VulnerableParameters.fromJson(_json['vulnerableParameters']);
+      vulnerableParameters = VulnerableParameters.fromJson(
+          _json['vulnerableParameters'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('xss')) {
-      xss = Xss.fromJson(_json['xss']);
+      xss = Xss.fromJson(_json['xss'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1360,7 +1398,8 @@ class IapCredential {
   IapCredential.fromJson(core.Map _json) {
     if (_json.containsKey('iapTestServiceAccountInfo')) {
       iapTestServiceAccountInfo = IapTestServiceAccountInfo.fromJson(
-          _json['iapTestServiceAccountInfo']);
+          _json['iapTestServiceAccountInfo']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1411,7 +1450,8 @@ class ListCrawledUrlsResponse {
   ListCrawledUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('crawledUrls')) {
       crawledUrls = (_json['crawledUrls'] as core.List)
-          .map<CrawledUrl>((value) => CrawledUrl.fromJson(value))
+          .map<CrawledUrl>((value) =>
+              CrawledUrl.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1442,7 +1482,8 @@ class ListFindingTypeStatsResponse {
   ListFindingTypeStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('findingTypeStats')) {
       findingTypeStats = (_json['findingTypeStats'] as core.List)
-          .map<FindingTypeStats>((value) => FindingTypeStats.fromJson(value))
+          .map<FindingTypeStats>((value) => FindingTypeStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1471,7 +1512,8 @@ class ListFindingsResponse {
   ListFindingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('findings')) {
       findings = (_json['findings'] as core.List)
-          .map<Finding>((value) => Finding.fromJson(value))
+          .map<Finding>((value) =>
+              Finding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1508,7 +1550,8 @@ class ListScanConfigsResponse {
     }
     if (_json.containsKey('scanConfigs')) {
       scanConfigs = (_json['scanConfigs'] as core.List)
-          .map<ScanConfig>((value) => ScanConfig.fromJson(value))
+          .map<ScanConfig>((value) =>
+              ScanConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1543,7 +1586,8 @@ class ListScanRunsResponse {
     }
     if (_json.containsKey('scanRuns')) {
       scanRuns = (_json['scanRuns'] as core.List)
-          .map<ScanRun>((value) => ScanRun.fromJson(value))
+          .map<ScanRun>((value) =>
+              ScanRun.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1670,7 +1714,8 @@ class ScanConfig {
 
   ScanConfig.fromJson(core.Map _json) {
     if (_json.containsKey('authentication')) {
-      authentication = Authentication.fromJson(_json['authentication']);
+      authentication = Authentication.fromJson(
+          _json['authentication'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('blacklistPatterns')) {
       blacklistPatterns = (_json['blacklistPatterns'] as core.List)
@@ -1697,7 +1742,8 @@ class ScanConfig {
       riskLevel = _json['riskLevel'] as core.String;
     }
     if (_json.containsKey('schedule')) {
-      schedule = Schedule.fromJson(_json['schedule']);
+      schedule = Schedule.fromJson(
+          _json['schedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startingUrls')) {
       startingUrls = (_json['startingUrls'] as core.List)
@@ -1938,7 +1984,8 @@ class ScanRun {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('errorTrace')) {
-      errorTrace = ScanRunErrorTrace.fromJson(_json['errorTrace']);
+      errorTrace = ScanRunErrorTrace.fromJson(
+          _json['errorTrace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('executionState')) {
       executionState = _json['executionState'] as core.String;
@@ -1966,8 +2013,8 @@ class ScanRun {
     }
     if (_json.containsKey('warningTraces')) {
       warningTraces = (_json['warningTraces'] as core.List)
-          .map<ScanRunWarningTrace>(
-              (value) => ScanRunWarningTrace.fromJson(value))
+          .map<ScanRunWarningTrace>((value) => ScanRunWarningTrace.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2056,7 +2103,8 @@ class ScanRunErrorTrace {
       mostCommonHttpErrorCode = _json['mostCommonHttpErrorCode'] as core.int;
     }
     if (_json.containsKey('scanConfigError')) {
-      scanConfigError = ScanConfigError.fromJson(_json['scanConfigError']);
+      scanConfigError = ScanConfigError.fromJson(
+          _json['scanConfigError'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2220,12 +2268,14 @@ class VulnerableHeaders {
   VulnerableHeaders.fromJson(core.Map _json) {
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<Header>((value) => Header.fromJson(value))
+          .map<Header>((value) =>
+              Header.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('missingHeaders')) {
       missingHeaders = (_json['missingHeaders'] as core.List)
-          .map<Header>((value) => Header.fromJson(value))
+          .map<Header>((value) =>
+              Header.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

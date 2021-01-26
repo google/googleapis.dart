@@ -83,8 +83,8 @@ core.List<api.AuditLogConfig> buildUnnamed1901() {
 
 void checkUnnamed1901(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -171,7 +171,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed1903(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -302,8 +302,8 @@ void checkCloudFunction(api.CloudFunction o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.entryPoint, unittest.equals('foo'));
     checkUnnamed1905(o.environmentVariables);
-    checkEventTrigger(o.eventTrigger);
-    checkHttpsTrigger(o.httpsTrigger);
+    checkEventTrigger(o.eventTrigger as api.EventTrigger);
+    checkHttpsTrigger(o.httpsTrigger as api.HttpsTrigger);
     unittest.expect(o.ingressSettings, unittest.equals('foo'));
     checkUnnamed1906(o.labels);
     unittest.expect(o.maxInstances, unittest.equals(42));
@@ -312,7 +312,7 @@ void checkCloudFunction(api.CloudFunction o) {
     unittest.expect(o.runtime, unittest.equals('foo'));
     unittest.expect(o.serviceAccountEmail, unittest.equals('foo'));
     unittest.expect(o.sourceArchiveUrl, unittest.equals('foo'));
-    checkSourceRepository(o.sourceRepository);
+    checkSourceRepository(o.sourceRepository as api.SourceRepository);
     unittest.expect(o.sourceUploadUrl, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.timeout, unittest.equals('foo'));
@@ -342,7 +342,7 @@ void checkEventTrigger(api.EventTrigger o) {
   buildCounterEventTrigger++;
   if (buildCounterEventTrigger < 3) {
     unittest.expect(o.eventType, unittest.equals('foo'));
-    checkFailurePolicy(o.failurePolicy);
+    checkFailurePolicy(o.failurePolicy as api.FailurePolicy);
     unittest.expect(o.resource, unittest.equals('foo'));
     unittest.expect(o.service, unittest.equals('foo'));
   }
@@ -388,7 +388,7 @@ api.FailurePolicy buildFailurePolicy() {
 void checkFailurePolicy(api.FailurePolicy o) {
   buildCounterFailurePolicy++;
   if (buildCounterFailurePolicy < 3) {
-    checkRetry(o.retry);
+    checkRetry(o.retry as api.Retry);
   }
   buildCounterFailurePolicy--;
 }
@@ -493,8 +493,8 @@ core.List<api.CloudFunction> buildUnnamed1907() {
 
 void checkUnnamed1907(core.List<api.CloudFunction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCloudFunction(o[0]);
-  checkCloudFunction(o[1]);
+  checkCloudFunction(o[0] as api.CloudFunction);
+  checkCloudFunction(o[1] as api.CloudFunction);
 }
 
 core.List<core.String> buildUnnamed1908() {
@@ -542,8 +542,8 @@ core.List<api.Location> buildUnnamed1909() {
 
 void checkUnnamed1909(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -576,8 +576,8 @@ core.List<api.Operation> buildUnnamed1910() {
 
 void checkUnnamed1910(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -747,7 +747,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1913(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1914(o.response);
@@ -822,8 +822,8 @@ core.List<api.AuditConfig> buildUnnamed1916() {
 
 void checkUnnamed1916(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed1917() {
@@ -835,8 +835,8 @@ core.List<api.Binding> buildUnnamed1917() {
 
 void checkUnnamed1917(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -894,7 +894,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1055,7 +1055,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1063,7 +1063,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1071,7 +1071,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1079,7 +1079,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCallFunctionRequest();
       var od = api.CallFunctionRequest.fromJson(o.toJson());
-      checkCallFunctionRequest(od);
+      checkCallFunctionRequest(od as api.CallFunctionRequest);
     });
   });
 
@@ -1087,7 +1087,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCallFunctionResponse();
       var od = api.CallFunctionResponse.fromJson(o.toJson());
-      checkCallFunctionResponse(od);
+      checkCallFunctionResponse(od as api.CallFunctionResponse);
     });
   });
 
@@ -1095,7 +1095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudFunction();
       var od = api.CloudFunction.fromJson(o.toJson());
-      checkCloudFunction(od);
+      checkCloudFunction(od as api.CloudFunction);
     });
   });
 
@@ -1103,7 +1103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventTrigger();
       var od = api.EventTrigger.fromJson(o.toJson());
-      checkEventTrigger(od);
+      checkEventTrigger(od as api.EventTrigger);
     });
   });
 
@@ -1111,7 +1111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1119,7 +1119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFailurePolicy();
       var od = api.FailurePolicy.fromJson(o.toJson());
-      checkFailurePolicy(od);
+      checkFailurePolicy(od as api.FailurePolicy);
     });
   });
 
@@ -1127,7 +1127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateDownloadUrlRequest();
       var od = api.GenerateDownloadUrlRequest.fromJson(o.toJson());
-      checkGenerateDownloadUrlRequest(od);
+      checkGenerateDownloadUrlRequest(od as api.GenerateDownloadUrlRequest);
     });
   });
 
@@ -1135,7 +1135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateDownloadUrlResponse();
       var od = api.GenerateDownloadUrlResponse.fromJson(o.toJson());
-      checkGenerateDownloadUrlResponse(od);
+      checkGenerateDownloadUrlResponse(od as api.GenerateDownloadUrlResponse);
     });
   });
 
@@ -1143,7 +1143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateUploadUrlRequest();
       var od = api.GenerateUploadUrlRequest.fromJson(o.toJson());
-      checkGenerateUploadUrlRequest(od);
+      checkGenerateUploadUrlRequest(od as api.GenerateUploadUrlRequest);
     });
   });
 
@@ -1151,7 +1151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateUploadUrlResponse();
       var od = api.GenerateUploadUrlResponse.fromJson(o.toJson());
-      checkGenerateUploadUrlResponse(od);
+      checkGenerateUploadUrlResponse(od as api.GenerateUploadUrlResponse);
     });
   });
 
@@ -1159,7 +1159,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpsTrigger();
       var od = api.HttpsTrigger.fromJson(o.toJson());
-      checkHttpsTrigger(od);
+      checkHttpsTrigger(od as api.HttpsTrigger);
     });
   });
 
@@ -1167,7 +1167,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFunctionsResponse();
       var od = api.ListFunctionsResponse.fromJson(o.toJson());
-      checkListFunctionsResponse(od);
+      checkListFunctionsResponse(od as api.ListFunctionsResponse);
     });
   });
 
@@ -1175,7 +1175,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1183,7 +1183,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1191,7 +1191,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1199,7 +1199,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1207,7 +1207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadataV1();
       var od = api.OperationMetadataV1.fromJson(o.toJson());
-      checkOperationMetadataV1(od);
+      checkOperationMetadataV1(od as api.OperationMetadataV1);
     });
   });
 
@@ -1215,7 +1215,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1223,7 +1223,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRetry();
       var od = api.Retry.fromJson(o.toJson());
-      checkRetry(od);
+      checkRetry(od as api.Retry);
     });
   });
 
@@ -1231,7 +1231,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1239,7 +1239,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceRepository();
       var od = api.SourceRepository.fromJson(o.toJson());
-      checkSourceRepository(od);
+      checkSourceRepository(od as api.SourceRepository);
     });
   });
 
@@ -1247,7 +1247,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1255,7 +1255,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1263,7 +1263,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1312,7 +1312,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1373,7 +1373,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -1435,7 +1435,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1448,8 +1448,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CallFunctionRequest.fromJson(json);
-        checkCallFunctionRequest(obj);
+        var obj = api.CallFunctionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCallFunctionRequest(obj as api.CallFunctionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1489,7 +1490,7 @@ void main() {
       res
           .call(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCallFunctionResponse(response);
+        checkCallFunctionResponse(response as api.CallFunctionResponse);
       })));
     });
 
@@ -1500,8 +1501,9 @@ void main() {
       var arg_location = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CloudFunction.fromJson(json);
-        checkCloudFunction(obj);
+        var obj = api.CloudFunction.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCloudFunction(obj as api.CloudFunction);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1541,7 +1543,7 @@ void main() {
       res
           .create(arg_request, arg_location, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1589,7 +1591,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1600,8 +1602,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateDownloadUrlRequest.fromJson(json);
-        checkGenerateDownloadUrlRequest(obj);
+        var obj = api.GenerateDownloadUrlRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateDownloadUrlRequest(obj as api.GenerateDownloadUrlRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1641,7 +1644,8 @@ void main() {
       res
           .generateDownloadUrl(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateDownloadUrlResponse(response);
+        checkGenerateDownloadUrlResponse(
+            response as api.GenerateDownloadUrlResponse);
       })));
     });
 
@@ -1652,8 +1656,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateUploadUrlRequest.fromJson(json);
-        checkGenerateUploadUrlRequest(obj);
+        var obj = api.GenerateUploadUrlRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateUploadUrlRequest(obj as api.GenerateUploadUrlRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1693,7 +1698,8 @@ void main() {
       res
           .generateUploadUrl(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateUploadUrlResponse(response);
+        checkGenerateUploadUrlResponse(
+            response as api.GenerateUploadUrlResponse);
       })));
     });
 
@@ -1741,7 +1747,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCloudFunction(response);
+        checkCloudFunction(response as api.CloudFunction);
       })));
     });
 
@@ -1796,7 +1802,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1853,7 +1859,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFunctionsResponse(response);
+        checkListFunctionsResponse(response as api.ListFunctionsResponse);
       })));
     });
 
@@ -1865,8 +1871,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CloudFunction.fromJson(json);
-        checkCloudFunction(obj);
+        var obj = api.CloudFunction.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCloudFunction(obj as api.CloudFunction);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1909,7 +1916,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1920,8 +1927,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1961,7 +1969,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1972,8 +1980,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2013,7 +2022,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });

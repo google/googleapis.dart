@@ -89,7 +89,7 @@ api.AnalyzeEntitiesRequest buildAnalyzeEntitiesRequest() {
 void checkAnalyzeEntitiesRequest(api.AnalyzeEntitiesRequest o) {
   buildCounterAnalyzeEntitiesRequest++;
   if (buildCounterAnalyzeEntitiesRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.encodingType, unittest.equals('foo'));
   }
   buildCounterAnalyzeEntitiesRequest--;
@@ -104,8 +104,8 @@ core.List<api.Entity> buildUnnamed6784() {
 
 void checkUnnamed6784(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntity(o[0]);
-  checkEntity(o[1]);
+  checkEntity(o[0] as api.Entity);
+  checkEntity(o[1] as api.Entity);
 }
 
 core.int buildCounterAnalyzeEntitiesResponse = 0;
@@ -144,7 +144,7 @@ api.AnalyzeEntitySentimentRequest buildAnalyzeEntitySentimentRequest() {
 void checkAnalyzeEntitySentimentRequest(api.AnalyzeEntitySentimentRequest o) {
   buildCounterAnalyzeEntitySentimentRequest++;
   if (buildCounterAnalyzeEntitySentimentRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.encodingType, unittest.equals('foo'));
   }
   buildCounterAnalyzeEntitySentimentRequest--;
@@ -159,8 +159,8 @@ core.List<api.Entity> buildUnnamed6785() {
 
 void checkUnnamed6785(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntity(o[0]);
-  checkEntity(o[1]);
+  checkEntity(o[0] as api.Entity);
+  checkEntity(o[1] as api.Entity);
 }
 
 core.int buildCounterAnalyzeEntitySentimentResponse = 0;
@@ -199,7 +199,7 @@ api.AnalyzeSentimentRequest buildAnalyzeSentimentRequest() {
 void checkAnalyzeSentimentRequest(api.AnalyzeSentimentRequest o) {
   buildCounterAnalyzeSentimentRequest++;
   if (buildCounterAnalyzeSentimentRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.encodingType, unittest.equals('foo'));
   }
   buildCounterAnalyzeSentimentRequest--;
@@ -214,8 +214,8 @@ core.List<api.Sentence> buildUnnamed6786() {
 
 void checkUnnamed6786(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSentence(o[0]);
-  checkSentence(o[1]);
+  checkSentence(o[0] as api.Sentence);
+  checkSentence(o[1] as api.Sentence);
 }
 
 core.int buildCounterAnalyzeSentimentResponse = 0;
@@ -234,7 +234,7 @@ api.AnalyzeSentimentResponse buildAnalyzeSentimentResponse() {
 void checkAnalyzeSentimentResponse(api.AnalyzeSentimentResponse o) {
   buildCounterAnalyzeSentimentResponse++;
   if (buildCounterAnalyzeSentimentResponse < 3) {
-    checkSentiment(o.documentSentiment);
+    checkSentiment(o.documentSentiment as api.Sentiment);
     unittest.expect(o.language, unittest.equals('foo'));
     checkUnnamed6786(o.sentences);
   }
@@ -256,7 +256,7 @@ api.AnalyzeSyntaxRequest buildAnalyzeSyntaxRequest() {
 void checkAnalyzeSyntaxRequest(api.AnalyzeSyntaxRequest o) {
   buildCounterAnalyzeSyntaxRequest++;
   if (buildCounterAnalyzeSyntaxRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.encodingType, unittest.equals('foo'));
   }
   buildCounterAnalyzeSyntaxRequest--;
@@ -271,8 +271,8 @@ core.List<api.Sentence> buildUnnamed6787() {
 
 void checkUnnamed6787(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSentence(o[0]);
-  checkSentence(o[1]);
+  checkSentence(o[0] as api.Sentence);
+  checkSentence(o[1] as api.Sentence);
 }
 
 core.List<api.Token> buildUnnamed6788() {
@@ -284,8 +284,8 @@ core.List<api.Token> buildUnnamed6788() {
 
 void checkUnnamed6788(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToken(o[0]);
-  checkToken(o[1]);
+  checkToken(o[0] as api.Token);
+  checkToken(o[1] as api.Token);
 }
 
 core.int buildCounterAnalyzeSyntaxResponse = 0;
@@ -327,9 +327,9 @@ api.AnnotateTextRequest buildAnnotateTextRequest() {
 void checkAnnotateTextRequest(api.AnnotateTextRequest o) {
   buildCounterAnnotateTextRequest++;
   if (buildCounterAnnotateTextRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.encodingType, unittest.equals('foo'));
-    checkFeatures(o.features);
+    checkFeatures(o.features as api.Features);
   }
   buildCounterAnnotateTextRequest--;
 }
@@ -343,8 +343,8 @@ core.List<api.ClassificationCategory> buildUnnamed6789() {
 
 void checkUnnamed6789(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClassificationCategory(o[0]);
-  checkClassificationCategory(o[1]);
+  checkClassificationCategory(o[0] as api.ClassificationCategory);
+  checkClassificationCategory(o[1] as api.ClassificationCategory);
 }
 
 core.List<api.Entity> buildUnnamed6790() {
@@ -356,8 +356,8 @@ core.List<api.Entity> buildUnnamed6790() {
 
 void checkUnnamed6790(core.List<api.Entity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntity(o[0]);
-  checkEntity(o[1]);
+  checkEntity(o[0] as api.Entity);
+  checkEntity(o[1] as api.Entity);
 }
 
 core.List<api.Sentence> buildUnnamed6791() {
@@ -369,8 +369,8 @@ core.List<api.Sentence> buildUnnamed6791() {
 
 void checkUnnamed6791(core.List<api.Sentence> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSentence(o[0]);
-  checkSentence(o[1]);
+  checkSentence(o[0] as api.Sentence);
+  checkSentence(o[1] as api.Sentence);
 }
 
 core.List<api.Token> buildUnnamed6792() {
@@ -382,8 +382,8 @@ core.List<api.Token> buildUnnamed6792() {
 
 void checkUnnamed6792(core.List<api.Token> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToken(o[0]);
-  checkToken(o[1]);
+  checkToken(o[0] as api.Token);
+  checkToken(o[1] as api.Token);
 }
 
 core.int buildCounterAnnotateTextResponse = 0;
@@ -406,7 +406,7 @@ void checkAnnotateTextResponse(api.AnnotateTextResponse o) {
   buildCounterAnnotateTextResponse++;
   if (buildCounterAnnotateTextResponse < 3) {
     checkUnnamed6789(o.categories);
-    checkSentiment(o.documentSentiment);
+    checkSentiment(o.documentSentiment as api.Sentiment);
     checkUnnamed6790(o.entities);
     unittest.expect(o.language, unittest.equals('foo'));
     checkUnnamed6791(o.sentences);
@@ -450,7 +450,7 @@ api.ClassifyTextRequest buildClassifyTextRequest() {
 void checkClassifyTextRequest(api.ClassifyTextRequest o) {
   buildCounterClassifyTextRequest++;
   if (buildCounterClassifyTextRequest < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
   }
   buildCounterClassifyTextRequest--;
 }
@@ -464,8 +464,8 @@ core.List<api.ClassificationCategory> buildUnnamed6793() {
 
 void checkUnnamed6793(core.List<api.ClassificationCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClassificationCategory(o[0]);
-  checkClassificationCategory(o[1]);
+  checkClassificationCategory(o[0] as api.ClassificationCategory);
+  checkClassificationCategory(o[1] as api.ClassificationCategory);
 }
 
 core.int buildCounterClassifyTextResponse = 0;
@@ -546,8 +546,8 @@ core.List<api.EntityMention> buildUnnamed6794() {
 
 void checkUnnamed6794(core.List<api.EntityMention> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityMention(o[0]);
-  checkEntityMention(o[1]);
+  checkEntityMention(o[0] as api.EntityMention);
+  checkEntityMention(o[1] as api.EntityMention);
 }
 
 core.Map<core.String, core.String> buildUnnamed6795() {
@@ -586,7 +586,7 @@ void checkEntity(api.Entity o) {
     checkUnnamed6795(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.salience, unittest.equals(42.0));
-    checkSentiment(o.sentiment);
+    checkSentiment(o.sentiment as api.Sentiment);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterEntity--;
@@ -608,8 +608,8 @@ api.EntityMention buildEntityMention() {
 void checkEntityMention(api.EntityMention o) {
   buildCounterEntityMention++;
   if (buildCounterEntityMention < 3) {
-    checkSentiment(o.sentiment);
-    checkTextSpan(o.text);
+    checkSentiment(o.sentiment as api.Sentiment);
+    checkTextSpan(o.text as api.TextSpan);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterEntityMention--;
@@ -698,8 +698,8 @@ api.Sentence buildSentence() {
 void checkSentence(api.Sentence o) {
   buildCounterSentence++;
   if (buildCounterSentence < 3) {
-    checkSentiment(o.sentiment);
-    checkTextSpan(o.text);
+    checkSentiment(o.sentiment as api.Sentiment);
+    checkTextSpan(o.text as api.TextSpan);
   }
   buildCounterSentence--;
 }
@@ -828,10 +828,10 @@ api.Token buildToken() {
 void checkToken(api.Token o) {
   buildCounterToken++;
   if (buildCounterToken < 3) {
-    checkDependencyEdge(o.dependencyEdge);
+    checkDependencyEdge(o.dependencyEdge as api.DependencyEdge);
     unittest.expect(o.lemma, unittest.equals('foo'));
-    checkPartOfSpeech(o.partOfSpeech);
-    checkTextSpan(o.text);
+    checkPartOfSpeech(o.partOfSpeech as api.PartOfSpeech);
+    checkTextSpan(o.text as api.TextSpan);
   }
   buildCounterToken--;
 }
@@ -841,7 +841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeEntitiesRequest();
       var od = api.AnalyzeEntitiesRequest.fromJson(o.toJson());
-      checkAnalyzeEntitiesRequest(od);
+      checkAnalyzeEntitiesRequest(od as api.AnalyzeEntitiesRequest);
     });
   });
 
@@ -849,7 +849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeEntitiesResponse();
       var od = api.AnalyzeEntitiesResponse.fromJson(o.toJson());
-      checkAnalyzeEntitiesResponse(od);
+      checkAnalyzeEntitiesResponse(od as api.AnalyzeEntitiesResponse);
     });
   });
 
@@ -857,7 +857,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeEntitySentimentRequest();
       var od = api.AnalyzeEntitySentimentRequest.fromJson(o.toJson());
-      checkAnalyzeEntitySentimentRequest(od);
+      checkAnalyzeEntitySentimentRequest(
+          od as api.AnalyzeEntitySentimentRequest);
     });
   });
 
@@ -865,7 +866,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeEntitySentimentResponse();
       var od = api.AnalyzeEntitySentimentResponse.fromJson(o.toJson());
-      checkAnalyzeEntitySentimentResponse(od);
+      checkAnalyzeEntitySentimentResponse(
+          od as api.AnalyzeEntitySentimentResponse);
     });
   });
 
@@ -873,7 +875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeSentimentRequest();
       var od = api.AnalyzeSentimentRequest.fromJson(o.toJson());
-      checkAnalyzeSentimentRequest(od);
+      checkAnalyzeSentimentRequest(od as api.AnalyzeSentimentRequest);
     });
   });
 
@@ -881,7 +883,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeSentimentResponse();
       var od = api.AnalyzeSentimentResponse.fromJson(o.toJson());
-      checkAnalyzeSentimentResponse(od);
+      checkAnalyzeSentimentResponse(od as api.AnalyzeSentimentResponse);
     });
   });
 
@@ -889,7 +891,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeSyntaxRequest();
       var od = api.AnalyzeSyntaxRequest.fromJson(o.toJson());
-      checkAnalyzeSyntaxRequest(od);
+      checkAnalyzeSyntaxRequest(od as api.AnalyzeSyntaxRequest);
     });
   });
 
@@ -897,7 +899,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnalyzeSyntaxResponse();
       var od = api.AnalyzeSyntaxResponse.fromJson(o.toJson());
-      checkAnalyzeSyntaxResponse(od);
+      checkAnalyzeSyntaxResponse(od as api.AnalyzeSyntaxResponse);
     });
   });
 
@@ -905,7 +907,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotateTextRequest();
       var od = api.AnnotateTextRequest.fromJson(o.toJson());
-      checkAnnotateTextRequest(od);
+      checkAnnotateTextRequest(od as api.AnnotateTextRequest);
     });
   });
 
@@ -913,7 +915,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotateTextResponse();
       var od = api.AnnotateTextResponse.fromJson(o.toJson());
-      checkAnnotateTextResponse(od);
+      checkAnnotateTextResponse(od as api.AnnotateTextResponse);
     });
   });
 
@@ -921,7 +923,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClassificationCategory();
       var od = api.ClassificationCategory.fromJson(o.toJson());
-      checkClassificationCategory(od);
+      checkClassificationCategory(od as api.ClassificationCategory);
     });
   });
 
@@ -929,7 +931,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClassifyTextRequest();
       var od = api.ClassifyTextRequest.fromJson(o.toJson());
-      checkClassifyTextRequest(od);
+      checkClassifyTextRequest(od as api.ClassifyTextRequest);
     });
   });
 
@@ -937,7 +939,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClassifyTextResponse();
       var od = api.ClassifyTextResponse.fromJson(o.toJson());
-      checkClassifyTextResponse(od);
+      checkClassifyTextResponse(od as api.ClassifyTextResponse);
     });
   });
 
@@ -945,7 +947,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDependencyEdge();
       var od = api.DependencyEdge.fromJson(o.toJson());
-      checkDependencyEdge(od);
+      checkDependencyEdge(od as api.DependencyEdge);
     });
   });
 
@@ -953,7 +955,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
-      checkDocument(od);
+      checkDocument(od as api.Document);
     });
   });
 
@@ -961,7 +963,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
-      checkEntity(od);
+      checkEntity(od as api.Entity);
     });
   });
 
@@ -969,7 +971,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityMention();
       var od = api.EntityMention.fromJson(o.toJson());
-      checkEntityMention(od);
+      checkEntityMention(od as api.EntityMention);
     });
   });
 
@@ -977,7 +979,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFeatures();
       var od = api.Features.fromJson(o.toJson());
-      checkFeatures(od);
+      checkFeatures(od as api.Features);
     });
   });
 
@@ -985,7 +987,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartOfSpeech();
       var od = api.PartOfSpeech.fromJson(o.toJson());
-      checkPartOfSpeech(od);
+      checkPartOfSpeech(od as api.PartOfSpeech);
     });
   });
 
@@ -993,7 +995,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSentence();
       var od = api.Sentence.fromJson(o.toJson());
-      checkSentence(od);
+      checkSentence(od as api.Sentence);
     });
   });
 
@@ -1001,7 +1003,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSentiment();
       var od = api.Sentiment.fromJson(o.toJson());
-      checkSentiment(od);
+      checkSentiment(od as api.Sentiment);
     });
   });
 
@@ -1009,7 +1011,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1017,7 +1019,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextSpan();
       var od = api.TextSpan.fromJson(o.toJson());
-      checkTextSpan(od);
+      checkTextSpan(od as api.TextSpan);
     });
   });
 
@@ -1025,7 +1027,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToken();
       var od = api.Token.fromJson(o.toJson());
-      checkToken(od);
+      checkToken(od as api.Token);
     });
   });
 
@@ -1036,8 +1038,9 @@ void main() {
       var arg_request = buildAnalyzeEntitiesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnalyzeEntitiesRequest.fromJson(json);
-        checkAnalyzeEntitiesRequest(obj);
+        var obj = api.AnalyzeEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnalyzeEntitiesRequest(obj as api.AnalyzeEntitiesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1076,7 +1079,7 @@ void main() {
       res
           .analyzeEntities(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnalyzeEntitiesResponse(response);
+        checkAnalyzeEntitiesResponse(response as api.AnalyzeEntitiesResponse);
       })));
     });
 
@@ -1086,8 +1089,10 @@ void main() {
       var arg_request = buildAnalyzeEntitySentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnalyzeEntitySentimentRequest.fromJson(json);
-        checkAnalyzeEntitySentimentRequest(obj);
+        var obj = api.AnalyzeEntitySentimentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnalyzeEntitySentimentRequest(
+            obj as api.AnalyzeEntitySentimentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1126,7 +1131,8 @@ void main() {
       res
           .analyzeEntitySentiment(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnalyzeEntitySentimentResponse(response);
+        checkAnalyzeEntitySentimentResponse(
+            response as api.AnalyzeEntitySentimentResponse);
       })));
     });
 
@@ -1136,8 +1142,9 @@ void main() {
       var arg_request = buildAnalyzeSentimentRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnalyzeSentimentRequest.fromJson(json);
-        checkAnalyzeSentimentRequest(obj);
+        var obj = api.AnalyzeSentimentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnalyzeSentimentRequest(obj as api.AnalyzeSentimentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1176,7 +1183,7 @@ void main() {
       res
           .analyzeSentiment(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnalyzeSentimentResponse(response);
+        checkAnalyzeSentimentResponse(response as api.AnalyzeSentimentResponse);
       })));
     });
 
@@ -1186,8 +1193,9 @@ void main() {
       var arg_request = buildAnalyzeSyntaxRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnalyzeSyntaxRequest.fromJson(json);
-        checkAnalyzeSyntaxRequest(obj);
+        var obj = api.AnalyzeSyntaxRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnalyzeSyntaxRequest(obj as api.AnalyzeSyntaxRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1226,7 +1234,7 @@ void main() {
       res
           .analyzeSyntax(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnalyzeSyntaxResponse(response);
+        checkAnalyzeSyntaxResponse(response as api.AnalyzeSyntaxResponse);
       })));
     });
 
@@ -1236,8 +1244,9 @@ void main() {
       var arg_request = buildAnnotateTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AnnotateTextRequest.fromJson(json);
-        checkAnnotateTextRequest(obj);
+        var obj = api.AnnotateTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnnotateTextRequest(obj as api.AnnotateTextRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1276,7 +1285,7 @@ void main() {
       res
           .annotateText(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotateTextResponse(response);
+        checkAnnotateTextResponse(response as api.AnnotateTextResponse);
       })));
     });
 
@@ -1286,8 +1295,9 @@ void main() {
       var arg_request = buildClassifyTextRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ClassifyTextRequest.fromJson(json);
-        checkClassifyTextRequest(obj);
+        var obj = api.ClassifyTextRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkClassifyTextRequest(obj as api.ClassifyTextRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1326,7 +1336,7 @@ void main() {
       res
           .classifyText(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkClassifyTextResponse(response);
+        checkClassifyTextResponse(response as api.ClassifyTextResponse);
       })));
     });
   });

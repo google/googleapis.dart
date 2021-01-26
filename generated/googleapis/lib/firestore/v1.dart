@@ -137,7 +137,10 @@ class ProjectsDatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports documents into Google Cloud Firestore. Existing documents with the
@@ -199,7 +202,10 @@ class ProjectsDatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -270,7 +276,10 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleFirestoreAdminV1Field.fromJson(data));
+    return _response.then(
+      (data) => GoogleFirestoreAdminV1Field.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the field configuration and metadata for this database. Currently,
@@ -348,7 +357,9 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleFirestoreAdminV1ListFieldsResponse.fromJson(data));
+      (data) => GoogleFirestoreAdminV1ListFieldsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a field configuration. Currently, field updates apply only to
@@ -438,7 +449,10 @@ class ProjectsDatabasesCollectionGroupsFieldsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -506,7 +520,10 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a composite index.
@@ -557,7 +574,9 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a composite index.
@@ -608,7 +627,10 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleFirestoreAdminV1Index.fromJson(data));
+    return _response.then(
+      (data) => GoogleFirestoreAdminV1Index.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists composite indexes.
@@ -681,7 +703,9 @@ class ProjectsDatabasesCollectionGroupsIndexesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleFirestoreAdminV1ListIndexesResponse.fromJson(data));
+      (data) => GoogleFirestoreAdminV1ListIndexesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -747,7 +771,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchGetDocumentsResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchGetDocumentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Applies a batch of write operations. The BatchWrite method does not apply
@@ -810,7 +837,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchWriteResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchWriteResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts a new transaction.
@@ -868,7 +898,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BeginTransactionResponse.fromJson(data));
+    return _response.then(
+      (data) => BeginTransactionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Commits a transaction, while optionally updating documents.
@@ -926,7 +959,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CommitResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          CommitResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new document.
@@ -1007,7 +1043,9 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Document.fromJson(data));
+    return _response.then(
+      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a document.
@@ -1073,7 +1111,9 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a single document.
@@ -1145,7 +1185,9 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Document.fromJson(data));
+    return _response.then(
+      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists documents.
@@ -1259,7 +1301,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDocumentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDocumentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the collection IDs underneath a document.
@@ -1320,7 +1365,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListCollectionIdsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCollectionIdsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Listens to changes.
@@ -1378,7 +1426,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListenResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ListenResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Partitions a query by returning partition cursors that can be used to run
@@ -1441,7 +1492,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PartitionQueryResponse.fromJson(data));
+    return _response.then(
+      (data) => PartitionQueryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates or inserts a document.
@@ -1526,7 +1580,9 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Document.fromJson(data));
+    return _response.then(
+      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rolls back a transaction.
@@ -1584,7 +1640,9 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Runs a query.
@@ -1645,7 +1703,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RunQueryResponse.fromJson(data));
+    return _response.then(
+      (data) => RunQueryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Streams batches of document updates and deletes, in order.
@@ -1704,7 +1765,10 @@ class ProjectsDatabasesDocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WriteResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          WriteResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1775,7 +1839,9 @@ class ProjectsDatabasesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1828,7 +1894,9 @@ class ProjectsDatabasesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1880,7 +1948,10 @@ class ProjectsDatabasesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1956,8 +2027,10 @@ class ProjectsDatabasesOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2013,7 +2086,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -2081,7 +2156,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2095,7 +2173,8 @@ class ArrayValue {
   ArrayValue.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2150,10 +2229,12 @@ class BatchGetDocumentsRequest {
           .toList();
     }
     if (_json.containsKey('mask')) {
-      mask = DocumentMask.fromJson(_json['mask']);
+      mask = DocumentMask.fromJson(
+          _json['mask'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('newTransaction')) {
-      newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
+      newTransaction = TransactionOptions.fromJson(
+          _json['newTransaction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readTime')) {
       readTime = _json['readTime'] as core.String;
@@ -2214,7 +2295,8 @@ class BatchGetDocumentsResponse {
 
   BatchGetDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('found')) {
-      found = Document.fromJson(_json['found']);
+      found = Document.fromJson(
+          _json['found'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('missing')) {
       missing = _json['missing'] as core.String;
@@ -2260,12 +2342,14 @@ class BatchWriteRequest {
   BatchWriteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
-          .map<Write>((value) => Write.fromJson(value))
+          .map<Write>((value) =>
+              Write.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2297,12 +2381,14 @@ class BatchWriteResponse {
   BatchWriteResponse.fromJson(core.Map _json) {
     if (_json.containsKey('status')) {
       status = (_json['status'] as core.List)
-          .map<Status>((value) => Status.fromJson(value))
+          .map<Status>((value) =>
+              Status.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('writeResults')) {
       writeResults = (_json['writeResults'] as core.List)
-          .map<WriteResult>((value) => WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2329,7 +2415,8 @@ class BeginTransactionRequest {
 
   BeginTransactionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = TransactionOptions.fromJson(_json['options']);
+      options = TransactionOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2427,7 +2514,8 @@ class CommitRequest {
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
-          .map<Write>((value) => Write.fromJson(value))
+          .map<Write>((value) =>
+              Write.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2462,7 +2550,8 @@ class CommitResponse {
     }
     if (_json.containsKey('writeResults')) {
       writeResults = (_json['writeResults'] as core.List)
-          .map<WriteResult>((value) => WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2497,7 +2586,8 @@ class CompositeFilter {
   CompositeFilter.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<Filter>((value) => Filter.fromJson(value))
+          .map<Filter>((value) =>
+              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('op')) {
@@ -2536,7 +2626,8 @@ class Cursor {
     }
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2596,8 +2687,10 @@ class Document {
     }
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json['fields'].cast<core.String, core.Map>(),
-          (core.Map item) => Value.fromJson(item));
+          (_json['fields'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Value.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2646,7 +2739,8 @@ class DocumentChange {
 
   DocumentChange.fromJson(core.Map _json) {
     if (_json.containsKey('document')) {
-      document = Document.fromJson(_json['document']);
+      document = Document.fromJson(
+          _json['document'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('removedTargetIds')) {
       removedTargetIds = (_json['removedTargetIds'] as core.List)
@@ -2814,7 +2908,8 @@ class DocumentTransform {
     }
     if (_json.containsKey('fieldTransforms')) {
       fieldTransforms = (_json['fieldTransforms'] as core.List)
-          .map<FieldTransform>((value) => FieldTransform.fromJson(value))
+          .map<FieldTransform>((value) => FieldTransform.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2952,13 +3047,15 @@ class FieldFilter {
 
   FieldFilter.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = FieldReference.fromJson(_json['field']);
+      field = FieldReference.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('op')) {
       op = _json['op'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = Value.fromJson(_json['value']);
+      value =
+          Value.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3069,23 +3166,27 @@ class FieldTransform {
 
   FieldTransform.fromJson(core.Map _json) {
     if (_json.containsKey('appendMissingElements')) {
-      appendMissingElements =
-          ArrayValue.fromJson(_json['appendMissingElements']);
+      appendMissingElements = ArrayValue.fromJson(_json['appendMissingElements']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fieldPath')) {
       fieldPath = _json['fieldPath'] as core.String;
     }
     if (_json.containsKey('increment')) {
-      increment = Value.fromJson(_json['increment']);
+      increment = Value.fromJson(
+          _json['increment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maximum')) {
-      maximum = Value.fromJson(_json['maximum']);
+      maximum = Value.fromJson(
+          _json['maximum'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minimum')) {
-      minimum = Value.fromJson(_json['minimum']);
+      minimum = Value.fromJson(
+          _json['minimum'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('removeAllFromArray')) {
-      removeAllFromArray = ArrayValue.fromJson(_json['removeAllFromArray']);
+      removeAllFromArray = ArrayValue.fromJson(
+          _json['removeAllFromArray'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('setToServerValue')) {
       setToServerValue = _json['setToServerValue'] as core.String;
@@ -3134,13 +3235,16 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey('compositeFilter')) {
-      compositeFilter = CompositeFilter.fromJson(_json['compositeFilter']);
+      compositeFilter = CompositeFilter.fromJson(
+          _json['compositeFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fieldFilter')) {
-      fieldFilter = FieldFilter.fromJson(_json['fieldFilter']);
+      fieldFilter = FieldFilter.fromJson(
+          _json['fieldFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unaryFilter')) {
-      unaryFilter = UnaryFilter.fromJson(_json['unaryFilter']);
+      unaryFilter = UnaryFilter.fromJson(
+          _json['unaryFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3215,12 +3319,12 @@ class GoogleFirestoreAdminV1ExportDocumentsMetadata {
       outputUriPrefix = _json['outputUriPrefix'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressDocuments')) {
-      progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
+      progressDocuments = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressDocuments'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -3352,8 +3456,8 @@ class GoogleFirestoreAdminV1Field {
 
   GoogleFirestoreAdminV1Field.fromJson(core.Map _json) {
     if (_json.containsKey('indexConfig')) {
-      indexConfig =
-          GoogleFirestoreAdminV1IndexConfig.fromJson(_json['indexConfig']);
+      indexConfig = GoogleFirestoreAdminV1IndexConfig.fromJson(
+          _json['indexConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3422,17 +3526,18 @@ class GoogleFirestoreAdminV1FieldOperationMetadata {
     }
     if (_json.containsKey('indexConfigDeltas')) {
       indexConfigDeltas = (_json['indexConfigDeltas'] as core.List)
-          .map<GoogleFirestoreAdminV1IndexConfigDelta>(
-              (value) => GoogleFirestoreAdminV1IndexConfigDelta.fromJson(value))
+          .map<GoogleFirestoreAdminV1IndexConfigDelta>((value) =>
+              GoogleFirestoreAdminV1IndexConfigDelta.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressDocuments')) {
-      progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
+      progressDocuments = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressDocuments'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -3526,12 +3631,12 @@ class GoogleFirestoreAdminV1ImportDocumentsMetadata {
       operationState = _json['operationState'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressDocuments')) {
-      progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
+      progressDocuments = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressDocuments'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -3660,8 +3765,9 @@ class GoogleFirestoreAdminV1Index {
   GoogleFirestoreAdminV1Index.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<GoogleFirestoreAdminV1IndexField>(
-              (value) => GoogleFirestoreAdminV1IndexField.fromJson(value))
+          .map<GoogleFirestoreAdminV1IndexField>((value) =>
+              GoogleFirestoreAdminV1IndexField.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -3723,8 +3829,9 @@ class GoogleFirestoreAdminV1IndexConfig {
     }
     if (_json.containsKey('indexes')) {
       indexes = (_json['indexes'] as core.List)
-          .map<GoogleFirestoreAdminV1Index>(
-              (value) => GoogleFirestoreAdminV1Index.fromJson(value))
+          .map<GoogleFirestoreAdminV1Index>((value) =>
+              GoogleFirestoreAdminV1Index.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('reverting')) {
@@ -3773,7 +3880,8 @@ class GoogleFirestoreAdminV1IndexConfigDelta {
       changeType = _json['changeType'] as core.String;
     }
     if (_json.containsKey('index')) {
-      index = GoogleFirestoreAdminV1Index.fromJson(_json['index']);
+      index = GoogleFirestoreAdminV1Index.fromJson(
+          _json['index'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3886,12 +3994,12 @@ class GoogleFirestoreAdminV1IndexOperationMetadata {
       index = _json['index'] as core.String;
     }
     if (_json.containsKey('progressBytes')) {
-      progressBytes =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressBytes']);
+      progressBytes = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressBytes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('progressDocuments')) {
-      progressDocuments =
-          GoogleFirestoreAdminV1Progress.fromJson(_json['progressDocuments']);
+      progressDocuments = GoogleFirestoreAdminV1Progress.fromJson(
+          _json['progressDocuments'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -3939,8 +4047,9 @@ class GoogleFirestoreAdminV1ListFieldsResponse {
   GoogleFirestoreAdminV1ListFieldsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<GoogleFirestoreAdminV1Field>(
-              (value) => GoogleFirestoreAdminV1Field.fromJson(value))
+          .map<GoogleFirestoreAdminV1Field>((value) =>
+              GoogleFirestoreAdminV1Field.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3974,8 +4083,9 @@ class GoogleFirestoreAdminV1ListIndexesResponse {
   GoogleFirestoreAdminV1ListIndexesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('indexes')) {
       indexes = (_json['indexes'] as core.List)
-          .map<GoogleFirestoreAdminV1Index>(
-              (value) => GoogleFirestoreAdminV1Index.fromJson(value))
+          .map<GoogleFirestoreAdminV1Index>((value) =>
+              GoogleFirestoreAdminV1Index.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4071,8 +4181,9 @@ class GoogleLongrunningListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>(
-              (value) => GoogleLongrunningOperation.fromJson(value))
+          .map<GoogleLongrunningOperation>((value) =>
+              GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4133,11 +4244,13 @@ class GoogleLongrunningOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4145,7 +4258,8 @@ class GoogleLongrunningOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -4282,7 +4396,8 @@ class ListDocumentsResponse {
   ListDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('documents')) {
       documents = (_json['documents'] as core.List)
-          .map<Document>((value) => Document.fromJson(value))
+          .map<Document>((value) =>
+              Document.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4315,7 +4430,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4350,11 +4466,13 @@ class ListenRequest {
 
   ListenRequest.fromJson(core.Map _json) {
     if (_json.containsKey('addTarget')) {
-      addTarget = Target.fromJson(_json['addTarget']);
+      addTarget = Target.fromJson(
+          _json['addTarget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('removeTarget')) {
@@ -4401,19 +4519,24 @@ class ListenResponse {
 
   ListenResponse.fromJson(core.Map _json) {
     if (_json.containsKey('documentChange')) {
-      documentChange = DocumentChange.fromJson(_json['documentChange']);
+      documentChange = DocumentChange.fromJson(
+          _json['documentChange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('documentDelete')) {
-      documentDelete = DocumentDelete.fromJson(_json['documentDelete']);
+      documentDelete = DocumentDelete.fromJson(
+          _json['documentDelete'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('documentRemove')) {
-      documentRemove = DocumentRemove.fromJson(_json['documentRemove']);
+      documentRemove = DocumentRemove.fromJson(
+          _json['documentRemove'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filter')) {
-      filter = ExistenceFilter.fromJson(_json['filter']);
+      filter = ExistenceFilter.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetChange')) {
-      targetChange = TargetChange.fromJson(_json['targetChange']);
+      targetChange = TargetChange.fromJson(
+          _json['targetChange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4470,7 +4593,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -4478,7 +4602,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4520,8 +4645,10 @@ class MapValue {
   MapValue.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json['fields'].cast<core.String, core.Map>(),
-          (core.Map item) => Value.fromJson(item));
+          (_json['fields'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Value.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -4555,7 +4682,8 @@ class Order {
       direction = _json['direction'] as core.String;
     }
     if (_json.containsKey('field')) {
-      field = FieldReference.fromJson(_json['field']);
+      field = FieldReference.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4618,7 +4746,8 @@ class PartitionQueryRequest {
       partitionCount = _json['partitionCount'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
-      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
+      structuredQuery = StructuredQuery.fromJson(
+          _json['structuredQuery'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4667,7 +4796,8 @@ class PartitionQueryResponse {
     }
     if (_json.containsKey('partitions')) {
       partitions = (_json['partitions'] as core.List)
-          .map<Cursor>((value) => Cursor.fromJson(value))
+          .map<Cursor>((value) =>
+              Cursor.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4728,7 +4858,8 @@ class Projection {
   Projection.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<FieldReference>((value) => FieldReference.fromJson(value))
+          .map<FieldReference>((value) => FieldReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4761,7 +4892,8 @@ class QueryTarget {
       parent = _json['parent'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
-      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
+      structuredQuery = StructuredQuery.fromJson(
+          _json['structuredQuery'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4885,13 +5017,15 @@ class RunQueryRequest {
 
   RunQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('newTransaction')) {
-      newTransaction = TransactionOptions.fromJson(_json['newTransaction']);
+      newTransaction = TransactionOptions.fromJson(
+          _json['newTransaction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readTime')) {
       readTime = _json['readTime'] as core.String;
     }
     if (_json.containsKey('structuredQuery')) {
-      structuredQuery = StructuredQuery.fromJson(_json['structuredQuery']);
+      structuredQuery = StructuredQuery.fromJson(
+          _json['structuredQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transaction')) {
       transaction = _json['transaction'] as core.String;
@@ -4949,7 +5083,8 @@ class RunQueryResponse {
 
   RunQueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('document')) {
-      document = Document.fromJson(_json['document']);
+      document = Document.fromJson(
+          _json['document'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readTime')) {
       readTime = _json['readTime'] as core.String;
@@ -5012,7 +5147,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -5078,12 +5214,13 @@ class StructuredQuery {
 
   StructuredQuery.fromJson(core.Map _json) {
     if (_json.containsKey('endAt')) {
-      endAt = Cursor.fromJson(_json['endAt']);
+      endAt = Cursor.fromJson(
+          _json['endAt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('from')) {
       from = (_json['from'] as core.List)
-          .map<CollectionSelector>(
-              (value) => CollectionSelector.fromJson(value))
+          .map<CollectionSelector>((value) => CollectionSelector.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('limit')) {
@@ -5094,17 +5231,21 @@ class StructuredQuery {
     }
     if (_json.containsKey('orderBy')) {
       orderBy = (_json['orderBy'] as core.List)
-          .map<Order>((value) => Order.fromJson(value))
+          .map<Order>((value) =>
+              Order.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('select')) {
-      select = Projection.fromJson(_json['select']);
+      select = Projection.fromJson(
+          _json['select'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startAt')) {
-      startAt = Cursor.fromJson(_json['startAt']);
+      startAt = Cursor.fromJson(
+          _json['startAt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('where')) {
-      where = Filter.fromJson(_json['where']);
+      where = Filter.fromJson(
+          _json['where'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5172,13 +5313,15 @@ class Target {
 
   Target.fromJson(core.Map _json) {
     if (_json.containsKey('documents')) {
-      documents = DocumentsTarget.fromJson(_json['documents']);
+      documents = DocumentsTarget.fromJson(
+          _json['documents'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('once')) {
       once = _json['once'] as core.bool;
     }
     if (_json.containsKey('query')) {
-      query = QueryTarget.fromJson(_json['query']);
+      query = QueryTarget.fromJson(
+          _json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readTime')) {
       readTime = _json['readTime'] as core.String;
@@ -5265,7 +5408,8 @@ class TargetChange {
 
   TargetChange.fromJson(core.Map _json) {
     if (_json.containsKey('cause')) {
-      cause = Status.fromJson(_json['cause']);
+      cause = Status.fromJson(
+          _json['cause'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readTime')) {
       readTime = _json['readTime'] as core.String;
@@ -5316,10 +5460,12 @@ class TransactionOptions {
 
   TransactionOptions.fromJson(core.Map _json) {
     if (_json.containsKey('readOnly')) {
-      readOnly = ReadOnly.fromJson(_json['readOnly']);
+      readOnly = ReadOnly.fromJson(
+          _json['readOnly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('readWrite')) {
-      readWrite = ReadWrite.fromJson(_json['readWrite']);
+      readWrite = ReadWrite.fromJson(
+          _json['readWrite'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5357,7 +5503,8 @@ class UnaryFilter {
 
   UnaryFilter.fromJson(core.Map _json) {
     if (_json.containsKey('field')) {
-      field = FieldReference.fromJson(_json['field']);
+      field = FieldReference.fromJson(
+          _json['field'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('op')) {
       op = _json['op'] as core.String;
@@ -5430,7 +5577,8 @@ class Value {
 
   Value.fromJson(core.Map _json) {
     if (_json.containsKey('arrayValue')) {
-      arrayValue = ArrayValue.fromJson(_json['arrayValue']);
+      arrayValue = ArrayValue.fromJson(
+          _json['arrayValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('booleanValue')) {
       booleanValue = _json['booleanValue'] as core.bool;
@@ -5442,13 +5590,15 @@ class Value {
       doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('geoPointValue')) {
-      geoPointValue = LatLng.fromJson(_json['geoPointValue']);
+      geoPointValue = LatLng.fromJson(
+          _json['geoPointValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('integerValue')) {
       integerValue = _json['integerValue'] as core.String;
     }
     if (_json.containsKey('mapValue')) {
-      mapValue = MapValue.fromJson(_json['mapValue']);
+      mapValue = MapValue.fromJson(
+          _json['mapValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nullValue')) {
       nullValue = _json['nullValue'] as core.String;
@@ -5538,23 +5688,28 @@ class Write {
 
   Write.fromJson(core.Map _json) {
     if (_json.containsKey('currentDocument')) {
-      currentDocument = Precondition.fromJson(_json['currentDocument']);
+      currentDocument = Precondition.fromJson(
+          _json['currentDocument'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('delete')) {
       delete = _json['delete'] as core.String;
     }
     if (_json.containsKey('transform')) {
-      transform = DocumentTransform.fromJson(_json['transform']);
+      transform = DocumentTransform.fromJson(
+          _json['transform'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('update')) {
-      update = Document.fromJson(_json['update']);
+      update = Document.fromJson(
+          _json['update'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
-      updateMask = DocumentMask.fromJson(_json['updateMask']);
+      updateMask = DocumentMask.fromJson(
+          _json['updateMask'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTransforms')) {
       updateTransforms = (_json['updateTransforms'] as core.List)
-          .map<FieldTransform>((value) => FieldTransform.fromJson(value))
+          .map<FieldTransform>((value) => FieldTransform.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5625,7 +5780,8 @@ class WriteRequest {
   WriteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('streamId')) {
@@ -5636,7 +5792,8 @@ class WriteRequest {
     }
     if (_json.containsKey('writes')) {
       writes = (_json['writes'] as core.List)
-          .map<Write>((value) => Write.fromJson(value))
+          .map<Write>((value) =>
+              Write.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5699,7 +5856,8 @@ class WriteResponse {
     }
     if (_json.containsKey('writeResults')) {
       writeResults = (_json['writeResults'] as core.List)
-          .map<WriteResult>((value) => WriteResult.fromJson(value))
+          .map<WriteResult>((value) => WriteResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5739,7 +5897,8 @@ class WriteResult {
   WriteResult.fromJson(core.Map _json) {
     if (_json.containsKey('transformResults')) {
       transformResults = (_json['transformResults'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {

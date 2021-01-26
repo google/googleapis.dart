@@ -132,7 +132,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns an access control rule.
@@ -191,7 +193,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AclRule.fromJson(data));
+    return _response.then(
+      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an access control rule.
@@ -254,7 +258,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AclRule.fromJson(data));
+    return _response.then(
+      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the rules in the access control list for the calendar.
@@ -341,7 +347,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Acl.fromJson(data));
+    return _response.then(
+      (data) => Acl.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an access control rule. This method supports patch semantics.
@@ -414,7 +422,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AclRule.fromJson(data));
+    return _response.then(
+      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an access control rule.
@@ -487,7 +497,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AclRule.fromJson(data));
+    return _response.then(
+      (data) => AclRule.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes to ACL resources.
@@ -582,7 +594,9 @@ class AclResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -639,7 +653,9 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns a calendar from the user's calendar list.
@@ -690,7 +706,10 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarListEntry.fromJson(data));
+    return _response.then(
+      (data) => CalendarListEntry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts an existing calendar into the user's calendar list.
@@ -747,7 +766,10 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarListEntry.fromJson(data));
+    return _response.then(
+      (data) => CalendarListEntry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the calendars on the user's calendar list.
@@ -848,7 +870,10 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CalendarList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing calendar on the user's calendar list. This method
@@ -915,7 +940,10 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarListEntry.fromJson(data));
+    return _response.then(
+      (data) => CalendarListEntry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing calendar on the user's calendar list.
@@ -981,7 +1009,10 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CalendarListEntry.fromJson(data));
+    return _response.then(
+      (data) => CalendarListEntry.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes to CalendarList resources.
@@ -1088,7 +1119,9 @@ class CalendarListResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1146,7 +1179,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Deletes a secondary calendar. Use calendars.clear for clearing all events
@@ -1197,7 +1232,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns metadata for a calendar.
@@ -1247,7 +1284,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Calendar.fromJson(data));
+    return _response.then(
+      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a secondary calendar.
@@ -1295,7 +1334,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Calendar.fromJson(data));
+    return _response.then(
+      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates metadata for a calendar. This method supports patch semantics.
@@ -1351,7 +1392,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Calendar.fromJson(data));
+    return _response.then(
+      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates metadata for a calendar.
@@ -1407,7 +1450,9 @@ class CalendarsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Calendar.fromJson(data));
+    return _response.then(
+      (data) => Calendar.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1461,7 +1506,9 @@ class ChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -1509,7 +1556,9 @@ class ColorsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Colors.fromJson(data));
+    return _response.then(
+      (data) => Colors.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1598,7 +1647,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns an event.
@@ -1681,7 +1732,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports an event. This operation is used to add a private copy of an
@@ -1758,7 +1811,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an event.
@@ -1866,7 +1921,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns instances of the specified recurring event.
@@ -1996,7 +2053,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Events.fromJson(data));
+    return _response.then(
+      (data) => Events.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns events on the specified calendar.
@@ -2216,7 +2275,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Events.fromJson(data));
+    return _response.then(
+      (data) => Events.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves an event to another calendar, i.e. changes an event's organizer.
@@ -2307,7 +2368,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an event. This method supports patch semantics.
@@ -2431,7 +2494,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an event based on a simple text string.
@@ -2514,7 +2579,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an event.
@@ -2638,7 +2705,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Event.fromJson(data));
+    return _response.then(
+      (data) => Event.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes to Events resources.
@@ -2865,7 +2934,9 @@ class EventsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2919,7 +2990,10 @@ class FreebusyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FreeBusyResponse.fromJson(data));
+    return _response.then(
+      (data) => FreeBusyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2973,7 +3047,9 @@ class SettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Setting.fromJson(data));
+    return _response.then(
+      (data) => Setting.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all user settings for the authenticated user.
@@ -3042,7 +3118,9 @@ class SettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Settings.fromJson(data));
+    return _response.then(
+      (data) => Settings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes to Settings resources.
@@ -3117,7 +3195,9 @@ class SettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3148,7 +3228,8 @@ class Acl {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AclRule>((value) => AclRule.fromJson(value))
+          .map<AclRule>((value) =>
+              AclRule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3263,7 +3344,8 @@ class AclRule {
       role = _json['role'] as core.String;
     }
     if (_json.containsKey('scope')) {
-      scope = AclRuleScope.fromJson(_json['scope']);
+      scope = AclRuleScope.fromJson(
+          _json['scope'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3320,8 +3402,8 @@ class Calendar {
 
   Calendar.fromJson(core.Map _json) {
     if (_json.containsKey('conferenceProperties')) {
-      conferenceProperties =
-          ConferenceProperties.fromJson(_json['conferenceProperties']);
+      conferenceProperties = ConferenceProperties.fromJson(
+          _json['conferenceProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -3403,7 +3485,8 @@ class CalendarList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(value))
+          .map<CalendarListEntry>((value) => CalendarListEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3449,8 +3532,8 @@ class CalendarListEntryNotificationSettings {
   CalendarListEntryNotificationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('notifications')) {
       notifications = (_json['notifications'] as core.List)
-          .map<CalendarNotification>(
-              (value) => CalendarNotification.fromJson(value))
+          .map<CalendarNotification>((value) => CalendarNotification.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3564,12 +3647,13 @@ class CalendarListEntry {
       colorId = _json['colorId'] as core.String;
     }
     if (_json.containsKey('conferenceProperties')) {
-      conferenceProperties =
-          ConferenceProperties.fromJson(_json['conferenceProperties']);
+      conferenceProperties = ConferenceProperties.fromJson(
+          _json['conferenceProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultReminders')) {
       defaultReminders = (_json['defaultReminders'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deleted')) {
@@ -3598,7 +3682,7 @@ class CalendarListEntry {
     }
     if (_json.containsKey('notificationSettings')) {
       notificationSettings = CalendarListEntryNotificationSettings.fromJson(
-          _json['notificationSettings']);
+          _json['notificationSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('primary')) {
       primary = _json['primary'] as core.bool;
@@ -3774,7 +3858,8 @@ class Channel {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.String, core.String>(
-          _json['params'].cast<core.String, core.String>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
@@ -3884,13 +3969,17 @@ class Colors {
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey('calendar')) {
       calendar = commons.mapMap<core.Map, ColorDefinition>(
-          _json['calendar'].cast<core.String, core.Map>(),
-          (core.Map item) => ColorDefinition.fromJson(item));
+          (_json['calendar'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ColorDefinition.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('event')) {
       event = commons.mapMap<core.Map, ColorDefinition>(
-          _json['event'].cast<core.String, core.Map>(),
-          (core.Map item) => ColorDefinition.fromJson(item));
+          (_json['event'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ColorDefinition.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3976,22 +4065,25 @@ class ConferenceData {
       conferenceId = _json['conferenceId'] as core.String;
     }
     if (_json.containsKey('conferenceSolution')) {
-      conferenceSolution =
-          ConferenceSolution.fromJson(_json['conferenceSolution']);
+      conferenceSolution = ConferenceSolution.fromJson(
+          _json['conferenceSolution'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createRequest')) {
-      createRequest = CreateConferenceRequest.fromJson(_json['createRequest']);
+      createRequest = CreateConferenceRequest.fromJson(
+          _json['createRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entryPoints')) {
       entryPoints = (_json['entryPoints'] as core.List)
-          .map<EntryPoint>((value) => EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) =>
+              EntryPoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notes')) {
       notes = _json['notes'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = ConferenceParameters.fromJson(_json['parameters']);
+      parameters = ConferenceParameters.fromJson(
+          _json['parameters'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('signature')) {
       signature = _json['signature'] as core.String;
@@ -4035,7 +4127,7 @@ class ConferenceParameters {
   ConferenceParameters.fromJson(core.Map _json) {
     if (_json.containsKey('addOnParameters')) {
       addOnParameters = ConferenceParametersAddOnParameters.fromJson(
-          _json['addOnParameters']);
+          _json['addOnParameters'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4056,7 +4148,8 @@ class ConferenceParametersAddOnParameters {
   ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.String, core.String>(
-          _json['parameters'].cast<core.String, core.String>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -4143,7 +4236,8 @@ class ConferenceSolution {
       iconUri = _json['iconUri'] as core.String;
     }
     if (_json.containsKey('key')) {
-      key = ConferenceSolutionKey.fromJson(_json['key']);
+      key = ConferenceSolutionKey.fromJson(
+          _json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4211,14 +4305,16 @@ class CreateConferenceRequest {
 
   CreateConferenceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('conferenceSolutionKey')) {
-      conferenceSolutionKey =
-          ConferenceSolutionKey.fromJson(_json['conferenceSolutionKey']);
+      conferenceSolutionKey = ConferenceSolutionKey.fromJson(
+          _json['conferenceSolutionKey']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = ConferenceRequestStatus.fromJson(_json['status']);
+      status = ConferenceRequestStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4500,12 +4596,14 @@ class EventExtendedProperties {
   EventExtendedProperties.fromJson(core.Map _json) {
     if (_json.containsKey('private')) {
       private = commons.mapMap<core.String, core.String>(
-          _json['private'].cast<core.String, core.String>(),
+          (_json['private'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('shared')) {
       shared = commons.mapMap<core.String, core.String>(
-          _json['shared'].cast<core.String, core.String>(),
+          (_json['shared'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -4571,7 +4669,8 @@ class EventGadget {
     }
     if (_json.containsKey('preferences')) {
       preferences = commons.mapMap<core.String, core.String>(
-          _json['preferences'].cast<core.String, core.String>(),
+          (_json['preferences'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('title')) {
@@ -4685,7 +4784,8 @@ class EventReminders {
   EventReminders.fromJson(core.Map _json) {
     if (_json.containsKey('overrides')) {
       overrides = (_json['overrides'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('useDefault')) {
@@ -4965,12 +5065,14 @@ class Event {
     }
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<EventAttachment>((value) => EventAttachment.fromJson(value))
+          .map<EventAttachment>((value) => EventAttachment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('attendees')) {
       attendees = (_json['attendees'] as core.List)
-          .map<EventAttendee>((value) => EventAttendee.fromJson(value))
+          .map<EventAttendee>((value) => EventAttendee.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('attendeesOmitted')) {
@@ -4980,19 +5082,22 @@ class Event {
       colorId = _json['colorId'] as core.String;
     }
     if (_json.containsKey('conferenceData')) {
-      conferenceData = ConferenceData.fromJson(_json['conferenceData']);
+      conferenceData = ConferenceData.fromJson(
+          _json['conferenceData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('creator')) {
-      creator = EventCreator.fromJson(_json['creator']);
+      creator = EventCreator.fromJson(
+          _json['creator'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('end')) {
-      end = EventDateTime.fromJson(_json['end']);
+      end = EventDateTime.fromJson(
+          _json['end'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTimeUnspecified')) {
       endTimeUnspecified = _json['endTimeUnspecified'] as core.bool;
@@ -5001,11 +5106,12 @@ class Event {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('extendedProperties')) {
-      extendedProperties =
-          EventExtendedProperties.fromJson(_json['extendedProperties']);
+      extendedProperties = EventExtendedProperties.fromJson(
+          _json['extendedProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gadget')) {
-      gadget = EventGadget.fromJson(_json['gadget']);
+      gadget = EventGadget.fromJson(
+          _json['gadget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('guestsCanInviteOthers')) {
       guestsCanInviteOthers = _json['guestsCanInviteOthers'] as core.bool;
@@ -5038,10 +5144,12 @@ class Event {
       locked = _json['locked'] as core.bool;
     }
     if (_json.containsKey('organizer')) {
-      organizer = EventOrganizer.fromJson(_json['organizer']);
+      organizer = EventOrganizer.fromJson(
+          _json['organizer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('originalStartTime')) {
-      originalStartTime = EventDateTime.fromJson(_json['originalStartTime']);
+      originalStartTime = EventDateTime.fromJson(
+          _json['originalStartTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateCopy')) {
       privateCopy = _json['privateCopy'] as core.bool;
@@ -5055,16 +5163,19 @@ class Event {
       recurringEventId = _json['recurringEventId'] as core.String;
     }
     if (_json.containsKey('reminders')) {
-      reminders = EventReminders.fromJson(_json['reminders']);
+      reminders = EventReminders.fromJson(
+          _json['reminders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sequence')) {
       sequence = _json['sequence'] as core.int;
     }
     if (_json.containsKey('source')) {
-      source = EventSource.fromJson(_json['source']);
+      source = EventSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('start')) {
-      start = EventDateTime.fromJson(_json['start']);
+      start = EventDateTime.fromJson(
+          _json['start'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -5518,7 +5629,8 @@ class Events {
     }
     if (_json.containsKey('defaultReminders')) {
       defaultReminders = (_json['defaultReminders'] as core.List)
-          .map<EventReminder>((value) => EventReminder.fromJson(value))
+          .map<EventReminder>((value) => EventReminder.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -5529,7 +5641,8 @@ class Events {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Event>((value) => Event.fromJson(value))
+          .map<Event>((value) =>
+              Event.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5604,12 +5717,14 @@ class FreeBusyCalendar {
   FreeBusyCalendar.fromJson(core.Map _json) {
     if (_json.containsKey('busy')) {
       busy = (_json['busy'] as core.List)
-          .map<TimePeriod>((value) => TimePeriod.fromJson(value))
+          .map<TimePeriod>((value) =>
+              TimePeriod.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<Error>((value) => Error.fromJson(value))
+          .map<Error>((value) =>
+              Error.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5643,7 +5758,8 @@ class FreeBusyGroup {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<Error>((value) => Error.fromJson(value))
+          .map<Error>((value) =>
+              Error.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5693,8 +5809,8 @@ class FreeBusyRequest {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<FreeBusyRequestItem>(
-              (value) => FreeBusyRequestItem.fromJson(value))
+          .map<FreeBusyRequestItem>((value) => FreeBusyRequestItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timeMax')) {
@@ -5774,13 +5890,17 @@ class FreeBusyResponse {
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('calendars')) {
       calendars = commons.mapMap<core.Map, FreeBusyCalendar>(
-          _json['calendars'].cast<core.String, core.Map>(),
-          (core.Map item) => FreeBusyCalendar.fromJson(item));
+          (_json['calendars'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => FreeBusyCalendar.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('groups')) {
       groups = commons.mapMap<core.Map, FreeBusyGroup>(
-          _json['groups'].cast<core.String, core.Map>(),
-          (core.Map item) => FreeBusyGroup.fromJson(item));
+          (_json['groups'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => FreeBusyGroup.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -5895,7 +6015,8 @@ class Settings {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Setting>((value) => Setting.fromJson(value))
+          .map<Setting>((value) =>
+              Setting.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

@@ -121,7 +121,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GenerateAccessTokenResponse.fromJson(data));
+    return _response.then(
+      (data) => GenerateAccessTokenResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Generates an OpenID Connect ID token for a service account.
@@ -181,7 +184,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GenerateIdTokenResponse.fromJson(data));
+    return _response.then(
+      (data) => GenerateIdTokenResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs a blob using a service account's system-managed private key.
@@ -239,7 +245,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignBlobResponse.fromJson(data));
+    return _response.then(
+      (data) => SignBlobResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs a JWT using a service account's system-managed private key.
@@ -297,7 +306,10 @@ class ProjectsServiceAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignJwtResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SignJwtResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

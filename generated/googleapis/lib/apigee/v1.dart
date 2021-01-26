@@ -117,7 +117,9 @@ class HybridIssuersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListHybridIssuersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -209,7 +211,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the profile for an Apigee organization. See [Understanding
@@ -260,8 +265,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Organization.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Organization.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the deployed ingress configuration for an organization.
@@ -328,8 +335,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1IngressConfig.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1IngressConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the service accounts with the permissions required to allow the
@@ -395,8 +404,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the Apigee organizations and associated GCP projects that you have
@@ -449,7 +460,9 @@ class OrganizationsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListOrganizationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the permissions required to allow the Synchronizer to download
@@ -516,8 +529,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SyncAuthorization.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the properties for an Apigee organization. No other fields in the
@@ -574,8 +589,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Organization.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Organization.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -650,8 +667,10 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Datastore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a Datastore from an org.
@@ -702,7 +721,10 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a Datastore
@@ -753,8 +775,10 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Datastore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List Datastores
@@ -814,7 +838,9 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDatastoresResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDatastoresResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Test if Datastore configuration is correct. This includes checking if
@@ -875,7 +901,9 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1TestDatastoreResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1TestDatastoreResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a Datastore
@@ -932,8 +960,10 @@ class OrganizationsAnalyticsDatastoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Datastore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Datastore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1009,8 +1039,10 @@ class OrganizationsApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an API product in an organization. You create API products after
@@ -1085,8 +1117,10 @@ class OrganizationsApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an API product from an organization. Deleting an API product
@@ -1143,8 +1177,10 @@ class OrganizationsApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets configuration details for an API product. The API product name
@@ -1198,8 +1234,10 @@ class OrganizationsApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all API product names for an organization. Filter the list by
@@ -1290,7 +1328,9 @@ class OrganizationsApiproductsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListApiProductsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListApiProductsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing API product. You must include all required values,
@@ -1351,8 +1391,10 @@ class OrganizationsApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProduct.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProduct.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1410,8 +1452,10 @@ class OrganizationsApiproductsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the value of an API product attribute.
@@ -1462,8 +1506,10 @@ class OrganizationsApiproductsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of all API product attributes.
@@ -1515,8 +1561,10 @@ class OrganizationsApiproductsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the value of an API product attribute. Limitations are: OAuth
@@ -1579,8 +1627,10 @@ class OrganizationsApiproductsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1687,8 +1737,10 @@ class OrganizationsApisResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an API proxy and all associated endpoints, policies, resources,
@@ -1739,7 +1791,10 @@ class OrganizationsApisResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1ApiProxy.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProxy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an API proxy including a list of existing revisions.
@@ -1789,7 +1844,10 @@ class OrganizationsApisResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1ApiProxy.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProxy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the names of all API proxies in an organization. The names returned
@@ -1856,7 +1914,9 @@ class OrganizationsApisResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1916,7 +1976,9 @@ class OrganizationsApisDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1982,8 +2044,10 @@ class OrganizationsApisKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a key value map in an api proxy.
@@ -2034,8 +2098,10 @@ class OrganizationsApisKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2098,8 +2164,10 @@ class OrganizationsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an API proxy revision. To download the API proxy configuration bundle
@@ -2165,7 +2233,10 @@ class OrganizationsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing API proxy revision by uploading the API proxy
@@ -2234,8 +2305,10 @@ class OrganizationsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiProxyRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2297,7 +2370,9 @@ class OrganizationsApisRevisionsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2354,7 +2429,10 @@ class OrganizationsAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1App.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1App.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists IDs of apps within an organization that have the specified app
@@ -2465,8 +2543,10 @@ class OrganizationsAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ListAppsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2535,7 +2615,9 @@ class OrganizationsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2615,8 +2697,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a developer. Once created, the developer can register an app and
@@ -2677,8 +2761,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Developer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a developer. All apps and API keys associated with the developer
@@ -2736,8 +2822,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Developer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the developer details, including the developer's name, email
@@ -2797,8 +2885,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Developer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all developers in an organization by email address. By default, the
@@ -2896,7 +2986,9 @@ class OrganizationsDevelopersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the status of a developer. Valid values are `active` or `inactive`. A
@@ -2960,7 +3052,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a developer. This API replaces the existing developer details with
@@ -3025,8 +3120,10 @@ class OrganizationsDevelopersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Developer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Developer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3098,8 +3195,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an app associated with a developer. This API associates the
@@ -3160,8 +3259,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a developer app. **Note**: The delete operation is asynchronous.
@@ -3216,8 +3317,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Manages access to a developer app by enabling you to: * Approve or revoke
@@ -3305,8 +3408,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the details for a developer app.
@@ -3376,8 +3481,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all apps created by a developer in an Apigee organization.
@@ -3466,7 +3573,9 @@ class OrganizationsDevelopersAppsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the details for a developer app. In addition, you can add an API
@@ -3533,8 +3642,10 @@ class OrganizationsDevelopersAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperApp.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperApp.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3593,8 +3704,10 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a developer app attribute.
@@ -3646,8 +3759,10 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of all developer app attributes.
@@ -3701,8 +3816,10 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a developer app attribute. **Note**: OAuth access tokens and Key
@@ -3765,8 +3882,10 @@ class OrganizationsDevelopersAppsAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3846,8 +3965,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an app's consumer key and removes all API products associated with
@@ -3905,8 +4026,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns details for a consumer key for a developer app, including the key
@@ -3959,8 +4082,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the scope of an app. This API replaces the existing scopes with
@@ -4023,8 +4148,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds an API product to a developer app key, enabling the app that holds
@@ -4095,8 +4222,10 @@ class OrganizationsDevelopersAppsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4159,8 +4288,10 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Approve or revoke an app's consumer key. After a consumer key is approved,
@@ -4224,7 +4355,10 @@ class OrganizationsDevelopersAppsKeysApiproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4301,8 +4435,10 @@ class OrganizationsDevelopersAppsKeysCreateResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DeveloperAppKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4361,8 +4497,10 @@ class OrganizationsDevelopersAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the value of the specified developer attribute.
@@ -4414,8 +4552,10 @@ class OrganizationsDevelopersAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of all developer attributes.
@@ -4468,8 +4608,10 @@ class OrganizationsDevelopersAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attributes.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attributes.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a developer attribute. **Note**: OAuth access tokens and Key
@@ -4532,8 +4674,10 @@ class OrganizationsDevelopersAttributesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Attribute.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Attribute.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4607,7 +4751,10 @@ class OrganizationsEnvgroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an environment group.
@@ -4657,7 +4804,10 @@ class OrganizationsEnvgroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an environment group.
@@ -4707,8 +4857,10 @@ class OrganizationsEnvgroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all environment groups.
@@ -4773,8 +4925,10 @@ class OrganizationsEnvgroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an environment group.
@@ -4836,7 +4990,10 @@ class OrganizationsEnvgroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4901,7 +5058,10 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an environment group attachment.
@@ -4953,7 +5113,10 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an environment group attachment.
@@ -5006,7 +5169,9 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(data));
+      (data) => GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all attachments of an environment group.
@@ -5074,9 +5239,11 @@ class OrganizationsEnvgroupsAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
-            data));
+    return _response.then(
+      (data) =>
+          GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse.fromJson(
+              data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5178,7 +5345,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an environment from an organization.
@@ -5228,7 +5398,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets environment details.
@@ -5278,8 +5451,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Environment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the debug mask singleton resource for an environment.
@@ -5330,8 +5505,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DebugMask.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DebugMask.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the deployed configuration for an environment.
@@ -5383,8 +5560,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1EnvironmentConfig.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1EnvironmentConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM policy on an environment. For more information, see [Manage
@@ -5455,7 +5634,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
+    return _response.then(
+      (data) => GoogleIamV1Policy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM policy on an environment, if the policy already exists it
@@ -5519,7 +5701,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleIamV1Policy.fromJson(data));
+    return _response.then(
+      (data) => GoogleIamV1Policy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a subscription for the environment's Pub/Sub topic. The server
@@ -5572,8 +5757,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Subscription.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Subscription.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests the permissions of a user on an environment, and returns a subset of
@@ -5635,8 +5822,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleIamV1TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleIamV1TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a subscription for the environment's Pub/Sub topic.
@@ -5694,7 +5883,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing environment. When updating properties, you must pass
@@ -5754,8 +5946,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Environment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the debug mask singleton resource for an environment.
@@ -5826,8 +6020,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DebugMask.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DebugMask.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing environment. When updating properties, you must pass
@@ -5887,8 +6083,10 @@ class OrganizationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Environment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Environment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5970,7 +6168,10 @@ class OrganizationsEnvironmentsAnalyticsAdminResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Schema.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Schema.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6039,7 +6240,10 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Export.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Export.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details and status of an analytics export job. If the export job
@@ -6092,7 +6296,10 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Export.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Export.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the details and status of all analytics export jobs belonging to the
@@ -6145,8 +6352,10 @@ class OrganizationsEnvironmentsAnalyticsExportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ListExportsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListExportsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6220,7 +6429,9 @@ class OrganizationsEnvironmentsApisDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6325,8 +6536,10 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Deployment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the deployment of an API proxy revision and actual state reported by
@@ -6380,8 +6593,10 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Deployment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeploys an API proxy revision from an environment. For a request path
@@ -6453,7 +6668,10 @@ class OrganizationsEnvironmentsApisRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6532,8 +6750,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DebugSession.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DebugSession.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the data from a debug session. This does not cancel the debug
@@ -6587,7 +6807,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a debug session.
@@ -6639,8 +6862,10 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1DebugSession.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1DebugSession.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists debug sessions that are currently active in the given API Proxy
@@ -6710,7 +6935,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDebugSessionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6771,7 +6998,9 @@ class OrganizationsEnvironmentsApisRevisionsDebugsessionsDataResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1DebugSessionTransaction.fromJson(data));
+      (data) => GoogleCloudApigeeV1DebugSessionTransaction.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6854,7 +7083,9 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
+      (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Generates a report for a dry run analysis of an UndeployApiProxy request
@@ -6921,7 +7152,9 @@ class OrganizationsEnvironmentsApisRevisionsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(data));
+      (data) => GoogleCloudApigeeV1DeploymentChangeReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6979,7 +7212,10 @@ class OrganizationsEnvironmentsCachesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7049,7 +7285,9 @@ class OrganizationsEnvironmentsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7114,7 +7352,10 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detaches a shared flow from a flow hook.
@@ -7165,7 +7406,10 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the name of the shared flow attached to the specified flow hook.
@@ -7218,7 +7462,10 @@ class OrganizationsEnvironmentsFlowhooksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1FlowHook.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1FlowHook.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7296,7 +7543,10 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Keystore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a keystore or truststore.
@@ -7347,7 +7597,10 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Keystore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a keystore or truststore.
@@ -7398,7 +7651,10 @@ class OrganizationsEnvironmentsKeystoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Keystore.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Keystore.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7510,7 +7766,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Alias.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Generates a PKCS #10 Certificate Signing Request for the private key in an
@@ -7562,7 +7821,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an alias.
@@ -7613,7 +7875,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Alias.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an alias.
@@ -7664,7 +7929,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Alias.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the certificate from an alias in PEM-encoded form.
@@ -7716,7 +7984,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the certificate in an alias.
@@ -7788,7 +8059,10 @@ class OrganizationsEnvironmentsKeystoresAliasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Alias.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Alias.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7854,8 +8128,10 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a key value map in an environment.
@@ -7906,8 +8182,10 @@ class OrganizationsEnvironmentsKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8078,8 +8356,10 @@ class OrganizationsEnvironmentsOptimizedStatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1OptimizedStats.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1OptimizedStats.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8146,8 +8426,10 @@ class OrganizationsEnvironmentsQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get query status If the query is still in progress, the `state` is set to
@@ -8200,8 +8482,10 @@ class OrganizationsEnvironmentsQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1AsyncQuery.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1AsyncQuery.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// After the query is completed, use this API to retrieve the results. If the
@@ -8257,7 +8541,10 @@ class OrganizationsEnvironmentsQueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Return a list of Asynchronous Queries
@@ -8350,7 +8637,9 @@ class OrganizationsEnvironmentsQueriesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8416,8 +8705,10 @@ class OrganizationsEnvironmentsReferencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Reference.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Reference from an environment. Returns the deleted Reference
@@ -8469,8 +8760,10 @@ class OrganizationsEnvironmentsReferencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Reference.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a Reference resource.
@@ -8521,8 +8814,10 @@ class OrganizationsEnvironmentsReferencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Reference.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing Reference. Note that this operation has PUT semantics;
@@ -8581,8 +8876,10 @@ class OrganizationsEnvironmentsReferencesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Reference.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Reference.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -8664,8 +8961,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a resource file. For more information about resource files, see
@@ -8734,8 +9033,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the contents of a resource file. For more information about resource
@@ -8804,7 +9105,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all resource files. For more information about resource files, see
@@ -8864,8 +9168,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all resource files. For more information about resource files, see
@@ -8927,8 +9233,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a resource file. Specify the `Content-Type` as
@@ -9005,8 +9313,10 @@ class OrganizationsEnvironmentsResourcefilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ResourceFile.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ResourceFile.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9081,7 +9391,9 @@ class OrganizationsEnvironmentsSharedflowsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9163,8 +9475,10 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Deployment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the deployment of a shared flow revision and actual state reported by
@@ -9218,8 +9532,10 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1Deployment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Deployment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeploys a shared flow revision from an environment. For a request path
@@ -9277,7 +9593,10 @@ class OrganizationsEnvironmentsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9449,7 +9768,10 @@ class OrganizationsEnvironmentsStatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Stats.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Stats.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9522,8 +9844,10 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a TargetServer from an environment. Returns the deleted
@@ -9576,8 +9900,10 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a TargetServer resource.
@@ -9629,8 +9955,10 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing TargetServer. Note that this operation has PUT
@@ -9690,8 +10018,10 @@ class OrganizationsEnvironmentsTargetserversResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1TargetServer.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1TargetServer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -9760,7 +10090,10 @@ class OrganizationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an Apigee runtime instance. The instance stops serving requests
@@ -9812,7 +10145,10 @@ class OrganizationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the details for an Apigee runtime instance. **Note:** Not supported
@@ -9863,7 +10199,10 @@ class OrganizationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleCloudApigeeV1Instance.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1Instance.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all Apigee runtime instances for the organization. **Note:** Not
@@ -9929,7 +10268,9 @@ class OrganizationsInstancesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListInstancesResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListInstancesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reports the latest status for a runtime instance.
@@ -9988,8 +10329,10 @@ class OrganizationsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ReportInstanceStatusResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10055,7 +10398,10 @@ class OrganizationsInstancesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an attachment. **Note:** Not supported for Apigee hybrid.
@@ -10107,7 +10453,10 @@ class OrganizationsInstancesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an attachment. **Note:** Not supported for Apigee hybrid.
@@ -10159,8 +10508,10 @@ class OrganizationsInstancesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1InstanceAttachment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1InstanceAttachment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all attachments to an instance. **Note:** Not supported for Apigee
@@ -10227,8 +10578,10 @@ class OrganizationsInstancesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10293,8 +10646,10 @@ class OrganizationsKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a key value map in an organization.
@@ -10344,8 +10699,10 @@ class OrganizationsKeyvaluemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1KeyValueMap.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1KeyValueMap.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10403,7 +10760,10 @@ class OrganizationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -10479,8 +10839,10 @@ class OrganizationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10551,8 +10913,10 @@ class OrganizationsReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an existing custom report definition
@@ -10603,7 +10967,9 @@ class OrganizationsReportsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1DeleteCustomReportResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieve a custom report definition.
@@ -10653,8 +11019,10 @@ class OrganizationsReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Return a list of Custom Reports
@@ -10712,7 +11080,9 @@ class OrganizationsReportsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing custom report definition
@@ -10768,8 +11138,10 @@ class OrganizationsReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1CustomReport.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1CustomReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -10856,8 +11228,10 @@ class OrganizationsSharedflowsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a shared flow and all it's revisions. The shared flow must be
@@ -10908,8 +11282,10 @@ class OrganizationsSharedflowsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SharedFlow.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SharedFlow.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a shared flow by name, including a list of its revisions.
@@ -10959,8 +11335,10 @@ class OrganizationsSharedflowsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SharedFlow.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SharedFlow.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all shared flows in the organization.
@@ -11027,7 +11405,9 @@ class OrganizationsSharedflowsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11088,7 +11468,9 @@ class OrganizationsSharedflowsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11151,8 +11533,10 @@ class OrganizationsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a revision of a shared flow. If `format=bundle` is passed, it instead
@@ -11213,7 +11597,10 @@ class OrganizationsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleApiHttpBody.fromJson(data));
+    return _response.then(
+      (data) => GoogleApiHttpBody.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a shared flow revision. This operation is only allowed on
@@ -11283,8 +11670,10 @@ class OrganizationsSharedflowsRevisionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1SharedFlowRevision.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11347,7 +11736,9 @@ class OrganizationsSharedflowsRevisionsDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11422,8 +11813,10 @@ class OrganizationsSitesApicategoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a category from the portal.
@@ -11475,8 +11868,10 @@ class OrganizationsSitesApicategoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiResponseWrapper.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiResponseWrapper.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a category on the portal.
@@ -11528,8 +11923,10 @@ class OrganizationsSitesApicategoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the categories on the portal.
@@ -11582,7 +11979,9 @@ class OrganizationsSitesApicategoriesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(data));
+      (data) => GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a category on the portal.
@@ -11640,8 +12039,10 @@ class OrganizationsSitesApicategoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudApigeeV1ApiCategory.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudApigeeV1ApiCategory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11706,7 +12107,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -11761,7 +12165,8 @@ class GoogleApiHttpBody {
       extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -11791,13 +12196,16 @@ class GoogleCloudApigeeV1Access {
 
   GoogleCloudApigeeV1Access.fromJson(core.Map _json) {
     if (_json.containsKey('Get')) {
-      Get = GoogleCloudApigeeV1AccessGet.fromJson(_json['Get']);
+      Get = GoogleCloudApigeeV1AccessGet.fromJson(
+          _json['Get'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('Remove')) {
-      Remove = GoogleCloudApigeeV1AccessRemove.fromJson(_json['Remove']);
+      Remove = GoogleCloudApigeeV1AccessRemove.fromJson(
+          _json['Remove'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('Set')) {
-      Set = GoogleCloudApigeeV1AccessSet.fromJson(_json['Set']);
+      Set = GoogleCloudApigeeV1AccessSet.fromJson(
+          _json['Set'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11933,7 +12341,8 @@ class GoogleCloudApigeeV1Alias {
       alias = _json['alias'] as core.String;
     }
     if (_json.containsKey('certsInfo')) {
-      certsInfo = GoogleCloudApigeeV1Certificate.fromJson(_json['certsInfo']);
+      certsInfo = GoogleCloudApigeeV1Certificate.fromJson(
+          _json['certsInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -12021,7 +12430,8 @@ class GoogleCloudApigeeV1ApiCategory {
 
   GoogleCloudApigeeV1ApiCategory.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = GoogleCloudApigeeV1ApiCategoryData.fromJson(_json['data']);
+      data = GoogleCloudApigeeV1ApiCategoryData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errorCode')) {
       errorCode = _json['errorCode'] as core.String;
@@ -12230,8 +12640,9 @@ class GoogleCloudApigeeV1ApiProduct {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('createdAt')) {
@@ -12255,8 +12666,8 @@ class GoogleCloudApigeeV1ApiProduct {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('operationGroup')) {
-      operationGroup =
-          GoogleCloudApigeeV1OperationGroup.fromJson(_json['operationGroup']);
+      operationGroup = GoogleCloudApigeeV1OperationGroup.fromJson(
+          _json['operationGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('proxies')) {
       proxies = (_json['proxies'] as core.List)
@@ -12381,7 +12792,8 @@ class GoogleCloudApigeeV1ApiProxy {
       latestRevisionId = _json['latestRevisionId'] as core.String;
     }
     if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json['metaData']);
+      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(
+          _json['metaData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -12505,7 +12917,7 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
     if (_json.containsKey('configurationVersion')) {
       configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
-          _json['configurationVersion']);
+          _json['configurationVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contextInfo')) {
       contextInfo = _json['contextInfo'] as core.String;
@@ -12521,7 +12933,9 @@ class GoogleCloudApigeeV1ApiProxyRevision {
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
       entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
-          _json['entityMetaDataAsProperties'].cast<core.String, core.String>(),
+          (_json['entityMetaDataAsProperties']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('lastModifiedAt')) {
@@ -12546,8 +12960,8 @@ class GoogleCloudApigeeV1ApiProxyRevision {
           .toList();
     }
     if (_json.containsKey('resourceFiles')) {
-      resourceFiles =
-          GoogleCloudApigeeV1ResourceFiles.fromJson(_json['resourceFiles']);
+      resourceFiles = GoogleCloudApigeeV1ResourceFiles.fromJson(
+          _json['resourceFiles'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -12760,8 +13174,9 @@ class GoogleCloudApigeeV1App {
   GoogleCloudApigeeV1App.fromJson(core.Map _json) {
     if (_json.containsKey('apiProducts')) {
       apiProducts = (_json['apiProducts'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProductRef>(
-              (value) => GoogleCloudApigeeV1ApiProductRef.fromJson(value))
+          .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
+              GoogleCloudApigeeV1ApiProductRef.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('appId')) {
@@ -12769,8 +13184,9 @@ class GoogleCloudApigeeV1App {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('callbackUrl')) {
@@ -12784,8 +13200,9 @@ class GoogleCloudApigeeV1App {
     }
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
-          .map<GoogleCloudApigeeV1Credential>(
-              (value) => GoogleCloudApigeeV1Credential.fromJson(value))
+          .map<GoogleCloudApigeeV1Credential>((value) =>
+              GoogleCloudApigeeV1Credential.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerId')) {
@@ -12911,14 +13328,15 @@ class GoogleCloudApigeeV1AsyncQuery {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('queryParams')) {
-      queryParams =
-          GoogleCloudApigeeV1QueryMetadata.fromJson(_json['queryParams']);
+      queryParams = GoogleCloudApigeeV1QueryMetadata.fromJson(
+          _json['queryParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reportDefinitionId')) {
       reportDefinitionId = _json['reportDefinitionId'] as core.String;
     }
     if (_json.containsKey('result')) {
-      result = GoogleCloudApigeeV1AsyncQueryResult.fromJson(_json['result']);
+      result = GoogleCloudApigeeV1AsyncQueryResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resultFileSize')) {
       resultFileSize = _json['resultFileSize'] as core.String;
@@ -13050,8 +13468,9 @@ class GoogleCloudApigeeV1Attributes {
   GoogleCloudApigeeV1Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attribute')) {
       attribute = (_json['attribute'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13189,8 +13608,9 @@ class GoogleCloudApigeeV1Certificate {
   GoogleCloudApigeeV1Certificate.fromJson(core.Map _json) {
     if (_json.containsKey('certInfo')) {
       certInfo = (_json['certInfo'] as core.List)
-          .map<GoogleCloudApigeeV1CertInfo>(
-              (value) => GoogleCloudApigeeV1CertInfo.fromJson(value))
+          .map<GoogleCloudApigeeV1CertInfo>((value) =>
+              GoogleCloudApigeeV1CertInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13294,14 +13714,16 @@ class GoogleCloudApigeeV1Credential {
   GoogleCloudApigeeV1Credential.fromJson(core.Map _json) {
     if (_json.containsKey('apiProducts')) {
       apiProducts = (_json['apiProducts'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProductRef>(
-              (value) => GoogleCloudApigeeV1ApiProductRef.fromJson(value))
+          .map<GoogleCloudApigeeV1ApiProductRef>((value) =>
+              GoogleCloudApigeeV1ApiProductRef.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('consumerKey')) {
@@ -13472,8 +13894,9 @@ class GoogleCloudApigeeV1CustomReport {
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1CustomReportMetric>(
-              (value) => GoogleCloudApigeeV1CustomReportMetric.fromJson(value))
+          .map<GoogleCloudApigeeV1CustomReportMetric>((value) =>
+              GoogleCloudApigeeV1CustomReportMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -13487,8 +13910,9 @@ class GoogleCloudApigeeV1CustomReport {
     }
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<GoogleCloudApigeeV1ReportProperty>(
-              (value) => GoogleCloudApigeeV1ReportProperty.fromJson(value))
+          .map<GoogleCloudApigeeV1ReportProperty>((value) =>
+              GoogleCloudApigeeV1ReportProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sortByCols')) {
@@ -13693,8 +14117,8 @@ class GoogleCloudApigeeV1Datastore {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('datastoreConfig')) {
-      datastoreConfig =
-          GoogleCloudApigeeV1DatastoreConfig.fromJson(_json['datastoreConfig']);
+      datastoreConfig = GoogleCloudApigeeV1DatastoreConfig.fromJson(
+          _json['datastoreConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
@@ -13884,7 +14308,8 @@ class GoogleCloudApigeeV1DebugMask {
     }
     if (_json.containsKey('namespaces')) {
       namespaces = commons.mapMap<core.String, core.String>(
-          _json['namespaces'].cast<core.String, core.String>(),
+          (_json['namespaces'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('requestJSONPaths')) {
@@ -14040,8 +14465,9 @@ class GoogleCloudApigeeV1DebugSessionTransaction {
     }
     if (_json.containsKey('point')) {
       point = (_json['point'] as core.List)
-          .map<GoogleCloudApigeeV1Point>(
-              (value) => GoogleCloudApigeeV1Point.fromJson(value))
+          .map<GoogleCloudApigeeV1Point>((value) =>
+              GoogleCloudApigeeV1Point.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14137,19 +14563,22 @@ class GoogleCloudApigeeV1Deployment {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(value))
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
           .map<GoogleCloudApigeeV1InstanceDeploymentStatus>((value) =>
-              GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(value))
+              GoogleCloudApigeeV1InstanceDeploymentStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pods')) {
       pods = (_json['pods'] as core.List)
-          .map<GoogleCloudApigeeV1PodStatus>(
-              (value) => GoogleCloudApigeeV1PodStatus.fromJson(value))
+          .map<GoogleCloudApigeeV1PodStatus>((value) =>
+              GoogleCloudApigeeV1PodStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('revision')) {
@@ -14160,7 +14589,7 @@ class GoogleCloudApigeeV1Deployment {
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
               (value) =>
                   GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
@@ -14234,7 +14663,7 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
       routingChanges = (_json['routingChanges'] as core.List)
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>(
               (value) => GoogleCloudApigeeV1DeploymentChangeReportRoutingChange
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('routingConflicts')) {
@@ -14242,12 +14671,12 @@ class GoogleCloudApigeeV1DeploymentChangeReport {
           .map<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>(
               (value) =>
                   GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('validationErrors')) {
-      validationErrors =
-          GoogleRpcPreconditionFailure.fromJson(_json['validationErrors']);
+      validationErrors = GoogleRpcPreconditionFailure.fromJson(
+          _json['validationErrors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14302,7 +14731,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     if (_json.containsKey('fromDeployment')) {
       fromDeployment =
           GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['fromDeployment']);
+              _json['fromDeployment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shouldSequenceRollout')) {
       shouldSequenceRollout = _json['shouldSequenceRollout'] as core.bool;
@@ -14310,7 +14739,7 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
     if (_json.containsKey('toDeployment')) {
       toDeployment =
           GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['toDeployment']);
+              _json['toDeployment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14355,7 +14784,8 @@ class GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
     if (_json.containsKey('conflictingDeployment')) {
       conflictingDeployment =
           GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment.fromJson(
-              _json['conflictingDeployment']);
+              _json['conflictingDeployment']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -14457,7 +14887,8 @@ class GoogleCloudApigeeV1DeploymentConfig {
   GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('basePath')) {
@@ -14567,8 +14998,9 @@ class GoogleCloudApigeeV1Developer {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('companies')) {
@@ -14717,8 +15149,9 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('callbackUrl')) {
@@ -14729,8 +15162,9 @@ class GoogleCloudApigeeV1DeveloperApp {
     }
     if (_json.containsKey('credentials')) {
       credentials = (_json['credentials'] as core.List)
-          .map<GoogleCloudApigeeV1Credential>(
-              (value) => GoogleCloudApigeeV1Credential.fromJson(value))
+          .map<GoogleCloudApigeeV1Credential>((value) =>
+              GoogleCloudApigeeV1Credential.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerId')) {
@@ -14843,8 +15277,9 @@ class GoogleCloudApigeeV1DeveloperAppKey {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('consumerKey')) {
@@ -14912,8 +15347,9 @@ class GoogleCloudApigeeV1DimensionMetric {
   GoogleCloudApigeeV1DimensionMetric.fromJson(core.Map _json) {
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1Metric>(
-              (value) => GoogleCloudApigeeV1Metric.fromJson(value))
+          .map<GoogleCloudApigeeV1Metric>((value) =>
+              GoogleCloudApigeeV1Metric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -15016,7 +15452,8 @@ class GoogleCloudApigeeV1Environment {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
+      properties = GoogleCloudApigeeV1Properties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15110,34 +15547,40 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (_json.containsKey('dataCollectors')) {
       dataCollectors = (_json['dataCollectors'] as core.List)
-          .map<GoogleCloudApigeeV1DataCollectorConfig>(
-              (value) => GoogleCloudApigeeV1DataCollectorConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1DataCollectorConfig>((value) =>
+              GoogleCloudApigeeV1DataCollectorConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('debugMask')) {
-      debugMask = GoogleCloudApigeeV1DebugMask.fromJson(_json['debugMask']);
+      debugMask = GoogleCloudApigeeV1DebugMask.fromJson(
+          _json['debugMask'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deployments')) {
       deployments = (_json['deployments'] as core.List)
-          .map<GoogleCloudApigeeV1DeploymentConfig>(
-              (value) => GoogleCloudApigeeV1DeploymentConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1DeploymentConfig>((value) =>
+              GoogleCloudApigeeV1DeploymentConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('featureFlags')) {
       featureFlags = commons.mapMap<core.String, core.String>(
-          _json['featureFlags'].cast<core.String, core.String>(),
+          (_json['featureFlags'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('flowhooks')) {
       flowhooks = (_json['flowhooks'] as core.List)
-          .map<GoogleCloudApigeeV1FlowHookConfig>(
-              (value) => GoogleCloudApigeeV1FlowHookConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1FlowHookConfig>((value) =>
+              GoogleCloudApigeeV1FlowHookConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('keystores')) {
       keystores = (_json['keystores'] as core.List)
-          .map<GoogleCloudApigeeV1KeystoreConfig>(
-              (value) => GoogleCloudApigeeV1KeystoreConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1KeystoreConfig>((value) =>
+              GoogleCloudApigeeV1KeystoreConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -15151,14 +15594,16 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (_json.containsKey('resourceReferences')) {
       resourceReferences = (_json['resourceReferences'] as core.List)
-          .map<GoogleCloudApigeeV1ReferenceConfig>(
-              (value) => GoogleCloudApigeeV1ReferenceConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1ReferenceConfig>((value) =>
+              GoogleCloudApigeeV1ReferenceConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceConfig>(
-              (value) => GoogleCloudApigeeV1ResourceConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1ResourceConfig>((value) =>
+              GoogleCloudApigeeV1ResourceConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('revisionId')) {
@@ -15169,13 +15614,14 @@ class GoogleCloudApigeeV1EnvironmentConfig {
     }
     if (_json.containsKey('targets')) {
       targets = (_json['targets'] as core.List)
-          .map<GoogleCloudApigeeV1TargetServerConfig>(
-              (value) => GoogleCloudApigeeV1TargetServerConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1TargetServerConfig>((value) =>
+              GoogleCloudApigeeV1TargetServerConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('traceConfig')) {
-      traceConfig =
-          GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(_json['traceConfig']);
+      traceConfig = GoogleCloudApigeeV1RuntimeTraceConfig.fromJson(
+          _json['traceConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uid')) {
       uid = _json['uid'] as core.String;
@@ -15377,8 +15823,9 @@ class GoogleCloudApigeeV1EnvironmentGroupConfig {
     }
     if (_json.containsKey('routingRules')) {
       routingRules = (_json['routingRules'] as core.List)
-          .map<GoogleCloudApigeeV1RoutingRule>(
-              (value) => GoogleCloudApigeeV1RoutingRule.fromJson(value))
+          .map<GoogleCloudApigeeV1RoutingRule>((value) =>
+              GoogleCloudApigeeV1RoutingRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('uid')) {
@@ -15543,7 +15990,8 @@ class GoogleCloudApigeeV1ExportRequest {
       datastoreName = _json['datastoreName'] as core.String;
     }
     if (_json.containsKey('dateRange')) {
-      dateRange = GoogleCloudApigeeV1DateRange.fromJson(_json['dateRange']);
+      dateRange = GoogleCloudApigeeV1DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -15717,7 +16165,8 @@ class GoogleCloudApigeeV1IngressConfig {
     if (_json.containsKey('environmentGroups')) {
       environmentGroups = (_json['environmentGroups'] as core.List)
           .map<GoogleCloudApigeeV1EnvironmentGroupConfig>((value) =>
-              GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(value))
+              GoogleCloudApigeeV1EnvironmentGroupConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -15932,7 +16381,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
           .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>(
               (value) =>
                   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deployedRoutes')) {
@@ -15940,7 +16389,7 @@ class GoogleCloudApigeeV1InstanceDeploymentStatus {
           .map<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>(
               (value) =>
                   GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('instance')) {
@@ -16157,8 +16606,9 @@ class GoogleCloudApigeeV1KeystoreConfig {
   GoogleCloudApigeeV1KeystoreConfig.fromJson(core.Map _json) {
     if (_json.containsKey('aliases')) {
       aliases = (_json['aliases'] as core.List)
-          .map<GoogleCloudApigeeV1AliasRevisionConfig>(
-              (value) => GoogleCloudApigeeV1AliasRevisionConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1AliasRevisionConfig>((value) =>
+              GoogleCloudApigeeV1AliasRevisionConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -16200,8 +16650,9 @@ class GoogleCloudApigeeV1ListApiCategoriesResponse {
   GoogleCloudApigeeV1ListApiCategoriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<GoogleCloudApigeeV1ApiCategoryData>(
-              (value) => GoogleCloudApigeeV1ApiCategoryData.fromJson(value))
+          .map<GoogleCloudApigeeV1ApiCategoryData>((value) =>
+              GoogleCloudApigeeV1ApiCategoryData.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('errorCode')) {
@@ -16248,8 +16699,9 @@ class GoogleCloudApigeeV1ListApiProductsResponse {
   GoogleCloudApigeeV1ListApiProductsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apiProduct')) {
       apiProduct = (_json['apiProduct'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProduct>(
-              (value) => GoogleCloudApigeeV1ApiProduct.fromJson(value))
+          .map<GoogleCloudApigeeV1ApiProduct>((value) =>
+              GoogleCloudApigeeV1ApiProduct.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16271,8 +16723,9 @@ class GoogleCloudApigeeV1ListApiProxiesResponse {
   GoogleCloudApigeeV1ListApiProxiesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('proxies')) {
       proxies = (_json['proxies'] as core.List)
-          .map<GoogleCloudApigeeV1ApiProxy>(
-              (value) => GoogleCloudApigeeV1ApiProxy.fromJson(value))
+          .map<GoogleCloudApigeeV1ApiProxy>((value) =>
+              GoogleCloudApigeeV1ApiProxy.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16294,8 +16747,9 @@ class GoogleCloudApigeeV1ListAppsResponse {
   GoogleCloudApigeeV1ListAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('app')) {
       app = (_json['app'] as core.List)
-          .map<GoogleCloudApigeeV1App>(
-              (value) => GoogleCloudApigeeV1App.fromJson(value))
+          .map<GoogleCloudApigeeV1App>((value) =>
+              GoogleCloudApigeeV1App.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16319,8 +16773,9 @@ class GoogleCloudApigeeV1ListAsyncQueriesResponse {
   GoogleCloudApigeeV1ListAsyncQueriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('queries')) {
       queries = (_json['queries'] as core.List)
-          .map<GoogleCloudApigeeV1AsyncQuery>(
-              (value) => GoogleCloudApigeeV1AsyncQuery.fromJson(value))
+          .map<GoogleCloudApigeeV1AsyncQuery>((value) =>
+              GoogleCloudApigeeV1AsyncQuery.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16343,8 +16798,9 @@ class GoogleCloudApigeeV1ListCustomReportsResponse {
   GoogleCloudApigeeV1ListCustomReportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('qualifier')) {
       qualifier = (_json['qualifier'] as core.List)
-          .map<GoogleCloudApigeeV1CustomReport>(
-              (value) => GoogleCloudApigeeV1CustomReport.fromJson(value))
+          .map<GoogleCloudApigeeV1CustomReport>((value) =>
+              GoogleCloudApigeeV1CustomReport.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16368,8 +16824,9 @@ class GoogleCloudApigeeV1ListDatastoresResponse {
   GoogleCloudApigeeV1ListDatastoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey('datastores')) {
       datastores = (_json['datastores'] as core.List)
-          .map<GoogleCloudApigeeV1Datastore>(
-              (value) => GoogleCloudApigeeV1Datastore.fromJson(value))
+          .map<GoogleCloudApigeeV1Datastore>((value) =>
+              GoogleCloudApigeeV1Datastore.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16400,8 +16857,9 @@ class GoogleCloudApigeeV1ListDebugSessionsResponse {
     }
     if (_json.containsKey('sessions')) {
       sessions = (_json['sessions'] as core.List)
-          .map<GoogleCloudApigeeV1Session>(
-              (value) => GoogleCloudApigeeV1Session.fromJson(value))
+          .map<GoogleCloudApigeeV1Session>((value) =>
+              GoogleCloudApigeeV1Session.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16427,8 +16885,9 @@ class GoogleCloudApigeeV1ListDeploymentsResponse {
   GoogleCloudApigeeV1ListDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deployments')) {
       deployments = (_json['deployments'] as core.List)
-          .map<GoogleCloudApigeeV1Deployment>(
-              (value) => GoogleCloudApigeeV1Deployment.fromJson(value))
+          .map<GoogleCloudApigeeV1Deployment>((value) =>
+              GoogleCloudApigeeV1Deployment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16452,8 +16911,9 @@ class GoogleCloudApigeeV1ListDeveloperAppsResponse {
   GoogleCloudApigeeV1ListDeveloperAppsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('app')) {
       app = (_json['app'] as core.List)
-          .map<GoogleCloudApigeeV1DeveloperApp>(
-              (value) => GoogleCloudApigeeV1DeveloperApp.fromJson(value))
+          .map<GoogleCloudApigeeV1DeveloperApp>((value) =>
+              GoogleCloudApigeeV1DeveloperApp.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16485,7 +16945,8 @@ class GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
       environmentGroupAttachments =
           (_json['environmentGroupAttachments'] as core.List)
               .map<GoogleCloudApigeeV1EnvironmentGroupAttachment>((value) =>
-                  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(value))
+                  GoogleCloudApigeeV1EnvironmentGroupAttachment.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -16520,8 +16981,9 @@ class GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   GoogleCloudApigeeV1ListEnvironmentGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('environmentGroups')) {
       environmentGroups = (_json['environmentGroups'] as core.List)
-          .map<GoogleCloudApigeeV1EnvironmentGroup>(
-              (value) => GoogleCloudApigeeV1EnvironmentGroup.fromJson(value))
+          .map<GoogleCloudApigeeV1EnvironmentGroup>((value) =>
+              GoogleCloudApigeeV1EnvironmentGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -16552,8 +17014,9 @@ class GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   GoogleCloudApigeeV1ListEnvironmentResourcesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('resourceFile')) {
       resourceFile = (_json['resourceFile'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceFile>(
-              (value) => GoogleCloudApigeeV1ResourceFile.fromJson(value))
+          .map<GoogleCloudApigeeV1ResourceFile>((value) =>
+              GoogleCloudApigeeV1ResourceFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16578,8 +17041,9 @@ class GoogleCloudApigeeV1ListExportsResponse {
   GoogleCloudApigeeV1ListExportsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('exports')) {
       exports = (_json['exports'] as core.List)
-          .map<GoogleCloudApigeeV1Export>(
-              (value) => GoogleCloudApigeeV1Export.fromJson(value))
+          .map<GoogleCloudApigeeV1Export>((value) =>
+              GoogleCloudApigeeV1Export.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16603,7 +17067,8 @@ class GoogleCloudApigeeV1ListHybridIssuersResponse {
     if (_json.containsKey('issuers')) {
       issuers = (_json['issuers'] as core.List)
           .map<GoogleCloudApigeeV1ServiceIssuersMapping>((value) =>
-              GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(value))
+              GoogleCloudApigeeV1ServiceIssuersMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16631,8 +17096,9 @@ class GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   GoogleCloudApigeeV1ListInstanceAttachmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
-          .map<GoogleCloudApigeeV1InstanceAttachment>(
-              (value) => GoogleCloudApigeeV1InstanceAttachment.fromJson(value))
+          .map<GoogleCloudApigeeV1InstanceAttachment>((value) =>
+              GoogleCloudApigeeV1InstanceAttachment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -16667,8 +17133,9 @@ class GoogleCloudApigeeV1ListInstancesResponse {
   GoogleCloudApigeeV1ListInstancesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<GoogleCloudApigeeV1Instance>(
-              (value) => GoogleCloudApigeeV1Instance.fromJson(value))
+          .map<GoogleCloudApigeeV1Instance>((value) =>
+              GoogleCloudApigeeV1Instance.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -16697,8 +17164,9 @@ class GoogleCloudApigeeV1ListOfDevelopersResponse {
   GoogleCloudApigeeV1ListOfDevelopersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('developer')) {
       developer = (_json['developer'] as core.List)
-          .map<GoogleCloudApigeeV1Developer>(
-              (value) => GoogleCloudApigeeV1Developer.fromJson(value))
+          .map<GoogleCloudApigeeV1Developer>((value) =>
+              GoogleCloudApigeeV1Developer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16722,7 +17190,8 @@ class GoogleCloudApigeeV1ListOrganizationsResponse {
     if (_json.containsKey('organizations')) {
       organizations = (_json['organizations'] as core.List)
           .map<GoogleCloudApigeeV1OrganizationProjectMapping>((value) =>
-              GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(value))
+              GoogleCloudApigeeV1OrganizationProjectMapping.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16745,8 +17214,9 @@ class GoogleCloudApigeeV1ListSharedFlowsResponse {
   GoogleCloudApigeeV1ListSharedFlowsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('sharedFlows')) {
       sharedFlows = (_json['sharedFlows'] as core.List)
-          .map<GoogleCloudApigeeV1SharedFlow>(
-              (value) => GoogleCloudApigeeV1SharedFlow.fromJson(value))
+          .map<GoogleCloudApigeeV1SharedFlow>((value) =>
+              GoogleCloudApigeeV1SharedFlow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16904,18 +17374,21 @@ class GoogleCloudApigeeV1OperationConfig {
     }
     if (_json.containsKey('attributes')) {
       attributes = (_json['attributes'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<GoogleCloudApigeeV1Operation>(
-              (value) => GoogleCloudApigeeV1Operation.fromJson(value))
+          .map<GoogleCloudApigeeV1Operation>((value) =>
+              GoogleCloudApigeeV1Operation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('quota')) {
-      quota = GoogleCloudApigeeV1Quota.fromJson(_json['quota']);
+      quota = GoogleCloudApigeeV1Quota.fromJson(
+          _json['quota'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16960,8 +17433,9 @@ class GoogleCloudApigeeV1OperationGroup {
     }
     if (_json.containsKey('operationConfigs')) {
       operationConfigs = (_json['operationConfigs'] as core.List)
-          .map<GoogleCloudApigeeV1OperationConfig>(
-              (value) => GoogleCloudApigeeV1OperationConfig.fromJson(value))
+          .map<GoogleCloudApigeeV1OperationConfig>((value) =>
+              GoogleCloudApigeeV1OperationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17046,8 +17520,8 @@ class GoogleCloudApigeeV1OptimizedStats {
 
   GoogleCloudApigeeV1OptimizedStats.fromJson(core.Map _json) {
     if (_json.containsKey('Response')) {
-      Response =
-          GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(_json['Response']);
+      Response = GoogleCloudApigeeV1OptimizedStatsResponse.fromJson(
+          _json['Response'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -17118,13 +17592,15 @@ class GoogleCloudApigeeV1OptimizedStatsResponse {
           .toList();
     }
     if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1Metadata.fromJson(_json['metaData']);
+      metaData = GoogleCloudApigeeV1Metadata.fromJson(
+          _json['metaData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resultTruncated')) {
       resultTruncated = _json['resultTruncated'] as core.bool;
     }
     if (_json.containsKey('stats')) {
-      stats = GoogleCloudApigeeV1OptimizedStatsNode.fromJson(_json['stats']);
+      stats = GoogleCloudApigeeV1OptimizedStatsNode.fromJson(
+          _json['stats'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -17274,7 +17750,8 @@ class GoogleCloudApigeeV1Organization {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
+      properties = GoogleCloudApigeeV1Properties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('runtimeType')) {
       runtimeType_ = _json['runtimeType'] as core.String;
@@ -17495,8 +17972,9 @@ class GoogleCloudApigeeV1Point {
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<GoogleCloudApigeeV1Result>(
-              (value) => GoogleCloudApigeeV1Result.fromJson(value))
+          .map<GoogleCloudApigeeV1Result>((value) =>
+              GoogleCloudApigeeV1Result.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17524,8 +18002,9 @@ class GoogleCloudApigeeV1Properties {
   GoogleCloudApigeeV1Properties.fromJson(core.Map _json) {
     if (_json.containsKey('property')) {
       property = (_json['property'] as core.List)
-          .map<GoogleCloudApigeeV1Property>(
-              (value) => GoogleCloudApigeeV1Property.fromJson(value))
+          .map<GoogleCloudApigeeV1Property>((value) =>
+              GoogleCloudApigeeV1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17692,8 +18171,9 @@ class GoogleCloudApigeeV1Query {
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1QueryMetric>(
-              (value) => GoogleCloudApigeeV1QueryMetric.fromJson(value))
+          .map<GoogleCloudApigeeV1QueryMetric>((value) =>
+              GoogleCloudApigeeV1QueryMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -18037,8 +18517,9 @@ class GoogleCloudApigeeV1ReportInstanceStatusRequest {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceStatus>(
-              (value) => GoogleCloudApigeeV1ResourceStatus.fromJson(value))
+          .map<GoogleCloudApigeeV1ResourceStatus>((value) =>
+              GoogleCloudApigeeV1ResourceStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -18087,8 +18568,9 @@ class GoogleCloudApigeeV1ReportProperty {
     }
     if (_json.containsKey('value')) {
       value = (_json['value'] as core.List)
-          .map<GoogleCloudApigeeV1Attribute>(
-              (value) => GoogleCloudApigeeV1Attribute.fromJson(value))
+          .map<GoogleCloudApigeeV1Attribute>((value) =>
+              GoogleCloudApigeeV1Attribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -18178,8 +18660,9 @@ class GoogleCloudApigeeV1ResourceFiles {
   GoogleCloudApigeeV1ResourceFiles.fromJson(core.Map _json) {
     if (_json.containsKey('resourceFile')) {
       resourceFile = (_json['resourceFile'] as core.List)
-          .map<GoogleCloudApigeeV1ResourceFile>(
-              (value) => GoogleCloudApigeeV1ResourceFile.fromJson(value))
+          .map<GoogleCloudApigeeV1ResourceFile>((value) =>
+              GoogleCloudApigeeV1ResourceFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -18221,8 +18704,9 @@ class GoogleCloudApigeeV1ResourceStatus {
     }
     if (_json.containsKey('revisions')) {
       revisions = (_json['revisions'] as core.List)
-          .map<GoogleCloudApigeeV1RevisionStatus>(
-              (value) => GoogleCloudApigeeV1RevisionStatus.fromJson(value))
+          .map<GoogleCloudApigeeV1RevisionStatus>((value) =>
+              GoogleCloudApigeeV1RevisionStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalReplicas')) {
@@ -18310,8 +18794,9 @@ class GoogleCloudApigeeV1Result {
     }
     if (_json.containsKey('accessList')) {
       accessList = (_json['accessList'] as core.List)
-          .map<GoogleCloudApigeeV1Access>(
-              (value) => GoogleCloudApigeeV1Access.fromJson(value))
+          .map<GoogleCloudApigeeV1Access>((value) =>
+              GoogleCloudApigeeV1Access.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('content')) {
@@ -18319,12 +18804,14 @@ class GoogleCloudApigeeV1Result {
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<GoogleCloudApigeeV1Property>(
-              (value) => GoogleCloudApigeeV1Property.fromJson(value))
+          .map<GoogleCloudApigeeV1Property>((value) =>
+              GoogleCloudApigeeV1Property.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = GoogleCloudApigeeV1Properties.fromJson(_json['properties']);
+      properties = GoogleCloudApigeeV1Properties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reasonPhrase')) {
       reasonPhrase = _json['reasonPhrase'] as core.String;
@@ -18398,8 +18885,9 @@ class GoogleCloudApigeeV1RevisionStatus {
   GoogleCloudApigeeV1RevisionStatus.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<GoogleCloudApigeeV1UpdateError>(
-              (value) => GoogleCloudApigeeV1UpdateError.fromJson(value))
+          .map<GoogleCloudApigeeV1UpdateError>((value) =>
+              GoogleCloudApigeeV1UpdateError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('jsonSpec')) {
@@ -18549,7 +19037,8 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     if (_json.containsKey('overrides')) {
       overrides = (_json['overrides'] as core.List)
           .map<GoogleCloudApigeeV1RuntimeTraceConfigOverride>((value) =>
-              GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(value))
+              GoogleCloudApigeeV1RuntimeTraceConfigOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('revisionCreateTime')) {
@@ -18560,7 +19049,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfig {
     }
     if (_json.containsKey('samplingConfig')) {
       samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-          _json['samplingConfig']);
+          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -18633,7 +19122,7 @@ class GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     }
     if (_json.containsKey('samplingConfig')) {
       samplingConfig = GoogleCloudApigeeV1RuntimeTraceSamplingConfig.fromJson(
-          _json['samplingConfig']);
+          _json['samplingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uid')) {
       uid = _json['uid'] as core.String;
@@ -18710,7 +19199,7 @@ class GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
           .map<GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange>(
               (value) =>
                   GoogleCloudApigeeV1RuntimeTraceSamplingConfigResponseCodeRange
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('responseCodes')) {
@@ -18801,8 +19290,9 @@ class GoogleCloudApigeeV1Schema {
   GoogleCloudApigeeV1Schema.fromJson(core.Map _json) {
     if (_json.containsKey('dimensions')) {
       dimensions = (_json['dimensions'] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>(
-              (value) => GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
+          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
+              GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('meta')) {
@@ -18812,8 +19302,9 @@ class GoogleCloudApigeeV1Schema {
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1SchemaSchemaElement>(
-              (value) => GoogleCloudApigeeV1SchemaSchemaElement.fromJson(value))
+          .map<GoogleCloudApigeeV1SchemaSchemaElement>((value) =>
+              GoogleCloudApigeeV1SchemaSchemaElement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -18849,8 +19340,8 @@ class GoogleCloudApigeeV1SchemaSchemaElement {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties =
-          GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(_json['properties']);
+      properties = GoogleCloudApigeeV1SchemaSchemaProperty.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -18991,7 +19482,8 @@ class GoogleCloudApigeeV1SharedFlow {
       latestRevisionId = _json['latestRevisionId'] as core.String;
     }
     if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(_json['metaData']);
+      metaData = GoogleCloudApigeeV1EntityMetadata.fromJson(
+          _json['metaData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -19076,7 +19568,7 @@ class GoogleCloudApigeeV1SharedFlowRevision {
   GoogleCloudApigeeV1SharedFlowRevision.fromJson(core.Map _json) {
     if (_json.containsKey('configurationVersion')) {
       configurationVersion = GoogleCloudApigeeV1ConfigVersion.fromJson(
-          _json['configurationVersion']);
+          _json['configurationVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contextInfo')) {
       contextInfo = _json['contextInfo'] as core.String;
@@ -19092,7 +19584,9 @@ class GoogleCloudApigeeV1SharedFlowRevision {
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
       entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
-          _json['entityMetaDataAsProperties'].cast<core.String, core.String>(),
+          (_json['entityMetaDataAsProperties']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('lastModifiedAt')) {
@@ -19107,8 +19601,8 @@ class GoogleCloudApigeeV1SharedFlowRevision {
           .toList();
     }
     if (_json.containsKey('resourceFiles')) {
-      resourceFiles =
-          GoogleCloudApigeeV1ResourceFiles.fromJson(_json['resourceFiles']);
+      resourceFiles = GoogleCloudApigeeV1ResourceFiles.fromJson(
+          _json['resourceFiles'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
@@ -19190,11 +19684,13 @@ class GoogleCloudApigeeV1Stats {
     if (_json.containsKey('environments')) {
       environments = (_json['environments'] as core.List)
           .map<GoogleCloudApigeeV1StatsEnvironmentStats>((value) =>
-              GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(value))
+              GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('metaData')) {
-      metaData = GoogleCloudApigeeV1Metadata.fromJson(_json['metaData']);
+      metaData = GoogleCloudApigeeV1Metadata.fromJson(
+          _json['metaData'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -19236,14 +19732,16 @@ class GoogleCloudApigeeV1StatsEnvironmentStats {
   GoogleCloudApigeeV1StatsEnvironmentStats.fromJson(core.Map _json) {
     if (_json.containsKey('dimensions')) {
       dimensions = (_json['dimensions'] as core.List)
-          .map<GoogleCloudApigeeV1DimensionMetric>(
-              (value) => GoogleCloudApigeeV1DimensionMetric.fromJson(value))
+          .map<GoogleCloudApigeeV1DimensionMetric>((value) =>
+              GoogleCloudApigeeV1DimensionMetric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<GoogleCloudApigeeV1Metric>(
-              (value) => GoogleCloudApigeeV1Metric.fromJson(value))
+          .map<GoogleCloudApigeeV1Metric>((value) =>
+              GoogleCloudApigeeV1Metric.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -19393,7 +19891,8 @@ class GoogleCloudApigeeV1TargetServer {
       port = _json['port'] as core.int;
     }
     if (_json.containsKey('sSLInfo')) {
-      sSLInfo = GoogleCloudApigeeV1TlsInfo.fromJson(_json['sSLInfo']);
+      sSLInfo = GoogleCloudApigeeV1TlsInfo.fromJson(
+          _json['sSLInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -19448,7 +19947,8 @@ class GoogleCloudApigeeV1TargetServerConfig {
       port = _json['port'] as core.int;
     }
     if (_json.containsKey('tlsInfo')) {
-      tlsInfo = GoogleCloudApigeeV1TlsInfoConfig.fromJson(_json['tlsInfo']);
+      tlsInfo = GoogleCloudApigeeV1TlsInfoConfig.fromJson(
+          _json['tlsInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -19552,8 +20052,8 @@ class GoogleCloudApigeeV1TlsInfo {
       clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
     }
     if (_json.containsKey('commonName')) {
-      commonName =
-          GoogleCloudApigeeV1TlsInfoCommonName.fromJson(_json['commonName']);
+      commonName = GoogleCloudApigeeV1TlsInfoCommonName.fromJson(
+          _json['commonName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enabled')) {
       enabled = _json['enabled'] as core.bool;
@@ -19688,8 +20188,8 @@ class GoogleCloudApigeeV1TlsInfoConfig {
       clientAuthEnabled = _json['clientAuthEnabled'] as core.bool;
     }
     if (_json.containsKey('commonName')) {
-      commonName =
-          GoogleCloudApigeeV1CommonNameConfig.fromJson(_json['commonName']);
+      commonName = GoogleCloudApigeeV1CommonNameConfig.fromJson(
+          _json['commonName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enabled')) {
       enabled = _json['enabled'] as core.bool;
@@ -19702,7 +20202,7 @@ class GoogleCloudApigeeV1TlsInfoConfig {
     }
     if (_json.containsKey('keyAliasReference')) {
       keyAliasReference = GoogleCloudApigeeV1KeyAliasReference.fromJson(
-          _json['keyAliasReference']);
+          _json['keyAliasReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('protocols')) {
       protocols = (_json['protocols'] as core.List)
@@ -19908,8 +20408,9 @@ class GoogleIamV1AuditConfig {
   GoogleIamV1AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<GoogleIamV1AuditLogConfig>(
-              (value) => GoogleIamV1AuditLogConfig.fromJson(value))
+          .map<GoogleIamV1AuditLogConfig>((value) =>
+              GoogleIamV1AuditLogConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -20023,7 +20524,8 @@ class GoogleIamV1Binding {
 
   GoogleIamV1Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = GoogleTypeExpr.fromJson(_json['condition']);
+      condition = GoogleTypeExpr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -20129,14 +20631,15 @@ class GoogleIamV1Policy {
   GoogleIamV1Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<GoogleIamV1AuditConfig>(
-              (value) => GoogleIamV1AuditConfig.fromJson(value))
+          .map<GoogleIamV1AuditConfig>((value) =>
+              GoogleIamV1AuditConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<GoogleIamV1Binding>(
-              (value) => GoogleIamV1Binding.fromJson(value))
+          .map<GoogleIamV1Binding>((value) => GoogleIamV1Binding.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -20183,7 +20686,8 @@ class GoogleIamV1SetIamPolicyRequest {
 
   GoogleIamV1SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = GoogleIamV1Policy.fromJson(_json['policy']);
+      policy = GoogleIamV1Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -20270,8 +20774,9 @@ class GoogleLongrunningListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>(
-              (value) => GoogleLongrunningOperation.fromJson(value))
+          .map<GoogleLongrunningOperation>((value) =>
+              GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20332,11 +20837,13 @@ class GoogleLongrunningOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(_json['error']);
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -20344,7 +20851,8 @@ class GoogleLongrunningOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -20400,8 +20908,9 @@ class GoogleRpcPreconditionFailure {
   GoogleRpcPreconditionFailure.fromJson(core.Map _json) {
     if (_json.containsKey('violations')) {
       violations = (_json['violations'] as core.List)
-          .map<GoogleRpcPreconditionFailureViolation>(
-              (value) => GoogleRpcPreconditionFailureViolation.fromJson(value))
+          .map<GoogleRpcPreconditionFailureViolation>((value) =>
+              GoogleRpcPreconditionFailureViolation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20493,7 +21002,8 @@ class GoogleRpcStatus {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

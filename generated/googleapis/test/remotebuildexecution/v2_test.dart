@@ -106,9 +106,11 @@ void checkBuildBazelRemoteExecutionV2Action(
     api.BuildBazelRemoteExecutionV2Action o) {
   buildCounterBuildBazelRemoteExecutionV2Action++;
   if (buildCounterBuildBazelRemoteExecutionV2Action < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.commandDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.commandDigest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.doNotCache, unittest.isTrue);
-    checkBuildBazelRemoteExecutionV2Digest(o.inputRootDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.inputRootDigest as api.BuildBazelRemoteExecutionV2Digest);
     checkUnnamed5140(o.outputNodeProperties);
     unittest.expect(o.timeout, unittest.equals('foo'));
   }
@@ -149,8 +151,10 @@ core.List<api.BuildBazelRemoteExecutionV2OutputDirectory> buildUnnamed5141() {
 void checkUnnamed5141(
     core.List<api.BuildBazelRemoteExecutionV2OutputDirectory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2OutputDirectory(o[0]);
-  checkBuildBazelRemoteExecutionV2OutputDirectory(o[1]);
+  checkBuildBazelRemoteExecutionV2OutputDirectory(
+      o[0] as api.BuildBazelRemoteExecutionV2OutputDirectory);
+  checkBuildBazelRemoteExecutionV2OutputDirectory(
+      o[1] as api.BuildBazelRemoteExecutionV2OutputDirectory);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5142() {
@@ -163,8 +167,10 @@ core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5142() {
 void checkUnnamed5142(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[0]);
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[1]);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[0] as api.BuildBazelRemoteExecutionV2OutputSymlink);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[1] as api.BuildBazelRemoteExecutionV2OutputSymlink);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5143() {
@@ -177,8 +183,10 @@ core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5143() {
 void checkUnnamed5143(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[0]);
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[1]);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[0] as api.BuildBazelRemoteExecutionV2OutputSymlink);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[1] as api.BuildBazelRemoteExecutionV2OutputSymlink);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2OutputFile> buildUnnamed5144() {
@@ -190,8 +198,10 @@ core.List<api.BuildBazelRemoteExecutionV2OutputFile> buildUnnamed5144() {
 
 void checkUnnamed5144(core.List<api.BuildBazelRemoteExecutionV2OutputFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2OutputFile(o[0]);
-  checkBuildBazelRemoteExecutionV2OutputFile(o[1]);
+  checkBuildBazelRemoteExecutionV2OutputFile(
+      o[0] as api.BuildBazelRemoteExecutionV2OutputFile);
+  checkBuildBazelRemoteExecutionV2OutputFile(
+      o[1] as api.BuildBazelRemoteExecutionV2OutputFile);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5145() {
@@ -204,8 +214,10 @@ core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> buildUnnamed5145() {
 void checkUnnamed5145(
     core.List<api.BuildBazelRemoteExecutionV2OutputSymlink> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[0]);
-  checkBuildBazelRemoteExecutionV2OutputSymlink(o[1]);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[0] as api.BuildBazelRemoteExecutionV2OutputSymlink);
+  checkBuildBazelRemoteExecutionV2OutputSymlink(
+      o[1] as api.BuildBazelRemoteExecutionV2OutputSymlink);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2ActionResult = 0;
@@ -235,16 +247,19 @@ void checkBuildBazelRemoteExecutionV2ActionResult(
     api.BuildBazelRemoteExecutionV2ActionResult o) {
   buildCounterBuildBazelRemoteExecutionV2ActionResult++;
   if (buildCounterBuildBazelRemoteExecutionV2ActionResult < 3) {
-    checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(o.executionMetadata);
+    checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(o.executionMetadata
+        as api.BuildBazelRemoteExecutionV2ExecutedActionMetadata);
     unittest.expect(o.exitCode, unittest.equals(42));
     checkUnnamed5141(o.outputDirectories);
     checkUnnamed5142(o.outputDirectorySymlinks);
     checkUnnamed5143(o.outputFileSymlinks);
     checkUnnamed5144(o.outputFiles);
     checkUnnamed5145(o.outputSymlinks);
-    checkBuildBazelRemoteExecutionV2Digest(o.stderrDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.stderrDigest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.stderrRaw, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2Digest(o.stdoutDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.stdoutDigest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.stdoutRaw, unittest.equals('foo'));
   }
   buildCounterBuildBazelRemoteExecutionV2ActionResult--;
@@ -259,8 +274,10 @@ core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed5146() {
 
 void checkUnnamed5146(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2Digest(o[0]);
-  checkBuildBazelRemoteExecutionV2Digest(o[1]);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[0] as api.BuildBazelRemoteExecutionV2Digest);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[1] as api.BuildBazelRemoteExecutionV2Digest);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsRequest = 0;
@@ -296,8 +313,10 @@ void checkUnnamed5147(
     core.List<api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(o[0]);
-  checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(o[1]);
+  checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
+      o[0] as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse);
+  checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
+      o[1] as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponse = 0;
@@ -343,8 +362,9 @@ void checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
   if (buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse <
       3) {
     unittest.expect(o.data, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
-    checkGoogleRpcStatus(o.status);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
+    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse--;
 }
@@ -361,8 +381,10 @@ void checkUnnamed5148(
     core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(o[0]);
-  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(o[1]);
+  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
+      o[0] as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest);
+  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
+      o[1] as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest = 0;
@@ -407,7 +429,8 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest <
       3) {
     unittest.expect(o.data, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest--;
 }
@@ -424,8 +447,10 @@ void checkUnnamed5149(
     core.List<api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(o[0]);
-  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(o[1]);
+  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(
+      o[0] as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse);
+  checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(
+      o[1] as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse = 0;
@@ -469,8 +494,9 @@ void checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse++;
   if (buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse <
       3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
-    checkGoogleRpcStatus(o.status);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
+    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse--;
 }
@@ -511,9 +537,11 @@ void checkBuildBazelRemoteExecutionV2CacheCapabilities(
   buildCounterBuildBazelRemoteExecutionV2CacheCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2CacheCapabilities < 3) {
     checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
-        o.actionCacheUpdateCapabilities);
+        o.actionCacheUpdateCapabilities
+            as api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities);
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
-        o.cachePriorityCapabilities);
+        o.cachePriorityCapabilities
+            as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
     checkUnnamed5150(o.digestFunction);
     unittest.expect(o.maxBatchTotalSizeBytes, unittest.equals('foo'));
     unittest.expect(o.symlinkAbsolutePathStrategy, unittest.equals('foo'));
@@ -545,8 +573,10 @@ core.List<api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable>
 void checkUnnamed5152(
     core.List<api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(o[0]);
-  checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(o[1]);
+  checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
+      o[0] as api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable);
+  checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
+      o[1] as api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable);
 }
 
 core.List<core.String> buildUnnamed5153() {
@@ -615,7 +645,8 @@ void checkBuildBazelRemoteExecutionV2Command(
     checkUnnamed5153(o.outputDirectories);
     checkUnnamed5154(o.outputFiles);
     checkUnnamed5155(o.outputPaths);
-    checkBuildBazelRemoteExecutionV2Platform(o.platform);
+    checkBuildBazelRemoteExecutionV2Platform(
+        o.platform as api.BuildBazelRemoteExecutionV2Platform);
     unittest.expect(o.workingDirectory, unittest.equals('foo'));
   }
   buildCounterBuildBazelRemoteExecutionV2Command--;
@@ -676,8 +707,10 @@ core.List<api.BuildBazelRemoteExecutionV2DirectoryNode> buildUnnamed5156() {
 void checkUnnamed5156(
     core.List<api.BuildBazelRemoteExecutionV2DirectoryNode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2DirectoryNode(o[0]);
-  checkBuildBazelRemoteExecutionV2DirectoryNode(o[1]);
+  checkBuildBazelRemoteExecutionV2DirectoryNode(
+      o[0] as api.BuildBazelRemoteExecutionV2DirectoryNode);
+  checkBuildBazelRemoteExecutionV2DirectoryNode(
+      o[1] as api.BuildBazelRemoteExecutionV2DirectoryNode);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2FileNode> buildUnnamed5157() {
@@ -689,8 +722,10 @@ core.List<api.BuildBazelRemoteExecutionV2FileNode> buildUnnamed5157() {
 
 void checkUnnamed5157(core.List<api.BuildBazelRemoteExecutionV2FileNode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2FileNode(o[0]);
-  checkBuildBazelRemoteExecutionV2FileNode(o[1]);
+  checkBuildBazelRemoteExecutionV2FileNode(
+      o[0] as api.BuildBazelRemoteExecutionV2FileNode);
+  checkBuildBazelRemoteExecutionV2FileNode(
+      o[1] as api.BuildBazelRemoteExecutionV2FileNode);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5158() {
@@ -703,8 +738,10 @@ core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5158() {
 void checkUnnamed5158(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2NodeProperty);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2NodeProperty);
 }
 
 core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> buildUnnamed5159() {
@@ -716,8 +753,10 @@ core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> buildUnnamed5159() {
 
 void checkUnnamed5159(core.List<api.BuildBazelRemoteExecutionV2SymlinkNode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2SymlinkNode(o[0]);
-  checkBuildBazelRemoteExecutionV2SymlinkNode(o[1]);
+  checkBuildBazelRemoteExecutionV2SymlinkNode(
+      o[0] as api.BuildBazelRemoteExecutionV2SymlinkNode);
+  checkBuildBazelRemoteExecutionV2SymlinkNode(
+      o[1] as api.BuildBazelRemoteExecutionV2SymlinkNode);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2Directory = 0;
@@ -764,7 +803,8 @@ void checkBuildBazelRemoteExecutionV2DirectoryNode(
     api.BuildBazelRemoteExecutionV2DirectoryNode o) {
   buildCounterBuildBazelRemoteExecutionV2DirectoryNode++;
   if (buildCounterBuildBazelRemoteExecutionV2DirectoryNode < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterBuildBazelRemoteExecutionV2DirectoryNode--;
@@ -789,7 +829,8 @@ void checkBuildBazelRemoteExecutionV2ExecuteOperationMetadata(
     api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata o) {
   buildCounterBuildBazelRemoteExecutionV2ExecuteOperationMetadata++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteOperationMetadata < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.actionDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.actionDigest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.stage, unittest.equals('foo'));
     unittest.expect(o.stderrStreamName, unittest.equals('foo'));
     unittest.expect(o.stdoutStreamName, unittest.equals('foo'));
@@ -816,9 +857,12 @@ void checkBuildBazelRemoteExecutionV2ExecuteRequest(
     api.BuildBazelRemoteExecutionV2ExecuteRequest o) {
   buildCounterBuildBazelRemoteExecutionV2ExecuteRequest++;
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteRequest < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.actionDigest);
-    checkBuildBazelRemoteExecutionV2ExecutionPolicy(o.executionPolicy);
-    checkBuildBazelRemoteExecutionV2ResultsCachePolicy(o.resultsCachePolicy);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.actionDigest as api.BuildBazelRemoteExecutionV2Digest);
+    checkBuildBazelRemoteExecutionV2ExecutionPolicy(
+        o.executionPolicy as api.BuildBazelRemoteExecutionV2ExecutionPolicy);
+    checkBuildBazelRemoteExecutionV2ResultsCachePolicy(o.resultsCachePolicy
+        as api.BuildBazelRemoteExecutionV2ResultsCachePolicy);
     unittest.expect(o.skipCacheLookup, unittest.isTrue);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteRequest--;
@@ -835,8 +879,10 @@ core.Map<core.String, api.BuildBazelRemoteExecutionV2LogFile>
 void checkUnnamed5160(
     core.Map<core.String, api.BuildBazelRemoteExecutionV2LogFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2LogFile(o['x']);
-  checkBuildBazelRemoteExecutionV2LogFile(o['y']);
+  checkBuildBazelRemoteExecutionV2LogFile(
+      o['x'] as api.BuildBazelRemoteExecutionV2LogFile);
+  checkBuildBazelRemoteExecutionV2LogFile(
+      o['y'] as api.BuildBazelRemoteExecutionV2LogFile);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2ExecuteResponse = 0;
@@ -861,9 +907,10 @@ void checkBuildBazelRemoteExecutionV2ExecuteResponse(
   if (buildCounterBuildBazelRemoteExecutionV2ExecuteResponse < 3) {
     unittest.expect(o.cachedResult, unittest.isTrue);
     unittest.expect(o.message, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2ActionResult(o.result);
+    checkBuildBazelRemoteExecutionV2ActionResult(
+        o.result as api.BuildBazelRemoteExecutionV2ActionResult);
     checkUnnamed5160(o.serverLogs);
-    checkGoogleRpcStatus(o.status);
+    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecuteResponse--;
 }
@@ -943,7 +990,8 @@ void checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
     unittest.expect(o.digestFunction, unittest.equals('foo'));
     unittest.expect(o.execEnabled, unittest.isTrue);
     checkBuildBazelRemoteExecutionV2PriorityCapabilities(
-        o.executionPriorityCapabilities);
+        o.executionPriorityCapabilities
+            as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
     checkUnnamed5161(o.supportedNodeProperties);
   }
   buildCounterBuildBazelRemoteExecutionV2ExecutionCapabilities--;
@@ -980,8 +1028,10 @@ core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5162() {
 void checkUnnamed5162(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2NodeProperty);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2NodeProperty);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2FileNode = 0;
@@ -1003,7 +1053,8 @@ void checkBuildBazelRemoteExecutionV2FileNode(
     api.BuildBazelRemoteExecutionV2FileNode o) {
   buildCounterBuildBazelRemoteExecutionV2FileNode++;
   if (buildCounterBuildBazelRemoteExecutionV2FileNode < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.isExecutable, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5162(o.nodeProperties);
@@ -1020,8 +1071,10 @@ core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed5163() {
 
 void checkUnnamed5163(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2Digest(o[0]);
-  checkBuildBazelRemoteExecutionV2Digest(o[1]);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[0] as api.BuildBazelRemoteExecutionV2Digest);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[1] as api.BuildBazelRemoteExecutionV2Digest);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsRequest = 0;
@@ -1054,8 +1107,10 @@ core.List<api.BuildBazelRemoteExecutionV2Digest> buildUnnamed5164() {
 
 void checkUnnamed5164(core.List<api.BuildBazelRemoteExecutionV2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2Digest(o[0]);
-  checkBuildBazelRemoteExecutionV2Digest(o[1]);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[0] as api.BuildBazelRemoteExecutionV2Digest);
+  checkBuildBazelRemoteExecutionV2Digest(
+      o[1] as api.BuildBazelRemoteExecutionV2Digest);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2FindMissingBlobsResponse = 0;
@@ -1088,8 +1143,10 @@ core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed5165() {
 
 void checkUnnamed5165(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2Directory(o[0]);
-  checkBuildBazelRemoteExecutionV2Directory(o[1]);
+  checkBuildBazelRemoteExecutionV2Directory(
+      o[0] as api.BuildBazelRemoteExecutionV2Directory);
+  checkBuildBazelRemoteExecutionV2Directory(
+      o[1] as api.BuildBazelRemoteExecutionV2Directory);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2GetTreeResponse = 0;
@@ -1132,7 +1189,8 @@ void checkBuildBazelRemoteExecutionV2LogFile(
     api.BuildBazelRemoteExecutionV2LogFile o) {
   buildCounterBuildBazelRemoteExecutionV2LogFile++;
   if (buildCounterBuildBazelRemoteExecutionV2LogFile < 3) {
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.humanReadable, unittest.isTrue);
   }
   buildCounterBuildBazelRemoteExecutionV2LogFile--;
@@ -1179,7 +1237,8 @@ void checkBuildBazelRemoteExecutionV2OutputDirectory(
   buildCounterBuildBazelRemoteExecutionV2OutputDirectory++;
   if (buildCounterBuildBazelRemoteExecutionV2OutputDirectory < 3) {
     unittest.expect(o.path, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2Digest(o.treeDigest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.treeDigest as api.BuildBazelRemoteExecutionV2Digest);
   }
   buildCounterBuildBazelRemoteExecutionV2OutputDirectory--;
 }
@@ -1194,8 +1253,10 @@ core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5166() {
 void checkUnnamed5166(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2NodeProperty);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2NodeProperty);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2OutputFile = 0;
@@ -1219,7 +1280,8 @@ void checkBuildBazelRemoteExecutionV2OutputFile(
   buildCounterBuildBazelRemoteExecutionV2OutputFile++;
   if (buildCounterBuildBazelRemoteExecutionV2OutputFile < 3) {
     unittest.expect(o.contents, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2Digest(o.digest);
+    checkBuildBazelRemoteExecutionV2Digest(
+        o.digest as api.BuildBazelRemoteExecutionV2Digest);
     unittest.expect(o.isExecutable, unittest.isTrue);
     checkUnnamed5166(o.nodeProperties);
     unittest.expect(o.path, unittest.equals('foo'));
@@ -1237,8 +1299,10 @@ core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5167() {
 void checkUnnamed5167(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2NodeProperty);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2NodeProperty);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2OutputSymlink = 0;
@@ -1276,8 +1340,10 @@ core.List<api.BuildBazelRemoteExecutionV2PlatformProperty> buildUnnamed5168() {
 void checkUnnamed5168(
     core.List<api.BuildBazelRemoteExecutionV2PlatformProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2PlatformProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2PlatformProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2PlatformProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2PlatformProperty);
+  checkBuildBazelRemoteExecutionV2PlatformProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2PlatformProperty);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2Platform = 0;
@@ -1336,8 +1402,10 @@ void checkUnnamed5169(
     core.List<api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(o[0]);
-  checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(o[1]);
+  checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(
+      o[0] as api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange);
+  checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(
+      o[1] as api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2PriorityCapabilities = 0;
@@ -1409,7 +1477,8 @@ void checkBuildBazelRemoteExecutionV2RequestMetadata(
   if (buildCounterBuildBazelRemoteExecutionV2RequestMetadata < 3) {
     unittest.expect(o.actionId, unittest.equals('foo'));
     unittest.expect(o.correlatedInvocationsId, unittest.equals('foo'));
-    checkBuildBazelRemoteExecutionV2ToolDetails(o.toolDetails);
+    checkBuildBazelRemoteExecutionV2ToolDetails(
+        o.toolDetails as api.BuildBazelRemoteExecutionV2ToolDetails);
     unittest.expect(o.toolInvocationId, unittest.equals('foo'));
   }
   buildCounterBuildBazelRemoteExecutionV2RequestMetadata--;
@@ -1457,12 +1526,15 @@ void checkBuildBazelRemoteExecutionV2ServerCapabilities(
     api.BuildBazelRemoteExecutionV2ServerCapabilities o) {
   buildCounterBuildBazelRemoteExecutionV2ServerCapabilities++;
   if (buildCounterBuildBazelRemoteExecutionV2ServerCapabilities < 3) {
-    checkBuildBazelRemoteExecutionV2CacheCapabilities(o.cacheCapabilities);
-    checkBuildBazelSemverSemVer(o.deprecatedApiVersion);
+    checkBuildBazelRemoteExecutionV2CacheCapabilities(o.cacheCapabilities
+        as api.BuildBazelRemoteExecutionV2CacheCapabilities);
+    checkBuildBazelSemverSemVer(
+        o.deprecatedApiVersion as api.BuildBazelSemverSemVer);
     checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
-        o.executionCapabilities);
-    checkBuildBazelSemverSemVer(o.highApiVersion);
-    checkBuildBazelSemverSemVer(o.lowApiVersion);
+        o.executionCapabilities
+            as api.BuildBazelRemoteExecutionV2ExecutionCapabilities);
+    checkBuildBazelSemverSemVer(o.highApiVersion as api.BuildBazelSemverSemVer);
+    checkBuildBazelSemverSemVer(o.lowApiVersion as api.BuildBazelSemverSemVer);
   }
   buildCounterBuildBazelRemoteExecutionV2ServerCapabilities--;
 }
@@ -1477,8 +1549,10 @@ core.List<api.BuildBazelRemoteExecutionV2NodeProperty> buildUnnamed5170() {
 void checkUnnamed5170(
     core.List<api.BuildBazelRemoteExecutionV2NodeProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[0]);
-  checkBuildBazelRemoteExecutionV2NodeProperty(o[1]);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[0] as api.BuildBazelRemoteExecutionV2NodeProperty);
+  checkBuildBazelRemoteExecutionV2NodeProperty(
+      o[1] as api.BuildBazelRemoteExecutionV2NodeProperty);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2SymlinkNode = 0;
@@ -1538,8 +1612,10 @@ core.List<api.BuildBazelRemoteExecutionV2Directory> buildUnnamed5171() {
 
 void checkUnnamed5171(core.List<api.BuildBazelRemoteExecutionV2Directory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBuildBazelRemoteExecutionV2Directory(o[0]);
-  checkBuildBazelRemoteExecutionV2Directory(o[1]);
+  checkBuildBazelRemoteExecutionV2Directory(
+      o[0] as api.BuildBazelRemoteExecutionV2Directory);
+  checkBuildBazelRemoteExecutionV2Directory(
+      o[1] as api.BuildBazelRemoteExecutionV2Directory);
 }
 
 core.int buildCounterBuildBazelRemoteExecutionV2Tree = 0;
@@ -1559,7 +1635,8 @@ void checkBuildBazelRemoteExecutionV2Tree(
   buildCounterBuildBazelRemoteExecutionV2Tree++;
   if (buildCounterBuildBazelRemoteExecutionV2Tree < 3) {
     checkUnnamed5171(o.children);
-    checkBuildBazelRemoteExecutionV2Directory(o.root);
+    checkBuildBazelRemoteExecutionV2Directory(
+        o.root as api.BuildBazelRemoteExecutionV2Directory);
   }
   buildCounterBuildBazelRemoteExecutionV2Tree--;
 }
@@ -1718,8 +1795,10 @@ void checkGoogleDevtoolsRemotebuildbotResourceUsage(
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage++;
   if (buildCounterGoogleDevtoolsRemotebuildbotResourceUsage < 3) {
     unittest.expect(o.cpuUsedPercent, unittest.equals(42.0));
-    checkGoogleDevtoolsRemotebuildbotResourceUsageStat(o.diskUsage);
-    checkGoogleDevtoolsRemotebuildbotResourceUsageStat(o.memoryUsage);
+    checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
+        o.diskUsage as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
+    checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
+        o.memoryUsage as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
   }
   buildCounterGoogleDevtoolsRemotebuildbotResourceUsage--;
 }
@@ -1821,7 +1900,8 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
     unittest.expect(o.instanceId, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
   }
@@ -1855,7 +1935,8 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest(
       3) {
     unittest.expect(o.parent, unittest.equals('foo'));
     unittest.expect(o.poolId, unittest.equals('foo'));
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest--;
 }
@@ -1949,21 +2030,29 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy <
       3) {
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.containerImageSources);
+        o.containerImageSources as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerAddCapabilities);
+        o.dockerAddCapabilities as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerChrootPath);
+        o.dockerChrootPath as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerNetwork);
+        o.dockerNetwork as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerPrivileged);
+        o.dockerPrivileged as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerRunAsRoot);
+        o.dockerRunAsRoot as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerRuntime);
+        o.dockerRuntime as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-        o.dockerSiblingContainers);
+        o.dockerSiblingContainers as api
+            .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     unittest.expect(o.linuxIsolation, unittest.equals('foo'));
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy--;
@@ -2084,7 +2173,8 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance < 3) {
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(
-        o.featurePolicy);
+        o.featurePolicy
+            as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy);
     unittest.expect(o.location, unittest.equals('foo'));
     unittest.expect(o.loggingEnabled, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -2130,8 +2220,10 @@ core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>
 void checkUnnamed5173(
     core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o[0]);
-  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o[1]);
+  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
+      o[0] as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
+  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
+      o[1] as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
 }
 
 core.int
@@ -2200,8 +2292,10 @@ core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>
 void checkUnnamed5174(
     core.List<api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o[0]);
-  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o[1]);
+  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
+      o[0] as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
+  checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
+      o[1] as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
 }
 
 core.int
@@ -2282,7 +2376,8 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(o.instance
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
     unittest.expect(o.loggingEnabled, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateMask, unittest.equals('foo'));
@@ -2315,7 +2410,8 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest(
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest <
       3) {
     unittest.expect(o.updateMask, unittest.equals('foo'));
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(o.workerPool
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest--;
 }
@@ -2364,8 +2460,9 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(
-        o.accelerator);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(o
+            .accelerator
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig);
     unittest.expect(o.diskSizeGb, unittest.equals('foo'));
     unittest.expect(o.diskType, unittest.equals('foo'));
     checkUnnamed5175(o.labels);
@@ -2374,8 +2471,9 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
     unittest.expect(o.minCpuPlatform, unittest.equals('foo'));
     unittest.expect(o.networkAccess, unittest.equals('foo'));
     unittest.expect(o.reserved, unittest.isTrue);
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig(
-        o.soleTenancy);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig(o
+            .soleTenancy
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig);
     unittest.expect(o.vmImage, unittest.equals('foo'));
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig--;
@@ -2407,12 +2505,14 @@ void checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool++;
   if (buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool <
       3) {
-    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(o.autoscale);
+    checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(o.autoscale
+        as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale);
     unittest.expect(o.channel, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
-        o.workerConfig);
+        o.workerConfig
+            as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig);
     unittest.expect(o.workerCount, unittest.equals('foo'));
   }
   buildCounterGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool--;
@@ -2459,7 +2559,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2Blob(
   buildCounterGoogleDevtoolsRemoteworkersV1test2Blob++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2Blob < 3) {
     unittest.expect(o.contents, unittest.equals('foo'));
-    checkGoogleDevtoolsRemoteworkersV1test2Digest(o.digest);
+    checkGoogleDevtoolsRemoteworkersV1test2Digest(
+        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2Blob--;
 }
@@ -2482,7 +2583,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandOutputs(
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs < 3) {
     unittest.expect(o.exitCode, unittest.equals(42));
-    checkGoogleDevtoolsRemoteworkersV1test2Digest(o.outputs);
+    checkGoogleDevtoolsRemoteworkersV1test2Digest(
+        o.outputs as api.GoogleDevtoolsRemoteworkersV1test2Digest);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandOutputs--;
 }
@@ -2576,9 +2678,10 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandResult(
     unittest.expect(o.duration, unittest.equals('foo'));
     unittest.expect(o.exitCode, unittest.equals(42));
     checkUnnamed5177(o.metadata);
-    checkGoogleDevtoolsRemoteworkersV1test2Digest(o.outputs);
+    checkGoogleDevtoolsRemoteworkersV1test2Digest(
+        o.outputs as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     unittest.expect(o.overhead, unittest.equals('foo'));
-    checkGoogleRpcStatus(o.status);
+    checkGoogleRpcStatus(o.status as api.GoogleRpcStatus);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandResult--;
 }
@@ -2602,10 +2705,12 @@ void checkGoogleDevtoolsRemoteworkersV1test2CommandTask(
     api.GoogleDevtoolsRemoteworkersV1test2CommandTask o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask < 3) {
-    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(
-        o.expectedOutputs);
-    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(o.inputs);
-    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(o.timeouts);
+    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(o.expectedOutputs
+        as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs);
+    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
+        o.inputs as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs);
+    checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(o.timeouts
+        as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts);
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTask--;
 }
@@ -2641,9 +2746,11 @@ void checkUnnamed5179(
         o) {
   unittest.expect(o, unittest.hasLength(2));
   checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable(
-      o[0]);
+      o[0] as api
+          .GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable);
   checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable(
-      o[1]);
+      o[1] as api
+          .GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable);
 }
 
 core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> buildUnnamed5180() {
@@ -2656,8 +2763,10 @@ core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> buildUnnamed5180() {
 void checkUnnamed5180(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2Digest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemoteworkersV1test2Digest(o[0]);
-  checkGoogleDevtoolsRemoteworkersV1test2Digest(o[1]);
+  checkGoogleDevtoolsRemoteworkersV1test2Digest(
+      o[0] as api.GoogleDevtoolsRemoteworkersV1test2Digest);
+  checkGoogleDevtoolsRemoteworkersV1test2Digest(
+      o[1] as api.GoogleDevtoolsRemoteworkersV1test2Digest);
 }
 
 core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> buildUnnamed5181() {
@@ -2669,8 +2778,10 @@ core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> buildUnnamed5181() {
 
 void checkUnnamed5181(core.List<api.GoogleDevtoolsRemoteworkersV1test2Blob> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemoteworkersV1test2Blob(o[0]);
-  checkGoogleDevtoolsRemoteworkersV1test2Blob(o[1]);
+  checkGoogleDevtoolsRemoteworkersV1test2Blob(
+      o[0] as api.GoogleDevtoolsRemoteworkersV1test2Blob);
+  checkGoogleDevtoolsRemoteworkersV1test2Blob(
+      o[1] as api.GoogleDevtoolsRemoteworkersV1test2Blob);
 }
 
 core.int buildCounterGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs = 0;
@@ -2843,8 +2954,10 @@ core.List<api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata>
 void checkUnnamed5184(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(o[0]);
-  checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(o[1]);
+  checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
+      o[0] as api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata);
+  checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
+      o[1] as api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata);
 }
 
 core.List<api.GoogleDevtoolsRemoteworkersV1test2FileMetadata>
@@ -2858,8 +2971,10 @@ core.List<api.GoogleDevtoolsRemoteworkersV1test2FileMetadata>
 void checkUnnamed5185(
     core.List<api.GoogleDevtoolsRemoteworkersV1test2FileMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(o[0]);
-  checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(o[1]);
+  checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
+      o[0] as api.GoogleDevtoolsRemoteworkersV1test2FileMetadata);
+  checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
+      o[1] as api.GoogleDevtoolsRemoteworkersV1test2FileMetadata);
 }
 
 core.int buildCounterGoogleDevtoolsRemoteworkersV1test2Directory = 0;
@@ -2902,7 +3017,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
     api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata o) {
   buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata < 3) {
-    checkGoogleDevtoolsRemoteworkersV1test2Digest(o.digest);
+    checkGoogleDevtoolsRemoteworkersV1test2Digest(
+        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     unittest.expect(o.path, unittest.equals('foo'));
   }
   buildCounterGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata--;
@@ -2928,7 +3044,8 @@ void checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
   buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata++;
   if (buildCounterGoogleDevtoolsRemoteworkersV1test2FileMetadata < 3) {
     unittest.expect(o.contents, unittest.equals('foo'));
-    checkGoogleDevtoolsRemoteworkersV1test2Digest(o.digest);
+    checkGoogleDevtoolsRemoteworkersV1test2Digest(
+        o.digest as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     unittest.expect(o.isExecutable, unittest.isTrue);
     unittest.expect(o.path, unittest.equals('foo'));
   }
@@ -3012,7 +3129,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkGoogleRpcStatus(o.error);
+    checkGoogleRpcStatus(o.error as api.GoogleRpcStatus);
     checkUnnamed5186(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5187(o.response);
@@ -3103,7 +3220,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Action();
       var od = api.BuildBazelRemoteExecutionV2Action.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Action(od);
+      checkBuildBazelRemoteExecutionV2Action(
+          od as api.BuildBazelRemoteExecutionV2Action);
     });
   });
 
@@ -3115,7 +3233,8 @@ void main() {
       var od =
           api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities.fromJson(
               o.toJson());
-      checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(od);
+      checkBuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities(
+          od as api.BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities);
     });
   });
 
@@ -3123,7 +3242,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2ActionResult();
       var od = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2ActionResult(od);
+      checkBuildBazelRemoteExecutionV2ActionResult(
+          od as api.BuildBazelRemoteExecutionV2ActionResult);
     });
   });
 
@@ -3133,7 +3253,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(od);
+      checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(
+          od as api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest);
     });
   });
 
@@ -3143,7 +3264,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(od);
+      checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
+          od as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse);
     });
   });
 
@@ -3154,7 +3276,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse
           .fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(od);
+      checkBuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse(
+          od as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse);
     });
   });
 
@@ -3164,7 +3287,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(od);
+      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(
+          od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest);
     });
   });
 
@@ -3175,7 +3299,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest
           .fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(od);
+      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest(
+          od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest);
     });
   });
 
@@ -3185,7 +3310,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(od);
+      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(
+          od as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse);
     });
   });
 
@@ -3197,7 +3323,8 @@ void main() {
           buildBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse();
       var od = api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse
           .fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(od);
+      checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse(od
+          as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse);
     });
   });
 
@@ -3206,7 +3333,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2CacheCapabilities();
       var od =
           api.BuildBazelRemoteExecutionV2CacheCapabilities.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2CacheCapabilities(od);
+      checkBuildBazelRemoteExecutionV2CacheCapabilities(
+          od as api.BuildBazelRemoteExecutionV2CacheCapabilities);
     });
   });
 
@@ -3214,7 +3342,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Command();
       var od = api.BuildBazelRemoteExecutionV2Command.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Command(od);
+      checkBuildBazelRemoteExecutionV2Command(
+          od as api.BuildBazelRemoteExecutionV2Command);
     });
   });
 
@@ -3225,7 +3354,8 @@ void main() {
       var od =
           api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable.fromJson(
               o.toJson());
-      checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(od);
+      checkBuildBazelRemoteExecutionV2CommandEnvironmentVariable(
+          od as api.BuildBazelRemoteExecutionV2CommandEnvironmentVariable);
     });
   });
 
@@ -3233,7 +3363,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Digest();
       var od = api.BuildBazelRemoteExecutionV2Digest.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Digest(od);
+      checkBuildBazelRemoteExecutionV2Digest(
+          od as api.BuildBazelRemoteExecutionV2Digest);
     });
   });
 
@@ -3241,7 +3372,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Directory();
       var od = api.BuildBazelRemoteExecutionV2Directory.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Directory(od);
+      checkBuildBazelRemoteExecutionV2Directory(
+          od as api.BuildBazelRemoteExecutionV2Directory);
     });
   });
 
@@ -3250,7 +3382,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2DirectoryNode();
       var od =
           api.BuildBazelRemoteExecutionV2DirectoryNode.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2DirectoryNode(od);
+      checkBuildBazelRemoteExecutionV2DirectoryNode(
+          od as api.BuildBazelRemoteExecutionV2DirectoryNode);
     });
   });
 
@@ -3260,7 +3393,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecuteOperationMetadata();
       var od = api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecuteOperationMetadata(od);
+      checkBuildBazelRemoteExecutionV2ExecuteOperationMetadata(
+          od as api.BuildBazelRemoteExecutionV2ExecuteOperationMetadata);
     });
   });
 
@@ -3269,7 +3403,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecuteRequest();
       var od =
           api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecuteRequest(od);
+      checkBuildBazelRemoteExecutionV2ExecuteRequest(
+          od as api.BuildBazelRemoteExecutionV2ExecuteRequest);
     });
   });
 
@@ -3278,7 +3413,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecuteResponse();
       var od =
           api.BuildBazelRemoteExecutionV2ExecuteResponse.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecuteResponse(od);
+      checkBuildBazelRemoteExecutionV2ExecuteResponse(
+          od as api.BuildBazelRemoteExecutionV2ExecuteResponse);
     });
   });
 
@@ -3288,7 +3424,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecutedActionMetadata();
       var od = api.BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(od);
+      checkBuildBazelRemoteExecutionV2ExecutedActionMetadata(
+          od as api.BuildBazelRemoteExecutionV2ExecutedActionMetadata);
     });
   });
 
@@ -3298,7 +3435,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecutionCapabilities();
       var od = api.BuildBazelRemoteExecutionV2ExecutionCapabilities.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecutionCapabilities(od);
+      checkBuildBazelRemoteExecutionV2ExecutionCapabilities(
+          od as api.BuildBazelRemoteExecutionV2ExecutionCapabilities);
     });
   });
 
@@ -3307,7 +3445,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ExecutionPolicy();
       var od =
           api.BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2ExecutionPolicy(od);
+      checkBuildBazelRemoteExecutionV2ExecutionPolicy(
+          od as api.BuildBazelRemoteExecutionV2ExecutionPolicy);
     });
   });
 
@@ -3315,7 +3454,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2FileNode();
       var od = api.BuildBazelRemoteExecutionV2FileNode.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2FileNode(od);
+      checkBuildBazelRemoteExecutionV2FileNode(
+          od as api.BuildBazelRemoteExecutionV2FileNode);
     });
   });
 
@@ -3325,7 +3465,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsRequest();
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(od);
+      checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(
+          od as api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest);
     });
   });
 
@@ -3335,7 +3476,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2FindMissingBlobsResponse();
       var od = api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(od);
+      checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(
+          od as api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse);
     });
   });
 
@@ -3344,7 +3486,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2GetTreeResponse();
       var od =
           api.BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2GetTreeResponse(od);
+      checkBuildBazelRemoteExecutionV2GetTreeResponse(
+          od as api.BuildBazelRemoteExecutionV2GetTreeResponse);
     });
   });
 
@@ -3352,7 +3495,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2LogFile();
       var od = api.BuildBazelRemoteExecutionV2LogFile.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2LogFile(od);
+      checkBuildBazelRemoteExecutionV2LogFile(
+          od as api.BuildBazelRemoteExecutionV2LogFile);
     });
   });
 
@@ -3360,7 +3504,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2NodeProperty();
       var od = api.BuildBazelRemoteExecutionV2NodeProperty.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2NodeProperty(od);
+      checkBuildBazelRemoteExecutionV2NodeProperty(
+          od as api.BuildBazelRemoteExecutionV2NodeProperty);
     });
   });
 
@@ -3369,7 +3514,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2OutputDirectory();
       var od =
           api.BuildBazelRemoteExecutionV2OutputDirectory.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2OutputDirectory(od);
+      checkBuildBazelRemoteExecutionV2OutputDirectory(
+          od as api.BuildBazelRemoteExecutionV2OutputDirectory);
     });
   });
 
@@ -3377,7 +3523,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2OutputFile();
       var od = api.BuildBazelRemoteExecutionV2OutputFile.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2OutputFile(od);
+      checkBuildBazelRemoteExecutionV2OutputFile(
+          od as api.BuildBazelRemoteExecutionV2OutputFile);
     });
   });
 
@@ -3386,7 +3533,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2OutputSymlink();
       var od =
           api.BuildBazelRemoteExecutionV2OutputSymlink.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2OutputSymlink(od);
+      checkBuildBazelRemoteExecutionV2OutputSymlink(
+          od as api.BuildBazelRemoteExecutionV2OutputSymlink);
     });
   });
 
@@ -3394,7 +3542,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Platform();
       var od = api.BuildBazelRemoteExecutionV2Platform.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Platform(od);
+      checkBuildBazelRemoteExecutionV2Platform(
+          od as api.BuildBazelRemoteExecutionV2Platform);
     });
   });
 
@@ -3403,7 +3552,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2PlatformProperty();
       var od =
           api.BuildBazelRemoteExecutionV2PlatformProperty.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2PlatformProperty(od);
+      checkBuildBazelRemoteExecutionV2PlatformProperty(
+          od as api.BuildBazelRemoteExecutionV2PlatformProperty);
     });
   });
 
@@ -3413,7 +3563,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2PriorityCapabilities();
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2PriorityCapabilities(od);
+      checkBuildBazelRemoteExecutionV2PriorityCapabilities(
+          od as api.BuildBazelRemoteExecutionV2PriorityCapabilities);
     });
   });
 
@@ -3425,7 +3576,8 @@ void main() {
           buildBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange();
       var od = api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange
           .fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(od);
+      checkBuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange(od
+          as api.BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange);
     });
   });
 
@@ -3434,7 +3586,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2RequestMetadata();
       var od =
           api.BuildBazelRemoteExecutionV2RequestMetadata.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2RequestMetadata(od);
+      checkBuildBazelRemoteExecutionV2RequestMetadata(
+          od as api.BuildBazelRemoteExecutionV2RequestMetadata);
     });
   });
 
@@ -3444,7 +3597,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ResultsCachePolicy();
       var od = api.BuildBazelRemoteExecutionV2ResultsCachePolicy.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2ResultsCachePolicy(od);
+      checkBuildBazelRemoteExecutionV2ResultsCachePolicy(
+          od as api.BuildBazelRemoteExecutionV2ResultsCachePolicy);
     });
   });
 
@@ -3454,7 +3608,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2ServerCapabilities();
       var od = api.BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2ServerCapabilities(od);
+      checkBuildBazelRemoteExecutionV2ServerCapabilities(
+          od as api.BuildBazelRemoteExecutionV2ServerCapabilities);
     });
   });
 
@@ -3462,7 +3617,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2SymlinkNode();
       var od = api.BuildBazelRemoteExecutionV2SymlinkNode.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2SymlinkNode(od);
+      checkBuildBazelRemoteExecutionV2SymlinkNode(
+          od as api.BuildBazelRemoteExecutionV2SymlinkNode);
     });
   });
 
@@ -3470,7 +3626,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2ToolDetails();
       var od = api.BuildBazelRemoteExecutionV2ToolDetails.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2ToolDetails(od);
+      checkBuildBazelRemoteExecutionV2ToolDetails(
+          od as api.BuildBazelRemoteExecutionV2ToolDetails);
     });
   });
 
@@ -3478,7 +3635,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelRemoteExecutionV2Tree();
       var od = api.BuildBazelRemoteExecutionV2Tree.fromJson(o.toJson());
-      checkBuildBazelRemoteExecutionV2Tree(od);
+      checkBuildBazelRemoteExecutionV2Tree(
+          od as api.BuildBazelRemoteExecutionV2Tree);
     });
   });
 
@@ -3488,7 +3646,8 @@ void main() {
       var o = buildBuildBazelRemoteExecutionV2WaitExecutionRequest();
       var od = api.BuildBazelRemoteExecutionV2WaitExecutionRequest.fromJson(
           o.toJson());
-      checkBuildBazelRemoteExecutionV2WaitExecutionRequest(od);
+      checkBuildBazelRemoteExecutionV2WaitExecutionRequest(
+          od as api.BuildBazelRemoteExecutionV2WaitExecutionRequest);
     });
   });
 
@@ -3496,7 +3655,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuildBazelSemverSemVer();
       var od = api.BuildBazelSemverSemVer.fromJson(o.toJson());
-      checkBuildBazelSemverSemVer(od);
+      checkBuildBazelSemverSemVer(od as api.BuildBazelSemverSemVer);
     });
   });
 
@@ -3505,7 +3664,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildbotCommandDurations();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandDurations.fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildbotCommandDurations(od);
+      checkGoogleDevtoolsRemotebuildbotCommandDurations(
+          od as api.GoogleDevtoolsRemotebuildbotCommandDurations);
     });
   });
 
@@ -3514,7 +3674,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildbotCommandEvents();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandEvents.fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildbotCommandEvents(od);
+      checkGoogleDevtoolsRemotebuildbotCommandEvents(
+          od as api.GoogleDevtoolsRemotebuildbotCommandEvents);
     });
   });
 
@@ -3523,7 +3684,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildbotCommandStatus();
       var od =
           api.GoogleDevtoolsRemotebuildbotCommandStatus.fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildbotCommandStatus(od);
+      checkGoogleDevtoolsRemotebuildbotCommandStatus(
+          od as api.GoogleDevtoolsRemotebuildbotCommandStatus);
     });
   });
 
@@ -3532,7 +3694,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsage();
       var od =
           api.GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildbotResourceUsage(od);
+      checkGoogleDevtoolsRemotebuildbotResourceUsage(
+          od as api.GoogleDevtoolsRemotebuildbotResourceUsage);
     });
   });
 
@@ -3542,7 +3705,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildbotResourceUsageStat();
       var od = api.GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemotebuildbotResourceUsageStat(od);
+      checkGoogleDevtoolsRemotebuildbotResourceUsageStat(
+          od as api.GoogleDevtoolsRemotebuildbotResourceUsageStat);
     });
   });
 
@@ -3555,7 +3719,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig);
     });
   });
 
@@ -3566,7 +3732,8 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
               o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale(
+          od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale);
     });
   });
 
@@ -3580,7 +3747,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest);
     });
   });
 
@@ -3594,7 +3762,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest);
     });
   });
 
@@ -3608,7 +3777,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteInstanceRequest);
     });
   });
 
@@ -3622,7 +3792,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaDeleteWorkerPoolRequest);
     });
   });
 
@@ -3634,7 +3805,8 @@ void main() {
           buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy();
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy
           .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy(od
+          as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy);
     });
   });
 
@@ -3647,8 +3819,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(
-          od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature);
     });
   });
 
@@ -3661,7 +3834,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetInstanceRequest);
     });
   });
 
@@ -3674,8 +3849,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest(
-          od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaGetWorkerPoolRequest);
     });
   });
 
@@ -3686,7 +3862,8 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
               o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance(
+          od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance);
     });
   });
 
@@ -3699,8 +3876,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest(
-          od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesRequest);
     });
   });
 
@@ -3714,7 +3892,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse);
     });
   });
 
@@ -3728,7 +3907,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsRequest);
     });
   });
 
@@ -3742,7 +3922,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse);
     });
   });
 
@@ -3755,7 +3936,9 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
               .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig(od
+          as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig);
     });
   });
 
@@ -3769,7 +3952,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest);
     });
   });
 
@@ -3783,7 +3967,8 @@ void main() {
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest(
-          od);
+          od as api
+              .GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest);
     });
   });
 
@@ -3794,7 +3979,8 @@ void main() {
       var o = buildGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig();
       var od = api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig
           .fromJson(o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig(
+          od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig);
     });
   });
 
@@ -3806,7 +3992,8 @@ void main() {
       var od =
           api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
               o.toJson());
-      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(od);
+      checkGoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool(
+          od as api.GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool);
     });
   });
 
@@ -3815,7 +4002,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2AdminTemp();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2AdminTemp.fromJson(o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2AdminTemp(od);
+      checkGoogleDevtoolsRemoteworkersV1test2AdminTemp(
+          od as api.GoogleDevtoolsRemoteworkersV1test2AdminTemp);
     });
   });
 
@@ -3823,7 +4011,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Blob();
       var od = api.GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2Blob(od);
+      checkGoogleDevtoolsRemoteworkersV1test2Blob(
+          od as api.GoogleDevtoolsRemoteworkersV1test2Blob);
     });
   });
 
@@ -3833,7 +4022,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOutputs();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandOutputs(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandOutputs(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandOutputs);
     });
   });
 
@@ -3843,7 +4033,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandOverhead();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandOverhead(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandOverhead(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandOverhead);
     });
   });
 
@@ -3853,7 +4044,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandResult();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandResult.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandResult(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandResult(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandResult);
     });
   });
 
@@ -3863,7 +4055,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTask();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTask.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandTask(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandTask(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandTask);
     });
   });
 
@@ -3873,7 +4066,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs();
       var od = api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputs(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs);
     });
   });
 
@@ -3887,7 +4081,8 @@ void main() {
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable
               .fromJson(o.toJson());
       checkGoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable(
-          od);
+          od as api
+              .GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable);
     });
   });
 
@@ -3898,7 +4093,8 @@ void main() {
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs.fromJson(
               o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs);
     });
   });
 
@@ -3909,7 +4105,8 @@ void main() {
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts.fromJson(
               o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(od);
+      checkGoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts(
+          od as api.GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts);
     });
   });
 
@@ -3918,7 +4115,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Digest();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2Digest(od);
+      checkGoogleDevtoolsRemoteworkersV1test2Digest(
+          od as api.GoogleDevtoolsRemoteworkersV1test2Digest);
     });
   });
 
@@ -3927,7 +4125,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2Directory();
       var od =
           api.GoogleDevtoolsRemoteworkersV1test2Directory.fromJson(o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2Directory(od);
+      checkGoogleDevtoolsRemoteworkersV1test2Directory(
+          od as api.GoogleDevtoolsRemoteworkersV1test2Directory);
     });
   });
 
@@ -3937,7 +4136,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata();
       var od = api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(od);
+      checkGoogleDevtoolsRemoteworkersV1test2DirectoryMetadata(
+          od as api.GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata);
     });
   });
 
@@ -3947,7 +4147,8 @@ void main() {
       var o = buildGoogleDevtoolsRemoteworkersV1test2FileMetadata();
       var od = api.GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(
           o.toJson());
-      checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(od);
+      checkGoogleDevtoolsRemoteworkersV1test2FileMetadata(
+          od as api.GoogleDevtoolsRemoteworkersV1test2FileMetadata);
     });
   });
 
@@ -3955,7 +4156,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
-      checkGoogleLongrunningOperation(od);
+      checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
 
@@ -3963,7 +4164,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleRpcStatus();
       var od = api.GoogleRpcStatus.fromJson(o.toJson());
-      checkGoogleRpcStatus(od);
+      checkGoogleRpcStatus(od as api.GoogleRpcStatus);
     });
   });
 
@@ -4028,7 +4229,8 @@ void main() {
               inlineStdout: arg_inlineStdout,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ActionResult(response);
+        checkBuildBazelRemoteExecutionV2ActionResult(
+            response as api.BuildBazelRemoteExecutionV2ActionResult);
       })));
     });
 
@@ -4042,8 +4244,10 @@ void main() {
       var arg_resultsCachePolicy_priority = 42;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(json);
-        checkBuildBazelRemoteExecutionV2ActionResult(obj);
+        var obj = api.BuildBazelRemoteExecutionV2ActionResult.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2ActionResult(
+            obj as api.BuildBazelRemoteExecutionV2ActionResult);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4089,7 +4293,8 @@ void main() {
               resultsCachePolicy_priority: arg_resultsCachePolicy_priority,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ActionResult(response);
+        checkBuildBazelRemoteExecutionV2ActionResult(
+            response as api.BuildBazelRemoteExecutionV2ActionResult);
       })));
     });
   });
@@ -4102,8 +4307,10 @@ void main() {
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(json);
-        checkBuildBazelRemoteExecutionV2ExecuteRequest(obj);
+        var obj = api.BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2ExecuteRequest(
+            obj as api.BuildBazelRemoteExecutionV2ExecuteRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4143,7 +4350,8 @@ void main() {
       res
           .execute(arg_request, arg_instanceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
   });
@@ -4156,9 +4364,10 @@ void main() {
       var arg_instanceName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(json);
-        checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(obj);
+        var obj = api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2BatchReadBlobsRequest(
+            obj as api.BuildBazelRemoteExecutionV2BatchReadBlobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4199,7 +4408,8 @@ void main() {
       res
           .batchRead(arg_request, arg_instanceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(response);
+        checkBuildBazelRemoteExecutionV2BatchReadBlobsResponse(
+            response as api.BuildBazelRemoteExecutionV2BatchReadBlobsResponse);
       })));
     });
 
@@ -4213,8 +4423,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest.fromJson(
-                json);
-        checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2BatchUpdateBlobsRequest(
+            obj as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4255,7 +4466,8 @@ void main() {
       res
           .batchUpdate(arg_request, arg_instanceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(response);
+        checkBuildBazelRemoteExecutionV2BatchUpdateBlobsResponse(response
+            as api.BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse);
       })));
     });
 
@@ -4269,8 +4481,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest.fromJson(
-                json);
-        checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2FindMissingBlobsRequest(
+            obj as api.BuildBazelRemoteExecutionV2FindMissingBlobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4311,7 +4524,8 @@ void main() {
       res
           .findMissing(arg_request, arg_instanceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(response);
+        checkBuildBazelRemoteExecutionV2FindMissingBlobsResponse(response
+            as api.BuildBazelRemoteExecutionV2FindMissingBlobsResponse);
       })));
     });
 
@@ -4371,7 +4585,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2GetTreeResponse(response);
+        checkBuildBazelRemoteExecutionV2GetTreeResponse(
+            response as api.BuildBazelRemoteExecutionV2GetTreeResponse);
       })));
     });
   });
@@ -4384,9 +4599,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.BuildBazelRemoteExecutionV2WaitExecutionRequest.fromJson(json);
-        checkBuildBazelRemoteExecutionV2WaitExecutionRequest(obj);
+        var obj = api.BuildBazelRemoteExecutionV2WaitExecutionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBuildBazelRemoteExecutionV2WaitExecutionRequest(
+            obj as api.BuildBazelRemoteExecutionV2WaitExecutionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4426,7 +4642,8 @@ void main() {
       res
           .waitExecution(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
   });
@@ -4477,7 +4694,8 @@ void main() {
       res
           .getCapabilities(arg_instanceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuildBazelRemoteExecutionV2ServerCapabilities(response);
+        checkBuildBazelRemoteExecutionV2ServerCapabilities(
+            response as api.BuildBazelRemoteExecutionV2ServerCapabilities);
       })));
     });
   });
