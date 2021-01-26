@@ -2,12 +2,12 @@
 # See https://dart.dev/tools/pub/glossary#lockfile
 packages:
   _discoveryapis_commons:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
-      name: _discoveryapis_commons
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.0"
+      path: "../discoveryapis_commons"
+      relative: true
+    source: path
+    version: "0.3.0-dev"
   _fe_analyzer_shared:
     dependency: transitive
     description:

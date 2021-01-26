@@ -5,8 +5,13 @@ environment:
   sdk: '>=2.10.0 <3.0.0'
 
 dependencies:
-  discoveryapis_generator:
-    path: ../discoveryapis_generator
+  discoveryapis_generator: any
   io: ^0.3.3
   pool: ^1.4.0
   yaml: ^2.1.0
+
+dependency_overrides:
+  _discoveryapis_commons:
+    path: ../discoveryapis_commons
+  discoveryapis_generator:
+    path: ../discoveryapis_generator
