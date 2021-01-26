@@ -295,15 +295,14 @@ class MultipartMediaUploader {
 
     final bodyController = StreamController<List<int>>()
       ..add(utf8.encode(bodyHead));
-    bodyController
-        .addStream(base64MediaStream)
-        .then((_) {
-          bodyController.add(utf8.encode(bodyTail));
-        })
-        .catchError(bodyController.addError)
-        .then((_) {
-          bodyController.close();
-        });
+    bodyController.addStream(base64MediaStream).then((_) {
+      bodyController.add(utf8.encode(bodyTail));
+    }).catchError((e) {
+      bodyController.addError(e);
+      return null;
+    }).then((_) {
+      bodyController.close();
+    });
 
     final headers = {
       'user-agent': _userAgent,
