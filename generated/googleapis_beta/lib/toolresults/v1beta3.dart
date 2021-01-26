@@ -3018,7 +3018,7 @@ class CPUInfo {
       cpuProcessor = _json['cpuProcessor'] as core.String;
     }
     if (_json.containsKey('cpuSpeedInGhz')) {
-      cpuSpeedInGhz = _json['cpuSpeedInGhz'].toDouble();
+      cpuSpeedInGhz = (_json['cpuSpeedInGhz'] as core.num).toDouble();
     }
     if (_json.containsKey('numberOfCores')) {
       numberOfCores = _json['numberOfCores'] as core.int;
@@ -5218,7 +5218,7 @@ class PerfSample {
       sampleTime = Timestamp.fromJson(_json['sampleTime']);
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -6362,7 +6362,7 @@ class SuggestionProto {
       screenId = _json['screenId'] as core.String;
     }
     if (_json.containsKey('secondaryPriority')) {
-      secondaryPriority = _json['secondaryPriority'].toDouble();
+      secondaryPriority = (_json['secondaryPriority'] as core.num).toDouble();
     }
     if (_json.containsKey('shortMessage')) {
       shortMessage = SafeHtmlProto.fromJson(_json['shortMessage']);

@@ -28,8 +28,8 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
 
   if (credentials is Map && credentials['type'] == 'authorized_user') {
     final clientId = ClientId(
-      credentials['client_id'],
-      credentials['client_secret'],
+      credentials['client_id'] as String,
+      credentials['client_secret'] as String?,
     );
     return AutoRefreshingClient(
       baseClient,
@@ -39,12 +39,12 @@ Future<AutoRefreshingAuthClient> fromApplicationsCredentialsFile(
         AccessCredentials(
           // Hack: Create empty credentials that have expired.
           AccessToken('Bearer', '', DateTime(0).toUtc()),
-          credentials['refresh_token'],
+          credentials['refresh_token'] as String?,
           scopes,
         ),
         baseClient,
       ),
-      quotaProject: credentials['quota_project_id'],
+      quotaProject: credentials['quota_project_id'] as String?,
     );
   }
   return await clientViaServiceAccount(

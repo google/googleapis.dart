@@ -12014,7 +12014,7 @@ class LoyaltyPoints {
       pointsValue = _json['pointsValue'] as core.String;
     }
     if (_json.containsKey('ratio')) {
-      ratio = _json['ratio'].toDouble();
+      ratio = (_json['ratio'] as core.num).toDouble();
     }
   }
 
@@ -18780,7 +18780,7 @@ class Product {
       displayAdsTitle = _json['displayAdsTitle'] as core.String;
     }
     if (_json.containsKey('displayAdsValue')) {
-      displayAdsValue = _json['displayAdsValue'].toDouble();
+      displayAdsValue = (_json['displayAdsValue'] as core.num).toDouble();
     }
     if (_json.containsKey('energyEfficiencyClass')) {
       energyEfficiencyClass = _json['energyEfficiencyClass'] as core.String;
@@ -19392,7 +19392,7 @@ class ProductShippingDimension {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -19422,7 +19422,7 @@ class ProductShippingWeight {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -19778,7 +19778,7 @@ class ProductTax {
       postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('rate')) {
-      rate = _json['rate'].toDouble();
+      rate = (_json['rate'] as core.num).toDouble();
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
@@ -19856,7 +19856,7 @@ class ProductUnitPricingMeasure {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 

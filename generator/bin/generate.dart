@@ -68,7 +68,7 @@ void main(List<String> arguments) {
   final commandOptions = options.command;
   final subCommands = ['download', 'generate', 'run_config'];
 
-  if (options['help']) {
+  if (options['help'] as bool) {
     dieWithUsage();
   } else if (commandOptions == null ||
       !subCommands.contains(commandOptions.name)) {
@@ -77,7 +77,7 @@ void main(List<String> arguments) {
 
   switch (commandOptions.name) {
     case 'download':
-      downloadDiscoveryDocuments(commandOptions['output-dir']);
+      downloadDiscoveryDocuments(commandOptions['output-dir'] as String);
       break;
     case 'run_config':
       if (commandOptions.command == null ||
@@ -86,7 +86,7 @@ void main(List<String> arguments) {
             '`download` and `generate`.');
       }
 
-      final configFile = commandOptions['config-file'];
+      final configFile = commandOptions['config-file'] as String;
       final generateNullSafe = commandOptions['generate-null-safe'] as bool;
       final deleteExisting = commandOptions['delete-existing'] as bool;
       switch (commandOptions.command.name) {

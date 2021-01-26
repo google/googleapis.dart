@@ -1637,7 +1637,7 @@ class Distribution {
 
   Distribution.fromJson(core.Map _json) {
     if (_json.containsKey('marketShare')) {
-      marketShare = _json['marketShare'].toDouble();
+      marketShare = (_json['marketShare'] as core.num).toDouble();
     }
     if (_json.containsKey('measurementTime')) {
       measurementTime = _json['measurementTime'] as core.String;
@@ -3906,19 +3906,20 @@ class TrafficRule {
 
   TrafficRule.fromJson(core.Map _json) {
     if (_json.containsKey('bandwidth')) {
-      bandwidth = _json['bandwidth'].toDouble();
+      bandwidth = (_json['bandwidth'] as core.num).toDouble();
     }
     if (_json.containsKey('burst')) {
-      burst = _json['burst'].toDouble();
+      burst = (_json['burst'] as core.num).toDouble();
     }
     if (_json.containsKey('delay')) {
       delay = _json['delay'] as core.String;
     }
     if (_json.containsKey('packetDuplicationRatio')) {
-      packetDuplicationRatio = _json['packetDuplicationRatio'].toDouble();
+      packetDuplicationRatio =
+          (_json['packetDuplicationRatio'] as core.num).toDouble();
     }
     if (_json.containsKey('packetLossRatio')) {
-      packetLossRatio = _json['packetLossRatio'].toDouble();
+      packetLossRatio = (_json['packetLossRatio'] as core.num).toDouble();
     }
   }
 

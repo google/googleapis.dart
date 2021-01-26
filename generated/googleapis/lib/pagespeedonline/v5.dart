@@ -170,7 +170,7 @@ class AuditRefs {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('weight')) {
-      weight = _json['weight'].toDouble();
+      weight = (_json['weight'] as core.num).toDouble();
     }
   }
 
@@ -212,7 +212,7 @@ class Bucket {
       min = _json['min'] as core.int;
     }
     if (_json.containsKey('proportion')) {
-      proportion = _json['proportion'].toDouble();
+      proportion = (_json['proportion'] as core.num).toDouble();
     }
   }
 
@@ -389,7 +389,7 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('benchmarkIndex')) {
-      benchmarkIndex = _json['benchmarkIndex'].toDouble();
+      benchmarkIndex = (_json['benchmarkIndex'] as core.num).toDouble();
     }
     if (_json.containsKey('hostUserAgent')) {
       hostUserAgent = _json['hostUserAgent'] as core.String;
@@ -508,7 +508,7 @@ class LighthouseAuditResultV5 {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('numericValue')) {
-      numericValue = _json['numericValue'].toDouble();
+      numericValue = (_json['numericValue'] as core.num).toDouble();
     }
     if (_json.containsKey('score')) {
       score = _json['score'] as core.Object;
@@ -1237,7 +1237,7 @@ class Timing {
 
   Timing.fromJson(core.Map _json) {
     if (_json.containsKey('total')) {
-      total = _json['total'].toDouble();
+      total = (_json['total'] as core.num).toDouble();
     }
   }
 

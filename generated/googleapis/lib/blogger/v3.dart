@@ -3707,10 +3707,10 @@ class PostLocation {
 
   PostLocation.fromJson(core.Map _json) {
     if (_json.containsKey('lat')) {
-      lat = _json['lat'].toDouble();
+      lat = (_json['lat'] as core.num).toDouble();
     }
     if (_json.containsKey('lng')) {
-      lng = _json['lng'].toDouble();
+      lng = (_json['lng'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;

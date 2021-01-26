@@ -7462,10 +7462,10 @@ class BuildingCoordinates {
 
   BuildingCoordinates.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -7865,7 +7865,7 @@ class ChromeOsDeviceActiveTimeRanges {
       activeTime = _json['activeTime'] as core.int;
     }
     if (_json.containsKey('date')) {
-      date = core.DateTime.parse(_json['date']);
+      date = core.DateTime.parse(_json['date'] as core.String);
     }
   }
 
@@ -7937,7 +7937,7 @@ class ChromeOsDeviceCpuStatusReports {
               .toList();
     }
     if (_json.containsKey('reportTime')) {
-      reportTime = core.DateTime.parse(_json['reportTime']);
+      reportTime = core.DateTime.parse(_json['reportTime'] as core.String);
     }
   }
 
@@ -7974,7 +7974,7 @@ class ChromeOsDeviceDeviceFiles {
 
   ChromeOsDeviceDeviceFiles.fromJson(core.Map _json) {
     if (_json.containsKey('createTime')) {
-      createTime = core.DateTime.parse(_json['createTime']);
+      createTime = core.DateTime.parse(_json['createTime'] as core.String);
     }
     if (_json.containsKey('downloadUrl')) {
       downloadUrl = _json['downloadUrl'] as core.String;
@@ -8138,7 +8138,7 @@ class ChromeOsDeviceSystemRamFreeReports {
 
   ChromeOsDeviceSystemRamFreeReports.fromJson(core.Map _json) {
     if (_json.containsKey('reportTime')) {
-      reportTime = core.DateTime.parse(_json['reportTime']);
+      reportTime = core.DateTime.parse(_json['reportTime'] as core.String);
     }
     if (_json.containsKey('systemRamFreeInfo')) {
       systemRamFreeInfo = (_json['systemRamFreeInfo'] as core.List)
@@ -8415,7 +8415,8 @@ class ChromeOsDevice {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastEnrollmentTime')) {
-      lastEnrollmentTime = core.DateTime.parse(_json['lastEnrollmentTime']);
+      lastEnrollmentTime =
+          core.DateTime.parse(_json['lastEnrollmentTime'] as core.String);
     }
     if (_json.containsKey('lastKnownNetwork')) {
       lastKnownNetwork = (_json['lastKnownNetwork'] as core.List)
@@ -8424,7 +8425,7 @@ class ChromeOsDevice {
           .toList();
     }
     if (_json.containsKey('lastSync')) {
-      lastSync = core.DateTime.parse(_json['lastSync']);
+      lastSync = core.DateTime.parse(_json['lastSync'] as core.String);
     }
     if (_json.containsKey('macAddress')) {
       macAddress = _json['macAddress'] as core.String;
@@ -8466,7 +8467,8 @@ class ChromeOsDevice {
       status = _json['status'] as core.String;
     }
     if (_json.containsKey('supportEndDate')) {
-      supportEndDate = core.DateTime.parse(_json['supportEndDate']);
+      supportEndDate =
+          core.DateTime.parse(_json['supportEndDate'] as core.String);
     }
     if (_json.containsKey('systemRamFreeReports')) {
       systemRamFreeReports = (_json['systemRamFreeReports'] as core.List)
@@ -8752,7 +8754,8 @@ class Customer {
       alternateEmail = _json['alternateEmail'] as core.String;
     }
     if (_json.containsKey('customerCreationTime')) {
-      customerCreationTime = core.DateTime.parse(_json['customerCreationTime']);
+      customerCreationTime =
+          core.DateTime.parse(_json['customerCreationTime'] as core.String);
     }
     if (_json.containsKey('customerDomain')) {
       customerDomain = _json['customerDomain'] as core.String;
@@ -9832,7 +9835,7 @@ class MobileDevice {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('firstSync')) {
-      firstSync = core.DateTime.parse(_json['firstSync']);
+      firstSync = core.DateTime.parse(_json['firstSync'] as core.String);
     }
     if (_json.containsKey('hardware')) {
       hardware = _json['hardware'] as core.String;
@@ -9850,7 +9853,7 @@ class MobileDevice {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lastSync')) {
-      lastSync = core.DateTime.parse(_json['lastSync']);
+      lastSync = core.DateTime.parse(_json['lastSync'] as core.String);
     }
     if (_json.containsKey('managedAccountIsOnOwnerProfile')) {
       managedAccountIsOnOwnerProfile =
@@ -10764,10 +10767,10 @@ class SchemaFieldSpecNumericIndexingSpec {
 
   SchemaFieldSpecNumericIndexingSpec.fromJson(core.Map _json) {
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
   }
 
@@ -11311,7 +11314,7 @@ class User {
           _json['changePasswordAtNextLogin'] as core.bool;
     }
     if (_json.containsKey('creationTime')) {
-      creationTime = core.DateTime.parse(_json['creationTime']);
+      creationTime = core.DateTime.parse(_json['creationTime'] as core.String);
     }
     if (_json.containsKey('customSchemas')) {
       customSchemas = commons.mapMap<core.Map, UserCustomProperties>(
@@ -11322,7 +11325,7 @@ class User {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('deletionTime')) {
-      deletionTime = core.DateTime.parse(_json['deletionTime']);
+      deletionTime = core.DateTime.parse(_json['deletionTime'] as core.String);
     }
     if (_json.containsKey('emails')) {
       emails = _json['emails'] as core.Object;
@@ -11377,7 +11380,8 @@ class User {
       languages = _json['languages'] as core.Object;
     }
     if (_json.containsKey('lastLoginTime')) {
-      lastLoginTime = core.DateTime.parse(_json['lastLoginTime']);
+      lastLoginTime =
+          core.DateTime.parse(_json['lastLoginTime'] as core.String);
     }
     if (_json.containsKey('locations')) {
       locations = _json['locations'] as core.Object;

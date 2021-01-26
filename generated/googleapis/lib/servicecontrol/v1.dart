@@ -1322,16 +1322,17 @@ class Distribution {
       linearBuckets = LinearBuckets.fromJson(_json['linearBuckets']);
     }
     if (_json.containsKey('maximum')) {
-      maximum = _json['maximum'].toDouble();
+      maximum = (_json['maximum'] as core.num).toDouble();
     }
     if (_json.containsKey('mean')) {
-      mean = _json['mean'].toDouble();
+      mean = (_json['mean'] as core.num).toDouble();
     }
     if (_json.containsKey('minimum')) {
-      minimum = _json['minimum'].toDouble();
+      minimum = (_json['minimum'] as core.num).toDouble();
     }
     if (_json.containsKey('sumOfSquaredDeviation')) {
-      sumOfSquaredDeviation = _json['sumOfSquaredDeviation'].toDouble();
+      sumOfSquaredDeviation =
+          (_json['sumOfSquaredDeviation'] as core.num).toDouble();
     }
   }
 
@@ -1410,7 +1411,7 @@ class Exemplar {
       timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -1447,7 +1448,7 @@ class ExplicitBuckets {
   ExplicitBuckets.fromJson(core.Map _json) {
     if (_json.containsKey('bounds')) {
       bounds = (_json['bounds'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -1482,13 +1483,13 @@ class ExponentialBuckets {
 
   ExponentialBuckets.fromJson(core.Map _json) {
     if (_json.containsKey('growthFactor')) {
-      growthFactor = _json['growthFactor'].toDouble();
+      growthFactor = (_json['growthFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('numFiniteBuckets')) {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('scale')) {
-      scale = _json['scale'].toDouble();
+      scale = (_json['scale'] as core.num).toDouble();
     }
   }
 
@@ -1731,10 +1732,10 @@ class LinearBuckets {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'].toDouble();
+      offset = (_json['offset'] as core.num).toDouble();
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
   }
 
@@ -2059,7 +2060,7 @@ class MetricValue {
       distributionValue = Distribution.fromJson(_json['distributionValue']);
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;

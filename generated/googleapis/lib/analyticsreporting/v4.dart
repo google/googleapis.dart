@@ -1095,7 +1095,7 @@ class GoalData {
       goalPreviousStep3 = _json['goalPreviousStep3'] as core.String;
     }
     if (_json.containsKey('goalValue')) {
-      goalValue = _json['goalValue'].toDouble();
+      goalValue = (_json['goalValue'] as core.num).toDouble();
     }
   }
 
@@ -1728,7 +1728,7 @@ class ProductData {
 
   ProductData.fromJson(core.Map _json) {
     if (_json.containsKey('itemRevenue')) {
-      itemRevenue = _json['itemRevenue'].toDouble();
+      itemRevenue = (_json['itemRevenue'] as core.num).toDouble();
     }
     if (_json.containsKey('productName')) {
       productName = _json['productName'] as core.String;
@@ -2403,7 +2403,7 @@ class SearchUserActivityResponse {
       nextPageToken = _json['nextPageToken'] as core.String;
     }
     if (_json.containsKey('sampleRate')) {
-      sampleRate = _json['sampleRate'].toDouble();
+      sampleRate = (_json['sampleRate'] as core.num).toDouble();
     }
     if (_json.containsKey('sessions')) {
       sessions = (_json['sessions'] as core.List)
@@ -2898,13 +2898,14 @@ class TransactionData {
       transactionId = _json['transactionId'] as core.String;
     }
     if (_json.containsKey('transactionRevenue')) {
-      transactionRevenue = _json['transactionRevenue'].toDouble();
+      transactionRevenue = (_json['transactionRevenue'] as core.num).toDouble();
     }
     if (_json.containsKey('transactionShipping')) {
-      transactionShipping = _json['transactionShipping'].toDouble();
+      transactionShipping =
+          (_json['transactionShipping'] as core.num).toDouble();
     }
     if (_json.containsKey('transactionTax')) {
-      transactionTax = _json['transactionTax'].toDouble();
+      transactionTax = (_json['transactionTax'] as core.num).toDouble();
     }
   }
 

@@ -117,10 +117,17 @@ import 'package:test/test.dart' as unittest;
 import '$apiImportPath' as api;
 
 class HttpServerMock extends http.BaseClient {
-  core.Function _callback;
+  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object) _callback;
   core.bool _expectJson;
 
-  void register(core.Function callback, core.bool expectJson) {
+  void register(
+    core.Future<http.StreamedResponse> Function(
+      http.BaseRequest bob,
+      core.Object foo,
+    )
+        callback,
+    core.bool expectJson,
+  ) {
     _callback = callback;
     _expectJson = expectJson;
   }
@@ -409,7 +416,8 @@ class MethodArgsTest extends TestHelper {
     ln('var query = $uriExpr.query;');
     ln('var queryOffset = 0;');
     ln('var queryMap = <core.String, core.List<core.String>>{};');
-    ln('void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);');
+    ln('void addQueryParam(core.String n, core.String v) => '
+        'queryMap.putIfAbsent(n, () => []).add(v);');
     ln(parseBoolPlaceholder);
     ln('if (query.isNotEmpty) {');
     ln("  for (var part in query.split('&')) {");

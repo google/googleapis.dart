@@ -3228,7 +3228,7 @@ class GoogleDevtoolsRemotebuildbotCommandEvents {
       dockerImageName = _json['dockerImageName'] as core.String;
     }
     if (_json.containsKey('inputCacheMiss')) {
-      inputCacheMiss = _json['inputCacheMiss'].toDouble();
+      inputCacheMiss = (_json['inputCacheMiss'] as core.num).toDouble();
     }
     if (_json.containsKey('numErrors')) {
       numErrors = _json['numErrors'] as core.String;
@@ -3360,7 +3360,7 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
 
   GoogleDevtoolsRemotebuildbotResourceUsage.fromJson(core.Map _json) {
     if (_json.containsKey('cpuUsedPercent')) {
-      cpuUsedPercent = _json['cpuUsedPercent'].toDouble();
+      cpuUsedPercent = (_json['cpuUsedPercent'] as core.num).toDouble();
     }
     if (_json.containsKey('diskUsage')) {
       diskUsage = GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(

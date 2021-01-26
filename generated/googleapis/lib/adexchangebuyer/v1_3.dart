@@ -1963,7 +1963,7 @@ class CreativeNativeAd {
       price = _json['price'] as core.String;
     }
     if (_json.containsKey('starRating')) {
-      starRating = _json['starRating'].toDouble();
+      starRating = (_json['starRating'] as core.num).toDouble();
     }
   }
 
@@ -2121,7 +2121,8 @@ class Creative {
       agencyId = _json['agencyId'] as core.String;
     }
     if (_json.containsKey('apiUploadTimestamp')) {
-      apiUploadTimestamp = core.DateTime.parse(_json['apiUploadTimestamp']);
+      apiUploadTimestamp =
+          core.DateTime.parse(_json['apiUploadTimestamp'] as core.String);
     }
     if (_json.containsKey('attribute')) {
       attribute = (_json['attribute'] as core.List)
@@ -2615,10 +2616,10 @@ class PerformanceReport {
 
   PerformanceReport.fromJson(core.Map _json) {
     if (_json.containsKey('bidRate')) {
-      bidRate = _json['bidRate'].toDouble();
+      bidRate = (_json['bidRate'] as core.num).toDouble();
     }
     if (_json.containsKey('bidRequestRate')) {
-      bidRequestRate = _json['bidRequestRate'].toDouble();
+      bidRequestRate = (_json['bidRequestRate'] as core.num).toDouble();
     }
     if (_json.containsKey('calloutStatusRate')) {
       calloutStatusRate = (_json['calloutStatusRate'] as core.List)
@@ -2636,7 +2637,7 @@ class PerformanceReport {
           .toList();
     }
     if (_json.containsKey('filteredBidRate')) {
-      filteredBidRate = _json['filteredBidRate'].toDouble();
+      filteredBidRate = (_json['filteredBidRate'] as core.num).toDouble();
     }
     if (_json.containsKey('hostedMatchStatusRate')) {
       hostedMatchStatusRate = (_json['hostedMatchStatusRate'] as core.List)
@@ -2644,49 +2645,57 @@ class PerformanceReport {
           .toList();
     }
     if (_json.containsKey('inventoryMatchRate')) {
-      inventoryMatchRate = _json['inventoryMatchRate'].toDouble();
+      inventoryMatchRate = (_json['inventoryMatchRate'] as core.num).toDouble();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('latency50thPercentile')) {
-      latency50thPercentile = _json['latency50thPercentile'].toDouble();
+      latency50thPercentile =
+          (_json['latency50thPercentile'] as core.num).toDouble();
     }
     if (_json.containsKey('latency85thPercentile')) {
-      latency85thPercentile = _json['latency85thPercentile'].toDouble();
+      latency85thPercentile =
+          (_json['latency85thPercentile'] as core.num).toDouble();
     }
     if (_json.containsKey('latency95thPercentile')) {
-      latency95thPercentile = _json['latency95thPercentile'].toDouble();
+      latency95thPercentile =
+          (_json['latency95thPercentile'] as core.num).toDouble();
     }
     if (_json.containsKey('noQuotaInRegion')) {
-      noQuotaInRegion = _json['noQuotaInRegion'].toDouble();
+      noQuotaInRegion = (_json['noQuotaInRegion'] as core.num).toDouble();
     }
     if (_json.containsKey('outOfQuota')) {
-      outOfQuota = _json['outOfQuota'].toDouble();
+      outOfQuota = (_json['outOfQuota'] as core.num).toDouble();
     }
     if (_json.containsKey('pixelMatchRequests')) {
-      pixelMatchRequests = _json['pixelMatchRequests'].toDouble();
+      pixelMatchRequests = (_json['pixelMatchRequests'] as core.num).toDouble();
     }
     if (_json.containsKey('pixelMatchResponses')) {
-      pixelMatchResponses = _json['pixelMatchResponses'].toDouble();
+      pixelMatchResponses =
+          (_json['pixelMatchResponses'] as core.num).toDouble();
     }
     if (_json.containsKey('quotaConfiguredLimit')) {
-      quotaConfiguredLimit = _json['quotaConfiguredLimit'].toDouble();
+      quotaConfiguredLimit =
+          (_json['quotaConfiguredLimit'] as core.num).toDouble();
     }
     if (_json.containsKey('quotaThrottledLimit')) {
-      quotaThrottledLimit = _json['quotaThrottledLimit'].toDouble();
+      quotaThrottledLimit =
+          (_json['quotaThrottledLimit'] as core.num).toDouble();
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
     }
     if (_json.containsKey('successfulRequestRate')) {
-      successfulRequestRate = _json['successfulRequestRate'].toDouble();
+      successfulRequestRate =
+          (_json['successfulRequestRate'] as core.num).toDouble();
     }
     if (_json.containsKey('timestamp')) {
       timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('unsuccessfulRequestRate')) {
-      unsuccessfulRequestRate = _json['unsuccessfulRequestRate'].toDouble();
+      unsuccessfulRequestRate =
+          (_json['unsuccessfulRequestRate'] as core.num).toDouble();
     }
   }
 

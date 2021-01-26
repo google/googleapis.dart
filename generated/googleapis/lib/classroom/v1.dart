@@ -5434,7 +5434,7 @@ class CourseWork {
           .toList();
     }
     if (_json.containsKey('maxPoints')) {
-      maxPoints = _json['maxPoints'].toDouble();
+      maxPoints = (_json['maxPoints'] as core.num).toDouble();
     }
     if (_json.containsKey('multipleChoiceQuestion')) {
       multipleChoiceQuestion =
@@ -6067,10 +6067,10 @@ class GradeHistory {
       gradeTimestamp = _json['gradeTimestamp'] as core.String;
     }
     if (_json.containsKey('maxPoints')) {
-      maxPoints = _json['maxPoints'].toDouble();
+      maxPoints = (_json['maxPoints'] as core.num).toDouble();
     }
     if (_json.containsKey('pointsEarned')) {
-      pointsEarned = _json['pointsEarned'].toDouble();
+      pointsEarned = (_json['pointsEarned'] as core.num).toDouble();
     }
   }
 
@@ -7371,7 +7371,7 @@ class StudentSubmission {
       alternateLink = _json['alternateLink'] as core.String;
     }
     if (_json.containsKey('assignedGrade')) {
-      assignedGrade = _json['assignedGrade'].toDouble();
+      assignedGrade = (_json['assignedGrade'] as core.num).toDouble();
     }
     if (_json.containsKey('assignmentSubmission')) {
       assignmentSubmission =
@@ -7393,7 +7393,7 @@ class StudentSubmission {
       creationTime = _json['creationTime'] as core.String;
     }
     if (_json.containsKey('draftGrade')) {
-      draftGrade = _json['draftGrade'].toDouble();
+      draftGrade = (_json['draftGrade'] as core.num).toDouble();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;

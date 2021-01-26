@@ -11491,13 +11491,13 @@ class GeoPoint {
 
   GeoPoint.fromJson(core.Map _json) {
     if (_json.containsKey('altitude')) {
-      altitude = _json['altitude'].toDouble();
+      altitude = (_json['altitude'] as core.num).toDouble();
     }
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -18311,7 +18311,7 @@ class VideoFileDetailsVideoStream {
 
   VideoFileDetailsVideoStream.fromJson(core.Map _json) {
     if (_json.containsKey('aspectRatio')) {
-      aspectRatio = _json['aspectRatio'].toDouble();
+      aspectRatio = (_json['aspectRatio'] as core.num).toDouble();
     }
     if (_json.containsKey('bitrateBps')) {
       bitrateBps = _json['bitrateBps'] as core.String;
@@ -18320,7 +18320,7 @@ class VideoFileDetailsVideoStream {
       codec = _json['codec'] as core.String;
     }
     if (_json.containsKey('frameRateFps')) {
-      frameRateFps = _json['frameRateFps'].toDouble();
+      frameRateFps = (_json['frameRateFps'] as core.num).toDouble();
     }
     if (_json.containsKey('heightPixels')) {
       heightPixels = _json['heightPixels'] as core.int;

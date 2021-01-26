@@ -2558,7 +2558,7 @@ class SearchSearchInformation {
       formattedTotalResults = _json['formattedTotalResults'] as core.String;
     }
     if (_json.containsKey('searchTime')) {
-      searchTime = _json['searchTime'].toDouble();
+      searchTime = (_json['searchTime'] as core.num).toDouble();
     }
     if (_json.containsKey('totalResults')) {
       totalResults = _json['totalResults'] as core.String;

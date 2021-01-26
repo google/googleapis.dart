@@ -104,24 +104,32 @@ class ServiceAccountCredentials {
     if (json is! Map) {
       throw ArgumentError('json must be a Map or a String encoding a Map.');
     }
-    final identifier = json['client_id'];
-    final privateKey = json['private_key'];
-    final email = json['client_email'];
+    final identifier = json['client_id'] as String?;
+    final privateKey = json['private_key'] as String?;
+    final email = json['client_email'] as String?;
     final type = json['type'];
 
     if (type != 'service_account') {
-      throw ArgumentError('The given credentials are not of type '
-          'service_account (was: $type).');
+      throw ArgumentError(
+        'The given credentials are not of type '
+        'service_account (was: $type).',
+      );
     }
 
     if (identifier == null || privateKey == null || email == null) {
-      throw ArgumentError('The given credentials do not contain all the '
-          'fields: client_id, private_key and client_email.');
+      throw ArgumentError(
+        'The given credentials do not contain all the '
+        'fields: client_id, private_key and client_email.',
+      );
     }
 
     final clientId = ClientId(identifier, null);
-    return ServiceAccountCredentials(email, clientId, privateKey,
-        impersonatedUser: impersonatedUser);
+    return ServiceAccountCredentials(
+      email,
+      clientId,
+      privateKey,
+      impersonatedUser: impersonatedUser,
+    );
   }
 
   /// Creates a new [ServiceAccountCredentials].
@@ -253,10 +261,10 @@ Future<AccessCredentials> refreshCredentials(
       .transform(json.decoder)
       .first as Map;
 
-  final idToken = jsonMap['id_token'];
-  final token = jsonMap['access_token'];
+  final idToken = jsonMap['id_token'] as String?;
+  final token = jsonMap['access_token'] as String?;
   final seconds = jsonMap['expires_in'];
-  final tokenType = jsonMap['token_type'];
+  final tokenType = jsonMap['token_type'] as String?;
   final error = jsonMap['error'];
 
   if (response.statusCode != 200 && error != null) {
@@ -264,14 +272,20 @@ Future<AccessCredentials> refreshCredentials(
         'Response was ${response.statusCode}. Error message was $error.');
   }
 
-  if (token == null || seconds is! int || tokenType != 'Bearer') {
+  if (token == null ||
+      seconds is! int ||
+      tokenType == null ||
+      tokenType != 'Bearer') {
     throw Exception('Refresing attempt failed. '
         'Invalid server response.');
   }
 
-  return AccessCredentials(AccessToken(tokenType, token, expiryDate(seconds)),
-      credentials.refreshToken, credentials.scopes,
-      idToken: idToken);
+  return AccessCredentials(
+    AccessToken(tokenType, token, expiryDate(seconds)),
+    credentials.refreshToken,
+    credentials.scopes,
+    idToken: idToken,
+  );
 }
 
 /// Available response types that can be requested when using the implicit

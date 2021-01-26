@@ -30,10 +30,18 @@ import 'package:test/test.dart' as unittest;
 import 'package:googleapis/cloudfunctions/v1.dart' as api;
 
 class HttpServerMock extends http.BaseClient {
-  core.Function _callback;
+  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
+      _callback;
   core.bool _expectJson;
 
-  void register(core.Function callback, core.bool expectJson) {
+  void register(
+    core.Future<http.StreamedResponse> Function(
+      http.BaseRequest bob,
+      core.Object foo,
+    )
+        callback,
+    core.bool expectJson,
+  ) {
     _callback = callback;
     _expectJson = expectJson;
   }
@@ -1281,7 +1289,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1330,7 +1339,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1393,7 +1403,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1455,7 +1466,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1506,7 +1518,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1553,7 +1566,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1604,7 +1618,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1655,7 +1670,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1702,7 +1718,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1750,7 +1767,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1805,7 +1823,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1864,7 +1883,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1918,7 +1938,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {
@@ -1969,7 +1990,8 @@ void main() {
         var query = (req.url).query;
         var queryOffset = 0;
         var queryMap = <core.String, core.List<core.String>>{};
-        void addQueryParam(n, v) => queryMap.putIfAbsent(n, () => []).add(v);
+        void addQueryParam(core.String n, core.String v) =>
+            queryMap.putIfAbsent(n, () => []).add(v);
 
         if (query.isNotEmpty) {
           for (var part in query.split('&')) {

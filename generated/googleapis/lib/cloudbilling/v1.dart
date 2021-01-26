@@ -1683,13 +1683,14 @@ class PricingExpression {
       baseUnit = _json['baseUnit'] as core.String;
     }
     if (_json.containsKey('baseUnitConversionFactor')) {
-      baseUnitConversionFactor = _json['baseUnitConversionFactor'].toDouble();
+      baseUnitConversionFactor =
+          (_json['baseUnitConversionFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('baseUnitDescription')) {
       baseUnitDescription = _json['baseUnitDescription'] as core.String;
     }
     if (_json.containsKey('displayQuantity')) {
-      displayQuantity = _json['displayQuantity'].toDouble();
+      displayQuantity = (_json['displayQuantity'] as core.num).toDouble();
     }
     if (_json.containsKey('tieredRates')) {
       tieredRates = (_json['tieredRates'] as core.List)
@@ -1766,7 +1767,8 @@ class PricingInfo {
       aggregationInfo = AggregationInfo.fromJson(_json['aggregationInfo']);
     }
     if (_json.containsKey('currencyConversionRate')) {
-      currencyConversionRate = _json['currencyConversionRate'].toDouble();
+      currencyConversionRate =
+          (_json['currencyConversionRate'] as core.num).toDouble();
     }
     if (_json.containsKey('effectiveTime')) {
       effectiveTime = _json['effectiveTime'] as core.String;
@@ -2108,7 +2110,7 @@ class TierRate {
 
   TierRate.fromJson(core.Map _json) {
     if (_json.containsKey('startUsageAmount')) {
-      startUsageAmount = _json['startUsageAmount'].toDouble();
+      startUsageAmount = (_json['startUsageAmount'] as core.num).toDouble();
     }
     if (_json.containsKey('unitPrice')) {
       unitPrice = Money.fromJson(_json['unitPrice']);

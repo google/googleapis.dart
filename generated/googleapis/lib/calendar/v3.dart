@@ -3896,7 +3896,7 @@ class Colors {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 
@@ -4983,7 +4983,7 @@ class Event {
       conferenceData = ConferenceData.fromJson(_json['conferenceData']);
     }
     if (_json.containsKey('created')) {
-      created = core.DateTime.parse(_json['created']);
+      created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('creator')) {
       creator = EventCreator.fromJson(_json['creator']);
@@ -5076,7 +5076,7 @@ class Event {
       transparency = _json['transparency'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('visibility')) {
       visibility = _json['visibility'] as core.String;
@@ -5399,10 +5399,10 @@ class EventDateTime {
 
   EventDateTime.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = core.DateTime.parse(_json['date']);
+      date = core.DateTime.parse(_json['date'] as core.String);
     }
     if (_json.containsKey('dateTime')) {
-      dateTime = core.DateTime.parse(_json['dateTime']);
+      dateTime = core.DateTime.parse(_json['dateTime'] as core.String);
     }
     if (_json.containsKey('timeZone')) {
       timeZone = _json['timeZone'] as core.String;
@@ -5548,7 +5548,7 @@ class Events {
       timeZone = _json['timeZone'] as core.String;
     }
     if (_json.containsKey('updated')) {
-      updated = core.DateTime.parse(_json['updated']);
+      updated = core.DateTime.parse(_json['updated'] as core.String);
     }
   }
 
@@ -5698,10 +5698,10 @@ class FreeBusyRequest {
           .toList();
     }
     if (_json.containsKey('timeMax')) {
-      timeMax = core.DateTime.parse(_json['timeMax']);
+      timeMax = core.DateTime.parse(_json['timeMax'] as core.String);
     }
     if (_json.containsKey('timeMin')) {
-      timeMin = core.DateTime.parse(_json['timeMin']);
+      timeMin = core.DateTime.parse(_json['timeMin'] as core.String);
     }
     if (_json.containsKey('timeZone')) {
       timeZone = _json['timeZone'] as core.String;
@@ -5786,10 +5786,10 @@ class FreeBusyResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('timeMax')) {
-      timeMax = core.DateTime.parse(_json['timeMax']);
+      timeMax = core.DateTime.parse(_json['timeMax'] as core.String);
     }
     if (_json.containsKey('timeMin')) {
-      timeMin = core.DateTime.parse(_json['timeMin']);
+      timeMin = core.DateTime.parse(_json['timeMin'] as core.String);
     }
   }
 
@@ -5941,10 +5941,10 @@ class TimePeriod {
 
   TimePeriod.fromJson(core.Map _json) {
     if (_json.containsKey('end')) {
-      end = core.DateTime.parse(_json['end']);
+      end = core.DateTime.parse(_json['end'] as core.String);
     }
     if (_json.containsKey('start')) {
-      start = core.DateTime.parse(_json['start']);
+      start = core.DateTime.parse(_json['start'] as core.String);
     }
   }
 

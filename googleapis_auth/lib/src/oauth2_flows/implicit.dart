@@ -150,11 +150,11 @@ class ImplicitFlow {
       js.JsObject.jsify(json),
       (jsTokenObject) {
         final tokenType = jsTokenObject['token_type'];
-        final token = jsTokenObject['access_token'];
+        final token = jsTokenObject['access_token'] as String?;
         final expiresInRaw = jsTokenObject['expires_in'];
-        final code = jsTokenObject['code'];
+        final code = jsTokenObject['code'] as String?;
         final error = jsTokenObject['error'];
-        final idToken = jsTokenObject['id_token'];
+        final idToken = jsTokenObject['id_token'] as String?;
 
         int? expiresIn;
         if (expiresInRaw is String) {

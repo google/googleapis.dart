@@ -7404,7 +7404,7 @@ class Metric {
 
   Metric.fromJson(core.Map _json) {
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('intValue')) {
       intValue = _json['intValue'] as core.String;

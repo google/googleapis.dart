@@ -573,13 +573,13 @@ class ApiDataRow {
 
   ApiDataRow.fromJson(core.Map _json) {
     if (_json.containsKey('clicks')) {
-      clicks = _json['clicks'].toDouble();
+      clicks = (_json['clicks'] as core.num).toDouble();
     }
     if (_json.containsKey('ctr')) {
-      ctr = _json['ctr'].toDouble();
+      ctr = (_json['ctr'] as core.num).toDouble();
     }
     if (_json.containsKey('impressions')) {
-      impressions = _json['impressions'].toDouble();
+      impressions = (_json['impressions'] as core.num).toDouble();
     }
     if (_json.containsKey('keys')) {
       keys = (_json['keys'] as core.List)
@@ -587,7 +587,7 @@ class ApiDataRow {
           .toList();
     }
     if (_json.containsKey('position')) {
-      position = _json['position'].toDouble();
+      position = (_json['position'] as core.num).toDouble();
     }
   }
 
@@ -958,10 +958,12 @@ class WmxSitemap {
       isSitemapsIndex = _json['isSitemapsIndex'] as core.bool;
     }
     if (_json.containsKey('lastDownloaded')) {
-      lastDownloaded = core.DateTime.parse(_json['lastDownloaded']);
+      lastDownloaded =
+          core.DateTime.parse(_json['lastDownloaded'] as core.String);
     }
     if (_json.containsKey('lastSubmitted')) {
-      lastSubmitted = core.DateTime.parse(_json['lastSubmitted']);
+      lastSubmitted =
+          core.DateTime.parse(_json['lastSubmitted'] as core.String);
     }
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;

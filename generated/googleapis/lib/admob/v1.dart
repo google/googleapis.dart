@@ -1383,7 +1383,7 @@ class ReportRowMetricValue {
 
   ReportRowMetricValue.fromJson(core.Map _json) {
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('integerValue')) {
       integerValue = _json['integerValue'] as core.String;

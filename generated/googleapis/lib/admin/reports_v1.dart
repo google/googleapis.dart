@@ -1352,7 +1352,7 @@ class ActivityId {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('time')) {
-      time = core.DateTime.parse(_json['time']);
+      time = core.DateTime.parse(_json['time'] as core.String);
     }
     if (_json.containsKey('uniqueQualifier')) {
       uniqueQualifier = _json['uniqueQualifier'] as core.String;
@@ -1742,7 +1742,8 @@ class UsageReportParameters {
       boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('datetimeValue')) {
-      datetimeValue = core.DateTime.parse(_json['datetimeValue']);
+      datetimeValue =
+          core.DateTime.parse(_json['datetimeValue'] as core.String);
     }
     if (_json.containsKey('intValue')) {
       intValue = _json['intValue'] as core.String;

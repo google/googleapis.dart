@@ -4549,17 +4549,18 @@ class BasicYarnAutoscalingConfig {
           _json['gracefulDecommissionTimeout'] as core.String;
     }
     if (_json.containsKey('scaleDownFactor')) {
-      scaleDownFactor = _json['scaleDownFactor'].toDouble();
+      scaleDownFactor = (_json['scaleDownFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('scaleDownMinWorkerFraction')) {
       scaleDownMinWorkerFraction =
-          _json['scaleDownMinWorkerFraction'].toDouble();
+          (_json['scaleDownMinWorkerFraction'] as core.num).toDouble();
     }
     if (_json.containsKey('scaleUpFactor')) {
-      scaleUpFactor = _json['scaleUpFactor'].toDouble();
+      scaleUpFactor = (_json['scaleUpFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('scaleUpMinWorkerFraction')) {
-      scaleUpMinWorkerFraction = _json['scaleUpMinWorkerFraction'].toDouble();
+      scaleUpMinWorkerFraction =
+          (_json['scaleUpMinWorkerFraction'] as core.num).toDouble();
     }
   }
 
@@ -8997,7 +8998,7 @@ class YarnApplication {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('progress')) {
-      progress = _json['progress'].toDouble();
+      progress = (_json['progress'] as core.num).toDouble();
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;

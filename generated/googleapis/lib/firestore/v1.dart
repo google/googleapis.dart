@@ -4186,10 +4186,10 @@ class LatLng {
 
   LatLng.fromJson(core.Map _json) {
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
   }
 
@@ -5439,7 +5439,7 @@ class Value {
       bytesValue = _json['bytesValue'] as core.String;
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('geoPointValue')) {
       geoPointValue = LatLng.fromJson(_json['geoPointValue']);

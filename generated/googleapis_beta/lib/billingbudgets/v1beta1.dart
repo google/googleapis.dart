@@ -765,7 +765,7 @@ class GoogleCloudBillingBudgetsV1beta1ThresholdRule {
       spendBasis = _json['spendBasis'] as core.String;
     }
     if (_json.containsKey('thresholdPercent')) {
-      thresholdPercent = _json['thresholdPercent'].toDouble();
+      thresholdPercent = (_json['thresholdPercent'] as core.num).toDouble();
     }
   }
 

@@ -16000,7 +16000,7 @@ class Ad {
       dynamicClickTracker = _json['dynamicClickTracker'] as core.bool;
     }
     if (_json.containsKey('endTime')) {
-      endTime = core.DateTime.parse(_json['endTime']);
+      endTime = core.DateTime.parse(_json['endTime'] as core.String);
     }
     if (_json.containsKey('eventTagOverrides')) {
       eventTagOverrides = (_json['eventTagOverrides'] as core.List)
@@ -16053,7 +16053,7 @@ class Ad {
       sslRequired = _json['sslRequired'] as core.bool;
     }
     if (_json.containsKey('startTime')) {
-      startTime = core.DateTime.parse(_json['startTime']);
+      startTime = core.DateTime.parse(_json['startTime'] as core.String);
     }
     if (_json.containsKey('subaccountId')) {
       subaccountId = _json['subaccountId'] as core.String;
@@ -17135,7 +17135,7 @@ class Campaign {
       defaultLandingPageId = _json['defaultLandingPageId'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('eventTagOverrides')) {
       eventTagOverrides = (_json['eventTagOverrides'] as core.List)
@@ -17164,7 +17164,7 @@ class Campaign {
       nielsenOcrEnabled = _json['nielsenOcrEnabled'] as core.bool;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
     if (_json.containsKey('subaccountId')) {
       subaccountId = _json['subaccountId'] as core.String;
@@ -17521,7 +17521,7 @@ class ChangeLog {
       action = _json['action'] as core.String;
     }
     if (_json.containsKey('changeTime')) {
-      changeTime = core.DateTime.parse(_json['changeTime']);
+      changeTime = core.DateTime.parse(_json['changeTime'] as core.String);
     }
     if (_json.containsKey('fieldName')) {
       fieldName = _json['fieldName'] as core.String;
@@ -18534,7 +18534,7 @@ class Conversion {
       treatmentForUnderage = _json['treatmentForUnderage'] as core.bool;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -19501,7 +19501,7 @@ class Creative {
       mediaDescription = _json['mediaDescription'] as core.String;
     }
     if (_json.containsKey('mediaDuration')) {
-      mediaDuration = _json['mediaDuration'].toDouble();
+      mediaDuration = (_json['mediaDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -20201,7 +20201,7 @@ class CreativeAsset {
       flashVersion = _json['flashVersion'] as core.int;
     }
     if (_json.containsKey('frameRate')) {
-      frameRate = _json['frameRate'].toDouble();
+      frameRate = (_json['frameRate'] as core.num).toDouble();
     }
     if (_json.containsKey('hideFlashObjects')) {
       hideFlashObjects = _json['hideFlashObjects'] as core.bool;
@@ -20219,7 +20219,7 @@ class CreativeAsset {
       idDimensionValue = DimensionValue.fromJson(_json['idDimensionValue']);
     }
     if (_json.containsKey('mediaDuration')) {
-      mediaDuration = _json['mediaDuration'].toDouble();
+      mediaDuration = (_json['mediaDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -20252,7 +20252,7 @@ class CreativeAsset {
       pushdown = _json['pushdown'] as core.bool;
     }
     if (_json.containsKey('pushdownDuration')) {
-      pushdownDuration = _json['pushdownDuration'].toDouble();
+      pushdownDuration = (_json['pushdownDuration'] as core.num).toDouble();
     }
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;
@@ -20766,7 +20766,7 @@ class CreativeAssignment {
           DimensionValue.fromJson(_json['creativeIdDimensionValue']);
     }
     if (_json.containsKey('endTime')) {
-      endTime = core.DateTime.parse(_json['endTime']);
+      endTime = core.DateTime.parse(_json['endTime'] as core.String);
     }
     if (_json.containsKey('richMediaExitOverrides')) {
       richMediaExitOverrides = (_json['richMediaExitOverrides'] as core.List)
@@ -20781,7 +20781,7 @@ class CreativeAssignment {
       sslCompliant = _json['sslCompliant'] as core.bool;
     }
     if (_json.containsKey('startTime')) {
-      startTime = core.DateTime.parse(_json['startTime']);
+      startTime = core.DateTime.parse(_json['startTime'] as core.String);
     }
     if (_json.containsKey('weight')) {
       weight = _json['weight'] as core.int;
@@ -22525,7 +22525,7 @@ class DateRange {
 
   DateRange.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -22534,7 +22534,7 @@ class DateRange {
       relativeDateRange = _json['relativeDateRange'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
   }
 
@@ -23065,7 +23065,7 @@ class DimensionValueRequest {
       dimensionName = _json['dimensionName'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
@@ -23076,7 +23076,7 @@ class DimensionValueRequest {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
   }
 
@@ -24020,13 +24020,13 @@ class Flight {
 
   Flight.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('rateOrCost')) {
       rateOrCost = _json['rateOrCost'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
     if (_json.containsKey('units')) {
       units = _json['units'] as core.String;
@@ -27178,7 +27178,8 @@ class OrderDocument {
       createdInfo = LastModifiedInfo.fromJson(_json['createdInfo']);
     }
     if (_json.containsKey('effectiveDate')) {
-      effectiveDate = core.DateTime.parse(_json['effectiveDate']);
+      effectiveDate =
+          core.DateTime.parse(_json['effectiveDate'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -27192,7 +27193,7 @@ class OrderDocument {
           .toList();
     }
     if (_json.containsKey('lastSentTime')) {
-      lastSentTime = core.DateTime.parse(_json['lastSentTime']);
+      lastSentTime = core.DateTime.parse(_json['lastSentTime'] as core.String);
     }
     if (_json.containsKey('orderId')) {
       orderId = _json['orderId'] as core.String;
@@ -29016,7 +29017,7 @@ class Pricing {
       capCostType = _json['capCostType'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('flights')) {
       flights = (_json['flights'] as core.List)
@@ -29030,7 +29031,7 @@ class Pricing {
       pricingType = _json['pricingType'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
   }
 
@@ -29100,7 +29101,7 @@ class PricingSchedule {
       capCostOption = _json['capCostOption'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('flighted')) {
       flighted = _json['flighted'] as core.bool;
@@ -29118,10 +29119,11 @@ class PricingSchedule {
       pricingType = _json['pricingType'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
     if (_json.containsKey('testingStartDate')) {
-      testingStartDate = core.DateTime.parse(_json['testingStartDate']);
+      testingStartDate =
+          core.DateTime.parse(_json['testingStartDate'] as core.String);
     }
   }
 
@@ -29179,7 +29181,7 @@ class PricingSchedulePricingPeriod {
 
   PricingSchedulePricingPeriod.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('pricingComment')) {
       pricingComment = _json['pricingComment'] as core.String;
@@ -29188,7 +29190,7 @@ class PricingSchedulePricingPeriod {
       rateOrCostNanos = _json['rateOrCostNanos'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
     if (_json.containsKey('units')) {
       units = _json['units'] as core.String;
@@ -29322,7 +29324,7 @@ class Project {
       clientName = _json['clientName'] as core.String;
     }
     if (_json.containsKey('endDate')) {
-      endDate = core.DateTime.parse(_json['endDate']);
+      endDate = core.DateTime.parse(_json['endDate'] as core.String);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -29340,7 +29342,7 @@ class Project {
       overview = _json['overview'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
     if (_json.containsKey('subaccountId')) {
       subaccountId = _json['subaccountId'] as core.String;
@@ -30894,7 +30896,8 @@ class ReportSchedule {
       every = _json['every'] as core.int;
     }
     if (_json.containsKey('expirationDate')) {
-      expirationDate = core.DateTime.parse(_json['expirationDate']);
+      expirationDate =
+          core.DateTime.parse(_json['expirationDate'] as core.String);
     }
     if (_json.containsKey('repeats')) {
       repeats = _json['repeats'] as core.String;
@@ -30908,7 +30911,7 @@ class ReportSchedule {
       runsOnDayOfMonth = _json['runsOnDayOfMonth'] as core.String;
     }
     if (_json.containsKey('startDate')) {
-      startDate = core.DateTime.parse(_json['startDate']);
+      startDate = core.DateTime.parse(_json['startDate'] as core.String);
     }
   }
 

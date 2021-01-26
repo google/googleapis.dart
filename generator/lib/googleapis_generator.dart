@@ -58,7 +58,7 @@ Future<List<RestDescription>> fetchDiscoveryDocuments(
     try {
       var count = 0;
       return await pool
-          .forEach(list.items, (item) async {
+          .forEach(list.items, (DirectoryListItems item) async {
             print(
               ansi.darkGray.wrap(
                   'Requesting ${++count} of ${list.items.length} - ${item.id}'),
@@ -92,8 +92,10 @@ List<RestDescription> loadDiscoveryDocuments(String directory) =>
     Directory(directory)
         .listSync()
         .where((fse) => fse is File && fse.path.endsWith('.json'))
-        .map((FileSystemEntity file) => RestDescription.fromJson(
-            json.decode((file as File).readAsStringSync())))
+        .map(
+          (FileSystemEntity file) => RestDescription.fromJson(
+              json.decode((file as File).readAsStringSync()) as Map),
+        )
         .toList();
 
 Future downloadFromConfiguration(String configFile) async {

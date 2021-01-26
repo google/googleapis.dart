@@ -53,17 +53,23 @@ Client clientViaApiKey(String apiKey, {Client? baseClient}) {
 /// Closing the returned [BrowserOAuth2Flow] will not close [baseClient]
 /// if one was given.
 Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
-    ClientId clientId, List<String> scopes,
-    {Client? baseClient}) {
+  ClientId clientId,
+  List<String> scopes, {
+  Client? baseClient,
+}) async {
   final refCountedClient = baseClient == null
       ? RefCountedClient(BrowserClient())
       : RefCountedClient(baseClient, initialRefCount: 2);
 
   final flow = ImplicitFlow(clientId.identifier, scopes);
-  return flow.initialize().catchError((error, stack) {
+
+  try {
+    await flow.initialize();
+  } catch (_) {
     refCountedClient.close();
-    return Future.error(error, stack);
-  }).then((_) => BrowserOAuth2Flow._(flow, refCountedClient));
+    rethrow;
+  }
+  return BrowserOAuth2Flow._(flow, refCountedClient);
 }
 
 /// Used for obtaining oauth2 access credentials.

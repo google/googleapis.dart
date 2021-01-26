@@ -3983,7 +3983,7 @@ class BubbleChartSpec {
       bubbleMinRadiusSize = _json['bubbleMinRadiusSize'] as core.int;
     }
     if (_json.containsKey('bubbleOpacity')) {
-      bubbleOpacity = _json['bubbleOpacity'].toDouble();
+      bubbleOpacity = (_json['bubbleOpacity'] as core.num).toDouble();
     }
     if (_json.containsKey('bubbleSizes')) {
       bubbleSizes = ChartData.fromJson(_json['bubbleSizes']);
@@ -4539,10 +4539,10 @@ class ChartAxisViewWindowOptions {
 
   ChartAxisViewWindowOptions.fromJson(core.Map _json) {
     if (_json.containsKey('viewWindowMax')) {
-      viewWindowMax = _json['viewWindowMax'].toDouble();
+      viewWindowMax = (_json['viewWindowMax'] as core.num).toDouble();
     }
     if (_json.containsKey('viewWindowMin')) {
-      viewWindowMin = _json['viewWindowMin'].toDouble();
+      viewWindowMin = (_json['viewWindowMin'] as core.num).toDouble();
     }
     if (_json.containsKey('viewWindowMode')) {
       viewWindowMode = _json['viewWindowMode'] as core.String;
@@ -4764,13 +4764,13 @@ class ChartHistogramRule {
 
   ChartHistogramRule.fromJson(core.Map _json) {
     if (_json.containsKey('intervalSize')) {
-      intervalSize = _json['intervalSize'].toDouble();
+      intervalSize = (_json['intervalSize'] as core.num).toDouble();
     }
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
   }
 
@@ -5217,16 +5217,16 @@ class Color {
 
   Color.fromJson(core.Map _json) {
     if (_json.containsKey('alpha')) {
-      alpha = _json['alpha'].toDouble();
+      alpha = (_json['alpha'] as core.num).toDouble();
     }
     if (_json.containsKey('blue')) {
-      blue = _json['blue'].toDouble();
+      blue = (_json['blue'] as core.num).toDouble();
     }
     if (_json.containsKey('green')) {
-      green = _json['green'].toDouble();
+      green = (_json['green'] as core.num).toDouble();
     }
     if (_json.containsKey('red')) {
-      red = _json['red'].toDouble();
+      red = (_json['red'] as core.num).toDouble();
     }
   }
 
@@ -7740,7 +7740,7 @@ class ExtendedValue {
       formulaValue = _json['formulaValue'] as core.String;
     }
     if (_json.containsKey('numberValue')) {
-      numberValue = _json['numberValue'].toDouble();
+      numberValue = (_json['numberValue'] as core.num).toDouble();
     }
     if (_json.containsKey('stringValue')) {
       stringValue = _json['stringValue'] as core.String;
@@ -8527,13 +8527,13 @@ class HistogramChartSpec {
 
   HistogramChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('bucketSize')) {
-      bucketSize = _json['bucketSize'].toDouble();
+      bucketSize = (_json['bucketSize'] as core.num).toDouble();
     }
     if (_json.containsKey('legendPosition')) {
       legendPosition = _json['legendPosition'] as core.String;
     }
     if (_json.containsKey('outlierPercentile')) {
-      outlierPercentile = _json['outlierPercentile'].toDouble();
+      outlierPercentile = (_json['outlierPercentile'] as core.num).toDouble();
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
@@ -8601,13 +8601,13 @@ class HistogramRule {
 
   HistogramRule.fromJson(core.Map _json) {
     if (_json.containsKey('end')) {
-      end = _json['end'].toDouble();
+      end = (_json['end'] as core.num).toDouble();
     }
     if (_json.containsKey('interval')) {
-      interval = _json['interval'].toDouble();
+      interval = (_json['interval'] as core.num).toDouble();
     }
     if (_json.containsKey('start')) {
-      start = _json['start'].toDouble();
+      start = (_json['start'] as core.num).toDouble();
     }
   }
 
@@ -8865,7 +8865,8 @@ class IterativeCalculationSettings {
 
   IterativeCalculationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('convergenceThreshold')) {
-      convergenceThreshold = _json['convergenceThreshold'].toDouble();
+      convergenceThreshold =
+          (_json['convergenceThreshold'] as core.num).toDouble();
     }
     if (_json.containsKey('maxIterations')) {
       maxIterations = _json['maxIterations'] as core.int;
@@ -9581,7 +9582,7 @@ class PieChartSpec {
       legendPosition = _json['legendPosition'] as core.String;
     }
     if (_json.containsKey('pieHole')) {
-      pieHole = _json['pieHole'].toDouble();
+      pieHole = (_json['pieHole'] as core.num).toDouble();
     }
     if (_json.containsKey('series')) {
       series = ChartData.fromJson(_json['series']);
@@ -11450,7 +11451,7 @@ class ScorecardChartSpec {
       numberFormatSource = _json['numberFormatSource'] as core.String;
     }
     if (_json.containsKey('scaleFactor')) {
-      scaleFactor = _json['scaleFactor'].toDouble();
+      scaleFactor = (_json['scaleFactor'] as core.num).toDouble();
     }
   }
 
@@ -12956,10 +12957,10 @@ class TreemapChartSpec {
       levels = _json['levels'] as core.int;
     }
     if (_json.containsKey('maxValue')) {
-      maxValue = _json['maxValue'].toDouble();
+      maxValue = (_json['maxValue'] as core.num).toDouble();
     }
     if (_json.containsKey('minValue')) {
-      minValue = _json['minValue'].toDouble();
+      minValue = (_json['minValue'] as core.num).toDouble();
     }
     if (_json.containsKey('parentLabels')) {
       parentLabels = ChartData.fromJson(_json['parentLabels']);

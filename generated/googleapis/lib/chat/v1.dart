@@ -1306,7 +1306,7 @@ class Image {
 
   Image.fromJson(core.Map _json) {
     if (_json.containsKey('aspectRatio')) {
-      aspectRatio = _json['aspectRatio'].toDouble();
+      aspectRatio = (_json['aspectRatio'] as core.num).toDouble();
     }
     if (_json.containsKey('imageUrl')) {
       imageUrl = _json['imageUrl'] as core.String;

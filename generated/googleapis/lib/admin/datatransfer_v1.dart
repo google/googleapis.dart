@@ -621,7 +621,7 @@ class DataTransfer {
           _json['overallTransferStatusCode'] as core.String;
     }
     if (_json.containsKey('requestTime')) {
-      requestTime = core.DateTime.parse(_json['requestTime']);
+      requestTime = core.DateTime.parse(_json['requestTime'] as core.String);
     }
   }
 

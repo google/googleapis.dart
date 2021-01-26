@@ -2567,25 +2567,25 @@ class AggregateClassificationMetrics {
 
   AggregateClassificationMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('accuracy')) {
-      accuracy = _json['accuracy'].toDouble();
+      accuracy = (_json['accuracy'] as core.num).toDouble();
     }
     if (_json.containsKey('f1Score')) {
-      f1Score = _json['f1Score'].toDouble();
+      f1Score = (_json['f1Score'] as core.num).toDouble();
     }
     if (_json.containsKey('logLoss')) {
-      logLoss = _json['logLoss'].toDouble();
+      logLoss = (_json['logLoss'] as core.num).toDouble();
     }
     if (_json.containsKey('precision')) {
-      precision = _json['precision'].toDouble();
+      precision = (_json['precision'] as core.num).toDouble();
     }
     if (_json.containsKey('recall')) {
-      recall = _json['recall'].toDouble();
+      recall = (_json['recall'] as core.num).toDouble();
     }
     if (_json.containsKey('rocAuc')) {
-      rocAuc = _json['rocAuc'].toDouble();
+      rocAuc = (_json['rocAuc'] as core.num).toDouble();
     }
     if (_json.containsKey('threshold')) {
-      threshold = _json['threshold'].toDouble();
+      threshold = (_json['threshold'] as core.num).toDouble();
     }
   }
 
@@ -2695,16 +2695,17 @@ class ArimaCoefficients {
     if (_json.containsKey('autoRegressiveCoefficients')) {
       autoRegressiveCoefficients =
           (_json['autoRegressiveCoefficients'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
     if (_json.containsKey('interceptCoefficient')) {
-      interceptCoefficient = _json['interceptCoefficient'].toDouble();
+      interceptCoefficient =
+          (_json['interceptCoefficient'] as core.num).toDouble();
     }
     if (_json.containsKey('movingAverageCoefficients')) {
       movingAverageCoefficients =
           (_json['movingAverageCoefficients'] as core.List)
-              .map<core.double>((value) => value.toDouble())
+              .map<core.double>((value) => (value as core.num).toDouble())
               .toList();
     }
   }
@@ -2739,13 +2740,13 @@ class ArimaFittingMetrics {
 
   ArimaFittingMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('aic')) {
-      aic = _json['aic'].toDouble();
+      aic = (_json['aic'] as core.num).toDouble();
     }
     if (_json.containsKey('logLikelihood')) {
-      logLikelihood = _json['logLikelihood'].toDouble();
+      logLikelihood = (_json['logLikelihood'] as core.num).toDouble();
     }
     if (_json.containsKey('variance')) {
-      variance = _json['variance'].toDouble();
+      variance = (_json['variance'] as core.num).toDouble();
     }
   }
 
@@ -3513,10 +3514,10 @@ class BinaryConfusionMatrix {
 
   BinaryConfusionMatrix.fromJson(core.Map _json) {
     if (_json.containsKey('accuracy')) {
-      accuracy = _json['accuracy'].toDouble();
+      accuracy = (_json['accuracy'] as core.num).toDouble();
     }
     if (_json.containsKey('f1Score')) {
-      f1Score = _json['f1Score'].toDouble();
+      f1Score = (_json['f1Score'] as core.num).toDouble();
     }
     if (_json.containsKey('falseNegatives')) {
       falseNegatives = _json['falseNegatives'] as core.String;
@@ -3525,13 +3526,14 @@ class BinaryConfusionMatrix {
       falsePositives = _json['falsePositives'] as core.String;
     }
     if (_json.containsKey('positiveClassThreshold')) {
-      positiveClassThreshold = _json['positiveClassThreshold'].toDouble();
+      positiveClassThreshold =
+          (_json['positiveClassThreshold'] as core.num).toDouble();
     }
     if (_json.containsKey('precision')) {
-      precision = _json['precision'].toDouble();
+      precision = (_json['precision'] as core.num).toDouble();
     }
     if (_json.containsKey('recall')) {
-      recall = _json['recall'].toDouble();
+      recall = (_json['recall'] as core.num).toDouble();
     }
     if (_json.containsKey('trueNegatives')) {
       trueNegatives = _json['trueNegatives'] as core.String;
@@ -3682,16 +3684,16 @@ class BqmlIterationResult {
       durationMs = _json['durationMs'] as core.String;
     }
     if (_json.containsKey('evalLoss')) {
-      evalLoss = _json['evalLoss'].toDouble();
+      evalLoss = (_json['evalLoss'] as core.num).toDouble();
     }
     if (_json.containsKey('index')) {
       index = _json['index'] as core.int;
     }
     if (_json.containsKey('learnRate')) {
-      learnRate = _json['learnRate'].toDouble();
+      learnRate = (_json['learnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('trainingLoss')) {
-      trainingLoss = _json['trainingLoss'].toDouble();
+      trainingLoss = (_json['trainingLoss'] as core.num).toDouble();
     }
   }
 
@@ -3739,25 +3741,26 @@ class BqmlTrainingRunTrainingOptions {
       earlyStop = _json['earlyStop'] as core.bool;
     }
     if (_json.containsKey('l1Reg')) {
-      l1Reg = _json['l1Reg'].toDouble();
+      l1Reg = (_json['l1Reg'] as core.num).toDouble();
     }
     if (_json.containsKey('l2Reg')) {
-      l2Reg = _json['l2Reg'].toDouble();
+      l2Reg = (_json['l2Reg'] as core.num).toDouble();
     }
     if (_json.containsKey('learnRate')) {
-      learnRate = _json['learnRate'].toDouble();
+      learnRate = (_json['learnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('learnRateStrategy')) {
       learnRateStrategy = _json['learnRateStrategy'] as core.String;
     }
     if (_json.containsKey('lineSearchInitLearnRate')) {
-      lineSearchInitLearnRate = _json['lineSearchInitLearnRate'].toDouble();
+      lineSearchInitLearnRate =
+          (_json['lineSearchInitLearnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('maxIteration')) {
       maxIteration = _json['maxIteration'] as core.String;
     }
     if (_json.containsKey('minRelProgress')) {
-      minRelProgress = _json['minRelProgress'].toDouble();
+      minRelProgress = (_json['minRelProgress'] as core.num).toDouble();
     }
     if (_json.containsKey('warmStart')) {
       warmStart = _json['warmStart'] as core.bool;
@@ -3829,7 +3832,7 @@ class BqmlTrainingRun {
           .toList();
     }
     if (_json.containsKey('startTime')) {
-      startTime = core.DateTime.parse(_json['startTime']);
+      startTime = core.DateTime.parse(_json['startTime'] as core.String);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -3980,7 +3983,7 @@ class ClusterInfo {
       centroidId = _json['centroidId'] as core.String;
     }
     if (_json.containsKey('clusterRadius')) {
-      clusterRadius = _json['clusterRadius'].toDouble();
+      clusterRadius = (_json['clusterRadius'] as core.num).toDouble();
     }
     if (_json.containsKey('clusterSize')) {
       clusterSize = _json['clusterSize'] as core.String;
@@ -4049,10 +4052,11 @@ class ClusteringMetrics {
           .toList();
     }
     if (_json.containsKey('daviesBouldinIndex')) {
-      daviesBouldinIndex = _json['daviesBouldinIndex'].toDouble();
+      daviesBouldinIndex = (_json['daviesBouldinIndex'] as core.num).toDouble();
     }
     if (_json.containsKey('meanSquaredDistance')) {
-      meanSquaredDistance = _json['meanSquaredDistance'].toDouble();
+      meanSquaredDistance =
+          (_json['meanSquaredDistance'] as core.num).toDouble();
     }
   }
 
@@ -4084,7 +4088,8 @@ class ConfusionMatrix {
 
   ConfusionMatrix.fromJson(core.Map _json) {
     if (_json.containsKey('confidenceThreshold')) {
-      confidenceThreshold = _json['confidenceThreshold'].toDouble();
+      confidenceThreshold =
+          (_json['confidenceThreshold'] as core.num).toDouble();
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -5051,10 +5056,10 @@ class ExplainQueryStage {
       computeMsMax = _json['computeMsMax'] as core.String;
     }
     if (_json.containsKey('computeRatioAvg')) {
-      computeRatioAvg = _json['computeRatioAvg'].toDouble();
+      computeRatioAvg = (_json['computeRatioAvg'] as core.num).toDouble();
     }
     if (_json.containsKey('computeRatioMax')) {
-      computeRatioMax = _json['computeRatioMax'].toDouble();
+      computeRatioMax = (_json['computeRatioMax'] as core.num).toDouble();
     }
     if (_json.containsKey('endMs')) {
       endMs = _json['endMs'] as core.String;
@@ -5080,10 +5085,10 @@ class ExplainQueryStage {
       readMsMax = _json['readMsMax'] as core.String;
     }
     if (_json.containsKey('readRatioAvg')) {
-      readRatioAvg = _json['readRatioAvg'].toDouble();
+      readRatioAvg = (_json['readRatioAvg'] as core.num).toDouble();
     }
     if (_json.containsKey('readRatioMax')) {
-      readRatioMax = _json['readRatioMax'].toDouble();
+      readRatioMax = (_json['readRatioMax'] as core.num).toDouble();
     }
     if (_json.containsKey('recordsRead')) {
       recordsRead = _json['recordsRead'] as core.String;
@@ -5119,10 +5124,10 @@ class ExplainQueryStage {
       waitMsMax = _json['waitMsMax'] as core.String;
     }
     if (_json.containsKey('waitRatioAvg')) {
-      waitRatioAvg = _json['waitRatioAvg'].toDouble();
+      waitRatioAvg = (_json['waitRatioAvg'] as core.num).toDouble();
     }
     if (_json.containsKey('waitRatioMax')) {
-      waitRatioMax = _json['waitRatioMax'].toDouble();
+      waitRatioMax = (_json['waitRatioMax'] as core.num).toDouble();
     }
     if (_json.containsKey('writeMsAvg')) {
       writeMsAvg = _json['writeMsAvg'] as core.String;
@@ -5131,10 +5136,10 @@ class ExplainQueryStage {
       writeMsMax = _json['writeMsMax'] as core.String;
     }
     if (_json.containsKey('writeRatioAvg')) {
-      writeRatioAvg = _json['writeRatioAvg'].toDouble();
+      writeRatioAvg = (_json['writeRatioAvg'] as core.num).toDouble();
     }
     if (_json.containsKey('writeRatioMax')) {
-      writeRatioMax = _json['writeRatioMax'].toDouble();
+      writeRatioMax = (_json['writeRatioMax'] as core.num).toDouble();
     }
   }
 
@@ -5509,7 +5514,7 @@ class FeatureValue {
       featureColumn = _json['featureColumn'] as core.String;
     }
     if (_json.containsKey('numericalValue')) {
-      numericalValue = _json['numericalValue'].toDouble();
+      numericalValue = (_json['numericalValue'] as core.num).toDouble();
     }
   }
 
@@ -5886,16 +5891,16 @@ class IterationResult {
       durationMs = _json['durationMs'] as core.String;
     }
     if (_json.containsKey('evalLoss')) {
-      evalLoss = _json['evalLoss'].toDouble();
+      evalLoss = (_json['evalLoss'] as core.num).toDouble();
     }
     if (_json.containsKey('index')) {
       index = _json['index'] as core.int;
     }
     if (_json.containsKey('learnRate')) {
-      learnRate = _json['learnRate'].toDouble();
+      learnRate = (_json['learnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('trainingLoss')) {
-      trainingLoss = _json['trainingLoss'].toDouble();
+      trainingLoss = (_json['trainingLoss'] as core.num).toDouble();
     }
   }
 
@@ -7329,7 +7334,7 @@ class JobStatistics {
 
   JobStatistics.fromJson(core.Map _json) {
     if (_json.containsKey('completionRatio')) {
-      completionRatio = _json['completionRatio'].toDouble();
+      completionRatio = (_json['completionRatio'] as core.num).toDouble();
     }
     if (_json.containsKey('creationTime')) {
       creationTime = _json['creationTime'] as core.String;
@@ -9366,17 +9371,18 @@ class RankingMetrics {
 
   RankingMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('averageRank')) {
-      averageRank = _json['averageRank'].toDouble();
+      averageRank = (_json['averageRank'] as core.num).toDouble();
     }
     if (_json.containsKey('meanAveragePrecision')) {
-      meanAveragePrecision = _json['meanAveragePrecision'].toDouble();
+      meanAveragePrecision =
+          (_json['meanAveragePrecision'] as core.num).toDouble();
     }
     if (_json.containsKey('meanSquaredError')) {
-      meanSquaredError = _json['meanSquaredError'].toDouble();
+      meanSquaredError = (_json['meanSquaredError'] as core.num).toDouble();
     }
     if (_json.containsKey('normalizedDiscountedCumulativeGain')) {
       normalizedDiscountedCumulativeGain =
-          _json['normalizedDiscountedCumulativeGain'].toDouble();
+          (_json['normalizedDiscountedCumulativeGain'] as core.num).toDouble();
     }
   }
 
@@ -9421,19 +9427,21 @@ class RegressionMetrics {
 
   RegressionMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('meanAbsoluteError')) {
-      meanAbsoluteError = _json['meanAbsoluteError'].toDouble();
+      meanAbsoluteError = (_json['meanAbsoluteError'] as core.num).toDouble();
     }
     if (_json.containsKey('meanSquaredError')) {
-      meanSquaredError = _json['meanSquaredError'].toDouble();
+      meanSquaredError = (_json['meanSquaredError'] as core.num).toDouble();
     }
     if (_json.containsKey('meanSquaredLogError')) {
-      meanSquaredLogError = _json['meanSquaredLogError'].toDouble();
+      meanSquaredLogError =
+          (_json['meanSquaredLogError'] as core.num).toDouble();
     }
     if (_json.containsKey('medianAbsoluteError')) {
-      medianAbsoluteError = _json['medianAbsoluteError'].toDouble();
+      medianAbsoluteError =
+          (_json['medianAbsoluteError'] as core.num).toDouble();
     }
     if (_json.containsKey('rSquared')) {
-      rSquared = _json['rSquared'].toDouble();
+      rSquared = (_json['rSquared'] as core.num).toDouble();
     }
   }
 
@@ -9921,7 +9929,7 @@ class SnapshotDefinition {
       baseTableReference = TableReference.fromJson(_json['baseTableReference']);
     }
     if (_json.containsKey('snapshotTime')) {
-      snapshotTime = core.DateTime.parse(_json['snapshotTime']);
+      snapshotTime = core.DateTime.parse(_json['snapshotTime'] as core.String);
     }
   }
 
@@ -11498,7 +11506,8 @@ class TrainingOptions {
       dataSplitColumn = _json['dataSplitColumn'] as core.String;
     }
     if (_json.containsKey('dataSplitEvalFraction')) {
-      dataSplitEvalFraction = _json['dataSplitEvalFraction'].toDouble();
+      dataSplitEvalFraction =
+          (_json['dataSplitEvalFraction'] as core.num).toDouble();
     }
     if (_json.containsKey('dataSplitMethod')) {
       dataSplitMethod = _json['dataSplitMethod'] as core.String;
@@ -11507,7 +11516,7 @@ class TrainingOptions {
       distanceType = _json['distanceType'] as core.String;
     }
     if (_json.containsKey('dropout')) {
-      dropout = _json['dropout'].toDouble();
+      dropout = (_json['dropout'] as core.num).toDouble();
     }
     if (_json.containsKey('earlyStop')) {
       earlyStop = _json['earlyStop'] as core.bool;
@@ -11530,7 +11539,7 @@ class TrainingOptions {
       includeDrift = _json['includeDrift'] as core.bool;
     }
     if (_json.containsKey('initialLearnRate')) {
-      initialLearnRate = _json['initialLearnRate'].toDouble();
+      initialLearnRate = (_json['initialLearnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('inputLabelColumns')) {
       inputLabelColumns = (_json['inputLabelColumns'] as core.List)
@@ -11549,18 +11558,18 @@ class TrainingOptions {
           _json['kmeansInitializationMethod'] as core.String;
     }
     if (_json.containsKey('l1Regularization')) {
-      l1Regularization = _json['l1Regularization'].toDouble();
+      l1Regularization = (_json['l1Regularization'] as core.num).toDouble();
     }
     if (_json.containsKey('l2Regularization')) {
-      l2Regularization = _json['l2Regularization'].toDouble();
+      l2Regularization = (_json['l2Regularization'] as core.num).toDouble();
     }
     if (_json.containsKey('labelClassWeights')) {
       labelClassWeights = commons.mapMap<core.num, core.double>(
           _json['labelClassWeights'].cast<core.String, core.num>(),
-          (core.num item) => item.toDouble());
+          (core.num item) => (item as core.num).toDouble());
     }
     if (_json.containsKey('learnRate')) {
-      learnRate = _json['learnRate'].toDouble();
+      learnRate = (_json['learnRate'] as core.num).toDouble();
     }
     if (_json.containsKey('learnRateStrategy')) {
       learnRateStrategy = _json['learnRateStrategy'] as core.String;
@@ -11575,10 +11584,11 @@ class TrainingOptions {
       maxTreeDepth = _json['maxTreeDepth'] as core.String;
     }
     if (_json.containsKey('minRelativeProgress')) {
-      minRelativeProgress = _json['minRelativeProgress'].toDouble();
+      minRelativeProgress =
+          (_json['minRelativeProgress'] as core.num).toDouble();
     }
     if (_json.containsKey('minSplitLoss')) {
-      minSplitLoss = _json['minSplitLoss'].toDouble();
+      minSplitLoss = (_json['minSplitLoss'] as core.num).toDouble();
     }
     if (_json.containsKey('modelUri')) {
       modelUri = _json['modelUri'] as core.String;
@@ -11599,7 +11609,7 @@ class TrainingOptions {
       preserveInputStructs = _json['preserveInputStructs'] as core.bool;
     }
     if (_json.containsKey('subsample')) {
-      subsample = _json['subsample'].toDouble();
+      subsample = (_json['subsample'] as core.num).toDouble();
     }
     if (_json.containsKey('timeSeriesDataColumn')) {
       timeSeriesDataColumn = _json['timeSeriesDataColumn'] as core.String;
@@ -11615,7 +11625,7 @@ class TrainingOptions {
       userColumn = _json['userColumn'] as core.String;
     }
     if (_json.containsKey('walsAlpha')) {
-      walsAlpha = _json['walsAlpha'].toDouble();
+      walsAlpha = (_json['walsAlpha'] as core.num).toDouble();
     }
     if (_json.containsKey('warmStart')) {
       warmStart = _json['warmStart'] as core.bool;

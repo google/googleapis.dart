@@ -2311,16 +2311,17 @@ class CVSSv3 {
       availabilityImpact = _json['availabilityImpact'] as core.String;
     }
     if (_json.containsKey('baseScore')) {
-      baseScore = _json['baseScore'].toDouble();
+      baseScore = (_json['baseScore'] as core.num).toDouble();
     }
     if (_json.containsKey('confidentialityImpact')) {
       confidentialityImpact = _json['confidentialityImpact'] as core.String;
     }
     if (_json.containsKey('exploitabilityScore')) {
-      exploitabilityScore = _json['exploitabilityScore'].toDouble();
+      exploitabilityScore =
+          (_json['exploitabilityScore'] as core.num).toDouble();
     }
     if (_json.containsKey('impactScore')) {
-      impactScore = _json['impactScore'].toDouble();
+      impactScore = (_json['impactScore'] as core.num).toDouble();
     }
     if (_json.containsKey('integrityImpact')) {
       integrityImpact = _json['integrityImpact'] as core.String;
@@ -3701,7 +3702,7 @@ class GrafeasV1beta1VulnerabilityDetails {
 
   GrafeasV1beta1VulnerabilityDetails.fromJson(core.Map _json) {
     if (_json.containsKey('cvssScore')) {
-      cvssScore = _json['cvssScore'].toDouble();
+      cvssScore = (_json['cvssScore'] as core.num).toDouble();
     }
     if (_json.containsKey('effectiveSeverity')) {
       effectiveSeverity = _json['effectiveSeverity'] as core.String;
@@ -5570,7 +5571,7 @@ class Vulnerability {
 
   Vulnerability.fromJson(core.Map _json) {
     if (_json.containsKey('cvssScore')) {
-      cvssScore = _json['cvssScore'].toDouble();
+      cvssScore = (_json['cvssScore'] as core.num).toDouble();
     }
     if (_json.containsKey('cvssV3')) {
       cvssV3 = CVSSv3.fromJson(_json['cvssV3']);

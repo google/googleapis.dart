@@ -7081,7 +7081,7 @@ class TrackRelease {
       status = _json['status'] as core.String;
     }
     if (_json.containsKey('userFraction')) {
-      userFraction = _json['userFraction'].toDouble();
+      userFraction = (_json['userFraction'] as core.num).toDouble();
     }
     if (_json.containsKey('versionCodes')) {
       versionCodes = (_json['versionCodes'] as core.List)

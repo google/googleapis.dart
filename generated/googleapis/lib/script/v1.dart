@@ -2778,7 +2778,7 @@ class Value {
       nullValue = _json['nullValue'] as core.String;
     }
     if (_json.containsKey('numberValue')) {
-      numberValue = _json['numberValue'].toDouble();
+      numberValue = (_json['numberValue'] as core.num).toDouble();
     }
     if (_json.containsKey('protoValue')) {
       protoValue = commons.mapMap<core.Object, core.Object>(

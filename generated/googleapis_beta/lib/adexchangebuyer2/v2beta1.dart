@@ -8791,7 +8791,7 @@ class NativeContent {
       priceDisplayText = _json['priceDisplayText'] as core.String;
     }
     if (_json.containsKey('starRating')) {
-      starRating = _json['starRating'].toDouble();
+      starRating = (_json['starRating'] as core.num).toDouble();
     }
     if (_json.containsKey('storeUrl')) {
       storeUrl = _json['storeUrl'] as core.String;

@@ -4848,13 +4848,14 @@ class Distribution {
           .toList();
     }
     if (_json.containsKey('mean')) {
-      mean = _json['mean'].toDouble();
+      mean = (_json['mean'] as core.num).toDouble();
     }
     if (_json.containsKey('range')) {
       range = Range.fromJson(_json['range']);
     }
     if (_json.containsKey('sumOfSquaredDeviation')) {
-      sumOfSquaredDeviation = _json['sumOfSquaredDeviation'].toDouble();
+      sumOfSquaredDeviation =
+          (_json['sumOfSquaredDeviation'] as core.num).toDouble();
     }
   }
 
@@ -5081,7 +5082,7 @@ class Exemplar {
       timestamp = _json['timestamp'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = _json['value'].toDouble();
+      value = (_json['value'] as core.num).toDouble();
     }
   }
 
@@ -5115,7 +5116,7 @@ class Explicit {
   Explicit.fromJson(core.Map _json) {
     if (_json.containsKey('bounds')) {
       bounds = (_json['bounds'] as core.List)
-          .map<core.double>((value) => value.toDouble())
+          .map<core.double>((value) => (value as core.num).toDouble())
           .toList();
     }
   }
@@ -5149,13 +5150,13 @@ class Exponential {
 
   Exponential.fromJson(core.Map _json) {
     if (_json.containsKey('growthFactor')) {
-      growthFactor = _json['growthFactor'].toDouble();
+      growthFactor = (_json['growthFactor'] as core.num).toDouble();
     }
     if (_json.containsKey('numFiniteBuckets')) {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('scale')) {
-      scale = _json['scale'].toDouble();
+      scale = (_json['scale'] as core.num).toDouble();
     }
   }
 
@@ -5386,10 +5387,10 @@ class GoogleMonitoringV3Range {
 
   GoogleMonitoringV3Range.fromJson(core.Map _json) {
     if (_json.containsKey('max')) {
-      max = _json['max'].toDouble();
+      max = (_json['max'] as core.num).toDouble();
     }
     if (_json.containsKey('min')) {
-      min = _json['min'].toDouble();
+      min = (_json['min'] as core.num).toDouble();
     }
   }
 
@@ -5863,10 +5864,10 @@ class Linear {
       numFiniteBuckets = _json['numFiniteBuckets'] as core.int;
     }
     if (_json.containsKey('offset')) {
-      offset = _json['offset'].toDouble();
+      offset = (_json['offset'] as core.num).toDouble();
     }
     if (_json.containsKey('width')) {
-      width = _json['width'].toDouble();
+      width = (_json['width'] as core.num).toDouble();
     }
   }
 
@@ -7002,7 +7003,7 @@ class MetricThreshold {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('thresholdValue')) {
-      thresholdValue = _json['thresholdValue'].toDouble();
+      thresholdValue = (_json['thresholdValue'] as core.num).toDouble();
     }
     if (_json.containsKey('trigger')) {
       trigger = Trigger.fromJson(_json['trigger']);
@@ -7655,7 +7656,7 @@ class PerformanceThreshold {
       performance = RequestBasedSli.fromJson(_json['performance']);
     }
     if (_json.containsKey('threshold')) {
-      threshold = _json['threshold'].toDouble();
+      threshold = (_json['threshold'] as core.num).toDouble();
     }
   }
 
@@ -7863,10 +7864,10 @@ class Range {
 
   Range.fromJson(core.Map _json) {
     if (_json.containsKey('max')) {
-      max = _json['max'].toDouble();
+      max = (_json['max'] as core.num).toDouble();
     }
     if (_json.containsKey('min')) {
-      min = _json['min'].toDouble();
+      min = (_json['min'] as core.num).toDouble();
     }
   }
 
@@ -8166,7 +8167,7 @@ class ServiceLevelObjective {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('goal')) {
-      goal = _json['goal'].toDouble();
+      goal = (_json['goal'] as core.num).toDouble();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8690,7 +8691,7 @@ class Trigger {
       count = _json['count'] as core.int;
     }
     if (_json.containsKey('percent')) {
-      percent = _json['percent'].toDouble();
+      percent = (_json['percent'] as core.num).toDouble();
     }
   }
 
@@ -8810,7 +8811,7 @@ class TypedValue {
       distributionValue = Distribution.fromJson(_json['distributionValue']);
     }
     if (_json.containsKey('doubleValue')) {
-      doubleValue = _json['doubleValue'].toDouble();
+      doubleValue = (_json['doubleValue'] as core.num).toDouble();
     }
     if (_json.containsKey('int64Value')) {
       int64Value = _json['int64Value'] as core.String;

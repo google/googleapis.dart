@@ -1581,7 +1581,7 @@ class PatchJob {
       patchDeployment = _json['patchDeployment'] as core.String;
     }
     if (_json.containsKey('percentComplete')) {
-      percentComplete = _json['percentComplete'].toDouble();
+      percentComplete = (_json['percentComplete'] as core.num).toDouble();
     }
     if (_json.containsKey('rollout')) {
       rollout = PatchRollout.fromJson(_json['rollout']);

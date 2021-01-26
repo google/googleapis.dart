@@ -4270,7 +4270,7 @@ class SasPortalDeviceGrant {
       grantId = _json['grantId'] as core.String;
     }
     if (_json.containsKey('maxEirp')) {
-      maxEirp = _json['maxEirp'].toDouble();
+      maxEirp = (_json['maxEirp'] as core.num).toDouble();
     }
     if (_json.containsKey('moveList')) {
       moveList = (_json['moveList'] as core.List)
@@ -4452,10 +4452,10 @@ class SasPortalFrequencyRange {
 
   SasPortalFrequencyRange.fromJson(core.Map _json) {
     if (_json.containsKey('highFrequencyMhz')) {
-      highFrequencyMhz = _json['highFrequencyMhz'].toDouble();
+      highFrequencyMhz = (_json['highFrequencyMhz'] as core.num).toDouble();
     }
     if (_json.containsKey('lowFrequencyMhz')) {
-      lowFrequencyMhz = _json['lowFrequencyMhz'].toDouble();
+      lowFrequencyMhz = (_json['lowFrequencyMhz'] as core.num).toDouble();
     }
   }
 
@@ -4633,25 +4633,25 @@ class SasPortalInstallationParams {
       eirpCapability = _json['eirpCapability'] as core.int;
     }
     if (_json.containsKey('height')) {
-      height = _json['height'].toDouble();
+      height = (_json['height'] as core.num).toDouble();
     }
     if (_json.containsKey('heightType')) {
       heightType = _json['heightType'] as core.String;
     }
     if (_json.containsKey('horizontalAccuracy')) {
-      horizontalAccuracy = _json['horizontalAccuracy'].toDouble();
+      horizontalAccuracy = (_json['horizontalAccuracy'] as core.num).toDouble();
     }
     if (_json.containsKey('indoorDeployment')) {
       indoorDeployment = _json['indoorDeployment'] as core.bool;
     }
     if (_json.containsKey('latitude')) {
-      latitude = _json['latitude'].toDouble();
+      latitude = (_json['latitude'] as core.num).toDouble();
     }
     if (_json.containsKey('longitude')) {
-      longitude = _json['longitude'].toDouble();
+      longitude = (_json['longitude'] as core.num).toDouble();
     }
     if (_json.containsKey('verticalAccuracy')) {
-      verticalAccuracy = _json['verticalAccuracy'].toDouble();
+      verticalAccuracy = (_json['verticalAccuracy'] as core.num).toDouble();
     }
   }
 
