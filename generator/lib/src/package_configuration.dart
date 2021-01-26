@@ -80,7 +80,7 @@ class DiscoveryPackagesConfiguration {
   /// The file names for the content of readme and license files are resolved
   /// relative to the configuration file.
   DiscoveryPackagesConfiguration(this.configFile) {
-    yaml = loadYaml(File(configFile).readAsStringSync());
+    yaml = loadYaml(File(configFile).readAsStringSync()) as Map;
   }
 
   /// Downloads discovery documents from the configuration.
@@ -106,10 +106,13 @@ class DiscoveryPackagesConfiguration {
 
     var count = 0;
     try {
-      await pool.forEach(packages.entries, (e) async {
+      await pool.forEach(packages.entries, (MapEntry<String, Package> e) async {
         print(' ${++count} of ${packages.length} - ${e.key}');
-        await downloadDiscoveryDocuments('$discoveryDocsDir/${e.key}',
-            ids: e.value.apis);
+
+        await downloadDiscoveryDocuments(
+          '$discoveryDocsDir/${e.key}',
+          ids: e.value.apis,
+        );
       }).drain();
     } finally {
       await pool.close();
@@ -185,15 +188,18 @@ class DiscoveryPackagesConfiguration {
   /// Initializes the missingApis/excessApis/packages properties from a list
   /// of [RestDescription]s.
   void _initialize(List<RestDescription> allApis) {
-    packages = _packagesFromYaml(yaml['packages'], configFile, allApis);
-    final knownApis =
-        _calculateKnownApis(packages, _listFromYaml(yaml['skipped_apis']));
+    packages =
+        _packagesFromYaml(yaml['packages'] as YamlList, configFile, allApis);
+    final knownApis = _calculateKnownApis(
+      packages,
+      _listFromYaml(yaml['skipped_apis'] as YamlList),
+    );
     missingApis = _calculateMissingApis(knownApis, allApis);
     excessApis = _calculateExcessApis(knownApis, allApis);
   }
 
   // Return empty list for YAML null value.
-  static List _listFromYaml(value) => value ?? [];
+  static List _listFromYaml(List value) => value ?? [];
 
   static String _generateReadme(
       String readmeFile, List<RestDescription> items) {
@@ -229,11 +235,14 @@ package.
     return sb.toString();
   }
 
-  static Map<String, Package> _packagesFromYaml(YamlList configPackages,
-      String configFile, List<RestDescription> allApis) {
+  static Map<String, Package> _packagesFromYaml(
+    YamlList configPackages,
+    String configFile,
+    List<RestDescription> allApis,
+  ) {
     final packages = <String, Package>{};
     for (var package in configPackages) {
-      package.forEach((name, values) {
+      package.forEach((String name, YamlMap values) {
         packages[name] = _packageFromYaml(name, values, configFile, allApis);
       });
     }
@@ -247,10 +256,10 @@ package.
     String configFile,
     List<RestDescription> allApis,
   ) {
-    final apis = _listFromYaml(values['apis']).cast<String>();
-    final version = values['version'] ?? '0.1.0-dev';
-    final author = values['author'];
-    final homepage = values['homepage'];
+    final apis = _listFromYaml(values['apis'] as List).cast<String>();
+    final version = values['version'] as String ?? '0.1.0-dev';
+    final author = values['author'] as String;
+    final homepage = values['homepage'] as String;
 
     Map<String, String> extraDevDependencies;
     if (values.containsKey('extraDevDependencies')) {
@@ -268,25 +277,25 @@ package.
 
     String readmeFile;
     if (values['readme'] != null) {
-      readmeFile = configUri.resolve(values['readme']).path;
+      readmeFile = configUri.resolve(values['readme'] as String).path;
     }
     String licenseFile;
     if (values['license'] != null) {
-      licenseFile = configUri.resolve(values['license']).path;
+      licenseFile = configUri.resolve(values['license'] as String).path;
     }
     String changelogFile;
     if (values['changelog'] != null) {
-      changelogFile = configUri.resolve(values['changelog']).path;
+      changelogFile = configUri.resolve(values['changelog'] as String).path;
     }
     String example;
     if (values['example'] != null) {
-      final exampleFile = configUri.resolve(values['example']).path;
+      final exampleFile = configUri.resolve(values['example'] as String).path;
       example = File(exampleFile).readAsStringSync();
     }
 
     String monoPkg;
     if (values['mono_pkg'] != null) {
-      final monoPkgFile = configUri.resolve(values['mono_pkg']).path;
+      final monoPkgFile = configUri.resolve(values['mono_pkg'] as String).path;
       monoPkg = File(monoPkgFile).readAsStringSync();
     }
 
@@ -334,7 +343,7 @@ package.
   /// the APIs explicitly skipped.
   static Set<String> _calculateKnownApis(
     Map<String, Package> packages,
-    YamlList skippedApis,
+    List skippedApis,
   ) {
     final knownApis = <String>{...skippedApis.cast<String>()};
     packages.forEach((_, package) => knownApis.addAll(package.apis));
