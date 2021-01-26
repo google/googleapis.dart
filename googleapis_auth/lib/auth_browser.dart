@@ -67,6 +67,7 @@ Future<BrowserOAuth2Flow> createImplicitBrowserFlow(
     await flow.initialize();
   } catch (_) {
     refCountedClient.close();
+    rethrow;
   }
   return BrowserOAuth2Flow._(flow, refCountedClient);
 }
