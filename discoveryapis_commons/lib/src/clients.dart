@@ -297,7 +297,7 @@ class MultipartMediaUploader {
       ..add(utf8.encode(bodyHead));
     bodyController.addStream(base64MediaStream).then((_) {
       bodyController.add(utf8.encode(bodyTail));
-    }).catchError((e) {
+    }).catchError((Object e) {
       bodyController.addError(e);
       return null;
     }).then((_) {
