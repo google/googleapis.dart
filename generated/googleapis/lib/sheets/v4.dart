@@ -139,8 +139,10 @@ class SpreadsheetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BatchUpdateSpreadsheetResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUpdateSpreadsheetResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a spreadsheet, returning the newly created spreadsheet.
@@ -188,7 +190,10 @@ class SpreadsheetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Spreadsheet.fromJson(data));
+    return _response.then(
+      (data) =>
+          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the spreadsheet at the given ID. The caller must specify the
@@ -259,7 +264,10 @@ class SpreadsheetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Spreadsheet.fromJson(data));
+    return _response.then(
+      (data) =>
+          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the spreadsheet at the given ID. The caller must specify the
@@ -326,7 +334,10 @@ class SpreadsheetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Spreadsheet.fromJson(data));
+    return _response.then(
+      (data) =>
+          Spreadsheet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -391,7 +402,10 @@ class SpreadsheetsDeveloperMetadataResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeveloperMetadata.fromJson(data));
+    return _response.then(
+      (data) => DeveloperMetadata.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all developer metadata matching the specified DataFilter. If the
@@ -451,8 +465,10 @@ class SpreadsheetsDeveloperMetadataResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SearchDeveloperMetadataResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchDeveloperMetadataResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -524,7 +540,10 @@ class SpreadsheetsSheetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SheetProperties.fromJson(data));
+    return _response.then(
+      (data) =>
+          SheetProperties.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -682,7 +701,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppendValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => AppendValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Clears one or more ranges of values from a spreadsheet. The caller must
@@ -741,7 +763,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchClearValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchClearValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Clears one or more ranges of values from a spreadsheet. The caller must
@@ -801,8 +826,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BatchClearValuesByDataFilterResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchClearValuesByDataFilterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns one or more ranges of values from a spreadsheet. The caller must
@@ -913,7 +940,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchGetValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchGetValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns one or more ranges of values that match the specified data
@@ -972,8 +1002,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BatchGetValuesByDataFilterResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchGetValuesByDataFilterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets values in one or more ranges of a spreadsheet. The caller must
@@ -1031,7 +1063,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchUpdateValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUpdateValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets values in one or more ranges of a spreadsheet. The caller must
@@ -1089,8 +1124,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BatchUpdateValuesByDataFilterResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUpdateValuesByDataFilterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Clears values from a spreadsheet. The caller must specify the spreadsheet
@@ -1156,7 +1193,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ClearValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => ClearValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a range of values from a spreadsheet. The caller must specify the
@@ -1268,7 +1308,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ValueRange.fromJson(data));
+    return _response.then(
+      (data) =>
+          ValueRange.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets values in a range of a spreadsheet. The caller must specify the
@@ -1400,7 +1443,10 @@ class SpreadsheetsValuesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UpdateValuesResponse.fromJson(data));
+    return _response.then(
+      (data) => UpdateValuesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1415,7 +1461,8 @@ class AddBandingRequest {
 
   AddBandingRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bandedRange')) {
-      bandedRange = BandedRange.fromJson(_json['bandedRange']);
+      bandedRange = BandedRange.fromJson(
+          _json['bandedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1437,7 +1484,8 @@ class AddBandingResponse {
 
   AddBandingResponse.fromJson(core.Map _json) {
     if (_json.containsKey('bandedRange')) {
-      bandedRange = BandedRange.fromJson(_json['bandedRange']);
+      bandedRange = BandedRange.fromJson(
+          _json['bandedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1462,7 +1510,8 @@ class AddChartRequest {
 
   AddChartRequest.fromJson(core.Map _json) {
     if (_json.containsKey('chart')) {
-      chart = EmbeddedChart.fromJson(_json['chart']);
+      chart = EmbeddedChart.fromJson(
+          _json['chart'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1484,7 +1533,8 @@ class AddChartResponse {
 
   AddChartResponse.fromJson(core.Map _json) {
     if (_json.containsKey('chart')) {
-      chart = EmbeddedChart.fromJson(_json['chart']);
+      chart = EmbeddedChart.fromJson(
+          _json['chart'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1513,7 +1563,8 @@ class AddConditionalFormatRuleRequest {
       index = _json['index'] as core.int;
     }
     if (_json.containsKey('rule')) {
-      rule = ConditionalFormatRule.fromJson(_json['rule']);
+      rule = ConditionalFormatRule.fromJson(
+          _json['rule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1541,7 +1592,8 @@ class AddDataSourceRequest {
 
   AddDataSourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSource')) {
-      dataSource = DataSource.fromJson(_json['dataSource']);
+      dataSource = DataSource.fromJson(
+          _json['dataSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1566,11 +1618,12 @@ class AddDataSourceResponse {
 
   AddDataSourceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSource')) {
-      dataSource = DataSource.fromJson(_json['dataSource']);
+      dataSource = DataSource.fromJson(
+          _json['dataSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1607,7 +1660,8 @@ class AddDimensionGroupRequest {
 
   AddDimensionGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1630,7 +1684,8 @@ class AddDimensionGroupResponse {
   AddDimensionGroupResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionGroups')) {
       dimensionGroups = (_json['dimensionGroups'] as core.List)
-          .map<DimensionGroup>((value) => DimensionGroup.fromJson(value))
+          .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1656,7 +1711,8 @@ class AddFilterViewRequest {
 
   AddFilterViewRequest.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = FilterView.fromJson(_json['filter']);
+      filter = FilterView.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1678,7 +1734,8 @@ class AddFilterViewResponse {
 
   AddFilterViewResponse.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = FilterView.fromJson(_json['filter']);
+      filter = FilterView.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1702,7 +1759,8 @@ class AddNamedRangeRequest {
 
   AddNamedRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('namedRange')) {
-      namedRange = NamedRange.fromJson(_json['namedRange']);
+      namedRange = NamedRange.fromJson(
+          _json['namedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1724,7 +1782,8 @@ class AddNamedRangeResponse {
 
   AddNamedRangeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('namedRange')) {
-      namedRange = NamedRange.fromJson(_json['namedRange']);
+      namedRange = NamedRange.fromJson(
+          _json['namedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1748,7 +1807,8 @@ class AddProtectedRangeRequest {
 
   AddProtectedRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('protectedRange')) {
-      protectedRange = ProtectedRange.fromJson(_json['protectedRange']);
+      protectedRange = ProtectedRange.fromJson(
+          _json['protectedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1770,7 +1830,8 @@ class AddProtectedRangeResponse {
 
   AddProtectedRangeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('protectedRange')) {
-      protectedRange = ProtectedRange.fromJson(_json['protectedRange']);
+      protectedRange = ProtectedRange.fromJson(
+          _json['protectedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1798,7 +1859,8 @@ class AddSheetRequest {
 
   AddSheetRequest.fromJson(core.Map _json) {
     if (_json.containsKey('properties')) {
-      properties = SheetProperties.fromJson(_json['properties']);
+      properties = SheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1820,7 +1882,8 @@ class AddSheetResponse {
 
   AddSheetResponse.fromJson(core.Map _json) {
     if (_json.containsKey('properties')) {
-      properties = SheetProperties.fromJson(_json['properties']);
+      properties = SheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1845,7 +1908,8 @@ class AddSlicerRequest {
 
   AddSlicerRequest.fromJson(core.Map _json) {
     if (_json.containsKey('slicer')) {
-      slicer = Slicer.fromJson(_json['slicer']);
+      slicer = Slicer.fromJson(
+          _json['slicer'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1867,7 +1931,8 @@ class AddSlicerResponse {
 
   AddSlicerResponse.fromJson(core.Map _json) {
     if (_json.containsKey('slicer')) {
-      slicer = Slicer.fromJson(_json['slicer']);
+      slicer = Slicer.fromJson(
+          _json['slicer'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1903,7 +1968,8 @@ class AppendCellsRequest {
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<RowData>((value) => RowData.fromJson(value))
+          .map<RowData>((value) =>
+              RowData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sheetId')) {
@@ -1992,7 +2058,8 @@ class AppendValuesResponse {
       tableRange = _json['tableRange'] as core.String;
     }
     if (_json.containsKey('updates')) {
-      updates = UpdateValuesResponse.fromJson(_json['updates']);
+      updates = UpdateValuesResponse.fromJson(
+          _json['updates'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2030,11 +2097,12 @@ class AutoFillRequest {
 
   AutoFillRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceAndDestination')) {
-      sourceAndDestination =
-          SourceAndDestination.fromJson(_json['sourceAndDestination']);
+      sourceAndDestination = SourceAndDestination.fromJson(
+          _json['sourceAndDestination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('useAlternateSeries')) {
       useAlternateSeries = _json['useAlternateSeries'] as core.bool;
@@ -2070,10 +2138,12 @@ class AutoResizeDimensionsRequest {
   AutoResizeDimensionsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceSheetDimensions')) {
       dataSourceSheetDimensions = DataSourceSheetDimensionRange.fromJson(
-          _json['dataSourceSheetDimensions']);
+          _json['dataSourceSheetDimensions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = DimensionRange.fromJson(_json['dimensions']);
+      dimensions = DimensionRange.fromJson(
+          _json['dimensions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2114,13 +2184,16 @@ class BandedRange {
       bandedRangeId = _json['bandedRangeId'] as core.int;
     }
     if (_json.containsKey('columnProperties')) {
-      columnProperties = BandingProperties.fromJson(_json['columnProperties']);
+      columnProperties = BandingProperties.fromJson(
+          _json['columnProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rowProperties')) {
-      rowProperties = BandingProperties.fromJson(_json['rowProperties']);
+      rowProperties = BandingProperties.fromJson(
+          _json['rowProperties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2197,28 +2270,36 @@ class BandingProperties {
 
   BandingProperties.fromJson(core.Map _json) {
     if (_json.containsKey('firstBandColor')) {
-      firstBandColor = Color.fromJson(_json['firstBandColor']);
+      firstBandColor = Color.fromJson(
+          _json['firstBandColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('firstBandColorStyle')) {
-      firstBandColorStyle = ColorStyle.fromJson(_json['firstBandColorStyle']);
+      firstBandColorStyle = ColorStyle.fromJson(
+          _json['firstBandColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footerColor')) {
-      footerColor = Color.fromJson(_json['footerColor']);
+      footerColor = Color.fromJson(
+          _json['footerColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footerColorStyle')) {
-      footerColorStyle = ColorStyle.fromJson(_json['footerColorStyle']);
+      footerColorStyle = ColorStyle.fromJson(
+          _json['footerColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headerColor')) {
-      headerColor = Color.fromJson(_json['headerColor']);
+      headerColor = Color.fromJson(
+          _json['headerColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headerColorStyle')) {
-      headerColorStyle = ColorStyle.fromJson(_json['headerColorStyle']);
+      headerColorStyle = ColorStyle.fromJson(
+          _json['headerColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secondBandColor')) {
-      secondBandColor = Color.fromJson(_json['secondBandColor']);
+      secondBandColor = Color.fromJson(
+          _json['secondBandColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secondBandColorStyle')) {
-      secondBandColorStyle = ColorStyle.fromJson(_json['secondBandColorStyle']);
+      secondBandColorStyle = ColorStyle.fromJson(
+          _json['secondBandColorStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2302,22 +2383,28 @@ class BaselineValueFormat {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('negativeColor')) {
-      negativeColor = Color.fromJson(_json['negativeColor']);
+      negativeColor = Color.fromJson(
+          _json['negativeColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('negativeColorStyle')) {
-      negativeColorStyle = ColorStyle.fromJson(_json['negativeColorStyle']);
+      negativeColorStyle = ColorStyle.fromJson(
+          _json['negativeColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('position')) {
-      position = TextPosition.fromJson(_json['position']);
+      position = TextPosition.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positiveColor')) {
-      positiveColor = Color.fromJson(_json['positiveColor']);
+      positiveColor = Color.fromJson(
+          _json['positiveColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positiveColorStyle')) {
-      positiveColorStyle = ColorStyle.fromJson(_json['positiveColorStyle']);
+      positiveColorStyle = ColorStyle.fromJson(
+          _json['positiveColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textFormat')) {
-      textFormat = TextFormat.fromJson(_json['textFormat']);
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2385,7 +2472,8 @@ class BasicChartAxis {
 
   BasicChartAxis.fromJson(core.Map _json) {
     if (_json.containsKey('format')) {
-      format = TextFormat.fromJson(_json['format']);
+      format = TextFormat.fromJson(
+          _json['format'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('position')) {
       position = _json['position'] as core.String;
@@ -2394,11 +2482,12 @@ class BasicChartAxis {
       title = _json['title'] as core.String;
     }
     if (_json.containsKey('titleTextPosition')) {
-      titleTextPosition = TextPosition.fromJson(_json['titleTextPosition']);
+      titleTextPosition = TextPosition.fromJson(
+          _json['titleTextPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('viewWindowOptions')) {
-      viewWindowOptions =
-          ChartAxisViewWindowOptions.fromJson(_json['viewWindowOptions']);
+      viewWindowOptions = ChartAxisViewWindowOptions.fromJson(
+          _json['viewWindowOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2437,7 +2526,8 @@ class BasicChartDomain {
 
   BasicChartDomain.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = ChartData.fromJson(_json['domain']);
+      domain = ChartData.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reversed')) {
       reversed = _json['reversed'] as core.bool;
@@ -2512,16 +2602,20 @@ class BasicChartSeries {
 
   BasicChartSeries.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorStyle')) {
-      colorStyle = ColorStyle.fromJson(_json['colorStyle']);
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lineStyle')) {
-      lineStyle = LineStyle.fromJson(_json['lineStyle']);
+      lineStyle = LineStyle.fromJson(
+          _json['lineStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('series')) {
-      series = ChartData.fromJson(_json['series']);
+      series = ChartData.fromJson(
+          _json['series'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetAxis')) {
       targetAxis = _json['targetAxis'] as core.String;
@@ -2633,7 +2727,8 @@ class BasicChartSpec {
   BasicChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('axis')) {
       axis = (_json['axis'] as core.List)
-          .map<BasicChartAxis>((value) => BasicChartAxis.fromJson(value))
+          .map<BasicChartAxis>((value) => BasicChartAxis.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('chartType')) {
@@ -2644,7 +2739,8 @@ class BasicChartSpec {
     }
     if (_json.containsKey('domains')) {
       domains = (_json['domains'] as core.List)
-          .map<BasicChartDomain>((value) => BasicChartDomain.fromJson(value))
+          .map<BasicChartDomain>((value) => BasicChartDomain.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('headerCount')) {
@@ -2661,7 +2757,8 @@ class BasicChartSpec {
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
-          .map<BasicChartSeries>((value) => BasicChartSeries.fromJson(value))
+          .map<BasicChartSeries>((value) => BasicChartSeries.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('stackedType')) {
@@ -2735,20 +2832,25 @@ class BasicFilter {
   BasicFilter.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
       criteria = commons.mapMap<core.Map, FilterCriteria>(
-          _json['criteria'].cast<core.String, core.Map>(),
-          (core.Map item) => FilterCriteria.fromJson(item));
+          (_json['criteria'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => FilterCriteria.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
-          .map<FilterSpec>((value) => FilterSpec.fromJson(value))
+          .map<FilterSpec>((value) =>
+              FilterSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortSpecs')) {
       sortSpecs = (_json['sortSpecs'] as core.List)
-          .map<SortSpec>((value) => SortSpec.fromJson(value))
+          .map<SortSpec>((value) =>
+              SortSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2785,7 +2887,8 @@ class BatchClearValuesByDataFilterRequest {
   BatchClearValuesByDataFilterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2950,7 +3053,8 @@ class BatchGetValuesByDataFilterRequest {
   BatchGetValuesByDataFilterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dateTimeRenderOption')) {
@@ -3000,7 +3104,8 @@ class BatchGetValuesByDataFilterResponse {
     }
     if (_json.containsKey('valueRanges')) {
       valueRanges = (_json['valueRanges'] as core.List)
-          .map<MatchedValueRange>((value) => MatchedValueRange.fromJson(value))
+          .map<MatchedValueRange>((value) => MatchedValueRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3035,7 +3140,8 @@ class BatchGetValuesResponse {
     }
     if (_json.containsKey('valueRanges')) {
       valueRanges = (_json['valueRanges'] as core.List)
-          .map<ValueRange>((value) => ValueRange.fromJson(value))
+          .map<ValueRange>((value) =>
+              ValueRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3081,7 +3187,8 @@ class BatchUpdateSpreadsheetRequest {
     }
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<Request>((value) => Request.fromJson(value))
+          .map<Request>((value) =>
+              Request.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('responseIncludeGridData')) {
@@ -3130,14 +3237,16 @@ class BatchUpdateSpreadsheetResponse {
   BatchUpdateSpreadsheetResponse.fromJson(core.Map _json) {
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
-          .map<Response>((value) => Response.fromJson(value))
+          .map<Response>((value) =>
+              Response.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('spreadsheetId')) {
       spreadsheetId = _json['spreadsheetId'] as core.String;
     }
     if (_json.containsKey('updatedSpreadsheet')) {
-      updatedSpreadsheet = Spreadsheet.fromJson(_json['updatedSpreadsheet']);
+      updatedSpreadsheet = Spreadsheet.fromJson(
+          _json['updatedSpreadsheet'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3223,8 +3332,8 @@ class BatchUpdateValuesByDataFilterRequest {
   BatchUpdateValuesByDataFilterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<DataFilterValueRange>(
-              (value) => DataFilterValueRange.fromJson(value))
+          .map<DataFilterValueRange>((value) => DataFilterValueRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('includeValuesInResponse')) {
@@ -3291,8 +3400,9 @@ class BatchUpdateValuesByDataFilterResponse {
   BatchUpdateValuesByDataFilterResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<UpdateValuesByDataFilterResponse>(
-              (value) => UpdateValuesByDataFilterResponse.fromJson(value))
+          .map<UpdateValuesByDataFilterResponse>((value) =>
+              UpdateValuesByDataFilterResponse.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('spreadsheetId')) {
@@ -3401,7 +3511,8 @@ class BatchUpdateValuesRequest {
   BatchUpdateValuesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<ValueRange>((value) => ValueRange.fromJson(value))
+          .map<ValueRange>((value) =>
+              ValueRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('includeValuesInResponse')) {
@@ -3469,8 +3580,8 @@ class BatchUpdateValuesResponse {
   BatchUpdateValuesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('responses')) {
       responses = (_json['responses'] as core.List)
-          .map<UpdateValuesResponse>(
-              (value) => UpdateValuesResponse.fromJson(value))
+          .map<UpdateValuesResponse>((value) => UpdateValuesResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('spreadsheetId')) {
@@ -3533,10 +3644,12 @@ class BigQueryDataSourceSpec {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('querySpec')) {
-      querySpec = BigQueryQuerySpec.fromJson(_json['querySpec']);
+      querySpec = BigQueryQuerySpec.fromJson(
+          _json['querySpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableSpec')) {
-      tableSpec = BigQueryTableSpec.fromJson(_json['tableSpec']);
+      tableSpec = BigQueryTableSpec.fromJson(
+          _json['tableSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3744,7 +3857,8 @@ class BooleanCondition {
     }
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<ConditionValue>((value) => ConditionValue.fromJson(value))
+          .map<ConditionValue>((value) => ConditionValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3776,10 +3890,12 @@ class BooleanRule {
 
   BooleanRule.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = BooleanCondition.fromJson(_json['condition']);
+      condition = BooleanCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('format')) {
-      format = CellFormat.fromJson(_json['format']);
+      format = CellFormat.fromJson(
+          _json['format'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3825,10 +3941,12 @@ class Border {
 
   Border.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorStyle')) {
-      colorStyle = ColorStyle.fromJson(_json['colorStyle']);
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('style')) {
       style = _json['style'] as core.String;
@@ -3874,16 +3992,20 @@ class Borders {
 
   Borders.fromJson(core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = Border.fromJson(_json['bottom']);
+      bottom = Border.fromJson(
+          _json['bottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('left')) {
-      left = Border.fromJson(_json['left']);
+      left =
+          Border.fromJson(_json['left'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('right')) {
-      right = Border.fromJson(_json['right']);
+      right = Border.fromJson(
+          _json['right'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('top')) {
-      top = Border.fromJson(_json['top']);
+      top =
+          Border.fromJson(_json['top'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3967,14 +4089,17 @@ class BubbleChartSpec {
 
   BubbleChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('bubbleBorderColor')) {
-      bubbleBorderColor = Color.fromJson(_json['bubbleBorderColor']);
+      bubbleBorderColor = Color.fromJson(
+          _json['bubbleBorderColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bubbleBorderColorStyle')) {
-      bubbleBorderColorStyle =
-          ColorStyle.fromJson(_json['bubbleBorderColorStyle']);
+      bubbleBorderColorStyle = ColorStyle.fromJson(
+          _json['bubbleBorderColorStyle']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bubbleLabels')) {
-      bubbleLabels = ChartData.fromJson(_json['bubbleLabels']);
+      bubbleLabels = ChartData.fromJson(
+          _json['bubbleLabels'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bubbleMaxRadiusSize')) {
       bubbleMaxRadiusSize = _json['bubbleMaxRadiusSize'] as core.int;
@@ -3986,22 +4111,27 @@ class BubbleChartSpec {
       bubbleOpacity = (_json['bubbleOpacity'] as core.num).toDouble();
     }
     if (_json.containsKey('bubbleSizes')) {
-      bubbleSizes = ChartData.fromJson(_json['bubbleSizes']);
+      bubbleSizes = ChartData.fromJson(
+          _json['bubbleSizes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bubbleTextStyle')) {
-      bubbleTextStyle = TextFormat.fromJson(_json['bubbleTextStyle']);
+      bubbleTextStyle = TextFormat.fromJson(
+          _json['bubbleTextStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('domain')) {
-      domain = ChartData.fromJson(_json['domain']);
+      domain = ChartData.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupIds')) {
-      groupIds = ChartData.fromJson(_json['groupIds']);
+      groupIds = ChartData.fromJson(
+          _json['groupIds'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('legendPosition')) {
       legendPosition = _json['legendPosition'] as core.String;
     }
     if (_json.containsKey('series')) {
-      series = ChartData.fromJson(_json['series']);
+      series = ChartData.fromJson(
+          _json['series'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4062,11 +4192,13 @@ class CandlestickChartSpec {
   CandlestickChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<CandlestickData>((value) => CandlestickData.fromJson(value))
+          .map<CandlestickData>((value) => CandlestickData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('domain')) {
-      domain = CandlestickDomain.fromJson(_json['domain']);
+      domain = CandlestickDomain.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4107,16 +4239,20 @@ class CandlestickData {
 
   CandlestickData.fromJson(core.Map _json) {
     if (_json.containsKey('closeSeries')) {
-      closeSeries = CandlestickSeries.fromJson(_json['closeSeries']);
+      closeSeries = CandlestickSeries.fromJson(
+          _json['closeSeries'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('highSeries')) {
-      highSeries = CandlestickSeries.fromJson(_json['highSeries']);
+      highSeries = CandlestickSeries.fromJson(
+          _json['highSeries'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lowSeries')) {
-      lowSeries = CandlestickSeries.fromJson(_json['lowSeries']);
+      lowSeries = CandlestickSeries.fromJson(
+          _json['lowSeries'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('openSeries')) {
-      openSeries = CandlestickSeries.fromJson(_json['openSeries']);
+      openSeries = CandlestickSeries.fromJson(
+          _json['openSeries'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4150,7 +4286,8 @@ class CandlestickDomain {
 
   CandlestickDomain.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = ChartData.fromJson(_json['data']);
+      data = ChartData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reversed')) {
       reversed = _json['reversed'] as core.bool;
@@ -4178,7 +4315,8 @@ class CandlestickSeries {
 
   CandlestickSeries.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = ChartData.fromJson(_json['data']);
+      data = ChartData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4262,20 +4400,24 @@ class CellData {
 
   CellData.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceFormula')) {
-      dataSourceFormula =
-          DataSourceFormula.fromJson(_json['dataSourceFormula']);
+      dataSourceFormula = DataSourceFormula.fromJson(
+          _json['dataSourceFormula'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceTable')) {
-      dataSourceTable = DataSourceTable.fromJson(_json['dataSourceTable']);
+      dataSourceTable = DataSourceTable.fromJson(
+          _json['dataSourceTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataValidation')) {
-      dataValidation = DataValidationRule.fromJson(_json['dataValidation']);
+      dataValidation = DataValidationRule.fromJson(
+          _json['dataValidation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('effectiveFormat')) {
-      effectiveFormat = CellFormat.fromJson(_json['effectiveFormat']);
+      effectiveFormat = CellFormat.fromJson(
+          _json['effectiveFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('effectiveValue')) {
-      effectiveValue = ExtendedValue.fromJson(_json['effectiveValue']);
+      effectiveValue = ExtendedValue.fromJson(
+          _json['effectiveValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('formattedValue')) {
       formattedValue = _json['formattedValue'] as core.String;
@@ -4287,18 +4429,22 @@ class CellData {
       note = _json['note'] as core.String;
     }
     if (_json.containsKey('pivotTable')) {
-      pivotTable = PivotTable.fromJson(_json['pivotTable']);
+      pivotTable = PivotTable.fromJson(
+          _json['pivotTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textFormatRuns')) {
       textFormatRuns = (_json['textFormatRuns'] as core.List)
-          .map<TextFormatRun>((value) => TextFormatRun.fromJson(value))
+          .map<TextFormatRun>((value) => TextFormatRun.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('userEnteredFormat')) {
-      userEnteredFormat = CellFormat.fromJson(_json['userEnteredFormat']);
+      userEnteredFormat = CellFormat.fromJson(
+          _json['userEnteredFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userEnteredValue')) {
-      userEnteredValue = ExtendedValue.fromJson(_json['userEnteredValue']);
+      userEnteredValue = ExtendedValue.fromJson(
+          _json['userEnteredValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4432,13 +4578,16 @@ class CellFormat {
 
   CellFormat.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = Color.fromJson(_json['backgroundColor']);
+      backgroundColor = Color.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundColorStyle')) {
-      backgroundColorStyle = ColorStyle.fromJson(_json['backgroundColorStyle']);
+      backgroundColorStyle = ColorStyle.fromJson(
+          _json['backgroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borders')) {
-      borders = Borders.fromJson(_json['borders']);
+      borders = Borders.fromJson(
+          _json['borders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('horizontalAlignment')) {
       horizontalAlignment = _json['horizontalAlignment'] as core.String;
@@ -4447,19 +4596,23 @@ class CellFormat {
       hyperlinkDisplayType = _json['hyperlinkDisplayType'] as core.String;
     }
     if (_json.containsKey('numberFormat')) {
-      numberFormat = NumberFormat.fromJson(_json['numberFormat']);
+      numberFormat = NumberFormat.fromJson(
+          _json['numberFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('padding')) {
-      padding = Padding.fromJson(_json['padding']);
+      padding = Padding.fromJson(
+          _json['padding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textDirection')) {
       textDirection = _json['textDirection'] as core.String;
     }
     if (_json.containsKey('textFormat')) {
-      textFormat = TextFormat.fromJson(_json['textFormat']);
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textRotation')) {
-      textRotation = TextRotation.fromJson(_json['textRotation']);
+      textRotation = TextRotation.fromJson(
+          _json['textRotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('verticalAlignment')) {
       verticalAlignment = _json['verticalAlignment'] as core.String;
@@ -4628,14 +4781,16 @@ class ChartData {
       aggregateType = _json['aggregateType'] as core.String;
     }
     if (_json.containsKey('columnReference')) {
-      columnReference =
-          DataSourceColumnReference.fromJson(_json['columnReference']);
+      columnReference = DataSourceColumnReference.fromJson(
+          _json['columnReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupRule')) {
-      groupRule = ChartGroupRule.fromJson(_json['groupRule']);
+      groupRule = ChartGroupRule.fromJson(
+          _json['groupRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceRange')) {
-      sourceRange = ChartSourceRange.fromJson(_json['sourceRange']);
+      sourceRange = ChartSourceRange.fromJson(
+          _json['sourceRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4725,10 +4880,12 @@ class ChartGroupRule {
 
   ChartGroupRule.fromJson(core.Map _json) {
     if (_json.containsKey('dateTimeRule')) {
-      dateTimeRule = ChartDateTimeRule.fromJson(_json['dateTimeRule']);
+      dateTimeRule = ChartDateTimeRule.fromJson(
+          _json['dateTimeRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('histogramRule')) {
-      histogramRule = ChartHistogramRule.fromJson(_json['histogramRule']);
+      histogramRule = ChartHistogramRule.fromJson(
+          _json['histogramRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4807,7 +4964,8 @@ class ChartSourceRange {
   ChartSourceRange.fromJson(core.Map _json) {
     if (_json.containsKey('sources')) {
       sources = (_json['sources'] as core.List)
-          .map<GridRange>((value) => GridRange.fromJson(value))
+          .map<GridRange>((value) =>
+              GridRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4919,28 +5077,34 @@ class ChartSpec {
       altText = _json['altText'] as core.String;
     }
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = Color.fromJson(_json['backgroundColor']);
+      backgroundColor = Color.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundColorStyle')) {
-      backgroundColorStyle = ColorStyle.fromJson(_json['backgroundColorStyle']);
+      backgroundColorStyle = ColorStyle.fromJson(
+          _json['backgroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('basicChart')) {
-      basicChart = BasicChartSpec.fromJson(_json['basicChart']);
+      basicChart = BasicChartSpec.fromJson(
+          _json['basicChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bubbleChart')) {
-      bubbleChart = BubbleChartSpec.fromJson(_json['bubbleChart']);
+      bubbleChart = BubbleChartSpec.fromJson(
+          _json['bubbleChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('candlestickChart')) {
-      candlestickChart =
-          CandlestickChartSpec.fromJson(_json['candlestickChart']);
+      candlestickChart = CandlestickChartSpec.fromJson(
+          _json['candlestickChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceChartProperties')) {
       dataSourceChartProperties = DataSourceChartProperties.fromJson(
-          _json['dataSourceChartProperties']);
+          _json['dataSourceChartProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
-          .map<FilterSpec>((value) => FilterSpec.fromJson(value))
+          .map<FilterSpec>((value) =>
+              FilterSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fontName')) {
@@ -4950,49 +5114,59 @@ class ChartSpec {
       hiddenDimensionStrategy = _json['hiddenDimensionStrategy'] as core.String;
     }
     if (_json.containsKey('histogramChart')) {
-      histogramChart = HistogramChartSpec.fromJson(_json['histogramChart']);
+      histogramChart = HistogramChartSpec.fromJson(
+          _json['histogramChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maximized')) {
       maximized = _json['maximized'] as core.bool;
     }
     if (_json.containsKey('orgChart')) {
-      orgChart = OrgChartSpec.fromJson(_json['orgChart']);
+      orgChart = OrgChartSpec.fromJson(
+          _json['orgChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pieChart')) {
-      pieChart = PieChartSpec.fromJson(_json['pieChart']);
+      pieChart = PieChartSpec.fromJson(
+          _json['pieChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scorecardChart')) {
-      scorecardChart = ScorecardChartSpec.fromJson(_json['scorecardChart']);
+      scorecardChart = ScorecardChartSpec.fromJson(
+          _json['scorecardChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortSpecs')) {
       sortSpecs = (_json['sortSpecs'] as core.List)
-          .map<SortSpec>((value) => SortSpec.fromJson(value))
+          .map<SortSpec>((value) =>
+              SortSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subtitle')) {
       subtitle = _json['subtitle'] as core.String;
     }
     if (_json.containsKey('subtitleTextFormat')) {
-      subtitleTextFormat = TextFormat.fromJson(_json['subtitleTextFormat']);
+      subtitleTextFormat = TextFormat.fromJson(
+          _json['subtitleTextFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtitleTextPosition')) {
-      subtitleTextPosition =
-          TextPosition.fromJson(_json['subtitleTextPosition']);
+      subtitleTextPosition = TextPosition.fromJson(
+          _json['subtitleTextPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
     }
     if (_json.containsKey('titleTextFormat')) {
-      titleTextFormat = TextFormat.fromJson(_json['titleTextFormat']);
+      titleTextFormat = TextFormat.fromJson(
+          _json['titleTextFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('titleTextPosition')) {
-      titleTextPosition = TextPosition.fromJson(_json['titleTextPosition']);
+      titleTextPosition = TextPosition.fromJson(
+          _json['titleTextPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('treemapChart')) {
-      treemapChart = TreemapChartSpec.fromJson(_json['treemapChart']);
+      treemapChart = TreemapChartSpec.fromJson(
+          _json['treemapChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('waterfallChart')) {
-      waterfallChart = WaterfallChartSpec.fromJson(_json['waterfallChart']);
+      waterfallChart = WaterfallChartSpec.fromJson(
+          _json['waterfallChart'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5271,7 +5445,8 @@ class ColorStyle {
 
   ColorStyle.fromJson(core.Map _json) {
     if (_json.containsKey('rgbColor')) {
-      rgbColor = Color.fromJson(_json['rgbColor']);
+      rgbColor = Color.fromJson(
+          _json['rgbColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('themeColor')) {
       themeColor = _json['themeColor'] as core.String;
@@ -5350,14 +5525,17 @@ class ConditionalFormatRule {
 
   ConditionalFormatRule.fromJson(core.Map _json) {
     if (_json.containsKey('booleanRule')) {
-      booleanRule = BooleanRule.fromJson(_json['booleanRule']);
+      booleanRule = BooleanRule.fromJson(
+          _json['booleanRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gradientRule')) {
-      gradientRule = GradientRule.fromJson(_json['gradientRule']);
+      gradientRule = GradientRule.fromJson(
+          _json['gradientRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('ranges')) {
       ranges = (_json['ranges'] as core.List)
-          .map<GridRange>((value) => GridRange.fromJson(value))
+          .map<GridRange>((value) =>
+              GridRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5413,7 +5591,8 @@ class CopyPasteRequest {
 
   CopyPasteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = GridRange.fromJson(_json['destination']);
+      destination = GridRange.fromJson(
+          _json['destination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pasteOrientation')) {
       pasteOrientation = _json['pasteOrientation'] as core.String;
@@ -5422,7 +5601,8 @@ class CopyPasteRequest {
       pasteType = _json['pasteType'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = GridRange.fromJson(_json['source']);
+      source = GridRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5476,8 +5656,8 @@ class CreateDeveloperMetadataRequest {
 
   CreateDeveloperMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('developerMetadata')) {
-      developerMetadata =
-          DeveloperMetadata.fromJson(_json['developerMetadata']);
+      developerMetadata = DeveloperMetadata.fromJson(
+          _json['developerMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5499,8 +5679,8 @@ class CreateDeveloperMetadataResponse {
 
   CreateDeveloperMetadataResponse.fromJson(core.Map _json) {
     if (_json.containsKey('developerMetadata')) {
-      developerMetadata =
-          DeveloperMetadata.fromJson(_json['developerMetadata']);
+      developerMetadata = DeveloperMetadata.fromJson(
+          _json['developerMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5539,13 +5719,15 @@ class CutPasteRequest {
 
   CutPasteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = GridCoordinate.fromJson(_json['destination']);
+      destination = GridCoordinate.fromJson(
+          _json['destination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pasteType')) {
       pasteType = _json['pasteType'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = GridRange.fromJson(_json['source']);
+      source = GridRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5676,11 +5858,13 @@ class DataFilter {
       a1Range = _json['a1Range'] as core.String;
     }
     if (_json.containsKey('developerMetadataLookup')) {
-      developerMetadataLookup =
-          DeveloperMetadataLookup.fromJson(_json['developerMetadataLookup']);
+      developerMetadataLookup = DeveloperMetadataLookup.fromJson(
+          _json['developerMetadataLookup']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gridRange')) {
-      gridRange = GridRange.fromJson(_json['gridRange']);
+      gridRange = GridRange.fromJson(
+          _json['gridRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5724,7 +5908,8 @@ class DataFilterValueRange {
 
   DataFilterValueRange.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilter')) {
-      dataFilter = DataFilter.fromJson(_json['dataFilter']);
+      dataFilter = DataFilter.fromJson(
+          _json['dataFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('majorDimension')) {
       majorDimension = _json['majorDimension'] as core.String;
@@ -5776,7 +5961,8 @@ class DataSource {
   DataSource.fromJson(core.Map _json) {
     if (_json.containsKey('calculatedColumns')) {
       calculatedColumns = (_json['calculatedColumns'] as core.List)
-          .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(value))
+          .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dataSourceId')) {
@@ -5786,7 +5972,8 @@ class DataSource {
       sheetId = _json['sheetId'] as core.int;
     }
     if (_json.containsKey('spec')) {
-      spec = DataSourceSpec.fromJson(_json['spec']);
+      spec = DataSourceSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5821,8 +6008,8 @@ class DataSourceChartProperties {
 
   DataSourceChartProperties.fromJson(core.Map _json) {
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceId')) {
       dataSourceId = _json['dataSourceId'] as core.String;
@@ -5856,7 +6043,8 @@ class DataSourceColumn {
       formula = _json['formula'] as core.String;
     }
     if (_json.containsKey('reference')) {
-      reference = DataSourceColumnReference.fromJson(_json['reference']);
+      reference = DataSourceColumnReference.fromJson(
+          _json['reference'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5906,8 +6094,8 @@ class DataSourceFormula {
 
   DataSourceFormula.fromJson(core.Map _json) {
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceId')) {
       dataSourceId = _json['dataSourceId'] as core.String;
@@ -5950,16 +6138,19 @@ class DataSourceObjectReference {
       chartId = _json['chartId'] as core.int;
     }
     if (_json.containsKey('dataSourceFormulaCell')) {
-      dataSourceFormulaCell =
-          GridCoordinate.fromJson(_json['dataSourceFormulaCell']);
+      dataSourceFormulaCell = GridCoordinate.fromJson(
+          _json['dataSourceFormulaCell']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourcePivotTableAnchorCell')) {
-      dataSourcePivotTableAnchorCell =
-          GridCoordinate.fromJson(_json['dataSourcePivotTableAnchorCell']);
+      dataSourcePivotTableAnchorCell = GridCoordinate.fromJson(
+          _json['dataSourcePivotTableAnchorCell']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceTableAnchorCell')) {
-      dataSourceTableAnchorCell =
-          GridCoordinate.fromJson(_json['dataSourceTableAnchorCell']);
+      dataSourceTableAnchorCell = GridCoordinate.fromJson(
+          _json['dataSourceTableAnchorCell']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sheetId')) {
       sheetId = _json['sheetId'] as core.String;
@@ -5998,8 +6189,9 @@ class DataSourceObjectReferences {
   DataSourceObjectReferences.fromJson(core.Map _json) {
     if (_json.containsKey('references')) {
       references = (_json['references'] as core.List)
-          .map<DataSourceObjectReference>(
-              (value) => DataSourceObjectReference.fromJson(value))
+          .map<DataSourceObjectReference>((value) =>
+              DataSourceObjectReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6037,7 +6229,8 @@ class DataSourceParameter {
       namedRangeId = _json['namedRangeId'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6067,7 +6260,8 @@ class DataSourceRefreshDailySchedule {
 
   DataSourceRefreshDailySchedule.fromJson(core.Map _json) {
     if (_json.containsKey('startTime')) {
-      startTime = TimeOfDay.fromJson(_json['startTime']);
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6101,7 +6295,8 @@ class DataSourceRefreshMonthlySchedule {
           .toList();
     }
     if (_json.containsKey('startTime')) {
-      startTime = TimeOfDay.fromJson(_json['startTime']);
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6149,25 +6344,26 @@ class DataSourceRefreshSchedule {
 
   DataSourceRefreshSchedule.fromJson(core.Map _json) {
     if (_json.containsKey('dailySchedule')) {
-      dailySchedule =
-          DataSourceRefreshDailySchedule.fromJson(_json['dailySchedule']);
+      dailySchedule = DataSourceRefreshDailySchedule.fromJson(
+          _json['dailySchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enabled')) {
       enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('monthlySchedule')) {
-      monthlySchedule =
-          DataSourceRefreshMonthlySchedule.fromJson(_json['monthlySchedule']);
+      monthlySchedule = DataSourceRefreshMonthlySchedule.fromJson(
+          _json['monthlySchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nextRun')) {
-      nextRun = Interval.fromJson(_json['nextRun']);
+      nextRun = Interval.fromJson(
+          _json['nextRun'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refreshScope')) {
       refreshScope = _json['refreshScope'] as core.String;
     }
     if (_json.containsKey('weeklySchedule')) {
-      weeklySchedule =
-          DataSourceRefreshWeeklySchedule.fromJson(_json['weeklySchedule']);
+      weeklySchedule = DataSourceRefreshWeeklySchedule.fromJson(
+          _json['weeklySchedule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6215,7 +6411,8 @@ class DataSourceRefreshWeeklySchedule {
           .toList();
     }
     if (_json.containsKey('startTime')) {
-      startTime = TimeOfDay.fromJson(_json['startTime']);
+      startTime = TimeOfDay.fromJson(
+          _json['startTime'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6244,8 +6441,9 @@ class DataSourceSheetDimensionRange {
   DataSourceSheetDimensionRange.fromJson(core.Map _json) {
     if (_json.containsKey('columnReferences')) {
       columnReferences = (_json['columnReferences'] as core.List)
-          .map<DataSourceColumnReference>(
-              (value) => DataSourceColumnReference.fromJson(value))
+          .map<DataSourceColumnReference>((value) =>
+              DataSourceColumnReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sheetId')) {
@@ -6283,12 +6481,13 @@ class DataSourceSheetProperties {
   DataSourceSheetProperties.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
       columns = (_json['columns'] as core.List)
-          .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(value))
+          .map<DataSourceColumn>((value) => DataSourceColumn.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceId')) {
       dataSourceId = _json['dataSourceId'] as core.String;
@@ -6323,12 +6522,13 @@ class DataSourceSpec {
 
   DataSourceSpec.fromJson(core.Map _json) {
     if (_json.containsKey('bigQuery')) {
-      bigQuery = BigQueryDataSourceSpec.fromJson(_json['bigQuery']);
+      bigQuery = BigQueryDataSourceSpec.fromJson(
+          _json['bigQuery'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<DataSourceParameter>(
-              (value) => DataSourceParameter.fromJson(value))
+          .map<DataSourceParameter>((value) => DataSourceParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6389,20 +6589,22 @@ class DataSourceTable {
     }
     if (_json.containsKey('columns')) {
       columns = (_json['columns'] as core.List)
-          .map<DataSourceColumnReference>(
-              (value) => DataSourceColumnReference.fromJson(value))
+          .map<DataSourceColumnReference>((value) =>
+              DataSourceColumnReference.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceId')) {
       dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
-          .map<FilterSpec>((value) => FilterSpec.fromJson(value))
+          .map<FilterSpec>((value) =>
+              FilterSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowLimit')) {
@@ -6410,7 +6612,8 @@ class DataSourceTable {
     }
     if (_json.containsKey('sortSpecs')) {
       sortSpecs = (_json['sortSpecs'] as core.List)
-          .map<SortSpec>((value) => SortSpec.fromJson(value))
+          .map<SortSpec>((value) =>
+              SortSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6462,7 +6665,8 @@ class DataValidationRule {
 
   DataValidationRule.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = BooleanCondition.fromJson(_json['condition']);
+      condition = BooleanCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputMessage')) {
       inputMessage = _json['inputMessage'] as core.String;
@@ -6615,7 +6819,8 @@ class DeleteConditionalFormatRuleResponse {
 
   DeleteConditionalFormatRuleResponse.fromJson(core.Map _json) {
     if (_json.containsKey('rule')) {
-      rule = ConditionalFormatRule.fromJson(_json['rule']);
+      rule = ConditionalFormatRule.fromJson(
+          _json['rule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6661,7 +6866,8 @@ class DeleteDeveloperMetadataRequest {
 
   DeleteDeveloperMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilter')) {
-      dataFilter = DataFilter.fromJson(_json['dataFilter']);
+      dataFilter = DataFilter.fromJson(
+          _json['dataFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6683,10 +6889,11 @@ class DeleteDeveloperMetadataResponse {
 
   DeleteDeveloperMetadataResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deletedDeveloperMetadata')) {
-      deletedDeveloperMetadata = (_json['deletedDeveloperMetadata']
-              as core.List)
-          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(value))
-          .toList();
+      deletedDeveloperMetadata =
+          (_json['deletedDeveloperMetadata'] as core.List)
+              .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
+              .toList();
     }
   }
 
@@ -6712,7 +6919,8 @@ class DeleteDimensionGroupRequest {
 
   DeleteDimensionGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6735,7 +6943,8 @@ class DeleteDimensionGroupResponse {
   DeleteDimensionGroupResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionGroups')) {
       dimensionGroups = (_json['dimensionGroups'] as core.List)
-          .map<DimensionGroup>((value) => DimensionGroup.fromJson(value))
+          .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6759,7 +6968,8 @@ class DeleteDimensionRequest {
 
   DeleteDimensionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6794,11 +7004,13 @@ class DeleteDuplicatesRequest {
   DeleteDuplicatesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('comparisonColumns')) {
       comparisonColumns = (_json['comparisonColumns'] as core.List)
-          .map<DimensionRange>((value) => DimensionRange.fromJson(value))
+          .map<DimensionRange>((value) => DimensionRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6943,7 +7155,8 @@ class DeleteRangeRequest {
 
   DeleteRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shiftDimension')) {
       shiftDimension = _json['shiftDimension'] as core.String;
@@ -7023,7 +7236,8 @@ class DeveloperMetadata {
 
   DeveloperMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('location')) {
-      location = DeveloperMetadataLocation.fromJson(_json['location']);
+      location = DeveloperMetadataLocation.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadataId')) {
       metadataId = _json['metadataId'] as core.int;
@@ -7086,7 +7300,8 @@ class DeveloperMetadataLocation {
 
   DeveloperMetadataLocation.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionRange')) {
-      dimensionRange = DimensionRange.fromJson(_json['dimensionRange']);
+      dimensionRange = DimensionRange.fromJson(
+          _json['dimensionRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locationType')) {
       locationType = _json['locationType'] as core.String;
@@ -7212,8 +7427,8 @@ class DeveloperMetadataLookup {
       metadataKey = _json['metadataKey'] as core.String;
     }
     if (_json.containsKey('metadataLocation')) {
-      metadataLocation =
-          DeveloperMetadataLocation.fromJson(_json['metadataLocation']);
+      metadataLocation = DeveloperMetadataLocation.fromJson(
+          _json['metadataLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadataValue')) {
       metadataValue = _json['metadataValue'] as core.String;
@@ -7280,7 +7495,8 @@ class DimensionGroup {
       depth = _json['depth'] as core.int;
     }
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7321,11 +7537,13 @@ class DimensionProperties {
   DimensionProperties.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('developerMetadata')) {
       developerMetadata = (_json['developerMetadata'] as core.List)
-          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(value))
+          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('hiddenByFilter')) {
@@ -7447,7 +7665,8 @@ class DuplicateFilterViewResponse {
 
   DuplicateFilterViewResponse.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = FilterView.fromJson(_json['filter']);
+      filter = FilterView.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7524,7 +7743,8 @@ class DuplicateSheetResponse {
 
   DuplicateSheetResponse.fromJson(core.Map _json) {
     if (_json.containsKey('properties')) {
-      properties = SheetProperties.fromJson(_json['properties']);
+      properties = SheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7600,10 +7820,12 @@ class EmbeddedChart {
       chartId = _json['chartId'] as core.int;
     }
     if (_json.containsKey('position')) {
-      position = EmbeddedObjectPosition.fromJson(_json['position']);
+      position = EmbeddedObjectPosition.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spec')) {
-      spec = ChartSpec.fromJson(_json['spec']);
+      spec = ChartSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7642,7 +7864,8 @@ class EmbeddedObjectPosition {
       newSheet = _json['newSheet'] as core.bool;
     }
     if (_json.containsKey('overlayPosition')) {
-      overlayPosition = OverlayPosition.fromJson(_json['overlayPosition']);
+      overlayPosition = OverlayPosition.fromJson(
+          _json['overlayPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sheetId')) {
       sheetId = _json['sheetId'] as core.int;
@@ -7734,7 +7957,8 @@ class ExtendedValue {
       boolValue = _json['boolValue'] as core.bool;
     }
     if (_json.containsKey('errorValue')) {
-      errorValue = ErrorValue.fromJson(_json['errorValue']);
+      errorValue = ErrorValue.fromJson(
+          _json['errorValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('formulaValue')) {
       formulaValue = _json['formulaValue'] as core.String;
@@ -7802,7 +8026,8 @@ class FilterCriteria {
 
   FilterCriteria.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = BooleanCondition.fromJson(_json['condition']);
+      condition = BooleanCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hiddenValues')) {
       hiddenValues = (_json['hiddenValues'] as core.List)
@@ -7810,18 +8035,22 @@ class FilterCriteria {
           .toList();
     }
     if (_json.containsKey('visibleBackgroundColor')) {
-      visibleBackgroundColor = Color.fromJson(_json['visibleBackgroundColor']);
+      visibleBackgroundColor = Color.fromJson(_json['visibleBackgroundColor']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visibleBackgroundColorStyle')) {
-      visibleBackgroundColorStyle =
-          ColorStyle.fromJson(_json['visibleBackgroundColorStyle']);
+      visibleBackgroundColorStyle = ColorStyle.fromJson(
+          _json['visibleBackgroundColorStyle']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visibleForegroundColor')) {
-      visibleForegroundColor = Color.fromJson(_json['visibleForegroundColor']);
+      visibleForegroundColor = Color.fromJson(_json['visibleForegroundColor']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visibleForegroundColorStyle')) {
-      visibleForegroundColorStyle =
-          ColorStyle.fromJson(_json['visibleForegroundColorStyle']);
+      visibleForegroundColorStyle = ColorStyle.fromJson(
+          _json['visibleForegroundColorStyle']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7870,10 +8099,12 @@ class FilterSpec {
     }
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filterCriteria')) {
-      filterCriteria = FilterCriteria.fromJson(_json['filterCriteria']);
+      filterCriteria = FilterCriteria.fromJson(
+          _json['filterCriteria'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7927,12 +8158,15 @@ class FilterView {
   FilterView.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
       criteria = commons.mapMap<core.Map, FilterCriteria>(
-          _json['criteria'].cast<core.String, core.Map>(),
-          (core.Map item) => FilterCriteria.fromJson(item));
+          (_json['criteria'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => FilterCriteria.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
-          .map<FilterSpec>((value) => FilterSpec.fromJson(value))
+          .map<FilterSpec>((value) =>
+              FilterSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filterViewId')) {
@@ -7942,11 +8176,13 @@ class FilterView {
       namedRangeId = _json['namedRangeId'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortSpecs')) {
       sortSpecs = (_json['sortSpecs'] as core.List)
-          .map<SortSpec>((value) => SortSpec.fromJson(value))
+          .map<SortSpec>((value) =>
+              SortSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('title')) {
@@ -8040,7 +8276,8 @@ class FindReplaceRequest {
       matchEntireCell = _json['matchEntireCell'] as core.bool;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replacement')) {
       replacement = _json['replacement'] as core.String;
@@ -8161,7 +8398,8 @@ class GetSpreadsheetByDataFilterRequest {
   GetSpreadsheetByDataFilterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('includeGridData')) {
@@ -8199,13 +8437,16 @@ class GradientRule {
 
   GradientRule.fromJson(core.Map _json) {
     if (_json.containsKey('maxpoint')) {
-      maxpoint = InterpolationPoint.fromJson(_json['maxpoint']);
+      maxpoint = InterpolationPoint.fromJson(
+          _json['maxpoint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('midpoint')) {
-      midpoint = InterpolationPoint.fromJson(_json['midpoint']);
+      midpoint = InterpolationPoint.fromJson(
+          _json['midpoint'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minpoint')) {
-      minpoint = InterpolationPoint.fromJson(_json['minpoint']);
+      minpoint = InterpolationPoint.fromJson(
+          _json['minpoint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8290,19 +8531,20 @@ class GridData {
   GridData.fromJson(core.Map _json) {
     if (_json.containsKey('columnMetadata')) {
       columnMetadata = (_json['columnMetadata'] as core.List)
-          .map<DimensionProperties>(
-              (value) => DimensionProperties.fromJson(value))
+          .map<DimensionProperties>((value) => DimensionProperties.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowData')) {
       rowData = (_json['rowData'] as core.List)
-          .map<RowData>((value) => RowData.fromJson(value))
+          .map<RowData>((value) =>
+              RowData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowMetadata')) {
       rowMetadata = (_json['rowMetadata'] as core.List)
-          .map<DimensionProperties>(
-              (value) => DimensionProperties.fromJson(value))
+          .map<DimensionProperties>((value) => DimensionProperties.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('startColumn')) {
@@ -8537,7 +8779,8 @@ class HistogramChartSpec {
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
-          .map<HistogramSeries>((value) => HistogramSeries.fromJson(value))
+          .map<HistogramSeries>((value) => HistogramSeries.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('showItemDividers')) {
@@ -8643,13 +8886,16 @@ class HistogramSeries {
 
   HistogramSeries.fromJson(core.Map _json) {
     if (_json.containsKey('barColor')) {
-      barColor = Color.fromJson(_json['barColor']);
+      barColor = Color.fromJson(
+          _json['barColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('barColorStyle')) {
-      barColorStyle = ColorStyle.fromJson(_json['barColorStyle']);
+      barColorStyle = ColorStyle.fromJson(
+          _json['barColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('data')) {
-      data = ChartData.fromJson(_json['data']);
+      data = ChartData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8692,7 +8938,8 @@ class InsertDimensionRequest {
       inheritFromBefore = _json['inheritFromBefore'] as core.bool;
     }
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8726,7 +8973,8 @@ class InsertRangeRequest {
 
   InsertRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shiftDimension')) {
       shiftDimension = _json['shiftDimension'] as core.String;
@@ -8783,10 +9031,12 @@ class InterpolationPoint {
 
   InterpolationPoint.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorStyle')) {
-      colorStyle = ColorStyle.fromJson(_json['colorStyle']);
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -8898,10 +9148,12 @@ class KeyValueFormat {
 
   KeyValueFormat.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = TextPosition.fromJson(_json['position']);
+      position = TextPosition.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textFormat')) {
-      textFormat = TextFormat.fromJson(_json['textFormat']);
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8983,7 +9235,8 @@ class ManualRule {
   ManualRule.fromJson(core.Map _json) {
     if (_json.containsKey('groups')) {
       groups = (_json['groups'] as core.List)
-          .map<ManualRuleGroup>((value) => ManualRuleGroup.fromJson(value))
+          .map<ManualRuleGroup>((value) => ManualRuleGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9014,11 +9267,13 @@ class ManualRuleGroup {
 
   ManualRuleGroup.fromJson(core.Map _json) {
     if (_json.containsKey('groupName')) {
-      groupName = ExtendedValue.fromJson(_json['groupName']);
+      groupName = ExtendedValue.fromJson(
+          _json['groupName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ExtendedValue>((value) => ExtendedValue.fromJson(value))
+          .map<ExtendedValue>((value) => ExtendedValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9049,12 +9304,13 @@ class MatchedDeveloperMetadata {
   MatchedDeveloperMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerMetadata')) {
-      developerMetadata =
-          DeveloperMetadata.fromJson(_json['developerMetadata']);
+      developerMetadata = DeveloperMetadata.fromJson(
+          _json['developerMetadata'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9084,11 +9340,13 @@ class MatchedValueRange {
   MatchedValueRange.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('valueRange')) {
-      valueRange = ValueRange.fromJson(_json['valueRange']);
+      valueRange = ValueRange.fromJson(
+          _json['valueRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9124,7 +9382,8 @@ class MergeCellsRequest {
       mergeType = _json['mergeType'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9163,7 +9422,8 @@ class MoveDimensionRequest {
       destinationIndex = _json['destinationIndex'] as core.int;
     }
     if (_json.containsKey('source')) {
-      source = DimensionRange.fromJson(_json['source']);
+      source = DimensionRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9200,7 +9460,8 @@ class NamedRange {
       namedRangeId = _json['namedRangeId'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9313,29 +9574,36 @@ class OrgChartSpec {
 
   OrgChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = ChartData.fromJson(_json['labels']);
+      labels = ChartData.fromJson(
+          _json['labels'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeColor')) {
-      nodeColor = Color.fromJson(_json['nodeColor']);
+      nodeColor = Color.fromJson(
+          _json['nodeColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeColorStyle')) {
-      nodeColorStyle = ColorStyle.fromJson(_json['nodeColorStyle']);
+      nodeColorStyle = ColorStyle.fromJson(
+          _json['nodeColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeSize')) {
       nodeSize = _json['nodeSize'] as core.String;
     }
     if (_json.containsKey('parentLabels')) {
-      parentLabels = ChartData.fromJson(_json['parentLabels']);
+      parentLabels = ChartData.fromJson(
+          _json['parentLabels'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selectedNodeColor')) {
-      selectedNodeColor = Color.fromJson(_json['selectedNodeColor']);
+      selectedNodeColor = Color.fromJson(
+          _json['selectedNodeColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selectedNodeColorStyle')) {
-      selectedNodeColorStyle =
-          ColorStyle.fromJson(_json['selectedNodeColorStyle']);
+      selectedNodeColorStyle = ColorStyle.fromJson(
+          _json['selectedNodeColorStyle']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tooltips')) {
-      tooltips = ChartData.fromJson(_json['tooltips']);
+      tooltips = ChartData.fromJson(
+          _json['tooltips'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9392,7 +9660,8 @@ class OverlayPosition {
 
   OverlayPosition.fromJson(core.Map _json) {
     if (_json.containsKey('anchorCell')) {
-      anchorCell = GridCoordinate.fromJson(_json['anchorCell']);
+      anchorCell = GridCoordinate.fromJson(
+          _json['anchorCell'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('heightPixels')) {
       heightPixels = _json['heightPixels'] as core.int;
@@ -9510,7 +9779,8 @@ class PasteDataRequest {
 
   PasteDataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('coordinate')) {
-      coordinate = GridCoordinate.fromJson(_json['coordinate']);
+      coordinate = GridCoordinate.fromJson(
+          _json['coordinate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('data')) {
       data = _json['data'] as core.String;
@@ -9576,7 +9846,8 @@ class PieChartSpec {
 
   PieChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('domain')) {
-      domain = ChartData.fromJson(_json['domain']);
+      domain = ChartData.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('legendPosition')) {
       legendPosition = _json['legendPosition'] as core.String;
@@ -9585,7 +9856,8 @@ class PieChartSpec {
       pieHole = (_json['pieHole'] as core.num).toDouble();
     }
     if (_json.containsKey('series')) {
-      series = ChartData.fromJson(_json['series']);
+      series = ChartData.fromJson(
+          _json['series'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('threeDimensional')) {
       threeDimensional = _json['threeDimensional'] as core.bool;
@@ -9657,10 +9929,12 @@ class PivotFilterSpec {
     }
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filterCriteria')) {
-      filterCriteria = PivotFilterCriteria.fromJson(_json['filterCriteria']);
+      filterCriteria = PivotFilterCriteria.fromJson(
+          _json['filterCriteria'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9741,13 +10015,16 @@ class PivotGroup {
   PivotGroup.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupLimit')) {
-      groupLimit = PivotGroupLimit.fromJson(_json['groupLimit']);
+      groupLimit = PivotGroupLimit.fromJson(
+          _json['groupLimit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('groupRule')) {
-      groupRule = PivotGroupRule.fromJson(_json['groupRule']);
+      groupRule = PivotGroupRule.fromJson(
+          _json['groupRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('label')) {
       label = _json['label'] as core.String;
@@ -9765,12 +10042,14 @@ class PivotGroup {
       sourceColumnOffset = _json['sourceColumnOffset'] as core.int;
     }
     if (_json.containsKey('valueBucket')) {
-      valueBucket = PivotGroupSortValueBucket.fromJson(_json['valueBucket']);
+      valueBucket = PivotGroupSortValueBucket.fromJson(
+          _json['valueBucket'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('valueMetadata')) {
       valueMetadata = (_json['valueMetadata'] as core.List)
-          .map<PivotGroupValueMetadata>(
-              (value) => PivotGroupValueMetadata.fromJson(value))
+          .map<PivotGroupValueMetadata>((value) =>
+              PivotGroupValueMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9867,13 +10146,16 @@ class PivotGroupRule {
 
   PivotGroupRule.fromJson(core.Map _json) {
     if (_json.containsKey('dateTimeRule')) {
-      dateTimeRule = DateTimeRule.fromJson(_json['dateTimeRule']);
+      dateTimeRule = DateTimeRule.fromJson(
+          _json['dateTimeRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('histogramRule')) {
-      histogramRule = HistogramRule.fromJson(_json['histogramRule']);
+      histogramRule = HistogramRule.fromJson(
+          _json['histogramRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('manualRule')) {
-      manualRule = ManualRule.fromJson(_json['manualRule']);
+      manualRule = ManualRule.fromJson(
+          _json['manualRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9913,7 +10195,8 @@ class PivotGroupSortValueBucket {
   PivotGroupSortValueBucket.fromJson(core.Map _json) {
     if (_json.containsKey('buckets')) {
       buckets = (_json['buckets'] as core.List)
-          .map<ExtendedValue>((value) => ExtendedValue.fromJson(value))
+          .map<ExtendedValue>((value) => ExtendedValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('valuesIndex')) {
@@ -9949,7 +10232,8 @@ class PivotGroupValueMetadata {
       collapsed = _json['collapsed'] as core.bool;
     }
     if (_json.containsKey('value')) {
-      value = ExtendedValue.fromJson(_json['value']);
+      value = ExtendedValue.fromJson(
+          _json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10011,40 +10295,47 @@ class PivotTable {
   PivotTable.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
       columns = (_json['columns'] as core.List)
-          .map<PivotGroup>((value) => PivotGroup.fromJson(value))
+          .map<PivotGroup>((value) =>
+              PivotGroup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('criteria')) {
       criteria = commons.mapMap<core.Map, PivotFilterCriteria>(
-          _json['criteria'].cast<core.String, core.Map>(),
-          (core.Map item) => PivotFilterCriteria.fromJson(item));
+          (_json['criteria'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PivotFilterCriteria.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceId')) {
       dataSourceId = _json['dataSourceId'] as core.String;
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
-          .map<PivotFilterSpec>((value) => PivotFilterSpec.fromJson(value))
+          .map<PivotFilterSpec>((value) => PivotFilterSpec.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<PivotGroup>((value) => PivotGroup.fromJson(value))
+          .map<PivotGroup>((value) =>
+              PivotGroup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = GridRange.fromJson(_json['source']);
+      source = GridRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('valueLayout')) {
       valueLayout = _json['valueLayout'] as core.String;
     }
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<PivotValue>((value) => PivotValue.fromJson(value))
+          .map<PivotValue>((value) =>
+              PivotValue.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10150,7 +10441,8 @@ class PivotValue {
     }
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('formula')) {
       formula = _json['formula'] as core.String;
@@ -10236,7 +10528,8 @@ class ProtectedRange {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('editors')) {
-      editors = Editors.fromJson(_json['editors']);
+      editors = Editors.fromJson(
+          _json['editors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('namedRangeId')) {
       namedRangeId = _json['namedRangeId'] as core.String;
@@ -10245,14 +10538,16 @@ class ProtectedRange {
       protectedRangeId = _json['protectedRangeId'] as core.int;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestingUserCanEdit')) {
       requestingUserCanEdit = _json['requestingUserCanEdit'] as core.bool;
     }
     if (_json.containsKey('unprotectedRanges')) {
       unprotectedRanges = (_json['unprotectedRanges'] as core.List)
-          .map<GridRange>((value) => GridRange.fromJson(value))
+          .map<GridRange>((value) =>
+              GridRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warningOnly')) {
@@ -10300,7 +10595,8 @@ class RandomizeRangeRequest {
 
   RandomizeRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10325,11 +10621,12 @@ class RefreshDataSourceObjectExecutionStatus {
 
   RefreshDataSourceObjectExecutionStatus.fromJson(core.Map _json) {
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reference')) {
-      reference = DataSourceObjectReference.fromJson(_json['reference']);
+      reference = DataSourceObjectReference.fromJson(
+          _json['reference'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10379,7 +10676,8 @@ class RefreshDataSourceRequest {
       isAll = _json['isAll'] as core.bool;
     }
     if (_json.containsKey('references')) {
-      references = DataSourceObjectReferences.fromJson(_json['references']);
+      references = DataSourceObjectReferences.fromJson(
+          _json['references'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10413,8 +10711,9 @@ class RefreshDataSourceResponse {
   RefreshDataSourceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('statuses')) {
       statuses = (_json['statuses'] as core.List)
-          .map<RefreshDataSourceObjectExecutionStatus>(
-              (value) => RefreshDataSourceObjectExecutionStatus.fromJson(value))
+          .map<RefreshDataSourceObjectExecutionStatus>((value) =>
+              RefreshDataSourceObjectExecutionStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10453,13 +10752,15 @@ class RepeatCellRequest {
 
   RepeatCellRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cell')) {
-      cell = CellData.fromJson(_json['cell']);
+      cell = CellData.fromJson(
+          _json['cell'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10678,231 +10979,271 @@ class Request {
 
   Request.fromJson(core.Map _json) {
     if (_json.containsKey('addBanding')) {
-      addBanding = AddBandingRequest.fromJson(_json['addBanding']);
+      addBanding = AddBandingRequest.fromJson(
+          _json['addBanding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addChart')) {
-      addChart = AddChartRequest.fromJson(_json['addChart']);
+      addChart = AddChartRequest.fromJson(
+          _json['addChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addConditionalFormatRule')) {
       addConditionalFormatRule = AddConditionalFormatRuleRequest.fromJson(
-          _json['addConditionalFormatRule']);
+          _json['addConditionalFormatRule']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addDataSource')) {
-      addDataSource = AddDataSourceRequest.fromJson(_json['addDataSource']);
+      addDataSource = AddDataSourceRequest.fromJson(
+          _json['addDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addDimensionGroup')) {
-      addDimensionGroup =
-          AddDimensionGroupRequest.fromJson(_json['addDimensionGroup']);
+      addDimensionGroup = AddDimensionGroupRequest.fromJson(
+          _json['addDimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addFilterView')) {
-      addFilterView = AddFilterViewRequest.fromJson(_json['addFilterView']);
+      addFilterView = AddFilterViewRequest.fromJson(
+          _json['addFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addNamedRange')) {
-      addNamedRange = AddNamedRangeRequest.fromJson(_json['addNamedRange']);
+      addNamedRange = AddNamedRangeRequest.fromJson(
+          _json['addNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addProtectedRange')) {
-      addProtectedRange =
-          AddProtectedRangeRequest.fromJson(_json['addProtectedRange']);
+      addProtectedRange = AddProtectedRangeRequest.fromJson(
+          _json['addProtectedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addSheet')) {
-      addSheet = AddSheetRequest.fromJson(_json['addSheet']);
+      addSheet = AddSheetRequest.fromJson(
+          _json['addSheet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addSlicer')) {
-      addSlicer = AddSlicerRequest.fromJson(_json['addSlicer']);
+      addSlicer = AddSlicerRequest.fromJson(
+          _json['addSlicer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('appendCells')) {
-      appendCells = AppendCellsRequest.fromJson(_json['appendCells']);
+      appendCells = AppendCellsRequest.fromJson(
+          _json['appendCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('appendDimension')) {
-      appendDimension =
-          AppendDimensionRequest.fromJson(_json['appendDimension']);
+      appendDimension = AppendDimensionRequest.fromJson(
+          _json['appendDimension'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('autoFill')) {
-      autoFill = AutoFillRequest.fromJson(_json['autoFill']);
+      autoFill = AutoFillRequest.fromJson(
+          _json['autoFill'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('autoResizeDimensions')) {
-      autoResizeDimensions =
-          AutoResizeDimensionsRequest.fromJson(_json['autoResizeDimensions']);
+      autoResizeDimensions = AutoResizeDimensionsRequest.fromJson(
+          _json['autoResizeDimensions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clearBasicFilter')) {
-      clearBasicFilter =
-          ClearBasicFilterRequest.fromJson(_json['clearBasicFilter']);
+      clearBasicFilter = ClearBasicFilterRequest.fromJson(
+          _json['clearBasicFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('copyPaste')) {
-      copyPaste = CopyPasteRequest.fromJson(_json['copyPaste']);
+      copyPaste = CopyPasteRequest.fromJson(
+          _json['copyPaste'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createDeveloperMetadata')) {
       createDeveloperMetadata = CreateDeveloperMetadataRequest.fromJson(
-          _json['createDeveloperMetadata']);
+          _json['createDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cutPaste')) {
-      cutPaste = CutPasteRequest.fromJson(_json['cutPaste']);
+      cutPaste = CutPasteRequest.fromJson(
+          _json['cutPaste'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteBanding')) {
-      deleteBanding = DeleteBandingRequest.fromJson(_json['deleteBanding']);
+      deleteBanding = DeleteBandingRequest.fromJson(
+          _json['deleteBanding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteConditionalFormatRule')) {
       deleteConditionalFormatRule = DeleteConditionalFormatRuleRequest.fromJson(
-          _json['deleteConditionalFormatRule']);
+          _json['deleteConditionalFormatRule']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDataSource')) {
-      deleteDataSource =
-          DeleteDataSourceRequest.fromJson(_json['deleteDataSource']);
+      deleteDataSource = DeleteDataSourceRequest.fromJson(
+          _json['deleteDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDeveloperMetadata')) {
       deleteDeveloperMetadata = DeleteDeveloperMetadataRequest.fromJson(
-          _json['deleteDeveloperMetadata']);
+          _json['deleteDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDimension')) {
-      deleteDimension =
-          DeleteDimensionRequest.fromJson(_json['deleteDimension']);
+      deleteDimension = DeleteDimensionRequest.fromJson(
+          _json['deleteDimension'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDimensionGroup')) {
-      deleteDimensionGroup =
-          DeleteDimensionGroupRequest.fromJson(_json['deleteDimensionGroup']);
+      deleteDimensionGroup = DeleteDimensionGroupRequest.fromJson(
+          _json['deleteDimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDuplicates')) {
-      deleteDuplicates =
-          DeleteDuplicatesRequest.fromJson(_json['deleteDuplicates']);
+      deleteDuplicates = DeleteDuplicatesRequest.fromJson(
+          _json['deleteDuplicates'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteEmbeddedObject')) {
-      deleteEmbeddedObject =
-          DeleteEmbeddedObjectRequest.fromJson(_json['deleteEmbeddedObject']);
+      deleteEmbeddedObject = DeleteEmbeddedObjectRequest.fromJson(
+          _json['deleteEmbeddedObject'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteFilterView')) {
-      deleteFilterView =
-          DeleteFilterViewRequest.fromJson(_json['deleteFilterView']);
+      deleteFilterView = DeleteFilterViewRequest.fromJson(
+          _json['deleteFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteNamedRange')) {
-      deleteNamedRange =
-          DeleteNamedRangeRequest.fromJson(_json['deleteNamedRange']);
+      deleteNamedRange = DeleteNamedRangeRequest.fromJson(
+          _json['deleteNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteProtectedRange')) {
-      deleteProtectedRange =
-          DeleteProtectedRangeRequest.fromJson(_json['deleteProtectedRange']);
+      deleteProtectedRange = DeleteProtectedRangeRequest.fromJson(
+          _json['deleteProtectedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteRange')) {
-      deleteRange = DeleteRangeRequest.fromJson(_json['deleteRange']);
+      deleteRange = DeleteRangeRequest.fromJson(
+          _json['deleteRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteSheet')) {
-      deleteSheet = DeleteSheetRequest.fromJson(_json['deleteSheet']);
+      deleteSheet = DeleteSheetRequest.fromJson(
+          _json['deleteSheet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('duplicateFilterView')) {
-      duplicateFilterView =
-          DuplicateFilterViewRequest.fromJson(_json['duplicateFilterView']);
+      duplicateFilterView = DuplicateFilterViewRequest.fromJson(
+          _json['duplicateFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('duplicateSheet')) {
-      duplicateSheet = DuplicateSheetRequest.fromJson(_json['duplicateSheet']);
+      duplicateSheet = DuplicateSheetRequest.fromJson(
+          _json['duplicateSheet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('findReplace')) {
-      findReplace = FindReplaceRequest.fromJson(_json['findReplace']);
+      findReplace = FindReplaceRequest.fromJson(
+          _json['findReplace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertDimension')) {
-      insertDimension =
-          InsertDimensionRequest.fromJson(_json['insertDimension']);
+      insertDimension = InsertDimensionRequest.fromJson(
+          _json['insertDimension'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertRange')) {
-      insertRange = InsertRangeRequest.fromJson(_json['insertRange']);
+      insertRange = InsertRangeRequest.fromJson(
+          _json['insertRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mergeCells')) {
-      mergeCells = MergeCellsRequest.fromJson(_json['mergeCells']);
+      mergeCells = MergeCellsRequest.fromJson(
+          _json['mergeCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('moveDimension')) {
-      moveDimension = MoveDimensionRequest.fromJson(_json['moveDimension']);
+      moveDimension = MoveDimensionRequest.fromJson(
+          _json['moveDimension'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pasteData')) {
-      pasteData = PasteDataRequest.fromJson(_json['pasteData']);
+      pasteData = PasteDataRequest.fromJson(
+          _json['pasteData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('randomizeRange')) {
-      randomizeRange = RandomizeRangeRequest.fromJson(_json['randomizeRange']);
+      randomizeRange = RandomizeRangeRequest.fromJson(
+          _json['randomizeRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refreshDataSource')) {
-      refreshDataSource =
-          RefreshDataSourceRequest.fromJson(_json['refreshDataSource']);
+      refreshDataSource = RefreshDataSourceRequest.fromJson(
+          _json['refreshDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('repeatCell')) {
-      repeatCell = RepeatCellRequest.fromJson(_json['repeatCell']);
+      repeatCell = RepeatCellRequest.fromJson(
+          _json['repeatCell'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('setBasicFilter')) {
-      setBasicFilter = SetBasicFilterRequest.fromJson(_json['setBasicFilter']);
+      setBasicFilter = SetBasicFilterRequest.fromJson(
+          _json['setBasicFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('setDataValidation')) {
-      setDataValidation =
-          SetDataValidationRequest.fromJson(_json['setDataValidation']);
+      setDataValidation = SetDataValidationRequest.fromJson(
+          _json['setDataValidation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortRange')) {
-      sortRange = SortRangeRequest.fromJson(_json['sortRange']);
+      sortRange = SortRangeRequest.fromJson(
+          _json['sortRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textToColumns')) {
-      textToColumns = TextToColumnsRequest.fromJson(_json['textToColumns']);
+      textToColumns = TextToColumnsRequest.fromJson(
+          _json['textToColumns'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('trimWhitespace')) {
-      trimWhitespace = TrimWhitespaceRequest.fromJson(_json['trimWhitespace']);
+      trimWhitespace = TrimWhitespaceRequest.fromJson(
+          _json['trimWhitespace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unmergeCells')) {
-      unmergeCells = UnmergeCellsRequest.fromJson(_json['unmergeCells']);
+      unmergeCells = UnmergeCellsRequest.fromJson(
+          _json['unmergeCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateBanding')) {
-      updateBanding = UpdateBandingRequest.fromJson(_json['updateBanding']);
+      updateBanding = UpdateBandingRequest.fromJson(
+          _json['updateBanding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateBorders')) {
-      updateBorders = UpdateBordersRequest.fromJson(_json['updateBorders']);
+      updateBorders = UpdateBordersRequest.fromJson(
+          _json['updateBorders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateCells')) {
-      updateCells = UpdateCellsRequest.fromJson(_json['updateCells']);
+      updateCells = UpdateCellsRequest.fromJson(
+          _json['updateCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateChartSpec')) {
-      updateChartSpec =
-          UpdateChartSpecRequest.fromJson(_json['updateChartSpec']);
+      updateChartSpec = UpdateChartSpecRequest.fromJson(
+          _json['updateChartSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateConditionalFormatRule')) {
       updateConditionalFormatRule = UpdateConditionalFormatRuleRequest.fromJson(
-          _json['updateConditionalFormatRule']);
+          _json['updateConditionalFormatRule']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDataSource')) {
-      updateDataSource =
-          UpdateDataSourceRequest.fromJson(_json['updateDataSource']);
+      updateDataSource = UpdateDataSourceRequest.fromJson(
+          _json['updateDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDeveloperMetadata')) {
       updateDeveloperMetadata = UpdateDeveloperMetadataRequest.fromJson(
-          _json['updateDeveloperMetadata']);
+          _json['updateDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDimensionGroup')) {
-      updateDimensionGroup =
-          UpdateDimensionGroupRequest.fromJson(_json['updateDimensionGroup']);
+      updateDimensionGroup = UpdateDimensionGroupRequest.fromJson(
+          _json['updateDimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDimensionProperties')) {
       updateDimensionProperties = UpdateDimensionPropertiesRequest.fromJson(
-          _json['updateDimensionProperties']);
+          _json['updateDimensionProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateEmbeddedObjectPosition')) {
       updateEmbeddedObjectPosition =
           UpdateEmbeddedObjectPositionRequest.fromJson(
-              _json['updateEmbeddedObjectPosition']);
+              _json['updateEmbeddedObjectPosition']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateFilterView')) {
-      updateFilterView =
-          UpdateFilterViewRequest.fromJson(_json['updateFilterView']);
+      updateFilterView = UpdateFilterViewRequest.fromJson(
+          _json['updateFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateNamedRange')) {
-      updateNamedRange =
-          UpdateNamedRangeRequest.fromJson(_json['updateNamedRange']);
+      updateNamedRange = UpdateNamedRangeRequest.fromJson(
+          _json['updateNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateProtectedRange')) {
-      updateProtectedRange =
-          UpdateProtectedRangeRequest.fromJson(_json['updateProtectedRange']);
+      updateProtectedRange = UpdateProtectedRangeRequest.fromJson(
+          _json['updateProtectedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateSheetProperties')) {
-      updateSheetProperties =
-          UpdateSheetPropertiesRequest.fromJson(_json['updateSheetProperties']);
+      updateSheetProperties = UpdateSheetPropertiesRequest.fromJson(
+          _json['updateSheetProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateSlicerSpec')) {
-      updateSlicerSpec =
-          UpdateSlicerSpecRequest.fromJson(_json['updateSlicerSpec']);
+      updateSlicerSpec = UpdateSlicerSpecRequest.fromJson(
+          _json['updateSlicerSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateSpreadsheetProperties')) {
       updateSpreadsheetProperties = UpdateSpreadsheetPropertiesRequest.fromJson(
-          _json['updateSpreadsheetProperties']);
+          _json['updateSpreadsheetProperties']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11183,89 +11524,105 @@ class Response {
 
   Response.fromJson(core.Map _json) {
     if (_json.containsKey('addBanding')) {
-      addBanding = AddBandingResponse.fromJson(_json['addBanding']);
+      addBanding = AddBandingResponse.fromJson(
+          _json['addBanding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addChart')) {
-      addChart = AddChartResponse.fromJson(_json['addChart']);
+      addChart = AddChartResponse.fromJson(
+          _json['addChart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addDataSource')) {
-      addDataSource = AddDataSourceResponse.fromJson(_json['addDataSource']);
+      addDataSource = AddDataSourceResponse.fromJson(
+          _json['addDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addDimensionGroup')) {
-      addDimensionGroup =
-          AddDimensionGroupResponse.fromJson(_json['addDimensionGroup']);
+      addDimensionGroup = AddDimensionGroupResponse.fromJson(
+          _json['addDimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addFilterView')) {
-      addFilterView = AddFilterViewResponse.fromJson(_json['addFilterView']);
+      addFilterView = AddFilterViewResponse.fromJson(
+          _json['addFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addNamedRange')) {
-      addNamedRange = AddNamedRangeResponse.fromJson(_json['addNamedRange']);
+      addNamedRange = AddNamedRangeResponse.fromJson(
+          _json['addNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addProtectedRange')) {
-      addProtectedRange =
-          AddProtectedRangeResponse.fromJson(_json['addProtectedRange']);
+      addProtectedRange = AddProtectedRangeResponse.fromJson(
+          _json['addProtectedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addSheet')) {
-      addSheet = AddSheetResponse.fromJson(_json['addSheet']);
+      addSheet = AddSheetResponse.fromJson(
+          _json['addSheet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('addSlicer')) {
-      addSlicer = AddSlicerResponse.fromJson(_json['addSlicer']);
+      addSlicer = AddSlicerResponse.fromJson(
+          _json['addSlicer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createDeveloperMetadata')) {
       createDeveloperMetadata = CreateDeveloperMetadataResponse.fromJson(
-          _json['createDeveloperMetadata']);
+          _json['createDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteConditionalFormatRule')) {
       deleteConditionalFormatRule =
           DeleteConditionalFormatRuleResponse.fromJson(
-              _json['deleteConditionalFormatRule']);
+              _json['deleteConditionalFormatRule']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDeveloperMetadata')) {
       deleteDeveloperMetadata = DeleteDeveloperMetadataResponse.fromJson(
-          _json['deleteDeveloperMetadata']);
+          _json['deleteDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDimensionGroup')) {
-      deleteDimensionGroup =
-          DeleteDimensionGroupResponse.fromJson(_json['deleteDimensionGroup']);
+      deleteDimensionGroup = DeleteDimensionGroupResponse.fromJson(
+          _json['deleteDimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteDuplicates')) {
-      deleteDuplicates =
-          DeleteDuplicatesResponse.fromJson(_json['deleteDuplicates']);
+      deleteDuplicates = DeleteDuplicatesResponse.fromJson(
+          _json['deleteDuplicates'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('duplicateFilterView')) {
-      duplicateFilterView =
-          DuplicateFilterViewResponse.fromJson(_json['duplicateFilterView']);
+      duplicateFilterView = DuplicateFilterViewResponse.fromJson(
+          _json['duplicateFilterView'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('duplicateSheet')) {
-      duplicateSheet = DuplicateSheetResponse.fromJson(_json['duplicateSheet']);
+      duplicateSheet = DuplicateSheetResponse.fromJson(
+          _json['duplicateSheet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('findReplace')) {
-      findReplace = FindReplaceResponse.fromJson(_json['findReplace']);
+      findReplace = FindReplaceResponse.fromJson(
+          _json['findReplace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refreshDataSource')) {
-      refreshDataSource =
-          RefreshDataSourceResponse.fromJson(_json['refreshDataSource']);
+      refreshDataSource = RefreshDataSourceResponse.fromJson(
+          _json['refreshDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('trimWhitespace')) {
-      trimWhitespace = TrimWhitespaceResponse.fromJson(_json['trimWhitespace']);
+      trimWhitespace = TrimWhitespaceResponse.fromJson(
+          _json['trimWhitespace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateConditionalFormatRule')) {
       updateConditionalFormatRule =
           UpdateConditionalFormatRuleResponse.fromJson(
-              _json['updateConditionalFormatRule']);
+              _json['updateConditionalFormatRule']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDataSource')) {
-      updateDataSource =
-          UpdateDataSourceResponse.fromJson(_json['updateDataSource']);
+      updateDataSource = UpdateDataSourceResponse.fromJson(
+          _json['updateDataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDeveloperMetadata')) {
       updateDeveloperMetadata = UpdateDeveloperMetadataResponse.fromJson(
-          _json['updateDeveloperMetadata']);
+          _json['updateDeveloperMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateEmbeddedObjectPosition')) {
       updateEmbeddedObjectPosition =
           UpdateEmbeddedObjectPositionResponse.fromJson(
-              _json['updateEmbeddedObjectPosition']);
+              _json['updateEmbeddedObjectPosition']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11357,7 +11714,8 @@ class RowData {
   RowData.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<CellData>((value) => CellData.fromJson(value))
+          .map<CellData>((value) =>
+              CellData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11431,21 +11789,24 @@ class ScorecardChartSpec {
       aggregateType = _json['aggregateType'] as core.String;
     }
     if (_json.containsKey('baselineValueData')) {
-      baselineValueData = ChartData.fromJson(_json['baselineValueData']);
+      baselineValueData = ChartData.fromJson(
+          _json['baselineValueData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('baselineValueFormat')) {
-      baselineValueFormat =
-          BaselineValueFormat.fromJson(_json['baselineValueFormat']);
+      baselineValueFormat = BaselineValueFormat.fromJson(
+          _json['baselineValueFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customFormatOptions')) {
-      customFormatOptions =
-          ChartCustomNumberFormatOptions.fromJson(_json['customFormatOptions']);
+      customFormatOptions = ChartCustomNumberFormatOptions.fromJson(
+          _json['customFormatOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('keyValueData')) {
-      keyValueData = ChartData.fromJson(_json['keyValueData']);
+      keyValueData = ChartData.fromJson(
+          _json['keyValueData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('keyValueFormat')) {
-      keyValueFormat = KeyValueFormat.fromJson(_json['keyValueFormat']);
+      keyValueFormat = KeyValueFormat.fromJson(
+          _json['keyValueFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('numberFormatSource')) {
       numberFormatSource = _json['numberFormatSource'] as core.String;
@@ -11498,7 +11859,8 @@ class SearchDeveloperMetadataRequest {
   SearchDeveloperMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11524,8 +11886,9 @@ class SearchDeveloperMetadataResponse {
     if (_json.containsKey('matchedDeveloperMetadata')) {
       matchedDeveloperMetadata =
           (_json['matchedDeveloperMetadata'] as core.List)
-              .map<MatchedDeveloperMetadata>(
-                  (value) => MatchedDeveloperMetadata.fromJson(value))
+              .map<MatchedDeveloperMetadata>((value) =>
+                  MatchedDeveloperMetadata.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -11549,7 +11912,8 @@ class SetBasicFilterRequest {
 
   SetBasicFilterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = BasicFilter.fromJson(_json['filter']);
+      filter = BasicFilter.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11576,10 +11940,12 @@ class SetDataValidationRequest {
 
   SetDataValidationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rule')) {
-      rule = DataValidationRule.fromJson(_json['rule']);
+      rule = DataValidationRule.fromJson(
+          _json['rule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11650,64 +12016,76 @@ class Sheet {
   Sheet.fromJson(core.Map _json) {
     if (_json.containsKey('bandedRanges')) {
       bandedRanges = (_json['bandedRanges'] as core.List)
-          .map<BandedRange>((value) => BandedRange.fromJson(value))
+          .map<BandedRange>((value) => BandedRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('basicFilter')) {
-      basicFilter = BasicFilter.fromJson(_json['basicFilter']);
+      basicFilter = BasicFilter.fromJson(
+          _json['basicFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('charts')) {
       charts = (_json['charts'] as core.List)
-          .map<EmbeddedChart>((value) => EmbeddedChart.fromJson(value))
+          .map<EmbeddedChart>((value) => EmbeddedChart.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('columnGroups')) {
       columnGroups = (_json['columnGroups'] as core.List)
-          .map<DimensionGroup>((value) => DimensionGroup.fromJson(value))
+          .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('conditionalFormats')) {
       conditionalFormats = (_json['conditionalFormats'] as core.List)
-          .map<ConditionalFormatRule>(
-              (value) => ConditionalFormatRule.fromJson(value))
+          .map<ConditionalFormatRule>((value) => ConditionalFormatRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('data')) {
       data = (_json['data'] as core.List)
-          .map<GridData>((value) => GridData.fromJson(value))
+          .map<GridData>((value) =>
+              GridData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerMetadata')) {
       developerMetadata = (_json['developerMetadata'] as core.List)
-          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(value))
+          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filterViews')) {
       filterViews = (_json['filterViews'] as core.List)
-          .map<FilterView>((value) => FilterView.fromJson(value))
+          .map<FilterView>((value) =>
+              FilterView.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('merges')) {
       merges = (_json['merges'] as core.List)
-          .map<GridRange>((value) => GridRange.fromJson(value))
+          .map<GridRange>((value) =>
+              GridRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = SheetProperties.fromJson(_json['properties']);
+      properties = SheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('protectedRanges')) {
       protectedRanges = (_json['protectedRanges'] as core.List)
-          .map<ProtectedRange>((value) => ProtectedRange.fromJson(value))
+          .map<ProtectedRange>((value) => ProtectedRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowGroups')) {
       rowGroups = (_json['rowGroups'] as core.List)
-          .map<DimensionGroup>((value) => DimensionGroup.fromJson(value))
+          .map<DimensionGroup>((value) => DimensionGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('slicers')) {
       slicers = (_json['slicers'] as core.List)
-          .map<Slicer>((value) => Slicer.fromJson(value))
+          .map<Slicer>((value) =>
+              Slicer.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11823,10 +12201,12 @@ class SheetProperties {
   SheetProperties.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceSheetProperties')) {
       dataSourceSheetProperties = DataSourceSheetProperties.fromJson(
-          _json['dataSourceSheetProperties']);
+          _json['dataSourceSheetProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gridProperties')) {
-      gridProperties = GridProperties.fromJson(_json['gridProperties']);
+      gridProperties = GridProperties.fromJson(
+          _json['gridProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hidden')) {
       hidden = _json['hidden'] as core.bool;
@@ -11844,10 +12224,12 @@ class SheetProperties {
       sheetType = _json['sheetType'] as core.String;
     }
     if (_json.containsKey('tabColor')) {
-      tabColor = Color.fromJson(_json['tabColor']);
+      tabColor = Color.fromJson(
+          _json['tabColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tabColorStyle')) {
-      tabColorStyle = ColorStyle.fromJson(_json['tabColorStyle']);
+      tabColorStyle = ColorStyle.fromJson(
+          _json['tabColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -11907,13 +12289,15 @@ class Slicer {
 
   Slicer.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = EmbeddedObjectPosition.fromJson(_json['position']);
+      position = EmbeddedObjectPosition.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('slicerId')) {
       slicerId = _json['slicerId'] as core.int;
     }
     if (_json.containsKey('spec')) {
-      spec = SlicerSpec.fromJson(_json['spec']);
+      spec = SlicerSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11977,25 +12361,30 @@ class SlicerSpec {
       applyToPivotTables = _json['applyToPivotTables'] as core.bool;
     }
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = Color.fromJson(_json['backgroundColor']);
+      backgroundColor = Color.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundColorStyle')) {
-      backgroundColorStyle = ColorStyle.fromJson(_json['backgroundColorStyle']);
+      backgroundColorStyle = ColorStyle.fromJson(
+          _json['backgroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('columnIndex')) {
       columnIndex = _json['columnIndex'] as core.int;
     }
     if (_json.containsKey('dataRange')) {
-      dataRange = GridRange.fromJson(_json['dataRange']);
+      dataRange = GridRange.fromJson(
+          _json['dataRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filterCriteria')) {
-      filterCriteria = FilterCriteria.fromJson(_json['filterCriteria']);
+      filterCriteria = FilterCriteria.fromJson(
+          _json['filterCriteria'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('horizontalAlignment')) {
       horizontalAlignment = _json['horizontalAlignment'] as core.String;
     }
     if (_json.containsKey('textFormat')) {
-      textFormat = TextFormat.fromJson(_json['textFormat']);
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -12048,11 +12437,13 @@ class SortRangeRequest {
 
   SortRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortSpecs')) {
       sortSpecs = (_json['sortSpecs'] as core.List)
-          .map<SortSpec>((value) => SortSpec.fromJson(value))
+          .map<SortSpec>((value) =>
+              SortSpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12108,23 +12499,28 @@ class SortSpec {
 
   SortSpec.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = Color.fromJson(_json['backgroundColor']);
+      backgroundColor = Color.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('backgroundColorStyle')) {
-      backgroundColorStyle = ColorStyle.fromJson(_json['backgroundColorStyle']);
+      backgroundColorStyle = ColorStyle.fromJson(
+          _json['backgroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSourceColumnReference')) {
       dataSourceColumnReference = DataSourceColumnReference.fromJson(
-          _json['dataSourceColumnReference']);
+          _json['dataSourceColumnReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dimensionIndex')) {
       dimensionIndex = _json['dimensionIndex'] as core.int;
     }
     if (_json.containsKey('foregroundColor')) {
-      foregroundColor = Color.fromJson(_json['foregroundColor']);
+      foregroundColor = Color.fromJson(
+          _json['foregroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('foregroundColorStyle')) {
-      foregroundColorStyle = ColorStyle.fromJson(_json['foregroundColorStyle']);
+      foregroundColorStyle = ColorStyle.fromJson(
+          _json['foregroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortOrder')) {
       sortOrder = _json['sortOrder'] as core.String;
@@ -12185,7 +12581,8 @@ class SourceAndDestination {
       fillLength = _json['fillLength'] as core.int;
     }
     if (_json.containsKey('source')) {
-      source = GridRange.fromJson(_json['source']);
+      source = GridRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12235,31 +12632,37 @@ class Spreadsheet {
   Spreadsheet.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceSchedules')) {
       dataSourceSchedules = (_json['dataSourceSchedules'] as core.List)
-          .map<DataSourceRefreshSchedule>(
-              (value) => DataSourceRefreshSchedule.fromJson(value))
+          .map<DataSourceRefreshSchedule>((value) =>
+              DataSourceRefreshSchedule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dataSources')) {
       dataSources = (_json['dataSources'] as core.List)
-          .map<DataSource>((value) => DataSource.fromJson(value))
+          .map<DataSource>((value) =>
+              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerMetadata')) {
       developerMetadata = (_json['developerMetadata'] as core.List)
-          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(value))
+          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('namedRanges')) {
       namedRanges = (_json['namedRanges'] as core.List)
-          .map<NamedRange>((value) => NamedRange.fromJson(value))
+          .map<NamedRange>((value) =>
+              NamedRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = SpreadsheetProperties.fromJson(_json['properties']);
+      properties = SpreadsheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sheets')) {
       sheets = (_json['sheets'] as core.List)
-          .map<Sheet>((value) => Sheet.fromJson(value))
+          .map<Sheet>((value) =>
+              Sheet.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('spreadsheetId')) {
@@ -12351,17 +12754,20 @@ class SpreadsheetProperties {
       autoRecalc = _json['autoRecalc'] as core.String;
     }
     if (_json.containsKey('defaultFormat')) {
-      defaultFormat = CellFormat.fromJson(_json['defaultFormat']);
+      defaultFormat = CellFormat.fromJson(
+          _json['defaultFormat'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('iterativeCalculationSettings')) {
       iterativeCalculationSettings = IterativeCalculationSettings.fromJson(
-          _json['iterativeCalculationSettings']);
+          _json['iterativeCalculationSettings']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('locale')) {
       locale = _json['locale'] as core.String;
     }
     if (_json.containsKey('spreadsheetTheme')) {
-      spreadsheetTheme = SpreadsheetTheme.fromJson(_json['spreadsheetTheme']);
+      spreadsheetTheme = SpreadsheetTheme.fromJson(
+          _json['spreadsheetTheme'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeZone')) {
       timeZone = _json['timeZone'] as core.String;
@@ -12416,7 +12822,8 @@ class SpreadsheetTheme {
     }
     if (_json.containsKey('themeColors')) {
       themeColors = (_json['themeColors'] as core.List)
-          .map<ThemeColorPair>((value) => ThemeColorPair.fromJson(value))
+          .map<ThemeColorPair>((value) => ThemeColorPair.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12475,10 +12882,12 @@ class TextFormat {
       fontSize = _json['fontSize'] as core.int;
     }
     if (_json.containsKey('foregroundColor')) {
-      foregroundColor = Color.fromJson(_json['foregroundColor']);
+      foregroundColor = Color.fromJson(
+          _json['foregroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('foregroundColorStyle')) {
-      foregroundColorStyle = ColorStyle.fromJson(_json['foregroundColorStyle']);
+      foregroundColorStyle = ColorStyle.fromJson(
+          _json['foregroundColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('italic')) {
       italic = _json['italic'] as core.bool;
@@ -12534,7 +12943,8 @@ class TextFormatRun {
 
   TextFormatRun.fromJson(core.Map _json) {
     if (_json.containsKey('format')) {
-      format = TextFormat.fromJson(_json['format']);
+      format = TextFormat.fromJson(
+          _json['format'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
@@ -12649,7 +13059,8 @@ class TextToColumnsRequest {
       delimiterType = _json['delimiterType'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = GridRange.fromJson(_json['source']);
+      source = GridRange.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12692,7 +13103,8 @@ class ThemeColorPair {
 
   ThemeColorPair.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = ColorStyle.fromJson(_json['color']);
+      color = ColorStyle.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorType')) {
       colorType = _json['colorType'] as core.String;
@@ -12806,28 +13218,36 @@ class TreemapChartColorScale {
 
   TreemapChartColorScale.fromJson(core.Map _json) {
     if (_json.containsKey('maxValueColor')) {
-      maxValueColor = Color.fromJson(_json['maxValueColor']);
+      maxValueColor = Color.fromJson(
+          _json['maxValueColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxValueColorStyle')) {
-      maxValueColorStyle = ColorStyle.fromJson(_json['maxValueColorStyle']);
+      maxValueColorStyle = ColorStyle.fromJson(
+          _json['maxValueColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('midValueColor')) {
-      midValueColor = Color.fromJson(_json['midValueColor']);
+      midValueColor = Color.fromJson(
+          _json['midValueColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('midValueColorStyle')) {
-      midValueColorStyle = ColorStyle.fromJson(_json['midValueColorStyle']);
+      midValueColorStyle = ColorStyle.fromJson(
+          _json['midValueColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minValueColor')) {
-      minValueColor = Color.fromJson(_json['minValueColor']);
+      minValueColor = Color.fromJson(
+          _json['minValueColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minValueColorStyle')) {
-      minValueColorStyle = ColorStyle.fromJson(_json['minValueColorStyle']);
+      minValueColorStyle = ColorStyle.fromJson(
+          _json['minValueColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('noDataColor')) {
-      noDataColor = Color.fromJson(_json['noDataColor']);
+      noDataColor = Color.fromJson(
+          _json['noDataColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('noDataColorStyle')) {
-      noDataColorStyle = ColorStyle.fromJson(_json['noDataColorStyle']);
+      noDataColorStyle = ColorStyle.fromJson(
+          _json['noDataColorStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12933,16 +13353,20 @@ class TreemapChartSpec {
 
   TreemapChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('colorData')) {
-      colorData = ChartData.fromJson(_json['colorData']);
+      colorData = ChartData.fromJson(
+          _json['colorData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorScale')) {
-      colorScale = TreemapChartColorScale.fromJson(_json['colorScale']);
+      colorScale = TreemapChartColorScale.fromJson(
+          _json['colorScale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headerColor')) {
-      headerColor = Color.fromJson(_json['headerColor']);
+      headerColor = Color.fromJson(
+          _json['headerColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headerColorStyle')) {
-      headerColorStyle = ColorStyle.fromJson(_json['headerColorStyle']);
+      headerColorStyle = ColorStyle.fromJson(
+          _json['headerColorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hideTooltips')) {
       hideTooltips = _json['hideTooltips'] as core.bool;
@@ -12951,7 +13375,8 @@ class TreemapChartSpec {
       hintedLevels = _json['hintedLevels'] as core.int;
     }
     if (_json.containsKey('labels')) {
-      labels = ChartData.fromJson(_json['labels']);
+      labels = ChartData.fromJson(
+          _json['labels'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('levels')) {
       levels = _json['levels'] as core.int;
@@ -12963,13 +13388,16 @@ class TreemapChartSpec {
       minValue = (_json['minValue'] as core.num).toDouble();
     }
     if (_json.containsKey('parentLabels')) {
-      parentLabels = ChartData.fromJson(_json['parentLabels']);
+      parentLabels = ChartData.fromJson(
+          _json['parentLabels'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sizeData')) {
-      sizeData = ChartData.fromJson(_json['sizeData']);
+      sizeData = ChartData.fromJson(
+          _json['sizeData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textFormat')) {
-      textFormat = TextFormat.fromJson(_json['textFormat']);
+      textFormat = TextFormat.fromJson(
+          _json['textFormat'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13032,7 +13460,8 @@ class TrimWhitespaceRequest {
 
   TrimWhitespaceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13078,7 +13507,8 @@ class UnmergeCellsRequest {
 
   UnmergeCellsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13105,7 +13535,8 @@ class UpdateBandingRequest {
 
   UpdateBandingRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bandedRange')) {
-      bandedRange = BandedRange.fromJson(_json['bandedRange']);
+      bandedRange = BandedRange.fromJson(
+          _json['bandedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
@@ -13156,25 +13587,32 @@ class UpdateBordersRequest {
 
   UpdateBordersRequest.fromJson(core.Map _json) {
     if (_json.containsKey('bottom')) {
-      bottom = Border.fromJson(_json['bottom']);
+      bottom = Border.fromJson(
+          _json['bottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('innerHorizontal')) {
-      innerHorizontal = Border.fromJson(_json['innerHorizontal']);
+      innerHorizontal = Border.fromJson(
+          _json['innerHorizontal'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('innerVertical')) {
-      innerVertical = Border.fromJson(_json['innerVertical']);
+      innerVertical = Border.fromJson(
+          _json['innerVertical'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('left')) {
-      left = Border.fromJson(_json['left']);
+      left =
+          Border.fromJson(_json['left'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('right')) {
-      right = Border.fromJson(_json['right']);
+      right = Border.fromJson(
+          _json['right'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('top')) {
-      top = Border.fromJson(_json['top']);
+      top =
+          Border.fromJson(_json['top'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13231,15 +13669,18 @@ class UpdateCellsRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = GridRange.fromJson(_json['range']);
+      range = GridRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<RowData>((value) => RowData.fromJson(value))
+          .map<RowData>((value) =>
+              RowData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('start')) {
-      start = GridCoordinate.fromJson(_json['start']);
+      start = GridCoordinate.fromJson(
+          _json['start'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13277,7 +13718,8 @@ class UpdateChartSpecRequest {
       chartId = _json['chartId'] as core.int;
     }
     if (_json.containsKey('spec')) {
-      spec = ChartSpec.fromJson(_json['spec']);
+      spec = ChartSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13319,7 +13761,8 @@ class UpdateConditionalFormatRuleRequest {
       newIndex = _json['newIndex'] as core.int;
     }
     if (_json.containsKey('rule')) {
-      rule = ConditionalFormatRule.fromJson(_json['rule']);
+      rule = ConditionalFormatRule.fromJson(
+          _json['rule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sheetId')) {
       sheetId = _json['sheetId'] as core.int;
@@ -13368,13 +13811,15 @@ class UpdateConditionalFormatRuleResponse {
       newIndex = _json['newIndex'] as core.int;
     }
     if (_json.containsKey('newRule')) {
-      newRule = ConditionalFormatRule.fromJson(_json['newRule']);
+      newRule = ConditionalFormatRule.fromJson(
+          _json['newRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oldIndex')) {
       oldIndex = _json['oldIndex'] as core.int;
     }
     if (_json.containsKey('oldRule')) {
-      oldRule = ConditionalFormatRule.fromJson(_json['oldRule']);
+      oldRule = ConditionalFormatRule.fromJson(
+          _json['oldRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13413,7 +13858,8 @@ class UpdateDataSourceRequest {
 
   UpdateDataSourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSource')) {
-      dataSource = DataSource.fromJson(_json['dataSource']);
+      dataSource = DataSource.fromJson(
+          _json['dataSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
@@ -13444,11 +13890,12 @@ class UpdateDataSourceResponse {
 
   UpdateDataSourceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataExecutionStatus')) {
-      dataExecutionStatus =
-          DataExecutionStatus.fromJson(_json['dataExecutionStatus']);
+      dataExecutionStatus = DataExecutionStatus.fromJson(
+          _json['dataExecutionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataSource')) {
-      dataSource = DataSource.fromJson(_json['dataSource']);
+      dataSource = DataSource.fromJson(
+          _json['dataSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13487,12 +13934,13 @@ class UpdateDeveloperMetadataRequest {
   UpdateDeveloperMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilters')) {
       dataFilters = (_json['dataFilters'] as core.List)
-          .map<DataFilter>((value) => DataFilter.fromJson(value))
+          .map<DataFilter>((value) =>
+              DataFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('developerMetadata')) {
-      developerMetadata =
-          DeveloperMetadata.fromJson(_json['developerMetadata']);
+      developerMetadata = DeveloperMetadata.fromJson(
+          _json['developerMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
@@ -13525,7 +13973,8 @@ class UpdateDeveloperMetadataResponse {
   UpdateDeveloperMetadataResponse.fromJson(core.Map _json) {
     if (_json.containsKey('developerMetadata')) {
       developerMetadata = (_json['developerMetadata'] as core.List)
-          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(value))
+          .map<DeveloperMetadata>((value) => DeveloperMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13555,7 +14004,8 @@ class UpdateDimensionGroupRequest {
 
   UpdateDimensionGroupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionGroup')) {
-      dimensionGroup = DimensionGroup.fromJson(_json['dimensionGroup']);
+      dimensionGroup = DimensionGroup.fromJson(
+          _json['dimensionGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
@@ -13594,17 +14044,19 @@ class UpdateDimensionPropertiesRequest {
 
   UpdateDimensionPropertiesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceSheetRange')) {
-      dataSourceSheetRange =
-          DataSourceSheetDimensionRange.fromJson(_json['dataSourceSheetRange']);
+      dataSourceSheetRange = DataSourceSheetDimensionRange.fromJson(
+          _json['dataSourceSheetRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = DimensionProperties.fromJson(_json['properties']);
+      properties = DimensionProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('range')) {
-      range = DimensionRange.fromJson(_json['range']);
+      range = DimensionRange.fromJson(
+          _json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13652,7 +14104,8 @@ class UpdateEmbeddedObjectPositionRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('newPosition')) {
-      newPosition = EmbeddedObjectPosition.fromJson(_json['newPosition']);
+      newPosition = EmbeddedObjectPosition.fromJson(
+          _json['newPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectId')) {
       objectId = _json['objectId'] as core.int;
@@ -13683,7 +14136,8 @@ class UpdateEmbeddedObjectPositionResponse {
 
   UpdateEmbeddedObjectPositionResponse.fromJson(core.Map _json) {
     if (_json.containsKey('position')) {
-      position = EmbeddedObjectPosition.fromJson(_json['position']);
+      position = EmbeddedObjectPosition.fromJson(
+          _json['position'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13713,7 +14167,8 @@ class UpdateFilterViewRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('filter')) {
-      filter = FilterView.fromJson(_json['filter']);
+      filter = FilterView.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13746,7 +14201,8 @@ class UpdateNamedRangeRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('namedRange')) {
-      namedRange = NamedRange.fromJson(_json['namedRange']);
+      namedRange = NamedRange.fromJson(
+          _json['namedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13779,7 +14235,8 @@ class UpdateProtectedRangeRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('protectedRange')) {
-      protectedRange = ProtectedRange.fromJson(_json['protectedRange']);
+      protectedRange = ProtectedRange.fromJson(
+          _json['protectedRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13812,7 +14269,8 @@ class UpdateSheetPropertiesRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = SheetProperties.fromJson(_json['properties']);
+      properties = SheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13852,7 +14310,8 @@ class UpdateSlicerSpecRequest {
       slicerId = _json['slicerId'] as core.int;
     }
     if (_json.containsKey('spec')) {
-      spec = SlicerSpec.fromJson(_json['spec']);
+      spec = SlicerSpec.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13888,7 +14347,8 @@ class UpdateSpreadsheetPropertiesRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = SpreadsheetProperties.fromJson(_json['properties']);
+      properties = SpreadsheetProperties.fromJson(
+          _json['properties'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13931,7 +14391,8 @@ class UpdateValuesByDataFilterResponse {
 
   UpdateValuesByDataFilterResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dataFilter')) {
-      dataFilter = DataFilter.fromJson(_json['dataFilter']);
+      dataFilter = DataFilter.fromJson(
+          _json['dataFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updatedCells')) {
       updatedCells = _json['updatedCells'] as core.int;
@@ -13940,7 +14401,8 @@ class UpdateValuesByDataFilterResponse {
       updatedColumns = _json['updatedColumns'] as core.int;
     }
     if (_json.containsKey('updatedData')) {
-      updatedData = ValueRange.fromJson(_json['updatedData']);
+      updatedData = ValueRange.fromJson(
+          _json['updatedData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updatedRange')) {
       updatedRange = _json['updatedRange'] as core.String;
@@ -14008,7 +14470,8 @@ class UpdateValuesResponse {
       updatedColumns = _json['updatedColumns'] as core.int;
     }
     if (_json.containsKey('updatedData')) {
-      updatedData = ValueRange.fromJson(_json['updatedData']);
+      updatedData = ValueRange.fromJson(
+          _json['updatedData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updatedRange')) {
       updatedRange = _json['updatedRange'] as core.String;
@@ -14125,10 +14588,12 @@ class WaterfallChartColumnStyle {
 
   WaterfallChartColumnStyle.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('colorStyle')) {
-      colorStyle = ColorStyle.fromJson(_json['colorStyle']);
+      colorStyle = ColorStyle.fromJson(
+          _json['colorStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('label')) {
       label = _json['label'] as core.String;
@@ -14210,7 +14675,8 @@ class WaterfallChartDomain {
 
   WaterfallChartDomain.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = ChartData.fromJson(_json['data']);
+      data = ChartData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reversed')) {
       reversed = _json['reversed'] as core.bool;
@@ -14258,27 +14724,29 @@ class WaterfallChartSeries {
   WaterfallChartSeries.fromJson(core.Map _json) {
     if (_json.containsKey('customSubtotals')) {
       customSubtotals = (_json['customSubtotals'] as core.List)
-          .map<WaterfallChartCustomSubtotal>(
-              (value) => WaterfallChartCustomSubtotal.fromJson(value))
+          .map<WaterfallChartCustomSubtotal>((value) =>
+              WaterfallChartCustomSubtotal.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('data')) {
-      data = ChartData.fromJson(_json['data']);
+      data = ChartData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hideTrailingSubtotal')) {
       hideTrailingSubtotal = _json['hideTrailingSubtotal'] as core.bool;
     }
     if (_json.containsKey('negativeColumnsStyle')) {
-      negativeColumnsStyle =
-          WaterfallChartColumnStyle.fromJson(_json['negativeColumnsStyle']);
+      negativeColumnsStyle = WaterfallChartColumnStyle.fromJson(
+          _json['negativeColumnsStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positiveColumnsStyle')) {
-      positiveColumnsStyle =
-          WaterfallChartColumnStyle.fromJson(_json['positiveColumnsStyle']);
+      positiveColumnsStyle = WaterfallChartColumnStyle.fromJson(
+          _json['positiveColumnsStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtotalColumnsStyle')) {
-      subtotalColumnsStyle =
-          WaterfallChartColumnStyle.fromJson(_json['subtotalColumnsStyle']);
+      subtotalColumnsStyle = WaterfallChartColumnStyle.fromJson(
+          _json['subtotalColumnsStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -14336,10 +14804,12 @@ class WaterfallChartSpec {
 
   WaterfallChartSpec.fromJson(core.Map _json) {
     if (_json.containsKey('connectorLineStyle')) {
-      connectorLineStyle = LineStyle.fromJson(_json['connectorLineStyle']);
+      connectorLineStyle = LineStyle.fromJson(
+          _json['connectorLineStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('domain')) {
-      domain = WaterfallChartDomain.fromJson(_json['domain']);
+      domain = WaterfallChartDomain.fromJson(
+          _json['domain'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('firstValueIsTotal')) {
       firstValueIsTotal = _json['firstValueIsTotal'] as core.bool;
@@ -14349,8 +14819,8 @@ class WaterfallChartSpec {
     }
     if (_json.containsKey('series')) {
       series = (_json['series'] as core.List)
-          .map<WaterfallChartSeries>(
-              (value) => WaterfallChartSeries.fromJson(value))
+          .map<WaterfallChartSeries>((value) => WaterfallChartSeries.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('stackedType')) {

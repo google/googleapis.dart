@@ -142,7 +142,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -194,7 +196,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -245,7 +249,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -338,7 +344,10 @@ class OperationsProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -420,7 +429,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete an instance from a project.
@@ -470,7 +481,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information about an instance.
@@ -520,7 +533,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Instance.fromJson(data));
+    return _response.then(
+      (data) => Instance.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for an instance resource. Returns an empty
@@ -580,7 +595,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about instances in a project.
@@ -637,7 +654,10 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListInstancesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListInstancesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Partially updates an instance within a project. This method can modify all
@@ -701,7 +721,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on an instance resource. Replaces any
@@ -761,7 +783,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that the caller has on the specified instance
@@ -821,7 +845,10 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an instance within a project. This method updates only the display
@@ -879,7 +906,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Instance.fromJson(data));
+    return _response.then(
+      (data) => Instance.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -960,7 +989,10 @@ class ProjectsInstancesAppProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppProfile.fromJson(data));
+    return _response.then(
+      (data) =>
+          AppProfile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an app profile from an instance.
@@ -1019,7 +1051,9 @@ class ProjectsInstancesAppProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information about an app profile.
@@ -1071,7 +1105,10 @@ class ProjectsInstancesAppProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppProfile.fromJson(data));
+    return _response.then(
+      (data) =>
+          AppProfile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about app profiles in an instance.
@@ -1144,7 +1181,10 @@ class ProjectsInstancesAppProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAppProfilesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAppProfilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an app profile within an instance.
@@ -1215,7 +1255,9 @@ class ProjectsInstancesAppProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1291,7 +1333,9 @@ class ProjectsInstancesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a cluster from an instance.
@@ -1342,7 +1386,9 @@ class ProjectsInstancesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information about a cluster.
@@ -1392,7 +1438,9 @@ class ProjectsInstancesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Cluster.fromJson(data));
+    return _response.then(
+      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about clusters in an instance.
@@ -1452,7 +1500,10 @@ class ProjectsInstancesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListClustersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListClustersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a cluster within an instance.
@@ -1508,7 +1559,9 @@ class ProjectsInstancesClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1589,7 +1642,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a pending or completed Cloud Bigtable backup.
@@ -1640,7 +1695,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets metadata on a pending or completed Cloud Bigtable Backup.
@@ -1691,7 +1748,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Backup.fromJson(data));
+    return _response.then(
+      (data) => Backup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a Table resource. Returns an empty
@@ -1752,7 +1811,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Cloud Bigtable backups. Returns both completed and pending backups.
@@ -1862,7 +1923,10 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBackupsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBackupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a pending or completed Cloud Bigtable Backup.
@@ -1934,7 +1998,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Backup.fromJson(data));
+    return _response.then(
+      (data) => Backup.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on a Table resource. Replaces any existing
@@ -1995,7 +2061,9 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that the caller has on the specified table resource.
@@ -2055,7 +2123,10 @@ class ProjectsInstancesClustersBackupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2123,7 +2194,10 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CheckConsistencyResponse.fromJson(data));
+    return _response.then(
+      (data) => CheckConsistencyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new table in the specified instance. The table can be created
@@ -2181,7 +2255,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Table.fromJson(data));
+    return _response.then(
+      (data) => Table.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently deletes a specified table and all of its data.
@@ -2231,7 +2307,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Permanently drop/delete a row range from a specified table. The request
@@ -2292,7 +2370,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Generates a consistency token for a Table, which can be used in
@@ -2354,8 +2434,10 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GenerateConsistencyTokenResponse.fromJson(data));
+    return _response.then(
+      (data) => GenerateConsistencyTokenResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets metadata information about the specified table.
@@ -2421,7 +2503,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Table.fromJson(data));
+    return _response.then(
+      (data) => Table.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a Table resource. Returns an empty
@@ -2481,7 +2565,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all tables served from a specified instance.
@@ -2566,7 +2652,10 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTablesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTablesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Performs a series of column family modifications on the specified table.
@@ -2628,7 +2717,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Table.fromJson(data));
+    return _response.then(
+      (data) => Table.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new table by restoring from a completed backup. The new table
@@ -2691,7 +2782,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on a Table resource. Replaces any existing
@@ -2751,7 +2844,9 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that the caller has on the specified table resource.
@@ -2810,7 +2905,10 @@ class ProjectsInstancesTablesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2866,7 +2964,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -2934,7 +3034,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2974,14 +3077,15 @@ class AppProfile {
     }
     if (_json.containsKey('multiClusterRoutingUseAny')) {
       multiClusterRoutingUseAny = MultiClusterRoutingUseAny.fromJson(
-          _json['multiClusterRoutingUseAny']);
+          _json['multiClusterRoutingUseAny']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('singleClusterRouting')) {
-      singleClusterRouting =
-          SingleClusterRouting.fromJson(_json['singleClusterRouting']);
+      singleClusterRouting = SingleClusterRouting.fromJson(
+          _json['singleClusterRouting'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3036,7 +3140,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -3296,7 +3401,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -3503,7 +3609,8 @@ class ColumnFamily {
 
   ColumnFamily.fromJson(core.Map _json) {
     if (_json.containsKey('gcRule')) {
-      gcRule = GcRule.fromJson(_json['gcRule']);
+      gcRule = GcRule.fromJson(
+          _json['gcRule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3590,15 +3697,18 @@ class CreateClusterMetadata {
       finishTime = _json['finishTime'] as core.String;
     }
     if (_json.containsKey('originalRequest')) {
-      originalRequest = CreateClusterRequest.fromJson(_json['originalRequest']);
+      originalRequest = CreateClusterRequest.fromJson(
+          _json['originalRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestTime')) {
       requestTime = _json['requestTime'] as core.String;
     }
     if (_json.containsKey('tables')) {
       tables = commons.mapMap<core.Map, TableProgress>(
-          _json['tables'].cast<core.String, core.Map>(),
-          (core.Map item) => TableProgress.fromJson(item));
+          (_json['tables'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TableProgress.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -3641,7 +3751,8 @@ class CreateClusterRequest {
 
   CreateClusterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cluster')) {
-      cluster = Cluster.fromJson(_json['cluster']);
+      cluster = Cluster.fromJson(
+          _json['cluster'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('clusterId')) {
       clusterId = _json['clusterId'] as core.String;
@@ -3684,8 +3795,8 @@ class CreateInstanceMetadata {
       finishTime = _json['finishTime'] as core.String;
     }
     if (_json.containsKey('originalRequest')) {
-      originalRequest =
-          CreateInstanceRequest.fromJson(_json['originalRequest']);
+      originalRequest = CreateInstanceRequest.fromJson(
+          _json['originalRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestTime')) {
       requestTime = _json['requestTime'] as core.String;
@@ -3734,11 +3845,14 @@ class CreateInstanceRequest {
   CreateInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
       clusters = commons.mapMap<core.Map, Cluster>(
-          _json['clusters'].cast<core.String, core.Map>(),
-          (core.Map item) => Cluster.fromJson(item));
+          (_json['clusters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Cluster.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('instance')) {
-      instance = Instance.fromJson(_json['instance']);
+      instance = Instance.fromJson(
+          _json['instance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instanceId')) {
       instanceId = _json['instanceId'] as core.String;
@@ -3795,11 +3909,13 @@ class CreateTableRequest {
   CreateTableRequest.fromJson(core.Map _json) {
     if (_json.containsKey('initialSplits')) {
       initialSplits = (_json['initialSplits'] as core.List)
-          .map<Split>((value) => Split.fromJson(value))
+          .map<Split>((value) =>
+              Split.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('table')) {
-      table = Table.fromJson(_json['table']);
+      table =
+          Table.fromJson(_json['table'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableId')) {
       tableId = _json['tableId'] as core.String;
@@ -3956,7 +4072,8 @@ class FailureTrace {
   FailureTrace.fromJson(core.Map _json) {
     if (_json.containsKey('frames')) {
       frames = (_json['frames'] as core.List)
-          .map<Frame>((value) => Frame.fromJson(value))
+          .map<Frame>((value) =>
+              Frame.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4023,7 +4140,8 @@ class GcRule {
 
   GcRule.fromJson(core.Map _json) {
     if (_json.containsKey('intersection')) {
-      intersection = Intersection.fromJson(_json['intersection']);
+      intersection = Intersection.fromJson(
+          _json['intersection'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxAge')) {
       maxAge = _json['maxAge'] as core.String;
@@ -4032,7 +4150,8 @@ class GcRule {
       maxNumVersions = _json['maxNumVersions'] as core.int;
     }
     if (_json.containsKey('union')) {
-      union = Union.fromJson(_json['union']);
+      union =
+          Union.fromJson(_json['union'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4102,7 +4221,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4194,7 +4314,8 @@ class Instance {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -4239,7 +4360,8 @@ class Intersection {
   Intersection.fromJson(core.Map _json) {
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<GcRule>((value) => GcRule.fromJson(value))
+          .map<GcRule>((value) =>
+              GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4274,7 +4396,8 @@ class ListAppProfilesResponse {
   ListAppProfilesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('appProfiles')) {
       appProfiles = (_json['appProfiles'] as core.List)
-          .map<AppProfile>((value) => AppProfile.fromJson(value))
+          .map<AppProfile>((value) =>
+              AppProfile.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('failedLocations')) {
@@ -4317,7 +4440,8 @@ class ListBackupsResponse {
   ListBackupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('backups')) {
       backups = (_json['backups'] as core.List)
-          .map<Backup>((value) => Backup.fromJson(value))
+          .map<Backup>((value) =>
+              Backup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4356,7 +4480,8 @@ class ListClustersResponse {
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
       clusters = (_json['clusters'] as core.List)
-          .map<Cluster>((value) => Cluster.fromJson(value))
+          .map<Cluster>((value) =>
+              Cluster.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('failedLocations')) {
@@ -4410,7 +4535,8 @@ class ListInstancesResponse {
     }
     if (_json.containsKey('instances')) {
       instances = (_json['instances'] as core.List)
-          .map<Instance>((value) => Instance.fromJson(value))
+          .map<Instance>((value) =>
+              Instance.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4446,7 +4572,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4482,7 +4609,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4516,7 +4644,8 @@ class ListTablesResponse {
     }
     if (_json.containsKey('tables')) {
       tables = (_json['tables'] as core.List)
-          .map<Table>((value) => Table.fromJson(value))
+          .map<Table>((value) =>
+              Table.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4565,7 +4694,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -4573,7 +4703,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4623,7 +4754,8 @@ class Modification {
 
   Modification.fromJson(core.Map _json) {
     if (_json.containsKey('create')) {
-      create = ColumnFamily.fromJson(_json['create']);
+      create = ColumnFamily.fromJson(
+          _json['create'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('drop')) {
       drop = _json['drop'] as core.bool;
@@ -4632,7 +4764,8 @@ class Modification {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('update')) {
-      update = ColumnFamily.fromJson(_json['update']);
+      update = ColumnFamily.fromJson(
+          _json['update'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4668,7 +4801,8 @@ class ModifyColumnFamiliesRequest {
   ModifyColumnFamiliesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('modifications')) {
       modifications = (_json['modifications'] as core.List)
-          .map<Modification>((value) => Modification.fromJson(value))
+          .map<Modification>((value) => Modification.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4745,11 +4879,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4757,7 +4893,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -4844,7 +4981,8 @@ class OptimizeRestoredTableMetadata {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('progress')) {
-      progress = OperationProgress.fromJson(_json['progress']);
+      progress = OperationProgress.fromJson(
+          _json['progress'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4873,7 +5011,8 @@ class PartialUpdateInstanceRequest {
 
   PartialUpdateInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('instance')) {
-      instance = Instance.fromJson(_json['instance']);
+      instance = Instance.fromJson(
+          _json['instance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -4971,12 +5110,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -5022,7 +5163,8 @@ class RestoreInfo {
 
   RestoreInfo.fromJson(core.Map _json) {
     if (_json.containsKey('backupInfo')) {
-      backupInfo = BackupInfo.fromJson(_json['backupInfo']);
+      backupInfo = BackupInfo.fromJson(
+          _json['backupInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceType')) {
       sourceType = _json['sourceType'] as core.String;
@@ -5071,7 +5213,8 @@ class RestoreTableMetadata {
 
   RestoreTableMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('backupInfo')) {
-      backupInfo = BackupInfo.fromJson(_json['backupInfo']);
+      backupInfo = BackupInfo.fromJson(
+          _json['backupInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5081,7 +5224,8 @@ class RestoreTableMetadata {
           _json['optimizeTableOperationName'] as core.String;
     }
     if (_json.containsKey('progress')) {
-      progress = OperationProgress.fromJson(_json['progress']);
+      progress = OperationProgress.fromJson(
+          _json['progress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceType')) {
       sourceType = _json['sourceType'] as core.String;
@@ -5160,7 +5304,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -5274,7 +5419,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -5337,13 +5483,17 @@ class Table {
   Table.fromJson(core.Map _json) {
     if (_json.containsKey('clusterStates')) {
       clusterStates = commons.mapMap<core.Map, ClusterState>(
-          _json['clusterStates'].cast<core.String, core.Map>(),
-          (core.Map item) => ClusterState.fromJson(item));
+          (_json['clusterStates'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ClusterState.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('columnFamilies')) {
       columnFamilies = commons.mapMap<core.Map, ColumnFamily>(
-          _json['columnFamilies'].cast<core.String, core.Map>(),
-          (core.Map item) => ColumnFamily.fromJson(item));
+          (_json['columnFamilies'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ColumnFamily.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('granularity')) {
       granularity = _json['granularity'] as core.String;
@@ -5352,7 +5502,8 @@ class Table {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('restoreInfo')) {
-      restoreInfo = RestoreInfo.fromJson(_json['restoreInfo']);
+      restoreInfo = RestoreInfo.fromJson(
+          _json['restoreInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5493,7 +5644,8 @@ class Union {
   Union.fromJson(core.Map _json) {
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<GcRule>((value) => GcRule.fromJson(value))
+          .map<GcRule>((value) =>
+              GcRule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5539,7 +5691,8 @@ class UpdateClusterMetadata {
       finishTime = _json['finishTime'] as core.String;
     }
     if (_json.containsKey('originalRequest')) {
-      originalRequest = Cluster.fromJson(_json['originalRequest']);
+      originalRequest = Cluster.fromJson(
+          _json['originalRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestTime')) {
       requestTime = _json['requestTime'] as core.String;
@@ -5579,8 +5732,8 @@ class UpdateInstanceMetadata {
       finishTime = _json['finishTime'] as core.String;
     }
     if (_json.containsKey('originalRequest')) {
-      originalRequest =
-          PartialUpdateInstanceRequest.fromJson(_json['originalRequest']);
+      originalRequest = PartialUpdateInstanceRequest.fromJson(
+          _json['originalRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestTime')) {
       requestTime = _json['requestTime'] as core.String;

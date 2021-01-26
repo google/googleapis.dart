@@ -141,7 +141,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2499(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -157,8 +157,8 @@ core.List<api.DeviceCredential> buildUnnamed2500() {
 
 void checkUnnamed2500(core.List<api.DeviceCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceCredential(o[0]);
-  checkDeviceCredential(o[1]);
+  checkDeviceCredential(o[0] as api.DeviceCredential);
+  checkDeviceCredential(o[1] as api.DeviceCredential);
 }
 
 core.Map<core.String, core.String> buildUnnamed2501() {
@@ -205,13 +205,13 @@ void checkDevice(api.Device o) {
   buildCounterDevice++;
   if (buildCounterDevice < 3) {
     unittest.expect(o.blocked, unittest.isTrue);
-    checkDeviceConfig(o.config);
+    checkDeviceConfig(o.config as api.DeviceConfig);
     checkUnnamed2500(o.credentials);
-    checkGatewayConfig(o.gatewayConfig);
+    checkGatewayConfig(o.gatewayConfig as api.GatewayConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.lastConfigAckTime, unittest.equals('foo'));
     unittest.expect(o.lastConfigSendTime, unittest.equals('foo'));
-    checkStatus(o.lastErrorStatus);
+    checkStatus(o.lastErrorStatus as api.Status);
     unittest.expect(o.lastErrorTime, unittest.equals('foo'));
     unittest.expect(o.lastEventTime, unittest.equals('foo'));
     unittest.expect(o.lastHeartbeatTime, unittest.equals('foo'));
@@ -220,7 +220,7 @@ void checkDevice(api.Device o) {
     checkUnnamed2501(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.numId, unittest.equals('foo'));
-    checkDeviceState(o.state);
+    checkDeviceState(o.state as api.DeviceState);
   }
   buildCounterDevice--;
 }
@@ -266,7 +266,7 @@ void checkDeviceCredential(api.DeviceCredential o) {
   buildCounterDeviceCredential++;
   if (buildCounterDeviceCredential < 3) {
     unittest.expect(o.expirationTime, unittest.equals('foo'));
-    checkPublicKeyCredential(o.publicKey);
+    checkPublicKeyCredential(o.publicKey as api.PublicKeyCredential);
   }
   buildCounterDeviceCredential--;
 }
@@ -280,8 +280,8 @@ core.List<api.RegistryCredential> buildUnnamed2502() {
 
 void checkUnnamed2502(core.List<api.RegistryCredential> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRegistryCredential(o[0]);
-  checkRegistryCredential(o[1]);
+  checkRegistryCredential(o[0] as api.RegistryCredential);
+  checkRegistryCredential(o[1] as api.RegistryCredential);
 }
 
 core.List<api.EventNotificationConfig> buildUnnamed2503() {
@@ -293,8 +293,8 @@ core.List<api.EventNotificationConfig> buildUnnamed2503() {
 
 void checkUnnamed2503(core.List<api.EventNotificationConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventNotificationConfig(o[0]);
-  checkEventNotificationConfig(o[1]);
+  checkEventNotificationConfig(o[0] as api.EventNotificationConfig);
+  checkEventNotificationConfig(o[1] as api.EventNotificationConfig);
 }
 
 core.int buildCounterDeviceRegistry = 0;
@@ -320,12 +320,13 @@ void checkDeviceRegistry(api.DeviceRegistry o) {
   if (buildCounterDeviceRegistry < 3) {
     checkUnnamed2502(o.credentials);
     checkUnnamed2503(o.eventNotificationConfigs);
-    checkHttpConfig(o.httpConfig);
+    checkHttpConfig(o.httpConfig as api.HttpConfig);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.logLevel, unittest.equals('foo'));
-    checkMqttConfig(o.mqttConfig);
+    checkMqttConfig(o.mqttConfig as api.MqttConfig);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkStateNotificationConfig(o.stateNotificationConfig);
+    checkStateNotificationConfig(
+        o.stateNotificationConfig as api.StateNotificationConfig);
   }
   buildCounterDeviceRegistry--;
 }
@@ -451,7 +452,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -503,8 +504,8 @@ core.List<api.DeviceConfig> buildUnnamed2504() {
 
 void checkUnnamed2504(core.List<api.DeviceConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceConfig(o[0]);
-  checkDeviceConfig(o[1]);
+  checkDeviceConfig(o[0] as api.DeviceConfig);
+  checkDeviceConfig(o[1] as api.DeviceConfig);
 }
 
 core.int buildCounterListDeviceConfigVersionsResponse = 0;
@@ -536,8 +537,8 @@ core.List<api.DeviceRegistry> buildUnnamed2505() {
 
 void checkUnnamed2505(core.List<api.DeviceRegistry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceRegistry(o[0]);
-  checkDeviceRegistry(o[1]);
+  checkDeviceRegistry(o[0] as api.DeviceRegistry);
+  checkDeviceRegistry(o[1] as api.DeviceRegistry);
 }
 
 core.int buildCounterListDeviceRegistriesResponse = 0;
@@ -570,8 +571,8 @@ core.List<api.DeviceState> buildUnnamed2506() {
 
 void checkUnnamed2506(core.List<api.DeviceState> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceState(o[0]);
-  checkDeviceState(o[1]);
+  checkDeviceState(o[0] as api.DeviceState);
+  checkDeviceState(o[1] as api.DeviceState);
 }
 
 core.int buildCounterListDeviceStatesResponse = 0;
@@ -602,8 +603,8 @@ core.List<api.Device> buildUnnamed2507() {
 
 void checkUnnamed2507(core.List<api.Device> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDevice(o[0]);
-  checkDevice(o[1]);
+  checkDevice(o[0] as api.Device);
+  checkDevice(o[1] as api.Device);
 }
 
 core.int buildCounterListDevicesResponse = 0;
@@ -677,8 +678,8 @@ core.List<api.Binding> buildUnnamed2508() {
 
 void checkUnnamed2508(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -722,7 +723,7 @@ void checkPublicKeyCertificate(api.PublicKeyCertificate o) {
   if (buildCounterPublicKeyCertificate < 3) {
     unittest.expect(o.certificate, unittest.equals('foo'));
     unittest.expect(o.format, unittest.equals('foo'));
-    checkX509CertificateDetails(o.x509Details);
+    checkX509CertificateDetails(o.x509Details as api.X509CertificateDetails);
   }
   buildCounterPublicKeyCertificate--;
 }
@@ -762,7 +763,8 @@ api.RegistryCredential buildRegistryCredential() {
 void checkRegistryCredential(api.RegistryCredential o) {
   buildCounterRegistryCredential++;
   if (buildCounterRegistryCredential < 3) {
-    checkPublicKeyCertificate(o.publicKeyCertificate);
+    checkPublicKeyCertificate(
+        o.publicKeyCertificate as api.PublicKeyCertificate);
   }
   buildCounterRegistryCredential--;
 }
@@ -817,7 +819,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -1093,7 +1095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBindDeviceToGatewayRequest();
       var od = api.BindDeviceToGatewayRequest.fromJson(o.toJson());
-      checkBindDeviceToGatewayRequest(od);
+      checkBindDeviceToGatewayRequest(od as api.BindDeviceToGatewayRequest);
     });
   });
 
@@ -1101,7 +1103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBindDeviceToGatewayResponse();
       var od = api.BindDeviceToGatewayResponse.fromJson(o.toJson());
-      checkBindDeviceToGatewayResponse(od);
+      checkBindDeviceToGatewayResponse(od as api.BindDeviceToGatewayResponse);
     });
   });
 
@@ -1109,7 +1111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1117,7 +1119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
-      checkDevice(od);
+      checkDevice(od as api.Device);
     });
   });
 
@@ -1125,7 +1127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceConfig();
       var od = api.DeviceConfig.fromJson(o.toJson());
-      checkDeviceConfig(od);
+      checkDeviceConfig(od as api.DeviceConfig);
     });
   });
 
@@ -1133,7 +1135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceCredential();
       var od = api.DeviceCredential.fromJson(o.toJson());
-      checkDeviceCredential(od);
+      checkDeviceCredential(od as api.DeviceCredential);
     });
   });
 
@@ -1141,7 +1143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceRegistry();
       var od = api.DeviceRegistry.fromJson(o.toJson());
-      checkDeviceRegistry(od);
+      checkDeviceRegistry(od as api.DeviceRegistry);
     });
   });
 
@@ -1149,7 +1151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceState();
       var od = api.DeviceState.fromJson(o.toJson());
-      checkDeviceState(od);
+      checkDeviceState(od as api.DeviceState);
     });
   });
 
@@ -1157,7 +1159,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1165,7 +1167,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventNotificationConfig();
       var od = api.EventNotificationConfig.fromJson(o.toJson());
-      checkEventNotificationConfig(od);
+      checkEventNotificationConfig(od as api.EventNotificationConfig);
     });
   });
 
@@ -1173,7 +1175,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1181,7 +1183,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGatewayConfig();
       var od = api.GatewayConfig.fromJson(o.toJson());
-      checkGatewayConfig(od);
+      checkGatewayConfig(od as api.GatewayConfig);
     });
   });
 
@@ -1189,7 +1191,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -1197,7 +1199,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -1205,7 +1207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpConfig();
       var od = api.HttpConfig.fromJson(o.toJson());
-      checkHttpConfig(od);
+      checkHttpConfig(od as api.HttpConfig);
     });
   });
 
@@ -1213,7 +1215,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDeviceConfigVersionsResponse();
       var od = api.ListDeviceConfigVersionsResponse.fromJson(o.toJson());
-      checkListDeviceConfigVersionsResponse(od);
+      checkListDeviceConfigVersionsResponse(
+          od as api.ListDeviceConfigVersionsResponse);
     });
   });
 
@@ -1221,7 +1224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDeviceRegistriesResponse();
       var od = api.ListDeviceRegistriesResponse.fromJson(o.toJson());
-      checkListDeviceRegistriesResponse(od);
+      checkListDeviceRegistriesResponse(od as api.ListDeviceRegistriesResponse);
     });
   });
 
@@ -1229,7 +1232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDeviceStatesResponse();
       var od = api.ListDeviceStatesResponse.fromJson(o.toJson());
-      checkListDeviceStatesResponse(od);
+      checkListDeviceStatesResponse(od as api.ListDeviceStatesResponse);
     });
   });
 
@@ -1237,7 +1240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDevicesResponse();
       var od = api.ListDevicesResponse.fromJson(o.toJson());
-      checkListDevicesResponse(od);
+      checkListDevicesResponse(od as api.ListDevicesResponse);
     });
   });
 
@@ -1245,7 +1248,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyCloudToDeviceConfigRequest();
       var od = api.ModifyCloudToDeviceConfigRequest.fromJson(o.toJson());
-      checkModifyCloudToDeviceConfigRequest(od);
+      checkModifyCloudToDeviceConfigRequest(
+          od as api.ModifyCloudToDeviceConfigRequest);
     });
   });
 
@@ -1253,7 +1257,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMqttConfig();
       var od = api.MqttConfig.fromJson(o.toJson());
-      checkMqttConfig(od);
+      checkMqttConfig(od as api.MqttConfig);
     });
   });
 
@@ -1261,7 +1265,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1269,7 +1273,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublicKeyCertificate();
       var od = api.PublicKeyCertificate.fromJson(o.toJson());
-      checkPublicKeyCertificate(od);
+      checkPublicKeyCertificate(od as api.PublicKeyCertificate);
     });
   });
 
@@ -1277,7 +1281,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublicKeyCredential();
       var od = api.PublicKeyCredential.fromJson(o.toJson());
-      checkPublicKeyCredential(od);
+      checkPublicKeyCredential(od as api.PublicKeyCredential);
     });
   });
 
@@ -1285,7 +1289,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRegistryCredential();
       var od = api.RegistryCredential.fromJson(o.toJson());
-      checkRegistryCredential(od);
+      checkRegistryCredential(od as api.RegistryCredential);
     });
   });
 
@@ -1293,7 +1297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSendCommandToDeviceRequest();
       var od = api.SendCommandToDeviceRequest.fromJson(o.toJson());
-      checkSendCommandToDeviceRequest(od);
+      checkSendCommandToDeviceRequest(od as api.SendCommandToDeviceRequest);
     });
   });
 
@@ -1301,7 +1305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSendCommandToDeviceResponse();
       var od = api.SendCommandToDeviceResponse.fromJson(o.toJson());
-      checkSendCommandToDeviceResponse(od);
+      checkSendCommandToDeviceResponse(od as api.SendCommandToDeviceResponse);
     });
   });
 
@@ -1309,7 +1313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1317,7 +1321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStateNotificationConfig();
       var od = api.StateNotificationConfig.fromJson(o.toJson());
-      checkStateNotificationConfig(od);
+      checkStateNotificationConfig(od as api.StateNotificationConfig);
     });
   });
 
@@ -1325,7 +1329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1333,7 +1337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1341,7 +1345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1349,7 +1353,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnbindDeviceFromGatewayRequest();
       var od = api.UnbindDeviceFromGatewayRequest.fromJson(o.toJson());
-      checkUnbindDeviceFromGatewayRequest(od);
+      checkUnbindDeviceFromGatewayRequest(
+          od as api.UnbindDeviceFromGatewayRequest);
     });
   });
 
@@ -1357,7 +1362,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnbindDeviceFromGatewayResponse();
       var od = api.UnbindDeviceFromGatewayResponse.fromJson(o.toJson());
-      checkUnbindDeviceFromGatewayResponse(od);
+      checkUnbindDeviceFromGatewayResponse(
+          od as api.UnbindDeviceFromGatewayResponse);
     });
   });
 
@@ -1365,7 +1371,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildX509CertificateDetails();
       var od = api.X509CertificateDetails.fromJson(o.toJson());
-      checkX509CertificateDetails(od);
+      checkX509CertificateDetails(od as api.X509CertificateDetails);
     });
   });
 
@@ -1377,8 +1383,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BindDeviceToGatewayRequest.fromJson(json);
-        checkBindDeviceToGatewayRequest(obj);
+        var obj = api.BindDeviceToGatewayRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBindDeviceToGatewayRequest(obj as api.BindDeviceToGatewayRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1418,7 +1425,8 @@ void main() {
       res
           .bindDeviceToGateway(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBindDeviceToGatewayResponse(response);
+        checkBindDeviceToGatewayResponse(
+            response as api.BindDeviceToGatewayResponse);
       })));
     });
 
@@ -1429,8 +1437,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeviceRegistry.fromJson(json);
-        checkDeviceRegistry(obj);
+        var obj = api.DeviceRegistry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeviceRegistry(obj as api.DeviceRegistry);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1470,7 +1479,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response);
+        checkDeviceRegistry(response as api.DeviceRegistry);
       })));
     });
 
@@ -1518,7 +1527,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1566,7 +1575,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response);
+        checkDeviceRegistry(response as api.DeviceRegistry);
       })));
     });
 
@@ -1577,8 +1586,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1618,7 +1628,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1675,7 +1685,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDeviceRegistriesResponse(response);
+        checkListDeviceRegistriesResponse(
+            response as api.ListDeviceRegistriesResponse);
       })));
     });
 
@@ -1687,8 +1698,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeviceRegistry.fromJson(json);
-        checkDeviceRegistry(obj);
+        var obj = api.DeviceRegistry.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeviceRegistry(obj as api.DeviceRegistry);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1731,7 +1743,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeviceRegistry(response);
+        checkDeviceRegistry(response as api.DeviceRegistry);
       })));
     });
 
@@ -1742,8 +1754,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1783,7 +1796,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1794,8 +1807,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1835,7 +1849,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -1846,8 +1861,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UnbindDeviceFromGatewayRequest.fromJson(json);
-        checkUnbindDeviceFromGatewayRequest(obj);
+        var obj = api.UnbindDeviceFromGatewayRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUnbindDeviceFromGatewayRequest(
+            obj as api.UnbindDeviceFromGatewayRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1888,7 +1905,8 @@ void main() {
           .unbindDeviceFromGateway(arg_request, arg_parent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUnbindDeviceFromGatewayResponse(response);
+        checkUnbindDeviceFromGatewayResponse(
+            response as api.UnbindDeviceFromGatewayResponse);
       })));
     });
   });
@@ -1901,8 +1919,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Device.fromJson(json);
-        checkDevice(obj);
+        var obj =
+            api.Device.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDevice(obj as api.Device);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1942,7 +1961,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDevice(response);
+        checkDevice(response as api.Device);
       })));
     });
 
@@ -1990,7 +2009,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2041,7 +2060,7 @@ void main() {
       res
           .get(arg_name, fieldMask: arg_fieldMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDevice(response);
+        checkDevice(response as api.Device);
       })));
     });
 
@@ -2126,7 +2145,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDevicesResponse(response);
+        checkListDevicesResponse(response as api.ListDevicesResponse);
       })));
     });
 
@@ -2137,8 +2156,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyCloudToDeviceConfigRequest.fromJson(json);
-        checkModifyCloudToDeviceConfigRequest(obj);
+        var obj = api.ModifyCloudToDeviceConfigRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyCloudToDeviceConfigRequest(
+            obj as api.ModifyCloudToDeviceConfigRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2179,7 +2200,7 @@ void main() {
           .modifyCloudToDeviceConfig(arg_request, arg_name,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeviceConfig(response);
+        checkDeviceConfig(response as api.DeviceConfig);
       })));
     });
 
@@ -2191,8 +2212,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Device.fromJson(json);
-        checkDevice(obj);
+        var obj =
+            api.Device.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDevice(obj as api.Device);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2235,7 +2257,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDevice(response);
+        checkDevice(response as api.Device);
       })));
     });
 
@@ -2246,8 +2268,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SendCommandToDeviceRequest.fromJson(json);
-        checkSendCommandToDeviceRequest(obj);
+        var obj = api.SendCommandToDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSendCommandToDeviceRequest(obj as api.SendCommandToDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2287,7 +2310,8 @@ void main() {
       res
           .sendCommandToDevice(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSendCommandToDeviceResponse(response);
+        checkSendCommandToDeviceResponse(
+            response as api.SendCommandToDeviceResponse);
       })));
     });
   });
@@ -2347,7 +2371,8 @@ void main() {
       res
           .list(arg_name, numVersions: arg_numVersions, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDeviceConfigVersionsResponse(response);
+        checkListDeviceConfigVersionsResponse(
+            response as api.ListDeviceConfigVersionsResponse);
       })));
     });
   });
@@ -2402,7 +2427,7 @@ void main() {
       res
           .list(arg_name, numStates: arg_numStates, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDeviceStatesResponse(response);
+        checkListDeviceStatesResponse(response as api.ListDeviceStatesResponse);
       })));
     });
   });
@@ -2415,8 +2440,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2456,7 +2482,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2467,8 +2493,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2508,7 +2535,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2519,8 +2546,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2560,7 +2588,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -2649,7 +2678,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDevicesResponse(response);
+        checkListDevicesResponse(response as api.ListDevicesResponse);
       })));
     });
   });

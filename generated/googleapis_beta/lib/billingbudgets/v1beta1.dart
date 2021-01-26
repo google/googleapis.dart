@@ -124,8 +124,10 @@ class BillingAccountsBudgetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a budget. Returns successfully if already deleted.
@@ -175,7 +177,10 @@ class BillingAccountsBudgetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a budget. WARNING: There are some fields exposed on the Google
@@ -228,8 +233,10 @@ class BillingAccountsBudgetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of budgets for a billing account. WARNING: There are some
@@ -300,8 +307,10 @@ class BillingAccountsBudgetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a budget and returns the updated budget. WARNING: There are some
@@ -361,8 +370,10 @@ class BillingAccountsBudgetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -480,15 +491,15 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
   GoogleCloudBillingBudgetsV1beta1Budget.fromJson(core.Map _json) {
     if (_json.containsKey('allUpdatesRule')) {
       allUpdatesRule = GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
-          _json['allUpdatesRule']);
+          _json['allUpdatesRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('amount')) {
       amount = GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(
-          _json['amount']);
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('budgetFilter')) {
       budgetFilter = GoogleCloudBillingBudgetsV1beta1Filter.fromJson(
-          _json['budgetFilter']);
+          _json['budgetFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
@@ -502,7 +513,8 @@ class GoogleCloudBillingBudgetsV1beta1Budget {
     if (_json.containsKey('thresholdRules')) {
       thresholdRules = (_json['thresholdRules'] as core.List)
           .map<GoogleCloudBillingBudgetsV1beta1ThresholdRule>((value) =>
-              GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(value))
+              GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -551,10 +563,11 @@ class GoogleCloudBillingBudgetsV1beta1BudgetAmount {
     if (_json.containsKey('lastPeriodAmount')) {
       lastPeriodAmount =
           GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
-              _json['lastPeriodAmount']);
+              _json['lastPeriodAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('specifiedAmount')) {
-      specifiedAmount = GoogleTypeMoney.fromJson(_json['specifiedAmount']);
+      specifiedAmount = GoogleTypeMoney.fromJson(
+          _json['specifiedAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -579,7 +592,8 @@ class GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest {
 
   GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(core.Map _json) {
     if (_json.containsKey('budget')) {
-      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json['budget']);
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+          _json['budget'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -642,7 +656,8 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.List, core.List<core.Object>>(
-          _json['labels'].cast<core.String, core.List>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.List>(),
           (core.List item) => (item as core.List)
               .map<core.Object>((value) => value as core.Object)
               .toList());
@@ -716,8 +731,9 @@ class GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse {
   GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('budgets')) {
       budgets = (_json['budgets'] as core.List)
-          .map<GoogleCloudBillingBudgetsV1beta1Budget>(
-              (value) => GoogleCloudBillingBudgetsV1beta1Budget.fromJson(value))
+          .map<GoogleCloudBillingBudgetsV1beta1Budget>((value) =>
+              GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -799,7 +815,8 @@ class GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest {
 
   GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(core.Map _json) {
     if (_json.containsKey('budget')) {
-      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(_json['budget']);
+      budget = GoogleCloudBillingBudgetsV1beta1Budget.fromJson(
+          _json['budget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

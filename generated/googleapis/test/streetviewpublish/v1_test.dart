@@ -115,8 +115,8 @@ core.List<api.Status> buildUnnamed5720() {
 
 void checkUnnamed5720(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o[0]);
-  checkStatus(o[1]);
+  checkStatus(o[0] as api.Status);
+  checkStatus(o[1] as api.Status);
 }
 
 core.int buildCounterBatchDeletePhotosResponse = 0;
@@ -147,8 +147,8 @@ core.List<api.PhotoResponse> buildUnnamed5721() {
 
 void checkUnnamed5721(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPhotoResponse(o[0]);
-  checkPhotoResponse(o[1]);
+  checkPhotoResponse(o[0] as api.PhotoResponse);
+  checkPhotoResponse(o[1] as api.PhotoResponse);
 }
 
 core.int buildCounterBatchGetPhotosResponse = 0;
@@ -179,8 +179,8 @@ core.List<api.UpdatePhotoRequest> buildUnnamed5722() {
 
 void checkUnnamed5722(core.List<api.UpdatePhotoRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUpdatePhotoRequest(o[0]);
-  checkUpdatePhotoRequest(o[1]);
+  checkUpdatePhotoRequest(o[0] as api.UpdatePhotoRequest);
+  checkUpdatePhotoRequest(o[1] as api.UpdatePhotoRequest);
 }
 
 core.int buildCounterBatchUpdatePhotosRequest = 0;
@@ -211,8 +211,8 @@ core.List<api.PhotoResponse> buildUnnamed5723() {
 
 void checkUnnamed5723(core.List<api.PhotoResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPhotoResponse(o[0]);
-  checkPhotoResponse(o[1]);
+  checkPhotoResponse(o[0] as api.PhotoResponse);
+  checkPhotoResponse(o[1] as api.PhotoResponse);
 }
 
 core.int buildCounterBatchUpdatePhotosResponse = 0;
@@ -248,7 +248,7 @@ api.Connection buildConnection() {
 void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
-    checkPhotoId(o.target);
+    checkPhotoId(o.target as api.PhotoId);
   }
   buildCounterConnection--;
 }
@@ -319,8 +319,8 @@ core.List<api.Photo> buildUnnamed5724() {
 
 void checkUnnamed5724(core.List<api.Photo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPhoto(o[0]);
-  checkPhoto(o[1]);
+  checkPhoto(o[0] as api.Photo);
+  checkPhoto(o[1] as api.Photo);
 }
 
 core.int buildCounterListPhotosResponse = 0;
@@ -421,7 +421,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5725(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5726(o.response);
@@ -438,8 +438,8 @@ core.List<api.Connection> buildUnnamed5727() {
 
 void checkUnnamed5727(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkConnection(o[0]);
-  checkConnection(o[1]);
+  checkConnection(o[0] as api.Connection);
+  checkConnection(o[1] as api.Connection);
 }
 
 core.List<api.Place> buildUnnamed5728() {
@@ -451,8 +451,8 @@ core.List<api.Place> buildUnnamed5728() {
 
 void checkUnnamed5728(core.List<api.Place> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlace(o[0]);
-  checkPlace(o[1]);
+  checkPlace(o[0] as api.Place);
+  checkPlace(o[1] as api.Place);
 }
 
 core.int buildCounterPhoto = 0;
@@ -484,13 +484,13 @@ void checkPhoto(api.Photo o) {
     checkUnnamed5727(o.connections);
     unittest.expect(o.downloadUrl, unittest.equals('foo'));
     unittest.expect(o.mapsPublishStatus, unittest.equals('foo'));
-    checkPhotoId(o.photoId);
+    checkPhotoId(o.photoId as api.PhotoId);
     checkUnnamed5728(o.places);
-    checkPose(o.pose);
+    checkPose(o.pose as api.Pose);
     unittest.expect(o.shareLink, unittest.equals('foo'));
     unittest.expect(o.thumbnailUrl, unittest.equals('foo'));
     unittest.expect(o.transferStatus, unittest.equals('foo'));
-    checkUploadRef(o.uploadReference);
+    checkUploadRef(o.uploadReference as api.UploadRef);
     unittest.expect(o.viewCount, unittest.equals('foo'));
   }
   buildCounterPhoto--;
@@ -530,8 +530,8 @@ api.PhotoResponse buildPhotoResponse() {
 void checkPhotoResponse(api.PhotoResponse o) {
   buildCounterPhotoResponse++;
   if (buildCounterPhotoResponse < 3) {
-    checkPhoto(o.photo);
-    checkStatus(o.status);
+    checkPhoto(o.photo as api.Photo);
+    checkStatus(o.status as api.Status);
   }
   buildCounterPhotoResponse--;
 }
@@ -582,8 +582,8 @@ void checkPose(api.Pose o) {
     unittest.expect(o.accuracyMeters, unittest.equals(42.0));
     unittest.expect(o.altitude, unittest.equals(42.0));
     unittest.expect(o.heading, unittest.equals(42.0));
-    checkLatLng(o.latLngPair);
-    checkLevel(o.level);
+    checkLatLng(o.latLngPair as api.LatLng);
+    checkLevel(o.level as api.Level);
     unittest.expect(o.pitch, unittest.equals(42.0));
     unittest.expect(o.roll, unittest.equals(42.0));
   }
@@ -670,7 +670,7 @@ api.UpdatePhotoRequest buildUpdatePhotoRequest() {
 void checkUpdatePhotoRequest(api.UpdatePhotoRequest o) {
   buildCounterUpdatePhotoRequest++;
   if (buildCounterUpdatePhotoRequest < 3) {
-    checkPhoto(o.photo);
+    checkPhoto(o.photo as api.Photo);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterUpdatePhotoRequest--;
@@ -713,7 +713,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchDeletePhotosRequest();
       var od = api.BatchDeletePhotosRequest.fromJson(o.toJson());
-      checkBatchDeletePhotosRequest(od);
+      checkBatchDeletePhotosRequest(od as api.BatchDeletePhotosRequest);
     });
   });
 
@@ -721,7 +721,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchDeletePhotosResponse();
       var od = api.BatchDeletePhotosResponse.fromJson(o.toJson());
-      checkBatchDeletePhotosResponse(od);
+      checkBatchDeletePhotosResponse(od as api.BatchDeletePhotosResponse);
     });
   });
 
@@ -729,7 +729,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetPhotosResponse();
       var od = api.BatchGetPhotosResponse.fromJson(o.toJson());
-      checkBatchGetPhotosResponse(od);
+      checkBatchGetPhotosResponse(od as api.BatchGetPhotosResponse);
     });
   });
 
@@ -737,7 +737,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchUpdatePhotosRequest();
       var od = api.BatchUpdatePhotosRequest.fromJson(o.toJson());
-      checkBatchUpdatePhotosRequest(od);
+      checkBatchUpdatePhotosRequest(od as api.BatchUpdatePhotosRequest);
     });
   });
 
@@ -745,7 +745,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchUpdatePhotosResponse();
       var od = api.BatchUpdatePhotosResponse.fromJson(o.toJson());
-      checkBatchUpdatePhotosResponse(od);
+      checkBatchUpdatePhotosResponse(od as api.BatchUpdatePhotosResponse);
     });
   });
 
@@ -753,7 +753,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConnection();
       var od = api.Connection.fromJson(o.toJson());
-      checkConnection(od);
+      checkConnection(od as api.Connection);
     });
   });
 
@@ -761,7 +761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -769,7 +769,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
-      checkLatLng(od);
+      checkLatLng(od as api.LatLng);
     });
   });
 
@@ -777,7 +777,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLevel();
       var od = api.Level.fromJson(o.toJson());
-      checkLevel(od);
+      checkLevel(od as api.Level);
     });
   });
 
@@ -785,7 +785,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListPhotosResponse();
       var od = api.ListPhotosResponse.fromJson(o.toJson());
-      checkListPhotosResponse(od);
+      checkListPhotosResponse(od as api.ListPhotosResponse);
     });
   });
 
@@ -793,7 +793,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -801,7 +801,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPhoto();
       var od = api.Photo.fromJson(o.toJson());
-      checkPhoto(od);
+      checkPhoto(od as api.Photo);
     });
   });
 
@@ -809,7 +809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPhotoId();
       var od = api.PhotoId.fromJson(o.toJson());
-      checkPhotoId(od);
+      checkPhotoId(od as api.PhotoId);
     });
   });
 
@@ -817,7 +817,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPhotoResponse();
       var od = api.PhotoResponse.fromJson(o.toJson());
-      checkPhotoResponse(od);
+      checkPhotoResponse(od as api.PhotoResponse);
     });
   });
 
@@ -825,7 +825,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlace();
       var od = api.Place.fromJson(o.toJson());
-      checkPlace(od);
+      checkPlace(od as api.Place);
     });
   });
 
@@ -833,7 +833,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPose();
       var od = api.Pose.fromJson(o.toJson());
-      checkPose(od);
+      checkPose(od as api.Pose);
     });
   });
 
@@ -841,7 +841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -849,7 +849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdatePhotoRequest();
       var od = api.UpdatePhotoRequest.fromJson(o.toJson());
-      checkUpdatePhotoRequest(od);
+      checkUpdatePhotoRequest(od as api.UpdatePhotoRequest);
     });
   });
 
@@ -857,7 +857,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUploadRef();
       var od = api.UploadRef.fromJson(o.toJson());
-      checkUploadRef(od);
+      checkUploadRef(od as api.UploadRef);
     });
   });
 
@@ -868,8 +868,9 @@ void main() {
       var arg_request = buildPhoto();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Photo.fromJson(json);
-        checkPhoto(obj);
+        var obj =
+            api.Photo.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPhoto(obj as api.Photo);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -908,7 +909,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPhoto(response);
+        checkPhoto(response as api.Photo);
       })));
     });
 
@@ -958,7 +959,7 @@ void main() {
       res
           .delete(arg_photoId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1016,7 +1017,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPhoto(response);
+        checkPhoto(response as api.Photo);
       })));
     });
 
@@ -1026,8 +1027,9 @@ void main() {
       var arg_request = buildEmpty();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Empty.fromJson(json);
-        checkEmpty(obj);
+        var obj =
+            api.Empty.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkEmpty(obj as api.Empty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1066,7 +1068,7 @@ void main() {
       res
           .startUpload(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUploadRef(response);
+        checkUploadRef(response as api.UploadRef);
       })));
     });
 
@@ -1078,8 +1080,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Photo.fromJson(json);
-        checkPhoto(obj);
+        var obj =
+            api.Photo.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPhoto(obj as api.Photo);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1124,7 +1127,7 @@ void main() {
           .update(arg_request, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPhoto(response);
+        checkPhoto(response as api.Photo);
       })));
     });
   });
@@ -1136,8 +1139,9 @@ void main() {
       var arg_request = buildBatchDeletePhotosRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchDeletePhotosRequest.fromJson(json);
-        checkBatchDeletePhotosRequest(obj);
+        var obj = api.BatchDeletePhotosRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchDeletePhotosRequest(obj as api.BatchDeletePhotosRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1176,7 +1180,8 @@ void main() {
       res
           .batchDelete(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchDeletePhotosResponse(response);
+        checkBatchDeletePhotosResponse(
+            response as api.BatchDeletePhotosResponse);
       })));
     });
 
@@ -1233,7 +1238,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetPhotosResponse(response);
+        checkBatchGetPhotosResponse(response as api.BatchGetPhotosResponse);
       })));
     });
 
@@ -1243,8 +1248,9 @@ void main() {
       var arg_request = buildBatchUpdatePhotosRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchUpdatePhotosRequest.fromJson(json);
-        checkBatchUpdatePhotosRequest(obj);
+        var obj = api.BatchUpdatePhotosRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchUpdatePhotosRequest(obj as api.BatchUpdatePhotosRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1283,7 +1289,8 @@ void main() {
       res
           .batchUpdate(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchUpdatePhotosResponse(response);
+        checkBatchUpdatePhotosResponse(
+            response as api.BatchUpdatePhotosResponse);
       })));
     });
 
@@ -1348,7 +1355,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListPhotosResponse(response);
+        checkListPhotosResponse(response as api.ListPhotosResponse);
       })));
     });
   });

@@ -125,8 +125,10 @@ core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule>
 void checkUnnamed6799(
     core.List<api.GoogleCloudBillingBudgetsV1beta1ThresholdRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(o[0]);
-  checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(o[1]);
+  checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
+      o[0] as api.GoogleCloudBillingBudgetsV1beta1ThresholdRule);
+  checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
+      o[1] as api.GoogleCloudBillingBudgetsV1beta1ThresholdRule);
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1Budget = 0;
@@ -151,9 +153,12 @@ void checkGoogleCloudBillingBudgetsV1beta1Budget(
     api.GoogleCloudBillingBudgetsV1beta1Budget o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1Budget++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1Budget < 3) {
-    checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(o.allUpdatesRule);
-    checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(o.amount);
-    checkGoogleCloudBillingBudgetsV1beta1Filter(o.budgetFilter);
+    checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
+        o.allUpdatesRule as api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule);
+    checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
+        o.amount as api.GoogleCloudBillingBudgetsV1beta1BudgetAmount);
+    checkGoogleCloudBillingBudgetsV1beta1Filter(
+        o.budgetFilter as api.GoogleCloudBillingBudgetsV1beta1Filter);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
@@ -180,8 +185,9 @@ void checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
     api.GoogleCloudBillingBudgetsV1beta1BudgetAmount o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount < 3) {
-    checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(o.lastPeriodAmount);
-    checkGoogleTypeMoney(o.specifiedAmount);
+    checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(o.lastPeriodAmount
+        as api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount);
+    checkGoogleTypeMoney(o.specifiedAmount as api.GoogleTypeMoney);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1BudgetAmount--;
 }
@@ -202,7 +208,8 @@ void checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
     api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest < 3) {
-    checkGoogleCloudBillingBudgetsV1beta1Budget(o.budget);
+    checkGoogleCloudBillingBudgetsV1beta1Budget(
+        o.budget as api.GoogleCloudBillingBudgetsV1beta1Budget);
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest--;
 }
@@ -343,8 +350,10 @@ core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> buildUnnamed6805() {
 
 void checkUnnamed6805(core.List<api.GoogleCloudBillingBudgetsV1beta1Budget> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudBillingBudgetsV1beta1Budget(o[0]);
-  checkGoogleCloudBillingBudgetsV1beta1Budget(o[1]);
+  checkGoogleCloudBillingBudgetsV1beta1Budget(
+      o[0] as api.GoogleCloudBillingBudgetsV1beta1Budget);
+  checkGoogleCloudBillingBudgetsV1beta1Budget(
+      o[1] as api.GoogleCloudBillingBudgetsV1beta1Budget);
 }
 
 core.int buildCounterGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse = 0;
@@ -410,7 +419,8 @@ void checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
     api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest o) {
   buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest++;
   if (buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest < 3) {
-    checkGoogleCloudBillingBudgetsV1beta1Budget(o.budget);
+    checkGoogleCloudBillingBudgetsV1beta1Budget(
+        o.budget as api.GoogleCloudBillingBudgetsV1beta1Budget);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest--;
@@ -461,7 +471,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1AllUpdatesRule();
       var od = api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(od);
+      checkGoogleCloudBillingBudgetsV1beta1AllUpdatesRule(
+          od as api.GoogleCloudBillingBudgetsV1beta1AllUpdatesRule);
     });
   });
 
@@ -469,7 +480,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudBillingBudgetsV1beta1Budget();
       var od = api.GoogleCloudBillingBudgetsV1beta1Budget.fromJson(o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1Budget(od);
+      checkGoogleCloudBillingBudgetsV1beta1Budget(
+          od as api.GoogleCloudBillingBudgetsV1beta1Budget);
     });
   });
 
@@ -478,7 +490,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1BudgetAmount();
       var od =
           api.GoogleCloudBillingBudgetsV1beta1BudgetAmount.fromJson(o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(od);
+      checkGoogleCloudBillingBudgetsV1beta1BudgetAmount(
+          od as api.GoogleCloudBillingBudgetsV1beta1BudgetAmount);
     });
   });
 
@@ -488,7 +501,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest();
       var od = api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(od);
+      checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
+          od as api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest);
     });
   });
 
@@ -496,7 +510,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudBillingBudgetsV1beta1Filter();
       var od = api.GoogleCloudBillingBudgetsV1beta1Filter.fromJson(o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1Filter(od);
+      checkGoogleCloudBillingBudgetsV1beta1Filter(
+          od as api.GoogleCloudBillingBudgetsV1beta1Filter);
     });
   });
 
@@ -506,7 +521,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1LastPeriodAmount();
       var od = api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(od);
+      checkGoogleCloudBillingBudgetsV1beta1LastPeriodAmount(
+          od as api.GoogleCloudBillingBudgetsV1beta1LastPeriodAmount);
     });
   });
 
@@ -516,7 +532,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse();
       var od = api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(od);
+      checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(
+          od as api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse);
     });
   });
 
@@ -526,7 +543,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1ThresholdRule();
       var od = api.GoogleCloudBillingBudgetsV1beta1ThresholdRule.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(od);
+      checkGoogleCloudBillingBudgetsV1beta1ThresholdRule(
+          od as api.GoogleCloudBillingBudgetsV1beta1ThresholdRule);
     });
   });
 
@@ -536,7 +554,8 @@ void main() {
       var o = buildGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest();
       var od = api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(
           o.toJson());
-      checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(od);
+      checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
+          od as api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest);
     });
   });
 
@@ -544,7 +563,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleProtobufEmpty();
       var od = api.GoogleProtobufEmpty.fromJson(o.toJson());
-      checkGoogleProtobufEmpty(od);
+      checkGoogleProtobufEmpty(od as api.GoogleProtobufEmpty);
     });
   });
 
@@ -552,7 +571,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleTypeMoney();
       var od = api.GoogleTypeMoney.fromJson(o.toJson());
-      checkGoogleTypeMoney(od);
+      checkGoogleTypeMoney(od as api.GoogleTypeMoney);
     });
   });
 
@@ -567,8 +586,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest.fromJson(
-                json);
-        checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBillingBudgetsV1beta1CreateBudgetRequest(
+            obj as api.GoogleCloudBillingBudgetsV1beta1CreateBudgetRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -609,7 +629,8 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1beta1Budget(response);
+        checkGoogleCloudBillingBudgetsV1beta1Budget(
+            response as api.GoogleCloudBillingBudgetsV1beta1Budget);
       })));
     });
 
@@ -657,7 +678,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleProtobufEmpty(response);
+        checkGoogleProtobufEmpty(response as api.GoogleProtobufEmpty);
       })));
     });
 
@@ -706,7 +727,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1beta1Budget(response);
+        checkGoogleCloudBillingBudgetsV1beta1Budget(
+            response as api.GoogleCloudBillingBudgetsV1beta1Budget);
       })));
     });
 
@@ -764,7 +786,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(response);
+        checkGoogleCloudBillingBudgetsV1beta1ListBudgetsResponse(response
+            as api.GoogleCloudBillingBudgetsV1beta1ListBudgetsResponse);
       })));
     });
 
@@ -778,8 +801,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest.fromJson(
-                json);
-        checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkGoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest(
+            obj as api.GoogleCloudBillingBudgetsV1beta1UpdateBudgetRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -820,7 +844,8 @@ void main() {
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleCloudBillingBudgetsV1beta1Budget(response);
+        checkGoogleCloudBillingBudgetsV1beta1Budget(
+            response as api.GoogleCloudBillingBudgetsV1beta1Budget);
       })));
     });
   });

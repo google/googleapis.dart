@@ -111,7 +111,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -179,7 +181,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -242,7 +247,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a job.
@@ -292,7 +299,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a job.
@@ -342,7 +351,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists jobs.
@@ -412,7 +423,10 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a job. If successful, the updated Job is returned. If the job does
@@ -488,7 +502,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pauses a job. If a job is paused then the system will stop executing the
@@ -547,7 +563,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resume a job. This method reenables a job after it has been
@@ -606,7 +624,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Forces a job to run now. When this method is called, Cloud Scheduler will
@@ -663,7 +683,9 @@ class ProjectsLocationsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -733,14 +755,16 @@ class AppEngineHttpTarget {
 
   AppEngineHttpTarget.fromJson(core.Map _json) {
     if (_json.containsKey('appEngineRouting')) {
-      appEngineRouting = AppEngineRouting.fromJson(_json['appEngineRouting']);
+      appEngineRouting = AppEngineRouting.fromJson(
+          _json['appEngineRouting'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('body')) {
       body = _json['body'] as core.String;
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
@@ -953,17 +977,20 @@ class HttpTarget {
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('httpMethod')) {
       httpMethod = _json['httpMethod'] as core.String;
     }
     if (_json.containsKey('oauthToken')) {
-      oauthToken = OAuthToken.fromJson(_json['oauthToken']);
+      oauthToken = OAuthToken.fromJson(
+          _json['oauthToken'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oidcToken')) {
-      oidcToken = OidcToken.fromJson(_json['oidcToken']);
+      oidcToken = OidcToken.fromJson(
+          _json['oidcToken'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uri')) {
       uri = _json['uri'] as core.String;
@@ -1092,8 +1119,8 @@ class Job {
 
   Job.fromJson(core.Map _json) {
     if (_json.containsKey('appEngineHttpTarget')) {
-      appEngineHttpTarget =
-          AppEngineHttpTarget.fromJson(_json['appEngineHttpTarget']);
+      appEngineHttpTarget = AppEngineHttpTarget.fromJson(
+          _json['appEngineHttpTarget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('attemptDeadline')) {
       attemptDeadline = _json['attemptDeadline'] as core.String;
@@ -1102,7 +1129,8 @@ class Job {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('httpTarget')) {
-      httpTarget = HttpTarget.fromJson(_json['httpTarget']);
+      httpTarget = HttpTarget.fromJson(
+          _json['httpTarget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastAttemptTime')) {
       lastAttemptTime = _json['lastAttemptTime'] as core.String;
@@ -1111,10 +1139,12 @@ class Job {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pubsubTarget')) {
-      pubsubTarget = PubsubTarget.fromJson(_json['pubsubTarget']);
+      pubsubTarget = PubsubTarget.fromJson(
+          _json['pubsubTarget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retryConfig')) {
-      retryConfig = RetryConfig.fromJson(_json['retryConfig']);
+      retryConfig = RetryConfig.fromJson(
+          _json['retryConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('schedule')) {
       schedule = _json['schedule'] as core.String;
@@ -1126,7 +1156,8 @@ class Job {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = Status.fromJson(_json['status']);
+      status = Status.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeZone')) {
       timeZone = _json['timeZone'] as core.String;
@@ -1201,7 +1232,8 @@ class ListJobsResponse {
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('jobs')) {
       jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) => Job.fromJson(value))
+          .map<Job>((value) =>
+              Job.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1234,7 +1266,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1286,7 +1319,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1294,7 +1328,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1463,7 +1498,8 @@ class PubsubMessage {
   PubsubMessage.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
@@ -1531,7 +1567,8 @@ class PubsubTarget {
   PubsubTarget.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('data')) {
@@ -1701,7 +1738,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

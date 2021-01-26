@@ -112,8 +112,8 @@ core.List<api.CustomDimension> buildUnnamed1384() {
 
 void checkUnnamed1384(core.List<api.CustomDimension> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomDimension(o[0]);
-  checkCustomDimension(o[1]);
+  checkCustomDimension(o[0] as api.CustomDimension);
+  checkCustomDimension(o[1] as api.CustomDimension);
 }
 
 core.List<api.CustomMetric> buildUnnamed1385() {
@@ -125,8 +125,8 @@ core.List<api.CustomMetric> buildUnnamed1385() {
 
 void checkUnnamed1385(core.List<api.CustomMetric> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomMetric(o[0]);
-  checkCustomMetric(o[1]);
+  checkCustomMetric(o[0] as api.CustomMetric);
+  checkCustomMetric(o[1] as api.CustomMetric);
 }
 
 core.int buildCounterConversion = 0;
@@ -221,8 +221,8 @@ core.List<api.Conversion> buildUnnamed1386() {
 
 void checkUnnamed1386(core.List<api.Conversion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkConversion(o[0]);
-  checkConversion(o[1]);
+  checkConversion(o[0] as api.Conversion);
+  checkConversion(o[1] as api.Conversion);
 }
 
 core.int buildCounterConversionList = 0;
@@ -318,8 +318,8 @@ core.List<api.ReportFiles> buildUnnamed1387() {
 
 void checkUnnamed1387(core.List<api.ReportFiles> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportFiles(o[0]);
-  checkReportFiles(o[1]);
+  checkReportFiles(o[0] as api.ReportFiles);
+  checkReportFiles(o[1] as api.ReportFiles);
 }
 
 core.List<api.ReportRow> buildUnnamed1388() {
@@ -331,8 +331,8 @@ core.List<api.ReportRow> buildUnnamed1388() {
 
 void checkUnnamed1388(core.List<api.ReportRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRow(o[0]);
-  checkReportRow(o[1]);
+  checkReportRow(o[0] as api.ReportRow);
+  checkReportRow(o[1] as api.ReportRow);
 }
 
 core.int buildCounterReport = 0;
@@ -361,7 +361,7 @@ void checkReport(api.Report o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isReportReady, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkReportRequest(o.request);
+    checkReportRequest(o.request as api.ReportRequest);
     unittest.expect(o.rowCount, unittest.equals(42));
     checkUnnamed1388(o.rows);
     unittest.expect(o.statisticsCurrencyCode, unittest.equals('foo'));
@@ -416,8 +416,8 @@ core.List<api.ReportApiColumnSpec> buildUnnamed1389() {
 
 void checkUnnamed1389(core.List<api.ReportApiColumnSpec> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportApiColumnSpec(o[0]);
-  checkReportApiColumnSpec(o[1]);
+  checkReportApiColumnSpec(o[0] as api.ReportApiColumnSpec);
+  checkReportApiColumnSpec(o[1] as api.ReportApiColumnSpec);
 }
 
 core.List<core.Object> buildUnnamed1390() {
@@ -465,7 +465,7 @@ api.ReportRequestFilters buildReportRequestFilters() {
 void checkReportRequestFilters(api.ReportRequestFilters o) {
   buildCounterReportRequestFilters++;
   if (buildCounterReportRequestFilters < 3) {
-    checkReportApiColumnSpec(o.column);
+    checkReportApiColumnSpec(o.column as api.ReportApiColumnSpec);
     unittest.expect(o.operator, unittest.equals('foo'));
     checkUnnamed1390(o.values);
   }
@@ -481,8 +481,8 @@ core.List<api.ReportRequestFilters> buildUnnamed1391() {
 
 void checkUnnamed1391(core.List<api.ReportRequestFilters> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRequestFilters(o[0]);
-  checkReportRequestFilters(o[1]);
+  checkReportRequestFilters(o[0] as api.ReportRequestFilters);
+  checkReportRequestFilters(o[1] as api.ReportRequestFilters);
 }
 
 core.int buildCounterReportRequestOrderBy = 0;
@@ -500,7 +500,7 @@ api.ReportRequestOrderBy buildReportRequestOrderBy() {
 void checkReportRequestOrderBy(api.ReportRequestOrderBy o) {
   buildCounterReportRequestOrderBy++;
   if (buildCounterReportRequestOrderBy < 3) {
-    checkReportApiColumnSpec(o.column);
+    checkReportApiColumnSpec(o.column as api.ReportApiColumnSpec);
     unittest.expect(o.sortOrder, unittest.equals('foo'));
   }
   buildCounterReportRequestOrderBy--;
@@ -515,8 +515,8 @@ core.List<api.ReportRequestOrderBy> buildUnnamed1392() {
 
 void checkUnnamed1392(core.List<api.ReportRequestOrderBy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRequestOrderBy(o[0]);
-  checkReportRequestOrderBy(o[1]);
+  checkReportRequestOrderBy(o[0] as api.ReportRequestOrderBy);
+  checkReportRequestOrderBy(o[1] as api.ReportRequestOrderBy);
 }
 
 core.int buildCounterReportRequestReportScope = 0;
@@ -609,12 +609,13 @@ void checkReportRequest(api.ReportRequest o) {
     unittest.expect(o.includeRemovedEntities, unittest.isTrue);
     unittest.expect(o.maxRowsPerFile, unittest.equals(42));
     checkUnnamed1392(o.orderBy);
-    checkReportRequestReportScope(o.reportScope);
+    checkReportRequestReportScope(
+        o.reportScope as api.ReportRequestReportScope);
     unittest.expect(o.reportType, unittest.equals('foo'));
     unittest.expect(o.rowCount, unittest.equals(42));
     unittest.expect(o.startRow, unittest.equals(42));
     unittest.expect(o.statisticsCurrency, unittest.equals('foo'));
-    checkReportRequestTimeRange(o.timeRange);
+    checkReportRequestTimeRange(o.timeRange as api.ReportRequestTimeRange);
     unittest.expect(o.verifySingleTimeZone, unittest.isTrue);
   }
   buildCounterReportRequest--;
@@ -681,8 +682,8 @@ core.List<api.SavedColumn> buildUnnamed1393() {
 
 void checkUnnamed1393(core.List<api.SavedColumn> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSavedColumn(o[0]);
-  checkSavedColumn(o[1]);
+  checkSavedColumn(o[0] as api.SavedColumn);
+  checkSavedColumn(o[1] as api.SavedColumn);
 }
 
 core.int buildCounterSavedColumnList = 0;
@@ -715,8 +716,8 @@ core.List<api.Availability> buildUnnamed1394() {
 
 void checkUnnamed1394(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAvailability(o[0]);
-  checkAvailability(o[1]);
+  checkAvailability(o[0] as api.Availability);
+  checkAvailability(o[1] as api.Availability);
 }
 
 core.int buildCounterUpdateAvailabilityRequest = 0;
@@ -747,8 +748,8 @@ core.List<api.Availability> buildUnnamed1395() {
 
 void checkUnnamed1395(core.List<api.Availability> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAvailability(o[0]);
-  checkAvailability(o[1]);
+  checkAvailability(o[0] as api.Availability);
+  checkAvailability(o[1] as api.Availability);
 }
 
 core.int buildCounterUpdateAvailabilityResponse = 0;
@@ -775,7 +776,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAvailability();
       var od = api.Availability.fromJson(o.toJson());
-      checkAvailability(od);
+      checkAvailability(od as api.Availability);
     });
   });
 
@@ -783,7 +784,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConversion();
       var od = api.Conversion.fromJson(o.toJson());
-      checkConversion(od);
+      checkConversion(od as api.Conversion);
     });
   });
 
@@ -791,7 +792,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConversionList();
       var od = api.ConversionList.fromJson(o.toJson());
-      checkConversionList(od);
+      checkConversionList(od as api.ConversionList);
     });
   });
 
@@ -799,7 +800,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomDimension();
       var od = api.CustomDimension.fromJson(o.toJson());
-      checkCustomDimension(od);
+      checkCustomDimension(od as api.CustomDimension);
     });
   });
 
@@ -807,7 +808,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomMetric();
       var od = api.CustomMetric.fromJson(o.toJson());
-      checkCustomMetric(od);
+      checkCustomMetric(od as api.CustomMetric);
     });
   });
 
@@ -815,7 +816,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportFiles();
       var od = api.ReportFiles.fromJson(o.toJson());
-      checkReportFiles(od);
+      checkReportFiles(od as api.ReportFiles);
     });
   });
 
@@ -823,7 +824,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
-      checkReport(od);
+      checkReport(od as api.Report);
     });
   });
 
@@ -831,7 +832,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportApiColumnSpec();
       var od = api.ReportApiColumnSpec.fromJson(o.toJson());
-      checkReportApiColumnSpec(od);
+      checkReportApiColumnSpec(od as api.ReportApiColumnSpec);
     });
   });
 
@@ -839,7 +840,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequestFilters();
       var od = api.ReportRequestFilters.fromJson(o.toJson());
-      checkReportRequestFilters(od);
+      checkReportRequestFilters(od as api.ReportRequestFilters);
     });
   });
 
@@ -847,7 +848,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequestOrderBy();
       var od = api.ReportRequestOrderBy.fromJson(o.toJson());
-      checkReportRequestOrderBy(od);
+      checkReportRequestOrderBy(od as api.ReportRequestOrderBy);
     });
   });
 
@@ -855,7 +856,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequestReportScope();
       var od = api.ReportRequestReportScope.fromJson(o.toJson());
-      checkReportRequestReportScope(od);
+      checkReportRequestReportScope(od as api.ReportRequestReportScope);
     });
   });
 
@@ -863,7 +864,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequestTimeRange();
       var od = api.ReportRequestTimeRange.fromJson(o.toJson());
-      checkReportRequestTimeRange(od);
+      checkReportRequestTimeRange(od as api.ReportRequestTimeRange);
     });
   });
 
@@ -871,7 +872,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRequest();
       var od = api.ReportRequest.fromJson(o.toJson());
-      checkReportRequest(od);
+      checkReportRequest(od as api.ReportRequest);
     });
   });
 
@@ -879,7 +880,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
-      checkReportRow(od);
+      checkReportRow(od as api.ReportRow);
     });
   });
 
@@ -887,7 +888,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedColumn();
       var od = api.SavedColumn.fromJson(o.toJson());
-      checkSavedColumn(od);
+      checkSavedColumn(od as api.SavedColumn);
     });
   });
 
@@ -895,7 +896,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSavedColumnList();
       var od = api.SavedColumnList.fromJson(o.toJson());
-      checkSavedColumnList(od);
+      checkSavedColumnList(od as api.SavedColumnList);
     });
   });
 
@@ -903,7 +904,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateAvailabilityRequest();
       var od = api.UpdateAvailabilityRequest.fromJson(o.toJson());
-      checkUpdateAvailabilityRequest(od);
+      checkUpdateAvailabilityRequest(od as api.UpdateAvailabilityRequest);
     });
   });
 
@@ -911,7 +912,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateAvailabilityResponse();
       var od = api.UpdateAvailabilityResponse.fromJson(o.toJson());
-      checkUpdateAvailabilityResponse(od);
+      checkUpdateAvailabilityResponse(od as api.UpdateAvailabilityResponse);
     });
   });
 
@@ -1017,7 +1018,7 @@ void main() {
               criterionId: arg_criterionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConversionList(response);
+        checkConversionList(response as api.ConversionList);
       })));
     });
 
@@ -1027,8 +1028,9 @@ void main() {
       var arg_request = buildConversionList();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ConversionList.fromJson(json);
-        checkConversionList(obj);
+        var obj = api.ConversionList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConversionList(obj as api.ConversionList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1067,7 +1069,7 @@ void main() {
       res
           .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConversionList(response);
+        checkConversionList(response as api.ConversionList);
       })));
     });
 
@@ -1077,8 +1079,9 @@ void main() {
       var arg_request = buildConversionList();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ConversionList.fromJson(json);
-        checkConversionList(obj);
+        var obj = api.ConversionList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConversionList(obj as api.ConversionList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1117,7 +1120,7 @@ void main() {
       res
           .update(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConversionList(response);
+        checkConversionList(response as api.ConversionList);
       })));
     });
 
@@ -1127,8 +1130,9 @@ void main() {
       var arg_request = buildUpdateAvailabilityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateAvailabilityRequest.fromJson(json);
-        checkUpdateAvailabilityRequest(obj);
+        var obj = api.UpdateAvailabilityRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateAvailabilityRequest(obj as api.UpdateAvailabilityRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1169,7 +1173,8 @@ void main() {
       res
           .updateAvailability(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUpdateAvailabilityResponse(response);
+        checkUpdateAvailabilityResponse(
+            response as api.UpdateAvailabilityResponse);
       })));
     });
   });
@@ -1181,8 +1186,9 @@ void main() {
       var arg_request_1 = buildReportRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReportRequest.fromJson(json);
-        checkReportRequest(obj);
+        var obj = api.ReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReportRequest(obj as api.ReportRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1221,7 +1227,7 @@ void main() {
       res
           .generate(arg_request_1, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
 
@@ -1271,7 +1277,7 @@ void main() {
       res
           .get(arg_reportId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
 
@@ -1342,8 +1348,9 @@ void main() {
       var arg_request_1 = buildReportRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReportRequest.fromJson(json);
-        checkReportRequest(obj);
+        var obj = api.ReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReportRequest(obj as api.ReportRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1382,7 +1389,7 @@ void main() {
       res
           .request(arg_request_1, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
   });
@@ -1450,7 +1457,7 @@ void main() {
       res
           .list(arg_agencyId, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSavedColumnList(response);
+        checkSavedColumnList(response as api.SavedColumnList);
       })));
     });
   });

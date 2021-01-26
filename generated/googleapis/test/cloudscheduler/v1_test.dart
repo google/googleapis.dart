@@ -105,7 +105,7 @@ api.AppEngineHttpTarget buildAppEngineHttpTarget() {
 void checkAppEngineHttpTarget(api.AppEngineHttpTarget o) {
   buildCounterAppEngineHttpTarget++;
   if (buildCounterAppEngineHttpTarget < 3) {
-    checkAppEngineRouting(o.appEngineRouting);
+    checkAppEngineRouting(o.appEngineRouting as api.AppEngineRouting);
     unittest.expect(o.body, unittest.equals('foo'));
     checkUnnamed2749(o.headers);
     unittest.expect(o.httpMethod, unittest.equals('foo'));
@@ -189,8 +189,8 @@ void checkHttpTarget(api.HttpTarget o) {
     unittest.expect(o.body, unittest.equals('foo'));
     checkUnnamed2750(o.headers);
     unittest.expect(o.httpMethod, unittest.equals('foo'));
-    checkOAuthToken(o.oauthToken);
-    checkOidcToken(o.oidcToken);
+    checkOAuthToken(o.oauthToken as api.OAuthToken);
+    checkOidcToken(o.oidcToken as api.OidcToken);
     unittest.expect(o.uri, unittest.equals('foo'));
   }
   buildCounterHttpTarget--;
@@ -223,18 +223,18 @@ api.Job buildJob() {
 void checkJob(api.Job o) {
   buildCounterJob++;
   if (buildCounterJob < 3) {
-    checkAppEngineHttpTarget(o.appEngineHttpTarget);
+    checkAppEngineHttpTarget(o.appEngineHttpTarget as api.AppEngineHttpTarget);
     unittest.expect(o.attemptDeadline, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkHttpTarget(o.httpTarget);
+    checkHttpTarget(o.httpTarget as api.HttpTarget);
     unittest.expect(o.lastAttemptTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkPubsubTarget(o.pubsubTarget);
-    checkRetryConfig(o.retryConfig);
+    checkPubsubTarget(o.pubsubTarget as api.PubsubTarget);
+    checkRetryConfig(o.retryConfig as api.RetryConfig);
     unittest.expect(o.schedule, unittest.equals('foo'));
     unittest.expect(o.scheduleTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
-    checkStatus(o.status);
+    checkStatus(o.status as api.Status);
     unittest.expect(o.timeZone, unittest.equals('foo'));
     unittest.expect(o.userUpdateTime, unittest.equals('foo'));
   }
@@ -250,8 +250,8 @@ core.List<api.Job> buildUnnamed2751() {
 
 void checkUnnamed2751(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJob(o[0]);
-  checkJob(o[1]);
+  checkJob(o[0] as api.Job);
+  checkJob(o[1] as api.Job);
 }
 
 core.int buildCounterListJobsResponse = 0;
@@ -284,8 +284,8 @@ core.List<api.Location> buildUnnamed2752() {
 
 void checkUnnamed2752(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -638,7 +638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppEngineHttpTarget();
       var od = api.AppEngineHttpTarget.fromJson(o.toJson());
-      checkAppEngineHttpTarget(od);
+      checkAppEngineHttpTarget(od as api.AppEngineHttpTarget);
     });
   });
 
@@ -646,7 +646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppEngineRouting();
       var od = api.AppEngineRouting.fromJson(o.toJson());
-      checkAppEngineRouting(od);
+      checkAppEngineRouting(od as api.AppEngineRouting);
     });
   });
 
@@ -654,7 +654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -662,7 +662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpTarget();
       var od = api.HttpTarget.fromJson(o.toJson());
-      checkHttpTarget(od);
+      checkHttpTarget(od as api.HttpTarget);
     });
   });
 
@@ -670,7 +670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
-      checkJob(od);
+      checkJob(od as api.Job);
     });
   });
 
@@ -678,7 +678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
-      checkListJobsResponse(od);
+      checkListJobsResponse(od as api.ListJobsResponse);
     });
   });
 
@@ -686,7 +686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -694,7 +694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -702,7 +702,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOAuthToken();
       var od = api.OAuthToken.fromJson(o.toJson());
-      checkOAuthToken(od);
+      checkOAuthToken(od as api.OAuthToken);
     });
   });
 
@@ -710,7 +710,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOidcToken();
       var od = api.OidcToken.fromJson(o.toJson());
-      checkOidcToken(od);
+      checkOidcToken(od as api.OidcToken);
     });
   });
 
@@ -718,7 +718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPauseJobRequest();
       var od = api.PauseJobRequest.fromJson(o.toJson());
-      checkPauseJobRequest(od);
+      checkPauseJobRequest(od as api.PauseJobRequest);
     });
   });
 
@@ -726,7 +726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPubsubMessage();
       var od = api.PubsubMessage.fromJson(o.toJson());
-      checkPubsubMessage(od);
+      checkPubsubMessage(od as api.PubsubMessage);
     });
   });
 
@@ -734,7 +734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPubsubTarget();
       var od = api.PubsubTarget.fromJson(o.toJson());
-      checkPubsubTarget(od);
+      checkPubsubTarget(od as api.PubsubTarget);
     });
   });
 
@@ -742,7 +742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResumeJobRequest();
       var od = api.ResumeJobRequest.fromJson(o.toJson());
-      checkResumeJobRequest(od);
+      checkResumeJobRequest(od as api.ResumeJobRequest);
     });
   });
 
@@ -750,7 +750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRetryConfig();
       var od = api.RetryConfig.fromJson(o.toJson());
-      checkRetryConfig(od);
+      checkRetryConfig(od as api.RetryConfig);
     });
   });
 
@@ -758,7 +758,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunJobRequest();
       var od = api.RunJobRequest.fromJson(o.toJson());
-      checkRunJobRequest(od);
+      checkRunJobRequest(od as api.RunJobRequest);
     });
   });
 
@@ -766,7 +766,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -815,7 +815,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -875,7 +875,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -888,8 +888,8 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Job.fromJson(json);
-        checkJob(obj);
+        var obj = api.Job.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkJob(obj as api.Job);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -929,7 +929,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -977,7 +977,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1025,7 +1025,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -1082,7 +1082,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response);
+        checkListJobsResponse(response as api.ListJobsResponse);
       })));
     });
 
@@ -1094,8 +1094,8 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Job.fromJson(json);
-        checkJob(obj);
+        var obj = api.Job.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkJob(obj as api.Job);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1138,7 +1138,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -1149,8 +1149,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PauseJobRequest.fromJson(json);
-        checkPauseJobRequest(obj);
+        var obj = api.PauseJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPauseJobRequest(obj as api.PauseJobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1190,7 +1191,7 @@ void main() {
       res
           .pause(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -1201,8 +1202,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ResumeJobRequest.fromJson(json);
-        checkResumeJobRequest(obj);
+        var obj = api.ResumeJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResumeJobRequest(obj as api.ResumeJobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1242,7 +1244,7 @@ void main() {
       res
           .resume(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -1253,8 +1255,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RunJobRequest.fromJson(json);
-        checkRunJobRequest(obj);
+        var obj = api.RunJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunJobRequest(obj as api.RunJobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1294,7 +1297,7 @@ void main() {
       res
           .run(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
   });

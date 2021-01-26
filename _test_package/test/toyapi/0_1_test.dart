@@ -18,7 +18,7 @@
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-library googleapis.toyApi.D0_1.test;
+library test_package.toyApi.D0_1.test;
 
 import "dart:core" as core;
 import "dart:async" as async;
@@ -27,7 +27,7 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
 
-import 'package:googleapis/toyapi/0_1.dart' as api;
+import 'package:test_package/toyapi/0_1.dart' as api;
 
 class HttpServerMock extends http.BaseClient {
   core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
@@ -109,8 +109,8 @@ core.List<api.ToyRequest> buildUnnamed1() {
 
 void checkUnnamed1(core.List<api.ToyRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyRequest(o[0]);
-  checkToyRequest(o[1]);
+  checkToyRequest(o[0] as api.ToyRequest);
+  checkToyRequest(o[1] as api.ToyRequest);
 }
 
 api.ListOfListOfToyRequest buildListOfListOfToyRequest() {
@@ -252,8 +252,8 @@ api.ListOfToyRequest buildListOfToyRequest() {
 
 void checkListOfToyRequest(api.ListOfToyRequest o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyRequest(o[0]);
-  checkToyRequest(o[1]);
+  checkToyRequest(o[0] as api.ToyRequest);
+  checkToyRequest(o[1] as api.ToyRequest);
 }
 
 core.Map<core.String, core.bool> buildUnnamed7() {
@@ -395,8 +395,8 @@ api.MapOfToyResponse buildMapOfToyResponse() {
 
 void checkMapOfToyResponse(api.MapOfToyResponse o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkToyResponse(o["a"]);
-  checkToyResponse(o["b"]);
+  checkToyResponse(o["a"] as api.ToyResponse);
+  checkToyResponse(o["b"] as api.ToyResponse);
 }
 
 api.MapOfint buildMapOfint() {
@@ -459,8 +459,8 @@ core.Map<core.String, api.NestedResponse> buildUnnamed13() {
 
 void checkUnnamed13(core.Map<core.String, api.NestedResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestedResponse(o['x']);
-  checkNestedResponse(o['y']);
+  checkNestedResponse(o['x'] as api.NestedResponse);
+  checkNestedResponse(o['y'] as api.NestedResponse);
 }
 
 core.int buildCounterToyMapResponse = 0;
@@ -548,7 +548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfListOfString();
       var od = api.ListOfListOfString.fromJson(o.toJson());
-      checkListOfListOfString(od);
+      checkListOfListOfString(od as api.ListOfListOfString);
     });
   });
 
@@ -556,7 +556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfListOfToyRequest();
       var od = api.ListOfListOfToyRequest.fromJson(o.toJson());
-      checkListOfListOfToyRequest(od);
+      checkListOfListOfToyRequest(od as api.ListOfListOfToyRequest);
     });
   });
 
@@ -564,7 +564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfListOfint();
       var od = api.ListOfListOfint.fromJson(o.toJson());
-      checkListOfListOfint(od);
+      checkListOfListOfint(od as api.ListOfListOfint);
     });
   });
 
@@ -572,7 +572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfMapOfListOfString();
       var od = api.ListOfMapOfListOfString.fromJson(o.toJson());
-      checkListOfMapOfListOfString(od);
+      checkListOfMapOfListOfString(od as api.ListOfMapOfListOfString);
     });
   });
 
@@ -580,7 +580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfMapOfListOfint();
       var od = api.ListOfMapOfListOfint.fromJson(o.toJson());
-      checkListOfMapOfListOfint(od);
+      checkListOfMapOfListOfint(od as api.ListOfMapOfListOfint);
     });
   });
 
@@ -588,7 +588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfString();
       var od = api.ListOfString.fromJson(o.toJson());
-      checkListOfString(od);
+      checkListOfString(od as api.ListOfString);
     });
   });
 
@@ -596,7 +596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOfToyRequest();
       var od = api.ListOfToyRequest.fromJson(o.toJson());
-      checkListOfToyRequest(od);
+      checkListOfToyRequest(od as api.ListOfToyRequest);
     });
   });
 
@@ -604,7 +604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfListOfMapOfbool();
       var od = api.MapOfListOfMapOfbool.fromJson(o.toJson());
-      checkMapOfListOfMapOfbool(od);
+      checkMapOfListOfMapOfbool(od as api.MapOfListOfMapOfbool);
     });
   });
 
@@ -612,7 +612,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfListOfMapOfint();
       var od = api.MapOfListOfMapOfint.fromJson(o.toJson());
-      checkMapOfListOfMapOfint(od);
+      checkMapOfListOfMapOfint(od as api.MapOfListOfMapOfint);
     });
   });
 
@@ -620,7 +620,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfMapOfbool();
       var od = api.MapOfMapOfbool.fromJson(o.toJson());
-      checkMapOfMapOfbool(od);
+      checkMapOfMapOfbool(od as api.MapOfMapOfbool);
     });
   });
 
@@ -628,7 +628,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfMapOfint();
       var od = api.MapOfMapOfint.fromJson(o.toJson());
-      checkMapOfMapOfint(od);
+      checkMapOfMapOfint(od as api.MapOfMapOfint);
     });
   });
 
@@ -636,7 +636,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfToyResponse();
       var od = api.MapOfToyResponse.fromJson(o.toJson());
-      checkMapOfToyResponse(od);
+      checkMapOfToyResponse(od as api.MapOfToyResponse);
     });
   });
 
@@ -644,7 +644,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapOfint();
       var od = api.MapOfint.fromJson(o.toJson());
-      checkMapOfint(od);
+      checkMapOfint(od as api.MapOfint);
     });
   });
 
@@ -652,7 +652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNestedResponse();
       var od = api.NestedResponse.fromJson(o.toJson());
-      checkNestedResponse(od);
+      checkNestedResponse(od as api.NestedResponse);
     });
   });
 
@@ -660,7 +660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToyAgeRequest();
       var od = api.ToyAgeRequest.fromJson(o.toJson());
-      checkToyAgeRequest(od);
+      checkToyAgeRequest(od as api.ToyAgeRequest);
     });
   });
 
@@ -668,7 +668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToyMapResponse();
       var od = api.ToyMapResponse.fromJson(o.toJson());
-      checkToyMapResponse(od);
+      checkToyMapResponse(od as api.ToyMapResponse);
     });
   });
 
@@ -676,7 +676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToyRequest();
       var od = api.ToyRequest.fromJson(o.toJson());
-      checkToyRequest(od);
+      checkToyRequest(od as api.ToyRequest);
     });
   });
 
@@ -684,7 +684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToyResourceResponse();
       var od = api.ToyResourceResponse.fromJson(o.toJson());
-      checkToyResourceResponse(od);
+      checkToyResourceResponse(od as api.ToyResourceResponse);
     });
   });
 
@@ -692,7 +692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToyResponse();
       var od = api.ToyResponse.fromJson(o.toJson());
-      checkToyResponse(od);
+      checkToyResponse(od as api.ToyResponse);
     });
   });
 
@@ -785,7 +785,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.hello($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -795,8 +795,8 @@ void main() {
       var arg_request = buildListOfToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfToyRequest.fromJson(json);
-        checkListOfToyRequest(obj);
+        var obj = api.ListOfToyRequest.fromJson(json as core.List);
+        checkListOfToyRequest(obj as api.ListOfToyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -838,7 +838,7 @@ void main() {
       res
           .helloListOfClass(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMapOfToyResponse(response);
+        checkMapOfToyResponse(response as api.MapOfToyResponse);
       })));
     });
 
@@ -848,8 +848,8 @@ void main() {
       var arg_request = buildListOfListOfToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfListOfToyRequest.fromJson(json);
-        checkListOfListOfToyRequest(obj);
+        var obj = api.ListOfListOfToyRequest.fromJson(json as core.List);
+        checkListOfListOfToyRequest(obj as api.ListOfListOfToyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -891,7 +891,7 @@ void main() {
       res
           .helloListOfListOfClass(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMapOfToyResponse(response);
+        checkMapOfToyResponse(response as api.MapOfToyResponse);
       })));
     });
 
@@ -901,8 +901,9 @@ void main() {
       var arg_request = buildMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MapOfint.fromJson(json);
-        checkMapOfint(obj);
+        var obj =
+            api.MapOfint.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMapOfint(obj as api.MapOfint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -944,7 +945,7 @@ void main() {
       res
           .helloMap(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMapOfint(response);
+        checkMapOfint(response as api.MapOfint);
       })));
     });
 
@@ -1007,7 +1008,7 @@ void main() {
       res
           .helloNameAge(arg_name, arg_age, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1018,8 +1019,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ToyAgeRequest.fromJson(json);
-        checkToyAgeRequest(obj);
+        var obj = api.ToyAgeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkToyAgeRequest(obj as api.ToyAgeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1064,7 +1066,7 @@ void main() {
       res
           .helloNamePostAge(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1123,7 +1125,7 @@ void main() {
           .helloNameQueryAgeFoo(arg_name,
               age: arg_age, foo: arg_foo, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1133,8 +1135,8 @@ void main() {
       var arg_request = buildListOfListOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfListOfint.fromJson(json);
-        checkListOfListOfint(obj);
+        var obj = api.ListOfListOfint.fromJson(json as core.List);
+        checkListOfListOfint(obj as api.ListOfListOfint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1176,7 +1178,7 @@ void main() {
       res
           .helloNestedListList(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOfListOfString(response);
+        checkListOfListOfString(response as api.ListOfListOfString);
       })));
     });
 
@@ -1186,8 +1188,8 @@ void main() {
       var arg_request = buildListOfMapOfListOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfMapOfListOfint.fromJson(json);
-        checkListOfMapOfListOfint(obj);
+        var obj = api.ListOfMapOfListOfint.fromJson(json as core.List);
+        checkListOfMapOfListOfint(obj as api.ListOfMapOfListOfint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1229,7 +1231,7 @@ void main() {
       res
           .helloNestedListMapList(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOfMapOfListOfString(response);
+        checkListOfMapOfListOfString(response as api.ListOfMapOfListOfString);
       })));
     });
 
@@ -1278,7 +1280,7 @@ void main() {
       res
           .helloNestedMap($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyMapResponse(response);
+        checkToyMapResponse(response as api.ToyMapResponse);
       })));
     });
 
@@ -1288,8 +1290,9 @@ void main() {
       var arg_request = buildMapOfListOfMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MapOfListOfMapOfint.fromJson(json);
-        checkMapOfListOfMapOfint(obj);
+        var obj = api.MapOfListOfMapOfint.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMapOfListOfMapOfint(obj as api.MapOfListOfMapOfint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1331,7 +1334,7 @@ void main() {
       res
           .helloNestedMapListMap(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMapOfListOfMapOfbool(response);
+        checkMapOfListOfMapOfbool(response as api.MapOfListOfMapOfbool);
       })));
     });
 
@@ -1341,8 +1344,9 @@ void main() {
       var arg_request = buildMapOfMapOfint();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MapOfMapOfint.fromJson(json);
-        checkMapOfMapOfint(obj);
+        var obj = api.MapOfMapOfint.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMapOfMapOfint(obj as api.MapOfMapOfint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1384,7 +1388,7 @@ void main() {
       res
           .helloNestedMapMap(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMapOfMapOfbool(response);
+        checkMapOfMapOfbool(response as api.MapOfMapOfbool);
       })));
     });
 
@@ -1394,8 +1398,9 @@ void main() {
       var arg_request = buildToyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ToyRequest.fromJson(json);
-        checkToyRequest(obj);
+        var obj = api.ToyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkToyRequest(obj as api.ToyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1437,7 +1442,7 @@ void main() {
       res
           .helloPost(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1486,7 +1491,7 @@ void main() {
       res
           .helloReturnNull($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1535,7 +1540,7 @@ void main() {
       res
           .helloVoid($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResponse(response);
+        checkToyResponse(response as api.ToyResponse);
       })));
     });
 
@@ -1590,8 +1595,8 @@ void main() {
       var arg_request = buildListOfString();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListOfString.fromJson(json);
-        checkListOfString(obj);
+        var obj = api.ListOfString.fromJson(json as core.List);
+        checkListOfString(obj as api.ListOfString);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1633,7 +1638,7 @@ void main() {
       res
           .reverseList(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOfString(response);
+        checkListOfString(response as api.ListOfString);
       })));
     });
   });
@@ -1698,7 +1703,7 @@ void main() {
       res
           .get(arg_resource, arg_compute, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResourceResponse(response);
+        checkToyResourceResponse(response as api.ToyResourceResponse);
       })));
     });
   });
@@ -1763,7 +1768,7 @@ void main() {
       res
           .get(arg_resource, arg_storage, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkToyResourceResponse(response);
+        checkToyResourceResponse(response as api.ToyResourceResponse);
       })));
     });
   });

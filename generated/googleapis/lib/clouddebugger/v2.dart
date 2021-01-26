@@ -122,7 +122,10 @@ class ControllerDebuggeesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegisterDebuggeeResponse.fromJson(data));
+    return _response.then(
+      (data) => RegisterDebuggeeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -214,8 +217,10 @@ class ControllerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListActiveBreakpointsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListActiveBreakpointsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the breakpoint state or mutable fields. The entire Breakpoint
@@ -284,8 +289,10 @@ class ControllerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => UpdateActiveBreakpointResponse.fromJson(data));
+    return _response.then(
+      (data) => UpdateActiveBreakpointResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -367,7 +374,10 @@ class DebuggerDebuggeesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDebuggeesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDebuggeesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -438,7 +448,9 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets breakpoint information.
@@ -502,7 +514,10 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetBreakpointResponse.fromJson(data));
+    return _response.then(
+      (data) => GetBreakpointResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all breakpoints for the debuggee.
@@ -605,7 +620,10 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBreakpointsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBreakpointsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the breakpoint to the debuggee.
@@ -685,7 +703,10 @@ class DebuggerDebuggeesBreakpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SetBreakpointResponse.fromJson(data));
+    return _response.then(
+      (data) => SetBreakpointResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -856,7 +877,8 @@ class Breakpoint {
     }
     if (_json.containsKey('evaluatedExpressions')) {
       evaluatedExpressions = (_json['evaluatedExpressions'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('expressions')) {
@@ -875,11 +897,13 @@ class Breakpoint {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('location')) {
-      location = SourceLocation.fromJson(_json['location']);
+      location = SourceLocation.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('logLevel')) {
       logLevel = _json['logLevel'] as core.String;
@@ -889,21 +913,24 @@ class Breakpoint {
     }
     if (_json.containsKey('stackFrames')) {
       stackFrames = (_json['stackFrames'] as core.List)
-          .map<StackFrame>((value) => StackFrame.fromJson(value))
+          .map<StackFrame>((value) =>
+              StackFrame.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(_json['status']);
+      status = StatusMessage.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userEmail')) {
       userEmail = _json['userEmail'] as core.String;
     }
     if (_json.containsKey('variableTable')) {
       variableTable = (_json['variableTable'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -990,13 +1017,15 @@ class CloudRepoSourceContext {
 
   CloudRepoSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(_json['aliasContext']);
+      aliasContext = AliasContext.fromJson(
+          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('aliasName')) {
       aliasName = _json['aliasName'] as core.String;
     }
     if (_json.containsKey('repoId')) {
-      repoId = RepoId.fromJson(_json['repoId']);
+      repoId = RepoId.fromJson(
+          _json['repoId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('revisionId')) {
       revisionId = _json['revisionId'] as core.String;
@@ -1039,7 +1068,8 @@ class CloudWorkspaceId {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('repoId')) {
-      repoId = RepoId.fromJson(_json['repoId']);
+      repoId = RepoId.fromJson(
+          _json['repoId'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1071,7 +1101,8 @@ class CloudWorkspaceSourceContext {
       snapshotId = _json['snapshotId'] as core.String;
     }
     if (_json.containsKey('workspaceId')) {
-      workspaceId = CloudWorkspaceId.fromJson(_json['workspaceId']);
+      workspaceId = CloudWorkspaceId.fromJson(
+          _json['workspaceId'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1172,8 +1203,8 @@ class Debuggee {
     }
     if (_json.containsKey('extSourceContexts')) {
       extSourceContexts = (_json['extSourceContexts'] as core.List)
-          .map<ExtendedSourceContext>(
-              (value) => ExtendedSourceContext.fromJson(value))
+          .map<ExtendedSourceContext>((value) => ExtendedSourceContext.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -1187,7 +1218,8 @@ class Debuggee {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('project')) {
@@ -1195,11 +1227,13 @@ class Debuggee {
     }
     if (_json.containsKey('sourceContexts')) {
       sourceContexts = (_json['sourceContexts'] as core.List)
-          .map<SourceContext>((value) => SourceContext.fromJson(value))
+          .map<SourceContext>((value) => SourceContext.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(_json['status']);
+      status = StatusMessage.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uniquifier')) {
       uniquifier = _json['uniquifier'] as core.String;
@@ -1281,11 +1315,13 @@ class ExtendedSourceContext {
 
   ExtendedSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = SourceContext.fromJson(_json['context']);
+      context = SourceContext.fromJson(
+          _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -1362,7 +1398,8 @@ class GerritSourceContext {
 
   GerritSourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('aliasContext')) {
-      aliasContext = AliasContext.fromJson(_json['aliasContext']);
+      aliasContext = AliasContext.fromJson(
+          _json['aliasContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('aliasName')) {
       aliasName = _json['aliasName'] as core.String;
@@ -1409,7 +1446,8 @@ class GetBreakpointResponse {
 
   GetBreakpointResponse.fromJson(core.Map _json) {
     if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(_json['breakpoint']);
+      breakpoint = Breakpoint.fromJson(
+          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1474,7 +1512,8 @@ class ListActiveBreakpointsResponse {
   ListActiveBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('breakpoints')) {
       breakpoints = (_json['breakpoints'] as core.List)
-          .map<Breakpoint>((value) => Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) =>
+              Breakpoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextWaitToken')) {
@@ -1519,7 +1558,8 @@ class ListBreakpointsResponse {
   ListBreakpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('breakpoints')) {
       breakpoints = (_json['breakpoints'] as core.List)
-          .map<Breakpoint>((value) => Breakpoint.fromJson(value))
+          .map<Breakpoint>((value) =>
+              Breakpoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextWaitToken')) {
@@ -1552,7 +1592,8 @@ class ListDebuggeesResponse {
   ListDebuggeesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('debuggees')) {
       debuggees = (_json['debuggees'] as core.List)
-          .map<Debuggee>((value) => Debuggee.fromJson(value))
+          .map<Debuggee>((value) =>
+              Debuggee.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1609,7 +1650,8 @@ class RegisterDebuggeeRequest {
 
   RegisterDebuggeeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('debuggee')) {
-      debuggee = Debuggee.fromJson(_json['debuggee']);
+      debuggee = Debuggee.fromJson(
+          _json['debuggee'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1642,7 +1684,8 @@ class RegisterDebuggeeResponse {
       agentId = _json['agentId'] as core.String;
     }
     if (_json.containsKey('debuggee')) {
-      debuggee = Debuggee.fromJson(_json['debuggee']);
+      debuggee = Debuggee.fromJson(
+          _json['debuggee'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1670,7 +1713,8 @@ class RepoId {
 
   RepoId.fromJson(core.Map _json) {
     if (_json.containsKey('projectRepoId')) {
-      projectRepoId = ProjectRepoId.fromJson(_json['projectRepoId']);
+      projectRepoId = ProjectRepoId.fromJson(
+          _json['projectRepoId'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uid')) {
       uid = _json['uid'] as core.String;
@@ -1699,7 +1743,8 @@ class SetBreakpointResponse {
 
   SetBreakpointResponse.fromJson(core.Map _json) {
     if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(_json['breakpoint']);
+      breakpoint = Breakpoint.fromJson(
+          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1731,17 +1776,20 @@ class SourceContext {
 
   SourceContext.fromJson(core.Map _json) {
     if (_json.containsKey('cloudRepo')) {
-      cloudRepo = CloudRepoSourceContext.fromJson(_json['cloudRepo']);
+      cloudRepo = CloudRepoSourceContext.fromJson(
+          _json['cloudRepo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cloudWorkspace')) {
-      cloudWorkspace =
-          CloudWorkspaceSourceContext.fromJson(_json['cloudWorkspace']);
+      cloudWorkspace = CloudWorkspaceSourceContext.fromJson(
+          _json['cloudWorkspace'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gerrit')) {
-      gerrit = GerritSourceContext.fromJson(_json['gerrit']);
+      gerrit = GerritSourceContext.fromJson(
+          _json['gerrit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('git')) {
-      git = GitSourceContext.fromJson(_json['git']);
+      git = GitSourceContext.fromJson(
+          _json['git'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1826,7 +1874,8 @@ class StackFrame {
   StackFrame.fromJson(core.Map _json) {
     if (_json.containsKey('arguments')) {
       arguments = (_json['arguments'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('function')) {
@@ -1834,11 +1883,13 @@ class StackFrame {
     }
     if (_json.containsKey('locals')) {
       locals = (_json['locals'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('location')) {
-      location = SourceLocation.fromJson(_json['location']);
+      location = SourceLocation.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1893,7 +1944,8 @@ class StatusMessage {
 
   StatusMessage.fromJson(core.Map _json) {
     if (_json.containsKey('description')) {
-      description = FormatMessage.fromJson(_json['description']);
+      description = FormatMessage.fromJson(
+          _json['description'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isError')) {
       isError = _json['isError'] as core.bool;
@@ -1928,7 +1980,8 @@ class UpdateActiveBreakpointRequest {
 
   UpdateActiveBreakpointRequest.fromJson(core.Map _json) {
     if (_json.containsKey('breakpoint')) {
-      breakpoint = Breakpoint.fromJson(_json['breakpoint']);
+      breakpoint = Breakpoint.fromJson(
+          _json['breakpoint'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2029,14 +2082,16 @@ class Variable {
   Variable.fromJson(core.Map _json) {
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
-          .map<Variable>((value) => Variable.fromJson(value))
+          .map<Variable>((value) =>
+              Variable.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = StatusMessage.fromJson(_json['status']);
+      status = StatusMessage.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;

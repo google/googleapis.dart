@@ -101,7 +101,10 @@ class UrlNotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlNotificationMetadata.fromJson(data));
+    return _response.then(
+      (data) => UrlNotificationMetadata.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Notifies that a URL has been updated or deleted.
@@ -149,8 +152,10 @@ class UrlNotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PublishUrlNotificationResponse.fromJson(data));
+    return _response.then(
+      (data) => PublishUrlNotificationResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -163,8 +168,9 @@ class PublishUrlNotificationResponse {
 
   PublishUrlNotificationResponse.fromJson(core.Map _json) {
     if (_json.containsKey('urlNotificationMetadata')) {
-      urlNotificationMetadata =
-          UrlNotificationMetadata.fromJson(_json['urlNotificationMetadata']);
+      urlNotificationMetadata = UrlNotificationMetadata.fromJson(
+          _json['urlNotificationMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -241,10 +247,12 @@ class UrlNotificationMetadata {
 
   UrlNotificationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('latestRemove')) {
-      latestRemove = UrlNotification.fromJson(_json['latestRemove']);
+      latestRemove = UrlNotification.fromJson(
+          _json['latestRemove'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('latestUpdate')) {
-      latestUpdate = UrlNotification.fromJson(_json['latestUpdate']);
+      latestUpdate = UrlNotification.fromJson(
+          _json['latestUpdate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;

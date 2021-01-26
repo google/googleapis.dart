@@ -109,7 +109,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified agent.
@@ -159,8 +162,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Agent.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Agent.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates/updates the specified agent.
@@ -221,8 +226,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Agent.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Agent.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -295,7 +302,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the fulfillment.
@@ -345,8 +355,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Fulfillment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Fulfillment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets agent validation result. Agent validation is performed during
@@ -409,8 +421,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2ValidationResult.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2ValidationResult.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports the specified agent from a ZIP file. Uploads new intents and
@@ -477,7 +491,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores the specified agent from a ZIP file. Replaces the current agent
@@ -543,7 +560,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of agents. Since there is at most one conversational
@@ -613,7 +633,9 @@ class ProjectsAgentResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Trains the specified agent. Operation
@@ -671,7 +693,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the fulfillment.
@@ -734,8 +759,10 @@ class ProjectsAgentResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Fulfillment.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Fulfillment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -803,7 +830,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates/Creates multiple entity types in the specified agent. Operation
@@ -861,7 +891,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an entity type in the specified agent.
@@ -928,8 +961,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2EntityType.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified entity type.
@@ -979,7 +1014,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified entity type.
@@ -1038,8 +1076,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2EntityType.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all entity types in the specified agent.
@@ -1114,8 +1154,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified entity type.
@@ -1187,8 +1229,10 @@ class ProjectsAgentEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2EntityType.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2EntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1253,7 +1297,10 @@ class ProjectsAgentEntityTypesEntitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes entities in the specified entity type. Operation
@@ -1311,7 +1358,10 @@ class ProjectsAgentEntityTypesEntitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates or creates multiple entities in the specified entity type. This
@@ -1371,7 +1421,10 @@ class ProjectsAgentEntityTypesEntitiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1447,8 +1500,10 @@ class ProjectsAgentEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1527,7 +1582,10 @@ class ProjectsAgentEnvironmentsUsersSessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -1598,7 +1656,9 @@ class ProjectsAgentEnvironmentsUsersSessionsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1668,8 +1728,10 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified context.
@@ -1723,7 +1785,10 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified context.
@@ -1777,8 +1842,10 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -1848,7 +1915,9 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified context.
@@ -1919,8 +1988,10 @@ class ProjectsAgentEnvironmentsUsersSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1994,7 +2065,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified session entity type. This method doesn't work with
@@ -2050,7 +2123,10 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified session entity type. This method doesn't work with
@@ -2107,7 +2183,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -2180,8 +2258,10 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified session entity type. This method doesn't work with
@@ -2252,7 +2332,9 @@ class ProjectsAgentEnvironmentsUsersSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2317,7 +2399,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates/Creates multiple intents in the specified agent. Operation
@@ -2375,7 +2460,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an intent in the specified agent.
@@ -2452,8 +2540,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Intent.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Intent.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified intent and its direct or indirect followup intents.
@@ -2504,7 +2594,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified intent.
@@ -2574,8 +2667,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Intent.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Intent.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all intents in the specified agent.
@@ -2661,7 +2756,9 @@ class ProjectsAgentIntentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2ListIntentsResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2ListIntentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified intent.
@@ -2744,8 +2841,10 @@ class ProjectsAgentIntentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Intent.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Intent.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2811,7 +2910,10 @@ class ProjectsAgentSessionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Processes a natural language query and returns structured, actionable data
@@ -2881,7 +2983,9 @@ class ProjectsAgentSessionsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2DetectIntentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2949,8 +3053,10 @@ class ProjectsAgentSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified context.
@@ -3004,7 +3110,10 @@ class ProjectsAgentSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified context.
@@ -3058,8 +3167,10 @@ class ProjectsAgentSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all contexts in the specified session.
@@ -3128,7 +3239,9 @@ class ProjectsAgentSessionsContextsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(data));
+      (data) => GoogleCloudDialogflowV2ListContextsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified context.
@@ -3199,8 +3312,10 @@ class ProjectsAgentSessionsContextsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleCloudDialogflowV2Context.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2Context.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3272,7 +3387,9 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified session entity type. This method doesn't work with
@@ -3328,7 +3445,10 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the specified session entity type. This method doesn't work with
@@ -3385,7 +3505,9 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of all session entity types in the specified session.
@@ -3457,8 +3579,10 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleCloudDialogflowV2ListSessionEntityTypesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified session entity type. This method doesn't work with
@@ -3529,7 +3653,9 @@ class ProjectsAgentSessionsEntityTypesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(data));
+      (data) => GoogleCloudDialogflowV2SessionEntityType.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3604,7 +3730,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -3656,7 +3785,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -3732,8 +3864,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3797,7 +3931,10 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleProtobufEmpty.fromJson(data));
+    return _response.then(
+      (data) => GoogleProtobufEmpty.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -3848,7 +3985,10 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -3924,8 +4064,10 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GoogleLongrunningListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4035,7 +4177,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfo {
     }
     if (_json.containsKey('formInfo')) {
       formInfo = GoogleCloudDialogflowCxV3beta1PageInfoFormInfo.fromJson(
-          _json['formInfo']);
+          _json['formInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4067,7 +4209,7 @@ class GoogleCloudDialogflowCxV3beta1PageInfoFormInfo {
           .map<GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo>(
               (value) =>
                   GoogleCloudDialogflowCxV3beta1PageInfoFormInfoParameterInfo
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4221,41 +4363,44 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
     if (_json.containsKey('conversationSuccess')) {
       conversationSuccess =
           GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess
-              .fromJson(_json['conversationSuccess']);
+              .fromJson(_json['conversationSuccess']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endInteraction')) {
       endInteraction =
           GoogleCloudDialogflowCxV3beta1ResponseMessageEndInteraction.fromJson(
-              _json['endInteraction']);
+              _json['endInteraction'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('liveAgentHandoff')) {
       liveAgentHandoff =
           GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff
-              .fromJson(_json['liveAgentHandoff']);
+              .fromJson(_json['liveAgentHandoff']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mixedAudio')) {
       mixedAudio =
           GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio.fromJson(
-              _json['mixedAudio']);
+              _json['mixedAudio'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputAudioText')) {
       outputAudioText =
           GoogleCloudDialogflowCxV3beta1ResponseMessageOutputAudioText.fromJson(
-              _json['outputAudioText']);
+              _json['outputAudioText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('playAudio')) {
       playAudio =
           GoogleCloudDialogflowCxV3beta1ResponseMessagePlayAudio.fromJson(
-              _json['playAudio']);
+              _json['playAudio'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = GoogleCloudDialogflowCxV3beta1ResponseMessageText.fromJson(
-          _json['text']);
+          _json['text'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4311,7 +4456,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
       core.Map _json) {
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -4361,7 +4507,8 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
       core.Map _json) {
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -4393,7 +4540,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudio {
           .map<GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment>(
               (value) =>
                   GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioSegment
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4599,7 +4746,8 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
   GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('session')) {
@@ -4658,31 +4806,33 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
     if (_json.containsKey('fulfillmentInfo')) {
       fulfillmentInfo =
           GoogleCloudDialogflowCxV3beta1WebhookRequestFulfillmentInfo.fromJson(
-              _json['fulfillmentInfo']);
+              _json['fulfillmentInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intentInfo')) {
       intentInfo =
           GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo.fromJson(
-              _json['intentInfo']);
+              _json['intentInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
           .map<GoogleCloudDialogflowCxV3beta1ResponseMessage>((value) =>
-              GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(value))
+              GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageInfo')) {
-      pageInfo =
-          GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
-          _json['sessionInfo']);
+          _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4761,10 +4911,11 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Map,
               GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue>(
-          _json['parameters'].cast<core.String, core.Map>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
           (core.Map item) =>
               GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
-                  .fromJson(item));
+                  .fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -4857,20 +5008,22 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
     if (_json.containsKey('fulfillmentResponse')) {
       fulfillmentResponse =
           GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse
-              .fromJson(_json['fulfillmentResponse']);
+              .fromJson(_json['fulfillmentResponse']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageInfo')) {
-      pageInfo =
-          GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = GoogleCloudDialogflowCxV3beta1PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
-          _json['sessionInfo']);
+          _json['sessionInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetFlow')) {
       targetFlow = _json['targetFlow'] as core.String;
@@ -4928,7 +5081,8 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponseFulfillmentResponse {
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
           .map<GoogleCloudDialogflowCxV3beta1ResponseMessage>((value) =>
-              GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(value))
+              GoogleCloudDialogflowCxV3beta1ResponseMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5181,7 +5335,8 @@ class GoogleCloudDialogflowV2BatchCreateEntitiesRequest {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('languageCode')) {
@@ -5276,8 +5431,9 @@ class GoogleCloudDialogflowV2BatchDeleteIntentsRequest {
   GoogleCloudDialogflowV2BatchDeleteIntentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('intents')) {
       intents = (_json['intents'] as core.List)
-          .map<GoogleCloudDialogflowV2Intent>(
-              (value) => GoogleCloudDialogflowV2Intent.fromJson(value))
+          .map<GoogleCloudDialogflowV2Intent>((value) =>
+              GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5311,7 +5467,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntitiesRequest {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('languageCode')) {
@@ -5362,7 +5519,8 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesRequest {
       core.Map _json) {
     if (_json.containsKey('entityTypeBatchInline')) {
       entityTypeBatchInline = GoogleCloudDialogflowV2EntityTypeBatch.fromJson(
-          _json['entityTypeBatchInline']);
+          _json['entityTypeBatchInline']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entityTypeBatchUri')) {
       entityTypeBatchUri = _json['entityTypeBatchUri'] as core.String;
@@ -5404,8 +5562,9 @@ class GoogleCloudDialogflowV2BatchUpdateEntityTypesResponse {
       core.Map _json) {
     if (_json.containsKey('entityTypes')) {
       entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDialogflowV2EntityType>(
-              (value) => GoogleCloudDialogflowV2EntityType.fromJson(value))
+          .map<GoogleCloudDialogflowV2EntityType>((value) =>
+              GoogleCloudDialogflowV2EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5450,7 +5609,7 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsRequest {
   GoogleCloudDialogflowV2BatchUpdateIntentsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('intentBatchInline')) {
       intentBatchInline = GoogleCloudDialogflowV2IntentBatch.fromJson(
-          _json['intentBatchInline']);
+          _json['intentBatchInline'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intentBatchUri')) {
       intentBatchUri = _json['intentBatchUri'] as core.String;
@@ -5497,8 +5656,9 @@ class GoogleCloudDialogflowV2BatchUpdateIntentsResponse {
   GoogleCloudDialogflowV2BatchUpdateIntentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('intents')) {
       intents = (_json['intents'] as core.List)
-          .map<GoogleCloudDialogflowV2Intent>(
-              (value) => GoogleCloudDialogflowV2Intent.fromJson(value))
+          .map<GoogleCloudDialogflowV2Intent>((value) =>
+              GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5568,7 +5728,8 @@ class GoogleCloudDialogflowV2Context {
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -5631,11 +5792,12 @@ class GoogleCloudDialogflowV2ConversationEvent {
       conversation = _json['conversation'] as core.String;
     }
     if (_json.containsKey('errorStatus')) {
-      errorStatus = GoogleRpcStatus.fromJson(_json['errorStatus']);
+      errorStatus = GoogleRpcStatus.fromJson(
+          _json['errorStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('newMessagePayload')) {
-      newMessagePayload =
-          GoogleCloudDialogflowV2Message.fromJson(_json['newMessagePayload']);
+      newMessagePayload = GoogleCloudDialogflowV2Message.fromJson(
+          _json['newMessagePayload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -5702,18 +5864,18 @@ class GoogleCloudDialogflowV2DetectIntentRequest {
     }
     if (_json.containsKey('outputAudioConfig')) {
       outputAudioConfig = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-          _json['outputAudioConfig']);
+          _json['outputAudioConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputAudioConfigMask')) {
       outputAudioConfigMask = _json['outputAudioConfigMask'] as core.String;
     }
     if (_json.containsKey('queryInput')) {
-      queryInput =
-          GoogleCloudDialogflowV2QueryInput.fromJson(_json['queryInput']);
+      queryInput = GoogleCloudDialogflowV2QueryInput.fromJson(
+          _json['queryInput'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryParams')) {
-      queryParams =
-          GoogleCloudDialogflowV2QueryParameters.fromJson(_json['queryParams']);
+      queryParams = GoogleCloudDialogflowV2QueryParameters.fromJson(
+          _json['queryParams'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5779,17 +5941,18 @@ class GoogleCloudDialogflowV2DetectIntentResponse {
     }
     if (_json.containsKey('outputAudioConfig')) {
       outputAudioConfig = GoogleCloudDialogflowV2OutputAudioConfig.fromJson(
-          _json['outputAudioConfig']);
+          _json['outputAudioConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryResult')) {
-      queryResult =
-          GoogleCloudDialogflowV2QueryResult.fromJson(_json['queryResult']);
+      queryResult = GoogleCloudDialogflowV2QueryResult.fromJson(
+          _json['queryResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responseId')) {
       responseId = _json['responseId'] as core.String;
     }
     if (_json.containsKey('webhookStatus')) {
-      webhookStatus = GoogleRpcStatus.fromJson(_json['webhookStatus']);
+      webhookStatus = GoogleRpcStatus.fromJson(
+          _json['webhookStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5874,7 +6037,8 @@ class GoogleCloudDialogflowV2EntityType {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5919,8 +6083,9 @@ class GoogleCloudDialogflowV2EntityTypeBatch {
   GoogleCloudDialogflowV2EntityTypeBatch.fromJson(core.Map _json) {
     if (_json.containsKey('entityTypes')) {
       entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDialogflowV2EntityType>(
-              (value) => GoogleCloudDialogflowV2EntityType.fromJson(value))
+          .map<GoogleCloudDialogflowV2EntityType>((value) =>
+              GoogleCloudDialogflowV2EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6090,7 +6255,8 @@ class GoogleCloudDialogflowV2EventInput {
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -6213,13 +6379,15 @@ class GoogleCloudDialogflowV2Fulfillment {
     if (_json.containsKey('features')) {
       features = (_json['features'] as core.List)
           .map<GoogleCloudDialogflowV2FulfillmentFeature>((value) =>
-              GoogleCloudDialogflowV2FulfillmentFeature.fromJson(value))
+              GoogleCloudDialogflowV2FulfillmentFeature.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('genericWebService')) {
       genericWebService =
           GoogleCloudDialogflowV2FulfillmentGenericWebService.fromJson(
-              _json['genericWebService']);
+              _json['genericWebService']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -6307,7 +6475,8 @@ class GoogleCloudDialogflowV2FulfillmentGenericWebService {
     }
     if (_json.containsKey('requestHeaders')) {
       requestHeaders = commons.mapMap<core.String, core.String>(
-          _json['requestHeaders'].cast<core.String, core.String>(),
+          (_json['requestHeaders'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('uri')) {
@@ -6388,7 +6557,8 @@ class GoogleCloudDialogflowV2ImportDocumentsResponse {
   GoogleCloudDialogflowV2ImportDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(value))
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6546,8 +6716,9 @@ class GoogleCloudDialogflowV2InputAudioConfig {
     }
     if (_json.containsKey('speechContexts')) {
       speechContexts = (_json['speechContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2SpeechContext>(
-              (value) => GoogleCloudDialogflowV2SpeechContext.fromJson(value))
+          .map<GoogleCloudDialogflowV2SpeechContext>((value) =>
+              GoogleCloudDialogflowV2SpeechContext.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6707,7 +6878,8 @@ class GoogleCloudDialogflowV2Intent {
     if (_json.containsKey('followupIntentInfo')) {
       followupIntentInfo = (_json['followupIntentInfo'] as core.List)
           .map<GoogleCloudDialogflowV2IntentFollowupIntentInfo>((value) =>
-              GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(value))
+              GoogleCloudDialogflowV2IntentFollowupIntentInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inputContextNames')) {
@@ -6720,8 +6892,9 @@ class GoogleCloudDialogflowV2Intent {
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<GoogleCloudDialogflowV2IntentMessage>(
-              (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(value))
+          .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
+              GoogleCloudDialogflowV2IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mlDisabled')) {
@@ -6732,14 +6905,16 @@ class GoogleCloudDialogflowV2Intent {
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2Context>(
-              (value) => GoogleCloudDialogflowV2Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2Context>((value) =>
+              GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<GoogleCloudDialogflowV2IntentParameter>(
-              (value) => GoogleCloudDialogflowV2IntentParameter.fromJson(value))
+          .map<GoogleCloudDialogflowV2IntentParameter>((value) =>
+              GoogleCloudDialogflowV2IntentParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFollowupIntentName')) {
@@ -6758,7 +6933,8 @@ class GoogleCloudDialogflowV2Intent {
     if (_json.containsKey('trainingPhrases')) {
       trainingPhrases = (_json['trainingPhrases'] as core.List)
           .map<GoogleCloudDialogflowV2IntentTrainingPhrase>((value) =>
-              GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(value))
+              GoogleCloudDialogflowV2IntentTrainingPhrase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webhookState')) {
@@ -6839,8 +7015,9 @@ class GoogleCloudDialogflowV2IntentBatch {
   GoogleCloudDialogflowV2IntentBatch.fromJson(core.Map _json) {
     if (_json.containsKey('intents')) {
       intents = (_json['intents'] as core.List)
-          .map<GoogleCloudDialogflowV2Intent>(
-              (value) => GoogleCloudDialogflowV2Intent.fromJson(value))
+          .map<GoogleCloudDialogflowV2Intent>((value) =>
+              GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6957,41 +7134,45 @@ class GoogleCloudDialogflowV2IntentMessage {
   GoogleCloudDialogflowV2IntentMessage.fromJson(core.Map _json) {
     if (_json.containsKey('basicCard')) {
       basicCard = GoogleCloudDialogflowV2IntentMessageBasicCard.fromJson(
-          _json['basicCard']);
+          _json['basicCard'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('browseCarouselCard')) {
       browseCarouselCard =
           GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard.fromJson(
-              _json['browseCarouselCard']);
+              _json['browseCarouselCard']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('card')) {
-      card = GoogleCloudDialogflowV2IntentMessageCard.fromJson(_json['card']);
+      card = GoogleCloudDialogflowV2IntentMessageCard.fromJson(
+          _json['card'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('carouselSelect')) {
       carouselSelect =
           GoogleCloudDialogflowV2IntentMessageCarouselSelect.fromJson(
-              _json['carouselSelect']);
+              _json['carouselSelect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linkOutSuggestion')) {
       linkOutSuggestion =
           GoogleCloudDialogflowV2IntentMessageLinkOutSuggestion.fromJson(
-              _json['linkOutSuggestion']);
+              _json['linkOutSuggestion']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('listSelect')) {
       listSelect = GoogleCloudDialogflowV2IntentMessageListSelect.fromJson(
-          _json['listSelect']);
+          _json['listSelect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mediaContent')) {
       mediaContent = GoogleCloudDialogflowV2IntentMessageMediaContent.fromJson(
-          _json['mediaContent']);
+          _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('platform')) {
@@ -6999,23 +7180,24 @@ class GoogleCloudDialogflowV2IntentMessage {
     }
     if (_json.containsKey('quickReplies')) {
       quickReplies = GoogleCloudDialogflowV2IntentMessageQuickReplies.fromJson(
-          _json['quickReplies']);
+          _json['quickReplies'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('simpleResponses')) {
       simpleResponses =
           GoogleCloudDialogflowV2IntentMessageSimpleResponses.fromJson(
-              _json['simpleResponses']);
+              _json['simpleResponses'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestions')) {
       suggestions = GoogleCloudDialogflowV2IntentMessageSuggestions.fromJson(
-          _json['suggestions']);
+          _json['suggestions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableCard')) {
       tableCard = GoogleCloudDialogflowV2IntentMessageTableCard.fromJson(
-          _json['tableCard']);
+          _json['tableCard'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
-      text = GoogleCloudDialogflowV2IntentMessageText.fromJson(_json['text']);
+      text = GoogleCloudDialogflowV2IntentMessageText.fromJson(
+          _json['text'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7094,15 +7276,15 @@ class GoogleCloudDialogflowV2IntentMessageBasicCard {
       buttons = (_json['buttons'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageBasicCardButton>((value) =>
               GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('formattedText')) {
       formattedText = _json['formattedText'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtitle')) {
       subtitle = _json['subtitle'] as core.String;
@@ -7148,7 +7330,8 @@ class GoogleCloudDialogflowV2IntentMessageBasicCardButton {
     if (_json.containsKey('openUriAction')) {
       openUriAction =
           GoogleCloudDialogflowV2IntentMessageBasicCardButtonOpenUriAction
-              .fromJson(_json['openUriAction']);
+              .fromJson(_json['openUriAction']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -7230,7 +7413,7 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCard {
           .map<GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(
               (value) =>
                   GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItem
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7277,13 +7460,14 @@ class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardIt
       footer = _json['footer'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('openUriAction')) {
       openUriAction =
           GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
-              .fromJson(_json['openUriAction']);
+              .fromJson(_json['openUriAction']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -7369,7 +7553,8 @@ class GoogleCloudDialogflowV2IntentMessageCard {
     if (_json.containsKey('buttons')) {
       buttons = (_json['buttons'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageCardButton>((value) =>
-              GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(value))
+              GoogleCloudDialogflowV2IntentMessageCardButton.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('imageUri')) {
@@ -7444,7 +7629,7 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelect {
       items = (_json['items'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageCarouselSelectItem>(
               (value) => GoogleCloudDialogflowV2IntentMessageCarouselSelectItem
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7480,12 +7665,12 @@ class GoogleCloudDialogflowV2IntentMessageCarouselSelectItem {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('info')) {
       info = GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-          _json['info']);
+          _json['info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -7632,7 +7817,7 @@ class GoogleCloudDialogflowV2IntentMessageListSelect {
       items = (_json['items'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageListSelectItem>((value) =>
               GoogleCloudDialogflowV2IntentMessageListSelectItem.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subtitle')) {
@@ -7679,12 +7864,12 @@ class GoogleCloudDialogflowV2IntentMessageListSelectItem {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('info')) {
       info = GoogleCloudDialogflowV2IntentMessageSelectItemInfo.fromJson(
-          _json['info']);
+          _json['info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -7729,7 +7914,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
           .map<GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject>(
               (value) =>
                   GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mediaType')) {
@@ -7778,11 +7963,12 @@ class GoogleCloudDialogflowV2IntentMessageMediaContentResponseMediaObject {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('icon')) {
-      icon = GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['icon']);
+      icon = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['icon'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('largeImage')) {
       largeImage = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
-          _json['largeImage']);
+          _json['largeImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7935,7 +8121,7 @@ class GoogleCloudDialogflowV2IntentMessageSimpleResponses {
       simpleResponses = (_json['simpleResponses'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageSimpleResponse>((value) =>
               GoogleCloudDialogflowV2IntentMessageSimpleResponse.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7984,7 +8170,8 @@ class GoogleCloudDialogflowV2IntentMessageSuggestions {
     if (_json.containsKey('suggestions')) {
       suggestions = (_json['suggestions'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageSuggestion>((value) =>
-              GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(value))
+              GoogleCloudDialogflowV2IntentMessageSuggestion.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8027,24 +8214,25 @@ class GoogleCloudDialogflowV2IntentMessageTableCard {
       buttons = (_json['buttons'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageBasicCardButton>((value) =>
               GoogleCloudDialogflowV2IntentMessageBasicCardButton.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('columnProperties')) {
       columnProperties = (_json['columnProperties'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageColumnProperties>((value) =>
               GoogleCloudDialogflowV2IntentMessageColumnProperties.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('image')) {
-      image =
-          GoogleCloudDialogflowV2IntentMessageImage.fromJson(_json['image']);
+      image = GoogleCloudDialogflowV2IntentMessageImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageTableCardRow>((value) =>
-              GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(value))
+              GoogleCloudDialogflowV2IntentMessageTableCardRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subtitle')) {
@@ -8116,7 +8304,8 @@ class GoogleCloudDialogflowV2IntentMessageTableCardRow {
     if (_json.containsKey('cells')) {
       cells = (_json['cells'] as core.List)
           .map<GoogleCloudDialogflowV2IntentMessageTableCardCell>((value) =>
-              GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(value))
+              GoogleCloudDialogflowV2IntentMessageTableCardCell.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dividerAfter')) {
@@ -8301,7 +8490,8 @@ class GoogleCloudDialogflowV2IntentTrainingPhrase {
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
           .map<GoogleCloudDialogflowV2IntentTrainingPhrasePart>((value) =>
-              GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(value))
+              GoogleCloudDialogflowV2IntentTrainingPhrasePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timesAddedCount')) {
@@ -8400,8 +8590,9 @@ class GoogleCloudDialogflowV2ListContextsResponse {
   GoogleCloudDialogflowV2ListContextsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('contexts')) {
       contexts = (_json['contexts'] as core.List)
-          .map<GoogleCloudDialogflowV2Context>(
-              (value) => GoogleCloudDialogflowV2Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2Context>((value) =>
+              GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8436,8 +8627,9 @@ class GoogleCloudDialogflowV2ListEntityTypesResponse {
   GoogleCloudDialogflowV2ListEntityTypesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entityTypes')) {
       entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDialogflowV2EntityType>(
-              (value) => GoogleCloudDialogflowV2EntityType.fromJson(value))
+          .map<GoogleCloudDialogflowV2EntityType>((value) =>
+              GoogleCloudDialogflowV2EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8473,8 +8665,9 @@ class GoogleCloudDialogflowV2ListEnvironmentsResponse {
   GoogleCloudDialogflowV2ListEnvironmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('environments')) {
       environments = (_json['environments'] as core.List)
-          .map<GoogleCloudDialogflowV2Environment>(
-              (value) => GoogleCloudDialogflowV2Environment.fromJson(value))
+          .map<GoogleCloudDialogflowV2Environment>((value) =>
+              GoogleCloudDialogflowV2Environment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8510,8 +8703,9 @@ class GoogleCloudDialogflowV2ListIntentsResponse {
   GoogleCloudDialogflowV2ListIntentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('intents')) {
       intents = (_json['intents'] as core.List)
-          .map<GoogleCloudDialogflowV2Intent>(
-              (value) => GoogleCloudDialogflowV2Intent.fromJson(value))
+          .map<GoogleCloudDialogflowV2Intent>((value) =>
+              GoogleCloudDialogflowV2Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8551,7 +8745,8 @@ class GoogleCloudDialogflowV2ListSessionEntityTypesResponse {
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
           .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
-              GoogleCloudDialogflowV2SessionEntityType.fromJson(value))
+              GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8616,7 +8811,7 @@ class GoogleCloudDialogflowV2Message {
     }
     if (_json.containsKey('messageAnnotation')) {
       messageAnnotation = GoogleCloudDialogflowV2MessageAnnotation.fromJson(
-          _json['messageAnnotation']);
+          _json['messageAnnotation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8675,7 +8870,8 @@ class GoogleCloudDialogflowV2MessageAnnotation {
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
           .map<GoogleCloudDialogflowV2AnnotatedMessagePart>((value) =>
-              GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(value))
+              GoogleCloudDialogflowV2AnnotatedMessagePart.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8721,7 +8917,8 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
   GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('source')) {
@@ -8787,7 +8984,8 @@ class GoogleCloudDialogflowV2OutputAudioConfig {
     if (_json.containsKey('synthesizeSpeechConfig')) {
       synthesizeSpeechConfig =
           GoogleCloudDialogflowV2SynthesizeSpeechConfig.fromJson(
-              _json['synthesizeSpeechConfig']);
+              _json['synthesizeSpeechConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8825,13 +9023,15 @@ class GoogleCloudDialogflowV2QueryInput {
   GoogleCloudDialogflowV2QueryInput.fromJson(core.Map _json) {
     if (_json.containsKey('audioConfig')) {
       audioConfig = GoogleCloudDialogflowV2InputAudioConfig.fromJson(
-          _json['audioConfig']);
+          _json['audioConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('event')) {
-      event = GoogleCloudDialogflowV2EventInput.fromJson(_json['event']);
+      event = GoogleCloudDialogflowV2EventInput.fromJson(
+          _json['event'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
-      text = GoogleCloudDialogflowV2TextInput.fromJson(_json['text']);
+      text = GoogleCloudDialogflowV2TextInput.fromJson(
+          _json['text'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8892,16 +9092,19 @@ class GoogleCloudDialogflowV2QueryParameters {
   GoogleCloudDialogflowV2QueryParameters.fromJson(core.Map _json) {
     if (_json.containsKey('contexts')) {
       contexts = (_json['contexts'] as core.List)
-          .map<GoogleCloudDialogflowV2Context>(
-              (value) => GoogleCloudDialogflowV2Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2Context>((value) =>
+              GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('geoLocation')) {
-      geoLocation = GoogleTypeLatLng.fromJson(_json['geoLocation']);
+      geoLocation = GoogleTypeLatLng.fromJson(
+          _json['geoLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('resetContexts')) {
@@ -8910,12 +9113,14 @@ class GoogleCloudDialogflowV2QueryParameters {
     if (_json.containsKey('sentimentAnalysisRequestConfig')) {
       sentimentAnalysisRequestConfig =
           GoogleCloudDialogflowV2SentimentAnalysisRequestConfig.fromJson(
-              _json['sentimentAnalysisRequestConfig']);
+              _json['sentimentAnalysisRequestConfig']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
           .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
-              GoogleCloudDialogflowV2SessionEntityType.fromJson(value))
+              GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timeZone')) {
@@ -9060,20 +9265,23 @@ class GoogleCloudDialogflowV2QueryResult {
     }
     if (_json.containsKey('diagnosticInfo')) {
       diagnosticInfo = commons.mapMap<core.Object, core.Object>(
-          _json['diagnosticInfo'].cast<core.String, core.Object>(),
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
-          .map<GoogleCloudDialogflowV2IntentMessage>(
-              (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(value))
+          .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
+              GoogleCloudDialogflowV2IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
       fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('intent')) {
-      intent = GoogleCloudDialogflowV2Intent.fromJson(_json['intent']);
+      intent = GoogleCloudDialogflowV2Intent.fromJson(
+          _json['intent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intentDetectionConfidence')) {
       intentDetectionConfidence =
@@ -9084,13 +9292,15 @@ class GoogleCloudDialogflowV2QueryResult {
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2Context>(
-              (value) => GoogleCloudDialogflowV2Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2Context>((value) =>
+              GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('queryText')) {
@@ -9099,7 +9309,8 @@ class GoogleCloudDialogflowV2QueryResult {
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
           GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(
-              _json['sentimentAnalysisResult']);
+              _json['sentimentAnalysisResult']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('speechRecognitionConfidence')) {
       speechRecognitionConfidence =
@@ -9107,7 +9318,8 @@ class GoogleCloudDialogflowV2QueryResult {
     }
     if (_json.containsKey('webhookPayload')) {
       webhookPayload = commons.mapMap<core.Object, core.Object>(
-          _json['webhookPayload'].cast<core.String, core.Object>(),
+          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('webhookSource')) {
@@ -9222,8 +9434,9 @@ class GoogleCloudDialogflowV2SearchAgentsResponse {
   GoogleCloudDialogflowV2SearchAgentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('agents')) {
       agents = (_json['agents'] as core.List)
-          .map<GoogleCloudDialogflowV2Agent>(
-              (value) => GoogleCloudDialogflowV2Agent.fromJson(value))
+          .map<GoogleCloudDialogflowV2Agent>((value) =>
+              GoogleCloudDialogflowV2Agent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -9320,7 +9533,7 @@ class GoogleCloudDialogflowV2SentimentAnalysisResult {
   GoogleCloudDialogflowV2SentimentAnalysisResult.fromJson(core.Map _json) {
     if (_json.containsKey('queryTextSentiment')) {
       queryTextSentiment = GoogleCloudDialogflowV2Sentiment.fromJson(
-          _json['queryTextSentiment']);
+          _json['queryTextSentiment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9377,7 +9590,8 @@ class GoogleCloudDialogflowV2SessionEntityType {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('entityOverrideMode')) {
@@ -9494,8 +9708,8 @@ class GoogleCloudDialogflowV2SynthesizeSpeechConfig {
       speakingRate = (_json['speakingRate'] as core.num).toDouble();
     }
     if (_json.containsKey('voice')) {
-      voice =
-          GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(_json['voice']);
+      voice = GoogleCloudDialogflowV2VoiceSelectionParams.fromJson(
+          _json['voice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('volumeGainDb')) {
       volumeGainDb = (_json['volumeGainDb'] as core.num).toDouble();
@@ -9637,8 +9851,9 @@ class GoogleCloudDialogflowV2ValidationResult {
   GoogleCloudDialogflowV2ValidationResult.fromJson(core.Map _json) {
     if (_json.containsKey('validationErrors')) {
       validationErrors = (_json['validationErrors'] as core.List)
-          .map<GoogleCloudDialogflowV2ValidationError>(
-              (value) => GoogleCloudDialogflowV2ValidationError.fromJson(value))
+          .map<GoogleCloudDialogflowV2ValidationError>((value) =>
+              GoogleCloudDialogflowV2ValidationError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9722,11 +9937,12 @@ class GoogleCloudDialogflowV2WebhookRequest {
     if (_json.containsKey('originalDetectIntentRequest')) {
       originalDetectIntentRequest =
           GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(
-              _json['originalDetectIntentRequest']);
+              _json['originalDetectIntentRequest']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryResult')) {
-      queryResult =
-          GoogleCloudDialogflowV2QueryResult.fromJson(_json['queryResult']);
+      queryResult = GoogleCloudDialogflowV2QueryResult.fromJson(
+          _json['queryResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responseId')) {
       responseId = _json['responseId'] as core.String;
@@ -9816,12 +10032,13 @@ class GoogleCloudDialogflowV2WebhookResponse {
   GoogleCloudDialogflowV2WebhookResponse.fromJson(core.Map _json) {
     if (_json.containsKey('followupEventInput')) {
       followupEventInput = GoogleCloudDialogflowV2EventInput.fromJson(
-          _json['followupEventInput']);
+          _json['followupEventInput'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
-          .map<GoogleCloudDialogflowV2IntentMessage>(
-              (value) => GoogleCloudDialogflowV2IntentMessage.fromJson(value))
+          .map<GoogleCloudDialogflowV2IntentMessage>((value) =>
+              GoogleCloudDialogflowV2IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
@@ -9829,19 +10046,22 @@ class GoogleCloudDialogflowV2WebhookResponse {
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2Context>(
-              (value) => GoogleCloudDialogflowV2Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2Context>((value) =>
+              GoogleCloudDialogflowV2Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
           .map<GoogleCloudDialogflowV2SessionEntityType>((value) =>
-              GoogleCloudDialogflowV2SessionEntityType.fromJson(value))
+              GoogleCloudDialogflowV2SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('source')) {
@@ -10018,8 +10238,9 @@ class GoogleCloudDialogflowV2beta1BatchUpdateEntityTypesResponse {
       core.Map _json) {
     if (_json.containsKey('entityTypes')) {
       entityTypes = (_json['entityTypes'] as core.List)
-          .map<GoogleCloudDialogflowV2beta1EntityType>(
-              (value) => GoogleCloudDialogflowV2beta1EntityType.fromJson(value))
+          .map<GoogleCloudDialogflowV2beta1EntityType>((value) =>
+              GoogleCloudDialogflowV2beta1EntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10045,8 +10266,9 @@ class GoogleCloudDialogflowV2beta1BatchUpdateIntentsResponse {
       core.Map _json) {
     if (_json.containsKey('intents')) {
       intents = (_json['intents'] as core.List)
-          .map<GoogleCloudDialogflowV2beta1Intent>(
-              (value) => GoogleCloudDialogflowV2beta1Intent.fromJson(value))
+          .map<GoogleCloudDialogflowV2beta1Intent>((value) =>
+              GoogleCloudDialogflowV2beta1Intent.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10073,7 +10295,8 @@ class GoogleCloudDialogflowV2beta1BatchUpdateSmartMessagingEntriesResponse {
     if (_json.containsKey('smartMessagingEntries')) {
       smartMessagingEntries = (_json['smartMessagingEntries'] as core.List)
           .map<GoogleCloudDialogflowV2beta1SmartMessagingEntry>((value) =>
-              GoogleCloudDialogflowV2beta1SmartMessagingEntry.fromJson(value))
+              GoogleCloudDialogflowV2beta1SmartMessagingEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10146,7 +10369,8 @@ class GoogleCloudDialogflowV2beta1Context {
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -10227,7 +10451,8 @@ class GoogleCloudDialogflowV2beta1EntityType {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2beta1EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10340,7 +10565,8 @@ class GoogleCloudDialogflowV2beta1EventInput {
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -10409,7 +10635,8 @@ class GoogleCloudDialogflowV2beta1ImportDocumentsResponse {
   GoogleCloudDialogflowV2beta1ImportDocumentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(value))
+          .map<GoogleRpcStatus>((value) => GoogleRpcStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10566,7 +10793,7 @@ class GoogleCloudDialogflowV2beta1Intent {
       followupIntentInfo = (_json['followupIntentInfo'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo>((value) =>
               GoogleCloudDialogflowV2beta1IntentFollowupIntentInfo.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inputContextNames')) {
@@ -10580,7 +10807,8 @@ class GoogleCloudDialogflowV2beta1Intent {
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
-              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(value))
+              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mlDisabled')) {
@@ -10594,14 +10822,16 @@ class GoogleCloudDialogflowV2beta1Intent {
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2beta1Context>(
-              (value) => GoogleCloudDialogflowV2beta1Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2beta1Context>((value) =>
+              GoogleCloudDialogflowV2beta1Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentParameter>((value) =>
-              GoogleCloudDialogflowV2beta1IntentParameter.fromJson(value))
+              GoogleCloudDialogflowV2beta1IntentParameter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parentFollowupIntentName')) {
@@ -10620,7 +10850,8 @@ class GoogleCloudDialogflowV2beta1Intent {
     if (_json.containsKey('trainingPhrases')) {
       trainingPhrases = (_json['trainingPhrases'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentTrainingPhrase>((value) =>
-              GoogleCloudDialogflowV2beta1IntentTrainingPhrase.fromJson(value))
+              GoogleCloudDialogflowV2beta1IntentTrainingPhrase.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webhookState')) {
@@ -10825,43 +11056,46 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
   GoogleCloudDialogflowV2beta1IntentMessage.fromJson(core.Map _json) {
     if (_json.containsKey('basicCard')) {
       basicCard = GoogleCloudDialogflowV2beta1IntentMessageBasicCard.fromJson(
-          _json['basicCard']);
+          _json['basicCard'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('browseCarouselCard')) {
       browseCarouselCard =
           GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard.fromJson(
-              _json['browseCarouselCard']);
+              _json['browseCarouselCard']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('card')) {
-      card =
-          GoogleCloudDialogflowV2beta1IntentMessageCard.fromJson(_json['card']);
+      card = GoogleCloudDialogflowV2beta1IntentMessageCard.fromJson(
+          _json['card'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('carouselSelect')) {
       carouselSelect =
           GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect.fromJson(
-              _json['carouselSelect']);
+              _json['carouselSelect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linkOutSuggestion')) {
       linkOutSuggestion =
           GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion.fromJson(
-              _json['linkOutSuggestion']);
+              _json['linkOutSuggestion']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('listSelect')) {
       listSelect = GoogleCloudDialogflowV2beta1IntentMessageListSelect.fromJson(
-          _json['listSelect']);
+          _json['listSelect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mediaContent')) {
       mediaContent =
           GoogleCloudDialogflowV2beta1IntentMessageMediaContent.fromJson(
-              _json['mediaContent']);
+              _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('platform')) {
@@ -10870,54 +11104,59 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
     if (_json.containsKey('quickReplies')) {
       quickReplies =
           GoogleCloudDialogflowV2beta1IntentMessageQuickReplies.fromJson(
-              _json['quickReplies']);
+              _json['quickReplies'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rbmCarouselRichCard')) {
       rbmCarouselRichCard =
           GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard.fromJson(
-              _json['rbmCarouselRichCard']);
+              _json['rbmCarouselRichCard']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rbmStandaloneRichCard')) {
       rbmStandaloneRichCard =
           GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard.fromJson(
-              _json['rbmStandaloneRichCard']);
+              _json['rbmStandaloneRichCard']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rbmText')) {
       rbmText = GoogleCloudDialogflowV2beta1IntentMessageRbmText.fromJson(
-          _json['rbmText']);
+          _json['rbmText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('simpleResponses')) {
       simpleResponses =
           GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses.fromJson(
-              _json['simpleResponses']);
+              _json['simpleResponses'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestions')) {
       suggestions =
           GoogleCloudDialogflowV2beta1IntentMessageSuggestions.fromJson(
-              _json['suggestions']);
+              _json['suggestions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableCard')) {
       tableCard = GoogleCloudDialogflowV2beta1IntentMessageTableCard.fromJson(
-          _json['tableCard']);
+          _json['tableCard'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('telephonyPlayAudio')) {
       telephonyPlayAudio =
           GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio.fromJson(
-              _json['telephonyPlayAudio']);
+              _json['telephonyPlayAudio']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('telephonySynthesizeSpeech')) {
       telephonySynthesizeSpeech =
           GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech
-              .fromJson(_json['telephonySynthesizeSpeech']);
+              .fromJson(_json['telephonySynthesizeSpeech']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('telephonyTransferCall')) {
       telephonyTransferCall =
           GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall
-              .fromJson(_json['telephonyTransferCall']);
+              .fromJson(_json['telephonyTransferCall']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
-      text =
-          GoogleCloudDialogflowV2beta1IntentMessageText.fromJson(_json['text']);
+      text = GoogleCloudDialogflowV2beta1IntentMessageText.fromJson(
+          _json['text'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -11015,7 +11254,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
           .map<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('formattedText')) {
@@ -11023,7 +11262,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCard {
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtitle')) {
       subtitle = _json['subtitle'] as core.String;
@@ -11070,7 +11309,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton {
     if (_json.containsKey('openUriAction')) {
       openUriAction =
           GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction
-              .fromJson(_json['openUriAction']);
+              .fromJson(_json['openUriAction']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -11152,7 +11392,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard {
           .map<GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItem
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11200,12 +11440,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselC
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('openUriAction')) {
       openUriAction =
           GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlAction
-              .fromJson(_json['openUriAction']);
+              .fromJson(_json['openUriAction']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -11292,7 +11533,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCard {
       buttons = (_json['buttons'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageCardButton>((value) =>
               GoogleCloudDialogflowV2beta1IntentMessageCardButton.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('imageUri')) {
@@ -11369,7 +11610,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect {
           .map<GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11406,11 +11647,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem {
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('info')) {
       info = GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromJson(
-          _json['info']);
+          _json['info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -11557,7 +11798,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelect {
       items = (_json['items'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageListSelectItem>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageListSelectItem
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subtitle')) {
@@ -11606,11 +11847,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageListSelectItem {
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('info')) {
       info = GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo.fromJson(
-          _json['info']);
+          _json['info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -11657,7 +11898,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContent {
           .map<GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mediaType')) {
@@ -11707,11 +11948,11 @@ class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject {
     }
     if (_json.containsKey('icon')) {
       icon = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['icon']);
+          _json['icon'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('largeImage')) {
       largeImage = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['largeImage']);
+          _json['largeImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -11799,13 +12040,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent {
     }
     if (_json.containsKey('media')) {
       media = GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia
-          .fromJson(_json['media']);
+          .fromJson(_json['media'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestions')) {
       suggestions = (_json['suggestions'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('title')) {
@@ -11916,7 +12157,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard {
       cardContents = (_json['cardContents'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cardWidth')) {
@@ -11967,7 +12208,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard {
     if (_json.containsKey('cardContent')) {
       cardContent =
           GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent.fromJson(
-              _json['cardContent']);
+              _json['cardContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cardOrientation')) {
       cardOrientation = _json['cardOrientation'] as core.String;
@@ -12022,12 +12263,13 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
     if (_json.containsKey('dial')) {
       dial =
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDial
-              .fromJson(_json['dial']);
+              .fromJson(_json['dial'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('openUrl')) {
       openUrl =
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUri
-              .fromJson(_json['openUrl']);
+              .fromJson(
+                  _json['openUrl'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('postbackData')) {
       postbackData = _json['postbackData'] as core.String;
@@ -12035,7 +12277,8 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction {
     if (_json.containsKey('shareLocation')) {
       shareLocation =
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocation
-              .fromJson(_json['shareLocation']);
+              .fromJson(_json['shareLocation']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -12182,12 +12425,12 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
     if (_json.containsKey('action')) {
       action =
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction.fromJson(
-              _json['action']);
+              _json['action'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reply')) {
       reply =
           GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply.fromJson(
-              _json['reply']);
+              _json['reply'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12219,7 +12462,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
       rbmSuggestion = (_json['rbmSuggestion'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('text')) {
@@ -12336,7 +12579,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses {
       simpleResponses = (_json['simpleResponses'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12387,7 +12630,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSuggestions {
       suggestions = (_json['suggestions'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageSuggestion>((value) =>
               GoogleCloudDialogflowV2beta1IntentMessageSuggestion.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12431,7 +12674,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
           .map<GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('columnProperties')) {
@@ -12439,18 +12682,18 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
           .map<GoogleCloudDialogflowV2beta1IntentMessageColumnProperties>(
               (value) =>
                   GoogleCloudDialogflowV2beta1IntentMessageColumnProperties
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('image')) {
       image = GoogleCloudDialogflowV2beta1IntentMessageImage.fromJson(
-          _json['image']);
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageTableCardRow>((value) =>
               GoogleCloudDialogflowV2beta1IntentMessageTableCardRow.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('subtitle')) {
@@ -12525,7 +12768,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCardRow {
       cells = (_json['cells'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessageTableCardCell>(
               (value) => GoogleCloudDialogflowV2beta1IntentMessageTableCardCell
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dividerAfter')) {
@@ -12803,7 +13046,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrase {
       parts = (_json['parts'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart>((value) =>
               GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timesAddedCount')) {
@@ -12900,7 +13143,7 @@ class GoogleCloudDialogflowV2beta1KnowledgeAnswers {
       answers = (_json['answers'] as core.List)
           .map<GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer>((value) =>
               GoogleCloudDialogflowV2beta1KnowledgeAnswersAnswer.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13032,7 +13275,8 @@ class GoogleCloudDialogflowV2beta1LabelConversationResponse {
     if (_json.containsKey('annotatedConversationDataset')) {
       annotatedConversationDataset =
           GoogleCloudDialogflowV2beta1AnnotatedConversationDataset.fromJson(
-              _json['annotatedConversationDataset']);
+              _json['annotatedConversationDataset']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13076,7 +13320,8 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
       core.Map _json) {
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('source')) {
@@ -13214,20 +13459,23 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     }
     if (_json.containsKey('diagnosticInfo')) {
       diagnosticInfo = commons.mapMap<core.Object, core.Object>(
-          _json['diagnosticInfo'].cast<core.String, core.Object>(),
+          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
-              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(value))
+              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
       fulfillmentText = _json['fulfillmentText'] as core.String;
     }
     if (_json.containsKey('intent')) {
-      intent = GoogleCloudDialogflowV2beta1Intent.fromJson(_json['intent']);
+      intent = GoogleCloudDialogflowV2beta1Intent.fromJson(
+          _json['intent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('intentDetectionConfidence')) {
       intentDetectionConfidence =
@@ -13235,20 +13483,22 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     }
     if (_json.containsKey('knowledgeAnswers')) {
       knowledgeAnswers = GoogleCloudDialogflowV2beta1KnowledgeAnswers.fromJson(
-          _json['knowledgeAnswers']);
+          _json['knowledgeAnswers'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2beta1Context>(
-              (value) => GoogleCloudDialogflowV2beta1Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2beta1Context>((value) =>
+              GoogleCloudDialogflowV2beta1Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.Object, core.Object>(
-          _json['parameters'].cast<core.String, core.Object>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('queryText')) {
@@ -13257,7 +13507,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     if (_json.containsKey('sentimentAnalysisResult')) {
       sentimentAnalysisResult =
           GoogleCloudDialogflowV2beta1SentimentAnalysisResult.fromJson(
-              _json['sentimentAnalysisResult']);
+              _json['sentimentAnalysisResult']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('speechRecognitionConfidence')) {
       speechRecognitionConfidence =
@@ -13265,7 +13516,8 @@ class GoogleCloudDialogflowV2beta1QueryResult {
     }
     if (_json.containsKey('webhookPayload')) {
       webhookPayload = commons.mapMap<core.Object, core.Object>(
-          _json['webhookPayload'].cast<core.String, core.Object>(),
+          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('webhookSource')) {
@@ -13381,7 +13633,7 @@ class GoogleCloudDialogflowV2beta1SentimentAnalysisResult {
   GoogleCloudDialogflowV2beta1SentimentAnalysisResult.fromJson(core.Map _json) {
     if (_json.containsKey('queryTextSentiment')) {
       queryTextSentiment = GoogleCloudDialogflowV2beta1Sentiment.fromJson(
-          _json['queryTextSentiment']);
+          _json['queryTextSentiment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13441,7 +13693,8 @@ class GoogleCloudDialogflowV2beta1SessionEntityType {
     if (_json.containsKey('entities')) {
       entities = (_json['entities'] as core.List)
           .map<GoogleCloudDialogflowV2beta1EntityTypeEntity>((value) =>
-              GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(value))
+              GoogleCloudDialogflowV2beta1EntityTypeEntity.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('entityOverrideMode')) {
@@ -13497,7 +13750,7 @@ class GoogleCloudDialogflowV2beta1SmartMessagingEntry {
     if (_json.containsKey('messageInfo')) {
       messageInfo =
           GoogleCloudDialogflowV2beta1SmartMessagingEntryInfo.fromJson(
-              _json['messageInfo']);
+              _json['messageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -13599,17 +13852,19 @@ class GoogleCloudDialogflowV2beta1WebhookRequest {
     if (_json.containsKey('alternativeQueryResults')) {
       alternativeQueryResults = (_json['alternativeQueryResults'] as core.List)
           .map<GoogleCloudDialogflowV2beta1QueryResult>((value) =>
-              GoogleCloudDialogflowV2beta1QueryResult.fromJson(value))
+              GoogleCloudDialogflowV2beta1QueryResult.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('originalDetectIntentRequest')) {
       originalDetectIntentRequest =
           GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest.fromJson(
-              _json['originalDetectIntentRequest']);
+              _json['originalDetectIntentRequest']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryResult')) {
       queryResult = GoogleCloudDialogflowV2beta1QueryResult.fromJson(
-          _json['queryResult']);
+          _json['queryResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('responseId')) {
       responseId = _json['responseId'] as core.String;
@@ -13711,12 +13966,13 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     }
     if (_json.containsKey('followupEventInput')) {
       followupEventInput = GoogleCloudDialogflowV2beta1EventInput.fromJson(
-          _json['followupEventInput']);
+          _json['followupEventInput'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
           .map<GoogleCloudDialogflowV2beta1IntentMessage>((value) =>
-              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(value))
+              GoogleCloudDialogflowV2beta1IntentMessage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('fulfillmentText')) {
@@ -13724,19 +13980,22 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
     }
     if (_json.containsKey('outputContexts')) {
       outputContexts = (_json['outputContexts'] as core.List)
-          .map<GoogleCloudDialogflowV2beta1Context>(
-              (value) => GoogleCloudDialogflowV2beta1Context.fromJson(value))
+          .map<GoogleCloudDialogflowV2beta1Context>((value) =>
+              GoogleCloudDialogflowV2beta1Context.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('payload')) {
       payload = commons.mapMap<core.Object, core.Object>(
-          _json['payload'].cast<core.String, core.Object>(),
+          (_json['payload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
           .map<GoogleCloudDialogflowV2beta1SessionEntityType>((value) =>
-              GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(value))
+              GoogleCloudDialogflowV2beta1SessionEntityType.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('source')) {
@@ -13948,8 +14207,9 @@ class GoogleLongrunningListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<GoogleLongrunningOperation>(
-              (value) => GoogleLongrunningOperation.fromJson(value))
+          .map<GoogleLongrunningOperation>((value) =>
+              GoogleLongrunningOperation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14010,11 +14270,13 @@ class GoogleLongrunningOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(_json['error']);
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -14022,7 +14284,8 @@ class GoogleLongrunningOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -14098,7 +14361,8 @@ class GoogleRpcStatus {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

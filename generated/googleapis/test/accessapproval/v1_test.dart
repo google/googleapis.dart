@@ -83,8 +83,8 @@ core.List<api.EnrolledService> buildUnnamed4338() {
 
 void checkUnnamed4338(core.List<api.EnrolledService> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnrolledService(o[0]);
-  checkEnrolledService(o[1]);
+  checkEnrolledService(o[0] as api.EnrolledService);
+  checkEnrolledService(o[1] as api.EnrolledService);
 }
 
 core.List<core.String> buildUnnamed4339() {
@@ -189,15 +189,16 @@ api.ApprovalRequest buildApprovalRequest() {
 void checkApprovalRequest(api.ApprovalRequest o) {
   buildCounterApprovalRequest++;
   if (buildCounterApprovalRequest < 3) {
-    checkApproveDecision(o.approve);
-    checkDismissDecision(o.dismiss);
+    checkApproveDecision(o.approve as api.ApproveDecision);
+    checkDismissDecision(o.dismiss as api.DismissDecision);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.requestTime, unittest.equals('foo'));
     unittest.expect(o.requestedExpiration, unittest.equals('foo'));
-    checkAccessLocations(o.requestedLocations);
-    checkAccessReason(o.requestedReason);
+    checkAccessLocations(o.requestedLocations as api.AccessLocations);
+    checkAccessReason(o.requestedReason as api.AccessReason);
     unittest.expect(o.requestedResourceName, unittest.equals('foo'));
-    checkResourceProperties(o.requestedResourceProperties);
+    checkResourceProperties(
+        o.requestedResourceProperties as api.ResourceProperties);
   }
   buildCounterApprovalRequest--;
 }
@@ -323,8 +324,8 @@ core.List<api.ApprovalRequest> buildUnnamed4340() {
 
 void checkUnnamed4340(core.List<api.ApprovalRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApprovalRequest(o[0]);
-  checkApprovalRequest(o[1]);
+  checkApprovalRequest(o[0] as api.ApprovalRequest);
+  checkApprovalRequest(o[1] as api.ApprovalRequest);
 }
 
 core.int buildCounterListApprovalRequestsResponse = 0;
@@ -372,7 +373,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessApprovalSettings();
       var od = api.AccessApprovalSettings.fromJson(o.toJson());
-      checkAccessApprovalSettings(od);
+      checkAccessApprovalSettings(od as api.AccessApprovalSettings);
     });
   });
 
@@ -380,7 +381,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessLocations();
       var od = api.AccessLocations.fromJson(o.toJson());
-      checkAccessLocations(od);
+      checkAccessLocations(od as api.AccessLocations);
     });
   });
 
@@ -388,7 +389,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessReason();
       var od = api.AccessReason.fromJson(o.toJson());
-      checkAccessReason(od);
+      checkAccessReason(od as api.AccessReason);
     });
   });
 
@@ -396,7 +397,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApprovalRequest();
       var od = api.ApprovalRequest.fromJson(o.toJson());
-      checkApprovalRequest(od);
+      checkApprovalRequest(od as api.ApprovalRequest);
     });
   });
 
@@ -404,7 +405,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApproveApprovalRequestMessage();
       var od = api.ApproveApprovalRequestMessage.fromJson(o.toJson());
-      checkApproveApprovalRequestMessage(od);
+      checkApproveApprovalRequestMessage(
+          od as api.ApproveApprovalRequestMessage);
     });
   });
 
@@ -412,7 +414,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApproveDecision();
       var od = api.ApproveDecision.fromJson(o.toJson());
-      checkApproveDecision(od);
+      checkApproveDecision(od as api.ApproveDecision);
     });
   });
 
@@ -420,7 +422,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDismissApprovalRequestMessage();
       var od = api.DismissApprovalRequestMessage.fromJson(o.toJson());
-      checkDismissApprovalRequestMessage(od);
+      checkDismissApprovalRequestMessage(
+          od as api.DismissApprovalRequestMessage);
     });
   });
 
@@ -428,7 +431,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDismissDecision();
       var od = api.DismissDecision.fromJson(o.toJson());
-      checkDismissDecision(od);
+      checkDismissDecision(od as api.DismissDecision);
     });
   });
 
@@ -436,7 +439,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -444,7 +447,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnrolledService();
       var od = api.EnrolledService.fromJson(o.toJson());
-      checkEnrolledService(od);
+      checkEnrolledService(od as api.EnrolledService);
     });
   });
 
@@ -452,7 +455,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListApprovalRequestsResponse();
       var od = api.ListApprovalRequestsResponse.fromJson(o.toJson());
-      checkListApprovalRequestsResponse(od);
+      checkListApprovalRequestsResponse(od as api.ListApprovalRequestsResponse);
     });
   });
 
@@ -460,7 +463,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceProperties();
       var od = api.ResourceProperties.fromJson(o.toJson());
-      checkResourceProperties(od);
+      checkResourceProperties(od as api.ResourceProperties);
     });
   });
 
@@ -509,7 +512,7 @@ void main() {
       res
           .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -557,7 +560,7 @@ void main() {
       res
           .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
 
@@ -569,8 +572,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(json);
-        checkAccessApprovalSettings(obj);
+        var obj = api.AccessApprovalSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -613,7 +617,7 @@ void main() {
           .updateAccessApprovalSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
   });
@@ -626,8 +630,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(json);
-        checkApproveApprovalRequestMessage(obj);
+        var obj = api.ApproveApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkApproveApprovalRequestMessage(
+            obj as api.ApproveApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -667,7 +673,7 @@ void main() {
       res
           .approve(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -678,8 +684,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(json);
-        checkDismissApprovalRequestMessage(obj);
+        var obj = api.DismissApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDismissApprovalRequestMessage(
+            obj as api.DismissApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -719,7 +727,7 @@ void main() {
       res
           .dismiss(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -767,7 +775,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -827,7 +835,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(response);
+        checkListApprovalRequestsResponse(
+            response as api.ListApprovalRequestsResponse);
       })));
     });
   });
@@ -877,7 +886,7 @@ void main() {
       res
           .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -925,7 +934,7 @@ void main() {
       res
           .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
 
@@ -937,8 +946,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(json);
-        checkAccessApprovalSettings(obj);
+        var obj = api.AccessApprovalSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -981,7 +991,7 @@ void main() {
           .updateAccessApprovalSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
   });
@@ -994,8 +1004,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(json);
-        checkApproveApprovalRequestMessage(obj);
+        var obj = api.ApproveApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkApproveApprovalRequestMessage(
+            obj as api.ApproveApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1035,7 +1047,7 @@ void main() {
       res
           .approve(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1046,8 +1058,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(json);
-        checkDismissApprovalRequestMessage(obj);
+        var obj = api.DismissApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDismissApprovalRequestMessage(
+            obj as api.DismissApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1087,7 +1101,7 @@ void main() {
       res
           .dismiss(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1135,7 +1149,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1195,7 +1209,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(response);
+        checkListApprovalRequestsResponse(
+            response as api.ListApprovalRequestsResponse);
       })));
     });
   });
@@ -1245,7 +1260,7 @@ void main() {
       res
           .deleteAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1293,7 +1308,7 @@ void main() {
       res
           .getAccessApprovalSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
 
@@ -1305,8 +1320,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AccessApprovalSettings.fromJson(json);
-        checkAccessApprovalSettings(obj);
+        var obj = api.AccessApprovalSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAccessApprovalSettings(obj as api.AccessApprovalSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1349,7 +1365,7 @@ void main() {
           .updateAccessApprovalSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessApprovalSettings(response);
+        checkAccessApprovalSettings(response as api.AccessApprovalSettings);
       })));
     });
   });
@@ -1362,8 +1378,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ApproveApprovalRequestMessage.fromJson(json);
-        checkApproveApprovalRequestMessage(obj);
+        var obj = api.ApproveApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkApproveApprovalRequestMessage(
+            obj as api.ApproveApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1403,7 +1421,7 @@ void main() {
       res
           .approve(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1414,8 +1432,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DismissApprovalRequestMessage.fromJson(json);
-        checkDismissApprovalRequestMessage(obj);
+        var obj = api.DismissApprovalRequestMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDismissApprovalRequestMessage(
+            obj as api.DismissApprovalRequestMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1455,7 +1475,7 @@ void main() {
       res
           .dismiss(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1503,7 +1523,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApprovalRequest(response);
+        checkApprovalRequest(response as api.ApprovalRequest);
       })));
     });
 
@@ -1563,7 +1583,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListApprovalRequestsResponse(response);
+        checkListApprovalRequestsResponse(
+            response as api.ListApprovalRequestsResponse);
       })));
     });
   });

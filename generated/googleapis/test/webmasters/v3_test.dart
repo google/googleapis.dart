@@ -146,8 +146,8 @@ core.List<api.ApiDimensionFilter> buildUnnamed2742() {
 
 void checkUnnamed2742(core.List<api.ApiDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApiDimensionFilter(o[0]);
-  checkApiDimensionFilter(o[1]);
+  checkApiDimensionFilter(o[0] as api.ApiDimensionFilter);
+  checkApiDimensionFilter(o[1] as api.ApiDimensionFilter);
 }
 
 core.int buildCounterApiDimensionFilterGroup = 0;
@@ -180,8 +180,8 @@ core.List<api.ApiDimensionFilterGroup> buildUnnamed2743() {
 
 void checkUnnamed2743(core.List<api.ApiDimensionFilterGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApiDimensionFilterGroup(o[0]);
-  checkApiDimensionFilterGroup(o[1]);
+  checkApiDimensionFilterGroup(o[0] as api.ApiDimensionFilterGroup);
+  checkApiDimensionFilterGroup(o[1] as api.ApiDimensionFilterGroup);
 }
 
 core.List<core.String> buildUnnamed2744() {
@@ -239,8 +239,8 @@ core.List<api.ApiDataRow> buildUnnamed2745() {
 
 void checkUnnamed2745(core.List<api.ApiDataRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApiDataRow(o[0]);
-  checkApiDataRow(o[1]);
+  checkApiDataRow(o[0] as api.ApiDataRow);
+  checkApiDataRow(o[1] as api.ApiDataRow);
 }
 
 core.int buildCounterSearchAnalyticsQueryResponse = 0;
@@ -273,8 +273,8 @@ core.List<api.WmxSitemap> buildUnnamed2746() {
 
 void checkUnnamed2746(core.List<api.WmxSitemap> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWmxSitemap(o[0]);
-  checkWmxSitemap(o[1]);
+  checkWmxSitemap(o[0] as api.WmxSitemap);
+  checkWmxSitemap(o[1] as api.WmxSitemap);
 }
 
 core.int buildCounterSitemapsListResponse = 0;
@@ -305,8 +305,8 @@ core.List<api.WmxSite> buildUnnamed2747() {
 
 void checkUnnamed2747(core.List<api.WmxSite> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWmxSite(o[0]);
-  checkWmxSite(o[1]);
+  checkWmxSite(o[0] as api.WmxSite);
+  checkWmxSite(o[1] as api.WmxSite);
 }
 
 core.int buildCounterSitesListResponse = 0;
@@ -358,8 +358,8 @@ core.List<api.WmxSitemapContent> buildUnnamed2748() {
 
 void checkUnnamed2748(core.List<api.WmxSitemapContent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWmxSitemapContent(o[0]);
-  checkWmxSitemapContent(o[1]);
+  checkWmxSitemapContent(o[0] as api.WmxSitemapContent);
+  checkWmxSitemapContent(o[1] as api.WmxSitemapContent);
 }
 
 core.int buildCounterWmxSitemap = 0;
@@ -427,7 +427,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApiDataRow();
       var od = api.ApiDataRow.fromJson(o.toJson());
-      checkApiDataRow(od);
+      checkApiDataRow(od as api.ApiDataRow);
     });
   });
 
@@ -435,7 +435,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApiDimensionFilter();
       var od = api.ApiDimensionFilter.fromJson(o.toJson());
-      checkApiDimensionFilter(od);
+      checkApiDimensionFilter(od as api.ApiDimensionFilter);
     });
   });
 
@@ -443,7 +443,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApiDimensionFilterGroup();
       var od = api.ApiDimensionFilterGroup.fromJson(o.toJson());
-      checkApiDimensionFilterGroup(od);
+      checkApiDimensionFilterGroup(od as api.ApiDimensionFilterGroup);
     });
   });
 
@@ -451,7 +451,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAnalyticsQueryRequest();
       var od = api.SearchAnalyticsQueryRequest.fromJson(o.toJson());
-      checkSearchAnalyticsQueryRequest(od);
+      checkSearchAnalyticsQueryRequest(od as api.SearchAnalyticsQueryRequest);
     });
   });
 
@@ -459,7 +459,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAnalyticsQueryResponse();
       var od = api.SearchAnalyticsQueryResponse.fromJson(o.toJson());
-      checkSearchAnalyticsQueryResponse(od);
+      checkSearchAnalyticsQueryResponse(od as api.SearchAnalyticsQueryResponse);
     });
   });
 
@@ -467,7 +467,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSitemapsListResponse();
       var od = api.SitemapsListResponse.fromJson(o.toJson());
-      checkSitemapsListResponse(od);
+      checkSitemapsListResponse(od as api.SitemapsListResponse);
     });
   });
 
@@ -475,7 +475,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSitesListResponse();
       var od = api.SitesListResponse.fromJson(o.toJson());
-      checkSitesListResponse(od);
+      checkSitesListResponse(od as api.SitesListResponse);
     });
   });
 
@@ -483,7 +483,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWmxSite();
       var od = api.WmxSite.fromJson(o.toJson());
-      checkWmxSite(od);
+      checkWmxSite(od as api.WmxSite);
     });
   });
 
@@ -491,7 +491,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWmxSitemap();
       var od = api.WmxSitemap.fromJson(o.toJson());
-      checkWmxSitemap(od);
+      checkWmxSitemap(od as api.WmxSitemap);
     });
   });
 
@@ -499,7 +499,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWmxSitemapContent();
       var od = api.WmxSitemapContent.fromJson(o.toJson());
-      checkWmxSitemapContent(od);
+      checkWmxSitemapContent(od as api.WmxSitemapContent);
     });
   });
 
@@ -511,8 +511,10 @@ void main() {
       var arg_siteUrl = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchAnalyticsQueryRequest.fromJson(json);
-        checkSearchAnalyticsQueryRequest(obj);
+        var obj = api.SearchAnalyticsQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchAnalyticsQueryRequest(
+            obj as api.SearchAnalyticsQueryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -563,7 +565,8 @@ void main() {
       res
           .query(arg_request, arg_siteUrl, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchAnalyticsQueryResponse(response);
+        checkSearchAnalyticsQueryResponse(
+            response as api.SearchAnalyticsQueryResponse);
       })));
     });
   });
@@ -689,7 +692,7 @@ void main() {
       res
           .get(arg_siteUrl, arg_feedpath, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWmxSitemap(response);
+        checkWmxSitemap(response as api.WmxSitemap);
       })));
     });
 
@@ -752,7 +755,7 @@ void main() {
           .list(arg_siteUrl,
               sitemapIndex: arg_sitemapIndex, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSitemapsListResponse(response);
+        checkSitemapsListResponse(response as api.SitemapsListResponse);
       })));
     });
 
@@ -970,7 +973,7 @@ void main() {
       res
           .get(arg_siteUrl, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWmxSite(response);
+        checkWmxSite(response as api.WmxSite);
       })));
     });
 
@@ -1017,7 +1020,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkSitesListResponse(response);
+        checkSitesListResponse(response as api.SitesListResponse);
       })));
     });
   });

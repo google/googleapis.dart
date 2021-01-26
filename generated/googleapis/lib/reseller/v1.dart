@@ -107,7 +107,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Order a new customer's account.
@@ -166,7 +168,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a customer account's settings. This method supports patch
@@ -224,7 +228,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a customer account's settings.
@@ -281,7 +287,9 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Customer.fromJson(data));
+    return _response.then(
+      (data) => Customer.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -329,8 +337,10 @@ class ResellernotifyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ResellernotifyGetwatchdetailsResponse.fromJson(data));
+    return _response.then(
+      (data) => ResellernotifyGetwatchdetailsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Registers a Reseller for receiving notifications.
@@ -379,7 +389,10 @@ class ResellernotifyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResellernotifyResource.fromJson(data));
+    return _response.then(
+      (data) => ResellernotifyResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unregisters a Reseller for receiving notifications.
@@ -428,7 +441,10 @@ class ResellernotifyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResellernotifyResource.fromJson(data));
+    return _response.then(
+      (data) => ResellernotifyResource.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -499,7 +515,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a subscription plan. Use this method to update a plan for a 30-day
@@ -572,7 +591,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a user license's renewal settings. This is applicable for accounts
@@ -644,7 +666,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a subscription's user license settings.
@@ -715,7 +740,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Cancel, suspend, or transfer a subscription to direct.
@@ -795,7 +823,9 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Get a specific subscription.
@@ -859,7 +889,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create or transfer a subscription.
@@ -929,7 +962,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List of subscriptions managed by the reseller. The list can be all
@@ -1021,7 +1057,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscriptions.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscriptions.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Immediately move a 30-day free trial subscription to a paid service
@@ -1087,7 +1126,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Suspends an active subscription.
@@ -1152,7 +1194,10 @@ class SubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Subscription.fromJson(data));
+    return _response.then(
+      (data) =>
+          Subscription.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1317,7 +1362,8 @@ class ChangePlanRequest {
       purchaseOrderId = _json['purchaseOrderId'] as core.String;
     }
     if (_json.containsKey('seats')) {
-      seats = Seats.fromJson(_json['seats']);
+      seats =
+          Seats.fromJson(_json['seats'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1403,7 +1449,8 @@ class Customer {
       phoneNumber = _json['phoneNumber'] as core.String;
     }
     if (_json.containsKey('postalAddress')) {
-      postalAddress = Address.fromJson(_json['postalAddress']);
+      postalAddress = Address.fromJson(
+          _json['postalAddress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceUiUrl')) {
       resourceUiUrl = _json['resourceUiUrl'] as core.String;
@@ -1668,7 +1715,7 @@ class SubscriptionPlan {
   SubscriptionPlan.fromJson(core.Map _json) {
     if (_json.containsKey('commitmentInterval')) {
       commitmentInterval = SubscriptionPlanCommitmentInterval.fromJson(
-          _json['commitmentInterval']);
+          _json['commitmentInterval'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isCommitmentPlan')) {
       isCommitmentPlan = _json['isCommitmentPlan'] as core.bool;
@@ -1885,19 +1932,22 @@ class Subscription {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('plan')) {
-      plan = SubscriptionPlan.fromJson(_json['plan']);
+      plan = SubscriptionPlan.fromJson(
+          _json['plan'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('purchaseOrderId')) {
       purchaseOrderId = _json['purchaseOrderId'] as core.String;
     }
     if (_json.containsKey('renewalSettings')) {
-      renewalSettings = RenewalSettings.fromJson(_json['renewalSettings']);
+      renewalSettings = RenewalSettings.fromJson(
+          _json['renewalSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceUiUrl')) {
       resourceUiUrl = _json['resourceUiUrl'] as core.String;
     }
     if (_json.containsKey('seats')) {
-      seats = Seats.fromJson(_json['seats']);
+      seats =
+          Seats.fromJson(_json['seats'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('skuId')) {
       skuId = _json['skuId'] as core.String;
@@ -1917,11 +1967,12 @@ class Subscription {
           .toList();
     }
     if (_json.containsKey('transferInfo')) {
-      transferInfo = SubscriptionTransferInfo.fromJson(_json['transferInfo']);
+      transferInfo = SubscriptionTransferInfo.fromJson(
+          _json['transferInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('trialSettings')) {
-      trialSettings =
-          SubscriptionTrialSettings.fromJson(_json['trialSettings']);
+      trialSettings = SubscriptionTrialSettings.fromJson(
+          _json['trialSettings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2009,7 +2060,8 @@ class Subscriptions {
     }
     if (_json.containsKey('subscriptions')) {
       subscriptions = (_json['subscriptions'] as core.List)
-          .map<Subscription>((value) => Subscription.fromJson(value))
+          .map<Subscription>((value) => Subscription.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

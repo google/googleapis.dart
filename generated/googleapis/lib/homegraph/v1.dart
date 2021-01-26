@@ -109,7 +109,9 @@ class AgentUsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -166,7 +168,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => QueryResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          QueryResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reports device state and optionally sends device notifications. Called by
@@ -225,8 +230,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ReportStateAndNotificationResponse.fromJson(data));
+    return _response.then(
+      (data) => ReportStateAndNotificationResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Requests Google to send an `action.devices.SYNC`
@@ -279,7 +286,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RequestSyncDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => RequestSyncDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets all the devices associated with the given third-party user. The
@@ -330,7 +340,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SyncResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SyncResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -451,22 +464,26 @@ class Device {
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.Object, core.Object>(
-          _json['attributes'].cast<core.String, core.Object>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('customData')) {
       customData = commons.mapMap<core.Object, core.Object>(
-          _json['customData'].cast<core.String, core.Object>(),
+          (_json['customData'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('deviceInfo')) {
-      deviceInfo = DeviceInfo.fromJson(_json['deviceInfo']);
+      deviceInfo = DeviceInfo.fromJson(
+          _json['deviceInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('name')) {
-      name = DeviceNames.fromJson(_json['name']);
+      name = DeviceNames.fromJson(
+          _json['name'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('notificationSupportedByAgent')) {
       notificationSupportedByAgent =
@@ -474,8 +491,8 @@ class Device {
     }
     if (_json.containsKey('otherDeviceIds')) {
       otherDeviceIds = (_json['otherDeviceIds'] as core.List)
-          .map<AgentOtherDeviceId>(
-              (value) => AgentOtherDeviceId.fromJson(value))
+          .map<AgentOtherDeviceId>((value) => AgentOtherDeviceId.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('roomHint')) {
@@ -673,7 +690,8 @@ class QueryRequest {
     }
     if (_json.containsKey('inputs')) {
       inputs = (_json['inputs'] as core.List)
-          .map<QueryRequestInput>((value) => QueryRequestInput.fromJson(value))
+          .map<QueryRequestInput>((value) => QueryRequestInput.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('requestId')) {
@@ -705,7 +723,8 @@ class QueryRequestInput {
 
   QueryRequestInput.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = QueryRequestPayload.fromJson(_json['payload']);
+      payload = QueryRequestPayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -728,7 +747,8 @@ class QueryRequestPayload {
   QueryRequestPayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<AgentDeviceId>((value) => AgentDeviceId.fromJson(value))
+          .map<AgentDeviceId>((value) => AgentDeviceId.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -761,7 +781,8 @@ class QueryResponse {
 
   QueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = QueryResponsePayload.fromJson(_json['payload']);
+      payload = QueryResponsePayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -794,9 +815,11 @@ class QueryResponsePayload {
   QueryResponsePayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = commons.mapMap<core.Map, core.Map<core.String, core.Object>>(
-          _json['devices'].cast<core.String, core.Map>(),
+          (_json['devices'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
           (core.Map item) => commons.mapMap<core.Object, core.Object>(
-              item.cast<core.String, core.Object>(),
+              (item as core.Map<core.String, core.dynamic>)
+                  .cast<core.String, core.Object>(),
               (core.Object item) => item as core.Object));
     }
   }
@@ -833,12 +856,14 @@ class ReportStateAndNotificationDevice {
   ReportStateAndNotificationDevice.fromJson(core.Map _json) {
     if (_json.containsKey('notifications')) {
       notifications = commons.mapMap<core.Object, core.Object>(
-          _json['notifications'].cast<core.String, core.Object>(),
+          (_json['notifications'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('states')) {
       states = commons.mapMap<core.Object, core.Object>(
-          _json['states'].cast<core.String, core.Object>(),
+          (_json['states'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -896,7 +921,8 @@ class ReportStateAndNotificationRequest {
       followUpToken = _json['followUpToken'] as core.String;
     }
     if (_json.containsKey('payload')) {
-      payload = StateAndNotificationPayload.fromJson(_json['payload']);
+      payload = StateAndNotificationPayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -1009,7 +1035,8 @@ class StateAndNotificationPayload {
 
   StateAndNotificationPayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
-      devices = ReportStateAndNotificationDevice.fromJson(_json['devices']);
+      devices = ReportStateAndNotificationDevice.fromJson(
+          _json['devices'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1077,7 +1104,8 @@ class SyncResponse {
 
   SyncResponse.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = SyncResponsePayload.fromJson(_json['payload']);
+      payload = SyncResponsePayload.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -1112,7 +1140,8 @@ class SyncResponsePayload {
     }
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

@@ -251,7 +251,9 @@ class DataGaResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GaData.fromJson(data));
+    return _response.then(
+      (data) => GaData.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -389,7 +391,9 @@ class DataMcfResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => McfData.fromJson(data));
+    return _response.then(
+      (data) => McfData.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -485,7 +489,10 @@ class DataRealtimeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RealtimeData.fromJson(data));
+    return _response.then(
+      (data) =>
+          RealtimeData.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -596,7 +603,10 @@ class ManagementAccountSummariesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountSummaries.fromJson(data));
+    return _response.then(
+      (data) => AccountSummaries.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -660,7 +670,9 @@ class ManagementAccountUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Adds a new user to the given account.
@@ -716,7 +728,10 @@ class ManagementAccountUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists account-user links for a given account.
@@ -781,7 +796,10 @@ class ManagementAccountUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLinks.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLinks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates permissions for an existing user on the given account.
@@ -844,7 +862,10 @@ class ManagementAccountUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -907,7 +928,9 @@ class ManagementAccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Accounts.fromJson(data));
+    return _response.then(
+      (data) => Accounts.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -962,7 +985,10 @@ class ManagementClientIdResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HashClientIdResponse.fromJson(data));
+    return _response.then(
+      (data) => HashClientIdResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1044,7 +1070,10 @@ class ManagementCustomDataSourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDataSources.fromJson(data));
+    return _response.then(
+      (data) => CustomDataSources.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1116,7 +1145,10 @@ class ManagementCustomDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDimension.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomDimension.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new custom dimension.
@@ -1180,7 +1212,10 @@ class ManagementCustomDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDimension.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomDimension.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists custom dimensions to which the user has access.
@@ -1252,7 +1287,10 @@ class ManagementCustomDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDimensions.fromJson(data));
+    return _response.then(
+      (data) => CustomDimensions.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing custom dimension. This method supports patch
@@ -1335,7 +1373,10 @@ class ManagementCustomDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDimension.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomDimension.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing custom dimension.
@@ -1417,7 +1458,10 @@ class ManagementCustomDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomDimension.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomDimension.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1489,7 +1533,10 @@ class ManagementCustomMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomMetric.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new custom metric.
@@ -1553,7 +1600,10 @@ class ManagementCustomMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomMetric.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists custom metrics to which the user has access.
@@ -1625,7 +1675,10 @@ class ManagementCustomMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomMetrics.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomMetrics.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing custom metric. This method supports patch semantics.
@@ -1706,7 +1759,10 @@ class ManagementCustomMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomMetric.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing custom metric.
@@ -1787,7 +1843,10 @@ class ManagementCustomMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomMetric.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1867,7 +1926,9 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns an experiment to which the user has access.
@@ -1940,7 +2001,10 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Experiment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Experiment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new experiment.
@@ -2012,7 +2076,10 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Experiment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Experiment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists experiments to which the user has access.
@@ -2095,7 +2162,10 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Experiments.fromJson(data));
+    return _response.then(
+      (data) =>
+          Experiments.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing experiment. This method supports patch semantics.
@@ -2174,7 +2244,10 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Experiment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Experiment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing experiment.
@@ -2253,7 +2326,10 @@ class ManagementExperimentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Experiment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Experiment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2317,7 +2393,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns filters to which the user has access.
@@ -2374,7 +2452,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new filter.
@@ -2430,7 +2510,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all filters for an account
@@ -2494,7 +2576,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filters.fromJson(data));
+    return _response.then(
+      (data) => Filters.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing filter. This method supports patch semantics.
@@ -2557,7 +2641,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing filter.
@@ -2620,7 +2706,9 @@ class ManagementFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2699,7 +2787,9 @@ class ManagementGoalsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Goal.fromJson(data));
+    return _response.then(
+      (data) => Goal.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new goal.
@@ -2771,7 +2861,9 @@ class ManagementGoalsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Goal.fromJson(data));
+    return _response.then(
+      (data) => Goal.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists goals to which the user has access.
@@ -2856,7 +2948,9 @@ class ManagementGoalsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Goals.fromJson(data));
+    return _response.then(
+      (data) => Goals.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing goal. This method supports patch semantics.
@@ -2935,7 +3029,9 @@ class ManagementGoalsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Goal.fromJson(data));
+    return _response.then(
+      (data) => Goal.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing goal.
@@ -3014,7 +3110,9 @@ class ManagementGoalsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Goal.fromJson(data));
+    return _response.then(
+      (data) => Goal.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3099,7 +3197,9 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns a single profile filter link.
@@ -3176,7 +3276,10 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProfileFilterLink.fromJson(data));
+    return _response.then(
+      (data) => ProfileFilterLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new profile filter link.
@@ -3251,7 +3354,10 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProfileFilterLink.fromJson(data));
+    return _response.then(
+      (data) => ProfileFilterLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all profile filter links for a profile.
@@ -3336,7 +3442,10 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProfileFilterLinks.fromJson(data));
+    return _response.then(
+      (data) => ProfileFilterLinks.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing profile filter link. This method supports patch
@@ -3420,7 +3529,10 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProfileFilterLink.fromJson(data));
+    return _response.then(
+      (data) => ProfileFilterLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing profile filter link.
@@ -3503,7 +3615,10 @@ class ManagementProfileFilterLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProfileFilterLink.fromJson(data));
+    return _response.then(
+      (data) => ProfileFilterLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3583,7 +3698,9 @@ class ManagementProfileUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Adds a new user to the given view (profile).
@@ -3655,7 +3772,10 @@ class ManagementProfileUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists profile-user links for a given view (profile).
@@ -3740,7 +3860,10 @@ class ManagementProfileUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLinks.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLinks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates permissions for an existing user on the given view (profile).
@@ -3819,7 +3942,10 @@ class ManagementProfileUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3891,7 +4017,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a view (profile) to which the user has access.
@@ -3959,7 +4087,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new view (profile).
@@ -4023,7 +4153,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists views (profiles) to which the user has access.
@@ -4099,7 +4231,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profiles.fromJson(data));
+    return _response.then(
+      (data) => Profiles.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing view (profile). This method supports patch semantics.
@@ -4170,7 +4304,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing view (profile).
@@ -4241,7 +4377,9 @@ class ManagementProfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4314,7 +4452,9 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a remarketing audience to which the user has access.
@@ -4380,7 +4520,10 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemarketingAudience.fromJson(data));
+    return _response.then(
+      (data) => RemarketingAudience.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new remarketing audience.
@@ -4445,7 +4588,10 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemarketingAudience.fromJson(data));
+    return _response.then(
+      (data) => RemarketingAudience.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists remarketing audiences to which the user has access.
@@ -4524,7 +4670,10 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemarketingAudiences.fromJson(data));
+    return _response.then(
+      (data) => RemarketingAudiences.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing remarketing audience. This method supports patch
@@ -4597,7 +4746,10 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemarketingAudience.fromJson(data));
+    return _response.then(
+      (data) => RemarketingAudience.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing remarketing audience.
@@ -4669,7 +4821,10 @@ class ManagementRemarketingAudienceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RemarketingAudience.fromJson(data));
+    return _response.then(
+      (data) => RemarketingAudience.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4732,7 +4887,9 @@ class ManagementSegmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Segments.fromJson(data));
+    return _response.then(
+      (data) => Segments.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4812,7 +4969,9 @@ class ManagementUnsampledReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns a single unsampled report.
@@ -4885,7 +5044,10 @@ class ManagementUnsampledReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UnsampledReport.fromJson(data));
+    return _response.then(
+      (data) =>
+          UnsampledReport.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new unsampled report.
@@ -4957,7 +5119,10 @@ class ManagementUnsampledReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UnsampledReport.fromJson(data));
+    return _response.then(
+      (data) =>
+          UnsampledReport.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists unsampled reports to which the user has access.
@@ -5041,7 +5206,10 @@ class ManagementUnsampledReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UnsampledReports.fromJson(data));
+    return _response.then(
+      (data) => UnsampledReports.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5124,7 +5292,9 @@ class ManagementUploadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// List uploads to which the user has access.
@@ -5201,7 +5371,9 @@ class ManagementUploadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Upload.fromJson(data));
+    return _response.then(
+      (data) => Upload.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List uploads to which the user has access.
@@ -5283,7 +5455,9 @@ class ManagementUploadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Uploads.fromJson(data));
+    return _response.then(
+      (data) => Uploads.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Upload data for a custom data source.
@@ -5381,7 +5555,9 @@ class ManagementUploadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Upload.fromJson(data));
+    return _response.then(
+      (data) => Upload.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5454,7 +5630,9 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns a web property-Google Ads link to which the user has access.
@@ -5520,7 +5698,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityAdWordsLink.fromJson(data));
+    return _response.then(
+      (data) => EntityAdWordsLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a webProperty-Google Ads link.
@@ -5584,7 +5765,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityAdWordsLink.fromJson(data));
+    return _response.then(
+      (data) => EntityAdWordsLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists webProperty-Google Ads links for a given web property.
@@ -5658,7 +5842,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityAdWordsLinks.fromJson(data));
+    return _response.then(
+      (data) => EntityAdWordsLinks.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing webProperty-Google Ads link. This method supports
@@ -5731,7 +5918,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityAdWordsLink.fromJson(data));
+    return _response.then(
+      (data) => EntityAdWordsLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing webProperty-Google Ads link.
@@ -5803,7 +5993,10 @@ class ManagementWebPropertyAdWordsLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityAdWordsLink.fromJson(data));
+    return _response.then(
+      (data) => EntityAdWordsLink.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5869,7 +6062,10 @@ class ManagementWebpropertiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Webproperty.fromJson(data));
+    return _response.then(
+      (data) =>
+          Webproperty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a new property if the account has fewer than 20 properties. Web
@@ -5927,7 +6123,10 @@ class ManagementWebpropertiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Webproperty.fromJson(data));
+    return _response.then(
+      (data) =>
+          Webproperty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists web properties to which the user has access.
@@ -5993,7 +6192,10 @@ class ManagementWebpropertiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Webproperties.fromJson(data));
+    return _response.then(
+      (data) =>
+          Webproperties.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing web property. This method supports patch semantics.
@@ -6056,7 +6258,10 @@ class ManagementWebpropertiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Webproperty.fromJson(data));
+    return _response.then(
+      (data) =>
+          Webproperty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing web property.
@@ -6119,7 +6324,10 @@ class ManagementWebpropertiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Webproperty.fromJson(data));
+    return _response.then(
+      (data) =>
+          Webproperty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6191,7 +6399,9 @@ class ManagementWebpropertyUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Adds a new user to the given web property.
@@ -6255,7 +6465,10 @@ class ManagementWebpropertyUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists webProperty-user links for a given web property.
@@ -6330,7 +6543,10 @@ class ManagementWebpropertyUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLinks.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLinks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates permissions for an existing user on the given web property.
@@ -6401,7 +6617,10 @@ class ManagementWebpropertyUserLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntityUserLink.fromJson(data));
+    return _response.then(
+      (data) =>
+          EntityUserLink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6467,7 +6686,9 @@ class MetadataColumnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Columns.fromJson(data));
+    return _response.then(
+      (data) => Columns.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6521,7 +6742,10 @@ class ProvisioningResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountTicket.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccountTicket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Provision account.
@@ -6569,7 +6793,10 @@ class ProvisioningResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountTreeResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountTreeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6633,7 +6860,10 @@ class UserDeletionUserDeletionRequestResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UserDeletionRequest.fromJson(data));
+    return _response.then(
+      (data) => UserDeletionRequest.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6728,7 +6958,8 @@ class Account {
 
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('childLink')) {
-      childLink = AccountChildLink.fromJson(_json['childLink']);
+      childLink = AccountChildLink.fromJson(
+          _json['childLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
@@ -6743,7 +6974,8 @@ class Account {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('permissions')) {
-      permissions = AccountPermissions.fromJson(_json['permissions']);
+      permissions = AccountPermissions.fromJson(
+          _json['permissions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -6876,7 +7108,8 @@ class AccountSummaries {
   AccountSummaries.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AccountSummary>((value) => AccountSummary.fromJson(value))
+          .map<AccountSummary>((value) => AccountSummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -6967,8 +7200,8 @@ class AccountSummary {
     }
     if (_json.containsKey('webProperties')) {
       webProperties = (_json['webProperties'] as core.List)
-          .map<WebPropertySummary>(
-              (value) => WebPropertySummary.fromJson(value))
+          .map<WebPropertySummary>((value) => WebPropertySummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7022,7 +7255,8 @@ class AccountTicket {
 
   AccountTicket.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
-      account = Account.fromJson(_json['account']);
+      account = Account.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -7031,13 +7265,15 @@ class AccountTicket {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('profile')) {
-      profile = Profile.fromJson(_json['profile']);
+      profile = Profile.fromJson(
+          _json['profile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('redirectUri')) {
       redirectUri = _json['redirectUri'] as core.String;
     }
     if (_json.containsKey('webproperty')) {
-      webproperty = Webproperty.fromJson(_json['webproperty']);
+      webproperty = Webproperty.fromJson(
+          _json['webproperty'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7146,16 +7382,19 @@ class AccountTreeResponse {
 
   AccountTreeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
-      account = Account.fromJson(_json['account']);
+      account = Account.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('profile')) {
-      profile = Profile.fromJson(_json['profile']);
+      profile = Profile.fromJson(
+          _json['profile'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webproperty')) {
-      webproperty = Webproperty.fromJson(_json['webproperty']);
+      webproperty = Webproperty.fromJson(
+          _json['webproperty'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7216,7 +7455,8 @@ class Accounts {
   Accounts.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -7353,7 +7593,8 @@ class Column {
   Column.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
       attributes = commons.mapMap<core.String, core.String>(
-          _json['attributes'].cast<core.String, core.String>(),
+          (_json['attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('id')) {
@@ -7410,7 +7651,8 @@ class Columns {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Column>((value) => Column.fromJson(value))
+          .map<Column>((value) =>
+              Column.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7560,7 +7802,8 @@ class CustomDataSource {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('childLink')) {
-      childLink = CustomDataSourceChildLink.fromJson(_json['childLink']);
+      childLink = CustomDataSourceChildLink.fromJson(
+          _json['childLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
@@ -7581,7 +7824,8 @@ class CustomDataSource {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = CustomDataSourceParentLink.fromJson(_json['parentLink']);
+      parentLink = CustomDataSourceParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profilesLinked')) {
       profilesLinked = (_json['profilesLinked'] as core.List)
@@ -7702,7 +7946,8 @@ class CustomDataSources {
   CustomDataSources.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CustomDataSource>((value) => CustomDataSource.fromJson(value))
+          .map<CustomDataSource>((value) => CustomDataSource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -7855,7 +8100,8 @@ class CustomDimension {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = CustomDimensionParentLink.fromJson(_json['parentLink']);
+      parentLink = CustomDimensionParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scope')) {
       scope = _json['scope'] as core.String;
@@ -7951,7 +8197,8 @@ class CustomDimensions {
   CustomDimensions.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CustomDimension>((value) => CustomDimension.fromJson(value))
+          .map<CustomDimension>((value) => CustomDimension.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -8119,7 +8366,8 @@ class CustomMetric {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = CustomMetricParentLink.fromJson(_json['parentLink']);
+      parentLink = CustomMetricParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scope')) {
       scope = _json['scope'] as core.String;
@@ -8227,7 +8475,8 @@ class CustomMetrics {
   CustomMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CustomMetric>((value) => CustomMetric.fromJson(value))
+          .map<CustomMetric>((value) => CustomMetric.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -8291,7 +8540,8 @@ class EntityAdWordsLinkEntity {
 
   EntityAdWordsLinkEntity.fromJson(core.Map _json) {
     if (_json.containsKey('webPropertyRef')) {
-      webPropertyRef = WebPropertyRef.fromJson(_json['webPropertyRef']);
+      webPropertyRef = WebPropertyRef.fromJson(
+          _json['webPropertyRef'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8333,11 +8583,13 @@ class EntityAdWordsLink {
   EntityAdWordsLink.fromJson(core.Map _json) {
     if (_json.containsKey('adWordsAccounts')) {
       adWordsAccounts = (_json['adWordsAccounts'] as core.List)
-          .map<AdWordsAccount>((value) => AdWordsAccount.fromJson(value))
+          .map<AdWordsAccount>((value) => AdWordsAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('entity')) {
-      entity = EntityAdWordsLinkEntity.fromJson(_json['entity']);
+      entity = EntityAdWordsLinkEntity.fromJson(
+          _json['entity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -8420,7 +8672,8 @@ class EntityAdWordsLinks {
   EntityAdWordsLinks.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<EntityAdWordsLink>((value) => EntityAdWordsLink.fromJson(value))
+          .map<EntityAdWordsLink>((value) => EntityAdWordsLink.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -8486,13 +8739,16 @@ class EntityUserLinkEntity {
 
   EntityUserLinkEntity.fromJson(core.Map _json) {
     if (_json.containsKey('accountRef')) {
-      accountRef = AccountRef.fromJson(_json['accountRef']);
+      accountRef = AccountRef.fromJson(
+          _json['accountRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profileRef')) {
-      profileRef = ProfileRef.fromJson(_json['profileRef']);
+      profileRef = ProfileRef.fromJson(
+          _json['profileRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webPropertyRef')) {
-      webPropertyRef = WebPropertyRef.fromJson(_json['webPropertyRef']);
+      webPropertyRef = WebPropertyRef.fromJson(
+          _json['webPropertyRef'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8577,7 +8833,8 @@ class EntityUserLink {
 
   EntityUserLink.fromJson(core.Map _json) {
     if (_json.containsKey('entity')) {
-      entity = EntityUserLinkEntity.fromJson(_json['entity']);
+      entity = EntityUserLinkEntity.fromJson(
+          _json['entity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -8586,13 +8843,15 @@ class EntityUserLink {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('permissions')) {
-      permissions = EntityUserLinkPermissions.fromJson(_json['permissions']);
+      permissions = EntityUserLinkPermissions.fromJson(
+          _json['permissions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('userRef')) {
-      userRef = UserRef.fromJson(_json['userRef']);
+      userRef = UserRef.fromJson(
+          _json['userRef'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8654,7 +8913,8 @@ class EntityUserLinks {
   EntityUserLinks.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<EntityUserLink>((value) => EntityUserLink.fromJson(value))
+          .map<EntityUserLink>((value) => EntityUserLink.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -8983,7 +9243,8 @@ class Experiment {
       optimizationType = _json['optimizationType'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = ExperimentParentLink.fromJson(_json['parentLink']);
+      parentLink = ExperimentParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profileId')) {
       profileId = _json['profileId'] as core.String;
@@ -9018,8 +9279,8 @@ class Experiment {
     }
     if (_json.containsKey('variations')) {
       variations = (_json['variations'] as core.List)
-          .map<ExperimentVariations>(
-              (value) => ExperimentVariations.fromJson(value))
+          .map<ExperimentVariations>((value) => ExperimentVariations.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('webPropertyId')) {
@@ -9162,7 +9423,8 @@ class Experiments {
   Experiments.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Experiment>((value) => Experiment.fromJson(value))
+          .map<Experiment>((value) =>
+              Experiment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -9563,37 +9825,41 @@ class Filter {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('advancedDetails')) {
-      advancedDetails =
-          FilterAdvancedDetails.fromJson(_json['advancedDetails']);
+      advancedDetails = FilterAdvancedDetails.fromJson(
+          _json['advancedDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('excludeDetails')) {
-      excludeDetails = FilterExpression.fromJson(_json['excludeDetails']);
+      excludeDetails = FilterExpression.fromJson(
+          _json['excludeDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('includeDetails')) {
-      includeDetails = FilterExpression.fromJson(_json['includeDetails']);
+      includeDetails = FilterExpression.fromJson(
+          _json['includeDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('lowercaseDetails')) {
-      lowercaseDetails =
-          FilterLowercaseDetails.fromJson(_json['lowercaseDetails']);
+      lowercaseDetails = FilterLowercaseDetails.fromJson(
+          _json['lowercaseDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = FilterParentLink.fromJson(_json['parentLink']);
+      parentLink = FilterParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchAndReplaceDetails')) {
       searchAndReplaceDetails = FilterSearchAndReplaceDetails.fromJson(
-          _json['searchAndReplaceDetails']);
+          _json['searchAndReplaceDetails']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -9605,8 +9871,8 @@ class Filter {
       updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('uppercaseDetails')) {
-      uppercaseDetails =
-          FilterUppercaseDetails.fromJson(_json['uppercaseDetails']);
+      uppercaseDetails = FilterUppercaseDetails.fromJson(
+          _json['uppercaseDetails'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9913,7 +10179,8 @@ class Filters {
   Filters.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Filter>((value) => Filter.fromJson(value))
+          .map<Filter>((value) =>
+              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -10072,8 +10339,8 @@ class GaDataDataTableRows {
   GaDataDataTableRows.fromJson(core.Map _json) {
     if (_json.containsKey('c')) {
       c = (_json['c'] as core.List)
-          .map<GaDataDataTableRowsC>(
-              (value) => GaDataDataTableRowsC.fromJson(value))
+          .map<GaDataDataTableRowsC>((value) => GaDataDataTableRowsC.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10096,14 +10363,14 @@ class GaDataDataTable {
   GaDataDataTable.fromJson(core.Map _json) {
     if (_json.containsKey('cols')) {
       cols = (_json['cols'] as core.List)
-          .map<GaDataDataTableCols>(
-              (value) => GaDataDataTableCols.fromJson(value))
+          .map<GaDataDataTableCols>((value) => GaDataDataTableCols.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<GaDataDataTableRows>(
-              (value) => GaDataDataTableRows.fromJson(value))
+          .map<GaDataDataTableRows>((value) => GaDataDataTableRows.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10370,8 +10637,8 @@ class GaData {
   GaData.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeaders')) {
       columnHeaders = (_json['columnHeaders'] as core.List)
-          .map<GaDataColumnHeaders>(
-              (value) => GaDataColumnHeaders.fromJson(value))
+          .map<GaDataColumnHeaders>((value) => GaDataColumnHeaders.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('containsSampledData')) {
@@ -10381,7 +10648,8 @@ class GaData {
       dataLastRefreshed = _json['dataLastRefreshed'] as core.String;
     }
     if (_json.containsKey('dataTable')) {
-      dataTable = GaDataDataTable.fromJson(_json['dataTable']);
+      dataTable = GaDataDataTable.fromJson(
+          _json['dataTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -10399,10 +10667,12 @@ class GaData {
       previousLink = _json['previousLink'] as core.String;
     }
     if (_json.containsKey('profileInfo')) {
-      profileInfo = GaDataProfileInfo.fromJson(_json['profileInfo']);
+      profileInfo = GaDataProfileInfo.fromJson(
+          _json['profileInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = GaDataQuery.fromJson(_json['query']);
+      query = GaDataQuery.fromJson(
+          _json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -10425,7 +10695,8 @@ class GaData {
     }
     if (_json.containsKey('totalsForAllResults')) {
       totalsForAllResults = commons.mapMap<core.String, core.String>(
-          _json['totalsForAllResults'].cast<core.String, core.String>(),
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -10560,8 +10831,9 @@ class GoalEventDetails {
   GoalEventDetails.fromJson(core.Map _json) {
     if (_json.containsKey('eventConditions')) {
       eventConditions = (_json['eventConditions'] as core.List)
-          .map<GoalEventDetailsEventConditions>(
-              (value) => GoalEventDetailsEventConditions.fromJson(value))
+          .map<GoalEventDetailsEventConditions>((value) =>
+              GoalEventDetailsEventConditions.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('useEventValue')) {
@@ -10685,8 +10957,9 @@ class GoalUrlDestinationDetails {
     }
     if (_json.containsKey('steps')) {
       steps = (_json['steps'] as core.List)
-          .map<GoalUrlDestinationDetailsSteps>(
-              (value) => GoalUrlDestinationDetailsSteps.fromJson(value))
+          .map<GoalUrlDestinationDetailsSteps>((value) =>
+              GoalUrlDestinationDetailsSteps.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('url')) {
@@ -10849,7 +11122,8 @@ class Goal {
       created = core.DateTime.parse(_json['created'] as core.String);
     }
     if (_json.containsKey('eventDetails')) {
-      eventDetails = GoalEventDetails.fromJson(_json['eventDetails']);
+      eventDetails = GoalEventDetails.fromJson(
+          _json['eventDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -10864,7 +11138,8 @@ class Goal {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = GoalParentLink.fromJson(_json['parentLink']);
+      parentLink = GoalParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profileId')) {
       profileId = _json['profileId'] as core.String;
@@ -10879,19 +11154,21 @@ class Goal {
       updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('urlDestinationDetails')) {
-      urlDestinationDetails =
-          GoalUrlDestinationDetails.fromJson(_json['urlDestinationDetails']);
+      urlDestinationDetails = GoalUrlDestinationDetails.fromJson(
+          _json['urlDestinationDetails']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('value')) {
       value = (_json['value'] as core.num).toDouble();
     }
     if (_json.containsKey('visitNumPagesDetails')) {
-      visitNumPagesDetails =
-          GoalVisitNumPagesDetails.fromJson(_json['visitNumPagesDetails']);
+      visitNumPagesDetails = GoalVisitNumPagesDetails.fromJson(
+          _json['visitNumPagesDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visitTimeOnSiteDetails')) {
-      visitTimeOnSiteDetails =
-          GoalVisitTimeOnSiteDetails.fromJson(_json['visitTimeOnSiteDetails']);
+      visitTimeOnSiteDetails = GoalVisitTimeOnSiteDetails.fromJson(
+          _json['visitTimeOnSiteDetails']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webPropertyId')) {
       webPropertyId = _json['webPropertyId'] as core.String;
@@ -10996,7 +11273,8 @@ class Goals {
   Goals.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Goal>((value) => Goal.fromJson(value))
+          .map<Goal>((value) =>
+              Goal.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -11570,8 +11848,9 @@ class McfDataRows {
   McfDataRows.fromJson(core.Map _json) {
     if (_json.containsKey('conversionPathValue')) {
       conversionPathValue = (_json['conversionPathValue'] as core.List)
-          .map<McfDataRowsConversionPathValue>(
-              (value) => McfDataRowsConversionPathValue.fromJson(value))
+          .map<McfDataRowsConversionPathValue>((value) =>
+              McfDataRowsConversionPathValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('primitiveValue')) {
@@ -11654,8 +11933,8 @@ class McfData {
   McfData.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeaders')) {
       columnHeaders = (_json['columnHeaders'] as core.List)
-          .map<McfDataColumnHeaders>(
-              (value) => McfDataColumnHeaders.fromJson(value))
+          .map<McfDataColumnHeaders>((value) => McfDataColumnHeaders.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('containsSampledData')) {
@@ -11677,15 +11956,18 @@ class McfData {
       previousLink = _json['previousLink'] as core.String;
     }
     if (_json.containsKey('profileInfo')) {
-      profileInfo = McfDataProfileInfo.fromJson(_json['profileInfo']);
+      profileInfo = McfDataProfileInfo.fromJson(
+          _json['profileInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = McfDataQuery.fromJson(_json['query']);
+      query = McfDataQuery.fromJson(
+          _json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
           .map<core.List<McfDataRows>>((value) => (value as core.List)
-              .map<McfDataRows>((value) => McfDataRows.fromJson(value))
+              .map<McfDataRows>((value) => McfDataRows.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
               .toList())
           .toList();
     }
@@ -11703,7 +11985,8 @@ class McfData {
     }
     if (_json.containsKey('totalsForAllResults')) {
       totalsForAllResults = commons.mapMap<core.String, core.String>(
-          _json['totalsForAllResults'].cast<core.String, core.String>(),
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -11955,7 +12238,8 @@ class Profile {
       botFilteringEnabled = _json['botFilteringEnabled'] as core.bool;
     }
     if (_json.containsKey('childLink')) {
-      childLink = ProfileChildLink.fromJson(_json['childLink']);
+      childLink = ProfileChildLink.fromJson(
+          _json['childLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
@@ -11989,10 +12273,12 @@ class Profile {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = ProfileParentLink.fromJson(_json['parentLink']);
+      parentLink = ProfileParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('permissions')) {
-      permissions = ProfilePermissions.fromJson(_json['permissions']);
+      permissions = ProfilePermissions.fromJson(
+          _json['permissions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -12152,7 +12438,8 @@ class ProfileFilterLink {
 
   ProfileFilterLink.fromJson(core.Map _json) {
     if (_json.containsKey('filterRef')) {
-      filterRef = FilterRef.fromJson(_json['filterRef']);
+      filterRef = FilterRef.fromJson(
+          _json['filterRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -12161,7 +12448,8 @@ class ProfileFilterLink {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('profileRef')) {
-      profileRef = ProfileRef.fromJson(_json['profileRef']);
+      profileRef = ProfileRef.fromJson(
+          _json['profileRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rank')) {
       rank = _json['rank'] as core.int;
@@ -12233,7 +12521,8 @@ class ProfileFilterLinks {
   ProfileFilterLinks.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ProfileFilterLink>((value) => ProfileFilterLink.fromJson(value))
+          .map<ProfileFilterLink>((value) => ProfileFilterLink.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -12463,7 +12752,8 @@ class Profiles {
   Profiles.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Profile>((value) => Profile.fromJson(value))
+          .map<Profile>((value) =>
+              Profile.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -12740,8 +13030,9 @@ class RealtimeData {
   RealtimeData.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeaders')) {
       columnHeaders = (_json['columnHeaders'] as core.List)
-          .map<RealtimeDataColumnHeaders>(
-              (value) => RealtimeDataColumnHeaders.fromJson(value))
+          .map<RealtimeDataColumnHeaders>((value) =>
+              RealtimeDataColumnHeaders.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -12751,10 +13042,12 @@ class RealtimeData {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('profileInfo')) {
-      profileInfo = RealtimeDataProfileInfo.fromJson(_json['profileInfo']);
+      profileInfo = RealtimeDataProfileInfo.fromJson(
+          _json['profileInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('query')) {
-      query = RealtimeDataQuery.fromJson(_json['query']);
+      query = RealtimeDataQuery.fromJson(
+          _json['query'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
@@ -12771,7 +13064,8 @@ class RealtimeData {
     }
     if (_json.containsKey('totalsForAllResults')) {
       totalsForAllResults = commons.mapMap<core.String, core.String>(
-          _json['totalsForAllResults'].cast<core.String, core.String>(),
+          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -12820,8 +13114,8 @@ class RemarketingAudienceAudienceDefinition {
 
   RemarketingAudienceAudienceDefinition.fromJson(core.Map _json) {
     if (_json.containsKey('includeConditions')) {
-      includeConditions =
-          IncludeConditions.fromJson(_json['includeConditions']);
+      includeConditions = IncludeConditions.fromJson(
+          _json['includeConditions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12883,11 +13177,12 @@ class RemarketingAudienceStateBasedAudienceDefinition {
     if (_json.containsKey('excludeConditions')) {
       excludeConditions =
           RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
-              .fromJson(_json['excludeConditions']);
+              .fromJson(_json['excludeConditions']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('includeConditions')) {
-      includeConditions =
-          IncludeConditions.fromJson(_json['includeConditions']);
+      includeConditions = IncludeConditions.fromJson(
+          _json['includeConditions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12960,7 +13255,7 @@ class RemarketingAudience {
     }
     if (_json.containsKey('audienceDefinition')) {
       audienceDefinition = RemarketingAudienceAudienceDefinition.fromJson(
-          _json['audienceDefinition']);
+          _json['audienceDefinition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('audienceType')) {
       audienceType = _json['audienceType'] as core.String;
@@ -12982,8 +13277,8 @@ class RemarketingAudience {
     }
     if (_json.containsKey('linkedAdAccounts')) {
       linkedAdAccounts = (_json['linkedAdAccounts'] as core.List)
-          .map<LinkedForeignAccount>(
-              (value) => LinkedForeignAccount.fromJson(value))
+          .map<LinkedForeignAccount>((value) => LinkedForeignAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('linkedViews')) {
@@ -12997,7 +13292,8 @@ class RemarketingAudience {
     if (_json.containsKey('stateBasedAudienceDefinition')) {
       stateBasedAudienceDefinition =
           RemarketingAudienceStateBasedAudienceDefinition.fromJson(
-              _json['stateBasedAudienceDefinition']);
+              _json['stateBasedAudienceDefinition']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updated')) {
       updated = core.DateTime.parse(_json['updated'] as core.String);
@@ -13095,8 +13391,8 @@ class RemarketingAudiences {
   RemarketingAudiences.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<RemarketingAudience>(
-              (value) => RemarketingAudience.fromJson(value))
+          .map<RemarketingAudience>((value) => RemarketingAudience.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -13284,7 +13580,8 @@ class Segments {
   Segments.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Segment>((value) => Segment.fromJson(value))
+          .map<Segment>((value) =>
+              Segment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -13466,7 +13763,8 @@ class UnsampledReport {
     if (_json.containsKey('cloudStorageDownloadDetails')) {
       cloudStorageDownloadDetails =
           UnsampledReportCloudStorageDownloadDetails.fromJson(
-              _json['cloudStorageDownloadDetails']);
+              _json['cloudStorageDownloadDetails']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
@@ -13479,7 +13777,7 @@ class UnsampledReport {
     }
     if (_json.containsKey('driveDownloadDetails')) {
       driveDownloadDetails = UnsampledReportDriveDownloadDetails.fromJson(
-          _json['driveDownloadDetails']);
+          _json['driveDownloadDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('end-date')) {
       end_date = _json['end-date'] as core.String;
@@ -13625,7 +13923,8 @@ class UnsampledReports {
   UnsampledReports.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<UnsampledReport>((value) => UnsampledReport.fromJson(value))
+          .map<UnsampledReport>((value) => UnsampledReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -13795,7 +14094,8 @@ class Uploads {
   Uploads.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Upload>((value) => Upload.fromJson(value))
+          .map<Upload>((value) =>
+              Upload.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -13908,7 +14208,8 @@ class UserDeletionRequest {
       firebaseProjectId = _json['firebaseProjectId'] as core.String;
     }
     if (_json.containsKey('id')) {
-      id = UserDeletionRequestId.fromJson(_json['id']);
+      id = UserDeletionRequestId.fromJson(
+          _json['id'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -14097,7 +14398,8 @@ class WebPropertySummary {
     }
     if (_json.containsKey('profiles')) {
       profiles = (_json['profiles'] as core.List)
-          .map<ProfileSummary>((value) => ProfileSummary.fromJson(value))
+          .map<ProfileSummary>((value) => ProfileSummary.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('starred')) {
@@ -14176,7 +14478,8 @@ class Webproperties {
   Webproperties.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Webproperty>((value) => Webproperty.fromJson(value))
+          .map<Webproperty>((value) => Webproperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsPerPage')) {
@@ -14396,7 +14699,8 @@ class Webproperty {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('childLink')) {
-      childLink = WebpropertyChildLink.fromJson(_json['childLink']);
+      childLink = WebpropertyChildLink.fromJson(
+          _json['childLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('created')) {
       created = core.DateTime.parse(_json['created'] as core.String);
@@ -14430,10 +14734,12 @@ class Webproperty {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parentLink')) {
-      parentLink = WebpropertyParentLink.fromJson(_json['parentLink']);
+      parentLink = WebpropertyParentLink.fromJson(
+          _json['parentLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('permissions')) {
-      permissions = WebpropertyPermissions.fromJson(_json['permissions']);
+      permissions = WebpropertyPermissions.fromJson(
+          _json['permissions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('profileCount')) {
       profileCount = _json['profileCount'] as core.int;

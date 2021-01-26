@@ -135,10 +135,10 @@ void checkAnnotation(api.Annotation o) {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
     unittest.expect(o.length, unittest.equals(42));
-    checkSlashCommandMetadata(o.slashCommand);
+    checkSlashCommandMetadata(o.slashCommand as api.SlashCommandMetadata);
     unittest.expect(o.startIndex, unittest.equals(42));
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUserMentionMetadata(o.userMention);
+    checkUserMentionMetadata(o.userMention as api.UserMentionMetadata);
   }
   buildCounterAnnotation--;
 }
@@ -164,11 +164,11 @@ api.Attachment buildAttachment() {
 void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    checkAttachmentDataRef(o.attachmentDataRef);
+    checkAttachmentDataRef(o.attachmentDataRef as api.AttachmentDataRef);
     unittest.expect(o.contentName, unittest.equals('foo'));
     unittest.expect(o.contentType, unittest.equals('foo'));
     unittest.expect(o.downloadUri, unittest.equals('foo'));
-    checkDriveDataRef(o.driveDataRef);
+    checkDriveDataRef(o.driveDataRef as api.DriveDataRef);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.thumbnailUri, unittest.equals('foo'));
@@ -210,8 +210,8 @@ api.Button buildButton() {
 void checkButton(api.Button o) {
   buildCounterButton++;
   if (buildCounterButton < 3) {
-    checkImageButton(o.imageButton);
-    checkTextButton(o.textButton);
+    checkImageButton(o.imageButton as api.ImageButton);
+    checkTextButton(o.textButton as api.TextButton);
   }
   buildCounterButton--;
 }
@@ -225,8 +225,8 @@ core.List<api.CardAction> buildUnnamed2960() {
 
 void checkUnnamed2960(core.List<api.CardAction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCardAction(o[0]);
-  checkCardAction(o[1]);
+  checkCardAction(o[0] as api.CardAction);
+  checkCardAction(o[1] as api.CardAction);
 }
 
 core.List<api.Section> buildUnnamed2961() {
@@ -238,8 +238,8 @@ core.List<api.Section> buildUnnamed2961() {
 
 void checkUnnamed2961(core.List<api.Section> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSection(o[0]);
-  checkSection(o[1]);
+  checkSection(o[0] as api.Section);
+  checkSection(o[1] as api.Section);
 }
 
 core.int buildCounterCard = 0;
@@ -260,7 +260,7 @@ void checkCard(api.Card o) {
   buildCounterCard++;
   if (buildCounterCard < 3) {
     checkUnnamed2960(o.cardActions);
-    checkCardHeader(o.header);
+    checkCardHeader(o.header as api.CardHeader);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2961(o.sections);
   }
@@ -283,7 +283,7 @@ void checkCardAction(api.CardAction o) {
   buildCounterCardAction++;
   if (buildCounterCardAction < 3) {
     unittest.expect(o.actionLabel, unittest.equals('foo'));
-    checkOnClick(o.onClick);
+    checkOnClick(o.onClick as api.OnClick);
   }
   buildCounterCardAction--;
 }
@@ -335,15 +335,15 @@ api.DeprecatedEvent buildDeprecatedEvent() {
 void checkDeprecatedEvent(api.DeprecatedEvent o) {
   buildCounterDeprecatedEvent++;
   if (buildCounterDeprecatedEvent < 3) {
-    checkFormAction(o.action);
+    checkFormAction(o.action as api.FormAction);
     unittest.expect(o.configCompleteRedirectUrl, unittest.equals('foo'));
     unittest.expect(o.eventTime, unittest.equals('foo'));
-    checkMessage(o.message);
-    checkSpace(o.space);
+    checkMessage(o.message as api.Message);
+    checkSpace(o.space as api.Space);
     unittest.expect(o.threadKey, unittest.equals('foo'));
     unittest.expect(o.token, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUser(o.user);
+    checkUser(o.user as api.User);
   }
   buildCounterDeprecatedEvent--;
 }
@@ -391,8 +391,8 @@ core.List<api.ActionParameter> buildUnnamed2962() {
 
 void checkUnnamed2962(core.List<api.ActionParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActionParameter(o[0]);
-  checkActionParameter(o[1]);
+  checkActionParameter(o[0] as api.ActionParameter);
+  checkActionParameter(o[1] as api.ActionParameter);
 }
 
 core.int buildCounterFormAction = 0;
@@ -434,7 +434,7 @@ void checkImage(api.Image o) {
   if (buildCounterImage < 3) {
     unittest.expect(o.aspectRatio, unittest.equals(42.0));
     unittest.expect(o.imageUrl, unittest.equals('foo'));
-    checkOnClick(o.onClick);
+    checkOnClick(o.onClick as api.OnClick);
   }
   buildCounterImage--;
 }
@@ -459,7 +459,7 @@ void checkImageButton(api.ImageButton o) {
     unittest.expect(o.icon, unittest.equals('foo'));
     unittest.expect(o.iconUrl, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOnClick(o.onClick);
+    checkOnClick(o.onClick as api.OnClick);
   }
   buildCounterImageButton--;
 }
@@ -486,12 +486,12 @@ void checkKeyValue(api.KeyValue o) {
   buildCounterKeyValue++;
   if (buildCounterKeyValue < 3) {
     unittest.expect(o.bottomLabel, unittest.equals('foo'));
-    checkButton(o.button);
+    checkButton(o.button as api.Button);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.contentMultiline, unittest.isTrue);
     unittest.expect(o.icon, unittest.equals('foo'));
     unittest.expect(o.iconUrl, unittest.equals('foo'));
-    checkOnClick(o.onClick);
+    checkOnClick(o.onClick as api.OnClick);
     unittest.expect(o.topLabel, unittest.equals('foo'));
   }
   buildCounterKeyValue--;
@@ -506,8 +506,8 @@ core.List<api.Membership> buildUnnamed2963() {
 
 void checkUnnamed2963(core.List<api.Membership> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembership(o[0]);
-  checkMembership(o[1]);
+  checkMembership(o[0] as api.Membership);
+  checkMembership(o[1] as api.Membership);
 }
 
 core.int buildCounterListMembershipsResponse = 0;
@@ -540,8 +540,8 @@ core.List<api.Space> buildUnnamed2964() {
 
 void checkUnnamed2964(core.List<api.Space> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpace(o[0]);
-  checkSpace(o[1]);
+  checkSpace(o[0] as api.Space);
+  checkSpace(o[1] as api.Space);
 }
 
 core.int buildCounterListSpacesResponse = 0;
@@ -602,7 +602,7 @@ void checkMembership(api.Membership o) {
   buildCounterMembership++;
   if (buildCounterMembership < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkUser(o.member);
+    checkUser(o.member as api.User);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -618,8 +618,8 @@ core.List<api.Annotation> buildUnnamed2965() {
 
 void checkUnnamed2965(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotation(o[0]);
-  checkAnnotation(o[1]);
+  checkAnnotation(o[0] as api.Annotation);
+  checkAnnotation(o[1] as api.Annotation);
 }
 
 core.List<api.Attachment> buildUnnamed2966() {
@@ -631,8 +631,8 @@ core.List<api.Attachment> buildUnnamed2966() {
 
 void checkUnnamed2966(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttachment(o[0]);
-  checkAttachment(o[1]);
+  checkAttachment(o[0] as api.Attachment);
+  checkAttachment(o[1] as api.Attachment);
 }
 
 core.List<api.Card> buildUnnamed2967() {
@@ -644,8 +644,8 @@ core.List<api.Card> buildUnnamed2967() {
 
 void checkUnnamed2967(core.List<api.Card> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCard(o[0]);
-  checkCard(o[1]);
+  checkCard(o[0] as api.Card);
+  checkCard(o[1] as api.Card);
 }
 
 core.int buildCounterMessage = 0;
@@ -675,7 +675,7 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    checkActionResponse(o.actionResponse);
+    checkActionResponse(o.actionResponse as api.ActionResponse);
     checkUnnamed2965(o.annotations);
     unittest.expect(o.argumentText, unittest.equals('foo'));
     checkUnnamed2966(o.attachment);
@@ -684,11 +684,11 @@ void checkMessage(api.Message o) {
     unittest.expect(o.fallbackText, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.previewText, unittest.equals('foo'));
-    checkUser(o.sender);
-    checkSlashCommand(o.slashCommand);
-    checkSpace(o.space);
+    checkUser(o.sender as api.User);
+    checkSlashCommand(o.slashCommand as api.SlashCommand);
+    checkSpace(o.space as api.Space);
     unittest.expect(o.text, unittest.equals('foo'));
-    checkThread(o.thread);
+    checkThread(o.thread as api.Thread);
   }
   buildCounterMessage--;
 }
@@ -708,8 +708,8 @@ api.OnClick buildOnClick() {
 void checkOnClick(api.OnClick o) {
   buildCounterOnClick++;
   if (buildCounterOnClick < 3) {
-    checkFormAction(o.action);
-    checkOpenLink(o.openLink);
+    checkFormAction(o.action as api.FormAction);
+    checkOpenLink(o.openLink as api.OpenLink);
   }
   buildCounterOnClick--;
 }
@@ -742,8 +742,8 @@ core.List<api.WidgetMarkup> buildUnnamed2968() {
 
 void checkUnnamed2968(core.List<api.WidgetMarkup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWidgetMarkup(o[0]);
-  checkWidgetMarkup(o[1]);
+  checkWidgetMarkup(o[0] as api.WidgetMarkup);
+  checkWidgetMarkup(o[1] as api.WidgetMarkup);
 }
 
 core.int buildCounterSection = 0;
@@ -804,7 +804,7 @@ api.SlashCommandMetadata buildSlashCommandMetadata() {
 void checkSlashCommandMetadata(api.SlashCommandMetadata o) {
   buildCounterSlashCommandMetadata++;
   if (buildCounterSlashCommandMetadata < 3) {
-    checkUser(o.bot);
+    checkUser(o.bot as api.User);
     unittest.expect(o.commandId, unittest.equals('foo'));
     unittest.expect(o.commandName, unittest.equals('foo'));
     unittest.expect(o.triggersDialog, unittest.isTrue);
@@ -855,7 +855,7 @@ api.TextButton buildTextButton() {
 void checkTextButton(api.TextButton o) {
   buildCounterTextButton++;
   if (buildCounterTextButton < 3) {
-    checkOnClick(o.onClick);
+    checkOnClick(o.onClick as api.OnClick);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterTextButton--;
@@ -940,7 +940,7 @@ void checkUserMentionMetadata(api.UserMentionMetadata o) {
   buildCounterUserMentionMetadata++;
   if (buildCounterUserMentionMetadata < 3) {
     unittest.expect(o.type, unittest.equals('foo'));
-    checkUser(o.user);
+    checkUser(o.user as api.User);
   }
   buildCounterUserMentionMetadata--;
 }
@@ -954,8 +954,8 @@ core.List<api.Button> buildUnnamed2969() {
 
 void checkUnnamed2969(core.List<api.Button> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkButton(o[0]);
-  checkButton(o[1]);
+  checkButton(o[0] as api.Button);
+  checkButton(o[1] as api.Button);
 }
 
 core.int buildCounterWidgetMarkup = 0;
@@ -976,9 +976,9 @@ void checkWidgetMarkup(api.WidgetMarkup o) {
   buildCounterWidgetMarkup++;
   if (buildCounterWidgetMarkup < 3) {
     checkUnnamed2969(o.buttons);
-    checkImage(o.image);
-    checkKeyValue(o.keyValue);
-    checkTextParagraph(o.textParagraph);
+    checkImage(o.image as api.Image);
+    checkKeyValue(o.keyValue as api.KeyValue);
+    checkTextParagraph(o.textParagraph as api.TextParagraph);
   }
   buildCounterWidgetMarkup--;
 }
@@ -988,7 +988,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActionParameter();
       var od = api.ActionParameter.fromJson(o.toJson());
-      checkActionParameter(od);
+      checkActionParameter(od as api.ActionParameter);
     });
   });
 
@@ -996,7 +996,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActionResponse();
       var od = api.ActionResponse.fromJson(o.toJson());
-      checkActionResponse(od);
+      checkActionResponse(od as api.ActionResponse);
     });
   });
 
@@ -1004,7 +1004,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
-      checkAnnotation(od);
+      checkAnnotation(od as api.Annotation);
     });
   });
 
@@ -1012,7 +1012,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
-      checkAttachment(od);
+      checkAttachment(od as api.Attachment);
     });
   });
 
@@ -1020,7 +1020,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttachmentDataRef();
       var od = api.AttachmentDataRef.fromJson(o.toJson());
-      checkAttachmentDataRef(od);
+      checkAttachmentDataRef(od as api.AttachmentDataRef);
     });
   });
 
@@ -1028,7 +1028,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildButton();
       var od = api.Button.fromJson(o.toJson());
-      checkButton(od);
+      checkButton(od as api.Button);
     });
   });
 
@@ -1036,7 +1036,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCard();
       var od = api.Card.fromJson(o.toJson());
-      checkCard(od);
+      checkCard(od as api.Card);
     });
   });
 
@@ -1044,7 +1044,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCardAction();
       var od = api.CardAction.fromJson(o.toJson());
-      checkCardAction(od);
+      checkCardAction(od as api.CardAction);
     });
   });
 
@@ -1052,7 +1052,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCardHeader();
       var od = api.CardHeader.fromJson(o.toJson());
-      checkCardHeader(od);
+      checkCardHeader(od as api.CardHeader);
     });
   });
 
@@ -1060,7 +1060,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeprecatedEvent();
       var od = api.DeprecatedEvent.fromJson(o.toJson());
-      checkDeprecatedEvent(od);
+      checkDeprecatedEvent(od as api.DeprecatedEvent);
     });
   });
 
@@ -1068,7 +1068,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveDataRef();
       var od = api.DriveDataRef.fromJson(o.toJson());
-      checkDriveDataRef(od);
+      checkDriveDataRef(od as api.DriveDataRef);
     });
   });
 
@@ -1076,7 +1076,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1084,7 +1084,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFormAction();
       var od = api.FormAction.fromJson(o.toJson());
-      checkFormAction(od);
+      checkFormAction(od as api.FormAction);
     });
   });
 
@@ -1092,7 +1092,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
-      checkImage(od);
+      checkImage(od as api.Image);
     });
   });
 
@@ -1100,7 +1100,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageButton();
       var od = api.ImageButton.fromJson(o.toJson());
-      checkImageButton(od);
+      checkImageButton(od as api.ImageButton);
     });
   });
 
@@ -1108,7 +1108,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKeyValue();
       var od = api.KeyValue.fromJson(o.toJson());
-      checkKeyValue(od);
+      checkKeyValue(od as api.KeyValue);
     });
   });
 
@@ -1116,7 +1116,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListMembershipsResponse();
       var od = api.ListMembershipsResponse.fromJson(o.toJson());
-      checkListMembershipsResponse(od);
+      checkListMembershipsResponse(od as api.ListMembershipsResponse);
     });
   });
 
@@ -1124,7 +1124,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSpacesResponse();
       var od = api.ListSpacesResponse.fromJson(o.toJson());
-      checkListSpacesResponse(od);
+      checkListSpacesResponse(od as api.ListSpacesResponse);
     });
   });
 
@@ -1132,7 +1132,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMedia();
       var od = api.Media.fromJson(o.toJson());
-      checkMedia(od);
+      checkMedia(od as api.Media);
     });
   });
 
@@ -1140,7 +1140,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembership();
       var od = api.Membership.fromJson(o.toJson());
-      checkMembership(od);
+      checkMembership(od as api.Membership);
     });
   });
 
@@ -1148,7 +1148,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
-      checkMessage(od);
+      checkMessage(od as api.Message);
     });
   });
 
@@ -1156,7 +1156,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOnClick();
       var od = api.OnClick.fromJson(o.toJson());
-      checkOnClick(od);
+      checkOnClick(od as api.OnClick);
     });
   });
 
@@ -1164,7 +1164,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOpenLink();
       var od = api.OpenLink.fromJson(o.toJson());
-      checkOpenLink(od);
+      checkOpenLink(od as api.OpenLink);
     });
   });
 
@@ -1172,7 +1172,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSection();
       var od = api.Section.fromJson(o.toJson());
-      checkSection(od);
+      checkSection(od as api.Section);
     });
   });
 
@@ -1180,7 +1180,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSlashCommand();
       var od = api.SlashCommand.fromJson(o.toJson());
-      checkSlashCommand(od);
+      checkSlashCommand(od as api.SlashCommand);
     });
   });
 
@@ -1188,7 +1188,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSlashCommandMetadata();
       var od = api.SlashCommandMetadata.fromJson(o.toJson());
-      checkSlashCommandMetadata(od);
+      checkSlashCommandMetadata(od as api.SlashCommandMetadata);
     });
   });
 
@@ -1196,7 +1196,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSpace();
       var od = api.Space.fromJson(o.toJson());
-      checkSpace(od);
+      checkSpace(od as api.Space);
     });
   });
 
@@ -1204,7 +1204,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextButton();
       var od = api.TextButton.fromJson(o.toJson());
-      checkTextButton(od);
+      checkTextButton(od as api.TextButton);
     });
   });
 
@@ -1212,7 +1212,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextParagraph();
       var od = api.TextParagraph.fromJson(o.toJson());
-      checkTextParagraph(od);
+      checkTextParagraph(od as api.TextParagraph);
     });
   });
 
@@ -1220,7 +1220,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThread();
       var od = api.Thread.fromJson(o.toJson());
-      checkThread(od);
+      checkThread(od as api.Thread);
     });
   });
 
@@ -1228,7 +1228,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -1236,7 +1236,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserMentionMetadata();
       var od = api.UserMentionMetadata.fromJson(o.toJson());
-      checkUserMentionMetadata(od);
+      checkUserMentionMetadata(od as api.UserMentionMetadata);
     });
   });
 
@@ -1244,7 +1244,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWidgetMarkup();
       var od = api.WidgetMarkup.fromJson(o.toJson());
-      checkWidgetMarkup(od);
+      checkWidgetMarkup(od as api.WidgetMarkup);
     });
   });
 
@@ -1296,7 +1296,7 @@ void main() {
       res
           .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMedia(response);
+        checkMedia(response as api.Media);
       })));
     });
   });
@@ -1346,7 +1346,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSpace(response);
+        checkSpace(response as api.Space);
       })));
     });
 
@@ -1401,7 +1401,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSpacesResponse(response);
+        checkListSpacesResponse(response as api.ListSpacesResponse);
       })));
     });
   });
@@ -1451,7 +1451,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMembership(response);
+        checkMembership(response as api.Membership);
       })));
     });
 
@@ -1508,7 +1508,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListMembershipsResponse(response);
+        checkListMembershipsResponse(response as api.ListMembershipsResponse);
       })));
     });
   });
@@ -1522,8 +1522,9 @@ void main() {
       var arg_threadKey = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Message.fromJson(json);
-        checkMessage(obj);
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1566,7 +1567,7 @@ void main() {
           .create(arg_request, arg_parent,
               threadKey: arg_threadKey, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
 
@@ -1614,7 +1615,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1662,7 +1663,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
 
@@ -1674,8 +1675,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Message.fromJson(json);
-        checkMessage(obj);
+        var obj =
+            api.Message.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkMessage(obj as api.Message);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1718,7 +1720,7 @@ void main() {
           .update(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
   });
@@ -1768,7 +1770,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAttachment(response);
+        checkAttachment(response as api.Attachment);
       })));
     });
   });

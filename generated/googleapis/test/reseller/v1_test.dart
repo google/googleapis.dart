@@ -133,7 +133,7 @@ void checkChangePlanRequest(api.ChangePlanRequest o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.planName, unittest.equals('foo'));
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
-    checkSeats(o.seats);
+    checkSeats(o.seats as api.Seats);
   }
   buildCounterChangePlanRequest--;
 }
@@ -165,7 +165,7 @@ void checkCustomer(api.Customer o) {
     unittest.expect(o.customerId, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.phoneNumber, unittest.equals('foo'));
-    checkAddress(o.postalAddress);
+    checkAddress(o.postalAddress as api.Address);
     unittest.expect(o.resourceUiUrl, unittest.equals('foo'));
   }
   buildCounterCustomer--;
@@ -311,7 +311,8 @@ api.SubscriptionPlan buildSubscriptionPlan() {
 void checkSubscriptionPlan(api.SubscriptionPlan o) {
   buildCounterSubscriptionPlan++;
   if (buildCounterSubscriptionPlan < 3) {
-    checkSubscriptionPlanCommitmentInterval(o.commitmentInterval);
+    checkSubscriptionPlanCommitmentInterval(
+        o.commitmentInterval as api.SubscriptionPlanCommitmentInterval);
     unittest.expect(o.isCommitmentPlan, unittest.isTrue);
     unittest.expect(o.planName, unittest.equals('foo'));
   }
@@ -410,18 +411,20 @@ void checkSubscription(api.Subscription o) {
     unittest.expect(o.customerId, unittest.equals('foo'));
     unittest.expect(o.dealCode, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkSubscriptionPlan(o.plan);
+    checkSubscriptionPlan(o.plan as api.SubscriptionPlan);
     unittest.expect(o.purchaseOrderId, unittest.equals('foo'));
-    checkRenewalSettings(o.renewalSettings);
+    checkRenewalSettings(o.renewalSettings as api.RenewalSettings);
     unittest.expect(o.resourceUiUrl, unittest.equals('foo'));
-    checkSeats(o.seats);
+    checkSeats(o.seats as api.Seats);
     unittest.expect(o.skuId, unittest.equals('foo'));
     unittest.expect(o.skuName, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
     checkUnnamed3388(o.suspensionReasons);
-    checkSubscriptionTransferInfo(o.transferInfo);
-    checkSubscriptionTrialSettings(o.trialSettings);
+    checkSubscriptionTransferInfo(
+        o.transferInfo as api.SubscriptionTransferInfo);
+    checkSubscriptionTrialSettings(
+        o.trialSettings as api.SubscriptionTrialSettings);
   }
   buildCounterSubscription--;
 }
@@ -435,8 +438,8 @@ core.List<api.Subscription> buildUnnamed3389() {
 
 void checkUnnamed3389(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSubscription(o[0]);
-  checkSubscription(o[1]);
+  checkSubscription(o[0] as api.Subscription);
+  checkSubscription(o[1] as api.Subscription);
 }
 
 core.int buildCounterSubscriptions = 0;
@@ -467,7 +470,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddress();
       var od = api.Address.fromJson(o.toJson());
-      checkAddress(od);
+      checkAddress(od as api.Address);
     });
   });
 
@@ -475,7 +478,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChangePlanRequest();
       var od = api.ChangePlanRequest.fromJson(o.toJson());
-      checkChangePlanRequest(od);
+      checkChangePlanRequest(od as api.ChangePlanRequest);
     });
   });
 
@@ -483,7 +486,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomer();
       var od = api.Customer.fromJson(o.toJson());
-      checkCustomer(od);
+      checkCustomer(od as api.Customer);
     });
   });
 
@@ -491,7 +494,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRenewalSettings();
       var od = api.RenewalSettings.fromJson(o.toJson());
-      checkRenewalSettings(od);
+      checkRenewalSettings(od as api.RenewalSettings);
     });
   });
 
@@ -499,7 +502,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResellernotifyGetwatchdetailsResponse();
       var od = api.ResellernotifyGetwatchdetailsResponse.fromJson(o.toJson());
-      checkResellernotifyGetwatchdetailsResponse(od);
+      checkResellernotifyGetwatchdetailsResponse(
+          od as api.ResellernotifyGetwatchdetailsResponse);
     });
   });
 
@@ -507,7 +511,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResellernotifyResource();
       var od = api.ResellernotifyResource.fromJson(o.toJson());
-      checkResellernotifyResource(od);
+      checkResellernotifyResource(od as api.ResellernotifyResource);
     });
   });
 
@@ -515,7 +519,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSeats();
       var od = api.Seats.fromJson(o.toJson());
-      checkSeats(od);
+      checkSeats(od as api.Seats);
     });
   });
 
@@ -523,7 +527,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPlanCommitmentInterval();
       var od = api.SubscriptionPlanCommitmentInterval.fromJson(o.toJson());
-      checkSubscriptionPlanCommitmentInterval(od);
+      checkSubscriptionPlanCommitmentInterval(
+          od as api.SubscriptionPlanCommitmentInterval);
     });
   });
 
@@ -531,7 +536,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionPlan();
       var od = api.SubscriptionPlan.fromJson(o.toJson());
-      checkSubscriptionPlan(od);
+      checkSubscriptionPlan(od as api.SubscriptionPlan);
     });
   });
 
@@ -539,7 +544,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionTransferInfo();
       var od = api.SubscriptionTransferInfo.fromJson(o.toJson());
-      checkSubscriptionTransferInfo(od);
+      checkSubscriptionTransferInfo(od as api.SubscriptionTransferInfo);
     });
   });
 
@@ -547,7 +552,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionTrialSettings();
       var od = api.SubscriptionTrialSettings.fromJson(o.toJson());
-      checkSubscriptionTrialSettings(od);
+      checkSubscriptionTrialSettings(od as api.SubscriptionTrialSettings);
     });
   });
 
@@ -555,7 +560,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
-      checkSubscription(od);
+      checkSubscription(od as api.Subscription);
     });
   });
 
@@ -563,7 +568,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptions();
       var od = api.Subscriptions.fromJson(o.toJson());
-      checkSubscriptions(od);
+      checkSubscriptions(od as api.Subscriptions);
     });
   });
 
@@ -617,7 +622,7 @@ void main() {
       res
           .get(arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomer(response);
+        checkCustomer(response as api.Customer);
       })));
     });
 
@@ -628,8 +633,9 @@ void main() {
       var arg_customerAuthToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Customer.fromJson(json);
-        checkCustomer(obj);
+        var obj =
+            api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCustomer(obj as api.Customer);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -674,7 +680,7 @@ void main() {
           .insert(arg_request,
               customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomer(response);
+        checkCustomer(response as api.Customer);
       })));
     });
 
@@ -685,8 +691,9 @@ void main() {
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Customer.fromJson(json);
-        checkCustomer(obj);
+        var obj =
+            api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCustomer(obj as api.Customer);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -731,7 +738,7 @@ void main() {
       res
           .patch(arg_request, arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomer(response);
+        checkCustomer(response as api.Customer);
       })));
     });
 
@@ -742,8 +749,9 @@ void main() {
       var arg_customerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Customer.fromJson(json);
-        checkCustomer(obj);
+        var obj =
+            api.Customer.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCustomer(obj as api.Customer);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -788,7 +796,7 @@ void main() {
       res
           .update(arg_request, arg_customerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomer(response);
+        checkCustomer(response as api.Customer);
       })));
     });
   });
@@ -840,7 +848,8 @@ void main() {
       res
           .getwatchdetails($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResellernotifyGetwatchdetailsResponse(response);
+        checkResellernotifyGetwatchdetailsResponse(
+            response as api.ResellernotifyGetwatchdetailsResponse);
       })));
     });
 
@@ -894,7 +903,7 @@ void main() {
               serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResellernotifyResource(response);
+        checkResellernotifyResource(response as api.ResellernotifyResource);
       })));
     });
 
@@ -948,7 +957,7 @@ void main() {
               serviceAccountEmailAddress: arg_serviceAccountEmailAddress,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResellernotifyResource(response);
+        checkResellernotifyResource(response as api.ResellernotifyResource);
       })));
     });
   });
@@ -1019,7 +1028,7 @@ void main() {
       res
           .activate(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1031,8 +1040,9 @@ void main() {
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ChangePlanRequest.fromJson(json);
-        checkChangePlanRequest(obj);
+        var obj = api.ChangePlanRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChangePlanRequest(obj as api.ChangePlanRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1093,7 +1103,7 @@ void main() {
           .changePlan(arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1105,8 +1115,9 @@ void main() {
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RenewalSettings.fromJson(json);
-        checkRenewalSettings(obj);
+        var obj = api.RenewalSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRenewalSettings(obj as api.RenewalSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1168,7 +1179,7 @@ void main() {
               arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1180,8 +1191,9 @@ void main() {
       var arg_subscriptionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Seats.fromJson(json);
-        checkSeats(obj);
+        var obj =
+            api.Seats.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSeats(obj as api.Seats);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1242,7 +1254,7 @@ void main() {
           .changeSeats(arg_request, arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1370,7 +1382,7 @@ void main() {
       res
           .get(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1382,8 +1394,9 @@ void main() {
       var arg_customerAuthToken = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Subscription.fromJson(json);
-        checkSubscription(obj);
+        var obj = api.Subscription.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSubscription(obj as api.Subscription);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1437,7 +1450,7 @@ void main() {
           .insert(arg_request, arg_customerId,
               customerAuthToken: arg_customerAuthToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1507,7 +1520,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscriptions(response);
+        checkSubscriptions(response as api.Subscriptions);
       })));
     });
 
@@ -1577,7 +1590,7 @@ void main() {
           .startPaidService(arg_customerId, arg_subscriptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -1646,7 +1659,7 @@ void main() {
       res
           .suspend(arg_customerId, arg_subscriptionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
   });

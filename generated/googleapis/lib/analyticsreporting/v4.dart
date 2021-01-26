@@ -102,7 +102,10 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetReportsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetReportsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -156,7 +159,10 @@ class UserActivityResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchUserActivityResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchUserActivityResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -261,7 +267,8 @@ class Activity {
       activityType = _json['activityType'] as core.String;
     }
     if (_json.containsKey('appview')) {
-      appview = ScreenviewData.fromJson(_json['appview']);
+      appview = ScreenviewData.fromJson(
+          _json['appview'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('campaign')) {
       campaign = _json['campaign'] as core.String;
@@ -271,17 +278,21 @@ class Activity {
     }
     if (_json.containsKey('customDimension')) {
       customDimension = (_json['customDimension'] as core.List)
-          .map<CustomDimension>((value) => CustomDimension.fromJson(value))
+          .map<CustomDimension>((value) => CustomDimension.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ecommerce')) {
-      ecommerce = EcommerceData.fromJson(_json['ecommerce']);
+      ecommerce = EcommerceData.fromJson(
+          _json['ecommerce'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('event')) {
-      event = EventData.fromJson(_json['event']);
+      event = EventData.fromJson(
+          _json['event'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('goals')) {
-      goals = GoalSetData.fromJson(_json['goals']);
+      goals = GoalSetData.fromJson(
+          _json['goals'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hostname')) {
       hostname = _json['hostname'] as core.String;
@@ -296,7 +307,8 @@ class Activity {
       medium = _json['medium'] as core.String;
     }
     if (_json.containsKey('pageview')) {
-      pageview = PageviewData.fromJson(_json['pageview']);
+      pageview = PageviewData.fromJson(
+          _json['pageview'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -389,7 +401,8 @@ class Cohort {
 
   Cohort.fromJson(core.Map _json) {
     if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(_json['dateRange']);
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -449,7 +462,8 @@ class CohortGroup {
   CohortGroup.fromJson(core.Map _json) {
     if (_json.containsKey('cohorts')) {
       cohorts = (_json['cohorts'] as core.List)
-          .map<Cohort>((value) => Cohort.fromJson(value))
+          .map<Cohort>((value) =>
+              Cohort.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('lifetimeValue')) {
@@ -486,7 +500,8 @@ class ColumnHeader {
           .toList();
     }
     if (_json.containsKey('metricHeader')) {
-      metricHeader = MetricHeader.fromJson(_json['metricHeader']);
+      metricHeader = MetricHeader.fromJson(
+          _json['metricHeader'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -581,7 +596,8 @@ class DateRangeValues {
   DateRangeValues.fromJson(core.Map _json) {
     if (_json.containsKey('pivotValueRegions')) {
       pivotValueRegions = (_json['pivotValueRegions'] as core.List)
-          .map<PivotValueRegion>((value) => PivotValueRegion.fromJson(value))
+          .map<PivotValueRegion>((value) => PivotValueRegion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('values')) {
@@ -770,7 +786,8 @@ class DimensionFilterClause {
   DimensionFilterClause.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<DimensionFilter>((value) => DimensionFilter.fromJson(value))
+          .map<DimensionFilter>((value) => DimensionFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operator')) {
@@ -809,10 +826,12 @@ class DynamicSegment {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('sessionSegment')) {
-      sessionSegment = SegmentDefinition.fromJson(_json['sessionSegment']);
+      sessionSegment = SegmentDefinition.fromJson(
+          _json['sessionSegment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userSegment')) {
-      userSegment = SegmentDefinition.fromJson(_json['userSegment']);
+      userSegment = SegmentDefinition.fromJson(
+          _json['userSegment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -872,11 +891,13 @@ class EcommerceData {
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<ProductData>((value) => ProductData.fromJson(value))
+          .map<ProductData>((value) => ProductData.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('transaction')) {
-      transaction = TransactionData.fromJson(_json['transaction']);
+      transaction = TransactionData.fromJson(
+          _json['transaction'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -978,7 +999,8 @@ class GetReportsRequest {
   GetReportsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('reportRequests')) {
       reportRequests = (_json['reportRequests'] as core.List)
-          .map<ReportRequest>((value) => ReportRequest.fromJson(value))
+          .map<ReportRequest>((value) => ReportRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('useResourceQuotas')) {
@@ -1020,12 +1042,14 @@ class GetReportsResponse {
     }
     if (_json.containsKey('reports')) {
       reports = (_json['reports'] as core.List)
-          .map<Report>((value) => Report.fromJson(value))
+          .map<Report>((value) =>
+              Report.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resourceQuotasRemaining')) {
-      resourceQuotasRemaining =
-          ResourceQuotasRemaining.fromJson(_json['resourceQuotasRemaining']);
+      resourceQuotasRemaining = ResourceQuotasRemaining.fromJson(
+          _json['resourceQuotasRemaining']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1139,7 +1163,8 @@ class GoalSetData {
   GoalSetData.fromJson(core.Map _json) {
     if (_json.containsKey('goals')) {
       goals = (_json['goals'] as core.List)
-          .map<GoalData>((value) => GoalData.fromJson(value))
+          .map<GoalData>((value) =>
+              GoalData.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1299,7 +1324,8 @@ class MetricFilterClause {
   MetricFilterClause.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<MetricFilter>((value) => MetricFilter.fromJson(value))
+          .map<MetricFilter>((value) => MetricFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operator')) {
@@ -1332,12 +1358,14 @@ class MetricHeader {
   MetricHeader.fromJson(core.Map _json) {
     if (_json.containsKey('metricHeaderEntries')) {
       metricHeaderEntries = (_json['metricHeaderEntries'] as core.List)
-          .map<MetricHeaderEntry>((value) => MetricHeaderEntry.fromJson(value))
+          .map<MetricHeaderEntry>((value) => MetricHeaderEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pivotHeaders')) {
       pivotHeaders = (_json['pivotHeaders'] as core.List)
-          .map<PivotHeader>((value) => PivotHeader.fromJson(value))
+          .map<PivotHeader>((value) => PivotHeader.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1405,8 +1433,8 @@ class OrFiltersForSegment {
   OrFiltersForSegment.fromJson(core.Map _json) {
     if (_json.containsKey('segmentFilterClauses')) {
       segmentFilterClauses = (_json['segmentFilterClauses'] as core.List)
-          .map<SegmentFilterClause>(
-              (value) => SegmentFilterClause.fromJson(value))
+          .map<SegmentFilterClause>((value) => SegmentFilterClause.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1562,13 +1590,14 @@ class Pivot {
   Pivot.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionFilterClauses')) {
       dimensionFilterClauses = (_json['dimensionFilterClauses'] as core.List)
-          .map<DimensionFilterClause>(
-              (value) => DimensionFilterClause.fromJson(value))
+          .map<DimensionFilterClause>((value) => DimensionFilterClause.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensions')) {
       dimensions = (_json['dimensions'] as core.List)
-          .map<Dimension>((value) => Dimension.fromJson(value))
+          .map<Dimension>((value) =>
+              Dimension.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxGroupCount')) {
@@ -1576,7 +1605,8 @@ class Pivot {
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<Metric>((value) => Metric.fromJson(value))
+          .map<Metric>((value) =>
+              Metric.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('startGroup')) {
@@ -1619,7 +1649,8 @@ class PivotHeader {
   PivotHeader.fromJson(core.Map _json) {
     if (_json.containsKey('pivotHeaderEntries')) {
       pivotHeaderEntries = (_json['pivotHeaderEntries'] as core.List)
-          .map<PivotHeaderEntry>((value) => PivotHeaderEntry.fromJson(value))
+          .map<PivotHeaderEntry>((value) => PivotHeaderEntry.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalPivotGroupsCount')) {
@@ -1666,7 +1697,8 @@ class PivotHeaderEntry {
           .toList();
     }
     if (_json.containsKey('metric')) {
-      metric = MetricHeaderEntry.fromJson(_json['metric']);
+      metric = MetricHeaderEntry.fromJson(
+          _json['metric'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1774,10 +1806,12 @@ class Report {
 
   Report.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeader')) {
-      columnHeader = ColumnHeader.fromJson(_json['columnHeader']);
+      columnHeader = ColumnHeader.fromJson(
+          _json['columnHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('data')) {
-      data = ReportData.fromJson(_json['data']);
+      data = ReportData.fromJson(
+          _json['data'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nextPageToken')) {
       nextPageToken = _json['nextPageToken'] as core.String;
@@ -1861,12 +1895,14 @@ class ReportData {
     }
     if (_json.containsKey('maximums')) {
       maximums = (_json['maximums'] as core.List)
-          .map<DateRangeValues>((value) => DateRangeValues.fromJson(value))
+          .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('minimums')) {
       minimums = (_json['minimums'] as core.List)
-          .map<DateRangeValues>((value) => DateRangeValues.fromJson(value))
+          .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rowCount')) {
@@ -1874,7 +1910,8 @@ class ReportData {
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<ReportRow>((value) => ReportRow.fromJson(value))
+          .map<ReportRow>((value) =>
+              ReportRow.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('samplesReadCounts')) {
@@ -1889,7 +1926,8 @@ class ReportData {
     }
     if (_json.containsKey('totals')) {
       totals = (_json['totals'] as core.List)
-          .map<DateRangeValues>((value) => DateRangeValues.fromJson(value))
+          .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2046,22 +2084,25 @@ class ReportRequest {
 
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cohortGroup')) {
-      cohortGroup = CohortGroup.fromJson(_json['cohortGroup']);
+      cohortGroup = CohortGroup.fromJson(
+          _json['cohortGroup'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dateRanges')) {
       dateRanges = (_json['dateRanges'] as core.List)
-          .map<DateRange>((value) => DateRange.fromJson(value))
+          .map<DateRange>((value) =>
+              DateRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensionFilterClauses')) {
       dimensionFilterClauses = (_json['dimensionFilterClauses'] as core.List)
-          .map<DimensionFilterClause>(
-              (value) => DimensionFilterClause.fromJson(value))
+          .map<DimensionFilterClause>((value) => DimensionFilterClause.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensions')) {
       dimensions = (_json['dimensions'] as core.List)
-          .map<Dimension>((value) => Dimension.fromJson(value))
+          .map<Dimension>((value) =>
+              Dimension.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filtersExpression')) {
@@ -2078,18 +2119,20 @@ class ReportRequest {
     }
     if (_json.containsKey('metricFilterClauses')) {
       metricFilterClauses = (_json['metricFilterClauses'] as core.List)
-          .map<MetricFilterClause>(
-              (value) => MetricFilterClause.fromJson(value))
+          .map<MetricFilterClause>((value) => MetricFilterClause.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<Metric>((value) => Metric.fromJson(value))
+          .map<Metric>((value) =>
+              Metric.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('orderBys')) {
       orderBys = (_json['orderBys'] as core.List)
-          .map<OrderBy>((value) => OrderBy.fromJson(value))
+          .map<OrderBy>((value) =>
+              OrderBy.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageSize')) {
@@ -2100,7 +2143,8 @@ class ReportRequest {
     }
     if (_json.containsKey('pivots')) {
       pivots = (_json['pivots'] as core.List)
-          .map<Pivot>((value) => Pivot.fromJson(value))
+          .map<Pivot>((value) =>
+              Pivot.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('samplingLevel')) {
@@ -2108,7 +2152,8 @@ class ReportRequest {
     }
     if (_json.containsKey('segments')) {
       segments = (_json['segments'] as core.List)
-          .map<Segment>((value) => Segment.fromJson(value))
+          .map<Segment>((value) =>
+              Segment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('viewId')) {
@@ -2193,7 +2238,8 @@ class ReportRow {
     }
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<DateRangeValues>((value) => DateRangeValues.fromJson(value))
+          .map<DateRangeValues>((value) => DateRangeValues.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2336,7 +2382,8 @@ class SearchUserActivityRequest {
           .toList();
     }
     if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(_json['dateRange']);
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageSize')) {
       pageSize = _json['pageSize'] as core.int;
@@ -2345,7 +2392,8 @@ class SearchUserActivityRequest {
       pageToken = _json['pageToken'] as core.String;
     }
     if (_json.containsKey('user')) {
-      user = User.fromJson(_json['user']);
+      user =
+          User.fromJson(_json['user'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('viewId')) {
       viewId = _json['viewId'] as core.String;
@@ -2407,8 +2455,8 @@ class SearchUserActivityResponse {
     }
     if (_json.containsKey('sessions')) {
       sessions = (_json['sessions'] as core.List)
-          .map<UserActivitySession>(
-              (value) => UserActivitySession.fromJson(value))
+          .map<UserActivitySession>((value) => UserActivitySession.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalRows')) {
@@ -2448,7 +2496,8 @@ class Segment {
 
   Segment.fromJson(core.Map _json) {
     if (_json.containsKey('dynamicSegment')) {
-      dynamicSegment = DynamicSegment.fromJson(_json['dynamicSegment']);
+      dynamicSegment = DynamicSegment.fromJson(
+          _json['dynamicSegment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('segmentId')) {
       segmentId = _json['segmentId'] as core.String;
@@ -2479,7 +2528,8 @@ class SegmentDefinition {
   SegmentDefinition.fromJson(core.Map _json) {
     if (_json.containsKey('segmentFilters')) {
       segmentFilters = (_json['segmentFilters'] as core.List)
-          .map<SegmentFilter>((value) => SegmentFilter.fromJson(value))
+          .map<SegmentFilter>((value) => SegmentFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2619,10 +2669,12 @@ class SegmentFilter {
       not = _json['not'] as core.bool;
     }
     if (_json.containsKey('sequenceSegment')) {
-      sequenceSegment = SequenceSegment.fromJson(_json['sequenceSegment']);
+      sequenceSegment = SequenceSegment.fromJson(
+          _json['sequenceSegment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('simpleSegment')) {
-      simpleSegment = SimpleSegment.fromJson(_json['simpleSegment']);
+      simpleSegment = SimpleSegment.fromJson(
+          _json['simpleSegment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2657,11 +2709,12 @@ class SegmentFilterClause {
 
   SegmentFilterClause.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionFilter')) {
-      dimensionFilter =
-          SegmentDimensionFilter.fromJson(_json['dimensionFilter']);
+      dimensionFilter = SegmentDimensionFilter.fromJson(
+          _json['dimensionFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metricFilter')) {
-      metricFilter = SegmentMetricFilter.fromJson(_json['metricFilter']);
+      metricFilter = SegmentMetricFilter.fromJson(
+          _json['metricFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('not')) {
       not = _json['not'] as core.bool;
@@ -2789,8 +2842,8 @@ class SegmentSequenceStep {
     }
     if (_json.containsKey('orFiltersForSegment')) {
       orFiltersForSegment = (_json['orFiltersForSegment'] as core.List)
-          .map<OrFiltersForSegment>(
-              (value) => OrFiltersForSegment.fromJson(value))
+          .map<OrFiltersForSegment>((value) => OrFiltersForSegment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2828,8 +2881,8 @@ class SequenceSegment {
     }
     if (_json.containsKey('segmentSequenceSteps')) {
       segmentSequenceSteps = (_json['segmentSequenceSteps'] as core.List)
-          .map<SegmentSequenceStep>(
-              (value) => SegmentSequenceStep.fromJson(value))
+          .map<SegmentSequenceStep>((value) => SegmentSequenceStep.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2859,8 +2912,8 @@ class SimpleSegment {
   SimpleSegment.fromJson(core.Map _json) {
     if (_json.containsKey('orFiltersForSegment')) {
       orFiltersForSegment = (_json['orFiltersForSegment'] as core.List)
-          .map<OrFiltersForSegment>(
-              (value) => OrFiltersForSegment.fromJson(value))
+          .map<OrFiltersForSegment>((value) => OrFiltersForSegment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2994,7 +3047,8 @@ class UserActivitySession {
   UserActivitySession.fromJson(core.Map _json) {
     if (_json.containsKey('activities')) {
       activities = (_json['activities'] as core.List)
-          .map<Activity>((value) => Activity.fromJson(value))
+          .map<Activity>((value) =>
+              Activity.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dataSource')) {

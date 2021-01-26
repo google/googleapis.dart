@@ -96,8 +96,8 @@ core.List<api.GoogleCloudOrgpolicyV1Policy> buildUnnamed2670() {
 
 void checkUnnamed2670(core.List<api.GoogleCloudOrgpolicyV1Policy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudOrgpolicyV1Policy(o[0]);
-  checkGoogleCloudOrgpolicyV1Policy(o[1]);
+  checkGoogleCloudOrgpolicyV1Policy(o[0] as api.GoogleCloudOrgpolicyV1Policy);
+  checkGoogleCloudOrgpolicyV1Policy(o[1] as api.GoogleCloudOrgpolicyV1Policy);
 }
 
 core.int buildCounterAsset = 0;
@@ -124,16 +124,18 @@ api.Asset buildAsset() {
 void checkAsset(api.Asset o) {
   buildCounterAsset++;
   if (buildCounterAsset < 3) {
-    checkGoogleIdentityAccesscontextmanagerV1AccessLevel(o.accessLevel);
-    checkGoogleIdentityAccesscontextmanagerV1AccessPolicy(o.accessPolicy);
+    checkGoogleIdentityAccesscontextmanagerV1AccessLevel(
+        o.accessLevel as api.GoogleIdentityAccesscontextmanagerV1AccessLevel);
+    checkGoogleIdentityAccesscontextmanagerV1AccessPolicy(
+        o.accessPolicy as api.GoogleIdentityAccesscontextmanagerV1AccessPolicy);
     checkUnnamed2669(o.ancestors);
     unittest.expect(o.assetType, unittest.equals('foo'));
-    checkPolicy(o.iamPolicy);
+    checkPolicy(o.iamPolicy as api.Policy);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2670(o.orgPolicy);
-    checkResource(o.resource);
-    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(
-        o.servicePerimeter);
+    checkResource(o.resource as api.Resource);
+    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(o.servicePerimeter
+        as api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterAsset--;
@@ -148,8 +150,8 @@ core.List<api.AuditLogConfig> buildUnnamed2671() {
 
 void checkUnnamed2671(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -216,8 +218,8 @@ core.List<api.TemporalAsset> buildUnnamed2673() {
 
 void checkUnnamed2673(core.List<api.TemporalAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTemporalAsset(o[0]);
-  checkTemporalAsset(o[1]);
+  checkTemporalAsset(o[0] as api.TemporalAsset);
+  checkTemporalAsset(o[1] as api.TemporalAsset);
 }
 
 core.int buildCounterBatchGetAssetsHistoryResponse = 0;
@@ -259,7 +261,7 @@ void checkBigQueryDestination(api.BigQueryDestination o) {
   if (buildCounterBigQueryDestination < 3) {
     unittest.expect(o.dataset, unittest.equals('foo'));
     unittest.expect(o.force, unittest.isTrue);
-    checkPartitionSpec(o.partitionSpec);
+    checkPartitionSpec(o.partitionSpec as api.PartitionSpec);
     unittest.expect(o.separateTablesPerAssetType, unittest.isTrue);
     unittest.expect(o.table, unittest.equals('foo'));
   }
@@ -295,7 +297,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2674(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -317,7 +319,7 @@ api.CreateFeedRequest buildCreateFeedRequest() {
 void checkCreateFeedRequest(api.CreateFeedRequest o) {
   buildCounterCreateFeedRequest++;
   if (buildCounterCreateFeedRequest < 3) {
-    checkFeed(o.feed);
+    checkFeed(o.feed as api.Feed);
     unittest.expect(o.feedId, unittest.equals('foo'));
   }
   buildCounterCreateFeedRequest--;
@@ -347,8 +349,8 @@ core.Map<core.String, api.Permissions> buildUnnamed2675() {
 
 void checkUnnamed2675(core.Map<core.String, api.Permissions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermissions(o['x']);
-  checkPermissions(o['y']);
+  checkPermissions(o['x'] as api.Permissions);
+  checkPermissions(o['y'] as api.Permissions);
 }
 
 core.int buildCounterExplanation = 0;
@@ -402,7 +404,7 @@ void checkExportAssetsRequest(api.ExportAssetsRequest o) {
   if (buildCounterExportAssetsRequest < 3) {
     checkUnnamed2676(o.assetTypes);
     unittest.expect(o.contentType, unittest.equals('foo'));
-    checkOutputConfig(o.outputConfig);
+    checkOutputConfig(o.outputConfig as api.OutputConfig);
     unittest.expect(o.readTime, unittest.equals('foo'));
   }
   buildCounterExportAssetsRequest--;
@@ -480,9 +482,9 @@ void checkFeed(api.Feed o) {
   if (buildCounterFeed < 3) {
     checkUnnamed2677(o.assetNames);
     checkUnnamed2678(o.assetTypes);
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     unittest.expect(o.contentType, unittest.equals('foo'));
-    checkFeedOutputConfig(o.feedOutputConfig);
+    checkFeedOutputConfig(o.feedOutputConfig as api.FeedOutputConfig);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterFeed--;
@@ -502,7 +504,7 @@ api.FeedOutputConfig buildFeedOutputConfig() {
 void checkFeedOutputConfig(api.FeedOutputConfig o) {
   buildCounterFeedOutputConfig++;
   if (buildCounterFeedOutputConfig < 3) {
-    checkPubsubDestination(o.pubsubDestination);
+    checkPubsubDestination(o.pubsubDestination as api.PubsubDestination);
   }
   buildCounterFeedOutputConfig--;
 }
@@ -623,11 +625,14 @@ api.GoogleCloudOrgpolicyV1Policy buildGoogleCloudOrgpolicyV1Policy() {
 void checkGoogleCloudOrgpolicyV1Policy(api.GoogleCloudOrgpolicyV1Policy o) {
   buildCounterGoogleCloudOrgpolicyV1Policy++;
   if (buildCounterGoogleCloudOrgpolicyV1Policy < 3) {
-    checkGoogleCloudOrgpolicyV1BooleanPolicy(o.booleanPolicy);
+    checkGoogleCloudOrgpolicyV1BooleanPolicy(
+        o.booleanPolicy as api.GoogleCloudOrgpolicyV1BooleanPolicy);
     unittest.expect(o.constraint, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkGoogleCloudOrgpolicyV1ListPolicy(o.listPolicy);
-    checkGoogleCloudOrgpolicyV1RestoreDefault(o.restoreDefault);
+    checkGoogleCloudOrgpolicyV1ListPolicy(
+        o.listPolicy as api.GoogleCloudOrgpolicyV1ListPolicy);
+    checkGoogleCloudOrgpolicyV1RestoreDefault(
+        o.restoreDefault as api.GoogleCloudOrgpolicyV1RestoreDefault);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals(42));
   }
@@ -671,8 +676,10 @@ void checkGoogleIdentityAccesscontextmanagerV1AccessLevel(
     api.GoogleIdentityAccesscontextmanagerV1AccessLevel o) {
   buildCounterGoogleIdentityAccesscontextmanagerV1AccessLevel++;
   if (buildCounterGoogleIdentityAccesscontextmanagerV1AccessLevel < 3) {
-    checkGoogleIdentityAccesscontextmanagerV1BasicLevel(o.basic);
-    checkGoogleIdentityAccesscontextmanagerV1CustomLevel(o.custom);
+    checkGoogleIdentityAccesscontextmanagerV1BasicLevel(
+        o.basic as api.GoogleIdentityAccesscontextmanagerV1BasicLevel);
+    checkGoogleIdentityAccesscontextmanagerV1CustomLevel(
+        o.custom as api.GoogleIdentityAccesscontextmanagerV1CustomLevel);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -718,8 +725,10 @@ core.List<api.GoogleIdentityAccesscontextmanagerV1Condition>
 void checkUnnamed2681(
     core.List<api.GoogleIdentityAccesscontextmanagerV1Condition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIdentityAccesscontextmanagerV1Condition(o[0]);
-  checkGoogleIdentityAccesscontextmanagerV1Condition(o[1]);
+  checkGoogleIdentityAccesscontextmanagerV1Condition(
+      o[0] as api.GoogleIdentityAccesscontextmanagerV1Condition);
+  checkGoogleIdentityAccesscontextmanagerV1Condition(
+      o[1] as api.GoogleIdentityAccesscontextmanagerV1Condition);
 }
 
 core.int buildCounterGoogleIdentityAccesscontextmanagerV1BasicLevel = 0;
@@ -818,7 +827,8 @@ void checkGoogleIdentityAccesscontextmanagerV1Condition(
     api.GoogleIdentityAccesscontextmanagerV1Condition o) {
   buildCounterGoogleIdentityAccesscontextmanagerV1Condition++;
   if (buildCounterGoogleIdentityAccesscontextmanagerV1Condition < 3) {
-    checkGoogleIdentityAccesscontextmanagerV1DevicePolicy(o.devicePolicy);
+    checkGoogleIdentityAccesscontextmanagerV1DevicePolicy(
+        o.devicePolicy as api.GoogleIdentityAccesscontextmanagerV1DevicePolicy);
     checkUnnamed2682(o.ipSubnetworks);
     checkUnnamed2683(o.members);
     unittest.expect(o.negate, unittest.isTrue);
@@ -844,7 +854,7 @@ void checkGoogleIdentityAccesscontextmanagerV1CustomLevel(
     api.GoogleIdentityAccesscontextmanagerV1CustomLevel o) {
   buildCounterGoogleIdentityAccesscontextmanagerV1CustomLevel++;
   if (buildCounterGoogleIdentityAccesscontextmanagerV1CustomLevel < 3) {
-    checkExpr(o.expr);
+    checkExpr(o.expr as api.Expr);
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1CustomLevel--;
 }
@@ -886,8 +896,10 @@ core.List<api.GoogleIdentityAccesscontextmanagerV1OsConstraint>
 void checkUnnamed2688(
     core.List<api.GoogleIdentityAccesscontextmanagerV1OsConstraint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleIdentityAccesscontextmanagerV1OsConstraint(o[0]);
-  checkGoogleIdentityAccesscontextmanagerV1OsConstraint(o[1]);
+  checkGoogleIdentityAccesscontextmanagerV1OsConstraint(
+      o[0] as api.GoogleIdentityAccesscontextmanagerV1OsConstraint);
+  checkGoogleIdentityAccesscontextmanagerV1OsConstraint(
+      o[1] as api.GoogleIdentityAccesscontextmanagerV1OsConstraint);
 }
 
 core.int buildCounterGoogleIdentityAccesscontextmanagerV1DevicePolicy = 0;
@@ -972,8 +984,10 @@ void checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.perimeterType, unittest.equals('foo'));
-    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(o.spec);
-    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(o.status);
+    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(o.spec
+        as api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig);
+    checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(o.status
+        as api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.useExplicitDryRunSpec, unittest.isTrue);
   }
@@ -1046,7 +1060,8 @@ void checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(
     checkUnnamed2690(o.resources);
     checkUnnamed2691(o.restrictedServices);
     checkGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices(
-        o.vpcAccessibleServices);
+        o.vpcAccessibleServices
+            as api.GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices);
   }
   buildCounterGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig--;
 }
@@ -1107,8 +1122,8 @@ api.IamPolicySearchResult buildIamPolicySearchResult() {
 void checkIamPolicySearchResult(api.IamPolicySearchResult o) {
   buildCounterIamPolicySearchResult++;
   if (buildCounterIamPolicySearchResult < 3) {
-    checkExplanation(o.explanation);
-    checkPolicy(o.policy);
+    checkExplanation(o.explanation as api.Explanation);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.project, unittest.equals('foo'));
     unittest.expect(o.resource, unittest.equals('foo'));
   }
@@ -1124,8 +1139,8 @@ core.List<api.Feed> buildUnnamed2693() {
 
 void checkUnnamed2693(core.List<api.Feed> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeed(o[0]);
-  checkFeed(o[1]);
+  checkFeed(o[0] as api.Feed);
+  checkFeed(o[1] as api.Feed);
 }
 
 core.int buildCounterListFeedsResponse = 0;
@@ -1224,7 +1239,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed2694(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2695(o.response);
@@ -1247,8 +1262,8 @@ api.OutputConfig buildOutputConfig() {
 void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
-    checkBigQueryDestination(o.bigqueryDestination);
-    checkGcsDestination(o.gcsDestination);
+    checkBigQueryDestination(o.bigqueryDestination as api.BigQueryDestination);
+    checkGcsDestination(o.gcsDestination as api.GcsDestination);
   }
   buildCounterOutputConfig--;
 }
@@ -1313,8 +1328,8 @@ core.List<api.AuditConfig> buildUnnamed2697() {
 
 void checkUnnamed2697(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed2698() {
@@ -1326,8 +1341,8 @@ core.List<api.Binding> buildUnnamed2698() {
 
 void checkUnnamed2698(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1533,8 +1548,8 @@ core.List<api.IamPolicySearchResult> buildUnnamed2703() {
 
 void checkUnnamed2703(core.List<api.IamPolicySearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIamPolicySearchResult(o[0]);
-  checkIamPolicySearchResult(o[1]);
+  checkIamPolicySearchResult(o[0] as api.IamPolicySearchResult);
+  checkIamPolicySearchResult(o[1] as api.IamPolicySearchResult);
 }
 
 core.int buildCounterSearchAllIamPoliciesResponse = 0;
@@ -1567,8 +1582,8 @@ core.List<api.ResourceSearchResult> buildUnnamed2704() {
 
 void checkUnnamed2704(core.List<api.ResourceSearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResourceSearchResult(o[0]);
-  checkResourceSearchResult(o[1]);
+  checkResourceSearchResult(o[0] as api.ResourceSearchResult);
+  checkResourceSearchResult(o[1] as api.ResourceSearchResult);
 }
 
 core.int buildCounterSearchAllResourcesResponse = 0;
@@ -1675,11 +1690,11 @@ api.TemporalAsset buildTemporalAsset() {
 void checkTemporalAsset(api.TemporalAsset o) {
   buildCounterTemporalAsset++;
   if (buildCounterTemporalAsset < 3) {
-    checkAsset(o.asset);
+    checkAsset(o.asset as api.Asset);
     unittest.expect(o.deleted, unittest.isTrue);
-    checkAsset(o.priorAsset);
+    checkAsset(o.priorAsset as api.Asset);
     unittest.expect(o.priorAssetState, unittest.equals('foo'));
-    checkTimeWindow(o.window);
+    checkTimeWindow(o.window as api.TimeWindow);
   }
   buildCounterTemporalAsset--;
 }
@@ -1720,7 +1735,7 @@ api.UpdateFeedRequest buildUpdateFeedRequest() {
 void checkUpdateFeedRequest(api.UpdateFeedRequest o) {
   buildCounterUpdateFeedRequest++;
   if (buildCounterUpdateFeedRequest < 3) {
-    checkFeed(o.feed);
+    checkFeed(o.feed as api.Feed);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterUpdateFeedRequest--;
@@ -1757,7 +1772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
-      checkAsset(od);
+      checkAsset(od as api.Asset);
     });
   });
 
@@ -1765,7 +1780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1773,7 +1788,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1781,7 +1796,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetAssetsHistoryResponse();
       var od = api.BatchGetAssetsHistoryResponse.fromJson(o.toJson());
-      checkBatchGetAssetsHistoryResponse(od);
+      checkBatchGetAssetsHistoryResponse(
+          od as api.BatchGetAssetsHistoryResponse);
     });
   });
 
@@ -1789,7 +1805,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBigQueryDestination();
       var od = api.BigQueryDestination.fromJson(o.toJson());
-      checkBigQueryDestination(od);
+      checkBigQueryDestination(od as api.BigQueryDestination);
     });
   });
 
@@ -1797,7 +1813,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1805,7 +1821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateFeedRequest();
       var od = api.CreateFeedRequest.fromJson(o.toJson());
-      checkCreateFeedRequest(od);
+      checkCreateFeedRequest(od as api.CreateFeedRequest);
     });
   });
 
@@ -1813,7 +1829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1821,7 +1837,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExplanation();
       var od = api.Explanation.fromJson(o.toJson());
-      checkExplanation(od);
+      checkExplanation(od as api.Explanation);
     });
   });
 
@@ -1829,7 +1845,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportAssetsRequest();
       var od = api.ExportAssetsRequest.fromJson(o.toJson());
-      checkExportAssetsRequest(od);
+      checkExportAssetsRequest(od as api.ExportAssetsRequest);
     });
   });
 
@@ -1837,7 +1853,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1845,7 +1861,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFeed();
       var od = api.Feed.fromJson(o.toJson());
-      checkFeed(od);
+      checkFeed(od as api.Feed);
     });
   });
 
@@ -1853,7 +1869,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFeedOutputConfig();
       var od = api.FeedOutputConfig.fromJson(o.toJson());
-      checkFeedOutputConfig(od);
+      checkFeedOutputConfig(od as api.FeedOutputConfig);
     });
   });
 
@@ -1861,7 +1877,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
-      checkGcsDestination(od);
+      checkGcsDestination(od as api.GcsDestination);
     });
   });
 
@@ -1869,7 +1885,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudOrgpolicyV1BooleanPolicy();
       var od = api.GoogleCloudOrgpolicyV1BooleanPolicy.fromJson(o.toJson());
-      checkGoogleCloudOrgpolicyV1BooleanPolicy(od);
+      checkGoogleCloudOrgpolicyV1BooleanPolicy(
+          od as api.GoogleCloudOrgpolicyV1BooleanPolicy);
     });
   });
 
@@ -1877,7 +1894,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudOrgpolicyV1ListPolicy();
       var od = api.GoogleCloudOrgpolicyV1ListPolicy.fromJson(o.toJson());
-      checkGoogleCloudOrgpolicyV1ListPolicy(od);
+      checkGoogleCloudOrgpolicyV1ListPolicy(
+          od as api.GoogleCloudOrgpolicyV1ListPolicy);
     });
   });
 
@@ -1885,7 +1903,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudOrgpolicyV1Policy();
       var od = api.GoogleCloudOrgpolicyV1Policy.fromJson(o.toJson());
-      checkGoogleCloudOrgpolicyV1Policy(od);
+      checkGoogleCloudOrgpolicyV1Policy(od as api.GoogleCloudOrgpolicyV1Policy);
     });
   });
 
@@ -1893,7 +1911,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudOrgpolicyV1RestoreDefault();
       var od = api.GoogleCloudOrgpolicyV1RestoreDefault.fromJson(o.toJson());
-      checkGoogleCloudOrgpolicyV1RestoreDefault(od);
+      checkGoogleCloudOrgpolicyV1RestoreDefault(
+          od as api.GoogleCloudOrgpolicyV1RestoreDefault);
     });
   });
 
@@ -1903,7 +1922,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1AccessLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1AccessLevel.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1AccessLevel(od);
+      checkGoogleIdentityAccesscontextmanagerV1AccessLevel(
+          od as api.GoogleIdentityAccesscontextmanagerV1AccessLevel);
     });
   });
 
@@ -1913,7 +1933,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1AccessPolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1AccessPolicy.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1AccessPolicy(od);
+      checkGoogleIdentityAccesscontextmanagerV1AccessPolicy(
+          od as api.GoogleIdentityAccesscontextmanagerV1AccessPolicy);
     });
   });
 
@@ -1923,7 +1944,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1BasicLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1BasicLevel.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1BasicLevel(od);
+      checkGoogleIdentityAccesscontextmanagerV1BasicLevel(
+          od as api.GoogleIdentityAccesscontextmanagerV1BasicLevel);
     });
   });
 
@@ -1933,7 +1955,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1Condition();
       var od = api.GoogleIdentityAccesscontextmanagerV1Condition.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1Condition(od);
+      checkGoogleIdentityAccesscontextmanagerV1Condition(
+          od as api.GoogleIdentityAccesscontextmanagerV1Condition);
     });
   });
 
@@ -1943,7 +1966,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1CustomLevel();
       var od = api.GoogleIdentityAccesscontextmanagerV1CustomLevel.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1CustomLevel(od);
+      checkGoogleIdentityAccesscontextmanagerV1CustomLevel(
+          od as api.GoogleIdentityAccesscontextmanagerV1CustomLevel);
     });
   });
 
@@ -1953,7 +1977,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1DevicePolicy();
       var od = api.GoogleIdentityAccesscontextmanagerV1DevicePolicy.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1DevicePolicy(od);
+      checkGoogleIdentityAccesscontextmanagerV1DevicePolicy(
+          od as api.GoogleIdentityAccesscontextmanagerV1DevicePolicy);
     });
   });
 
@@ -1963,7 +1988,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1OsConstraint();
       var od = api.GoogleIdentityAccesscontextmanagerV1OsConstraint.fromJson(
           o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1OsConstraint(od);
+      checkGoogleIdentityAccesscontextmanagerV1OsConstraint(
+          od as api.GoogleIdentityAccesscontextmanagerV1OsConstraint);
     });
   });
 
@@ -1974,7 +2000,8 @@ void main() {
       var od =
           api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter.fromJson(
               o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(od);
+      checkGoogleIdentityAccesscontextmanagerV1ServicePerimeter(
+          od as api.GoogleIdentityAccesscontextmanagerV1ServicePerimeter);
     });
   });
 
@@ -1985,7 +2012,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig();
       var od = api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig
           .fromJson(o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(od);
+      checkGoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig(
+          od as api.GoogleIdentityAccesscontextmanagerV1ServicePerimeterConfig);
     });
   });
 
@@ -1996,7 +2024,8 @@ void main() {
       var o = buildGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices();
       var od = api.GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices
           .fromJson(o.toJson());
-      checkGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices(od);
+      checkGoogleIdentityAccesscontextmanagerV1VpcAccessibleServices(
+          od as api.GoogleIdentityAccesscontextmanagerV1VpcAccessibleServices);
     });
   });
 
@@ -2004,7 +2033,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIamPolicySearchResult();
       var od = api.IamPolicySearchResult.fromJson(o.toJson());
-      checkIamPolicySearchResult(od);
+      checkIamPolicySearchResult(od as api.IamPolicySearchResult);
     });
   });
 
@@ -2012,7 +2041,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFeedsResponse();
       var od = api.ListFeedsResponse.fromJson(o.toJson());
-      checkListFeedsResponse(od);
+      checkListFeedsResponse(od as api.ListFeedsResponse);
     });
   });
 
@@ -2020,7 +2049,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -2028,7 +2057,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
-      checkOutputConfig(od);
+      checkOutputConfig(od as api.OutputConfig);
     });
   });
 
@@ -2036,7 +2065,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartitionSpec();
       var od = api.PartitionSpec.fromJson(o.toJson());
-      checkPartitionSpec(od);
+      checkPartitionSpec(od as api.PartitionSpec);
     });
   });
 
@@ -2044,7 +2073,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissions();
       var od = api.Permissions.fromJson(o.toJson());
-      checkPermissions(od);
+      checkPermissions(od as api.Permissions);
     });
   });
 
@@ -2052,7 +2081,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -2060,7 +2089,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPubsubDestination();
       var od = api.PubsubDestination.fromJson(o.toJson());
-      checkPubsubDestination(od);
+      checkPubsubDestination(od as api.PubsubDestination);
     });
   });
 
@@ -2068,7 +2097,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
-      checkResource(od);
+      checkResource(od as api.Resource);
     });
   });
 
@@ -2076,7 +2105,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceSearchResult();
       var od = api.ResourceSearchResult.fromJson(o.toJson());
-      checkResourceSearchResult(od);
+      checkResourceSearchResult(od as api.ResourceSearchResult);
     });
   });
 
@@ -2084,7 +2113,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAllIamPoliciesResponse();
       var od = api.SearchAllIamPoliciesResponse.fromJson(o.toJson());
-      checkSearchAllIamPoliciesResponse(od);
+      checkSearchAllIamPoliciesResponse(od as api.SearchAllIamPoliciesResponse);
     });
   });
 
@@ -2092,7 +2121,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAllResourcesResponse();
       var od = api.SearchAllResourcesResponse.fromJson(o.toJson());
-      checkSearchAllResourcesResponse(od);
+      checkSearchAllResourcesResponse(od as api.SearchAllResourcesResponse);
     });
   });
 
@@ -2100,7 +2129,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -2108,7 +2137,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTemporalAsset();
       var od = api.TemporalAsset.fromJson(o.toJson());
-      checkTemporalAsset(od);
+      checkTemporalAsset(od as api.TemporalAsset);
     });
   });
 
@@ -2116,7 +2145,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeWindow();
       var od = api.TimeWindow.fromJson(o.toJson());
-      checkTimeWindow(od);
+      checkTimeWindow(od as api.TimeWindow);
     });
   });
 
@@ -2124,7 +2153,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateFeedRequest();
       var od = api.UpdateFeedRequest.fromJson(o.toJson());
-      checkUpdateFeedRequest(od);
+      checkUpdateFeedRequest(od as api.UpdateFeedRequest);
     });
   });
 
@@ -2136,8 +2165,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateFeedRequest.fromJson(json);
-        checkCreateFeedRequest(obj);
+        var obj = api.CreateFeedRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateFeedRequest(obj as api.CreateFeedRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2177,7 +2207,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFeed(response);
+        checkFeed(response as api.Feed);
       })));
     });
 
@@ -2225,7 +2255,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2273,7 +2303,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFeed(response);
+        checkFeed(response as api.Feed);
       })));
     });
 
@@ -2321,7 +2351,7 @@ void main() {
       res
           .list(arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFeedsResponse(response);
+        checkListFeedsResponse(response as api.ListFeedsResponse);
       })));
     });
 
@@ -2332,8 +2362,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateFeedRequest.fromJson(json);
-        checkUpdateFeedRequest(obj);
+        var obj = api.UpdateFeedRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateFeedRequest(obj as api.UpdateFeedRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2373,7 +2404,7 @@ void main() {
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFeed(response);
+        checkFeed(response as api.Feed);
       })));
     });
   });
@@ -2423,7 +2454,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2490,7 +2521,8 @@ void main() {
               readTimeWindow_startTime: arg_readTimeWindow_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetAssetsHistoryResponse(response);
+        checkBatchGetAssetsHistoryResponse(
+            response as api.BatchGetAssetsHistoryResponse);
       })));
     });
 
@@ -2501,8 +2533,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExportAssetsRequest.fromJson(json);
-        checkExportAssetsRequest(obj);
+        var obj = api.ExportAssetsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExportAssetsRequest(obj as api.ExportAssetsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2542,7 +2575,7 @@ void main() {
       res
           .exportAssets(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2602,7 +2635,8 @@ void main() {
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchAllIamPoliciesResponse(response);
+        checkSearchAllIamPoliciesResponse(
+            response as api.SearchAllIamPoliciesResponse);
       })));
     });
 
@@ -2670,7 +2704,8 @@ void main() {
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchAllResourcesResponse(response);
+        checkSearchAllResourcesResponse(
+            response as api.SearchAllResourcesResponse);
       })));
     });
   });

@@ -90,9 +90,9 @@ api.Authentication buildAuthentication() {
 void checkAuthentication(api.Authentication o) {
   buildCounterAuthentication++;
   if (buildCounterAuthentication < 3) {
-    checkCustomAccount(o.customAccount);
-    checkGoogleAccount(o.googleAccount);
-    checkIapCredential(o.iapCredential);
+    checkCustomAccount(o.customAccount as api.CustomAccount);
+    checkGoogleAccount(o.googleAccount as api.GoogleAccount);
+    checkIapCredential(o.iapCredential as api.IapCredential);
   }
   buildCounterAuthentication--;
 }
@@ -192,19 +192,20 @@ void checkFinding(api.Finding o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.finalUrl, unittest.equals('foo'));
     unittest.expect(o.findingType, unittest.equals('foo'));
-    checkForm(o.form);
+    checkForm(o.form as api.Form);
     unittest.expect(o.frameUrl, unittest.equals('foo'));
     unittest.expect(o.fuzzedUrl, unittest.equals('foo'));
     unittest.expect(o.httpMethod, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOutdatedLibrary(o.outdatedLibrary);
+    checkOutdatedLibrary(o.outdatedLibrary as api.OutdatedLibrary);
     unittest.expect(o.reproductionUrl, unittest.equals('foo'));
     unittest.expect(o.severity, unittest.equals('foo'));
     unittest.expect(o.trackingId, unittest.equals('foo'));
-    checkViolatingResource(o.violatingResource);
-    checkVulnerableHeaders(o.vulnerableHeaders);
-    checkVulnerableParameters(o.vulnerableParameters);
-    checkXss(o.xss);
+    checkViolatingResource(o.violatingResource as api.ViolatingResource);
+    checkVulnerableHeaders(o.vulnerableHeaders as api.VulnerableHeaders);
+    checkVulnerableParameters(
+        o.vulnerableParameters as api.VulnerableParameters);
+    checkXss(o.xss as api.Xss);
   }
   buildCounterFinding--;
 }
@@ -320,7 +321,8 @@ api.IapCredential buildIapCredential() {
 void checkIapCredential(api.IapCredential o) {
   buildCounterIapCredential++;
   if (buildCounterIapCredential < 3) {
-    checkIapTestServiceAccountInfo(o.iapTestServiceAccountInfo);
+    checkIapTestServiceAccountInfo(
+        o.iapTestServiceAccountInfo as api.IapTestServiceAccountInfo);
   }
   buildCounterIapCredential--;
 }
@@ -353,8 +355,8 @@ core.List<api.CrawledUrl> buildUnnamed135() {
 
 void checkUnnamed135(core.List<api.CrawledUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCrawledUrl(o[0]);
-  checkCrawledUrl(o[1]);
+  checkCrawledUrl(o[0] as api.CrawledUrl);
+  checkCrawledUrl(o[1] as api.CrawledUrl);
 }
 
 core.int buildCounterListCrawledUrlsResponse = 0;
@@ -387,8 +389,8 @@ core.List<api.FindingTypeStats> buildUnnamed136() {
 
 void checkUnnamed136(core.List<api.FindingTypeStats> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFindingTypeStats(o[0]);
-  checkFindingTypeStats(o[1]);
+  checkFindingTypeStats(o[0] as api.FindingTypeStats);
+  checkFindingTypeStats(o[1] as api.FindingTypeStats);
 }
 
 core.int buildCounterListFindingTypeStatsResponse = 0;
@@ -419,8 +421,8 @@ core.List<api.Finding> buildUnnamed137() {
 
 void checkUnnamed137(core.List<api.Finding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFinding(o[0]);
-  checkFinding(o[1]);
+  checkFinding(o[0] as api.Finding);
+  checkFinding(o[1] as api.Finding);
 }
 
 core.int buildCounterListFindingsResponse = 0;
@@ -453,8 +455,8 @@ core.List<api.ScanConfig> buildUnnamed138() {
 
 void checkUnnamed138(core.List<api.ScanConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkScanConfig(o[0]);
-  checkScanConfig(o[1]);
+  checkScanConfig(o[0] as api.ScanConfig);
+  checkScanConfig(o[1] as api.ScanConfig);
 }
 
 core.int buildCounterListScanConfigsResponse = 0;
@@ -487,8 +489,8 @@ core.List<api.ScanRun> buildUnnamed139() {
 
 void checkUnnamed139(core.List<api.ScanRun> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkScanRun(o[0]);
-  checkScanRun(o[1]);
+  checkScanRun(o[0] as api.ScanRun);
+  checkScanRun(o[1] as api.ScanRun);
 }
 
 core.int buildCounterListScanRunsResponse = 0;
@@ -599,7 +601,7 @@ api.ScanConfig buildScanConfig() {
 void checkScanConfig(api.ScanConfig o) {
   buildCounterScanConfig++;
   if (buildCounterScanConfig < 3) {
-    checkAuthentication(o.authentication);
+    checkAuthentication(o.authentication as api.Authentication);
     checkUnnamed141(o.blacklistPatterns);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.exportToSecurityCommandCenter, unittest.equals('foo'));
@@ -607,7 +609,7 @@ void checkScanConfig(api.ScanConfig o) {
     unittest.expect(o.maxQps, unittest.equals(42));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.riskLevel, unittest.equals('foo'));
-    checkSchedule(o.schedule);
+    checkSchedule(o.schedule as api.Schedule);
     checkUnnamed142(o.startingUrls);
     unittest.expect(o.staticIpScan, unittest.isTrue);
     unittest.expect(o.userAgent, unittest.equals('foo'));
@@ -645,8 +647,8 @@ core.List<api.ScanRunWarningTrace> buildUnnamed143() {
 
 void checkUnnamed143(core.List<api.ScanRunWarningTrace> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkScanRunWarningTrace(o[0]);
-  checkScanRunWarningTrace(o[1]);
+  checkScanRunWarningTrace(o[0] as api.ScanRunWarningTrace);
+  checkScanRunWarningTrace(o[1] as api.ScanRunWarningTrace);
 }
 
 core.int buildCounterScanRun = 0;
@@ -674,7 +676,7 @@ void checkScanRun(api.ScanRun o) {
   buildCounterScanRun++;
   if (buildCounterScanRun < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
-    checkScanRunErrorTrace(o.errorTrace);
+    checkScanRunErrorTrace(o.errorTrace as api.ScanRunErrorTrace);
     unittest.expect(o.executionState, unittest.equals('foo'));
     unittest.expect(o.hasVulnerabilities, unittest.isTrue);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -706,7 +708,7 @@ void checkScanRunErrorTrace(api.ScanRunErrorTrace o) {
   if (buildCounterScanRunErrorTrace < 3) {
     unittest.expect(o.code, unittest.equals('foo'));
     unittest.expect(o.mostCommonHttpErrorCode, unittest.equals(42));
-    checkScanConfigError(o.scanConfigError);
+    checkScanConfigError(o.scanConfigError as api.ScanConfigError);
   }
   buildCounterScanRunErrorTrace--;
 }
@@ -811,8 +813,8 @@ core.List<api.Header> buildUnnamed144() {
 
 void checkUnnamed144(core.List<api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o[0]);
-  checkHeader(o[1]);
+  checkHeader(o[0] as api.Header);
+  checkHeader(o[1] as api.Header);
 }
 
 core.List<api.Header> buildUnnamed145() {
@@ -824,8 +826,8 @@ core.List<api.Header> buildUnnamed145() {
 
 void checkUnnamed145(core.List<api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o[0]);
-  checkHeader(o[1]);
+  checkHeader(o[0] as api.Header);
+  checkHeader(o[1] as api.Header);
 }
 
 core.int buildCounterVulnerableHeaders = 0;
@@ -924,7 +926,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuthentication();
       var od = api.Authentication.fromJson(o.toJson());
-      checkAuthentication(od);
+      checkAuthentication(od as api.Authentication);
     });
   });
 
@@ -932,7 +934,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCrawledUrl();
       var od = api.CrawledUrl.fromJson(o.toJson());
-      checkCrawledUrl(od);
+      checkCrawledUrl(od as api.CrawledUrl);
     });
   });
 
@@ -940,7 +942,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomAccount();
       var od = api.CustomAccount.fromJson(o.toJson());
-      checkCustomAccount(od);
+      checkCustomAccount(od as api.CustomAccount);
     });
   });
 
@@ -948,7 +950,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -956,7 +958,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFinding();
       var od = api.Finding.fromJson(o.toJson());
-      checkFinding(od);
+      checkFinding(od as api.Finding);
     });
   });
 
@@ -964,7 +966,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFindingTypeStats();
       var od = api.FindingTypeStats.fromJson(o.toJson());
-      checkFindingTypeStats(od);
+      checkFindingTypeStats(od as api.FindingTypeStats);
     });
   });
 
@@ -972,7 +974,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildForm();
       var od = api.Form.fromJson(o.toJson());
-      checkForm(od);
+      checkForm(od as api.Form);
     });
   });
 
@@ -980,7 +982,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAccount();
       var od = api.GoogleAccount.fromJson(o.toJson());
-      checkGoogleAccount(od);
+      checkGoogleAccount(od as api.GoogleAccount);
     });
   });
 
@@ -988,7 +990,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
-      checkHeader(od);
+      checkHeader(od as api.Header);
     });
   });
 
@@ -996,7 +998,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIapCredential();
       var od = api.IapCredential.fromJson(o.toJson());
-      checkIapCredential(od);
+      checkIapCredential(od as api.IapCredential);
     });
   });
 
@@ -1004,7 +1006,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIapTestServiceAccountInfo();
       var od = api.IapTestServiceAccountInfo.fromJson(o.toJson());
-      checkIapTestServiceAccountInfo(od);
+      checkIapTestServiceAccountInfo(od as api.IapTestServiceAccountInfo);
     });
   });
 
@@ -1012,7 +1014,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCrawledUrlsResponse();
       var od = api.ListCrawledUrlsResponse.fromJson(o.toJson());
-      checkListCrawledUrlsResponse(od);
+      checkListCrawledUrlsResponse(od as api.ListCrawledUrlsResponse);
     });
   });
 
@@ -1020,7 +1022,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFindingTypeStatsResponse();
       var od = api.ListFindingTypeStatsResponse.fromJson(o.toJson());
-      checkListFindingTypeStatsResponse(od);
+      checkListFindingTypeStatsResponse(od as api.ListFindingTypeStatsResponse);
     });
   });
 
@@ -1028,7 +1030,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFindingsResponse();
       var od = api.ListFindingsResponse.fromJson(o.toJson());
-      checkListFindingsResponse(od);
+      checkListFindingsResponse(od as api.ListFindingsResponse);
     });
   });
 
@@ -1036,7 +1038,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListScanConfigsResponse();
       var od = api.ListScanConfigsResponse.fromJson(o.toJson());
-      checkListScanConfigsResponse(od);
+      checkListScanConfigsResponse(od as api.ListScanConfigsResponse);
     });
   });
 
@@ -1044,7 +1046,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListScanRunsResponse();
       var od = api.ListScanRunsResponse.fromJson(o.toJson());
-      checkListScanRunsResponse(od);
+      checkListScanRunsResponse(od as api.ListScanRunsResponse);
     });
   });
 
@@ -1052,7 +1054,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutdatedLibrary();
       var od = api.OutdatedLibrary.fromJson(o.toJson());
-      checkOutdatedLibrary(od);
+      checkOutdatedLibrary(od as api.OutdatedLibrary);
     });
   });
 
@@ -1060,7 +1062,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScanConfig();
       var od = api.ScanConfig.fromJson(o.toJson());
-      checkScanConfig(od);
+      checkScanConfig(od as api.ScanConfig);
     });
   });
 
@@ -1068,7 +1070,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScanConfigError();
       var od = api.ScanConfigError.fromJson(o.toJson());
-      checkScanConfigError(od);
+      checkScanConfigError(od as api.ScanConfigError);
     });
   });
 
@@ -1076,7 +1078,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScanRun();
       var od = api.ScanRun.fromJson(o.toJson());
-      checkScanRun(od);
+      checkScanRun(od as api.ScanRun);
     });
   });
 
@@ -1084,7 +1086,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScanRunErrorTrace();
       var od = api.ScanRunErrorTrace.fromJson(o.toJson());
-      checkScanRunErrorTrace(od);
+      checkScanRunErrorTrace(od as api.ScanRunErrorTrace);
     });
   });
 
@@ -1092,7 +1094,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScanRunWarningTrace();
       var od = api.ScanRunWarningTrace.fromJson(o.toJson());
-      checkScanRunWarningTrace(od);
+      checkScanRunWarningTrace(od as api.ScanRunWarningTrace);
     });
   });
 
@@ -1100,7 +1102,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSchedule();
       var od = api.Schedule.fromJson(o.toJson());
-      checkSchedule(od);
+      checkSchedule(od as api.Schedule);
     });
   });
 
@@ -1108,7 +1110,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartScanRunRequest();
       var od = api.StartScanRunRequest.fromJson(o.toJson());
-      checkStartScanRunRequest(od);
+      checkStartScanRunRequest(od as api.StartScanRunRequest);
     });
   });
 
@@ -1116,7 +1118,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStopScanRunRequest();
       var od = api.StopScanRunRequest.fromJson(o.toJson());
-      checkStopScanRunRequest(od);
+      checkStopScanRunRequest(od as api.StopScanRunRequest);
     });
   });
 
@@ -1124,7 +1126,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildViolatingResource();
       var od = api.ViolatingResource.fromJson(o.toJson());
-      checkViolatingResource(od);
+      checkViolatingResource(od as api.ViolatingResource);
     });
   });
 
@@ -1132,7 +1134,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVulnerableHeaders();
       var od = api.VulnerableHeaders.fromJson(o.toJson());
-      checkVulnerableHeaders(od);
+      checkVulnerableHeaders(od as api.VulnerableHeaders);
     });
   });
 
@@ -1140,7 +1142,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVulnerableParameters();
       var od = api.VulnerableParameters.fromJson(o.toJson());
-      checkVulnerableParameters(od);
+      checkVulnerableParameters(od as api.VulnerableParameters);
     });
   });
 
@@ -1148,7 +1150,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildXss();
       var od = api.Xss.fromJson(o.toJson());
-      checkXss(od);
+      checkXss(od as api.Xss);
     });
   });
 
@@ -1160,8 +1162,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ScanConfig.fromJson(json);
-        checkScanConfig(obj);
+        var obj = api.ScanConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkScanConfig(obj as api.ScanConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1201,7 +1204,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response);
+        checkScanConfig(response as api.ScanConfig);
       })));
     });
 
@@ -1249,7 +1252,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1297,7 +1300,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response);
+        checkScanConfig(response as api.ScanConfig);
       })));
     });
 
@@ -1354,7 +1357,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListScanConfigsResponse(response);
+        checkListScanConfigsResponse(response as api.ListScanConfigsResponse);
       })));
     });
 
@@ -1366,8 +1369,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ScanConfig.fromJson(json);
-        checkScanConfig(obj);
+        var obj = api.ScanConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkScanConfig(obj as api.ScanConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1410,7 +1414,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanConfig(response);
+        checkScanConfig(response as api.ScanConfig);
       })));
     });
 
@@ -1421,8 +1425,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StartScanRunRequest.fromJson(json);
-        checkStartScanRunRequest(obj);
+        var obj = api.StartScanRunRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStartScanRunRequest(obj as api.StartScanRunRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1462,7 +1467,7 @@ void main() {
       res
           .start(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanRun(response);
+        checkScanRun(response as api.ScanRun);
       })));
     });
   });
@@ -1512,7 +1517,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanRun(response);
+        checkScanRun(response as api.ScanRun);
       })));
     });
 
@@ -1569,7 +1574,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListScanRunsResponse(response);
+        checkListScanRunsResponse(response as api.ListScanRunsResponse);
       })));
     });
 
@@ -1580,8 +1585,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StopScanRunRequest.fromJson(json);
-        checkStopScanRunRequest(obj);
+        var obj = api.StopScanRunRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStopScanRunRequest(obj as api.StopScanRunRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1621,7 +1627,7 @@ void main() {
       res
           .stop(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkScanRun(response);
+        checkScanRun(response as api.ScanRun);
       })));
     });
   });
@@ -1685,7 +1691,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCrawledUrlsResponse(response);
+        checkListCrawledUrlsResponse(response as api.ListCrawledUrlsResponse);
       })));
     });
   });
@@ -1740,7 +1746,8 @@ void main() {
       res
           .list(arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFindingTypeStatsResponse(response);
+        checkListFindingTypeStatsResponse(
+            response as api.ListFindingTypeStatsResponse);
       })));
     });
   });
@@ -1794,7 +1801,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFinding(response);
+        checkFinding(response as api.Finding);
       })));
     });
 
@@ -1858,7 +1865,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFindingsResponse(response);
+        checkListFindingsResponse(response as api.ListFindingsResponse);
       })));
     });
   });

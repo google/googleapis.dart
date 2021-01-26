@@ -112,8 +112,8 @@ api.DateRange buildDateRange() {
 void checkDateRange(api.DateRange o) {
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
-    checkDate(o.endDate);
-    checkDate(o.startDate);
+    checkDate(o.endDate as api.Date);
+    checkDate(o.startDate as api.Date);
   }
   buildCounterDateRange--;
 }
@@ -132,7 +132,7 @@ api.GenerateMediationReportRequest buildGenerateMediationReportRequest() {
 void checkGenerateMediationReportRequest(api.GenerateMediationReportRequest o) {
   buildCounterGenerateMediationReportRequest++;
   if (buildCounterGenerateMediationReportRequest < 3) {
-    checkMediationReportSpec(o.reportSpec);
+    checkMediationReportSpec(o.reportSpec as api.MediationReportSpec);
   }
   buildCounterGenerateMediationReportRequest--;
 }
@@ -154,9 +154,9 @@ void checkGenerateMediationReportResponse(
     api.GenerateMediationReportResponse o) {
   buildCounterGenerateMediationReportResponse++;
   if (buildCounterGenerateMediationReportResponse < 3) {
-    checkReportFooter(o.footer);
-    checkReportHeader(o.header);
-    checkReportRow(o.row);
+    checkReportFooter(o.footer as api.ReportFooter);
+    checkReportHeader(o.header as api.ReportHeader);
+    checkReportRow(o.row as api.ReportRow);
   }
   buildCounterGenerateMediationReportResponse--;
 }
@@ -175,7 +175,7 @@ api.GenerateNetworkReportRequest buildGenerateNetworkReportRequest() {
 void checkGenerateNetworkReportRequest(api.GenerateNetworkReportRequest o) {
   buildCounterGenerateNetworkReportRequest++;
   if (buildCounterGenerateNetworkReportRequest < 3) {
-    checkNetworkReportSpec(o.reportSpec);
+    checkNetworkReportSpec(o.reportSpec as api.NetworkReportSpec);
   }
   buildCounterGenerateNetworkReportRequest--;
 }
@@ -196,9 +196,9 @@ api.GenerateNetworkReportResponse buildGenerateNetworkReportResponse() {
 void checkGenerateNetworkReportResponse(api.GenerateNetworkReportResponse o) {
   buildCounterGenerateNetworkReportResponse++;
   if (buildCounterGenerateNetworkReportResponse < 3) {
-    checkReportFooter(o.footer);
-    checkReportHeader(o.header);
-    checkReportRow(o.row);
+    checkReportFooter(o.footer as api.ReportFooter);
+    checkReportHeader(o.header as api.ReportHeader);
+    checkReportRow(o.row as api.ReportRow);
   }
   buildCounterGenerateNetworkReportResponse--;
 }
@@ -212,8 +212,8 @@ core.List<api.PublisherAccount> buildUnnamed5706() {
 
 void checkUnnamed5706(core.List<api.PublisherAccount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPublisherAccount(o[0]);
-  checkPublisherAccount(o[1]);
+  checkPublisherAccount(o[0] as api.PublisherAccount);
+  checkPublisherAccount(o[1] as api.PublisherAccount);
 }
 
 core.int buildCounterListPublisherAccountsResponse = 0;
@@ -267,8 +267,10 @@ core.List<api.MediationReportSpecDimensionFilter> buildUnnamed5707() {
 
 void checkUnnamed5707(core.List<api.MediationReportSpecDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMediationReportSpecDimensionFilter(o[0]);
-  checkMediationReportSpecDimensionFilter(o[1]);
+  checkMediationReportSpecDimensionFilter(
+      o[0] as api.MediationReportSpecDimensionFilter);
+  checkMediationReportSpecDimensionFilter(
+      o[1] as api.MediationReportSpecDimensionFilter);
 }
 
 core.List<core.String> buildUnnamed5708() {
@@ -306,8 +308,10 @@ core.List<api.MediationReportSpecSortCondition> buildUnnamed5710() {
 
 void checkUnnamed5710(core.List<api.MediationReportSpecSortCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMediationReportSpecSortCondition(o[0]);
-  checkMediationReportSpecSortCondition(o[1]);
+  checkMediationReportSpecSortCondition(
+      o[0] as api.MediationReportSpecSortCondition);
+  checkMediationReportSpecSortCondition(
+      o[1] as api.MediationReportSpecSortCondition);
 }
 
 core.int buildCounterMediationReportSpec = 0;
@@ -331,10 +335,11 @@ api.MediationReportSpec buildMediationReportSpec() {
 void checkMediationReportSpec(api.MediationReportSpec o) {
   buildCounterMediationReportSpec++;
   if (buildCounterMediationReportSpec < 3) {
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     checkUnnamed5707(o.dimensionFilters);
     checkUnnamed5708(o.dimensions);
-    checkLocalizationSettings(o.localizationSettings);
+    checkLocalizationSettings(
+        o.localizationSettings as api.LocalizationSettings);
     unittest.expect(o.maxReportRows, unittest.equals(42));
     checkUnnamed5709(o.metrics);
     checkUnnamed5710(o.sortConditions);
@@ -361,7 +366,7 @@ void checkMediationReportSpecDimensionFilter(
   buildCounterMediationReportSpecDimensionFilter++;
   if (buildCounterMediationReportSpecDimensionFilter < 3) {
     unittest.expect(o.dimension, unittest.equals('foo'));
-    checkStringList(o.matchesAny);
+    checkStringList(o.matchesAny as api.StringList);
   }
   buildCounterMediationReportSpecDimensionFilter--;
 }
@@ -399,8 +404,10 @@ core.List<api.NetworkReportSpecDimensionFilter> buildUnnamed5711() {
 
 void checkUnnamed5711(core.List<api.NetworkReportSpecDimensionFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkReportSpecDimensionFilter(o[0]);
-  checkNetworkReportSpecDimensionFilter(o[1]);
+  checkNetworkReportSpecDimensionFilter(
+      o[0] as api.NetworkReportSpecDimensionFilter);
+  checkNetworkReportSpecDimensionFilter(
+      o[1] as api.NetworkReportSpecDimensionFilter);
 }
 
 core.List<core.String> buildUnnamed5712() {
@@ -438,8 +445,10 @@ core.List<api.NetworkReportSpecSortCondition> buildUnnamed5714() {
 
 void checkUnnamed5714(core.List<api.NetworkReportSpecSortCondition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkReportSpecSortCondition(o[0]);
-  checkNetworkReportSpecSortCondition(o[1]);
+  checkNetworkReportSpecSortCondition(
+      o[0] as api.NetworkReportSpecSortCondition);
+  checkNetworkReportSpecSortCondition(
+      o[1] as api.NetworkReportSpecSortCondition);
 }
 
 core.int buildCounterNetworkReportSpec = 0;
@@ -463,10 +472,11 @@ api.NetworkReportSpec buildNetworkReportSpec() {
 void checkNetworkReportSpec(api.NetworkReportSpec o) {
   buildCounterNetworkReportSpec++;
   if (buildCounterNetworkReportSpec < 3) {
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     checkUnnamed5711(o.dimensionFilters);
     checkUnnamed5712(o.dimensions);
-    checkLocalizationSettings(o.localizationSettings);
+    checkLocalizationSettings(
+        o.localizationSettings as api.LocalizationSettings);
     unittest.expect(o.maxReportRows, unittest.equals(42));
     checkUnnamed5713(o.metrics);
     checkUnnamed5714(o.sortConditions);
@@ -492,7 +502,7 @@ void checkNetworkReportSpecDimensionFilter(
   buildCounterNetworkReportSpecDimensionFilter++;
   if (buildCounterNetworkReportSpecDimensionFilter < 3) {
     unittest.expect(o.dimension, unittest.equals('foo'));
-    checkStringList(o.matchesAny);
+    checkStringList(o.matchesAny as api.StringList);
   }
   buildCounterNetworkReportSpecDimensionFilter--;
 }
@@ -554,8 +564,8 @@ core.List<api.ReportWarning> buildUnnamed5715() {
 
 void checkUnnamed5715(core.List<api.ReportWarning> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportWarning(o[0]);
-  checkReportWarning(o[1]);
+  checkReportWarning(o[0] as api.ReportWarning);
+  checkReportWarning(o[1] as api.ReportWarning);
 }
 
 core.int buildCounterReportFooter = 0;
@@ -595,8 +605,9 @@ api.ReportHeader buildReportHeader() {
 void checkReportHeader(api.ReportHeader o) {
   buildCounterReportHeader++;
   if (buildCounterReportHeader < 3) {
-    checkDateRange(o.dateRange);
-    checkLocalizationSettings(o.localizationSettings);
+    checkDateRange(o.dateRange as api.DateRange);
+    checkLocalizationSettings(
+        o.localizationSettings as api.LocalizationSettings);
     unittest.expect(o.reportingTimeZone, unittest.equals('foo'));
   }
   buildCounterReportHeader--;
@@ -611,8 +622,8 @@ core.Map<core.String, api.ReportRowDimensionValue> buildUnnamed5716() {
 
 void checkUnnamed5716(core.Map<core.String, api.ReportRowDimensionValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowDimensionValue(o['x']);
-  checkReportRowDimensionValue(o['y']);
+  checkReportRowDimensionValue(o['x'] as api.ReportRowDimensionValue);
+  checkReportRowDimensionValue(o['y'] as api.ReportRowDimensionValue);
 }
 
 core.Map<core.String, api.ReportRowMetricValue> buildUnnamed5717() {
@@ -624,8 +635,8 @@ core.Map<core.String, api.ReportRowMetricValue> buildUnnamed5717() {
 
 void checkUnnamed5717(core.Map<core.String, api.ReportRowMetricValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportRowMetricValue(o['x']);
-  checkReportRowMetricValue(o['y']);
+  checkReportRowMetricValue(o['x'] as api.ReportRowMetricValue);
+  checkReportRowMetricValue(o['y'] as api.ReportRowMetricValue);
 }
 
 core.int buildCounterReportRow = 0;
@@ -751,7 +762,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -759,7 +770,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
-      checkDateRange(od);
+      checkDateRange(od as api.DateRange);
     });
   });
 
@@ -767,7 +778,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateMediationReportRequest();
       var od = api.GenerateMediationReportRequest.fromJson(o.toJson());
-      checkGenerateMediationReportRequest(od);
+      checkGenerateMediationReportRequest(
+          od as api.GenerateMediationReportRequest);
     });
   });
 
@@ -775,7 +787,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateMediationReportResponse();
       var od = api.GenerateMediationReportResponse.fromJson(o.toJson());
-      checkGenerateMediationReportResponse(od);
+      checkGenerateMediationReportResponse(
+          od as api.GenerateMediationReportResponse);
     });
   });
 
@@ -783,7 +796,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateNetworkReportRequest();
       var od = api.GenerateNetworkReportRequest.fromJson(o.toJson());
-      checkGenerateNetworkReportRequest(od);
+      checkGenerateNetworkReportRequest(od as api.GenerateNetworkReportRequest);
     });
   });
 
@@ -791,7 +804,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateNetworkReportResponse();
       var od = api.GenerateNetworkReportResponse.fromJson(o.toJson());
-      checkGenerateNetworkReportResponse(od);
+      checkGenerateNetworkReportResponse(
+          od as api.GenerateNetworkReportResponse);
     });
   });
 
@@ -799,7 +813,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListPublisherAccountsResponse();
       var od = api.ListPublisherAccountsResponse.fromJson(o.toJson());
-      checkListPublisherAccountsResponse(od);
+      checkListPublisherAccountsResponse(
+          od as api.ListPublisherAccountsResponse);
     });
   });
 
@@ -807,7 +822,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizationSettings();
       var od = api.LocalizationSettings.fromJson(o.toJson());
-      checkLocalizationSettings(od);
+      checkLocalizationSettings(od as api.LocalizationSettings);
     });
   });
 
@@ -815,7 +830,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpec();
       var od = api.MediationReportSpec.fromJson(o.toJson());
-      checkMediationReportSpec(od);
+      checkMediationReportSpec(od as api.MediationReportSpec);
     });
   });
 
@@ -823,7 +838,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpecDimensionFilter();
       var od = api.MediationReportSpecDimensionFilter.fromJson(o.toJson());
-      checkMediationReportSpecDimensionFilter(od);
+      checkMediationReportSpecDimensionFilter(
+          od as api.MediationReportSpecDimensionFilter);
     });
   });
 
@@ -831,7 +847,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMediationReportSpecSortCondition();
       var od = api.MediationReportSpecSortCondition.fromJson(o.toJson());
-      checkMediationReportSpecSortCondition(od);
+      checkMediationReportSpecSortCondition(
+          od as api.MediationReportSpecSortCondition);
     });
   });
 
@@ -839,7 +856,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpec();
       var od = api.NetworkReportSpec.fromJson(o.toJson());
-      checkNetworkReportSpec(od);
+      checkNetworkReportSpec(od as api.NetworkReportSpec);
     });
   });
 
@@ -847,7 +864,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpecDimensionFilter();
       var od = api.NetworkReportSpecDimensionFilter.fromJson(o.toJson());
-      checkNetworkReportSpecDimensionFilter(od);
+      checkNetworkReportSpecDimensionFilter(
+          od as api.NetworkReportSpecDimensionFilter);
     });
   });
 
@@ -855,7 +873,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkReportSpecSortCondition();
       var od = api.NetworkReportSpecSortCondition.fromJson(o.toJson());
-      checkNetworkReportSpecSortCondition(od);
+      checkNetworkReportSpecSortCondition(
+          od as api.NetworkReportSpecSortCondition);
     });
   });
 
@@ -863,7 +882,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublisherAccount();
       var od = api.PublisherAccount.fromJson(o.toJson());
-      checkPublisherAccount(od);
+      checkPublisherAccount(od as api.PublisherAccount);
     });
   });
 
@@ -871,7 +890,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportFooter();
       var od = api.ReportFooter.fromJson(o.toJson());
-      checkReportFooter(od);
+      checkReportFooter(od as api.ReportFooter);
     });
   });
 
@@ -879,7 +898,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportHeader();
       var od = api.ReportHeader.fromJson(o.toJson());
-      checkReportHeader(od);
+      checkReportHeader(od as api.ReportHeader);
     });
   });
 
@@ -887,7 +906,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRow();
       var od = api.ReportRow.fromJson(o.toJson());
-      checkReportRow(od);
+      checkReportRow(od as api.ReportRow);
     });
   });
 
@@ -895,7 +914,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRowDimensionValue();
       var od = api.ReportRowDimensionValue.fromJson(o.toJson());
-      checkReportRowDimensionValue(od);
+      checkReportRowDimensionValue(od as api.ReportRowDimensionValue);
     });
   });
 
@@ -903,7 +922,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportRowMetricValue();
       var od = api.ReportRowMetricValue.fromJson(o.toJson());
-      checkReportRowMetricValue(od);
+      checkReportRowMetricValue(od as api.ReportRowMetricValue);
     });
   });
 
@@ -911,7 +930,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportWarning();
       var od = api.ReportWarning.fromJson(o.toJson());
-      checkReportWarning(od);
+      checkReportWarning(od as api.ReportWarning);
     });
   });
 
@@ -919,7 +938,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStringList();
       var od = api.StringList.fromJson(o.toJson());
-      checkStringList(od);
+      checkStringList(od as api.StringList);
     });
   });
 
@@ -968,7 +987,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPublisherAccount(response);
+        checkPublisherAccount(response as api.PublisherAccount);
       })));
     });
 
@@ -1023,7 +1042,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListPublisherAccountsResponse(response);
+        checkListPublisherAccountsResponse(
+            response as api.ListPublisherAccountsResponse);
       })));
     });
   });
@@ -1036,8 +1056,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateMediationReportRequest.fromJson(json);
-        checkGenerateMediationReportRequest(obj);
+        var obj = api.GenerateMediationReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateMediationReportRequest(
+            obj as api.GenerateMediationReportRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1077,7 +1099,8 @@ void main() {
       res
           .generate(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateMediationReportResponse(response);
+        checkGenerateMediationReportResponse(
+            response as api.GenerateMediationReportResponse);
       })));
     });
   });
@@ -1090,8 +1113,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateNetworkReportRequest.fromJson(json);
-        checkGenerateNetworkReportRequest(obj);
+        var obj = api.GenerateNetworkReportRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateNetworkReportRequest(
+            obj as api.GenerateNetworkReportRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1131,7 +1156,8 @@ void main() {
       res
           .generate(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateNetworkReportResponse(response);
+        checkGenerateNetworkReportResponse(
+            response as api.GenerateNetworkReportResponse);
       })));
     });
   });

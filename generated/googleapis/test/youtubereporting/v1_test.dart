@@ -141,13 +141,13 @@ void checkGdataCompositeMedia(api.GdataCompositeMedia o) {
   buildCounterGdataCompositeMedia++;
   if (buildCounterGdataCompositeMedia < 3) {
     unittest.expect(o.blobRef, unittest.equals('foo'));
-    checkGdataBlobstore2Info(o.blobstore2Info);
+    checkGdataBlobstore2Info(o.blobstore2Info as api.GdataBlobstore2Info);
     unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
     unittest.expect(o.crc32cHash, unittest.equals(42));
     unittest.expect(o.inline, unittest.equals('foo'));
     unittest.expect(o.length, unittest.equals('foo'));
     unittest.expect(o.md5Hash, unittest.equals('foo'));
-    checkGdataObjectId(o.objectId);
+    checkGdataObjectId(o.objectId as api.GdataObjectId);
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.referenceType, unittest.equals('foo'));
     unittest.expect(o.sha1Hash, unittest.equals('foo'));
@@ -200,9 +200,9 @@ api.GdataDiffChecksumsResponse buildGdataDiffChecksumsResponse() {
 void checkGdataDiffChecksumsResponse(api.GdataDiffChecksumsResponse o) {
   buildCounterGdataDiffChecksumsResponse++;
   if (buildCounterGdataDiffChecksumsResponse < 3) {
-    checkGdataCompositeMedia(o.checksumsLocation);
+    checkGdataCompositeMedia(o.checksumsLocation as api.GdataCompositeMedia);
     unittest.expect(o.chunkSizeBytes, unittest.equals('foo'));
-    checkGdataCompositeMedia(o.objectLocation);
+    checkGdataCompositeMedia(o.objectLocation as api.GdataCompositeMedia);
     unittest.expect(o.objectSizeBytes, unittest.equals('foo'));
     unittest.expect(o.objectVersion, unittest.equals('foo'));
   }
@@ -223,7 +223,7 @@ api.GdataDiffDownloadResponse buildGdataDiffDownloadResponse() {
 void checkGdataDiffDownloadResponse(api.GdataDiffDownloadResponse o) {
   buildCounterGdataDiffDownloadResponse++;
   if (buildCounterGdataDiffDownloadResponse < 3) {
-    checkGdataCompositeMedia(o.objectLocation);
+    checkGdataCompositeMedia(o.objectLocation as api.GdataCompositeMedia);
   }
   buildCounterGdataDiffDownloadResponse--;
 }
@@ -244,8 +244,8 @@ api.GdataDiffUploadRequest buildGdataDiffUploadRequest() {
 void checkGdataDiffUploadRequest(api.GdataDiffUploadRequest o) {
   buildCounterGdataDiffUploadRequest++;
   if (buildCounterGdataDiffUploadRequest < 3) {
-    checkGdataCompositeMedia(o.checksumsInfo);
-    checkGdataCompositeMedia(o.objectInfo);
+    checkGdataCompositeMedia(o.checksumsInfo as api.GdataCompositeMedia);
+    checkGdataCompositeMedia(o.objectInfo as api.GdataCompositeMedia);
     unittest.expect(o.objectVersion, unittest.equals('foo'));
   }
   buildCounterGdataDiffUploadRequest--;
@@ -267,7 +267,7 @@ void checkGdataDiffUploadResponse(api.GdataDiffUploadResponse o) {
   buildCounterGdataDiffUploadResponse++;
   if (buildCounterGdataDiffUploadResponse < 3) {
     unittest.expect(o.objectVersion, unittest.equals('foo'));
-    checkGdataCompositeMedia(o.originalObject);
+    checkGdataCompositeMedia(o.originalObject as api.GdataCompositeMedia);
   }
   buildCounterGdataDiffUploadResponse--;
 }
@@ -323,8 +323,8 @@ core.List<api.GdataCompositeMedia> buildUnnamed3232() {
 
 void checkUnnamed3232(core.List<api.GdataCompositeMedia> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGdataCompositeMedia(o[0]);
-  checkGdataCompositeMedia(o[1]);
+  checkGdataCompositeMedia(o[0] as api.GdataCompositeMedia);
+  checkGdataCompositeMedia(o[1] as api.GdataCompositeMedia);
 }
 
 core.int buildCounterGdataMedia = 0;
@@ -373,18 +373,24 @@ void checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.algorithm, unittest.equals('foo'));
     unittest.expect(o.bigstoreObjectRef, unittest.equals('foo'));
     unittest.expect(o.blobRef, unittest.equals('foo'));
-    checkGdataBlobstore2Info(o.blobstore2Info);
+    checkGdataBlobstore2Info(o.blobstore2Info as api.GdataBlobstore2Info);
     checkUnnamed3232(o.compositeMedia);
     unittest.expect(o.contentType, unittest.equals('foo'));
-    checkGdataContentTypeInfo(o.contentTypeInfo);
+    checkGdataContentTypeInfo(o.contentTypeInfo as api.GdataContentTypeInfo);
     unittest.expect(o.cosmoBinaryReference, unittest.equals('foo'));
     unittest.expect(o.crc32cHash, unittest.equals(42));
-    checkGdataDiffChecksumsResponse(o.diffChecksumsResponse);
-    checkGdataDiffDownloadResponse(o.diffDownloadResponse);
-    checkGdataDiffUploadRequest(o.diffUploadRequest);
-    checkGdataDiffUploadResponse(o.diffUploadResponse);
-    checkGdataDiffVersionResponse(o.diffVersionResponse);
-    checkGdataDownloadParameters(o.downloadParameters);
+    checkGdataDiffChecksumsResponse(
+        o.diffChecksumsResponse as api.GdataDiffChecksumsResponse);
+    checkGdataDiffDownloadResponse(
+        o.diffDownloadResponse as api.GdataDiffDownloadResponse);
+    checkGdataDiffUploadRequest(
+        o.diffUploadRequest as api.GdataDiffUploadRequest);
+    checkGdataDiffUploadResponse(
+        o.diffUploadResponse as api.GdataDiffUploadResponse);
+    checkGdataDiffVersionResponse(
+        o.diffVersionResponse as api.GdataDiffVersionResponse);
+    checkGdataDownloadParameters(
+        o.downloadParameters as api.GdataDownloadParameters);
     unittest.expect(o.filename, unittest.equals('foo'));
     unittest.expect(o.hash, unittest.equals('foo'));
     unittest.expect(o.hashVerified, unittest.isTrue);
@@ -393,7 +399,7 @@ void checkGdataMedia(api.GdataMedia o) {
     unittest.expect(o.length, unittest.equals('foo'));
     unittest.expect(o.md5Hash, unittest.equals('foo'));
     unittest.expect(o.mediaId, unittest.equals('foo'));
-    checkGdataObjectId(o.objectId);
+    checkGdataObjectId(o.objectId as api.GdataObjectId);
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.referenceType, unittest.equals('foo'));
     unittest.expect(o.sha1Hash, unittest.equals('foo'));
@@ -465,8 +471,8 @@ core.List<api.Job> buildUnnamed3233() {
 
 void checkUnnamed3233(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJob(o[0]);
-  checkJob(o[1]);
+  checkJob(o[0] as api.Job);
+  checkJob(o[1] as api.Job);
 }
 
 core.int buildCounterListJobsResponse = 0;
@@ -499,8 +505,8 @@ core.List<api.ReportType> buildUnnamed3234() {
 
 void checkUnnamed3234(core.List<api.ReportType> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReportType(o[0]);
-  checkReportType(o[1]);
+  checkReportType(o[0] as api.ReportType);
+  checkReportType(o[1] as api.ReportType);
 }
 
 core.int buildCounterListReportTypesResponse = 0;
@@ -533,8 +539,8 @@ core.List<api.Report> buildUnnamed3235() {
 
 void checkUnnamed3235(core.List<api.Report> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReport(o[0]);
-  checkReport(o[1]);
+  checkReport(o[0] as api.Report);
+  checkReport(o[1] as api.Report);
 }
 
 core.int buildCounterListReportsResponse = 0;
@@ -619,7 +625,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -627,7 +633,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataBlobstore2Info();
       var od = api.GdataBlobstore2Info.fromJson(o.toJson());
-      checkGdataBlobstore2Info(od);
+      checkGdataBlobstore2Info(od as api.GdataBlobstore2Info);
     });
   });
 
@@ -635,7 +641,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataCompositeMedia();
       var od = api.GdataCompositeMedia.fromJson(o.toJson());
-      checkGdataCompositeMedia(od);
+      checkGdataCompositeMedia(od as api.GdataCompositeMedia);
     });
   });
 
@@ -643,7 +649,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataContentTypeInfo();
       var od = api.GdataContentTypeInfo.fromJson(o.toJson());
-      checkGdataContentTypeInfo(od);
+      checkGdataContentTypeInfo(od as api.GdataContentTypeInfo);
     });
   });
 
@@ -651,7 +657,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDiffChecksumsResponse();
       var od = api.GdataDiffChecksumsResponse.fromJson(o.toJson());
-      checkGdataDiffChecksumsResponse(od);
+      checkGdataDiffChecksumsResponse(od as api.GdataDiffChecksumsResponse);
     });
   });
 
@@ -659,7 +665,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDiffDownloadResponse();
       var od = api.GdataDiffDownloadResponse.fromJson(o.toJson());
-      checkGdataDiffDownloadResponse(od);
+      checkGdataDiffDownloadResponse(od as api.GdataDiffDownloadResponse);
     });
   });
 
@@ -667,7 +673,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDiffUploadRequest();
       var od = api.GdataDiffUploadRequest.fromJson(o.toJson());
-      checkGdataDiffUploadRequest(od);
+      checkGdataDiffUploadRequest(od as api.GdataDiffUploadRequest);
     });
   });
 
@@ -675,7 +681,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDiffUploadResponse();
       var od = api.GdataDiffUploadResponse.fromJson(o.toJson());
-      checkGdataDiffUploadResponse(od);
+      checkGdataDiffUploadResponse(od as api.GdataDiffUploadResponse);
     });
   });
 
@@ -683,7 +689,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDiffVersionResponse();
       var od = api.GdataDiffVersionResponse.fromJson(o.toJson());
-      checkGdataDiffVersionResponse(od);
+      checkGdataDiffVersionResponse(od as api.GdataDiffVersionResponse);
     });
   });
 
@@ -691,7 +697,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataDownloadParameters();
       var od = api.GdataDownloadParameters.fromJson(o.toJson());
-      checkGdataDownloadParameters(od);
+      checkGdataDownloadParameters(od as api.GdataDownloadParameters);
     });
   });
 
@@ -699,7 +705,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataMedia();
       var od = api.GdataMedia.fromJson(o.toJson());
-      checkGdataMedia(od);
+      checkGdataMedia(od as api.GdataMedia);
     });
   });
 
@@ -707,7 +713,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGdataObjectId();
       var od = api.GdataObjectId.fromJson(o.toJson());
-      checkGdataObjectId(od);
+      checkGdataObjectId(od as api.GdataObjectId);
     });
   });
 
@@ -715,7 +721,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
-      checkJob(od);
+      checkJob(od as api.Job);
     });
   });
 
@@ -723,7 +729,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
-      checkListJobsResponse(od);
+      checkListJobsResponse(od as api.ListJobsResponse);
     });
   });
 
@@ -731,7 +737,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListReportTypesResponse();
       var od = api.ListReportTypesResponse.fromJson(o.toJson());
-      checkListReportTypesResponse(od);
+      checkListReportTypesResponse(od as api.ListReportTypesResponse);
     });
   });
 
@@ -739,7 +745,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListReportsResponse();
       var od = api.ListReportsResponse.fromJson(o.toJson());
-      checkListReportsResponse(od);
+      checkListReportsResponse(od as api.ListReportsResponse);
     });
   });
 
@@ -747,7 +753,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReport();
       var od = api.Report.fromJson(o.toJson());
-      checkReport(od);
+      checkReport(od as api.Report);
     });
   });
 
@@ -755,7 +761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReportType();
       var od = api.ReportType.fromJson(o.toJson());
-      checkReportType(od);
+      checkReportType(od as api.ReportType);
     });
   });
 
@@ -767,8 +773,8 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Job.fromJson(json);
-        checkJob(obj);
+        var obj = api.Job.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkJob(obj as api.Job);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -811,7 +817,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -866,7 +872,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -921,7 +927,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -984,7 +990,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response);
+        checkListJobsResponse(response as api.ListJobsResponse);
       })));
     });
   });
@@ -1051,7 +1057,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReport(response);
+        checkReport(response as api.Report);
       })));
     });
 
@@ -1132,7 +1138,7 @@ void main() {
               startTimeBefore: arg_startTimeBefore,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReportsResponse(response);
+        checkListReportsResponse(response as api.ListReportsResponse);
       })));
     });
   });
@@ -1185,7 +1191,7 @@ void main() {
       res
           .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGdataMedia(response);
+        checkGdataMedia(response as api.GdataMedia);
       })));
     });
   });
@@ -1250,7 +1256,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReportTypesResponse(response);
+        checkListReportTypesResponse(response as api.ListReportTypesResponse);
       })));
     });
   });

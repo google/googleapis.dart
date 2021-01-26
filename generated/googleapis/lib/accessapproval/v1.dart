@@ -109,7 +109,9 @@ class FoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -158,7 +160,10 @@ class FoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -230,7 +235,10 @@ class FoldersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -294,7 +302,10 @@ class FoldersApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
@@ -353,7 +364,10 @@ class FoldersApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
@@ -402,7 +416,10 @@ class FoldersApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -479,8 +496,10 @@ class FoldersApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListApprovalRequestsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListApprovalRequestsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -543,7 +562,9 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -592,7 +613,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -664,7 +688,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -728,7 +755,10 @@ class OrganizationsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
@@ -787,7 +817,10 @@ class OrganizationsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
@@ -836,7 +869,10 @@ class OrganizationsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -913,8 +949,10 @@ class OrganizationsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListApprovalRequestsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListApprovalRequestsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -977,7 +1015,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the settings associated with a project, folder, or organization.
@@ -1026,7 +1066,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the settings associated with a project, folder, or organization.
@@ -1098,7 +1141,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessApprovalSettings.fromJson(data));
+    return _response.then(
+      (data) => AccessApprovalSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1162,7 +1208,10 @@ class ProjectsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Dismisses a request. Returns the updated ApprovalRequest. NOTE: This does
@@ -1221,7 +1270,10 @@ class ProjectsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an approval request. Returns NOT_FOUND if the request does not exist.
@@ -1270,7 +1322,10 @@ class ProjectsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApprovalRequest.fromJson(data));
+    return _response.then(
+      (data) =>
+          ApprovalRequest.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists approval requests associated with a project, folder, or
@@ -1347,8 +1402,10 @@ class ProjectsApprovalRequestsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListApprovalRequestsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListApprovalRequestsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1392,7 +1449,8 @@ class AccessApprovalSettings {
     }
     if (_json.containsKey('enrolledServices')) {
       enrolledServices = (_json['enrolledServices'] as core.List)
-          .map<EnrolledService>((value) => EnrolledService.fromJson(value))
+          .map<EnrolledService>((value) => EnrolledService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -1553,10 +1611,12 @@ class ApprovalRequest {
 
   ApprovalRequest.fromJson(core.Map _json) {
     if (_json.containsKey('approve')) {
-      approve = ApproveDecision.fromJson(_json['approve']);
+      approve = ApproveDecision.fromJson(
+          _json['approve'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dismiss')) {
-      dismiss = DismissDecision.fromJson(_json['dismiss']);
+      dismiss = DismissDecision.fromJson(
+          _json['dismiss'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1568,18 +1628,20 @@ class ApprovalRequest {
       requestedExpiration = _json['requestedExpiration'] as core.String;
     }
     if (_json.containsKey('requestedLocations')) {
-      requestedLocations =
-          AccessLocations.fromJson(_json['requestedLocations']);
+      requestedLocations = AccessLocations.fromJson(
+          _json['requestedLocations'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedReason')) {
-      requestedReason = AccessReason.fromJson(_json['requestedReason']);
+      requestedReason = AccessReason.fromJson(
+          _json['requestedReason'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestedResourceName')) {
       requestedResourceName = _json['requestedResourceName'] as core.String;
     }
     if (_json.containsKey('requestedResourceProperties')) {
-      requestedResourceProperties =
-          ResourceProperties.fromJson(_json['requestedResourceProperties']);
+      requestedResourceProperties = ResourceProperties.fromJson(
+          _json['requestedResourceProperties']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1799,7 +1861,8 @@ class ListApprovalRequestsResponse {
   ListApprovalRequestsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('approvalRequests')) {
       approvalRequests = (_json['approvalRequests'] as core.List)
-          .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(value))
+          .map<ApprovalRequest>((value) => ApprovalRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {

@@ -107,7 +107,10 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalCustomer.fromJson(data));
+    return _response.then(
+      (data) => SasPortalCustomer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of requested customers.
@@ -163,8 +166,10 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListCustomersResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListCustomersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing customer.
@@ -225,7 +230,10 @@ class CustomersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalCustomer.fromJson(data));
+    return _response.then(
+      (data) => SasPortalCustomer.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -291,7 +299,10 @@ class CustomersDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -355,7 +366,10 @@ class CustomersDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -412,7 +426,10 @@ class CustomersDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -485,8 +502,10 @@ class CustomersDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -550,8 +569,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalBulkCreateDeviceResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalBulkCreateDeviceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a device under a node or customer.
@@ -608,7 +629,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -665,7 +689,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a device.
@@ -714,7 +741,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details about a device.
@@ -763,7 +793,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -836,8 +869,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -893,7 +928,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a device.
@@ -954,7 +992,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs a device.
@@ -1011,7 +1052,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a signed device.
@@ -1068,7 +1112,10 @@ class CustomersDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1135,7 +1182,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a node.
@@ -1184,7 +1234,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a requested node.
@@ -1233,7 +1286,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes.
@@ -1297,7 +1353,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalListNodesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListNodesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a node under another node or customer.
@@ -1353,7 +1412,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing node.
@@ -1414,7 +1476,10 @@ class CustomersNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1479,7 +1544,10 @@ class CustomersNodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes.
@@ -1543,7 +1611,10 @@ class CustomersNodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalListNodesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListNodesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1608,7 +1679,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details about a device.
@@ -1657,7 +1731,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -1713,7 +1790,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a device.
@@ -1774,7 +1854,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs a device.
@@ -1831,7 +1914,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a signed device.
@@ -1888,7 +1974,10 @@ class DeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1942,8 +2031,10 @@ class InstallerResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalGenerateSecretResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalGenerateSecretResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Validates the identity of a Certified Professional Installer (CPI).
@@ -1991,8 +2082,10 @@ class InstallerResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalValidateInstallerResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalValidateInstallerResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2052,7 +2145,10 @@ class NodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2118,7 +2214,10 @@ class NodesDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2182,7 +2281,10 @@ class NodesDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -2239,7 +2341,10 @@ class NodesDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -2312,8 +2417,10 @@ class NodesDeploymentsDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2376,8 +2483,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalBulkCreateDeviceResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalBulkCreateDeviceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a device under a node or customer.
@@ -2434,7 +2543,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -2491,7 +2603,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a device.
@@ -2540,7 +2655,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details about a device.
@@ -2589,7 +2707,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -2662,8 +2783,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a device under another node or customer.
@@ -2719,7 +2842,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a device.
@@ -2780,7 +2906,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signs a device.
@@ -2837,7 +2966,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a signed device.
@@ -2894,7 +3026,10 @@ class NodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2963,7 +3098,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a node.
@@ -3012,7 +3150,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalEmpty.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalEmpty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a requested node.
@@ -3061,7 +3202,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes.
@@ -3125,7 +3269,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalListNodesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListNodesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves a node under another node or customer.
@@ -3181,7 +3328,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalOperation.fromJson(data));
+    return _response.then(
+      (data) => SasPortalOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing node.
@@ -3242,7 +3392,10 @@ class NodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3306,8 +3459,10 @@ class NodesNodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalBulkCreateDeviceResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalBulkCreateDeviceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a device under a node or customer.
@@ -3364,7 +3519,10 @@ class NodesNodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a signed device under a node or customer.
@@ -3421,7 +3579,10 @@ class NodesNodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalDevice.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalDevice.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists devices under a node or customer.
@@ -3494,8 +3655,10 @@ class NodesNodesDevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalListDevicesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListDevicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3559,7 +3722,10 @@ class NodesNodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalNode.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalNode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists nodes.
@@ -3623,7 +3789,10 @@ class NodesNodesNodesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalListNodesResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalListNodesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3678,7 +3847,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -3727,7 +3899,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SasPortalPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          SasPortalPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource.
@@ -3775,8 +3950,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SasPortalTestPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => SasPortalTestPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3850,7 +4027,8 @@ class SasPortalBulkCreateDeviceResponse {
   SasPortalBulkCreateDeviceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(value))
+          .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3985,11 +4163,12 @@ class SasPortalDevice {
 
   SasPortalDevice.fromJson(core.Map _json) {
     if (_json.containsKey('activeConfig')) {
-      activeConfig = SasPortalDeviceConfig.fromJson(_json['activeConfig']);
+      activeConfig = SasPortalDeviceConfig.fromJson(
+          _json['activeConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata =
-          SasPortalDeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = SasPortalDeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
@@ -3999,16 +4178,16 @@ class SasPortalDevice {
     }
     if (_json.containsKey('grants')) {
       grants = (_json['grants'] as core.List)
-          .map<SasPortalDeviceGrant>(
-              (value) => SasPortalDeviceGrant.fromJson(value))
+          .map<SasPortalDeviceGrant>((value) => SasPortalDeviceGrant.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('preloadedConfig')) {
-      preloadedConfig =
-          SasPortalDeviceConfig.fromJson(_json['preloadedConfig']);
+      preloadedConfig = SasPortalDeviceConfig.fromJson(
+          _json['preloadedConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serialNumber')) {
       serialNumber = _json['serialNumber'] as core.String;
@@ -4139,8 +4318,8 @@ class SasPortalDeviceConfig {
 
   SasPortalDeviceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('airInterface')) {
-      airInterface =
-          SasPortalDeviceAirInterface.fromJson(_json['airInterface']);
+      airInterface = SasPortalDeviceAirInterface.fromJson(
+          _json['airInterface'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('callSign')) {
       callSign = _json['callSign'] as core.String;
@@ -4149,8 +4328,8 @@ class SasPortalDeviceConfig {
       category = _json['category'] as core.String;
     }
     if (_json.containsKey('installationParams')) {
-      installationParams =
-          SasPortalInstallationParams.fromJson(_json['installationParams']);
+      installationParams = SasPortalInstallationParams.fromJson(
+          _json['installationParams'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isSigned')) {
       isSigned = _json['isSigned'] as core.bool;
@@ -4161,7 +4340,8 @@ class SasPortalDeviceConfig {
           .toList();
     }
     if (_json.containsKey('model')) {
-      model = SasPortalDeviceModel.fromJson(_json['model']);
+      model = SasPortalDeviceModel.fromJson(
+          _json['model'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -4263,8 +4443,8 @@ class SasPortalDeviceGrant {
       expireTime = _json['expireTime'] as core.String;
     }
     if (_json.containsKey('frequencyRange')) {
-      frequencyRange =
-          SasPortalFrequencyRange.fromJson(_json['frequencyRange']);
+      frequencyRange = SasPortalFrequencyRange.fromJson(
+          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('grantId')) {
       grantId = _json['grantId'] as core.String;
@@ -4274,8 +4454,8 @@ class SasPortalDeviceGrant {
     }
     if (_json.containsKey('moveList')) {
       moveList = (_json['moveList'] as core.List)
-          .map<SasPortalDpaMoveList>(
-              (value) => SasPortalDpaMoveList.fromJson(value))
+          .map<SasPortalDpaMoveList>((value) => SasPortalDpaMoveList.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
@@ -4405,8 +4585,8 @@ class SasPortalDpaMoveList {
       dpaId = _json['dpaId'] as core.String;
     }
     if (_json.containsKey('frequencyRange')) {
-      frequencyRange =
-          SasPortalFrequencyRange.fromJson(_json['frequencyRange']);
+      frequencyRange = SasPortalFrequencyRange.fromJson(
+          _json['frequencyRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4718,7 +4898,8 @@ class SasPortalListCustomersResponse {
   SasPortalListCustomersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('customers')) {
       customers = (_json['customers'] as core.List)
-          .map<SasPortalCustomer>((value) => SasPortalCustomer.fromJson(value))
+          .map<SasPortalCustomer>((value) => SasPortalCustomer.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4753,7 +4934,8 @@ class SasPortalListDevicesResponse {
   SasPortalListDevicesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
       devices = (_json['devices'] as core.List)
-          .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(value))
+          .map<SasPortalDevice>((value) => SasPortalDevice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -4791,7 +4973,8 @@ class SasPortalListNodesResponse {
     }
     if (_json.containsKey('nodes')) {
       nodes = (_json['nodes'] as core.List)
-          .map<SasPortalNode>((value) => SasPortalNode.fromJson(value))
+          .map<SasPortalNode>((value) => SasPortalNode.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4963,11 +5146,13 @@ class SasPortalOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = SasPortalStatus.fromJson(_json['error']);
+      error = SasPortalStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4975,7 +5160,8 @@ class SasPortalOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -5027,8 +5213,8 @@ class SasPortalPolicy {
   SasPortalPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('assignments')) {
       assignments = (_json['assignments'] as core.List)
-          .map<SasPortalAssignment>(
-              (value) => SasPortalAssignment.fromJson(value))
+          .map<SasPortalAssignment>((value) => SasPortalAssignment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -5062,7 +5248,8 @@ class SasPortalSetPolicyRequest {
 
   SasPortalSetPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = SasPortalPolicy.fromJson(_json['policy']);
+      policy = SasPortalPolicy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resource')) {
       resource = _json['resource'] as core.String;
@@ -5091,7 +5278,8 @@ class SasPortalSignDeviceRequest {
 
   SasPortalSignDeviceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('device')) {
-      device = SasPortalDevice.fromJson(_json['device']);
+      device = SasPortalDevice.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5136,7 +5324,8 @@ class SasPortalStatus {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

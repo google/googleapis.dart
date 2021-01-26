@@ -113,7 +113,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -165,7 +167,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request.
@@ -254,7 +258,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -375,7 +382,8 @@ class ContainerStartedEvent {
     }
     if (_json.containsKey('portMappings')) {
       portMappings = commons.mapMap<core.int, core.int>(
-          _json['portMappings'].cast<core.String, core.int>(),
+          (_json['portMappings'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.int>(),
           (core.int item) => item as core.int);
     }
   }
@@ -522,7 +530,8 @@ class Event {
     }
     if (_json.containsKey('details')) {
       details = commons.mapMap<core.Object, core.Object>(
-          _json['details'].cast<core.String, core.Object>(),
+          (_json['details'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('timestamp')) {
@@ -673,7 +682,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -726,11 +736,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -738,7 +750,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -860,12 +873,14 @@ class OperationMetadata {
     }
     if (_json.containsKey('events')) {
       events = (_json['events'] as core.List)
-          .map<OperationEvent>((value) => OperationEvent.fromJson(value))
+          .map<OperationEvent>((value) => OperationEvent.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('projectId')) {
@@ -873,12 +888,14 @@ class OperationMetadata {
     }
     if (_json.containsKey('request')) {
       request = commons.mapMap<core.Object, core.Object>(
-          _json['request'].cast<core.String, core.Object>(),
+          (_json['request'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('runtimeMetadata')) {
       runtimeMetadata = commons.mapMap<core.Object, core.Object>(
-          _json['runtimeMetadata'].cast<core.String, core.Object>(),
+          (_json['runtimeMetadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('startTime')) {
@@ -988,7 +1005,8 @@ class RuntimeMetadata {
 
   RuntimeMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('computeEngine')) {
-      computeEngine = ComputeEngine.fromJson(_json['computeEngine']);
+      computeEngine = ComputeEngine.fromJson(
+          _json['computeEngine'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1033,7 +1051,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

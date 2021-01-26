@@ -160,17 +160,22 @@ api.Advertiser buildAdvertiser() {
 void checkAdvertiser(api.Advertiser o) {
   buildCounterAdvertiser++;
   if (buildCounterAdvertiser < 3) {
-    checkAdvertiserAdServerConfig(o.adServerConfig);
+    checkAdvertiserAdServerConfig(
+        o.adServerConfig as api.AdvertiserAdServerConfig);
     unittest.expect(o.advertiserId, unittest.equals('foo'));
-    checkAdvertiserCreativeConfig(o.creativeConfig);
-    checkAdvertiserDataAccessConfig(o.dataAccessConfig);
+    checkAdvertiserCreativeConfig(
+        o.creativeConfig as api.AdvertiserCreativeConfig);
+    checkAdvertiserDataAccessConfig(
+        o.dataAccessConfig as api.AdvertiserDataAccessConfig);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.entityStatus, unittest.equals('foo'));
-    checkAdvertiserGeneralConfig(o.generalConfig);
-    checkIntegrationDetails(o.integrationDetails);
+    checkAdvertiserGeneralConfig(
+        o.generalConfig as api.AdvertiserGeneralConfig);
+    checkIntegrationDetails(o.integrationDetails as api.IntegrationDetails);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.partnerId, unittest.equals('foo'));
-    checkAdvertiserTargetingConfig(o.servingConfig);
+    checkAdvertiserTargetingConfig(
+        o.servingConfig as api.AdvertiserTargetingConfig);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterAdvertiser--;
@@ -191,8 +196,9 @@ api.AdvertiserAdServerConfig buildAdvertiserAdServerConfig() {
 void checkAdvertiserAdServerConfig(api.AdvertiserAdServerConfig o) {
   buildCounterAdvertiserAdServerConfig++;
   if (buildCounterAdvertiserAdServerConfig < 3) {
-    checkCmHybridConfig(o.cmHybridConfig);
-    checkThirdPartyOnlyConfig(o.thirdPartyOnlyConfig);
+    checkCmHybridConfig(o.cmHybridConfig as api.CmHybridConfig);
+    checkThirdPartyOnlyConfig(
+        o.thirdPartyOnlyConfig as api.ThirdPartyOnlyConfig);
   }
   buildCounterAdvertiserAdServerConfig--;
 }
@@ -236,7 +242,7 @@ api.AdvertiserDataAccessConfig buildAdvertiserDataAccessConfig() {
 void checkAdvertiserDataAccessConfig(api.AdvertiserDataAccessConfig o) {
   buildCounterAdvertiserDataAccessConfig++;
   if (buildCounterAdvertiserDataAccessConfig < 3) {
-    checkAdvertiserSdfConfig(o.sdfConfig);
+    checkAdvertiserSdfConfig(o.sdfConfig as api.AdvertiserSdfConfig);
   }
   buildCounterAdvertiserDataAccessConfig--;
 }
@@ -280,7 +286,7 @@ void checkAdvertiserSdfConfig(api.AdvertiserSdfConfig o) {
   buildCounterAdvertiserSdfConfig++;
   if (buildCounterAdvertiserSdfConfig < 3) {
     unittest.expect(o.overridePartnerSdfConfig, unittest.isTrue);
-    checkSdfConfig(o.sdfConfig);
+    checkSdfConfig(o.sdfConfig as api.SdfConfig);
   }
   buildCounterAdvertiserSdfConfig--;
 }
@@ -451,7 +457,7 @@ api.AssetAssociation buildAssetAssociation() {
 void checkAssetAssociation(api.AssetAssociation o) {
   buildCounterAssetAssociation++;
   if (buildCounterAssetAssociation < 3) {
-    checkAsset(o.asset);
+    checkAsset(o.asset as api.Asset);
     unittest.expect(o.role, unittest.equals('foo'));
   }
   buildCounterAssetAssociation--;
@@ -575,64 +581,96 @@ api.AssignedTargetingOption buildAssignedTargetingOption() {
 void checkAssignedTargetingOption(api.AssignedTargetingOption o) {
   buildCounterAssignedTargetingOption++;
   if (buildCounterAssignedTargetingOption < 3) {
-    checkAgeRangeAssignedTargetingOptionDetails(o.ageRangeDetails);
-    checkAppCategoryAssignedTargetingOptionDetails(o.appCategoryDetails);
-    checkAppAssignedTargetingOptionDetails(o.appDetails);
+    checkAgeRangeAssignedTargetingOptionDetails(
+        o.ageRangeDetails as api.AgeRangeAssignedTargetingOptionDetails);
+    checkAppCategoryAssignedTargetingOptionDetails(
+        o.appCategoryDetails as api.AppCategoryAssignedTargetingOptionDetails);
+    checkAppAssignedTargetingOptionDetails(
+        o.appDetails as api.AppAssignedTargetingOptionDetails);
     unittest.expect(o.assignedTargetingOptionId, unittest.equals('foo'));
-    checkAudienceGroupAssignedTargetingOptionDetails(o.audienceGroupDetails);
+    checkAudienceGroupAssignedTargetingOptionDetails(o.audienceGroupDetails
+        as api.AudienceGroupAssignedTargetingOptionDetails);
     checkAuthorizedSellerStatusAssignedTargetingOptionDetails(
-        o.authorizedSellerStatusDetails);
-    checkBrowserAssignedTargetingOptionDetails(o.browserDetails);
-    checkCarrierAndIspAssignedTargetingOptionDetails(o.carrierAndIspDetails);
-    checkCategoryAssignedTargetingOptionDetails(o.categoryDetails);
-    checkChannelAssignedTargetingOptionDetails(o.channelDetails);
+        o.authorizedSellerStatusDetails
+            as api.AuthorizedSellerStatusAssignedTargetingOptionDetails);
+    checkBrowserAssignedTargetingOptionDetails(
+        o.browserDetails as api.BrowserAssignedTargetingOptionDetails);
+    checkCarrierAndIspAssignedTargetingOptionDetails(o.carrierAndIspDetails
+        as api.CarrierAndIspAssignedTargetingOptionDetails);
+    checkCategoryAssignedTargetingOptionDetails(
+        o.categoryDetails as api.CategoryAssignedTargetingOptionDetails);
+    checkChannelAssignedTargetingOptionDetails(
+        o.channelDetails as api.ChannelAssignedTargetingOptionDetails);
     checkContentInstreamPositionAssignedTargetingOptionDetails(
-        o.contentInstreamPositionDetails);
+        o.contentInstreamPositionDetails
+            as api.ContentInstreamPositionAssignedTargetingOptionDetails);
     checkContentOutstreamPositionAssignedTargetingOptionDetails(
-        o.contentOutstreamPositionDetails);
-    checkDayAndTimeAssignedTargetingOptionDetails(o.dayAndTimeDetails);
-    checkDeviceMakeModelAssignedTargetingOptionDetails(
-        o.deviceMakeModelDetails);
-    checkDeviceTypeAssignedTargetingOptionDetails(o.deviceTypeDetails);
+        o.contentOutstreamPositionDetails
+            as api.ContentOutstreamPositionAssignedTargetingOptionDetails);
+    checkDayAndTimeAssignedTargetingOptionDetails(
+        o.dayAndTimeDetails as api.DayAndTimeAssignedTargetingOptionDetails);
+    checkDeviceMakeModelAssignedTargetingOptionDetails(o.deviceMakeModelDetails
+        as api.DeviceMakeModelAssignedTargetingOptionDetails);
+    checkDeviceTypeAssignedTargetingOptionDetails(
+        o.deviceTypeDetails as api.DeviceTypeAssignedTargetingOptionDetails);
     checkDigitalContentLabelAssignedTargetingOptionDetails(
-        o.digitalContentLabelExclusionDetails);
-    checkEnvironmentAssignedTargetingOptionDetails(o.environmentDetails);
-    checkExchangeAssignedTargetingOptionDetails(o.exchangeDetails);
-    checkGenderAssignedTargetingOptionDetails(o.genderDetails);
-    checkGeoRegionAssignedTargetingOptionDetails(o.geoRegionDetails);
-    checkHouseholdIncomeAssignedTargetingOptionDetails(
-        o.householdIncomeDetails);
+        o.digitalContentLabelExclusionDetails
+            as api.DigitalContentLabelAssignedTargetingOptionDetails);
+    checkEnvironmentAssignedTargetingOptionDetails(
+        o.environmentDetails as api.EnvironmentAssignedTargetingOptionDetails);
+    checkExchangeAssignedTargetingOptionDetails(
+        o.exchangeDetails as api.ExchangeAssignedTargetingOptionDetails);
+    checkGenderAssignedTargetingOptionDetails(
+        o.genderDetails as api.GenderAssignedTargetingOptionDetails);
+    checkGeoRegionAssignedTargetingOptionDetails(
+        o.geoRegionDetails as api.GeoRegionAssignedTargetingOptionDetails);
+    checkHouseholdIncomeAssignedTargetingOptionDetails(o.householdIncomeDetails
+        as api.HouseholdIncomeAssignedTargetingOptionDetails);
     unittest.expect(o.inheritance, unittest.equals('foo'));
-    checkInventorySourceAssignedTargetingOptionDetails(
-        o.inventorySourceDetails);
+    checkInventorySourceAssignedTargetingOptionDetails(o.inventorySourceDetails
+        as api.InventorySourceAssignedTargetingOptionDetails);
     checkInventorySourceGroupAssignedTargetingOptionDetails(
-        o.inventorySourceGroupDetails);
-    checkKeywordAssignedTargetingOptionDetails(o.keywordDetails);
-    checkLanguageAssignedTargetingOptionDetails(o.languageDetails);
+        o.inventorySourceGroupDetails
+            as api.InventorySourceGroupAssignedTargetingOptionDetails);
+    checkKeywordAssignedTargetingOptionDetails(
+        o.keywordDetails as api.KeywordAssignedTargetingOptionDetails);
+    checkLanguageAssignedTargetingOptionDetails(
+        o.languageDetails as api.LanguageAssignedTargetingOptionDetails);
     unittest.expect(o.name, unittest.equals('foo'));
     checkNegativeKeywordListAssignedTargetingOptionDetails(
-        o.negativeKeywordListDetails);
+        o.negativeKeywordListDetails
+            as api.NegativeKeywordListAssignedTargetingOptionDetails);
     checkOnScreenPositionAssignedTargetingOptionDetails(
-        o.onScreenPositionDetails);
-    checkOperatingSystemAssignedTargetingOptionDetails(
-        o.operatingSystemDetails);
-    checkParentalStatusAssignedTargetingOptionDetails(o.parentalStatusDetails);
+        o.onScreenPositionDetails
+            as api.OnScreenPositionAssignedTargetingOptionDetails);
+    checkOperatingSystemAssignedTargetingOptionDetails(o.operatingSystemDetails
+        as api.OperatingSystemAssignedTargetingOptionDetails);
+    checkParentalStatusAssignedTargetingOptionDetails(o.parentalStatusDetails
+        as api.ParentalStatusAssignedTargetingOptionDetails);
     checkProximityLocationListAssignedTargetingOptionDetails(
-        o.proximityLocationListDetails);
+        o.proximityLocationListDetails
+            as api.ProximityLocationListAssignedTargetingOptionDetails);
     checkRegionalLocationListAssignedTargetingOptionDetails(
-        o.regionalLocationListDetails);
+        o.regionalLocationListDetails
+            as api.RegionalLocationListAssignedTargetingOptionDetails);
     checkSensitiveCategoryAssignedTargetingOptionDetails(
-        o.sensitiveCategoryExclusionDetails);
-    checkSubExchangeAssignedTargetingOptionDetails(o.subExchangeDetails);
+        o.sensitiveCategoryExclusionDetails
+            as api.SensitiveCategoryAssignedTargetingOptionDetails);
+    checkSubExchangeAssignedTargetingOptionDetails(
+        o.subExchangeDetails as api.SubExchangeAssignedTargetingOptionDetails);
     unittest.expect(o.targetingType, unittest.equals('foo'));
     checkThirdPartyVerifierAssignedTargetingOptionDetails(
-        o.thirdPartyVerifierDetails);
-    checkUrlAssignedTargetingOptionDetails(o.urlDetails);
+        o.thirdPartyVerifierDetails
+            as api.ThirdPartyVerifierAssignedTargetingOptionDetails);
+    checkUrlAssignedTargetingOptionDetails(
+        o.urlDetails as api.UrlAssignedTargetingOptionDetails);
     checkUserRewardedContentAssignedTargetingOptionDetails(
-        o.userRewardedContentDetails);
-    checkVideoPlayerSizeAssignedTargetingOptionDetails(
-        o.videoPlayerSizeDetails);
-    checkViewabilityAssignedTargetingOptionDetails(o.viewabilityDetails);
+        o.userRewardedContentDetails
+            as api.UserRewardedContentAssignedTargetingOptionDetails);
+    checkVideoPlayerSizeAssignedTargetingOptionDetails(o.videoPlayerSizeDetails
+        as api.VideoPlayerSizeAssignedTargetingOptionDetails);
+    checkViewabilityAssignedTargetingOptionDetails(
+        o.viewabilityDetails as api.ViewabilityAssignedTargetingOptionDetails);
   }
   buildCounterAssignedTargetingOption--;
 }
@@ -671,8 +709,10 @@ core.List<api.FirstAndThirdPartyAudienceGroup> buildUnnamed4567() {
 
 void checkUnnamed4567(core.List<api.FirstAndThirdPartyAudienceGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirstAndThirdPartyAudienceGroup(o[0]);
-  checkFirstAndThirdPartyAudienceGroup(o[1]);
+  checkFirstAndThirdPartyAudienceGroup(
+      o[0] as api.FirstAndThirdPartyAudienceGroup);
+  checkFirstAndThirdPartyAudienceGroup(
+      o[1] as api.FirstAndThirdPartyAudienceGroup);
 }
 
 core.int buildCounterAudienceGroupAssignedTargetingOptionDetails = 0;
@@ -698,12 +738,16 @@ void checkAudienceGroupAssignedTargetingOptionDetails(
   buildCounterAudienceGroupAssignedTargetingOptionDetails++;
   if (buildCounterAudienceGroupAssignedTargetingOptionDetails < 3) {
     checkFirstAndThirdPartyAudienceGroup(
-        o.excludedFirstAndThirdPartyAudienceGroup);
-    checkGoogleAudienceGroup(o.excludedGoogleAudienceGroup);
-    checkCombinedAudienceGroup(o.includedCombinedAudienceGroup);
-    checkCustomListGroup(o.includedCustomListGroup);
+        o.excludedFirstAndThirdPartyAudienceGroup
+            as api.FirstAndThirdPartyAudienceGroup);
+    checkGoogleAudienceGroup(
+        o.excludedGoogleAudienceGroup as api.GoogleAudienceGroup);
+    checkCombinedAudienceGroup(
+        o.includedCombinedAudienceGroup as api.CombinedAudienceGroup);
+    checkCustomListGroup(o.includedCustomListGroup as api.CustomListGroup);
     checkUnnamed4567(o.includedFirstAndThirdPartyAudienceGroups);
-    checkGoogleAudienceGroup(o.includedGoogleAudienceGroup);
+    checkGoogleAudienceGroup(
+        o.includedGoogleAudienceGroup as api.GoogleAudienceGroup);
   }
   buildCounterAudienceGroupAssignedTargetingOptionDetails--;
 }
@@ -822,9 +866,11 @@ api.BiddingStrategy buildBiddingStrategy() {
 void checkBiddingStrategy(api.BiddingStrategy o) {
   buildCounterBiddingStrategy++;
   if (buildCounterBiddingStrategy < 3) {
-    checkFixedBidStrategy(o.fixedBid);
-    checkMaximizeSpendBidStrategy(o.maximizeSpendAutoBid);
-    checkPerformanceGoalBidStrategy(o.performanceGoalAutoBid);
+    checkFixedBidStrategy(o.fixedBid as api.FixedBidStrategy);
+    checkMaximizeSpendBidStrategy(
+        o.maximizeSpendAutoBid as api.MaximizeSpendBidStrategy);
+    checkPerformanceGoalBidStrategy(
+        o.performanceGoalAutoBid as api.PerformanceGoalBidStrategy);
   }
   buildCounterBiddingStrategy--;
 }
@@ -882,8 +928,10 @@ core.List<api.CreateAssignedTargetingOptionsRequest> buildUnnamed4568() {
 
 void checkUnnamed4568(core.List<api.CreateAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreateAssignedTargetingOptionsRequest(o[0]);
-  checkCreateAssignedTargetingOptionsRequest(o[1]);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[0] as api.CreateAssignedTargetingOptionsRequest);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[1] as api.CreateAssignedTargetingOptionsRequest);
 }
 
 core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4569() {
@@ -895,8 +943,10 @@ core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4569() {
 
 void checkUnnamed4569(core.List<api.DeleteAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeleteAssignedTargetingOptionsRequest(o[0]);
-  checkDeleteAssignedTargetingOptionsRequest(o[1]);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[0] as api.DeleteAssignedTargetingOptionsRequest);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[1] as api.DeleteAssignedTargetingOptionsRequest);
 }
 
 core.int buildCounterBulkEditAdvertiserAssignedTargetingOptionsRequest = 0;
@@ -931,8 +981,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4570() {
 
 void checkUnnamed4570(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterBulkEditAdvertiserAssignedTargetingOptionsResponse = 0;
@@ -965,8 +1015,8 @@ core.List<api.AssignedInventorySource> buildUnnamed4571() {
 
 void checkUnnamed4571(core.List<api.AssignedInventorySource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedInventorySource(o[0]);
-  checkAssignedInventorySource(o[1]);
+  checkAssignedInventorySource(o[0] as api.AssignedInventorySource);
+  checkAssignedInventorySource(o[1] as api.AssignedInventorySource);
 }
 
 core.List<core.String> buildUnnamed4572() {
@@ -1018,8 +1068,8 @@ core.List<api.AssignedInventorySource> buildUnnamed4573() {
 
 void checkUnnamed4573(core.List<api.AssignedInventorySource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedInventorySource(o[0]);
-  checkAssignedInventorySource(o[1]);
+  checkAssignedInventorySource(o[0] as api.AssignedInventorySource);
+  checkAssignedInventorySource(o[1] as api.AssignedInventorySource);
 }
 
 core.int buildCounterBulkEditAssignedInventorySourcesResponse = 0;
@@ -1052,8 +1102,8 @@ core.List<api.AssignedLocation> buildUnnamed4574() {
 
 void checkUnnamed4574(core.List<api.AssignedLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedLocation(o[0]);
-  checkAssignedLocation(o[1]);
+  checkAssignedLocation(o[0] as api.AssignedLocation);
+  checkAssignedLocation(o[1] as api.AssignedLocation);
 }
 
 core.List<core.String> buildUnnamed4575() {
@@ -1100,8 +1150,8 @@ core.List<api.AssignedLocation> buildUnnamed4576() {
 
 void checkUnnamed4576(core.List<api.AssignedLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedLocation(o[0]);
-  checkAssignedLocation(o[1]);
+  checkAssignedLocation(o[0] as api.AssignedLocation);
+  checkAssignedLocation(o[1] as api.AssignedLocation);
 }
 
 core.int buildCounterBulkEditAssignedLocationsResponse = 0;
@@ -1133,8 +1183,8 @@ core.List<api.AssignedUserRole> buildUnnamed4577() {
 
 void checkUnnamed4577(core.List<api.AssignedUserRole> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedUserRole(o[0]);
-  checkAssignedUserRole(o[1]);
+  checkAssignedUserRole(o[0] as api.AssignedUserRole);
+  checkAssignedUserRole(o[1] as api.AssignedUserRole);
 }
 
 core.List<core.String> buildUnnamed4578() {
@@ -1181,8 +1231,8 @@ core.List<api.AssignedUserRole> buildUnnamed4579() {
 
 void checkUnnamed4579(core.List<api.AssignedUserRole> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedUserRole(o[0]);
-  checkAssignedUserRole(o[1]);
+  checkAssignedUserRole(o[0] as api.AssignedUserRole);
+  checkAssignedUserRole(o[1] as api.AssignedUserRole);
 }
 
 core.int buildCounterBulkEditAssignedUserRolesResponse = 0;
@@ -1214,8 +1264,10 @@ core.List<api.CreateAssignedTargetingOptionsRequest> buildUnnamed4580() {
 
 void checkUnnamed4580(core.List<api.CreateAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreateAssignedTargetingOptionsRequest(o[0]);
-  checkCreateAssignedTargetingOptionsRequest(o[1]);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[0] as api.CreateAssignedTargetingOptionsRequest);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[1] as api.CreateAssignedTargetingOptionsRequest);
 }
 
 core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4581() {
@@ -1227,8 +1279,10 @@ core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4581() {
 
 void checkUnnamed4581(core.List<api.DeleteAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeleteAssignedTargetingOptionsRequest(o[0]);
-  checkDeleteAssignedTargetingOptionsRequest(o[1]);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[0] as api.DeleteAssignedTargetingOptionsRequest);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[1] as api.DeleteAssignedTargetingOptionsRequest);
 }
 
 core.int buildCounterBulkEditLineItemAssignedTargetingOptionsRequest = 0;
@@ -1263,8 +1317,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4582() {
 
 void checkUnnamed4582(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterBulkEditLineItemAssignedTargetingOptionsResponse = 0;
@@ -1297,8 +1351,8 @@ core.List<api.NegativeKeyword> buildUnnamed4583() {
 
 void checkUnnamed4583(core.List<api.NegativeKeyword> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNegativeKeyword(o[0]);
-  checkNegativeKeyword(o[1]);
+  checkNegativeKeyword(o[0] as api.NegativeKeyword);
+  checkNegativeKeyword(o[1] as api.NegativeKeyword);
 }
 
 core.List<core.String> buildUnnamed4584() {
@@ -1345,8 +1399,8 @@ core.List<api.NegativeKeyword> buildUnnamed4585() {
 
 void checkUnnamed4585(core.List<api.NegativeKeyword> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNegativeKeyword(o[0]);
-  checkNegativeKeyword(o[1]);
+  checkNegativeKeyword(o[0] as api.NegativeKeyword);
+  checkNegativeKeyword(o[1] as api.NegativeKeyword);
 }
 
 core.int buildCounterBulkEditNegativeKeywordsResponse = 0;
@@ -1378,8 +1432,10 @@ core.List<api.CreateAssignedTargetingOptionsRequest> buildUnnamed4586() {
 
 void checkUnnamed4586(core.List<api.CreateAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreateAssignedTargetingOptionsRequest(o[0]);
-  checkCreateAssignedTargetingOptionsRequest(o[1]);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[0] as api.CreateAssignedTargetingOptionsRequest);
+  checkCreateAssignedTargetingOptionsRequest(
+      o[1] as api.CreateAssignedTargetingOptionsRequest);
 }
 
 core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4587() {
@@ -1391,8 +1447,10 @@ core.List<api.DeleteAssignedTargetingOptionsRequest> buildUnnamed4587() {
 
 void checkUnnamed4587(core.List<api.DeleteAssignedTargetingOptionsRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeleteAssignedTargetingOptionsRequest(o[0]);
-  checkDeleteAssignedTargetingOptionsRequest(o[1]);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[0] as api.DeleteAssignedTargetingOptionsRequest);
+  checkDeleteAssignedTargetingOptionsRequest(
+      o[1] as api.DeleteAssignedTargetingOptionsRequest);
 }
 
 core.int buildCounterBulkEditPartnerAssignedTargetingOptionsRequest = 0;
@@ -1427,8 +1485,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4588() {
 
 void checkUnnamed4588(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterBulkEditPartnerAssignedTargetingOptionsResponse = 0;
@@ -1461,8 +1519,8 @@ core.List<api.Site> buildUnnamed4589() {
 
 void checkUnnamed4589(core.List<api.Site> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSite(o[0]);
-  checkSite(o[1]);
+  checkSite(o[0] as api.Site);
+  checkSite(o[1] as api.Site);
 }
 
 core.List<core.String> buildUnnamed4590() {
@@ -1512,8 +1570,8 @@ core.List<api.Site> buildUnnamed4591() {
 
 void checkUnnamed4591(core.List<api.Site> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSite(o[0]);
-  checkSite(o[1]);
+  checkSite(o[0] as api.Site);
+  checkSite(o[1] as api.Site);
 }
 
 core.int buildCounterBulkEditSitesResponse = 0;
@@ -1544,8 +1602,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4592() {
 
 void checkUnnamed4592(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterBulkListAdvertiserAssignedTargetingOptionsResponse = 0;
@@ -1580,8 +1638,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4593() {
 
 void checkUnnamed4593(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterBulkListLineItemAssignedTargetingOptionsResponse = 0;
@@ -1630,12 +1688,12 @@ void checkCampaign(api.Campaign o) {
   buildCounterCampaign++;
   if (buildCounterCampaign < 3) {
     unittest.expect(o.advertiserId, unittest.equals('foo'));
-    checkCampaignFlight(o.campaignFlight);
-    checkCampaignGoal(o.campaignGoal);
+    checkCampaignFlight(o.campaignFlight as api.CampaignFlight);
+    checkCampaignGoal(o.campaignGoal as api.CampaignGoal);
     unittest.expect(o.campaignId, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.entityStatus, unittest.equals('foo'));
-    checkFrequencyCap(o.frequencyCap);
+    checkFrequencyCap(o.frequencyCap as api.FrequencyCap);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -1657,7 +1715,7 @@ api.CampaignFlight buildCampaignFlight() {
 void checkCampaignFlight(api.CampaignFlight o) {
   buildCounterCampaignFlight++;
   if (buildCounterCampaignFlight < 3) {
-    checkDateRange(o.plannedDates);
+    checkDateRange(o.plannedDates as api.DateRange);
     unittest.expect(o.plannedSpendAmountMicros, unittest.equals('foo'));
   }
   buildCounterCampaignFlight--;
@@ -1679,7 +1737,7 @@ void checkCampaignGoal(api.CampaignGoal o) {
   buildCounterCampaignGoal++;
   if (buildCounterCampaignGoal < 3) {
     unittest.expect(o.campaignGoalType, unittest.equals('foo'));
-    checkPerformanceGoal(o.performanceGoal);
+    checkPerformanceGoal(o.performanceGoal as api.PerformanceGoal);
   }
   buildCounterCampaignGoal--;
 }
@@ -1923,8 +1981,10 @@ core.List<api.CombinedAudienceTargetingSetting> buildUnnamed4595() {
 
 void checkUnnamed4595(core.List<api.CombinedAudienceTargetingSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCombinedAudienceTargetingSetting(o[0]);
-  checkCombinedAudienceTargetingSetting(o[1]);
+  checkCombinedAudienceTargetingSetting(
+      o[0] as api.CombinedAudienceTargetingSetting);
+  checkCombinedAudienceTargetingSetting(
+      o[1] as api.CombinedAudienceTargetingSetting);
 }
 
 core.int buildCounterCombinedAudienceGroup = 0;
@@ -2063,8 +2123,10 @@ core.List<api.TrackingFloodlightActivityConfig> buildUnnamed4596() {
 
 void checkUnnamed4596(core.List<api.TrackingFloodlightActivityConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrackingFloodlightActivityConfig(o[0]);
-  checkTrackingFloodlightActivityConfig(o[1]);
+  checkTrackingFloodlightActivityConfig(
+      o[0] as api.TrackingFloodlightActivityConfig);
+  checkTrackingFloodlightActivityConfig(
+      o[1] as api.TrackingFloodlightActivityConfig);
 }
 
 core.int buildCounterConversionCountingConfig = 0;
@@ -2142,7 +2204,7 @@ api.CreateAssetResponse buildCreateAssetResponse() {
 void checkCreateAssetResponse(api.CreateAssetResponse o) {
   buildCounterCreateAssetResponse++;
   if (buildCounterCreateAssetResponse < 3) {
-    checkAsset(o.asset);
+    checkAsset(o.asset as api.Asset);
   }
   buildCounterCreateAssetResponse--;
 }
@@ -2156,8 +2218,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4597() {
 
 void checkUnnamed4597(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterCreateAssignedTargetingOptionsRequest = 0;
@@ -2203,9 +2265,10 @@ void checkCreateSdfDownloadTaskRequest(api.CreateSdfDownloadTaskRequest o) {
   buildCounterCreateSdfDownloadTaskRequest++;
   if (buildCounterCreateSdfDownloadTaskRequest < 3) {
     unittest.expect(o.advertiserId, unittest.equals('foo'));
-    checkIdFilter(o.idFilter);
-    checkInventorySourceFilter(o.inventorySourceFilter);
-    checkParentEntityFilter(o.parentEntityFilter);
+    checkIdFilter(o.idFilter as api.IdFilter);
+    checkInventorySourceFilter(
+        o.inventorySourceFilter as api.InventorySourceFilter);
+    checkParentEntityFilter(o.parentEntityFilter as api.ParentEntityFilter);
     unittest.expect(o.partnerId, unittest.equals('foo'));
     unittest.expect(o.version, unittest.equals('foo'));
   }
@@ -2221,8 +2284,8 @@ core.List<api.Dimensions> buildUnnamed4598() {
 
 void checkUnnamed4598(core.List<api.Dimensions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDimensions(o[0]);
-  checkDimensions(o[1]);
+  checkDimensions(o[0] as api.Dimensions);
+  checkDimensions(o[1] as api.Dimensions);
 }
 
 core.List<api.AssetAssociation> buildUnnamed4599() {
@@ -2234,8 +2297,8 @@ core.List<api.AssetAssociation> buildUnnamed4599() {
 
 void checkUnnamed4599(core.List<api.AssetAssociation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssetAssociation(o[0]);
-  checkAssetAssociation(o[1]);
+  checkAssetAssociation(o[0] as api.AssetAssociation);
+  checkAssetAssociation(o[1] as api.AssetAssociation);
 }
 
 core.List<core.String> buildUnnamed4600() {
@@ -2260,8 +2323,8 @@ core.List<api.CounterEvent> buildUnnamed4601() {
 
 void checkUnnamed4601(core.List<api.CounterEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCounterEvent(o[0]);
-  checkCounterEvent(o[1]);
+  checkCounterEvent(o[0] as api.CounterEvent);
+  checkCounterEvent(o[1] as api.CounterEvent);
 }
 
 core.List<core.String> buildUnnamed4602() {
@@ -2286,8 +2349,8 @@ core.List<api.ExitEvent> buildUnnamed4603() {
 
 void checkUnnamed4603(core.List<api.ExitEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExitEvent(o[0]);
-  checkExitEvent(o[1]);
+  checkExitEvent(o[0] as api.ExitEvent);
+  checkExitEvent(o[1] as api.ExitEvent);
 }
 
 core.List<core.String> buildUnnamed4604() {
@@ -2312,8 +2375,8 @@ core.List<api.ThirdPartyUrl> buildUnnamed4605() {
 
 void checkUnnamed4605(core.List<api.ThirdPartyUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThirdPartyUrl(o[0]);
-  checkThirdPartyUrl(o[1]);
+  checkThirdPartyUrl(o[0] as api.ThirdPartyUrl);
+  checkThirdPartyUrl(o[1] as api.ThirdPartyUrl);
 }
 
 core.List<api.TimerEvent> buildUnnamed4606() {
@@ -2325,8 +2388,8 @@ core.List<api.TimerEvent> buildUnnamed4606() {
 
 void checkUnnamed4606(core.List<api.TimerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTimerEvent(o[0]);
-  checkTimerEvent(o[1]);
+  checkTimerEvent(o[0] as api.TimerEvent);
+  checkTimerEvent(o[1] as api.TimerEvent);
 }
 
 core.List<core.String> buildUnnamed4607() {
@@ -2351,8 +2414,8 @@ core.List<api.Transcode> buildUnnamed4608() {
 
 void checkUnnamed4608(core.List<api.Transcode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTranscode(o[0]);
-  checkTranscode(o[1]);
+  checkTranscode(o[0] as api.Transcode);
+  checkTranscode(o[1] as api.Transcode);
 }
 
 core.int buildCounterCreative = 0;
@@ -2418,14 +2481,14 @@ void checkCreative(api.Creative o) {
     unittest.expect(o.appendedTag, unittest.equals('foo'));
     checkUnnamed4599(o.assets);
     unittest.expect(o.cmPlacementId, unittest.equals('foo'));
-    checkCmTrackingAd(o.cmTrackingAd);
+    checkCmTrackingAd(o.cmTrackingAd as api.CmTrackingAd);
     checkUnnamed4600(o.companionCreativeIds);
     checkUnnamed4601(o.counterEvents);
     unittest.expect(o.createTime, unittest.equals('foo'));
     checkUnnamed4602(o.creativeAttributes);
     unittest.expect(o.creativeId, unittest.equals('foo'));
     unittest.expect(o.creativeType, unittest.equals('foo'));
-    checkDimensions(o.dimensions);
+    checkDimensions(o.dimensions as api.Dimensions);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.dynamic, unittest.isTrue);
     unittest.expect(o.entityStatus, unittest.equals('foo'));
@@ -2441,20 +2504,20 @@ void checkCreative(api.Creative o) {
     unittest.expect(o.mediaDuration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.notes, unittest.equals('foo'));
-    checkObaIcon(o.obaIcon);
-    checkAudioVideoOffset(o.progressOffset);
+    checkObaIcon(o.obaIcon as api.ObaIcon);
+    checkAudioVideoOffset(o.progressOffset as api.AudioVideoOffset);
     unittest.expect(o.requireHtml5, unittest.isTrue);
     unittest.expect(o.requireMraid, unittest.isTrue);
     unittest.expect(o.requirePingForAttribution, unittest.isTrue);
-    checkReviewStatusInfo(o.reviewStatus);
-    checkAudioVideoOffset(o.skipOffset);
+    checkReviewStatusInfo(o.reviewStatus as api.ReviewStatusInfo);
+    checkAudioVideoOffset(o.skipOffset as api.AudioVideoOffset);
     unittest.expect(o.skippable, unittest.isTrue);
     unittest.expect(o.thirdPartyTag, unittest.equals('foo'));
     checkUnnamed4605(o.thirdPartyUrls);
     checkUnnamed4606(o.timerEvents);
     checkUnnamed4607(o.trackerUrls);
     checkUnnamed4608(o.transcodes);
-    checkUniversalAdId(o.universalAdId);
+    checkUniversalAdId(o.universalAdId as api.UniversalAdId);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.vastTagUrl, unittest.equals('foo'));
     unittest.expect(o.vpaid, unittest.isTrue);
@@ -2479,8 +2542,10 @@ void checkCreativeConfig(api.CreativeConfig o) {
   buildCounterCreativeConfig++;
   if (buildCounterCreativeConfig < 3) {
     unittest.expect(o.creativeType, unittest.equals('foo'));
-    checkInventorySourceDisplayCreativeConfig(o.displayCreativeConfig);
-    checkInventorySourceVideoCreativeConfig(o.videoCreativeConfig);
+    checkInventorySourceDisplayCreativeConfig(
+        o.displayCreativeConfig as api.InventorySourceDisplayCreativeConfig);
+    checkInventorySourceVideoCreativeConfig(
+        o.videoCreativeConfig as api.InventorySourceVideoCreativeConfig);
   }
   buildCounterCreativeConfig--;
 }
@@ -2548,8 +2613,8 @@ core.List<api.CustomListTargetingSetting> buildUnnamed4609() {
 
 void checkUnnamed4609(core.List<api.CustomListTargetingSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomListTargetingSetting(o[0]);
-  checkCustomListTargetingSetting(o[1]);
+  checkCustomListTargetingSetting(o[0] as api.CustomListTargetingSetting);
+  checkCustomListTargetingSetting(o[1] as api.CustomListTargetingSetting);
 }
 
 core.int buildCounterCustomListGroup = 0;
@@ -2628,8 +2693,8 @@ api.DateRange buildDateRange() {
 void checkDateRange(api.DateRange o) {
   buildCounterDateRange++;
   if (buildCounterDateRange < 3) {
-    checkDate(o.endDate);
-    checkDate(o.startDate);
+    checkDate(o.endDate as api.Date);
+    checkDate(o.startDate as api.Date);
   }
   buildCounterDateRange--;
 }
@@ -2883,12 +2948,17 @@ api.DoubleVerify buildDoubleVerify() {
 void checkDoubleVerify(api.DoubleVerify o) {
   buildCounterDoubleVerify++;
   if (buildCounterDoubleVerify < 3) {
-    checkDoubleVerifyAppStarRating(o.appStarRating);
+    checkDoubleVerifyAppStarRating(
+        o.appStarRating as api.DoubleVerifyAppStarRating);
     checkUnnamed4611(o.avoidedAgeRatings);
-    checkDoubleVerifyBrandSafetyCategories(o.brandSafetyCategories);
-    checkDoubleVerifyDisplayViewability(o.displayViewability);
-    checkDoubleVerifyFraudInvalidTraffic(o.fraudInvalidTraffic);
-    checkDoubleVerifyVideoViewability(o.videoViewability);
+    checkDoubleVerifyBrandSafetyCategories(
+        o.brandSafetyCategories as api.DoubleVerifyBrandSafetyCategories);
+    checkDoubleVerifyDisplayViewability(
+        o.displayViewability as api.DoubleVerifyDisplayViewability);
+    checkDoubleVerifyFraudInvalidTraffic(
+        o.fraudInvalidTraffic as api.DoubleVerifyFraudInvalidTraffic);
+    checkDoubleVerifyVideoViewability(
+        o.videoViewability as api.DoubleVerifyVideoViewability);
   }
   buildCounterDoubleVerify--;
 }
@@ -3118,8 +3188,8 @@ core.List<api.ExchangeConfigEnabledExchange> buildUnnamed4614() {
 
 void checkUnnamed4614(core.List<api.ExchangeConfigEnabledExchange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExchangeConfigEnabledExchange(o[0]);
-  checkExchangeConfigEnabledExchange(o[1]);
+  checkExchangeConfigEnabledExchange(o[0] as api.ExchangeConfigEnabledExchange);
+  checkExchangeConfigEnabledExchange(o[1] as api.ExchangeConfigEnabledExchange);
 }
 
 core.int buildCounterExchangeConfig = 0;
@@ -3288,8 +3358,10 @@ core.List<api.FirstAndThirdPartyAudienceTargetingSetting> buildUnnamed4615() {
 void checkUnnamed4615(
     core.List<api.FirstAndThirdPartyAudienceTargetingSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirstAndThirdPartyAudienceTargetingSetting(o[0]);
-  checkFirstAndThirdPartyAudienceTargetingSetting(o[1]);
+  checkFirstAndThirdPartyAudienceTargetingSetting(
+      o[0] as api.FirstAndThirdPartyAudienceTargetingSetting);
+  checkFirstAndThirdPartyAudienceTargetingSetting(
+      o[1] as api.FirstAndThirdPartyAudienceTargetingSetting);
 }
 
 core.int buildCounterFirstAndThirdPartyAudienceGroup = 0;
@@ -3403,11 +3475,12 @@ api.FloodlightGroup buildFloodlightGroup() {
 void checkFloodlightGroup(api.FloodlightGroup o) {
   buildCounterFloodlightGroup++;
   if (buildCounterFloodlightGroup < 3) {
-    checkActiveViewVideoViewabilityMetricConfig(o.activeViewConfig);
+    checkActiveViewVideoViewabilityMetricConfig(
+        o.activeViewConfig as api.ActiveViewVideoViewabilityMetricConfig);
     checkUnnamed4616(o.customVariables);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.floodlightGroupId, unittest.equals('foo'));
-    checkLookbackWindow(o.lookbackWindow);
+    checkLookbackWindow(o.lookbackWindow as api.LookbackWindow);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.webTagType, unittest.equals('foo'));
   }
@@ -3564,8 +3637,10 @@ core.List<api.GoogleAudienceTargetingSetting> buildUnnamed4617() {
 
 void checkUnnamed4617(core.List<api.GoogleAudienceTargetingSetting> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAudienceTargetingSetting(o[0]);
-  checkGoogleAudienceTargetingSetting(o[1]);
+  checkGoogleAudienceTargetingSetting(
+      o[0] as api.GoogleAudienceTargetingSetting);
+  checkGoogleAudienceTargetingSetting(
+      o[1] as api.GoogleAudienceTargetingSetting);
 }
 
 core.int buildCounterGoogleAudienceGroup = 0;
@@ -3785,8 +3860,8 @@ core.List<api.PartnerCost> buildUnnamed4624() {
 
 void checkUnnamed4624(core.List<api.PartnerCost> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPartnerCost(o[0]);
-  checkPartnerCost(o[1]);
+  checkPartnerCost(o[0] as api.PartnerCost);
+  checkPartnerCost(o[1] as api.PartnerCost);
 }
 
 core.int buildCounterInsertionOrder = 0;
@@ -3817,18 +3892,18 @@ void checkInsertionOrder(api.InsertionOrder o) {
   buildCounterInsertionOrder++;
   if (buildCounterInsertionOrder < 3) {
     unittest.expect(o.advertiserId, unittest.equals('foo'));
-    checkBiddingStrategy(o.bidStrategy);
-    checkInsertionOrderBudget(o.budget);
+    checkBiddingStrategy(o.bidStrategy as api.BiddingStrategy);
+    checkInsertionOrderBudget(o.budget as api.InsertionOrderBudget);
     unittest.expect(o.campaignId, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.entityStatus, unittest.equals('foo'));
-    checkFrequencyCap(o.frequencyCap);
+    checkFrequencyCap(o.frequencyCap as api.FrequencyCap);
     unittest.expect(o.insertionOrderId, unittest.equals('foo'));
-    checkIntegrationDetails(o.integrationDetails);
+    checkIntegrationDetails(o.integrationDetails as api.IntegrationDetails);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkPacing(o.pacing);
+    checkPacing(o.pacing as api.Pacing);
     checkUnnamed4624(o.partnerCosts);
-    checkPerformanceGoal(o.performanceGoal);
+    checkPerformanceGoal(o.performanceGoal as api.PerformanceGoal);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterInsertionOrder--;
@@ -3843,8 +3918,8 @@ core.List<api.InsertionOrderBudgetSegment> buildUnnamed4625() {
 
 void checkUnnamed4625(core.List<api.InsertionOrderBudgetSegment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInsertionOrderBudgetSegment(o[0]);
-  checkInsertionOrderBudgetSegment(o[1]);
+  checkInsertionOrderBudgetSegment(o[0] as api.InsertionOrderBudgetSegment);
+  checkInsertionOrderBudgetSegment(o[1] as api.InsertionOrderBudgetSegment);
 }
 
 core.int buildCounterInsertionOrderBudget = 0;
@@ -3889,7 +3964,7 @@ void checkInsertionOrderBudgetSegment(api.InsertionOrderBudgetSegment o) {
   if (buildCounterInsertionOrderBudgetSegment < 3) {
     unittest.expect(o.budgetAmountMicros, unittest.equals('foo'));
     unittest.expect(o.campaignBudgetId, unittest.equals('foo'));
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     unittest.expect(o.description, unittest.equals('foo'));
   }
   buildCounterInsertionOrderBudgetSegment--;
@@ -3968,8 +4043,8 @@ core.List<api.CreativeConfig> buildUnnamed4626() {
 
 void checkUnnamed4626(core.List<api.CreativeConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreativeConfig(o[0]);
-  checkCreativeConfig(o[1]);
+  checkCreativeConfig(o[0] as api.CreativeConfig);
+  checkCreativeConfig(o[1] as api.CreativeConfig);
 }
 
 core.int buildCounterInventorySource = 0;
@@ -4009,9 +4084,9 @@ void checkInventorySource(api.InventorySource o) {
     unittest.expect(o.inventorySourceType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.publisherName, unittest.equals('foo'));
-    checkRateDetails(o.rateDetails);
-    checkInventorySourceStatus(o.status);
-    checkTimeRange(o.timeRange);
+    checkRateDetails(o.rateDetails as api.RateDetails);
+    checkInventorySourceStatus(o.status as api.InventorySourceStatus);
+    checkTimeRange(o.timeRange as api.TimeRange);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterInventorySource--;
@@ -4054,7 +4129,7 @@ void checkInventorySourceDisplayCreativeConfig(
     api.InventorySourceDisplayCreativeConfig o) {
   buildCounterInventorySourceDisplayCreativeConfig++;
   if (buildCounterInventorySourceDisplayCreativeConfig < 3) {
-    checkDimensions(o.creativeSize);
+    checkDimensions(o.creativeSize as api.Dimensions);
   }
   buildCounterInventorySourceDisplayCreativeConfig--;
 }
@@ -4285,8 +4360,8 @@ core.List<api.PartnerCost> buildUnnamed4630() {
 
 void checkUnnamed4630(core.List<api.PartnerCost> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPartnerCost(o[0]);
-  checkPartnerCost(o[1]);
+  checkPartnerCost(o[0] as api.PartnerCost);
+  checkPartnerCost(o[1] as api.PartnerCost);
 }
 
 core.List<core.String> buildUnnamed4631() {
@@ -4337,24 +4412,25 @@ void checkLineItem(api.LineItem o) {
   buildCounterLineItem++;
   if (buildCounterLineItem < 3) {
     unittest.expect(o.advertiserId, unittest.equals('foo'));
-    checkBiddingStrategy(o.bidStrategy);
-    checkLineItemBudget(o.budget);
+    checkBiddingStrategy(o.bidStrategy as api.BiddingStrategy);
+    checkLineItemBudget(o.budget as api.LineItemBudget);
     unittest.expect(o.campaignId, unittest.equals('foo'));
-    checkConversionCountingConfig(o.conversionCounting);
+    checkConversionCountingConfig(
+        o.conversionCounting as api.ConversionCountingConfig);
     checkUnnamed4628(o.creativeIds);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.entityStatus, unittest.equals('foo'));
-    checkLineItemFlight(o.flight);
-    checkFrequencyCap(o.frequencyCap);
+    checkLineItemFlight(o.flight as api.LineItemFlight);
+    checkFrequencyCap(o.frequencyCap as api.FrequencyCap);
     unittest.expect(o.insertionOrderId, unittest.equals('foo'));
-    checkIntegrationDetails(o.integrationDetails);
+    checkIntegrationDetails(o.integrationDetails as api.IntegrationDetails);
     checkUnnamed4629(o.inventorySourceIds);
     unittest.expect(o.lineItemId, unittest.equals('foo'));
     unittest.expect(o.lineItemType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkPacing(o.pacing);
+    checkPacing(o.pacing as api.Pacing);
     checkUnnamed4630(o.partnerCosts);
-    checkPartnerRevenueModel(o.partnerRevenueModel);
+    checkPartnerRevenueModel(o.partnerRevenueModel as api.PartnerRevenueModel);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     checkUnnamed4631(o.warningMessages);
   }
@@ -4399,7 +4475,7 @@ api.LineItemFlight buildLineItemFlight() {
 void checkLineItemFlight(api.LineItemFlight o) {
   buildCounterLineItemFlight++;
   if (buildCounterLineItemFlight < 3) {
-    checkDateRange(o.dateRange);
+    checkDateRange(o.dateRange as api.DateRange);
     unittest.expect(o.flightDateType, unittest.equals('foo'));
   }
   buildCounterLineItemFlight--;
@@ -4414,8 +4490,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4632() {
 
 void checkUnnamed4632(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterListAdvertiserAssignedTargetingOptionsResponse = 0;
@@ -4450,8 +4526,8 @@ core.List<api.Advertiser> buildUnnamed4633() {
 
 void checkUnnamed4633(core.List<api.Advertiser> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAdvertiser(o[0]);
-  checkAdvertiser(o[1]);
+  checkAdvertiser(o[0] as api.Advertiser);
+  checkAdvertiser(o[1] as api.Advertiser);
 }
 
 core.int buildCounterListAdvertisersResponse = 0;
@@ -4484,8 +4560,8 @@ core.List<api.AssignedInventorySource> buildUnnamed4634() {
 
 void checkUnnamed4634(core.List<api.AssignedInventorySource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedInventorySource(o[0]);
-  checkAssignedInventorySource(o[1]);
+  checkAssignedInventorySource(o[0] as api.AssignedInventorySource);
+  checkAssignedInventorySource(o[1] as api.AssignedInventorySource);
 }
 
 core.int buildCounterListAssignedInventorySourcesResponse = 0;
@@ -4520,8 +4596,8 @@ core.List<api.AssignedLocation> buildUnnamed4635() {
 
 void checkUnnamed4635(core.List<api.AssignedLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedLocation(o[0]);
-  checkAssignedLocation(o[1]);
+  checkAssignedLocation(o[0] as api.AssignedLocation);
+  checkAssignedLocation(o[1] as api.AssignedLocation);
 }
 
 core.int buildCounterListAssignedLocationsResponse = 0;
@@ -4554,8 +4630,8 @@ core.List<api.Campaign> buildUnnamed4636() {
 
 void checkUnnamed4636(core.List<api.Campaign> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCampaign(o[0]);
-  checkCampaign(o[1]);
+  checkCampaign(o[0] as api.Campaign);
+  checkCampaign(o[1] as api.Campaign);
 }
 
 core.int buildCounterListCampaignsResponse = 0;
@@ -4588,8 +4664,8 @@ core.List<api.Channel> buildUnnamed4637() {
 
 void checkUnnamed4637(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannel(o[0]);
-  checkChannel(o[1]);
+  checkChannel(o[0] as api.Channel);
+  checkChannel(o[1] as api.Channel);
 }
 
 core.int buildCounterListChannelsResponse = 0;
@@ -4622,8 +4698,8 @@ core.List<api.CombinedAudience> buildUnnamed4638() {
 
 void checkUnnamed4638(core.List<api.CombinedAudience> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCombinedAudience(o[0]);
-  checkCombinedAudience(o[1]);
+  checkCombinedAudience(o[0] as api.CombinedAudience);
+  checkCombinedAudience(o[1] as api.CombinedAudience);
 }
 
 core.int buildCounterListCombinedAudiencesResponse = 0;
@@ -4656,8 +4732,8 @@ core.List<api.Creative> buildUnnamed4639() {
 
 void checkUnnamed4639(core.List<api.Creative> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCreative(o[0]);
-  checkCreative(o[1]);
+  checkCreative(o[0] as api.Creative);
+  checkCreative(o[1] as api.Creative);
 }
 
 core.int buildCounterListCreativesResponse = 0;
@@ -4690,8 +4766,8 @@ core.List<api.CustomBiddingAlgorithm> buildUnnamed4640() {
 
 void checkUnnamed4640(core.List<api.CustomBiddingAlgorithm> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomBiddingAlgorithm(o[0]);
-  checkCustomBiddingAlgorithm(o[1]);
+  checkCustomBiddingAlgorithm(o[0] as api.CustomBiddingAlgorithm);
+  checkCustomBiddingAlgorithm(o[1] as api.CustomBiddingAlgorithm);
 }
 
 core.int buildCounterListCustomBiddingAlgorithmsResponse = 0;
@@ -4726,8 +4802,8 @@ core.List<api.CustomList> buildUnnamed4641() {
 
 void checkUnnamed4641(core.List<api.CustomList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomList(o[0]);
-  checkCustomList(o[1]);
+  checkCustomList(o[0] as api.CustomList);
+  checkCustomList(o[1] as api.CustomList);
 }
 
 core.int buildCounterListCustomListsResponse = 0;
@@ -4760,8 +4836,8 @@ core.List<api.FirstAndThirdPartyAudience> buildUnnamed4642() {
 
 void checkUnnamed4642(core.List<api.FirstAndThirdPartyAudience> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFirstAndThirdPartyAudience(o[0]);
-  checkFirstAndThirdPartyAudience(o[1]);
+  checkFirstAndThirdPartyAudience(o[0] as api.FirstAndThirdPartyAudience);
+  checkFirstAndThirdPartyAudience(o[1] as api.FirstAndThirdPartyAudience);
 }
 
 core.int buildCounterListFirstAndThirdPartyAudiencesResponse = 0;
@@ -4796,8 +4872,8 @@ core.List<api.GoogleAudience> buildUnnamed4643() {
 
 void checkUnnamed4643(core.List<api.GoogleAudience> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleAudience(o[0]);
-  checkGoogleAudience(o[1]);
+  checkGoogleAudience(o[0] as api.GoogleAudience);
+  checkGoogleAudience(o[1] as api.GoogleAudience);
 }
 
 core.int buildCounterListGoogleAudiencesResponse = 0;
@@ -4830,8 +4906,8 @@ core.List<api.InsertionOrder> buildUnnamed4644() {
 
 void checkUnnamed4644(core.List<api.InsertionOrder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInsertionOrder(o[0]);
-  checkInsertionOrder(o[1]);
+  checkInsertionOrder(o[0] as api.InsertionOrder);
+  checkInsertionOrder(o[1] as api.InsertionOrder);
 }
 
 core.int buildCounterListInsertionOrdersResponse = 0;
@@ -4864,8 +4940,8 @@ core.List<api.InventorySourceGroup> buildUnnamed4645() {
 
 void checkUnnamed4645(core.List<api.InventorySourceGroup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInventorySourceGroup(o[0]);
-  checkInventorySourceGroup(o[1]);
+  checkInventorySourceGroup(o[0] as api.InventorySourceGroup);
+  checkInventorySourceGroup(o[1] as api.InventorySourceGroup);
 }
 
 core.int buildCounterListInventorySourceGroupsResponse = 0;
@@ -4899,8 +4975,8 @@ core.List<api.InventorySource> buildUnnamed4646() {
 
 void checkUnnamed4646(core.List<api.InventorySource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInventorySource(o[0]);
-  checkInventorySource(o[1]);
+  checkInventorySource(o[0] as api.InventorySource);
+  checkInventorySource(o[1] as api.InventorySource);
 }
 
 core.int buildCounterListInventorySourcesResponse = 0;
@@ -4933,8 +5009,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4647() {
 
 void checkUnnamed4647(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterListLineItemAssignedTargetingOptionsResponse = 0;
@@ -4969,8 +5045,8 @@ core.List<api.LineItem> buildUnnamed4648() {
 
 void checkUnnamed4648(core.List<api.LineItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLineItem(o[0]);
-  checkLineItem(o[1]);
+  checkLineItem(o[0] as api.LineItem);
+  checkLineItem(o[1] as api.LineItem);
 }
 
 core.int buildCounterListLineItemsResponse = 0;
@@ -5003,8 +5079,8 @@ core.List<api.LocationList> buildUnnamed4649() {
 
 void checkUnnamed4649(core.List<api.LocationList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocationList(o[0]);
-  checkLocationList(o[1]);
+  checkLocationList(o[0] as api.LocationList);
+  checkLocationList(o[1] as api.LocationList);
 }
 
 core.int buildCounterListLocationListsResponse = 0;
@@ -5037,8 +5113,8 @@ core.List<api.NegativeKeywordList> buildUnnamed4650() {
 
 void checkUnnamed4650(core.List<api.NegativeKeywordList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNegativeKeywordList(o[0]);
-  checkNegativeKeywordList(o[1]);
+  checkNegativeKeywordList(o[0] as api.NegativeKeywordList);
+  checkNegativeKeywordList(o[1] as api.NegativeKeywordList);
 }
 
 core.int buildCounterListNegativeKeywordListsResponse = 0;
@@ -5072,8 +5148,8 @@ core.List<api.NegativeKeyword> buildUnnamed4651() {
 
 void checkUnnamed4651(core.List<api.NegativeKeyword> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNegativeKeyword(o[0]);
-  checkNegativeKeyword(o[1]);
+  checkNegativeKeyword(o[0] as api.NegativeKeyword);
+  checkNegativeKeyword(o[1] as api.NegativeKeyword);
 }
 
 core.int buildCounterListNegativeKeywordsResponse = 0;
@@ -5106,8 +5182,8 @@ core.List<api.AssignedTargetingOption> buildUnnamed4652() {
 
 void checkUnnamed4652(core.List<api.AssignedTargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedTargetingOption(o[0]);
-  checkAssignedTargetingOption(o[1]);
+  checkAssignedTargetingOption(o[0] as api.AssignedTargetingOption);
+  checkAssignedTargetingOption(o[1] as api.AssignedTargetingOption);
 }
 
 core.int buildCounterListPartnerAssignedTargetingOptionsResponse = 0;
@@ -5142,8 +5218,8 @@ core.List<api.Partner> buildUnnamed4653() {
 
 void checkUnnamed4653(core.List<api.Partner> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPartner(o[0]);
-  checkPartner(o[1]);
+  checkPartner(o[0] as api.Partner);
+  checkPartner(o[1] as api.Partner);
 }
 
 core.int buildCounterListPartnersResponse = 0;
@@ -5176,8 +5252,8 @@ core.List<api.Site> buildUnnamed4654() {
 
 void checkUnnamed4654(core.List<api.Site> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSite(o[0]);
-  checkSite(o[1]);
+  checkSite(o[0] as api.Site);
+  checkSite(o[1] as api.Site);
 }
 
 core.int buildCounterListSitesResponse = 0;
@@ -5210,8 +5286,8 @@ core.List<api.TargetingOption> buildUnnamed4655() {
 
 void checkUnnamed4655(core.List<api.TargetingOption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTargetingOption(o[0]);
-  checkTargetingOption(o[1]);
+  checkTargetingOption(o[0] as api.TargetingOption);
+  checkTargetingOption(o[1] as api.TargetingOption);
 }
 
 core.int buildCounterListTargetingOptionsResponse = 0;
@@ -5244,8 +5320,8 @@ core.List<api.User> buildUnnamed4656() {
 
 void checkUnnamed4656(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUser(o[0]);
-  checkUser(o[1]);
+  checkUser(o[0] as api.User);
+  checkUser(o[1] as api.User);
 }
 
 core.int buildCounterListUsersResponse = 0;
@@ -5473,7 +5549,7 @@ void checkObaIcon(api.ObaIcon o) {
   buildCounterObaIcon++;
   if (buildCounterObaIcon < 3) {
     unittest.expect(o.clickTrackingUrl, unittest.equals('foo'));
-    checkDimensions(o.dimensions);
+    checkDimensions(o.dimensions as api.Dimensions);
     unittest.expect(o.landingPageUrl, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals('foo'));
     unittest.expect(o.program, unittest.equals('foo'));
@@ -5651,7 +5727,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed4657(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed4658(o.response);
@@ -5799,12 +5875,13 @@ api.Partner buildPartner() {
 void checkPartner(api.Partner o) {
   buildCounterPartner++;
   if (buildCounterPartner < 3) {
-    checkPartnerAdServerConfig(o.adServerConfig);
-    checkPartnerDataAccessConfig(o.dataAccessConfig);
+    checkPartnerAdServerConfig(o.adServerConfig as api.PartnerAdServerConfig);
+    checkPartnerDataAccessConfig(
+        o.dataAccessConfig as api.PartnerDataAccessConfig);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.entityStatus, unittest.equals('foo'));
-    checkExchangeConfig(o.exchangeConfig);
-    checkPartnerGeneralConfig(o.generalConfig);
+    checkExchangeConfig(o.exchangeConfig as api.ExchangeConfig);
+    checkPartnerGeneralConfig(o.generalConfig as api.PartnerGeneralConfig);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.partnerId, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -5826,7 +5903,7 @@ api.PartnerAdServerConfig buildPartnerAdServerConfig() {
 void checkPartnerAdServerConfig(api.PartnerAdServerConfig o) {
   buildCounterPartnerAdServerConfig++;
   if (buildCounterPartnerAdServerConfig < 3) {
-    checkMeasurementConfig(o.measurementConfig);
+    checkMeasurementConfig(o.measurementConfig as api.MeasurementConfig);
   }
   buildCounterPartnerAdServerConfig--;
 }
@@ -5872,7 +5949,7 @@ api.PartnerDataAccessConfig buildPartnerDataAccessConfig() {
 void checkPartnerDataAccessConfig(api.PartnerDataAccessConfig o) {
   buildCounterPartnerDataAccessConfig++;
   if (buildCounterPartnerDataAccessConfig < 3) {
-    checkSdfConfig(o.sdfConfig);
+    checkSdfConfig(o.sdfConfig as api.SdfConfig);
   }
   buildCounterPartnerDataAccessConfig--;
 }
@@ -6031,8 +6108,8 @@ void checkRateDetails(api.RateDetails o) {
   buildCounterRateDetails++;
   if (buildCounterRateDetails < 3) {
     unittest.expect(o.inventorySourceRateType, unittest.equals('foo'));
-    checkMoney(o.minimumSpend);
-    checkMoney(o.rate);
+    checkMoney(o.minimumSpend as api.Money);
+    checkMoney(o.rate as api.Money);
     unittest.expect(o.unitsPurchased, unittest.equals('foo'));
   }
   buildCounterRateDetails--;
@@ -6070,8 +6147,8 @@ core.List<api.ExchangeReviewStatus> buildUnnamed4661() {
 
 void checkUnnamed4661(core.List<api.ExchangeReviewStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExchangeReviewStatus(o[0]);
-  checkExchangeReviewStatus(o[1]);
+  checkExchangeReviewStatus(o[0] as api.ExchangeReviewStatus);
+  checkExchangeReviewStatus(o[1] as api.ExchangeReviewStatus);
 }
 
 core.List<api.PublisherReviewStatus> buildUnnamed4662() {
@@ -6083,8 +6160,8 @@ core.List<api.PublisherReviewStatus> buildUnnamed4662() {
 
 void checkUnnamed4662(core.List<api.PublisherReviewStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPublisherReviewStatus(o[0]);
-  checkPublisherReviewStatus(o[1]);
+  checkPublisherReviewStatus(o[0] as api.PublisherReviewStatus);
+  checkPublisherReviewStatus(o[1] as api.PublisherReviewStatus);
 }
 
 core.int buildCounterReviewStatusInfo = 0;
@@ -6395,39 +6472,62 @@ api.TargetingOption buildTargetingOption() {
 void checkTargetingOption(api.TargetingOption o) {
   buildCounterTargetingOption++;
   if (buildCounterTargetingOption < 3) {
-    checkAgeRangeTargetingOptionDetails(o.ageRangeDetails);
-    checkAppCategoryTargetingOptionDetails(o.appCategoryDetails);
+    checkAgeRangeTargetingOptionDetails(
+        o.ageRangeDetails as api.AgeRangeTargetingOptionDetails);
+    checkAppCategoryTargetingOptionDetails(
+        o.appCategoryDetails as api.AppCategoryTargetingOptionDetails);
     checkAuthorizedSellerStatusTargetingOptionDetails(
-        o.authorizedSellerStatusDetails);
-    checkBrowserTargetingOptionDetails(o.browserDetails);
-    checkCarrierAndIspTargetingOptionDetails(o.carrierAndIspDetails);
-    checkCategoryTargetingOptionDetails(o.categoryDetails);
+        o.authorizedSellerStatusDetails
+            as api.AuthorizedSellerStatusTargetingOptionDetails);
+    checkBrowserTargetingOptionDetails(
+        o.browserDetails as api.BrowserTargetingOptionDetails);
+    checkCarrierAndIspTargetingOptionDetails(
+        o.carrierAndIspDetails as api.CarrierAndIspTargetingOptionDetails);
+    checkCategoryTargetingOptionDetails(
+        o.categoryDetails as api.CategoryTargetingOptionDetails);
     checkContentInstreamPositionTargetingOptionDetails(
-        o.contentInstreamPositionDetails);
+        o.contentInstreamPositionDetails
+            as api.ContentInstreamPositionTargetingOptionDetails);
     checkContentOutstreamPositionTargetingOptionDetails(
-        o.contentOutstreamPositionDetails);
-    checkDeviceMakeModelTargetingOptionDetails(o.deviceMakeModelDetails);
-    checkDeviceTypeTargetingOptionDetails(o.deviceTypeDetails);
-    checkDigitalContentLabelTargetingOptionDetails(
-        o.digitalContentLabelDetails);
-    checkEnvironmentTargetingOptionDetails(o.environmentDetails);
-    checkExchangeTargetingOptionDetails(o.exchangeDetails);
-    checkGenderTargetingOptionDetails(o.genderDetails);
-    checkGeoRegionTargetingOptionDetails(o.geoRegionDetails);
-    checkHouseholdIncomeTargetingOptionDetails(o.householdIncomeDetails);
-    checkLanguageTargetingOptionDetails(o.languageDetails);
+        o.contentOutstreamPositionDetails
+            as api.ContentOutstreamPositionTargetingOptionDetails);
+    checkDeviceMakeModelTargetingOptionDetails(
+        o.deviceMakeModelDetails as api.DeviceMakeModelTargetingOptionDetails);
+    checkDeviceTypeTargetingOptionDetails(
+        o.deviceTypeDetails as api.DeviceTypeTargetingOptionDetails);
+    checkDigitalContentLabelTargetingOptionDetails(o.digitalContentLabelDetails
+        as api.DigitalContentLabelTargetingOptionDetails);
+    checkEnvironmentTargetingOptionDetails(
+        o.environmentDetails as api.EnvironmentTargetingOptionDetails);
+    checkExchangeTargetingOptionDetails(
+        o.exchangeDetails as api.ExchangeTargetingOptionDetails);
+    checkGenderTargetingOptionDetails(
+        o.genderDetails as api.GenderTargetingOptionDetails);
+    checkGeoRegionTargetingOptionDetails(
+        o.geoRegionDetails as api.GeoRegionTargetingOptionDetails);
+    checkHouseholdIncomeTargetingOptionDetails(
+        o.householdIncomeDetails as api.HouseholdIncomeTargetingOptionDetails);
+    checkLanguageTargetingOptionDetails(
+        o.languageDetails as api.LanguageTargetingOptionDetails);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOnScreenPositionTargetingOptionDetails(o.onScreenPositionDetails);
-    checkOperatingSystemTargetingOptionDetails(o.operatingSystemDetails);
-    checkParentalStatusTargetingOptionDetails(o.parentalStatusDetails);
-    checkSensitiveCategoryTargetingOptionDetails(o.sensitiveCategoryDetails);
-    checkSubExchangeTargetingOptionDetails(o.subExchangeDetails);
+    checkOnScreenPositionTargetingOptionDetails(o.onScreenPositionDetails
+        as api.OnScreenPositionTargetingOptionDetails);
+    checkOperatingSystemTargetingOptionDetails(
+        o.operatingSystemDetails as api.OperatingSystemTargetingOptionDetails);
+    checkParentalStatusTargetingOptionDetails(
+        o.parentalStatusDetails as api.ParentalStatusTargetingOptionDetails);
+    checkSensitiveCategoryTargetingOptionDetails(o.sensitiveCategoryDetails
+        as api.SensitiveCategoryTargetingOptionDetails);
+    checkSubExchangeTargetingOptionDetails(
+        o.subExchangeDetails as api.SubExchangeTargetingOptionDetails);
     unittest.expect(o.targetingOptionId, unittest.equals('foo'));
     unittest.expect(o.targetingType, unittest.equals('foo'));
-    checkUserRewardedContentTargetingOptionDetails(
-        o.userRewardedContentDetails);
-    checkVideoPlayerSizeTargetingOptionDetails(o.videoPlayerSizeDetails);
-    checkViewabilityTargetingOptionDetails(o.viewabilityDetails);
+    checkUserRewardedContentTargetingOptionDetails(o.userRewardedContentDetails
+        as api.UserRewardedContentTargetingOptionDetails);
+    checkVideoPlayerSizeTargetingOptionDetails(
+        o.videoPlayerSizeDetails as api.VideoPlayerSizeTargetingOptionDetails);
+    checkViewabilityTargetingOptionDetails(
+        o.viewabilityDetails as api.ViewabilityTargetingOptionDetails);
   }
   buildCounterTargetingOption--;
 }
@@ -6490,9 +6590,9 @@ void checkThirdPartyVerifierAssignedTargetingOptionDetails(
     api.ThirdPartyVerifierAssignedTargetingOptionDetails o) {
   buildCounterThirdPartyVerifierAssignedTargetingOptionDetails++;
   if (buildCounterThirdPartyVerifierAssignedTargetingOptionDetails < 3) {
-    checkAdloox(o.adloox);
-    checkDoubleVerify(o.doubleVerify);
-    checkIntegralAdScience(o.integralAdScience);
+    checkAdloox(o.adloox as api.Adloox);
+    checkDoubleVerify(o.doubleVerify as api.DoubleVerify);
+    checkIntegralAdScience(o.integralAdScience as api.IntegralAdScience);
   }
   buildCounterThirdPartyVerifierAssignedTargetingOptionDetails--;
 }
@@ -6588,7 +6688,7 @@ void checkTranscode(api.Transcode o) {
     unittest.expect(o.audioBitRateKbps, unittest.equals('foo'));
     unittest.expect(o.audioSampleRateHz, unittest.equals('foo'));
     unittest.expect(o.bitRateKbps, unittest.equals('foo'));
-    checkDimensions(o.dimensions);
+    checkDimensions(o.dimensions as api.Dimensions);
     unittest.expect(o.fileSizeBytes, unittest.equals('foo'));
     unittest.expect(o.frameRate, unittest.equals(42.0));
     unittest.expect(o.mimeType, unittest.equals('foo'));
@@ -6650,8 +6750,8 @@ core.List<api.AssignedUserRole> buildUnnamed4665() {
 
 void checkUnnamed4665(core.List<api.AssignedUserRole> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignedUserRole(o[0]);
-  checkAssignedUserRole(o[1]);
+  checkAssignedUserRole(o[0] as api.AssignedUserRole);
+  checkAssignedUserRole(o[1] as api.AssignedUserRole);
 }
 
 core.int buildCounterUser = 0;
@@ -6817,7 +6917,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActiveViewVideoViewabilityMetricConfig();
       var od = api.ActiveViewVideoViewabilityMetricConfig.fromJson(o.toJson());
-      checkActiveViewVideoViewabilityMetricConfig(od);
+      checkActiveViewVideoViewabilityMetricConfig(
+          od as api.ActiveViewVideoViewabilityMetricConfig);
     });
   });
 
@@ -6825,7 +6926,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdloox();
       var od = api.Adloox.fromJson(o.toJson());
-      checkAdloox(od);
+      checkAdloox(od as api.Adloox);
     });
   });
 
@@ -6833,7 +6934,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiser();
       var od = api.Advertiser.fromJson(o.toJson());
-      checkAdvertiser(od);
+      checkAdvertiser(od as api.Advertiser);
     });
   });
 
@@ -6841,7 +6942,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserAdServerConfig();
       var od = api.AdvertiserAdServerConfig.fromJson(o.toJson());
-      checkAdvertiserAdServerConfig(od);
+      checkAdvertiserAdServerConfig(od as api.AdvertiserAdServerConfig);
     });
   });
 
@@ -6849,7 +6950,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserCreativeConfig();
       var od = api.AdvertiserCreativeConfig.fromJson(o.toJson());
-      checkAdvertiserCreativeConfig(od);
+      checkAdvertiserCreativeConfig(od as api.AdvertiserCreativeConfig);
     });
   });
 
@@ -6857,7 +6958,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserDataAccessConfig();
       var od = api.AdvertiserDataAccessConfig.fromJson(o.toJson());
-      checkAdvertiserDataAccessConfig(od);
+      checkAdvertiserDataAccessConfig(od as api.AdvertiserDataAccessConfig);
     });
   });
 
@@ -6865,7 +6966,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserGeneralConfig();
       var od = api.AdvertiserGeneralConfig.fromJson(o.toJson());
-      checkAdvertiserGeneralConfig(od);
+      checkAdvertiserGeneralConfig(od as api.AdvertiserGeneralConfig);
     });
   });
 
@@ -6873,7 +6974,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserSdfConfig();
       var od = api.AdvertiserSdfConfig.fromJson(o.toJson());
-      checkAdvertiserSdfConfig(od);
+      checkAdvertiserSdfConfig(od as api.AdvertiserSdfConfig);
     });
   });
 
@@ -6881,7 +6982,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdvertiserTargetingConfig();
       var od = api.AdvertiserTargetingConfig.fromJson(o.toJson());
-      checkAdvertiserTargetingConfig(od);
+      checkAdvertiserTargetingConfig(od as api.AdvertiserTargetingConfig);
     });
   });
 
@@ -6889,7 +6990,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAgeRangeAssignedTargetingOptionDetails();
       var od = api.AgeRangeAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkAgeRangeAssignedTargetingOptionDetails(od);
+      checkAgeRangeAssignedTargetingOptionDetails(
+          od as api.AgeRangeAssignedTargetingOptionDetails);
     });
   });
 
@@ -6897,7 +6999,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAgeRangeTargetingOptionDetails();
       var od = api.AgeRangeTargetingOptionDetails.fromJson(o.toJson());
-      checkAgeRangeTargetingOptionDetails(od);
+      checkAgeRangeTargetingOptionDetails(
+          od as api.AgeRangeTargetingOptionDetails);
     });
   });
 
@@ -6905,7 +7008,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppAssignedTargetingOptionDetails();
       var od = api.AppAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkAppAssignedTargetingOptionDetails(od);
+      checkAppAssignedTargetingOptionDetails(
+          od as api.AppAssignedTargetingOptionDetails);
     });
   });
 
@@ -6914,7 +7018,8 @@ void main() {
       var o = buildAppCategoryAssignedTargetingOptionDetails();
       var od =
           api.AppCategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkAppCategoryAssignedTargetingOptionDetails(od);
+      checkAppCategoryAssignedTargetingOptionDetails(
+          od as api.AppCategoryAssignedTargetingOptionDetails);
     });
   });
 
@@ -6922,7 +7027,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppCategoryTargetingOptionDetails();
       var od = api.AppCategoryTargetingOptionDetails.fromJson(o.toJson());
-      checkAppCategoryTargetingOptionDetails(od);
+      checkAppCategoryTargetingOptionDetails(
+          od as api.AppCategoryTargetingOptionDetails);
     });
   });
 
@@ -6930,7 +7036,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAsset();
       var od = api.Asset.fromJson(o.toJson());
-      checkAsset(od);
+      checkAsset(od as api.Asset);
     });
   });
 
@@ -6938,7 +7044,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssetAssociation();
       var od = api.AssetAssociation.fromJson(o.toJson());
-      checkAssetAssociation(od);
+      checkAssetAssociation(od as api.AssetAssociation);
     });
   });
 
@@ -6946,7 +7052,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignedInventorySource();
       var od = api.AssignedInventorySource.fromJson(o.toJson());
-      checkAssignedInventorySource(od);
+      checkAssignedInventorySource(od as api.AssignedInventorySource);
     });
   });
 
@@ -6954,7 +7060,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignedLocation();
       var od = api.AssignedLocation.fromJson(o.toJson());
-      checkAssignedLocation(od);
+      checkAssignedLocation(od as api.AssignedLocation);
     });
   });
 
@@ -6962,7 +7068,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignedTargetingOption();
       var od = api.AssignedTargetingOption.fromJson(o.toJson());
-      checkAssignedTargetingOption(od);
+      checkAssignedTargetingOption(od as api.AssignedTargetingOption);
     });
   });
 
@@ -6970,7 +7076,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignedUserRole();
       var od = api.AssignedUserRole.fromJson(o.toJson());
-      checkAssignedUserRole(od);
+      checkAssignedUserRole(od as api.AssignedUserRole);
     });
   });
 
@@ -6979,7 +7085,8 @@ void main() {
       var o = buildAudienceGroupAssignedTargetingOptionDetails();
       var od =
           api.AudienceGroupAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkAudienceGroupAssignedTargetingOptionDetails(od);
+      checkAudienceGroupAssignedTargetingOptionDetails(
+          od as api.AudienceGroupAssignedTargetingOptionDetails);
     });
   });
 
@@ -6987,7 +7094,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAudioVideoOffset();
       var od = api.AudioVideoOffset.fromJson(o.toJson());
-      checkAudioVideoOffset(od);
+      checkAudioVideoOffset(od as api.AudioVideoOffset);
     });
   });
 
@@ -6995,7 +7102,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditAdvertiserResponse();
       var od = api.AuditAdvertiserResponse.fromJson(o.toJson());
-      checkAuditAdvertiserResponse(od);
+      checkAuditAdvertiserResponse(od as api.AuditAdvertiserResponse);
     });
   });
 
@@ -7006,7 +7113,8 @@ void main() {
       var od =
           api.AuthorizedSellerStatusAssignedTargetingOptionDetails.fromJson(
               o.toJson());
-      checkAuthorizedSellerStatusAssignedTargetingOptionDetails(od);
+      checkAuthorizedSellerStatusAssignedTargetingOptionDetails(
+          od as api.AuthorizedSellerStatusAssignedTargetingOptionDetails);
     });
   });
 
@@ -7015,7 +7123,8 @@ void main() {
       var o = buildAuthorizedSellerStatusTargetingOptionDetails();
       var od =
           api.AuthorizedSellerStatusTargetingOptionDetails.fromJson(o.toJson());
-      checkAuthorizedSellerStatusTargetingOptionDetails(od);
+      checkAuthorizedSellerStatusTargetingOptionDetails(
+          od as api.AuthorizedSellerStatusTargetingOptionDetails);
     });
   });
 
@@ -7023,7 +7132,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBiddingStrategy();
       var od = api.BiddingStrategy.fromJson(o.toJson());
-      checkBiddingStrategy(od);
+      checkBiddingStrategy(od as api.BiddingStrategy);
     });
   });
 
@@ -7031,7 +7140,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBrowserAssignedTargetingOptionDetails();
       var od = api.BrowserAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkBrowserAssignedTargetingOptionDetails(od);
+      checkBrowserAssignedTargetingOptionDetails(
+          od as api.BrowserAssignedTargetingOptionDetails);
     });
   });
 
@@ -7039,7 +7149,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBrowserTargetingOptionDetails();
       var od = api.BrowserTargetingOptionDetails.fromJson(o.toJson());
-      checkBrowserTargetingOptionDetails(od);
+      checkBrowserTargetingOptionDetails(
+          od as api.BrowserTargetingOptionDetails);
     });
   });
 
@@ -7049,7 +7160,8 @@ void main() {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsRequest();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
-      checkBulkEditAdvertiserAssignedTargetingOptionsRequest(od);
+      checkBulkEditAdvertiserAssignedTargetingOptionsRequest(
+          od as api.BulkEditAdvertiserAssignedTargetingOptionsRequest);
     });
   });
 
@@ -7059,7 +7171,8 @@ void main() {
       var o = buildBulkEditAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkEditAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkBulkEditAdvertiserAssignedTargetingOptionsResponse(od);
+      checkBulkEditAdvertiserAssignedTargetingOptionsResponse(
+          od as api.BulkEditAdvertiserAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7067,7 +7180,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedInventorySourcesRequest();
       var od = api.BulkEditAssignedInventorySourcesRequest.fromJson(o.toJson());
-      checkBulkEditAssignedInventorySourcesRequest(od);
+      checkBulkEditAssignedInventorySourcesRequest(
+          od as api.BulkEditAssignedInventorySourcesRequest);
     });
   });
 
@@ -7076,7 +7190,8 @@ void main() {
       var o = buildBulkEditAssignedInventorySourcesResponse();
       var od =
           api.BulkEditAssignedInventorySourcesResponse.fromJson(o.toJson());
-      checkBulkEditAssignedInventorySourcesResponse(od);
+      checkBulkEditAssignedInventorySourcesResponse(
+          od as api.BulkEditAssignedInventorySourcesResponse);
     });
   });
 
@@ -7084,7 +7199,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedLocationsRequest();
       var od = api.BulkEditAssignedLocationsRequest.fromJson(o.toJson());
-      checkBulkEditAssignedLocationsRequest(od);
+      checkBulkEditAssignedLocationsRequest(
+          od as api.BulkEditAssignedLocationsRequest);
     });
   });
 
@@ -7092,7 +7208,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedLocationsResponse();
       var od = api.BulkEditAssignedLocationsResponse.fromJson(o.toJson());
-      checkBulkEditAssignedLocationsResponse(od);
+      checkBulkEditAssignedLocationsResponse(
+          od as api.BulkEditAssignedLocationsResponse);
     });
   });
 
@@ -7100,7 +7217,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedUserRolesRequest();
       var od = api.BulkEditAssignedUserRolesRequest.fromJson(o.toJson());
-      checkBulkEditAssignedUserRolesRequest(od);
+      checkBulkEditAssignedUserRolesRequest(
+          od as api.BulkEditAssignedUserRolesRequest);
     });
   });
 
@@ -7108,7 +7226,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditAssignedUserRolesResponse();
       var od = api.BulkEditAssignedUserRolesResponse.fromJson(o.toJson());
-      checkBulkEditAssignedUserRolesResponse(od);
+      checkBulkEditAssignedUserRolesResponse(
+          od as api.BulkEditAssignedUserRolesResponse);
     });
   });
 
@@ -7118,7 +7237,8 @@ void main() {
       var o = buildBulkEditLineItemAssignedTargetingOptionsRequest();
       var od = api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
-      checkBulkEditLineItemAssignedTargetingOptionsRequest(od);
+      checkBulkEditLineItemAssignedTargetingOptionsRequest(
+          od as api.BulkEditLineItemAssignedTargetingOptionsRequest);
     });
   });
 
@@ -7128,7 +7248,8 @@ void main() {
       var o = buildBulkEditLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkEditLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkBulkEditLineItemAssignedTargetingOptionsResponse(od);
+      checkBulkEditLineItemAssignedTargetingOptionsResponse(
+          od as api.BulkEditLineItemAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7136,7 +7257,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditNegativeKeywordsRequest();
       var od = api.BulkEditNegativeKeywordsRequest.fromJson(o.toJson());
-      checkBulkEditNegativeKeywordsRequest(od);
+      checkBulkEditNegativeKeywordsRequest(
+          od as api.BulkEditNegativeKeywordsRequest);
     });
   });
 
@@ -7144,7 +7266,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditNegativeKeywordsResponse();
       var od = api.BulkEditNegativeKeywordsResponse.fromJson(o.toJson());
-      checkBulkEditNegativeKeywordsResponse(od);
+      checkBulkEditNegativeKeywordsResponse(
+          od as api.BulkEditNegativeKeywordsResponse);
     });
   });
 
@@ -7154,7 +7277,8 @@ void main() {
       var o = buildBulkEditPartnerAssignedTargetingOptionsRequest();
       var od = api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
           o.toJson());
-      checkBulkEditPartnerAssignedTargetingOptionsRequest(od);
+      checkBulkEditPartnerAssignedTargetingOptionsRequest(
+          od as api.BulkEditPartnerAssignedTargetingOptionsRequest);
     });
   });
 
@@ -7164,7 +7288,8 @@ void main() {
       var o = buildBulkEditPartnerAssignedTargetingOptionsResponse();
       var od = api.BulkEditPartnerAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkBulkEditPartnerAssignedTargetingOptionsResponse(od);
+      checkBulkEditPartnerAssignedTargetingOptionsResponse(
+          od as api.BulkEditPartnerAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7172,7 +7297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditSitesRequest();
       var od = api.BulkEditSitesRequest.fromJson(o.toJson());
-      checkBulkEditSitesRequest(od);
+      checkBulkEditSitesRequest(od as api.BulkEditSitesRequest);
     });
   });
 
@@ -7180,7 +7305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBulkEditSitesResponse();
       var od = api.BulkEditSitesResponse.fromJson(o.toJson());
-      checkBulkEditSitesResponse(od);
+      checkBulkEditSitesResponse(od as api.BulkEditSitesResponse);
     });
   });
 
@@ -7190,7 +7315,8 @@ void main() {
       var o = buildBulkListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.BulkListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkBulkListAdvertiserAssignedTargetingOptionsResponse(od);
+      checkBulkListAdvertiserAssignedTargetingOptionsResponse(
+          od as api.BulkListAdvertiserAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7200,7 +7326,8 @@ void main() {
       var o = buildBulkListLineItemAssignedTargetingOptionsResponse();
       var od = api.BulkListLineItemAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkBulkListLineItemAssignedTargetingOptionsResponse(od);
+      checkBulkListLineItemAssignedTargetingOptionsResponse(
+          od as api.BulkListLineItemAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7208,7 +7335,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCampaign();
       var od = api.Campaign.fromJson(o.toJson());
-      checkCampaign(od);
+      checkCampaign(od as api.Campaign);
     });
   });
 
@@ -7216,7 +7343,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCampaignFlight();
       var od = api.CampaignFlight.fromJson(o.toJson());
-      checkCampaignFlight(od);
+      checkCampaignFlight(od as api.CampaignFlight);
     });
   });
 
@@ -7224,7 +7351,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCampaignGoal();
       var od = api.CampaignGoal.fromJson(o.toJson());
-      checkCampaignGoal(od);
+      checkCampaignGoal(od as api.CampaignGoal);
     });
   });
 
@@ -7233,7 +7360,8 @@ void main() {
       var o = buildCarrierAndIspAssignedTargetingOptionDetails();
       var od =
           api.CarrierAndIspAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkCarrierAndIspAssignedTargetingOptionDetails(od);
+      checkCarrierAndIspAssignedTargetingOptionDetails(
+          od as api.CarrierAndIspAssignedTargetingOptionDetails);
     });
   });
 
@@ -7241,7 +7369,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCarrierAndIspTargetingOptionDetails();
       var od = api.CarrierAndIspTargetingOptionDetails.fromJson(o.toJson());
-      checkCarrierAndIspTargetingOptionDetails(od);
+      checkCarrierAndIspTargetingOptionDetails(
+          od as api.CarrierAndIspTargetingOptionDetails);
     });
   });
 
@@ -7249,7 +7378,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategoryAssignedTargetingOptionDetails();
       var od = api.CategoryAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkCategoryAssignedTargetingOptionDetails(od);
+      checkCategoryAssignedTargetingOptionDetails(
+          od as api.CategoryAssignedTargetingOptionDetails);
     });
   });
 
@@ -7257,7 +7387,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategoryTargetingOptionDetails();
       var od = api.CategoryTargetingOptionDetails.fromJson(o.toJson());
-      checkCategoryTargetingOptionDetails(od);
+      checkCategoryTargetingOptionDetails(
+          od as api.CategoryTargetingOptionDetails);
     });
   });
 
@@ -7265,7 +7396,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -7273,7 +7404,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelAssignedTargetingOptionDetails();
       var od = api.ChannelAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkChannelAssignedTargetingOptionDetails(od);
+      checkChannelAssignedTargetingOptionDetails(
+          od as api.ChannelAssignedTargetingOptionDetails);
     });
   });
 
@@ -7281,7 +7413,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCmHybridConfig();
       var od = api.CmHybridConfig.fromJson(o.toJson());
-      checkCmHybridConfig(od);
+      checkCmHybridConfig(od as api.CmHybridConfig);
     });
   });
 
@@ -7289,7 +7421,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCmTrackingAd();
       var od = api.CmTrackingAd.fromJson(o.toJson());
-      checkCmTrackingAd(od);
+      checkCmTrackingAd(od as api.CmTrackingAd);
     });
   });
 
@@ -7297,7 +7429,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCombinedAudience();
       var od = api.CombinedAudience.fromJson(o.toJson());
-      checkCombinedAudience(od);
+      checkCombinedAudience(od as api.CombinedAudience);
     });
   });
 
@@ -7305,7 +7437,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCombinedAudienceGroup();
       var od = api.CombinedAudienceGroup.fromJson(o.toJson());
-      checkCombinedAudienceGroup(od);
+      checkCombinedAudienceGroup(od as api.CombinedAudienceGroup);
     });
   });
 
@@ -7313,7 +7445,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCombinedAudienceTargetingSetting();
       var od = api.CombinedAudienceTargetingSetting.fromJson(o.toJson());
-      checkCombinedAudienceTargetingSetting(od);
+      checkCombinedAudienceTargetingSetting(
+          od as api.CombinedAudienceTargetingSetting);
     });
   });
 
@@ -7324,7 +7457,8 @@ void main() {
       var od =
           api.ContentInstreamPositionAssignedTargetingOptionDetails.fromJson(
               o.toJson());
-      checkContentInstreamPositionAssignedTargetingOptionDetails(od);
+      checkContentInstreamPositionAssignedTargetingOptionDetails(
+          od as api.ContentInstreamPositionAssignedTargetingOptionDetails);
     });
   });
 
@@ -7334,7 +7468,8 @@ void main() {
       var o = buildContentInstreamPositionTargetingOptionDetails();
       var od = api.ContentInstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
-      checkContentInstreamPositionTargetingOptionDetails(od);
+      checkContentInstreamPositionTargetingOptionDetails(
+          od as api.ContentInstreamPositionTargetingOptionDetails);
     });
   });
 
@@ -7345,7 +7480,8 @@ void main() {
       var od =
           api.ContentOutstreamPositionAssignedTargetingOptionDetails.fromJson(
               o.toJson());
-      checkContentOutstreamPositionAssignedTargetingOptionDetails(od);
+      checkContentOutstreamPositionAssignedTargetingOptionDetails(
+          od as api.ContentOutstreamPositionAssignedTargetingOptionDetails);
     });
   });
 
@@ -7355,7 +7491,8 @@ void main() {
       var o = buildContentOutstreamPositionTargetingOptionDetails();
       var od = api.ContentOutstreamPositionTargetingOptionDetails.fromJson(
           o.toJson());
-      checkContentOutstreamPositionTargetingOptionDetails(od);
+      checkContentOutstreamPositionTargetingOptionDetails(
+          od as api.ContentOutstreamPositionTargetingOptionDetails);
     });
   });
 
@@ -7363,7 +7500,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConversionCountingConfig();
       var od = api.ConversionCountingConfig.fromJson(o.toJson());
-      checkConversionCountingConfig(od);
+      checkConversionCountingConfig(od as api.ConversionCountingConfig);
     });
   });
 
@@ -7371,7 +7508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCounterEvent();
       var od = api.CounterEvent.fromJson(o.toJson());
-      checkCounterEvent(od);
+      checkCounterEvent(od as api.CounterEvent);
     });
   });
 
@@ -7379,7 +7516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateAssetRequest();
       var od = api.CreateAssetRequest.fromJson(o.toJson());
-      checkCreateAssetRequest(od);
+      checkCreateAssetRequest(od as api.CreateAssetRequest);
     });
   });
 
@@ -7387,7 +7524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateAssetResponse();
       var od = api.CreateAssetResponse.fromJson(o.toJson());
-      checkCreateAssetResponse(od);
+      checkCreateAssetResponse(od as api.CreateAssetResponse);
     });
   });
 
@@ -7395,7 +7532,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateAssignedTargetingOptionsRequest();
       var od = api.CreateAssignedTargetingOptionsRequest.fromJson(o.toJson());
-      checkCreateAssignedTargetingOptionsRequest(od);
+      checkCreateAssignedTargetingOptionsRequest(
+          od as api.CreateAssignedTargetingOptionsRequest);
     });
   });
 
@@ -7403,7 +7541,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSdfDownloadTaskRequest();
       var od = api.CreateSdfDownloadTaskRequest.fromJson(o.toJson());
-      checkCreateSdfDownloadTaskRequest(od);
+      checkCreateSdfDownloadTaskRequest(od as api.CreateSdfDownloadTaskRequest);
     });
   });
 
@@ -7411,7 +7549,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreative();
       var od = api.Creative.fromJson(o.toJson());
-      checkCreative(od);
+      checkCreative(od as api.Creative);
     });
   });
 
@@ -7419,7 +7557,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreativeConfig();
       var od = api.CreativeConfig.fromJson(o.toJson());
-      checkCreativeConfig(od);
+      checkCreativeConfig(od as api.CreativeConfig);
     });
   });
 
@@ -7427,7 +7565,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomBiddingAlgorithm();
       var od = api.CustomBiddingAlgorithm.fromJson(o.toJson());
-      checkCustomBiddingAlgorithm(od);
+      checkCustomBiddingAlgorithm(od as api.CustomBiddingAlgorithm);
     });
   });
 
@@ -7435,7 +7573,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomList();
       var od = api.CustomList.fromJson(o.toJson());
-      checkCustomList(od);
+      checkCustomList(od as api.CustomList);
     });
   });
 
@@ -7443,7 +7581,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomListGroup();
       var od = api.CustomListGroup.fromJson(o.toJson());
-      checkCustomListGroup(od);
+      checkCustomListGroup(od as api.CustomListGroup);
     });
   });
 
@@ -7451,7 +7589,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomListTargetingSetting();
       var od = api.CustomListTargetingSetting.fromJson(o.toJson());
-      checkCustomListTargetingSetting(od);
+      checkCustomListTargetingSetting(od as api.CustomListTargetingSetting);
     });
   });
 
@@ -7459,7 +7597,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -7467,7 +7605,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDateRange();
       var od = api.DateRange.fromJson(o.toJson());
-      checkDateRange(od);
+      checkDateRange(od as api.DateRange);
     });
   });
 
@@ -7476,7 +7614,8 @@ void main() {
       var o = buildDayAndTimeAssignedTargetingOptionDetails();
       var od =
           api.DayAndTimeAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkDayAndTimeAssignedTargetingOptionDetails(od);
+      checkDayAndTimeAssignedTargetingOptionDetails(
+          od as api.DayAndTimeAssignedTargetingOptionDetails);
     });
   });
 
@@ -7484,7 +7623,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteAssignedTargetingOptionsRequest();
       var od = api.DeleteAssignedTargetingOptionsRequest.fromJson(o.toJson());
-      checkDeleteAssignedTargetingOptionsRequest(od);
+      checkDeleteAssignedTargetingOptionsRequest(
+          od as api.DeleteAssignedTargetingOptionsRequest);
     });
   });
 
@@ -7494,7 +7634,8 @@ void main() {
       var o = buildDeviceMakeModelAssignedTargetingOptionDetails();
       var od = api.DeviceMakeModelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkDeviceMakeModelAssignedTargetingOptionDetails(od);
+      checkDeviceMakeModelAssignedTargetingOptionDetails(
+          od as api.DeviceMakeModelAssignedTargetingOptionDetails);
     });
   });
 
@@ -7502,7 +7643,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceMakeModelTargetingOptionDetails();
       var od = api.DeviceMakeModelTargetingOptionDetails.fromJson(o.toJson());
-      checkDeviceMakeModelTargetingOptionDetails(od);
+      checkDeviceMakeModelTargetingOptionDetails(
+          od as api.DeviceMakeModelTargetingOptionDetails);
     });
   });
 
@@ -7511,7 +7653,8 @@ void main() {
       var o = buildDeviceTypeAssignedTargetingOptionDetails();
       var od =
           api.DeviceTypeAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkDeviceTypeAssignedTargetingOptionDetails(od);
+      checkDeviceTypeAssignedTargetingOptionDetails(
+          od as api.DeviceTypeAssignedTargetingOptionDetails);
     });
   });
 
@@ -7519,7 +7662,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceTypeTargetingOptionDetails();
       var od = api.DeviceTypeTargetingOptionDetails.fromJson(o.toJson());
-      checkDeviceTypeTargetingOptionDetails(od);
+      checkDeviceTypeTargetingOptionDetails(
+          od as api.DeviceTypeTargetingOptionDetails);
     });
   });
 
@@ -7529,7 +7673,8 @@ void main() {
       var o = buildDigitalContentLabelAssignedTargetingOptionDetails();
       var od = api.DigitalContentLabelAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkDigitalContentLabelAssignedTargetingOptionDetails(od);
+      checkDigitalContentLabelAssignedTargetingOptionDetails(
+          od as api.DigitalContentLabelAssignedTargetingOptionDetails);
     });
   });
 
@@ -7538,7 +7683,8 @@ void main() {
       var o = buildDigitalContentLabelTargetingOptionDetails();
       var od =
           api.DigitalContentLabelTargetingOptionDetails.fromJson(o.toJson());
-      checkDigitalContentLabelTargetingOptionDetails(od);
+      checkDigitalContentLabelTargetingOptionDetails(
+          od as api.DigitalContentLabelTargetingOptionDetails);
     });
   });
 
@@ -7546,7 +7692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDimensions();
       var od = api.Dimensions.fromJson(o.toJson());
-      checkDimensions(od);
+      checkDimensions(od as api.Dimensions);
     });
   });
 
@@ -7554,7 +7700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerify();
       var od = api.DoubleVerify.fromJson(o.toJson());
-      checkDoubleVerify(od);
+      checkDoubleVerify(od as api.DoubleVerify);
     });
   });
 
@@ -7562,7 +7708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyAppStarRating();
       var od = api.DoubleVerifyAppStarRating.fromJson(o.toJson());
-      checkDoubleVerifyAppStarRating(od);
+      checkDoubleVerifyAppStarRating(od as api.DoubleVerifyAppStarRating);
     });
   });
 
@@ -7570,7 +7716,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyBrandSafetyCategories();
       var od = api.DoubleVerifyBrandSafetyCategories.fromJson(o.toJson());
-      checkDoubleVerifyBrandSafetyCategories(od);
+      checkDoubleVerifyBrandSafetyCategories(
+          od as api.DoubleVerifyBrandSafetyCategories);
     });
   });
 
@@ -7578,7 +7725,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyDisplayViewability();
       var od = api.DoubleVerifyDisplayViewability.fromJson(o.toJson());
-      checkDoubleVerifyDisplayViewability(od);
+      checkDoubleVerifyDisplayViewability(
+          od as api.DoubleVerifyDisplayViewability);
     });
   });
 
@@ -7586,7 +7734,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyFraudInvalidTraffic();
       var od = api.DoubleVerifyFraudInvalidTraffic.fromJson(o.toJson());
-      checkDoubleVerifyFraudInvalidTraffic(od);
+      checkDoubleVerifyFraudInvalidTraffic(
+          od as api.DoubleVerifyFraudInvalidTraffic);
     });
   });
 
@@ -7594,7 +7743,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDoubleVerifyVideoViewability();
       var od = api.DoubleVerifyVideoViewability.fromJson(o.toJson());
-      checkDoubleVerifyVideoViewability(od);
+      checkDoubleVerifyVideoViewability(od as api.DoubleVerifyVideoViewability);
     });
   });
 
@@ -7602,7 +7751,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -7611,7 +7760,8 @@ void main() {
       var o = buildEnvironmentAssignedTargetingOptionDetails();
       var od =
           api.EnvironmentAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkEnvironmentAssignedTargetingOptionDetails(od);
+      checkEnvironmentAssignedTargetingOptionDetails(
+          od as api.EnvironmentAssignedTargetingOptionDetails);
     });
   });
 
@@ -7619,7 +7769,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironmentTargetingOptionDetails();
       var od = api.EnvironmentTargetingOptionDetails.fromJson(o.toJson());
-      checkEnvironmentTargetingOptionDetails(od);
+      checkEnvironmentTargetingOptionDetails(
+          od as api.EnvironmentTargetingOptionDetails);
     });
   });
 
@@ -7627,7 +7778,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExchangeAssignedTargetingOptionDetails();
       var od = api.ExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkExchangeAssignedTargetingOptionDetails(od);
+      checkExchangeAssignedTargetingOptionDetails(
+          od as api.ExchangeAssignedTargetingOptionDetails);
     });
   });
 
@@ -7635,7 +7787,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExchangeConfig();
       var od = api.ExchangeConfig.fromJson(o.toJson());
-      checkExchangeConfig(od);
+      checkExchangeConfig(od as api.ExchangeConfig);
     });
   });
 
@@ -7643,7 +7795,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExchangeConfigEnabledExchange();
       var od = api.ExchangeConfigEnabledExchange.fromJson(o.toJson());
-      checkExchangeConfigEnabledExchange(od);
+      checkExchangeConfigEnabledExchange(
+          od as api.ExchangeConfigEnabledExchange);
     });
   });
 
@@ -7651,7 +7804,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExchangeReviewStatus();
       var od = api.ExchangeReviewStatus.fromJson(o.toJson());
-      checkExchangeReviewStatus(od);
+      checkExchangeReviewStatus(od as api.ExchangeReviewStatus);
     });
   });
 
@@ -7659,7 +7812,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExchangeTargetingOptionDetails();
       var od = api.ExchangeTargetingOptionDetails.fromJson(o.toJson());
-      checkExchangeTargetingOptionDetails(od);
+      checkExchangeTargetingOptionDetails(
+          od as api.ExchangeTargetingOptionDetails);
     });
   });
 
@@ -7667,7 +7821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExitEvent();
       var od = api.ExitEvent.fromJson(o.toJson());
-      checkExitEvent(od);
+      checkExitEvent(od as api.ExitEvent);
     });
   });
 
@@ -7675,7 +7829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFirstAndThirdPartyAudience();
       var od = api.FirstAndThirdPartyAudience.fromJson(o.toJson());
-      checkFirstAndThirdPartyAudience(od);
+      checkFirstAndThirdPartyAudience(od as api.FirstAndThirdPartyAudience);
     });
   });
 
@@ -7683,7 +7837,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFirstAndThirdPartyAudienceGroup();
       var od = api.FirstAndThirdPartyAudienceGroup.fromJson(o.toJson());
-      checkFirstAndThirdPartyAudienceGroup(od);
+      checkFirstAndThirdPartyAudienceGroup(
+          od as api.FirstAndThirdPartyAudienceGroup);
     });
   });
 
@@ -7692,7 +7847,8 @@ void main() {
       var o = buildFirstAndThirdPartyAudienceTargetingSetting();
       var od =
           api.FirstAndThirdPartyAudienceTargetingSetting.fromJson(o.toJson());
-      checkFirstAndThirdPartyAudienceTargetingSetting(od);
+      checkFirstAndThirdPartyAudienceTargetingSetting(
+          od as api.FirstAndThirdPartyAudienceTargetingSetting);
     });
   });
 
@@ -7700,7 +7856,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFixedBidStrategy();
       var od = api.FixedBidStrategy.fromJson(o.toJson());
-      checkFixedBidStrategy(od);
+      checkFixedBidStrategy(od as api.FixedBidStrategy);
     });
   });
 
@@ -7708,7 +7864,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFloodlightGroup();
       var od = api.FloodlightGroup.fromJson(o.toJson());
-      checkFloodlightGroup(od);
+      checkFloodlightGroup(od as api.FloodlightGroup);
     });
   });
 
@@ -7716,7 +7872,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFrequencyCap();
       var od = api.FrequencyCap.fromJson(o.toJson());
-      checkFrequencyCap(od);
+      checkFrequencyCap(od as api.FrequencyCap);
     });
   });
 
@@ -7724,7 +7880,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenderAssignedTargetingOptionDetails();
       var od = api.GenderAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkGenderAssignedTargetingOptionDetails(od);
+      checkGenderAssignedTargetingOptionDetails(
+          od as api.GenderAssignedTargetingOptionDetails);
     });
   });
 
@@ -7732,7 +7889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenderTargetingOptionDetails();
       var od = api.GenderTargetingOptionDetails.fromJson(o.toJson());
-      checkGenderTargetingOptionDetails(od);
+      checkGenderTargetingOptionDetails(od as api.GenderTargetingOptionDetails);
     });
   });
 
@@ -7740,7 +7897,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeoRegionAssignedTargetingOptionDetails();
       var od = api.GeoRegionAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkGeoRegionAssignedTargetingOptionDetails(od);
+      checkGeoRegionAssignedTargetingOptionDetails(
+          od as api.GeoRegionAssignedTargetingOptionDetails);
     });
   });
 
@@ -7748,7 +7906,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeoRegionTargetingOptionDetails();
       var od = api.GeoRegionTargetingOptionDetails.fromJson(o.toJson());
-      checkGeoRegionTargetingOptionDetails(od);
+      checkGeoRegionTargetingOptionDetails(
+          od as api.GeoRegionTargetingOptionDetails);
     });
   });
 
@@ -7756,7 +7915,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAudience();
       var od = api.GoogleAudience.fromJson(o.toJson());
-      checkGoogleAudience(od);
+      checkGoogleAudience(od as api.GoogleAudience);
     });
   });
 
@@ -7764,7 +7923,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAudienceGroup();
       var od = api.GoogleAudienceGroup.fromJson(o.toJson());
-      checkGoogleAudienceGroup(od);
+      checkGoogleAudienceGroup(od as api.GoogleAudienceGroup);
     });
   });
 
@@ -7772,7 +7931,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAudienceTargetingSetting();
       var od = api.GoogleAudienceTargetingSetting.fromJson(o.toJson());
-      checkGoogleAudienceTargetingSetting(od);
+      checkGoogleAudienceTargetingSetting(
+          od as api.GoogleAudienceTargetingSetting);
     });
   });
 
@@ -7780,7 +7940,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleBytestreamMedia();
       var od = api.GoogleBytestreamMedia.fromJson(o.toJson());
-      checkGoogleBytestreamMedia(od);
+      checkGoogleBytestreamMedia(od as api.GoogleBytestreamMedia);
     });
   });
 
@@ -7790,7 +7950,8 @@ void main() {
       var o = buildHouseholdIncomeAssignedTargetingOptionDetails();
       var od = api.HouseholdIncomeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkHouseholdIncomeAssignedTargetingOptionDetails(od);
+      checkHouseholdIncomeAssignedTargetingOptionDetails(
+          od as api.HouseholdIncomeAssignedTargetingOptionDetails);
     });
   });
 
@@ -7798,7 +7959,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHouseholdIncomeTargetingOptionDetails();
       var od = api.HouseholdIncomeTargetingOptionDetails.fromJson(o.toJson());
-      checkHouseholdIncomeTargetingOptionDetails(od);
+      checkHouseholdIncomeTargetingOptionDetails(
+          od as api.HouseholdIncomeTargetingOptionDetails);
     });
   });
 
@@ -7806,7 +7968,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIdFilter();
       var od = api.IdFilter.fromJson(o.toJson());
-      checkIdFilter(od);
+      checkIdFilter(od as api.IdFilter);
     });
   });
 
@@ -7814,7 +7976,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertionOrder();
       var od = api.InsertionOrder.fromJson(o.toJson());
-      checkInsertionOrder(od);
+      checkInsertionOrder(od as api.InsertionOrder);
     });
   });
 
@@ -7822,7 +7984,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertionOrderBudget();
       var od = api.InsertionOrderBudget.fromJson(o.toJson());
-      checkInsertionOrderBudget(od);
+      checkInsertionOrderBudget(od as api.InsertionOrderBudget);
     });
   });
 
@@ -7830,7 +7992,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertionOrderBudgetSegment();
       var od = api.InsertionOrderBudgetSegment.fromJson(o.toJson());
-      checkInsertionOrderBudgetSegment(od);
+      checkInsertionOrderBudgetSegment(od as api.InsertionOrderBudgetSegment);
     });
   });
 
@@ -7838,7 +8000,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIntegralAdScience();
       var od = api.IntegralAdScience.fromJson(o.toJson());
-      checkIntegralAdScience(od);
+      checkIntegralAdScience(od as api.IntegralAdScience);
     });
   });
 
@@ -7846,7 +8008,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIntegrationDetails();
       var od = api.IntegrationDetails.fromJson(o.toJson());
-      checkIntegrationDetails(od);
+      checkIntegrationDetails(od as api.IntegrationDetails);
     });
   });
 
@@ -7854,7 +8016,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySource();
       var od = api.InventorySource.fromJson(o.toJson());
-      checkInventorySource(od);
+      checkInventorySource(od as api.InventorySource);
     });
   });
 
@@ -7864,7 +8026,8 @@ void main() {
       var o = buildInventorySourceAssignedTargetingOptionDetails();
       var od = api.InventorySourceAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkInventorySourceAssignedTargetingOptionDetails(od);
+      checkInventorySourceAssignedTargetingOptionDetails(
+          od as api.InventorySourceAssignedTargetingOptionDetails);
     });
   });
 
@@ -7872,7 +8035,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySourceDisplayCreativeConfig();
       var od = api.InventorySourceDisplayCreativeConfig.fromJson(o.toJson());
-      checkInventorySourceDisplayCreativeConfig(od);
+      checkInventorySourceDisplayCreativeConfig(
+          od as api.InventorySourceDisplayCreativeConfig);
     });
   });
 
@@ -7880,7 +8044,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySourceFilter();
       var od = api.InventorySourceFilter.fromJson(o.toJson());
-      checkInventorySourceFilter(od);
+      checkInventorySourceFilter(od as api.InventorySourceFilter);
     });
   });
 
@@ -7888,7 +8052,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySourceGroup();
       var od = api.InventorySourceGroup.fromJson(o.toJson());
-      checkInventorySourceGroup(od);
+      checkInventorySourceGroup(od as api.InventorySourceGroup);
     });
   });
 
@@ -7898,7 +8062,8 @@ void main() {
       var o = buildInventorySourceGroupAssignedTargetingOptionDetails();
       var od = api.InventorySourceGroupAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkInventorySourceGroupAssignedTargetingOptionDetails(od);
+      checkInventorySourceGroupAssignedTargetingOptionDetails(
+          od as api.InventorySourceGroupAssignedTargetingOptionDetails);
     });
   });
 
@@ -7906,7 +8071,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySourceStatus();
       var od = api.InventorySourceStatus.fromJson(o.toJson());
-      checkInventorySourceStatus(od);
+      checkInventorySourceStatus(od as api.InventorySourceStatus);
     });
   });
 
@@ -7914,7 +8079,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInventorySourceVideoCreativeConfig();
       var od = api.InventorySourceVideoCreativeConfig.fromJson(o.toJson());
-      checkInventorySourceVideoCreativeConfig(od);
+      checkInventorySourceVideoCreativeConfig(
+          od as api.InventorySourceVideoCreativeConfig);
     });
   });
 
@@ -7922,7 +8088,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKeywordAssignedTargetingOptionDetails();
       var od = api.KeywordAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkKeywordAssignedTargetingOptionDetails(od);
+      checkKeywordAssignedTargetingOptionDetails(
+          od as api.KeywordAssignedTargetingOptionDetails);
     });
   });
 
@@ -7930,7 +8097,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLanguageAssignedTargetingOptionDetails();
       var od = api.LanguageAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkLanguageAssignedTargetingOptionDetails(od);
+      checkLanguageAssignedTargetingOptionDetails(
+          od as api.LanguageAssignedTargetingOptionDetails);
     });
   });
 
@@ -7938,7 +8106,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLanguageTargetingOptionDetails();
       var od = api.LanguageTargetingOptionDetails.fromJson(o.toJson());
-      checkLanguageTargetingOptionDetails(od);
+      checkLanguageTargetingOptionDetails(
+          od as api.LanguageTargetingOptionDetails);
     });
   });
 
@@ -7946,7 +8115,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineItem();
       var od = api.LineItem.fromJson(o.toJson());
-      checkLineItem(od);
+      checkLineItem(od as api.LineItem);
     });
   });
 
@@ -7954,7 +8123,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineItemBudget();
       var od = api.LineItemBudget.fromJson(o.toJson());
-      checkLineItemBudget(od);
+      checkLineItemBudget(od as api.LineItemBudget);
     });
   });
 
@@ -7962,7 +8131,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineItemFlight();
       var od = api.LineItemFlight.fromJson(o.toJson());
-      checkLineItemFlight(od);
+      checkLineItemFlight(od as api.LineItemFlight);
     });
   });
 
@@ -7972,7 +8141,8 @@ void main() {
       var o = buildListAdvertiserAssignedTargetingOptionsResponse();
       var od = api.ListAdvertiserAssignedTargetingOptionsResponse.fromJson(
           o.toJson());
-      checkListAdvertiserAssignedTargetingOptionsResponse(od);
+      checkListAdvertiserAssignedTargetingOptionsResponse(
+          od as api.ListAdvertiserAssignedTargetingOptionsResponse);
     });
   });
 
@@ -7980,7 +8150,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAdvertisersResponse();
       var od = api.ListAdvertisersResponse.fromJson(o.toJson());
-      checkListAdvertisersResponse(od);
+      checkListAdvertisersResponse(od as api.ListAdvertisersResponse);
     });
   });
 
@@ -7988,7 +8158,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAssignedInventorySourcesResponse();
       var od = api.ListAssignedInventorySourcesResponse.fromJson(o.toJson());
-      checkListAssignedInventorySourcesResponse(od);
+      checkListAssignedInventorySourcesResponse(
+          od as api.ListAssignedInventorySourcesResponse);
     });
   });
 
@@ -7996,7 +8167,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAssignedLocationsResponse();
       var od = api.ListAssignedLocationsResponse.fromJson(o.toJson());
-      checkListAssignedLocationsResponse(od);
+      checkListAssignedLocationsResponse(
+          od as api.ListAssignedLocationsResponse);
     });
   });
 
@@ -8004,7 +8176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCampaignsResponse();
       var od = api.ListCampaignsResponse.fromJson(o.toJson());
-      checkListCampaignsResponse(od);
+      checkListCampaignsResponse(od as api.ListCampaignsResponse);
     });
   });
 
@@ -8012,7 +8184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListChannelsResponse();
       var od = api.ListChannelsResponse.fromJson(o.toJson());
-      checkListChannelsResponse(od);
+      checkListChannelsResponse(od as api.ListChannelsResponse);
     });
   });
 
@@ -8020,7 +8192,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCombinedAudiencesResponse();
       var od = api.ListCombinedAudiencesResponse.fromJson(o.toJson());
-      checkListCombinedAudiencesResponse(od);
+      checkListCombinedAudiencesResponse(
+          od as api.ListCombinedAudiencesResponse);
     });
   });
 
@@ -8028,7 +8201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCreativesResponse();
       var od = api.ListCreativesResponse.fromJson(o.toJson());
-      checkListCreativesResponse(od);
+      checkListCreativesResponse(od as api.ListCreativesResponse);
     });
   });
 
@@ -8036,7 +8209,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCustomBiddingAlgorithmsResponse();
       var od = api.ListCustomBiddingAlgorithmsResponse.fromJson(o.toJson());
-      checkListCustomBiddingAlgorithmsResponse(od);
+      checkListCustomBiddingAlgorithmsResponse(
+          od as api.ListCustomBiddingAlgorithmsResponse);
     });
   });
 
@@ -8044,7 +8218,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCustomListsResponse();
       var od = api.ListCustomListsResponse.fromJson(o.toJson());
-      checkListCustomListsResponse(od);
+      checkListCustomListsResponse(od as api.ListCustomListsResponse);
     });
   });
 
@@ -8052,7 +8226,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFirstAndThirdPartyAudiencesResponse();
       var od = api.ListFirstAndThirdPartyAudiencesResponse.fromJson(o.toJson());
-      checkListFirstAndThirdPartyAudiencesResponse(od);
+      checkListFirstAndThirdPartyAudiencesResponse(
+          od as api.ListFirstAndThirdPartyAudiencesResponse);
     });
   });
 
@@ -8060,7 +8235,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGoogleAudiencesResponse();
       var od = api.ListGoogleAudiencesResponse.fromJson(o.toJson());
-      checkListGoogleAudiencesResponse(od);
+      checkListGoogleAudiencesResponse(od as api.ListGoogleAudiencesResponse);
     });
   });
 
@@ -8068,7 +8243,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInsertionOrdersResponse();
       var od = api.ListInsertionOrdersResponse.fromJson(o.toJson());
-      checkListInsertionOrdersResponse(od);
+      checkListInsertionOrdersResponse(od as api.ListInsertionOrdersResponse);
     });
   });
 
@@ -8076,7 +8251,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInventorySourceGroupsResponse();
       var od = api.ListInventorySourceGroupsResponse.fromJson(o.toJson());
-      checkListInventorySourceGroupsResponse(od);
+      checkListInventorySourceGroupsResponse(
+          od as api.ListInventorySourceGroupsResponse);
     });
   });
 
@@ -8084,7 +8260,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInventorySourcesResponse();
       var od = api.ListInventorySourcesResponse.fromJson(o.toJson());
-      checkListInventorySourcesResponse(od);
+      checkListInventorySourcesResponse(od as api.ListInventorySourcesResponse);
     });
   });
 
@@ -8093,7 +8269,8 @@ void main() {
       var o = buildListLineItemAssignedTargetingOptionsResponse();
       var od =
           api.ListLineItemAssignedTargetingOptionsResponse.fromJson(o.toJson());
-      checkListLineItemAssignedTargetingOptionsResponse(od);
+      checkListLineItemAssignedTargetingOptionsResponse(
+          od as api.ListLineItemAssignedTargetingOptionsResponse);
     });
   });
 
@@ -8101,7 +8278,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLineItemsResponse();
       var od = api.ListLineItemsResponse.fromJson(o.toJson());
-      checkListLineItemsResponse(od);
+      checkListLineItemsResponse(od as api.ListLineItemsResponse);
     });
   });
 
@@ -8109,7 +8286,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationListsResponse();
       var od = api.ListLocationListsResponse.fromJson(o.toJson());
-      checkListLocationListsResponse(od);
+      checkListLocationListsResponse(od as api.ListLocationListsResponse);
     });
   });
 
@@ -8117,7 +8294,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListNegativeKeywordListsResponse();
       var od = api.ListNegativeKeywordListsResponse.fromJson(o.toJson());
-      checkListNegativeKeywordListsResponse(od);
+      checkListNegativeKeywordListsResponse(
+          od as api.ListNegativeKeywordListsResponse);
     });
   });
 
@@ -8125,7 +8303,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListNegativeKeywordsResponse();
       var od = api.ListNegativeKeywordsResponse.fromJson(o.toJson());
-      checkListNegativeKeywordsResponse(od);
+      checkListNegativeKeywordsResponse(od as api.ListNegativeKeywordsResponse);
     });
   });
 
@@ -8134,7 +8312,8 @@ void main() {
       var o = buildListPartnerAssignedTargetingOptionsResponse();
       var od =
           api.ListPartnerAssignedTargetingOptionsResponse.fromJson(o.toJson());
-      checkListPartnerAssignedTargetingOptionsResponse(od);
+      checkListPartnerAssignedTargetingOptionsResponse(
+          od as api.ListPartnerAssignedTargetingOptionsResponse);
     });
   });
 
@@ -8142,7 +8321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListPartnersResponse();
       var od = api.ListPartnersResponse.fromJson(o.toJson());
-      checkListPartnersResponse(od);
+      checkListPartnersResponse(od as api.ListPartnersResponse);
     });
   });
 
@@ -8150,7 +8329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSitesResponse();
       var od = api.ListSitesResponse.fromJson(o.toJson());
-      checkListSitesResponse(od);
+      checkListSitesResponse(od as api.ListSitesResponse);
     });
   });
 
@@ -8158,7 +8337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTargetingOptionsResponse();
       var od = api.ListTargetingOptionsResponse.fromJson(o.toJson());
-      checkListTargetingOptionsResponse(od);
+      checkListTargetingOptionsResponse(od as api.ListTargetingOptionsResponse);
     });
   });
 
@@ -8166,7 +8345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListUsersResponse();
       var od = api.ListUsersResponse.fromJson(o.toJson());
-      checkListUsersResponse(od);
+      checkListUsersResponse(od as api.ListUsersResponse);
     });
   });
 
@@ -8174,7 +8353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocationList();
       var od = api.LocationList.fromJson(o.toJson());
-      checkLocationList(od);
+      checkLocationList(od as api.LocationList);
     });
   });
 
@@ -8182,7 +8361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLookbackWindow();
       var od = api.LookbackWindow.fromJson(o.toJson());
-      checkLookbackWindow(od);
+      checkLookbackWindow(od as api.LookbackWindow);
     });
   });
 
@@ -8190,7 +8369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMaximizeSpendBidStrategy();
       var od = api.MaximizeSpendBidStrategy.fromJson(o.toJson());
-      checkMaximizeSpendBidStrategy(od);
+      checkMaximizeSpendBidStrategy(od as api.MaximizeSpendBidStrategy);
     });
   });
 
@@ -8198,7 +8377,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMeasurementConfig();
       var od = api.MeasurementConfig.fromJson(o.toJson());
-      checkMeasurementConfig(od);
+      checkMeasurementConfig(od as api.MeasurementConfig);
     });
   });
 
@@ -8206,7 +8385,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
-      checkMoney(od);
+      checkMoney(od as api.Money);
     });
   });
 
@@ -8214,7 +8393,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNegativeKeyword();
       var od = api.NegativeKeyword.fromJson(o.toJson());
-      checkNegativeKeyword(od);
+      checkNegativeKeyword(od as api.NegativeKeyword);
     });
   });
 
@@ -8222,7 +8401,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNegativeKeywordList();
       var od = api.NegativeKeywordList.fromJson(o.toJson());
-      checkNegativeKeywordList(od);
+      checkNegativeKeywordList(od as api.NegativeKeywordList);
     });
   });
 
@@ -8232,7 +8411,8 @@ void main() {
       var o = buildNegativeKeywordListAssignedTargetingOptionDetails();
       var od = api.NegativeKeywordListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkNegativeKeywordListAssignedTargetingOptionDetails(od);
+      checkNegativeKeywordListAssignedTargetingOptionDetails(
+          od as api.NegativeKeywordListAssignedTargetingOptionDetails);
     });
   });
 
@@ -8240,7 +8420,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObaIcon();
       var od = api.ObaIcon.fromJson(o.toJson());
-      checkObaIcon(od);
+      checkObaIcon(od as api.ObaIcon);
     });
   });
 
@@ -8250,7 +8430,8 @@ void main() {
       var o = buildOnScreenPositionAssignedTargetingOptionDetails();
       var od = api.OnScreenPositionAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkOnScreenPositionAssignedTargetingOptionDetails(od);
+      checkOnScreenPositionAssignedTargetingOptionDetails(
+          od as api.OnScreenPositionAssignedTargetingOptionDetails);
     });
   });
 
@@ -8258,7 +8439,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOnScreenPositionTargetingOptionDetails();
       var od = api.OnScreenPositionTargetingOptionDetails.fromJson(o.toJson());
-      checkOnScreenPositionTargetingOptionDetails(od);
+      checkOnScreenPositionTargetingOptionDetails(
+          od as api.OnScreenPositionTargetingOptionDetails);
     });
   });
 
@@ -8268,7 +8450,8 @@ void main() {
       var o = buildOperatingSystemAssignedTargetingOptionDetails();
       var od = api.OperatingSystemAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkOperatingSystemAssignedTargetingOptionDetails(od);
+      checkOperatingSystemAssignedTargetingOptionDetails(
+          od as api.OperatingSystemAssignedTargetingOptionDetails);
     });
   });
 
@@ -8276,7 +8459,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperatingSystemTargetingOptionDetails();
       var od = api.OperatingSystemTargetingOptionDetails.fromJson(o.toJson());
-      checkOperatingSystemTargetingOptionDetails(od);
+      checkOperatingSystemTargetingOptionDetails(
+          od as api.OperatingSystemTargetingOptionDetails);
     });
   });
 
@@ -8284,7 +8468,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -8292,7 +8476,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPacing();
       var od = api.Pacing.fromJson(o.toJson());
-      checkPacing(od);
+      checkPacing(od as api.Pacing);
     });
   });
 
@@ -8300,7 +8484,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParentEntityFilter();
       var od = api.ParentEntityFilter.fromJson(o.toJson());
-      checkParentEntityFilter(od);
+      checkParentEntityFilter(od as api.ParentEntityFilter);
     });
   });
 
@@ -8309,7 +8493,8 @@ void main() {
       var o = buildParentalStatusAssignedTargetingOptionDetails();
       var od =
           api.ParentalStatusAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkParentalStatusAssignedTargetingOptionDetails(od);
+      checkParentalStatusAssignedTargetingOptionDetails(
+          od as api.ParentalStatusAssignedTargetingOptionDetails);
     });
   });
 
@@ -8317,7 +8502,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParentalStatusTargetingOptionDetails();
       var od = api.ParentalStatusTargetingOptionDetails.fromJson(o.toJson());
-      checkParentalStatusTargetingOptionDetails(od);
+      checkParentalStatusTargetingOptionDetails(
+          od as api.ParentalStatusTargetingOptionDetails);
     });
   });
 
@@ -8325,7 +8511,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartner();
       var od = api.Partner.fromJson(o.toJson());
-      checkPartner(od);
+      checkPartner(od as api.Partner);
     });
   });
 
@@ -8333,7 +8519,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartnerAdServerConfig();
       var od = api.PartnerAdServerConfig.fromJson(o.toJson());
-      checkPartnerAdServerConfig(od);
+      checkPartnerAdServerConfig(od as api.PartnerAdServerConfig);
     });
   });
 
@@ -8341,7 +8527,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartnerCost();
       var od = api.PartnerCost.fromJson(o.toJson());
-      checkPartnerCost(od);
+      checkPartnerCost(od as api.PartnerCost);
     });
   });
 
@@ -8349,7 +8535,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartnerDataAccessConfig();
       var od = api.PartnerDataAccessConfig.fromJson(o.toJson());
-      checkPartnerDataAccessConfig(od);
+      checkPartnerDataAccessConfig(od as api.PartnerDataAccessConfig);
     });
   });
 
@@ -8357,7 +8543,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartnerGeneralConfig();
       var od = api.PartnerGeneralConfig.fromJson(o.toJson());
-      checkPartnerGeneralConfig(od);
+      checkPartnerGeneralConfig(od as api.PartnerGeneralConfig);
     });
   });
 
@@ -8365,7 +8551,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartnerRevenueModel();
       var od = api.PartnerRevenueModel.fromJson(o.toJson());
-      checkPartnerRevenueModel(od);
+      checkPartnerRevenueModel(od as api.PartnerRevenueModel);
     });
   });
 
@@ -8373,7 +8559,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPerformanceGoal();
       var od = api.PerformanceGoal.fromJson(o.toJson());
-      checkPerformanceGoal(od);
+      checkPerformanceGoal(od as api.PerformanceGoal);
     });
   });
 
@@ -8381,7 +8567,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPerformanceGoalBidStrategy();
       var od = api.PerformanceGoalBidStrategy.fromJson(o.toJson());
-      checkPerformanceGoalBidStrategy(od);
+      checkPerformanceGoalBidStrategy(od as api.PerformanceGoalBidStrategy);
     });
   });
 
@@ -8391,7 +8577,8 @@ void main() {
       var o = buildProximityLocationListAssignedTargetingOptionDetails();
       var od = api.ProximityLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkProximityLocationListAssignedTargetingOptionDetails(od);
+      checkProximityLocationListAssignedTargetingOptionDetails(
+          od as api.ProximityLocationListAssignedTargetingOptionDetails);
     });
   });
 
@@ -8399,7 +8586,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublisherReviewStatus();
       var od = api.PublisherReviewStatus.fromJson(o.toJson());
-      checkPublisherReviewStatus(od);
+      checkPublisherReviewStatus(od as api.PublisherReviewStatus);
     });
   });
 
@@ -8407,7 +8594,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRateDetails();
       var od = api.RateDetails.fromJson(o.toJson());
-      checkRateDetails(od);
+      checkRateDetails(od as api.RateDetails);
     });
   });
 
@@ -8417,7 +8604,8 @@ void main() {
       var o = buildRegionalLocationListAssignedTargetingOptionDetails();
       var od = api.RegionalLocationListAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkRegionalLocationListAssignedTargetingOptionDetails(od);
+      checkRegionalLocationListAssignedTargetingOptionDetails(
+          od as api.RegionalLocationListAssignedTargetingOptionDetails);
     });
   });
 
@@ -8425,7 +8613,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewStatusInfo();
       var od = api.ReviewStatusInfo.fromJson(o.toJson());
-      checkReviewStatusInfo(od);
+      checkReviewStatusInfo(od as api.ReviewStatusInfo);
     });
   });
 
@@ -8433,7 +8621,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSdfConfig();
       var od = api.SdfConfig.fromJson(o.toJson());
-      checkSdfConfig(od);
+      checkSdfConfig(od as api.SdfConfig);
     });
   });
 
@@ -8441,7 +8629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSdfDownloadTask();
       var od = api.SdfDownloadTask.fromJson(o.toJson());
-      checkSdfDownloadTask(od);
+      checkSdfDownloadTask(od as api.SdfDownloadTask);
     });
   });
 
@@ -8449,7 +8637,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSdfDownloadTaskMetadata();
       var od = api.SdfDownloadTaskMetadata.fromJson(o.toJson());
-      checkSdfDownloadTaskMetadata(od);
+      checkSdfDownloadTaskMetadata(od as api.SdfDownloadTaskMetadata);
     });
   });
 
@@ -8459,7 +8647,8 @@ void main() {
       var o = buildSensitiveCategoryAssignedTargetingOptionDetails();
       var od = api.SensitiveCategoryAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkSensitiveCategoryAssignedTargetingOptionDetails(od);
+      checkSensitiveCategoryAssignedTargetingOptionDetails(
+          od as api.SensitiveCategoryAssignedTargetingOptionDetails);
     });
   });
 
@@ -8467,7 +8656,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSensitiveCategoryTargetingOptionDetails();
       var od = api.SensitiveCategoryTargetingOptionDetails.fromJson(o.toJson());
-      checkSensitiveCategoryTargetingOptionDetails(od);
+      checkSensitiveCategoryTargetingOptionDetails(
+          od as api.SensitiveCategoryTargetingOptionDetails);
     });
   });
 
@@ -8475,7 +8665,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSite();
       var od = api.Site.fromJson(o.toJson());
-      checkSite(od);
+      checkSite(od as api.Site);
     });
   });
 
@@ -8483,7 +8673,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -8492,7 +8682,8 @@ void main() {
       var o = buildSubExchangeAssignedTargetingOptionDetails();
       var od =
           api.SubExchangeAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkSubExchangeAssignedTargetingOptionDetails(od);
+      checkSubExchangeAssignedTargetingOptionDetails(
+          od as api.SubExchangeAssignedTargetingOptionDetails);
     });
   });
 
@@ -8500,7 +8691,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubExchangeTargetingOptionDetails();
       var od = api.SubExchangeTargetingOptionDetails.fromJson(o.toJson());
-      checkSubExchangeTargetingOptionDetails(od);
+      checkSubExchangeTargetingOptionDetails(
+          od as api.SubExchangeTargetingOptionDetails);
     });
   });
 
@@ -8508,7 +8700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTargetingOption();
       var od = api.TargetingOption.fromJson(o.toJson());
-      checkTargetingOption(od);
+      checkTargetingOption(od as api.TargetingOption);
     });
   });
 
@@ -8516,7 +8708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThirdPartyOnlyConfig();
       var od = api.ThirdPartyOnlyConfig.fromJson(o.toJson());
-      checkThirdPartyOnlyConfig(od);
+      checkThirdPartyOnlyConfig(od as api.ThirdPartyOnlyConfig);
     });
   });
 
@@ -8524,7 +8716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThirdPartyUrl();
       var od = api.ThirdPartyUrl.fromJson(o.toJson());
-      checkThirdPartyUrl(od);
+      checkThirdPartyUrl(od as api.ThirdPartyUrl);
     });
   });
 
@@ -8534,7 +8726,8 @@ void main() {
       var o = buildThirdPartyVerifierAssignedTargetingOptionDetails();
       var od = api.ThirdPartyVerifierAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkThirdPartyVerifierAssignedTargetingOptionDetails(od);
+      checkThirdPartyVerifierAssignedTargetingOptionDetails(
+          od as api.ThirdPartyVerifierAssignedTargetingOptionDetails);
     });
   });
 
@@ -8542,7 +8735,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
-      checkTimeRange(od);
+      checkTimeRange(od as api.TimeRange);
     });
   });
 
@@ -8550,7 +8743,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimerEvent();
       var od = api.TimerEvent.fromJson(o.toJson());
-      checkTimerEvent(od);
+      checkTimerEvent(od as api.TimerEvent);
     });
   });
 
@@ -8558,7 +8751,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrackingFloodlightActivityConfig();
       var od = api.TrackingFloodlightActivityConfig.fromJson(o.toJson());
-      checkTrackingFloodlightActivityConfig(od);
+      checkTrackingFloodlightActivityConfig(
+          od as api.TrackingFloodlightActivityConfig);
     });
   });
 
@@ -8566,7 +8760,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTranscode();
       var od = api.Transcode.fromJson(o.toJson());
-      checkTranscode(od);
+      checkTranscode(od as api.Transcode);
     });
   });
 
@@ -8574,7 +8768,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUniversalAdId();
       var od = api.UniversalAdId.fromJson(o.toJson());
-      checkUniversalAdId(od);
+      checkUniversalAdId(od as api.UniversalAdId);
     });
   });
 
@@ -8582,7 +8776,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlAssignedTargetingOptionDetails();
       var od = api.UrlAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkUrlAssignedTargetingOptionDetails(od);
+      checkUrlAssignedTargetingOptionDetails(
+          od as api.UrlAssignedTargetingOptionDetails);
     });
   });
 
@@ -8590,7 +8785,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -8600,7 +8795,8 @@ void main() {
       var o = buildUserRewardedContentAssignedTargetingOptionDetails();
       var od = api.UserRewardedContentAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkUserRewardedContentAssignedTargetingOptionDetails(od);
+      checkUserRewardedContentAssignedTargetingOptionDetails(
+          od as api.UserRewardedContentAssignedTargetingOptionDetails);
     });
   });
 
@@ -8609,7 +8805,8 @@ void main() {
       var o = buildUserRewardedContentTargetingOptionDetails();
       var od =
           api.UserRewardedContentTargetingOptionDetails.fromJson(o.toJson());
-      checkUserRewardedContentTargetingOptionDetails(od);
+      checkUserRewardedContentTargetingOptionDetails(
+          od as api.UserRewardedContentTargetingOptionDetails);
     });
   });
 
@@ -8619,7 +8816,8 @@ void main() {
       var o = buildVideoPlayerSizeAssignedTargetingOptionDetails();
       var od = api.VideoPlayerSizeAssignedTargetingOptionDetails.fromJson(
           o.toJson());
-      checkVideoPlayerSizeAssignedTargetingOptionDetails(od);
+      checkVideoPlayerSizeAssignedTargetingOptionDetails(
+          od as api.VideoPlayerSizeAssignedTargetingOptionDetails);
     });
   });
 
@@ -8627,7 +8825,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoPlayerSizeTargetingOptionDetails();
       var od = api.VideoPlayerSizeTargetingOptionDetails.fromJson(o.toJson());
-      checkVideoPlayerSizeTargetingOptionDetails(od);
+      checkVideoPlayerSizeTargetingOptionDetails(
+          od as api.VideoPlayerSizeTargetingOptionDetails);
     });
   });
 
@@ -8636,7 +8835,8 @@ void main() {
       var o = buildViewabilityAssignedTargetingOptionDetails();
       var od =
           api.ViewabilityAssignedTargetingOptionDetails.fromJson(o.toJson());
-      checkViewabilityAssignedTargetingOptionDetails(od);
+      checkViewabilityAssignedTargetingOptionDetails(
+          od as api.ViewabilityAssignedTargetingOptionDetails);
     });
   });
 
@@ -8644,7 +8844,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildViewabilityTargetingOptionDetails();
       var od = api.ViewabilityTargetingOptionDetails.fromJson(o.toJson());
-      checkViewabilityTargetingOptionDetails(od);
+      checkViewabilityTargetingOptionDetails(
+          od as api.ViewabilityTargetingOptionDetails);
     });
   });
 
@@ -8696,7 +8897,7 @@ void main() {
       res
           .audit(arg_advertiserId, readMask: arg_readMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAuditAdvertiserResponse(response);
+        checkAuditAdvertiserResponse(response as api.AuditAdvertiserResponse);
       })));
     });
 
@@ -8710,8 +8911,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.BulkEditAdvertiserAssignedTargetingOptionsRequest.fromJson(
-                json);
-        checkBulkEditAdvertiserAssignedTargetingOptionsRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkBulkEditAdvertiserAssignedTargetingOptionsRequest(
+            obj as api.BulkEditAdvertiserAssignedTargetingOptionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8754,7 +8956,8 @@ void main() {
               arg_request, arg_advertiserId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditAdvertiserAssignedTargetingOptionsResponse(response);
+        checkBulkEditAdvertiserAssignedTargetingOptionsResponse(
+            response as api.BulkEditAdvertiserAssignedTargetingOptionsResponse);
       })));
     });
 
@@ -8819,7 +9022,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkListAdvertiserAssignedTargetingOptionsResponse(response);
+        checkBulkListAdvertiserAssignedTargetingOptionsResponse(
+            response as api.BulkListAdvertiserAssignedTargetingOptionsResponse);
       })));
     });
 
@@ -8829,8 +9033,9 @@ void main() {
       var arg_request = buildAdvertiser();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Advertiser.fromJson(json);
-        checkAdvertiser(obj);
+        var obj = api.Advertiser.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAdvertiser(obj as api.Advertiser);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8869,7 +9074,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response);
+        checkAdvertiser(response as api.Advertiser);
       })));
     });
 
@@ -8917,7 +9122,7 @@ void main() {
       res
           .delete(arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -8965,7 +9170,7 @@ void main() {
       res
           .get(arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response);
+        checkAdvertiser(response as api.Advertiser);
       })));
     });
 
@@ -9031,7 +9236,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAdvertisersResponse(response);
+        checkListAdvertisersResponse(response as api.ListAdvertisersResponse);
       })));
     });
 
@@ -9043,8 +9248,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Advertiser.fromJson(json);
-        checkAdvertiser(obj);
+        var obj = api.Advertiser.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAdvertiser(obj as api.Advertiser);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9087,7 +9293,7 @@ void main() {
           .patch(arg_request, arg_advertiserId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAdvertiser(response);
+        checkAdvertiser(response as api.Advertiser);
       })));
     });
   });
@@ -9103,8 +9309,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateAssetRequest.fromJson(json);
-        checkCreateAssetRequest(obj);
+        var obj = api.CreateAssetRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateAssetRequest(obj as api.CreateAssetRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9144,7 +9351,7 @@ void main() {
       res
           .upload(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreateAssetResponse(response);
+        checkCreateAssetResponse(response as api.CreateAssetResponse);
       })));
     });
   });
@@ -9157,8 +9364,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Campaign.fromJson(json);
-        checkCampaign(obj);
+        var obj =
+            api.Campaign.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCampaign(obj as api.Campaign);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9198,7 +9406,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCampaign(response);
+        checkCampaign(response as api.Campaign);
       })));
     });
 
@@ -9247,7 +9455,7 @@ void main() {
       res
           .delete(arg_advertiserId, arg_campaignId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -9296,7 +9504,7 @@ void main() {
       res
           .get(arg_advertiserId, arg_campaignId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCampaign(response);
+        checkCampaign(response as api.Campaign);
       })));
     });
 
@@ -9360,7 +9568,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCampaignsResponse(response);
+        checkListCampaignsResponse(response as api.ListCampaignsResponse);
       })));
     });
 
@@ -9373,8 +9581,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Campaign.fromJson(json);
-        checkCampaign(obj);
+        var obj =
+            api.Campaign.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCampaign(obj as api.Campaign);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9417,7 +9626,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_campaignId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCampaign(response);
+        checkCampaign(response as api.Campaign);
       })));
     });
   });
@@ -9431,8 +9640,9 @@ void main() {
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9475,7 +9685,7 @@ void main() {
           .create(arg_request, arg_advertiserId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -9528,7 +9738,7 @@ void main() {
           .get(arg_advertiserId, arg_channelId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -9596,7 +9806,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response);
+        checkListChannelsResponse(response as api.ListChannelsResponse);
       })));
     });
 
@@ -9610,8 +9820,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9658,7 +9869,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -9672,8 +9883,9 @@ void main() {
       var arg_channelId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditSitesRequest.fromJson(json);
-        checkBulkEditSitesRequest(obj);
+        var obj = api.BulkEditSitesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditSitesRequest(obj as api.BulkEditSitesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9723,7 +9935,7 @@ void main() {
           .bulkEdit(arg_request, arg_advertiserId, arg_channelId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditSitesResponse(response);
+        checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
       })));
     });
 
@@ -9736,8 +9948,9 @@ void main() {
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Site.fromJson(json);
-        checkSite(obj);
+        var obj =
+            api.Site.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSite(obj as api.Site);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9789,7 +10002,7 @@ void main() {
           .create(arg_request, arg_advertiserId, arg_channelId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSite(response);
+        checkSite(response as api.Site);
       })));
     });
 
@@ -9852,7 +10065,7 @@ void main() {
           .delete(arg_advertiserId, arg_channelId, arg_urlOrAppId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -9921,7 +10134,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSitesResponse(response);
+        checkListSitesResponse(response as api.ListSitesResponse);
       })));
     });
   });
@@ -9934,8 +10147,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Creative.fromJson(json);
-        checkCreative(obj);
+        var obj =
+            api.Creative.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCreative(obj as api.Creative);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9975,7 +10189,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreative(response);
+        checkCreative(response as api.Creative);
       })));
     });
 
@@ -10024,7 +10238,7 @@ void main() {
       res
           .delete(arg_advertiserId, arg_creativeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -10073,7 +10287,7 @@ void main() {
       res
           .get(arg_advertiserId, arg_creativeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreative(response);
+        checkCreative(response as api.Creative);
       })));
     });
 
@@ -10137,7 +10351,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCreativesResponse(response);
+        checkListCreativesResponse(response as api.ListCreativesResponse);
       })));
     });
 
@@ -10150,8 +10364,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Creative.fromJson(json);
-        checkCreative(obj);
+        var obj =
+            api.Creative.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCreative(obj as api.Creative);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10194,7 +10409,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_creativeId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreative(response);
+        checkCreative(response as api.Creative);
       })));
     });
   });
@@ -10207,8 +10422,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InsertionOrder.fromJson(json);
-        checkInsertionOrder(obj);
+        var obj = api.InsertionOrder.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInsertionOrder(obj as api.InsertionOrder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10248,7 +10464,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response);
+        checkInsertionOrder(response as api.InsertionOrder);
       })));
     });
 
@@ -10297,7 +10513,7 @@ void main() {
       res
           .delete(arg_advertiserId, arg_insertionOrderId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -10346,7 +10562,7 @@ void main() {
       res
           .get(arg_advertiserId, arg_insertionOrderId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response);
+        checkInsertionOrder(response as api.InsertionOrder);
       })));
     });
 
@@ -10410,7 +10626,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInsertionOrdersResponse(response);
+        checkListInsertionOrdersResponse(
+            response as api.ListInsertionOrdersResponse);
       })));
     });
 
@@ -10423,8 +10640,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InsertionOrder.fromJson(json);
-        checkInsertionOrder(obj);
+        var obj = api.InsertionOrder.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInsertionOrder(obj as api.InsertionOrder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10467,7 +10685,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_insertionOrderId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInsertionOrder(response);
+        checkInsertionOrder(response as api.InsertionOrder);
       })));
     });
   });
@@ -10481,9 +10699,10 @@ void main() {
       var arg_lineItemId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(json);
-        checkBulkEditLineItemAssignedTargetingOptionsRequest(obj);
+        var obj = api.BulkEditLineItemAssignedTargetingOptionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditLineItemAssignedTargetingOptionsRequest(
+            obj as api.BulkEditLineItemAssignedTargetingOptionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10526,7 +10745,8 @@ void main() {
               arg_request, arg_advertiserId, arg_lineItemId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditLineItemAssignedTargetingOptionsResponse(response);
+        checkBulkEditLineItemAssignedTargetingOptionsResponse(
+            response as api.BulkEditLineItemAssignedTargetingOptionsResponse);
       })));
     });
 
@@ -10593,7 +10813,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkListLineItemAssignedTargetingOptionsResponse(response);
+        checkBulkListLineItemAssignedTargetingOptionsResponse(
+            response as api.BulkListLineItemAssignedTargetingOptionsResponse);
       })));
     });
 
@@ -10604,8 +10825,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LineItem.fromJson(json);
-        checkLineItem(obj);
+        var obj =
+            api.LineItem.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLineItem(obj as api.LineItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10645,7 +10867,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLineItem(response);
+        checkLineItem(response as api.LineItem);
       })));
     });
 
@@ -10694,7 +10916,7 @@ void main() {
       res
           .delete(arg_advertiserId, arg_lineItemId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -10743,7 +10965,7 @@ void main() {
       res
           .get(arg_advertiserId, arg_lineItemId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLineItem(response);
+        checkLineItem(response as api.LineItem);
       })));
     });
 
@@ -10807,7 +11029,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLineItemsResponse(response);
+        checkListLineItemsResponse(response as api.ListLineItemsResponse);
       })));
     });
 
@@ -10820,8 +11042,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LineItem.fromJson(json);
-        checkLineItem(obj);
+        var obj =
+            api.LineItem.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkLineItem(obj as api.LineItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10864,7 +11087,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_lineItemId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLineItem(response);
+        checkLineItem(response as api.LineItem);
       })));
     });
   });
@@ -10885,8 +11108,9 @@ void main() {
       var arg_targetingType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AssignedTargetingOption.fromJson(json);
-        checkAssignedTargetingOption(obj);
+        var obj = api.AssignedTargetingOption.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignedTargetingOption(obj as api.AssignedTargetingOption);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10928,7 +11152,7 @@ void main() {
               arg_request, arg_advertiserId, arg_lineItemId, arg_targetingType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -10985,7 +11209,7 @@ void main() {
               arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -11042,7 +11266,7 @@ void main() {
               arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -11113,7 +11337,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLineItemAssignedTargetingOptionsResponse(response);
+        checkListLineItemAssignedTargetingOptionsResponse(
+            response as api.ListLineItemAssignedTargetingOptionsResponse);
       })));
     });
   });
@@ -11126,8 +11351,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LocationList.fromJson(json);
-        checkLocationList(obj);
+        var obj = api.LocationList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLocationList(obj as api.LocationList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11167,7 +11393,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocationList(response);
+        checkLocationList(response as api.LocationList);
       })));
     });
 
@@ -11216,7 +11442,7 @@ void main() {
       res
           .get(arg_advertiserId, arg_locationListId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocationList(response);
+        checkLocationList(response as api.LocationList);
       })));
     });
 
@@ -11280,7 +11506,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationListsResponse(response);
+        checkListLocationListsResponse(
+            response as api.ListLocationListsResponse);
       })));
     });
 
@@ -11293,8 +11520,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LocationList.fromJson(json);
-        checkLocationList(obj);
+        var obj = api.LocationList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLocationList(obj as api.LocationList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11337,7 +11565,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_locationListId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocationList(response);
+        checkLocationList(response as api.LocationList);
       })));
     });
   });
@@ -11353,8 +11581,10 @@ void main() {
       var arg_locationListId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditAssignedLocationsRequest.fromJson(json);
-        checkBulkEditAssignedLocationsRequest(obj);
+        var obj = api.BulkEditAssignedLocationsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditAssignedLocationsRequest(
+            obj as api.BulkEditAssignedLocationsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11405,7 +11635,8 @@ void main() {
           .bulkEdit(arg_request, arg_advertiserId, arg_locationListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedLocationsResponse(response);
+        checkBulkEditAssignedLocationsResponse(
+            response as api.BulkEditAssignedLocationsResponse);
       })));
     });
 
@@ -11418,8 +11649,9 @@ void main() {
       var arg_locationListId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AssignedLocation.fromJson(json);
-        checkAssignedLocation(obj);
+        var obj = api.AssignedLocation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignedLocation(obj as api.AssignedLocation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11477,7 +11709,7 @@ void main() {
           .create(arg_request, arg_advertiserId, arg_locationListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedLocation(response);
+        checkAssignedLocation(response as api.AssignedLocation);
       })));
     });
 
@@ -11547,7 +11779,7 @@ void main() {
           .delete(arg_advertiserId, arg_locationListId, arg_assignedLocationId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -11630,7 +11862,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAssignedLocationsResponse(response);
+        checkListAssignedLocationsResponse(
+            response as api.ListAssignedLocationsResponse);
       })));
     });
   });
@@ -11643,8 +11876,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.NegativeKeywordList.fromJson(json);
-        checkNegativeKeywordList(obj);
+        var obj = api.NegativeKeywordList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkNegativeKeywordList(obj as api.NegativeKeywordList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11684,7 +11918,7 @@ void main() {
       res
           .create(arg_request, arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response);
+        checkNegativeKeywordList(response as api.NegativeKeywordList);
       })));
     });
 
@@ -11734,7 +11968,7 @@ void main() {
           .delete(arg_advertiserId, arg_negativeKeywordListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -11784,7 +12018,7 @@ void main() {
           .get(arg_advertiserId, arg_negativeKeywordListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response);
+        checkNegativeKeywordList(response as api.NegativeKeywordList);
       })));
     });
 
@@ -11841,7 +12075,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListNegativeKeywordListsResponse(response);
+        checkListNegativeKeywordListsResponse(
+            response as api.ListNegativeKeywordListsResponse);
       })));
     });
 
@@ -11854,8 +12089,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.NegativeKeywordList.fromJson(json);
-        checkNegativeKeywordList(obj);
+        var obj = api.NegativeKeywordList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkNegativeKeywordList(obj as api.NegativeKeywordList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11898,7 +12134,7 @@ void main() {
           .patch(arg_request, arg_advertiserId, arg_negativeKeywordListId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNegativeKeywordList(response);
+        checkNegativeKeywordList(response as api.NegativeKeywordList);
       })));
     });
   });
@@ -11917,8 +12153,10 @@ void main() {
       var arg_negativeKeywordListId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditNegativeKeywordsRequest.fromJson(json);
-        checkBulkEditNegativeKeywordsRequest(obj);
+        var obj = api.BulkEditNegativeKeywordsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditNegativeKeywordsRequest(
+            obj as api.BulkEditNegativeKeywordsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11968,7 +12206,8 @@ void main() {
           .bulkEdit(arg_request, arg_advertiserId, arg_negativeKeywordListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditNegativeKeywordsResponse(response);
+        checkBulkEditNegativeKeywordsResponse(
+            response as api.BulkEditNegativeKeywordsResponse);
       })));
     });
 
@@ -11983,8 +12222,9 @@ void main() {
       var arg_negativeKeywordListId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.NegativeKeyword.fromJson(json);
-        checkNegativeKeyword(obj);
+        var obj = api.NegativeKeyword.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkNegativeKeyword(obj as api.NegativeKeyword);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12034,7 +12274,7 @@ void main() {
           .create(arg_request, arg_advertiserId, arg_negativeKeywordListId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNegativeKeyword(response);
+        checkNegativeKeyword(response as api.NegativeKeyword);
       })));
     });
 
@@ -12097,7 +12337,7 @@ void main() {
           .delete(arg_advertiserId, arg_negativeKeywordListId, arg_keywordValue,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -12165,7 +12405,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListNegativeKeywordsResponse(response);
+        checkListNegativeKeywordsResponse(
+            response as api.ListNegativeKeywordsResponse);
       })));
     });
   });
@@ -12184,8 +12425,9 @@ void main() {
       var arg_targetingType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AssignedTargetingOption.fromJson(json);
-        checkAssignedTargetingOption(obj);
+        var obj = api.AssignedTargetingOption.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignedTargetingOption(obj as api.AssignedTargetingOption);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12226,7 +12468,7 @@ void main() {
           .create(arg_request, arg_advertiserId, arg_targetingType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -12281,7 +12523,7 @@ void main() {
               arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -12336,7 +12578,7 @@ void main() {
               arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -12405,7 +12647,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAdvertiserAssignedTargetingOptionsResponse(response);
+        checkListAdvertiserAssignedTargetingOptionsResponse(
+            response as api.ListAdvertiserAssignedTargetingOptionsResponse);
       })));
     });
   });
@@ -12464,7 +12707,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCombinedAudience(response);
+        checkCombinedAudience(response as api.CombinedAudience);
       })));
     });
 
@@ -12534,7 +12777,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCombinedAudiencesResponse(response);
+        checkListCombinedAudiencesResponse(
+            response as api.ListCombinedAudiencesResponse);
       })));
     });
   });
@@ -12593,7 +12837,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomBiddingAlgorithm(response);
+        checkCustomBiddingAlgorithm(response as api.CustomBiddingAlgorithm);
       })));
     });
 
@@ -12664,7 +12908,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCustomBiddingAlgorithmsResponse(response);
+        checkListCustomBiddingAlgorithmsResponse(
+            response as api.ListCustomBiddingAlgorithmsResponse);
       })));
     });
   });
@@ -12718,7 +12963,7 @@ void main() {
           .get(arg_customListId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCustomList(response);
+        checkCustomList(response as api.CustomList);
       })));
     });
 
@@ -12784,7 +13029,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCustomListsResponse(response);
+        checkListCustomListsResponse(response as api.ListCustomListsResponse);
       })));
     });
   });
@@ -12843,7 +13088,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFirstAndThirdPartyAudience(response);
+        checkFirstAndThirdPartyAudience(
+            response as api.FirstAndThirdPartyAudience);
       })));
     });
 
@@ -12914,7 +13160,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFirstAndThirdPartyAudiencesResponse(response);
+        checkListFirstAndThirdPartyAudiencesResponse(
+            response as api.ListFirstAndThirdPartyAudiencesResponse);
       })));
     });
   });
@@ -12968,7 +13215,7 @@ void main() {
           .get(arg_floodlightGroupId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFloodlightGroup(response);
+        checkFloodlightGroup(response as api.FloodlightGroup);
       })));
     });
 
@@ -12981,8 +13228,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FloodlightGroup.fromJson(json);
-        checkFloodlightGroup(obj);
+        var obj = api.FloodlightGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFloodlightGroup(obj as api.FloodlightGroup);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13031,7 +13279,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFloodlightGroup(response);
+        checkFloodlightGroup(response as api.FloodlightGroup);
       })));
     });
   });
@@ -13090,7 +13338,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleAudience(response);
+        checkGoogleAudience(response as api.GoogleAudience);
       })));
     });
 
@@ -13160,7 +13408,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGoogleAudiencesResponse(response);
+        checkListGoogleAudiencesResponse(
+            response as api.ListGoogleAudiencesResponse);
       })));
     });
   });
@@ -13174,8 +13423,9 @@ void main() {
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InventorySourceGroup.fromJson(json);
-        checkInventorySourceGroup(obj);
+        var obj = api.InventorySourceGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInventorySourceGroup(obj as api.InventorySourceGroup);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13221,7 +13471,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response);
+        checkInventorySourceGroup(response as api.InventorySourceGroup);
       })));
     });
 
@@ -13278,7 +13528,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -13335,7 +13585,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response);
+        checkInventorySourceGroup(response as api.InventorySourceGroup);
       })));
     });
 
@@ -13406,7 +13656,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInventorySourceGroupsResponse(response);
+        checkListInventorySourceGroupsResponse(
+            response as api.ListInventorySourceGroupsResponse);
       })));
     });
 
@@ -13420,8 +13671,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InventorySourceGroup.fromJson(json);
-        checkInventorySourceGroup(obj);
+        var obj = api.InventorySourceGroup.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInventorySourceGroup(obj as api.InventorySourceGroup);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13474,7 +13726,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInventorySourceGroup(response);
+        checkInventorySourceGroup(response as api.InventorySourceGroup);
       })));
     });
   });
@@ -13490,8 +13742,10 @@ void main() {
       var arg_inventorySourceGroupId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditAssignedInventorySourcesRequest.fromJson(json);
-        checkBulkEditAssignedInventorySourcesRequest(obj);
+        var obj = api.BulkEditAssignedInventorySourcesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditAssignedInventorySourcesRequest(
+            obj as api.BulkEditAssignedInventorySourcesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13533,7 +13787,8 @@ void main() {
           .bulkEdit(arg_request, arg_inventorySourceGroupId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedInventorySourcesResponse(response);
+        checkBulkEditAssignedInventorySourcesResponse(
+            response as api.BulkEditAssignedInventorySourcesResponse);
       })));
     });
 
@@ -13548,8 +13803,9 @@ void main() {
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AssignedInventorySource.fromJson(json);
-        checkAssignedInventorySource(obj);
+        var obj = api.AssignedInventorySource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignedInventorySource(obj as api.AssignedInventorySource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13596,7 +13852,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedInventorySource(response);
+        checkAssignedInventorySource(response as api.AssignedInventorySource);
       })));
     });
 
@@ -13656,7 +13912,7 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -13731,7 +13987,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAssignedInventorySourcesResponse(response);
+        checkListAssignedInventorySourcesResponse(
+            response as api.ListAssignedInventorySourcesResponse);
       })));
     });
   });
@@ -13785,7 +14042,7 @@ void main() {
           .get(arg_inventorySourceId,
               partnerId: arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInventorySource(response);
+        checkInventorySource(response as api.InventorySource);
       })));
     });
 
@@ -13855,7 +14112,8 @@ void main() {
               partnerId: arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInventorySourcesResponse(response);
+        checkListInventorySourcesResponse(
+            response as api.ListInventorySourcesResponse);
       })));
     });
   });
@@ -13908,7 +14166,7 @@ void main() {
       res
           .download(arg_resourceName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleBytestreamMedia(response);
+        checkGoogleBytestreamMedia(response as api.GoogleBytestreamMedia);
       })));
     });
   });
@@ -13921,9 +14179,10 @@ void main() {
       var arg_partnerId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(json);
-        checkBulkEditPartnerAssignedTargetingOptionsRequest(obj);
+        var obj = api.BulkEditPartnerAssignedTargetingOptionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditPartnerAssignedTargetingOptionsRequest(
+            obj as api.BulkEditPartnerAssignedTargetingOptionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13965,7 +14224,8 @@ void main() {
           .bulkEditPartnerAssignedTargetingOptions(arg_request, arg_partnerId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditPartnerAssignedTargetingOptionsResponse(response);
+        checkBulkEditPartnerAssignedTargetingOptionsResponse(
+            response as api.BulkEditPartnerAssignedTargetingOptionsResponse);
       })));
     });
 
@@ -14013,7 +14273,7 @@ void main() {
       res
           .get(arg_partnerId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPartner(response);
+        checkPartner(response as api.Partner);
       })));
     });
 
@@ -14075,7 +14335,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListPartnersResponse(response);
+        checkListPartnersResponse(response as api.ListPartnersResponse);
       })));
     });
   });
@@ -14089,8 +14349,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14133,7 +14394,7 @@ void main() {
           .create(arg_request, arg_partnerId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -14186,7 +14447,7 @@ void main() {
           .get(arg_partnerId, arg_channelId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -14254,7 +14515,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response);
+        checkListChannelsResponse(response as api.ListChannelsResponse);
       })));
     });
 
@@ -14268,8 +14529,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14316,7 +14578,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -14330,8 +14592,9 @@ void main() {
       var arg_channelId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditSitesRequest.fromJson(json);
-        checkBulkEditSitesRequest(obj);
+        var obj = api.BulkEditSitesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditSitesRequest(obj as api.BulkEditSitesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14381,7 +14644,7 @@ void main() {
           .bulkEdit(arg_request, arg_partnerId, arg_channelId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditSitesResponse(response);
+        checkBulkEditSitesResponse(response as api.BulkEditSitesResponse);
       })));
     });
 
@@ -14394,8 +14657,9 @@ void main() {
       var arg_advertiserId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Site.fromJson(json);
-        checkSite(obj);
+        var obj =
+            api.Site.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSite(obj as api.Site);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14447,7 +14711,7 @@ void main() {
           .create(arg_request, arg_partnerId, arg_channelId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSite(response);
+        checkSite(response as api.Site);
       })));
     });
 
@@ -14510,7 +14774,7 @@ void main() {
           .delete(arg_partnerId, arg_channelId, arg_urlOrAppId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -14579,7 +14843,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSitesResponse(response);
+        checkListSitesResponse(response as api.ListSitesResponse);
       })));
     });
   });
@@ -14597,8 +14861,9 @@ void main() {
       var arg_targetingType = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AssignedTargetingOption.fromJson(json);
-        checkAssignedTargetingOption(obj);
+        var obj = api.AssignedTargetingOption.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignedTargetingOption(obj as api.AssignedTargetingOption);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14639,7 +14904,7 @@ void main() {
           .create(arg_request, arg_partnerId, arg_targetingType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -14694,7 +14959,7 @@ void main() {
               arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -14748,7 +15013,7 @@ void main() {
           .get(arg_partnerId, arg_targetingType, arg_assignedTargetingOptionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignedTargetingOption(response);
+        checkAssignedTargetingOption(response as api.AssignedTargetingOption);
       })));
     });
 
@@ -14817,7 +15082,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListPartnerAssignedTargetingOptionsResponse(response);
+        checkListPartnerAssignedTargetingOptionsResponse(
+            response as api.ListPartnerAssignedTargetingOptionsResponse);
       })));
     });
   });
@@ -14829,8 +15095,10 @@ void main() {
       var arg_request = buildCreateSdfDownloadTaskRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateSdfDownloadTaskRequest.fromJson(json);
-        checkCreateSdfDownloadTaskRequest(obj);
+        var obj = api.CreateSdfDownloadTaskRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateSdfDownloadTaskRequest(
+            obj as api.CreateSdfDownloadTaskRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -14869,7 +15137,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -14919,7 +15187,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -14974,7 +15242,7 @@ void main() {
           .get(arg_targetingType, arg_targetingOptionId,
               advertiserId: arg_advertiserId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTargetingOption(response);
+        checkTargetingOption(response as api.TargetingOption);
       })));
     });
 
@@ -15042,7 +15310,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTargetingOptionsResponse(response);
+        checkListTargetingOptionsResponse(
+            response as api.ListTargetingOptionsResponse);
       })));
     });
   });
@@ -15055,8 +15324,10 @@ void main() {
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BulkEditAssignedUserRolesRequest.fromJson(json);
-        checkBulkEditAssignedUserRolesRequest(obj);
+        var obj = api.BulkEditAssignedUserRolesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBulkEditAssignedUserRolesRequest(
+            obj as api.BulkEditAssignedUserRolesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15098,7 +15369,8 @@ void main() {
           .bulkEditAssignedUserRoles(arg_request, arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBulkEditAssignedUserRolesResponse(response);
+        checkBulkEditAssignedUserRolesResponse(
+            response as api.BulkEditAssignedUserRolesResponse);
       })));
     });
 
@@ -15108,8 +15380,9 @@ void main() {
       var arg_request = buildUser();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.User.fromJson(json);
-        checkUser(obj);
+        var obj =
+            api.User.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkUser(obj as api.User);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15148,7 +15421,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUser(response);
+        checkUser(response as api.User);
       })));
     });
 
@@ -15196,7 +15469,7 @@ void main() {
       res
           .delete(arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -15244,7 +15517,7 @@ void main() {
       res
           .get(arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUser(response);
+        checkUser(response as api.User);
       })));
     });
 
@@ -15306,7 +15579,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListUsersResponse(response);
+        checkListUsersResponse(response as api.ListUsersResponse);
       })));
     });
 
@@ -15318,8 +15591,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.User.fromJson(json);
-        checkUser(obj);
+        var obj =
+            api.User.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkUser(obj as api.User);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -15362,7 +15636,7 @@ void main() {
           .patch(arg_request, arg_userId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUser(response);
+        checkUser(response as api.User);
       })));
     });
   });

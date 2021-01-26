@@ -159,7 +159,9 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the ACL entry for the specified entity on the specified bucket.
@@ -232,7 +234,10 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BucketAccessControl.fromJson(data));
+    return _response.then(
+      (data) => BucketAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new ACL entry on the specified bucket.
@@ -300,7 +305,10 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BucketAccessControl.fromJson(data));
+    return _response.then(
+      (data) => BucketAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves ACL entries on the specified bucket.
@@ -362,7 +370,10 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BucketAccessControls.fromJson(data));
+    return _response.then(
+      (data) => BucketAccessControls.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches an ACL entry on the specified bucket.
@@ -441,7 +452,10 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BucketAccessControl.fromJson(data));
+    return _response.then(
+      (data) => BucketAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an ACL entry on the specified bucket.
@@ -520,7 +534,10 @@ class BucketAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BucketAccessControl.fromJson(data));
+    return _response.then(
+      (data) => BucketAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -602,7 +619,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns metadata for the specified bucket.
@@ -689,7 +708,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bucket.fromJson(data));
+    return _response.then(
+      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns an IAM policy for the specified bucket.
@@ -761,7 +782,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new bucket.
@@ -876,7 +899,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bucket.fromJson(data));
+    return _response.then(
+      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of buckets for a given project.
@@ -967,7 +992,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Buckets.fromJson(data));
+    return _response.then(
+      (data) => Buckets.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Locks retention policy on a bucket.
@@ -1039,7 +1066,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bucket.fromJson(data));
+    return _response.then(
+      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a bucket. Changes to the bucket will be readable immediately after
@@ -1169,7 +1198,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bucket.fromJson(data));
+    return _response.then(
+      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an IAM policy for the specified bucket.
@@ -1237,7 +1268,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests a set of permissions on the given bucket to see which, if any, are
@@ -1309,7 +1342,10 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. Changes to the bucket will be readable immediately after
@@ -1439,7 +1475,9 @@ class BucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bucket.fromJson(data));
+    return _response.then(
+      (data) => Bucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1493,7 +1531,9 @@ class ChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -1574,7 +1614,9 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the default object ACL entry for the specified entity on the
@@ -1648,7 +1690,10 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new default object ACL entry on the specified bucket.
@@ -1717,7 +1762,10 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves default object ACL entries on the specified bucket.
@@ -1794,7 +1842,10 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControls.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControls.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a default object ACL entry on the specified bucket.
@@ -1873,7 +1924,10 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a default object ACL entry on the specified bucket.
@@ -1952,7 +2006,10 @@ class DefaultObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2029,7 +2086,9 @@ class NotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// View a notification configuration.
@@ -2100,7 +2159,10 @@ class NotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Notification.fromJson(data));
+    return _response.then(
+      (data) =>
+          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a notification subscription for a given bucket.
@@ -2170,7 +2232,10 @@ class NotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Notification.fromJson(data));
+    return _response.then(
+      (data) =>
+          Notification.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of notification subscriptions for a given bucket.
@@ -2234,7 +2299,10 @@ class NotificationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Notifications.fromJson(data));
+    return _response.then(
+      (data) =>
+          Notifications.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2331,7 +2399,9 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the ACL entry for the specified entity on the specified object.
@@ -2420,7 +2490,10 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new ACL entry on the specified object.
@@ -2506,7 +2579,10 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves ACL entries on the specified object.
@@ -2586,7 +2662,10 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControls.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControls.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches an ACL entry on the specified object.
@@ -2681,7 +2760,10 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an ACL entry on the specified object.
@@ -2776,7 +2858,10 @@ class ObjectAccessControlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ObjectAccessControl.fromJson(data));
+    return _response.then(
+      (data) => ObjectAccessControl.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2906,7 +2991,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Object.fromJson(data));
+    return _response.then(
+      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Copies a source object to a destination object. Optionally overrides
@@ -3117,7 +3204,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Object.fromJson(data));
+    return _response.then(
+      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an object and its metadata. Deletions are permanent if versioning
@@ -3228,7 +3317,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves an object or its metadata.
@@ -3360,7 +3451,9 @@ class ObjectsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => Object.fromJson(data));
+      return _response.then(
+        (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -3443,7 +3536,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stores a new object and metadata.
@@ -3621,7 +3716,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Object.fromJson(data));
+    return _response.then(
+      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of objects matching the criteria.
@@ -3758,7 +3855,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Objects.fromJson(data));
+    return _response.then(
+      (data) => Objects.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches an object's metadata.
@@ -3902,7 +4001,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Object.fromJson(data));
+    return _response.then(
+      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rewrites a source object to a destination object. Optionally overrides
@@ -4133,7 +4234,10 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RewriteResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          RewriteResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an IAM policy for the specified object.
@@ -4219,7 +4323,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests a set of permissions on the given object to see which, if any, are
@@ -4307,7 +4413,10 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an object's metadata.
@@ -4451,7 +4560,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Object.fromJson(data));
+    return _response.then(
+      (data) => Object.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Watch for changes on all objects in a bucket.
@@ -4594,7 +4705,9 @@ class ObjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4674,7 +4787,9 @@ class ProjectsHmacKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HmacKey.fromJson(data));
+    return _response.then(
+      (data) => HmacKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an HMAC key.
@@ -4737,7 +4852,9 @@ class ProjectsHmacKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves an HMAC key's metadata
@@ -4800,7 +4917,10 @@ class ProjectsHmacKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HmacKeyMetadata.fromJson(data));
+    return _response.then(
+      (data) =>
+          HmacKeyMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of HMAC keys matching the criteria.
@@ -4886,7 +5006,10 @@ class ProjectsHmacKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HmacKeysMetadata.fromJson(data));
+    return _response.then(
+      (data) => HmacKeysMetadata.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the state of an HMAC key. See the HMAC Key resource descriptor for
@@ -4956,7 +5079,10 @@ class ProjectsHmacKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HmacKeyMetadata.fromJson(data));
+    return _response.then(
+      (data) =>
+          HmacKeyMetadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5027,7 +5153,10 @@ class ProjectsServiceAccountResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5225,12 +5354,13 @@ class BucketIamConfiguration {
   BucketIamConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('bucketPolicyOnly')) {
       bucketPolicyOnly = BucketIamConfigurationBucketPolicyOnly.fromJson(
-          _json['bucketPolicyOnly']);
+          _json['bucketPolicyOnly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uniformBucketLevelAccess')) {
       uniformBucketLevelAccess =
           BucketIamConfigurationUniformBucketLevelAccess.fromJson(
-              _json['uniformBucketLevelAccess']);
+              _json['uniformBucketLevelAccess']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5426,10 +5556,12 @@ class BucketLifecycleRule {
 
   BucketLifecycleRule.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = BucketLifecycleRuleAction.fromJson(_json['action']);
+      action = BucketLifecycleRuleAction.fromJson(
+          _json['action'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('condition')) {
-      condition = BucketLifecycleRuleCondition.fromJson(_json['condition']);
+      condition = BucketLifecycleRuleCondition.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5457,8 +5589,8 @@ class BucketLifecycle {
   BucketLifecycle.fromJson(core.Map _json) {
     if (_json.containsKey('rule')) {
       rule = (_json['rule'] as core.List)
-          .map<BucketLifecycleRule>(
-              (value) => BucketLifecycleRule.fromJson(value))
+          .map<BucketLifecycleRule>((value) => BucketLifecycleRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5773,16 +5905,18 @@ class Bucket {
   Bucket.fromJson(core.Map _json) {
     if (_json.containsKey('acl')) {
       acl = (_json['acl'] as core.List)
-          .map<BucketAccessControl>(
-              (value) => BucketAccessControl.fromJson(value))
+          .map<BucketAccessControl>((value) => BucketAccessControl.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('billing')) {
-      billing = BucketBilling.fromJson(_json['billing']);
+      billing = BucketBilling.fromJson(
+          _json['billing'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cors')) {
       cors = (_json['cors'] as core.List)
-          .map<BucketCors>((value) => BucketCors.fromJson(value))
+          .map<BucketCors>((value) =>
+              BucketCors.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('defaultEventBasedHold')) {
@@ -5790,19 +5924,20 @@ class Bucket {
     }
     if (_json.containsKey('defaultObjectAcl')) {
       defaultObjectAcl = (_json['defaultObjectAcl'] as core.List)
-          .map<ObjectAccessControl>(
-              (value) => ObjectAccessControl.fromJson(value))
+          .map<ObjectAccessControl>((value) => ObjectAccessControl.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('encryption')) {
-      encryption = BucketEncryption.fromJson(_json['encryption']);
+      encryption = BucketEncryption.fromJson(
+          _json['encryption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('iamConfiguration')) {
-      iamConfiguration =
-          BucketIamConfiguration.fromJson(_json['iamConfiguration']);
+      iamConfiguration = BucketIamConfiguration.fromJson(
+          _json['iamConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -5812,11 +5947,13 @@ class Bucket {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('lifecycle')) {
-      lifecycle = BucketLifecycle.fromJson(_json['lifecycle']);
+      lifecycle = BucketLifecycle.fromJson(
+          _json['lifecycle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -5825,7 +5962,8 @@ class Bucket {
       locationType = _json['locationType'] as core.String;
     }
     if (_json.containsKey('logging')) {
-      logging = BucketLogging.fromJson(_json['logging']);
+      logging = BucketLogging.fromJson(
+          _json['logging'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metageneration')) {
       metageneration = _json['metageneration'] as core.String;
@@ -5834,14 +5972,15 @@ class Bucket {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = BucketOwner.fromJson(_json['owner']);
+      owner = BucketOwner.fromJson(
+          _json['owner'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectNumber')) {
       projectNumber = _json['projectNumber'] as core.String;
     }
     if (_json.containsKey('retentionPolicy')) {
-      retentionPolicy =
-          BucketRetentionPolicy.fromJson(_json['retentionPolicy']);
+      retentionPolicy = BucketRetentionPolicy.fromJson(
+          _json['retentionPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
@@ -5856,10 +5995,12 @@ class Bucket {
       updated = core.DateTime.parse(_json['updated'] as core.String);
     }
     if (_json.containsKey('versioning')) {
-      versioning = BucketVersioning.fromJson(_json['versioning']);
+      versioning = BucketVersioning.fromJson(
+          _json['versioning'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('website')) {
-      website = BucketWebsite.fromJson(_json['website']);
+      website = BucketWebsite.fromJson(
+          _json['website'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zoneAffinity')) {
       zoneAffinity = (_json['zoneAffinity'] as core.List)
@@ -6064,8 +6205,8 @@ class BucketAccessControl {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('projectTeam')) {
-      projectTeam =
-          BucketAccessControlProjectTeam.fromJson(_json['projectTeam']);
+      projectTeam = BucketAccessControlProjectTeam.fromJson(
+          _json['projectTeam'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;
@@ -6128,8 +6269,8 @@ class BucketAccessControls {
   BucketAccessControls.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<BucketAccessControl>(
-              (value) => BucketAccessControl.fromJson(value))
+          .map<BucketAccessControl>((value) => BucketAccessControl.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6167,7 +6308,8 @@ class Buckets {
   Buckets.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Bucket>((value) => Bucket.fromJson(value))
+          .map<Bucket>((value) =>
+              Bucket.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6246,7 +6388,8 @@ class Channel {
     }
     if (_json.containsKey('params')) {
       params = commons.mapMap<core.String, core.String>(
-          _json['params'].cast<core.String, core.String>(),
+          (_json['params'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('payload')) {
@@ -6349,7 +6492,8 @@ class ComposeRequestSourceObjects {
     if (_json.containsKey('objectPreconditions')) {
       objectPreconditions =
           ComposeRequestSourceObjectsObjectPreconditions.fromJson(
-              _json['objectPreconditions']);
+              _json['objectPreconditions']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6383,15 +6527,17 @@ class ComposeRequest {
 
   ComposeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('destination')) {
-      destination = Object.fromJson(_json['destination']);
+      destination = Object.fromJson(
+          _json['destination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('sourceObjects')) {
       sourceObjects = (_json['sourceObjects'] as core.List)
-          .map<ComposeRequestSourceObjects>(
-              (value) => ComposeRequestSourceObjects.fromJson(value))
+          .map<ComposeRequestSourceObjects>((value) =>
+              ComposeRequestSourceObjects.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6487,7 +6633,8 @@ class HmacKey {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = HmacKeyMetadata.fromJson(_json['metadata']);
+      metadata = HmacKeyMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secret')) {
       secret = _json['secret'] as core.String;
@@ -6631,7 +6778,8 @@ class HmacKeysMetadata {
   HmacKeysMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<HmacKeyMetadata>((value) => HmacKeyMetadata.fromJson(value))
+          .map<HmacKeyMetadata>((value) => HmacKeyMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6696,7 +6844,8 @@ class Notification {
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey('custom_attributes')) {
       customAttributes = commons.mapMap<core.String, core.String>(
-          _json['custom_attributes'].cast<core.String, core.String>(),
+          (_json['custom_attributes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('etag')) {
@@ -6774,7 +6923,8 @@ class Notifications {
   Notifications.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Notification>((value) => Notification.fromJson(value))
+          .map<Notification>((value) => Notification.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6996,8 +7146,8 @@ class Object {
   Object.fromJson(core.Map _json) {
     if (_json.containsKey('acl')) {
       acl = (_json['acl'] as core.List)
-          .map<ObjectAccessControl>(
-              (value) => ObjectAccessControl.fromJson(value))
+          .map<ObjectAccessControl>((value) => ObjectAccessControl.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bucket')) {
@@ -7028,8 +7178,8 @@ class Object {
       customTime = core.DateTime.parse(_json['customTime'] as core.String);
     }
     if (_json.containsKey('customerEncryption')) {
-      customerEncryption =
-          ObjectCustomerEncryption.fromJson(_json['customerEncryption']);
+      customerEncryption = ObjectCustomerEncryption.fromJson(
+          _json['customerEncryption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -7057,7 +7207,8 @@ class Object {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('metageneration')) {
@@ -7067,7 +7218,8 @@ class Object {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = ObjectOwner.fromJson(_json['owner']);
+      owner = ObjectOwner.fromJson(
+          _json['owner'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retentionExpirationTime')) {
       retentionExpirationTime =
@@ -7324,8 +7476,8 @@ class ObjectAccessControl {
       object = _json['object'] as core.String;
     }
     if (_json.containsKey('projectTeam')) {
-      projectTeam =
-          ObjectAccessControlProjectTeam.fromJson(_json['projectTeam']);
+      projectTeam = ObjectAccessControlProjectTeam.fromJson(
+          _json['projectTeam'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('role')) {
       role = _json['role'] as core.String;
@@ -7394,8 +7546,8 @@ class ObjectAccessControls {
   ObjectAccessControls.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ObjectAccessControl>(
-              (value) => ObjectAccessControl.fromJson(value))
+          .map<ObjectAccessControl>((value) => ObjectAccessControl.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7437,7 +7589,8 @@ class Objects {
   Objects.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Object>((value) => Object.fromJson(value))
+          .map<Object>((value) =>
+              Object.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7531,7 +7684,8 @@ class PolicyBindings {
 
   PolicyBindings.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -7594,7 +7748,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<PolicyBindings>((value) => PolicyBindings.fromJson(value))
+          .map<PolicyBindings>((value) => PolicyBindings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -7671,7 +7826,8 @@ class RewriteResponse {
       objectSize = _json['objectSize'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = Object.fromJson(_json['resource']);
+      resource = Object.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rewriteToken')) {
       rewriteToken = _json['rewriteToken'] as core.String;

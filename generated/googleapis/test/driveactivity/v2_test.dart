@@ -92,10 +92,10 @@ api.Action buildAction() {
 void checkAction(api.Action o) {
   buildCounterAction++;
   if (buildCounterAction < 3) {
-    checkActor(o.actor);
-    checkActionDetail(o.detail);
-    checkTarget(o.target);
-    checkTimeRange(o.timeRange);
+    checkActor(o.actor as api.Actor);
+    checkActionDetail(o.detail as api.ActionDetail);
+    checkTarget(o.target as api.Target);
+    checkTimeRange(o.timeRange as api.TimeRange);
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
   buildCounterAction--;
@@ -125,17 +125,17 @@ api.ActionDetail buildActionDetail() {
 void checkActionDetail(api.ActionDetail o) {
   buildCounterActionDetail++;
   if (buildCounterActionDetail < 3) {
-    checkComment(o.comment);
-    checkCreate(o.create);
-    checkDelete(o.delete);
-    checkDataLeakPreventionChange(o.dlpChange);
-    checkEdit(o.edit);
-    checkMove(o.move);
-    checkPermissionChange(o.permissionChange);
-    checkApplicationReference(o.reference);
-    checkRename(o.rename);
-    checkRestore(o.restore);
-    checkSettingsChange(o.settingsChange);
+    checkComment(o.comment as api.Comment);
+    checkCreate(o.create as api.Create);
+    checkDelete(o.delete as api.Delete);
+    checkDataLeakPreventionChange(o.dlpChange as api.DataLeakPreventionChange);
+    checkEdit(o.edit as api.Edit);
+    checkMove(o.move as api.Move);
+    checkPermissionChange(o.permissionChange as api.PermissionChange);
+    checkApplicationReference(o.reference as api.ApplicationReference);
+    checkRename(o.rename as api.Rename);
+    checkRestore(o.restore as api.Restore);
+    checkSettingsChange(o.settingsChange as api.SettingsChange);
   }
   buildCounterActionDetail--;
 }
@@ -158,11 +158,11 @@ api.Actor buildActor() {
 void checkActor(api.Actor o) {
   buildCounterActor++;
   if (buildCounterActor < 3) {
-    checkAdministrator(o.administrator);
-    checkAnonymousUser(o.anonymous);
-    checkImpersonation(o.impersonation);
-    checkSystemEvent(o.system);
-    checkUser(o.user);
+    checkAdministrator(o.administrator as api.Administrator);
+    checkAnonymousUser(o.anonymous as api.AnonymousUser);
+    checkImpersonation(o.impersonation as api.Impersonation);
+    checkSystemEvent(o.system as api.SystemEvent);
+    checkUser(o.user as api.User);
   }
   buildCounterActor--;
 }
@@ -246,7 +246,7 @@ api.Assignment buildAssignment() {
 void checkAssignment(api.Assignment o) {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
-    checkUser(o.assignedUser);
+    checkUser(o.assignedUser as api.User);
     unittest.expect(o.subtype, unittest.equals('foo'));
   }
   buildCounterAssignment--;
@@ -261,8 +261,8 @@ core.List<api.User> buildUnnamed3869() {
 
 void checkUnnamed3869(core.List<api.User> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUser(o[0]);
-  checkUser(o[1]);
+  checkUser(o[0] as api.User);
+  checkUser(o[1] as api.User);
 }
 
 core.int buildCounterComment = 0;
@@ -282,10 +282,10 @@ api.Comment buildComment() {
 void checkComment(api.Comment o) {
   buildCounterComment++;
   if (buildCounterComment < 3) {
-    checkAssignment(o.assignment);
+    checkAssignment(o.assignment as api.Assignment);
     checkUnnamed3869(o.mentionedUsers);
-    checkPost(o.post);
-    checkSuggestion(o.suggestion);
+    checkPost(o.post as api.Post);
+    checkSuggestion(o.suggestion as api.Suggestion);
   }
   buildCounterComment--;
 }
@@ -305,8 +305,8 @@ api.ConsolidationStrategy buildConsolidationStrategy() {
 void checkConsolidationStrategy(api.ConsolidationStrategy o) {
   buildCounterConsolidationStrategy++;
   if (buildCounterConsolidationStrategy < 3) {
-    checkLegacy(o.legacy);
-    checkNoConsolidation(o.none);
+    checkLegacy(o.legacy as api.Legacy);
+    checkNoConsolidation(o.none as api.NoConsolidation);
   }
   buildCounterConsolidationStrategy--;
 }
@@ -325,7 +325,7 @@ api.Copy buildCopy() {
 void checkCopy(api.Copy o) {
   buildCounterCopy++;
   if (buildCounterCopy < 3) {
-    checkTargetReference(o.originalObject);
+    checkTargetReference(o.originalObject as api.TargetReference);
   }
   buildCounterCopy--;
 }
@@ -346,9 +346,9 @@ api.Create buildCreate() {
 void checkCreate(api.Create o) {
   buildCounterCreate++;
   if (buildCounterCreate < 3) {
-    checkCopy(o.copy);
-    checkNew(o.new_);
-    checkUpload(o.upload);
+    checkCopy(o.copy as api.Copy);
+    checkNew(o.new_ as api.New);
+    checkUpload(o.upload as api.Upload);
   }
   buildCounterCreate--;
 }
@@ -444,7 +444,7 @@ void checkDrive(api.Drive o) {
   buildCounterDrive++;
   if (buildCounterDrive < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkDriveItem(o.root);
+    checkDriveItem(o.root as api.DriveItem);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterDrive--;
@@ -459,8 +459,8 @@ core.List<api.Action> buildUnnamed3870() {
 
 void checkUnnamed3870(core.List<api.Action> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAction(o[0]);
-  checkAction(o[1]);
+  checkAction(o[0] as api.Action);
+  checkAction(o[1] as api.Action);
 }
 
 core.List<api.Actor> buildUnnamed3871() {
@@ -472,8 +472,8 @@ core.List<api.Actor> buildUnnamed3871() {
 
 void checkUnnamed3871(core.List<api.Actor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActor(o[0]);
-  checkActor(o[1]);
+  checkActor(o[0] as api.Actor);
+  checkActor(o[1] as api.Actor);
 }
 
 core.List<api.Target> buildUnnamed3872() {
@@ -485,8 +485,8 @@ core.List<api.Target> buildUnnamed3872() {
 
 void checkUnnamed3872(core.List<api.Target> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTarget(o[0]);
-  checkTarget(o[1]);
+  checkTarget(o[0] as api.Target);
+  checkTarget(o[1] as api.Target);
 }
 
 core.int buildCounterDriveActivity = 0;
@@ -510,9 +510,9 @@ void checkDriveActivity(api.DriveActivity o) {
   if (buildCounterDriveActivity < 3) {
     checkUnnamed3870(o.actions);
     checkUnnamed3871(o.actors);
-    checkActionDetail(o.primaryActionDetail);
+    checkActionDetail(o.primaryActionDetail as api.ActionDetail);
     checkUnnamed3872(o.targets);
-    checkTimeRange(o.timeRange);
+    checkTimeRange(o.timeRange as api.TimeRange);
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
   buildCounterDriveActivity--;
@@ -573,13 +573,13 @@ api.DriveItem buildDriveItem() {
 void checkDriveItem(api.DriveItem o) {
   buildCounterDriveItem++;
   if (buildCounterDriveItem < 3) {
-    checkDriveFile(o.driveFile);
-    checkDriveFolder(o.driveFolder);
-    checkFile(o.file);
-    checkFolder(o.folder);
+    checkDriveFile(o.driveFile as api.DriveFile);
+    checkDriveFolder(o.driveFolder as api.DriveFolder);
+    checkFile(o.file as api.File);
+    checkFolder(o.folder as api.Folder);
     unittest.expect(o.mimeType, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOwner(o.owner);
+    checkOwner(o.owner as api.Owner);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterDriveItem--;
@@ -604,10 +604,10 @@ api.DriveItemReference buildDriveItemReference() {
 void checkDriveItemReference(api.DriveItemReference o) {
   buildCounterDriveItemReference++;
   if (buildCounterDriveItemReference < 3) {
-    checkDriveFile(o.driveFile);
-    checkDriveFolder(o.driveFolder);
-    checkFile(o.file);
-    checkFolder(o.folder);
+    checkDriveFile(o.driveFile as api.DriveFile);
+    checkDriveFolder(o.driveFolder as api.DriveFolder);
+    checkFile(o.file as api.File);
+    checkFolder(o.folder as api.Folder);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
@@ -685,7 +685,7 @@ void checkFileComment(api.FileComment o) {
     unittest.expect(o.legacyCommentId, unittest.equals('foo'));
     unittest.expect(o.legacyDiscussionId, unittest.equals('foo'));
     unittest.expect(o.linkToDiscussion, unittest.equals('foo'));
-    checkDriveItem(o.parent);
+    checkDriveItem(o.parent as api.DriveItem);
   }
   buildCounterFileComment--;
 }
@@ -744,7 +744,7 @@ api.Impersonation buildImpersonation() {
 void checkImpersonation(api.Impersonation o) {
   buildCounterImpersonation++;
   if (buildCounterImpersonation < 3) {
-    checkUser(o.impersonatedUser);
+    checkUser(o.impersonatedUser as api.User);
   }
   buildCounterImpersonation--;
 }
@@ -794,8 +794,8 @@ core.List<api.TargetReference> buildUnnamed3873() {
 
 void checkUnnamed3873(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTargetReference(o[0]);
-  checkTargetReference(o[1]);
+  checkTargetReference(o[0] as api.TargetReference);
+  checkTargetReference(o[1] as api.TargetReference);
 }
 
 core.List<api.TargetReference> buildUnnamed3874() {
@@ -807,8 +807,8 @@ core.List<api.TargetReference> buildUnnamed3874() {
 
 void checkUnnamed3874(core.List<api.TargetReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTargetReference(o[0]);
-  checkTargetReference(o[1]);
+  checkTargetReference(o[0] as api.TargetReference);
+  checkTargetReference(o[1] as api.TargetReference);
 }
 
 core.int buildCounterMove = 0;
@@ -879,10 +879,10 @@ api.Owner buildOwner() {
 void checkOwner(api.Owner o) {
   buildCounterOwner++;
   if (buildCounterOwner < 3) {
-    checkDomain(o.domain);
-    checkDriveReference(o.drive);
-    checkTeamDriveReference(o.teamDrive);
-    checkUser(o.user);
+    checkDomain(o.domain as api.Domain);
+    checkDriveReference(o.drive as api.DriveReference);
+    checkTeamDriveReference(o.teamDrive as api.TeamDriveReference);
+    checkUser(o.user as api.User);
   }
   buildCounterOwner--;
 }
@@ -907,11 +907,11 @@ void checkPermission(api.Permission o) {
   buildCounterPermission++;
   if (buildCounterPermission < 3) {
     unittest.expect(o.allowDiscovery, unittest.isTrue);
-    checkAnyone(o.anyone);
-    checkDomain(o.domain);
-    checkGroup(o.group);
+    checkAnyone(o.anyone as api.Anyone);
+    checkDomain(o.domain as api.Domain);
+    checkGroup(o.group as api.Group);
     unittest.expect(o.role, unittest.equals('foo'));
-    checkUser(o.user);
+    checkUser(o.user as api.User);
   }
   buildCounterPermission--;
 }
@@ -925,8 +925,8 @@ core.List<api.Permission> buildUnnamed3875() {
 
 void checkUnnamed3875(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0]);
-  checkPermission(o[1]);
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
 }
 
 core.List<api.Permission> buildUnnamed3876() {
@@ -938,8 +938,8 @@ core.List<api.Permission> buildUnnamed3876() {
 
 void checkUnnamed3876(core.List<api.Permission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPermission(o[0]);
-  checkPermission(o[1]);
+  checkPermission(o[0] as api.Permission);
+  checkPermission(o[1] as api.Permission);
 }
 
 core.int buildCounterPermissionChange = 0;
@@ -1002,7 +1002,8 @@ void checkQueryDriveActivityRequest(api.QueryDriveActivityRequest o) {
   buildCounterQueryDriveActivityRequest++;
   if (buildCounterQueryDriveActivityRequest < 3) {
     unittest.expect(o.ancestorName, unittest.equals('foo'));
-    checkConsolidationStrategy(o.consolidationStrategy);
+    checkConsolidationStrategy(
+        o.consolidationStrategy as api.ConsolidationStrategy);
     unittest.expect(o.filter, unittest.equals('foo'));
     unittest.expect(o.itemName, unittest.equals('foo'));
     unittest.expect(o.pageSize, unittest.equals(42));
@@ -1020,8 +1021,8 @@ core.List<api.DriveActivity> buildUnnamed3877() {
 
 void checkUnnamed3877(core.List<api.DriveActivity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDriveActivity(o[0]);
-  checkDriveActivity(o[1]);
+  checkDriveActivity(o[0] as api.DriveActivity);
+  checkDriveActivity(o[1] as api.DriveActivity);
 }
 
 core.int buildCounterQueryDriveActivityResponse = 0;
@@ -1115,8 +1116,8 @@ core.List<api.RestrictionChange> buildUnnamed3878() {
 
 void checkUnnamed3878(core.List<api.RestrictionChange> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRestrictionChange(o[0]);
-  checkRestrictionChange(o[1]);
+  checkRestrictionChange(o[0] as api.RestrictionChange);
+  checkRestrictionChange(o[1] as api.RestrictionChange);
 }
 
 core.int buildCounterSettingsChange = 0;
@@ -1193,10 +1194,10 @@ api.Target buildTarget() {
 void checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
-    checkDrive(o.drive);
-    checkDriveItem(o.driveItem);
-    checkFileComment(o.fileComment);
-    checkTeamDrive(o.teamDrive);
+    checkDrive(o.drive as api.Drive);
+    checkDriveItem(o.driveItem as api.DriveItem);
+    checkFileComment(o.fileComment as api.FileComment);
+    checkTeamDrive(o.teamDrive as api.TeamDrive);
   }
   buildCounterTarget--;
 }
@@ -1217,9 +1218,9 @@ api.TargetReference buildTargetReference() {
 void checkTargetReference(api.TargetReference o) {
   buildCounterTargetReference++;
   if (buildCounterTargetReference < 3) {
-    checkDriveReference(o.drive);
-    checkDriveItemReference(o.driveItem);
-    checkTeamDriveReference(o.teamDrive);
+    checkDriveReference(o.drive as api.DriveReference);
+    checkDriveItemReference(o.driveItem as api.DriveItemReference);
+    checkTeamDriveReference(o.teamDrive as api.TeamDriveReference);
   }
   buildCounterTargetReference--;
 }
@@ -1241,7 +1242,7 @@ void checkTeamDrive(api.TeamDrive o) {
   buildCounterTeamDrive++;
   if (buildCounterTeamDrive < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkDriveItem(o.root);
+    checkDriveItem(o.root as api.DriveItem);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterTeamDrive--;
@@ -1335,9 +1336,9 @@ api.User buildUser() {
 void checkUser(api.User o) {
   buildCounterUser++;
   if (buildCounterUser < 3) {
-    checkDeletedUser(o.deletedUser);
-    checkKnownUser(o.knownUser);
-    checkUnknownUser(o.unknownUser);
+    checkDeletedUser(o.deletedUser as api.DeletedUser);
+    checkKnownUser(o.knownUser as api.KnownUser);
+    checkUnknownUser(o.unknownUser as api.UnknownUser);
   }
   buildCounterUser--;
 }
@@ -1347,7 +1348,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAction();
       var od = api.Action.fromJson(o.toJson());
-      checkAction(od);
+      checkAction(od as api.Action);
     });
   });
 
@@ -1355,7 +1356,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActionDetail();
       var od = api.ActionDetail.fromJson(o.toJson());
-      checkActionDetail(od);
+      checkActionDetail(od as api.ActionDetail);
     });
   });
 
@@ -1363,7 +1364,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActor();
       var od = api.Actor.fromJson(o.toJson());
-      checkActor(od);
+      checkActor(od as api.Actor);
     });
   });
 
@@ -1371,7 +1372,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAdministrator();
       var od = api.Administrator.fromJson(o.toJson());
-      checkAdministrator(od);
+      checkAdministrator(od as api.Administrator);
     });
   });
 
@@ -1379,7 +1380,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnonymousUser();
       var od = api.AnonymousUser.fromJson(o.toJson());
-      checkAnonymousUser(od);
+      checkAnonymousUser(od as api.AnonymousUser);
     });
   });
 
@@ -1387,7 +1388,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnyone();
       var od = api.Anyone.fromJson(o.toJson());
-      checkAnyone(od);
+      checkAnyone(od as api.Anyone);
     });
   });
 
@@ -1395,7 +1396,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationReference();
       var od = api.ApplicationReference.fromJson(o.toJson());
-      checkApplicationReference(od);
+      checkApplicationReference(od as api.ApplicationReference);
     });
   });
 
@@ -1403,7 +1404,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
-      checkAssignment(od);
+      checkAssignment(od as api.Assignment);
     });
   });
 
@@ -1411,7 +1412,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
-      checkComment(od);
+      checkComment(od as api.Comment);
     });
   });
 
@@ -1419,7 +1420,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConsolidationStrategy();
       var od = api.ConsolidationStrategy.fromJson(o.toJson());
-      checkConsolidationStrategy(od);
+      checkConsolidationStrategy(od as api.ConsolidationStrategy);
     });
   });
 
@@ -1427,7 +1428,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCopy();
       var od = api.Copy.fromJson(o.toJson());
-      checkCopy(od);
+      checkCopy(od as api.Copy);
     });
   });
 
@@ -1435,7 +1436,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreate();
       var od = api.Create.fromJson(o.toJson());
-      checkCreate(od);
+      checkCreate(od as api.Create);
     });
   });
 
@@ -1443,7 +1444,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataLeakPreventionChange();
       var od = api.DataLeakPreventionChange.fromJson(o.toJson());
-      checkDataLeakPreventionChange(od);
+      checkDataLeakPreventionChange(od as api.DataLeakPreventionChange);
     });
   });
 
@@ -1451,7 +1452,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDelete();
       var od = api.Delete.fromJson(o.toJson());
-      checkDelete(od);
+      checkDelete(od as api.Delete);
     });
   });
 
@@ -1459,7 +1460,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeletedUser();
       var od = api.DeletedUser.fromJson(o.toJson());
-      checkDeletedUser(od);
+      checkDeletedUser(od as api.DeletedUser);
     });
   });
 
@@ -1467,7 +1468,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
-      checkDomain(od);
+      checkDomain(od as api.Domain);
     });
   });
 
@@ -1475,7 +1476,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDrive();
       var od = api.Drive.fromJson(o.toJson());
-      checkDrive(od);
+      checkDrive(od as api.Drive);
     });
   });
 
@@ -1483,7 +1484,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveActivity();
       var od = api.DriveActivity.fromJson(o.toJson());
-      checkDriveActivity(od);
+      checkDriveActivity(od as api.DriveActivity);
     });
   });
 
@@ -1491,7 +1492,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveFile();
       var od = api.DriveFile.fromJson(o.toJson());
-      checkDriveFile(od);
+      checkDriveFile(od as api.DriveFile);
     });
   });
 
@@ -1499,7 +1500,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveFolder();
       var od = api.DriveFolder.fromJson(o.toJson());
-      checkDriveFolder(od);
+      checkDriveFolder(od as api.DriveFolder);
     });
   });
 
@@ -1507,7 +1508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveItem();
       var od = api.DriveItem.fromJson(o.toJson());
-      checkDriveItem(od);
+      checkDriveItem(od as api.DriveItem);
     });
   });
 
@@ -1515,7 +1516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveItemReference();
       var od = api.DriveItemReference.fromJson(o.toJson());
-      checkDriveItemReference(od);
+      checkDriveItemReference(od as api.DriveItemReference);
     });
   });
 
@@ -1523,7 +1524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveReference();
       var od = api.DriveReference.fromJson(o.toJson());
-      checkDriveReference(od);
+      checkDriveReference(od as api.DriveReference);
     });
   });
 
@@ -1531,7 +1532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEdit();
       var od = api.Edit.fromJson(o.toJson());
-      checkEdit(od);
+      checkEdit(od as api.Edit);
     });
   });
 
@@ -1539,7 +1540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFile();
       var od = api.File.fromJson(o.toJson());
-      checkFile(od);
+      checkFile(od as api.File);
     });
   });
 
@@ -1547,7 +1548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileComment();
       var od = api.FileComment.fromJson(o.toJson());
-      checkFileComment(od);
+      checkFileComment(od as api.FileComment);
     });
   });
 
@@ -1555,7 +1556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
-      checkFolder(od);
+      checkFolder(od as api.Folder);
     });
   });
 
@@ -1563,7 +1564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
-      checkGroup(od);
+      checkGroup(od as api.Group);
     });
   });
 
@@ -1571,7 +1572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImpersonation();
       var od = api.Impersonation.fromJson(o.toJson());
-      checkImpersonation(od);
+      checkImpersonation(od as api.Impersonation);
     });
   });
 
@@ -1579,7 +1580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKnownUser();
       var od = api.KnownUser.fromJson(o.toJson());
-      checkKnownUser(od);
+      checkKnownUser(od as api.KnownUser);
     });
   });
 
@@ -1587,7 +1588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLegacy();
       var od = api.Legacy.fromJson(o.toJson());
-      checkLegacy(od);
+      checkLegacy(od as api.Legacy);
     });
   });
 
@@ -1595,7 +1596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMove();
       var od = api.Move.fromJson(o.toJson());
-      checkMove(od);
+      checkMove(od as api.Move);
     });
   });
 
@@ -1603,7 +1604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNew();
       var od = api.New.fromJson(o.toJson());
-      checkNew(od);
+      checkNew(od as api.New);
     });
   });
 
@@ -1611,7 +1612,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNoConsolidation();
       var od = api.NoConsolidation.fromJson(o.toJson());
-      checkNoConsolidation(od);
+      checkNoConsolidation(od as api.NoConsolidation);
     });
   });
 
@@ -1619,7 +1620,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOwner();
       var od = api.Owner.fromJson(o.toJson());
-      checkOwner(od);
+      checkOwner(od as api.Owner);
     });
   });
 
@@ -1627,7 +1628,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermission();
       var od = api.Permission.fromJson(o.toJson());
-      checkPermission(od);
+      checkPermission(od as api.Permission);
     });
   });
 
@@ -1635,7 +1636,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPermissionChange();
       var od = api.PermissionChange.fromJson(o.toJson());
-      checkPermissionChange(od);
+      checkPermissionChange(od as api.PermissionChange);
     });
   });
 
@@ -1643,7 +1644,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPost();
       var od = api.Post.fromJson(o.toJson());
-      checkPost(od);
+      checkPost(od as api.Post);
     });
   });
 
@@ -1651,7 +1652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryDriveActivityRequest();
       var od = api.QueryDriveActivityRequest.fromJson(o.toJson());
-      checkQueryDriveActivityRequest(od);
+      checkQueryDriveActivityRequest(od as api.QueryDriveActivityRequest);
     });
   });
 
@@ -1659,7 +1660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryDriveActivityResponse();
       var od = api.QueryDriveActivityResponse.fromJson(o.toJson());
-      checkQueryDriveActivityResponse(od);
+      checkQueryDriveActivityResponse(od as api.QueryDriveActivityResponse);
     });
   });
 
@@ -1667,7 +1668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRename();
       var od = api.Rename.fromJson(o.toJson());
-      checkRename(od);
+      checkRename(od as api.Rename);
     });
   });
 
@@ -1675,7 +1676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestore();
       var od = api.Restore.fromJson(o.toJson());
-      checkRestore(od);
+      checkRestore(od as api.Restore);
     });
   });
 
@@ -1683,7 +1684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestrictionChange();
       var od = api.RestrictionChange.fromJson(o.toJson());
-      checkRestrictionChange(od);
+      checkRestrictionChange(od as api.RestrictionChange);
     });
   });
 
@@ -1691,7 +1692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSettingsChange();
       var od = api.SettingsChange.fromJson(o.toJson());
-      checkSettingsChange(od);
+      checkSettingsChange(od as api.SettingsChange);
     });
   });
 
@@ -1699,7 +1700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSuggestion();
       var od = api.Suggestion.fromJson(o.toJson());
-      checkSuggestion(od);
+      checkSuggestion(od as api.Suggestion);
     });
   });
 
@@ -1707,7 +1708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystemEvent();
       var od = api.SystemEvent.fromJson(o.toJson());
-      checkSystemEvent(od);
+      checkSystemEvent(od as api.SystemEvent);
     });
   });
 
@@ -1715,7 +1716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTarget();
       var od = api.Target.fromJson(o.toJson());
-      checkTarget(od);
+      checkTarget(od as api.Target);
     });
   });
 
@@ -1723,7 +1724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTargetReference();
       var od = api.TargetReference.fromJson(o.toJson());
-      checkTargetReference(od);
+      checkTargetReference(od as api.TargetReference);
     });
   });
 
@@ -1731,7 +1732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDrive();
       var od = api.TeamDrive.fromJson(o.toJson());
-      checkTeamDrive(od);
+      checkTeamDrive(od as api.TeamDrive);
     });
   });
 
@@ -1739,7 +1740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeamDriveReference();
       var od = api.TeamDriveReference.fromJson(o.toJson());
-      checkTeamDriveReference(od);
+      checkTeamDriveReference(od as api.TeamDriveReference);
     });
   });
 
@@ -1747,7 +1748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeRange();
       var od = api.TimeRange.fromJson(o.toJson());
-      checkTimeRange(od);
+      checkTimeRange(od as api.TimeRange);
     });
   });
 
@@ -1755,7 +1756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnknownUser();
       var od = api.UnknownUser.fromJson(o.toJson());
-      checkUnknownUser(od);
+      checkUnknownUser(od as api.UnknownUser);
     });
   });
 
@@ -1763,7 +1764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpload();
       var od = api.Upload.fromJson(o.toJson());
-      checkUpload(od);
+      checkUpload(od as api.Upload);
     });
   });
 
@@ -1771,7 +1772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUser();
       var od = api.User.fromJson(o.toJson());
-      checkUser(od);
+      checkUser(od as api.User);
     });
   });
 
@@ -1782,8 +1783,9 @@ void main() {
       var arg_request = buildQueryDriveActivityRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.QueryDriveActivityRequest.fromJson(json);
-        checkQueryDriveActivityRequest(obj);
+        var obj = api.QueryDriveActivityRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkQueryDriveActivityRequest(obj as api.QueryDriveActivityRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1822,7 +1824,8 @@ void main() {
       res
           .query(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkQueryDriveActivityResponse(response);
+        checkQueryDriveActivityResponse(
+            response as api.QueryDriveActivityResponse);
       })));
     });
   });

@@ -131,7 +131,9 @@ class ProjectsLocationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete an environment.
@@ -182,7 +184,9 @@ class ProjectsLocationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get an existing environment.
@@ -233,7 +237,10 @@ class ProjectsLocationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Environment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Environment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List environments.
@@ -298,7 +305,10 @@ class ProjectsLocationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListEnvironmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListEnvironmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an environment.
@@ -424,7 +434,9 @@ class ProjectsLocationsEnvironmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -496,7 +508,10 @@ class ProjectsLocationsImageVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListImageVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListImageVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -556,7 +571,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -608,7 +625,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -684,7 +703,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -751,14 +773,16 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = EnvironmentConfig.fromJson(_json['config']);
+      config = EnvironmentConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -845,17 +869,20 @@ class EnvironmentConfig {
       gkeCluster = _json['gkeCluster'] as core.String;
     }
     if (_json.containsKey('nodeConfig')) {
-      nodeConfig = NodeConfig.fromJson(_json['nodeConfig']);
+      nodeConfig = NodeConfig.fromJson(
+          _json['nodeConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nodeCount')) {
       nodeCount = _json['nodeCount'] as core.int;
     }
     if (_json.containsKey('privateEnvironmentConfig')) {
-      privateEnvironmentConfig =
-          PrivateEnvironmentConfig.fromJson(_json['privateEnvironmentConfig']);
+      privateEnvironmentConfig = PrivateEnvironmentConfig.fromJson(
+          _json['privateEnvironmentConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('softwareConfig')) {
-      softwareConfig = SoftwareConfig.fromJson(_json['softwareConfig']);
+      softwareConfig = SoftwareConfig.fromJson(
+          _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1024,7 +1051,8 @@ class ListEnvironmentsResponse {
   ListEnvironmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('environments')) {
       environments = (_json['environments'] as core.List)
-          .map<Environment>((value) => Environment.fromJson(value))
+          .map<Environment>((value) => Environment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1058,7 +1086,8 @@ class ListImageVersionsResponse {
   ListImageVersionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('imageVersions')) {
       imageVersions = (_json['imageVersions'] as core.List)
-          .map<ImageVersion>((value) => ImageVersion.fromJson(value))
+          .map<ImageVersion>((value) => ImageVersion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1095,7 +1124,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1198,8 +1228,8 @@ class NodeConfig {
       diskSizeGb = _json['diskSizeGb'] as core.int;
     }
     if (_json.containsKey('ipAllocationPolicy')) {
-      ipAllocationPolicy =
-          IPAllocationPolicy.fromJson(_json['ipAllocationPolicy']);
+      ipAllocationPolicy = IPAllocationPolicy.fromJson(
+          _json['ipAllocationPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -1305,11 +1335,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1317,7 +1349,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -1508,8 +1541,8 @@ class PrivateEnvironmentConfig {
       enablePrivateEnvironment = _json['enablePrivateEnvironment'] as core.bool;
     }
     if (_json.containsKey('privateClusterConfig')) {
-      privateClusterConfig =
-          PrivateClusterConfig.fromJson(_json['privateClusterConfig']);
+      privateClusterConfig = PrivateClusterConfig.fromJson(
+          _json['privateClusterConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webServerIpv4CidrBlock')) {
       webServerIpv4CidrBlock = _json['webServerIpv4CidrBlock'] as core.String;
@@ -1604,12 +1637,15 @@ class SoftwareConfig {
   SoftwareConfig.fromJson(core.Map _json) {
     if (_json.containsKey('airflowConfigOverrides')) {
       airflowConfigOverrides = commons.mapMap<core.String, core.String>(
-          _json['airflowConfigOverrides'].cast<core.String, core.String>(),
+          (_json['airflowConfigOverrides']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('envVariables')) {
       envVariables = commons.mapMap<core.String, core.String>(
-          _json['envVariables'].cast<core.String, core.String>(),
+          (_json['envVariables'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('imageVersion')) {
@@ -1617,7 +1653,8 @@ class SoftwareConfig {
     }
     if (_json.containsKey('pypiPackages')) {
       pypiPackages = commons.mapMap<core.String, core.String>(
-          _json['pypiPackages'].cast<core.String, core.String>(),
+          (_json['pypiPackages'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('pythonVersion')) {
@@ -1678,7 +1715,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

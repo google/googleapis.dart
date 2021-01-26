@@ -143,7 +143,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves the details of a device.
@@ -208,7 +210,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves whether a device's access to Google services is enabled or
@@ -278,7 +282,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceState.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceState.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the IDs of all of a user's devices.
@@ -336,7 +343,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DevicesListResponse.fromJson(data));
+    return _response.then(
+      (data) => DevicesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets whether a device's access to Google services is enabled or disabled.
@@ -412,7 +422,10 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeviceState.fromJson(data));
+    return _response.then(
+      (data) =>
+          DeviceState.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the device policy
@@ -491,7 +504,9 @@ class DevicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Device.fromJson(data));
+    return _response.then(
+      (data) => Device.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -548,7 +563,9 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Completes the signup flow, by specifying the Completion token and
@@ -605,7 +622,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Enterprise.fromJson(data));
+    return _response.then(
+      (data) =>
+          Enterprise.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a unique token to access an embeddable UI. To generate a web UI,
@@ -664,7 +684,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdministratorWebToken.fromJson(data));
+    return _response.then(
+      (data) => AdministratorWebToken.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enrolls an enterprise with the calling EMM.
@@ -720,7 +743,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Enterprise.fromJson(data));
+    return _response.then(
+      (data) =>
+          Enterprise.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Generates a sign-up URL.
@@ -775,7 +801,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignupInfo.fromJson(data));
+    return _response.then(
+      (data) =>
+          SignupInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the name and domain of an enterprise.
@@ -824,7 +853,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Enterprise.fromJson(data));
+    return _response.then(
+      (data) =>
+          Enterprise.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a service account and credentials. The service account can be
@@ -898,7 +930,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccount.fromJson(data));
+    return _response.then(
+      (data) =>
+          ServiceAccount.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the store layout for the enterprise. If the store layout has not
@@ -949,7 +984,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StoreLayout.fromJson(data));
+    return _response.then(
+      (data) =>
+          StoreLayout.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up an enterprise by domain name. This is only supported for
@@ -1003,7 +1041,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EnterprisesListResponse.fromJson(data));
+    return _response.then(
+      (data) => EnterprisesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pulls and returns a notification set for the enterprises associated with
@@ -1075,7 +1116,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => NotificationSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          NotificationSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends a test notification to validate the EMM integration with the Google
@@ -1128,7 +1172,9 @@ class EnterprisesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => EnterprisesSendTestPushNotificationResponse.fromJson(data));
+      (data) => EnterprisesSendTestPushNotificationResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the account that will be used to authenticate to the API as the
@@ -1185,7 +1231,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EnterpriseAccount.fromJson(data));
+    return _response.then(
+      (data) => EnterpriseAccount.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the store layout for the enterprise. By default, storeLayoutType is
@@ -1247,7 +1296,10 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StoreLayout.fromJson(data));
+    return _response.then(
+      (data) =>
+          StoreLayout.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unenrolls an enterprise from the calling EMM.
@@ -1297,7 +1349,9 @@ class EnterprisesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -1369,7 +1423,9 @@ class EntitlementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of an entitlement.
@@ -1435,7 +1491,10 @@ class EntitlementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Entitlement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Entitlement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all entitlements for the specified user. Only the ID is set.
@@ -1493,7 +1552,10 @@ class EntitlementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EntitlementsListResponse.fromJson(data));
+    return _response.then(
+      (data) => EntitlementsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds or updates an entitlement to an app for a user.
@@ -1574,7 +1636,10 @@ class EntitlementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Entitlement.fromJson(data));
+    return _response.then(
+      (data) =>
+          Entitlement.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1638,7 +1703,10 @@ class GrouplicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GroupLicense.fromJson(data));
+    return _response.then(
+      (data) =>
+          GroupLicense.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves IDs of all products for which the enterprise has a group
@@ -1689,7 +1757,10 @@ class GrouplicensesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GroupLicensesListResponse.fromJson(data));
+    return _response.then(
+      (data) => GroupLicensesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1756,8 +1827,10 @@ class GrouplicenseusersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GroupLicenseUsersListResponse.fromJson(data));
+    return _response.then(
+      (data) => GroupLicenseUsersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1838,7 +1911,9 @@ class InstallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of an installation of an app on a device.
@@ -1912,7 +1987,9 @@ class InstallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Install.fromJson(data));
+    return _response.then(
+      (data) => Install.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the details of all apps installed on the specified device.
@@ -1978,7 +2055,10 @@ class InstallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstallsListResponse.fromJson(data));
+    return _response.then(
+      (data) => InstallsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Requests to install the latest version of an app to a device. If the app
@@ -2060,7 +2140,9 @@ class InstallsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Install.fromJson(data));
+    return _response.then(
+      (data) => Install.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2143,7 +2225,9 @@ class ManagedconfigurationsfordeviceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of a per-device managed configuration.
@@ -2218,7 +2302,10 @@ class ManagedconfigurationsfordeviceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedConfiguration.fromJson(data));
+    return _response.then(
+      (data) => ManagedConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the per-device managed configurations for the specified device.
@@ -2286,7 +2373,9 @@ class ManagedconfigurationsfordeviceResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ManagedConfigurationsForDeviceListResponse.fromJson(data));
+      (data) => ManagedConfigurationsForDeviceListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds or updates a per-device managed configuration for an app for the
@@ -2368,7 +2457,10 @@ class ManagedconfigurationsfordeviceResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedConfiguration.fromJson(data));
+    return _response.then(
+      (data) => ManagedConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2443,7 +2535,9 @@ class ManagedconfigurationsforuserResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of a per-user managed configuration for an app for the
@@ -2511,7 +2605,10 @@ class ManagedconfigurationsforuserResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedConfiguration.fromJson(data));
+    return _response.then(
+      (data) => ManagedConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the per-user managed configurations for the specified user. Only
@@ -2571,7 +2668,9 @@ class ManagedconfigurationsforuserResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ManagedConfigurationsForUserListResponse.fromJson(data));
+      (data) => ManagedConfigurationsForUserListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds or updates the managed configuration settings for an app for the
@@ -2649,7 +2748,10 @@ class ManagedconfigurationsforuserResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedConfiguration.fromJson(data));
+    return _response.then(
+      (data) => ManagedConfiguration.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2716,7 +2818,9 @@ class ManagedconfigurationssettingsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ManagedConfigurationsSettingsListResponse.fromJson(data));
+      (data) => ManagedConfigurationsSettingsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2779,7 +2883,10 @@ class PermissionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Permission.fromJson(data));
+    return _response.then(
+      (data) =>
+          Permission.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2853,7 +2960,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Generates a URL that can be rendered in an iframe to display the
@@ -2925,8 +3034,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ProductsGenerateApprovalUrlResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductsGenerateApprovalUrlResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves details of a product for display to an enterprise admin.
@@ -2990,7 +3101,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the schema that defines the configurable properties for this
@@ -3060,7 +3173,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppRestrictionsSchema.fromJson(data));
+    return _response.then(
+      (data) => AppRestrictionsSchema.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the Android app permissions required by this app.
@@ -3118,7 +3234,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductPermissions.fromJson(data));
+    return _response.then(
+      (data) => ProductPermissions.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Finds approved products that match a query, or all approved products if
@@ -3208,7 +3327,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unapproves the specified product (and the relevant app permissions, if
@@ -3267,7 +3389,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -3334,7 +3458,9 @@ class ServiceaccountkeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Generates new credentials for the service account associated with this
@@ -3394,7 +3520,10 @@ class ServiceaccountkeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServiceAccountKey.fromJson(data));
+    return _response.then(
+      (data) => ServiceAccountKey.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all active credentials for the service account associated with this
@@ -3448,8 +3577,10 @@ class ServiceaccountkeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ServiceAccountKeysListResponse.fromJson(data));
+    return _response.then(
+      (data) => ServiceAccountKeysListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3521,7 +3652,9 @@ class StorelayoutclustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of a cluster.
@@ -3586,7 +3719,10 @@ class StorelayoutclustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StoreCluster.fromJson(data));
+    return _response.then(
+      (data) =>
+          StoreCluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a new cluster in a page.
@@ -3650,7 +3786,10 @@ class StorelayoutclustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StoreCluster.fromJson(data));
+    return _response.then(
+      (data) =>
+          StoreCluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the details of all clusters on the specified page.
@@ -3708,8 +3847,10 @@ class StorelayoutclustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => StoreLayoutClustersListResponse.fromJson(data));
+    return _response.then(
+      (data) => StoreLayoutClustersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a cluster.
@@ -3780,7 +3921,10 @@ class StorelayoutclustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StoreCluster.fromJson(data));
+    return _response.then(
+      (data) =>
+          StoreCluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3844,7 +3988,9 @@ class StorelayoutpagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves details of a store page.
@@ -3901,7 +4047,9 @@ class StorelayoutpagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StorePage.fromJson(data));
+    return _response.then(
+      (data) => StorePage.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a new store page.
@@ -3957,7 +4105,9 @@ class StorelayoutpagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StorePage.fromJson(data));
+    return _response.then(
+      (data) => StorePage.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the details of all pages in the store.
@@ -4007,8 +4157,10 @@ class StorelayoutpagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => StoreLayoutPagesListResponse.fromJson(data));
+    return _response.then(
+      (data) => StoreLayoutPagesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the content of a store page.
@@ -4071,7 +4223,9 @@ class StorelayoutpagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => StorePage.fromJson(data));
+    return _response.then(
+      (data) => StorePage.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4134,7 +4288,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Generates an authentication token which the device policy client can use
@@ -4196,7 +4352,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AuthenticationToken.fromJson(data));
+    return _response.then(
+      (data) => AuthenticationToken.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a user's details.
@@ -4253,7 +4412,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the set of products a user is entitled to access.
@@ -4311,7 +4472,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new EMM-managed user. The Users resource passed in the body of
@@ -4371,7 +4535,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up a user by primary email address. This is only supported for
@@ -4431,7 +4597,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UsersListResponse.fromJson(data));
+    return _response.then(
+      (data) => UsersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Revokes access to all devices currently provisioned to the user. The user
@@ -4491,7 +4660,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Modifies the set of products that a user is entitled to access (referred
@@ -4558,7 +4729,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductSet.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductSet.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the details of an EMM-managed user. Can be used with EMM-managed
@@ -4624,7 +4798,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => User.fromJson(data));
+    return _response.then(
+      (data) => User.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4687,7 +4863,9 @@ class WebappsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets an existing web app.
@@ -4744,7 +4922,9 @@ class WebappsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebApp.fromJson(data));
+    return _response.then(
+      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new web app for the enterprise.
@@ -4800,7 +4980,9 @@ class WebappsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebApp.fromJson(data));
+    return _response.then(
+      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the details of all web apps for a given enterprise.
@@ -4850,7 +5032,10 @@ class WebappsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebAppsListResponse.fromJson(data));
+    return _response.then(
+      (data) => WebAppsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing web app.
@@ -4913,7 +5098,9 @@ class WebappsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WebApp.fromJson(data));
+    return _response.then(
+      (data) => WebApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4995,7 +5182,8 @@ class AdministratorWebTokenSpec {
     if (_json.containsKey('managedConfigurations')) {
       managedConfigurations =
           AdministratorWebTokenSpecManagedConfigurations.fromJson(
-              _json['managedConfigurations']);
+              _json['managedConfigurations']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parent')) {
       parent = _json['parent'] as core.String;
@@ -5006,19 +5194,20 @@ class AdministratorWebTokenSpec {
           .toList();
     }
     if (_json.containsKey('playSearch')) {
-      playSearch =
-          AdministratorWebTokenSpecPlaySearch.fromJson(_json['playSearch']);
+      playSearch = AdministratorWebTokenSpecPlaySearch.fromJson(
+          _json['playSearch'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateApps')) {
-      privateApps =
-          AdministratorWebTokenSpecPrivateApps.fromJson(_json['privateApps']);
+      privateApps = AdministratorWebTokenSpecPrivateApps.fromJson(
+          _json['privateApps'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('storeBuilder')) {
-      storeBuilder =
-          AdministratorWebTokenSpecStoreBuilder.fromJson(_json['storeBuilder']);
+      storeBuilder = AdministratorWebTokenSpecStoreBuilder.fromJson(
+          _json['storeBuilder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webApps')) {
-      webApps = AdministratorWebTokenSpecWebApps.fromJson(_json['webApps']);
+      webApps = AdministratorWebTokenSpecWebApps.fromJson(
+          _json['webApps'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5180,8 +5369,9 @@ class AppRestrictionsSchema {
     }
     if (_json.containsKey('restrictions')) {
       restrictions = (_json['restrictions'] as core.List)
-          .map<AppRestrictionsSchemaRestriction>(
-              (value) => AppRestrictionsSchemaRestriction.fromJson(value))
+          .map<AppRestrictionsSchemaRestriction>((value) =>
+              AppRestrictionsSchemaRestriction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5276,7 +5466,7 @@ class AppRestrictionsSchemaRestriction {
   AppRestrictionsSchemaRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('defaultValue')) {
       defaultValue = AppRestrictionsSchemaRestrictionRestrictionValue.fromJson(
-          _json['defaultValue']);
+          _json['defaultValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -5296,8 +5486,9 @@ class AppRestrictionsSchemaRestriction {
     }
     if (_json.containsKey('nestedRestriction')) {
       nestedRestriction = (_json['nestedRestriction'] as core.List)
-          .map<AppRestrictionsSchemaRestriction>(
-              (value) => AppRestrictionsSchemaRestriction.fromJson(value))
+          .map<AppRestrictionsSchemaRestriction>((value) =>
+              AppRestrictionsSchemaRestriction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('restrictionType')) {
@@ -5425,7 +5616,8 @@ class AppState {
   AppState.fromJson(core.Map _json) {
     if (_json.containsKey('keyedAppState')) {
       keyedAppState = (_json['keyedAppState'] as core.List)
-          .map<KeyedAppState>((value) => KeyedAppState.fromJson(value))
+          .map<KeyedAppState>((value) => KeyedAppState.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('packageName')) {
@@ -5676,8 +5868,8 @@ class AutoInstallPolicy {
   AutoInstallPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('autoInstallConstraint')) {
       autoInstallConstraint = (_json['autoInstallConstraint'] as core.List)
-          .map<AutoInstallConstraint>(
-              (value) => AutoInstallConstraint.fromJson(value))
+          .map<AutoInstallConstraint>((value) => AutoInstallConstraint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('autoInstallMode')) {
@@ -5729,7 +5921,8 @@ class ConfigurationVariables {
     }
     if (_json.containsKey('variableSet')) {
       variableSet = (_json['variableSet'] as core.List)
-          .map<VariableSet>((value) => VariableSet.fromJson(value))
+          .map<VariableSet>((value) => VariableSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5787,10 +5980,12 @@ class Device {
       managementType = _json['managementType'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('report')) {
-      report = DeviceReport.fromJson(_json['report']);
+      report = DeviceReport.fromJson(
+          _json['report'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5828,7 +6023,8 @@ class DeviceReport {
   DeviceReport.fromJson(core.Map _json) {
     if (_json.containsKey('appState')) {
       appState = (_json['appState'] as core.List)
-          .map<AppState>((value) => AppState.fromJson(value))
+          .map<AppState>((value) =>
+              AppState.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('lastUpdatedTimestampMillis')) {
@@ -5868,7 +6064,8 @@ class DeviceReportUpdateEvent {
       deviceId = _json['deviceId'] as core.String;
     }
     if (_json.containsKey('report')) {
-      report = DeviceReport.fromJson(_json['report']);
+      report = DeviceReport.fromJson(
+          _json['report'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userId')) {
       userId = _json['userId'] as core.String;
@@ -5928,7 +6125,8 @@ class DevicesListResponse {
   DevicesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('device')) {
       device = (_json['device'] as core.List)
-          .map<Device>((value) => Device.fromJson(value))
+          .map<Device>((value) =>
+              Device.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5973,7 +6171,8 @@ class Enterprise {
   Enterprise.fromJson(core.Map _json) {
     if (_json.containsKey('administrator')) {
       administrator = (_json['administrator'] as core.List)
-          .map<Administrator>((value) => Administrator.fromJson(value))
+          .map<Administrator>((value) => Administrator.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -6038,7 +6237,8 @@ class EnterprisesListResponse {
   EnterprisesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('enterprise')) {
       enterprise = (_json['enterprise'] as core.List)
-          .map<Enterprise>((value) => Enterprise.fromJson(value))
+          .map<Enterprise>((value) =>
+              Enterprise.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6150,7 +6350,8 @@ class EntitlementsListResponse {
   EntitlementsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entitlement')) {
       entitlement = (_json['entitlement'] as core.List)
-          .map<Entitlement>((value) => Entitlement.fromJson(value))
+          .map<Entitlement>((value) => Entitlement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6283,7 +6484,8 @@ class GroupLicenseUsersListResponse {
   GroupLicenseUsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('user')) {
       user = (_json['user'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6306,7 +6508,8 @@ class GroupLicensesListResponse {
   GroupLicensesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('groupLicense')) {
       groupLicense = (_json['groupLicense'] as core.List)
-          .map<GroupLicense>((value) => GroupLicense.fromJson(value))
+          .map<GroupLicense>((value) => GroupLicense.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6462,7 +6665,8 @@ class InstallsListResponse {
   InstallsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('install')) {
       install = (_json['install'] as core.List)
-          .map<Install>((value) => Install.fromJson(value))
+          .map<Install>((value) =>
+              Install.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6635,15 +6839,17 @@ class ManagedConfiguration {
 
   ManagedConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('configurationVariables')) {
-      configurationVariables =
-          ConfigurationVariables.fromJson(_json['configurationVariables']);
+      configurationVariables = ConfigurationVariables.fromJson(
+          _json['configurationVariables']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('managedProperty')) {
       managedProperty = (_json['managedProperty'] as core.List)
-          .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => ManagedProperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productId')) {
@@ -6678,11 +6884,11 @@ class ManagedConfigurationsForDeviceListResponse {
 
   ManagedConfigurationsForDeviceListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('managedConfigurationForDevice')) {
-      managedConfigurationForDevice =
-          (_json['managedConfigurationForDevice'] as core.List)
-              .map<ManagedConfiguration>(
-                  (value) => ManagedConfiguration.fromJson(value))
-              .toList();
+      managedConfigurationForDevice = (_json['managedConfigurationForDevice']
+              as core.List)
+          .map<ManagedConfiguration>((value) => ManagedConfiguration.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
   }
 
@@ -6704,11 +6910,11 @@ class ManagedConfigurationsForUserListResponse {
 
   ManagedConfigurationsForUserListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('managedConfigurationForUser')) {
-      managedConfigurationForUser =
-          (_json['managedConfigurationForUser'] as core.List)
-              .map<ManagedConfiguration>(
-                  (value) => ManagedConfiguration.fromJson(value))
-              .toList();
+      managedConfigurationForUser = (_json['managedConfigurationForUser']
+              as core.List)
+          .map<ManagedConfiguration>((value) => ManagedConfiguration.fromJson(
+              value as core.Map<core.String, core.dynamic>))
+          .toList();
     }
   }
 
@@ -6778,8 +6984,9 @@ class ManagedConfigurationsSettingsListResponse {
     if (_json.containsKey('managedConfigurationsSettings')) {
       managedConfigurationsSettings =
           (_json['managedConfigurationsSettings'] as core.List)
-              .map<ManagedConfigurationsSettings>(
-                  (value) => ManagedConfigurationsSettings.fromJson(value))
+              .map<ManagedConfigurationsSettings>((value) =>
+                  ManagedConfigurationsSettings.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -6836,12 +7043,13 @@ class ManagedProperty {
       valueBool = _json['valueBool'] as core.bool;
     }
     if (_json.containsKey('valueBundle')) {
-      valueBundle = ManagedPropertyBundle.fromJson(_json['valueBundle']);
+      valueBundle = ManagedPropertyBundle.fromJson(
+          _json['valueBundle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('valueBundleArray')) {
       valueBundleArray = (_json['valueBundleArray'] as core.List)
-          .map<ManagedPropertyBundle>(
-              (value) => ManagedPropertyBundle.fromJson(value))
+          .map<ManagedPropertyBundle>((value) => ManagedPropertyBundle.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('valueInteger')) {
@@ -6895,7 +7103,8 @@ class ManagedPropertyBundle {
   ManagedPropertyBundle.fromJson(core.Map _json) {
     if (_json.containsKey('managedProperty')) {
       managedProperty = (_json['managedProperty'] as core.List)
-          .map<ManagedProperty>((value) => ManagedProperty.fromJson(value))
+          .map<ManagedProperty>((value) => ManagedProperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7071,39 +7280,44 @@ class Notification {
     if (_json.containsKey('appRestrictionsSchemaChangeEvent')) {
       appRestrictionsSchemaChangeEvent =
           AppRestrictionsSchemaChangeEvent.fromJson(
-              _json['appRestrictionsSchemaChangeEvent']);
+              _json['appRestrictionsSchemaChangeEvent']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('appUpdateEvent')) {
-      appUpdateEvent = AppUpdateEvent.fromJson(_json['appUpdateEvent']);
+      appUpdateEvent = AppUpdateEvent.fromJson(
+          _json['appUpdateEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deviceReportUpdateEvent')) {
-      deviceReportUpdateEvent =
-          DeviceReportUpdateEvent.fromJson(_json['deviceReportUpdateEvent']);
+      deviceReportUpdateEvent = DeviceReportUpdateEvent.fromJson(
+          _json['deviceReportUpdateEvent']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enterpriseId')) {
       enterpriseId = _json['enterpriseId'] as core.String;
     }
     if (_json.containsKey('installFailureEvent')) {
-      installFailureEvent =
-          InstallFailureEvent.fromJson(_json['installFailureEvent']);
+      installFailureEvent = InstallFailureEvent.fromJson(
+          _json['installFailureEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('newDeviceEvent')) {
-      newDeviceEvent = NewDeviceEvent.fromJson(_json['newDeviceEvent']);
+      newDeviceEvent = NewDeviceEvent.fromJson(
+          _json['newDeviceEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('newPermissionsEvent')) {
-      newPermissionsEvent =
-          NewPermissionsEvent.fromJson(_json['newPermissionsEvent']);
+      newPermissionsEvent = NewPermissionsEvent.fromJson(
+          _json['newPermissionsEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('notificationType')) {
       notificationType = _json['notificationType'] as core.String;
     }
     if (_json.containsKey('productApprovalEvent')) {
-      productApprovalEvent =
-          ProductApprovalEvent.fromJson(_json['productApprovalEvent']);
+      productApprovalEvent = ProductApprovalEvent.fromJson(
+          _json['productApprovalEvent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productAvailabilityChangeEvent')) {
       productAvailabilityChangeEvent = ProductAvailabilityChangeEvent.fromJson(
-          _json['productAvailabilityChangeEvent']);
+          _json['productAvailabilityChangeEvent']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestampMillis')) {
       timestampMillis = _json['timestampMillis'] as core.String;
@@ -7168,7 +7382,8 @@ class NotificationSet {
   NotificationSet.fromJson(core.Map _json) {
     if (_json.containsKey('notification')) {
       notification = (_json['notification'] as core.List)
-          .map<Notification>((value) => Notification.fromJson(value))
+          .map<Notification>((value) => Notification.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notificationSetId')) {
@@ -7337,8 +7552,8 @@ class Policy {
       deviceReportPolicy = _json['deviceReportPolicy'] as core.String;
     }
     if (_json.containsKey('maintenanceWindow')) {
-      maintenanceWindow =
-          MaintenanceWindow.fromJson(_json['maintenanceWindow']);
+      maintenanceWindow = MaintenanceWindow.fromJson(
+          _json['maintenanceWindow'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productAvailabilityPolicy')) {
       productAvailabilityPolicy =
@@ -7346,7 +7561,8 @@ class Policy {
     }
     if (_json.containsKey('productPolicy')) {
       productPolicy = (_json['productPolicy'] as core.List)
-          .map<ProductPolicy>((value) => ProductPolicy.fromJson(value))
+          .map<ProductPolicy>((value) => ProductPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7488,12 +7704,14 @@ class Product {
   Product.fromJson(core.Map _json) {
     if (_json.containsKey('appTracks')) {
       appTracks = (_json['appTracks'] as core.List)
-          .map<TrackInfo>((value) => TrackInfo.fromJson(value))
+          .map<TrackInfo>((value) =>
+              TrackInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('appVersion')) {
       appVersion = (_json['appVersion'] as core.List)
-          .map<AppVersion>((value) => AppVersion.fromJson(value))
+          .map<AppVersion>((value) =>
+              AppVersion.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('authorName')) {
@@ -7541,7 +7759,8 @@ class Product {
     }
     if (_json.containsKey('permissions')) {
       permissions = (_json['permissions'] as core.List)
-          .map<ProductPermission>((value) => ProductPermission.fromJson(value))
+          .map<ProductPermission>((value) => ProductPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productId')) {
@@ -7562,8 +7781,8 @@ class Product {
           .toList();
     }
     if (_json.containsKey('signingCertificate')) {
-      signingCertificate =
-          ProductSigningCertificate.fromJson(_json['signingCertificate']);
+      signingCertificate = ProductSigningCertificate.fromJson(
+          _json['signingCertificate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('smallIconUrl')) {
       smallIconUrl = _json['smallIconUrl'] as core.String;
@@ -7783,7 +8002,8 @@ class ProductPermissions {
   ProductPermissions.fromJson(core.Map _json) {
     if (_json.containsKey('permission')) {
       permission = (_json['permission'] as core.List)
-          .map<ProductPermission>((value) => ProductPermission.fromJson(value))
+          .map<ProductPermission>((value) => ProductPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productId')) {
@@ -7826,12 +8046,12 @@ class ProductPolicy {
 
   ProductPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('autoInstallPolicy')) {
-      autoInstallPolicy =
-          AutoInstallPolicy.fromJson(_json['autoInstallPolicy']);
+      autoInstallPolicy = AutoInstallPolicy.fromJson(
+          _json['autoInstallPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('managedConfiguration')) {
-      managedConfiguration =
-          ManagedConfiguration.fromJson(_json['managedConfiguration']);
+      managedConfiguration = ManagedConfiguration.fromJson(
+          _json['managedConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productId')) {
       productId = _json['productId'] as core.String;
@@ -7918,7 +8138,8 @@ class ProductSet {
     }
     if (_json.containsKey('productVisibility')) {
       productVisibility = (_json['productVisibility'] as core.List)
-          .map<ProductVisibility>((value) => ProductVisibility.fromJson(value))
+          .map<ProductVisibility>((value) => ProductVisibility.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8044,7 +8265,8 @@ class ProductsApproveRequest {
 
   ProductsApproveRequest.fromJson(core.Map _json) {
     if (_json.containsKey('approvalUrlInfo')) {
-      approvalUrlInfo = ApprovalUrlInfo.fromJson(_json['approvalUrlInfo']);
+      approvalUrlInfo = ApprovalUrlInfo.fromJson(
+          _json['approvalUrlInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('approvedPermissions')) {
       approvedPermissions = _json['approvedPermissions'] as core.String;
@@ -8106,15 +8328,18 @@ class ProductsListResponse {
 
   ProductsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('product')) {
       product = (_json['product'] as core.List)
-          .map<Product>((value) => Product.fromJson(value))
+          .map<Product>((value) =>
+              Product.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
+      tokenPagination = TokenPagination.fromJson(
+          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8147,7 +8372,8 @@ class ServiceAccount {
 
   ServiceAccount.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = ServiceAccountKey.fromJson(_json['key']);
+      key = ServiceAccountKey.fromJson(
+          _json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -8237,7 +8463,8 @@ class ServiceAccountKeysListResponse {
   ServiceAccountKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('serviceAccountKey')) {
       serviceAccountKey = (_json['serviceAccountKey'] as core.List)
-          .map<ServiceAccountKey>((value) => ServiceAccountKey.fromJson(value))
+          .map<ServiceAccountKey>((value) => ServiceAccountKey.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8327,7 +8554,8 @@ class StoreCluster {
     }
     if (_json.containsKey('name')) {
       name = (_json['name'] as core.List)
-          .map<LocalizedText>((value) => LocalizedText.fromJson(value))
+          .map<LocalizedText>((value) => LocalizedText.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('orderInPage')) {
@@ -8408,7 +8636,8 @@ class StoreLayoutClustersListResponse {
   StoreLayoutClustersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('cluster')) {
       cluster = (_json['cluster'] as core.List)
-          .map<StoreCluster>((value) => StoreCluster.fromJson(value))
+          .map<StoreCluster>((value) => StoreCluster.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8431,7 +8660,8 @@ class StoreLayoutPagesListResponse {
   StoreLayoutPagesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('page')) {
       page = (_json['page'] as core.List)
-          .map<StorePage>((value) => StorePage.fromJson(value))
+          .map<StorePage>((value) =>
+              StorePage.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8476,7 +8706,8 @@ class StorePage {
     }
     if (_json.containsKey('name')) {
       name = (_json['name'] as core.List)
-          .map<LocalizedText>((value) => LocalizedText.fromJson(value))
+          .map<LocalizedText>((value) => LocalizedText.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8671,7 +8902,8 @@ class UsersListResponse {
   UsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('user')) {
       user = (_json['user'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8778,7 +9010,8 @@ class WebApp {
     }
     if (_json.containsKey('icons')) {
       icons = (_json['icons'] as core.List)
-          .map<WebAppIcon>((value) => WebAppIcon.fromJson(value))
+          .map<WebAppIcon>((value) =>
+              WebAppIcon.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('isPublished')) {
@@ -8859,7 +9092,8 @@ class WebAppsListResponse {
   WebAppsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('webApp')) {
       webApp = (_json['webApp'] as core.List)
-          .map<WebApp>((value) => WebApp.fromJson(value))
+          .map<WebApp>((value) =>
+              WebApp.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

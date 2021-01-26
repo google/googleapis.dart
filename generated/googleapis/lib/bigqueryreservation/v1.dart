@@ -105,7 +105,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -180,7 +182,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -251,7 +256,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BiReservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          BiReservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up assignments for a specified resource for a particular region. If
@@ -335,8 +343,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SearchAllAssignmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchAllAssignmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Looks up assignments for a specified resource for a particular region. If
@@ -421,7 +431,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchAssignmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchAssignmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a BI reservation. Only fields specified in the `field_mask` are
@@ -487,7 +500,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BiReservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          BiReservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -561,7 +577,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CapacityCommitment.fromJson(data));
+    return _response.then(
+      (data) => CapacityCommitment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a capacity commitment. Attempting to delete capacity commitment
@@ -614,7 +633,9 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about the capacity commitment.
@@ -665,7 +686,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CapacityCommitment.fromJson(data));
+    return _response.then(
+      (data) => CapacityCommitment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the capacity commitments for the admin project.
@@ -730,8 +754,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListCapacityCommitmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListCapacityCommitmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Merges capacity commitments of the same plan into a single commitment. The
@@ -793,7 +819,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CapacityCommitment.fromJson(data));
+    return _response.then(
+      (data) => CapacityCommitment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing capacity commitment. Only `plan` and `renewal_plan`
@@ -860,7 +889,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CapacityCommitment.fromJson(data));
+    return _response.then(
+      (data) => CapacityCommitment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Splits capacity commitment to two commitments of the same plan and
@@ -922,8 +954,10 @@ class ProjectsLocationsCapacityCommitmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SplitCapacityCommitmentResponse.fromJson(data));
+    return _response.then(
+      (data) => SplitCapacityCommitmentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -998,7 +1032,10 @@ class ProjectsLocationsReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a reservation. Returns `google.rpc.Code.FAILED_PRECONDITION` when
@@ -1050,7 +1087,9 @@ class ProjectsLocationsReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns information about the reservation.
@@ -1101,7 +1140,10 @@ class ProjectsLocationsReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the reservations for the project in the specified location.
@@ -1166,7 +1208,10 @@ class ProjectsLocationsReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReservationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReservationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing reservation resource.
@@ -1229,7 +1274,10 @@ class ProjectsLocationsReservationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Reservation.fromJson(data));
+    return _response.then(
+      (data) =>
+          Reservation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1313,7 +1361,10 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Assignment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Assignment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a assignment. No expansion will happen. Example: * Organization
@@ -1371,7 +1422,9 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists assignments. Only explicitly created assignments will be returned.
@@ -1447,7 +1500,10 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAssignmentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAssignmentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves an assignment under a new reservation. This differs from removing an
@@ -1506,7 +1562,10 @@ class ProjectsLocationsReservationsAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Assignment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Assignment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1703,7 +1762,8 @@ class CapacityCommitment {
       commitmentStartTime = _json['commitmentStartTime'] as core.String;
     }
     if (_json.containsKey('failureStatus')) {
-      failureStatus = Status.fromJson(_json['failureStatus']);
+      failureStatus = Status.fromJson(
+          _json['failureStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1807,7 +1867,8 @@ class ListAssignmentsResponse {
   ListAssignmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assignments')) {
       assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) => Assignment.fromJson(value))
+          .map<Assignment>((value) =>
+              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1842,8 +1903,8 @@ class ListCapacityCommitmentsResponse {
   ListCapacityCommitmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('capacityCommitments')) {
       capacityCommitments = (_json['capacityCommitments'] as core.List)
-          .map<CapacityCommitment>(
-              (value) => CapacityCommitment.fromJson(value))
+          .map<CapacityCommitment>((value) => CapacityCommitment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1880,7 +1941,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1914,7 +1976,8 @@ class ListReservationsResponse {
     }
     if (_json.containsKey('reservations')) {
       reservations = (_json['reservations'] as core.List)
-          .map<Reservation>((value) => Reservation.fromJson(value))
+          .map<Reservation>((value) => Reservation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2030,11 +2093,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2042,7 +2107,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2149,7 +2215,8 @@ class SearchAllAssignmentsResponse {
   SearchAllAssignmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assignments')) {
       assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) => Assignment.fromJson(value))
+          .map<Assignment>((value) =>
+              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2184,7 +2251,8 @@ class SearchAssignmentsResponse {
   SearchAssignmentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('assignments')) {
       assignments = (_json['assignments'] as core.List)
-          .map<Assignment>((value) => Assignment.fromJson(value))
+          .map<Assignment>((value) =>
+              Assignment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2239,10 +2307,12 @@ class SplitCapacityCommitmentResponse {
 
   SplitCapacityCommitmentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('first')) {
-      first = CapacityCommitment.fromJson(_json['first']);
+      first = CapacityCommitment.fromJson(
+          _json['first'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('second')) {
-      second = CapacityCommitment.fromJson(_json['second']);
+      second = CapacityCommitment.fromJson(
+          _json['second'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2290,7 +2360,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

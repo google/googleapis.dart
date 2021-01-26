@@ -112,7 +112,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -181,7 +183,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -260,7 +265,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Namespace.fromJson(data));
+    return _response.then(
+      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a namespace. This also deletes all services and endpoints in the
@@ -311,7 +318,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a namespace.
@@ -361,7 +370,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Namespace.fromJson(data));
+    return _response.then(
+      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM Policy for a resource (namespace or service only).
@@ -421,7 +432,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all namespaces.
@@ -516,7 +529,10 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListNamespacesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListNamespacesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a namespace.
@@ -579,7 +595,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Namespace.fromJson(data));
+    return _response.then(
+      (data) => Namespace.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM Policy for a resource (namespace or service only).
@@ -639,7 +657,9 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests IAM permissions for a resource (namespace or service only).
@@ -699,7 +719,10 @@ class ProjectsLocationsNamespacesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -779,7 +802,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a service. This also deletes all endpoints associated with the
@@ -830,7 +855,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a service.
@@ -880,7 +907,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM Policy for a resource (namespace or service only).
@@ -940,7 +969,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all services belonging to a namespace.
@@ -1033,7 +1064,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a service.
@@ -1096,7 +1130,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Service.fromJson(data));
+    return _response.then(
+      (data) => Service.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a service and its associated endpoints. Resolving a service is not
@@ -1155,7 +1191,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResolveServiceResponse.fromJson(data));
+    return _response.then(
+      (data) => ResolveServiceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM Policy for a resource (namespace or service only).
@@ -1215,7 +1254,9 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests IAM permissions for a resource (namespace or service only).
@@ -1275,7 +1316,10 @@ class ProjectsLocationsNamespacesServicesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1353,7 +1397,9 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Endpoint.fromJson(data));
+    return _response.then(
+      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a endpoint.
@@ -1403,7 +1449,9 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a endpoint.
@@ -1453,7 +1501,9 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Endpoint.fromJson(data));
+    return _response.then(
+      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all endpoints.
@@ -1548,7 +1598,10 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListEndpointsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListEndpointsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a endpoint.
@@ -1612,7 +1665,9 @@ class ProjectsLocationsNamespacesServicesEndpointsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Endpoint.fromJson(data));
+    return _response.then(
+      (data) => Endpoint.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1673,7 +1728,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1750,7 +1806,8 @@ class Endpoint {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -1857,7 +1914,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1912,7 +1970,8 @@ class ListEndpointsResponse {
   ListEndpointsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('endpoints')) {
       endpoints = (_json['endpoints'] as core.List)
-          .map<Endpoint>((value) => Endpoint.fromJson(value))
+          .map<Endpoint>((value) =>
+              Endpoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1945,7 +2004,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1979,7 +2039,8 @@ class ListNamespacesResponse {
   ListNamespacesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('namespaces')) {
       namespaces = (_json['namespaces'] as core.List)
-          .map<Namespace>((value) => Namespace.fromJson(value))
+          .map<Namespace>((value) =>
+              Namespace.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2016,7 +2077,8 @@ class ListServicesResponse {
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
-          .map<Service>((value) => Service.fromJson(value))
+          .map<Service>((value) =>
+              Service.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2065,7 +2127,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -2073,7 +2136,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2119,7 +2183,8 @@ class Namespace {
   Namespace.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -2215,7 +2280,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2293,7 +2359,8 @@ class ResolveServiceResponse {
 
   ResolveServiceResponse.fromJson(core.Map _json) {
     if (_json.containsKey('service')) {
-      service = Service.fromJson(_json['service']);
+      service = Service.fromJson(
+          _json['service'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2329,12 +2396,14 @@ class Service {
   Service.fromJson(core.Map _json) {
     if (_json.containsKey('endpoints')) {
       endpoints = (_json['endpoints'] as core.List)
-          .map<Endpoint>((value) => Endpoint.fromJson(value))
+          .map<Endpoint>((value) =>
+              Endpoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -2369,7 +2438,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 

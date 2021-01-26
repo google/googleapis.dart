@@ -132,7 +132,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestRulesetResponse.fromJson(data));
+    return _response.then(
+      (data) => TestRulesetResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -209,7 +212,9 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a `Release` by resource name.
@@ -259,7 +264,9 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a `Release` by name.
@@ -309,7 +316,9 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the `Release` executable to use when enforcing rules.
@@ -375,8 +384,10 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetReleaseExecutableResponse.fromJson(data));
+    return _response.then(
+      (data) => GetReleaseExecutableResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List the `Release` values for a project. This list may optionally be
@@ -464,7 +475,10 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReleasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReleasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a `Release` via PATCH. Only updates to the `ruleset_name` and
@@ -522,7 +536,9 @@ class ProjectsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -589,7 +605,9 @@ class ProjectsRulesetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Ruleset.fromJson(data));
+    return _response.then(
+      (data) => Ruleset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a
@@ -640,7 +658,9 @@ class ProjectsRulesetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a `Ruleset` by name including the full `Source` contents.
@@ -690,7 +710,9 @@ class ProjectsRulesetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Ruleset.fromJson(data));
+    return _response.then(
+      (data) => Ruleset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List `Ruleset` metadata only and optionally filter the results by
@@ -767,7 +789,10 @@ class ProjectsRulesetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRulesetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRulesetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -786,7 +811,8 @@ class Arg {
 
   Arg.fromJson(core.Map _json) {
     if (_json.containsKey('anyValue')) {
-      anyValue = Empty.fromJson(_json['anyValue']);
+      anyValue = Empty.fromJson(
+          _json['anyValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('exactValue')) {
       exactValue = _json['exactValue'] as core.Object;
@@ -840,15 +866,18 @@ class ExpressionReport {
   ExpressionReport.fromJson(core.Map _json) {
     if (_json.containsKey('children')) {
       children = (_json['children'] as core.List)
-          .map<ExpressionReport>((value) => ExpressionReport.fromJson(value))
+          .map<ExpressionReport>((value) => ExpressionReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(_json['sourcePosition']);
+      sourcePosition = SourcePosition.fromJson(
+          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<ValueCount>((value) => ValueCount.fromJson(value))
+          .map<ValueCount>((value) =>
+              ValueCount.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -977,14 +1006,16 @@ class FunctionMock {
   FunctionMock.fromJson(core.Map _json) {
     if (_json.containsKey('args')) {
       args = (_json['args'] as core.List)
-          .map<Arg>((value) => Arg.fromJson(value))
+          .map<Arg>((value) =>
+              Arg.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('function')) {
       function = _json['function'] as core.String;
     }
     if (_json.containsKey('result')) {
-      result = Result.fromJson(_json['result']);
+      result = Result.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1119,7 +1150,8 @@ class Issue {
       severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(_json['sourcePosition']);
+      sourcePosition = SourcePosition.fromJson(
+          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1155,7 +1187,8 @@ class ListReleasesResponse {
     }
     if (_json.containsKey('releases')) {
       releases = (_json['releases'] as core.List)
-          .map<Release>((value) => Release.fromJson(value))
+          .map<Release>((value) =>
+              Release.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1189,7 +1222,8 @@ class ListRulesetsResponse {
     }
     if (_json.containsKey('rulesets')) {
       rulesets = (_json['rulesets'] as core.List)
-          .map<Ruleset>((value) => Ruleset.fromJson(value))
+          .map<Ruleset>((value) =>
+              Ruleset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1313,7 +1347,8 @@ class Result {
 
   Result.fromJson(core.Map _json) {
     if (_json.containsKey('undefined')) {
-      undefined = Empty.fromJson(_json['undefined']);
+      undefined = Empty.fromJson(
+          _json['undefined'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('value')) {
       value = _json['value'] as core.Object;
@@ -1355,13 +1390,15 @@ class Ruleset {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = Metadata.fromJson(_json['metadata']);
+      metadata = Metadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1393,7 +1430,8 @@ class Source {
   Source.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<File>((value) => File.fromJson(value))
+          .map<File>((value) =>
+              File.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1537,7 +1575,8 @@ class TestCase {
     }
     if (_json.containsKey('functionMocks')) {
       functionMocks = (_json['functionMocks'] as core.List)
-          .map<FunctionMock>((value) => FunctionMock.fromJson(value))
+          .map<FunctionMock>((value) => FunctionMock.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pathEncoding')) {
@@ -1628,16 +1667,19 @@ class TestResult {
           .toList();
     }
     if (_json.containsKey('errorPosition')) {
-      errorPosition = SourcePosition.fromJson(_json['errorPosition']);
+      errorPosition = SourcePosition.fromJson(
+          _json['errorPosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('expressionReports')) {
       expressionReports = (_json['expressionReports'] as core.List)
-          .map<ExpressionReport>((value) => ExpressionReport.fromJson(value))
+          .map<ExpressionReport>((value) => ExpressionReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('functionCalls')) {
       functionCalls = (_json['functionCalls'] as core.List)
-          .map<FunctionCall>((value) => FunctionCall.fromJson(value))
+          .map<FunctionCall>((value) => FunctionCall.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('state')) {
@@ -1645,7 +1687,8 @@ class TestResult {
     }
     if (_json.containsKey('visitedExpressions')) {
       visitedExpressions = (_json['visitedExpressions'] as core.List)
-          .map<VisitedExpression>((value) => VisitedExpression.fromJson(value))
+          .map<VisitedExpression>((value) => VisitedExpression.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1690,10 +1733,12 @@ class TestRulesetRequest {
 
   TestRulesetRequest.fromJson(core.Map _json) {
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('testSuite')) {
-      testSuite = TestSuite.fromJson(_json['testSuite']);
+      testSuite = TestSuite.fromJson(
+          _json['testSuite'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1725,12 +1770,14 @@ class TestRulesetResponse {
   TestRulesetResponse.fromJson(core.Map _json) {
     if (_json.containsKey('issues')) {
       issues = (_json['issues'] as core.List)
-          .map<Issue>((value) => Issue.fromJson(value))
+          .map<Issue>((value) =>
+              Issue.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('testResults')) {
       testResults = (_json['testResults'] as core.List)
-          .map<TestResult>((value) => TestResult.fromJson(value))
+          .map<TestResult>((value) =>
+              TestResult.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1761,7 +1808,8 @@ class TestSuite {
   TestSuite.fromJson(core.Map _json) {
     if (_json.containsKey('testCases')) {
       testCases = (_json['testCases'] as core.List)
-          .map<TestCase>((value) => TestCase.fromJson(value))
+          .map<TestCase>((value) =>
+              TestCase.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1787,7 +1835,8 @@ class UpdateReleaseRequest {
 
   UpdateReleaseRequest.fromJson(core.Map _json) {
     if (_json.containsKey('release')) {
-      release = Release.fromJson(_json['release']);
+      release = Release.fromJson(
+          _json['release'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -1856,7 +1905,8 @@ class VisitedExpression {
 
   VisitedExpression.fromJson(core.Map _json) {
     if (_json.containsKey('sourcePosition')) {
-      sourcePosition = SourcePosition.fromJson(_json['sourcePosition']);
+      sourcePosition = SourcePosition.fromJson(
+          _json['sourcePosition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('value')) {
       value = _json['value'] as core.Object;

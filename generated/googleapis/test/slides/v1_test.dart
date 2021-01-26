@@ -122,7 +122,7 @@ void checkAutoText(api.AutoText o) {
   buildCounterAutoText++;
   if (buildCounterAutoText < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
-    checkTextStyle(o.style);
+    checkTextStyle(o.style as api.TextStyle);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterAutoText--;
@@ -137,8 +137,8 @@ core.List<api.Request> buildUnnamed1922() {
 
 void checkUnnamed1922(core.List<api.Request> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRequest(o[0]);
-  checkRequest(o[1]);
+  checkRequest(o[0] as api.Request);
+  checkRequest(o[1] as api.Request);
 }
 
 core.int buildCounterBatchUpdatePresentationRequest = 0;
@@ -157,7 +157,7 @@ void checkBatchUpdatePresentationRequest(api.BatchUpdatePresentationRequest o) {
   buildCounterBatchUpdatePresentationRequest++;
   if (buildCounterBatchUpdatePresentationRequest < 3) {
     checkUnnamed1922(o.requests);
-    checkWriteControl(o.writeControl);
+    checkWriteControl(o.writeControl as api.WriteControl);
   }
   buildCounterBatchUpdatePresentationRequest--;
 }
@@ -171,8 +171,8 @@ core.List<api.Response> buildUnnamed1923() {
 
 void checkUnnamed1923(core.List<api.Response> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkResponse(o[0]);
-  checkResponse(o[1]);
+  checkResponse(o[0] as api.Response);
+  checkResponse(o[1] as api.Response);
 }
 
 core.int buildCounterBatchUpdatePresentationResponse = 0;
@@ -194,7 +194,7 @@ void checkBatchUpdatePresentationResponse(
   if (buildCounterBatchUpdatePresentationResponse < 3) {
     unittest.expect(o.presentationId, unittest.equals('foo'));
     checkUnnamed1923(o.replies);
-    checkWriteControl(o.writeControl);
+    checkWriteControl(o.writeControl as api.WriteControl);
   }
   buildCounterBatchUpdatePresentationResponse--;
 }
@@ -216,7 +216,7 @@ api.Bullet buildBullet() {
 void checkBullet(api.Bullet o) {
   buildCounterBullet++;
   if (buildCounterBullet < 3) {
-    checkTextStyle(o.bulletStyle);
+    checkTextStyle(o.bulletStyle as api.TextStyle);
     unittest.expect(o.glyph, unittest.equals('foo'));
     unittest.expect(o.listId, unittest.equals('foo'));
     unittest.expect(o.nestingLevel, unittest.equals(42));
@@ -233,8 +233,8 @@ core.List<api.ThemeColorPair> buildUnnamed1924() {
 
 void checkUnnamed1924(core.List<api.ThemeColorPair> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThemeColorPair(o[0]);
-  checkThemeColorPair(o[1]);
+  checkThemeColorPair(o[0] as api.ThemeColorPair);
+  checkThemeColorPair(o[1] as api.ThemeColorPair);
 }
 
 core.int buildCounterColorScheme = 0;
@@ -273,7 +273,7 @@ void checkColorStop(api.ColorStop o) {
   buildCounterColorStop++;
   if (buildCounterColorStop < 3) {
     unittest.expect(o.alpha, unittest.equals(42.0));
-    checkOpaqueColor(o.color);
+    checkOpaqueColor(o.color as api.OpaqueColor);
     unittest.expect(o.position, unittest.equals(42.0));
   }
   buildCounterColorStop--;
@@ -295,7 +295,8 @@ api.CreateImageRequest buildCreateImageRequest() {
 void checkCreateImageRequest(api.CreateImageRequest o) {
   buildCounterCreateImageRequest++;
   if (buildCounterCreateImageRequest < 3) {
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
   }
@@ -339,7 +340,8 @@ void checkCreateLineRequest(api.CreateLineRequest o) {
   buildCounterCreateLineRequest++;
   if (buildCounterCreateLineRequest < 3) {
     unittest.expect(o.category, unittest.equals('foo'));
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.lineCategory, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
   }
@@ -383,9 +385,9 @@ void checkCreateParagraphBulletsRequest(api.CreateParagraphBulletsRequest o) {
   buildCounterCreateParagraphBulletsRequest++;
   if (buildCounterCreateParagraphBulletsRequest < 3) {
     unittest.expect(o.bulletPreset, unittest.equals('foo'));
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkRange(o.textRange);
+    checkRange(o.textRange as api.Range);
   }
   buildCounterCreateParagraphBulletsRequest--;
 }
@@ -406,7 +408,8 @@ api.CreateShapeRequest buildCreateShapeRequest() {
 void checkCreateShapeRequest(api.CreateShapeRequest o) {
   buildCounterCreateShapeRequest++;
   if (buildCounterCreateShapeRequest < 3) {
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.shapeType, unittest.equals('foo'));
   }
@@ -451,7 +454,8 @@ void checkCreateSheetsChartRequest(api.CreateSheetsChartRequest o) {
   buildCounterCreateSheetsChartRequest++;
   if (buildCounterCreateSheetsChartRequest < 3) {
     unittest.expect(o.chartId, unittest.equals(42));
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.linkingMode, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.spreadsheetId, unittest.equals('foo'));
@@ -487,8 +491,8 @@ core.List<api.LayoutPlaceholderIdMapping> buildUnnamed1925() {
 
 void checkUnnamed1925(core.List<api.LayoutPlaceholderIdMapping> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLayoutPlaceholderIdMapping(o[0]);
-  checkLayoutPlaceholderIdMapping(o[1]);
+  checkLayoutPlaceholderIdMapping(o[0] as api.LayoutPlaceholderIdMapping);
+  checkLayoutPlaceholderIdMapping(o[1] as api.LayoutPlaceholderIdMapping);
 }
 
 core.int buildCounterCreateSlideRequest = 0;
@@ -511,7 +515,7 @@ void checkCreateSlideRequest(api.CreateSlideRequest o) {
     unittest.expect(o.insertionIndex, unittest.equals(42));
     unittest.expect(o.objectId, unittest.equals('foo'));
     checkUnnamed1925(o.placeholderIdMappings);
-    checkLayoutReference(o.slideLayoutReference);
+    checkLayoutReference(o.slideLayoutReference as api.LayoutReference);
   }
   buildCounterCreateSlideRequest--;
 }
@@ -553,7 +557,8 @@ void checkCreateTableRequest(api.CreateTableRequest o) {
   buildCounterCreateTableRequest++;
   if (buildCounterCreateTableRequest < 3) {
     unittest.expect(o.columns, unittest.equals(42));
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.rows, unittest.equals(42));
   }
@@ -596,7 +601,8 @@ api.CreateVideoRequest buildCreateVideoRequest() {
 void checkCreateVideoRequest(api.CreateVideoRequest o) {
   buildCounterCreateVideoRequest++;
   if (buildCounterCreateVideoRequest < 3) {
-    checkPageElementProperties(o.elementProperties);
+    checkPageElementProperties(
+        o.elementProperties as api.PageElementProperties);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.source, unittest.equals('foo'));
@@ -685,9 +691,9 @@ api.DeleteParagraphBulletsRequest buildDeleteParagraphBulletsRequest() {
 void checkDeleteParagraphBulletsRequest(api.DeleteParagraphBulletsRequest o) {
   buildCounterDeleteParagraphBulletsRequest++;
   if (buildCounterDeleteParagraphBulletsRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkRange(o.textRange);
+    checkRange(o.textRange as api.Range);
   }
   buildCounterDeleteParagraphBulletsRequest--;
 }
@@ -707,7 +713,7 @@ api.DeleteTableColumnRequest buildDeleteTableColumnRequest() {
 void checkDeleteTableColumnRequest(api.DeleteTableColumnRequest o) {
   buildCounterDeleteTableColumnRequest++;
   if (buildCounterDeleteTableColumnRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.tableObjectId, unittest.equals('foo'));
   }
   buildCounterDeleteTableColumnRequest--;
@@ -728,7 +734,7 @@ api.DeleteTableRowRequest buildDeleteTableRowRequest() {
 void checkDeleteTableRowRequest(api.DeleteTableRowRequest o) {
   buildCounterDeleteTableRowRequest++;
   if (buildCounterDeleteTableRowRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.tableObjectId, unittest.equals('foo'));
   }
   buildCounterDeleteTableRowRequest--;
@@ -750,9 +756,9 @@ api.DeleteTextRequest buildDeleteTextRequest() {
 void checkDeleteTextRequest(api.DeleteTextRequest o) {
   buildCounterDeleteTextRequest++;
   if (buildCounterDeleteTextRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkRange(o.textRange);
+    checkRange(o.textRange as api.Range);
   }
   buildCounterDeleteTextRequest--;
 }
@@ -840,8 +846,8 @@ core.List<api.PageElement> buildUnnamed1927() {
 
 void checkUnnamed1927(core.List<api.PageElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPageElement(o[0]);
-  checkPageElement(o[1]);
+  checkPageElement(o[0] as api.PageElement);
+  checkPageElement(o[1] as api.PageElement);
 }
 
 core.int buildCounterGroup = 0;
@@ -933,7 +939,7 @@ void checkImage(api.Image o) {
   buildCounterImage++;
   if (buildCounterImage < 3) {
     unittest.expect(o.contentUrl, unittest.equals('foo'));
-    checkImageProperties(o.imageProperties);
+    checkImageProperties(o.imageProperties as api.ImageProperties);
     unittest.expect(o.sourceUrl, unittest.equals('foo'));
   }
   buildCounterImage--;
@@ -962,11 +968,11 @@ void checkImageProperties(api.ImageProperties o) {
   if (buildCounterImageProperties < 3) {
     unittest.expect(o.brightness, unittest.equals(42.0));
     unittest.expect(o.contrast, unittest.equals(42.0));
-    checkCropProperties(o.cropProperties);
-    checkLink(o.link);
-    checkOutline(o.outline);
-    checkRecolor(o.recolor);
-    checkShadow(o.shadow);
+    checkCropProperties(o.cropProperties as api.CropProperties);
+    checkLink(o.link as api.Link);
+    checkOutline(o.outline as api.Outline);
+    checkRecolor(o.recolor as api.Recolor);
+    checkShadow(o.shadow as api.Shadow);
     unittest.expect(o.transparency, unittest.equals(42.0));
   }
   buildCounterImageProperties--;
@@ -989,7 +995,7 @@ api.InsertTableColumnsRequest buildInsertTableColumnsRequest() {
 void checkInsertTableColumnsRequest(api.InsertTableColumnsRequest o) {
   buildCounterInsertTableColumnsRequest++;
   if (buildCounterInsertTableColumnsRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.insertRight, unittest.isTrue);
     unittest.expect(o.number, unittest.equals(42));
     unittest.expect(o.tableObjectId, unittest.equals('foo'));
@@ -1014,7 +1020,7 @@ api.InsertTableRowsRequest buildInsertTableRowsRequest() {
 void checkInsertTableRowsRequest(api.InsertTableRowsRequest o) {
   buildCounterInsertTableRowsRequest++;
   if (buildCounterInsertTableRowsRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.insertBelow, unittest.isTrue);
     unittest.expect(o.number, unittest.equals(42));
     unittest.expect(o.tableObjectId, unittest.equals('foo'));
@@ -1039,7 +1045,7 @@ api.InsertTextRequest buildInsertTextRequest() {
 void checkInsertTextRequest(api.InsertTextRequest o) {
   buildCounterInsertTextRequest++;
   if (buildCounterInsertTextRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.insertionIndex, unittest.equals(42));
     unittest.expect(o.objectId, unittest.equals('foo'));
     unittest.expect(o.text, unittest.equals('foo'));
@@ -1063,7 +1069,7 @@ api.LayoutPlaceholderIdMapping buildLayoutPlaceholderIdMapping() {
 void checkLayoutPlaceholderIdMapping(api.LayoutPlaceholderIdMapping o) {
   buildCounterLayoutPlaceholderIdMapping++;
   if (buildCounterLayoutPlaceholderIdMapping < 3) {
-    checkPlaceholder(o.layoutPlaceholder);
+    checkPlaceholder(o.layoutPlaceholder as api.Placeholder);
     unittest.expect(o.layoutPlaceholderObjectId, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
   }
@@ -1131,7 +1137,7 @@ void checkLine(api.Line o) {
   buildCounterLine++;
   if (buildCounterLine < 3) {
     unittest.expect(o.lineCategory, unittest.equals('foo'));
-    checkLineProperties(o.lineProperties);
+    checkLineProperties(o.lineProperties as api.LineProperties);
     unittest.expect(o.lineType, unittest.equals('foo'));
   }
   buildCounterLine--;
@@ -1172,7 +1178,7 @@ api.LineFill buildLineFill() {
 void checkLineFill(api.LineFill o) {
   buildCounterLineFill++;
   if (buildCounterLineFill < 3) {
-    checkSolidFill(o.solidFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
   }
   buildCounterLineFill--;
 }
@@ -1200,12 +1206,12 @@ void checkLineProperties(api.LineProperties o) {
   if (buildCounterLineProperties < 3) {
     unittest.expect(o.dashStyle, unittest.equals('foo'));
     unittest.expect(o.endArrow, unittest.equals('foo'));
-    checkLineConnection(o.endConnection);
-    checkLineFill(o.lineFill);
-    checkLink(o.link);
+    checkLineConnection(o.endConnection as api.LineConnection);
+    checkLineFill(o.lineFill as api.LineFill);
+    checkLink(o.link as api.Link);
     unittest.expect(o.startArrow, unittest.equals('foo'));
-    checkLineConnection(o.startConnection);
-    checkDimension(o.weight);
+    checkLineConnection(o.startConnection as api.LineConnection);
+    checkDimension(o.weight as api.Dimension);
   }
   buildCounterLineProperties--;
 }
@@ -1244,8 +1250,8 @@ core.Map<core.String, api.NestingLevel> buildUnnamed1929() {
 
 void checkUnnamed1929(core.Map<core.String, api.NestingLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestingLevel(o['x']);
-  checkNestingLevel(o['y']);
+  checkNestingLevel(o['x'] as api.NestingLevel);
+  checkNestingLevel(o['y'] as api.NestingLevel);
 }
 
 core.int buildCounterList = 0;
@@ -1304,7 +1310,7 @@ void checkMergeTableCellsRequest(api.MergeTableCellsRequest o) {
   buildCounterMergeTableCellsRequest++;
   if (buildCounterMergeTableCellsRequest < 3) {
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTableRange(o.tableRange);
+    checkTableRange(o.tableRange as api.TableRange);
   }
   buildCounterMergeTableCellsRequest--;
 }
@@ -1323,7 +1329,7 @@ api.NestingLevel buildNestingLevel() {
 void checkNestingLevel(api.NestingLevel o) {
   buildCounterNestingLevel++;
   if (buildCounterNestingLevel < 3) {
-    checkTextStyle(o.bulletStyle);
+    checkTextStyle(o.bulletStyle as api.TextStyle);
   }
   buildCounterNestingLevel--;
 }
@@ -1362,7 +1368,7 @@ api.OpaqueColor buildOpaqueColor() {
 void checkOpaqueColor(api.OpaqueColor o) {
   buildCounterOpaqueColor++;
   if (buildCounterOpaqueColor < 3) {
-    checkRgbColor(o.rgbColor);
+    checkRgbColor(o.rgbColor as api.RgbColor);
     unittest.expect(o.themeColor, unittest.equals('foo'));
   }
   buildCounterOpaqueColor--;
@@ -1382,7 +1388,7 @@ api.OptionalColor buildOptionalColor() {
 void checkOptionalColor(api.OptionalColor o) {
   buildCounterOptionalColor++;
   if (buildCounterOptionalColor < 3) {
-    checkOpaqueColor(o.opaqueColor);
+    checkOpaqueColor(o.opaqueColor as api.OpaqueColor);
   }
   buildCounterOptionalColor--;
 }
@@ -1405,9 +1411,9 @@ void checkOutline(api.Outline o) {
   buildCounterOutline++;
   if (buildCounterOutline < 3) {
     unittest.expect(o.dashStyle, unittest.equals('foo'));
-    checkOutlineFill(o.outlineFill);
+    checkOutlineFill(o.outlineFill as api.OutlineFill);
     unittest.expect(o.propertyState, unittest.equals('foo'));
-    checkDimension(o.weight);
+    checkDimension(o.weight as api.Dimension);
   }
   buildCounterOutline--;
 }
@@ -1426,7 +1432,7 @@ api.OutlineFill buildOutlineFill() {
 void checkOutlineFill(api.OutlineFill o) {
   buildCounterOutlineFill++;
   if (buildCounterOutlineFill < 3) {
-    checkSolidFill(o.solidFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
   }
   buildCounterOutlineFill--;
 }
@@ -1440,8 +1446,8 @@ core.List<api.PageElement> buildUnnamed1930() {
 
 void checkUnnamed1930(core.List<api.PageElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPageElement(o[0]);
-  checkPageElement(o[1]);
+  checkPageElement(o[0] as api.PageElement);
+  checkPageElement(o[1] as api.PageElement);
 }
 
 core.int buildCounterPage = 0;
@@ -1466,15 +1472,15 @@ api.Page buildPage() {
 void checkPage(api.Page o) {
   buildCounterPage++;
   if (buildCounterPage < 3) {
-    checkLayoutProperties(o.layoutProperties);
-    checkMasterProperties(o.masterProperties);
-    checkNotesProperties(o.notesProperties);
+    checkLayoutProperties(o.layoutProperties as api.LayoutProperties);
+    checkMasterProperties(o.masterProperties as api.MasterProperties);
+    checkNotesProperties(o.notesProperties as api.NotesProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
     checkUnnamed1930(o.pageElements);
-    checkPageProperties(o.pageProperties);
+    checkPageProperties(o.pageProperties as api.PageProperties);
     unittest.expect(o.pageType, unittest.equals('foo'));
     unittest.expect(o.revisionId, unittest.equals('foo'));
-    checkSlideProperties(o.slideProperties);
+    checkSlideProperties(o.slideProperties as api.SlideProperties);
   }
   buildCounterPage--;
 }
@@ -1496,8 +1502,9 @@ void checkPageBackgroundFill(api.PageBackgroundFill o) {
   buildCounterPageBackgroundFill++;
   if (buildCounterPageBackgroundFill < 3) {
     unittest.expect(o.propertyState, unittest.equals('foo'));
-    checkSolidFill(o.solidFill);
-    checkStretchedPictureFill(o.stretchedPictureFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
+    checkStretchedPictureFill(
+        o.stretchedPictureFill as api.StretchedPictureFill);
   }
   buildCounterPageBackgroundFill--;
 }
@@ -1529,18 +1536,18 @@ void checkPageElement(api.PageElement o) {
   buildCounterPageElement++;
   if (buildCounterPageElement < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
-    checkGroup(o.elementGroup);
-    checkImage(o.image);
-    checkLine(o.line);
+    checkGroup(o.elementGroup as api.Group);
+    checkImage(o.image as api.Image);
+    checkLine(o.line as api.Line);
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkShape(o.shape);
-    checkSheetsChart(o.sheetsChart);
-    checkSize(o.size);
-    checkTable(o.table);
+    checkShape(o.shape as api.Shape);
+    checkSheetsChart(o.sheetsChart as api.SheetsChart);
+    checkSize(o.size as api.Size);
+    checkTable(o.table as api.Table);
     unittest.expect(o.title, unittest.equals('foo'));
-    checkAffineTransform(o.transform);
-    checkVideo(o.video);
-    checkWordArt(o.wordArt);
+    checkAffineTransform(o.transform as api.AffineTransform);
+    checkVideo(o.video as api.Video);
+    checkWordArt(o.wordArt as api.WordArt);
   }
   buildCounterPageElement--;
 }
@@ -1562,8 +1569,8 @@ void checkPageElementProperties(api.PageElementProperties o) {
   buildCounterPageElementProperties++;
   if (buildCounterPageElementProperties < 3) {
     unittest.expect(o.pageObjectId, unittest.equals('foo'));
-    checkSize(o.size);
-    checkAffineTransform(o.transform);
+    checkSize(o.size as api.Size);
+    checkAffineTransform(o.transform as api.AffineTransform);
   }
   buildCounterPageElementProperties--;
 }
@@ -1583,8 +1590,8 @@ api.PageProperties buildPageProperties() {
 void checkPageProperties(api.PageProperties o) {
   buildCounterPageProperties++;
   if (buildCounterPageProperties < 3) {
-    checkColorScheme(o.colorScheme);
-    checkPageBackgroundFill(o.pageBackgroundFill);
+    checkColorScheme(o.colorScheme as api.ColorScheme);
+    checkPageBackgroundFill(o.pageBackgroundFill as api.PageBackgroundFill);
   }
   buildCounterPageProperties--;
 }
@@ -1604,8 +1611,8 @@ api.ParagraphMarker buildParagraphMarker() {
 void checkParagraphMarker(api.ParagraphMarker o) {
   buildCounterParagraphMarker++;
   if (buildCounterParagraphMarker < 3) {
-    checkBullet(o.bullet);
-    checkParagraphStyle(o.style);
+    checkBullet(o.bullet as api.Bullet);
+    checkParagraphStyle(o.style as api.ParagraphStyle);
   }
   buildCounterParagraphMarker--;
 }
@@ -1634,12 +1641,12 @@ void checkParagraphStyle(api.ParagraphStyle o) {
   if (buildCounterParagraphStyle < 3) {
     unittest.expect(o.alignment, unittest.equals('foo'));
     unittest.expect(o.direction, unittest.equals('foo'));
-    checkDimension(o.indentEnd);
-    checkDimension(o.indentFirstLine);
-    checkDimension(o.indentStart);
+    checkDimension(o.indentEnd as api.Dimension);
+    checkDimension(o.indentFirstLine as api.Dimension);
+    checkDimension(o.indentStart as api.Dimension);
     unittest.expect(o.lineSpacing, unittest.equals(42.0));
-    checkDimension(o.spaceAbove);
-    checkDimension(o.spaceBelow);
+    checkDimension(o.spaceAbove as api.Dimension);
+    checkDimension(o.spaceBelow as api.Dimension);
     unittest.expect(o.spacingMode, unittest.equals('foo'));
   }
   buildCounterParagraphStyle--;
@@ -1677,8 +1684,8 @@ core.List<api.Page> buildUnnamed1931() {
 
 void checkUnnamed1931(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.List<api.Page> buildUnnamed1932() {
@@ -1690,8 +1697,8 @@ core.List<api.Page> buildUnnamed1932() {
 
 void checkUnnamed1932(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.List<api.Page> buildUnnamed1933() {
@@ -1703,8 +1710,8 @@ core.List<api.Page> buildUnnamed1933() {
 
 void checkUnnamed1933(core.List<api.Page> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPage(o[0]);
-  checkPage(o[1]);
+  checkPage(o[0] as api.Page);
+  checkPage(o[1] as api.Page);
 }
 
 core.int buildCounterPresentation = 0;
@@ -1732,8 +1739,8 @@ void checkPresentation(api.Presentation o) {
     checkUnnamed1931(o.layouts);
     unittest.expect(o.locale, unittest.equals('foo'));
     checkUnnamed1932(o.masters);
-    checkPage(o.notesMaster);
-    checkSize(o.pageSize);
+    checkPage(o.notesMaster as api.Page);
+    checkSize(o.pageSize as api.Size);
     unittest.expect(o.presentationId, unittest.equals('foo'));
     unittest.expect(o.revisionId, unittest.equals('foo'));
     checkUnnamed1933(o.slides);
@@ -1774,8 +1781,8 @@ core.List<api.ColorStop> buildUnnamed1934() {
 
 void checkUnnamed1934(core.List<api.ColorStop> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColorStop(o[0]);
-  checkColorStop(o[1]);
+  checkColorStop(o[0] as api.ColorStop);
+  checkColorStop(o[1] as api.ColorStop);
 }
 
 core.int buildCounterRecolor = 0;
@@ -1850,7 +1857,7 @@ void checkReplaceAllShapesWithImageRequest(
     api.ReplaceAllShapesWithImageRequest o) {
   buildCounterReplaceAllShapesWithImageRequest++;
   if (buildCounterReplaceAllShapesWithImageRequest < 3) {
-    checkSubstringMatchCriteria(o.containsText);
+    checkSubstringMatchCriteria(o.containsText as api.SubstringMatchCriteria);
     unittest.expect(o.imageReplaceMethod, unittest.equals('foo'));
     unittest.expect(o.imageUrl, unittest.equals('foo'));
     checkUnnamed1935(o.pageObjectIds);
@@ -1913,7 +1920,7 @@ void checkReplaceAllShapesWithSheetsChartRequest(
   buildCounterReplaceAllShapesWithSheetsChartRequest++;
   if (buildCounterReplaceAllShapesWithSheetsChartRequest < 3) {
     unittest.expect(o.chartId, unittest.equals(42));
-    checkSubstringMatchCriteria(o.containsText);
+    checkSubstringMatchCriteria(o.containsText as api.SubstringMatchCriteria);
     unittest.expect(o.linkingMode, unittest.equals('foo'));
     checkUnnamed1936(o.pageObjectIds);
     unittest.expect(o.spreadsheetId, unittest.equals('foo'));
@@ -1971,7 +1978,7 @@ api.ReplaceAllTextRequest buildReplaceAllTextRequest() {
 void checkReplaceAllTextRequest(api.ReplaceAllTextRequest o) {
   buildCounterReplaceAllTextRequest++;
   if (buildCounterReplaceAllTextRequest < 3) {
-    checkSubstringMatchCriteria(o.containsText);
+    checkSubstringMatchCriteria(o.containsText as api.SubstringMatchCriteria);
     checkUnnamed1937(o.pageObjectIds);
     unittest.expect(o.replaceText, unittest.equals('foo'));
   }
@@ -2077,50 +2084,78 @@ api.Request buildRequest() {
 void checkRequest(api.Request o) {
   buildCounterRequest++;
   if (buildCounterRequest < 3) {
-    checkCreateImageRequest(o.createImage);
-    checkCreateLineRequest(o.createLine);
-    checkCreateParagraphBulletsRequest(o.createParagraphBullets);
-    checkCreateShapeRequest(o.createShape);
-    checkCreateSheetsChartRequest(o.createSheetsChart);
-    checkCreateSlideRequest(o.createSlide);
-    checkCreateTableRequest(o.createTable);
-    checkCreateVideoRequest(o.createVideo);
-    checkDeleteObjectRequest(o.deleteObject);
-    checkDeleteParagraphBulletsRequest(o.deleteParagraphBullets);
-    checkDeleteTableColumnRequest(o.deleteTableColumn);
-    checkDeleteTableRowRequest(o.deleteTableRow);
-    checkDeleteTextRequest(o.deleteText);
-    checkDuplicateObjectRequest(o.duplicateObject);
-    checkGroupObjectsRequest(o.groupObjects);
-    checkInsertTableColumnsRequest(o.insertTableColumns);
-    checkInsertTableRowsRequest(o.insertTableRows);
-    checkInsertTextRequest(o.insertText);
-    checkMergeTableCellsRequest(o.mergeTableCells);
-    checkRefreshSheetsChartRequest(o.refreshSheetsChart);
-    checkReplaceAllShapesWithImageRequest(o.replaceAllShapesWithImage);
+    checkCreateImageRequest(o.createImage as api.CreateImageRequest);
+    checkCreateLineRequest(o.createLine as api.CreateLineRequest);
+    checkCreateParagraphBulletsRequest(
+        o.createParagraphBullets as api.CreateParagraphBulletsRequest);
+    checkCreateShapeRequest(o.createShape as api.CreateShapeRequest);
+    checkCreateSheetsChartRequest(
+        o.createSheetsChart as api.CreateSheetsChartRequest);
+    checkCreateSlideRequest(o.createSlide as api.CreateSlideRequest);
+    checkCreateTableRequest(o.createTable as api.CreateTableRequest);
+    checkCreateVideoRequest(o.createVideo as api.CreateVideoRequest);
+    checkDeleteObjectRequest(o.deleteObject as api.DeleteObjectRequest);
+    checkDeleteParagraphBulletsRequest(
+        o.deleteParagraphBullets as api.DeleteParagraphBulletsRequest);
+    checkDeleteTableColumnRequest(
+        o.deleteTableColumn as api.DeleteTableColumnRequest);
+    checkDeleteTableRowRequest(o.deleteTableRow as api.DeleteTableRowRequest);
+    checkDeleteTextRequest(o.deleteText as api.DeleteTextRequest);
+    checkDuplicateObjectRequest(
+        o.duplicateObject as api.DuplicateObjectRequest);
+    checkGroupObjectsRequest(o.groupObjects as api.GroupObjectsRequest);
+    checkInsertTableColumnsRequest(
+        o.insertTableColumns as api.InsertTableColumnsRequest);
+    checkInsertTableRowsRequest(
+        o.insertTableRows as api.InsertTableRowsRequest);
+    checkInsertTextRequest(o.insertText as api.InsertTextRequest);
+    checkMergeTableCellsRequest(
+        o.mergeTableCells as api.MergeTableCellsRequest);
+    checkRefreshSheetsChartRequest(
+        o.refreshSheetsChart as api.RefreshSheetsChartRequest);
+    checkReplaceAllShapesWithImageRequest(
+        o.replaceAllShapesWithImage as api.ReplaceAllShapesWithImageRequest);
     checkReplaceAllShapesWithSheetsChartRequest(
-        o.replaceAllShapesWithSheetsChart);
-    checkReplaceAllTextRequest(o.replaceAllText);
-    checkReplaceImageRequest(o.replaceImage);
-    checkRerouteLineRequest(o.rerouteLine);
-    checkUngroupObjectsRequest(o.ungroupObjects);
-    checkUnmergeTableCellsRequest(o.unmergeTableCells);
-    checkUpdateImagePropertiesRequest(o.updateImageProperties);
-    checkUpdateLineCategoryRequest(o.updateLineCategory);
-    checkUpdateLinePropertiesRequest(o.updateLineProperties);
-    checkUpdatePageElementAltTextRequest(o.updatePageElementAltText);
-    checkUpdatePageElementTransformRequest(o.updatePageElementTransform);
-    checkUpdatePageElementsZOrderRequest(o.updatePageElementsZOrder);
-    checkUpdatePagePropertiesRequest(o.updatePageProperties);
-    checkUpdateParagraphStyleRequest(o.updateParagraphStyle);
-    checkUpdateShapePropertiesRequest(o.updateShapeProperties);
-    checkUpdateSlidesPositionRequest(o.updateSlidesPosition);
-    checkUpdateTableBorderPropertiesRequest(o.updateTableBorderProperties);
-    checkUpdateTableCellPropertiesRequest(o.updateTableCellProperties);
-    checkUpdateTableColumnPropertiesRequest(o.updateTableColumnProperties);
-    checkUpdateTableRowPropertiesRequest(o.updateTableRowProperties);
-    checkUpdateTextStyleRequest(o.updateTextStyle);
-    checkUpdateVideoPropertiesRequest(o.updateVideoProperties);
+        o.replaceAllShapesWithSheetsChart
+            as api.ReplaceAllShapesWithSheetsChartRequest);
+    checkReplaceAllTextRequest(o.replaceAllText as api.ReplaceAllTextRequest);
+    checkReplaceImageRequest(o.replaceImage as api.ReplaceImageRequest);
+    checkRerouteLineRequest(o.rerouteLine as api.RerouteLineRequest);
+    checkUngroupObjectsRequest(o.ungroupObjects as api.UngroupObjectsRequest);
+    checkUnmergeTableCellsRequest(
+        o.unmergeTableCells as api.UnmergeTableCellsRequest);
+    checkUpdateImagePropertiesRequest(
+        o.updateImageProperties as api.UpdateImagePropertiesRequest);
+    checkUpdateLineCategoryRequest(
+        o.updateLineCategory as api.UpdateLineCategoryRequest);
+    checkUpdateLinePropertiesRequest(
+        o.updateLineProperties as api.UpdateLinePropertiesRequest);
+    checkUpdatePageElementAltTextRequest(
+        o.updatePageElementAltText as api.UpdatePageElementAltTextRequest);
+    checkUpdatePageElementTransformRequest(
+        o.updatePageElementTransform as api.UpdatePageElementTransformRequest);
+    checkUpdatePageElementsZOrderRequest(
+        o.updatePageElementsZOrder as api.UpdatePageElementsZOrderRequest);
+    checkUpdatePagePropertiesRequest(
+        o.updatePageProperties as api.UpdatePagePropertiesRequest);
+    checkUpdateParagraphStyleRequest(
+        o.updateParagraphStyle as api.UpdateParagraphStyleRequest);
+    checkUpdateShapePropertiesRequest(
+        o.updateShapeProperties as api.UpdateShapePropertiesRequest);
+    checkUpdateSlidesPositionRequest(
+        o.updateSlidesPosition as api.UpdateSlidesPositionRequest);
+    checkUpdateTableBorderPropertiesRequest(o.updateTableBorderProperties
+        as api.UpdateTableBorderPropertiesRequest);
+    checkUpdateTableCellPropertiesRequest(
+        o.updateTableCellProperties as api.UpdateTableCellPropertiesRequest);
+    checkUpdateTableColumnPropertiesRequest(o.updateTableColumnProperties
+        as api.UpdateTableColumnPropertiesRequest);
+    checkUpdateTableRowPropertiesRequest(
+        o.updateTableRowProperties as api.UpdateTableRowPropertiesRequest);
+    checkUpdateTextStyleRequest(
+        o.updateTextStyle as api.UpdateTextStyleRequest);
+    checkUpdateVideoPropertiesRequest(
+        o.updateVideoProperties as api.UpdateVideoPropertiesRequest);
   }
   buildCounterRequest--;
 }
@@ -2170,19 +2205,23 @@ api.Response buildResponse() {
 void checkResponse(api.Response o) {
   buildCounterResponse++;
   if (buildCounterResponse < 3) {
-    checkCreateImageResponse(o.createImage);
-    checkCreateLineResponse(o.createLine);
-    checkCreateShapeResponse(o.createShape);
-    checkCreateSheetsChartResponse(o.createSheetsChart);
-    checkCreateSlideResponse(o.createSlide);
-    checkCreateTableResponse(o.createTable);
-    checkCreateVideoResponse(o.createVideo);
-    checkDuplicateObjectResponse(o.duplicateObject);
-    checkGroupObjectsResponse(o.groupObjects);
-    checkReplaceAllShapesWithImageResponse(o.replaceAllShapesWithImage);
+    checkCreateImageResponse(o.createImage as api.CreateImageResponse);
+    checkCreateLineResponse(o.createLine as api.CreateLineResponse);
+    checkCreateShapeResponse(o.createShape as api.CreateShapeResponse);
+    checkCreateSheetsChartResponse(
+        o.createSheetsChart as api.CreateSheetsChartResponse);
+    checkCreateSlideResponse(o.createSlide as api.CreateSlideResponse);
+    checkCreateTableResponse(o.createTable as api.CreateTableResponse);
+    checkCreateVideoResponse(o.createVideo as api.CreateVideoResponse);
+    checkDuplicateObjectResponse(
+        o.duplicateObject as api.DuplicateObjectResponse);
+    checkGroupObjectsResponse(o.groupObjects as api.GroupObjectsResponse);
+    checkReplaceAllShapesWithImageResponse(
+        o.replaceAllShapesWithImage as api.ReplaceAllShapesWithImageResponse);
     checkReplaceAllShapesWithSheetsChartResponse(
-        o.replaceAllShapesWithSheetsChart);
-    checkReplaceAllTextResponse(o.replaceAllText);
+        o.replaceAllShapesWithSheetsChart
+            as api.ReplaceAllShapesWithSheetsChartResponse);
+    checkReplaceAllTextResponse(o.replaceAllText as api.ReplaceAllTextResponse);
   }
   buildCounterResponse--;
 }
@@ -2233,11 +2272,11 @@ void checkShadow(api.Shadow o) {
   if (buildCounterShadow < 3) {
     unittest.expect(o.alignment, unittest.equals('foo'));
     unittest.expect(o.alpha, unittest.equals(42.0));
-    checkDimension(o.blurRadius);
-    checkOpaqueColor(o.color);
+    checkDimension(o.blurRadius as api.Dimension);
+    checkOpaqueColor(o.color as api.OpaqueColor);
     unittest.expect(o.propertyState, unittest.equals('foo'));
     unittest.expect(o.rotateWithShape, unittest.isTrue);
-    checkAffineTransform(o.transform);
+    checkAffineTransform(o.transform as api.AffineTransform);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterShadow--;
@@ -2260,10 +2299,10 @@ api.Shape buildShape() {
 void checkShape(api.Shape o) {
   buildCounterShape++;
   if (buildCounterShape < 3) {
-    checkPlaceholder(o.placeholder);
-    checkShapeProperties(o.shapeProperties);
+    checkPlaceholder(o.placeholder as api.Placeholder);
+    checkShapeProperties(o.shapeProperties as api.ShapeProperties);
     unittest.expect(o.shapeType, unittest.equals('foo'));
-    checkTextContent(o.text);
+    checkTextContent(o.text as api.TextContent);
   }
   buildCounterShape--;
 }
@@ -2284,7 +2323,7 @@ void checkShapeBackgroundFill(api.ShapeBackgroundFill o) {
   buildCounterShapeBackgroundFill++;
   if (buildCounterShapeBackgroundFill < 3) {
     unittest.expect(o.propertyState, unittest.equals('foo'));
-    checkSolidFill(o.solidFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
   }
   buildCounterShapeBackgroundFill--;
 }
@@ -2308,10 +2347,10 @@ void checkShapeProperties(api.ShapeProperties o) {
   buildCounterShapeProperties++;
   if (buildCounterShapeProperties < 3) {
     unittest.expect(o.contentAlignment, unittest.equals('foo'));
-    checkLink(o.link);
-    checkOutline(o.outline);
-    checkShadow(o.shadow);
-    checkShapeBackgroundFill(o.shapeBackgroundFill);
+    checkLink(o.link as api.Link);
+    checkOutline(o.outline as api.Outline);
+    checkShadow(o.shadow as api.Shadow);
+    checkShapeBackgroundFill(o.shapeBackgroundFill as api.ShapeBackgroundFill);
   }
   buildCounterShapeProperties--;
 }
@@ -2335,7 +2374,8 @@ void checkSheetsChart(api.SheetsChart o) {
   if (buildCounterSheetsChart < 3) {
     unittest.expect(o.chartId, unittest.equals(42));
     unittest.expect(o.contentUrl, unittest.equals('foo'));
-    checkSheetsChartProperties(o.sheetsChartProperties);
+    checkSheetsChartProperties(
+        o.sheetsChartProperties as api.SheetsChartProperties);
     unittest.expect(o.spreadsheetId, unittest.equals('foo'));
   }
   buildCounterSheetsChart--;
@@ -2355,7 +2395,7 @@ api.SheetsChartProperties buildSheetsChartProperties() {
 void checkSheetsChartProperties(api.SheetsChartProperties o) {
   buildCounterSheetsChartProperties++;
   if (buildCounterSheetsChartProperties < 3) {
-    checkImageProperties(o.chartImageProperties);
+    checkImageProperties(o.chartImageProperties as api.ImageProperties);
   }
   buildCounterSheetsChartProperties--;
 }
@@ -2375,8 +2415,8 @@ api.Size buildSize() {
 void checkSize(api.Size o) {
   buildCounterSize++;
   if (buildCounterSize < 3) {
-    checkDimension(o.height);
-    checkDimension(o.width);
+    checkDimension(o.height as api.Dimension);
+    checkDimension(o.width as api.Dimension);
   }
   buildCounterSize--;
 }
@@ -2399,7 +2439,7 @@ void checkSlideProperties(api.SlideProperties o) {
   if (buildCounterSlideProperties < 3) {
     unittest.expect(o.layoutObjectId, unittest.equals('foo'));
     unittest.expect(o.masterObjectId, unittest.equals('foo'));
-    checkPage(o.notesPage);
+    checkPage(o.notesPage as api.Page);
   }
   buildCounterSlideProperties--;
 }
@@ -2420,7 +2460,7 @@ void checkSolidFill(api.SolidFill o) {
   buildCounterSolidFill++;
   if (buildCounterSolidFill < 3) {
     unittest.expect(o.alpha, unittest.equals(42.0));
-    checkOpaqueColor(o.color);
+    checkOpaqueColor(o.color as api.OpaqueColor);
   }
   buildCounterSolidFill--;
 }
@@ -2441,7 +2481,7 @@ void checkStretchedPictureFill(api.StretchedPictureFill o) {
   buildCounterStretchedPictureFill++;
   if (buildCounterStretchedPictureFill < 3) {
     unittest.expect(o.contentUrl, unittest.equals('foo'));
-    checkSize(o.size);
+    checkSize(o.size as api.Size);
   }
   buildCounterStretchedPictureFill--;
 }
@@ -2476,8 +2516,8 @@ core.List<api.TableBorderRow> buildUnnamed1938() {
 
 void checkUnnamed1938(core.List<api.TableBorderRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableBorderRow(o[0]);
-  checkTableBorderRow(o[1]);
+  checkTableBorderRow(o[0] as api.TableBorderRow);
+  checkTableBorderRow(o[1] as api.TableBorderRow);
 }
 
 core.List<api.TableColumnProperties> buildUnnamed1939() {
@@ -2489,8 +2529,8 @@ core.List<api.TableColumnProperties> buildUnnamed1939() {
 
 void checkUnnamed1939(core.List<api.TableColumnProperties> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableColumnProperties(o[0]);
-  checkTableColumnProperties(o[1]);
+  checkTableColumnProperties(o[0] as api.TableColumnProperties);
+  checkTableColumnProperties(o[1] as api.TableColumnProperties);
 }
 
 core.List<api.TableRow> buildUnnamed1940() {
@@ -2502,8 +2542,8 @@ core.List<api.TableRow> buildUnnamed1940() {
 
 void checkUnnamed1940(core.List<api.TableRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableRow(o[0]);
-  checkTableRow(o[1]);
+  checkTableRow(o[0] as api.TableRow);
+  checkTableRow(o[1] as api.TableRow);
 }
 
 core.List<api.TableBorderRow> buildUnnamed1941() {
@@ -2515,8 +2555,8 @@ core.List<api.TableBorderRow> buildUnnamed1941() {
 
 void checkUnnamed1941(core.List<api.TableBorderRow> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableBorderRow(o[0]);
-  checkTableBorderRow(o[1]);
+  checkTableBorderRow(o[0] as api.TableBorderRow);
+  checkTableBorderRow(o[1] as api.TableBorderRow);
 }
 
 core.int buildCounterTable = 0;
@@ -2563,8 +2603,9 @@ api.TableBorderCell buildTableBorderCell() {
 void checkTableBorderCell(api.TableBorderCell o) {
   buildCounterTableBorderCell++;
   if (buildCounterTableBorderCell < 3) {
-    checkTableCellLocation(o.location);
-    checkTableBorderProperties(o.tableBorderProperties);
+    checkTableCellLocation(o.location as api.TableCellLocation);
+    checkTableBorderProperties(
+        o.tableBorderProperties as api.TableBorderProperties);
   }
   buildCounterTableBorderCell--;
 }
@@ -2583,7 +2624,7 @@ api.TableBorderFill buildTableBorderFill() {
 void checkTableBorderFill(api.TableBorderFill o) {
   buildCounterTableBorderFill++;
   if (buildCounterTableBorderFill < 3) {
-    checkSolidFill(o.solidFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
   }
   buildCounterTableBorderFill--;
 }
@@ -2605,8 +2646,8 @@ void checkTableBorderProperties(api.TableBorderProperties o) {
   buildCounterTableBorderProperties++;
   if (buildCounterTableBorderProperties < 3) {
     unittest.expect(o.dashStyle, unittest.equals('foo'));
-    checkTableBorderFill(o.tableBorderFill);
-    checkDimension(o.weight);
+    checkTableBorderFill(o.tableBorderFill as api.TableBorderFill);
+    checkDimension(o.weight as api.Dimension);
   }
   buildCounterTableBorderProperties--;
 }
@@ -2620,8 +2661,8 @@ core.List<api.TableBorderCell> buildUnnamed1942() {
 
 void checkUnnamed1942(core.List<api.TableBorderCell> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableBorderCell(o[0]);
-  checkTableBorderCell(o[1]);
+  checkTableBorderCell(o[0] as api.TableBorderCell);
+  checkTableBorderCell(o[1] as api.TableBorderCell);
 }
 
 core.int buildCounterTableBorderRow = 0;
@@ -2662,10 +2703,10 @@ void checkTableCell(api.TableCell o) {
   buildCounterTableCell++;
   if (buildCounterTableCell < 3) {
     unittest.expect(o.columnSpan, unittest.equals(42));
-    checkTableCellLocation(o.location);
+    checkTableCellLocation(o.location as api.TableCellLocation);
     unittest.expect(o.rowSpan, unittest.equals(42));
-    checkTableCellProperties(o.tableCellProperties);
-    checkTextContent(o.text);
+    checkTableCellProperties(o.tableCellProperties as api.TableCellProperties);
+    checkTextContent(o.text as api.TextContent);
   }
   buildCounterTableCell--;
 }
@@ -2686,7 +2727,7 @@ void checkTableCellBackgroundFill(api.TableCellBackgroundFill o) {
   buildCounterTableCellBackgroundFill++;
   if (buildCounterTableCellBackgroundFill < 3) {
     unittest.expect(o.propertyState, unittest.equals('foo'));
-    checkSolidFill(o.solidFill);
+    checkSolidFill(o.solidFill as api.SolidFill);
   }
   buildCounterTableCellBackgroundFill--;
 }
@@ -2728,7 +2769,8 @@ void checkTableCellProperties(api.TableCellProperties o) {
   buildCounterTableCellProperties++;
   if (buildCounterTableCellProperties < 3) {
     unittest.expect(o.contentAlignment, unittest.equals('foo'));
-    checkTableCellBackgroundFill(o.tableCellBackgroundFill);
+    checkTableCellBackgroundFill(
+        o.tableCellBackgroundFill as api.TableCellBackgroundFill);
   }
   buildCounterTableCellProperties--;
 }
@@ -2747,7 +2789,7 @@ api.TableColumnProperties buildTableColumnProperties() {
 void checkTableColumnProperties(api.TableColumnProperties o) {
   buildCounterTableColumnProperties++;
   if (buildCounterTableColumnProperties < 3) {
-    checkDimension(o.columnWidth);
+    checkDimension(o.columnWidth as api.Dimension);
   }
   buildCounterTableColumnProperties--;
 }
@@ -2769,7 +2811,7 @@ void checkTableRange(api.TableRange o) {
   buildCounterTableRange++;
   if (buildCounterTableRange < 3) {
     unittest.expect(o.columnSpan, unittest.equals(42));
-    checkTableCellLocation(o.location);
+    checkTableCellLocation(o.location as api.TableCellLocation);
     unittest.expect(o.rowSpan, unittest.equals(42));
   }
   buildCounterTableRange--;
@@ -2784,8 +2826,8 @@ core.List<api.TableCell> buildUnnamed1943() {
 
 void checkUnnamed1943(core.List<api.TableCell> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableCell(o[0]);
-  checkTableCell(o[1]);
+  checkTableCell(o[0] as api.TableCell);
+  checkTableCell(o[1] as api.TableCell);
 }
 
 core.int buildCounterTableRow = 0;
@@ -2804,9 +2846,9 @@ api.TableRow buildTableRow() {
 void checkTableRow(api.TableRow o) {
   buildCounterTableRow++;
   if (buildCounterTableRow < 3) {
-    checkDimension(o.rowHeight);
+    checkDimension(o.rowHeight as api.Dimension);
     checkUnnamed1943(o.tableCells);
-    checkTableRowProperties(o.tableRowProperties);
+    checkTableRowProperties(o.tableRowProperties as api.TableRowProperties);
   }
   buildCounterTableRow--;
 }
@@ -2825,7 +2867,7 @@ api.TableRowProperties buildTableRowProperties() {
 void checkTableRowProperties(api.TableRowProperties o) {
   buildCounterTableRowProperties++;
   if (buildCounterTableRowProperties < 3) {
-    checkDimension(o.minRowHeight);
+    checkDimension(o.minRowHeight as api.Dimension);
   }
   buildCounterTableRowProperties--;
 }
@@ -2839,8 +2881,8 @@ core.Map<core.String, api.List> buildUnnamed1944() {
 
 void checkUnnamed1944(core.Map<core.String, api.List> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkList(o['x']);
-  checkList(o['y']);
+  checkList(o['x'] as api.List);
+  checkList(o['y'] as api.List);
 }
 
 core.List<api.TextElement> buildUnnamed1945() {
@@ -2852,8 +2894,8 @@ core.List<api.TextElement> buildUnnamed1945() {
 
 void checkUnnamed1945(core.List<api.TextElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTextElement(o[0]);
-  checkTextElement(o[1]);
+  checkTextElement(o[0] as api.TextElement);
+  checkTextElement(o[1] as api.TextElement);
 }
 
 core.int buildCounterTextContent = 0;
@@ -2895,11 +2937,11 @@ api.TextElement buildTextElement() {
 void checkTextElement(api.TextElement o) {
   buildCounterTextElement++;
   if (buildCounterTextElement < 3) {
-    checkAutoText(o.autoText);
+    checkAutoText(o.autoText as api.AutoText);
     unittest.expect(o.endIndex, unittest.equals(42));
-    checkParagraphMarker(o.paragraphMarker);
+    checkParagraphMarker(o.paragraphMarker as api.ParagraphMarker);
     unittest.expect(o.startIndex, unittest.equals(42));
-    checkTextRun(o.textRun);
+    checkTextRun(o.textRun as api.TextRun);
   }
   buildCounterTextElement--;
 }
@@ -2920,7 +2962,7 @@ void checkTextRun(api.TextRun o) {
   buildCounterTextRun++;
   if (buildCounterTextRun < 3) {
     unittest.expect(o.content, unittest.equals('foo'));
-    checkTextStyle(o.style);
+    checkTextStyle(o.style as api.TextStyle);
   }
   buildCounterTextRun--;
 }
@@ -2950,18 +2992,18 @@ api.TextStyle buildTextStyle() {
 void checkTextStyle(api.TextStyle o) {
   buildCounterTextStyle++;
   if (buildCounterTextStyle < 3) {
-    checkOptionalColor(o.backgroundColor);
+    checkOptionalColor(o.backgroundColor as api.OptionalColor);
     unittest.expect(o.baselineOffset, unittest.equals('foo'));
     unittest.expect(o.bold, unittest.isTrue);
     unittest.expect(o.fontFamily, unittest.equals('foo'));
-    checkDimension(o.fontSize);
-    checkOptionalColor(o.foregroundColor);
+    checkDimension(o.fontSize as api.Dimension);
+    checkOptionalColor(o.foregroundColor as api.OptionalColor);
     unittest.expect(o.italic, unittest.isTrue);
-    checkLink(o.link);
+    checkLink(o.link as api.Link);
     unittest.expect(o.smallCaps, unittest.isTrue);
     unittest.expect(o.strikethrough, unittest.isTrue);
     unittest.expect(o.underline, unittest.isTrue);
-    checkWeightedFontFamily(o.weightedFontFamily);
+    checkWeightedFontFamily(o.weightedFontFamily as api.WeightedFontFamily);
   }
   buildCounterTextStyle--;
 }
@@ -2981,7 +3023,7 @@ api.ThemeColorPair buildThemeColorPair() {
 void checkThemeColorPair(api.ThemeColorPair o) {
   buildCounterThemeColorPair++;
   if (buildCounterThemeColorPair < 3) {
-    checkRgbColor(o.color);
+    checkRgbColor(o.color as api.RgbColor);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterThemeColorPair--;
@@ -3058,7 +3100,7 @@ void checkUnmergeTableCellsRequest(api.UnmergeTableCellsRequest o) {
   buildCounterUnmergeTableCellsRequest++;
   if (buildCounterUnmergeTableCellsRequest < 3) {
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTableRange(o.tableRange);
+    checkTableRange(o.tableRange as api.TableRange);
   }
   buildCounterUnmergeTableCellsRequest--;
 }
@@ -3080,7 +3122,7 @@ void checkUpdateImagePropertiesRequest(api.UpdateImagePropertiesRequest o) {
   buildCounterUpdateImagePropertiesRequest++;
   if (buildCounterUpdateImagePropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
-    checkImageProperties(o.imageProperties);
+    checkImageProperties(o.imageProperties as api.ImageProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
   }
   buildCounterUpdateImagePropertiesRequest--;
@@ -3124,7 +3166,7 @@ void checkUpdateLinePropertiesRequest(api.UpdateLinePropertiesRequest o) {
   buildCounterUpdateLinePropertiesRequest++;
   if (buildCounterUpdateLinePropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
-    checkLineProperties(o.lineProperties);
+    checkLineProperties(o.lineProperties as api.LineProperties);
     unittest.expect(o.objectId, unittest.equals('foo'));
   }
   buildCounterUpdateLinePropertiesRequest--;
@@ -3173,7 +3215,7 @@ void checkUpdatePageElementTransformRequest(
   if (buildCounterUpdatePageElementTransformRequest < 3) {
     unittest.expect(o.applyMode, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkAffineTransform(o.transform);
+    checkAffineTransform(o.transform as api.AffineTransform);
   }
   buildCounterUpdatePageElementTransformRequest--;
 }
@@ -3231,7 +3273,7 @@ void checkUpdatePagePropertiesRequest(api.UpdatePagePropertiesRequest o) {
   if (buildCounterUpdatePagePropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkPageProperties(o.pageProperties);
+    checkPageProperties(o.pageProperties as api.PageProperties);
   }
   buildCounterUpdatePagePropertiesRequest--;
 }
@@ -3254,11 +3296,11 @@ api.UpdateParagraphStyleRequest buildUpdateParagraphStyleRequest() {
 void checkUpdateParagraphStyleRequest(api.UpdateParagraphStyleRequest o) {
   buildCounterUpdateParagraphStyleRequest++;
   if (buildCounterUpdateParagraphStyleRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkParagraphStyle(o.style);
-    checkRange(o.textRange);
+    checkParagraphStyle(o.style as api.ParagraphStyle);
+    checkRange(o.textRange as api.Range);
   }
   buildCounterUpdateParagraphStyleRequest--;
 }
@@ -3281,7 +3323,7 @@ void checkUpdateShapePropertiesRequest(api.UpdateShapePropertiesRequest o) {
   if (buildCounterUpdateShapePropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkShapeProperties(o.shapeProperties);
+    checkShapeProperties(o.shapeProperties as api.ShapeProperties);
   }
   buildCounterUpdateShapePropertiesRequest--;
 }
@@ -3343,8 +3385,9 @@ void checkUpdateTableBorderPropertiesRequest(
     unittest.expect(o.borderPosition, unittest.equals('foo'));
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTableBorderProperties(o.tableBorderProperties);
-    checkTableRange(o.tableRange);
+    checkTableBorderProperties(
+        o.tableBorderProperties as api.TableBorderProperties);
+    checkTableRange(o.tableRange as api.TableRange);
   }
   buildCounterUpdateTableBorderPropertiesRequest--;
 }
@@ -3369,8 +3412,8 @@ void checkUpdateTableCellPropertiesRequest(
   if (buildCounterUpdateTableCellPropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTableCellProperties(o.tableCellProperties);
-    checkTableRange(o.tableRange);
+    checkTableCellProperties(o.tableCellProperties as api.TableCellProperties);
+    checkTableRange(o.tableRange as api.TableRange);
   }
   buildCounterUpdateTableCellPropertiesRequest--;
 }
@@ -3410,7 +3453,8 @@ void checkUpdateTableColumnPropertiesRequest(
     checkUnnamed1949(o.columnIndices);
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTableColumnProperties(o.tableColumnProperties);
+    checkTableColumnProperties(
+        o.tableColumnProperties as api.TableColumnProperties);
   }
   buildCounterUpdateTableColumnPropertiesRequest--;
 }
@@ -3449,7 +3493,7 @@ void checkUpdateTableRowPropertiesRequest(
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
     checkUnnamed1950(o.rowIndices);
-    checkTableRowProperties(o.tableRowProperties);
+    checkTableRowProperties(o.tableRowProperties as api.TableRowProperties);
   }
   buildCounterUpdateTableRowPropertiesRequest--;
 }
@@ -3472,11 +3516,11 @@ api.UpdateTextStyleRequest buildUpdateTextStyleRequest() {
 void checkUpdateTextStyleRequest(api.UpdateTextStyleRequest o) {
   buildCounterUpdateTextStyleRequest++;
   if (buildCounterUpdateTextStyleRequest < 3) {
-    checkTableCellLocation(o.cellLocation);
+    checkTableCellLocation(o.cellLocation as api.TableCellLocation);
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkTextStyle(o.style);
-    checkRange(o.textRange);
+    checkTextStyle(o.style as api.TextStyle);
+    checkRange(o.textRange as api.Range);
   }
   buildCounterUpdateTextStyleRequest--;
 }
@@ -3499,7 +3543,7 @@ void checkUpdateVideoPropertiesRequest(api.UpdateVideoPropertiesRequest o) {
   if (buildCounterUpdateVideoPropertiesRequest < 3) {
     unittest.expect(o.fields, unittest.equals('foo'));
     unittest.expect(o.objectId, unittest.equals('foo'));
-    checkVideoProperties(o.videoProperties);
+    checkVideoProperties(o.videoProperties as api.VideoProperties);
   }
   buildCounterUpdateVideoPropertiesRequest--;
 }
@@ -3524,7 +3568,7 @@ void checkVideo(api.Video o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.source, unittest.equals('foo'));
     unittest.expect(o.url, unittest.equals('foo'));
-    checkVideoProperties(o.videoProperties);
+    checkVideoProperties(o.videoProperties as api.VideoProperties);
   }
   buildCounterVideo--;
 }
@@ -3550,7 +3594,7 @@ void checkVideoProperties(api.VideoProperties o) {
     unittest.expect(o.autoPlay, unittest.isTrue);
     unittest.expect(o.end, unittest.equals(42));
     unittest.expect(o.mute, unittest.isTrue);
-    checkOutline(o.outline);
+    checkOutline(o.outline as api.Outline);
     unittest.expect(o.start, unittest.equals(42));
   }
   buildCounterVideoProperties--;
@@ -3620,7 +3664,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAffineTransform();
       var od = api.AffineTransform.fromJson(o.toJson());
-      checkAffineTransform(od);
+      checkAffineTransform(od as api.AffineTransform);
     });
   });
 
@@ -3628,7 +3672,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAutoText();
       var od = api.AutoText.fromJson(o.toJson());
-      checkAutoText(od);
+      checkAutoText(od as api.AutoText);
     });
   });
 
@@ -3636,7 +3680,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchUpdatePresentationRequest();
       var od = api.BatchUpdatePresentationRequest.fromJson(o.toJson());
-      checkBatchUpdatePresentationRequest(od);
+      checkBatchUpdatePresentationRequest(
+          od as api.BatchUpdatePresentationRequest);
     });
   });
 
@@ -3644,7 +3689,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchUpdatePresentationResponse();
       var od = api.BatchUpdatePresentationResponse.fromJson(o.toJson());
-      checkBatchUpdatePresentationResponse(od);
+      checkBatchUpdatePresentationResponse(
+          od as api.BatchUpdatePresentationResponse);
     });
   });
 
@@ -3652,7 +3698,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBullet();
       var od = api.Bullet.fromJson(o.toJson());
-      checkBullet(od);
+      checkBullet(od as api.Bullet);
     });
   });
 
@@ -3660,7 +3706,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColorScheme();
       var od = api.ColorScheme.fromJson(o.toJson());
-      checkColorScheme(od);
+      checkColorScheme(od as api.ColorScheme);
     });
   });
 
@@ -3668,7 +3714,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColorStop();
       var od = api.ColorStop.fromJson(o.toJson());
-      checkColorStop(od);
+      checkColorStop(od as api.ColorStop);
     });
   });
 
@@ -3676,7 +3722,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateImageRequest();
       var od = api.CreateImageRequest.fromJson(o.toJson());
-      checkCreateImageRequest(od);
+      checkCreateImageRequest(od as api.CreateImageRequest);
     });
   });
 
@@ -3684,7 +3730,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateImageResponse();
       var od = api.CreateImageResponse.fromJson(o.toJson());
-      checkCreateImageResponse(od);
+      checkCreateImageResponse(od as api.CreateImageResponse);
     });
   });
 
@@ -3692,7 +3738,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateLineRequest();
       var od = api.CreateLineRequest.fromJson(o.toJson());
-      checkCreateLineRequest(od);
+      checkCreateLineRequest(od as api.CreateLineRequest);
     });
   });
 
@@ -3700,7 +3746,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateLineResponse();
       var od = api.CreateLineResponse.fromJson(o.toJson());
-      checkCreateLineResponse(od);
+      checkCreateLineResponse(od as api.CreateLineResponse);
     });
   });
 
@@ -3708,7 +3754,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateParagraphBulletsRequest();
       var od = api.CreateParagraphBulletsRequest.fromJson(o.toJson());
-      checkCreateParagraphBulletsRequest(od);
+      checkCreateParagraphBulletsRequest(
+          od as api.CreateParagraphBulletsRequest);
     });
   });
 
@@ -3716,7 +3763,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateShapeRequest();
       var od = api.CreateShapeRequest.fromJson(o.toJson());
-      checkCreateShapeRequest(od);
+      checkCreateShapeRequest(od as api.CreateShapeRequest);
     });
   });
 
@@ -3724,7 +3771,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateShapeResponse();
       var od = api.CreateShapeResponse.fromJson(o.toJson());
-      checkCreateShapeResponse(od);
+      checkCreateShapeResponse(od as api.CreateShapeResponse);
     });
   });
 
@@ -3732,7 +3779,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSheetsChartRequest();
       var od = api.CreateSheetsChartRequest.fromJson(o.toJson());
-      checkCreateSheetsChartRequest(od);
+      checkCreateSheetsChartRequest(od as api.CreateSheetsChartRequest);
     });
   });
 
@@ -3740,7 +3787,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSheetsChartResponse();
       var od = api.CreateSheetsChartResponse.fromJson(o.toJson());
-      checkCreateSheetsChartResponse(od);
+      checkCreateSheetsChartResponse(od as api.CreateSheetsChartResponse);
     });
   });
 
@@ -3748,7 +3795,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSlideRequest();
       var od = api.CreateSlideRequest.fromJson(o.toJson());
-      checkCreateSlideRequest(od);
+      checkCreateSlideRequest(od as api.CreateSlideRequest);
     });
   });
 
@@ -3756,7 +3803,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSlideResponse();
       var od = api.CreateSlideResponse.fromJson(o.toJson());
-      checkCreateSlideResponse(od);
+      checkCreateSlideResponse(od as api.CreateSlideResponse);
     });
   });
 
@@ -3764,7 +3811,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateTableRequest();
       var od = api.CreateTableRequest.fromJson(o.toJson());
-      checkCreateTableRequest(od);
+      checkCreateTableRequest(od as api.CreateTableRequest);
     });
   });
 
@@ -3772,7 +3819,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateTableResponse();
       var od = api.CreateTableResponse.fromJson(o.toJson());
-      checkCreateTableResponse(od);
+      checkCreateTableResponse(od as api.CreateTableResponse);
     });
   });
 
@@ -3780,7 +3827,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateVideoRequest();
       var od = api.CreateVideoRequest.fromJson(o.toJson());
-      checkCreateVideoRequest(od);
+      checkCreateVideoRequest(od as api.CreateVideoRequest);
     });
   });
 
@@ -3788,7 +3835,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateVideoResponse();
       var od = api.CreateVideoResponse.fromJson(o.toJson());
-      checkCreateVideoResponse(od);
+      checkCreateVideoResponse(od as api.CreateVideoResponse);
     });
   });
 
@@ -3796,7 +3843,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCropProperties();
       var od = api.CropProperties.fromJson(o.toJson());
-      checkCropProperties(od);
+      checkCropProperties(od as api.CropProperties);
     });
   });
 
@@ -3804,7 +3851,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteObjectRequest();
       var od = api.DeleteObjectRequest.fromJson(o.toJson());
-      checkDeleteObjectRequest(od);
+      checkDeleteObjectRequest(od as api.DeleteObjectRequest);
     });
   });
 
@@ -3812,7 +3859,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteParagraphBulletsRequest();
       var od = api.DeleteParagraphBulletsRequest.fromJson(o.toJson());
-      checkDeleteParagraphBulletsRequest(od);
+      checkDeleteParagraphBulletsRequest(
+          od as api.DeleteParagraphBulletsRequest);
     });
   });
 
@@ -3820,7 +3868,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteTableColumnRequest();
       var od = api.DeleteTableColumnRequest.fromJson(o.toJson());
-      checkDeleteTableColumnRequest(od);
+      checkDeleteTableColumnRequest(od as api.DeleteTableColumnRequest);
     });
   });
 
@@ -3828,7 +3876,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteTableRowRequest();
       var od = api.DeleteTableRowRequest.fromJson(o.toJson());
-      checkDeleteTableRowRequest(od);
+      checkDeleteTableRowRequest(od as api.DeleteTableRowRequest);
     });
   });
 
@@ -3836,7 +3884,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteTextRequest();
       var od = api.DeleteTextRequest.fromJson(o.toJson());
-      checkDeleteTextRequest(od);
+      checkDeleteTextRequest(od as api.DeleteTextRequest);
     });
   });
 
@@ -3844,7 +3892,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDimension();
       var od = api.Dimension.fromJson(o.toJson());
-      checkDimension(od);
+      checkDimension(od as api.Dimension);
     });
   });
 
@@ -3852,7 +3900,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDuplicateObjectRequest();
       var od = api.DuplicateObjectRequest.fromJson(o.toJson());
-      checkDuplicateObjectRequest(od);
+      checkDuplicateObjectRequest(od as api.DuplicateObjectRequest);
     });
   });
 
@@ -3860,7 +3908,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDuplicateObjectResponse();
       var od = api.DuplicateObjectResponse.fromJson(o.toJson());
-      checkDuplicateObjectResponse(od);
+      checkDuplicateObjectResponse(od as api.DuplicateObjectResponse);
     });
   });
 
@@ -3868,7 +3916,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroup();
       var od = api.Group.fromJson(o.toJson());
-      checkGroup(od);
+      checkGroup(od as api.Group);
     });
   });
 
@@ -3876,7 +3924,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupObjectsRequest();
       var od = api.GroupObjectsRequest.fromJson(o.toJson());
-      checkGroupObjectsRequest(od);
+      checkGroupObjectsRequest(od as api.GroupObjectsRequest);
     });
   });
 
@@ -3884,7 +3932,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroupObjectsResponse();
       var od = api.GroupObjectsResponse.fromJson(o.toJson());
-      checkGroupObjectsResponse(od);
+      checkGroupObjectsResponse(od as api.GroupObjectsResponse);
     });
   });
 
@@ -3892,7 +3940,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
-      checkImage(od);
+      checkImage(od as api.Image);
     });
   });
 
@@ -3900,7 +3948,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageProperties();
       var od = api.ImageProperties.fromJson(o.toJson());
-      checkImageProperties(od);
+      checkImageProperties(od as api.ImageProperties);
     });
   });
 
@@ -3908,7 +3956,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertTableColumnsRequest();
       var od = api.InsertTableColumnsRequest.fromJson(o.toJson());
-      checkInsertTableColumnsRequest(od);
+      checkInsertTableColumnsRequest(od as api.InsertTableColumnsRequest);
     });
   });
 
@@ -3916,7 +3964,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertTableRowsRequest();
       var od = api.InsertTableRowsRequest.fromJson(o.toJson());
-      checkInsertTableRowsRequest(od);
+      checkInsertTableRowsRequest(od as api.InsertTableRowsRequest);
     });
   });
 
@@ -3924,7 +3972,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInsertTextRequest();
       var od = api.InsertTextRequest.fromJson(o.toJson());
-      checkInsertTextRequest(od);
+      checkInsertTextRequest(od as api.InsertTextRequest);
     });
   });
 
@@ -3932,7 +3980,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLayoutPlaceholderIdMapping();
       var od = api.LayoutPlaceholderIdMapping.fromJson(o.toJson());
-      checkLayoutPlaceholderIdMapping(od);
+      checkLayoutPlaceholderIdMapping(od as api.LayoutPlaceholderIdMapping);
     });
   });
 
@@ -3940,7 +3988,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLayoutProperties();
       var od = api.LayoutProperties.fromJson(o.toJson());
-      checkLayoutProperties(od);
+      checkLayoutProperties(od as api.LayoutProperties);
     });
   });
 
@@ -3948,7 +3996,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLayoutReference();
       var od = api.LayoutReference.fromJson(o.toJson());
-      checkLayoutReference(od);
+      checkLayoutReference(od as api.LayoutReference);
     });
   });
 
@@ -3956,7 +4004,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLine();
       var od = api.Line.fromJson(o.toJson());
-      checkLine(od);
+      checkLine(od as api.Line);
     });
   });
 
@@ -3964,7 +4012,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineConnection();
       var od = api.LineConnection.fromJson(o.toJson());
-      checkLineConnection(od);
+      checkLineConnection(od as api.LineConnection);
     });
   });
 
@@ -3972,7 +4020,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineFill();
       var od = api.LineFill.fromJson(o.toJson());
-      checkLineFill(od);
+      checkLineFill(od as api.LineFill);
     });
   });
 
@@ -3980,7 +4028,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLineProperties();
       var od = api.LineProperties.fromJson(o.toJson());
-      checkLineProperties(od);
+      checkLineProperties(od as api.LineProperties);
     });
   });
 
@@ -3988,7 +4036,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
-      checkLink(od);
+      checkLink(od as api.Link);
     });
   });
 
@@ -3996,7 +4044,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildList();
       var od = api.List.fromJson(o.toJson());
-      checkList(od);
+      checkList(od as api.List);
     });
   });
 
@@ -4004,7 +4052,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMasterProperties();
       var od = api.MasterProperties.fromJson(o.toJson());
-      checkMasterProperties(od);
+      checkMasterProperties(od as api.MasterProperties);
     });
   });
 
@@ -4012,7 +4060,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMergeTableCellsRequest();
       var od = api.MergeTableCellsRequest.fromJson(o.toJson());
-      checkMergeTableCellsRequest(od);
+      checkMergeTableCellsRequest(od as api.MergeTableCellsRequest);
     });
   });
 
@@ -4020,7 +4068,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNestingLevel();
       var od = api.NestingLevel.fromJson(o.toJson());
-      checkNestingLevel(od);
+      checkNestingLevel(od as api.NestingLevel);
     });
   });
 
@@ -4028,7 +4076,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotesProperties();
       var od = api.NotesProperties.fromJson(o.toJson());
-      checkNotesProperties(od);
+      checkNotesProperties(od as api.NotesProperties);
     });
   });
 
@@ -4036,7 +4084,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOpaqueColor();
       var od = api.OpaqueColor.fromJson(o.toJson());
-      checkOpaqueColor(od);
+      checkOpaqueColor(od as api.OpaqueColor);
     });
   });
 
@@ -4044,7 +4092,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOptionalColor();
       var od = api.OptionalColor.fromJson(o.toJson());
-      checkOptionalColor(od);
+      checkOptionalColor(od as api.OptionalColor);
     });
   });
 
@@ -4052,7 +4100,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutline();
       var od = api.Outline.fromJson(o.toJson());
-      checkOutline(od);
+      checkOutline(od as api.Outline);
     });
   });
 
@@ -4060,7 +4108,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutlineFill();
       var od = api.OutlineFill.fromJson(o.toJson());
-      checkOutlineFill(od);
+      checkOutlineFill(od as api.OutlineFill);
     });
   });
 
@@ -4068,7 +4116,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPage();
       var od = api.Page.fromJson(o.toJson());
-      checkPage(od);
+      checkPage(od as api.Page);
     });
   });
 
@@ -4076,7 +4124,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageBackgroundFill();
       var od = api.PageBackgroundFill.fromJson(o.toJson());
-      checkPageBackgroundFill(od);
+      checkPageBackgroundFill(od as api.PageBackgroundFill);
     });
   });
 
@@ -4084,7 +4132,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageElement();
       var od = api.PageElement.fromJson(o.toJson());
-      checkPageElement(od);
+      checkPageElement(od as api.PageElement);
     });
   });
 
@@ -4092,7 +4140,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageElementProperties();
       var od = api.PageElementProperties.fromJson(o.toJson());
-      checkPageElementProperties(od);
+      checkPageElementProperties(od as api.PageElementProperties);
     });
   });
 
@@ -4100,7 +4148,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageProperties();
       var od = api.PageProperties.fromJson(o.toJson());
-      checkPageProperties(od);
+      checkPageProperties(od as api.PageProperties);
     });
   });
 
@@ -4108,7 +4156,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParagraphMarker();
       var od = api.ParagraphMarker.fromJson(o.toJson());
-      checkParagraphMarker(od);
+      checkParagraphMarker(od as api.ParagraphMarker);
     });
   });
 
@@ -4116,7 +4164,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildParagraphStyle();
       var od = api.ParagraphStyle.fromJson(o.toJson());
-      checkParagraphStyle(od);
+      checkParagraphStyle(od as api.ParagraphStyle);
     });
   });
 
@@ -4124,7 +4172,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaceholder();
       var od = api.Placeholder.fromJson(o.toJson());
-      checkPlaceholder(od);
+      checkPlaceholder(od as api.Placeholder);
     });
   });
 
@@ -4132,7 +4180,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPresentation();
       var od = api.Presentation.fromJson(o.toJson());
-      checkPresentation(od);
+      checkPresentation(od as api.Presentation);
     });
   });
 
@@ -4140,7 +4188,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRange();
       var od = api.Range.fromJson(o.toJson());
-      checkRange(od);
+      checkRange(od as api.Range);
     });
   });
 
@@ -4148,7 +4196,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRecolor();
       var od = api.Recolor.fromJson(o.toJson());
-      checkRecolor(od);
+      checkRecolor(od as api.Recolor);
     });
   });
 
@@ -4156,7 +4204,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRefreshSheetsChartRequest();
       var od = api.RefreshSheetsChartRequest.fromJson(o.toJson());
-      checkRefreshSheetsChartRequest(od);
+      checkRefreshSheetsChartRequest(od as api.RefreshSheetsChartRequest);
     });
   });
 
@@ -4164,7 +4212,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllShapesWithImageRequest();
       var od = api.ReplaceAllShapesWithImageRequest.fromJson(o.toJson());
-      checkReplaceAllShapesWithImageRequest(od);
+      checkReplaceAllShapesWithImageRequest(
+          od as api.ReplaceAllShapesWithImageRequest);
     });
   });
 
@@ -4172,7 +4221,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllShapesWithImageResponse();
       var od = api.ReplaceAllShapesWithImageResponse.fromJson(o.toJson());
-      checkReplaceAllShapesWithImageResponse(od);
+      checkReplaceAllShapesWithImageResponse(
+          od as api.ReplaceAllShapesWithImageResponse);
     });
   });
 
@@ -4180,7 +4230,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllShapesWithSheetsChartRequest();
       var od = api.ReplaceAllShapesWithSheetsChartRequest.fromJson(o.toJson());
-      checkReplaceAllShapesWithSheetsChartRequest(od);
+      checkReplaceAllShapesWithSheetsChartRequest(
+          od as api.ReplaceAllShapesWithSheetsChartRequest);
     });
   });
 
@@ -4188,7 +4239,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllShapesWithSheetsChartResponse();
       var od = api.ReplaceAllShapesWithSheetsChartResponse.fromJson(o.toJson());
-      checkReplaceAllShapesWithSheetsChartResponse(od);
+      checkReplaceAllShapesWithSheetsChartResponse(
+          od as api.ReplaceAllShapesWithSheetsChartResponse);
     });
   });
 
@@ -4196,7 +4248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllTextRequest();
       var od = api.ReplaceAllTextRequest.fromJson(o.toJson());
-      checkReplaceAllTextRequest(od);
+      checkReplaceAllTextRequest(od as api.ReplaceAllTextRequest);
     });
   });
 
@@ -4204,7 +4256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceAllTextResponse();
       var od = api.ReplaceAllTextResponse.fromJson(o.toJson());
-      checkReplaceAllTextResponse(od);
+      checkReplaceAllTextResponse(od as api.ReplaceAllTextResponse);
     });
   });
 
@@ -4212,7 +4264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplaceImageRequest();
       var od = api.ReplaceImageRequest.fromJson(o.toJson());
-      checkReplaceImageRequest(od);
+      checkReplaceImageRequest(od as api.ReplaceImageRequest);
     });
   });
 
@@ -4220,7 +4272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequest();
       var od = api.Request.fromJson(o.toJson());
-      checkRequest(od);
+      checkRequest(od as api.Request);
     });
   });
 
@@ -4228,7 +4280,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRerouteLineRequest();
       var od = api.RerouteLineRequest.fromJson(o.toJson());
-      checkRerouteLineRequest(od);
+      checkRerouteLineRequest(od as api.RerouteLineRequest);
     });
   });
 
@@ -4236,7 +4288,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResponse();
       var od = api.Response.fromJson(o.toJson());
-      checkResponse(od);
+      checkResponse(od as api.Response);
     });
   });
 
@@ -4244,7 +4296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRgbColor();
       var od = api.RgbColor.fromJson(o.toJson());
-      checkRgbColor(od);
+      checkRgbColor(od as api.RgbColor);
     });
   });
 
@@ -4252,7 +4304,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShadow();
       var od = api.Shadow.fromJson(o.toJson());
-      checkShadow(od);
+      checkShadow(od as api.Shadow);
     });
   });
 
@@ -4260,7 +4312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShape();
       var od = api.Shape.fromJson(o.toJson());
-      checkShape(od);
+      checkShape(od as api.Shape);
     });
   });
 
@@ -4268,7 +4320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShapeBackgroundFill();
       var od = api.ShapeBackgroundFill.fromJson(o.toJson());
-      checkShapeBackgroundFill(od);
+      checkShapeBackgroundFill(od as api.ShapeBackgroundFill);
     });
   });
 
@@ -4276,7 +4328,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShapeProperties();
       var od = api.ShapeProperties.fromJson(o.toJson());
-      checkShapeProperties(od);
+      checkShapeProperties(od as api.ShapeProperties);
     });
   });
 
@@ -4284,7 +4336,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSheetsChart();
       var od = api.SheetsChart.fromJson(o.toJson());
-      checkSheetsChart(od);
+      checkSheetsChart(od as api.SheetsChart);
     });
   });
 
@@ -4292,7 +4344,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSheetsChartProperties();
       var od = api.SheetsChartProperties.fromJson(o.toJson());
-      checkSheetsChartProperties(od);
+      checkSheetsChartProperties(od as api.SheetsChartProperties);
     });
   });
 
@@ -4300,7 +4352,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSize();
       var od = api.Size.fromJson(o.toJson());
-      checkSize(od);
+      checkSize(od as api.Size);
     });
   });
 
@@ -4308,7 +4360,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSlideProperties();
       var od = api.SlideProperties.fromJson(o.toJson());
-      checkSlideProperties(od);
+      checkSlideProperties(od as api.SlideProperties);
     });
   });
 
@@ -4316,7 +4368,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSolidFill();
       var od = api.SolidFill.fromJson(o.toJson());
-      checkSolidFill(od);
+      checkSolidFill(od as api.SolidFill);
     });
   });
 
@@ -4324,7 +4376,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStretchedPictureFill();
       var od = api.StretchedPictureFill.fromJson(o.toJson());
-      checkStretchedPictureFill(od);
+      checkStretchedPictureFill(od as api.StretchedPictureFill);
     });
   });
 
@@ -4332,7 +4384,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubstringMatchCriteria();
       var od = api.SubstringMatchCriteria.fromJson(o.toJson());
-      checkSubstringMatchCriteria(od);
+      checkSubstringMatchCriteria(od as api.SubstringMatchCriteria);
     });
   });
 
@@ -4340,7 +4392,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
-      checkTable(od);
+      checkTable(od as api.Table);
     });
   });
 
@@ -4348,7 +4400,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableBorderCell();
       var od = api.TableBorderCell.fromJson(o.toJson());
-      checkTableBorderCell(od);
+      checkTableBorderCell(od as api.TableBorderCell);
     });
   });
 
@@ -4356,7 +4408,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableBorderFill();
       var od = api.TableBorderFill.fromJson(o.toJson());
-      checkTableBorderFill(od);
+      checkTableBorderFill(od as api.TableBorderFill);
     });
   });
 
@@ -4364,7 +4416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableBorderProperties();
       var od = api.TableBorderProperties.fromJson(o.toJson());
-      checkTableBorderProperties(od);
+      checkTableBorderProperties(od as api.TableBorderProperties);
     });
   });
 
@@ -4372,7 +4424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableBorderRow();
       var od = api.TableBorderRow.fromJson(o.toJson());
-      checkTableBorderRow(od);
+      checkTableBorderRow(od as api.TableBorderRow);
     });
   });
 
@@ -4380,7 +4432,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableCell();
       var od = api.TableCell.fromJson(o.toJson());
-      checkTableCell(od);
+      checkTableCell(od as api.TableCell);
     });
   });
 
@@ -4388,7 +4440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableCellBackgroundFill();
       var od = api.TableCellBackgroundFill.fromJson(o.toJson());
-      checkTableCellBackgroundFill(od);
+      checkTableCellBackgroundFill(od as api.TableCellBackgroundFill);
     });
   });
 
@@ -4396,7 +4448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableCellLocation();
       var od = api.TableCellLocation.fromJson(o.toJson());
-      checkTableCellLocation(od);
+      checkTableCellLocation(od as api.TableCellLocation);
     });
   });
 
@@ -4404,7 +4456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableCellProperties();
       var od = api.TableCellProperties.fromJson(o.toJson());
-      checkTableCellProperties(od);
+      checkTableCellProperties(od as api.TableCellProperties);
     });
   });
 
@@ -4412,7 +4464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableColumnProperties();
       var od = api.TableColumnProperties.fromJson(o.toJson());
-      checkTableColumnProperties(od);
+      checkTableColumnProperties(od as api.TableColumnProperties);
     });
   });
 
@@ -4420,7 +4472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableRange();
       var od = api.TableRange.fromJson(o.toJson());
-      checkTableRange(od);
+      checkTableRange(od as api.TableRange);
     });
   });
 
@@ -4428,7 +4480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableRow();
       var od = api.TableRow.fromJson(o.toJson());
-      checkTableRow(od);
+      checkTableRow(od as api.TableRow);
     });
   });
 
@@ -4436,7 +4488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableRowProperties();
       var od = api.TableRowProperties.fromJson(o.toJson());
-      checkTableRowProperties(od);
+      checkTableRowProperties(od as api.TableRowProperties);
     });
   });
 
@@ -4444,7 +4496,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextContent();
       var od = api.TextContent.fromJson(o.toJson());
-      checkTextContent(od);
+      checkTextContent(od as api.TextContent);
     });
   });
 
@@ -4452,7 +4504,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextElement();
       var od = api.TextElement.fromJson(o.toJson());
-      checkTextElement(od);
+      checkTextElement(od as api.TextElement);
     });
   });
 
@@ -4460,7 +4512,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextRun();
       var od = api.TextRun.fromJson(o.toJson());
-      checkTextRun(od);
+      checkTextRun(od as api.TextRun);
     });
   });
 
@@ -4468,7 +4520,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTextStyle();
       var od = api.TextStyle.fromJson(o.toJson());
-      checkTextStyle(od);
+      checkTextStyle(od as api.TextStyle);
     });
   });
 
@@ -4476,7 +4528,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThemeColorPair();
       var od = api.ThemeColorPair.fromJson(o.toJson());
-      checkThemeColorPair(od);
+      checkThemeColorPair(od as api.ThemeColorPair);
     });
   });
 
@@ -4484,7 +4536,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThumbnail();
       var od = api.Thumbnail.fromJson(o.toJson());
-      checkThumbnail(od);
+      checkThumbnail(od as api.Thumbnail);
     });
   });
 
@@ -4492,7 +4544,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUngroupObjectsRequest();
       var od = api.UngroupObjectsRequest.fromJson(o.toJson());
-      checkUngroupObjectsRequest(od);
+      checkUngroupObjectsRequest(od as api.UngroupObjectsRequest);
     });
   });
 
@@ -4500,7 +4552,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnmergeTableCellsRequest();
       var od = api.UnmergeTableCellsRequest.fromJson(o.toJson());
-      checkUnmergeTableCellsRequest(od);
+      checkUnmergeTableCellsRequest(od as api.UnmergeTableCellsRequest);
     });
   });
 
@@ -4508,7 +4560,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateImagePropertiesRequest();
       var od = api.UpdateImagePropertiesRequest.fromJson(o.toJson());
-      checkUpdateImagePropertiesRequest(od);
+      checkUpdateImagePropertiesRequest(od as api.UpdateImagePropertiesRequest);
     });
   });
 
@@ -4516,7 +4568,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateLineCategoryRequest();
       var od = api.UpdateLineCategoryRequest.fromJson(o.toJson());
-      checkUpdateLineCategoryRequest(od);
+      checkUpdateLineCategoryRequest(od as api.UpdateLineCategoryRequest);
     });
   });
 
@@ -4524,7 +4576,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateLinePropertiesRequest();
       var od = api.UpdateLinePropertiesRequest.fromJson(o.toJson());
-      checkUpdateLinePropertiesRequest(od);
+      checkUpdateLinePropertiesRequest(od as api.UpdateLinePropertiesRequest);
     });
   });
 
@@ -4532,7 +4584,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdatePageElementAltTextRequest();
       var od = api.UpdatePageElementAltTextRequest.fromJson(o.toJson());
-      checkUpdatePageElementAltTextRequest(od);
+      checkUpdatePageElementAltTextRequest(
+          od as api.UpdatePageElementAltTextRequest);
     });
   });
 
@@ -4540,7 +4593,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdatePageElementTransformRequest();
       var od = api.UpdatePageElementTransformRequest.fromJson(o.toJson());
-      checkUpdatePageElementTransformRequest(od);
+      checkUpdatePageElementTransformRequest(
+          od as api.UpdatePageElementTransformRequest);
     });
   });
 
@@ -4548,7 +4602,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdatePageElementsZOrderRequest();
       var od = api.UpdatePageElementsZOrderRequest.fromJson(o.toJson());
-      checkUpdatePageElementsZOrderRequest(od);
+      checkUpdatePageElementsZOrderRequest(
+          od as api.UpdatePageElementsZOrderRequest);
     });
   });
 
@@ -4556,7 +4611,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdatePagePropertiesRequest();
       var od = api.UpdatePagePropertiesRequest.fromJson(o.toJson());
-      checkUpdatePagePropertiesRequest(od);
+      checkUpdatePagePropertiesRequest(od as api.UpdatePagePropertiesRequest);
     });
   });
 
@@ -4564,7 +4619,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateParagraphStyleRequest();
       var od = api.UpdateParagraphStyleRequest.fromJson(o.toJson());
-      checkUpdateParagraphStyleRequest(od);
+      checkUpdateParagraphStyleRequest(od as api.UpdateParagraphStyleRequest);
     });
   });
 
@@ -4572,7 +4627,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateShapePropertiesRequest();
       var od = api.UpdateShapePropertiesRequest.fromJson(o.toJson());
-      checkUpdateShapePropertiesRequest(od);
+      checkUpdateShapePropertiesRequest(od as api.UpdateShapePropertiesRequest);
     });
   });
 
@@ -4580,7 +4635,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateSlidesPositionRequest();
       var od = api.UpdateSlidesPositionRequest.fromJson(o.toJson());
-      checkUpdateSlidesPositionRequest(od);
+      checkUpdateSlidesPositionRequest(od as api.UpdateSlidesPositionRequest);
     });
   });
 
@@ -4588,7 +4643,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateTableBorderPropertiesRequest();
       var od = api.UpdateTableBorderPropertiesRequest.fromJson(o.toJson());
-      checkUpdateTableBorderPropertiesRequest(od);
+      checkUpdateTableBorderPropertiesRequest(
+          od as api.UpdateTableBorderPropertiesRequest);
     });
   });
 
@@ -4596,7 +4652,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateTableCellPropertiesRequest();
       var od = api.UpdateTableCellPropertiesRequest.fromJson(o.toJson());
-      checkUpdateTableCellPropertiesRequest(od);
+      checkUpdateTableCellPropertiesRequest(
+          od as api.UpdateTableCellPropertiesRequest);
     });
   });
 
@@ -4604,7 +4661,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateTableColumnPropertiesRequest();
       var od = api.UpdateTableColumnPropertiesRequest.fromJson(o.toJson());
-      checkUpdateTableColumnPropertiesRequest(od);
+      checkUpdateTableColumnPropertiesRequest(
+          od as api.UpdateTableColumnPropertiesRequest);
     });
   });
 
@@ -4612,7 +4670,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateTableRowPropertiesRequest();
       var od = api.UpdateTableRowPropertiesRequest.fromJson(o.toJson());
-      checkUpdateTableRowPropertiesRequest(od);
+      checkUpdateTableRowPropertiesRequest(
+          od as api.UpdateTableRowPropertiesRequest);
     });
   });
 
@@ -4620,7 +4679,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateTextStyleRequest();
       var od = api.UpdateTextStyleRequest.fromJson(o.toJson());
-      checkUpdateTextStyleRequest(od);
+      checkUpdateTextStyleRequest(od as api.UpdateTextStyleRequest);
     });
   });
 
@@ -4628,7 +4687,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateVideoPropertiesRequest();
       var od = api.UpdateVideoPropertiesRequest.fromJson(o.toJson());
-      checkUpdateVideoPropertiesRequest(od);
+      checkUpdateVideoPropertiesRequest(od as api.UpdateVideoPropertiesRequest);
     });
   });
 
@@ -4636,7 +4695,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideo();
       var od = api.Video.fromJson(o.toJson());
-      checkVideo(od);
+      checkVideo(od as api.Video);
     });
   });
 
@@ -4644,7 +4703,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoProperties();
       var od = api.VideoProperties.fromJson(o.toJson());
-      checkVideoProperties(od);
+      checkVideoProperties(od as api.VideoProperties);
     });
   });
 
@@ -4652,7 +4711,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWeightedFontFamily();
       var od = api.WeightedFontFamily.fromJson(o.toJson());
-      checkWeightedFontFamily(od);
+      checkWeightedFontFamily(od as api.WeightedFontFamily);
     });
   });
 
@@ -4660,7 +4719,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWordArt();
       var od = api.WordArt.fromJson(o.toJson());
-      checkWordArt(od);
+      checkWordArt(od as api.WordArt);
     });
   });
 
@@ -4668,7 +4727,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteControl();
       var od = api.WriteControl.fromJson(o.toJson());
-      checkWriteControl(od);
+      checkWriteControl(od as api.WriteControl);
     });
   });
 
@@ -4680,8 +4739,10 @@ void main() {
       var arg_presentationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchUpdatePresentationRequest.fromJson(json);
-        checkBatchUpdatePresentationRequest(obj);
+        var obj = api.BatchUpdatePresentationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchUpdatePresentationRequest(
+            obj as api.BatchUpdatePresentationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4729,7 +4790,8 @@ void main() {
       res
           .batchUpdate(arg_request, arg_presentationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchUpdatePresentationResponse(response);
+        checkBatchUpdatePresentationResponse(
+            response as api.BatchUpdatePresentationResponse);
       })));
     });
 
@@ -4739,8 +4801,9 @@ void main() {
       var arg_request = buildPresentation();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Presentation.fromJson(json);
-        checkPresentation(obj);
+        var obj = api.Presentation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPresentation(obj as api.Presentation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4779,7 +4842,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPresentation(response);
+        checkPresentation(response as api.Presentation);
       })));
     });
 
@@ -4827,7 +4890,7 @@ void main() {
       res
           .get(arg_presentationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPresentation(response);
+        checkPresentation(response as api.Presentation);
       })));
     });
   });
@@ -4889,7 +4952,7 @@ void main() {
       res
           .get(arg_presentationId, arg_pageObjectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPage(response);
+        checkPage(response as api.Page);
       })));
     });
 
@@ -4965,7 +5028,7 @@ void main() {
                   arg_thumbnailProperties_thumbnailSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkThumbnail(response);
+        checkThumbnail(response as api.Thumbnail);
       })));
     });
   });

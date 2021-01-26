@@ -88,7 +88,7 @@ api.Account buildAccount() {
 void checkAccount(api.Account o) {
   buildCounterAccount++;
   if (buildCounterAccount < 3) {
-    checkGoogleAuto(o.googleAuto);
+    checkGoogleAuto(o.googleAuto as api.GoogleAuto);
   }
   buildCounterAccount--;
 }
@@ -127,8 +127,8 @@ core.List<api.AndroidModel> buildUnnamed83() {
 
 void checkUnnamed83(core.List<api.AndroidModel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidModel(o[0]);
-  checkAndroidModel(o[1]);
+  checkAndroidModel(o[0] as api.AndroidModel);
+  checkAndroidModel(o[1] as api.AndroidModel);
 }
 
 core.List<api.AndroidVersion> buildUnnamed84() {
@@ -140,8 +140,8 @@ core.List<api.AndroidVersion> buildUnnamed84() {
 
 void checkUnnamed84(core.List<api.AndroidVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidVersion(o[0]);
-  checkAndroidVersion(o[1]);
+  checkAndroidVersion(o[0] as api.AndroidVersion);
+  checkAndroidVersion(o[1] as api.AndroidVersion);
 }
 
 core.int buildCounterAndroidDeviceCatalog = 0;
@@ -161,7 +161,8 @@ void checkAndroidDeviceCatalog(api.AndroidDeviceCatalog o) {
   buildCounterAndroidDeviceCatalog++;
   if (buildCounterAndroidDeviceCatalog < 3) {
     checkUnnamed83(o.models);
-    checkAndroidRuntimeConfiguration(o.runtimeConfiguration);
+    checkAndroidRuntimeConfiguration(
+        o.runtimeConfiguration as api.AndroidRuntimeConfiguration);
     checkUnnamed84(o.versions);
   }
   buildCounterAndroidDeviceCatalog--;
@@ -176,8 +177,8 @@ core.List<api.AndroidDevice> buildUnnamed85() {
 
 void checkUnnamed85(core.List<api.AndroidDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAndroidDevice(o[0]);
-  checkAndroidDevice(o[1]);
+  checkAndroidDevice(o[0] as api.AndroidDevice);
+  checkAndroidDevice(o[1] as api.AndroidDevice);
 }
 
 core.int buildCounterAndroidDeviceList = 0;
@@ -234,12 +235,12 @@ api.AndroidInstrumentationTest buildAndroidInstrumentationTest() {
 void checkAndroidInstrumentationTest(api.AndroidInstrumentationTest o) {
   buildCounterAndroidInstrumentationTest++;
   if (buildCounterAndroidInstrumentationTest < 3) {
-    checkFileReference(o.appApk);
-    checkAppBundle(o.appBundle);
+    checkFileReference(o.appApk as api.FileReference);
+    checkAppBundle(o.appBundle as api.AppBundle);
     unittest.expect(o.appPackageId, unittest.equals('foo'));
     unittest.expect(o.orchestratorOption, unittest.equals('foo'));
-    checkShardingOption(o.shardingOption);
-    checkFileReference(o.testApk);
+    checkShardingOption(o.shardingOption as api.ShardingOption);
+    checkFileReference(o.testApk as api.FileReference);
     unittest.expect(o.testPackageId, unittest.equals('foo'));
     unittest.expect(o.testRunnerClass, unittest.equals('foo'));
     checkUnnamed86(o.testTargets);
@@ -419,8 +420,8 @@ core.List<api.RoboDirective> buildUnnamed94() {
 
 void checkUnnamed94(core.List<api.RoboDirective> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRoboDirective(o[0]);
-  checkRoboDirective(o[1]);
+  checkRoboDirective(o[0] as api.RoboDirective);
+  checkRoboDirective(o[1] as api.RoboDirective);
 }
 
 core.List<api.RoboStartingIntent> buildUnnamed95() {
@@ -432,8 +433,8 @@ core.List<api.RoboStartingIntent> buildUnnamed95() {
 
 void checkUnnamed95(core.List<api.RoboStartingIntent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRoboStartingIntent(o[0]);
-  checkRoboStartingIntent(o[1]);
+  checkRoboStartingIntent(o[0] as api.RoboStartingIntent);
+  checkRoboStartingIntent(o[1] as api.RoboStartingIntent);
 }
 
 core.int buildCounterAndroidRoboTest = 0;
@@ -458,14 +459,14 @@ api.AndroidRoboTest buildAndroidRoboTest() {
 void checkAndroidRoboTest(api.AndroidRoboTest o) {
   buildCounterAndroidRoboTest++;
   if (buildCounterAndroidRoboTest < 3) {
-    checkFileReference(o.appApk);
-    checkAppBundle(o.appBundle);
+    checkFileReference(o.appApk as api.FileReference);
+    checkAppBundle(o.appBundle as api.AppBundle);
     unittest.expect(o.appInitialActivity, unittest.equals('foo'));
     unittest.expect(o.appPackageId, unittest.equals('foo'));
     unittest.expect(o.maxDepth, unittest.equals(42));
     unittest.expect(o.maxSteps, unittest.equals(42));
     checkUnnamed94(o.roboDirectives);
-    checkFileReference(o.roboScript);
+    checkFileReference(o.roboScript as api.FileReference);
     checkUnnamed95(o.startingIntents);
   }
   buildCounterAndroidRoboTest--;
@@ -480,8 +481,8 @@ core.List<api.Locale> buildUnnamed96() {
 
 void checkUnnamed96(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocale(o[0]);
-  checkLocale(o[1]);
+  checkLocale(o[0] as api.Locale);
+  checkLocale(o[1] as api.Locale);
 }
 
 core.List<api.Orientation> buildUnnamed97() {
@@ -493,8 +494,8 @@ core.List<api.Orientation> buildUnnamed97() {
 
 void checkUnnamed97(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrientation(o[0]);
-  checkOrientation(o[1]);
+  checkOrientation(o[0] as api.Orientation);
+  checkOrientation(o[1] as api.Orientation);
 }
 
 core.int buildCounterAndroidRuntimeConfiguration = 0;
@@ -562,8 +563,8 @@ api.AndroidTestLoop buildAndroidTestLoop() {
 void checkAndroidTestLoop(api.AndroidTestLoop o) {
   buildCounterAndroidTestLoop++;
   if (buildCounterAndroidTestLoop < 3) {
-    checkFileReference(o.appApk);
-    checkAppBundle(o.appBundle);
+    checkFileReference(o.appApk as api.FileReference);
+    checkAppBundle(o.appBundle as api.AppBundle);
     unittest.expect(o.appPackageId, unittest.equals('foo'));
     checkUnnamed98(o.scenarioLabels);
     checkUnnamed99(o.scenarios);
@@ -606,9 +607,9 @@ void checkAndroidVersion(api.AndroidVersion o) {
   if (buildCounterAndroidVersion < 3) {
     unittest.expect(o.apiLevel, unittest.equals(42));
     unittest.expect(o.codeName, unittest.equals('foo'));
-    checkDistribution(o.distribution);
+    checkDistribution(o.distribution as api.Distribution);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkDate(o.releaseDate);
+    checkDate(o.releaseDate as api.Date);
     checkUnnamed100(o.tags);
     unittest.expect(o.versionString, unittest.equals('foo'));
   }
@@ -630,7 +631,7 @@ api.Apk buildApk() {
 void checkApk(api.Apk o) {
   buildCounterApk++;
   if (buildCounterApk < 3) {
-    checkFileReference(o.location);
+    checkFileReference(o.location as api.FileReference);
     unittest.expect(o.packageName, unittest.equals('foo'));
   }
   buildCounterApk--;
@@ -650,7 +651,7 @@ api.ApkDetail buildApkDetail() {
 void checkApkDetail(api.ApkDetail o) {
   buildCounterApkDetail++;
   if (buildCounterApkDetail < 3) {
-    checkApkManifest(o.apkManifest);
+    checkApkManifest(o.apkManifest as api.ApkManifest);
   }
   buildCounterApkDetail--;
 }
@@ -664,8 +665,8 @@ core.List<api.IntentFilter> buildUnnamed101() {
 
 void checkUnnamed101(core.List<api.IntentFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIntentFilter(o[0]);
-  checkIntentFilter(o[1]);
+  checkIntentFilter(o[0] as api.IntentFilter);
+  checkIntentFilter(o[1] as api.IntentFilter);
 }
 
 core.int buildCounterApkManifest = 0;
@@ -711,7 +712,7 @@ api.AppBundle buildAppBundle() {
 void checkAppBundle(api.AppBundle o) {
   buildCounterAppBundle++;
   if (buildCounterAppBundle < 3) {
-    checkFileReference(o.bundleLocation);
+    checkFileReference(o.bundleLocation as api.FileReference);
   }
   buildCounterAppBundle--;
 }
@@ -744,8 +745,8 @@ core.List<api.ClientInfoDetail> buildUnnamed102() {
 
 void checkUnnamed102(core.List<api.ClientInfoDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClientInfoDetail(o[0]);
-  checkClientInfoDetail(o[1]);
+  checkClientInfoDetail(o[0] as api.ClientInfoDetail);
+  checkClientInfoDetail(o[1] as api.ClientInfoDetail);
 }
 
 core.int buildCounterClientInfo = 0;
@@ -828,8 +829,8 @@ api.DeviceFile buildDeviceFile() {
 void checkDeviceFile(api.DeviceFile o) {
   buildCounterDeviceFile++;
   if (buildCounterDeviceFile < 3) {
-    checkObbFile(o.obbFile);
-    checkRegularFile(o.regularFile);
+    checkObbFile(o.obbFile as api.ObbFile);
+    checkRegularFile(o.regularFile as api.RegularFile);
   }
   buildCounterDeviceFile--;
 }
@@ -850,7 +851,7 @@ api.DeviceIpBlock buildDeviceIpBlock() {
 void checkDeviceIpBlock(api.DeviceIpBlock o) {
   buildCounterDeviceIpBlock++;
   if (buildCounterDeviceIpBlock < 3) {
-    checkDate(o.addedDate);
+    checkDate(o.addedDate as api.Date);
     unittest.expect(o.block, unittest.equals('foo'));
     unittest.expect(o.form, unittest.equals('foo'));
   }
@@ -866,8 +867,8 @@ core.List<api.DeviceIpBlock> buildUnnamed103() {
 
 void checkUnnamed103(core.List<api.DeviceIpBlock> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceIpBlock(o[0]);
-  checkDeviceIpBlock(o[1]);
+  checkDeviceIpBlock(o[0] as api.DeviceIpBlock);
+  checkDeviceIpBlock(o[1] as api.DeviceIpBlock);
 }
 
 core.int buildCounterDeviceIpBlockCatalog = 0;
@@ -925,8 +926,8 @@ api.Environment buildEnvironment() {
 void checkEnvironment(api.Environment o) {
   buildCounterEnvironment++;
   if (buildCounterEnvironment < 3) {
-    checkAndroidDevice(o.androidDevice);
-    checkIosDevice(o.iosDevice);
+    checkAndroidDevice(o.androidDevice as api.AndroidDevice);
+    checkIosDevice(o.iosDevice as api.IosDevice);
   }
   buildCounterEnvironment--;
 }
@@ -947,9 +948,9 @@ api.EnvironmentMatrix buildEnvironmentMatrix() {
 void checkEnvironmentMatrix(api.EnvironmentMatrix o) {
   buildCounterEnvironmentMatrix++;
   if (buildCounterEnvironmentMatrix < 3) {
-    checkAndroidDeviceList(o.androidDeviceList);
-    checkAndroidMatrix(o.androidMatrix);
-    checkIosDeviceList(o.iosDeviceList);
+    checkAndroidDeviceList(o.androidDeviceList as api.AndroidDeviceList);
+    checkAndroidMatrix(o.androidMatrix as api.AndroidMatrix);
+    checkIosDeviceList(o.iosDeviceList as api.IosDeviceList);
   }
   buildCounterEnvironmentMatrix--;
 }
@@ -1008,7 +1009,7 @@ api.GetApkDetailsResponse buildGetApkDetailsResponse() {
 void checkGetApkDetailsResponse(api.GetApkDetailsResponse o) {
   buildCounterGetApkDetailsResponse++;
   if (buildCounterGetApkDetailsResponse < 3) {
-    checkApkDetail(o.apkDetail);
+    checkApkDetail(o.apkDetail as api.ApkDetail);
   }
   buildCounterGetApkDetailsResponse--;
 }
@@ -1130,8 +1131,8 @@ core.List<api.IosModel> buildUnnamed106() {
 
 void checkUnnamed106(core.List<api.IosModel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosModel(o[0]);
-  checkIosModel(o[1]);
+  checkIosModel(o[0] as api.IosModel);
+  checkIosModel(o[1] as api.IosModel);
 }
 
 core.List<api.IosVersion> buildUnnamed107() {
@@ -1143,8 +1144,8 @@ core.List<api.IosVersion> buildUnnamed107() {
 
 void checkUnnamed107(core.List<api.IosVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosVersion(o[0]);
-  checkIosVersion(o[1]);
+  checkIosVersion(o[0] as api.IosVersion);
+  checkIosVersion(o[1] as api.IosVersion);
 }
 
 core.List<api.XcodeVersion> buildUnnamed108() {
@@ -1156,8 +1157,8 @@ core.List<api.XcodeVersion> buildUnnamed108() {
 
 void checkUnnamed108(core.List<api.XcodeVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkXcodeVersion(o[0]);
-  checkXcodeVersion(o[1]);
+  checkXcodeVersion(o[0] as api.XcodeVersion);
+  checkXcodeVersion(o[1] as api.XcodeVersion);
 }
 
 core.int buildCounterIosDeviceCatalog = 0;
@@ -1178,7 +1179,8 @@ void checkIosDeviceCatalog(api.IosDeviceCatalog o) {
   buildCounterIosDeviceCatalog++;
   if (buildCounterIosDeviceCatalog < 3) {
     checkUnnamed106(o.models);
-    checkIosRuntimeConfiguration(o.runtimeConfiguration);
+    checkIosRuntimeConfiguration(
+        o.runtimeConfiguration as api.IosRuntimeConfiguration);
     checkUnnamed107(o.versions);
     checkUnnamed108(o.xcodeVersions);
   }
@@ -1202,7 +1204,7 @@ void checkIosDeviceFile(api.IosDeviceFile o) {
   buildCounterIosDeviceFile++;
   if (buildCounterIosDeviceFile < 3) {
     unittest.expect(o.bundleId, unittest.equals('foo'));
-    checkFileReference(o.content);
+    checkFileReference(o.content as api.FileReference);
     unittest.expect(o.devicePath, unittest.equals('foo'));
   }
   buildCounterIosDeviceFile--;
@@ -1217,8 +1219,8 @@ core.List<api.IosDevice> buildUnnamed109() {
 
 void checkUnnamed109(core.List<api.IosDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDevice(o[0]);
-  checkIosDevice(o[1]);
+  checkIosDevice(o[0] as api.IosDevice);
+  checkIosDevice(o[1] as api.IosDevice);
 }
 
 core.int buildCounterIosDeviceList = 0;
@@ -1323,8 +1325,8 @@ core.List<api.Locale> buildUnnamed113() {
 
 void checkUnnamed113(core.List<api.Locale> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocale(o[0]);
-  checkLocale(o[1]);
+  checkLocale(o[0] as api.Locale);
+  checkLocale(o[1] as api.Locale);
 }
 
 core.List<api.Orientation> buildUnnamed114() {
@@ -1336,8 +1338,8 @@ core.List<api.Orientation> buildUnnamed114() {
 
 void checkUnnamed114(core.List<api.Orientation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrientation(o[0]);
-  checkOrientation(o[1]);
+  checkOrientation(o[0] as api.Orientation);
+  checkOrientation(o[1] as api.Orientation);
 }
 
 core.int buildCounterIosRuntimeConfiguration = 0;
@@ -1391,7 +1393,7 @@ void checkIosTestLoop(api.IosTestLoop o) {
   buildCounterIosTestLoop++;
   if (buildCounterIosTestLoop < 3) {
     unittest.expect(o.appBundleId, unittest.equals('foo'));
-    checkFileReference(o.appIpa);
+    checkFileReference(o.appIpa as api.FileReference);
     checkUnnamed115(o.scenarios);
   }
   buildCounterIosTestLoop--;
@@ -1406,8 +1408,8 @@ core.List<api.FileReference> buildUnnamed116() {
 
 void checkUnnamed116(core.List<api.FileReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFileReference(o[0]);
-  checkFileReference(o[1]);
+  checkFileReference(o[0] as api.FileReference);
+  checkFileReference(o[1] as api.FileReference);
 }
 
 core.List<api.IosDeviceFile> buildUnnamed117() {
@@ -1419,8 +1421,8 @@ core.List<api.IosDeviceFile> buildUnnamed117() {
 
 void checkUnnamed117(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDeviceFile(o[0]);
-  checkIosDeviceFile(o[1]);
+  checkIosDeviceFile(o[0] as api.IosDeviceFile);
+  checkIosDeviceFile(o[1] as api.IosDeviceFile);
 }
 
 core.List<api.IosDeviceFile> buildUnnamed118() {
@@ -1432,8 +1434,8 @@ core.List<api.IosDeviceFile> buildUnnamed118() {
 
 void checkUnnamed118(core.List<api.IosDeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIosDeviceFile(o[0]);
-  checkIosDeviceFile(o[1]);
+  checkIosDeviceFile(o[0] as api.IosDeviceFile);
+  checkIosDeviceFile(o[1] as api.IosDeviceFile);
 }
 
 core.int buildCounterIosTestSetup = 0;
@@ -1534,9 +1536,9 @@ void checkIosXcTest(api.IosXcTest o) {
   if (buildCounterIosXcTest < 3) {
     unittest.expect(o.appBundleId, unittest.equals('foo'));
     unittest.expect(o.testSpecialEntitlements, unittest.isTrue);
-    checkFileReference(o.testsZip);
+    checkFileReference(o.testsZip as api.FileReference);
     unittest.expect(o.xcodeVersion, unittest.equals('foo'));
-    checkFileReference(o.xctestrun);
+    checkFileReference(o.xctestrun as api.FileReference);
   }
   buildCounterIosXcTest--;
 }
@@ -1603,8 +1605,8 @@ core.List<api.TestTargetsForShard> buildUnnamed122() {
 
 void checkUnnamed122(core.List<api.TestTargetsForShard> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestTargetsForShard(o[0]);
-  checkTestTargetsForShard(o[1]);
+  checkTestTargetsForShard(o[0] as api.TestTargetsForShard);
+  checkTestTargetsForShard(o[1] as api.TestTargetsForShard);
 }
 
 core.int buildCounterManualSharding = 0;
@@ -1642,9 +1644,9 @@ api.NetworkConfiguration buildNetworkConfiguration() {
 void checkNetworkConfiguration(api.NetworkConfiguration o) {
   buildCounterNetworkConfiguration++;
   if (buildCounterNetworkConfiguration < 3) {
-    checkTrafficRule(o.downRule);
+    checkTrafficRule(o.downRule as api.TrafficRule);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkTrafficRule(o.upRule);
+    checkTrafficRule(o.upRule as api.TrafficRule);
   }
   buildCounterNetworkConfiguration--;
 }
@@ -1658,8 +1660,8 @@ core.List<api.NetworkConfiguration> buildUnnamed123() {
 
 void checkUnnamed123(core.List<api.NetworkConfiguration> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkConfiguration(o[0]);
-  checkNetworkConfiguration(o[1]);
+  checkNetworkConfiguration(o[0] as api.NetworkConfiguration);
+  checkNetworkConfiguration(o[1] as api.NetworkConfiguration);
 }
 
 core.int buildCounterNetworkConfigurationCatalog = 0;
@@ -1696,7 +1698,7 @@ api.ObbFile buildObbFile() {
 void checkObbFile(api.ObbFile o) {
   buildCounterObbFile++;
   if (buildCounterObbFile < 3) {
-    checkFileReference(o.obb);
+    checkFileReference(o.obb as api.FileReference);
     unittest.expect(o.obbFileName, unittest.equals('foo'));
   }
   buildCounterObbFile--;
@@ -1772,7 +1774,7 @@ api.RegularFile buildRegularFile() {
 void checkRegularFile(api.RegularFile o) {
   buildCounterRegularFile++;
   if (buildCounterRegularFile < 3) {
-    checkFileReference(o.content);
+    checkFileReference(o.content as api.FileReference);
     unittest.expect(o.devicePath, unittest.equals('foo'));
   }
   buildCounterRegularFile--;
@@ -1795,10 +1797,11 @@ api.ResultStorage buildResultStorage() {
 void checkResultStorage(api.ResultStorage o) {
   buildCounterResultStorage++;
   if (buildCounterResultStorage < 3) {
-    checkGoogleCloudStorage(o.googleCloudStorage);
+    checkGoogleCloudStorage(o.googleCloudStorage as api.GoogleCloudStorage);
     unittest.expect(o.resultsUrl, unittest.equals('foo'));
-    checkToolResultsExecution(o.toolResultsExecution);
-    checkToolResultsHistory(o.toolResultsHistory);
+    checkToolResultsExecution(
+        o.toolResultsExecution as api.ToolResultsExecution);
+    checkToolResultsHistory(o.toolResultsHistory as api.ToolResultsHistory);
   }
   buildCounterResultStorage--;
 }
@@ -1842,8 +1845,9 @@ api.RoboStartingIntent buildRoboStartingIntent() {
 void checkRoboStartingIntent(api.RoboStartingIntent o) {
   buildCounterRoboStartingIntent++;
   if (buildCounterRoboStartingIntent < 3) {
-    checkLauncherActivityIntent(o.launcherActivity);
-    checkStartActivityIntent(o.startActivity);
+    checkLauncherActivityIntent(
+        o.launcherActivity as api.LauncherActivityIntent);
+    checkStartActivityIntent(o.startActivity as api.StartActivityIntent);
     unittest.expect(o.timeout, unittest.equals('foo'));
   }
   buildCounterRoboStartingIntent--;
@@ -1867,7 +1871,7 @@ void checkShard(api.Shard o) {
   if (buildCounterShard < 3) {
     unittest.expect(o.numShards, unittest.equals(42));
     unittest.expect(o.shardIndex, unittest.equals(42));
-    checkTestTargetsForShard(o.testTargetsForShard);
+    checkTestTargetsForShard(o.testTargetsForShard as api.TestTargetsForShard);
   }
   buildCounterShard--;
 }
@@ -1887,8 +1891,8 @@ api.ShardingOption buildShardingOption() {
 void checkShardingOption(api.ShardingOption o) {
   buildCounterShardingOption++;
   if (buildCounterShardingOption < 3) {
-    checkManualSharding(o.manualSharding);
-    checkUniformSharding(o.uniformSharding);
+    checkManualSharding(o.manualSharding as api.ManualSharding);
+    checkUniformSharding(o.uniformSharding as api.UniformSharding);
   }
   buildCounterShardingOption--;
 }
@@ -2000,11 +2004,15 @@ api.TestEnvironmentCatalog buildTestEnvironmentCatalog() {
 void checkTestEnvironmentCatalog(api.TestEnvironmentCatalog o) {
   buildCounterTestEnvironmentCatalog++;
   if (buildCounterTestEnvironmentCatalog < 3) {
-    checkAndroidDeviceCatalog(o.androidDeviceCatalog);
-    checkDeviceIpBlockCatalog(o.deviceIpBlockCatalog);
-    checkIosDeviceCatalog(o.iosDeviceCatalog);
-    checkNetworkConfigurationCatalog(o.networkConfigurationCatalog);
-    checkProvidedSoftwareCatalog(o.softwareCatalog);
+    checkAndroidDeviceCatalog(
+        o.androidDeviceCatalog as api.AndroidDeviceCatalog);
+    checkDeviceIpBlockCatalog(
+        o.deviceIpBlockCatalog as api.DeviceIpBlockCatalog);
+    checkIosDeviceCatalog(o.iosDeviceCatalog as api.IosDeviceCatalog);
+    checkNetworkConfigurationCatalog(
+        o.networkConfigurationCatalog as api.NetworkConfigurationCatalog);
+    checkProvidedSoftwareCatalog(
+        o.softwareCatalog as api.ProvidedSoftwareCatalog);
   }
   buildCounterTestEnvironmentCatalog--;
 }
@@ -2032,16 +2040,16 @@ api.TestExecution buildTestExecution() {
 void checkTestExecution(api.TestExecution o) {
   buildCounterTestExecution++;
   if (buildCounterTestExecution < 3) {
-    checkEnvironment(o.environment);
+    checkEnvironment(o.environment as api.Environment);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.matrixId, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkShard(o.shard);
+    checkShard(o.shard as api.Shard);
     unittest.expect(o.state, unittest.equals('foo'));
-    checkTestDetails(o.testDetails);
-    checkTestSpecification(o.testSpecification);
+    checkTestDetails(o.testDetails as api.TestDetails);
+    checkTestSpecification(o.testSpecification as api.TestSpecification);
     unittest.expect(o.timestamp, unittest.equals('foo'));
-    checkToolResultsStep(o.toolResultsStep);
+    checkToolResultsStep(o.toolResultsStep as api.ToolResultsStep);
   }
   buildCounterTestExecution--;
 }
@@ -2055,8 +2063,8 @@ core.List<api.TestExecution> buildUnnamed127() {
 
 void checkUnnamed127(core.List<api.TestExecution> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTestExecution(o[0]);
-  checkTestExecution(o[1]);
+  checkTestExecution(o[0] as api.TestExecution);
+  checkTestExecution(o[1] as api.TestExecution);
 }
 
 core.int buildCounterTestMatrix = 0;
@@ -2084,17 +2092,17 @@ api.TestMatrix buildTestMatrix() {
 void checkTestMatrix(api.TestMatrix o) {
   buildCounterTestMatrix++;
   if (buildCounterTestMatrix < 3) {
-    checkClientInfo(o.clientInfo);
-    checkEnvironmentMatrix(o.environmentMatrix);
+    checkClientInfo(o.clientInfo as api.ClientInfo);
+    checkEnvironmentMatrix(o.environmentMatrix as api.EnvironmentMatrix);
     unittest.expect(o.flakyTestAttempts, unittest.equals(42));
     unittest.expect(o.invalidMatrixDetails, unittest.equals('foo'));
     unittest.expect(o.outcomeSummary, unittest.equals('foo'));
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkResultStorage(o.resultStorage);
+    checkResultStorage(o.resultStorage as api.ResultStorage);
     unittest.expect(o.state, unittest.equals('foo'));
     checkUnnamed127(o.testExecutions);
     unittest.expect(o.testMatrixId, unittest.equals('foo'));
-    checkTestSpecification(o.testSpecification);
+    checkTestSpecification(o.testSpecification as api.TestSpecification);
     unittest.expect(o.timestamp, unittest.equals('foo'));
   }
   buildCounterTestMatrix--;
@@ -2109,8 +2117,8 @@ core.List<api.Apk> buildUnnamed128() {
 
 void checkUnnamed128(core.List<api.Apk> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApk(o[0]);
-  checkApk(o[1]);
+  checkApk(o[0] as api.Apk);
+  checkApk(o[1] as api.Apk);
 }
 
 core.List<core.String> buildUnnamed129() {
@@ -2135,8 +2143,8 @@ core.List<api.EnvironmentVariable> buildUnnamed130() {
 
 void checkUnnamed130(core.List<api.EnvironmentVariable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEnvironmentVariable(o[0]);
-  checkEnvironmentVariable(o[1]);
+  checkEnvironmentVariable(o[0] as api.EnvironmentVariable);
+  checkEnvironmentVariable(o[1] as api.EnvironmentVariable);
 }
 
 core.List<api.DeviceFile> buildUnnamed131() {
@@ -2148,8 +2156,8 @@ core.List<api.DeviceFile> buildUnnamed131() {
 
 void checkUnnamed131(core.List<api.DeviceFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDeviceFile(o[0]);
-  checkDeviceFile(o[1]);
+  checkDeviceFile(o[0] as api.DeviceFile);
+  checkDeviceFile(o[1] as api.DeviceFile);
 }
 
 core.int buildCounterTestSetup = 0;
@@ -2173,14 +2181,14 @@ api.TestSetup buildTestSetup() {
 void checkTestSetup(api.TestSetup o) {
   buildCounterTestSetup++;
   if (buildCounterTestSetup < 3) {
-    checkAccount(o.account);
+    checkAccount(o.account as api.Account);
     checkUnnamed128(o.additionalApks);
     checkUnnamed129(o.directoriesToPull);
     unittest.expect(o.dontAutograntPermissions, unittest.isTrue);
     checkUnnamed130(o.environmentVariables);
     checkUnnamed131(o.filesToPush);
     unittest.expect(o.networkProfile, unittest.equals('foo'));
-    checkSystraceSetup(o.systrace);
+    checkSystraceSetup(o.systrace as api.SystraceSetup);
   }
   buildCounterTestSetup--;
 }
@@ -2208,15 +2216,16 @@ api.TestSpecification buildTestSpecification() {
 void checkTestSpecification(api.TestSpecification o) {
   buildCounterTestSpecification++;
   if (buildCounterTestSpecification < 3) {
-    checkAndroidInstrumentationTest(o.androidInstrumentationTest);
-    checkAndroidRoboTest(o.androidRoboTest);
-    checkAndroidTestLoop(o.androidTestLoop);
+    checkAndroidInstrumentationTest(
+        o.androidInstrumentationTest as api.AndroidInstrumentationTest);
+    checkAndroidRoboTest(o.androidRoboTest as api.AndroidRoboTest);
+    checkAndroidTestLoop(o.androidTestLoop as api.AndroidTestLoop);
     unittest.expect(o.disablePerformanceMetrics, unittest.isTrue);
     unittest.expect(o.disableVideoRecording, unittest.isTrue);
-    checkIosTestLoop(o.iosTestLoop);
-    checkIosTestSetup(o.iosTestSetup);
-    checkIosXcTest(o.iosXcTest);
-    checkTestSetup(o.testSetup);
+    checkIosTestLoop(o.iosTestLoop as api.IosTestLoop);
+    checkIosTestSetup(o.iosTestSetup as api.IosTestSetup);
+    checkIosXcTest(o.iosXcTest as api.IosXcTest);
+    checkTestSetup(o.testSetup as api.TestSetup);
     unittest.expect(o.testTimeout, unittest.equals('foo'));
   }
   buildCounterTestSpecification--;
@@ -2408,7 +2417,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccount();
       var od = api.Account.fromJson(o.toJson());
-      checkAccount(od);
+      checkAccount(od as api.Account);
     });
   });
 
@@ -2416,7 +2425,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidDevice();
       var od = api.AndroidDevice.fromJson(o.toJson());
-      checkAndroidDevice(od);
+      checkAndroidDevice(od as api.AndroidDevice);
     });
   });
 
@@ -2424,7 +2433,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidDeviceCatalog();
       var od = api.AndroidDeviceCatalog.fromJson(o.toJson());
-      checkAndroidDeviceCatalog(od);
+      checkAndroidDeviceCatalog(od as api.AndroidDeviceCatalog);
     });
   });
 
@@ -2432,7 +2441,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidDeviceList();
       var od = api.AndroidDeviceList.fromJson(o.toJson());
-      checkAndroidDeviceList(od);
+      checkAndroidDeviceList(od as api.AndroidDeviceList);
     });
   });
 
@@ -2440,7 +2449,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidInstrumentationTest();
       var od = api.AndroidInstrumentationTest.fromJson(o.toJson());
-      checkAndroidInstrumentationTest(od);
+      checkAndroidInstrumentationTest(od as api.AndroidInstrumentationTest);
     });
   });
 
@@ -2448,7 +2457,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidMatrix();
       var od = api.AndroidMatrix.fromJson(o.toJson());
-      checkAndroidMatrix(od);
+      checkAndroidMatrix(od as api.AndroidMatrix);
     });
   });
 
@@ -2456,7 +2465,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidModel();
       var od = api.AndroidModel.fromJson(o.toJson());
-      checkAndroidModel(od);
+      checkAndroidModel(od as api.AndroidModel);
     });
   });
 
@@ -2464,7 +2473,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidRoboTest();
       var od = api.AndroidRoboTest.fromJson(o.toJson());
-      checkAndroidRoboTest(od);
+      checkAndroidRoboTest(od as api.AndroidRoboTest);
     });
   });
 
@@ -2472,7 +2481,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidRuntimeConfiguration();
       var od = api.AndroidRuntimeConfiguration.fromJson(o.toJson());
-      checkAndroidRuntimeConfiguration(od);
+      checkAndroidRuntimeConfiguration(od as api.AndroidRuntimeConfiguration);
     });
   });
 
@@ -2480,7 +2489,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidTestLoop();
       var od = api.AndroidTestLoop.fromJson(o.toJson());
-      checkAndroidTestLoop(od);
+      checkAndroidTestLoop(od as api.AndroidTestLoop);
     });
   });
 
@@ -2488,7 +2497,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidVersion();
       var od = api.AndroidVersion.fromJson(o.toJson());
-      checkAndroidVersion(od);
+      checkAndroidVersion(od as api.AndroidVersion);
     });
   });
 
@@ -2496,7 +2505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApk();
       var od = api.Apk.fromJson(o.toJson());
-      checkApk(od);
+      checkApk(od as api.Apk);
     });
   });
 
@@ -2504,7 +2513,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApkDetail();
       var od = api.ApkDetail.fromJson(o.toJson());
-      checkApkDetail(od);
+      checkApkDetail(od as api.ApkDetail);
     });
   });
 
@@ -2512,7 +2521,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApkManifest();
       var od = api.ApkManifest.fromJson(o.toJson());
-      checkApkManifest(od);
+      checkApkManifest(od as api.ApkManifest);
     });
   });
 
@@ -2520,7 +2529,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppBundle();
       var od = api.AppBundle.fromJson(o.toJson());
-      checkAppBundle(od);
+      checkAppBundle(od as api.AppBundle);
     });
   });
 
@@ -2528,7 +2537,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelTestMatrixResponse();
       var od = api.CancelTestMatrixResponse.fromJson(o.toJson());
-      checkCancelTestMatrixResponse(od);
+      checkCancelTestMatrixResponse(od as api.CancelTestMatrixResponse);
     });
   });
 
@@ -2536,7 +2545,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClientInfo();
       var od = api.ClientInfo.fromJson(o.toJson());
-      checkClientInfo(od);
+      checkClientInfo(od as api.ClientInfo);
     });
   });
 
@@ -2544,7 +2553,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClientInfoDetail();
       var od = api.ClientInfoDetail.fromJson(o.toJson());
-      checkClientInfoDetail(od);
+      checkClientInfoDetail(od as api.ClientInfoDetail);
     });
   });
 
@@ -2552,7 +2561,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -2560,7 +2569,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceFile();
       var od = api.DeviceFile.fromJson(o.toJson());
-      checkDeviceFile(od);
+      checkDeviceFile(od as api.DeviceFile);
     });
   });
 
@@ -2568,7 +2577,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceIpBlock();
       var od = api.DeviceIpBlock.fromJson(o.toJson());
-      checkDeviceIpBlock(od);
+      checkDeviceIpBlock(od as api.DeviceIpBlock);
     });
   });
 
@@ -2576,7 +2585,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceIpBlockCatalog();
       var od = api.DeviceIpBlockCatalog.fromJson(o.toJson());
-      checkDeviceIpBlockCatalog(od);
+      checkDeviceIpBlockCatalog(od as api.DeviceIpBlockCatalog);
     });
   });
 
@@ -2584,7 +2593,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDistribution();
       var od = api.Distribution.fromJson(o.toJson());
-      checkDistribution(od);
+      checkDistribution(od as api.Distribution);
     });
   });
 
@@ -2592,7 +2601,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironment();
       var od = api.Environment.fromJson(o.toJson());
-      checkEnvironment(od);
+      checkEnvironment(od as api.Environment);
     });
   });
 
@@ -2600,7 +2609,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironmentMatrix();
       var od = api.EnvironmentMatrix.fromJson(o.toJson());
-      checkEnvironmentMatrix(od);
+      checkEnvironmentMatrix(od as api.EnvironmentMatrix);
     });
   });
 
@@ -2608,7 +2617,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnvironmentVariable();
       var od = api.EnvironmentVariable.fromJson(o.toJson());
-      checkEnvironmentVariable(od);
+      checkEnvironmentVariable(od as api.EnvironmentVariable);
     });
   });
 
@@ -2616,7 +2625,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileReference();
       var od = api.FileReference.fromJson(o.toJson());
-      checkFileReference(od);
+      checkFileReference(od as api.FileReference);
     });
   });
 
@@ -2624,7 +2633,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetApkDetailsResponse();
       var od = api.GetApkDetailsResponse.fromJson(o.toJson());
-      checkGetApkDetailsResponse(od);
+      checkGetApkDetailsResponse(od as api.GetApkDetailsResponse);
     });
   });
 
@@ -2632,7 +2641,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleAuto();
       var od = api.GoogleAuto.fromJson(o.toJson());
-      checkGoogleAuto(od);
+      checkGoogleAuto(od as api.GoogleAuto);
     });
   });
 
@@ -2640,7 +2649,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudStorage();
       var od = api.GoogleCloudStorage.fromJson(o.toJson());
-      checkGoogleCloudStorage(od);
+      checkGoogleCloudStorage(od as api.GoogleCloudStorage);
     });
   });
 
@@ -2648,7 +2657,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIntentFilter();
       var od = api.IntentFilter.fromJson(o.toJson());
-      checkIntentFilter(od);
+      checkIntentFilter(od as api.IntentFilter);
     });
   });
 
@@ -2656,7 +2665,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosDevice();
       var od = api.IosDevice.fromJson(o.toJson());
-      checkIosDevice(od);
+      checkIosDevice(od as api.IosDevice);
     });
   });
 
@@ -2664,7 +2673,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosDeviceCatalog();
       var od = api.IosDeviceCatalog.fromJson(o.toJson());
-      checkIosDeviceCatalog(od);
+      checkIosDeviceCatalog(od as api.IosDeviceCatalog);
     });
   });
 
@@ -2672,7 +2681,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosDeviceFile();
       var od = api.IosDeviceFile.fromJson(o.toJson());
-      checkIosDeviceFile(od);
+      checkIosDeviceFile(od as api.IosDeviceFile);
     });
   });
 
@@ -2680,7 +2689,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosDeviceList();
       var od = api.IosDeviceList.fromJson(o.toJson());
-      checkIosDeviceList(od);
+      checkIosDeviceList(od as api.IosDeviceList);
     });
   });
 
@@ -2688,7 +2697,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosModel();
       var od = api.IosModel.fromJson(o.toJson());
-      checkIosModel(od);
+      checkIosModel(od as api.IosModel);
     });
   });
 
@@ -2696,7 +2705,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosRuntimeConfiguration();
       var od = api.IosRuntimeConfiguration.fromJson(o.toJson());
-      checkIosRuntimeConfiguration(od);
+      checkIosRuntimeConfiguration(od as api.IosRuntimeConfiguration);
     });
   });
 
@@ -2704,7 +2713,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosTestLoop();
       var od = api.IosTestLoop.fromJson(o.toJson());
-      checkIosTestLoop(od);
+      checkIosTestLoop(od as api.IosTestLoop);
     });
   });
 
@@ -2712,7 +2721,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosTestSetup();
       var od = api.IosTestSetup.fromJson(o.toJson());
-      checkIosTestSetup(od);
+      checkIosTestSetup(od as api.IosTestSetup);
     });
   });
 
@@ -2720,7 +2729,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosVersion();
       var od = api.IosVersion.fromJson(o.toJson());
-      checkIosVersion(od);
+      checkIosVersion(od as api.IosVersion);
     });
   });
 
@@ -2728,7 +2737,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIosXcTest();
       var od = api.IosXcTest.fromJson(o.toJson());
-      checkIosXcTest(od);
+      checkIosXcTest(od as api.IosXcTest);
     });
   });
 
@@ -2736,7 +2745,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLauncherActivityIntent();
       var od = api.LauncherActivityIntent.fromJson(o.toJson());
-      checkLauncherActivityIntent(od);
+      checkLauncherActivityIntent(od as api.LauncherActivityIntent);
     });
   });
 
@@ -2744,7 +2753,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocale();
       var od = api.Locale.fromJson(o.toJson());
-      checkLocale(od);
+      checkLocale(od as api.Locale);
     });
   });
 
@@ -2752,7 +2761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildManualSharding();
       var od = api.ManualSharding.fromJson(o.toJson());
-      checkManualSharding(od);
+      checkManualSharding(od as api.ManualSharding);
     });
   });
 
@@ -2760,7 +2769,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkConfiguration();
       var od = api.NetworkConfiguration.fromJson(o.toJson());
-      checkNetworkConfiguration(od);
+      checkNetworkConfiguration(od as api.NetworkConfiguration);
     });
   });
 
@@ -2768,7 +2777,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkConfigurationCatalog();
       var od = api.NetworkConfigurationCatalog.fromJson(o.toJson());
-      checkNetworkConfigurationCatalog(od);
+      checkNetworkConfigurationCatalog(od as api.NetworkConfigurationCatalog);
     });
   });
 
@@ -2776,7 +2785,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObbFile();
       var od = api.ObbFile.fromJson(o.toJson());
-      checkObbFile(od);
+      checkObbFile(od as api.ObbFile);
     });
   });
 
@@ -2784,7 +2793,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrientation();
       var od = api.Orientation.fromJson(o.toJson());
-      checkOrientation(od);
+      checkOrientation(od as api.Orientation);
     });
   });
 
@@ -2792,7 +2801,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProvidedSoftwareCatalog();
       var od = api.ProvidedSoftwareCatalog.fromJson(o.toJson());
-      checkProvidedSoftwareCatalog(od);
+      checkProvidedSoftwareCatalog(od as api.ProvidedSoftwareCatalog);
     });
   });
 
@@ -2800,7 +2809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRegularFile();
       var od = api.RegularFile.fromJson(o.toJson());
-      checkRegularFile(od);
+      checkRegularFile(od as api.RegularFile);
     });
   });
 
@@ -2808,7 +2817,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResultStorage();
       var od = api.ResultStorage.fromJson(o.toJson());
-      checkResultStorage(od);
+      checkResultStorage(od as api.ResultStorage);
     });
   });
 
@@ -2816,7 +2825,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRoboDirective();
       var od = api.RoboDirective.fromJson(o.toJson());
-      checkRoboDirective(od);
+      checkRoboDirective(od as api.RoboDirective);
     });
   });
 
@@ -2824,7 +2833,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRoboStartingIntent();
       var od = api.RoboStartingIntent.fromJson(o.toJson());
-      checkRoboStartingIntent(od);
+      checkRoboStartingIntent(od as api.RoboStartingIntent);
     });
   });
 
@@ -2832,7 +2841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShard();
       var od = api.Shard.fromJson(o.toJson());
-      checkShard(od);
+      checkShard(od as api.Shard);
     });
   });
 
@@ -2840,7 +2849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShardingOption();
       var od = api.ShardingOption.fromJson(o.toJson());
-      checkShardingOption(od);
+      checkShardingOption(od as api.ShardingOption);
     });
   });
 
@@ -2848,7 +2857,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartActivityIntent();
       var od = api.StartActivityIntent.fromJson(o.toJson());
-      checkStartActivityIntent(od);
+      checkStartActivityIntent(od as api.StartActivityIntent);
     });
   });
 
@@ -2856,7 +2865,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSystraceSetup();
       var od = api.SystraceSetup.fromJson(o.toJson());
-      checkSystraceSetup(od);
+      checkSystraceSetup(od as api.SystraceSetup);
     });
   });
 
@@ -2864,7 +2873,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestDetails();
       var od = api.TestDetails.fromJson(o.toJson());
-      checkTestDetails(od);
+      checkTestDetails(od as api.TestDetails);
     });
   });
 
@@ -2872,7 +2881,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestEnvironmentCatalog();
       var od = api.TestEnvironmentCatalog.fromJson(o.toJson());
-      checkTestEnvironmentCatalog(od);
+      checkTestEnvironmentCatalog(od as api.TestEnvironmentCatalog);
     });
   });
 
@@ -2880,7 +2889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestExecution();
       var od = api.TestExecution.fromJson(o.toJson());
-      checkTestExecution(od);
+      checkTestExecution(od as api.TestExecution);
     });
   });
 
@@ -2888,7 +2897,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestMatrix();
       var od = api.TestMatrix.fromJson(o.toJson());
-      checkTestMatrix(od);
+      checkTestMatrix(od as api.TestMatrix);
     });
   });
 
@@ -2896,7 +2905,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestSetup();
       var od = api.TestSetup.fromJson(o.toJson());
-      checkTestSetup(od);
+      checkTestSetup(od as api.TestSetup);
     });
   });
 
@@ -2904,7 +2913,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestSpecification();
       var od = api.TestSpecification.fromJson(o.toJson());
-      checkTestSpecification(od);
+      checkTestSpecification(od as api.TestSpecification);
     });
   });
 
@@ -2912,7 +2921,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestTargetsForShard();
       var od = api.TestTargetsForShard.fromJson(o.toJson());
-      checkTestTargetsForShard(od);
+      checkTestTargetsForShard(od as api.TestTargetsForShard);
     });
   });
 
@@ -2920,7 +2929,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToolResultsExecution();
       var od = api.ToolResultsExecution.fromJson(o.toJson());
-      checkToolResultsExecution(od);
+      checkToolResultsExecution(od as api.ToolResultsExecution);
     });
   });
 
@@ -2928,7 +2937,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToolResultsHistory();
       var od = api.ToolResultsHistory.fromJson(o.toJson());
-      checkToolResultsHistory(od);
+      checkToolResultsHistory(od as api.ToolResultsHistory);
     });
   });
 
@@ -2936,7 +2945,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildToolResultsStep();
       var od = api.ToolResultsStep.fromJson(o.toJson());
-      checkToolResultsStep(od);
+      checkToolResultsStep(od as api.ToolResultsStep);
     });
   });
 
@@ -2944,7 +2953,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrafficRule();
       var od = api.TrafficRule.fromJson(o.toJson());
-      checkTrafficRule(od);
+      checkTrafficRule(od as api.TrafficRule);
     });
   });
 
@@ -2952,7 +2961,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUniformSharding();
       var od = api.UniformSharding.fromJson(o.toJson());
-      checkUniformSharding(od);
+      checkUniformSharding(od as api.UniformSharding);
     });
   });
 
@@ -2960,7 +2969,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildXcodeVersion();
       var od = api.XcodeVersion.fromJson(o.toJson());
-      checkXcodeVersion(od);
+      checkXcodeVersion(od as api.XcodeVersion);
     });
   });
 
@@ -2971,8 +2980,9 @@ void main() {
       var arg_request = buildFileReference();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FileReference.fromJson(json);
-        checkFileReference(obj);
+        var obj = api.FileReference.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFileReference(obj as api.FileReference);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3011,7 +3021,7 @@ void main() {
       res
           .getApkDetails(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetApkDetailsResponse(response);
+        checkGetApkDetailsResponse(response as api.GetApkDetailsResponse);
       })));
     });
   });
@@ -3079,7 +3089,7 @@ void main() {
       res
           .cancel(arg_projectId, arg_testMatrixId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCancelTestMatrixResponse(response);
+        checkCancelTestMatrixResponse(response as api.CancelTestMatrixResponse);
       })));
     });
 
@@ -3091,8 +3101,9 @@ void main() {
       var arg_requestId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestMatrix.fromJson(json);
-        checkTestMatrix(obj);
+        var obj = api.TestMatrix.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestMatrix(obj as api.TestMatrix);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3143,7 +3154,7 @@ void main() {
           .create(arg_request, arg_projectId,
               requestId: arg_requestId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestMatrix(response);
+        checkTestMatrix(response as api.TestMatrix);
       })));
     });
 
@@ -3203,7 +3214,7 @@ void main() {
       res
           .get(arg_projectId, arg_testMatrixId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestMatrix(response);
+        checkTestMatrix(response as api.TestMatrix);
       })));
     });
   });
@@ -3259,7 +3270,7 @@ void main() {
           .get(arg_environmentType,
               projectId: arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestEnvironmentCatalog(response);
+        checkTestEnvironmentCatalog(response as api.TestEnvironmentCatalog);
       })));
     });
   });

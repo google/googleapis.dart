@@ -83,8 +83,8 @@ core.List<api.AuditLogConfig> buildUnnamed2759() {
 
 void checkUnnamed2759(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -173,7 +173,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2761(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -290,7 +290,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -323,8 +323,8 @@ core.List<api.Folder> buildUnnamed2762() {
 
 void checkUnnamed2762(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFolder(o[0]);
-  checkFolder(o[1]);
+  checkFolder(o[0] as api.Folder);
+  checkFolder(o[1] as api.Folder);
 }
 
 core.int buildCounterListFoldersResponse = 0;
@@ -444,7 +444,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed2763(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2764(o.response);
@@ -461,8 +461,8 @@ core.List<api.AuditConfig> buildUnnamed2765() {
 
 void checkUnnamed2765(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed2766() {
@@ -474,8 +474,8 @@ core.List<api.Binding> buildUnnamed2766() {
 
 void checkUnnamed2766(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -558,8 +558,8 @@ core.List<api.Folder> buildUnnamed2767() {
 
 void checkUnnamed2767(core.List<api.Folder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFolder(o[0]);
-  checkFolder(o[1]);
+  checkFolder(o[0] as api.Folder);
+  checkFolder(o[1] as api.Folder);
 }
 
 core.int buildCounterSearchFoldersResponse = 0;
@@ -598,7 +598,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -753,7 +753,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -761,7 +761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -769,7 +769,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -777,7 +777,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -785,7 +785,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolder();
       var od = api.Folder.fromJson(o.toJson());
-      checkFolder(od);
+      checkFolder(od as api.Folder);
     });
   });
 
@@ -793,7 +793,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolderOperation();
       var od = api.FolderOperation.fromJson(o.toJson());
-      checkFolderOperation(od);
+      checkFolderOperation(od as api.FolderOperation);
     });
   });
 
@@ -801,7 +801,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFolderOperationError();
       var od = api.FolderOperationError.fromJson(o.toJson());
-      checkFolderOperationError(od);
+      checkFolderOperationError(od as api.FolderOperationError);
     });
   });
 
@@ -809,7 +809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -817,7 +817,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -825,7 +825,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListFoldersResponse();
       var od = api.ListFoldersResponse.fromJson(o.toJson());
-      checkListFoldersResponse(od);
+      checkListFoldersResponse(od as api.ListFoldersResponse);
     });
   });
 
@@ -833,7 +833,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMoveFolderRequest();
       var od = api.MoveFolderRequest.fromJson(o.toJson());
-      checkMoveFolderRequest(od);
+      checkMoveFolderRequest(od as api.MoveFolderRequest);
     });
   });
 
@@ -841,7 +841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -849,7 +849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -857,7 +857,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjectCreationStatus();
       var od = api.ProjectCreationStatus.fromJson(o.toJson());
-      checkProjectCreationStatus(od);
+      checkProjectCreationStatus(od as api.ProjectCreationStatus);
     });
   });
 
@@ -865,7 +865,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchFoldersRequest();
       var od = api.SearchFoldersRequest.fromJson(o.toJson());
-      checkSearchFoldersRequest(od);
+      checkSearchFoldersRequest(od as api.SearchFoldersRequest);
     });
   });
 
@@ -873,7 +873,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchFoldersResponse();
       var od = api.SearchFoldersResponse.fromJson(o.toJson());
-      checkSearchFoldersResponse(od);
+      checkSearchFoldersResponse(od as api.SearchFoldersResponse);
     });
   });
 
@@ -881,7 +881,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -889,7 +889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -897,7 +897,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -905,7 +905,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -913,7 +913,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUndeleteFolderRequest();
       var od = api.UndeleteFolderRequest.fromJson(o.toJson());
-      checkUndeleteFolderRequest(od);
+      checkUndeleteFolderRequest(od as api.UndeleteFolderRequest);
     });
   });
 
@@ -925,8 +925,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Folder.fromJson(json);
-        checkFolder(obj);
+        var obj =
+            api.Folder.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFolder(obj as api.Folder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -966,7 +967,7 @@ void main() {
       res
           .create(arg_request, parent: arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1014,7 +1015,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
 
@@ -1062,7 +1063,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
 
@@ -1073,8 +1074,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1114,7 +1116,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1176,7 +1178,7 @@ void main() {
               showDeleted: arg_showDeleted,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListFoldersResponse(response);
+        checkListFoldersResponse(response as api.ListFoldersResponse);
       })));
     });
 
@@ -1187,8 +1189,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MoveFolderRequest.fromJson(json);
-        checkMoveFolderRequest(obj);
+        var obj = api.MoveFolderRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMoveFolderRequest(obj as api.MoveFolderRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1228,7 +1231,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1240,8 +1243,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Folder.fromJson(json);
-        checkFolder(obj);
+        var obj =
+            api.Folder.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkFolder(obj as api.Folder);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1284,7 +1288,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
 
@@ -1294,8 +1298,9 @@ void main() {
       var arg_request = buildSearchFoldersRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchFoldersRequest.fromJson(json);
-        checkSearchFoldersRequest(obj);
+        var obj = api.SearchFoldersRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchFoldersRequest(obj as api.SearchFoldersRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1334,7 +1339,7 @@ void main() {
       res
           .search(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchFoldersResponse(response);
+        checkSearchFoldersResponse(response as api.SearchFoldersResponse);
       })));
     });
 
@@ -1345,8 +1350,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1386,7 +1392,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1397,8 +1403,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1438,7 +1445,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -1449,8 +1457,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UndeleteFolderRequest.fromJson(json);
-        checkUndeleteFolderRequest(obj);
+        var obj = api.UndeleteFolderRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUndeleteFolderRequest(obj as api.UndeleteFolderRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1490,7 +1499,7 @@ void main() {
       res
           .undelete(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFolder(response);
+        checkFolder(response as api.Folder);
       })));
     });
   });
@@ -1540,7 +1549,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });

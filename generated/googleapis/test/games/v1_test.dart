@@ -126,8 +126,8 @@ core.List<api.AchievementDefinition> buildUnnamed2709() {
 
 void checkUnnamed2709(core.List<api.AchievementDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementDefinition(o[0]);
-  checkAchievementDefinition(o[1]);
+  checkAchievementDefinition(o[0] as api.AchievementDefinition);
+  checkAchievementDefinition(o[1] as api.AchievementDefinition);
 }
 
 core.int buildCounterAchievementDefinitionsListResponse = 0;
@@ -254,8 +254,8 @@ core.List<api.AchievementUpdateRequest> buildUnnamed2710() {
 
 void checkUnnamed2710(core.List<api.AchievementUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementUpdateRequest(o[0]);
-  checkAchievementUpdateRequest(o[1]);
+  checkAchievementUpdateRequest(o[0] as api.AchievementUpdateRequest);
+  checkAchievementUpdateRequest(o[1] as api.AchievementUpdateRequest);
 }
 
 core.int buildCounterAchievementUpdateMultipleRequest = 0;
@@ -289,8 +289,8 @@ core.List<api.AchievementUpdateResponse> buildUnnamed2711() {
 
 void checkUnnamed2711(core.List<api.AchievementUpdateResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementUpdateResponse(o[0]);
-  checkAchievementUpdateResponse(o[1]);
+  checkAchievementUpdateResponse(o[0] as api.AchievementUpdateResponse);
+  checkAchievementUpdateResponse(o[1] as api.AchievementUpdateResponse);
 }
 
 core.int buildCounterAchievementUpdateMultipleResponse = 0;
@@ -334,9 +334,11 @@ void checkAchievementUpdateRequest(api.AchievementUpdateRequest o) {
   buildCounterAchievementUpdateRequest++;
   if (buildCounterAchievementUpdateRequest < 3) {
     unittest.expect(o.achievementId, unittest.equals('foo'));
-    checkGamesAchievementIncrement(o.incrementPayload);
+    checkGamesAchievementIncrement(
+        o.incrementPayload as api.GamesAchievementIncrement);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkGamesAchievementSetStepsAtLeast(o.setStepsAtLeastPayload);
+    checkGamesAchievementSetStepsAtLeast(
+        o.setStepsAtLeastPayload as api.GamesAchievementSetStepsAtLeast);
     unittest.expect(o.updateType, unittest.equals('foo'));
   }
   buildCounterAchievementUpdateRequest--;
@@ -380,8 +382,8 @@ core.List<api.ImageAsset> buildUnnamed2712() {
 
 void checkUnnamed2712(core.List<api.ImageAsset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImageAsset(o[0]);
-  checkImageAsset(o[1]);
+  checkImageAsset(o[0] as api.ImageAsset);
+  checkImageAsset(o[1] as api.ImageAsset);
 }
 
 core.List<core.String> buildUnnamed2713() {
@@ -406,8 +408,8 @@ core.List<api.Instance> buildUnnamed2714() {
 
 void checkUnnamed2714(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstance(o[0]);
-  checkInstance(o[1]);
+  checkInstance(o[0] as api.Instance);
+  checkInstance(o[1] as api.Instance);
 }
 
 core.int buildCounterApplication = 0;
@@ -439,7 +441,7 @@ void checkApplication(api.Application o) {
     unittest.expect(o.achievementCount, unittest.equals(42));
     checkUnnamed2712(o.assets);
     unittest.expect(o.author, unittest.equals('foo'));
-    checkApplicationCategory(o.category);
+    checkApplicationCategory(o.category as api.ApplicationCategory);
     unittest.expect(o.description, unittest.equals('foo'));
     checkUnnamed2713(o.enabledFeatures);
     unittest.expect(o.id, unittest.equals('foo'));
@@ -531,8 +533,8 @@ core.List<api.Category> buildUnnamed2715() {
 
 void checkUnnamed2715(core.List<api.Category> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCategory(o[0]);
-  checkCategory(o[1]);
+  checkCategory(o[0] as api.Category);
+  checkCategory(o[1] as api.Category);
 }
 
 core.int buildCounterCategoryListResponse = 0;
@@ -576,7 +578,7 @@ void checkEventBatchRecordFailure(api.EventBatchRecordFailure o) {
   if (buildCounterEventBatchRecordFailure < 3) {
     unittest.expect(o.failureCause, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkEventPeriodRange(o.range);
+    checkEventPeriodRange(o.range as api.EventPeriodRange);
   }
   buildCounterEventBatchRecordFailure--;
 }
@@ -611,8 +613,8 @@ core.List<api.EventChild> buildUnnamed2716() {
 
 void checkUnnamed2716(core.List<api.EventChild> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventChild(o[0]);
-  checkEventChild(o[1]);
+  checkEventChild(o[0] as api.EventChild);
+  checkEventChild(o[1] as api.EventChild);
 }
 
 core.int buildCounterEventDefinition = 0;
@@ -657,8 +659,8 @@ core.List<api.EventDefinition> buildUnnamed2717() {
 
 void checkUnnamed2717(core.List<api.EventDefinition> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventDefinition(o[0]);
-  checkEventDefinition(o[1]);
+  checkEventDefinition(o[0] as api.EventDefinition);
+  checkEventDefinition(o[1] as api.EventDefinition);
 }
 
 core.int buildCounterEventDefinitionListResponse = 0;
@@ -716,8 +718,8 @@ core.List<api.EventUpdateRequest> buildUnnamed2718() {
 
 void checkUnnamed2718(core.List<api.EventUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventUpdateRequest(o[0]);
-  checkEventUpdateRequest(o[1]);
+  checkEventUpdateRequest(o[0] as api.EventUpdateRequest);
+  checkEventUpdateRequest(o[1] as api.EventUpdateRequest);
 }
 
 core.int buildCounterEventPeriodUpdate = 0;
@@ -737,7 +739,7 @@ void checkEventPeriodUpdate(api.EventPeriodUpdate o) {
   buildCounterEventPeriodUpdate++;
   if (buildCounterEventPeriodUpdate < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkEventPeriodRange(o.timePeriod);
+    checkEventPeriodRange(o.timePeriod as api.EventPeriodRange);
     checkUnnamed2718(o.updates);
   }
   buildCounterEventPeriodUpdate--;
@@ -775,8 +777,8 @@ core.List<api.EventPeriodUpdate> buildUnnamed2719() {
 
 void checkUnnamed2719(core.List<api.EventPeriodUpdate> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventPeriodUpdate(o[0]);
-  checkEventPeriodUpdate(o[1]);
+  checkEventPeriodUpdate(o[0] as api.EventPeriodUpdate);
+  checkEventPeriodUpdate(o[1] as api.EventPeriodUpdate);
 }
 
 core.int buildCounterEventRecordRequest = 0;
@@ -836,8 +838,8 @@ core.List<api.EventBatchRecordFailure> buildUnnamed2720() {
 
 void checkUnnamed2720(core.List<api.EventBatchRecordFailure> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventBatchRecordFailure(o[0]);
-  checkEventBatchRecordFailure(o[1]);
+  checkEventBatchRecordFailure(o[0] as api.EventBatchRecordFailure);
+  checkEventBatchRecordFailure(o[1] as api.EventBatchRecordFailure);
 }
 
 core.List<api.EventRecordFailure> buildUnnamed2721() {
@@ -849,8 +851,8 @@ core.List<api.EventRecordFailure> buildUnnamed2721() {
 
 void checkUnnamed2721(core.List<api.EventRecordFailure> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEventRecordFailure(o[0]);
-  checkEventRecordFailure(o[1]);
+  checkEventRecordFailure(o[0] as api.EventRecordFailure);
+  checkEventRecordFailure(o[1] as api.EventRecordFailure);
 }
 
 core.List<api.PlayerEvent> buildUnnamed2722() {
@@ -862,8 +864,8 @@ core.List<api.PlayerEvent> buildUnnamed2722() {
 
 void checkUnnamed2722(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerEvent(o[0]);
-  checkPlayerEvent(o[1]);
+  checkPlayerEvent(o[0] as api.PlayerEvent);
+  checkPlayerEvent(o[1] as api.PlayerEvent);
 }
 
 core.int buildCounterEventUpdateResponse = 0;
@@ -986,14 +988,15 @@ void checkInstance(api.Instance o) {
   buildCounterInstance++;
   if (buildCounterInstance < 3) {
     unittest.expect(o.acquisitionUri, unittest.equals('foo'));
-    checkInstanceAndroidDetails(o.androidInstance);
-    checkInstanceIosDetails(o.iosInstance);
+    checkInstanceAndroidDetails(
+        o.androidInstance as api.InstanceAndroidDetails);
+    checkInstanceIosDetails(o.iosInstance as api.InstanceIosDetails);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.platformType, unittest.equals('foo'));
     unittest.expect(o.realtimePlay, unittest.isTrue);
     unittest.expect(o.turnBasedPlay, unittest.isTrue);
-    checkInstanceWebDetails(o.webInstance);
+    checkInstanceWebDetails(o.webInstance as api.InstanceWebDetails);
   }
   buildCounterInstance--;
 }
@@ -1131,7 +1134,7 @@ void checkLeaderboardEntry(api.LeaderboardEntry o) {
     unittest.expect(o.formattedScore, unittest.equals('foo'));
     unittest.expect(o.formattedScoreRank, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPlayer(o.player);
+    checkPlayer(o.player as api.Player);
     unittest.expect(o.scoreRank, unittest.equals('foo'));
     unittest.expect(o.scoreTag, unittest.equals('foo'));
     unittest.expect(o.scoreValue, unittest.equals('foo'));
@@ -1150,8 +1153,8 @@ core.List<api.Leaderboard> buildUnnamed2723() {
 
 void checkUnnamed2723(core.List<api.Leaderboard> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLeaderboard(o[0]);
-  checkLeaderboard(o[1]);
+  checkLeaderboard(o[0] as api.Leaderboard);
+  checkLeaderboard(o[1] as api.Leaderboard);
 }
 
 core.int buildCounterLeaderboardListResponse = 0;
@@ -1213,8 +1216,8 @@ core.List<api.LeaderboardEntry> buildUnnamed2724() {
 
 void checkUnnamed2724(core.List<api.LeaderboardEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLeaderboardEntry(o[0]);
-  checkLeaderboardEntry(o[1]);
+  checkLeaderboardEntry(o[0] as api.LeaderboardEntry);
+  checkLeaderboardEntry(o[1] as api.LeaderboardEntry);
 }
 
 core.int buildCounterLeaderboardScores = 0;
@@ -1240,7 +1243,7 @@ void checkLeaderboardScores(api.LeaderboardScores o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.numScores, unittest.equals('foo'));
-    checkLeaderboardEntry(o.playerScore);
+    checkLeaderboardEntry(o.playerScore as api.LeaderboardEntry);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
   }
   buildCounterLeaderboardScores--;
@@ -1255,8 +1258,8 @@ core.List<api.PlayerLevel> buildUnnamed2725() {
 
 void checkUnnamed2725(core.List<api.PlayerLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerLevel(o[0]);
-  checkPlayerLevel(o[1]);
+  checkPlayerLevel(o[0] as api.PlayerLevel);
+  checkPlayerLevel(o[1] as api.PlayerLevel);
 }
 
 core.int buildCounterMetagameConfig = 0;
@@ -1332,13 +1335,13 @@ void checkPlayer(api.Player o) {
     unittest.expect(o.bannerUrlLandscape, unittest.equals('foo'));
     unittest.expect(o.bannerUrlPortrait, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkPlayerExperienceInfo(o.experienceInfo);
+    checkPlayerExperienceInfo(o.experienceInfo as api.PlayerExperienceInfo);
     unittest.expect(o.friendStatus, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPlayerName(o.name);
+    checkPlayerName(o.name as api.PlayerName);
     unittest.expect(o.originalPlayerId, unittest.equals('foo'));
     unittest.expect(o.playerId, unittest.equals('foo'));
-    checkProfileSettings(o.profileSettings);
+    checkProfileSettings(o.profileSettings as api.ProfileSettings);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterPlayer--;
@@ -1384,8 +1387,8 @@ core.List<api.PlayerAchievement> buildUnnamed2726() {
 
 void checkUnnamed2726(core.List<api.PlayerAchievement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerAchievement(o[0]);
-  checkPlayerAchievement(o[1]);
+  checkPlayerAchievement(o[0] as api.PlayerAchievement);
+  checkPlayerAchievement(o[1] as api.PlayerAchievement);
 }
 
 core.int buildCounterPlayerAchievementListResponse = 0;
@@ -1447,8 +1450,8 @@ core.List<api.PlayerEvent> buildUnnamed2727() {
 
 void checkUnnamed2727(core.List<api.PlayerEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerEvent(o[0]);
-  checkPlayerEvent(o[1]);
+  checkPlayerEvent(o[0] as api.PlayerEvent);
+  checkPlayerEvent(o[1] as api.PlayerEvent);
 }
 
 core.int buildCounterPlayerEventListResponse = 0;
@@ -1493,10 +1496,10 @@ void checkPlayerExperienceInfo(api.PlayerExperienceInfo o) {
   buildCounterPlayerExperienceInfo++;
   if (buildCounterPlayerExperienceInfo < 3) {
     unittest.expect(o.currentExperiencePoints, unittest.equals('foo'));
-    checkPlayerLevel(o.currentLevel);
+    checkPlayerLevel(o.currentLevel as api.PlayerLevel);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.lastLevelUpTimestampMillis, unittest.equals('foo'));
-    checkPlayerLevel(o.nextLevel);
+    checkPlayerLevel(o.nextLevel as api.PlayerLevel);
   }
   buildCounterPlayerExperienceInfo--;
 }
@@ -1524,14 +1527,14 @@ api.PlayerLeaderboardScore buildPlayerLeaderboardScore() {
 void checkPlayerLeaderboardScore(api.PlayerLeaderboardScore o) {
   buildCounterPlayerLeaderboardScore++;
   if (buildCounterPlayerLeaderboardScore < 3) {
-    checkLeaderboardScoreRank(o.friendsRank);
+    checkLeaderboardScoreRank(o.friendsRank as api.LeaderboardScoreRank);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.leaderboardId, unittest.equals('foo'));
-    checkLeaderboardScoreRank(o.publicRank);
+    checkLeaderboardScoreRank(o.publicRank as api.LeaderboardScoreRank);
     unittest.expect(o.scoreString, unittest.equals('foo'));
     unittest.expect(o.scoreTag, unittest.equals('foo'));
     unittest.expect(o.scoreValue, unittest.equals('foo'));
-    checkLeaderboardScoreRank(o.socialRank);
+    checkLeaderboardScoreRank(o.socialRank as api.LeaderboardScoreRank);
     unittest.expect(o.timeSpan, unittest.equals('foo'));
     unittest.expect(o.writeTimestamp, unittest.equals('foo'));
   }
@@ -1547,8 +1550,8 @@ core.List<api.PlayerLeaderboardScore> buildUnnamed2728() {
 
 void checkUnnamed2728(core.List<api.PlayerLeaderboardScore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerLeaderboardScore(o[0]);
-  checkPlayerLeaderboardScore(o[1]);
+  checkPlayerLeaderboardScore(o[0] as api.PlayerLeaderboardScore);
+  checkPlayerLeaderboardScore(o[1] as api.PlayerLeaderboardScore);
 }
 
 core.int buildCounterPlayerLeaderboardScoreListResponse = 0;
@@ -1573,7 +1576,7 @@ void checkPlayerLeaderboardScoreListResponse(
     checkUnnamed2728(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPlayer(o.player);
+    checkPlayer(o.player as api.Player);
   }
   buildCounterPlayerLeaderboardScoreListResponse--;
 }
@@ -1612,8 +1615,8 @@ core.List<api.Player> buildUnnamed2729() {
 
 void checkUnnamed2729(core.List<api.Player> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayer(o[0]);
-  checkPlayer(o[1]);
+  checkPlayer(o[0] as api.Player);
+  checkPlayer(o[1] as api.Player);
 }
 
 core.int buildCounterPlayerListResponse = 0;
@@ -1675,8 +1678,8 @@ core.List<api.PlayerScoreResponse> buildUnnamed2730() {
 
 void checkUnnamed2730(core.List<api.PlayerScoreResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerScoreResponse(o[0]);
-  checkPlayerScoreResponse(o[1]);
+  checkPlayerScoreResponse(o[0] as api.PlayerScoreResponse);
+  checkPlayerScoreResponse(o[1] as api.PlayerScoreResponse);
 }
 
 core.int buildCounterPlayerScoreListResponse = 0;
@@ -1722,8 +1725,8 @@ core.List<api.PlayerScore> buildUnnamed2732() {
 
 void checkUnnamed2732(core.List<api.PlayerScore> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerScore(o[0]);
-  checkPlayerScore(o[1]);
+  checkPlayerScore(o[0] as api.PlayerScore);
+  checkPlayerScore(o[1] as api.PlayerScore);
 }
 
 core.int buildCounterPlayerScoreResponse = 0;
@@ -1764,8 +1767,8 @@ core.List<api.ScoreSubmission> buildUnnamed2733() {
 
 void checkUnnamed2733(core.List<api.ScoreSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkScoreSubmission(o[0]);
-  checkScoreSubmission(o[1]);
+  checkScoreSubmission(o[0] as api.ScoreSubmission);
+  checkScoreSubmission(o[1] as api.ScoreSubmission);
 }
 
 core.int buildCounterPlayerScoreSubmissionList = 0;
@@ -1886,7 +1889,7 @@ api.Snapshot buildSnapshot() {
 void checkSnapshot(api.Snapshot o) {
   buildCounterSnapshot++;
   if (buildCounterSnapshot < 3) {
-    checkSnapshotImage(o.coverImage);
+    checkSnapshotImage(o.coverImage as api.SnapshotImage);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.driveId, unittest.equals('foo'));
     unittest.expect(o.durationMillis, unittest.equals('foo'));
@@ -1937,8 +1940,8 @@ core.List<api.Snapshot> buildUnnamed2734() {
 
 void checkUnnamed2734(core.List<api.Snapshot> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSnapshot(o[0]);
-  checkSnapshot(o[1]);
+  checkSnapshot(o[0] as api.Snapshot);
+  checkSnapshot(o[1] as api.Snapshot);
 }
 
 core.int buildCounterSnapshotListResponse = 0;
@@ -2008,7 +2011,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementDefinition();
       var od = api.AchievementDefinition.fromJson(o.toJson());
-      checkAchievementDefinition(od);
+      checkAchievementDefinition(od as api.AchievementDefinition);
     });
   });
 
@@ -2016,7 +2019,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementDefinitionsListResponse();
       var od = api.AchievementDefinitionsListResponse.fromJson(o.toJson());
-      checkAchievementDefinitionsListResponse(od);
+      checkAchievementDefinitionsListResponse(
+          od as api.AchievementDefinitionsListResponse);
     });
   });
 
@@ -2024,7 +2028,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementIncrementResponse();
       var od = api.AchievementIncrementResponse.fromJson(o.toJson());
-      checkAchievementIncrementResponse(od);
+      checkAchievementIncrementResponse(od as api.AchievementIncrementResponse);
     });
   });
 
@@ -2032,7 +2036,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementRevealResponse();
       var od = api.AchievementRevealResponse.fromJson(o.toJson());
-      checkAchievementRevealResponse(od);
+      checkAchievementRevealResponse(od as api.AchievementRevealResponse);
     });
   });
 
@@ -2040,7 +2044,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementSetStepsAtLeastResponse();
       var od = api.AchievementSetStepsAtLeastResponse.fromJson(o.toJson());
-      checkAchievementSetStepsAtLeastResponse(od);
+      checkAchievementSetStepsAtLeastResponse(
+          od as api.AchievementSetStepsAtLeastResponse);
     });
   });
 
@@ -2048,7 +2053,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementUnlockResponse();
       var od = api.AchievementUnlockResponse.fromJson(o.toJson());
-      checkAchievementUnlockResponse(od);
+      checkAchievementUnlockResponse(od as api.AchievementUnlockResponse);
     });
   });
 
@@ -2056,7 +2061,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateMultipleRequest();
       var od = api.AchievementUpdateMultipleRequest.fromJson(o.toJson());
-      checkAchievementUpdateMultipleRequest(od);
+      checkAchievementUpdateMultipleRequest(
+          od as api.AchievementUpdateMultipleRequest);
     });
   });
 
@@ -2064,7 +2070,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateMultipleResponse();
       var od = api.AchievementUpdateMultipleResponse.fromJson(o.toJson());
-      checkAchievementUpdateMultipleResponse(od);
+      checkAchievementUpdateMultipleResponse(
+          od as api.AchievementUpdateMultipleResponse);
     });
   });
 
@@ -2072,7 +2079,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateRequest();
       var od = api.AchievementUpdateRequest.fromJson(o.toJson());
-      checkAchievementUpdateRequest(od);
+      checkAchievementUpdateRequest(od as api.AchievementUpdateRequest);
     });
   });
 
@@ -2080,7 +2087,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementUpdateResponse();
       var od = api.AchievementUpdateResponse.fromJson(o.toJson());
-      checkAchievementUpdateResponse(od);
+      checkAchievementUpdateResponse(od as api.AchievementUpdateResponse);
     });
   });
 
@@ -2088,7 +2095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
-      checkApplication(od);
+      checkApplication(od as api.Application);
     });
   });
 
@@ -2096,7 +2103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationCategory();
       var od = api.ApplicationCategory.fromJson(o.toJson());
-      checkApplicationCategory(od);
+      checkApplicationCategory(od as api.ApplicationCategory);
     });
   });
 
@@ -2104,7 +2111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationVerifyResponse();
       var od = api.ApplicationVerifyResponse.fromJson(o.toJson());
-      checkApplicationVerifyResponse(od);
+      checkApplicationVerifyResponse(od as api.ApplicationVerifyResponse);
     });
   });
 
@@ -2112,7 +2119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
-      checkCategory(od);
+      checkCategory(od as api.Category);
     });
   });
 
@@ -2120,7 +2127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategoryListResponse();
       var od = api.CategoryListResponse.fromJson(o.toJson());
-      checkCategoryListResponse(od);
+      checkCategoryListResponse(od as api.CategoryListResponse);
     });
   });
 
@@ -2128,7 +2135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventBatchRecordFailure();
       var od = api.EventBatchRecordFailure.fromJson(o.toJson());
-      checkEventBatchRecordFailure(od);
+      checkEventBatchRecordFailure(od as api.EventBatchRecordFailure);
     });
   });
 
@@ -2136,7 +2143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventChild();
       var od = api.EventChild.fromJson(o.toJson());
-      checkEventChild(od);
+      checkEventChild(od as api.EventChild);
     });
   });
 
@@ -2144,7 +2151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventDefinition();
       var od = api.EventDefinition.fromJson(o.toJson());
-      checkEventDefinition(od);
+      checkEventDefinition(od as api.EventDefinition);
     });
   });
 
@@ -2152,7 +2159,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventDefinitionListResponse();
       var od = api.EventDefinitionListResponse.fromJson(o.toJson());
-      checkEventDefinitionListResponse(od);
+      checkEventDefinitionListResponse(od as api.EventDefinitionListResponse);
     });
   });
 
@@ -2160,7 +2167,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventPeriodRange();
       var od = api.EventPeriodRange.fromJson(o.toJson());
-      checkEventPeriodRange(od);
+      checkEventPeriodRange(od as api.EventPeriodRange);
     });
   });
 
@@ -2168,7 +2175,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventPeriodUpdate();
       var od = api.EventPeriodUpdate.fromJson(o.toJson());
-      checkEventPeriodUpdate(od);
+      checkEventPeriodUpdate(od as api.EventPeriodUpdate);
     });
   });
 
@@ -2176,7 +2183,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventRecordFailure();
       var od = api.EventRecordFailure.fromJson(o.toJson());
-      checkEventRecordFailure(od);
+      checkEventRecordFailure(od as api.EventRecordFailure);
     });
   });
 
@@ -2184,7 +2191,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventRecordRequest();
       var od = api.EventRecordRequest.fromJson(o.toJson());
-      checkEventRecordRequest(od);
+      checkEventRecordRequest(od as api.EventRecordRequest);
     });
   });
 
@@ -2192,7 +2199,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventUpdateRequest();
       var od = api.EventUpdateRequest.fromJson(o.toJson());
-      checkEventUpdateRequest(od);
+      checkEventUpdateRequest(od as api.EventUpdateRequest);
     });
   });
 
@@ -2200,7 +2207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventUpdateResponse();
       var od = api.EventUpdateResponse.fromJson(o.toJson());
-      checkEventUpdateResponse(od);
+      checkEventUpdateResponse(od as api.EventUpdateResponse);
     });
   });
 
@@ -2208,7 +2215,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesAchievementIncrement();
       var od = api.GamesAchievementIncrement.fromJson(o.toJson());
-      checkGamesAchievementIncrement(od);
+      checkGamesAchievementIncrement(od as api.GamesAchievementIncrement);
     });
   });
 
@@ -2216,7 +2223,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesAchievementSetStepsAtLeast();
       var od = api.GamesAchievementSetStepsAtLeast.fromJson(o.toJson());
-      checkGamesAchievementSetStepsAtLeast(od);
+      checkGamesAchievementSetStepsAtLeast(
+          od as api.GamesAchievementSetStepsAtLeast);
     });
   });
 
@@ -2224,7 +2232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageAsset();
       var od = api.ImageAsset.fromJson(o.toJson());
-      checkImageAsset(od);
+      checkImageAsset(od as api.ImageAsset);
     });
   });
 
@@ -2232,7 +2240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
-      checkInstance(od);
+      checkInstance(od as api.Instance);
     });
   });
 
@@ -2240,7 +2248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstanceAndroidDetails();
       var od = api.InstanceAndroidDetails.fromJson(o.toJson());
-      checkInstanceAndroidDetails(od);
+      checkInstanceAndroidDetails(od as api.InstanceAndroidDetails);
     });
   });
 
@@ -2248,7 +2256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstanceIosDetails();
       var od = api.InstanceIosDetails.fromJson(o.toJson());
-      checkInstanceIosDetails(od);
+      checkInstanceIosDetails(od as api.InstanceIosDetails);
     });
   });
 
@@ -2256,7 +2264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstanceWebDetails();
       var od = api.InstanceWebDetails.fromJson(o.toJson());
-      checkInstanceWebDetails(od);
+      checkInstanceWebDetails(od as api.InstanceWebDetails);
     });
   });
 
@@ -2264,7 +2272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboard();
       var od = api.Leaderboard.fromJson(o.toJson());
-      checkLeaderboard(od);
+      checkLeaderboard(od as api.Leaderboard);
     });
   });
 
@@ -2272,7 +2280,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardEntry();
       var od = api.LeaderboardEntry.fromJson(o.toJson());
-      checkLeaderboardEntry(od);
+      checkLeaderboardEntry(od as api.LeaderboardEntry);
     });
   });
 
@@ -2280,7 +2288,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardListResponse();
       var od = api.LeaderboardListResponse.fromJson(o.toJson());
-      checkLeaderboardListResponse(od);
+      checkLeaderboardListResponse(od as api.LeaderboardListResponse);
     });
   });
 
@@ -2288,7 +2296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardScoreRank();
       var od = api.LeaderboardScoreRank.fromJson(o.toJson());
-      checkLeaderboardScoreRank(od);
+      checkLeaderboardScoreRank(od as api.LeaderboardScoreRank);
     });
   });
 
@@ -2296,7 +2304,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLeaderboardScores();
       var od = api.LeaderboardScores.fromJson(o.toJson());
-      checkLeaderboardScores(od);
+      checkLeaderboardScores(od as api.LeaderboardScores);
     });
   });
 
@@ -2304,7 +2312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetagameConfig();
       var od = api.MetagameConfig.fromJson(o.toJson());
-      checkMetagameConfig(od);
+      checkMetagameConfig(od as api.MetagameConfig);
     });
   });
 
@@ -2312,7 +2320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerName();
       var od = api.PlayerName.fromJson(o.toJson());
-      checkPlayerName(od);
+      checkPlayerName(od as api.PlayerName);
     });
   });
 
@@ -2320,7 +2328,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayer();
       var od = api.Player.fromJson(o.toJson());
-      checkPlayer(od);
+      checkPlayer(od as api.Player);
     });
   });
 
@@ -2328,7 +2336,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerAchievement();
       var od = api.PlayerAchievement.fromJson(o.toJson());
-      checkPlayerAchievement(od);
+      checkPlayerAchievement(od as api.PlayerAchievement);
     });
   });
 
@@ -2336,7 +2344,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerAchievementListResponse();
       var od = api.PlayerAchievementListResponse.fromJson(o.toJson());
-      checkPlayerAchievementListResponse(od);
+      checkPlayerAchievementListResponse(
+          od as api.PlayerAchievementListResponse);
     });
   });
 
@@ -2344,7 +2353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerEvent();
       var od = api.PlayerEvent.fromJson(o.toJson());
-      checkPlayerEvent(od);
+      checkPlayerEvent(od as api.PlayerEvent);
     });
   });
 
@@ -2352,7 +2361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerEventListResponse();
       var od = api.PlayerEventListResponse.fromJson(o.toJson());
-      checkPlayerEventListResponse(od);
+      checkPlayerEventListResponse(od as api.PlayerEventListResponse);
     });
   });
 
@@ -2360,7 +2369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerExperienceInfo();
       var od = api.PlayerExperienceInfo.fromJson(o.toJson());
-      checkPlayerExperienceInfo(od);
+      checkPlayerExperienceInfo(od as api.PlayerExperienceInfo);
     });
   });
 
@@ -2368,7 +2377,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerLeaderboardScore();
       var od = api.PlayerLeaderboardScore.fromJson(o.toJson());
-      checkPlayerLeaderboardScore(od);
+      checkPlayerLeaderboardScore(od as api.PlayerLeaderboardScore);
     });
   });
 
@@ -2376,7 +2385,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerLeaderboardScoreListResponse();
       var od = api.PlayerLeaderboardScoreListResponse.fromJson(o.toJson());
-      checkPlayerLeaderboardScoreListResponse(od);
+      checkPlayerLeaderboardScoreListResponse(
+          od as api.PlayerLeaderboardScoreListResponse);
     });
   });
 
@@ -2384,7 +2394,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerLevel();
       var od = api.PlayerLevel.fromJson(o.toJson());
-      checkPlayerLevel(od);
+      checkPlayerLevel(od as api.PlayerLevel);
     });
   });
 
@@ -2392,7 +2402,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerListResponse();
       var od = api.PlayerListResponse.fromJson(o.toJson());
-      checkPlayerListResponse(od);
+      checkPlayerListResponse(od as api.PlayerListResponse);
     });
   });
 
@@ -2400,7 +2410,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScore();
       var od = api.PlayerScore.fromJson(o.toJson());
-      checkPlayerScore(od);
+      checkPlayerScore(od as api.PlayerScore);
     });
   });
 
@@ -2408,7 +2418,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreListResponse();
       var od = api.PlayerScoreListResponse.fromJson(o.toJson());
-      checkPlayerScoreListResponse(od);
+      checkPlayerScoreListResponse(od as api.PlayerScoreListResponse);
     });
   });
 
@@ -2416,7 +2426,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreResponse();
       var od = api.PlayerScoreResponse.fromJson(o.toJson());
-      checkPlayerScoreResponse(od);
+      checkPlayerScoreResponse(od as api.PlayerScoreResponse);
     });
   });
 
@@ -2424,7 +2434,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreSubmissionList();
       var od = api.PlayerScoreSubmissionList.fromJson(o.toJson());
-      checkPlayerScoreSubmissionList(od);
+      checkPlayerScoreSubmissionList(od as api.PlayerScoreSubmissionList);
     });
   });
 
@@ -2432,7 +2442,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileSettings();
       var od = api.ProfileSettings.fromJson(o.toJson());
-      checkProfileSettings(od);
+      checkProfileSettings(od as api.ProfileSettings);
     });
   });
 
@@ -2440,7 +2450,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRevisionCheckResponse();
       var od = api.RevisionCheckResponse.fromJson(o.toJson());
-      checkRevisionCheckResponse(od);
+      checkRevisionCheckResponse(od as api.RevisionCheckResponse);
     });
   });
 
@@ -2448,7 +2458,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScoreSubmission();
       var od = api.ScoreSubmission.fromJson(o.toJson());
-      checkScoreSubmission(od);
+      checkScoreSubmission(od as api.ScoreSubmission);
     });
   });
 
@@ -2456,7 +2466,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSnapshot();
       var od = api.Snapshot.fromJson(o.toJson());
-      checkSnapshot(od);
+      checkSnapshot(od as api.Snapshot);
     });
   });
 
@@ -2464,7 +2474,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSnapshotImage();
       var od = api.SnapshotImage.fromJson(o.toJson());
-      checkSnapshotImage(od);
+      checkSnapshotImage(od as api.SnapshotImage);
     });
   });
 
@@ -2472,7 +2482,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSnapshotListResponse();
       var od = api.SnapshotListResponse.fromJson(o.toJson());
-      checkSnapshotListResponse(od);
+      checkSnapshotListResponse(od as api.SnapshotListResponse);
     });
   });
 
@@ -2480,7 +2490,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatsResponse();
       var od = api.StatsResponse.fromJson(o.toJson());
-      checkStatsResponse(od);
+      checkStatsResponse(od as api.StatsResponse);
     });
   });
 
@@ -2541,7 +2551,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementDefinitionsListResponse(response);
+        checkAchievementDefinitionsListResponse(
+            response as api.AchievementDefinitionsListResponse);
       })));
     });
   });
@@ -2606,7 +2617,8 @@ void main() {
           .increment(arg_achievementId, arg_stepsToIncrement,
               requestId: arg_requestId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementIncrementResponse(response);
+        checkAchievementIncrementResponse(
+            response as api.AchievementIncrementResponse);
       })));
     });
 
@@ -2678,7 +2690,8 @@ void main() {
               state: arg_state,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerAchievementListResponse(response);
+        checkPlayerAchievementListResponse(
+            response as api.PlayerAchievementListResponse);
       })));
     });
 
@@ -2734,7 +2747,8 @@ void main() {
       res
           .reveal(arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementRevealResponse(response);
+        checkAchievementRevealResponse(
+            response as api.AchievementRevealResponse);
       })));
     });
 
@@ -2794,7 +2808,8 @@ void main() {
       res
           .setStepsAtLeast(arg_achievementId, arg_steps, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementSetStepsAtLeastResponse(response);
+        checkAchievementSetStepsAtLeastResponse(
+            response as api.AchievementSetStepsAtLeastResponse);
       })));
     });
 
@@ -2850,7 +2865,8 @@ void main() {
       res
           .unlock(arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementUnlockResponse(response);
+        checkAchievementUnlockResponse(
+            response as api.AchievementUnlockResponse);
       })));
     });
 
@@ -2860,8 +2876,10 @@ void main() {
       var arg_request = buildAchievementUpdateMultipleRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementUpdateMultipleRequest.fromJson(json);
-        checkAchievementUpdateMultipleRequest(obj);
+        var obj = api.AchievementUpdateMultipleRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAchievementUpdateMultipleRequest(
+            obj as api.AchievementUpdateMultipleRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2901,7 +2919,8 @@ void main() {
       res
           .updateMultiple(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementUpdateMultipleResponse(response);
+        checkAchievementUpdateMultipleResponse(
+            response as api.AchievementUpdateMultipleResponse);
       })));
     });
   });
@@ -2962,7 +2981,7 @@ void main() {
               platformType: arg_platformType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApplication(response);
+        checkApplication(response as api.Application);
       })));
     });
 
@@ -3060,7 +3079,8 @@ void main() {
       res
           .verify(arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApplicationVerifyResponse(response);
+        checkApplicationVerifyResponse(
+            response as api.ApplicationVerifyResponse);
       })));
     });
   });
@@ -3121,7 +3141,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerEventListResponse(response);
+        checkPlayerEventListResponse(response as api.PlayerEventListResponse);
       })));
     });
 
@@ -3180,7 +3200,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEventDefinitionListResponse(response);
+        checkEventDefinitionListResponse(
+            response as api.EventDefinitionListResponse);
       })));
     });
 
@@ -3191,8 +3212,9 @@ void main() {
       var arg_language = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EventRecordRequest.fromJson(json);
-        checkEventRecordRequest(obj);
+        var obj = api.EventRecordRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEventRecordRequest(obj as api.EventRecordRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3233,7 +3255,7 @@ void main() {
       res
           .record(arg_request, language: arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEventUpdateResponse(response);
+        checkEventUpdateResponse(response as api.EventUpdateResponse);
       })));
     });
   });
@@ -3288,7 +3310,7 @@ void main() {
       res
           .get(arg_leaderboardId, language: arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboard(response);
+        checkLeaderboard(response as api.Leaderboard);
       })));
     });
 
@@ -3347,7 +3369,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardListResponse(response);
+        checkLeaderboardListResponse(response as api.LeaderboardListResponse);
       })));
     });
   });
@@ -3395,7 +3417,7 @@ void main() {
       res
           .getMetagameConfig($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMetagameConfig(response);
+        checkMetagameConfig(response as api.MetagameConfig);
       })));
     });
 
@@ -3468,7 +3490,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCategoryListResponse(response);
+        checkCategoryListResponse(response as api.CategoryListResponse);
       })));
     });
   });
@@ -3523,7 +3545,7 @@ void main() {
       res
           .get(arg_playerId, language: arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayer(response);
+        checkPlayer(response as api.Player);
       })));
     });
 
@@ -3586,7 +3608,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerListResponse(response);
+        checkPlayerListResponse(response as api.PlayerListResponse);
       })));
     });
   });
@@ -3637,7 +3659,7 @@ void main() {
       res
           .check(arg_clientRevision, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRevisionCheckResponse(response);
+        checkRevisionCheckResponse(response as api.RevisionCheckResponse);
       })));
     });
   });
@@ -3727,7 +3749,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerLeaderboardScoreListResponse(response);
+        checkPlayerLeaderboardScoreListResponse(
+            response as api.PlayerLeaderboardScoreListResponse);
       })));
     });
 
@@ -3803,7 +3826,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardScores(response);
+        checkLeaderboardScores(response as api.LeaderboardScores);
       })));
     });
 
@@ -3887,7 +3910,7 @@ void main() {
               returnTopIfAbsent: arg_returnTopIfAbsent,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLeaderboardScores(response);
+        checkLeaderboardScores(response as api.LeaderboardScores);
       })));
     });
 
@@ -3954,7 +3977,7 @@ void main() {
               scoreTag: arg_scoreTag,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResponse(response);
+        checkPlayerScoreResponse(response as api.PlayerScoreResponse);
       })));
     });
 
@@ -3965,8 +3988,9 @@ void main() {
       var arg_language = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PlayerScoreSubmissionList.fromJson(json);
-        checkPlayerScoreSubmissionList(obj);
+        var obj = api.PlayerScoreSubmissionList.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPlayerScoreSubmissionList(obj as api.PlayerScoreSubmissionList);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4008,7 +4032,7 @@ void main() {
           .submitMultiple(arg_request,
               language: arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreListResponse(response);
+        checkPlayerScoreListResponse(response as api.PlayerScoreListResponse);
       })));
     });
   });
@@ -4063,7 +4087,7 @@ void main() {
       res
           .get(arg_snapshotId, language: arg_language, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSnapshot(response);
+        checkSnapshot(response as api.Snapshot);
       })));
     });
 
@@ -4132,7 +4156,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSnapshotListResponse(response);
+        checkSnapshotListResponse(response as api.SnapshotListResponse);
       })));
     });
   });
@@ -4178,7 +4202,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkStatsResponse(response);
+        checkStatsResponse(response as api.StatsResponse);
       })));
     });
   });

@@ -111,7 +111,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -179,7 +181,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -262,7 +267,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new dataset containing de-identified data from the source
@@ -327,7 +334,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified health dataset and all data contained in the
@@ -379,7 +388,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets any metadata associated with a dataset.
@@ -429,7 +440,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Dataset.fromJson(data));
+    return _response.then(
+      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -497,7 +510,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the health datasets in the current project.
@@ -562,7 +577,10 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDatasetsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDatasetsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates dataset metadata.
@@ -626,7 +644,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Dataset.fromJson(data));
+    return _response.then(
+      (data) => Dataset.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -687,7 +707,9 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -750,7 +772,10 @@ class ProjectsLocationsDatasetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -824,7 +849,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DicomStore.fromJson(data));
+    return _response.then(
+      (data) =>
+          DicomStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// De-identifies data from the source store and writes it to the destination
@@ -890,7 +918,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified DICOM store and removes all images that are
@@ -941,7 +971,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Exports data to the specified destination by copying it from the DICOM
@@ -1002,7 +1034,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified DICOM store.
@@ -1052,7 +1086,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DicomStore.fromJson(data));
+    return _response.then(
+      (data) =>
+          DicomStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -1121,7 +1158,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports data into the DICOM store by copying it from the specified source.
@@ -1182,7 +1221,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the DICOM stores in the given dataset.
@@ -1255,7 +1296,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDicomStoresResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDicomStoresResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified DICOM store.
@@ -1320,7 +1364,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DicomStore.fromJson(data));
+    return _response.then(
+      (data) =>
+          DicomStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -1392,7 +1439,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForSeries returns a list of matching series. See [Search
@@ -1463,7 +1512,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForStudies returns a list of matching studies. See [Search
@@ -1534,7 +1585,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1596,7 +1649,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
@@ -1672,7 +1727,9 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1736,7 +1793,10 @@ class ProjectsLocationsDatasetsDicomStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1816,7 +1876,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveStudyMetadata returns instance associated with the given study
@@ -1887,7 +1949,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveStudy returns all instances within the given study. See
@@ -1957,7 +2021,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -2029,7 +2095,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForSeries returns a list of matching series. See [Search
@@ -2100,7 +2168,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// StoreInstances stores DICOM instances associated with study instance
@@ -2176,7 +2246,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2260,7 +2332,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveSeriesMetadata returns instance associated with the given study
@@ -2331,7 +2405,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveSeries returns all instances within the given study and series.
@@ -2401,7 +2477,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// SearchForInstances returns a list of matching instances. See [Search
@@ -2473,7 +2551,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2555,7 +2635,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveInstance returns instance associated with the given study, series,
@@ -2628,7 +2710,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveInstanceMetadata returns instance associated with the given study,
@@ -2702,7 +2786,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveRenderedInstance returns instance associated with the given study,
@@ -2776,7 +2862,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2856,7 +2944,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// RetrieveRenderedFrames returns instances associated with the given study,
@@ -2929,7 +3019,9 @@ class ProjectsLocationsDatasetsDicomStoresStudiesSeriesInstancesFramesResourceAp
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3003,7 +3095,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FhirStore.fromJson(data));
+    return _response.then(
+      (data) => FhirStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// De-identifies data from the source store and writes it to the destination
@@ -3066,7 +3160,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified FHIR store and removes all resources within it.
@@ -3116,7 +3212,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Export resources from the FHIR store to the specified destination. This
@@ -3181,7 +3279,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the configuration of the specified FHIR store.
@@ -3231,7 +3331,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FhirStore.fromJson(data));
+    return _response.then(
+      (data) => FhirStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -3300,7 +3402,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports resources to the FHIR store by loading data from the specified
@@ -3408,7 +3512,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the FHIR stores in the given dataset.
@@ -3481,7 +3587,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListFhirStoresResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFhirStoresResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the configuration of the specified FHIR store.
@@ -3546,7 +3655,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FhirStore.fromJson(data));
+    return _response.then(
+      (data) => FhirStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -3608,7 +3719,9 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -3672,7 +3785,10 @@ class ProjectsLocationsDatasetsFhirStoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3800,7 +3916,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes all the historical versions of a resource (excluding the current
@@ -3855,7 +3973,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the FHIR capability statement
@@ -3920,7 +4040,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a FHIR resource. Implements the FHIR standard create interaction
@@ -4005,7 +4127,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a FHIR resource. Implements the FHIR standard delete interaction
@@ -4064,7 +4188,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Executes all the requests in the given Bundle. Implements the FHIR
@@ -4146,7 +4272,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the versions of a resource (including the current version and
@@ -4248,7 +4376,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates part of an existing resource by applying the operations specified
@@ -4319,7 +4449,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the contents of a FHIR resource. Implements the FHIR standard read
@@ -4386,7 +4518,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Searches for resources in the given FHIR store according to criteria
@@ -4487,7 +4621,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the entire contents of a resource. Implements the FHIR standard
@@ -4560,7 +4696,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the contents of a version (current or historical) of a FHIR resource
@@ -4621,7 +4759,9 @@ class ProjectsLocationsDatasetsFhirStoresFhirResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => HttpBody.fromJson(data));
+    return _response.then(
+      (data) => HttpBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4695,7 +4835,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hl7V2Store.fromJson(data));
+    return _response.then(
+      (data) =>
+          Hl7V2Store.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified HL7v2 store and removes all messages that it
@@ -4746,7 +4889,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified HL7v2 store.
@@ -4796,7 +4941,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hl7V2Store.fromJson(data));
+    return _response.then(
+      (data) =>
+          Hl7V2Store.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -4865,7 +5013,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the HL7v2 stores in the given dataset.
@@ -4938,7 +5088,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListHl7V2StoresResponse.fromJson(data));
+    return _response.then(
+      (data) => ListHl7V2StoresResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the HL7v2 store.
@@ -5003,7 +5156,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Hl7V2Store.fromJson(data));
+    return _response.then(
+      (data) =>
+          Hl7V2Store.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -5065,7 +5221,9 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -5129,7 +5287,10 @@ class ProjectsLocationsDatasetsHl7V2StoresResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5199,7 +5360,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an HL7v2 message.
@@ -5249,7 +5412,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets an HL7v2 message.
@@ -5314,7 +5479,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Parses and stores an HL7v2 message. This method triggers an asynchronous
@@ -5380,7 +5547,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IngestMessageResponse.fromJson(data));
+    return _response.then(
+      (data) => IngestMessageResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the messages in the given HL7v2 store with support for
@@ -5495,7 +5665,10 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListMessagesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListMessagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the message. The contents of the message in Message.data and data
@@ -5565,7 +5738,9 @@ class ProjectsLocationsDatasetsHl7V2StoresMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5636,7 +5811,9 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -5688,7 +5865,9 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -5764,7 +5943,10 @@ class ProjectsLocationsDatasetsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5798,7 +5980,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -5912,7 +6095,8 @@ class Binding {
 
   Binding.fromJson(core.Map _json) {
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -5984,7 +6168,8 @@ class CreateMessageRequest {
 
   CreateMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6120,16 +6305,20 @@ class DeidentifyConfig {
 
   DeidentifyConfig.fromJson(core.Map _json) {
     if (_json.containsKey('dicom')) {
-      dicom = DicomConfig.fromJson(_json['dicom']);
+      dicom = DicomConfig.fromJson(
+          _json['dicom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fhir')) {
-      fhir = FhirConfig.fromJson(_json['fhir']);
+      fhir = FhirConfig.fromJson(
+          _json['fhir'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('image')) {
-      image = ImageConfig.fromJson(_json['image']);
+      image = ImageConfig.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
-      text = TextConfig.fromJson(_json['text']);
+      text = TextConfig.fromJson(
+          _json['text'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6166,7 +6355,8 @@ class DeidentifyDatasetRequest {
 
   DeidentifyDatasetRequest.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = DeidentifyConfig.fromJson(_json['config']);
+      config = DeidentifyConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('destinationDataset')) {
       destinationDataset = _json['destinationDataset'] as core.String;
@@ -6207,13 +6397,15 @@ class DeidentifyDicomStoreRequest {
 
   DeidentifyDicomStoreRequest.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = DeidentifyConfig.fromJson(_json['config']);
+      config = DeidentifyConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('destinationStore')) {
       destinationStore = _json['destinationStore'] as core.String;
     }
     if (_json.containsKey('filterConfig')) {
-      filterConfig = DicomFilterConfig.fromJson(_json['filterConfig']);
+      filterConfig = DicomFilterConfig.fromJson(
+          _json['filterConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6255,13 +6447,15 @@ class DeidentifyFhirStoreRequest {
 
   DeidentifyFhirStoreRequest.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = DeidentifyConfig.fromJson(_json['config']);
+      config = DeidentifyConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('destinationStore')) {
       destinationStore = _json['destinationStore'] as core.String;
     }
     if (_json.containsKey('resourceFilter')) {
-      resourceFilter = FhirFilter.fromJson(_json['resourceFilter']);
+      resourceFilter = FhirFilter.fromJson(
+          _json['resourceFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6336,10 +6530,12 @@ class DicomConfig {
       filterProfile = _json['filterProfile'] as core.String;
     }
     if (_json.containsKey('keepList')) {
-      keepList = TagFilterList.fromJson(_json['keepList']);
+      keepList = TagFilterList.fromJson(
+          _json['keepList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('removeList')) {
-      removeList = TagFilterList.fromJson(_json['removeList']);
+      removeList = TagFilterList.fromJson(
+          _json['removeList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('skipIdRedaction')) {
       skipIdRedaction = _json['skipIdRedaction'] as core.bool;
@@ -6417,15 +6613,16 @@ class DicomStore {
   DicomStore.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
-      notificationConfig =
-          NotificationConfig.fromJson(_json['notificationConfig']);
+      notificationConfig = NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6483,11 +6680,12 @@ class ExportDicomDataRequest {
     if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1DicomBigQueryDestination.fromJson(
-              _json['bigqueryDestination']);
+              _json['bigqueryDestination']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudHealthcareV1DicomGcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6537,11 +6735,12 @@ class ExportResourcesRequest {
     if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
-              _json['bigqueryDestination']);
+              _json['bigqueryDestination']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcsDestination')) {
       gcsDestination = GoogleCloudHealthcareV1FhirGcsDestination.fromJson(
-          _json['gcsDestination']);
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6653,7 +6852,8 @@ class FhirConfig {
   FhirConfig.fromJson(core.Map _json) {
     if (_json.containsKey('fieldMetadataList')) {
       fieldMetadataList = (_json['fieldMetadataList'] as core.List)
-          .map<FieldMetadata>((value) => FieldMetadata.fromJson(value))
+          .map<FieldMetadata>((value) => FieldMetadata.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6678,7 +6878,8 @@ class FhirFilter {
 
   FhirFilter.fromJson(core.Map _json) {
     if (_json.containsKey('resources')) {
-      resources = Resources.fromJson(_json['resources']);
+      resources = Resources.fromJson(
+          _json['resources'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6786,19 +6987,21 @@ class FhirStore {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('notificationConfig')) {
-      notificationConfig =
-          NotificationConfig.fromJson(_json['notificationConfig']);
+      notificationConfig = NotificationConfig.fromJson(
+          _json['notificationConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('streamConfigs')) {
       streamConfigs = (_json['streamConfigs'] as core.List)
-          .map<StreamConfig>((value) => StreamConfig.fromJson(value))
+          .map<StreamConfig>((value) => StreamConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('version')) {
@@ -7062,7 +7265,8 @@ class GoogleCloudHealthcareV1FhirBigQueryDestination {
       force = _json['force'] as core.bool;
     }
     if (_json.containsKey('schemaConfig')) {
-      schemaConfig = SchemaConfig.fromJson(_json['schemaConfig']);
+      schemaConfig = SchemaConfig.fromJson(
+          _json['schemaConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7246,7 +7450,8 @@ class Hl7V2Store {
   Hl7V2Store.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -7254,12 +7459,14 @@ class Hl7V2Store {
     }
     if (_json.containsKey('notificationConfigs')) {
       notificationConfigs = (_json['notificationConfigs'] as core.List)
-          .map<Hl7V2NotificationConfig>(
-              (value) => Hl7V2NotificationConfig.fromJson(value))
+          .map<Hl7V2NotificationConfig>((value) =>
+              Hl7V2NotificationConfig.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('parserConfig')) {
-      parserConfig = ParserConfig.fromJson(_json['parserConfig']);
+      parserConfig = ParserConfig.fromJson(
+          _json['parserConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rejectDuplicateMessage')) {
       rejectDuplicateMessage = _json['rejectDuplicateMessage'] as core.bool;
@@ -7339,7 +7546,8 @@ class HttpBody {
       extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -7400,8 +7608,8 @@ class ImportDicomDataRequest {
 
   ImportDicomDataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudHealthcareV1DicomGcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudHealthcareV1DicomGcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7460,8 +7668,8 @@ class ImportResourcesRequest {
       contentStructure = _json['contentStructure'] as core.String;
     }
     if (_json.containsKey('gcsSource')) {
-      gcsSource =
-          GoogleCloudHealthcareV1FhirGcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GoogleCloudHealthcareV1FhirGcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7519,14 +7727,16 @@ class InfoTypeTransformation {
 
   InfoTypeTransformation.fromJson(core.Map _json) {
     if (_json.containsKey('characterMaskConfig')) {
-      characterMaskConfig =
-          CharacterMaskConfig.fromJson(_json['characterMaskConfig']);
+      characterMaskConfig = CharacterMaskConfig.fromJson(
+          _json['characterMaskConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cryptoHashConfig')) {
-      cryptoHashConfig = CryptoHashConfig.fromJson(_json['cryptoHashConfig']);
+      cryptoHashConfig = CryptoHashConfig.fromJson(
+          _json['cryptoHashConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dateShiftConfig')) {
-      dateShiftConfig = DateShiftConfig.fromJson(_json['dateShiftConfig']);
+      dateShiftConfig = DateShiftConfig.fromJson(
+          _json['dateShiftConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('infoTypes')) {
       infoTypes = (_json['infoTypes'] as core.List)
@@ -7534,11 +7744,13 @@ class InfoTypeTransformation {
           .toList();
     }
     if (_json.containsKey('redactConfig')) {
-      redactConfig = RedactConfig.fromJson(_json['redactConfig']);
+      redactConfig = RedactConfig.fromJson(
+          _json['redactConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceWithInfoTypeConfig')) {
       replaceWithInfoTypeConfig = ReplaceWithInfoTypeConfig.fromJson(
-          _json['replaceWithInfoTypeConfig']);
+          _json['replaceWithInfoTypeConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7575,7 +7787,8 @@ class IngestMessageRequest {
 
   IngestMessageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7610,7 +7823,8 @@ class IngestMessageResponse {
       hl7Ack = _json['hl7Ack'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7640,7 +7854,8 @@ class ListDatasetsResponse {
   ListDatasetsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('datasets')) {
       datasets = (_json['datasets'] as core.List)
-          .map<Dataset>((value) => Dataset.fromJson(value))
+          .map<Dataset>((value) =>
+              Dataset.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7675,7 +7890,8 @@ class ListDicomStoresResponse {
   ListDicomStoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dicomStores')) {
       dicomStores = (_json['dicomStores'] as core.List)
-          .map<DicomStore>((value) => DicomStore.fromJson(value))
+          .map<DicomStore>((value) =>
+              DicomStore.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7711,7 +7927,8 @@ class ListFhirStoresResponse {
   ListFhirStoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey('fhirStores')) {
       fhirStores = (_json['fhirStores'] as core.List)
-          .map<FhirStore>((value) => FhirStore.fromJson(value))
+          .map<FhirStore>((value) =>
+              FhirStore.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7746,7 +7963,8 @@ class ListHl7V2StoresResponse {
   ListHl7V2StoresResponse.fromJson(core.Map _json) {
     if (_json.containsKey('hl7V2Stores')) {
       hl7V2Stores = (_json['hl7V2Stores'] as core.List)
-          .map<Hl7V2Store>((value) => Hl7V2Store.fromJson(value))
+          .map<Hl7V2Store>((value) =>
+              Hl7V2Store.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7780,7 +7998,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7815,7 +8034,8 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('hl7V2Messages')) {
       hl7V2Messages = (_json['hl7V2Messages'] as core.List)
-          .map<Message>((value) => Message.fromJson(value))
+          .map<Message>((value) =>
+              Message.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7852,7 +8072,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7901,7 +8122,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -7909,7 +8131,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -7996,7 +8219,8 @@ class Message {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('messageType')) {
@@ -8006,11 +8230,13 @@ class Message {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parsedData')) {
-      parsedData = ParsedData.fromJson(_json['parsedData']);
+      parsedData = ParsedData.fromJson(
+          _json['parsedData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('patientIds')) {
       patientIds = (_json['patientIds'] as core.List)
-          .map<PatientId>((value) => PatientId.fromJson(value))
+          .map<PatientId>((value) =>
+              PatientId.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('sendFacility')) {
@@ -8135,11 +8361,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -8147,7 +8375,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -8204,7 +8433,8 @@ class OperationMetadata {
       cancelRequested = _json['cancelRequested'] as core.bool;
     }
     if (_json.containsKey('counter')) {
-      counter = ProgressCounter.fromJson(_json['counter']);
+      counter = ProgressCounter.fromJson(
+          _json['counter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -8250,7 +8480,8 @@ class ParsedData {
   ParsedData.fromJson(core.Map _json) {
     if (_json.containsKey('segments')) {
       segments = (_json['segments'] as core.List)
-          .map<Segment>((value) => Segment.fromJson(value))
+          .map<Segment>((value) =>
+              Segment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8414,12 +8645,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -8643,7 +8876,8 @@ class Segment {
   Segment.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.String, core.String>(
-          _json['fields'].cast<core.String, core.String>(),
+          (_json['fields'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('segmentId')) {
@@ -8686,7 +8920,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -8737,7 +8972,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -8806,7 +9042,8 @@ class StreamConfig {
     if (_json.containsKey('bigqueryDestination')) {
       bigqueryDestination =
           GoogleCloudHealthcareV1FhirBigQueryDestination.fromJson(
-              _json['bigqueryDestination']);
+              _json['bigqueryDestination']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceTypes')) {
       resourceTypes = (_json['resourceTypes'] as core.List)
@@ -8916,8 +9153,9 @@ class TextConfig {
   TextConfig.fromJson(core.Map _json) {
     if (_json.containsKey('transformations')) {
       transformations = (_json['transformations'] as core.List)
-          .map<InfoTypeTransformation>(
-              (value) => InfoTypeTransformation.fromJson(value))
+          .map<InfoTypeTransformation>((value) =>
+              InfoTypeTransformation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

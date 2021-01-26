@@ -123,7 +123,9 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Get a specific user's license by product SKU.
@@ -194,7 +196,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignment.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Assign a license.
@@ -260,7 +265,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignment.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -338,7 +346,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignmentList.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignmentList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all users assigned licenses for a specific product SKU.
@@ -425,7 +436,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignmentList.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignmentList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch a Licensing info via Apiary Patch Orchestration
@@ -502,7 +516,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignment.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reassign a user's product SKU with a different SKU in the same product.
@@ -579,7 +596,10 @@ class LicenseAssignmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LicenseAssignment.fromJson(data));
+    return _response.then(
+      (data) => LicenseAssignment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -720,7 +740,8 @@ class LicenseAssignmentList {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(value))
+          .map<LicenseAssignment>((value) => LicenseAssignment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

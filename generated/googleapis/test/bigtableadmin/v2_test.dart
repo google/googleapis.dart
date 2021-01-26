@@ -94,9 +94,11 @@ void checkAppProfile(api.AppProfile o) {
   if (buildCounterAppProfile < 3) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkMultiClusterRoutingUseAny(o.multiClusterRoutingUseAny);
+    checkMultiClusterRoutingUseAny(
+        o.multiClusterRoutingUseAny as api.MultiClusterRoutingUseAny);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkSingleClusterRouting(o.singleClusterRouting);
+    checkSingleClusterRouting(
+        o.singleClusterRouting as api.SingleClusterRouting);
   }
   buildCounterAppProfile--;
 }
@@ -110,8 +112,8 @@ core.List<api.AuditLogConfig> buildUnnamed1175() {
 
 void checkUnnamed1175(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -254,7 +256,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed1177(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -359,7 +361,7 @@ api.ColumnFamily buildColumnFamily() {
 void checkColumnFamily(api.ColumnFamily o) {
   buildCounterColumnFamily++;
   if (buildCounterColumnFamily < 3) {
-    checkGcRule(o.gcRule);
+    checkGcRule(o.gcRule as api.GcRule);
   }
   buildCounterColumnFamily--;
 }
@@ -398,8 +400,8 @@ core.Map<core.String, api.TableProgress> buildUnnamed1178() {
 
 void checkUnnamed1178(core.Map<core.String, api.TableProgress> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTableProgress(o['x']);
-  checkTableProgress(o['y']);
+  checkTableProgress(o['x'] as api.TableProgress);
+  checkTableProgress(o['y'] as api.TableProgress);
 }
 
 core.int buildCounterCreateClusterMetadata = 0;
@@ -420,7 +422,7 @@ void checkCreateClusterMetadata(api.CreateClusterMetadata o) {
   buildCounterCreateClusterMetadata++;
   if (buildCounterCreateClusterMetadata < 3) {
     unittest.expect(o.finishTime, unittest.equals('foo'));
-    checkCreateClusterRequest(o.originalRequest);
+    checkCreateClusterRequest(o.originalRequest as api.CreateClusterRequest);
     unittest.expect(o.requestTime, unittest.equals('foo'));
     checkUnnamed1178(o.tables);
   }
@@ -443,7 +445,7 @@ api.CreateClusterRequest buildCreateClusterRequest() {
 void checkCreateClusterRequest(api.CreateClusterRequest o) {
   buildCounterCreateClusterRequest++;
   if (buildCounterCreateClusterRequest < 3) {
-    checkCluster(o.cluster);
+    checkCluster(o.cluster as api.Cluster);
     unittest.expect(o.clusterId, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
   }
@@ -467,7 +469,7 @@ void checkCreateInstanceMetadata(api.CreateInstanceMetadata o) {
   buildCounterCreateInstanceMetadata++;
   if (buildCounterCreateInstanceMetadata < 3) {
     unittest.expect(o.finishTime, unittest.equals('foo'));
-    checkCreateInstanceRequest(o.originalRequest);
+    checkCreateInstanceRequest(o.originalRequest as api.CreateInstanceRequest);
     unittest.expect(o.requestTime, unittest.equals('foo'));
   }
   buildCounterCreateInstanceMetadata--;
@@ -482,8 +484,8 @@ core.Map<core.String, api.Cluster> buildUnnamed1179() {
 
 void checkUnnamed1179(core.Map<core.String, api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCluster(o['x']);
-  checkCluster(o['y']);
+  checkCluster(o['x'] as api.Cluster);
+  checkCluster(o['y'] as api.Cluster);
 }
 
 core.int buildCounterCreateInstanceRequest = 0;
@@ -504,7 +506,7 @@ void checkCreateInstanceRequest(api.CreateInstanceRequest o) {
   buildCounterCreateInstanceRequest++;
   if (buildCounterCreateInstanceRequest < 3) {
     checkUnnamed1179(o.clusters);
-    checkInstance(o.instance);
+    checkInstance(o.instance as api.Instance);
     unittest.expect(o.instanceId, unittest.equals('foo'));
     unittest.expect(o.parent, unittest.equals('foo'));
   }
@@ -520,8 +522,8 @@ core.List<api.Split> buildUnnamed1180() {
 
 void checkUnnamed1180(core.List<api.Split> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSplit(o[0]);
-  checkSplit(o[1]);
+  checkSplit(o[0] as api.Split);
+  checkSplit(o[1] as api.Split);
 }
 
 core.int buildCounterCreateTableRequest = 0;
@@ -541,7 +543,7 @@ void checkCreateTableRequest(api.CreateTableRequest o) {
   buildCounterCreateTableRequest++;
   if (buildCounterCreateTableRequest < 3) {
     checkUnnamed1180(o.initialSplits);
-    checkTable(o.table);
+    checkTable(o.table as api.Table);
     unittest.expect(o.tableId, unittest.equals('foo'));
   }
   buildCounterCreateTableRequest--;
@@ -617,8 +619,8 @@ core.List<api.Frame> buildUnnamed1181() {
 
 void checkUnnamed1181(core.List<api.Frame> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFrame(o[0]);
-  checkFrame(o[1]);
+  checkFrame(o[0] as api.Frame);
+  checkFrame(o[1] as api.Frame);
 }
 
 core.int buildCounterFailureTrace = 0;
@@ -680,10 +682,10 @@ api.GcRule buildGcRule() {
 void checkGcRule(api.GcRule o) {
   buildCounterGcRule++;
   if (buildCounterGcRule < 3) {
-    checkIntersection(o.intersection);
+    checkIntersection(o.intersection as api.Intersection);
     unittest.expect(o.maxAge, unittest.equals('foo'));
     unittest.expect(o.maxNumVersions, unittest.equals(42));
-    checkUnion(o.union);
+    checkUnion(o.union as api.Union);
   }
   buildCounterGcRule--;
 }
@@ -738,7 +740,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -811,8 +813,8 @@ core.List<api.GcRule> buildUnnamed1183() {
 
 void checkUnnamed1183(core.List<api.GcRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGcRule(o[0]);
-  checkGcRule(o[1]);
+  checkGcRule(o[0] as api.GcRule);
+  checkGcRule(o[1] as api.GcRule);
 }
 
 core.int buildCounterIntersection = 0;
@@ -843,8 +845,8 @@ core.List<api.AppProfile> buildUnnamed1184() {
 
 void checkUnnamed1184(core.List<api.AppProfile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAppProfile(o[0]);
-  checkAppProfile(o[1]);
+  checkAppProfile(o[0] as api.AppProfile);
+  checkAppProfile(o[1] as api.AppProfile);
 }
 
 core.List<core.String> buildUnnamed1185() {
@@ -892,8 +894,8 @@ core.List<api.Backup> buildUnnamed1186() {
 
 void checkUnnamed1186(core.List<api.Backup> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBackup(o[0]);
-  checkBackup(o[1]);
+  checkBackup(o[0] as api.Backup);
+  checkBackup(o[1] as api.Backup);
 }
 
 core.int buildCounterListBackupsResponse = 0;
@@ -926,8 +928,8 @@ core.List<api.Cluster> buildUnnamed1187() {
 
 void checkUnnamed1187(core.List<api.Cluster> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCluster(o[0]);
-  checkCluster(o[1]);
+  checkCluster(o[0] as api.Cluster);
+  checkCluster(o[1] as api.Cluster);
 }
 
 core.List<core.String> buildUnnamed1188() {
@@ -988,8 +990,8 @@ core.List<api.Instance> buildUnnamed1190() {
 
 void checkUnnamed1190(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstance(o[0]);
-  checkInstance(o[1]);
+  checkInstance(o[0] as api.Instance);
+  checkInstance(o[1] as api.Instance);
 }
 
 core.int buildCounterListInstancesResponse = 0;
@@ -1024,8 +1026,8 @@ core.List<api.Location> buildUnnamed1191() {
 
 void checkUnnamed1191(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -1058,8 +1060,8 @@ core.List<api.Operation> buildUnnamed1192() {
 
 void checkUnnamed1192(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -1092,8 +1094,8 @@ core.List<api.Table> buildUnnamed1193() {
 
 void checkUnnamed1193(core.List<api.Table> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTable(o[0]);
-  checkTable(o[1]);
+  checkTable(o[0] as api.Table);
+  checkTable(o[1] as api.Table);
 }
 
 core.int buildCounterListTablesResponse = 0;
@@ -1203,10 +1205,10 @@ api.Modification buildModification() {
 void checkModification(api.Modification o) {
   buildCounterModification++;
   if (buildCounterModification < 3) {
-    checkColumnFamily(o.create);
+    checkColumnFamily(o.create as api.ColumnFamily);
     unittest.expect(o.drop, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkColumnFamily(o.update);
+    checkColumnFamily(o.update as api.ColumnFamily);
   }
   buildCounterModification--;
 }
@@ -1220,8 +1222,8 @@ core.List<api.Modification> buildUnnamed1196() {
 
 void checkUnnamed1196(core.List<api.Modification> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkModification(o[0]);
-  checkModification(o[1]);
+  checkModification(o[0] as api.Modification);
+  checkModification(o[1] as api.Modification);
 }
 
 core.int buildCounterModifyColumnFamiliesRequest = 0;
@@ -1335,7 +1337,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed1197(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed1198(o.response);
@@ -1382,7 +1384,7 @@ void checkOptimizeRestoredTableMetadata(api.OptimizeRestoredTableMetadata o) {
   buildCounterOptimizeRestoredTableMetadata++;
   if (buildCounterOptimizeRestoredTableMetadata < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkOperationProgress(o.progress);
+    checkOperationProgress(o.progress as api.OperationProgress);
   }
   buildCounterOptimizeRestoredTableMetadata--;
 }
@@ -1402,7 +1404,7 @@ api.PartialUpdateInstanceRequest buildPartialUpdateInstanceRequest() {
 void checkPartialUpdateInstanceRequest(api.PartialUpdateInstanceRequest o) {
   buildCounterPartialUpdateInstanceRequest++;
   if (buildCounterPartialUpdateInstanceRequest < 3) {
-    checkInstance(o.instance);
+    checkInstance(o.instance as api.Instance);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterPartialUpdateInstanceRequest--;
@@ -1417,8 +1419,8 @@ core.List<api.AuditConfig> buildUnnamed1199() {
 
 void checkUnnamed1199(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed1200() {
@@ -1430,8 +1432,8 @@ core.List<api.Binding> buildUnnamed1200() {
 
 void checkUnnamed1200(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1474,7 +1476,7 @@ api.RestoreInfo buildRestoreInfo() {
 void checkRestoreInfo(api.RestoreInfo o) {
   buildCounterRestoreInfo++;
   if (buildCounterRestoreInfo < 3) {
-    checkBackupInfo(o.backupInfo);
+    checkBackupInfo(o.backupInfo as api.BackupInfo);
     unittest.expect(o.sourceType, unittest.equals('foo'));
   }
   buildCounterRestoreInfo--;
@@ -1498,10 +1500,10 @@ api.RestoreTableMetadata buildRestoreTableMetadata() {
 void checkRestoreTableMetadata(api.RestoreTableMetadata o) {
   buildCounterRestoreTableMetadata++;
   if (buildCounterRestoreTableMetadata < 3) {
-    checkBackupInfo(o.backupInfo);
+    checkBackupInfo(o.backupInfo as api.BackupInfo);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.optimizeTableOperationName, unittest.equals('foo'));
-    checkOperationProgress(o.progress);
+    checkOperationProgress(o.progress as api.OperationProgress);
     unittest.expect(o.sourceType, unittest.equals('foo'));
   }
   buildCounterRestoreTableMetadata--;
@@ -1543,7 +1545,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1663,8 +1665,8 @@ core.Map<core.String, api.ClusterState> buildUnnamed1203() {
 
 void checkUnnamed1203(core.Map<core.String, api.ClusterState> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkClusterState(o['x']);
-  checkClusterState(o['y']);
+  checkClusterState(o['x'] as api.ClusterState);
+  checkClusterState(o['y'] as api.ClusterState);
 }
 
 core.Map<core.String, api.ColumnFamily> buildUnnamed1204() {
@@ -1676,8 +1678,8 @@ core.Map<core.String, api.ColumnFamily> buildUnnamed1204() {
 
 void checkUnnamed1204(core.Map<core.String, api.ColumnFamily> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkColumnFamily(o['x']);
-  checkColumnFamily(o['y']);
+  checkColumnFamily(o['x'] as api.ColumnFamily);
+  checkColumnFamily(o['y'] as api.ColumnFamily);
 }
 
 core.int buildCounterTable = 0;
@@ -1702,7 +1704,7 @@ void checkTable(api.Table o) {
     checkUnnamed1204(o.columnFamilies);
     unittest.expect(o.granularity, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkRestoreInfo(o.restoreInfo);
+    checkRestoreInfo(o.restoreInfo as api.RestoreInfo);
   }
   buildCounterTable--;
 }
@@ -1803,8 +1805,8 @@ core.List<api.GcRule> buildUnnamed1207() {
 
 void checkUnnamed1207(core.List<api.GcRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGcRule(o[0]);
-  checkGcRule(o[1]);
+  checkGcRule(o[0] as api.GcRule);
+  checkGcRule(o[1] as api.GcRule);
 }
 
 core.int buildCounterUnion = 0;
@@ -1858,7 +1860,7 @@ void checkUpdateClusterMetadata(api.UpdateClusterMetadata o) {
   buildCounterUpdateClusterMetadata++;
   if (buildCounterUpdateClusterMetadata < 3) {
     unittest.expect(o.finishTime, unittest.equals('foo'));
-    checkCluster(o.originalRequest);
+    checkCluster(o.originalRequest as api.Cluster);
     unittest.expect(o.requestTime, unittest.equals('foo'));
   }
   buildCounterUpdateClusterMetadata--;
@@ -1881,7 +1883,8 @@ void checkUpdateInstanceMetadata(api.UpdateInstanceMetadata o) {
   buildCounterUpdateInstanceMetadata++;
   if (buildCounterUpdateInstanceMetadata < 3) {
     unittest.expect(o.finishTime, unittest.equals('foo'));
-    checkPartialUpdateInstanceRequest(o.originalRequest);
+    checkPartialUpdateInstanceRequest(
+        o.originalRequest as api.PartialUpdateInstanceRequest);
     unittest.expect(o.requestTime, unittest.equals('foo'));
   }
   buildCounterUpdateInstanceMetadata--;
@@ -1892,7 +1895,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAppProfile();
       var od = api.AppProfile.fromJson(o.toJson());
-      checkAppProfile(od);
+      checkAppProfile(od as api.AppProfile);
     });
   });
 
@@ -1900,7 +1903,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1908,7 +1911,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1916,7 +1919,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBackup();
       var od = api.Backup.fromJson(o.toJson());
-      checkBackup(od);
+      checkBackup(od as api.Backup);
     });
   });
 
@@ -1924,7 +1927,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBackupInfo();
       var od = api.BackupInfo.fromJson(o.toJson());
-      checkBackupInfo(od);
+      checkBackupInfo(od as api.BackupInfo);
     });
   });
 
@@ -1932,7 +1935,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1940,7 +1943,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCheckConsistencyRequest();
       var od = api.CheckConsistencyRequest.fromJson(o.toJson());
-      checkCheckConsistencyRequest(od);
+      checkCheckConsistencyRequest(od as api.CheckConsistencyRequest);
     });
   });
 
@@ -1948,7 +1951,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCheckConsistencyResponse();
       var od = api.CheckConsistencyResponse.fromJson(o.toJson());
-      checkCheckConsistencyResponse(od);
+      checkCheckConsistencyResponse(od as api.CheckConsistencyResponse);
     });
   });
 
@@ -1956,7 +1959,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCluster();
       var od = api.Cluster.fromJson(o.toJson());
-      checkCluster(od);
+      checkCluster(od as api.Cluster);
     });
   });
 
@@ -1964,7 +1967,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClusterState();
       var od = api.ClusterState.fromJson(o.toJson());
-      checkClusterState(od);
+      checkClusterState(od as api.ClusterState);
     });
   });
 
@@ -1972,7 +1975,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColumnFamily();
       var od = api.ColumnFamily.fromJson(o.toJson());
-      checkColumnFamily(od);
+      checkColumnFamily(od as api.ColumnFamily);
     });
   });
 
@@ -1980,7 +1983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateBackupMetadata();
       var od = api.CreateBackupMetadata.fromJson(o.toJson());
-      checkCreateBackupMetadata(od);
+      checkCreateBackupMetadata(od as api.CreateBackupMetadata);
     });
   });
 
@@ -1988,7 +1991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateClusterMetadata();
       var od = api.CreateClusterMetadata.fromJson(o.toJson());
-      checkCreateClusterMetadata(od);
+      checkCreateClusterMetadata(od as api.CreateClusterMetadata);
     });
   });
 
@@ -1996,7 +1999,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateClusterRequest();
       var od = api.CreateClusterRequest.fromJson(o.toJson());
-      checkCreateClusterRequest(od);
+      checkCreateClusterRequest(od as api.CreateClusterRequest);
     });
   });
 
@@ -2004,7 +2007,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateInstanceMetadata();
       var od = api.CreateInstanceMetadata.fromJson(o.toJson());
-      checkCreateInstanceMetadata(od);
+      checkCreateInstanceMetadata(od as api.CreateInstanceMetadata);
     });
   });
 
@@ -2012,7 +2015,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateInstanceRequest();
       var od = api.CreateInstanceRequest.fromJson(o.toJson());
-      checkCreateInstanceRequest(od);
+      checkCreateInstanceRequest(od as api.CreateInstanceRequest);
     });
   });
 
@@ -2020,7 +2023,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateTableRequest();
       var od = api.CreateTableRequest.fromJson(o.toJson());
-      checkCreateTableRequest(od);
+      checkCreateTableRequest(od as api.CreateTableRequest);
     });
   });
 
@@ -2028,7 +2031,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDropRowRangeRequest();
       var od = api.DropRowRangeRequest.fromJson(o.toJson());
-      checkDropRowRangeRequest(od);
+      checkDropRowRangeRequest(od as api.DropRowRangeRequest);
     });
   });
 
@@ -2036,7 +2039,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2044,7 +2047,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -2052,7 +2055,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFailureTrace();
       var od = api.FailureTrace.fromJson(o.toJson());
-      checkFailureTrace(od);
+      checkFailureTrace(od as api.FailureTrace);
     });
   });
 
@@ -2060,7 +2063,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFrame();
       var od = api.Frame.fromJson(o.toJson());
-      checkFrame(od);
+      checkFrame(od as api.Frame);
     });
   });
 
@@ -2068,7 +2071,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcRule();
       var od = api.GcRule.fromJson(o.toJson());
-      checkGcRule(od);
+      checkGcRule(od as api.GcRule);
     });
   });
 
@@ -2076,7 +2079,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateConsistencyTokenRequest();
       var od = api.GenerateConsistencyTokenRequest.fromJson(o.toJson());
-      checkGenerateConsistencyTokenRequest(od);
+      checkGenerateConsistencyTokenRequest(
+          od as api.GenerateConsistencyTokenRequest);
     });
   });
 
@@ -2084,7 +2088,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateConsistencyTokenResponse();
       var od = api.GenerateConsistencyTokenResponse.fromJson(o.toJson());
-      checkGenerateConsistencyTokenResponse(od);
+      checkGenerateConsistencyTokenResponse(
+          od as api.GenerateConsistencyTokenResponse);
     });
   });
 
@@ -2092,7 +2097,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -2100,7 +2105,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -2108,7 +2113,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
-      checkInstance(od);
+      checkInstance(od as api.Instance);
     });
   });
 
@@ -2116,7 +2121,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIntersection();
       var od = api.Intersection.fromJson(o.toJson());
-      checkIntersection(od);
+      checkIntersection(od as api.Intersection);
     });
   });
 
@@ -2124,7 +2129,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAppProfilesResponse();
       var od = api.ListAppProfilesResponse.fromJson(o.toJson());
-      checkListAppProfilesResponse(od);
+      checkListAppProfilesResponse(od as api.ListAppProfilesResponse);
     });
   });
 
@@ -2132,7 +2137,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListBackupsResponse();
       var od = api.ListBackupsResponse.fromJson(o.toJson());
-      checkListBackupsResponse(od);
+      checkListBackupsResponse(od as api.ListBackupsResponse);
     });
   });
 
@@ -2140,7 +2145,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListClustersResponse();
       var od = api.ListClustersResponse.fromJson(o.toJson());
-      checkListClustersResponse(od);
+      checkListClustersResponse(od as api.ListClustersResponse);
     });
   });
 
@@ -2148,7 +2153,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
-      checkListInstancesResponse(od);
+      checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
 
@@ -2156,7 +2161,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -2164,7 +2169,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -2172,7 +2177,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTablesResponse();
       var od = api.ListTablesResponse.fromJson(o.toJson());
-      checkListTablesResponse(od);
+      checkListTablesResponse(od as api.ListTablesResponse);
     });
   });
 
@@ -2180,7 +2185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -2188,7 +2193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModification();
       var od = api.Modification.fromJson(o.toJson());
-      checkModification(od);
+      checkModification(od as api.Modification);
     });
   });
 
@@ -2196,7 +2201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyColumnFamiliesRequest();
       var od = api.ModifyColumnFamiliesRequest.fromJson(o.toJson());
-      checkModifyColumnFamiliesRequest(od);
+      checkModifyColumnFamiliesRequest(od as api.ModifyColumnFamiliesRequest);
     });
   });
 
@@ -2204,7 +2209,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMultiClusterRoutingUseAny();
       var od = api.MultiClusterRoutingUseAny.fromJson(o.toJson());
-      checkMultiClusterRoutingUseAny(od);
+      checkMultiClusterRoutingUseAny(od as api.MultiClusterRoutingUseAny);
     });
   });
 
@@ -2212,7 +2217,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -2220,7 +2225,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationProgress();
       var od = api.OperationProgress.fromJson(o.toJson());
-      checkOperationProgress(od);
+      checkOperationProgress(od as api.OperationProgress);
     });
   });
 
@@ -2228,7 +2233,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOptimizeRestoredTableMetadata();
       var od = api.OptimizeRestoredTableMetadata.fromJson(o.toJson());
-      checkOptimizeRestoredTableMetadata(od);
+      checkOptimizeRestoredTableMetadata(
+          od as api.OptimizeRestoredTableMetadata);
     });
   });
 
@@ -2236,7 +2242,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartialUpdateInstanceRequest();
       var od = api.PartialUpdateInstanceRequest.fromJson(o.toJson());
-      checkPartialUpdateInstanceRequest(od);
+      checkPartialUpdateInstanceRequest(od as api.PartialUpdateInstanceRequest);
     });
   });
 
@@ -2244,7 +2250,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -2252,7 +2258,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestoreInfo();
       var od = api.RestoreInfo.fromJson(o.toJson());
-      checkRestoreInfo(od);
+      checkRestoreInfo(od as api.RestoreInfo);
     });
   });
 
@@ -2260,7 +2266,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestoreTableMetadata();
       var od = api.RestoreTableMetadata.fromJson(o.toJson());
-      checkRestoreTableMetadata(od);
+      checkRestoreTableMetadata(od as api.RestoreTableMetadata);
     });
   });
 
@@ -2268,7 +2274,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRestoreTableRequest();
       var od = api.RestoreTableRequest.fromJson(o.toJson());
-      checkRestoreTableRequest(od);
+      checkRestoreTableRequest(od as api.RestoreTableRequest);
     });
   });
 
@@ -2276,7 +2282,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -2284,7 +2290,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSingleClusterRouting();
       var od = api.SingleClusterRouting.fromJson(o.toJson());
-      checkSingleClusterRouting(od);
+      checkSingleClusterRouting(od as api.SingleClusterRouting);
     });
   });
 
@@ -2292,7 +2298,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSplit();
       var od = api.Split.fromJson(o.toJson());
-      checkSplit(od);
+      checkSplit(od as api.Split);
     });
   });
 
@@ -2300,7 +2306,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -2308,7 +2314,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTable();
       var od = api.Table.fromJson(o.toJson());
-      checkTable(od);
+      checkTable(od as api.Table);
     });
   });
 
@@ -2316,7 +2322,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTableProgress();
       var od = api.TableProgress.fromJson(o.toJson());
-      checkTableProgress(od);
+      checkTableProgress(od as api.TableProgress);
     });
   });
 
@@ -2324,7 +2330,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -2332,7 +2338,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -2340,7 +2346,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnion();
       var od = api.Union.fromJson(o.toJson());
-      checkUnion(od);
+      checkUnion(od as api.Union);
     });
   });
 
@@ -2348,7 +2354,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateAppProfileMetadata();
       var od = api.UpdateAppProfileMetadata.fromJson(o.toJson());
-      checkUpdateAppProfileMetadata(od);
+      checkUpdateAppProfileMetadata(od as api.UpdateAppProfileMetadata);
     });
   });
 
@@ -2356,7 +2362,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateClusterMetadata();
       var od = api.UpdateClusterMetadata.fromJson(o.toJson());
-      checkUpdateClusterMetadata(od);
+      checkUpdateClusterMetadata(od as api.UpdateClusterMetadata);
     });
   });
 
@@ -2364,7 +2370,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateInstanceMetadata();
       var od = api.UpdateInstanceMetadata.fromJson(o.toJson());
-      checkUpdateInstanceMetadata(od);
+      checkUpdateInstanceMetadata(od as api.UpdateInstanceMetadata);
     });
   });
 
@@ -2413,7 +2419,7 @@ void main() {
       res
           .cancel(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2461,7 +2467,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2509,7 +2515,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -2571,7 +2577,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -2584,8 +2590,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateInstanceRequest.fromJson(json);
-        checkCreateInstanceRequest(obj);
+        var obj = api.CreateInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateInstanceRequest(obj as api.CreateInstanceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2625,7 +2632,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2673,7 +2680,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2721,7 +2728,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInstance(response);
+        checkInstance(response as api.Instance);
       })));
     });
 
@@ -2732,8 +2739,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2773,7 +2781,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2824,7 +2832,7 @@ void main() {
       res
           .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response);
+        checkListInstancesResponse(response as api.ListInstancesResponse);
       })));
     });
 
@@ -2836,8 +2844,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2880,7 +2889,7 @@ void main() {
           .partialUpdateInstance(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2891,8 +2900,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2932,7 +2942,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2943,8 +2953,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2984,7 +2995,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -2995,8 +3007,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3036,7 +3049,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInstance(response);
+        checkInstance(response as api.Instance);
       })));
     });
   });
@@ -3051,8 +3064,9 @@ void main() {
       var arg_ignoreWarnings = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AppProfile.fromJson(json);
-        checkAppProfile(obj);
+        var obj = api.AppProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAppProfile(obj as api.AppProfile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3099,7 +3113,7 @@ void main() {
               ignoreWarnings: arg_ignoreWarnings,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppProfile(response);
+        checkAppProfile(response as api.AppProfile);
       })));
     });
 
@@ -3151,7 +3165,7 @@ void main() {
           .delete(arg_name,
               ignoreWarnings: arg_ignoreWarnings, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3199,7 +3213,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAppProfile(response);
+        checkAppProfile(response as api.AppProfile);
       })));
     });
 
@@ -3256,7 +3270,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAppProfilesResponse(response);
+        checkListAppProfilesResponse(response as api.ListAppProfilesResponse);
       })));
     });
 
@@ -3269,8 +3283,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AppProfile.fromJson(json);
-        checkAppProfile(obj);
+        var obj = api.AppProfile.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAppProfile(obj as api.AppProfile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3317,7 +3332,7 @@ void main() {
               updateMask: arg_updateMask,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -3331,8 +3346,9 @@ void main() {
       var arg_clusterId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Cluster.fromJson(json);
-        checkCluster(obj);
+        var obj =
+            api.Cluster.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCluster(obj as api.Cluster);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3375,7 +3391,7 @@ void main() {
           .create(arg_request, arg_parent,
               clusterId: arg_clusterId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3423,7 +3439,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3471,7 +3487,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCluster(response);
+        checkCluster(response as api.Cluster);
       })));
     });
 
@@ -3522,7 +3538,7 @@ void main() {
       res
           .list(arg_parent, pageToken: arg_pageToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListClustersResponse(response);
+        checkListClustersResponse(response as api.ListClustersResponse);
       })));
     });
 
@@ -3533,8 +3549,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Cluster.fromJson(json);
-        checkCluster(obj);
+        var obj =
+            api.Cluster.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCluster(obj as api.Cluster);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3574,7 +3591,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -3588,8 +3605,9 @@ void main() {
       var arg_backupId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Backup.fromJson(json);
-        checkBackup(obj);
+        var obj =
+            api.Backup.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBackup(obj as api.Backup);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3632,7 +3650,7 @@ void main() {
           .create(arg_request, arg_parent,
               backupId: arg_backupId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3680,7 +3698,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3728,7 +3746,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBackup(response);
+        checkBackup(response as api.Backup);
       })));
     });
 
@@ -3739,8 +3757,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3780,7 +3799,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3844,7 +3863,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBackupsResponse(response);
+        checkListBackupsResponse(response as api.ListBackupsResponse);
       })));
     });
 
@@ -3856,8 +3875,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Backup.fromJson(json);
-        checkBackup(obj);
+        var obj =
+            api.Backup.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBackup(obj as api.Backup);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3900,7 +3920,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBackup(response);
+        checkBackup(response as api.Backup);
       })));
     });
 
@@ -3911,8 +3931,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3952,7 +3973,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3963,8 +3984,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4004,7 +4026,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -4017,8 +4040,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CheckConsistencyRequest.fromJson(json);
-        checkCheckConsistencyRequest(obj);
+        var obj = api.CheckConsistencyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCheckConsistencyRequest(obj as api.CheckConsistencyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4058,7 +4082,7 @@ void main() {
       res
           .checkConsistency(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCheckConsistencyResponse(response);
+        checkCheckConsistencyResponse(response as api.CheckConsistencyResponse);
       })));
     });
 
@@ -4069,8 +4093,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateTableRequest.fromJson(json);
-        checkCreateTableRequest(obj);
+        var obj = api.CreateTableRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateTableRequest(obj as api.CreateTableRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4110,7 +4135,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTable(response);
+        checkTable(response as api.Table);
       })));
     });
 
@@ -4158,7 +4183,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4169,8 +4194,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DropRowRangeRequest.fromJson(json);
-        checkDropRowRangeRequest(obj);
+        var obj = api.DropRowRangeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDropRowRangeRequest(obj as api.DropRowRangeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4210,7 +4236,7 @@ void main() {
       res
           .dropRowRange(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4221,8 +4247,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateConsistencyTokenRequest.fromJson(json);
-        checkGenerateConsistencyTokenRequest(obj);
+        var obj = api.GenerateConsistencyTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateConsistencyTokenRequest(
+            obj as api.GenerateConsistencyTokenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4262,7 +4290,8 @@ void main() {
       res
           .generateConsistencyToken(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateConsistencyTokenResponse(response);
+        checkGenerateConsistencyTokenResponse(
+            response as api.GenerateConsistencyTokenResponse);
       })));
     });
 
@@ -4312,7 +4341,7 @@ void main() {
       res
           .get(arg_name, view: arg_view, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTable(response);
+        checkTable(response as api.Table);
       })));
     });
 
@@ -4323,8 +4352,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4364,7 +4394,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -4424,7 +4454,7 @@ void main() {
               view: arg_view,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTablesResponse(response);
+        checkListTablesResponse(response as api.ListTablesResponse);
       })));
     });
 
@@ -4435,8 +4465,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyColumnFamiliesRequest.fromJson(json);
-        checkModifyColumnFamiliesRequest(obj);
+        var obj = api.ModifyColumnFamiliesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyColumnFamiliesRequest(
+            obj as api.ModifyColumnFamiliesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4476,7 +4508,7 @@ void main() {
       res
           .modifyColumnFamilies(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTable(response);
+        checkTable(response as api.Table);
       })));
     });
 
@@ -4487,8 +4519,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RestoreTableRequest.fromJson(json);
-        checkRestoreTableRequest(obj);
+        var obj = api.RestoreTableRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRestoreTableRequest(obj as api.RestoreTableRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4528,7 +4561,7 @@ void main() {
       res
           .restore(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -4539,8 +4572,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4580,7 +4614,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -4591,8 +4625,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4632,7 +4667,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -4682,7 +4718,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -4742,7 +4778,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });

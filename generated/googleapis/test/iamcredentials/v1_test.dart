@@ -314,7 +314,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateAccessTokenRequest();
       var od = api.GenerateAccessTokenRequest.fromJson(o.toJson());
-      checkGenerateAccessTokenRequest(od);
+      checkGenerateAccessTokenRequest(od as api.GenerateAccessTokenRequest);
     });
   });
 
@@ -322,7 +322,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateAccessTokenResponse();
       var od = api.GenerateAccessTokenResponse.fromJson(o.toJson());
-      checkGenerateAccessTokenResponse(od);
+      checkGenerateAccessTokenResponse(od as api.GenerateAccessTokenResponse);
     });
   });
 
@@ -330,7 +330,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateIdTokenRequest();
       var od = api.GenerateIdTokenRequest.fromJson(o.toJson());
-      checkGenerateIdTokenRequest(od);
+      checkGenerateIdTokenRequest(od as api.GenerateIdTokenRequest);
     });
   });
 
@@ -338,7 +338,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGenerateIdTokenResponse();
       var od = api.GenerateIdTokenResponse.fromJson(o.toJson());
-      checkGenerateIdTokenResponse(od);
+      checkGenerateIdTokenResponse(od as api.GenerateIdTokenResponse);
     });
   });
 
@@ -346,7 +346,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignBlobRequest();
       var od = api.SignBlobRequest.fromJson(o.toJson());
-      checkSignBlobRequest(od);
+      checkSignBlobRequest(od as api.SignBlobRequest);
     });
   });
 
@@ -354,7 +354,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignBlobResponse();
       var od = api.SignBlobResponse.fromJson(o.toJson());
-      checkSignBlobResponse(od);
+      checkSignBlobResponse(od as api.SignBlobResponse);
     });
   });
 
@@ -362,7 +362,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignJwtRequest();
       var od = api.SignJwtRequest.fromJson(o.toJson());
-      checkSignJwtRequest(od);
+      checkSignJwtRequest(od as api.SignJwtRequest);
     });
   });
 
@@ -370,7 +370,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignJwtResponse();
       var od = api.SignJwtResponse.fromJson(o.toJson());
-      checkSignJwtResponse(od);
+      checkSignJwtResponse(od as api.SignJwtResponse);
     });
   });
 
@@ -382,8 +382,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateAccessTokenRequest.fromJson(json);
-        checkGenerateAccessTokenRequest(obj);
+        var obj = api.GenerateAccessTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateAccessTokenRequest(obj as api.GenerateAccessTokenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -423,7 +424,8 @@ void main() {
       res
           .generateAccessToken(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateAccessTokenResponse(response);
+        checkGenerateAccessTokenResponse(
+            response as api.GenerateAccessTokenResponse);
       })));
     });
 
@@ -434,8 +436,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GenerateIdTokenRequest.fromJson(json);
-        checkGenerateIdTokenRequest(obj);
+        var obj = api.GenerateIdTokenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGenerateIdTokenRequest(obj as api.GenerateIdTokenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -475,7 +478,7 @@ void main() {
       res
           .generateIdToken(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGenerateIdTokenResponse(response);
+        checkGenerateIdTokenResponse(response as api.GenerateIdTokenResponse);
       })));
     });
 
@@ -486,8 +489,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignBlobRequest.fromJson(json);
-        checkSignBlobRequest(obj);
+        var obj = api.SignBlobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSignBlobRequest(obj as api.SignBlobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -527,7 +531,7 @@ void main() {
       res
           .signBlob(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSignBlobResponse(response);
+        checkSignBlobResponse(response as api.SignBlobResponse);
       })));
     });
 
@@ -538,8 +542,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SignJwtRequest.fromJson(json);
-        checkSignJwtRequest(obj);
+        var obj = api.SignJwtRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSignJwtRequest(obj as api.SignJwtRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -579,7 +584,7 @@ void main() {
       res
           .signJwt(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSignJwtResponse(response);
+        checkSignJwtResponse(response as api.SignJwtResponse);
       })));
     });
   });

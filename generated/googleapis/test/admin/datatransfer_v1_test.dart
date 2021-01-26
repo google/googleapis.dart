@@ -83,8 +83,8 @@ core.List<api.ApplicationTransferParam> buildUnnamed4811() {
 
 void checkUnnamed4811(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApplicationTransferParam(o[0]);
-  checkApplicationTransferParam(o[1]);
+  checkApplicationTransferParam(o[0] as api.ApplicationTransferParam);
+  checkApplicationTransferParam(o[1] as api.ApplicationTransferParam);
 }
 
 core.int buildCounterApplication = 0;
@@ -123,8 +123,8 @@ core.List<api.ApplicationTransferParam> buildUnnamed4812() {
 
 void checkUnnamed4812(core.List<api.ApplicationTransferParam> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApplicationTransferParam(o[0]);
-  checkApplicationTransferParam(o[1]);
+  checkApplicationTransferParam(o[0] as api.ApplicationTransferParam);
+  checkApplicationTransferParam(o[1] as api.ApplicationTransferParam);
 }
 
 core.int buildCounterApplicationDataTransfer = 0;
@@ -193,8 +193,8 @@ core.List<api.Application> buildUnnamed4814() {
 
 void checkUnnamed4814(core.List<api.Application> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApplication(o[0]);
-  checkApplication(o[1]);
+  checkApplication(o[0] as api.Application);
+  checkApplication(o[1] as api.Application);
 }
 
 core.int buildCounterApplicationsListResponse = 0;
@@ -231,8 +231,8 @@ core.List<api.ApplicationDataTransfer> buildUnnamed4815() {
 
 void checkUnnamed4815(core.List<api.ApplicationDataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkApplicationDataTransfer(o[0]);
-  checkApplicationDataTransfer(o[1]);
+  checkApplicationDataTransfer(o[0] as api.ApplicationDataTransfer);
+  checkApplicationDataTransfer(o[1] as api.ApplicationDataTransfer);
 }
 
 core.int buildCounterDataTransfer = 0;
@@ -278,8 +278,8 @@ core.List<api.DataTransfer> buildUnnamed4816() {
 
 void checkUnnamed4816(core.List<api.DataTransfer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataTransfer(o[0]);
-  checkDataTransfer(o[1]);
+  checkDataTransfer(o[0] as api.DataTransfer);
+  checkDataTransfer(o[1] as api.DataTransfer);
 }
 
 core.int buildCounterDataTransfersListResponse = 0;
@@ -312,7 +312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
-      checkApplication(od);
+      checkApplication(od as api.Application);
     });
   });
 
@@ -320,7 +320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationDataTransfer();
       var od = api.ApplicationDataTransfer.fromJson(o.toJson());
-      checkApplicationDataTransfer(od);
+      checkApplicationDataTransfer(od as api.ApplicationDataTransfer);
     });
   });
 
@@ -328,7 +328,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationTransferParam();
       var od = api.ApplicationTransferParam.fromJson(o.toJson());
-      checkApplicationTransferParam(od);
+      checkApplicationTransferParam(od as api.ApplicationTransferParam);
     });
   });
 
@@ -336,7 +336,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationsListResponse();
       var od = api.ApplicationsListResponse.fromJson(o.toJson());
-      checkApplicationsListResponse(od);
+      checkApplicationsListResponse(od as api.ApplicationsListResponse);
     });
   });
 
@@ -344,7 +344,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataTransfer();
       var od = api.DataTransfer.fromJson(o.toJson());
-      checkDataTransfer(od);
+      checkDataTransfer(od as api.DataTransfer);
     });
   });
 
@@ -352,7 +352,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataTransfersListResponse();
       var od = api.DataTransfersListResponse.fromJson(o.toJson());
-      checkDataTransfersListResponse(od);
+      checkDataTransfersListResponse(od as api.DataTransfersListResponse);
     });
   });
 
@@ -403,7 +403,7 @@ void main() {
       res
           .get(arg_applicationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApplication(response);
+        checkApplication(response as api.Application);
       })));
     });
 
@@ -462,7 +462,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkApplicationsListResponse(response);
+        checkApplicationsListResponse(response as api.ApplicationsListResponse);
       })));
     });
   });
@@ -514,7 +514,7 @@ void main() {
       res
           .get(arg_dataTransferId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataTransfer(response);
+        checkDataTransfer(response as api.DataTransfer);
       })));
     });
 
@@ -524,8 +524,9 @@ void main() {
       var arg_request = buildDataTransfer();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DataTransfer.fromJson(json);
-        checkDataTransfer(obj);
+        var obj = api.DataTransfer.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDataTransfer(obj as api.DataTransfer);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -564,7 +565,7 @@ void main() {
       res
           .insert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataTransfer(response);
+        checkDataTransfer(response as api.DataTransfer);
       })));
     });
 
@@ -634,7 +635,8 @@ void main() {
               status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataTransfersListResponse(response);
+        checkDataTransfersListResponse(
+            response as api.DataTransfersListResponse);
       })));
     });
   });

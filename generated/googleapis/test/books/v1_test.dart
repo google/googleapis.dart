@@ -92,11 +92,11 @@ api.AnnotationClientVersionRanges buildAnnotationClientVersionRanges() {
 void checkAnnotationClientVersionRanges(api.AnnotationClientVersionRanges o) {
   buildCounterAnnotationClientVersionRanges++;
   if (buildCounterAnnotationClientVersionRanges < 3) {
-    checkBooksAnnotationsRange(o.cfiRange);
+    checkBooksAnnotationsRange(o.cfiRange as api.BooksAnnotationsRange);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
-    checkBooksAnnotationsRange(o.gbImageRange);
-    checkBooksAnnotationsRange(o.gbTextRange);
-    checkBooksAnnotationsRange(o.imageCfiRange);
+    checkBooksAnnotationsRange(o.gbImageRange as api.BooksAnnotationsRange);
+    checkBooksAnnotationsRange(o.gbTextRange as api.BooksAnnotationsRange);
+    checkBooksAnnotationsRange(o.imageCfiRange as api.BooksAnnotationsRange);
   }
   buildCounterAnnotationClientVersionRanges--;
 }
@@ -119,11 +119,11 @@ api.AnnotationCurrentVersionRanges buildAnnotationCurrentVersionRanges() {
 void checkAnnotationCurrentVersionRanges(api.AnnotationCurrentVersionRanges o) {
   buildCounterAnnotationCurrentVersionRanges++;
   if (buildCounterAnnotationCurrentVersionRanges < 3) {
-    checkBooksAnnotationsRange(o.cfiRange);
+    checkBooksAnnotationsRange(o.cfiRange as api.BooksAnnotationsRange);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
-    checkBooksAnnotationsRange(o.gbImageRange);
-    checkBooksAnnotationsRange(o.gbTextRange);
-    checkBooksAnnotationsRange(o.imageCfiRange);
+    checkBooksAnnotationsRange(o.gbImageRange as api.BooksAnnotationsRange);
+    checkBooksAnnotationsRange(o.gbTextRange as api.BooksAnnotationsRange);
+    checkBooksAnnotationsRange(o.imageCfiRange as api.BooksAnnotationsRange);
   }
   buildCounterAnnotationCurrentVersionRanges--;
 }
@@ -196,16 +196,18 @@ void checkAnnotation(api.Annotation o) {
   if (buildCounterAnnotation < 3) {
     unittest.expect(o.afterSelectedText, unittest.equals('foo'));
     unittest.expect(o.beforeSelectedText, unittest.equals('foo'));
-    checkAnnotationClientVersionRanges(o.clientVersionRanges);
+    checkAnnotationClientVersionRanges(
+        o.clientVersionRanges as api.AnnotationClientVersionRanges);
     unittest.expect(o.created, unittest.equals('foo'));
-    checkAnnotationCurrentVersionRanges(o.currentVersionRanges);
+    checkAnnotationCurrentVersionRanges(
+        o.currentVersionRanges as api.AnnotationCurrentVersionRanges);
     unittest.expect(o.data, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.highlightStyle, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.layerId, unittest.equals('foo'));
-    checkAnnotationLayerSummary(o.layerSummary);
+    checkAnnotationLayerSummary(o.layerSummary as api.AnnotationLayerSummary);
     checkUnnamed5791(o.pageIds);
     unittest.expect(o.selectedText, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -224,8 +226,8 @@ core.List<api.Annotation> buildUnnamed5792() {
 
 void checkUnnamed5792(core.List<api.Annotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotation(o[0]);
-  checkAnnotation(o[1]);
+  checkAnnotation(o[0] as api.Annotation);
+  checkAnnotation(o[1] as api.Annotation);
 }
 
 core.int buildCounterAnnotations = 0;
@@ -289,8 +291,8 @@ core.List<api.AnnotationsSummaryLayers> buildUnnamed5793() {
 
 void checkUnnamed5793(core.List<api.AnnotationsSummaryLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnotationsSummaryLayers(o[0]);
-  checkAnnotationsSummaryLayers(o[1]);
+  checkAnnotationsSummaryLayers(o[0] as api.AnnotationsSummaryLayers);
+  checkAnnotationsSummaryLayers(o[1] as api.AnnotationsSummaryLayers);
 }
 
 core.int buildCounterAnnotationsSummary = 0;
@@ -323,8 +325,8 @@ core.List<api.GeoAnnotationdata> buildUnnamed5794() {
 
 void checkUnnamed5794(core.List<api.GeoAnnotationdata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGeoAnnotationdata(o[0]);
-  checkGeoAnnotationdata(o[1]);
+  checkGeoAnnotationdata(o[0] as api.GeoAnnotationdata);
+  checkGeoAnnotationdata(o[1] as api.GeoAnnotationdata);
 }
 
 core.int buildCounterAnnotationsdata = 0;
@@ -469,8 +471,8 @@ core.List<api.Bookshelf> buildUnnamed5795() {
 
 void checkUnnamed5795(core.List<api.Bookshelf> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBookshelf(o[0]);
-  checkBookshelf(o[1]);
+  checkBookshelf(o[0] as api.Bookshelf);
+  checkBookshelf(o[1] as api.Bookshelf);
 }
 
 core.int buildCounterBookshelves = 0;
@@ -526,8 +528,8 @@ core.List<api.CategoryItems> buildUnnamed5796() {
 
 void checkUnnamed5796(core.List<api.CategoryItems> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCategoryItems(o[0]);
-  checkCategoryItems(o[1]);
+  checkCategoryItems(o[0] as api.CategoryItems);
+  checkCategoryItems(o[1] as api.CategoryItems);
 }
 
 core.int buildCounterCategory = 0;
@@ -613,7 +615,7 @@ void checkDictionaryAnnotationdata(api.DictionaryAnnotationdata o) {
   buildCounterDictionaryAnnotationdata++;
   if (buildCounterDictionaryAnnotationdata < 3) {
     unittest.expect(o.annotationType, unittest.equals('foo'));
-    checkDictlayerdata(o.data);
+    checkDictlayerdata(o.data as api.Dictlayerdata);
     unittest.expect(o.encodedData, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -704,7 +706,8 @@ void checkDictlayerdataDictWordsDerivatives(
     api.DictlayerdataDictWordsDerivatives o) {
   buildCounterDictlayerdataDictWordsDerivatives++;
   if (buildCounterDictlayerdataDictWordsDerivatives < 3) {
-    checkDictlayerdataDictWordsDerivativesSource(o.source);
+    checkDictlayerdataDictWordsDerivativesSource(
+        o.source as api.DictlayerdataDictWordsDerivativesSource);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterDictlayerdataDictWordsDerivatives--;
@@ -719,8 +722,10 @@ core.List<api.DictlayerdataDictWordsDerivatives> buildUnnamed5797() {
 
 void checkUnnamed5797(core.List<api.DictlayerdataDictWordsDerivatives> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsDerivatives(o[0]);
-  checkDictlayerdataDictWordsDerivatives(o[1]);
+  checkDictlayerdataDictWordsDerivatives(
+      o[0] as api.DictlayerdataDictWordsDerivatives);
+  checkDictlayerdataDictWordsDerivatives(
+      o[1] as api.DictlayerdataDictWordsDerivatives);
 }
 
 core.int buildCounterDictlayerdataDictWordsExamplesSource = 0;
@@ -761,7 +766,8 @@ api.DictlayerdataDictWordsExamples buildDictlayerdataDictWordsExamples() {
 void checkDictlayerdataDictWordsExamples(api.DictlayerdataDictWordsExamples o) {
   buildCounterDictlayerdataDictWordsExamples++;
   if (buildCounterDictlayerdataDictWordsExamples < 3) {
-    checkDictlayerdataDictWordsExamplesSource(o.source);
+    checkDictlayerdataDictWordsExamplesSource(
+        o.source as api.DictlayerdataDictWordsExamplesSource);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterDictlayerdataDictWordsExamples--;
@@ -776,8 +782,10 @@ core.List<api.DictlayerdataDictWordsExamples> buildUnnamed5798() {
 
 void checkUnnamed5798(core.List<api.DictlayerdataDictWordsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsExamples(o[0]);
-  checkDictlayerdataDictWordsExamples(o[1]);
+  checkDictlayerdataDictWordsExamples(
+      o[0] as api.DictlayerdataDictWordsExamples);
+  checkDictlayerdataDictWordsExamples(
+      o[1] as api.DictlayerdataDictWordsExamples);
 }
 
 core.int buildCounterDictlayerdataDictWordsSensesConjugations = 0;
@@ -813,8 +821,10 @@ core.List<api.DictlayerdataDictWordsSensesConjugations> buildUnnamed5799() {
 void checkUnnamed5799(
     core.List<api.DictlayerdataDictWordsSensesConjugations> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsSensesConjugations(o[0]);
-  checkDictlayerdataDictWordsSensesConjugations(o[1]);
+  checkDictlayerdataDictWordsSensesConjugations(
+      o[0] as api.DictlayerdataDictWordsSensesConjugations);
+  checkDictlayerdataDictWordsSensesConjugations(
+      o[1] as api.DictlayerdataDictWordsSensesConjugations);
 }
 
 core.int buildCounterDictlayerdataDictWordsSensesDefinitionsExamplesSource = 0;
@@ -857,7 +867,8 @@ void checkDictlayerdataDictWordsSensesDefinitionsExamples(
     api.DictlayerdataDictWordsSensesDefinitionsExamples o) {
   buildCounterDictlayerdataDictWordsSensesDefinitionsExamples++;
   if (buildCounterDictlayerdataDictWordsSensesDefinitionsExamples < 3) {
-    checkDictlayerdataDictWordsSensesDefinitionsExamplesSource(o.source);
+    checkDictlayerdataDictWordsSensesDefinitionsExamplesSource(
+        o.source as api.DictlayerdataDictWordsSensesDefinitionsExamplesSource);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterDictlayerdataDictWordsSensesDefinitionsExamples--;
@@ -874,8 +885,10 @@ core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples>
 void checkUnnamed5800(
     core.List<api.DictlayerdataDictWordsSensesDefinitionsExamples> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsSensesDefinitionsExamples(o[0]);
-  checkDictlayerdataDictWordsSensesDefinitionsExamples(o[1]);
+  checkDictlayerdataDictWordsSensesDefinitionsExamples(
+      o[0] as api.DictlayerdataDictWordsSensesDefinitionsExamples);
+  checkDictlayerdataDictWordsSensesDefinitionsExamples(
+      o[1] as api.DictlayerdataDictWordsSensesDefinitionsExamples);
 }
 
 core.int buildCounterDictlayerdataDictWordsSensesDefinitions = 0;
@@ -911,8 +924,10 @@ core.List<api.DictlayerdataDictWordsSensesDefinitions> buildUnnamed5801() {
 void checkUnnamed5801(
     core.List<api.DictlayerdataDictWordsSensesDefinitions> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsSensesDefinitions(o[0]);
-  checkDictlayerdataDictWordsSensesDefinitions(o[1]);
+  checkDictlayerdataDictWordsSensesDefinitions(
+      o[0] as api.DictlayerdataDictWordsSensesDefinitions);
+  checkDictlayerdataDictWordsSensesDefinitions(
+      o[1] as api.DictlayerdataDictWordsSensesDefinitions);
 }
 
 core.int buildCounterDictlayerdataDictWordsSensesSource = 0;
@@ -978,7 +993,8 @@ void checkDictlayerdataDictWordsSensesSynonyms(
     api.DictlayerdataDictWordsSensesSynonyms o) {
   buildCounterDictlayerdataDictWordsSensesSynonyms++;
   if (buildCounterDictlayerdataDictWordsSensesSynonyms < 3) {
-    checkDictlayerdataDictWordsSensesSynonymsSource(o.source);
+    checkDictlayerdataDictWordsSensesSynonymsSource(
+        o.source as api.DictlayerdataDictWordsSensesSynonymsSource);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterDictlayerdataDictWordsSensesSynonyms--;
@@ -993,8 +1009,10 @@ core.List<api.DictlayerdataDictWordsSensesSynonyms> buildUnnamed5802() {
 
 void checkUnnamed5802(core.List<api.DictlayerdataDictWordsSensesSynonyms> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsSensesSynonyms(o[0]);
-  checkDictlayerdataDictWordsSensesSynonyms(o[1]);
+  checkDictlayerdataDictWordsSensesSynonyms(
+      o[0] as api.DictlayerdataDictWordsSensesSynonyms);
+  checkDictlayerdataDictWordsSensesSynonyms(
+      o[1] as api.DictlayerdataDictWordsSensesSynonyms);
 }
 
 core.int buildCounterDictlayerdataDictWordsSenses = 0;
@@ -1023,7 +1041,8 @@ void checkDictlayerdataDictWordsSenses(api.DictlayerdataDictWordsSenses o) {
     unittest.expect(o.partOfSpeech, unittest.equals('foo'));
     unittest.expect(o.pronunciation, unittest.equals('foo'));
     unittest.expect(o.pronunciationUrl, unittest.equals('foo'));
-    checkDictlayerdataDictWordsSensesSource(o.source);
+    checkDictlayerdataDictWordsSensesSource(
+        o.source as api.DictlayerdataDictWordsSensesSource);
     unittest.expect(o.syllabification, unittest.equals('foo'));
     checkUnnamed5802(o.synonyms);
   }
@@ -1039,8 +1058,8 @@ core.List<api.DictlayerdataDictWordsSenses> buildUnnamed5803() {
 
 void checkUnnamed5803(core.List<api.DictlayerdataDictWordsSenses> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWordsSenses(o[0]);
-  checkDictlayerdataDictWordsSenses(o[1]);
+  checkDictlayerdataDictWordsSenses(o[0] as api.DictlayerdataDictWordsSenses);
+  checkDictlayerdataDictWordsSenses(o[1] as api.DictlayerdataDictWordsSenses);
 }
 
 core.int buildCounterDictlayerdataDictWordsSource = 0;
@@ -1084,7 +1103,8 @@ void checkDictlayerdataDictWords(api.DictlayerdataDictWords o) {
     checkUnnamed5797(o.derivatives);
     checkUnnamed5798(o.examples);
     checkUnnamed5803(o.senses);
-    checkDictlayerdataDictWordsSource(o.source);
+    checkDictlayerdataDictWordsSource(
+        o.source as api.DictlayerdataDictWordsSource);
   }
   buildCounterDictlayerdataDictWords--;
 }
@@ -1098,8 +1118,8 @@ core.List<api.DictlayerdataDictWords> buildUnnamed5804() {
 
 void checkUnnamed5804(core.List<api.DictlayerdataDictWords> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDictlayerdataDictWords(o[0]);
-  checkDictlayerdataDictWords(o[1]);
+  checkDictlayerdataDictWords(o[0] as api.DictlayerdataDictWords);
+  checkDictlayerdataDictWords(o[1] as api.DictlayerdataDictWords);
 }
 
 core.int buildCounterDictlayerdataDict = 0;
@@ -1117,7 +1137,7 @@ api.DictlayerdataDict buildDictlayerdataDict() {
 void checkDictlayerdataDict(api.DictlayerdataDict o) {
   buildCounterDictlayerdataDict++;
   if (buildCounterDictlayerdataDict < 3) {
-    checkDictlayerdataDictSource(o.source);
+    checkDictlayerdataDictSource(o.source as api.DictlayerdataDictSource);
     checkUnnamed5804(o.words);
   }
   buildCounterDictlayerdataDict--;
@@ -1139,8 +1159,8 @@ api.Dictlayerdata buildDictlayerdata() {
 void checkDictlayerdata(api.Dictlayerdata o) {
   buildCounterDictlayerdata++;
   if (buildCounterDictlayerdata < 3) {
-    checkDictlayerdataCommon(o.common);
-    checkDictlayerdataDict(o.dict);
+    checkDictlayerdataCommon(o.common as api.DictlayerdataCommon);
+    checkDictlayerdataDict(o.dict as api.DictlayerdataDict);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterDictlayerdata--;
@@ -1186,8 +1206,8 @@ core.List<api.Volume> buildUnnamed5805() {
 
 void checkUnnamed5805(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
+  checkVolume(o[0] as api.Volume);
+  checkVolume(o[1] as api.Volume);
 }
 
 core.int buildCounterDiscoveryclustersClusters = 0;
@@ -1211,7 +1231,8 @@ void checkDiscoveryclustersClusters(api.DiscoveryclustersClusters o) {
   buildCounterDiscoveryclustersClusters++;
   if (buildCounterDiscoveryclustersClusters < 3) {
     checkDiscoveryclustersClustersBannerWithContentContainer(
-        o.bannerWithContentContainer);
+        o.bannerWithContentContainer
+            as api.DiscoveryclustersClustersBannerWithContentContainer);
     unittest.expect(o.subTitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.totalVolumes, unittest.equals(42));
@@ -1230,8 +1251,8 @@ core.List<api.DiscoveryclustersClusters> buildUnnamed5806() {
 
 void checkUnnamed5806(core.List<api.DiscoveryclustersClusters> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDiscoveryclustersClusters(o[0]);
-  checkDiscoveryclustersClusters(o[1]);
+  checkDiscoveryclustersClusters(o[0] as api.DiscoveryclustersClusters);
+  checkDiscoveryclustersClusters(o[1] as api.DiscoveryclustersClusters);
 }
 
 core.int buildCounterDiscoveryclusters = 0;
@@ -1307,8 +1328,8 @@ core.List<api.DownloadAccessRestriction> buildUnnamed5807() {
 
 void checkUnnamed5807(core.List<api.DownloadAccessRestriction> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDownloadAccessRestriction(o[0]);
-  checkDownloadAccessRestriction(o[1]);
+  checkDownloadAccessRestriction(o[0] as api.DownloadAccessRestriction);
+  checkDownloadAccessRestriction(o[1] as api.DownloadAccessRestriction);
 }
 
 core.int buildCounterDownloadAccesses = 0;
@@ -1390,7 +1411,7 @@ void checkFamilyInfo(api.FamilyInfo o) {
   buildCounterFamilyInfo++;
   if (buildCounterFamilyInfo < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkFamilyInfoMembership(o.membership);
+    checkFamilyInfoMembership(o.membership as api.FamilyInfoMembership);
   }
   buildCounterFamilyInfo--;
 }
@@ -1418,7 +1439,7 @@ void checkGeoAnnotationdata(api.GeoAnnotationdata o) {
   buildCounterGeoAnnotationdata++;
   if (buildCounterGeoAnnotationdata < 3) {
     unittest.expect(o.annotationType, unittest.equals('foo'));
-    checkGeolayerdata(o.data);
+    checkGeolayerdata(o.data as api.Geolayerdata);
     unittest.expect(o.encodedData, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
@@ -1527,8 +1548,8 @@ api.GeolayerdataGeoViewport buildGeolayerdataGeoViewport() {
 void checkGeolayerdataGeoViewport(api.GeolayerdataGeoViewport o) {
   buildCounterGeolayerdataGeoViewport++;
   if (buildCounterGeolayerdataGeoViewport < 3) {
-    checkGeolayerdataGeoViewportHi(o.hi);
-    checkGeolayerdataGeoViewportLo(o.lo);
+    checkGeolayerdataGeoViewportHi(o.hi as api.GeolayerdataGeoViewportHi);
+    checkGeolayerdataGeoViewportLo(o.lo as api.GeolayerdataGeoViewportLo);
   }
   buildCounterGeolayerdataGeoViewport--;
 }
@@ -1560,7 +1581,7 @@ void checkGeolayerdataGeo(api.GeolayerdataGeo o) {
     unittest.expect(o.latitude, unittest.equals(42.0));
     unittest.expect(o.longitude, unittest.equals(42.0));
     unittest.expect(o.mapType, unittest.equals('foo'));
-    checkGeolayerdataGeoViewport(o.viewport);
+    checkGeolayerdataGeoViewport(o.viewport as api.GeolayerdataGeoViewport);
     unittest.expect(o.zoom, unittest.equals(42));
   }
   buildCounterGeolayerdataGeo--;
@@ -1582,8 +1603,8 @@ api.Geolayerdata buildGeolayerdata() {
 void checkGeolayerdata(api.Geolayerdata o) {
   buildCounterGeolayerdata++;
   if (buildCounterGeolayerdata < 3) {
-    checkGeolayerdataCommon(o.common);
-    checkGeolayerdataGeo(o.geo);
+    checkGeolayerdataCommon(o.common as api.GeolayerdataCommon);
+    checkGeolayerdataGeo(o.geo as api.GeolayerdataGeo);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterGeolayerdata--;
@@ -1598,8 +1619,8 @@ core.List<api.Layersummary> buildUnnamed5809() {
 
 void checkUnnamed5809(core.List<api.Layersummary> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLayersummary(o[0]);
-  checkLayersummary(o[1]);
+  checkLayersummary(o[0] as api.Layersummary);
+  checkLayersummary(o[1] as api.Layersummary);
 }
 
 core.int buildCounterLayersummaries = 0;
@@ -1717,8 +1738,8 @@ core.List<api.MetadataItems> buildUnnamed5811() {
 
 void checkUnnamed5811(core.List<api.MetadataItems> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetadataItems(o[0]);
-  checkMetadataItems(o[1]);
+  checkMetadataItems(o[0] as api.MetadataItems);
+  checkMetadataItems(o[1] as api.MetadataItems);
 }
 
 core.int buildCounterMetadata = 0;
@@ -1842,8 +1863,8 @@ core.List<api.OffersItemsItems> buildUnnamed5813() {
 
 void checkUnnamed5813(core.List<api.OffersItemsItems> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOffersItemsItems(o[0]);
-  checkOffersItemsItems(o[1]);
+  checkOffersItemsItems(o[0] as api.OffersItemsItems);
+  checkOffersItemsItems(o[1] as api.OffersItemsItems);
 }
 
 core.int buildCounterOffersItems = 0;
@@ -1880,8 +1901,8 @@ core.List<api.OffersItems> buildUnnamed5814() {
 
 void checkUnnamed5814(core.List<api.OffersItems> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOffersItems(o[0]);
-  checkOffersItems(o[1]);
+  checkOffersItems(o[0] as api.OffersItems);
+  checkOffersItems(o[1] as api.OffersItems);
 }
 
 core.int buildCounterOffers = 0;
@@ -1952,8 +1973,10 @@ api.RequestAccessData buildRequestAccessData() {
 void checkRequestAccessData(api.RequestAccessData o) {
   buildCounterRequestAccessData++;
   if (buildCounterRequestAccessData < 3) {
-    checkConcurrentAccessRestriction(o.concurrentAccess);
-    checkDownloadAccessRestriction(o.downloadAccess);
+    checkConcurrentAccessRestriction(
+        o.concurrentAccess as api.ConcurrentAccessRestriction);
+    checkDownloadAccessRestriction(
+        o.downloadAccess as api.DownloadAccessRestriction);
     unittest.expect(o.kind, unittest.equals('foo'));
   }
   buildCounterRequestAccessData--;
@@ -2024,13 +2047,13 @@ api.Review buildReview() {
 void checkReview(api.Review o) {
   buildCounterReview++;
   if (buildCounterReview < 3) {
-    checkReviewAuthor(o.author);
+    checkReviewAuthor(o.author as api.ReviewAuthor);
     unittest.expect(o.content, unittest.equals('foo'));
     unittest.expect(o.date, unittest.equals('foo'));
     unittest.expect(o.fullTextUrl, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.rating, unittest.equals('foo'));
-    checkReviewSource(o.source);
+    checkReviewSource(o.source as api.ReviewSource);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.volumeId, unittest.equals('foo'));
@@ -2121,9 +2144,11 @@ void checkSeriesSeriesSeriesSubscriptionReleaseInfo(
   if (buildCounterSeriesSeriesSeriesSubscriptionReleaseInfo < 3) {
     unittest.expect(o.cancelTime, unittest.equals('foo'));
     checkSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo(
-        o.currentReleaseInfo);
+        o.currentReleaseInfo
+            as api.SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo);
     checkSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo(
-        o.nextReleaseInfo);
+        o.nextReleaseInfo
+            as api.SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo);
     unittest.expect(o.seriesSubscriptionType, unittest.equals('foo'));
   }
   buildCounterSeriesSeriesSeriesSubscriptionReleaseInfo--;
@@ -2160,7 +2185,8 @@ void checkSeriesSeries(api.SeriesSeries o) {
     unittest.expect(o.seriesFormatType, unittest.equals('foo'));
     unittest.expect(o.seriesId, unittest.equals('foo'));
     checkSeriesSeriesSeriesSubscriptionReleaseInfo(
-        o.seriesSubscriptionReleaseInfo);
+        o.seriesSubscriptionReleaseInfo
+            as api.SeriesSeriesSeriesSubscriptionReleaseInfo);
     unittest.expect(o.seriesType, unittest.equals('foo'));
     unittest.expect(o.subscriptionId, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -2177,8 +2203,8 @@ core.List<api.SeriesSeries> buildUnnamed5815() {
 
 void checkUnnamed5815(core.List<api.SeriesSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSeriesSeries(o[0]);
-  checkSeriesSeries(o[1]);
+  checkSeriesSeries(o[0] as api.SeriesSeries);
+  checkSeriesSeries(o[1] as api.SeriesSeries);
 }
 
 core.int buildCounterSeries = 0;
@@ -2211,8 +2237,8 @@ core.List<api.Volume> buildUnnamed5816() {
 
 void checkUnnamed5816(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
+  checkVolume(o[0] as api.Volume);
+  checkVolume(o[1] as api.Volume);
 }
 
 core.int buildCounterSeriesmembership = 0;
@@ -2381,11 +2407,16 @@ api.UsersettingsNotification buildUsersettingsNotification() {
 void checkUsersettingsNotification(api.UsersettingsNotification o) {
   buildCounterUsersettingsNotification++;
   if (buildCounterUsersettingsNotification < 3) {
-    checkUsersettingsNotificationMatchMyInterests(o.matchMyInterests);
-    checkUsersettingsNotificationMoreFromAuthors(o.moreFromAuthors);
-    checkUsersettingsNotificationMoreFromSeries(o.moreFromSeries);
-    checkUsersettingsNotificationPriceDrop(o.priceDrop);
-    checkUsersettingsNotificationRewardExpirations(o.rewardExpirations);
+    checkUsersettingsNotificationMatchMyInterests(
+        o.matchMyInterests as api.UsersettingsNotificationMatchMyInterests);
+    checkUsersettingsNotificationMoreFromAuthors(
+        o.moreFromAuthors as api.UsersettingsNotificationMoreFromAuthors);
+    checkUsersettingsNotificationMoreFromSeries(
+        o.moreFromSeries as api.UsersettingsNotificationMoreFromSeries);
+    checkUsersettingsNotificationPriceDrop(
+        o.priceDrop as api.UsersettingsNotificationPriceDrop);
+    checkUsersettingsNotificationRewardExpirations(
+        o.rewardExpirations as api.UsersettingsNotificationRewardExpirations);
   }
   buildCounterUsersettingsNotification--;
 }
@@ -2407,8 +2438,9 @@ void checkUsersettings(api.Usersettings o) {
   buildCounterUsersettings++;
   if (buildCounterUsersettings < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkUsersettingsNotesExport(o.notesExport);
-    checkUsersettingsNotification(o.notification);
+    checkUsersettingsNotesExport(o.notesExport as api.UsersettingsNotesExport);
+    checkUsersettingsNotification(
+        o.notification as api.UsersettingsNotification);
   }
   buildCounterUsersettings--;
 }
@@ -2488,12 +2520,13 @@ void checkVolumeAccessInfo(api.VolumeAccessInfo o) {
   if (buildCounterVolumeAccessInfo < 3) {
     unittest.expect(o.accessViewStatus, unittest.equals('foo'));
     unittest.expect(o.country, unittest.equals('foo'));
-    checkDownloadAccessRestriction(o.downloadAccess);
+    checkDownloadAccessRestriction(
+        o.downloadAccess as api.DownloadAccessRestriction);
     unittest.expect(o.driveImportedContentLink, unittest.equals('foo'));
     unittest.expect(o.embeddable, unittest.isTrue);
-    checkVolumeAccessInfoEpub(o.epub);
+    checkVolumeAccessInfoEpub(o.epub as api.VolumeAccessInfoEpub);
     unittest.expect(o.explicitOfflineLicenseManagement, unittest.isTrue);
-    checkVolumeAccessInfoPdf(o.pdf);
+    checkVolumeAccessInfoPdf(o.pdf as api.VolumeAccessInfoPdf);
     unittest.expect(o.publicDomain, unittest.isTrue);
     unittest.expect(o.quoteSharingAllowed, unittest.isTrue);
     unittest.expect(o.textToSpeechPermission, unittest.equals('foo'));
@@ -2534,8 +2567,8 @@ core.List<api.VolumeLayerInfoLayers> buildUnnamed5817() {
 
 void checkUnnamed5817(core.List<api.VolumeLayerInfoLayers> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeLayerInfoLayers(o[0]);
-  checkVolumeLayerInfoLayers(o[1]);
+  checkVolumeLayerInfoLayers(o[0] as api.VolumeLayerInfoLayers);
+  checkVolumeLayerInfoLayers(o[1] as api.VolumeLayerInfoLayers);
 }
 
 core.int buildCounterVolumeLayerInfo = 0;
@@ -2683,9 +2716,12 @@ void checkVolumeSaleInfoOffers(api.VolumeSaleInfoOffers o) {
   if (buildCounterVolumeSaleInfoOffers < 3) {
     unittest.expect(o.finskyOfferType, unittest.equals(42));
     unittest.expect(o.giftable, unittest.isTrue);
-    checkVolumeSaleInfoOffersListPrice(o.listPrice);
-    checkVolumeSaleInfoOffersRentalDuration(o.rentalDuration);
-    checkVolumeSaleInfoOffersRetailPrice(o.retailPrice);
+    checkVolumeSaleInfoOffersListPrice(
+        o.listPrice as api.VolumeSaleInfoOffersListPrice);
+    checkVolumeSaleInfoOffersRentalDuration(
+        o.rentalDuration as api.VolumeSaleInfoOffersRentalDuration);
+    checkVolumeSaleInfoOffersRetailPrice(
+        o.retailPrice as api.VolumeSaleInfoOffersRetailPrice);
   }
   buildCounterVolumeSaleInfoOffers--;
 }
@@ -2699,8 +2735,8 @@ core.List<api.VolumeSaleInfoOffers> buildUnnamed5818() {
 
 void checkUnnamed5818(core.List<api.VolumeSaleInfoOffers> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeSaleInfoOffers(o[0]);
-  checkVolumeSaleInfoOffers(o[1]);
+  checkVolumeSaleInfoOffers(o[0] as api.VolumeSaleInfoOffers);
+  checkVolumeSaleInfoOffers(o[1] as api.VolumeSaleInfoOffers);
 }
 
 core.int buildCounterVolumeSaleInfoRetailPrice = 0;
@@ -2748,10 +2784,11 @@ void checkVolumeSaleInfo(api.VolumeSaleInfo o) {
     unittest.expect(o.buyLink, unittest.equals('foo'));
     unittest.expect(o.country, unittest.equals('foo'));
     unittest.expect(o.isEbook, unittest.isTrue);
-    checkVolumeSaleInfoListPrice(o.listPrice);
+    checkVolumeSaleInfoListPrice(o.listPrice as api.VolumeSaleInfoListPrice);
     checkUnnamed5818(o.offers);
     unittest.expect(o.onSaleDate, unittest.equals('foo'));
-    checkVolumeSaleInfoRetailPrice(o.retailPrice);
+    checkVolumeSaleInfoRetailPrice(
+        o.retailPrice as api.VolumeSaleInfoRetailPrice);
     unittest.expect(o.saleability, unittest.equals('foo'));
   }
   buildCounterVolumeSaleInfo--;
@@ -2900,9 +2937,10 @@ void checkVolumeUserInfo(api.VolumeUserInfo o) {
   if (buildCounterVolumeUserInfo < 3) {
     unittest.expect(o.acquiredTime, unittest.equals('foo'));
     unittest.expect(o.acquisitionType, unittest.equals(42));
-    checkVolumeUserInfoCopy(o.copy);
+    checkVolumeUserInfoCopy(o.copy as api.VolumeUserInfoCopy);
     unittest.expect(o.entitlementType, unittest.equals(42));
-    checkVolumeUserInfoFamilySharing(o.familySharing);
+    checkVolumeUserInfoFamilySharing(
+        o.familySharing as api.VolumeUserInfoFamilySharing);
     unittest.expect(o.isFamilySharedFromUser, unittest.isTrue);
     unittest.expect(o.isFamilySharedToUser, unittest.isTrue);
     unittest.expect(o.isFamilySharingAllowed, unittest.isTrue);
@@ -2911,12 +2949,14 @@ void checkVolumeUserInfo(api.VolumeUserInfo o) {
     unittest.expect(o.isPreordered, unittest.isTrue);
     unittest.expect(o.isPurchased, unittest.isTrue);
     unittest.expect(o.isUploaded, unittest.isTrue);
-    checkReadingPosition(o.readingPosition);
-    checkVolumeUserInfoRentalPeriod(o.rentalPeriod);
+    checkReadingPosition(o.readingPosition as api.ReadingPosition);
+    checkVolumeUserInfoRentalPeriod(
+        o.rentalPeriod as api.VolumeUserInfoRentalPeriod);
     unittest.expect(o.rentalState, unittest.equals('foo'));
-    checkReview(o.review);
+    checkReview(o.review as api.Review);
     unittest.expect(o.updated, unittest.equals('foo'));
-    checkVolumeUserInfoUserUploadedVolumeInfo(o.userUploadedVolumeInfo);
+    checkVolumeUserInfoUserUploadedVolumeInfo(
+        o.userUploadedVolumeInfo as api.VolumeUserInfoUserUploadedVolumeInfo);
   }
   buildCounterVolumeUserInfo--;
 }
@@ -3031,8 +3071,10 @@ core.List<api.VolumeVolumeInfoIndustryIdentifiers> buildUnnamed5821() {
 
 void checkUnnamed5821(core.List<api.VolumeVolumeInfoIndustryIdentifiers> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeVolumeInfoIndustryIdentifiers(o[0]);
-  checkVolumeVolumeInfoIndustryIdentifiers(o[1]);
+  checkVolumeVolumeInfoIndustryIdentifiers(
+      o[0] as api.VolumeVolumeInfoIndustryIdentifiers);
+  checkVolumeVolumeInfoIndustryIdentifiers(
+      o[1] as api.VolumeVolumeInfoIndustryIdentifiers);
 }
 
 core.int buildCounterVolumeVolumeInfoPanelizationSummary = 0;
@@ -3132,24 +3174,28 @@ void checkVolumeVolumeInfo(api.VolumeVolumeInfo o) {
     unittest.expect(o.comicsContent, unittest.isTrue);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkVolumeVolumeInfoDimensions(o.dimensions);
-    checkVolumeVolumeInfoImageLinks(o.imageLinks);
+    checkVolumeVolumeInfoDimensions(
+        o.dimensions as api.VolumeVolumeInfoDimensions);
+    checkVolumeVolumeInfoImageLinks(
+        o.imageLinks as api.VolumeVolumeInfoImageLinks);
     checkUnnamed5821(o.industryIdentifiers);
     unittest.expect(o.infoLink, unittest.equals('foo'));
     unittest.expect(o.language, unittest.equals('foo'));
     unittest.expect(o.mainCategory, unittest.equals('foo'));
     unittest.expect(o.maturityRating, unittest.equals('foo'));
     unittest.expect(o.pageCount, unittest.equals(42));
-    checkVolumeVolumeInfoPanelizationSummary(o.panelizationSummary);
+    checkVolumeVolumeInfoPanelizationSummary(
+        o.panelizationSummary as api.VolumeVolumeInfoPanelizationSummary);
     unittest.expect(o.previewLink, unittest.equals('foo'));
     unittest.expect(o.printType, unittest.equals('foo'));
     unittest.expect(o.printedPageCount, unittest.equals(42));
     unittest.expect(o.publishedDate, unittest.equals('foo'));
     unittest.expect(o.publisher, unittest.equals('foo'));
     unittest.expect(o.ratingsCount, unittest.equals(42));
-    checkVolumeVolumeInfoReadingModes(o.readingModes);
+    checkVolumeVolumeInfoReadingModes(
+        o.readingModes as api.VolumeVolumeInfoReadingModes);
     unittest.expect(o.samplePageCount, unittest.equals(42));
-    checkVolumeseriesinfo(o.seriesInfo);
+    checkVolumeseriesinfo(o.seriesInfo as api.Volumeseriesinfo);
     unittest.expect(o.subtitle, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
   }
@@ -3180,17 +3226,17 @@ api.Volume buildVolume() {
 void checkVolume(api.Volume o) {
   buildCounterVolume++;
   if (buildCounterVolume < 3) {
-    checkVolumeAccessInfo(o.accessInfo);
+    checkVolumeAccessInfo(o.accessInfo as api.VolumeAccessInfo);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkVolumeLayerInfo(o.layerInfo);
-    checkVolumeRecommendedInfo(o.recommendedInfo);
-    checkVolumeSaleInfo(o.saleInfo);
-    checkVolumeSearchInfo(o.searchInfo);
+    checkVolumeLayerInfo(o.layerInfo as api.VolumeLayerInfo);
+    checkVolumeRecommendedInfo(o.recommendedInfo as api.VolumeRecommendedInfo);
+    checkVolumeSaleInfo(o.saleInfo as api.VolumeSaleInfo);
+    checkVolumeSearchInfo(o.searchInfo as api.VolumeSearchInfo);
     unittest.expect(o.selfLink, unittest.equals('foo'));
-    checkVolumeUserInfo(o.userInfo);
-    checkVolumeVolumeInfo(o.volumeInfo);
+    checkVolumeUserInfo(o.userInfo as api.VolumeUserInfo);
+    checkVolumeVolumeInfo(o.volumeInfo as api.VolumeVolumeInfo);
   }
   buildCounterVolume--;
 }
@@ -3204,8 +3250,8 @@ core.List<api.Volume> buildUnnamed5822() {
 
 void checkUnnamed5822(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
+  checkVolume(o[0] as api.Volume);
+  checkVolume(o[1] as api.Volume);
 }
 
 core.int buildCounterVolume2 = 0;
@@ -3248,10 +3294,10 @@ api.VolumeannotationContentRanges buildVolumeannotationContentRanges() {
 void checkVolumeannotationContentRanges(api.VolumeannotationContentRanges o) {
   buildCounterVolumeannotationContentRanges++;
   if (buildCounterVolumeannotationContentRanges < 3) {
-    checkBooksAnnotationsRange(o.cfiRange);
+    checkBooksAnnotationsRange(o.cfiRange as api.BooksAnnotationsRange);
     unittest.expect(o.contentVersion, unittest.equals('foo'));
-    checkBooksAnnotationsRange(o.gbImageRange);
-    checkBooksAnnotationsRange(o.gbTextRange);
+    checkBooksAnnotationsRange(o.gbImageRange as api.BooksAnnotationsRange);
+    checkBooksAnnotationsRange(o.gbTextRange as api.BooksAnnotationsRange);
   }
   buildCounterVolumeannotationContentRanges--;
 }
@@ -3299,7 +3345,8 @@ void checkVolumeannotation(api.Volumeannotation o) {
     unittest.expect(o.annotationDataId, unittest.equals('foo'));
     unittest.expect(o.annotationDataLink, unittest.equals('foo'));
     unittest.expect(o.annotationType, unittest.equals('foo'));
-    checkVolumeannotationContentRanges(o.contentRanges);
+    checkVolumeannotationContentRanges(
+        o.contentRanges as api.VolumeannotationContentRanges);
     unittest.expect(o.data, unittest.equals('foo'));
     unittest.expect(o.deleted, unittest.isTrue);
     unittest.expect(o.id, unittest.equals('foo'));
@@ -3323,8 +3370,8 @@ core.List<api.Volumeannotation> buildUnnamed5824() {
 
 void checkUnnamed5824(core.List<api.Volumeannotation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeannotation(o[0]);
-  checkVolumeannotation(o[1]);
+  checkVolumeannotation(o[0] as api.Volumeannotation);
+  checkVolumeannotation(o[1] as api.Volumeannotation);
 }
 
 core.int buildCounterVolumeannotations = 0;
@@ -3363,8 +3410,8 @@ core.List<api.Volume> buildUnnamed5825() {
 
 void checkUnnamed5825(core.List<api.Volume> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolume(o[0]);
-  checkVolume(o[1]);
+  checkVolume(o[0] as api.Volume);
+  checkVolume(o[1] as api.Volume);
 }
 
 core.int buildCounterVolumes = 0;
@@ -3421,8 +3468,10 @@ core.List<api.VolumeseriesinfoVolumeSeriesIssue> buildUnnamed5826() {
 
 void checkUnnamed5826(core.List<api.VolumeseriesinfoVolumeSeriesIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeseriesinfoVolumeSeriesIssue(o[0]);
-  checkVolumeseriesinfoVolumeSeriesIssue(o[1]);
+  checkVolumeseriesinfoVolumeSeriesIssue(
+      o[0] as api.VolumeseriesinfoVolumeSeriesIssue);
+  checkVolumeseriesinfoVolumeSeriesIssue(
+      o[1] as api.VolumeseriesinfoVolumeSeriesIssue);
 }
 
 core.int buildCounterVolumeseriesinfoVolumeSeries = 0;
@@ -3459,8 +3508,8 @@ core.List<api.VolumeseriesinfoVolumeSeries> buildUnnamed5827() {
 
 void checkUnnamed5827(core.List<api.VolumeseriesinfoVolumeSeries> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVolumeseriesinfoVolumeSeries(o[0]);
-  checkVolumeseriesinfoVolumeSeries(o[1]);
+  checkVolumeseriesinfoVolumeSeries(o[0] as api.VolumeseriesinfoVolumeSeries);
+  checkVolumeseriesinfoVolumeSeries(o[1] as api.VolumeseriesinfoVolumeSeries);
 }
 
 core.int buildCounterVolumeseriesinfo = 0;
@@ -3649,7 +3698,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationClientVersionRanges();
       var od = api.AnnotationClientVersionRanges.fromJson(o.toJson());
-      checkAnnotationClientVersionRanges(od);
+      checkAnnotationClientVersionRanges(
+          od as api.AnnotationClientVersionRanges);
     });
   });
 
@@ -3657,7 +3707,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationCurrentVersionRanges();
       var od = api.AnnotationCurrentVersionRanges.fromJson(o.toJson());
-      checkAnnotationCurrentVersionRanges(od);
+      checkAnnotationCurrentVersionRanges(
+          od as api.AnnotationCurrentVersionRanges);
     });
   });
 
@@ -3665,7 +3716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationLayerSummary();
       var od = api.AnnotationLayerSummary.fromJson(o.toJson());
-      checkAnnotationLayerSummary(od);
+      checkAnnotationLayerSummary(od as api.AnnotationLayerSummary);
     });
   });
 
@@ -3673,7 +3724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
-      checkAnnotation(od);
+      checkAnnotation(od as api.Annotation);
     });
   });
 
@@ -3681,7 +3732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotations();
       var od = api.Annotations.fromJson(o.toJson());
-      checkAnnotations(od);
+      checkAnnotations(od as api.Annotations);
     });
   });
 
@@ -3689,7 +3740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationsSummaryLayers();
       var od = api.AnnotationsSummaryLayers.fromJson(o.toJson());
-      checkAnnotationsSummaryLayers(od);
+      checkAnnotationsSummaryLayers(od as api.AnnotationsSummaryLayers);
     });
   });
 
@@ -3697,7 +3748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationsSummary();
       var od = api.AnnotationsSummary.fromJson(o.toJson());
-      checkAnnotationsSummary(od);
+      checkAnnotationsSummary(od as api.AnnotationsSummary);
     });
   });
 
@@ -3705,7 +3756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotationsdata();
       var od = api.Annotationsdata.fromJson(o.toJson());
-      checkAnnotationsdata(od);
+      checkAnnotationsdata(od as api.Annotationsdata);
     });
   });
 
@@ -3713,7 +3764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBooksAnnotationsRange();
       var od = api.BooksAnnotationsRange.fromJson(o.toJson());
-      checkBooksAnnotationsRange(od);
+      checkBooksAnnotationsRange(od as api.BooksAnnotationsRange);
     });
   });
 
@@ -3721,7 +3772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBooksCloudloadingResource();
       var od = api.BooksCloudloadingResource.fromJson(o.toJson());
-      checkBooksCloudloadingResource(od);
+      checkBooksCloudloadingResource(od as api.BooksCloudloadingResource);
     });
   });
 
@@ -3729,7 +3780,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBooksVolumesRecommendedRateResponse();
       var od = api.BooksVolumesRecommendedRateResponse.fromJson(o.toJson());
-      checkBooksVolumesRecommendedRateResponse(od);
+      checkBooksVolumesRecommendedRateResponse(
+          od as api.BooksVolumesRecommendedRateResponse);
     });
   });
 
@@ -3737,7 +3789,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBookshelf();
       var od = api.Bookshelf.fromJson(o.toJson());
-      checkBookshelf(od);
+      checkBookshelf(od as api.Bookshelf);
     });
   });
 
@@ -3745,7 +3797,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBookshelves();
       var od = api.Bookshelves.fromJson(o.toJson());
-      checkBookshelves(od);
+      checkBookshelves(od as api.Bookshelves);
     });
   });
 
@@ -3753,7 +3805,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategoryItems();
       var od = api.CategoryItems.fromJson(o.toJson());
-      checkCategoryItems(od);
+      checkCategoryItems(od as api.CategoryItems);
     });
   });
 
@@ -3761,7 +3813,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCategory();
       var od = api.Category.fromJson(o.toJson());
-      checkCategory(od);
+      checkCategory(od as api.Category);
     });
   });
 
@@ -3769,7 +3821,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConcurrentAccessRestriction();
       var od = api.ConcurrentAccessRestriction.fromJson(o.toJson());
-      checkConcurrentAccessRestriction(od);
+      checkConcurrentAccessRestriction(od as api.ConcurrentAccessRestriction);
     });
   });
 
@@ -3777,7 +3829,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictionaryAnnotationdata();
       var od = api.DictionaryAnnotationdata.fromJson(o.toJson());
-      checkDictionaryAnnotationdata(od);
+      checkDictionaryAnnotationdata(od as api.DictionaryAnnotationdata);
     });
   });
 
@@ -3785,7 +3837,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataCommon();
       var od = api.DictlayerdataCommon.fromJson(o.toJson());
-      checkDictlayerdataCommon(od);
+      checkDictlayerdataCommon(od as api.DictlayerdataCommon);
     });
   });
 
@@ -3793,7 +3845,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictSource();
       var od = api.DictlayerdataDictSource.fromJson(o.toJson());
-      checkDictlayerdataDictSource(od);
+      checkDictlayerdataDictSource(od as api.DictlayerdataDictSource);
     });
   });
 
@@ -3801,7 +3853,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsDerivativesSource();
       var od = api.DictlayerdataDictWordsDerivativesSource.fromJson(o.toJson());
-      checkDictlayerdataDictWordsDerivativesSource(od);
+      checkDictlayerdataDictWordsDerivativesSource(
+          od as api.DictlayerdataDictWordsDerivativesSource);
     });
   });
 
@@ -3809,7 +3862,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsDerivatives();
       var od = api.DictlayerdataDictWordsDerivatives.fromJson(o.toJson());
-      checkDictlayerdataDictWordsDerivatives(od);
+      checkDictlayerdataDictWordsDerivatives(
+          od as api.DictlayerdataDictWordsDerivatives);
     });
   });
 
@@ -3817,7 +3871,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsExamplesSource();
       var od = api.DictlayerdataDictWordsExamplesSource.fromJson(o.toJson());
-      checkDictlayerdataDictWordsExamplesSource(od);
+      checkDictlayerdataDictWordsExamplesSource(
+          od as api.DictlayerdataDictWordsExamplesSource);
     });
   });
 
@@ -3825,7 +3880,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsExamples();
       var od = api.DictlayerdataDictWordsExamples.fromJson(o.toJson());
-      checkDictlayerdataDictWordsExamples(od);
+      checkDictlayerdataDictWordsExamples(
+          od as api.DictlayerdataDictWordsExamples);
     });
   });
 
@@ -3834,7 +3890,8 @@ void main() {
       var o = buildDictlayerdataDictWordsSensesConjugations();
       var od =
           api.DictlayerdataDictWordsSensesConjugations.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSensesConjugations(od);
+      checkDictlayerdataDictWordsSensesConjugations(
+          od as api.DictlayerdataDictWordsSensesConjugations);
     });
   });
 
@@ -3845,7 +3902,8 @@ void main() {
       var od =
           api.DictlayerdataDictWordsSensesDefinitionsExamplesSource.fromJson(
               o.toJson());
-      checkDictlayerdataDictWordsSensesDefinitionsExamplesSource(od);
+      checkDictlayerdataDictWordsSensesDefinitionsExamplesSource(
+          od as api.DictlayerdataDictWordsSensesDefinitionsExamplesSource);
     });
   });
 
@@ -3855,7 +3913,8 @@ void main() {
       var o = buildDictlayerdataDictWordsSensesDefinitionsExamples();
       var od = api.DictlayerdataDictWordsSensesDefinitionsExamples.fromJson(
           o.toJson());
-      checkDictlayerdataDictWordsSensesDefinitionsExamples(od);
+      checkDictlayerdataDictWordsSensesDefinitionsExamples(
+          od as api.DictlayerdataDictWordsSensesDefinitionsExamples);
     });
   });
 
@@ -3863,7 +3922,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsSensesDefinitions();
       var od = api.DictlayerdataDictWordsSensesDefinitions.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSensesDefinitions(od);
+      checkDictlayerdataDictWordsSensesDefinitions(
+          od as api.DictlayerdataDictWordsSensesDefinitions);
     });
   });
 
@@ -3871,7 +3931,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsSensesSource();
       var od = api.DictlayerdataDictWordsSensesSource.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSensesSource(od);
+      checkDictlayerdataDictWordsSensesSource(
+          od as api.DictlayerdataDictWordsSensesSource);
     });
   });
 
@@ -3880,7 +3941,8 @@ void main() {
       var o = buildDictlayerdataDictWordsSensesSynonymsSource();
       var od =
           api.DictlayerdataDictWordsSensesSynonymsSource.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSensesSynonymsSource(od);
+      checkDictlayerdataDictWordsSensesSynonymsSource(
+          od as api.DictlayerdataDictWordsSensesSynonymsSource);
     });
   });
 
@@ -3888,7 +3950,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsSensesSynonyms();
       var od = api.DictlayerdataDictWordsSensesSynonyms.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSensesSynonyms(od);
+      checkDictlayerdataDictWordsSensesSynonyms(
+          od as api.DictlayerdataDictWordsSensesSynonyms);
     });
   });
 
@@ -3896,7 +3959,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsSenses();
       var od = api.DictlayerdataDictWordsSenses.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSenses(od);
+      checkDictlayerdataDictWordsSenses(od as api.DictlayerdataDictWordsSenses);
     });
   });
 
@@ -3904,7 +3967,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWordsSource();
       var od = api.DictlayerdataDictWordsSource.fromJson(o.toJson());
-      checkDictlayerdataDictWordsSource(od);
+      checkDictlayerdataDictWordsSource(od as api.DictlayerdataDictWordsSource);
     });
   });
 
@@ -3912,7 +3975,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDictWords();
       var od = api.DictlayerdataDictWords.fromJson(o.toJson());
-      checkDictlayerdataDictWords(od);
+      checkDictlayerdataDictWords(od as api.DictlayerdataDictWords);
     });
   });
 
@@ -3920,7 +3983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdataDict();
       var od = api.DictlayerdataDict.fromJson(o.toJson());
-      checkDictlayerdataDict(od);
+      checkDictlayerdataDict(od as api.DictlayerdataDict);
     });
   });
 
@@ -3928,7 +3991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDictlayerdata();
       var od = api.Dictlayerdata.fromJson(o.toJson());
-      checkDictlayerdata(od);
+      checkDictlayerdata(od as api.Dictlayerdata);
     });
   });
 
@@ -3938,7 +4001,8 @@ void main() {
       var o = buildDiscoveryclustersClustersBannerWithContentContainer();
       var od = api.DiscoveryclustersClustersBannerWithContentContainer.fromJson(
           o.toJson());
-      checkDiscoveryclustersClustersBannerWithContentContainer(od);
+      checkDiscoveryclustersClustersBannerWithContentContainer(
+          od as api.DiscoveryclustersClustersBannerWithContentContainer);
     });
   });
 
@@ -3946,7 +4010,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDiscoveryclustersClusters();
       var od = api.DiscoveryclustersClusters.fromJson(o.toJson());
-      checkDiscoveryclustersClusters(od);
+      checkDiscoveryclustersClusters(od as api.DiscoveryclustersClusters);
     });
   });
 
@@ -3954,7 +4018,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDiscoveryclusters();
       var od = api.Discoveryclusters.fromJson(o.toJson());
-      checkDiscoveryclusters(od);
+      checkDiscoveryclusters(od as api.Discoveryclusters);
     });
   });
 
@@ -3962,7 +4026,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDownloadAccessRestriction();
       var od = api.DownloadAccessRestriction.fromJson(o.toJson());
-      checkDownloadAccessRestriction(od);
+      checkDownloadAccessRestriction(od as api.DownloadAccessRestriction);
     });
   });
 
@@ -3970,7 +4034,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDownloadAccesses();
       var od = api.DownloadAccesses.fromJson(o.toJson());
-      checkDownloadAccesses(od);
+      checkDownloadAccesses(od as api.DownloadAccesses);
     });
   });
 
@@ -3978,7 +4042,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -3986,7 +4050,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFamilyInfoMembership();
       var od = api.FamilyInfoMembership.fromJson(o.toJson());
-      checkFamilyInfoMembership(od);
+      checkFamilyInfoMembership(od as api.FamilyInfoMembership);
     });
   });
 
@@ -3994,7 +4058,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFamilyInfo();
       var od = api.FamilyInfo.fromJson(o.toJson());
-      checkFamilyInfo(od);
+      checkFamilyInfo(od as api.FamilyInfo);
     });
   });
 
@@ -4002,7 +4066,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeoAnnotationdata();
       var od = api.GeoAnnotationdata.fromJson(o.toJson());
-      checkGeoAnnotationdata(od);
+      checkGeoAnnotationdata(od as api.GeoAnnotationdata);
     });
   });
 
@@ -4010,7 +4074,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdataCommon();
       var od = api.GeolayerdataCommon.fromJson(o.toJson());
-      checkGeolayerdataCommon(od);
+      checkGeolayerdataCommon(od as api.GeolayerdataCommon);
     });
   });
 
@@ -4018,7 +4082,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdataGeoViewportHi();
       var od = api.GeolayerdataGeoViewportHi.fromJson(o.toJson());
-      checkGeolayerdataGeoViewportHi(od);
+      checkGeolayerdataGeoViewportHi(od as api.GeolayerdataGeoViewportHi);
     });
   });
 
@@ -4026,7 +4090,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdataGeoViewportLo();
       var od = api.GeolayerdataGeoViewportLo.fromJson(o.toJson());
-      checkGeolayerdataGeoViewportLo(od);
+      checkGeolayerdataGeoViewportLo(od as api.GeolayerdataGeoViewportLo);
     });
   });
 
@@ -4034,7 +4098,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdataGeoViewport();
       var od = api.GeolayerdataGeoViewport.fromJson(o.toJson());
-      checkGeolayerdataGeoViewport(od);
+      checkGeolayerdataGeoViewport(od as api.GeolayerdataGeoViewport);
     });
   });
 
@@ -4042,7 +4106,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdataGeo();
       var od = api.GeolayerdataGeo.fromJson(o.toJson());
-      checkGeolayerdataGeo(od);
+      checkGeolayerdataGeo(od as api.GeolayerdataGeo);
     });
   });
 
@@ -4050,7 +4114,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeolayerdata();
       var od = api.Geolayerdata.fromJson(o.toJson());
-      checkGeolayerdata(od);
+      checkGeolayerdata(od as api.Geolayerdata);
     });
   });
 
@@ -4058,7 +4122,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLayersummaries();
       var od = api.Layersummaries.fromJson(o.toJson());
-      checkLayersummaries(od);
+      checkLayersummaries(od as api.Layersummaries);
     });
   });
 
@@ -4066,7 +4130,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLayersummary();
       var od = api.Layersummary.fromJson(o.toJson());
-      checkLayersummary(od);
+      checkLayersummary(od as api.Layersummary);
     });
   });
 
@@ -4074,7 +4138,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetadataItems();
       var od = api.MetadataItems.fromJson(o.toJson());
-      checkMetadataItems(od);
+      checkMetadataItems(od as api.MetadataItems);
     });
   });
 
@@ -4082,7 +4146,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetadata();
       var od = api.Metadata.fromJson(o.toJson());
-      checkMetadata(od);
+      checkMetadata(od as api.Metadata);
     });
   });
 
@@ -4090,7 +4154,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
-      checkNotification(od);
+      checkNotification(od as api.Notification);
     });
   });
 
@@ -4098,7 +4162,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOffersItemsItems();
       var od = api.OffersItemsItems.fromJson(o.toJson());
-      checkOffersItemsItems(od);
+      checkOffersItemsItems(od as api.OffersItemsItems);
     });
   });
 
@@ -4106,7 +4170,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOffersItems();
       var od = api.OffersItems.fromJson(o.toJson());
-      checkOffersItems(od);
+      checkOffersItems(od as api.OffersItems);
     });
   });
 
@@ -4114,7 +4178,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOffers();
       var od = api.Offers.fromJson(o.toJson());
-      checkOffers(od);
+      checkOffers(od as api.Offers);
     });
   });
 
@@ -4122,7 +4186,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadingPosition();
       var od = api.ReadingPosition.fromJson(o.toJson());
-      checkReadingPosition(od);
+      checkReadingPosition(od as api.ReadingPosition);
     });
   });
 
@@ -4130,7 +4194,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequestAccessData();
       var od = api.RequestAccessData.fromJson(o.toJson());
-      checkRequestAccessData(od);
+      checkRequestAccessData(od as api.RequestAccessData);
     });
   });
 
@@ -4138,7 +4202,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewAuthor();
       var od = api.ReviewAuthor.fromJson(o.toJson());
-      checkReviewAuthor(od);
+      checkReviewAuthor(od as api.ReviewAuthor);
     });
   });
 
@@ -4146,7 +4210,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReviewSource();
       var od = api.ReviewSource.fromJson(o.toJson());
-      checkReviewSource(od);
+      checkReviewSource(od as api.ReviewSource);
     });
   });
 
@@ -4154,7 +4218,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReview();
       var od = api.Review.fromJson(o.toJson());
-      checkReview(od);
+      checkReview(od as api.Review);
     });
   });
 
@@ -4166,7 +4230,8 @@ void main() {
           buildSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo();
       var od = api.SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo
           .fromJson(o.toJson());
-      checkSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo(od);
+      checkSeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo(od
+          as api.SeriesSeriesSeriesSubscriptionReleaseInfoCurrentReleaseInfo);
     });
   });
 
@@ -4178,7 +4243,8 @@ void main() {
       var od =
           api.SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo.fromJson(
               o.toJson());
-      checkSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo(od);
+      checkSeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo(
+          od as api.SeriesSeriesSeriesSubscriptionReleaseInfoNextReleaseInfo);
     });
   });
 
@@ -4187,7 +4253,8 @@ void main() {
       var o = buildSeriesSeriesSeriesSubscriptionReleaseInfo();
       var od =
           api.SeriesSeriesSeriesSubscriptionReleaseInfo.fromJson(o.toJson());
-      checkSeriesSeriesSeriesSubscriptionReleaseInfo(od);
+      checkSeriesSeriesSeriesSubscriptionReleaseInfo(
+          od as api.SeriesSeriesSeriesSubscriptionReleaseInfo);
     });
   });
 
@@ -4195,7 +4262,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSeriesSeries();
       var od = api.SeriesSeries.fromJson(o.toJson());
-      checkSeriesSeries(od);
+      checkSeriesSeries(od as api.SeriesSeries);
     });
   });
 
@@ -4203,7 +4270,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSeries();
       var od = api.Series.fromJson(o.toJson());
-      checkSeries(od);
+      checkSeries(od as api.Series);
     });
   });
 
@@ -4211,7 +4278,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSeriesmembership();
       var od = api.Seriesmembership.fromJson(o.toJson());
-      checkSeriesmembership(od);
+      checkSeriesmembership(od as api.Seriesmembership);
     });
   });
 
@@ -4219,7 +4286,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettingsNotesExport();
       var od = api.UsersettingsNotesExport.fromJson(o.toJson());
-      checkUsersettingsNotesExport(od);
+      checkUsersettingsNotesExport(od as api.UsersettingsNotesExport);
     });
   });
 
@@ -4228,7 +4295,8 @@ void main() {
       var o = buildUsersettingsNotificationMatchMyInterests();
       var od =
           api.UsersettingsNotificationMatchMyInterests.fromJson(o.toJson());
-      checkUsersettingsNotificationMatchMyInterests(od);
+      checkUsersettingsNotificationMatchMyInterests(
+          od as api.UsersettingsNotificationMatchMyInterests);
     });
   });
 
@@ -4236,7 +4304,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettingsNotificationMoreFromAuthors();
       var od = api.UsersettingsNotificationMoreFromAuthors.fromJson(o.toJson());
-      checkUsersettingsNotificationMoreFromAuthors(od);
+      checkUsersettingsNotificationMoreFromAuthors(
+          od as api.UsersettingsNotificationMoreFromAuthors);
     });
   });
 
@@ -4244,7 +4313,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettingsNotificationMoreFromSeries();
       var od = api.UsersettingsNotificationMoreFromSeries.fromJson(o.toJson());
-      checkUsersettingsNotificationMoreFromSeries(od);
+      checkUsersettingsNotificationMoreFromSeries(
+          od as api.UsersettingsNotificationMoreFromSeries);
     });
   });
 
@@ -4252,7 +4322,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettingsNotificationPriceDrop();
       var od = api.UsersettingsNotificationPriceDrop.fromJson(o.toJson());
-      checkUsersettingsNotificationPriceDrop(od);
+      checkUsersettingsNotificationPriceDrop(
+          od as api.UsersettingsNotificationPriceDrop);
     });
   });
 
@@ -4261,7 +4332,8 @@ void main() {
       var o = buildUsersettingsNotificationRewardExpirations();
       var od =
           api.UsersettingsNotificationRewardExpirations.fromJson(o.toJson());
-      checkUsersettingsNotificationRewardExpirations(od);
+      checkUsersettingsNotificationRewardExpirations(
+          od as api.UsersettingsNotificationRewardExpirations);
     });
   });
 
@@ -4269,7 +4341,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettingsNotification();
       var od = api.UsersettingsNotification.fromJson(o.toJson());
-      checkUsersettingsNotification(od);
+      checkUsersettingsNotification(od as api.UsersettingsNotification);
     });
   });
 
@@ -4277,7 +4349,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsersettings();
       var od = api.Usersettings.fromJson(o.toJson());
-      checkUsersettings(od);
+      checkUsersettings(od as api.Usersettings);
     });
   });
 
@@ -4285,7 +4357,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeAccessInfoEpub();
       var od = api.VolumeAccessInfoEpub.fromJson(o.toJson());
-      checkVolumeAccessInfoEpub(od);
+      checkVolumeAccessInfoEpub(od as api.VolumeAccessInfoEpub);
     });
   });
 
@@ -4293,7 +4365,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeAccessInfoPdf();
       var od = api.VolumeAccessInfoPdf.fromJson(o.toJson());
-      checkVolumeAccessInfoPdf(od);
+      checkVolumeAccessInfoPdf(od as api.VolumeAccessInfoPdf);
     });
   });
 
@@ -4301,7 +4373,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeAccessInfo();
       var od = api.VolumeAccessInfo.fromJson(o.toJson());
-      checkVolumeAccessInfo(od);
+      checkVolumeAccessInfo(od as api.VolumeAccessInfo);
     });
   });
 
@@ -4309,7 +4381,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeLayerInfoLayers();
       var od = api.VolumeLayerInfoLayers.fromJson(o.toJson());
-      checkVolumeLayerInfoLayers(od);
+      checkVolumeLayerInfoLayers(od as api.VolumeLayerInfoLayers);
     });
   });
 
@@ -4317,7 +4389,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeLayerInfo();
       var od = api.VolumeLayerInfo.fromJson(o.toJson());
-      checkVolumeLayerInfo(od);
+      checkVolumeLayerInfo(od as api.VolumeLayerInfo);
     });
   });
 
@@ -4325,7 +4397,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeRecommendedInfo();
       var od = api.VolumeRecommendedInfo.fromJson(o.toJson());
-      checkVolumeRecommendedInfo(od);
+      checkVolumeRecommendedInfo(od as api.VolumeRecommendedInfo);
     });
   });
 
@@ -4333,7 +4405,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoListPrice();
       var od = api.VolumeSaleInfoListPrice.fromJson(o.toJson());
-      checkVolumeSaleInfoListPrice(od);
+      checkVolumeSaleInfoListPrice(od as api.VolumeSaleInfoListPrice);
     });
   });
 
@@ -4341,7 +4413,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoOffersListPrice();
       var od = api.VolumeSaleInfoOffersListPrice.fromJson(o.toJson());
-      checkVolumeSaleInfoOffersListPrice(od);
+      checkVolumeSaleInfoOffersListPrice(
+          od as api.VolumeSaleInfoOffersListPrice);
     });
   });
 
@@ -4349,7 +4422,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoOffersRentalDuration();
       var od = api.VolumeSaleInfoOffersRentalDuration.fromJson(o.toJson());
-      checkVolumeSaleInfoOffersRentalDuration(od);
+      checkVolumeSaleInfoOffersRentalDuration(
+          od as api.VolumeSaleInfoOffersRentalDuration);
     });
   });
 
@@ -4357,7 +4431,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoOffersRetailPrice();
       var od = api.VolumeSaleInfoOffersRetailPrice.fromJson(o.toJson());
-      checkVolumeSaleInfoOffersRetailPrice(od);
+      checkVolumeSaleInfoOffersRetailPrice(
+          od as api.VolumeSaleInfoOffersRetailPrice);
     });
   });
 
@@ -4365,7 +4440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoOffers();
       var od = api.VolumeSaleInfoOffers.fromJson(o.toJson());
-      checkVolumeSaleInfoOffers(od);
+      checkVolumeSaleInfoOffers(od as api.VolumeSaleInfoOffers);
     });
   });
 
@@ -4373,7 +4448,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfoRetailPrice();
       var od = api.VolumeSaleInfoRetailPrice.fromJson(o.toJson());
-      checkVolumeSaleInfoRetailPrice(od);
+      checkVolumeSaleInfoRetailPrice(od as api.VolumeSaleInfoRetailPrice);
     });
   });
 
@@ -4381,7 +4456,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSaleInfo();
       var od = api.VolumeSaleInfo.fromJson(o.toJson());
-      checkVolumeSaleInfo(od);
+      checkVolumeSaleInfo(od as api.VolumeSaleInfo);
     });
   });
 
@@ -4389,7 +4464,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeSearchInfo();
       var od = api.VolumeSearchInfo.fromJson(o.toJson());
-      checkVolumeSearchInfo(od);
+      checkVolumeSearchInfo(od as api.VolumeSearchInfo);
     });
   });
 
@@ -4397,7 +4472,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeUserInfoCopy();
       var od = api.VolumeUserInfoCopy.fromJson(o.toJson());
-      checkVolumeUserInfoCopy(od);
+      checkVolumeUserInfoCopy(od as api.VolumeUserInfoCopy);
     });
   });
 
@@ -4405,7 +4480,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeUserInfoFamilySharing();
       var od = api.VolumeUserInfoFamilySharing.fromJson(o.toJson());
-      checkVolumeUserInfoFamilySharing(od);
+      checkVolumeUserInfoFamilySharing(od as api.VolumeUserInfoFamilySharing);
     });
   });
 
@@ -4413,7 +4488,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeUserInfoRentalPeriod();
       var od = api.VolumeUserInfoRentalPeriod.fromJson(o.toJson());
-      checkVolumeUserInfoRentalPeriod(od);
+      checkVolumeUserInfoRentalPeriod(od as api.VolumeUserInfoRentalPeriod);
     });
   });
 
@@ -4421,7 +4496,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeUserInfoUserUploadedVolumeInfo();
       var od = api.VolumeUserInfoUserUploadedVolumeInfo.fromJson(o.toJson());
-      checkVolumeUserInfoUserUploadedVolumeInfo(od);
+      checkVolumeUserInfoUserUploadedVolumeInfo(
+          od as api.VolumeUserInfoUserUploadedVolumeInfo);
     });
   });
 
@@ -4429,7 +4505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeUserInfo();
       var od = api.VolumeUserInfo.fromJson(o.toJson());
-      checkVolumeUserInfo(od);
+      checkVolumeUserInfo(od as api.VolumeUserInfo);
     });
   });
 
@@ -4437,7 +4513,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfoDimensions();
       var od = api.VolumeVolumeInfoDimensions.fromJson(o.toJson());
-      checkVolumeVolumeInfoDimensions(od);
+      checkVolumeVolumeInfoDimensions(od as api.VolumeVolumeInfoDimensions);
     });
   });
 
@@ -4445,7 +4521,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfoImageLinks();
       var od = api.VolumeVolumeInfoImageLinks.fromJson(o.toJson());
-      checkVolumeVolumeInfoImageLinks(od);
+      checkVolumeVolumeInfoImageLinks(od as api.VolumeVolumeInfoImageLinks);
     });
   });
 
@@ -4453,7 +4529,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfoIndustryIdentifiers();
       var od = api.VolumeVolumeInfoIndustryIdentifiers.fromJson(o.toJson());
-      checkVolumeVolumeInfoIndustryIdentifiers(od);
+      checkVolumeVolumeInfoIndustryIdentifiers(
+          od as api.VolumeVolumeInfoIndustryIdentifiers);
     });
   });
 
@@ -4461,7 +4538,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfoPanelizationSummary();
       var od = api.VolumeVolumeInfoPanelizationSummary.fromJson(o.toJson());
-      checkVolumeVolumeInfoPanelizationSummary(od);
+      checkVolumeVolumeInfoPanelizationSummary(
+          od as api.VolumeVolumeInfoPanelizationSummary);
     });
   });
 
@@ -4469,7 +4547,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfoReadingModes();
       var od = api.VolumeVolumeInfoReadingModes.fromJson(o.toJson());
-      checkVolumeVolumeInfoReadingModes(od);
+      checkVolumeVolumeInfoReadingModes(od as api.VolumeVolumeInfoReadingModes);
     });
   });
 
@@ -4477,7 +4555,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeVolumeInfo();
       var od = api.VolumeVolumeInfo.fromJson(o.toJson());
-      checkVolumeVolumeInfo(od);
+      checkVolumeVolumeInfo(od as api.VolumeVolumeInfo);
     });
   });
 
@@ -4485,7 +4563,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolume();
       var od = api.Volume.fromJson(o.toJson());
-      checkVolume(od);
+      checkVolume(od as api.Volume);
     });
   });
 
@@ -4493,7 +4571,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolume2();
       var od = api.Volume2.fromJson(o.toJson());
-      checkVolume2(od);
+      checkVolume2(od as api.Volume2);
     });
   });
 
@@ -4501,7 +4579,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeannotationContentRanges();
       var od = api.VolumeannotationContentRanges.fromJson(o.toJson());
-      checkVolumeannotationContentRanges(od);
+      checkVolumeannotationContentRanges(
+          od as api.VolumeannotationContentRanges);
     });
   });
 
@@ -4509,7 +4588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeannotation();
       var od = api.Volumeannotation.fromJson(o.toJson());
-      checkVolumeannotation(od);
+      checkVolumeannotation(od as api.Volumeannotation);
     });
   });
 
@@ -4517,7 +4596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeannotations();
       var od = api.Volumeannotations.fromJson(o.toJson());
-      checkVolumeannotations(od);
+      checkVolumeannotations(od as api.Volumeannotations);
     });
   });
 
@@ -4525,7 +4604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumes();
       var od = api.Volumes.fromJson(o.toJson());
-      checkVolumes(od);
+      checkVolumes(od as api.Volumes);
     });
   });
 
@@ -4533,7 +4612,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeseriesinfoVolumeSeriesIssue();
       var od = api.VolumeseriesinfoVolumeSeriesIssue.fromJson(o.toJson());
-      checkVolumeseriesinfoVolumeSeriesIssue(od);
+      checkVolumeseriesinfoVolumeSeriesIssue(
+          od as api.VolumeseriesinfoVolumeSeriesIssue);
     });
   });
 
@@ -4541,7 +4621,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeseriesinfoVolumeSeries();
       var od = api.VolumeseriesinfoVolumeSeries.fromJson(o.toJson());
-      checkVolumeseriesinfoVolumeSeries(od);
+      checkVolumeseriesinfoVolumeSeries(od as api.VolumeseriesinfoVolumeSeries);
     });
   });
 
@@ -4549,7 +4629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVolumeseriesinfo();
       var od = api.Volumeseriesinfo.fromJson(o.toJson());
-      checkVolumeseriesinfo(od);
+      checkVolumeseriesinfo(od as api.Volumeseriesinfo);
     });
   });
 
@@ -4612,7 +4692,7 @@ void main() {
       res
           .get(arg_userId, arg_shelf, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBookshelf(response);
+        checkBookshelf(response as api.Bookshelf);
       })));
     });
 
@@ -4670,7 +4750,7 @@ void main() {
       res
           .list(arg_userId, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBookshelves(response);
+        checkBookshelves(response as api.Bookshelves);
       })));
     });
   });
@@ -4754,7 +4834,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });
@@ -4818,7 +4898,8 @@ void main() {
               uploadClientToken: arg_uploadClientToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBooksCloudloadingResource(response);
+        checkBooksCloudloadingResource(
+            response as api.BooksCloudloadingResource);
       })));
     });
 
@@ -4867,7 +4948,7 @@ void main() {
       res
           .deleteBook(volumeId: arg_volumeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4877,8 +4958,9 @@ void main() {
       var arg_request = buildBooksCloudloadingResource();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BooksCloudloadingResource.fromJson(json);
-        checkBooksCloudloadingResource(obj);
+        var obj = api.BooksCloudloadingResource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBooksCloudloadingResource(obj as api.BooksCloudloadingResource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4917,7 +4999,8 @@ void main() {
       res
           .updateBook(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBooksCloudloadingResource(response);
+        checkBooksCloudloadingResource(
+            response as api.BooksCloudloadingResource);
       })));
     });
   });
@@ -4968,7 +5051,7 @@ void main() {
       res
           .listOfflineMetadata(cpksver: arg_cpksver, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMetadata(response);
+        checkMetadata(response as api.Metadata);
       })));
     });
   });
@@ -5018,7 +5101,7 @@ void main() {
       res
           .getFamilyInfo(source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFamilyInfo(response);
+        checkFamilyInfo(response as api.FamilyInfo);
       })));
     });
 
@@ -5075,7 +5158,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5132,7 +5215,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -5202,7 +5285,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLayersummary(response);
+        checkLayersummary(response as api.Layersummary);
       })));
     });
 
@@ -5274,7 +5357,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLayersummaries(response);
+        checkLayersummaries(response as api.Layersummaries);
       })));
     });
   });
@@ -5373,7 +5456,7 @@ void main() {
               w: arg_w,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDictionaryAnnotationdata(response);
+        checkDictionaryAnnotationdata(response as api.DictionaryAnnotationdata);
       })));
     });
 
@@ -5482,7 +5565,7 @@ void main() {
               w: arg_w,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotationsdata(response);
+        checkAnnotationsdata(response as api.Annotationsdata);
       })));
     });
   });
@@ -5559,7 +5642,7 @@ void main() {
           .get(arg_volumeId, arg_layerId, arg_annotationId,
               locale: arg_locale, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumeannotation(response);
+        checkVolumeannotation(response as api.Volumeannotation);
       })));
     });
 
@@ -5670,7 +5753,7 @@ void main() {
               volumeAnnotationsVersion: arg_volumeAnnotationsVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumeannotations(response);
+        checkVolumeannotations(response as api.Volumeannotations);
       })));
     });
   });
@@ -5721,7 +5804,7 @@ void main() {
       res
           .getUserSettings(country: arg_country, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUsersettings(response);
+        checkUsersettings(response as api.Usersettings);
       })));
     });
 
@@ -5781,7 +5864,7 @@ void main() {
               volumeIds: arg_volumeIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDownloadAccesses(response);
+        checkDownloadAccesses(response as api.DownloadAccesses);
       })));
     });
 
@@ -5849,7 +5932,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRequestAccessData(response);
+        checkRequestAccessData(response as api.RequestAccessData);
       })));
     });
 
@@ -5923,7 +6006,7 @@ void main() {
               volumeIds: arg_volumeIds,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
 
@@ -5933,8 +6016,9 @@ void main() {
       var arg_request = buildUsersettings();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Usersettings.fromJson(json);
-        checkUsersettings(obj);
+        var obj = api.Usersettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUsersettings(obj as api.Usersettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5973,7 +6057,7 @@ void main() {
       res
           .updateUserSettings(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUsersettings(response);
+        checkUsersettings(response as api.Usersettings);
       })));
     });
   });
@@ -6027,7 +6111,7 @@ void main() {
       res
           .delete(arg_annotationId, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6041,8 +6125,9 @@ void main() {
       var arg_source = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Annotation.fromJson(json);
-        checkAnnotation(obj);
+        var obj = api.Annotation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnnotation(obj as api.Annotation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6093,7 +6178,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotation(response);
+        checkAnnotation(response as api.Annotation);
       })));
     });
 
@@ -6178,7 +6263,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotations(response);
+        checkAnnotations(response as api.Annotations);
       })));
     });
 
@@ -6232,7 +6317,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotationsSummary(response);
+        checkAnnotationsSummary(response as api.AnnotationsSummary);
       })));
     });
 
@@ -6244,8 +6329,9 @@ void main() {
       var arg_source = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Annotation.fromJson(json);
-        checkAnnotation(obj);
+        var obj = api.Annotation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnnotation(obj as api.Annotation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6289,7 +6375,7 @@ void main() {
           .update(arg_request, arg_annotationId,
               source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnotation(response);
+        checkAnnotation(response as api.Annotation);
       })));
     });
   });
@@ -6358,7 +6444,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6416,7 +6502,7 @@ void main() {
       res
           .clearVolumes(arg_shelf, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6468,7 +6554,7 @@ void main() {
       res
           .get(arg_shelf, source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBookshelf(response);
+        checkBookshelf(response as api.Bookshelf);
       })));
     });
 
@@ -6516,7 +6602,7 @@ void main() {
       res
           .list(source: arg_source, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBookshelves(response);
+        checkBookshelves(response as api.Bookshelves);
       })));
     });
 
@@ -6584,7 +6670,7 @@ void main() {
               volumePosition: arg_volumePosition,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6651,7 +6737,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -6736,7 +6822,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });
@@ -6796,7 +6882,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReadingPosition(response);
+        checkReadingPosition(response as api.ReadingPosition);
       })));
     });
 
@@ -6875,7 +6961,7 @@ void main() {
               timestamp: arg_timestamp,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -6934,7 +7020,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNotification(response);
+        checkNotification(response as api.Notification);
       })));
     });
   });
@@ -6984,7 +7070,7 @@ void main() {
       res
           .listCategories(locale: arg_locale, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCategory(response);
+        checkCategory(response as api.Category);
       })));
     });
 
@@ -7050,7 +7136,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolume2(response);
+        checkVolume2(response as api.Volume2);
       })));
     });
   });
@@ -7109,7 +7195,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDiscoveryclusters(response);
+        checkDiscoveryclusters(response as api.Discoveryclusters);
       })));
     });
   });
@@ -7187,7 +7273,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -7259,7 +7345,7 @@ void main() {
               serial: arg_serial,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -7327,7 +7413,7 @@ void main() {
               serial: arg_serial,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOffers(response);
+        checkOffers(response as api.Offers);
       })));
     });
   });
@@ -7377,7 +7463,7 @@ void main() {
       res
           .get(seriesId: arg_seriesId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSeries(response);
+        checkSeries(response as api.Series);
       })));
     });
   });
@@ -7438,7 +7524,7 @@ void main() {
               seriesId: arg_seriesId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSeriesmembership(response);
+        checkSeriesmembership(response as api.Seriesmembership);
       })));
     });
   });
@@ -7514,7 +7600,7 @@ void main() {
               userLibraryConsistentRead: arg_userLibraryConsistentRead,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolume(response);
+        checkVolume(response as api.Volume);
       })));
     });
 
@@ -7614,7 +7700,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });
@@ -7687,7 +7773,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });
@@ -7762,7 +7848,7 @@ void main() {
               startIndex: arg_startIndex,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });
@@ -7821,7 +7907,7 @@ void main() {
               source: arg_source,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
 
@@ -7882,7 +7968,8 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBooksVolumesRecommendedRateResponse(response);
+        checkBooksVolumesRecommendedRateResponse(
+            response as api.BooksVolumesRecommendedRateResponse);
       })));
     });
   });
@@ -7952,7 +8039,7 @@ void main() {
               volumeId: arg_volumeId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVolumes(response);
+        checkVolumes(response as api.Volumes);
       })));
     });
   });

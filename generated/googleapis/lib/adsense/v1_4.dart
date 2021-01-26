@@ -140,7 +140,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all accounts available to this AdSense account.
@@ -198,7 +200,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Accounts.fromJson(data));
+    return _response.then(
+      (data) => Accounts.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -269,7 +273,9 @@ class AccountsAdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdCode.fromJson(data));
+    return _response.then(
+      (data) => AdCode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all ad clients in the specified account.
@@ -335,7 +341,9 @@ class AccountsAdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClients.fromJson(data));
+    return _response.then(
+      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -410,7 +418,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get ad code for the specified ad unit.
@@ -476,7 +486,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdCode.fromJson(data));
+    return _response.then(
+      (data) => AdCode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all ad units in the specified ad client for the specified account.
@@ -556,7 +568,9 @@ class AccountsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnits.fromJson(data));
+    return _response.then(
+      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -645,7 +659,10 @@ class AccountsAdunitsCustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -709,7 +726,9 @@ class AccountsAlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// List the alerts for the specified AdSense account.
@@ -766,7 +785,9 @@ class AccountsAlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alerts.fromJson(data));
+    return _response.then(
+      (data) => Alerts.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -842,7 +863,10 @@ class AccountsCustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all custom channels in the specified ad client for the specified
@@ -917,7 +941,10 @@ class AccountsCustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1012,7 +1039,9 @@ class AccountsCustomchannelsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnits.fromJson(data));
+    return _response.then(
+      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1068,7 +1097,9 @@ class AccountsPaymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Payments.fromJson(data));
+    return _response.then(
+      (data) => Payments.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1230,8 +1261,10 @@ class AccountsReportsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response
-          .then((data) => AdsenseReportsGenerateResponse.fromJson(data));
+      return _response.then(
+        (data) => AdsenseReportsGenerateResponse.fromJson(
+            data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -1321,8 +1354,10 @@ class AccountsReportsSavedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AdsenseReportsGenerateResponse.fromJson(data));
+    return _response.then(
+      (data) => AdsenseReportsGenerateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all saved reports in the specified AdSense account.
@@ -1388,7 +1423,10 @@ class AccountsReportsSavedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedReports.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedReports.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1452,7 +1490,10 @@ class AccountsSavedadstylesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedAdStyle.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedAdStyle.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all saved ad styles in the specified account.
@@ -1518,7 +1559,10 @@ class AccountsSavedadstylesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedAdStyles.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedAdStyles.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1600,7 +1644,10 @@ class AccountsUrlchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1664,7 +1711,9 @@ class AdclientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdClients.fromJson(data));
+    return _response.then(
+      (data) => AdClients.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1730,7 +1779,9 @@ class AdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnit.fromJson(data));
+    return _response.then(
+      (data) => AdUnit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get ad code for the specified ad unit.
@@ -1788,7 +1839,9 @@ class AdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdCode.fromJson(data));
+    return _response.then(
+      (data) => AdCode.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all ad units in the specified ad client for this AdSense account.
@@ -1860,7 +1913,9 @@ class AdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnits.fromJson(data));
+    return _response.then(
+      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1941,7 +1996,10 @@ class AdunitsCustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1995,7 +2053,9 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// List the alerts for this AdSense account.
@@ -2045,7 +2105,9 @@ class AlertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Alerts.fromJson(data));
+    return _response.then(
+      (data) => Alerts.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2111,7 +2173,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannel.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all custom channels in the specified ad client for this AdSense
@@ -2178,7 +2243,10 @@ class CustomchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          CustomChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2265,7 +2333,9 @@ class CustomchannelsAdunitsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AdUnits.fromJson(data));
+    return _response.then(
+      (data) => AdUnits.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2325,7 +2395,9 @@ class MetadataDimensionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Metadata.fromJson(data));
+    return _response.then(
+      (data) => Metadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2373,7 +2445,9 @@ class MetadataMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Metadata.fromJson(data));
+    return _response.then(
+      (data) => Metadata.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2421,7 +2495,9 @@ class PaymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Payments.fromJson(data));
+    return _response.then(
+      (data) => Payments.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2581,8 +2657,10 @@ class ReportsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response
-          .then((data) => AdsenseReportsGenerateResponse.fromJson(data));
+      return _response.then(
+        (data) => AdsenseReportsGenerateResponse.fromJson(
+            data as core.Map<core.String, core.dynamic>),
+      );
     } else {
       return _response;
     }
@@ -2662,8 +2740,10 @@ class ReportsSavedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AdsenseReportsGenerateResponse.fromJson(data));
+    return _response.then(
+      (data) => AdsenseReportsGenerateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all saved reports in this AdSense account.
@@ -2721,7 +2801,10 @@ class ReportsSavedResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedReports.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedReports.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2775,7 +2858,10 @@ class SavedadstylesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedAdStyle.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedAdStyle.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all saved ad styles in the user's account.
@@ -2833,7 +2919,10 @@ class SavedadstylesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedAdStyles.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedAdStyles.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2905,7 +2994,10 @@ class UrlchannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UrlChannels.fromJson(data));
+    return _response.then(
+      (data) =>
+          UrlChannels.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2950,7 +3042,8 @@ class Account {
     }
     if (_json.containsKey('subAccounts')) {
       subAccounts = (_json['subAccounts'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timezone')) {
@@ -3008,7 +3101,8 @@ class Accounts {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3117,7 +3211,8 @@ class AdClients {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AdClient>((value) => AdClient.fromJson(value))
+          .map<AdClient>((value) =>
+              AdClient.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3304,13 +3399,15 @@ class AdStyle {
 
   AdStyle.fromJson(core.Map _json) {
     if (_json.containsKey('colors')) {
-      colors = AdStyleColors.fromJson(_json['colors']);
+      colors = AdStyleColors.fromJson(
+          _json['colors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('corners')) {
       corners = _json['corners'] as core.String;
     }
     if (_json.containsKey('font')) {
-      font = AdStyleFont.fromJson(_json['font']);
+      font = AdStyleFont.fromJson(
+          _json['font'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3391,8 +3488,8 @@ class AdUnitContentAdsSettings {
 
   AdUnitContentAdsSettings.fromJson(core.Map _json) {
     if (_json.containsKey('backupOption')) {
-      backupOption =
-          AdUnitContentAdsSettingsBackupOption.fromJson(_json['backupOption']);
+      backupOption = AdUnitContentAdsSettingsBackupOption.fromJson(
+          _json['backupOption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('size')) {
       size = _json['size'] as core.String;
@@ -3564,15 +3661,16 @@ class AdUnit {
       code = _json['code'] as core.String;
     }
     if (_json.containsKey('contentAdsSettings')) {
-      contentAdsSettings =
-          AdUnitContentAdsSettings.fromJson(_json['contentAdsSettings']);
+      contentAdsSettings = AdUnitContentAdsSettings.fromJson(
+          _json['contentAdsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customStyle')) {
-      customStyle = AdStyle.fromJson(_json['customStyle']);
+      customStyle = AdStyle.fromJson(
+          _json['customStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('feedAdsSettings')) {
-      feedAdsSettings =
-          AdUnitFeedAdsSettings.fromJson(_json['feedAdsSettings']);
+      feedAdsSettings = AdUnitFeedAdsSettings.fromJson(
+          _json['feedAdsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -3582,7 +3680,8 @@ class AdUnit {
     }
     if (_json.containsKey('mobileContentAdsSettings')) {
       mobileContentAdsSettings = AdUnitMobileContentAdsSettings.fromJson(
-          _json['mobileContentAdsSettings']);
+          _json['mobileContentAdsSettings']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -3653,7 +3752,8 @@ class AdUnits {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<AdUnit>((value) => AdUnit.fromJson(value))
+          .map<AdUnit>((value) =>
+              AdUnit.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3772,8 +3872,9 @@ class AdsenseReportsGenerateResponse {
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<AdsenseReportsGenerateResponseHeaders>(
-              (value) => AdsenseReportsGenerateResponseHeaders.fromJson(value))
+          .map<AdsenseReportsGenerateResponseHeaders>((value) =>
+              AdsenseReportsGenerateResponseHeaders.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3918,7 +4019,8 @@ class Alerts {
   Alerts.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Alert>((value) => Alert.fromJson(value))
+          .map<Alert>((value) =>
+              Alert.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4026,8 +4128,8 @@ class CustomChannel {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('targetingInfo')) {
-      targetingInfo =
-          CustomChannelTargetingInfo.fromJson(_json['targetingInfo']);
+      targetingInfo = CustomChannelTargetingInfo.fromJson(
+          _json['targetingInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4074,7 +4176,8 @@ class CustomChannels {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<CustomChannel>((value) => CustomChannel.fromJson(value))
+          .map<CustomChannel>((value) => CustomChannel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4114,8 +4217,9 @@ class Metadata {
   Metadata.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<ReportingMetadataEntry>(
-              (value) => ReportingMetadataEntry.fromJson(value))
+          .map<ReportingMetadataEntry>((value) =>
+              ReportingMetadataEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4207,7 +4311,8 @@ class Payments {
   Payments.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Payment>((value) => Payment.fromJson(value))
+          .map<Payment>((value) =>
+              Payment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4342,7 +4447,8 @@ class SavedAdStyle {
 
   SavedAdStyle.fromJson(core.Map _json) {
     if (_json.containsKey('adStyle')) {
-      adStyle = AdStyle.fromJson(_json['adStyle']);
+      adStyle = AdStyle.fromJson(
+          _json['adStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -4395,7 +4501,8 @@ class SavedAdStyles {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SavedAdStyle>((value) => SavedAdStyle.fromJson(value))
+          .map<SavedAdStyle>((value) => SavedAdStyle.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4485,7 +4592,8 @@ class SavedReports {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SavedReport>((value) => SavedReport.fromJson(value))
+          .map<SavedReport>((value) => SavedReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4577,7 +4685,8 @@ class UrlChannels {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<UrlChannel>((value) => UrlChannel.fromJson(value))
+          .map<UrlChannel>((value) =>
+              UrlChannel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

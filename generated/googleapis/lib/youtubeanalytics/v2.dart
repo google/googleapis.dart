@@ -131,7 +131,10 @@ class GroupItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EmptyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          EmptyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a group item.
@@ -194,7 +197,9 @@ class GroupItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GroupItem.fromJson(data));
+    return _response.then(
+      (data) => GroupItem.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a collection of group items that match the API request parameters.
@@ -258,7 +263,10 @@ class GroupItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGroupItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGroupItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -328,7 +336,10 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EmptyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          EmptyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a group.
@@ -391,7 +402,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a collection of groups that match the API request parameters. For
@@ -477,7 +490,10 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGroupsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGroupsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies a group. For example, you could change a group's title.
@@ -540,7 +556,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Group.fromJson(data));
+    return _response.then(
+      (data) => Group.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -696,7 +714,10 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => QueryResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          QueryResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -709,7 +730,8 @@ class EmptyResponse {
 
   EmptyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -852,7 +874,8 @@ class Errors {
     }
     if (_json.containsKey('error')) {
       error = (_json['error'] as core.List)
-          .map<ErrorProto>((value) => ErrorProto.fromJson(value))
+          .map<ErrorProto>((value) =>
+              ErrorProto.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('requestId')) {
@@ -901,10 +924,12 @@ class Group {
 
   Group.fromJson(core.Map _json) {
     if (_json.containsKey('contentDetails')) {
-      contentDetails = GroupContentDetails.fromJson(_json['contentDetails']);
+      contentDetails = GroupContentDetails.fromJson(
+          _json['contentDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -916,7 +941,8 @@ class Group {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('snippet')) {
-      snippet = GroupSnippet.fromJson(_json['snippet']);
+      snippet = GroupSnippet.fromJson(
+          _json['snippet'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1009,7 +1035,8 @@ class GroupItem {
 
   GroupItem.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -1024,7 +1051,8 @@ class GroupItem {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = GroupItemResource.fromJson(_json['resource']);
+      resource = GroupItemResource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1137,14 +1165,16 @@ class ListGroupItemsResponse {
 
   ListGroupItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<GroupItem>((value) => GroupItem.fromJson(value))
+          .map<GroupItem>((value) =>
+              GroupItem.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1194,14 +1224,16 @@ class ListGroupsResponse {
 
   ListGroupsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Group>((value) => Group.fromJson(value))
+          .map<Group>((value) =>
+              Group.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1272,12 +1304,14 @@ class QueryResponse {
   QueryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeaders')) {
       columnHeaders = (_json['columnHeaders'] as core.List)
-          .map<ResultTableColumnHeader>(
-              (value) => ResultTableColumnHeader.fromJson(value))
+          .map<ResultTableColumnHeader>((value) =>
+              ResultTableColumnHeader.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;

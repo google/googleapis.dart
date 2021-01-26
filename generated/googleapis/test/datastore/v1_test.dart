@@ -83,8 +83,8 @@ core.List<api.Key> buildUnnamed0() {
 
 void checkUnnamed0(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKey(o[0]);
-  checkKey(o[1]);
+  checkKey(o[0] as api.Key);
+  checkKey(o[1] as api.Key);
 }
 
 core.int buildCounterAllocateIdsRequest = 0;
@@ -115,8 +115,8 @@ core.List<api.Key> buildUnnamed1() {
 
 void checkUnnamed1(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKey(o[0]);
-  checkKey(o[1]);
+  checkKey(o[0] as api.Key);
+  checkKey(o[1] as api.Key);
 }
 
 core.int buildCounterAllocateIdsResponse = 0;
@@ -147,8 +147,8 @@ core.List<api.Value> buildUnnamed2() {
 
 void checkUnnamed2(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterArrayValue = 0;
@@ -184,7 +184,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
 void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
-    checkTransactionOptions(o.transactionOptions);
+    checkTransactionOptions(o.transactionOptions as api.TransactionOptions);
   }
   buildCounterBeginTransactionRequest--;
 }
@@ -217,8 +217,8 @@ core.List<api.Mutation> buildUnnamed3() {
 
 void checkUnnamed3(core.List<api.Mutation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMutation(o[0]);
-  checkMutation(o[1]);
+  checkMutation(o[0] as api.Mutation);
+  checkMutation(o[1] as api.Mutation);
 }
 
 core.int buildCounterCommitRequest = 0;
@@ -253,8 +253,8 @@ core.List<api.MutationResult> buildUnnamed4() {
 
 void checkUnnamed4(core.List<api.MutationResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMutationResult(o[0]);
-  checkMutationResult(o[1]);
+  checkMutationResult(o[0] as api.MutationResult);
+  checkMutationResult(o[1] as api.MutationResult);
 }
 
 core.int buildCounterCommitResponse = 0;
@@ -287,8 +287,8 @@ core.List<api.Filter> buildUnnamed5() {
 
 void checkUnnamed5(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFilter(o[0]);
-  checkFilter(o[1]);
+  checkFilter(o[0] as api.Filter);
+  checkFilter(o[1] as api.Filter);
 }
 
 core.int buildCounterCompositeFilter = 0;
@@ -336,8 +336,8 @@ core.Map<core.String, api.Value> buildUnnamed6() {
 
 void checkUnnamed6(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o['x']);
-  checkValue(o['y']);
+  checkValue(o['x'] as api.Value);
+  checkValue(o['y'] as api.Value);
 }
 
 core.int buildCounterEntity = 0;
@@ -355,7 +355,7 @@ api.Entity buildEntity() {
 void checkEntity(api.Entity o) {
   buildCounterEntity++;
   if (buildCounterEntity < 3) {
-    checkKey(o.key);
+    checkKey(o.key as api.Key);
     checkUnnamed6(o.properties);
   }
   buildCounterEntity--;
@@ -378,7 +378,7 @@ void checkEntityResult(api.EntityResult o) {
   buildCounterEntityResult++;
   if (buildCounterEntityResult < 3) {
     unittest.expect(o.cursor, unittest.equals('foo'));
-    checkEntity(o.entity);
+    checkEntity(o.entity as api.Entity);
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterEntityResult--;
@@ -399,8 +399,8 @@ api.Filter buildFilter() {
 void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    checkCompositeFilter(o.compositeFilter);
-    checkPropertyFilter(o.propertyFilter);
+    checkCompositeFilter(o.compositeFilter as api.CompositeFilter);
+    checkPropertyFilter(o.propertyFilter as api.PropertyFilter);
   }
   buildCounterFilter--;
 }
@@ -516,11 +516,15 @@ void checkGoogleDatastoreAdminV1ExportEntitiesMetadata(
     api.GoogleDatastoreAdminV1ExportEntitiesMetadata o) {
   buildCounterGoogleDatastoreAdminV1ExportEntitiesMetadata++;
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesMetadata < 3) {
-    checkGoogleDatastoreAdminV1CommonMetadata(o.common);
-    checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1CommonMetadata(
+        o.common as api.GoogleDatastoreAdminV1CommonMetadata);
+    checkGoogleDatastoreAdminV1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1EntityFilter);
     unittest.expect(o.outputUrlPrefix, unittest.equals('foo'));
-    checkGoogleDatastoreAdminV1Progress(o.progressBytes);
-    checkGoogleDatastoreAdminV1Progress(o.progressEntities);
+    checkGoogleDatastoreAdminV1Progress(
+        o.progressBytes as api.GoogleDatastoreAdminV1Progress);
+    checkGoogleDatastoreAdminV1Progress(
+        o.progressEntities as api.GoogleDatastoreAdminV1Progress);
   }
   buildCounterGoogleDatastoreAdminV1ExportEntitiesMetadata--;
 }
@@ -556,7 +560,8 @@ void checkGoogleDatastoreAdminV1ExportEntitiesRequest(
     api.GoogleDatastoreAdminV1ExportEntitiesRequest o) {
   buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest++;
   if (buildCounterGoogleDatastoreAdminV1ExportEntitiesRequest < 3) {
-    checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1EntityFilter);
     checkUnnamed10(o.labels);
     unittest.expect(o.outputUrlPrefix, unittest.equals('foo'));
   }
@@ -604,11 +609,15 @@ void checkGoogleDatastoreAdminV1ImportEntitiesMetadata(
     api.GoogleDatastoreAdminV1ImportEntitiesMetadata o) {
   buildCounterGoogleDatastoreAdminV1ImportEntitiesMetadata++;
   if (buildCounterGoogleDatastoreAdminV1ImportEntitiesMetadata < 3) {
-    checkGoogleDatastoreAdminV1CommonMetadata(o.common);
-    checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1CommonMetadata(
+        o.common as api.GoogleDatastoreAdminV1CommonMetadata);
+    checkGoogleDatastoreAdminV1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1EntityFilter);
     unittest.expect(o.inputUrl, unittest.equals('foo'));
-    checkGoogleDatastoreAdminV1Progress(o.progressBytes);
-    checkGoogleDatastoreAdminV1Progress(o.progressEntities);
+    checkGoogleDatastoreAdminV1Progress(
+        o.progressBytes as api.GoogleDatastoreAdminV1Progress);
+    checkGoogleDatastoreAdminV1Progress(
+        o.progressEntities as api.GoogleDatastoreAdminV1Progress);
   }
   buildCounterGoogleDatastoreAdminV1ImportEntitiesMetadata--;
 }
@@ -644,7 +653,8 @@ void checkGoogleDatastoreAdminV1ImportEntitiesRequest(
     api.GoogleDatastoreAdminV1ImportEntitiesRequest o) {
   buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest++;
   if (buildCounterGoogleDatastoreAdminV1ImportEntitiesRequest < 3) {
-    checkGoogleDatastoreAdminV1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1EntityFilter);
     unittest.expect(o.inputUrl, unittest.equals('foo'));
     checkUnnamed11(o.labels);
   }
@@ -660,8 +670,10 @@ core.List<api.GoogleDatastoreAdminV1IndexedProperty> buildUnnamed12() {
 
 void checkUnnamed12(core.List<api.GoogleDatastoreAdminV1IndexedProperty> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDatastoreAdminV1IndexedProperty(o[0]);
-  checkGoogleDatastoreAdminV1IndexedProperty(o[1]);
+  checkGoogleDatastoreAdminV1IndexedProperty(
+      o[0] as api.GoogleDatastoreAdminV1IndexedProperty);
+  checkGoogleDatastoreAdminV1IndexedProperty(
+      o[1] as api.GoogleDatastoreAdminV1IndexedProperty);
 }
 
 core.int buildCounterGoogleDatastoreAdminV1Index = 0;
@@ -711,9 +723,11 @@ void checkGoogleDatastoreAdminV1IndexOperationMetadata(
     api.GoogleDatastoreAdminV1IndexOperationMetadata o) {
   buildCounterGoogleDatastoreAdminV1IndexOperationMetadata++;
   if (buildCounterGoogleDatastoreAdminV1IndexOperationMetadata < 3) {
-    checkGoogleDatastoreAdminV1CommonMetadata(o.common);
+    checkGoogleDatastoreAdminV1CommonMetadata(
+        o.common as api.GoogleDatastoreAdminV1CommonMetadata);
     unittest.expect(o.indexId, unittest.equals('foo'));
-    checkGoogleDatastoreAdminV1Progress(o.progressEntities);
+    checkGoogleDatastoreAdminV1Progress(
+        o.progressEntities as api.GoogleDatastoreAdminV1Progress);
   }
   buildCounterGoogleDatastoreAdminV1IndexOperationMetadata--;
 }
@@ -750,8 +764,8 @@ core.List<api.GoogleDatastoreAdminV1Index> buildUnnamed13() {
 
 void checkUnnamed13(core.List<api.GoogleDatastoreAdminV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleDatastoreAdminV1Index(o[0]);
-  checkGoogleDatastoreAdminV1Index(o[1]);
+  checkGoogleDatastoreAdminV1Index(o[0] as api.GoogleDatastoreAdminV1Index);
+  checkGoogleDatastoreAdminV1Index(o[1] as api.GoogleDatastoreAdminV1Index);
 }
 
 core.int buildCounterGoogleDatastoreAdminV1ListIndexesResponse = 0;
@@ -909,11 +923,15 @@ void checkGoogleDatastoreAdminV1beta1ExportEntitiesMetadata(
     api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata o) {
   buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesMetadata++;
   if (buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesMetadata < 3) {
-    checkGoogleDatastoreAdminV1beta1CommonMetadata(o.common);
-    checkGoogleDatastoreAdminV1beta1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1beta1CommonMetadata(
+        o.common as api.GoogleDatastoreAdminV1beta1CommonMetadata);
+    checkGoogleDatastoreAdminV1beta1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1beta1EntityFilter);
     unittest.expect(o.outputUrlPrefix, unittest.equals('foo'));
-    checkGoogleDatastoreAdminV1beta1Progress(o.progressBytes);
-    checkGoogleDatastoreAdminV1beta1Progress(o.progressEntities);
+    checkGoogleDatastoreAdminV1beta1Progress(
+        o.progressBytes as api.GoogleDatastoreAdminV1beta1Progress);
+    checkGoogleDatastoreAdminV1beta1Progress(
+        o.progressEntities as api.GoogleDatastoreAdminV1beta1Progress);
   }
   buildCounterGoogleDatastoreAdminV1beta1ExportEntitiesMetadata--;
 }
@@ -959,11 +977,15 @@ void checkGoogleDatastoreAdminV1beta1ImportEntitiesMetadata(
     api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata o) {
   buildCounterGoogleDatastoreAdminV1beta1ImportEntitiesMetadata++;
   if (buildCounterGoogleDatastoreAdminV1beta1ImportEntitiesMetadata < 3) {
-    checkGoogleDatastoreAdminV1beta1CommonMetadata(o.common);
-    checkGoogleDatastoreAdminV1beta1EntityFilter(o.entityFilter);
+    checkGoogleDatastoreAdminV1beta1CommonMetadata(
+        o.common as api.GoogleDatastoreAdminV1beta1CommonMetadata);
+    checkGoogleDatastoreAdminV1beta1EntityFilter(
+        o.entityFilter as api.GoogleDatastoreAdminV1beta1EntityFilter);
     unittest.expect(o.inputUrl, unittest.equals('foo'));
-    checkGoogleDatastoreAdminV1beta1Progress(o.progressBytes);
-    checkGoogleDatastoreAdminV1beta1Progress(o.progressEntities);
+    checkGoogleDatastoreAdminV1beta1Progress(
+        o.progressBytes as api.GoogleDatastoreAdminV1beta1Progress);
+    checkGoogleDatastoreAdminV1beta1Progress(
+        o.progressEntities as api.GoogleDatastoreAdminV1beta1Progress);
   }
   buildCounterGoogleDatastoreAdminV1beta1ImportEntitiesMetadata--;
 }
@@ -1000,8 +1022,8 @@ core.List<api.GoogleLongrunningOperation> buildUnnamed17() {
 
 void checkUnnamed17(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleLongrunningOperation(o[0]);
-  checkGoogleLongrunningOperation(o[1]);
+  checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
+  checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
 }
 
 core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
@@ -1104,7 +1126,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed18(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed19(o.response);
@@ -1121,8 +1143,8 @@ core.Map<core.String, api.GqlQueryParameter> buildUnnamed20() {
 
 void checkUnnamed20(core.Map<core.String, api.GqlQueryParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGqlQueryParameter(o['x']);
-  checkGqlQueryParameter(o['y']);
+  checkGqlQueryParameter(o['x'] as api.GqlQueryParameter);
+  checkGqlQueryParameter(o['y'] as api.GqlQueryParameter);
 }
 
 core.List<api.GqlQueryParameter> buildUnnamed21() {
@@ -1134,8 +1156,8 @@ core.List<api.GqlQueryParameter> buildUnnamed21() {
 
 void checkUnnamed21(core.List<api.GqlQueryParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGqlQueryParameter(o[0]);
-  checkGqlQueryParameter(o[1]);
+  checkGqlQueryParameter(o[0] as api.GqlQueryParameter);
+  checkGqlQueryParameter(o[1] as api.GqlQueryParameter);
 }
 
 core.int buildCounterGqlQuery = 0;
@@ -1179,7 +1201,7 @@ void checkGqlQueryParameter(api.GqlQueryParameter o) {
   buildCounterGqlQueryParameter++;
   if (buildCounterGqlQueryParameter < 3) {
     unittest.expect(o.cursor, unittest.equals('foo'));
-    checkValue(o.value);
+    checkValue(o.value as api.Value);
   }
   buildCounterGqlQueryParameter--;
 }
@@ -1193,8 +1215,8 @@ core.List<api.PathElement> buildUnnamed22() {
 
 void checkUnnamed22(core.List<api.PathElement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPathElement(o[0]);
-  checkPathElement(o[1]);
+  checkPathElement(o[0] as api.PathElement);
+  checkPathElement(o[1] as api.PathElement);
 }
 
 core.int buildCounterKey = 0;
@@ -1212,7 +1234,7 @@ api.Key buildKey() {
 void checkKey(api.Key o) {
   buildCounterKey++;
   if (buildCounterKey < 3) {
-    checkPartitionId(o.partitionId);
+    checkPartitionId(o.partitionId as api.PartitionId);
     checkUnnamed22(o.path);
   }
   buildCounterKey--;
@@ -1267,8 +1289,8 @@ core.List<api.Key> buildUnnamed23() {
 
 void checkUnnamed23(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKey(o[0]);
-  checkKey(o[1]);
+  checkKey(o[0] as api.Key);
+  checkKey(o[1] as api.Key);
 }
 
 core.int buildCounterLookupRequest = 0;
@@ -1287,7 +1309,7 @@ void checkLookupRequest(api.LookupRequest o) {
   buildCounterLookupRequest++;
   if (buildCounterLookupRequest < 3) {
     checkUnnamed23(o.keys);
-    checkReadOptions(o.readOptions);
+    checkReadOptions(o.readOptions as api.ReadOptions);
   }
   buildCounterLookupRequest--;
 }
@@ -1301,8 +1323,8 @@ core.List<api.Key> buildUnnamed24() {
 
 void checkUnnamed24(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKey(o[0]);
-  checkKey(o[1]);
+  checkKey(o[0] as api.Key);
+  checkKey(o[1] as api.Key);
 }
 
 core.List<api.EntityResult> buildUnnamed25() {
@@ -1314,8 +1336,8 @@ core.List<api.EntityResult> buildUnnamed25() {
 
 void checkUnnamed25(core.List<api.EntityResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityResult(o[0]);
-  checkEntityResult(o[1]);
+  checkEntityResult(o[0] as api.EntityResult);
+  checkEntityResult(o[1] as api.EntityResult);
 }
 
 core.List<api.EntityResult> buildUnnamed26() {
@@ -1327,8 +1349,8 @@ core.List<api.EntityResult> buildUnnamed26() {
 
 void checkUnnamed26(core.List<api.EntityResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityResult(o[0]);
-  checkEntityResult(o[1]);
+  checkEntityResult(o[0] as api.EntityResult);
+  checkEntityResult(o[1] as api.EntityResult);
 }
 
 core.int buildCounterLookupResponse = 0;
@@ -1373,10 +1395,10 @@ void checkMutation(api.Mutation o) {
   buildCounterMutation++;
   if (buildCounterMutation < 3) {
     unittest.expect(o.baseVersion, unittest.equals('foo'));
-    checkKey(o.delete);
-    checkEntity(o.insert);
-    checkEntity(o.update);
-    checkEntity(o.upsert);
+    checkKey(o.delete as api.Key);
+    checkEntity(o.insert as api.Entity);
+    checkEntity(o.update as api.Entity);
+    checkEntity(o.upsert as api.Entity);
   }
   buildCounterMutation--;
 }
@@ -1398,7 +1420,7 @@ void checkMutationResult(api.MutationResult o) {
   buildCounterMutationResult++;
   if (buildCounterMutationResult < 3) {
     unittest.expect(o.conflictDetected, unittest.isTrue);
-    checkKey(o.key);
+    checkKey(o.key as api.Key);
     unittest.expect(o.version, unittest.equals('foo'));
   }
   buildCounterMutationResult--;
@@ -1462,7 +1484,7 @@ api.Projection buildProjection() {
 void checkProjection(api.Projection o) {
   buildCounterProjection++;
   if (buildCounterProjection < 3) {
-    checkPropertyReference(o.property);
+    checkPropertyReference(o.property as api.PropertyReference);
   }
   buildCounterProjection--;
 }
@@ -1484,8 +1506,8 @@ void checkPropertyFilter(api.PropertyFilter o) {
   buildCounterPropertyFilter++;
   if (buildCounterPropertyFilter < 3) {
     unittest.expect(o.op, unittest.equals('foo'));
-    checkPropertyReference(o.property);
-    checkValue(o.value);
+    checkPropertyReference(o.property as api.PropertyReference);
+    checkValue(o.value as api.Value);
   }
   buildCounterPropertyFilter--;
 }
@@ -1506,7 +1528,7 @@ void checkPropertyOrder(api.PropertyOrder o) {
   buildCounterPropertyOrder++;
   if (buildCounterPropertyOrder < 3) {
     unittest.expect(o.direction, unittest.equals('foo'));
-    checkPropertyReference(o.property);
+    checkPropertyReference(o.property as api.PropertyReference);
   }
   buildCounterPropertyOrder--;
 }
@@ -1539,8 +1561,8 @@ core.List<api.PropertyReference> buildUnnamed27() {
 
 void checkUnnamed27(core.List<api.PropertyReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPropertyReference(o[0]);
-  checkPropertyReference(o[1]);
+  checkPropertyReference(o[0] as api.PropertyReference);
+  checkPropertyReference(o[1] as api.PropertyReference);
 }
 
 core.List<api.KindExpression> buildUnnamed28() {
@@ -1552,8 +1574,8 @@ core.List<api.KindExpression> buildUnnamed28() {
 
 void checkUnnamed28(core.List<api.KindExpression> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKindExpression(o[0]);
-  checkKindExpression(o[1]);
+  checkKindExpression(o[0] as api.KindExpression);
+  checkKindExpression(o[1] as api.KindExpression);
 }
 
 core.List<api.PropertyOrder> buildUnnamed29() {
@@ -1565,8 +1587,8 @@ core.List<api.PropertyOrder> buildUnnamed29() {
 
 void checkUnnamed29(core.List<api.PropertyOrder> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPropertyOrder(o[0]);
-  checkPropertyOrder(o[1]);
+  checkPropertyOrder(o[0] as api.PropertyOrder);
+  checkPropertyOrder(o[1] as api.PropertyOrder);
 }
 
 core.List<api.Projection> buildUnnamed30() {
@@ -1578,8 +1600,8 @@ core.List<api.Projection> buildUnnamed30() {
 
 void checkUnnamed30(core.List<api.Projection> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProjection(o[0]);
-  checkProjection(o[1]);
+  checkProjection(o[0] as api.Projection);
+  checkProjection(o[1] as api.Projection);
 }
 
 core.int buildCounterQuery = 0;
@@ -1606,7 +1628,7 @@ void checkQuery(api.Query o) {
   if (buildCounterQuery < 3) {
     checkUnnamed27(o.distinctOn);
     unittest.expect(o.endCursor, unittest.equals('foo'));
-    checkFilter(o.filter);
+    checkFilter(o.filter as api.Filter);
     checkUnnamed28(o.kind);
     unittest.expect(o.limit, unittest.equals(42));
     unittest.expect(o.offset, unittest.equals(42));
@@ -1626,8 +1648,8 @@ core.List<api.EntityResult> buildUnnamed31() {
 
 void checkUnnamed31(core.List<api.EntityResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkEntityResult(o[0]);
-  checkEntityResult(o[1]);
+  checkEntityResult(o[0] as api.EntityResult);
+  checkEntityResult(o[1] as api.EntityResult);
 }
 
 core.int buildCounterQueryResultBatch = 0;
@@ -1725,8 +1747,8 @@ core.List<api.Key> buildUnnamed32() {
 
 void checkUnnamed32(core.List<api.Key> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkKey(o[0]);
-  checkKey(o[1]);
+  checkKey(o[0] as api.Key);
+  checkKey(o[1] as api.Key);
 }
 
 core.int buildCounterReserveIdsRequest = 0;
@@ -1816,10 +1838,10 @@ api.RunQueryRequest buildRunQueryRequest() {
 void checkRunQueryRequest(api.RunQueryRequest o) {
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
-    checkGqlQuery(o.gqlQuery);
-    checkPartitionId(o.partitionId);
-    checkQuery(o.query);
-    checkReadOptions(o.readOptions);
+    checkGqlQuery(o.gqlQuery as api.GqlQuery);
+    checkPartitionId(o.partitionId as api.PartitionId);
+    checkQuery(o.query as api.Query);
+    checkReadOptions(o.readOptions as api.ReadOptions);
   }
   buildCounterRunQueryRequest--;
 }
@@ -1839,8 +1861,8 @@ api.RunQueryResponse buildRunQueryResponse() {
 void checkRunQueryResponse(api.RunQueryResponse o) {
   buildCounterRunQueryResponse++;
   if (buildCounterRunQueryResponse < 3) {
-    checkQueryResultBatch(o.batch);
-    checkQuery(o.query);
+    checkQueryResultBatch(o.batch as api.QueryResultBatch);
+    checkQuery(o.query as api.Query);
   }
   buildCounterRunQueryResponse--;
 }
@@ -1925,8 +1947,8 @@ api.TransactionOptions buildTransactionOptions() {
 void checkTransactionOptions(api.TransactionOptions o) {
   buildCounterTransactionOptions++;
   if (buildCounterTransactionOptions < 3) {
-    checkReadOnly(o.readOnly);
-    checkReadWrite(o.readWrite);
+    checkReadOnly(o.readOnly as api.ReadOnly);
+    checkReadWrite(o.readWrite as api.ReadWrite);
   }
   buildCounterTransactionOptions--;
 }
@@ -1957,15 +1979,15 @@ api.Value buildValue() {
 void checkValue(api.Value o) {
   buildCounterValue++;
   if (buildCounterValue < 3) {
-    checkArrayValue(o.arrayValue);
+    checkArrayValue(o.arrayValue as api.ArrayValue);
     unittest.expect(o.blobValue, unittest.equals('foo'));
     unittest.expect(o.booleanValue, unittest.isTrue);
     unittest.expect(o.doubleValue, unittest.equals(42.0));
-    checkEntity(o.entityValue);
+    checkEntity(o.entityValue as api.Entity);
     unittest.expect(o.excludeFromIndexes, unittest.isTrue);
-    checkLatLng(o.geoPointValue);
+    checkLatLng(o.geoPointValue as api.LatLng);
     unittest.expect(o.integerValue, unittest.equals('foo'));
-    checkKey(o.keyValue);
+    checkKey(o.keyValue as api.Key);
     unittest.expect(o.meaning, unittest.equals(42));
     unittest.expect(o.nullValue, unittest.equals('foo'));
     unittest.expect(o.stringValue, unittest.equals('foo'));
@@ -1979,7 +2001,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAllocateIdsRequest();
       var od = api.AllocateIdsRequest.fromJson(o.toJson());
-      checkAllocateIdsRequest(od);
+      checkAllocateIdsRequest(od as api.AllocateIdsRequest);
     });
   });
 
@@ -1987,7 +2009,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAllocateIdsResponse();
       var od = api.AllocateIdsResponse.fromJson(o.toJson());
-      checkAllocateIdsResponse(od);
+      checkAllocateIdsResponse(od as api.AllocateIdsResponse);
     });
   });
 
@@ -1995,7 +2017,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildArrayValue();
       var od = api.ArrayValue.fromJson(o.toJson());
-      checkArrayValue(od);
+      checkArrayValue(od as api.ArrayValue);
     });
   });
 
@@ -2003,7 +2025,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionRequest();
       var od = api.BeginTransactionRequest.fromJson(o.toJson());
-      checkBeginTransactionRequest(od);
+      checkBeginTransactionRequest(od as api.BeginTransactionRequest);
     });
   });
 
@@ -2011,7 +2033,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionResponse();
       var od = api.BeginTransactionResponse.fromJson(o.toJson());
-      checkBeginTransactionResponse(od);
+      checkBeginTransactionResponse(od as api.BeginTransactionResponse);
     });
   });
 
@@ -2019,7 +2041,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitRequest();
       var od = api.CommitRequest.fromJson(o.toJson());
-      checkCommitRequest(od);
+      checkCommitRequest(od as api.CommitRequest);
     });
   });
 
@@ -2027,7 +2049,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitResponse();
       var od = api.CommitResponse.fromJson(o.toJson());
-      checkCommitResponse(od);
+      checkCommitResponse(od as api.CommitResponse);
     });
   });
 
@@ -2035,7 +2057,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
-      checkCompositeFilter(od);
+      checkCompositeFilter(od as api.CompositeFilter);
     });
   });
 
@@ -2043,7 +2065,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2051,7 +2073,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
-      checkEntity(od);
+      checkEntity(od as api.Entity);
     });
   });
 
@@ -2059,7 +2081,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntityResult();
       var od = api.EntityResult.fromJson(o.toJson());
-      checkEntityResult(od);
+      checkEntityResult(od as api.EntityResult);
     });
   });
 
@@ -2067,7 +2089,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
-      checkFilter(od);
+      checkFilter(od as api.Filter);
     });
   });
 
@@ -2075,7 +2097,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1CommonMetadata();
       var od = api.GoogleDatastoreAdminV1CommonMetadata.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1CommonMetadata(od);
+      checkGoogleDatastoreAdminV1CommonMetadata(
+          od as api.GoogleDatastoreAdminV1CommonMetadata);
     });
   });
 
@@ -2083,7 +2106,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1EntityFilter();
       var od = api.GoogleDatastoreAdminV1EntityFilter.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1EntityFilter(od);
+      checkGoogleDatastoreAdminV1EntityFilter(
+          od as api.GoogleDatastoreAdminV1EntityFilter);
     });
   });
 
@@ -2092,7 +2116,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesMetadata.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ExportEntitiesMetadata(od);
+      checkGoogleDatastoreAdminV1ExportEntitiesMetadata(
+          od as api.GoogleDatastoreAdminV1ExportEntitiesMetadata);
     });
   });
 
@@ -2101,7 +2126,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ExportEntitiesRequest(od);
+      checkGoogleDatastoreAdminV1ExportEntitiesRequest(
+          od as api.GoogleDatastoreAdminV1ExportEntitiesRequest);
     });
   });
 
@@ -2110,7 +2136,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ExportEntitiesResponse();
       var od =
           api.GoogleDatastoreAdminV1ExportEntitiesResponse.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ExportEntitiesResponse(od);
+      checkGoogleDatastoreAdminV1ExportEntitiesResponse(
+          od as api.GoogleDatastoreAdminV1ExportEntitiesResponse);
     });
   });
 
@@ -2119,7 +2146,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesMetadata();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesMetadata.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ImportEntitiesMetadata(od);
+      checkGoogleDatastoreAdminV1ImportEntitiesMetadata(
+          od as api.GoogleDatastoreAdminV1ImportEntitiesMetadata);
     });
   });
 
@@ -2128,7 +2156,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ImportEntitiesRequest();
       var od =
           api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ImportEntitiesRequest(od);
+      checkGoogleDatastoreAdminV1ImportEntitiesRequest(
+          od as api.GoogleDatastoreAdminV1ImportEntitiesRequest);
     });
   });
 
@@ -2136,7 +2165,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1Index();
       var od = api.GoogleDatastoreAdminV1Index.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1Index(od);
+      checkGoogleDatastoreAdminV1Index(od as api.GoogleDatastoreAdminV1Index);
     });
   });
 
@@ -2145,7 +2174,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1IndexOperationMetadata();
       var od =
           api.GoogleDatastoreAdminV1IndexOperationMetadata.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1IndexOperationMetadata(od);
+      checkGoogleDatastoreAdminV1IndexOperationMetadata(
+          od as api.GoogleDatastoreAdminV1IndexOperationMetadata);
     });
   });
 
@@ -2153,7 +2183,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1IndexedProperty();
       var od = api.GoogleDatastoreAdminV1IndexedProperty.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1IndexedProperty(od);
+      checkGoogleDatastoreAdminV1IndexedProperty(
+          od as api.GoogleDatastoreAdminV1IndexedProperty);
     });
   });
 
@@ -2162,7 +2193,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1ListIndexesResponse();
       var od =
           api.GoogleDatastoreAdminV1ListIndexesResponse.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1ListIndexesResponse(od);
+      checkGoogleDatastoreAdminV1ListIndexesResponse(
+          od as api.GoogleDatastoreAdminV1ListIndexesResponse);
     });
   });
 
@@ -2170,7 +2202,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1Progress();
       var od = api.GoogleDatastoreAdminV1Progress.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1Progress(od);
+      checkGoogleDatastoreAdminV1Progress(
+          od as api.GoogleDatastoreAdminV1Progress);
     });
   });
 
@@ -2179,7 +2212,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1beta1CommonMetadata();
       var od =
           api.GoogleDatastoreAdminV1beta1CommonMetadata.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1beta1CommonMetadata(od);
+      checkGoogleDatastoreAdminV1beta1CommonMetadata(
+          od as api.GoogleDatastoreAdminV1beta1CommonMetadata);
     });
   });
 
@@ -2187,7 +2221,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1EntityFilter();
       var od = api.GoogleDatastoreAdminV1beta1EntityFilter.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1beta1EntityFilter(od);
+      checkGoogleDatastoreAdminV1beta1EntityFilter(
+          od as api.GoogleDatastoreAdminV1beta1EntityFilter);
     });
   });
 
@@ -2197,7 +2232,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata.fromJson(
           o.toJson());
-      checkGoogleDatastoreAdminV1beta1ExportEntitiesMetadata(od);
+      checkGoogleDatastoreAdminV1beta1ExportEntitiesMetadata(
+          od as api.GoogleDatastoreAdminV1beta1ExportEntitiesMetadata);
     });
   });
 
@@ -2207,7 +2243,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1beta1ExportEntitiesResponse();
       var od = api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse.fromJson(
           o.toJson());
-      checkGoogleDatastoreAdminV1beta1ExportEntitiesResponse(od);
+      checkGoogleDatastoreAdminV1beta1ExportEntitiesResponse(
+          od as api.GoogleDatastoreAdminV1beta1ExportEntitiesResponse);
     });
   });
 
@@ -2217,7 +2254,8 @@ void main() {
       var o = buildGoogleDatastoreAdminV1beta1ImportEntitiesMetadata();
       var od = api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata.fromJson(
           o.toJson());
-      checkGoogleDatastoreAdminV1beta1ImportEntitiesMetadata(od);
+      checkGoogleDatastoreAdminV1beta1ImportEntitiesMetadata(
+          od as api.GoogleDatastoreAdminV1beta1ImportEntitiesMetadata);
     });
   });
 
@@ -2225,7 +2263,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleDatastoreAdminV1beta1Progress();
       var od = api.GoogleDatastoreAdminV1beta1Progress.fromJson(o.toJson());
-      checkGoogleDatastoreAdminV1beta1Progress(od);
+      checkGoogleDatastoreAdminV1beta1Progress(
+          od as api.GoogleDatastoreAdminV1beta1Progress);
     });
   });
 
@@ -2233,7 +2272,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
-      checkGoogleLongrunningListOperationsResponse(od);
+      checkGoogleLongrunningListOperationsResponse(
+          od as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
@@ -2241,7 +2281,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
-      checkGoogleLongrunningOperation(od);
+      checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
 
@@ -2249,7 +2289,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGqlQuery();
       var od = api.GqlQuery.fromJson(o.toJson());
-      checkGqlQuery(od);
+      checkGqlQuery(od as api.GqlQuery);
     });
   });
 
@@ -2257,7 +2297,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGqlQueryParameter();
       var od = api.GqlQueryParameter.fromJson(o.toJson());
-      checkGqlQueryParameter(od);
+      checkGqlQueryParameter(od as api.GqlQueryParameter);
     });
   });
 
@@ -2265,7 +2305,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKey();
       var od = api.Key.fromJson(o.toJson());
-      checkKey(od);
+      checkKey(od as api.Key);
     });
   });
 
@@ -2273,7 +2313,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildKindExpression();
       var od = api.KindExpression.fromJson(o.toJson());
-      checkKindExpression(od);
+      checkKindExpression(od as api.KindExpression);
     });
   });
 
@@ -2281,7 +2321,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
-      checkLatLng(od);
+      checkLatLng(od as api.LatLng);
     });
   });
 
@@ -2289,7 +2329,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLookupRequest();
       var od = api.LookupRequest.fromJson(o.toJson());
-      checkLookupRequest(od);
+      checkLookupRequest(od as api.LookupRequest);
     });
   });
 
@@ -2297,7 +2337,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLookupResponse();
       var od = api.LookupResponse.fromJson(o.toJson());
-      checkLookupResponse(od);
+      checkLookupResponse(od as api.LookupResponse);
     });
   });
 
@@ -2305,7 +2345,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMutation();
       var od = api.Mutation.fromJson(o.toJson());
-      checkMutation(od);
+      checkMutation(od as api.Mutation);
     });
   });
 
@@ -2313,7 +2353,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMutationResult();
       var od = api.MutationResult.fromJson(o.toJson());
-      checkMutationResult(od);
+      checkMutationResult(od as api.MutationResult);
     });
   });
 
@@ -2321,7 +2361,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartitionId();
       var od = api.PartitionId.fromJson(o.toJson());
-      checkPartitionId(od);
+      checkPartitionId(od as api.PartitionId);
     });
   });
 
@@ -2329,7 +2369,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPathElement();
       var od = api.PathElement.fromJson(o.toJson());
-      checkPathElement(od);
+      checkPathElement(od as api.PathElement);
     });
   });
 
@@ -2337,7 +2377,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjection();
       var od = api.Projection.fromJson(o.toJson());
-      checkProjection(od);
+      checkProjection(od as api.Projection);
     });
   });
 
@@ -2345,7 +2385,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPropertyFilter();
       var od = api.PropertyFilter.fromJson(o.toJson());
-      checkPropertyFilter(od);
+      checkPropertyFilter(od as api.PropertyFilter);
     });
   });
 
@@ -2353,7 +2393,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPropertyOrder();
       var od = api.PropertyOrder.fromJson(o.toJson());
-      checkPropertyOrder(od);
+      checkPropertyOrder(od as api.PropertyOrder);
     });
   });
 
@@ -2361,7 +2401,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPropertyReference();
       var od = api.PropertyReference.fromJson(o.toJson());
-      checkPropertyReference(od);
+      checkPropertyReference(od as api.PropertyReference);
     });
   });
 
@@ -2369,7 +2409,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQuery();
       var od = api.Query.fromJson(o.toJson());
-      checkQuery(od);
+      checkQuery(od as api.Query);
     });
   });
 
@@ -2377,7 +2417,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryResultBatch();
       var od = api.QueryResultBatch.fromJson(o.toJson());
-      checkQueryResultBatch(od);
+      checkQueryResultBatch(od as api.QueryResultBatch);
     });
   });
 
@@ -2385,7 +2425,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadOnly();
       var od = api.ReadOnly.fromJson(o.toJson());
-      checkReadOnly(od);
+      checkReadOnly(od as api.ReadOnly);
     });
   });
 
@@ -2393,7 +2433,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadOptions();
       var od = api.ReadOptions.fromJson(o.toJson());
-      checkReadOptions(od);
+      checkReadOptions(od as api.ReadOptions);
     });
   });
 
@@ -2401,7 +2441,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadWrite();
       var od = api.ReadWrite.fromJson(o.toJson());
-      checkReadWrite(od);
+      checkReadWrite(od as api.ReadWrite);
     });
   });
 
@@ -2409,7 +2449,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReserveIdsRequest();
       var od = api.ReserveIdsRequest.fromJson(o.toJson());
-      checkReserveIdsRequest(od);
+      checkReserveIdsRequest(od as api.ReserveIdsRequest);
     });
   });
 
@@ -2417,7 +2457,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReserveIdsResponse();
       var od = api.ReserveIdsResponse.fromJson(o.toJson());
-      checkReserveIdsResponse(od);
+      checkReserveIdsResponse(od as api.ReserveIdsResponse);
     });
   });
 
@@ -2425,7 +2465,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRollbackRequest();
       var od = api.RollbackRequest.fromJson(o.toJson());
-      checkRollbackRequest(od);
+      checkRollbackRequest(od as api.RollbackRequest);
     });
   });
 
@@ -2433,7 +2473,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRollbackResponse();
       var od = api.RollbackResponse.fromJson(o.toJson());
-      checkRollbackResponse(od);
+      checkRollbackResponse(od as api.RollbackResponse);
     });
   });
 
@@ -2441,7 +2481,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
-      checkRunQueryRequest(od);
+      checkRunQueryRequest(od as api.RunQueryRequest);
     });
   });
 
@@ -2449,7 +2489,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunQueryResponse();
       var od = api.RunQueryResponse.fromJson(o.toJson());
-      checkRunQueryResponse(od);
+      checkRunQueryResponse(od as api.RunQueryResponse);
     });
   });
 
@@ -2457,7 +2497,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -2465,7 +2505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransactionOptions();
       var od = api.TransactionOptions.fromJson(o.toJson());
-      checkTransactionOptions(od);
+      checkTransactionOptions(od as api.TransactionOptions);
     });
   });
 
@@ -2473,7 +2513,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
-      checkValue(od);
+      checkValue(od as api.Value);
     });
   });
 
@@ -2485,8 +2525,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AllocateIdsRequest.fromJson(json);
-        checkAllocateIdsRequest(obj);
+        var obj = api.AllocateIdsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAllocateIdsRequest(obj as api.AllocateIdsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2534,7 +2575,7 @@ void main() {
       res
           .allocateIds(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAllocateIdsResponse(response);
+        checkAllocateIdsResponse(response as api.AllocateIdsResponse);
       })));
     });
 
@@ -2545,8 +2586,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BeginTransactionRequest.fromJson(json);
-        checkBeginTransactionRequest(obj);
+        var obj = api.BeginTransactionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBeginTransactionRequest(obj as api.BeginTransactionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2594,7 +2636,7 @@ void main() {
       res
           .beginTransaction(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBeginTransactionResponse(response);
+        checkBeginTransactionResponse(response as api.BeginTransactionResponse);
       })));
     });
 
@@ -2605,8 +2647,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommitRequest.fromJson(json);
-        checkCommitRequest(obj);
+        var obj = api.CommitRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitRequest(obj as api.CommitRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2654,7 +2697,7 @@ void main() {
       res
           .commit(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommitResponse(response);
+        checkCommitResponse(response as api.CommitResponse);
       })));
     });
 
@@ -2665,9 +2708,10 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(json);
-        checkGoogleDatastoreAdminV1ExportEntitiesRequest(obj);
+        var obj = api.GoogleDatastoreAdminV1ExportEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1ExportEntitiesRequest(
+            obj as api.GoogleDatastoreAdminV1ExportEntitiesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2715,7 +2759,8 @@ void main() {
       res
           .export(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -2726,9 +2771,10 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(json);
-        checkGoogleDatastoreAdminV1ImportEntitiesRequest(obj);
+        var obj = api.GoogleDatastoreAdminV1ImportEntitiesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1ImportEntitiesRequest(
+            obj as api.GoogleDatastoreAdminV1ImportEntitiesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2776,7 +2822,8 @@ void main() {
       res
           .import(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -2787,8 +2834,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LookupRequest.fromJson(json);
-        checkLookupRequest(obj);
+        var obj = api.LookupRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLookupRequest(obj as api.LookupRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2836,7 +2884,7 @@ void main() {
       res
           .lookup(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLookupResponse(response);
+        checkLookupResponse(response as api.LookupResponse);
       })));
     });
 
@@ -2847,8 +2895,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReserveIdsRequest.fromJson(json);
-        checkReserveIdsRequest(obj);
+        var obj = api.ReserveIdsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReserveIdsRequest(obj as api.ReserveIdsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2896,7 +2945,7 @@ void main() {
       res
           .reserveIds(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReserveIdsResponse(response);
+        checkReserveIdsResponse(response as api.ReserveIdsResponse);
       })));
     });
 
@@ -2907,8 +2956,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RollbackRequest.fromJson(json);
-        checkRollbackRequest(obj);
+        var obj = api.RollbackRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRollbackRequest(obj as api.RollbackRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2956,7 +3006,7 @@ void main() {
       res
           .rollback(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRollbackResponse(response);
+        checkRollbackResponse(response as api.RollbackResponse);
       })));
     });
 
@@ -2967,8 +3017,9 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RunQueryRequest.fromJson(json);
-        checkRunQueryRequest(obj);
+        var obj = api.RunQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunQueryRequest(obj as api.RunQueryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3016,7 +3067,7 @@ void main() {
       res
           .runQuery(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRunQueryResponse(response);
+        checkRunQueryResponse(response as api.RunQueryResponse);
       })));
     });
   });
@@ -3029,8 +3080,10 @@ void main() {
       var arg_projectId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleDatastoreAdminV1Index.fromJson(json);
-        checkGoogleDatastoreAdminV1Index(obj);
+        var obj = api.GoogleDatastoreAdminV1Index.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleDatastoreAdminV1Index(
+            obj as api.GoogleDatastoreAdminV1Index);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3078,7 +3131,8 @@ void main() {
       res
           .create(arg_request, arg_projectId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -3138,7 +3192,8 @@ void main() {
       res
           .delete(arg_projectId, arg_indexId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -3198,7 +3253,8 @@ void main() {
       res
           .get(arg_projectId, arg_indexId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleDatastoreAdminV1Index(response);
+        checkGoogleDatastoreAdminV1Index(
+            response as api.GoogleDatastoreAdminV1Index);
       })));
     });
 
@@ -3267,7 +3323,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleDatastoreAdminV1ListIndexesResponse(response);
+        checkGoogleDatastoreAdminV1ListIndexesResponse(
+            response as api.GoogleDatastoreAdminV1ListIndexesResponse);
       })));
     });
   });
@@ -3317,7 +3374,7 @@ void main() {
       res
           .cancel(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3365,7 +3422,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3413,7 +3470,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -3474,7 +3532,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(response);
+        checkGoogleLongrunningListOperationsResponse(
+            response as api.GoogleLongrunningListOperationsResponse);
       })));
     });
   });

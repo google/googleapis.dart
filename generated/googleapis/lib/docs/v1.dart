@@ -132,7 +132,10 @@ class DocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchUpdateDocumentResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchUpdateDocumentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a blank document using the title given in the request. Other
@@ -182,7 +185,9 @@ class DocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Document.fromJson(data));
+    return _response.then(
+      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest version of the specified document.
@@ -255,7 +260,9 @@ class DocumentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Document.fromJson(data));
+    return _response.then(
+      (data) => Document.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -301,11 +308,15 @@ class AutoText {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -345,7 +356,8 @@ class Background {
 
   Background.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = OptionalColor.fromJson(_json['color']);
+      color = OptionalColor.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -396,11 +408,13 @@ class BatchUpdateDocumentRequest {
   BatchUpdateDocumentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('requests')) {
       requests = (_json['requests'] as core.List)
-          .map<Request>((value) => Request.fromJson(value))
+          .map<Request>((value) =>
+              Request.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('writeControl')) {
-      writeControl = WriteControl.fromJson(_json['writeControl']);
+      writeControl = WriteControl.fromJson(
+          _json['writeControl'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -436,11 +450,13 @@ class BatchUpdateDocumentResponse {
     }
     if (_json.containsKey('replies')) {
       replies = (_json['replies'] as core.List)
-          .map<Response>((value) => Response.fromJson(value))
+          .map<Response>((value) =>
+              Response.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('writeControl')) {
-      writeControl = WriteControl.fromJson(_json['writeControl']);
+      writeControl = WriteControl.fromJson(
+          _json['writeControl'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -471,7 +487,8 @@ class Body {
   Body.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -506,7 +523,8 @@ class Bullet {
       nestingLevel = _json['nestingLevel'] as core.int;
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -549,8 +567,9 @@ class BulletSuggestionState {
       nestingLevelSuggested = _json['nestingLevelSuggested'] as core.bool;
     }
     if (_json.containsKey('textStyleSuggestionState')) {
-      textStyleSuggestionState =
-          TextStyleSuggestionState.fromJson(_json['textStyleSuggestionState']);
+      textStyleSuggestionState = TextStyleSuggestionState.fromJson(
+          _json['textStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -578,7 +597,8 @@ class Color {
 
   Color.fromJson(core.Map _json) {
     if (_json.containsKey('rgbColor')) {
-      rgbColor = RgbColor.fromJson(_json['rgbColor']);
+      rgbColor = RgbColor.fromJson(
+          _json['rgbColor'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -627,11 +647,15 @@ class ColumnBreak {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -678,7 +702,8 @@ class CreateFooterRequest {
 
   CreateFooterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('sectionBreakLocation')) {
-      sectionBreakLocation = Location.fromJson(_json['sectionBreakLocation']);
+      sectionBreakLocation = Location.fromJson(
+          _json['sectionBreakLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -742,11 +767,12 @@ class CreateFootnoteRequest {
 
   CreateFootnoteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -806,7 +832,8 @@ class CreateHeaderRequest {
 
   CreateHeaderRequest.fromJson(core.Map _json) {
     if (_json.containsKey('sectionBreakLocation')) {
-      sectionBreakLocation = Location.fromJson(_json['sectionBreakLocation']);
+      sectionBreakLocation = Location.fromJson(
+          _json['sectionBreakLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -864,7 +891,8 @@ class CreateNamedRangeRequest {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -965,7 +993,8 @@ class CreateParagraphBulletsRequest {
       bulletPreset = _json['bulletPreset'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1134,7 +1163,8 @@ class DeleteContentRangeRequest {
 
   DeleteContentRangeRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1242,7 +1272,8 @@ class DeleteParagraphBulletsRequest {
 
   DeleteParagraphBulletsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1290,8 +1321,8 @@ class DeleteTableColumnRequest {
 
   DeleteTableColumnRequest.fromJson(core.Map _json) {
     if (_json.containsKey('tableCellLocation')) {
-      tableCellLocation =
-          TableCellLocation.fromJson(_json['tableCellLocation']);
+      tableCellLocation = TableCellLocation.fromJson(
+          _json['tableCellLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1316,8 +1347,8 @@ class DeleteTableRowRequest {
 
   DeleteTableRowRequest.fromJson(core.Map _json) {
     if (_json.containsKey('tableCellLocation')) {
-      tableCellLocation =
-          TableCellLocation.fromJson(_json['tableCellLocation']);
+      tableCellLocation = TableCellLocation.fromJson(
+          _json['tableCellLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1448,51 +1479,68 @@ class Document {
 
   Document.fromJson(core.Map _json) {
     if (_json.containsKey('body')) {
-      body = Body.fromJson(_json['body']);
+      body =
+          Body.fromJson(_json['body'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('documentId')) {
       documentId = _json['documentId'] as core.String;
     }
     if (_json.containsKey('documentStyle')) {
-      documentStyle = DocumentStyle.fromJson(_json['documentStyle']);
+      documentStyle = DocumentStyle.fromJson(
+          _json['documentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footers')) {
       footers = commons.mapMap<core.Map, Footer>(
-          _json['footers'].cast<core.String, core.Map>(),
-          (core.Map item) => Footer.fromJson(item));
+          (_json['footers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Footer.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('footnotes')) {
       footnotes = commons.mapMap<core.Map, Footnote>(
-          _json['footnotes'].cast<core.String, core.Map>(),
-          (core.Map item) => Footnote.fromJson(item));
+          (_json['footnotes'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Footnote.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.Map, Header>(
-          _json['headers'].cast<core.String, core.Map>(),
-          (core.Map item) => Header.fromJson(item));
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Header.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('inlineObjects')) {
       inlineObjects = commons.mapMap<core.Map, InlineObject>(
-          _json['inlineObjects'].cast<core.String, core.Map>(),
-          (core.Map item) => InlineObject.fromJson(item));
+          (_json['inlineObjects'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InlineObject.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('lists')) {
       lists = commons.mapMap<core.Map, List>(
-          _json['lists'].cast<core.String, core.Map>(),
-          (core.Map item) => List.fromJson(item));
+          (_json['lists'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              List.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('namedRanges')) {
       namedRanges = commons.mapMap<core.Map, NamedRanges>(
-          _json['namedRanges'].cast<core.String, core.Map>(),
-          (core.Map item) => NamedRanges.fromJson(item));
+          (_json['namedRanges'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NamedRanges.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('namedStyles')) {
-      namedStyles = NamedStyles.fromJson(_json['namedStyles']);
+      namedStyles = NamedStyles.fromJson(
+          _json['namedStyles'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positionedObjects')) {
       positionedObjects = commons.mapMap<core.Map, PositionedObject>(
-          _json['positionedObjects'].cast<core.String, core.Map>(),
-          (core.Map item) => PositionedObject.fromJson(item));
+          (_json['positionedObjects'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => PositionedObject.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('revisionId')) {
       revisionId = _json['revisionId'] as core.String;
@@ -1500,16 +1548,20 @@ class Document {
     if (_json.containsKey('suggestedDocumentStyleChanges')) {
       suggestedDocumentStyleChanges =
           commons.mapMap<core.Map, SuggestedDocumentStyle>(
-              _json['suggestedDocumentStyleChanges']
+              (_json['suggestedDocumentStyleChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedDocumentStyle.fromJson(item));
+              (core.Map item) => SuggestedDocumentStyle.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('suggestedNamedStylesChanges')) {
       suggestedNamedStylesChanges =
           commons.mapMap<core.Map, SuggestedNamedStyles>(
-              _json['suggestedNamedStylesChanges']
+              (_json['suggestedNamedStylesChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedNamedStyles.fromJson(item));
+              (core.Map item) => SuggestedNamedStyles.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('suggestionsViewMode')) {
       suggestionsViewMode = _json['suggestionsViewMode'] as core.String;
@@ -1682,7 +1734,8 @@ class DocumentStyle {
 
   DocumentStyle.fromJson(core.Map _json) {
     if (_json.containsKey('background')) {
-      background = Background.fromJson(_json['background']);
+      background = Background.fromJson(
+          _json['background'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultFooterId')) {
       defaultFooterId = _json['defaultFooterId'] as core.String;
@@ -1703,28 +1756,35 @@ class DocumentStyle {
       firstPageHeaderId = _json['firstPageHeaderId'] as core.String;
     }
     if (_json.containsKey('marginBottom')) {
-      marginBottom = Dimension.fromJson(_json['marginBottom']);
+      marginBottom = Dimension.fromJson(
+          _json['marginBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginFooter')) {
-      marginFooter = Dimension.fromJson(_json['marginFooter']);
+      marginFooter = Dimension.fromJson(
+          _json['marginFooter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginHeader')) {
-      marginHeader = Dimension.fromJson(_json['marginHeader']);
+      marginHeader = Dimension.fromJson(
+          _json['marginHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginLeft')) {
-      marginLeft = Dimension.fromJson(_json['marginLeft']);
+      marginLeft = Dimension.fromJson(
+          _json['marginLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginRight')) {
-      marginRight = Dimension.fromJson(_json['marginRight']);
+      marginRight = Dimension.fromJson(
+          _json['marginRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginTop')) {
-      marginTop = Dimension.fromJson(_json['marginTop']);
+      marginTop = Dimension.fromJson(
+          _json['marginTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageNumberStart')) {
       pageNumberStart = _json['pageNumberStart'] as core.int;
     }
     if (_json.containsKey('pageSize')) {
-      pageSize = Size.fromJson(_json['pageSize']);
+      pageSize = Size.fromJson(
+          _json['pageSize'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('useCustomHeaderFooterMargins')) {
       useCustomHeaderFooterMargins =
@@ -1864,7 +1924,8 @@ class DocumentStyleSuggestionState {
   DocumentStyleSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundSuggestionState')) {
       backgroundSuggestionState = BackgroundSuggestionState.fromJson(
-          _json['backgroundSuggestionState']);
+          _json['backgroundSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('defaultFooterIdSuggested')) {
       defaultFooterIdSuggested = _json['defaultFooterIdSuggested'] as core.bool;
@@ -1910,8 +1971,9 @@ class DocumentStyleSuggestionState {
       pageNumberStartSuggested = _json['pageNumberStartSuggested'] as core.bool;
     }
     if (_json.containsKey('pageSizeSuggestionState')) {
-      pageSizeSuggestionState =
-          SizeSuggestionState.fromJson(_json['pageSizeSuggestionState']);
+      pageSizeSuggestionState = SizeSuggestionState.fromJson(
+          _json['pageSizeSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('useCustomHeaderFooterMarginsSuggested')) {
       useCustomHeaderFooterMarginsSuggested =
@@ -2067,33 +2129,41 @@ class EmbeddedObject {
     }
     if (_json.containsKey('embeddedDrawingProperties')) {
       embeddedDrawingProperties = EmbeddedDrawingProperties.fromJson(
-          _json['embeddedDrawingProperties']);
+          _json['embeddedDrawingProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('embeddedObjectBorder')) {
-      embeddedObjectBorder =
-          EmbeddedObjectBorder.fromJson(_json['embeddedObjectBorder']);
+      embeddedObjectBorder = EmbeddedObjectBorder.fromJson(
+          _json['embeddedObjectBorder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageProperties')) {
-      imageProperties = ImageProperties.fromJson(_json['imageProperties']);
+      imageProperties = ImageProperties.fromJson(
+          _json['imageProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linkedContentReference')) {
-      linkedContentReference =
-          LinkedContentReference.fromJson(_json['linkedContentReference']);
+      linkedContentReference = LinkedContentReference.fromJson(
+          _json['linkedContentReference']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginBottom')) {
-      marginBottom = Dimension.fromJson(_json['marginBottom']);
+      marginBottom = Dimension.fromJson(
+          _json['marginBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginLeft')) {
-      marginLeft = Dimension.fromJson(_json['marginLeft']);
+      marginLeft = Dimension.fromJson(
+          _json['marginLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginRight')) {
-      marginRight = Dimension.fromJson(_json['marginRight']);
+      marginRight = Dimension.fromJson(
+          _json['marginRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginTop')) {
-      marginTop = Dimension.fromJson(_json['marginTop']);
+      marginTop = Dimension.fromJson(
+          _json['marginTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('size')) {
-      size = Size.fromJson(_json['size']);
+      size =
+          Size.fromJson(_json['size'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -2171,7 +2241,8 @@ class EmbeddedObjectBorder {
 
   EmbeddedObjectBorder.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = OptionalColor.fromJson(_json['color']);
+      color = OptionalColor.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dashStyle')) {
       dashStyle = _json['dashStyle'] as core.String;
@@ -2180,7 +2251,8 @@ class EmbeddedObjectBorder {
       propertyState = _json['propertyState'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2305,21 +2377,25 @@ class EmbeddedObjectSuggestionState {
     if (_json.containsKey('embeddedDrawingPropertiesSuggestionState')) {
       embeddedDrawingPropertiesSuggestionState =
           EmbeddedDrawingPropertiesSuggestionState.fromJson(
-              _json['embeddedDrawingPropertiesSuggestionState']);
+              _json['embeddedDrawingPropertiesSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('embeddedObjectBorderSuggestionState')) {
       embeddedObjectBorderSuggestionState =
           EmbeddedObjectBorderSuggestionState.fromJson(
-              _json['embeddedObjectBorderSuggestionState']);
+              _json['embeddedObjectBorderSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imagePropertiesSuggestionState')) {
       imagePropertiesSuggestionState = ImagePropertiesSuggestionState.fromJson(
-          _json['imagePropertiesSuggestionState']);
+          _json['imagePropertiesSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linkedContentReferenceSuggestionState')) {
       linkedContentReferenceSuggestionState =
           LinkedContentReferenceSuggestionState.fromJson(
-              _json['linkedContentReferenceSuggestionState']);
+              _json['linkedContentReferenceSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginBottomSuggested')) {
       marginBottomSuggested = _json['marginBottomSuggested'] as core.bool;
@@ -2334,8 +2410,8 @@ class EmbeddedObjectSuggestionState {
       marginTopSuggested = _json['marginTopSuggested'] as core.bool;
     }
     if (_json.containsKey('sizeSuggestionState')) {
-      sizeSuggestionState =
-          SizeSuggestionState.fromJson(_json['sizeSuggestionState']);
+      sizeSuggestionState = SizeSuggestionState.fromJson(
+          _json['sizeSuggestionState'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('titleSuggested')) {
       titleSuggested = _json['titleSuggested'] as core.bool;
@@ -2461,7 +2537,8 @@ class Footer {
   Footer.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('footerId')) {
@@ -2495,7 +2572,8 @@ class Footnote {
   Footnote.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('footnoteId')) {
@@ -2563,11 +2641,15 @@ class FootnoteReference {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2612,7 +2694,8 @@ class Header {
   Header.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('headerId')) {
@@ -2668,11 +2751,15 @@ class HorizontalRule {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2743,7 +2830,8 @@ class ImageProperties {
       contrast = (_json['contrast'] as core.num).toDouble();
     }
     if (_json.containsKey('cropProperties')) {
-      cropProperties = CropProperties.fromJson(_json['cropProperties']);
+      cropProperties = CropProperties.fromJson(
+          _json['cropProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceUri')) {
       sourceUri = _json['sourceUri'] as core.String;
@@ -2823,7 +2911,8 @@ class ImagePropertiesSuggestionState {
     }
     if (_json.containsKey('cropPropertiesSuggestionState')) {
       cropPropertiesSuggestionState = CropPropertiesSuggestionState.fromJson(
-          _json['cropPropertiesSuggestionState']);
+          _json['cropPropertiesSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceUriSuggested')) {
       sourceUriSuggested = _json['sourceUriSuggested'] as core.bool;
@@ -2887,8 +2976,9 @@ class InlineObject {
 
   InlineObject.fromJson(core.Map _json) {
     if (_json.containsKey('inlineObjectProperties')) {
-      inlineObjectProperties =
-          InlineObjectProperties.fromJson(_json['inlineObjectProperties']);
+      inlineObjectProperties = InlineObjectProperties.fromJson(
+          _json['inlineObjectProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectId')) {
       objectId = _json['objectId'] as core.String;
@@ -2901,10 +2991,11 @@ class InlineObject {
     if (_json.containsKey('suggestedInlineObjectPropertiesChanges')) {
       suggestedInlineObjectPropertiesChanges =
           commons.mapMap<core.Map, SuggestedInlineObjectProperties>(
-              _json['suggestedInlineObjectPropertiesChanges']
+              (_json['suggestedInlineObjectPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) =>
-                  SuggestedInlineObjectProperties.fromJson(item));
+              (core.Map item) => SuggestedInlineObjectProperties.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('suggestedInsertionId')) {
       suggestedInsertionId = _json['suggestedInsertionId'] as core.String;
@@ -2978,11 +3069,15 @@ class InlineObjectElement {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3019,7 +3114,8 @@ class InlineObjectProperties {
 
   InlineObjectProperties.fromJson(core.Map _json) {
     if (_json.containsKey('embeddedObject')) {
-      embeddedObject = EmbeddedObject.fromJson(_json['embeddedObject']);
+      embeddedObject = EmbeddedObject.fromJson(
+          _json['embeddedObject'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3045,7 +3141,8 @@ class InlineObjectPropertiesSuggestionState {
   InlineObjectPropertiesSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('embeddedObjectSuggestionState')) {
       embeddedObjectSuggestionState = EmbeddedObjectSuggestionState.fromJson(
-          _json['embeddedObjectSuggestionState']);
+          _json['embeddedObjectSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3094,14 +3191,16 @@ class InsertInlineImageRequest {
 
   InsertInlineImageRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectSize')) {
-      objectSize = Size.fromJson(_json['objectSize']);
+      objectSize = Size.fromJson(
+          _json['objectSize'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uri')) {
       uri = _json['uri'] as core.String;
@@ -3189,11 +3288,12 @@ class InsertPageBreakRequest {
 
   InsertPageBreakRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3239,11 +3339,12 @@ class InsertSectionBreakRequest {
 
   InsertSectionBreakRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionType')) {
       sectionType = _json['sectionType'] as core.String;
@@ -3284,8 +3385,8 @@ class InsertTableColumnRequest {
       insertRight = _json['insertRight'] as core.bool;
     }
     if (_json.containsKey('tableCellLocation')) {
-      tableCellLocation =
-          TableCellLocation.fromJson(_json['tableCellLocation']);
+      tableCellLocation = TableCellLocation.fromJson(
+          _json['tableCellLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3330,11 +3431,12 @@ class InsertTableRequest {
       columns = _json['columns'] as core.int;
     }
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = _json['rows'] as core.int;
@@ -3378,8 +3480,8 @@ class InsertTableRowRequest {
       insertBelow = _json['insertBelow'] as core.bool;
     }
     if (_json.containsKey('tableCellLocation')) {
-      tableCellLocation =
-          TableCellLocation.fromJson(_json['tableCellLocation']);
+      tableCellLocation = TableCellLocation.fromJson(
+          _json['tableCellLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3424,11 +3526,12 @@ class InsertTextRequest {
 
   InsertTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('endOfSegmentLocation')) {
-      endOfSegmentLocation =
-          EndOfSegmentLocation.fromJson(_json['endOfSegmentLocation']);
+      endOfSegmentLocation = EndOfSegmentLocation.fromJson(
+          _json['endOfSegmentLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
-      location = Location.fromJson(_json['location']);
+      location = Location.fromJson(
+          _json['location'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -3499,8 +3602,8 @@ class LinkedContentReference {
 
   LinkedContentReference.fromJson(core.Map _json) {
     if (_json.containsKey('sheetsChartReference')) {
-      sheetsChartReference =
-          SheetsChartReference.fromJson(_json['sheetsChartReference']);
+      sheetsChartReference = SheetsChartReference.fromJson(
+          _json['sheetsChartReference'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3527,7 +3630,8 @@ class LinkedContentReferenceSuggestionState {
     if (_json.containsKey('sheetsChartReferenceSuggestionState')) {
       sheetsChartReferenceSuggestionState =
           SheetsChartReferenceSuggestionState.fromJson(
-              _json['sheetsChartReferenceSuggestionState']);
+              _json['sheetsChartReferenceSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3563,7 +3667,8 @@ class List {
 
   List.fromJson(core.Map _json) {
     if (_json.containsKey('listProperties')) {
-      listProperties = ListProperties.fromJson(_json['listProperties']);
+      listProperties = ListProperties.fromJson(
+          _json['listProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
       suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
@@ -3576,9 +3681,11 @@ class List {
     if (_json.containsKey('suggestedListPropertiesChanges')) {
       suggestedListPropertiesChanges =
           commons.mapMap<core.Map, SuggestedListProperties>(
-              _json['suggestedListPropertiesChanges']
+              (_json['suggestedListPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedListProperties.fromJson(item));
+              (core.Map item) => SuggestedListProperties.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -3618,7 +3725,8 @@ class ListProperties {
   ListProperties.fromJson(core.Map _json) {
     if (_json.containsKey('nestingLevels')) {
       nestingLevels = (_json['nestingLevels'] as core.List)
-          .map<NestingLevel>((value) => NestingLevel.fromJson(value))
+          .map<NestingLevel>((value) => NestingLevel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3649,8 +3757,9 @@ class ListPropertiesSuggestionState {
     if (_json.containsKey('nestingLevelsSuggestionStates')) {
       nestingLevelsSuggestionStates =
           (_json['nestingLevelsSuggestionStates'] as core.List)
-              .map<NestingLevelSuggestionState>(
-                  (value) => NestingLevelSuggestionState.fromJson(value))
+              .map<NestingLevelSuggestionState>((value) =>
+                  NestingLevelSuggestionState.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -3713,7 +3822,8 @@ class MergeTableCellsRequest {
 
   MergeTableCellsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('tableRange')) {
-      tableRange = TableRange.fromJson(_json['tableRange']);
+      tableRange = TableRange.fromJson(
+          _json['tableRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3756,7 +3866,8 @@ class NamedRange {
     }
     if (_json.containsKey('ranges')) {
       ranges = (_json['ranges'] as core.List)
-          .map<Range>((value) => Range.fromJson(value))
+          .map<Range>((value) =>
+              Range.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3792,7 +3903,8 @@ class NamedRanges {
     }
     if (_json.containsKey('namedRanges')) {
       namedRanges = (_json['namedRanges'] as core.List)
-          .map<NamedRange>((value) => NamedRange.fromJson(value))
+          .map<NamedRange>((value) =>
+              NamedRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3841,10 +3953,12 @@ class NamedStyle {
       namedStyleType = _json['namedStyleType'] as core.String;
     }
     if (_json.containsKey('paragraphStyle')) {
-      paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
+      paragraphStyle = ParagraphStyle.fromJson(
+          _json['paragraphStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3897,11 +4011,13 @@ class NamedStyleSuggestionState {
     }
     if (_json.containsKey('paragraphStyleSuggestionState')) {
       paragraphStyleSuggestionState = ParagraphStyleSuggestionState.fromJson(
-          _json['paragraphStyleSuggestionState']);
+          _json['paragraphStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textStyleSuggestionState')) {
-      textStyleSuggestionState =
-          TextStyleSuggestionState.fromJson(_json['textStyleSuggestionState']);
+      textStyleSuggestionState = TextStyleSuggestionState.fromJson(
+          _json['textStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3933,7 +4049,8 @@ class NamedStyles {
   NamedStyles.fromJson(core.Map _json) {
     if (_json.containsKey('styles')) {
       styles = (_json['styles'] as core.List)
-          .map<NamedStyle>((value) => NamedStyle.fromJson(value))
+          .map<NamedStyle>((value) =>
+              NamedStyle.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3960,8 +4077,9 @@ class NamedStylesSuggestionState {
   NamedStylesSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('stylesSuggestionStates')) {
       stylesSuggestionStates = (_json['stylesSuggestionStates'] as core.List)
-          .map<NamedStyleSuggestionState>(
-              (value) => NamedStyleSuggestionState.fromJson(value))
+          .map<NamedStyleSuggestionState>((value) =>
+              NamedStyleSuggestionState.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4074,16 +4192,19 @@ class NestingLevel {
       glyphType = _json['glyphType'] as core.String;
     }
     if (_json.containsKey('indentFirstLine')) {
-      indentFirstLine = Dimension.fromJson(_json['indentFirstLine']);
+      indentFirstLine = Dimension.fromJson(
+          _json['indentFirstLine'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indentStart')) {
-      indentStart = Dimension.fromJson(_json['indentStart']);
+      indentStart = Dimension.fromJson(
+          _json['indentStart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startNumber')) {
       startNumber = _json['startNumber'] as core.int;
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4171,8 +4292,9 @@ class NestingLevelSuggestionState {
       startNumberSuggested = _json['startNumberSuggested'] as core.bool;
     }
     if (_json.containsKey('textStyleSuggestionState')) {
-      textStyleSuggestionState =
-          TextStyleSuggestionState.fromJson(_json['textStyleSuggestionState']);
+      textStyleSuggestionState = TextStyleSuggestionState.fromJson(
+          _json['textStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4240,7 +4362,8 @@ class OptionalColor {
 
   OptionalColor.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = Color.fromJson(_json['color']);
+      color =
+          Color.fromJson(_json['color'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4289,11 +4412,15 @@ class PageBreak {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4349,15 +4476,18 @@ class Paragraph {
 
   Paragraph.fromJson(core.Map _json) {
     if (_json.containsKey('bullet')) {
-      bullet = Bullet.fromJson(_json['bullet']);
+      bullet = Bullet.fromJson(
+          _json['bullet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('elements')) {
       elements = (_json['elements'] as core.List)
-          .map<ParagraphElement>((value) => ParagraphElement.fromJson(value))
+          .map<ParagraphElement>((value) => ParagraphElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('paragraphStyle')) {
-      paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
+      paragraphStyle = ParagraphStyle.fromJson(
+          _json['paragraphStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positionedObjectIds')) {
       positionedObjectIds = (_json['positionedObjectIds'] as core.List)
@@ -4366,20 +4496,28 @@ class Paragraph {
     }
     if (_json.containsKey('suggestedBulletChanges')) {
       suggestedBulletChanges = commons.mapMap<core.Map, SuggestedBullet>(
-          _json['suggestedBulletChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedBullet.fromJson(item));
+          (_json['suggestedBulletChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedBullet.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('suggestedParagraphStyleChanges')) {
       suggestedParagraphStyleChanges =
           commons.mapMap<core.Map, SuggestedParagraphStyle>(
-              _json['suggestedParagraphStyleChanges']
+              (_json['suggestedParagraphStyleChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedParagraphStyle.fromJson(item));
+              (core.Map item) => SuggestedParagraphStyle.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('suggestedPositionedObjectIds')) {
       suggestedPositionedObjectIds = commons.mapMap<core.Map, ObjectReferences>(
-          _json['suggestedPositionedObjectIds'].cast<core.String, core.Map>(),
-          (core.Map item) => ObjectReferences.fromJson(item));
+          (_json['suggestedPositionedObjectIds']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ObjectReferences.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -4444,16 +4582,19 @@ class ParagraphBorder {
 
   ParagraphBorder.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = OptionalColor.fromJson(_json['color']);
+      color = OptionalColor.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dashStyle')) {
       dashStyle = _json['dashStyle'] as core.String;
     }
     if (_json.containsKey('padding')) {
-      padding = Dimension.fromJson(_json['padding']);
+      padding = Dimension.fromJson(
+          _json['padding'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4513,36 +4654,42 @@ class ParagraphElement {
 
   ParagraphElement.fromJson(core.Map _json) {
     if (_json.containsKey('autoText')) {
-      autoText = AutoText.fromJson(_json['autoText']);
+      autoText = AutoText.fromJson(
+          _json['autoText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('columnBreak')) {
-      columnBreak = ColumnBreak.fromJson(_json['columnBreak']);
+      columnBreak = ColumnBreak.fromJson(
+          _json['columnBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endIndex')) {
       endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('equation')) {
-      equation = Equation.fromJson(_json['equation']);
+      equation = Equation.fromJson(
+          _json['equation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footnoteReference')) {
-      footnoteReference =
-          FootnoteReference.fromJson(_json['footnoteReference']);
+      footnoteReference = FootnoteReference.fromJson(
+          _json['footnoteReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('horizontalRule')) {
-      horizontalRule = HorizontalRule.fromJson(_json['horizontalRule']);
+      horizontalRule = HorizontalRule.fromJson(
+          _json['horizontalRule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inlineObjectElement')) {
-      inlineObjectElement =
-          InlineObjectElement.fromJson(_json['inlineObjectElement']);
+      inlineObjectElement = InlineObjectElement.fromJson(
+          _json['inlineObjectElement'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageBreak')) {
-      pageBreak = PageBreak.fromJson(_json['pageBreak']);
+      pageBreak = PageBreak.fromJson(
+          _json['pageBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('textRun')) {
-      textRun = TextRun.fromJson(_json['textRun']);
+      textRun = TextRun.fromJson(
+          _json['textRun'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4733,19 +4880,24 @@ class ParagraphStyle {
       avoidWidowAndOrphan = _json['avoidWidowAndOrphan'] as core.bool;
     }
     if (_json.containsKey('borderBetween')) {
-      borderBetween = ParagraphBorder.fromJson(_json['borderBetween']);
+      borderBetween = ParagraphBorder.fromJson(
+          _json['borderBetween'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderBottom')) {
-      borderBottom = ParagraphBorder.fromJson(_json['borderBottom']);
+      borderBottom = ParagraphBorder.fromJson(
+          _json['borderBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderLeft')) {
-      borderLeft = ParagraphBorder.fromJson(_json['borderLeft']);
+      borderLeft = ParagraphBorder.fromJson(
+          _json['borderLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderRight')) {
-      borderRight = ParagraphBorder.fromJson(_json['borderRight']);
+      borderRight = ParagraphBorder.fromJson(
+          _json['borderRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderTop')) {
-      borderTop = ParagraphBorder.fromJson(_json['borderTop']);
+      borderTop = ParagraphBorder.fromJson(
+          _json['borderTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('direction')) {
       direction = _json['direction'] as core.String;
@@ -4754,13 +4906,16 @@ class ParagraphStyle {
       headingId = _json['headingId'] as core.String;
     }
     if (_json.containsKey('indentEnd')) {
-      indentEnd = Dimension.fromJson(_json['indentEnd']);
+      indentEnd = Dimension.fromJson(
+          _json['indentEnd'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indentFirstLine')) {
-      indentFirstLine = Dimension.fromJson(_json['indentFirstLine']);
+      indentFirstLine = Dimension.fromJson(
+          _json['indentFirstLine'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indentStart')) {
-      indentStart = Dimension.fromJson(_json['indentStart']);
+      indentStart = Dimension.fromJson(
+          _json['indentStart'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('keepLinesTogether')) {
       keepLinesTogether = _json['keepLinesTogether'] as core.bool;
@@ -4775,20 +4930,24 @@ class ParagraphStyle {
       namedStyleType = _json['namedStyleType'] as core.String;
     }
     if (_json.containsKey('shading')) {
-      shading = Shading.fromJson(_json['shading']);
+      shading = Shading.fromJson(
+          _json['shading'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spaceAbove')) {
-      spaceAbove = Dimension.fromJson(_json['spaceAbove']);
+      spaceAbove = Dimension.fromJson(
+          _json['spaceAbove'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spaceBelow')) {
-      spaceBelow = Dimension.fromJson(_json['spaceBelow']);
+      spaceBelow = Dimension.fromJson(
+          _json['spaceBelow'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spacingMode')) {
       spacingMode = _json['spacingMode'] as core.String;
     }
     if (_json.containsKey('tabStops')) {
       tabStops = (_json['tabStops'] as core.List)
-          .map<TabStop>((value) => TabStop.fromJson(value))
+          .map<TabStop>((value) =>
+              TabStop.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4981,8 +5140,9 @@ class ParagraphStyleSuggestionState {
       namedStyleTypeSuggested = _json['namedStyleTypeSuggested'] as core.bool;
     }
     if (_json.containsKey('shadingSuggestionState')) {
-      shadingSuggestionState =
-          ShadingSuggestionState.fromJson(_json['shadingSuggestionState']);
+      shadingSuggestionState = ShadingSuggestionState.fromJson(
+          _json['shadingSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spaceAboveSuggested')) {
       spaceAboveSuggested = _json['spaceAboveSuggested'] as core.bool;
@@ -5092,7 +5252,8 @@ class PositionedObject {
     }
     if (_json.containsKey('positionedObjectProperties')) {
       positionedObjectProperties = PositionedObjectProperties.fromJson(
-          _json['positionedObjectProperties']);
+          _json['positionedObjectProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
       suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
@@ -5105,10 +5266,11 @@ class PositionedObject {
     if (_json.containsKey('suggestedPositionedObjectPropertiesChanges')) {
       suggestedPositionedObjectPropertiesChanges =
           commons.mapMap<core.Map, SuggestedPositionedObjectProperties>(
-              _json['suggestedPositionedObjectPropertiesChanges']
+              (_json['suggestedPositionedObjectPropertiesChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) =>
-                  SuggestedPositionedObjectProperties.fromJson(item));
+              (core.Map item) => SuggestedPositionedObjectProperties.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -5172,10 +5334,12 @@ class PositionedObjectPositioning {
       layout = _json['layout'] as core.String;
     }
     if (_json.containsKey('leftOffset')) {
-      leftOffset = Dimension.fromJson(_json['leftOffset']);
+      leftOffset = Dimension.fromJson(
+          _json['leftOffset'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('topOffset')) {
-      topOffset = Dimension.fromJson(_json['topOffset']);
+      topOffset = Dimension.fromJson(
+          _json['topOffset'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5249,10 +5413,12 @@ class PositionedObjectProperties {
 
   PositionedObjectProperties.fromJson(core.Map _json) {
     if (_json.containsKey('embeddedObject')) {
-      embeddedObject = EmbeddedObject.fromJson(_json['embeddedObject']);
+      embeddedObject = EmbeddedObject.fromJson(
+          _json['embeddedObject'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positioning')) {
-      positioning = PositionedObjectPositioning.fromJson(_json['positioning']);
+      positioning = PositionedObjectPositioning.fromJson(
+          _json['positioning'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5285,12 +5451,14 @@ class PositionedObjectPropertiesSuggestionState {
   PositionedObjectPropertiesSuggestionState.fromJson(core.Map _json) {
     if (_json.containsKey('embeddedObjectSuggestionState')) {
       embeddedObjectSuggestionState = EmbeddedObjectSuggestionState.fromJson(
-          _json['embeddedObjectSuggestionState']);
+          _json['embeddedObjectSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positioningSuggestionState')) {
       positioningSuggestionState =
           PositionedObjectPositioningSuggestionState.fromJson(
-              _json['positioningSuggestionState']);
+              _json['positioningSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5365,7 +5533,8 @@ class ReplaceAllTextRequest {
 
   ReplaceAllTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('containsText')) {
-      containsText = SubstringMatchCriteria.fromJson(_json['containsText']);
+      containsText = SubstringMatchCriteria.fromJson(
+          _json['containsText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceText')) {
       replaceText = _json['replaceText'] as core.String;
@@ -5611,121 +5780,137 @@ class Request {
 
   Request.fromJson(core.Map _json) {
     if (_json.containsKey('createFooter')) {
-      createFooter = CreateFooterRequest.fromJson(_json['createFooter']);
+      createFooter = CreateFooterRequest.fromJson(
+          _json['createFooter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createFootnote')) {
-      createFootnote = CreateFootnoteRequest.fromJson(_json['createFootnote']);
+      createFootnote = CreateFootnoteRequest.fromJson(
+          _json['createFootnote'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createHeader')) {
-      createHeader = CreateHeaderRequest.fromJson(_json['createHeader']);
+      createHeader = CreateHeaderRequest.fromJson(
+          _json['createHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createNamedRange')) {
-      createNamedRange =
-          CreateNamedRangeRequest.fromJson(_json['createNamedRange']);
+      createNamedRange = CreateNamedRangeRequest.fromJson(
+          _json['createNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createParagraphBullets')) {
       createParagraphBullets = CreateParagraphBulletsRequest.fromJson(
-          _json['createParagraphBullets']);
+          _json['createParagraphBullets']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteContentRange')) {
-      deleteContentRange =
-          DeleteContentRangeRequest.fromJson(_json['deleteContentRange']);
+      deleteContentRange = DeleteContentRangeRequest.fromJson(
+          _json['deleteContentRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteFooter')) {
-      deleteFooter = DeleteFooterRequest.fromJson(_json['deleteFooter']);
+      deleteFooter = DeleteFooterRequest.fromJson(
+          _json['deleteFooter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteHeader')) {
-      deleteHeader = DeleteHeaderRequest.fromJson(_json['deleteHeader']);
+      deleteHeader = DeleteHeaderRequest.fromJson(
+          _json['deleteHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteNamedRange')) {
-      deleteNamedRange =
-          DeleteNamedRangeRequest.fromJson(_json['deleteNamedRange']);
+      deleteNamedRange = DeleteNamedRangeRequest.fromJson(
+          _json['deleteNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteParagraphBullets')) {
       deleteParagraphBullets = DeleteParagraphBulletsRequest.fromJson(
-          _json['deleteParagraphBullets']);
+          _json['deleteParagraphBullets']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deletePositionedObject')) {
       deletePositionedObject = DeletePositionedObjectRequest.fromJson(
-          _json['deletePositionedObject']);
+          _json['deletePositionedObject']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteTableColumn')) {
-      deleteTableColumn =
-          DeleteTableColumnRequest.fromJson(_json['deleteTableColumn']);
+      deleteTableColumn = DeleteTableColumnRequest.fromJson(
+          _json['deleteTableColumn'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteTableRow')) {
-      deleteTableRow = DeleteTableRowRequest.fromJson(_json['deleteTableRow']);
+      deleteTableRow = DeleteTableRowRequest.fromJson(
+          _json['deleteTableRow'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertInlineImage')) {
-      insertInlineImage =
-          InsertInlineImageRequest.fromJson(_json['insertInlineImage']);
+      insertInlineImage = InsertInlineImageRequest.fromJson(
+          _json['insertInlineImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertPageBreak')) {
-      insertPageBreak =
-          InsertPageBreakRequest.fromJson(_json['insertPageBreak']);
+      insertPageBreak = InsertPageBreakRequest.fromJson(
+          _json['insertPageBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertSectionBreak')) {
-      insertSectionBreak =
-          InsertSectionBreakRequest.fromJson(_json['insertSectionBreak']);
+      insertSectionBreak = InsertSectionBreakRequest.fromJson(
+          _json['insertSectionBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertTable')) {
-      insertTable = InsertTableRequest.fromJson(_json['insertTable']);
+      insertTable = InsertTableRequest.fromJson(
+          _json['insertTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertTableColumn')) {
-      insertTableColumn =
-          InsertTableColumnRequest.fromJson(_json['insertTableColumn']);
+      insertTableColumn = InsertTableColumnRequest.fromJson(
+          _json['insertTableColumn'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertTableRow')) {
-      insertTableRow = InsertTableRowRequest.fromJson(_json['insertTableRow']);
+      insertTableRow = InsertTableRowRequest.fromJson(
+          _json['insertTableRow'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertText')) {
-      insertText = InsertTextRequest.fromJson(_json['insertText']);
+      insertText = InsertTextRequest.fromJson(
+          _json['insertText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mergeTableCells')) {
-      mergeTableCells =
-          MergeTableCellsRequest.fromJson(_json['mergeTableCells']);
+      mergeTableCells = MergeTableCellsRequest.fromJson(
+          _json['mergeTableCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceAllText')) {
-      replaceAllText = ReplaceAllTextRequest.fromJson(_json['replaceAllText']);
+      replaceAllText = ReplaceAllTextRequest.fromJson(
+          _json['replaceAllText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceImage')) {
-      replaceImage = ReplaceImageRequest.fromJson(_json['replaceImage']);
+      replaceImage = ReplaceImageRequest.fromJson(
+          _json['replaceImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceNamedRangeContent')) {
       replaceNamedRangeContent = ReplaceNamedRangeContentRequest.fromJson(
-          _json['replaceNamedRangeContent']);
+          _json['replaceNamedRangeContent']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unmergeTableCells')) {
-      unmergeTableCells =
-          UnmergeTableCellsRequest.fromJson(_json['unmergeTableCells']);
+      unmergeTableCells = UnmergeTableCellsRequest.fromJson(
+          _json['unmergeTableCells'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateDocumentStyle')) {
-      updateDocumentStyle =
-          UpdateDocumentStyleRequest.fromJson(_json['updateDocumentStyle']);
+      updateDocumentStyle = UpdateDocumentStyleRequest.fromJson(
+          _json['updateDocumentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateParagraphStyle')) {
-      updateParagraphStyle =
-          UpdateParagraphStyleRequest.fromJson(_json['updateParagraphStyle']);
+      updateParagraphStyle = UpdateParagraphStyleRequest.fromJson(
+          _json['updateParagraphStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateSectionStyle')) {
-      updateSectionStyle =
-          UpdateSectionStyleRequest.fromJson(_json['updateSectionStyle']);
+      updateSectionStyle = UpdateSectionStyleRequest.fromJson(
+          _json['updateSectionStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTableCellStyle')) {
-      updateTableCellStyle =
-          UpdateTableCellStyleRequest.fromJson(_json['updateTableCellStyle']);
+      updateTableCellStyle = UpdateTableCellStyleRequest.fromJson(
+          _json['updateTableCellStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTableColumnProperties')) {
       updateTableColumnProperties = UpdateTableColumnPropertiesRequest.fromJson(
-          _json['updateTableColumnProperties']);
+          _json['updateTableColumnProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTableRowStyle')) {
-      updateTableRowStyle =
-          UpdateTableRowStyleRequest.fromJson(_json['updateTableRowStyle']);
+      updateTableRowStyle = UpdateTableRowStyleRequest.fromJson(
+          _json['updateTableRowStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTextStyle')) {
-      updateTextStyle =
-          UpdateTextStyleRequest.fromJson(_json['updateTextStyle']);
+      updateTextStyle = UpdateTextStyleRequest.fromJson(
+          _json['updateTextStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5859,28 +6044,33 @@ class Response {
 
   Response.fromJson(core.Map _json) {
     if (_json.containsKey('createFooter')) {
-      createFooter = CreateFooterResponse.fromJson(_json['createFooter']);
+      createFooter = CreateFooterResponse.fromJson(
+          _json['createFooter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createFootnote')) {
-      createFootnote = CreateFootnoteResponse.fromJson(_json['createFootnote']);
+      createFootnote = CreateFootnoteResponse.fromJson(
+          _json['createFootnote'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createHeader')) {
-      createHeader = CreateHeaderResponse.fromJson(_json['createHeader']);
+      createHeader = CreateHeaderResponse.fromJson(
+          _json['createHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createNamedRange')) {
-      createNamedRange =
-          CreateNamedRangeResponse.fromJson(_json['createNamedRange']);
+      createNamedRange = CreateNamedRangeResponse.fromJson(
+          _json['createNamedRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertInlineImage')) {
-      insertInlineImage =
-          InsertInlineImageResponse.fromJson(_json['insertInlineImage']);
+      insertInlineImage = InsertInlineImageResponse.fromJson(
+          _json['insertInlineImage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertInlineSheetsChart')) {
       insertInlineSheetsChart = InsertInlineSheetsChartResponse.fromJson(
-          _json['insertInlineSheetsChart']);
+          _json['insertInlineSheetsChart']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replaceAllText')) {
-      replaceAllText = ReplaceAllTextResponse.fromJson(_json['replaceAllText']);
+      replaceAllText = ReplaceAllTextResponse.fromJson(
+          _json['replaceAllText'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5972,7 +6162,8 @@ class SectionBreak {
 
   SectionBreak.fromJson(core.Map _json) {
     if (_json.containsKey('sectionStyle')) {
-      sectionStyle = SectionStyle.fromJson(_json['sectionStyle']);
+      sectionStyle = SectionStyle.fromJson(
+          _json['sectionStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestedDeletionIds')) {
       suggestedDeletionIds = (_json['suggestedDeletionIds'] as core.List)
@@ -6013,10 +6204,12 @@ class SectionColumnProperties {
 
   SectionColumnProperties.fromJson(core.Map _json) {
     if (_json.containsKey('paddingEnd')) {
-      paddingEnd = Dimension.fromJson(_json['paddingEnd']);
+      paddingEnd = Dimension.fromJson(
+          _json['paddingEnd'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6178,8 +6371,9 @@ class SectionStyle {
   SectionStyle.fromJson(core.Map _json) {
     if (_json.containsKey('columnProperties')) {
       columnProperties = (_json['columnProperties'] as core.List)
-          .map<SectionColumnProperties>(
-              (value) => SectionColumnProperties.fromJson(value))
+          .map<SectionColumnProperties>((value) =>
+              SectionColumnProperties.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('columnSeparatorStyle')) {
@@ -6207,22 +6401,28 @@ class SectionStyle {
       firstPageHeaderId = _json['firstPageHeaderId'] as core.String;
     }
     if (_json.containsKey('marginBottom')) {
-      marginBottom = Dimension.fromJson(_json['marginBottom']);
+      marginBottom = Dimension.fromJson(
+          _json['marginBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginFooter')) {
-      marginFooter = Dimension.fromJson(_json['marginFooter']);
+      marginFooter = Dimension.fromJson(
+          _json['marginFooter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginHeader')) {
-      marginHeader = Dimension.fromJson(_json['marginHeader']);
+      marginHeader = Dimension.fromJson(
+          _json['marginHeader'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginLeft')) {
-      marginLeft = Dimension.fromJson(_json['marginLeft']);
+      marginLeft = Dimension.fromJson(
+          _json['marginLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginRight')) {
-      marginRight = Dimension.fromJson(_json['marginRight']);
+      marginRight = Dimension.fromJson(
+          _json['marginRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marginTop')) {
-      marginTop = Dimension.fromJson(_json['marginTop']);
+      marginTop = Dimension.fromJson(
+          _json['marginTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageNumberStart')) {
       pageNumberStart = _json['pageNumberStart'] as core.int;
@@ -6305,7 +6505,8 @@ class Shading {
 
   Shading.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = OptionalColor.fromJson(_json['backgroundColor']);
+      backgroundColor = OptionalColor.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6419,10 +6620,12 @@ class Size {
 
   Size.fromJson(core.Map _json) {
     if (_json.containsKey('height')) {
-      height = Dimension.fromJson(_json['height']);
+      height = Dimension.fromJson(
+          _json['height'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6501,19 +6704,23 @@ class StructuralElement {
       endIndex = _json['endIndex'] as core.int;
     }
     if (_json.containsKey('paragraph')) {
-      paragraph = Paragraph.fromJson(_json['paragraph']);
+      paragraph = Paragraph.fromJson(
+          _json['paragraph'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionBreak')) {
-      sectionBreak = SectionBreak.fromJson(_json['sectionBreak']);
+      sectionBreak = SectionBreak.fromJson(
+          _json['sectionBreak'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startIndex')) {
       startIndex = _json['startIndex'] as core.int;
     }
     if (_json.containsKey('table')) {
-      table = Table.fromJson(_json['table']);
+      table =
+          Table.fromJson(_json['table'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableOfContents')) {
-      tableOfContents = TableOfContents.fromJson(_json['tableOfContents']);
+      tableOfContents = TableOfContents.fromJson(
+          _json['tableOfContents'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6588,11 +6795,13 @@ class SuggestedBullet {
 
   SuggestedBullet.fromJson(core.Map _json) {
     if (_json.containsKey('bullet')) {
-      bullet = Bullet.fromJson(_json['bullet']);
+      bullet = Bullet.fromJson(
+          _json['bullet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('bulletSuggestionState')) {
-      bulletSuggestionState =
-          BulletSuggestionState.fromJson(_json['bulletSuggestionState']);
+      bulletSuggestionState = BulletSuggestionState.fromJson(
+          _json['bulletSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6623,11 +6832,13 @@ class SuggestedDocumentStyle {
 
   SuggestedDocumentStyle.fromJson(core.Map _json) {
     if (_json.containsKey('documentStyle')) {
-      documentStyle = DocumentStyle.fromJson(_json['documentStyle']);
+      documentStyle = DocumentStyle.fromJson(
+          _json['documentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('documentStyleSuggestionState')) {
       documentStyleSuggestionState = DocumentStyleSuggestionState.fromJson(
-          _json['documentStyleSuggestionState']);
+          _json['documentStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6660,13 +6871,15 @@ class SuggestedInlineObjectProperties {
 
   SuggestedInlineObjectProperties.fromJson(core.Map _json) {
     if (_json.containsKey('inlineObjectProperties')) {
-      inlineObjectProperties =
-          InlineObjectProperties.fromJson(_json['inlineObjectProperties']);
+      inlineObjectProperties = InlineObjectProperties.fromJson(
+          _json['inlineObjectProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inlineObjectPropertiesSuggestionState')) {
       inlineObjectPropertiesSuggestionState =
           InlineObjectPropertiesSuggestionState.fromJson(
-              _json['inlineObjectPropertiesSuggestionState']);
+              _json['inlineObjectPropertiesSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6698,11 +6911,13 @@ class SuggestedListProperties {
 
   SuggestedListProperties.fromJson(core.Map _json) {
     if (_json.containsKey('listProperties')) {
-      listProperties = ListProperties.fromJson(_json['listProperties']);
+      listProperties = ListProperties.fromJson(
+          _json['listProperties'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('listPropertiesSuggestionState')) {
       listPropertiesSuggestionState = ListPropertiesSuggestionState.fromJson(
-          _json['listPropertiesSuggestionState']);
+          _json['listPropertiesSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6734,11 +6949,13 @@ class SuggestedNamedStyles {
 
   SuggestedNamedStyles.fromJson(core.Map _json) {
     if (_json.containsKey('namedStyles')) {
-      namedStyles = NamedStyles.fromJson(_json['namedStyles']);
+      namedStyles = NamedStyles.fromJson(
+          _json['namedStyles'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('namedStylesSuggestionState')) {
       namedStylesSuggestionState = NamedStylesSuggestionState.fromJson(
-          _json['namedStylesSuggestionState']);
+          _json['namedStylesSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6769,11 +6986,13 @@ class SuggestedParagraphStyle {
 
   SuggestedParagraphStyle.fromJson(core.Map _json) {
     if (_json.containsKey('paragraphStyle')) {
-      paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
+      paragraphStyle = ParagraphStyle.fromJson(
+          _json['paragraphStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paragraphStyleSuggestionState')) {
       paragraphStyleSuggestionState = ParagraphStyleSuggestionState.fromJson(
-          _json['paragraphStyleSuggestionState']);
+          _json['paragraphStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6808,12 +7027,14 @@ class SuggestedPositionedObjectProperties {
   SuggestedPositionedObjectProperties.fromJson(core.Map _json) {
     if (_json.containsKey('positionedObjectProperties')) {
       positionedObjectProperties = PositionedObjectProperties.fromJson(
-          _json['positionedObjectProperties']);
+          _json['positionedObjectProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positionedObjectPropertiesSuggestionState')) {
       positionedObjectPropertiesSuggestionState =
           PositionedObjectPropertiesSuggestionState.fromJson(
-              _json['positionedObjectPropertiesSuggestionState']);
+              _json['positionedObjectPropertiesSuggestionState']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6845,11 +7066,13 @@ class SuggestedTableCellStyle {
 
   SuggestedTableCellStyle.fromJson(core.Map _json) {
     if (_json.containsKey('tableCellStyle')) {
-      tableCellStyle = TableCellStyle.fromJson(_json['tableCellStyle']);
+      tableCellStyle = TableCellStyle.fromJson(
+          _json['tableCellStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableCellStyleSuggestionState')) {
       tableCellStyleSuggestionState = TableCellStyleSuggestionState.fromJson(
-          _json['tableCellStyleSuggestionState']);
+          _json['tableCellStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6881,11 +7104,13 @@ class SuggestedTableRowStyle {
 
   SuggestedTableRowStyle.fromJson(core.Map _json) {
     if (_json.containsKey('tableRowStyle')) {
-      tableRowStyle = TableRowStyle.fromJson(_json['tableRowStyle']);
+      tableRowStyle = TableRowStyle.fromJson(
+          _json['tableRowStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableRowStyleSuggestionState')) {
       tableRowStyleSuggestionState = TableRowStyleSuggestionState.fromJson(
-          _json['tableRowStyleSuggestionState']);
+          _json['tableRowStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6917,11 +7142,13 @@ class SuggestedTextStyle {
 
   SuggestedTextStyle.fromJson(core.Map _json) {
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textStyleSuggestionState')) {
-      textStyleSuggestionState =
-          TextStyleSuggestionState.fromJson(_json['textStyleSuggestionState']);
+      textStyleSuggestionState = TextStyleSuggestionState.fromJson(
+          _json['textStyleSuggestionState']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6959,7 +7186,8 @@ class TabStop {
       alignment = _json['alignment'] as core.String;
     }
     if (_json.containsKey('offset')) {
-      offset = Dimension.fromJson(_json['offset']);
+      offset = Dimension.fromJson(
+          _json['offset'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7020,11 +7248,13 @@ class Table {
     }
     if (_json.containsKey('tableRows')) {
       tableRows = (_json['tableRows'] as core.List)
-          .map<TableRow>((value) => TableRow.fromJson(value))
+          .map<TableRow>((value) =>
+              TableRow.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tableStyle')) {
-      tableStyle = TableStyle.fromJson(_json['tableStyle']);
+      tableStyle = TableStyle.fromJson(
+          _json['tableStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7083,7 +7313,8 @@ class TableCell {
   TableCell.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('endIndex')) {
@@ -7105,12 +7336,15 @@ class TableCell {
     if (_json.containsKey('suggestedTableCellStyleChanges')) {
       suggestedTableCellStyleChanges =
           commons.mapMap<core.Map, SuggestedTableCellStyle>(
-              _json['suggestedTableCellStyleChanges']
+              (_json['suggestedTableCellStyleChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedTableCellStyle.fromJson(item));
+              (core.Map item) => SuggestedTableCellStyle.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('tableCellStyle')) {
-      tableCellStyle = TableCellStyle.fromJson(_json['tableCellStyle']);
+      tableCellStyle = TableCellStyle.fromJson(
+          _json['tableCellStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7168,13 +7402,15 @@ class TableCellBorder {
 
   TableCellBorder.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = OptionalColor.fromJson(_json['color']);
+      color = OptionalColor.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dashStyle')) {
       dashStyle = _json['dashStyle'] as core.String;
     }
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7216,7 +7452,8 @@ class TableCellLocation {
       rowIndex = _json['rowIndex'] as core.int;
     }
     if (_json.containsKey('tableStartLocation')) {
-      tableStartLocation = Location.fromJson(_json['tableStartLocation']);
+      tableStartLocation = Location.fromJson(
+          _json['tableStartLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7290,19 +7527,24 @@ class TableCellStyle {
 
   TableCellStyle.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = OptionalColor.fromJson(_json['backgroundColor']);
+      backgroundColor = OptionalColor.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderBottom')) {
-      borderBottom = TableCellBorder.fromJson(_json['borderBottom']);
+      borderBottom = TableCellBorder.fromJson(
+          _json['borderBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderLeft')) {
-      borderLeft = TableCellBorder.fromJson(_json['borderLeft']);
+      borderLeft = TableCellBorder.fromJson(
+          _json['borderLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderRight')) {
-      borderRight = TableCellBorder.fromJson(_json['borderRight']);
+      borderRight = TableCellBorder.fromJson(
+          _json['borderRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('borderTop')) {
-      borderTop = TableCellBorder.fromJson(_json['borderTop']);
+      borderTop = TableCellBorder.fromJson(
+          _json['borderTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('columnSpan')) {
       columnSpan = _json['columnSpan'] as core.int;
@@ -7311,16 +7553,20 @@ class TableCellStyle {
       contentAlignment = _json['contentAlignment'] as core.String;
     }
     if (_json.containsKey('paddingBottom')) {
-      paddingBottom = Dimension.fromJson(_json['paddingBottom']);
+      paddingBottom = Dimension.fromJson(
+          _json['paddingBottom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paddingLeft')) {
-      paddingLeft = Dimension.fromJson(_json['paddingLeft']);
+      paddingLeft = Dimension.fromJson(
+          _json['paddingLeft'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paddingRight')) {
-      paddingRight = Dimension.fromJson(_json['paddingRight']);
+      paddingRight = Dimension.fromJson(
+          _json['paddingRight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paddingTop')) {
-      paddingTop = Dimension.fromJson(_json['paddingTop']);
+      paddingTop = Dimension.fromJson(
+          _json['paddingTop'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rowSpan')) {
       rowSpan = _json['rowSpan'] as core.int;
@@ -7514,7 +7760,8 @@ class TableColumnProperties {
 
   TableColumnProperties.fromJson(core.Map _json) {
     if (_json.containsKey('width')) {
-      width = Dimension.fromJson(_json['width']);
+      width = Dimension.fromJson(
+          _json['width'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('widthType')) {
       widthType = _json['widthType'] as core.String;
@@ -7552,7 +7799,8 @@ class TableOfContents {
   TableOfContents.fromJson(core.Map _json) {
     if (_json.containsKey('content')) {
       content = (_json['content'] as core.List)
-          .map<StructuralElement>((value) => StructuralElement.fromJson(value))
+          .map<StructuralElement>((value) => StructuralElement.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('suggestedDeletionIds')) {
@@ -7609,8 +7857,8 @@ class TableRange {
       rowSpan = _json['rowSpan'] as core.int;
     }
     if (_json.containsKey('tableCellLocation')) {
-      tableCellLocation =
-          TableCellLocation.fromJson(_json['tableCellLocation']);
+      tableCellLocation = TableCellLocation.fromJson(
+          _json['tableCellLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7679,17 +7927,21 @@ class TableRow {
     if (_json.containsKey('suggestedTableRowStyleChanges')) {
       suggestedTableRowStyleChanges =
           commons.mapMap<core.Map, SuggestedTableRowStyle>(
-              _json['suggestedTableRowStyleChanges']
+              (_json['suggestedTableRowStyleChanges']
+                      as core.Map<core.String, core.dynamic>)
                   .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedTableRowStyle.fromJson(item));
+              (core.Map item) => SuggestedTableRowStyle.fromJson(
+                  item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('tableCells')) {
       tableCells = (_json['tableCells'] as core.List)
-          .map<TableCell>((value) => TableCell.fromJson(value))
+          .map<TableCell>((value) =>
+              TableCell.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tableRowStyle')) {
-      tableRowStyle = TableRowStyle.fromJson(_json['tableRowStyle']);
+      tableRowStyle = TableRowStyle.fromJson(
+          _json['tableRowStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7734,7 +7986,8 @@ class TableRowStyle {
 
   TableRowStyle.fromJson(core.Map _json) {
     if (_json.containsKey('minRowHeight')) {
-      minRowHeight = Dimension.fromJson(_json['minRowHeight']);
+      minRowHeight = Dimension.fromJson(
+          _json['minRowHeight'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7783,8 +8036,8 @@ class TableStyle {
   TableStyle.fromJson(core.Map _json) {
     if (_json.containsKey('tableColumnProperties')) {
       tableColumnProperties = (_json['tableColumnProperties'] as core.List)
-          .map<TableColumnProperties>(
-              (value) => TableColumnProperties.fromJson(value))
+          .map<TableColumnProperties>((value) => TableColumnProperties.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7839,11 +8092,15 @@ class TextRun {
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
       suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          _json['suggestedTextStyleChanges'].cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(item));
+          (_json['suggestedTextStyleChanges']
+                  as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => SuggestedTextStyle.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7950,7 +8207,8 @@ class TextStyle {
 
   TextStyle.fromJson(core.Map _json) {
     if (_json.containsKey('backgroundColor')) {
-      backgroundColor = OptionalColor.fromJson(_json['backgroundColor']);
+      backgroundColor = OptionalColor.fromJson(
+          _json['backgroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('baselineOffset')) {
       baselineOffset = _json['baselineOffset'] as core.String;
@@ -7959,16 +8217,19 @@ class TextStyle {
       bold = _json['bold'] as core.bool;
     }
     if (_json.containsKey('fontSize')) {
-      fontSize = Dimension.fromJson(_json['fontSize']);
+      fontSize = Dimension.fromJson(
+          _json['fontSize'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('foregroundColor')) {
-      foregroundColor = OptionalColor.fromJson(_json['foregroundColor']);
+      foregroundColor = OptionalColor.fromJson(
+          _json['foregroundColor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('italic')) {
       italic = _json['italic'] as core.bool;
     }
     if (_json.containsKey('link')) {
-      link = Link.fromJson(_json['link']);
+      link =
+          Link.fromJson(_json['link'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('smallCaps')) {
       smallCaps = _json['smallCaps'] as core.bool;
@@ -7980,8 +8241,8 @@ class TextStyle {
       underline = _json['underline'] as core.bool;
     }
     if (_json.containsKey('weightedFontFamily')) {
-      weightedFontFamily =
-          WeightedFontFamily.fromJson(_json['weightedFontFamily']);
+      weightedFontFamily = WeightedFontFamily.fromJson(
+          _json['weightedFontFamily'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8154,7 +8415,8 @@ class UnmergeTableCellsRequest {
 
   UnmergeTableCellsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('tableRange')) {
-      tableRange = TableRange.fromJson(_json['tableRange']);
+      tableRange = TableRange.fromJson(
+          _json['tableRange'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8184,7 +8446,8 @@ class UpdateDocumentStyleRequest {
 
   UpdateDocumentStyleRequest.fromJson(core.Map _json) {
     if (_json.containsKey('documentStyle')) {
-      documentStyle = DocumentStyle.fromJson(_json['documentStyle']);
+      documentStyle = DocumentStyle.fromJson(
+          _json['documentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = _json['fields'] as core.String;
@@ -8227,10 +8490,12 @@ class UpdateParagraphStyleRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('paragraphStyle')) {
-      paragraphStyle = ParagraphStyle.fromJson(_json['paragraphStyle']);
+      paragraphStyle = ParagraphStyle.fromJson(
+          _json['paragraphStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8273,10 +8538,12 @@ class UpdateSectionStyleRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sectionStyle')) {
-      sectionStyle = SectionStyle.fromJson(_json['sectionStyle']);
+      sectionStyle = SectionStyle.fromJson(
+          _json['sectionStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8329,13 +8596,16 @@ class UpdateTableCellStyleRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('tableCellStyle')) {
-      tableCellStyle = TableCellStyle.fromJson(_json['tableCellStyle']);
+      tableCellStyle = TableCellStyle.fromJson(
+          _json['tableCellStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableRange')) {
-      tableRange = TableRange.fromJson(_json['tableRange']);
+      tableRange = TableRange.fromJson(
+          _json['tableRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableStartLocation')) {
-      tableStartLocation = Location.fromJson(_json['tableStartLocation']);
+      tableStartLocation = Location.fromJson(
+          _json['tableStartLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8389,11 +8659,13 @@ class UpdateTableColumnPropertiesRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('tableColumnProperties')) {
-      tableColumnProperties =
-          TableColumnProperties.fromJson(_json['tableColumnProperties']);
+      tableColumnProperties = TableColumnProperties.fromJson(
+          _json['tableColumnProperties']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableStartLocation')) {
-      tableStartLocation = Location.fromJson(_json['tableStartLocation']);
+      tableStartLocation = Location.fromJson(
+          _json['tableStartLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8445,10 +8717,12 @@ class UpdateTableRowStyleRequest {
           .toList();
     }
     if (_json.containsKey('tableRowStyle')) {
-      tableRowStyle = TableRowStyle.fromJson(_json['tableRowStyle']);
+      tableRowStyle = TableRowStyle.fromJson(
+          _json['tableRowStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tableStartLocation')) {
-      tableStartLocation = Location.fromJson(_json['tableStartLocation']);
+      tableStartLocation = Location.fromJson(
+          _json['tableStartLocation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8499,10 +8773,12 @@ class UpdateTextStyleRequest {
       fields = _json['fields'] as core.String;
     }
     if (_json.containsKey('range')) {
-      range = Range.fromJson(_json['range']);
+      range =
+          Range.fromJson(_json['range'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textStyle')) {
-      textStyle = TextStyle.fromJson(_json['textStyle']);
+      textStyle = TextStyle.fromJson(
+          _json['textStyle'] as core.Map<core.String, core.dynamic>);
     }
   }
 

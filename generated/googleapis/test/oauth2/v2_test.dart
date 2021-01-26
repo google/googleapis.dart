@@ -149,7 +149,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTokeninfo();
       var od = api.Tokeninfo.fromJson(o.toJson());
-      checkTokeninfo(od);
+      checkTokeninfo(od as api.Tokeninfo);
     });
   });
 
@@ -157,7 +157,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserinfo();
       var od = api.Userinfo.fromJson(o.toJson());
-      checkUserinfo(od);
+      checkUserinfo(od as api.Userinfo);
     });
   });
 
@@ -213,7 +213,7 @@ void main() {
               idToken: arg_idToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTokeninfo(response);
+        checkTokeninfo(response as api.Tokeninfo);
       })));
     });
   });
@@ -259,7 +259,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfo(response);
+        checkUserinfo(response as api.Userinfo);
       })));
     });
   });
@@ -305,7 +305,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.get($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkUserinfo(response);
+        checkUserinfo(response as api.Userinfo);
       })));
     });
   });

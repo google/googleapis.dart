@@ -163,8 +163,8 @@ core.List<api.AmpUrl> buildUnnamed3237() {
 
 void checkUnnamed3237(core.List<api.AmpUrl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAmpUrl(o[0]);
-  checkAmpUrl(o[1]);
+  checkAmpUrl(o[0] as api.AmpUrl);
+  checkAmpUrl(o[1] as api.AmpUrl);
 }
 
 core.List<api.AmpUrlError> buildUnnamed3238() {
@@ -176,8 +176,8 @@ core.List<api.AmpUrlError> buildUnnamed3238() {
 
 void checkUnnamed3238(core.List<api.AmpUrlError> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAmpUrlError(o[0]);
-  checkAmpUrlError(o[1]);
+  checkAmpUrlError(o[0] as api.AmpUrlError);
+  checkAmpUrlError(o[1] as api.AmpUrlError);
 }
 
 core.int buildCounterBatchGetAmpUrlsResponse = 0;
@@ -206,7 +206,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAmpUrl();
       var od = api.AmpUrl.fromJson(o.toJson());
-      checkAmpUrl(od);
+      checkAmpUrl(od as api.AmpUrl);
     });
   });
 
@@ -214,7 +214,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAmpUrlError();
       var od = api.AmpUrlError.fromJson(o.toJson());
-      checkAmpUrlError(od);
+      checkAmpUrlError(od as api.AmpUrlError);
     });
   });
 
@@ -222,7 +222,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetAmpUrlsRequest();
       var od = api.BatchGetAmpUrlsRequest.fromJson(o.toJson());
-      checkBatchGetAmpUrlsRequest(od);
+      checkBatchGetAmpUrlsRequest(od as api.BatchGetAmpUrlsRequest);
     });
   });
 
@@ -230,7 +230,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetAmpUrlsResponse();
       var od = api.BatchGetAmpUrlsResponse.fromJson(o.toJson());
-      checkBatchGetAmpUrlsResponse(od);
+      checkBatchGetAmpUrlsResponse(od as api.BatchGetAmpUrlsResponse);
     });
   });
 
@@ -241,8 +241,9 @@ void main() {
       var arg_request = buildBatchGetAmpUrlsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchGetAmpUrlsRequest.fromJson(json);
-        checkBatchGetAmpUrlsRequest(obj);
+        var obj = api.BatchGetAmpUrlsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchGetAmpUrlsRequest(obj as api.BatchGetAmpUrlsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -281,7 +282,7 @@ void main() {
       res
           .batchGet(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetAmpUrlsResponse(response);
+        checkBatchGetAmpUrlsResponse(response as api.BatchGetAmpUrlsResponse);
       })));
     });
   });

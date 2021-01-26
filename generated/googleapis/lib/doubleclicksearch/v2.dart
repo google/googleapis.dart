@@ -186,7 +186,10 @@ class ConversionResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ConversionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a batch of new conversions into DoubleClick Search.
@@ -234,7 +237,10 @@ class ConversionResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ConversionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a batch of conversions in DoubleClick Search.
@@ -282,7 +288,10 @@ class ConversionResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ConversionList.fromJson(data));
+    return _response.then(
+      (data) =>
+          ConversionList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the availabilities of a batch of floodlight activities in
@@ -331,7 +340,10 @@ class ConversionResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UpdateAvailabilityResponse.fromJson(data));
+    return _response.then(
+      (data) => UpdateAvailabilityResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -385,7 +397,9 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Report.fromJson(data));
+    return _response.then(
+      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Polls for the status of a report request.
@@ -434,7 +448,9 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Report.fromJson(data));
+    return _response.then(
+      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Downloads a report file encoded in UTF-8.
@@ -498,7 +514,9 @@ class ReportsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => null);
+      return _response.then(
+        (data) => null,
+      );
     } else {
       return _response;
     }
@@ -549,7 +567,9 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Report.fromJson(data));
+    return _response.then(
+      (data) => Report.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -613,7 +633,10 @@ class SavedColumnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SavedColumnList.fromJson(data));
+    return _response.then(
+      (data) =>
+          SavedColumnList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -859,12 +882,14 @@ class Conversion {
     }
     if (_json.containsKey('customDimension')) {
       customDimension = (_json['customDimension'] as core.List)
-          .map<CustomDimension>((value) => CustomDimension.fromJson(value))
+          .map<CustomDimension>((value) => CustomDimension.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('customMetric')) {
       customMetric = (_json['customMetric'] as core.List)
-          .map<CustomMetric>((value) => CustomMetric.fromJson(value))
+          .map<CustomMetric>((value) => CustomMetric.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deviceType')) {
@@ -1041,7 +1066,8 @@ class ConversionList {
   ConversionList.fromJson(core.Map _json) {
     if (_json.containsKey('conversion')) {
       conversion = (_json['conversion'] as core.List)
-          .map<Conversion>((value) => Conversion.fromJson(value))
+          .map<Conversion>((value) =>
+              Conversion.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1197,7 +1223,8 @@ class Report {
   Report.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<ReportFiles>((value) => ReportFiles.fromJson(value))
+          .map<ReportFiles>((value) => ReportFiles.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -1210,14 +1237,16 @@ class Report {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('request')) {
-      request = ReportRequest.fromJson(_json['request']);
+      request = ReportRequest.fromJson(
+          _json['request'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rowCount')) {
       rowCount = _json['rowCount'] as core.int;
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<ReportRow>((value) => ReportRow.fromJson(value))
+          .map<ReportRow>((value) =>
+              ReportRow.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statisticsCurrencyCode')) {
@@ -1407,7 +1436,8 @@ class ReportRequestFilters {
 
   ReportRequestFilters.fromJson(core.Map _json) {
     if (_json.containsKey('column')) {
-      column = ReportApiColumnSpec.fromJson(_json['column']);
+      column = ReportApiColumnSpec.fromJson(
+          _json['column'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('operator')) {
       operator = _json['operator'] as core.String;
@@ -1446,7 +1476,8 @@ class ReportRequestOrderBy {
 
   ReportRequestOrderBy.fromJson(core.Map _json) {
     if (_json.containsKey('column')) {
-      column = ReportApiColumnSpec.fromJson(_json['column']);
+      column = ReportApiColumnSpec.fromJson(
+          _json['column'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortOrder')) {
       sortOrder = _json['sortOrder'] as core.String;
@@ -1674,8 +1705,8 @@ class ReportRequest {
   ReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('columns')) {
       columns = (_json['columns'] as core.List)
-          .map<ReportApiColumnSpec>(
-              (value) => ReportApiColumnSpec.fromJson(value))
+          .map<ReportApiColumnSpec>((value) => ReportApiColumnSpec.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('downloadFormat')) {
@@ -1683,8 +1714,8 @@ class ReportRequest {
     }
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<ReportRequestFilters>(
-              (value) => ReportRequestFilters.fromJson(value))
+          .map<ReportRequestFilters>((value) => ReportRequestFilters.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('includeDeletedEntities')) {
@@ -1698,12 +1729,13 @@ class ReportRequest {
     }
     if (_json.containsKey('orderBy')) {
       orderBy = (_json['orderBy'] as core.List)
-          .map<ReportRequestOrderBy>(
-              (value) => ReportRequestOrderBy.fromJson(value))
+          .map<ReportRequestOrderBy>((value) => ReportRequestOrderBy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('reportScope')) {
-      reportScope = ReportRequestReportScope.fromJson(_json['reportScope']);
+      reportScope = ReportRequestReportScope.fromJson(
+          _json['reportScope'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reportType')) {
       reportType = _json['reportType'] as core.String;
@@ -1718,7 +1750,8 @@ class ReportRequest {
       statisticsCurrency = _json['statisticsCurrency'] as core.String;
     }
     if (_json.containsKey('timeRange')) {
-      timeRange = ReportRequestTimeRange.fromJson(_json['timeRange']);
+      timeRange = ReportRequestTimeRange.fromJson(
+          _json['timeRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('verifySingleTimeZone')) {
       verifySingleTimeZone = _json['verifySingleTimeZone'] as core.bool;
@@ -1869,7 +1902,8 @@ class SavedColumnList {
   SavedColumnList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SavedColumn>((value) => SavedColumn.fromJson(value))
+          .map<SavedColumn>((value) => SavedColumn.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1899,7 +1933,8 @@ class UpdateAvailabilityRequest {
   UpdateAvailabilityRequest.fromJson(core.Map _json) {
     if (_json.containsKey('availabilities')) {
       availabilities = (_json['availabilities'] as core.List)
-          .map<Availability>((value) => Availability.fromJson(value))
+          .map<Availability>((value) => Availability.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1924,7 +1959,8 @@ class UpdateAvailabilityResponse {
   UpdateAvailabilityResponse.fromJson(core.Map _json) {
     if (_json.containsKey('availabilities')) {
       availabilities = (_json['availabilities'] as core.List)
-          .map<Availability>((value) => Availability.fromJson(value))
+          .map<Availability>((value) => Availability.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

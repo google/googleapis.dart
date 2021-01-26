@@ -104,8 +104,8 @@ core.List<api.AuditLogConfig> buildUnnamed3597() {
 
 void checkUnnamed3597(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -192,7 +192,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed3599(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -266,14 +266,14 @@ void checkConnectivityTest(api.ConnectivityTest o) {
   if (buildCounterConnectivityTest < 3) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkEndpoint(o.destination);
+    checkEndpoint(o.destination as api.Endpoint);
     unittest.expect(o.displayName, unittest.equals('foo'));
     checkUnnamed3600(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.protocol, unittest.equals('foo'));
-    checkReachabilityDetails(o.reachabilityDetails);
+    checkReachabilityDetails(o.reachabilityDetails as api.ReachabilityDetails);
     checkUnnamed3601(o.relatedProjects);
-    checkEndpoint(o.source);
+    checkEndpoint(o.source as api.Endpoint);
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
   buildCounterConnectivityTest--;
@@ -587,8 +587,8 @@ core.List<api.ConnectivityTest> buildUnnamed3605() {
 
 void checkUnnamed3605(core.List<api.ConnectivityTest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkConnectivityTest(o[0]);
-  checkConnectivityTest(o[1]);
+  checkConnectivityTest(o[0] as api.ConnectivityTest);
+  checkConnectivityTest(o[1] as api.ConnectivityTest);
 }
 
 core.List<core.String> buildUnnamed3606() {
@@ -636,8 +636,8 @@ core.List<api.Location> buildUnnamed3607() {
 
 void checkUnnamed3607(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -670,8 +670,8 @@ core.List<api.Operation> buildUnnamed3608() {
 
 void checkUnnamed3608(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -757,8 +757,8 @@ core.List<api.LoadBalancerBackend> buildUnnamed3611() {
 
 void checkUnnamed3611(core.List<api.LoadBalancerBackend> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLoadBalancerBackend(o[0]);
-  checkLoadBalancerBackend(o[1]);
+  checkLoadBalancerBackend(o[0] as api.LoadBalancerBackend);
+  checkLoadBalancerBackend(o[1] as api.LoadBalancerBackend);
 }
 
 core.int buildCounterLoadBalancerInfo = 0;
@@ -957,7 +957,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed3614(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed3615(o.response);
@@ -1005,8 +1005,8 @@ core.List<api.AuditConfig> buildUnnamed3616() {
 
 void checkUnnamed3616(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed3617() {
@@ -1018,8 +1018,8 @@ core.List<api.Binding> buildUnnamed3617() {
 
 void checkUnnamed3617(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1056,8 +1056,8 @@ core.List<api.Trace> buildUnnamed3618() {
 
 void checkUnnamed3618(core.List<api.Trace> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTrace(o[0]);
-  checkTrace(o[1]);
+  checkTrace(o[0] as api.Trace);
+  checkTrace(o[1] as api.Trace);
 }
 
 core.int buildCounterReachabilityDetails = 0;
@@ -1077,7 +1077,7 @@ api.ReachabilityDetails buildReachabilityDetails() {
 void checkReachabilityDetails(api.ReachabilityDetails o) {
   buildCounterReachabilityDetails++;
   if (buildCounterReachabilityDetails < 3) {
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     unittest.expect(o.result, unittest.equals('foo'));
     checkUnnamed3618(o.traces);
     unittest.expect(o.verifyTime, unittest.equals('foo'));
@@ -1163,7 +1163,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -1264,23 +1264,23 @@ api.Step buildStep() {
 void checkStep(api.Step o) {
   buildCounterStep++;
   if (buildCounterStep < 3) {
-    checkAbortInfo(o.abort);
+    checkAbortInfo(o.abort as api.AbortInfo);
     unittest.expect(o.causesDrop, unittest.isTrue);
-    checkDeliverInfo(o.deliver);
+    checkDeliverInfo(o.deliver as api.DeliverInfo);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkDropInfo(o.drop);
-    checkEndpointInfo(o.endpoint);
-    checkFirewallInfo(o.firewall);
-    checkForwardInfo(o.forward);
-    checkForwardingRuleInfo(o.forwardingRule);
-    checkInstanceInfo(o.instance);
-    checkLoadBalancerInfo(o.loadBalancer);
-    checkNetworkInfo(o.network);
+    checkDropInfo(o.drop as api.DropInfo);
+    checkEndpointInfo(o.endpoint as api.EndpointInfo);
+    checkFirewallInfo(o.firewall as api.FirewallInfo);
+    checkForwardInfo(o.forward as api.ForwardInfo);
+    checkForwardingRuleInfo(o.forwardingRule as api.ForwardingRuleInfo);
+    checkInstanceInfo(o.instance as api.InstanceInfo);
+    checkLoadBalancerInfo(o.loadBalancer as api.LoadBalancerInfo);
+    checkNetworkInfo(o.network as api.NetworkInfo);
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkRouteInfo(o.route);
+    checkRouteInfo(o.route as api.RouteInfo);
     unittest.expect(o.state, unittest.equals('foo'));
-    checkVpnGatewayInfo(o.vpnGateway);
-    checkVpnTunnelInfo(o.vpnTunnel);
+    checkVpnGatewayInfo(o.vpnGateway as api.VpnGatewayInfo);
+    checkVpnTunnelInfo(o.vpnTunnel as api.VpnTunnelInfo);
   }
   buildCounterStep--;
 }
@@ -1358,8 +1358,8 @@ core.List<api.Step> buildUnnamed3624() {
 
 void checkUnnamed3624(core.List<api.Step> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStep(o[0]);
-  checkStep(o[1]);
+  checkStep(o[0] as api.Step);
+  checkStep(o[1] as api.Step);
 }
 
 core.int buildCounterTrace = 0;
@@ -1377,7 +1377,7 @@ api.Trace buildTrace() {
 void checkTrace(api.Trace o) {
   buildCounterTrace++;
   if (buildCounterTrace < 3) {
-    checkEndpointInfo(o.endpointInfo);
+    checkEndpointInfo(o.endpointInfo as api.EndpointInfo);
     checkUnnamed3624(o.steps);
   }
   buildCounterTrace--;
@@ -1452,7 +1452,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAbortInfo();
       var od = api.AbortInfo.fromJson(o.toJson());
-      checkAbortInfo(od);
+      checkAbortInfo(od as api.AbortInfo);
     });
   });
 
@@ -1460,7 +1460,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -1468,7 +1468,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -1476,7 +1476,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -1484,7 +1484,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1492,7 +1492,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConnectivityTest();
       var od = api.ConnectivityTest.fromJson(o.toJson());
-      checkConnectivityTest(od);
+      checkConnectivityTest(od as api.ConnectivityTest);
     });
   });
 
@@ -1500,7 +1500,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeliverInfo();
       var od = api.DeliverInfo.fromJson(o.toJson());
-      checkDeliverInfo(od);
+      checkDeliverInfo(od as api.DeliverInfo);
     });
   });
 
@@ -1508,7 +1508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDropInfo();
       var od = api.DropInfo.fromJson(o.toJson());
-      checkDropInfo(od);
+      checkDropInfo(od as api.DropInfo);
     });
   });
 
@@ -1516,7 +1516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1524,7 +1524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEndpoint();
       var od = api.Endpoint.fromJson(o.toJson());
-      checkEndpoint(od);
+      checkEndpoint(od as api.Endpoint);
     });
   });
 
@@ -1532,7 +1532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEndpointInfo();
       var od = api.EndpointInfo.fromJson(o.toJson());
-      checkEndpointInfo(od);
+      checkEndpointInfo(od as api.EndpointInfo);
     });
   });
 
@@ -1540,7 +1540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1548,7 +1548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFirewallInfo();
       var od = api.FirewallInfo.fromJson(o.toJson());
-      checkFirewallInfo(od);
+      checkFirewallInfo(od as api.FirewallInfo);
     });
   });
 
@@ -1556,7 +1556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildForwardInfo();
       var od = api.ForwardInfo.fromJson(o.toJson());
-      checkForwardInfo(od);
+      checkForwardInfo(od as api.ForwardInfo);
     });
   });
 
@@ -1564,7 +1564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildForwardingRuleInfo();
       var od = api.ForwardingRuleInfo.fromJson(o.toJson());
-      checkForwardingRuleInfo(od);
+      checkForwardingRuleInfo(od as api.ForwardingRuleInfo);
     });
   });
 
@@ -1572,7 +1572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstanceInfo();
       var od = api.InstanceInfo.fromJson(o.toJson());
-      checkInstanceInfo(od);
+      checkInstanceInfo(od as api.InstanceInfo);
     });
   });
 
@@ -1580,7 +1580,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListConnectivityTestsResponse();
       var od = api.ListConnectivityTestsResponse.fromJson(o.toJson());
-      checkListConnectivityTestsResponse(od);
+      checkListConnectivityTestsResponse(
+          od as api.ListConnectivityTestsResponse);
     });
   });
 
@@ -1588,7 +1589,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1596,7 +1597,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1604,7 +1605,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLoadBalancerBackend();
       var od = api.LoadBalancerBackend.fromJson(o.toJson());
-      checkLoadBalancerBackend(od);
+      checkLoadBalancerBackend(od as api.LoadBalancerBackend);
     });
   });
 
@@ -1612,7 +1613,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLoadBalancerInfo();
       var od = api.LoadBalancerInfo.fromJson(o.toJson());
-      checkLoadBalancerInfo(od);
+      checkLoadBalancerInfo(od as api.LoadBalancerInfo);
     });
   });
 
@@ -1620,7 +1621,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1628,7 +1629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkInfo();
       var od = api.NetworkInfo.fromJson(o.toJson());
-      checkNetworkInfo(od);
+      checkNetworkInfo(od as api.NetworkInfo);
     });
   });
 
@@ -1636,7 +1637,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1644,7 +1645,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -1652,7 +1653,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1660,7 +1661,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReachabilityDetails();
       var od = api.ReachabilityDetails.fromJson(o.toJson());
-      checkReachabilityDetails(od);
+      checkReachabilityDetails(od as api.ReachabilityDetails);
     });
   });
 
@@ -1668,7 +1669,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRerunConnectivityTestRequest();
       var od = api.RerunConnectivityTestRequest.fromJson(o.toJson());
-      checkRerunConnectivityTestRequest(od);
+      checkRerunConnectivityTestRequest(od as api.RerunConnectivityTestRequest);
     });
   });
 
@@ -1676,7 +1677,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRouteInfo();
       var od = api.RouteInfo.fromJson(o.toJson());
-      checkRouteInfo(od);
+      checkRouteInfo(od as api.RouteInfo);
     });
   });
 
@@ -1684,7 +1685,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1692,7 +1693,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1700,7 +1701,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStep();
       var od = api.Step.fromJson(o.toJson());
-      checkStep(od);
+      checkStep(od as api.Step);
     });
   });
 
@@ -1708,7 +1709,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1716,7 +1717,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1724,7 +1725,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTrace();
       var od = api.Trace.fromJson(o.toJson());
-      checkTrace(od);
+      checkTrace(od as api.Trace);
     });
   });
 
@@ -1732,7 +1733,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVpnGatewayInfo();
       var od = api.VpnGatewayInfo.fromJson(o.toJson());
-      checkVpnGatewayInfo(od);
+      checkVpnGatewayInfo(od as api.VpnGatewayInfo);
     });
   });
 
@@ -1740,7 +1741,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVpnTunnelInfo();
       var od = api.VpnTunnelInfo.fromJson(o.toJson());
-      checkVpnTunnelInfo(od);
+      checkVpnTunnelInfo(od as api.VpnTunnelInfo);
     });
   });
 
@@ -1789,7 +1790,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1849,7 +1850,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1868,8 +1869,9 @@ void main() {
       var arg_testId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ConnectivityTest.fromJson(json);
-        checkConnectivityTest(obj);
+        var obj = api.ConnectivityTest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConnectivityTest(obj as api.ConnectivityTest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1911,7 +1913,7 @@ void main() {
           .create(arg_request, arg_parent,
               testId: arg_testId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1963,7 +1965,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2015,7 +2017,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConnectivityTest(response);
+        checkConnectivityTest(response as api.ConnectivityTest);
       })));
     });
 
@@ -2074,7 +2076,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2142,7 +2144,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListConnectivityTestsResponse(response);
+        checkListConnectivityTestsResponse(
+            response as api.ListConnectivityTestsResponse);
       })));
     });
 
@@ -2158,8 +2161,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ConnectivityTest.fromJson(json);
-        checkConnectivityTest(obj);
+        var obj = api.ConnectivityTest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConnectivityTest(obj as api.ConnectivityTest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2202,7 +2206,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2217,8 +2221,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RerunConnectivityTestRequest.fromJson(json);
-        checkRerunConnectivityTestRequest(obj);
+        var obj = api.RerunConnectivityTestRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRerunConnectivityTestRequest(
+            obj as api.RerunConnectivityTestRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2258,7 +2264,7 @@ void main() {
       res
           .rerun(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2273,8 +2279,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2314,7 +2321,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2329,8 +2336,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2370,7 +2378,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -2384,8 +2393,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2425,7 +2435,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2474,7 +2484,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2523,7 +2533,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2584,7 +2594,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

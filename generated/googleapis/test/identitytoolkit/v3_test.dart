@@ -163,8 +163,8 @@ core.List<api.UserInfo> buildUnnamed432() {
 
 void checkUnnamed432(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserInfo(o[0]);
-  checkUserInfo(o[1]);
+  checkUserInfo(o[0] as api.UserInfo);
+  checkUserInfo(o[1] as api.UserInfo);
 }
 
 core.int buildCounterDownloadAccountResponse = 0;
@@ -259,8 +259,8 @@ core.List<api.UserInfo> buildUnnamed433() {
 
 void checkUnnamed433(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserInfo(o[0]);
-  checkUserInfo(o[1]);
+  checkUserInfo(o[0] as api.UserInfo);
+  checkUserInfo(o[1] as api.UserInfo);
 }
 
 core.int buildCounterGetAccountInfoResponse = 0;
@@ -561,8 +561,8 @@ core.List<api.IdpConfig> buildUnnamed439() {
 
 void checkUnnamed439(core.List<api.IdpConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIdpConfig(o[0]);
-  checkIdpConfig(o[1]);
+  checkIdpConfig(o[0] as api.IdpConfig);
+  checkIdpConfig(o[1] as api.IdpConfig);
 }
 
 core.int buildCounterIdentitytoolkitRelyingpartyGetProjectConfigResponse = 0;
@@ -595,15 +595,15 @@ void checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
     unittest.expect(o.allowPasswordUser, unittest.isTrue);
     unittest.expect(o.apiKey, unittest.equals('foo'));
     checkUnnamed438(o.authorizedDomains);
-    checkEmailTemplate(o.changeEmailTemplate);
+    checkEmailTemplate(o.changeEmailTemplate as api.EmailTemplate);
     unittest.expect(o.dynamicLinksDomain, unittest.equals('foo'));
     unittest.expect(o.enableAnonymousUser, unittest.isTrue);
     checkUnnamed439(o.idpConfig);
-    checkEmailTemplate(o.legacyResetPasswordTemplate);
+    checkEmailTemplate(o.legacyResetPasswordTemplate as api.EmailTemplate);
     unittest.expect(o.projectId, unittest.equals('foo'));
-    checkEmailTemplate(o.resetPasswordTemplate);
+    checkEmailTemplate(o.resetPasswordTemplate as api.EmailTemplate);
     unittest.expect(o.useEmailSending, unittest.isTrue);
-    checkEmailTemplate(o.verifyEmailTemplate);
+    checkEmailTemplate(o.verifyEmailTemplate as api.EmailTemplate);
   }
   buildCounterIdentitytoolkitRelyingpartyGetProjectConfigResponse--;
 }
@@ -825,8 +825,8 @@ core.List<api.IdpConfig> buildUnnamed444() {
 
 void checkUnnamed444(core.List<api.IdpConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIdpConfig(o[0]);
-  checkIdpConfig(o[1]);
+  checkIdpConfig(o[0] as api.IdpConfig);
+  checkIdpConfig(o[1] as api.IdpConfig);
 }
 
 core.int buildCounterIdentitytoolkitRelyingpartySetProjectConfigRequest = 0;
@@ -858,14 +858,14 @@ void checkIdentitytoolkitRelyingpartySetProjectConfigRequest(
     unittest.expect(o.allowPasswordUser, unittest.isTrue);
     unittest.expect(o.apiKey, unittest.equals('foo'));
     checkUnnamed443(o.authorizedDomains);
-    checkEmailTemplate(o.changeEmailTemplate);
+    checkEmailTemplate(o.changeEmailTemplate as api.EmailTemplate);
     unittest.expect(o.delegatedProjectNumber, unittest.equals('foo'));
     unittest.expect(o.enableAnonymousUser, unittest.isTrue);
     checkUnnamed444(o.idpConfig);
-    checkEmailTemplate(o.legacyResetPasswordTemplate);
-    checkEmailTemplate(o.resetPasswordTemplate);
+    checkEmailTemplate(o.legacyResetPasswordTemplate as api.EmailTemplate);
+    checkEmailTemplate(o.resetPasswordTemplate as api.EmailTemplate);
     unittest.expect(o.useEmailSending, unittest.isTrue);
-    checkEmailTemplate(o.verifyEmailTemplate);
+    checkEmailTemplate(o.verifyEmailTemplate as api.EmailTemplate);
   }
   buildCounterIdentitytoolkitRelyingpartySetProjectConfigRequest--;
 }
@@ -991,8 +991,8 @@ core.List<api.UserInfo> buildUnnamed445() {
 
 void checkUnnamed445(core.List<api.UserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserInfo(o[0]);
-  checkUserInfo(o[1]);
+  checkUserInfo(o[0] as api.UserInfo);
+  checkUserInfo(o[1] as api.UserInfo);
 }
 
 core.int buildCounterIdentitytoolkitRelyingpartyUploadAccountRequest = 0;
@@ -1377,8 +1377,10 @@ core.List<api.SetAccountInfoResponseProviderUserInfo> buildUnnamed447() {
 
 void checkUnnamed447(core.List<api.SetAccountInfoResponseProviderUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSetAccountInfoResponseProviderUserInfo(o[0]);
-  checkSetAccountInfoResponseProviderUserInfo(o[1]);
+  checkSetAccountInfoResponseProviderUserInfo(
+      o[0] as api.SetAccountInfoResponseProviderUserInfo);
+  checkSetAccountInfoResponseProviderUserInfo(
+      o[1] as api.SetAccountInfoResponseProviderUserInfo);
 }
 
 core.int buildCounterSetAccountInfoResponse = 0;
@@ -1483,8 +1485,8 @@ core.List<api.UploadAccountResponseError> buildUnnamed448() {
 
 void checkUnnamed448(core.List<api.UploadAccountResponseError> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUploadAccountResponseError(o[0]);
-  checkUploadAccountResponseError(o[1]);
+  checkUploadAccountResponseError(o[0] as api.UploadAccountResponseError);
+  checkUploadAccountResponseError(o[1] as api.UploadAccountResponseError);
 }
 
 core.int buildCounterUploadAccountResponse = 0;
@@ -1550,8 +1552,8 @@ core.List<api.UserInfoProviderUserInfo> buildUnnamed449() {
 
 void checkUnnamed449(core.List<api.UserInfoProviderUserInfo> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUserInfoProviderUserInfo(o[0]);
-  checkUserInfoProviderUserInfo(o[1]);
+  checkUserInfoProviderUserInfo(o[0] as api.UserInfoProviderUserInfo);
+  checkUserInfoProviderUserInfo(o[1] as api.UserInfoProviderUserInfo);
 }
 
 core.int buildCounterUserInfo = 0;
@@ -1790,7 +1792,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateAuthUriResponse();
       var od = api.CreateAuthUriResponse.fromJson(o.toJson());
-      checkCreateAuthUriResponse(od);
+      checkCreateAuthUriResponse(od as api.CreateAuthUriResponse);
     });
   });
 
@@ -1798,7 +1800,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteAccountResponse();
       var od = api.DeleteAccountResponse.fromJson(o.toJson());
-      checkDeleteAccountResponse(od);
+      checkDeleteAccountResponse(od as api.DeleteAccountResponse);
     });
   });
 
@@ -1806,7 +1808,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDownloadAccountResponse();
       var od = api.DownloadAccountResponse.fromJson(o.toJson());
-      checkDownloadAccountResponse(od);
+      checkDownloadAccountResponse(od as api.DownloadAccountResponse);
     });
   });
 
@@ -1814,7 +1816,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmailLinkSigninResponse();
       var od = api.EmailLinkSigninResponse.fromJson(o.toJson());
-      checkEmailLinkSigninResponse(od);
+      checkEmailLinkSigninResponse(od as api.EmailLinkSigninResponse);
     });
   });
 
@@ -1822,7 +1824,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmailTemplate();
       var od = api.EmailTemplate.fromJson(o.toJson());
-      checkEmailTemplate(od);
+      checkEmailTemplate(od as api.EmailTemplate);
     });
   });
 
@@ -1830,7 +1832,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetAccountInfoResponse();
       var od = api.GetAccountInfoResponse.fromJson(o.toJson());
-      checkGetAccountInfoResponse(od);
+      checkGetAccountInfoResponse(od as api.GetAccountInfoResponse);
     });
   });
 
@@ -1838,7 +1840,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetOobConfirmationCodeResponse();
       var od = api.GetOobConfirmationCodeResponse.fromJson(o.toJson());
-      checkGetOobConfirmationCodeResponse(od);
+      checkGetOobConfirmationCodeResponse(
+          od as api.GetOobConfirmationCodeResponse);
     });
   });
 
@@ -1846,7 +1849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetRecaptchaParamResponse();
       var od = api.GetRecaptchaParamResponse.fromJson(o.toJson());
-      checkGetRecaptchaParamResponse(od);
+      checkGetRecaptchaParamResponse(od as api.GetRecaptchaParamResponse);
     });
   });
 
@@ -1856,7 +1859,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
       var od = api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(od);
+      checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(
+          od as api.IdentitytoolkitRelyingpartyCreateAuthUriRequest);
     });
   });
 
@@ -1866,7 +1870,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyDeleteAccountRequest(od);
+      checkIdentitytoolkitRelyingpartyDeleteAccountRequest(
+          od as api.IdentitytoolkitRelyingpartyDeleteAccountRequest);
     });
   });
 
@@ -1876,7 +1881,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyDownloadAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyDownloadAccountRequest(od);
+      checkIdentitytoolkitRelyingpartyDownloadAccountRequest(
+          od as api.IdentitytoolkitRelyingpartyDownloadAccountRequest);
     });
   });
 
@@ -1886,7 +1892,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyEmailLinkSigninRequest();
       var od = api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(od);
+      checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(
+          od as api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest);
     });
   });
 
@@ -1896,7 +1903,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
       var od = api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(od);
+      checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(
+          od as api.IdentitytoolkitRelyingpartyGetAccountInfoRequest);
     });
   });
 
@@ -1906,7 +1914,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyGetProjectConfigResponse();
       var od = api.IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(od);
+      checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(
+          od as api.IdentitytoolkitRelyingpartyGetProjectConfigResponse);
     });
   });
 
@@ -1916,7 +1925,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyGetPublicKeysResponse();
       var od = api.IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(od);
+      checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
+          od as api.IdentitytoolkitRelyingpartyGetPublicKeysResponse);
     });
   });
 
@@ -1926,7 +1936,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
       var od = api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyResetPasswordRequest(od);
+      checkIdentitytoolkitRelyingpartyResetPasswordRequest(
+          od as api.IdentitytoolkitRelyingpartyResetPasswordRequest);
     });
   });
 
@@ -1937,7 +1948,8 @@ void main() {
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
               o.toJson());
-      checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(od);
+      checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(
+          od as api.IdentitytoolkitRelyingpartySendVerificationCodeRequest);
     });
   });
 
@@ -1948,7 +1960,8 @@ void main() {
       var od =
           api.IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
               o.toJson());
-      checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(od);
+      checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(
+          od as api.IdentitytoolkitRelyingpartySendVerificationCodeResponse);
     });
   });
 
@@ -1958,7 +1971,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
       var od = api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySetAccountInfoRequest(od);
+      checkIdentitytoolkitRelyingpartySetAccountInfoRequest(
+          od as api.IdentitytoolkitRelyingpartySetAccountInfoRequest);
     });
   });
 
@@ -1968,7 +1982,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigRequest();
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySetProjectConfigRequest(od);
+      checkIdentitytoolkitRelyingpartySetProjectConfigRequest(
+          od as api.IdentitytoolkitRelyingpartySetProjectConfigRequest);
     });
   });
 
@@ -1978,7 +1993,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySetProjectConfigResponse();
       var od = api.IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySetProjectConfigResponse(od);
+      checkIdentitytoolkitRelyingpartySetProjectConfigResponse(
+          od as api.IdentitytoolkitRelyingpartySetProjectConfigResponse);
     });
   });
 
@@ -1988,7 +2004,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySignOutUserRequest();
       var od = api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySignOutUserRequest(od);
+      checkIdentitytoolkitRelyingpartySignOutUserRequest(
+          od as api.IdentitytoolkitRelyingpartySignOutUserRequest);
     });
   });
 
@@ -1998,7 +2015,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySignOutUserResponse();
       var od = api.IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySignOutUserResponse(od);
+      checkIdentitytoolkitRelyingpartySignOutUserResponse(
+          od as api.IdentitytoolkitRelyingpartySignOutUserResponse);
     });
   });
 
@@ -2008,7 +2026,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
       var od = api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartySignupNewUserRequest(od);
+      checkIdentitytoolkitRelyingpartySignupNewUserRequest(
+          od as api.IdentitytoolkitRelyingpartySignupNewUserRequest);
     });
   });
 
@@ -2018,7 +2037,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
       var od = api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyUploadAccountRequest(od);
+      checkIdentitytoolkitRelyingpartyUploadAccountRequest(
+          od as api.IdentitytoolkitRelyingpartyUploadAccountRequest);
     });
   });
 
@@ -2028,7 +2048,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyVerifyAssertionRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(od);
+      checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(
+          od as api.IdentitytoolkitRelyingpartyVerifyAssertionRequest);
     });
   });
 
@@ -2038,7 +2059,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyVerifyCustomTokenRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(od);
+      checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(
+          od as api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest);
     });
   });
 
@@ -2048,7 +2070,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(od);
+      checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(
+          od as api.IdentitytoolkitRelyingpartyVerifyPasswordRequest);
     });
   });
 
@@ -2058,7 +2081,8 @@ void main() {
       var o = buildIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest();
       var od = api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
           o.toJson());
-      checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(od);
+      checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(
+          od as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest);
     });
   });
 
@@ -2069,7 +2093,8 @@ void main() {
       var od =
           api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
               o.toJson());
-      checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(od);
+      checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(
+          od as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse);
     });
   });
 
@@ -2077,7 +2102,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIdpConfig();
       var od = api.IdpConfig.fromJson(o.toJson());
-      checkIdpConfig(od);
+      checkIdpConfig(od as api.IdpConfig);
     });
   });
 
@@ -2085,7 +2110,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelyingparty();
       var od = api.Relyingparty.fromJson(o.toJson());
-      checkRelyingparty(od);
+      checkRelyingparty(od as api.Relyingparty);
     });
   });
 
@@ -2093,7 +2118,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResetPasswordResponse();
       var od = api.ResetPasswordResponse.fromJson(o.toJson());
-      checkResetPasswordResponse(od);
+      checkResetPasswordResponse(od as api.ResetPasswordResponse);
     });
   });
 
@@ -2101,7 +2126,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetAccountInfoResponseProviderUserInfo();
       var od = api.SetAccountInfoResponseProviderUserInfo.fromJson(o.toJson());
-      checkSetAccountInfoResponseProviderUserInfo(od);
+      checkSetAccountInfoResponseProviderUserInfo(
+          od as api.SetAccountInfoResponseProviderUserInfo);
     });
   });
 
@@ -2109,7 +2135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetAccountInfoResponse();
       var od = api.SetAccountInfoResponse.fromJson(o.toJson());
-      checkSetAccountInfoResponse(od);
+      checkSetAccountInfoResponse(od as api.SetAccountInfoResponse);
     });
   });
 
@@ -2117,7 +2143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSignupNewUserResponse();
       var od = api.SignupNewUserResponse.fromJson(o.toJson());
-      checkSignupNewUserResponse(od);
+      checkSignupNewUserResponse(od as api.SignupNewUserResponse);
     });
   });
 
@@ -2125,7 +2151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUploadAccountResponseError();
       var od = api.UploadAccountResponseError.fromJson(o.toJson());
-      checkUploadAccountResponseError(od);
+      checkUploadAccountResponseError(od as api.UploadAccountResponseError);
     });
   });
 
@@ -2133,7 +2159,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUploadAccountResponse();
       var od = api.UploadAccountResponse.fromJson(o.toJson());
-      checkUploadAccountResponse(od);
+      checkUploadAccountResponse(od as api.UploadAccountResponse);
     });
   });
 
@@ -2141,7 +2167,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserInfoProviderUserInfo();
       var od = api.UserInfoProviderUserInfo.fromJson(o.toJson());
-      checkUserInfoProviderUserInfo(od);
+      checkUserInfoProviderUserInfo(od as api.UserInfoProviderUserInfo);
     });
   });
 
@@ -2149,7 +2175,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserInfo();
       var od = api.UserInfo.fromJson(o.toJson());
-      checkUserInfo(od);
+      checkUserInfo(od as api.UserInfo);
     });
   });
 
@@ -2157,7 +2183,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVerifyAssertionResponse();
       var od = api.VerifyAssertionResponse.fromJson(o.toJson());
-      checkVerifyAssertionResponse(od);
+      checkVerifyAssertionResponse(od as api.VerifyAssertionResponse);
     });
   });
 
@@ -2165,7 +2191,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVerifyCustomTokenResponse();
       var od = api.VerifyCustomTokenResponse.fromJson(o.toJson());
-      checkVerifyCustomTokenResponse(od);
+      checkVerifyCustomTokenResponse(od as api.VerifyCustomTokenResponse);
     });
   });
 
@@ -2173,7 +2199,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVerifyPasswordResponse();
       var od = api.VerifyPasswordResponse.fromJson(o.toJson());
-      checkVerifyPasswordResponse(od);
+      checkVerifyPasswordResponse(od as api.VerifyPasswordResponse);
     });
   });
 
@@ -2184,9 +2210,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyCreateAuthUriRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyCreateAuthUriRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyCreateAuthUriRequest(
+            obj as api.IdentitytoolkitRelyingpartyCreateAuthUriRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2228,7 +2255,7 @@ void main() {
       res
           .createAuthUri(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCreateAuthUriResponse(response);
+        checkCreateAuthUriResponse(response as api.CreateAuthUriResponse);
       })));
     });
 
@@ -2238,9 +2265,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyDeleteAccountRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyDeleteAccountRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyDeleteAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyDeleteAccountRequest(
+            obj as api.IdentitytoolkitRelyingpartyDeleteAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2282,7 +2310,7 @@ void main() {
       res
           .deleteAccount(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDeleteAccountResponse(response);
+        checkDeleteAccountResponse(response as api.DeleteAccountResponse);
       })));
     });
 
@@ -2295,8 +2323,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartyDownloadAccountRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartyDownloadAccountRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyDownloadAccountRequest(
+            obj as api.IdentitytoolkitRelyingpartyDownloadAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2338,7 +2367,7 @@ void main() {
       res
           .downloadAccount(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDownloadAccountResponse(response);
+        checkDownloadAccountResponse(response as api.DownloadAccountResponse);
       })));
     });
 
@@ -2351,8 +2380,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyEmailLinkSigninRequest(
+            obj as api.IdentitytoolkitRelyingpartyEmailLinkSigninRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2394,7 +2424,7 @@ void main() {
       res
           .emailLinkSignin(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmailLinkSigninResponse(response);
+        checkEmailLinkSigninResponse(response as api.EmailLinkSigninResponse);
       })));
     });
 
@@ -2404,9 +2434,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyGetAccountInfoRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyGetAccountInfoRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyGetAccountInfoRequest(
+            obj as api.IdentitytoolkitRelyingpartyGetAccountInfoRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2448,7 +2479,7 @@ void main() {
       res
           .getAccountInfo(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetAccountInfoResponse(response);
+        checkGetAccountInfoResponse(response as api.GetAccountInfoResponse);
       })));
     });
 
@@ -2458,8 +2489,9 @@ void main() {
       var arg_request = buildRelyingparty();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Relyingparty.fromJson(json);
-        checkRelyingparty(obj);
+        var obj = api.Relyingparty.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRelyingparty(obj as api.Relyingparty);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2501,7 +2533,8 @@ void main() {
       res
           .getOobConfirmationCode(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetOobConfirmationCodeResponse(response);
+        checkGetOobConfirmationCodeResponse(
+            response as api.GetOobConfirmationCodeResponse);
       })));
     });
 
@@ -2560,7 +2593,8 @@ void main() {
               projectNumber: arg_projectNumber,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(response);
+        checkIdentitytoolkitRelyingpartyGetProjectConfigResponse(response
+            as api.IdentitytoolkitRelyingpartyGetProjectConfigResponse);
       })));
     });
 
@@ -2610,7 +2644,8 @@ void main() {
       res
           .getPublicKeys($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(response);
+        checkIdentitytoolkitRelyingpartyGetPublicKeysResponse(
+            response as api.IdentitytoolkitRelyingpartyGetPublicKeysResponse);
       })));
     });
 
@@ -2659,7 +2694,8 @@ void main() {
       res
           .getRecaptchaParam($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetRecaptchaParamResponse(response);
+        checkGetRecaptchaParamResponse(
+            response as api.GetRecaptchaParamResponse);
       })));
     });
 
@@ -2669,9 +2705,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyResetPasswordRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyResetPasswordRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyResetPasswordRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyResetPasswordRequest(
+            obj as api.IdentitytoolkitRelyingpartyResetPasswordRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2713,7 +2750,7 @@ void main() {
       res
           .resetPassword(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkResetPasswordResponse(response);
+        checkResetPasswordResponse(response as api.ResetPasswordResponse);
       })));
     });
 
@@ -2726,8 +2763,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartySendVerificationCodeRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartySendVerificationCodeRequest(
+            obj as api.IdentitytoolkitRelyingpartySendVerificationCodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2770,7 +2808,8 @@ void main() {
       res
           .sendVerificationCode(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(response);
+        checkIdentitytoolkitRelyingpartySendVerificationCodeResponse(response
+            as api.IdentitytoolkitRelyingpartySendVerificationCodeResponse);
       })));
     });
 
@@ -2780,9 +2819,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartySetAccountInfoRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartySetAccountInfoRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartySetAccountInfoRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartySetAccountInfoRequest(
+            obj as api.IdentitytoolkitRelyingpartySetAccountInfoRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2824,7 +2864,7 @@ void main() {
       res
           .setAccountInfo(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSetAccountInfoResponse(response);
+        checkSetAccountInfoResponse(response as api.SetAccountInfoResponse);
       })));
     });
 
@@ -2837,8 +2877,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartySetProjectConfigRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartySetProjectConfigRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartySetProjectConfigRequest(
+            obj as api.IdentitytoolkitRelyingpartySetProjectConfigRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2881,7 +2922,8 @@ void main() {
       res
           .setProjectConfig(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySetProjectConfigResponse(response);
+        checkIdentitytoolkitRelyingpartySetProjectConfigResponse(response
+            as api.IdentitytoolkitRelyingpartySetProjectConfigResponse);
       })));
     });
 
@@ -2891,9 +2933,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartySignOutUserRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartySignOutUserRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartySignOutUserRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartySignOutUserRequest(
+            obj as api.IdentitytoolkitRelyingpartySignOutUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2936,7 +2979,8 @@ void main() {
       res
           .signOutUser(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartySignOutUserResponse(response);
+        checkIdentitytoolkitRelyingpartySignOutUserResponse(
+            response as api.IdentitytoolkitRelyingpartySignOutUserResponse);
       })));
     });
 
@@ -2946,9 +2990,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartySignupNewUserRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartySignupNewUserRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartySignupNewUserRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartySignupNewUserRequest(
+            obj as api.IdentitytoolkitRelyingpartySignupNewUserRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2990,7 +3035,7 @@ void main() {
       res
           .signupNewUser(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSignupNewUserResponse(response);
+        checkSignupNewUserResponse(response as api.SignupNewUserResponse);
       })));
     });
 
@@ -3000,9 +3045,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyUploadAccountRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyUploadAccountRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyUploadAccountRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyUploadAccountRequest(
+            obj as api.IdentitytoolkitRelyingpartyUploadAccountRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3044,7 +3090,7 @@ void main() {
       res
           .uploadAccount(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUploadAccountResponse(response);
+        checkUploadAccountResponse(response as api.UploadAccountResponse);
       })));
     });
 
@@ -3057,8 +3103,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartyVerifyAssertionRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyVerifyAssertionRequest(
+            obj as api.IdentitytoolkitRelyingpartyVerifyAssertionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3100,7 +3147,7 @@ void main() {
       res
           .verifyAssertion(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVerifyAssertionResponse(response);
+        checkVerifyAssertionResponse(response as api.VerifyAssertionResponse);
       })));
     });
 
@@ -3113,8 +3160,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyVerifyCustomTokenRequest(
+            obj as api.IdentitytoolkitRelyingpartyVerifyCustomTokenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3156,7 +3204,8 @@ void main() {
       res
           .verifyCustomToken(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVerifyCustomTokenResponse(response);
+        checkVerifyCustomTokenResponse(
+            response as api.VerifyCustomTokenResponse);
       })));
     });
 
@@ -3166,9 +3215,10 @@ void main() {
       var arg_request = buildIdentitytoolkitRelyingpartyVerifyPasswordRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(json);
-        checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(obj);
+        var obj = api.IdentitytoolkitRelyingpartyVerifyPasswordRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyVerifyPasswordRequest(
+            obj as api.IdentitytoolkitRelyingpartyVerifyPasswordRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3210,7 +3260,7 @@ void main() {
       res
           .verifyPassword(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVerifyPasswordResponse(response);
+        checkVerifyPasswordResponse(response as api.VerifyPasswordResponse);
       })));
     });
 
@@ -3223,8 +3273,9 @@ void main() {
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
         var obj =
             api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest.fromJson(
-                json);
-        checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(obj);
+                json as core.Map<core.String, core.dynamic>);
+        checkIdentitytoolkitRelyingpartyVerifyPhoneNumberRequest(
+            obj as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3267,7 +3318,8 @@ void main() {
       res
           .verifyPhoneNumber(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(response);
+        checkIdentitytoolkitRelyingpartyVerifyPhoneNumberResponse(response
+            as api.IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse);
       })));
     });
   });

@@ -109,8 +109,10 @@ core.List<api.GoogleExampleLibraryagentV1Book> buildUnnamed3625() {
 
 void checkUnnamed3625(core.List<api.GoogleExampleLibraryagentV1Book> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleExampleLibraryagentV1Book(o[0]);
-  checkGoogleExampleLibraryagentV1Book(o[1]);
+  checkGoogleExampleLibraryagentV1Book(
+      o[0] as api.GoogleExampleLibraryagentV1Book);
+  checkGoogleExampleLibraryagentV1Book(
+      o[1] as api.GoogleExampleLibraryagentV1Book);
 }
 
 core.int buildCounterGoogleExampleLibraryagentV1ListBooksResponse = 0;
@@ -145,8 +147,10 @@ core.List<api.GoogleExampleLibraryagentV1Shelf> buildUnnamed3626() {
 
 void checkUnnamed3626(core.List<api.GoogleExampleLibraryagentV1Shelf> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleExampleLibraryagentV1Shelf(o[0]);
-  checkGoogleExampleLibraryagentV1Shelf(o[1]);
+  checkGoogleExampleLibraryagentV1Shelf(
+      o[0] as api.GoogleExampleLibraryagentV1Shelf);
+  checkGoogleExampleLibraryagentV1Shelf(
+      o[1] as api.GoogleExampleLibraryagentV1Shelf);
 }
 
 core.int buildCounterGoogleExampleLibraryagentV1ListShelvesResponse = 0;
@@ -199,7 +203,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1Book();
       var od = api.GoogleExampleLibraryagentV1Book.fromJson(o.toJson());
-      checkGoogleExampleLibraryagentV1Book(od);
+      checkGoogleExampleLibraryagentV1Book(
+          od as api.GoogleExampleLibraryagentV1Book);
     });
   });
 
@@ -208,7 +213,8 @@ void main() {
       var o = buildGoogleExampleLibraryagentV1ListBooksResponse();
       var od =
           api.GoogleExampleLibraryagentV1ListBooksResponse.fromJson(o.toJson());
-      checkGoogleExampleLibraryagentV1ListBooksResponse(od);
+      checkGoogleExampleLibraryagentV1ListBooksResponse(
+          od as api.GoogleExampleLibraryagentV1ListBooksResponse);
     });
   });
 
@@ -218,7 +224,8 @@ void main() {
       var o = buildGoogleExampleLibraryagentV1ListShelvesResponse();
       var od = api.GoogleExampleLibraryagentV1ListShelvesResponse.fromJson(
           o.toJson());
-      checkGoogleExampleLibraryagentV1ListShelvesResponse(od);
+      checkGoogleExampleLibraryagentV1ListShelvesResponse(
+          od as api.GoogleExampleLibraryagentV1ListShelvesResponse);
     });
   });
 
@@ -226,7 +233,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleExampleLibraryagentV1Shelf();
       var od = api.GoogleExampleLibraryagentV1Shelf.fromJson(o.toJson());
-      checkGoogleExampleLibraryagentV1Shelf(od);
+      checkGoogleExampleLibraryagentV1Shelf(
+          od as api.GoogleExampleLibraryagentV1Shelf);
     });
   });
 
@@ -275,7 +283,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Shelf(response);
+        checkGoogleExampleLibraryagentV1Shelf(
+            response as api.GoogleExampleLibraryagentV1Shelf);
       })));
     });
 
@@ -331,7 +340,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1ListShelvesResponse(response);
+        checkGoogleExampleLibraryagentV1ListShelvesResponse(
+            response as api.GoogleExampleLibraryagentV1ListShelvesResponse);
       })));
     });
   });
@@ -381,7 +391,8 @@ void main() {
       res
           .borrow(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(response);
+        checkGoogleExampleLibraryagentV1Book(
+            response as api.GoogleExampleLibraryagentV1Book);
       })));
     });
 
@@ -429,7 +440,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(response);
+        checkGoogleExampleLibraryagentV1Book(
+            response as api.GoogleExampleLibraryagentV1Book);
       })));
     });
 
@@ -487,7 +499,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1ListBooksResponse(response);
+        checkGoogleExampleLibraryagentV1ListBooksResponse(
+            response as api.GoogleExampleLibraryagentV1ListBooksResponse);
       })));
     });
 
@@ -535,7 +548,8 @@ void main() {
       res
           .return_(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleExampleLibraryagentV1Book(response);
+        checkGoogleExampleLibraryagentV1Book(
+            response as api.GoogleExampleLibraryagentV1Book);
       })));
     });
   });

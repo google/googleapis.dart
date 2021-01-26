@@ -145,7 +145,7 @@ void checkCapacityCommitment(api.CapacityCommitment o) {
   if (buildCounterCapacityCommitment < 3) {
     unittest.expect(o.commitmentEndTime, unittest.equals('foo'));
     unittest.expect(o.commitmentStartTime, unittest.equals('foo'));
-    checkStatus(o.failureStatus);
+    checkStatus(o.failureStatus as api.Status);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.plan, unittest.equals('foo'));
     unittest.expect(o.renewalPlan, unittest.equals('foo'));
@@ -198,8 +198,8 @@ core.List<api.Assignment> buildUnnamed3879() {
 
 void checkUnnamed3879(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignment(o[0]);
-  checkAssignment(o[1]);
+  checkAssignment(o[0] as api.Assignment);
+  checkAssignment(o[1] as api.Assignment);
 }
 
 core.int buildCounterListAssignmentsResponse = 0;
@@ -232,8 +232,8 @@ core.List<api.CapacityCommitment> buildUnnamed3880() {
 
 void checkUnnamed3880(core.List<api.CapacityCommitment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCapacityCommitment(o[0]);
-  checkCapacityCommitment(o[1]);
+  checkCapacityCommitment(o[0] as api.CapacityCommitment);
+  checkCapacityCommitment(o[1] as api.CapacityCommitment);
 }
 
 core.int buildCounterListCapacityCommitmentsResponse = 0;
@@ -267,8 +267,8 @@ core.List<api.Operation> buildUnnamed3881() {
 
 void checkUnnamed3881(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -301,8 +301,8 @@ core.List<api.Reservation> buildUnnamed3882() {
 
 void checkUnnamed3882(core.List<api.Reservation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReservation(o[0]);
-  checkReservation(o[1]);
+  checkReservation(o[0] as api.Reservation);
+  checkReservation(o[1] as api.Reservation);
 }
 
 core.int buildCounterListReservationsResponse = 0;
@@ -455,7 +455,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed3884(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed3885(o.response);
@@ -499,8 +499,8 @@ core.List<api.Assignment> buildUnnamed3886() {
 
 void checkUnnamed3886(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignment(o[0]);
-  checkAssignment(o[1]);
+  checkAssignment(o[0] as api.Assignment);
+  checkAssignment(o[1] as api.Assignment);
 }
 
 core.int buildCounterSearchAllAssignmentsResponse = 0;
@@ -533,8 +533,8 @@ core.List<api.Assignment> buildUnnamed3887() {
 
 void checkUnnamed3887(core.List<api.Assignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAssignment(o[0]);
-  checkAssignment(o[1]);
+  checkAssignment(o[0] as api.Assignment);
+  checkAssignment(o[1] as api.Assignment);
 }
 
 core.int buildCounterSearchAssignmentsResponse = 0;
@@ -593,8 +593,8 @@ void checkSplitCapacityCommitmentResponse(
     api.SplitCapacityCommitmentResponse o) {
   buildCounterSplitCapacityCommitmentResponse++;
   if (buildCounterSplitCapacityCommitmentResponse < 3) {
-    checkCapacityCommitment(o.first);
-    checkCapacityCommitment(o.second);
+    checkCapacityCommitment(o.first as api.CapacityCommitment);
+    checkCapacityCommitment(o.second as api.CapacityCommitment);
   }
   buildCounterSplitCapacityCommitmentResponse--;
 }
@@ -669,7 +669,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
-      checkAssignment(od);
+      checkAssignment(od as api.Assignment);
     });
   });
 
@@ -677,7 +677,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBiReservation();
       var od = api.BiReservation.fromJson(o.toJson());
-      checkBiReservation(od);
+      checkBiReservation(od as api.BiReservation);
     });
   });
 
@@ -685,7 +685,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCapacityCommitment();
       var od = api.CapacityCommitment.fromJson(o.toJson());
-      checkCapacityCommitment(od);
+      checkCapacityCommitment(od as api.CapacityCommitment);
     });
   });
 
@@ -693,7 +693,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateSlotPoolMetadata();
       var od = api.CreateSlotPoolMetadata.fromJson(o.toJson());
-      checkCreateSlotPoolMetadata(od);
+      checkCreateSlotPoolMetadata(od as api.CreateSlotPoolMetadata);
     });
   });
 
@@ -701,7 +701,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -709,7 +709,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAssignmentsResponse();
       var od = api.ListAssignmentsResponse.fromJson(o.toJson());
-      checkListAssignmentsResponse(od);
+      checkListAssignmentsResponse(od as api.ListAssignmentsResponse);
     });
   });
 
@@ -717,7 +717,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCapacityCommitmentsResponse();
       var od = api.ListCapacityCommitmentsResponse.fromJson(o.toJson());
-      checkListCapacityCommitmentsResponse(od);
+      checkListCapacityCommitmentsResponse(
+          od as api.ListCapacityCommitmentsResponse);
     });
   });
 
@@ -725,7 +726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -733,7 +734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListReservationsResponse();
       var od = api.ListReservationsResponse.fromJson(o.toJson());
-      checkListReservationsResponse(od);
+      checkListReservationsResponse(od as api.ListReservationsResponse);
     });
   });
 
@@ -741,7 +742,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMergeCapacityCommitmentsRequest();
       var od = api.MergeCapacityCommitmentsRequest.fromJson(o.toJson());
-      checkMergeCapacityCommitmentsRequest(od);
+      checkMergeCapacityCommitmentsRequest(
+          od as api.MergeCapacityCommitmentsRequest);
     });
   });
 
@@ -749,7 +751,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMoveAssignmentRequest();
       var od = api.MoveAssignmentRequest.fromJson(o.toJson());
-      checkMoveAssignmentRequest(od);
+      checkMoveAssignmentRequest(od as api.MoveAssignmentRequest);
     });
   });
 
@@ -757,7 +759,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -765,7 +767,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReservation();
       var od = api.Reservation.fromJson(o.toJson());
-      checkReservation(od);
+      checkReservation(od as api.Reservation);
     });
   });
 
@@ -773,7 +775,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAllAssignmentsResponse();
       var od = api.SearchAllAssignmentsResponse.fromJson(o.toJson());
-      checkSearchAllAssignmentsResponse(od);
+      checkSearchAllAssignmentsResponse(od as api.SearchAllAssignmentsResponse);
     });
   });
 
@@ -781,7 +783,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchAssignmentsResponse();
       var od = api.SearchAssignmentsResponse.fromJson(o.toJson());
-      checkSearchAssignmentsResponse(od);
+      checkSearchAssignmentsResponse(od as api.SearchAssignmentsResponse);
     });
   });
 
@@ -789,7 +791,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSplitCapacityCommitmentRequest();
       var od = api.SplitCapacityCommitmentRequest.fromJson(o.toJson());
-      checkSplitCapacityCommitmentRequest(od);
+      checkSplitCapacityCommitmentRequest(
+          od as api.SplitCapacityCommitmentRequest);
     });
   });
 
@@ -797,7 +800,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSplitCapacityCommitmentResponse();
       var od = api.SplitCapacityCommitmentResponse.fromJson(o.toJson());
-      checkSplitCapacityCommitmentResponse(od);
+      checkSplitCapacityCommitmentResponse(
+          od as api.SplitCapacityCommitmentResponse);
     });
   });
 
@@ -805,7 +809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -854,7 +858,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -914,7 +918,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -964,7 +968,7 @@ void main() {
       res
           .getBiReservation(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBiReservation(response);
+        checkBiReservation(response as api.BiReservation);
       })));
     });
 
@@ -1024,7 +1028,8 @@ void main() {
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchAllAssignmentsResponse(response);
+        checkSearchAllAssignmentsResponse(
+            response as api.SearchAllAssignmentsResponse);
       })));
     });
 
@@ -1084,7 +1089,8 @@ void main() {
               query: arg_query,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchAssignmentsResponse(response);
+        checkSearchAssignmentsResponse(
+            response as api.SearchAssignmentsResponse);
       })));
     });
 
@@ -1096,8 +1102,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BiReservation.fromJson(json);
-        checkBiReservation(obj);
+        var obj = api.BiReservation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBiReservation(obj as api.BiReservation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1140,7 +1147,7 @@ void main() {
           .updateBiReservation(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBiReservation(response);
+        checkBiReservation(response as api.BiReservation);
       })));
     });
   });
@@ -1158,8 +1165,9 @@ void main() {
       var arg_enforceSingleAdminProjectPerOrg = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CapacityCommitment.fromJson(json);
-        checkCapacityCommitment(obj);
+        var obj = api.CapacityCommitment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCapacityCommitment(obj as api.CapacityCommitment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1204,7 +1212,7 @@ void main() {
                   arg_enforceSingleAdminProjectPerOrg,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response);
+        checkCapacityCommitment(response as api.CapacityCommitment);
       })));
     });
 
@@ -1255,7 +1263,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1306,7 +1314,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response);
+        checkCapacityCommitment(response as api.CapacityCommitment);
       })));
     });
 
@@ -1366,7 +1374,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCapacityCommitmentsResponse(response);
+        checkListCapacityCommitmentsResponse(
+            response as api.ListCapacityCommitmentsResponse);
       })));
     });
 
@@ -1380,8 +1389,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MergeCapacityCommitmentsRequest.fromJson(json);
-        checkMergeCapacityCommitmentsRequest(obj);
+        var obj = api.MergeCapacityCommitmentsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMergeCapacityCommitmentsRequest(
+            obj as api.MergeCapacityCommitmentsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1421,7 +1432,7 @@ void main() {
       res
           .merge(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response);
+        checkCapacityCommitment(response as api.CapacityCommitment);
       })));
     });
 
@@ -1436,8 +1447,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CapacityCommitment.fromJson(json);
-        checkCapacityCommitment(obj);
+        var obj = api.CapacityCommitment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCapacityCommitment(obj as api.CapacityCommitment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1480,7 +1492,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCapacityCommitment(response);
+        checkCapacityCommitment(response as api.CapacityCommitment);
       })));
     });
 
@@ -1494,8 +1506,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SplitCapacityCommitmentRequest.fromJson(json);
-        checkSplitCapacityCommitmentRequest(obj);
+        var obj = api.SplitCapacityCommitmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSplitCapacityCommitmentRequest(
+            obj as api.SplitCapacityCommitmentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1535,7 +1549,8 @@ void main() {
       res
           .split(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSplitCapacityCommitmentResponse(response);
+        checkSplitCapacityCommitmentResponse(
+            response as api.SplitCapacityCommitmentResponse);
       })));
     });
   });
@@ -1550,8 +1565,9 @@ void main() {
       var arg_reservationId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Reservation.fromJson(json);
-        checkReservation(obj);
+        var obj = api.Reservation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReservation(obj as api.Reservation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1594,7 +1610,7 @@ void main() {
           .create(arg_request, arg_parent,
               reservationId: arg_reservationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReservation(response);
+        checkReservation(response as api.Reservation);
       })));
     });
 
@@ -1643,7 +1659,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1692,7 +1708,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReservation(response);
+        checkReservation(response as api.Reservation);
       })));
     });
 
@@ -1750,7 +1766,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReservationsResponse(response);
+        checkListReservationsResponse(response as api.ListReservationsResponse);
       })));
     });
 
@@ -1763,8 +1779,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Reservation.fromJson(json);
-        checkReservation(obj);
+        var obj = api.Reservation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReservation(obj as api.Reservation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1807,7 +1824,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkReservation(response);
+        checkReservation(response as api.Reservation);
       })));
     });
   });
@@ -1825,8 +1842,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Assignment.fromJson(json);
-        checkAssignment(obj);
+        var obj = api.Assignment.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAssignment(obj as api.Assignment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1866,7 +1884,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignment(response);
+        checkAssignment(response as api.Assignment);
       })));
     });
 
@@ -1918,7 +1936,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1979,7 +1997,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAssignmentsResponse(response);
+        checkListAssignmentsResponse(response as api.ListAssignmentsResponse);
       })));
     });
 
@@ -1994,8 +2012,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.MoveAssignmentRequest.fromJson(json);
-        checkMoveAssignmentRequest(obj);
+        var obj = api.MoveAssignmentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkMoveAssignmentRequest(obj as api.MoveAssignmentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2035,7 +2054,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAssignment(response);
+        checkAssignment(response as api.Assignment);
       })));
     });
   });

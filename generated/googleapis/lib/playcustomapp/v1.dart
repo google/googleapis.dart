@@ -135,7 +135,9 @@ class AccountsCustomAppsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CustomApp.fromJson(data));
+    return _response.then(
+      (data) => CustomApp.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

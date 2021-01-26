@@ -186,7 +186,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchResponse();
       var od = api.SearchResponse.fromJson(o.toJson());
-      checkSearchResponse(od);
+      checkSearchResponse(od as api.SearchResponse);
     });
   });
 
@@ -258,7 +258,7 @@ void main() {
               types: arg_types,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchResponse(response);
+        checkSearchResponse(response as api.SearchResponse);
       })));
     });
   });

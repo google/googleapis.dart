@@ -16,7 +16,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library googleapis.toyApi.D0_1;
+library test_package.toyApi.D0_1;
 
 import 'dart:core' as core;
 import 'dart:collection' as collection;
@@ -80,7 +80,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Request parameters:
@@ -120,7 +122,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -166,7 +171,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MapOfToyResponse.fromJson(data));
+    return _response.then(
+      (data) => MapOfToyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -212,7 +220,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MapOfToyResponse.fromJson(data));
+    return _response.then(
+      (data) => MapOfToyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -258,7 +269,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MapOfint.fromJson(data));
+    return _response.then(
+      (data) => MapOfint.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -313,7 +326,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -365,7 +381,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -423,7 +442,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -469,7 +491,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOfListOfString.fromJson(data));
+    return _response.then(
+      (data) => ListOfListOfString.fromJson(data as core.List),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -515,7 +539,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOfMapOfListOfString.fromJson(data));
+    return _response.then(
+      (data) => ListOfMapOfListOfString.fromJson(data as core.List),
+    );
   }
 
   /// Request parameters:
@@ -555,7 +581,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyMapResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyMapResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -601,7 +630,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MapOfListOfMapOfbool.fromJson(data));
+    return _response.then(
+      (data) => MapOfListOfMapOfbool.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -647,7 +679,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MapOfMapOfbool.fromJson(data));
+    return _response.then(
+      (data) =>
+          MapOfMapOfbool.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -693,7 +728,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -733,7 +771,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -773,7 +814,10 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ToyResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -813,7 +857,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -859,7 +905,9 @@ class ToyApiApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOfString.fromJson(data));
+    return _response.then(
+      (data) => ListOfString.fromJson(data as core.List),
+    );
   }
 }
 
@@ -920,7 +968,10 @@ class ComputeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResourceResponse.fromJson(data));
+    return _response.then(
+      (data) => ToyResourceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -981,7 +1032,10 @@ class StorageResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResourceResponse.fromJson(data));
+    return _response.then(
+      (data) => ToyResourceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1027,7 +1081,8 @@ class ListOfListOfToyRequest
   ListOfListOfToyRequest.fromJson(core.List json)
       : _inner = json
             .map((value) => (value as core.List)
-                .map<ToyRequest>((value) => ToyRequest.fromJson(value))
+                .map<ToyRequest>((value) => ToyRequest.fromJson(
+                    value as core.Map<core.String, core.dynamic>))
                 .toList())
             .toList();
 
@@ -1096,7 +1151,8 @@ class ListOfMapOfListOfString
   ListOfMapOfListOfString.fromJson(core.List json)
       : _inner = json
             .map((value) => commons.mapMap<core.List, core.List<core.String>>(
-                value.cast<core.String, core.List>(),
+                (value as core.Map<core.String, core.dynamic>)
+                    .cast<core.String, core.List>(),
                 (core.List item) => (item as core.List)
                     .map<core.String>((value) => value as core.String)
                     .toList()))
@@ -1134,7 +1190,8 @@ class ListOfMapOfListOfint
   ListOfMapOfListOfint.fromJson(core.List json)
       : _inner = json
             .map((value) => commons.mapMap<core.List, core.List<core.int>>(
-                value.cast<core.String, core.List>(),
+                (value as core.Map<core.String, core.dynamic>)
+                    .cast<core.String, core.List>(),
                 (core.List item) => (item as core.List)
                     .map<core.int>((value) => value as core.int)
                     .toList()))
@@ -1198,7 +1255,10 @@ class ListOfToyRequest extends collection.ListBase<ToyRequest> {
   ListOfToyRequest() : _inner = [];
 
   ListOfToyRequest.fromJson(core.List json)
-      : _inner = json.map((value) => ToyRequest.fromJson(value)).toList();
+      : _inner = json
+            .map((value) => ToyRequest.fromJson(
+                value as core.Map<core.String, core.dynamic>))
+            .toList();
 
   core.List<core.Map<core.String, core.Object>> toJson() {
     return _inner.map((value) => value.toJson()).toList();
@@ -1233,7 +1293,8 @@ class MapOfListOfMapOfbool extends collection
       this[key] = (value as core.List)
           .map<core.Map<core.String, core.bool>>((value) =>
               commons.mapMap<core.bool, core.bool>(
-                  value.cast<core.String, core.bool>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.bool>(),
                   (core.bool item) => item as core.bool))
           .toList();
     });
@@ -1276,7 +1337,8 @@ class MapOfListOfMapOfint extends collection
       this[key] = (value as core.List)
           .map<core.Map<core.String, core.int>>((value) =>
               commons.mapMap<core.int, core.int>(
-                  value.cast<core.String, core.int>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.int>(),
                   (core.int item) => item as core.int))
           .toList();
     });
@@ -1317,7 +1379,8 @@ class MapOfMapOfbool
   MapOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = commons.mapMap<core.bool, core.bool>(
-          value.cast<core.String, core.bool>(),
+          (value as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.bool>(),
           (core.bool item) => item as core.bool);
     });
   }
@@ -1356,7 +1419,8 @@ class MapOfMapOfint
   MapOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = commons.mapMap<core.int, core.int>(
-          value.cast<core.String, core.int>(),
+          (value as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.int>(),
           (core.int item) => item as core.int);
     });
   }
@@ -1393,7 +1457,8 @@ class MapOfToyResponse extends collection.MapBase<core.String, ToyResponse> {
 
   MapOfToyResponse.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = ToyResponse.fromJson(value);
+      this[key] =
+          ToyResponse.fromJson(value as core.Map<core.String, core.dynamic>);
     });
   }
 
@@ -1503,8 +1568,10 @@ class ToyMapResponse {
   ToyMapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mapResult')) {
       mapResult = commons.mapMap<core.Map, NestedResponse>(
-          _json['mapResult'].cast<core.String, core.Map>(),
-          (core.Map item) => NestedResponse.fromJson(item));
+          (_json['mapResult'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NestedResponse.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('result')) {
       result = _json['result'] as core.String;

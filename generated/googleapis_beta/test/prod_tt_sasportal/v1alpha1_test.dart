@@ -137,8 +137,8 @@ core.List<api.SasPortalDevice> buildUnnamed6161() {
 
 void checkUnnamed6161(core.List<api.SasPortalDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDevice(o[0]);
-  checkSasPortalDevice(o[1]);
+  checkSasPortalDevice(o[0] as api.SasPortalDevice);
+  checkSasPortalDevice(o[1] as api.SasPortalDevice);
 }
 
 core.int buildCounterSasPortalBulkCreateDeviceResponse = 0;
@@ -229,8 +229,8 @@ core.List<api.SasPortalDeviceGrant> buildUnnamed6163() {
 
 void checkUnnamed6163(core.List<api.SasPortalDeviceGrant> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDeviceGrant(o[0]);
-  checkSasPortalDeviceGrant(o[1]);
+  checkSasPortalDeviceGrant(o[0] as api.SasPortalDeviceGrant);
+  checkSasPortalDeviceGrant(o[1] as api.SasPortalDeviceGrant);
 }
 
 core.int buildCounterSasPortalDevice = 0;
@@ -255,13 +255,14 @@ api.SasPortalDevice buildSasPortalDevice() {
 void checkSasPortalDevice(api.SasPortalDevice o) {
   buildCounterSasPortalDevice++;
   if (buildCounterSasPortalDevice < 3) {
-    checkSasPortalDeviceConfig(o.activeConfig);
-    checkSasPortalDeviceMetadata(o.deviceMetadata);
+    checkSasPortalDeviceConfig(o.activeConfig as api.SasPortalDeviceConfig);
+    checkSasPortalDeviceMetadata(
+        o.deviceMetadata as api.SasPortalDeviceMetadata);
     unittest.expect(o.displayName, unittest.equals('foo'));
     unittest.expect(o.fccId, unittest.equals('foo'));
     checkUnnamed6163(o.grants);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkSasPortalDeviceConfig(o.preloadedConfig);
+    checkSasPortalDeviceConfig(o.preloadedConfig as api.SasPortalDeviceConfig);
     unittest.expect(o.serialNumber, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -325,13 +326,15 @@ api.SasPortalDeviceConfig buildSasPortalDeviceConfig() {
 void checkSasPortalDeviceConfig(api.SasPortalDeviceConfig o) {
   buildCounterSasPortalDeviceConfig++;
   if (buildCounterSasPortalDeviceConfig < 3) {
-    checkSasPortalDeviceAirInterface(o.airInterface);
+    checkSasPortalDeviceAirInterface(
+        o.airInterface as api.SasPortalDeviceAirInterface);
     unittest.expect(o.callSign, unittest.equals('foo'));
     unittest.expect(o.category, unittest.equals('foo'));
-    checkSasPortalInstallationParams(o.installationParams);
+    checkSasPortalInstallationParams(
+        o.installationParams as api.SasPortalInstallationParams);
     unittest.expect(o.isSigned, unittest.isTrue);
     checkUnnamed6164(o.measurementCapabilities);
-    checkSasPortalDeviceModel(o.model);
+    checkSasPortalDeviceModel(o.model as api.SasPortalDeviceModel);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
@@ -348,8 +351,8 @@ core.List<api.SasPortalDpaMoveList> buildUnnamed6165() {
 
 void checkUnnamed6165(core.List<api.SasPortalDpaMoveList> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDpaMoveList(o[0]);
-  checkSasPortalDpaMoveList(o[1]);
+  checkSasPortalDpaMoveList(o[0] as api.SasPortalDpaMoveList);
+  checkSasPortalDpaMoveList(o[1] as api.SasPortalDpaMoveList);
 }
 
 core.List<core.String> buildUnnamed6166() {
@@ -388,7 +391,8 @@ void checkSasPortalDeviceGrant(api.SasPortalDeviceGrant o) {
   if (buildCounterSasPortalDeviceGrant < 3) {
     unittest.expect(o.channelType, unittest.equals('foo'));
     unittest.expect(o.expireTime, unittest.equals('foo'));
-    checkSasPortalFrequencyRange(o.frequencyRange);
+    checkSasPortalFrequencyRange(
+        o.frequencyRange as api.SasPortalFrequencyRange);
     unittest.expect(o.grantId, unittest.equals('foo'));
     unittest.expect(o.maxEirp, unittest.equals(42.0));
     checkUnnamed6165(o.moveList);
@@ -456,7 +460,8 @@ void checkSasPortalDpaMoveList(api.SasPortalDpaMoveList o) {
   buildCounterSasPortalDpaMoveList++;
   if (buildCounterSasPortalDpaMoveList < 3) {
     unittest.expect(o.dpaId, unittest.equals('foo'));
-    checkSasPortalFrequencyRange(o.frequencyRange);
+    checkSasPortalFrequencyRange(
+        o.frequencyRange as api.SasPortalFrequencyRange);
   }
   buildCounterSasPortalDpaMoveList--;
 }
@@ -605,8 +610,8 @@ core.List<api.SasPortalCustomer> buildUnnamed6167() {
 
 void checkUnnamed6167(core.List<api.SasPortalCustomer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalCustomer(o[0]);
-  checkSasPortalCustomer(o[1]);
+  checkSasPortalCustomer(o[0] as api.SasPortalCustomer);
+  checkSasPortalCustomer(o[1] as api.SasPortalCustomer);
 }
 
 core.int buildCounterSasPortalListCustomersResponse = 0;
@@ -639,8 +644,8 @@ core.List<api.SasPortalDevice> buildUnnamed6168() {
 
 void checkUnnamed6168(core.List<api.SasPortalDevice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalDevice(o[0]);
-  checkSasPortalDevice(o[1]);
+  checkSasPortalDevice(o[0] as api.SasPortalDevice);
+  checkSasPortalDevice(o[1] as api.SasPortalDevice);
 }
 
 core.int buildCounterSasPortalListDevicesResponse = 0;
@@ -673,8 +678,8 @@ core.List<api.SasPortalNode> buildUnnamed6169() {
 
 void checkUnnamed6169(core.List<api.SasPortalNode> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalNode(o[0]);
-  checkSasPortalNode(o[1]);
+  checkSasPortalNode(o[0] as api.SasPortalNode);
+  checkSasPortalNode(o[1] as api.SasPortalNode);
 }
 
 core.int buildCounterSasPortalListNodesResponse = 0;
@@ -868,7 +873,7 @@ void checkSasPortalOperation(api.SasPortalOperation o) {
   buildCounterSasPortalOperation++;
   if (buildCounterSasPortalOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkSasPortalStatus(o.error);
+    checkSasPortalStatus(o.error as api.SasPortalStatus);
     checkUnnamed6171(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6172(o.response);
@@ -885,8 +890,8 @@ core.List<api.SasPortalAssignment> buildUnnamed6173() {
 
 void checkUnnamed6173(core.List<api.SasPortalAssignment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSasPortalAssignment(o[0]);
-  checkSasPortalAssignment(o[1]);
+  checkSasPortalAssignment(o[0] as api.SasPortalAssignment);
+  checkSasPortalAssignment(o[1] as api.SasPortalAssignment);
 }
 
 core.int buildCounterSasPortalPolicy = 0;
@@ -925,7 +930,7 @@ api.SasPortalSetPolicyRequest buildSasPortalSetPolicyRequest() {
 void checkSasPortalSetPolicyRequest(api.SasPortalSetPolicyRequest o) {
   buildCounterSasPortalSetPolicyRequest++;
   if (buildCounterSasPortalSetPolicyRequest < 3) {
-    checkSasPortalPolicy(o.policy);
+    checkSasPortalPolicy(o.policy as api.SasPortalPolicy);
     unittest.expect(o.resource, unittest.equals('foo'));
   }
   buildCounterSasPortalSetPolicyRequest--;
@@ -945,7 +950,7 @@ api.SasPortalSignDeviceRequest buildSasPortalSignDeviceRequest() {
 void checkSasPortalSignDeviceRequest(api.SasPortalSignDeviceRequest o) {
   buildCounterSasPortalSignDeviceRequest++;
   if (buildCounterSasPortalSignDeviceRequest < 3) {
-    checkSasPortalDevice(o.device);
+    checkSasPortalDevice(o.device as api.SasPortalDevice);
   }
   buildCounterSasPortalSignDeviceRequest--;
 }
@@ -1152,7 +1157,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalAssignment();
       var od = api.SasPortalAssignment.fromJson(o.toJson());
-      checkSasPortalAssignment(od);
+      checkSasPortalAssignment(od as api.SasPortalAssignment);
     });
   });
 
@@ -1160,7 +1165,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalBulkCreateDeviceRequest();
       var od = api.SasPortalBulkCreateDeviceRequest.fromJson(o.toJson());
-      checkSasPortalBulkCreateDeviceRequest(od);
+      checkSasPortalBulkCreateDeviceRequest(
+          od as api.SasPortalBulkCreateDeviceRequest);
     });
   });
 
@@ -1168,7 +1174,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalBulkCreateDeviceResponse();
       var od = api.SasPortalBulkCreateDeviceResponse.fromJson(o.toJson());
-      checkSasPortalBulkCreateDeviceResponse(od);
+      checkSasPortalBulkCreateDeviceResponse(
+          od as api.SasPortalBulkCreateDeviceResponse);
     });
   });
 
@@ -1176,7 +1183,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalCreateSignedDeviceRequest();
       var od = api.SasPortalCreateSignedDeviceRequest.fromJson(o.toJson());
-      checkSasPortalCreateSignedDeviceRequest(od);
+      checkSasPortalCreateSignedDeviceRequest(
+          od as api.SasPortalCreateSignedDeviceRequest);
     });
   });
 
@@ -1184,7 +1192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalCustomer();
       var od = api.SasPortalCustomer.fromJson(o.toJson());
-      checkSasPortalCustomer(od);
+      checkSasPortalCustomer(od as api.SasPortalCustomer);
     });
   });
 
@@ -1192,7 +1200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDevice();
       var od = api.SasPortalDevice.fromJson(o.toJson());
-      checkSasPortalDevice(od);
+      checkSasPortalDevice(od as api.SasPortalDevice);
     });
   });
 
@@ -1200,7 +1208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDeviceAirInterface();
       var od = api.SasPortalDeviceAirInterface.fromJson(o.toJson());
-      checkSasPortalDeviceAirInterface(od);
+      checkSasPortalDeviceAirInterface(od as api.SasPortalDeviceAirInterface);
     });
   });
 
@@ -1208,7 +1216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDeviceConfig();
       var od = api.SasPortalDeviceConfig.fromJson(o.toJson());
-      checkSasPortalDeviceConfig(od);
+      checkSasPortalDeviceConfig(od as api.SasPortalDeviceConfig);
     });
   });
 
@@ -1216,7 +1224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDeviceGrant();
       var od = api.SasPortalDeviceGrant.fromJson(o.toJson());
-      checkSasPortalDeviceGrant(od);
+      checkSasPortalDeviceGrant(od as api.SasPortalDeviceGrant);
     });
   });
 
@@ -1224,7 +1232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDeviceMetadata();
       var od = api.SasPortalDeviceMetadata.fromJson(o.toJson());
-      checkSasPortalDeviceMetadata(od);
+      checkSasPortalDeviceMetadata(od as api.SasPortalDeviceMetadata);
     });
   });
 
@@ -1232,7 +1240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDeviceModel();
       var od = api.SasPortalDeviceModel.fromJson(o.toJson());
-      checkSasPortalDeviceModel(od);
+      checkSasPortalDeviceModel(od as api.SasPortalDeviceModel);
     });
   });
 
@@ -1240,7 +1248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalDpaMoveList();
       var od = api.SasPortalDpaMoveList.fromJson(o.toJson());
-      checkSasPortalDpaMoveList(od);
+      checkSasPortalDpaMoveList(od as api.SasPortalDpaMoveList);
     });
   });
 
@@ -1248,7 +1256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalEmpty();
       var od = api.SasPortalEmpty.fromJson(o.toJson());
-      checkSasPortalEmpty(od);
+      checkSasPortalEmpty(od as api.SasPortalEmpty);
     });
   });
 
@@ -1256,7 +1264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalFrequencyRange();
       var od = api.SasPortalFrequencyRange.fromJson(o.toJson());
-      checkSasPortalFrequencyRange(od);
+      checkSasPortalFrequencyRange(od as api.SasPortalFrequencyRange);
     });
   });
 
@@ -1264,7 +1272,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalGenerateSecretRequest();
       var od = api.SasPortalGenerateSecretRequest.fromJson(o.toJson());
-      checkSasPortalGenerateSecretRequest(od);
+      checkSasPortalGenerateSecretRequest(
+          od as api.SasPortalGenerateSecretRequest);
     });
   });
 
@@ -1272,7 +1281,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalGenerateSecretResponse();
       var od = api.SasPortalGenerateSecretResponse.fromJson(o.toJson());
-      checkSasPortalGenerateSecretResponse(od);
+      checkSasPortalGenerateSecretResponse(
+          od as api.SasPortalGenerateSecretResponse);
     });
   });
 
@@ -1280,7 +1290,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalGetPolicyRequest();
       var od = api.SasPortalGetPolicyRequest.fromJson(o.toJson());
-      checkSasPortalGetPolicyRequest(od);
+      checkSasPortalGetPolicyRequest(od as api.SasPortalGetPolicyRequest);
     });
   });
 
@@ -1288,7 +1298,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalInstallationParams();
       var od = api.SasPortalInstallationParams.fromJson(o.toJson());
-      checkSasPortalInstallationParams(od);
+      checkSasPortalInstallationParams(od as api.SasPortalInstallationParams);
     });
   });
 
@@ -1296,7 +1306,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalListCustomersResponse();
       var od = api.SasPortalListCustomersResponse.fromJson(o.toJson());
-      checkSasPortalListCustomersResponse(od);
+      checkSasPortalListCustomersResponse(
+          od as api.SasPortalListCustomersResponse);
     });
   });
 
@@ -1304,7 +1315,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalListDevicesResponse();
       var od = api.SasPortalListDevicesResponse.fromJson(o.toJson());
-      checkSasPortalListDevicesResponse(od);
+      checkSasPortalListDevicesResponse(od as api.SasPortalListDevicesResponse);
     });
   });
 
@@ -1312,7 +1323,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalListNodesResponse();
       var od = api.SasPortalListNodesResponse.fromJson(o.toJson());
-      checkSasPortalListNodesResponse(od);
+      checkSasPortalListNodesResponse(od as api.SasPortalListNodesResponse);
     });
   });
 
@@ -1320,7 +1331,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalMoveDeploymentRequest();
       var od = api.SasPortalMoveDeploymentRequest.fromJson(o.toJson());
-      checkSasPortalMoveDeploymentRequest(od);
+      checkSasPortalMoveDeploymentRequest(
+          od as api.SasPortalMoveDeploymentRequest);
     });
   });
 
@@ -1328,7 +1340,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalMoveDeviceRequest();
       var od = api.SasPortalMoveDeviceRequest.fromJson(o.toJson());
-      checkSasPortalMoveDeviceRequest(od);
+      checkSasPortalMoveDeviceRequest(od as api.SasPortalMoveDeviceRequest);
     });
   });
 
@@ -1336,7 +1348,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalMoveNodeRequest();
       var od = api.SasPortalMoveNodeRequest.fromJson(o.toJson());
-      checkSasPortalMoveNodeRequest(od);
+      checkSasPortalMoveNodeRequest(od as api.SasPortalMoveNodeRequest);
     });
   });
 
@@ -1344,7 +1356,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalNode();
       var od = api.SasPortalNode.fromJson(o.toJson());
-      checkSasPortalNode(od);
+      checkSasPortalNode(od as api.SasPortalNode);
     });
   });
 
@@ -1352,7 +1364,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalOperation();
       var od = api.SasPortalOperation.fromJson(o.toJson());
-      checkSasPortalOperation(od);
+      checkSasPortalOperation(od as api.SasPortalOperation);
     });
   });
 
@@ -1360,7 +1372,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalPolicy();
       var od = api.SasPortalPolicy.fromJson(o.toJson());
-      checkSasPortalPolicy(od);
+      checkSasPortalPolicy(od as api.SasPortalPolicy);
     });
   });
 
@@ -1368,7 +1380,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalSetPolicyRequest();
       var od = api.SasPortalSetPolicyRequest.fromJson(o.toJson());
-      checkSasPortalSetPolicyRequest(od);
+      checkSasPortalSetPolicyRequest(od as api.SasPortalSetPolicyRequest);
     });
   });
 
@@ -1376,7 +1388,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalSignDeviceRequest();
       var od = api.SasPortalSignDeviceRequest.fromJson(o.toJson());
-      checkSasPortalSignDeviceRequest(od);
+      checkSasPortalSignDeviceRequest(od as api.SasPortalSignDeviceRequest);
     });
   });
 
@@ -1384,7 +1396,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalStatus();
       var od = api.SasPortalStatus.fromJson(o.toJson());
-      checkSasPortalStatus(od);
+      checkSasPortalStatus(od as api.SasPortalStatus);
     });
   });
 
@@ -1392,7 +1404,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalTestPermissionsRequest();
       var od = api.SasPortalTestPermissionsRequest.fromJson(o.toJson());
-      checkSasPortalTestPermissionsRequest(od);
+      checkSasPortalTestPermissionsRequest(
+          od as api.SasPortalTestPermissionsRequest);
     });
   });
 
@@ -1400,7 +1413,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalTestPermissionsResponse();
       var od = api.SasPortalTestPermissionsResponse.fromJson(o.toJson());
-      checkSasPortalTestPermissionsResponse(od);
+      checkSasPortalTestPermissionsResponse(
+          od as api.SasPortalTestPermissionsResponse);
     });
   });
 
@@ -1408,7 +1422,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalUpdateSignedDeviceRequest();
       var od = api.SasPortalUpdateSignedDeviceRequest.fromJson(o.toJson());
-      checkSasPortalUpdateSignedDeviceRequest(od);
+      checkSasPortalUpdateSignedDeviceRequest(
+          od as api.SasPortalUpdateSignedDeviceRequest);
     });
   });
 
@@ -1416,7 +1431,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalValidateInstallerRequest();
       var od = api.SasPortalValidateInstallerRequest.fromJson(o.toJson());
-      checkSasPortalValidateInstallerRequest(od);
+      checkSasPortalValidateInstallerRequest(
+          od as api.SasPortalValidateInstallerRequest);
     });
   });
 
@@ -1424,7 +1440,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSasPortalValidateInstallerResponse();
       var od = api.SasPortalValidateInstallerResponse.fromJson(o.toJson());
-      checkSasPortalValidateInstallerResponse(od);
+      checkSasPortalValidateInstallerResponse(
+          od as api.SasPortalValidateInstallerResponse);
     });
   });
 
@@ -1473,7 +1490,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalCustomer(response);
+        checkSasPortalCustomer(response as api.SasPortalCustomer);
       })));
     });
 
@@ -1528,7 +1545,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListCustomersResponse(response);
+        checkSasPortalListCustomersResponse(
+            response as api.SasPortalListCustomersResponse);
       })));
     });
 
@@ -1540,8 +1558,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCustomer.fromJson(json);
-        checkSasPortalCustomer(obj);
+        var obj = api.SasPortalCustomer.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCustomer(obj as api.SasPortalCustomer);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1584,7 +1603,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalCustomer(response);
+        checkSasPortalCustomer(response as api.SasPortalCustomer);
       })));
     });
   });
@@ -1597,8 +1616,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeploymentRequest.fromJson(json);
-        checkSasPortalMoveDeploymentRequest(obj);
+        var obj = api.SasPortalMoveDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveDeploymentRequest(
+            obj as api.SasPortalMoveDeploymentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1638,7 +1659,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
   });
@@ -1651,8 +1672,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1692,7 +1714,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -1703,8 +1725,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(json);
-        checkSasPortalCreateSignedDeviceRequest(obj);
+        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCreateSignedDeviceRequest(
+            obj as api.SasPortalCreateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1744,7 +1768,7 @@ void main() {
       res
           .createSigned(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -1804,7 +1828,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(response);
+        checkSasPortalListDevicesResponse(
+            response as api.SasPortalListDevicesResponse);
       })));
     });
   });
@@ -1817,8 +1842,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(json);
-        checkSasPortalBulkCreateDeviceRequest(obj);
+        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalBulkCreateDeviceRequest(
+            obj as api.SasPortalBulkCreateDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1859,7 +1886,8 @@ void main() {
       res
           .bulk(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalBulkCreateDeviceResponse(response);
+        checkSasPortalBulkCreateDeviceResponse(
+            response as api.SasPortalBulkCreateDeviceResponse);
       })));
     });
 
@@ -1870,8 +1898,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1911,7 +1940,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -1922,8 +1951,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(json);
-        checkSasPortalCreateSignedDeviceRequest(obj);
+        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCreateSignedDeviceRequest(
+            obj as api.SasPortalCreateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1963,7 +1994,7 @@ void main() {
       res
           .createSigned(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -2011,7 +2042,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -2059,7 +2090,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -2119,7 +2150,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(response);
+        checkSasPortalListDevicesResponse(
+            response as api.SasPortalListDevicesResponse);
       })));
     });
 
@@ -2130,8 +2162,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(json);
-        checkSasPortalMoveDeviceRequest(obj);
+        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2171,7 +2204,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
 
@@ -2183,8 +2216,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2227,7 +2261,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -2238,8 +2272,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(json);
-        checkSasPortalSignDeviceRequest(obj);
+        var obj = api.SasPortalSignDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2279,7 +2314,7 @@ void main() {
       res
           .signDevice(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -2290,8 +2325,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(json);
-        checkSasPortalUpdateSignedDeviceRequest(obj);
+        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalUpdateSignedDeviceRequest(
+            obj as api.SasPortalUpdateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2331,7 +2368,7 @@ void main() {
       res
           .updateSigned(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
   });
@@ -2344,8 +2381,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2385,7 +2423,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -2433,7 +2471,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -2481,7 +2519,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -2538,7 +2576,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(response);
+        checkSasPortalListNodesResponse(
+            response as api.SasPortalListNodesResponse);
       })));
     });
 
@@ -2549,8 +2588,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveNodeRequest.fromJson(json);
-        checkSasPortalMoveNodeRequest(obj);
+        var obj = api.SasPortalMoveNodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveNodeRequest(obj as api.SasPortalMoveNodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2590,7 +2630,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
 
@@ -2602,8 +2642,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2646,7 +2687,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
   });
@@ -2659,8 +2700,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2700,7 +2742,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -2757,7 +2799,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(response);
+        checkSasPortalListNodesResponse(
+            response as api.SasPortalListNodesResponse);
       })));
     });
   });
@@ -2807,7 +2850,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -2855,7 +2898,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -2866,8 +2909,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(json);
-        checkSasPortalMoveDeviceRequest(obj);
+        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2907,7 +2951,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
 
@@ -2919,8 +2963,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2963,7 +3008,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -2974,8 +3019,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(json);
-        checkSasPortalSignDeviceRequest(obj);
+        var obj = api.SasPortalSignDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3015,7 +3061,7 @@ void main() {
       res
           .signDevice(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -3026,8 +3072,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(json);
-        checkSasPortalUpdateSignedDeviceRequest(obj);
+        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalUpdateSignedDeviceRequest(
+            obj as api.SasPortalUpdateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3067,7 +3115,7 @@ void main() {
       res
           .updateSigned(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
   });
@@ -3079,8 +3127,10 @@ void main() {
       var arg_request = buildSasPortalGenerateSecretRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalGenerateSecretRequest.fromJson(json);
-        checkSasPortalGenerateSecretRequest(obj);
+        var obj = api.SasPortalGenerateSecretRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalGenerateSecretRequest(
+            obj as api.SasPortalGenerateSecretRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3119,7 +3169,8 @@ void main() {
       res
           .generateSecret(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalGenerateSecretResponse(response);
+        checkSasPortalGenerateSecretResponse(
+            response as api.SasPortalGenerateSecretResponse);
       })));
     });
 
@@ -3129,8 +3180,10 @@ void main() {
       var arg_request = buildSasPortalValidateInstallerRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalValidateInstallerRequest.fromJson(json);
-        checkSasPortalValidateInstallerRequest(obj);
+        var obj = api.SasPortalValidateInstallerRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalValidateInstallerRequest(
+            obj as api.SasPortalValidateInstallerRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3170,7 +3223,8 @@ void main() {
       res
           .validate(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalValidateInstallerResponse(response);
+        checkSasPortalValidateInstallerResponse(
+            response as api.SasPortalValidateInstallerResponse);
       })));
     });
   });
@@ -3220,7 +3274,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
   });
@@ -3233,8 +3287,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeploymentRequest.fromJson(json);
-        checkSasPortalMoveDeploymentRequest(obj);
+        var obj = api.SasPortalMoveDeploymentRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveDeploymentRequest(
+            obj as api.SasPortalMoveDeploymentRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3274,7 +3330,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
   });
@@ -3287,8 +3343,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3328,7 +3385,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3339,8 +3396,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(json);
-        checkSasPortalCreateSignedDeviceRequest(obj);
+        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCreateSignedDeviceRequest(
+            obj as api.SasPortalCreateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3380,7 +3439,7 @@ void main() {
       res
           .createSigned(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3440,7 +3499,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(response);
+        checkSasPortalListDevicesResponse(
+            response as api.SasPortalListDevicesResponse);
       })));
     });
   });
@@ -3453,8 +3513,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(json);
-        checkSasPortalBulkCreateDeviceRequest(obj);
+        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalBulkCreateDeviceRequest(
+            obj as api.SasPortalBulkCreateDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3495,7 +3557,8 @@ void main() {
       res
           .bulk(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalBulkCreateDeviceResponse(response);
+        checkSasPortalBulkCreateDeviceResponse(
+            response as api.SasPortalBulkCreateDeviceResponse);
       })));
     });
 
@@ -3506,8 +3569,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3547,7 +3611,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3558,8 +3622,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(json);
-        checkSasPortalCreateSignedDeviceRequest(obj);
+        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCreateSignedDeviceRequest(
+            obj as api.SasPortalCreateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3599,7 +3665,7 @@ void main() {
       res
           .createSigned(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3647,7 +3713,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -3695,7 +3761,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3755,7 +3821,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(response);
+        checkSasPortalListDevicesResponse(
+            response as api.SasPortalListDevicesResponse);
       })));
     });
 
@@ -3766,8 +3833,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveDeviceRequest.fromJson(json);
-        checkSasPortalMoveDeviceRequest(obj);
+        var obj = api.SasPortalMoveDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveDeviceRequest(obj as api.SasPortalMoveDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3807,7 +3875,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
 
@@ -3819,8 +3887,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3863,7 +3932,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -3874,8 +3943,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSignDeviceRequest.fromJson(json);
-        checkSasPortalSignDeviceRequest(obj);
+        var obj = api.SasPortalSignDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalSignDeviceRequest(obj as api.SasPortalSignDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3915,7 +3985,7 @@ void main() {
       res
           .signDevice(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -3926,8 +3996,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(json);
-        checkSasPortalUpdateSignedDeviceRequest(obj);
+        var obj = api.SasPortalUpdateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalUpdateSignedDeviceRequest(
+            obj as api.SasPortalUpdateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3967,7 +4039,7 @@ void main() {
       res
           .updateSigned(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
   });
@@ -3980,8 +4052,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4021,7 +4094,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -4069,7 +4142,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalEmpty(response);
+        checkSasPortalEmpty(response as api.SasPortalEmpty);
       })));
     });
 
@@ -4117,7 +4190,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -4174,7 +4247,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(response);
+        checkSasPortalListNodesResponse(
+            response as api.SasPortalListNodesResponse);
       })));
     });
 
@@ -4185,8 +4259,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalMoveNodeRequest.fromJson(json);
-        checkSasPortalMoveNodeRequest(obj);
+        var obj = api.SasPortalMoveNodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalMoveNodeRequest(obj as api.SasPortalMoveNodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4226,7 +4301,7 @@ void main() {
       res
           .move(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalOperation(response);
+        checkSasPortalOperation(response as api.SasPortalOperation);
       })));
     });
 
@@ -4238,8 +4313,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4282,7 +4358,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
   });
@@ -4295,8 +4371,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(json);
-        checkSasPortalBulkCreateDeviceRequest(obj);
+        var obj = api.SasPortalBulkCreateDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalBulkCreateDeviceRequest(
+            obj as api.SasPortalBulkCreateDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4337,7 +4415,8 @@ void main() {
       res
           .bulk(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalBulkCreateDeviceResponse(response);
+        checkSasPortalBulkCreateDeviceResponse(
+            response as api.SasPortalBulkCreateDeviceResponse);
       })));
     });
 
@@ -4348,8 +4427,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalDevice.fromJson(json);
-        checkSasPortalDevice(obj);
+        var obj = api.SasPortalDevice.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalDevice(obj as api.SasPortalDevice);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4389,7 +4469,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -4400,8 +4480,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(json);
-        checkSasPortalCreateSignedDeviceRequest(obj);
+        var obj = api.SasPortalCreateSignedDeviceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalCreateSignedDeviceRequest(
+            obj as api.SasPortalCreateSignedDeviceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4441,7 +4523,7 @@ void main() {
       res
           .createSigned(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalDevice(response);
+        checkSasPortalDevice(response as api.SasPortalDevice);
       })));
     });
 
@@ -4501,7 +4583,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListDevicesResponse(response);
+        checkSasPortalListDevicesResponse(
+            response as api.SasPortalListDevicesResponse);
       })));
     });
   });
@@ -4514,8 +4597,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalNode.fromJson(json);
-        checkSasPortalNode(obj);
+        var obj = api.SasPortalNode.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalNode(obj as api.SasPortalNode);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4555,7 +4639,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalNode(response);
+        checkSasPortalNode(response as api.SasPortalNode);
       })));
     });
 
@@ -4612,7 +4696,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalListNodesResponse(response);
+        checkSasPortalListNodesResponse(
+            response as api.SasPortalListNodesResponse);
       })));
     });
   });
@@ -4624,8 +4709,9 @@ void main() {
       var arg_request = buildSasPortalGetPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalGetPolicyRequest.fromJson(json);
-        checkSasPortalGetPolicyRequest(obj);
+        var obj = api.SasPortalGetPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalGetPolicyRequest(obj as api.SasPortalGetPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4664,7 +4750,7 @@ void main() {
       res
           .get(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalPolicy(response);
+        checkSasPortalPolicy(response as api.SasPortalPolicy);
       })));
     });
 
@@ -4674,8 +4760,9 @@ void main() {
       var arg_request = buildSasPortalSetPolicyRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalSetPolicyRequest.fromJson(json);
-        checkSasPortalSetPolicyRequest(obj);
+        var obj = api.SasPortalSetPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalSetPolicyRequest(obj as api.SasPortalSetPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4714,7 +4801,7 @@ void main() {
       res
           .set(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalPolicy(response);
+        checkSasPortalPolicy(response as api.SasPortalPolicy);
       })));
     });
 
@@ -4724,8 +4811,10 @@ void main() {
       var arg_request = buildSasPortalTestPermissionsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SasPortalTestPermissionsRequest.fromJson(json);
-        checkSasPortalTestPermissionsRequest(obj);
+        var obj = api.SasPortalTestPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSasPortalTestPermissionsRequest(
+            obj as api.SasPortalTestPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4764,7 +4853,8 @@ void main() {
       res
           .test(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSasPortalTestPermissionsResponse(response);
+        checkSasPortalTestPermissionsResponse(
+            response as api.SasPortalTestPermissionsResponse);
       })));
     });
   });

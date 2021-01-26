@@ -119,8 +119,8 @@ core.List<api.AcceleratorType> buildUnnamed6257() {
 
 void checkUnnamed6257(core.List<api.AcceleratorType> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAcceleratorType(o[0]);
-  checkAcceleratorType(o[1]);
+  checkAcceleratorType(o[0] as api.AcceleratorType);
+  checkAcceleratorType(o[1] as api.AcceleratorType);
 }
 
 core.List<core.String> buildUnnamed6258() {
@@ -168,8 +168,8 @@ core.List<api.Location> buildUnnamed6259() {
 
 void checkUnnamed6259(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -202,8 +202,8 @@ core.List<api.Node> buildUnnamed6260() {
 
 void checkUnnamed6260(core.List<api.Node> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNode(o[0]);
-  checkNode(o[1]);
+  checkNode(o[0] as api.Node);
+  checkNode(o[1] as api.Node);
 }
 
 core.List<core.String> buildUnnamed6261() {
@@ -251,8 +251,8 @@ core.List<api.Operation> buildUnnamed6262() {
 
 void checkUnnamed6262(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -285,8 +285,8 @@ core.List<api.TensorFlowVersion> buildUnnamed6263() {
 
 void checkUnnamed6263(core.List<api.TensorFlowVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTensorFlowVersion(o[0]);
-  checkTensorFlowVersion(o[1]);
+  checkTensorFlowVersion(o[0] as api.TensorFlowVersion);
+  checkTensorFlowVersion(o[1] as api.TensorFlowVersion);
 }
 
 core.List<core.String> buildUnnamed6264() {
@@ -437,8 +437,8 @@ core.List<api.NetworkEndpoint> buildUnnamed6268() {
 
 void checkUnnamed6268(core.List<api.NetworkEndpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkEndpoint(o[0]);
-  checkNetworkEndpoint(o[1]);
+  checkNetworkEndpoint(o[0] as api.NetworkEndpoint);
+  checkNetworkEndpoint(o[1] as api.NetworkEndpoint);
 }
 
 core.List<api.Symptom> buildUnnamed6269() {
@@ -450,8 +450,8 @@ core.List<api.Symptom> buildUnnamed6269() {
 
 void checkUnnamed6269(core.List<api.Symptom> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSymptom(o[0]);
-  checkSymptom(o[1]);
+  checkSymptom(o[0] as api.Symptom);
+  checkSymptom(o[1] as api.Symptom);
 }
 
 core.int buildCounterNode = 0;
@@ -497,7 +497,7 @@ void checkNode(api.Node o) {
     unittest.expect(o.network, unittest.equals('foo'));
     checkUnnamed6268(o.networkEndpoints);
     unittest.expect(o.port, unittest.equals('foo'));
-    checkSchedulingConfig(o.schedulingConfig);
+    checkSchedulingConfig(o.schedulingConfig as api.SchedulingConfig);
     unittest.expect(o.serviceAccount, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     checkUnnamed6269(o.symptoms);
@@ -584,7 +584,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed6270(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed6271(o.response);
@@ -809,7 +809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAcceleratorType();
       var od = api.AcceleratorType.fromJson(o.toJson());
-      checkAcceleratorType(od);
+      checkAcceleratorType(od as api.AcceleratorType);
     });
   });
 
@@ -817,7 +817,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -825,7 +825,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAcceleratorTypesResponse();
       var od = api.ListAcceleratorTypesResponse.fromJson(o.toJson());
-      checkListAcceleratorTypesResponse(od);
+      checkListAcceleratorTypesResponse(od as api.ListAcceleratorTypesResponse);
     });
   });
 
@@ -833,7 +833,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -841,7 +841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListNodesResponse();
       var od = api.ListNodesResponse.fromJson(o.toJson());
-      checkListNodesResponse(od);
+      checkListNodesResponse(od as api.ListNodesResponse);
     });
   });
 
@@ -849,7 +849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -857,7 +857,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTensorFlowVersionsResponse();
       var od = api.ListTensorFlowVersionsResponse.fromJson(o.toJson());
-      checkListTensorFlowVersionsResponse(od);
+      checkListTensorFlowVersionsResponse(
+          od as api.ListTensorFlowVersionsResponse);
     });
   });
 
@@ -865,7 +866,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -873,7 +874,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkEndpoint();
       var od = api.NetworkEndpoint.fromJson(o.toJson());
-      checkNetworkEndpoint(od);
+      checkNetworkEndpoint(od as api.NetworkEndpoint);
     });
   });
 
@@ -881,7 +882,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNode();
       var od = api.Node.fromJson(o.toJson());
-      checkNode(od);
+      checkNode(od as api.Node);
     });
   });
 
@@ -889,7 +890,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -897,7 +898,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -905,7 +906,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReimageNodeRequest();
       var od = api.ReimageNodeRequest.fromJson(o.toJson());
-      checkReimageNodeRequest(od);
+      checkReimageNodeRequest(od as api.ReimageNodeRequest);
     });
   });
 
@@ -913,7 +914,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSchedulingConfig();
       var od = api.SchedulingConfig.fromJson(o.toJson());
-      checkSchedulingConfig(od);
+      checkSchedulingConfig(od as api.SchedulingConfig);
     });
   });
 
@@ -921,7 +922,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStartNodeRequest();
       var od = api.StartNodeRequest.fromJson(o.toJson());
-      checkStartNodeRequest(od);
+      checkStartNodeRequest(od as api.StartNodeRequest);
     });
   });
 
@@ -929,7 +930,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -937,7 +938,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStopNodeRequest();
       var od = api.StopNodeRequest.fromJson(o.toJson());
-      checkStopNodeRequest(od);
+      checkStopNodeRequest(od as api.StopNodeRequest);
     });
   });
 
@@ -945,7 +946,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSymptom();
       var od = api.Symptom.fromJson(o.toJson());
-      checkSymptom(od);
+      checkSymptom(od as api.Symptom);
     });
   });
 
@@ -953,7 +954,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTensorFlowVersion();
       var od = api.TensorFlowVersion.fromJson(o.toJson());
-      checkTensorFlowVersion(od);
+      checkTensorFlowVersion(od as api.TensorFlowVersion);
     });
   });
 
@@ -1002,7 +1003,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1062,7 +1063,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1112,7 +1113,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAcceleratorType(response);
+        checkAcceleratorType(response as api.AcceleratorType);
       })));
     });
 
@@ -1176,7 +1177,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAcceleratorTypesResponse(response);
+        checkListAcceleratorTypesResponse(
+            response as api.ListAcceleratorTypesResponse);
       })));
     });
   });
@@ -1190,8 +1192,9 @@ void main() {
       var arg_nodeId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Node.fromJson(json);
-        checkNode(obj);
+        var obj =
+            api.Node.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkNode(obj as api.Node);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1233,7 +1236,7 @@ void main() {
           .create(arg_request, arg_parent,
               nodeId: arg_nodeId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1281,7 +1284,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1329,7 +1332,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNode(response);
+        checkNode(response as api.Node);
       })));
     });
 
@@ -1386,7 +1389,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListNodesResponse(response);
+        checkListNodesResponse(response as api.ListNodesResponse);
       })));
     });
 
@@ -1397,8 +1400,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReimageNodeRequest.fromJson(json);
-        checkReimageNodeRequest(obj);
+        var obj = api.ReimageNodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReimageNodeRequest(obj as api.ReimageNodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1438,7 +1442,7 @@ void main() {
       res
           .reimage(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1449,8 +1453,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StartNodeRequest.fromJson(json);
-        checkStartNodeRequest(obj);
+        var obj = api.StartNodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStartNodeRequest(obj as api.StartNodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1490,7 +1495,7 @@ void main() {
       res
           .start(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1501,8 +1506,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StopNodeRequest.fromJson(json);
-        checkStopNodeRequest(obj);
+        var obj = api.StopNodeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStopNodeRequest(obj as api.StopNodeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1542,7 +1548,7 @@ void main() {
       res
           .stop(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1592,7 +1598,7 @@ void main() {
       res
           .cancel(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1640,7 +1646,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1688,7 +1694,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1748,7 +1754,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });
@@ -1798,7 +1804,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTensorFlowVersion(response);
+        checkTensorFlowVersion(response as api.TensorFlowVersion);
       })));
     });
 
@@ -1862,7 +1868,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTensorFlowVersionsResponse(response);
+        checkListTensorFlowVersionsResponse(
+            response as api.ListTensorFlowVersionsResponse);
       })));
     });
   });

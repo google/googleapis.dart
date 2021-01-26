@@ -83,8 +83,8 @@ core.List<api.AuditLogConfig> buildUnnamed6625() {
 
 void checkUnnamed6625(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -171,7 +171,7 @@ api.Binding buildBinding() {
 void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed6627(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -216,7 +216,7 @@ api.CloudSqlProperties buildCloudSqlProperties() {
 void checkCloudSqlProperties(api.CloudSqlProperties o) {
   buildCounterCloudSqlProperties++;
   if (buildCounterCloudSqlProperties < 3) {
-    checkCloudSqlCredential(o.credential);
+    checkCloudSqlCredential(o.credential as api.CloudSqlCredential);
     unittest.expect(o.database, unittest.equals('foo'));
     unittest.expect(o.instanceId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -244,7 +244,7 @@ api.Connection buildConnection() {
 void checkConnection(api.Connection o) {
   buildCounterConnection++;
   if (buildCounterConnection < 3) {
-    checkCloudSqlProperties(o.cloudSql);
+    checkCloudSqlProperties(o.cloudSql as api.CloudSqlProperties);
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.friendlyName, unittest.equals('foo'));
@@ -269,7 +269,7 @@ api.ConnectionCredential buildConnectionCredential() {
 void checkConnectionCredential(api.ConnectionCredential o) {
   buildCounterConnectionCredential++;
   if (buildCounterConnectionCredential < 3) {
-    checkCloudSqlCredential(o.cloudSql);
+    checkCloudSqlCredential(o.cloudSql as api.CloudSqlCredential);
   }
   buildCounterConnectionCredential--;
 }
@@ -328,7 +328,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -361,8 +361,8 @@ core.List<api.Connection> buildUnnamed6628() {
 
 void checkUnnamed6628(core.List<api.Connection> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkConnection(o[0]);
-  checkConnection(o[1]);
+  checkConnection(o[0] as api.Connection);
+  checkConnection(o[1] as api.Connection);
 }
 
 core.int buildCounterListConnectionsResponse = 0;
@@ -395,8 +395,8 @@ core.List<api.AuditConfig> buildUnnamed6629() {
 
 void checkUnnamed6629(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed6630() {
@@ -408,8 +408,8 @@ core.List<api.Binding> buildUnnamed6630() {
 
 void checkUnnamed6630(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -452,7 +452,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -527,7 +527,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -535,7 +535,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -543,7 +543,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -551,7 +551,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudSqlCredential();
       var od = api.CloudSqlCredential.fromJson(o.toJson());
-      checkCloudSqlCredential(od);
+      checkCloudSqlCredential(od as api.CloudSqlCredential);
     });
   });
 
@@ -559,7 +559,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudSqlProperties();
       var od = api.CloudSqlProperties.fromJson(o.toJson());
-      checkCloudSqlProperties(od);
+      checkCloudSqlProperties(od as api.CloudSqlProperties);
     });
   });
 
@@ -567,7 +567,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConnection();
       var od = api.Connection.fromJson(o.toJson());
-      checkConnection(od);
+      checkConnection(od as api.Connection);
     });
   });
 
@@ -575,7 +575,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConnectionCredential();
       var od = api.ConnectionCredential.fromJson(o.toJson());
-      checkConnectionCredential(od);
+      checkConnectionCredential(od as api.ConnectionCredential);
     });
   });
 
@@ -583,7 +583,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -591,7 +591,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -599,7 +599,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -607,7 +607,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -615,7 +615,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListConnectionsResponse();
       var od = api.ListConnectionsResponse.fromJson(o.toJson());
-      checkListConnectionsResponse(od);
+      checkListConnectionsResponse(od as api.ListConnectionsResponse);
     });
   });
 
@@ -623,7 +623,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -631,7 +631,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -639,7 +639,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -647,7 +647,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -660,8 +660,9 @@ void main() {
       var arg_connectionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Connection.fromJson(json);
-        checkConnection(obj);
+        var obj = api.Connection.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConnection(obj as api.Connection);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -704,7 +705,7 @@ void main() {
           .create(arg_request, arg_parent,
               connectionId: arg_connectionId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConnection(response);
+        checkConnection(response as api.Connection);
       })));
     });
 
@@ -752,7 +753,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -800,7 +801,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConnection(response);
+        checkConnection(response as api.Connection);
       })));
     });
 
@@ -811,8 +812,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -852,7 +854,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -909,7 +911,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListConnectionsResponse(response);
+        checkListConnectionsResponse(response as api.ListConnectionsResponse);
       })));
     });
 
@@ -921,8 +923,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Connection.fromJson(json);
-        checkConnection(obj);
+        var obj = api.Connection.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConnection(obj as api.Connection);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -965,7 +968,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkConnection(response);
+        checkConnection(response as api.Connection);
       })));
     });
 
@@ -976,8 +979,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1017,7 +1021,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1028,8 +1032,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1069,7 +1074,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -1080,8 +1086,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ConnectionCredential.fromJson(json);
-        checkConnectionCredential(obj);
+        var obj = api.ConnectionCredential.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkConnectionCredential(obj as api.ConnectionCredential);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1121,7 +1128,7 @@ void main() {
       res
           .updateCredential(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });

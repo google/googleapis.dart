@@ -102,7 +102,7 @@ api.CreateProfileRequest buildCreateProfileRequest() {
 void checkCreateProfileRequest(api.CreateProfileRequest o) {
   buildCounterCreateProfileRequest++;
   if (buildCounterCreateProfileRequest < 3) {
-    checkDeployment(o.deployment);
+    checkDeployment(o.deployment as api.Deployment);
     checkUnnamed2262(o.profileType);
   }
   buildCounterCreateProfileRequest--;
@@ -176,7 +176,7 @@ api.Profile buildProfile() {
 void checkProfile(api.Profile o) {
   buildCounterProfile++;
   if (buildCounterProfile < 3) {
-    checkDeployment(o.deployment);
+    checkDeployment(o.deployment as api.Deployment);
     unittest.expect(o.duration, unittest.equals('foo'));
     checkUnnamed2264(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
@@ -191,7 +191,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateProfileRequest();
       var od = api.CreateProfileRequest.fromJson(o.toJson());
-      checkCreateProfileRequest(od);
+      checkCreateProfileRequest(od as api.CreateProfileRequest);
     });
   });
 
@@ -199,7 +199,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeployment();
       var od = api.Deployment.fromJson(o.toJson());
-      checkDeployment(od);
+      checkDeployment(od as api.Deployment);
     });
   });
 
@@ -207,7 +207,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfile();
       var od = api.Profile.fromJson(o.toJson());
-      checkProfile(od);
+      checkProfile(od as api.Profile);
     });
   });
 
@@ -219,8 +219,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateProfileRequest.fromJson(json);
-        checkCreateProfileRequest(obj);
+        var obj = api.CreateProfileRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateProfileRequest(obj as api.CreateProfileRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -260,7 +261,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
 
@@ -271,8 +272,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Profile.fromJson(json);
-        checkProfile(obj);
+        var obj =
+            api.Profile.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProfile(obj as api.Profile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -312,7 +314,7 @@ void main() {
       res
           .createOffline(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
 
@@ -324,8 +326,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Profile.fromJson(json);
-        checkProfile(obj);
+        var obj =
+            api.Profile.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkProfile(obj as api.Profile);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -368,7 +371,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProfile(response);
+        checkProfile(response as api.Profile);
       })));
     });
   });

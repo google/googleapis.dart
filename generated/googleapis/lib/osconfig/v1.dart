@@ -130,7 +130,10 @@ class ProjectsPatchDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PatchDeployment.fromJson(data));
+    return _response.then(
+      (data) =>
+          PatchDeployment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete an OS Config patch deployment.
@@ -180,7 +183,9 @@ class ProjectsPatchDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get an OS Config patch deployment.
@@ -230,7 +235,10 @@ class ProjectsPatchDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PatchDeployment.fromJson(data));
+    return _response.then(
+      (data) =>
+          PatchDeployment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a page of OS Config patch deployments.
@@ -297,8 +305,10 @@ class ProjectsPatchDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListPatchDeploymentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPatchDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -365,7 +375,9 @@ class ProjectsPatchJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PatchJob.fromJson(data));
+    return _response.then(
+      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch VM instances by creating and running a patch job.
@@ -423,7 +435,9 @@ class ProjectsPatchJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PatchJob.fromJson(data));
+    return _response.then(
+      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the patch job. This can be used to track the progress of an ongoing
@@ -474,7 +488,9 @@ class ProjectsPatchJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PatchJob.fromJson(data));
+    return _response.then(
+      (data) => PatchJob.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a list of patch jobs.
@@ -545,7 +561,10 @@ class ProjectsPatchJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListPatchJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPatchJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -626,8 +645,10 @@ class ProjectsPatchJobsInstanceDetailsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListPatchJobInstanceDetailsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPatchJobInstanceDetailsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -728,12 +749,13 @@ class ExecStep {
 
   ExecStep.fromJson(core.Map _json) {
     if (_json.containsKey('linuxExecStepConfig')) {
-      linuxExecStepConfig =
-          ExecStepConfig.fromJson(_json['linuxExecStepConfig']);
+      linuxExecStepConfig = ExecStepConfig.fromJson(
+          _json['linuxExecStepConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('windowsExecStepConfig')) {
-      windowsExecStepConfig =
-          ExecStepConfig.fromJson(_json['windowsExecStepConfig']);
+      windowsExecStepConfig = ExecStepConfig.fromJson(
+          _json['windowsExecStepConfig']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -784,7 +806,8 @@ class ExecStepConfig {
           .toList();
     }
     if (_json.containsKey('gcsObject')) {
-      gcsObject = GcsObject.fromJson(_json['gcsObject']);
+      gcsObject = GcsObject.fromJson(
+          _json['gcsObject'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('interpreter')) {
       interpreter = _json['interpreter'] as core.String;
@@ -856,13 +879,16 @@ class ExecutePatchJobRequest {
       duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
+      instanceFilter = PatchInstanceFilter.fromJson(
+          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(_json['patchConfig']);
+      patchConfig = PatchConfig.fromJson(
+          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(_json['rollout']);
+      rollout = PatchRollout.fromJson(
+          _json['rollout'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -998,7 +1024,8 @@ class ListPatchDeploymentsResponse {
     }
     if (_json.containsKey('patchDeployments')) {
       patchDeployments = (_json['patchDeployments'] as core.List)
-          .map<PatchDeployment>((value) => PatchDeployment.fromJson(value))
+          .map<PatchDeployment>((value) => PatchDeployment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1032,8 +1059,9 @@ class ListPatchJobInstanceDetailsResponse {
     }
     if (_json.containsKey('patchJobInstanceDetails')) {
       patchJobInstanceDetails = (_json['patchJobInstanceDetails'] as core.List)
-          .map<PatchJobInstanceDetails>(
-              (value) => PatchJobInstanceDetails.fromJson(value))
+          .map<PatchJobInstanceDetails>((value) =>
+              PatchJobInstanceDetails.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1067,7 +1095,8 @@ class ListPatchJobsResponse {
     }
     if (_json.containsKey('patchJobs')) {
       patchJobs = (_json['patchJobs'] as core.List)
-          .map<PatchJob>((value) => PatchJob.fromJson(value))
+          .map<PatchJob>((value) =>
+              PatchJob.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1103,7 +1132,8 @@ class MonthlySchedule {
       monthDay = _json['monthDay'] as core.int;
     }
     if (_json.containsKey('weekDayOfMonth')) {
-      weekDayOfMonth = WeekDayOfMonth.fromJson(_json['weekDayOfMonth']);
+      weekDayOfMonth = WeekDayOfMonth.fromJson(
+          _json['weekDayOfMonth'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1186,28 +1216,35 @@ class PatchConfig {
 
   PatchConfig.fromJson(core.Map _json) {
     if (_json.containsKey('apt')) {
-      apt = AptSettings.fromJson(_json['apt']);
+      apt = AptSettings.fromJson(
+          _json['apt'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('goo')) {
-      goo = GooSettings.fromJson(_json['goo']);
+      goo = GooSettings.fromJson(
+          _json['goo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('postStep')) {
-      postStep = ExecStep.fromJson(_json['postStep']);
+      postStep = ExecStep.fromJson(
+          _json['postStep'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('preStep')) {
-      preStep = ExecStep.fromJson(_json['preStep']);
+      preStep = ExecStep.fromJson(
+          _json['preStep'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rebootConfig')) {
       rebootConfig = _json['rebootConfig'] as core.String;
     }
     if (_json.containsKey('windowsUpdate')) {
-      windowsUpdate = WindowsUpdateSettings.fromJson(_json['windowsUpdate']);
+      windowsUpdate = WindowsUpdateSettings.fromJson(
+          _json['windowsUpdate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('yum')) {
-      yum = YumSettings.fromJson(_json['yum']);
+      yum = YumSettings.fromJson(
+          _json['yum'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('zypper')) {
-      zypper = ZypperSettings.fromJson(_json['zypper']);
+      zypper = ZypperSettings.fromJson(
+          _json['zypper'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1302,7 +1339,8 @@ class PatchDeployment {
       duration = _json['duration'] as core.String;
     }
     if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
+      instanceFilter = PatchInstanceFilter.fromJson(
+          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastExecuteTime')) {
       lastExecuteTime = _json['lastExecuteTime'] as core.String;
@@ -1311,17 +1349,20 @@ class PatchDeployment {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('oneTimeSchedule')) {
-      oneTimeSchedule = OneTimeSchedule.fromJson(_json['oneTimeSchedule']);
+      oneTimeSchedule = OneTimeSchedule.fromJson(
+          _json['oneTimeSchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(_json['patchConfig']);
+      patchConfig = PatchConfig.fromJson(
+          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('recurringSchedule')) {
-      recurringSchedule =
-          RecurringSchedule.fromJson(_json['recurringSchedule']);
+      recurringSchedule = RecurringSchedule.fromJson(
+          _json['recurringSchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(_json['rollout']);
+      rollout = PatchRollout.fromJson(
+          _json['rollout'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -1402,8 +1443,9 @@ class PatchInstanceFilter {
     }
     if (_json.containsKey('groupLabels')) {
       groupLabels = (_json['groupLabels'] as core.List)
-          .map<PatchInstanceFilterGroupLabel>(
-              (value) => PatchInstanceFilterGroupLabel.fromJson(value))
+          .map<PatchInstanceFilterGroupLabel>((value) =>
+              PatchInstanceFilterGroupLabel.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('instanceNamePrefixes')) {
@@ -1462,7 +1504,8 @@ class PatchInstanceFilterGroupLabel {
   PatchInstanceFilterGroupLabel.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -1566,16 +1609,19 @@ class PatchJob {
     }
     if (_json.containsKey('instanceDetailsSummary')) {
       instanceDetailsSummary = PatchJobInstanceDetailsSummary.fromJson(
-          _json['instanceDetailsSummary']);
+          _json['instanceDetailsSummary']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instanceFilter')) {
-      instanceFilter = PatchInstanceFilter.fromJson(_json['instanceFilter']);
+      instanceFilter = PatchInstanceFilter.fromJson(
+          _json['instanceFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('patchConfig')) {
-      patchConfig = PatchConfig.fromJson(_json['patchConfig']);
+      patchConfig = PatchConfig.fromJson(
+          _json['patchConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('patchDeployment')) {
       patchDeployment = _json['patchDeployment'] as core.String;
@@ -1584,7 +1630,8 @@ class PatchJob {
       percentComplete = (_json['percentComplete'] as core.num).toDouble();
     }
     if (_json.containsKey('rollout')) {
-      rollout = PatchRollout.fromJson(_json['rollout']);
+      rollout = PatchRollout.fromJson(
+          _json['rollout'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -1928,7 +1975,8 @@ class PatchRollout {
 
   PatchRollout.fromJson(core.Map _json) {
     if (_json.containsKey('disruptionBudget')) {
-      disruptionBudget = FixedOrPercent.fromJson(_json['disruptionBudget']);
+      disruptionBudget = FixedOrPercent.fromJson(
+          _json['disruptionBudget'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mode')) {
       mode = _json['mode'] as core.String;
@@ -1998,7 +2046,8 @@ class RecurringSchedule {
       lastExecuteTime = _json['lastExecuteTime'] as core.String;
     }
     if (_json.containsKey('monthly')) {
-      monthly = MonthlySchedule.fromJson(_json['monthly']);
+      monthly = MonthlySchedule.fromJson(
+          _json['monthly'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nextExecuteTime')) {
       nextExecuteTime = _json['nextExecuteTime'] as core.String;
@@ -2007,13 +2056,16 @@ class RecurringSchedule {
       startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('timeOfDay')) {
-      timeOfDay = TimeOfDay.fromJson(_json['timeOfDay']);
+      timeOfDay = TimeOfDay.fromJson(
+          _json['timeOfDay'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeZone')) {
-      timeZone = TimeZone.fromJson(_json['timeZone']);
+      timeZone = TimeZone.fromJson(
+          _json['timeZone'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('weekly')) {
-      weekly = WeeklySchedule.fromJson(_json['weekly']);
+      weekly = WeeklySchedule.fromJson(
+          _json['weekly'] as core.Map<core.String, core.dynamic>);
     }
   }
 

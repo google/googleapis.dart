@@ -16,7 +16,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library discoveryapis_tests.toyApi.client;
+library file_test_package.toyApi.client;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -24,7 +24,7 @@ import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
-import 'package:discoveryapis_tests/messages.dart';
+import 'package:file_test_package/messages.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 
@@ -79,7 +79,9 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Request parameters:
@@ -119,7 +121,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -166,9 +171,13 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => commons.mapMap<core.Map, ToyResponse>(
-        data.cast<core.String, core.Map>(),
-        (core.Map item) => ToyResponseFactory.fromJson(item)));
+    return _response.then(
+      (data) => commons.mapMap<core.Map, ToyResponse>(
+          (data as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ToyResponseFactory.fromJson(
+              item as core.Map<core.String, core.dynamic>)),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -217,9 +226,13 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => commons.mapMap<core.Map, ToyResponse>(
-        data.cast<core.String, core.Map>(),
-        (core.Map item) => ToyResponseFactory.fromJson(item)));
+    return _response.then(
+      (data) => commons.mapMap<core.Map, ToyResponse>(
+          (data as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ToyResponseFactory.fromJson(
+              item as core.Map<core.String, core.dynamic>)),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -265,9 +278,12 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => commons.mapMap<core.int, core.int>(
-        data.cast<core.String, core.int>(),
-        (core.int item) => item as core.int));
+    return _response.then(
+      (data) => commons.mapMap<core.int, core.int>(
+          (data as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.int>(),
+          (core.int item) => item as core.int),
+    );
   }
 
   /// Request parameters:
@@ -322,7 +338,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -374,7 +393,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -432,7 +454,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -478,11 +503,13 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => (data as core.List)
-        .map<core.List<core.String>>((value) => (value as core.List)
-            .map<core.String>((value) => value as core.String)
-            .toList())
-        .toList());
+    return _response.then(
+      (data) => (data as core.List)
+          .map<core.List<core.String>>((value) => (value as core.List)
+              .map<core.String>((value) => value as core.String)
+              .toList())
+          .toList(),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -530,14 +557,17 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => (data as core.List)
-        .map<core.Map<core.String, core.List<core.String>>>((value) =>
-            commons.mapMap<core.List, core.List<core.String>>(
-                value.cast<core.String, core.List>(),
-                (core.List item) => (item as core.List)
-                    .map<core.String>((value) => value as core.String)
-                    .toList()))
-        .toList());
+    return _response.then(
+      (data) => (data as core.List)
+          .map<core.Map<core.String, core.List<core.String>>>((value) =>
+              commons.mapMap<core.List, core.List<core.String>>(
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.List>(),
+                  (core.List item) => (item as core.List)
+                      .map<core.String>((value) => value as core.String)
+                      .toList()))
+          .toList(),
+    );
   }
 
   /// Request parameters:
@@ -577,7 +607,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyMapResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyMapResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -626,15 +659,19 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        commons.mapMap<core.List, core.List<core.Map<core.String, core.bool>>>(
-            data.cast<core.String, core.List>(),
-            (core.List item) => (item as core.List)
-                .map<core.Map<core.String, core.bool>>((value) =>
-                    commons.mapMap<core.bool, core.bool>(
-                        value.cast<core.String, core.bool>(),
-                        (core.bool item) => item as core.bool))
-                .toList()));
+    return _response.then(
+      (data) => commons
+          .mapMap<core.List, core.List<core.Map<core.String, core.bool>>>(
+              (data as core.Map<core.String, core.dynamic>)
+                  .cast<core.String, core.List>(),
+              (core.List item) => (item as core.List)
+                  .map<core.Map<core.String, core.bool>>((value) =>
+                      commons.mapMap<core.bool, core.bool>(
+                          (value as core.Map<core.String, core.dynamic>)
+                              .cast<core.String, core.bool>(),
+                          (core.bool item) => item as core.bool))
+                  .toList()),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -682,12 +719,15 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        commons.mapMap<core.Map, core.Map<core.String, core.bool>>(
-            data.cast<core.String, core.Map>(),
-            (core.Map item) => commons.mapMap<core.bool, core.bool>(
-                item.cast<core.String, core.bool>(),
-                (core.bool item) => item as core.bool)));
+    return _response.then(
+      (data) => commons.mapMap<core.Map, core.Map<core.String, core.bool>>(
+          (data as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => commons.mapMap<core.bool, core.bool>(
+              (item as core.Map<core.String, core.dynamic>)
+                  .cast<core.String, core.bool>(),
+              (core.bool item) => item as core.bool)),
+    );
   }
 
   /// [request] - The metadata request object.
@@ -733,7 +773,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -773,7 +816,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -813,7 +859,10 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Request parameters:
@@ -853,7 +902,9 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// [request] - The metadata request object.
@@ -899,9 +950,11 @@ class ToyApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => (data as core.List)
-        .map<core.String>((value) => value as core.String)
-        .toList());
+    return _response.then(
+      (data) => (data as core.List)
+          .map<core.String>((value) => value as core.String)
+          .toList(),
+    );
   }
 }
 
@@ -962,7 +1015,10 @@ class ComputeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResourceResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResourceResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1023,7 +1079,10 @@ class StorageResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ToyResourceResponseFactory.fromJson(data));
+    return _response.then(
+      (data) => ToyResourceResponseFactory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1036,8 +1095,8 @@ class NestedResponseFactory {
     return message;
   }
 
-  static core.Map toJson(NestedResponse message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(NestedResponse message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.nestedResult != null) {
       _json['nestedResult'] = message.nestedResult;
     }
@@ -1054,8 +1113,8 @@ class ToyAgeRequestFactory {
     return message;
   }
 
-  static core.Map toJson(ToyAgeRequest message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(ToyAgeRequest message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.age != null) {
       _json['age'] = message.age;
     }
@@ -1068,8 +1127,10 @@ class ToyMapResponseFactory {
     var message = ToyMapResponse();
     if (_json.containsKey('mapResult')) {
       message.mapResult = commons.mapMap<core.Map, NestedResponse>(
-          _json['mapResult'].cast<core.String, core.Map>(),
-          (core.Map item) => NestedResponseFactory.fromJson(item));
+          (_json['mapResult'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => NestedResponseFactory.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
@@ -1077,8 +1138,8 @@ class ToyMapResponseFactory {
     return message;
   }
 
-  static core.Map toJson(ToyMapResponse message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.mapResult != null) {
       _json['mapResult'] =
           commons.mapMap<NestedResponse, core.Map<core.String, core.Object>>(
@@ -1104,8 +1165,8 @@ class ToyRequestFactory {
     return message;
   }
 
-  static core.Map toJson(ToyRequest message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(ToyRequest message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.age != null) {
       _json['age'] = message.age;
     }
@@ -1125,8 +1186,9 @@ class ToyResourceResponseFactory {
     return message;
   }
 
-  static core.Map toJson(ToyResourceResponse message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(
+      ToyResourceResponse message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.result != null) {
       _json['result'] = message.result;
     }
@@ -1143,8 +1205,8 @@ class ToyResponseFactory {
     return message;
   }
 
-  static core.Map toJson(ToyResponse message) {
-    var _json = {};
+  static core.Map<core.String, core.dynamic> toJson(ToyResponse message) {
+    var _json = <core.String, core.dynamic>{};
     if (message.result != null) {
       _json['result'] = message.result;
     }

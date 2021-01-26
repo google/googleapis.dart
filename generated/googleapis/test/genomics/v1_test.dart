@@ -336,8 +336,8 @@ core.List<api.Operation> buildUnnamed5736() {
 
 void checkUnnamed5736(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -438,7 +438,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5737(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5738(o.response);
@@ -478,8 +478,8 @@ core.List<api.OperationEvent> buildUnnamed5739() {
 
 void checkUnnamed5739(core.List<api.OperationEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperationEvent(o[0]);
-  checkOperationEvent(o[1]);
+  checkOperationEvent(o[0] as api.OperationEvent);
+  checkOperationEvent(o[1] as api.OperationEvent);
 }
 
 core.Map<core.String, core.String> buildUnnamed5740() {
@@ -655,7 +655,7 @@ api.RuntimeMetadata buildRuntimeMetadata() {
 void checkRuntimeMetadata(api.RuntimeMetadata o) {
   buildCounterRuntimeMetadata++;
   if (buildCounterRuntimeMetadata < 3) {
-    checkComputeEngine(o.computeEngine);
+    checkComputeEngine(o.computeEngine as api.ComputeEngine);
   }
   buildCounterRuntimeMetadata--;
 }
@@ -795,7 +795,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -803,7 +803,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComputeEngine();
       var od = api.ComputeEngine.fromJson(o.toJson());
-      checkComputeEngine(od);
+      checkComputeEngine(od as api.ComputeEngine);
     });
   });
 
@@ -811,7 +811,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerKilledEvent();
       var od = api.ContainerKilledEvent.fromJson(o.toJson());
-      checkContainerKilledEvent(od);
+      checkContainerKilledEvent(od as api.ContainerKilledEvent);
     });
   });
 
@@ -819,7 +819,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerStartedEvent();
       var od = api.ContainerStartedEvent.fromJson(o.toJson());
-      checkContainerStartedEvent(od);
+      checkContainerStartedEvent(od as api.ContainerStartedEvent);
     });
   });
 
@@ -827,7 +827,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContainerStoppedEvent();
       var od = api.ContainerStoppedEvent.fromJson(o.toJson());
-      checkContainerStoppedEvent(od);
+      checkContainerStoppedEvent(od as api.ContainerStoppedEvent);
     });
   });
 
@@ -835,7 +835,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDelayedEvent();
       var od = api.DelayedEvent.fromJson(o.toJson());
-      checkDelayedEvent(od);
+      checkDelayedEvent(od as api.DelayedEvent);
     });
   });
 
@@ -843,7 +843,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -851,7 +851,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEvent();
       var od = api.Event.fromJson(o.toJson());
-      checkEvent(od);
+      checkEvent(od as api.Event);
     });
   });
 
@@ -859,7 +859,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFailedEvent();
       var od = api.FailedEvent.fromJson(o.toJson());
-      checkFailedEvent(od);
+      checkFailedEvent(od as api.FailedEvent);
     });
   });
 
@@ -867,7 +867,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -875,7 +875,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -883,7 +883,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationEvent();
       var od = api.OperationEvent.fromJson(o.toJson());
-      checkOperationEvent(od);
+      checkOperationEvent(od as api.OperationEvent);
     });
   });
 
@@ -891,7 +891,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -899,7 +899,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPullStartedEvent();
       var od = api.PullStartedEvent.fromJson(o.toJson());
-      checkPullStartedEvent(od);
+      checkPullStartedEvent(od as api.PullStartedEvent);
     });
   });
 
@@ -907,7 +907,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPullStoppedEvent();
       var od = api.PullStoppedEvent.fromJson(o.toJson());
-      checkPullStoppedEvent(od);
+      checkPullStoppedEvent(od as api.PullStoppedEvent);
     });
   });
 
@@ -915,7 +915,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunPipelineResponse();
       var od = api.RunPipelineResponse.fromJson(o.toJson());
-      checkRunPipelineResponse(od);
+      checkRunPipelineResponse(od as api.RunPipelineResponse);
     });
   });
 
@@ -923,7 +923,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRuntimeMetadata();
       var od = api.RuntimeMetadata.fromJson(o.toJson());
-      checkRuntimeMetadata(od);
+      checkRuntimeMetadata(od as api.RuntimeMetadata);
     });
   });
 
@@ -931,7 +931,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -939,7 +939,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnexpectedExitStatusEvent();
       var od = api.UnexpectedExitStatusEvent.fromJson(o.toJson());
-      checkUnexpectedExitStatusEvent(od);
+      checkUnexpectedExitStatusEvent(od as api.UnexpectedExitStatusEvent);
     });
   });
 
@@ -947,7 +947,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWorkerAssignedEvent();
       var od = api.WorkerAssignedEvent.fromJson(o.toJson());
-      checkWorkerAssignedEvent(od);
+      checkWorkerAssignedEvent(od as api.WorkerAssignedEvent);
     });
   });
 
@@ -955,7 +955,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWorkerReleasedEvent();
       var od = api.WorkerReleasedEvent.fromJson(o.toJson());
-      checkWorkerReleasedEvent(od);
+      checkWorkerReleasedEvent(od as api.WorkerReleasedEvent);
     });
   });
 
@@ -967,8 +967,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1008,7 +1009,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1056,7 +1057,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1116,7 +1117,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

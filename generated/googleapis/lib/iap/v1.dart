@@ -124,7 +124,9 @@ class ProjectsBrandsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Brand.fromJson(data));
+    return _response.then(
+      (data) => Brand.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the OAuth brand of the project.
@@ -174,7 +176,9 @@ class ProjectsBrandsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Brand.fromJson(data));
+    return _response.then(
+      (data) => Brand.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the existing brands for the project.
@@ -224,7 +228,10 @@ class ProjectsBrandsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBrandsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBrandsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -293,7 +300,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
+    return _response.then(
+      (data) => IdentityAwareProxyClient.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing
@@ -347,7 +357,9 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the
@@ -400,7 +412,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
+    return _response.then(
+      (data) => IdentityAwareProxyClient.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the existing clients for the brand.
@@ -471,8 +486,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListIdentityAwareProxyClientsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListIdentityAwareProxyClientsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the
@@ -532,7 +549,10 @@ class ProjectsBrandsIdentityAwareProxyClientsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IdentityAwareProxyClient.fromJson(data));
+    return _response.then(
+      (data) => IdentityAwareProxyClient.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -599,7 +619,9 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAP settings on a particular IAP protected resource.
@@ -651,7 +673,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IapSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          IapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy for an Identity-Aware Proxy protected
@@ -713,7 +738,9 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the Identity-Aware Proxy
@@ -775,7 +802,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the IAP settings on a particular IAP protected resource. It
@@ -840,7 +870,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => IapSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          IapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -888,17 +921,21 @@ class AccessSettings {
 
   AccessSettings.fromJson(core.Map _json) {
     if (_json.containsKey('corsSettings')) {
-      corsSettings = CorsSettings.fromJson(_json['corsSettings']);
+      corsSettings = CorsSettings.fromJson(
+          _json['corsSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcipSettings')) {
-      gcipSettings = GcipSettings.fromJson(_json['gcipSettings']);
+      gcipSettings = GcipSettings.fromJson(
+          _json['gcipSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oauthSettings')) {
-      oauthSettings = OAuthSettings.fromJson(_json['oauthSettings']);
+      oauthSettings = OAuthSettings.fromJson(
+          _json['oauthSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('policyDelegationSettings')) {
-      policyDelegationSettings =
-          PolicyDelegationSettings.fromJson(_json['policyDelegationSettings']);
+      policyDelegationSettings = PolicyDelegationSettings.fromJson(
+          _json['policyDelegationSettings']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -936,14 +973,16 @@ class ApplicationSettings {
 
   ApplicationSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accessDeniedPageSettings')) {
-      accessDeniedPageSettings =
-          AccessDeniedPageSettings.fromJson(_json['accessDeniedPageSettings']);
+      accessDeniedPageSettings = AccessDeniedPageSettings.fromJson(
+          _json['accessDeniedPageSettings']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cookieDomain')) {
       cookieDomain = _json['cookieDomain'] as core.String;
     }
     if (_json.containsKey('csmSettings')) {
-      csmSettings = CsmSettings.fromJson(_json['csmSettings']);
+      csmSettings = CsmSettings.fromJson(
+          _json['csmSettings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1019,7 +1058,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1288,7 +1328,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1344,11 +1385,12 @@ class IapSettings {
 
   IapSettings.fromJson(core.Map _json) {
     if (_json.containsKey('accessSettings')) {
-      accessSettings = AccessSettings.fromJson(_json['accessSettings']);
+      accessSettings = AccessSettings.fromJson(
+          _json['accessSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('applicationSettings')) {
-      applicationSettings =
-          ApplicationSettings.fromJson(_json['applicationSettings']);
+      applicationSettings = ApplicationSettings.fromJson(
+          _json['applicationSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1420,7 +1462,8 @@ class ListBrandsResponse {
   ListBrandsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('brands')) {
       brands = (_json['brands'] as core.List)
-          .map<Brand>((value) => Brand.fromJson(value))
+          .map<Brand>((value) =>
+              Brand.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1449,8 +1492,9 @@ class ListIdentityAwareProxyClientsResponse {
     if (_json.containsKey('identityAwareProxyClients')) {
       identityAwareProxyClients =
           (_json['identityAwareProxyClients'] as core.List)
-              .map<IdentityAwareProxyClient>(
-                  (value) => IdentityAwareProxyClient.fromJson(value))
+              .map<IdentityAwareProxyClient>((value) =>
+                  IdentityAwareProxyClient.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1589,7 +1633,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1646,10 +1691,12 @@ class PolicyDelegationSettings {
       iamServiceName = _json['iamServiceName'] as core.String;
     }
     if (_json.containsKey('policyName')) {
-      policyName = PolicyName.fromJson(_json['policyName']);
+      policyName = PolicyName.fromJson(
+          _json['policyName'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resource')) {
-      resource = Resource.fromJson(_json['resource']);
+      resource = Resource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1775,7 +1822,8 @@ class Resource {
   Resource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -1819,7 +1867,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 

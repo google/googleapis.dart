@@ -176,7 +176,7 @@ void checkChannel(api.Channel o) {
     unittest.expect(o.expireTime, unittest.equals('foo'));
     checkUnnamed5872(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkRelease(o.release);
+    checkRelease(o.release as api.Release);
     unittest.expect(o.retainedReleaseCount, unittest.equals(42));
     unittest.expect(o.ttl, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -202,9 +202,9 @@ api.CloneVersionRequest buildCloneVersionRequest() {
 void checkCloneVersionRequest(api.CloneVersionRequest o) {
   buildCounterCloneVersionRequest++;
   if (buildCounterCloneVersionRequest < 3) {
-    checkPathFilter(o.exclude);
+    checkPathFilter(o.exclude as api.PathFilter);
     unittest.expect(o.finalize, unittest.isTrue);
-    checkPathFilter(o.include);
+    checkPathFilter(o.include as api.PathFilter);
     unittest.expect(o.sourceVersion, unittest.equals('foo'));
   }
   buildCounterCloneVersionRequest--;
@@ -251,8 +251,8 @@ void checkDomain(api.Domain o) {
   buildCounterDomain++;
   if (buildCounterDomain < 3) {
     unittest.expect(o.domainName, unittest.equals('foo'));
-    checkDomainRedirect(o.domainRedirect);
-    checkDomainProvisioning(o.provisioning);
+    checkDomainRedirect(o.domainRedirect as api.DomainRedirect);
+    checkDomainProvisioning(o.provisioning as api.DomainProvisioning);
     unittest.expect(o.site, unittest.equals('foo'));
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -321,8 +321,8 @@ void checkDomainProvisioning(api.DomainProvisioning o) {
   buildCounterDomainProvisioning++;
   if (buildCounterDomainProvisioning < 3) {
     checkUnnamed5873(o.certChallengeDiscoveredTxt);
-    checkCertDnsChallenge(o.certChallengeDns);
-    checkCertHttpChallenge(o.certChallengeHttp);
+    checkCertDnsChallenge(o.certChallengeDns as api.CertDnsChallenge);
+    checkCertHttpChallenge(o.certChallengeHttp as api.CertHttpChallenge);
     unittest.expect(o.certStatus, unittest.equals('foo'));
     checkUnnamed5874(o.discoveredIps);
     unittest.expect(o.dnsFetchTime, unittest.equals('foo'));
@@ -432,8 +432,8 @@ core.List<api.Channel> buildUnnamed5877() {
 
 void checkUnnamed5877(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannel(o[0]);
-  checkChannel(o[1]);
+  checkChannel(o[0] as api.Channel);
+  checkChannel(o[1] as api.Channel);
 }
 
 core.int buildCounterListChannelsResponse = 0;
@@ -466,8 +466,8 @@ core.List<api.Domain> buildUnnamed5878() {
 
 void checkUnnamed5878(core.List<api.Domain> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDomain(o[0]);
-  checkDomain(o[1]);
+  checkDomain(o[0] as api.Domain);
+  checkDomain(o[1] as api.Domain);
 }
 
 core.int buildCounterListDomainsResponse = 0;
@@ -500,8 +500,8 @@ core.List<api.Release> buildUnnamed5879() {
 
 void checkUnnamed5879(core.List<api.Release> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelease(o[0]);
-  checkRelease(o[1]);
+  checkRelease(o[0] as api.Release);
+  checkRelease(o[1] as api.Release);
 }
 
 core.int buildCounterListReleasesResponse = 0;
@@ -534,8 +534,8 @@ core.List<api.VersionFile> buildUnnamed5880() {
 
 void checkUnnamed5880(core.List<api.VersionFile> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVersionFile(o[0]);
-  checkVersionFile(o[1]);
+  checkVersionFile(o[0] as api.VersionFile);
+  checkVersionFile(o[1] as api.VersionFile);
 }
 
 core.int buildCounterListVersionFilesResponse = 0;
@@ -568,8 +568,8 @@ core.List<api.Version> buildUnnamed5881() {
 
 void checkUnnamed5881(core.List<api.Version> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVersion(o[0]);
-  checkVersion(o[1]);
+  checkVersion(o[0] as api.Version);
+  checkVersion(o[1] as api.Version);
 }
 
 core.int buildCounterListVersionsResponse = 0;
@@ -670,7 +670,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5882(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5883(o.response);
@@ -844,9 +844,9 @@ void checkRelease(api.Release o) {
     unittest.expect(o.message, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.releaseTime, unittest.equals('foo'));
-    checkActingUser(o.releaseUser);
+    checkActingUser(o.releaseUser as api.ActingUser);
     unittest.expect(o.type, unittest.equals('foo'));
-    checkVersion(o.version);
+    checkVersion(o.version as api.Version);
   }
   buildCounterRelease--;
 }
@@ -875,7 +875,7 @@ void checkRewrite(api.Rewrite o) {
     unittest.expect(o.glob, unittest.equals('foo'));
     unittest.expect(o.path, unittest.equals('foo'));
     unittest.expect(o.regex, unittest.equals('foo'));
-    checkCloudRunRewrite(o.run);
+    checkCloudRunRewrite(o.run as api.CloudRunRewrite);
   }
   buildCounterRewrite--;
 }
@@ -889,8 +889,8 @@ core.List<api.Header> buildUnnamed5887() {
 
 void checkUnnamed5887(core.List<api.Header> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHeader(o[0]);
-  checkHeader(o[1]);
+  checkHeader(o[0] as api.Header);
+  checkHeader(o[1] as api.Header);
 }
 
 core.List<api.Redirect> buildUnnamed5888() {
@@ -902,8 +902,8 @@ core.List<api.Redirect> buildUnnamed5888() {
 
 void checkUnnamed5888(core.List<api.Redirect> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRedirect(o[0]);
-  checkRedirect(o[1]);
+  checkRedirect(o[0] as api.Redirect);
+  checkRedirect(o[1] as api.Redirect);
 }
 
 core.List<api.Rewrite> buildUnnamed5889() {
@@ -915,8 +915,8 @@ core.List<api.Rewrite> buildUnnamed5889() {
 
 void checkUnnamed5889(core.List<api.Rewrite> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRewrite(o[0]);
-  checkRewrite(o[1]);
+  checkRewrite(o[0] as api.Rewrite);
+  checkRewrite(o[1] as api.Rewrite);
 }
 
 core.int buildCounterServingConfig = 0;
@@ -942,7 +942,7 @@ void checkServingConfig(api.ServingConfig o) {
     unittest.expect(o.appAssociation, unittest.equals('foo'));
     unittest.expect(o.cleanUrls, unittest.isTrue);
     checkUnnamed5887(o.headers);
-    checkI18nConfig(o.i18n);
+    checkI18nConfig(o.i18n as api.I18nConfig);
     checkUnnamed5888(o.redirects);
     checkUnnamed5889(o.rewrites);
     unittest.expect(o.trailingSlashBehavior, unittest.equals('foo'));
@@ -1075,17 +1075,17 @@ api.Version buildVersion() {
 void checkVersion(api.Version o) {
   buildCounterVersion++;
   if (buildCounterVersion < 3) {
-    checkServingConfig(o.config);
+    checkServingConfig(o.config as api.ServingConfig);
     unittest.expect(o.createTime, unittest.equals('foo'));
-    checkActingUser(o.createUser);
+    checkActingUser(o.createUser as api.ActingUser);
     unittest.expect(o.deleteTime, unittest.equals('foo'));
-    checkActingUser(o.deleteUser);
+    checkActingUser(o.deleteUser as api.ActingUser);
     unittest.expect(o.fileCount, unittest.equals('foo'));
     unittest.expect(o.finalizeTime, unittest.equals('foo'));
-    checkActingUser(o.finalizeUser);
+    checkActingUser(o.finalizeUser as api.ActingUser);
     checkUnnamed5892(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkPreviewConfig(o.preview);
+    checkPreviewConfig(o.preview as api.PreviewConfig);
     unittest.expect(o.status, unittest.equals('foo'));
     unittest.expect(o.versionBytes, unittest.equals('foo'));
   }
@@ -1120,7 +1120,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActingUser();
       var od = api.ActingUser.fromJson(o.toJson());
-      checkActingUser(od);
+      checkActingUser(od as api.ActingUser);
     });
   });
 
@@ -1128,7 +1128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCertDnsChallenge();
       var od = api.CertDnsChallenge.fromJson(o.toJson());
-      checkCertDnsChallenge(od);
+      checkCertDnsChallenge(od as api.CertDnsChallenge);
     });
   });
 
@@ -1136,7 +1136,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCertHttpChallenge();
       var od = api.CertHttpChallenge.fromJson(o.toJson());
-      checkCertHttpChallenge(od);
+      checkCertHttpChallenge(od as api.CertHttpChallenge);
     });
   });
 
@@ -1144,7 +1144,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -1152,7 +1152,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloneVersionRequest();
       var od = api.CloneVersionRequest.fromJson(o.toJson());
-      checkCloneVersionRequest(od);
+      checkCloneVersionRequest(od as api.CloneVersionRequest);
     });
   });
 
@@ -1160,7 +1160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudRunRewrite();
       var od = api.CloudRunRewrite.fromJson(o.toJson());
-      checkCloudRunRewrite(od);
+      checkCloudRunRewrite(od as api.CloudRunRewrite);
     });
   });
 
@@ -1168,7 +1168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomain();
       var od = api.Domain.fromJson(o.toJson());
-      checkDomain(od);
+      checkDomain(od as api.Domain);
     });
   });
 
@@ -1176,7 +1176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomainProvisioning();
       var od = api.DomainProvisioning.fromJson(o.toJson());
-      checkDomainProvisioning(od);
+      checkDomainProvisioning(od as api.DomainProvisioning);
     });
   });
 
@@ -1184,7 +1184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDomainRedirect();
       var od = api.DomainRedirect.fromJson(o.toJson());
-      checkDomainRedirect(od);
+      checkDomainRedirect(od as api.DomainRedirect);
     });
   });
 
@@ -1192,7 +1192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1200,7 +1200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHeader();
       var od = api.Header.fromJson(o.toJson());
-      checkHeader(od);
+      checkHeader(od as api.Header);
     });
   });
 
@@ -1208,7 +1208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nConfig();
       var od = api.I18nConfig.fromJson(o.toJson());
-      checkI18nConfig(od);
+      checkI18nConfig(od as api.I18nConfig);
     });
   });
 
@@ -1216,7 +1216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListChannelsResponse();
       var od = api.ListChannelsResponse.fromJson(o.toJson());
-      checkListChannelsResponse(od);
+      checkListChannelsResponse(od as api.ListChannelsResponse);
     });
   });
 
@@ -1224,7 +1224,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDomainsResponse();
       var od = api.ListDomainsResponse.fromJson(o.toJson());
-      checkListDomainsResponse(od);
+      checkListDomainsResponse(od as api.ListDomainsResponse);
     });
   });
 
@@ -1232,7 +1232,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListReleasesResponse();
       var od = api.ListReleasesResponse.fromJson(o.toJson());
-      checkListReleasesResponse(od);
+      checkListReleasesResponse(od as api.ListReleasesResponse);
     });
   });
 
@@ -1240,7 +1240,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListVersionFilesResponse();
       var od = api.ListVersionFilesResponse.fromJson(o.toJson());
-      checkListVersionFilesResponse(od);
+      checkListVersionFilesResponse(od as api.ListVersionFilesResponse);
     });
   });
 
@@ -1248,7 +1248,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListVersionsResponse();
       var od = api.ListVersionsResponse.fromJson(o.toJson());
-      checkListVersionsResponse(od);
+      checkListVersionsResponse(od as api.ListVersionsResponse);
     });
   });
 
@@ -1256,7 +1256,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1264,7 +1264,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPathFilter();
       var od = api.PathFilter.fromJson(o.toJson());
-      checkPathFilter(od);
+      checkPathFilter(od as api.PathFilter);
     });
   });
 
@@ -1272,7 +1272,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPopulateVersionFilesRequest();
       var od = api.PopulateVersionFilesRequest.fromJson(o.toJson());
-      checkPopulateVersionFilesRequest(od);
+      checkPopulateVersionFilesRequest(od as api.PopulateVersionFilesRequest);
     });
   });
 
@@ -1280,7 +1280,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPopulateVersionFilesResponse();
       var od = api.PopulateVersionFilesResponse.fromJson(o.toJson());
-      checkPopulateVersionFilesResponse(od);
+      checkPopulateVersionFilesResponse(od as api.PopulateVersionFilesResponse);
     });
   });
 
@@ -1288,7 +1288,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPreviewConfig();
       var od = api.PreviewConfig.fromJson(o.toJson());
-      checkPreviewConfig(od);
+      checkPreviewConfig(od as api.PreviewConfig);
     });
   });
 
@@ -1296,7 +1296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRedirect();
       var od = api.Redirect.fromJson(o.toJson());
-      checkRedirect(od);
+      checkRedirect(od as api.Redirect);
     });
   });
 
@@ -1304,7 +1304,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelease();
       var od = api.Release.fromJson(o.toJson());
-      checkRelease(od);
+      checkRelease(od as api.Release);
     });
   });
 
@@ -1312,7 +1312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRewrite();
       var od = api.Rewrite.fromJson(o.toJson());
-      checkRewrite(od);
+      checkRewrite(od as api.Rewrite);
     });
   });
 
@@ -1320,7 +1320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServingConfig();
       var od = api.ServingConfig.fromJson(o.toJson());
-      checkServingConfig(od);
+      checkServingConfig(od as api.ServingConfig);
     });
   });
 
@@ -1328,7 +1328,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSiteConfig();
       var od = api.SiteConfig.fromJson(o.toJson());
-      checkSiteConfig(od);
+      checkSiteConfig(od as api.SiteConfig);
     });
   });
 
@@ -1336,7 +1336,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1344,7 +1344,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVersion();
       var od = api.Version.fromJson(o.toJson());
-      checkVersion(od);
+      checkVersion(od as api.Version);
     });
   });
 
@@ -1352,7 +1352,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVersionFile();
       var od = api.VersionFile.fromJson(o.toJson());
-      checkVersionFile(od);
+      checkVersionFile(od as api.VersionFile);
     });
   });
 
@@ -1401,7 +1401,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1451,7 +1451,7 @@ void main() {
       res
           .getConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteConfig(response);
+        checkSiteConfig(response as api.SiteConfig);
       })));
     });
 
@@ -1463,8 +1463,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteConfig.fromJson(json);
-        checkSiteConfig(obj);
+        var obj = api.SiteConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteConfig(obj as api.SiteConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1507,7 +1508,7 @@ void main() {
           .updateConfig(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteConfig(response);
+        checkSiteConfig(response as api.SiteConfig);
       })));
     });
   });
@@ -1521,8 +1522,9 @@ void main() {
       var arg_channelId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1565,7 +1567,7 @@ void main() {
           .create(arg_request, arg_parent,
               channelId: arg_channelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -1613,7 +1615,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1661,7 +1663,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -1718,7 +1720,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response);
+        checkListChannelsResponse(response as api.ListChannelsResponse);
       })));
     });
 
@@ -1730,8 +1732,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1774,7 +1777,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -1788,8 +1791,9 @@ void main() {
       var arg_versionName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Release.fromJson(json);
-        checkRelease(obj);
+        var obj =
+            api.Release.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRelease(obj as api.Release);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1832,7 +1836,7 @@ void main() {
           .create(arg_request, arg_parent,
               versionName: arg_versionName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRelease(response);
+        checkRelease(response as api.Release);
       })));
     });
 
@@ -1889,7 +1893,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReleasesResponse(response);
+        checkListReleasesResponse(response as api.ListReleasesResponse);
       })));
     });
   });
@@ -1902,8 +1906,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1943,7 +1948,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
 
@@ -1991,7 +1996,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2039,7 +2044,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
 
@@ -2096,7 +2101,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDomainsResponse(response);
+        checkListDomainsResponse(response as api.ListDomainsResponse);
       })));
     });
 
@@ -2107,8 +2112,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2148,7 +2154,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
   });
@@ -2162,8 +2168,9 @@ void main() {
       var arg_versionName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Release.fromJson(json);
-        checkRelease(obj);
+        var obj =
+            api.Release.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRelease(obj as api.Release);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2206,7 +2213,7 @@ void main() {
           .create(arg_request, arg_parent,
               versionName: arg_versionName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRelease(response);
+        checkRelease(response as api.Release);
       })));
     });
 
@@ -2263,7 +2270,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReleasesResponse(response);
+        checkListReleasesResponse(response as api.ListReleasesResponse);
       })));
     });
   });
@@ -2276,8 +2283,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CloneVersionRequest.fromJson(json);
-        checkCloneVersionRequest(obj);
+        var obj = api.CloneVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCloneVersionRequest(obj as api.CloneVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2317,7 +2325,7 @@ void main() {
       res
           .clone(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -2330,8 +2338,9 @@ void main() {
       var arg_versionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Version.fromJson(json);
-        checkVersion(obj);
+        var obj =
+            api.Version.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVersion(obj as api.Version);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2378,7 +2387,7 @@ void main() {
               versionId: arg_versionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -2426,7 +2435,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2486,7 +2495,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVersionsResponse(response);
+        checkListVersionsResponse(response as api.ListVersionsResponse);
       })));
     });
 
@@ -2498,8 +2507,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Version.fromJson(json);
-        checkVersion(obj);
+        var obj =
+            api.Version.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVersion(obj as api.Version);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2542,7 +2552,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -2553,8 +2563,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PopulateVersionFilesRequest.fromJson(json);
-        checkPopulateVersionFilesRequest(obj);
+        var obj = api.PopulateVersionFilesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPopulateVersionFilesRequest(
+            obj as api.PopulateVersionFilesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2594,7 +2606,8 @@ void main() {
       res
           .populateFiles(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPopulateVersionFilesResponse(response);
+        checkPopulateVersionFilesResponse(
+            response as api.PopulateVersionFilesResponse);
       })));
     });
   });
@@ -2656,7 +2669,7 @@ void main() {
               status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVersionFilesResponse(response);
+        checkListVersionFilesResponse(response as api.ListVersionFilesResponse);
       })));
     });
   });
@@ -2706,7 +2719,7 @@ void main() {
       res
           .getConfig(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteConfig(response);
+        checkSiteConfig(response as api.SiteConfig);
       })));
     });
 
@@ -2718,8 +2731,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SiteConfig.fromJson(json);
-        checkSiteConfig(obj);
+        var obj = api.SiteConfig.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSiteConfig(obj as api.SiteConfig);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2762,7 +2776,7 @@ void main() {
           .updateConfig(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSiteConfig(response);
+        checkSiteConfig(response as api.SiteConfig);
       })));
     });
   });
@@ -2776,8 +2790,9 @@ void main() {
       var arg_channelId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2820,7 +2835,7 @@ void main() {
           .create(arg_request, arg_parent,
               channelId: arg_channelId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -2868,7 +2883,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2916,7 +2931,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
 
@@ -2973,7 +2988,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListChannelsResponse(response);
+        checkListChannelsResponse(response as api.ListChannelsResponse);
       })));
     });
 
@@ -2985,8 +3000,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3029,7 +3045,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -3043,8 +3059,9 @@ void main() {
       var arg_versionName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Release.fromJson(json);
-        checkRelease(obj);
+        var obj =
+            api.Release.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRelease(obj as api.Release);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3087,7 +3104,7 @@ void main() {
           .create(arg_request, arg_parent,
               versionName: arg_versionName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRelease(response);
+        checkRelease(response as api.Release);
       })));
     });
 
@@ -3144,7 +3161,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReleasesResponse(response);
+        checkListReleasesResponse(response as api.ListReleasesResponse);
       })));
     });
   });
@@ -3157,8 +3174,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3198,7 +3216,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
 
@@ -3246,7 +3264,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3294,7 +3312,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
 
@@ -3351,7 +3369,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDomainsResponse(response);
+        checkListDomainsResponse(response as api.ListDomainsResponse);
       })));
     });
 
@@ -3362,8 +3380,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Domain.fromJson(json);
-        checkDomain(obj);
+        var obj =
+            api.Domain.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDomain(obj as api.Domain);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3403,7 +3422,7 @@ void main() {
       res
           .update(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDomain(response);
+        checkDomain(response as api.Domain);
       })));
     });
   });
@@ -3417,8 +3436,9 @@ void main() {
       var arg_versionName = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Release.fromJson(json);
-        checkRelease(obj);
+        var obj =
+            api.Release.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkRelease(obj as api.Release);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3461,7 +3481,7 @@ void main() {
           .create(arg_request, arg_parent,
               versionName: arg_versionName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRelease(response);
+        checkRelease(response as api.Release);
       })));
     });
 
@@ -3518,7 +3538,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListReleasesResponse(response);
+        checkListReleasesResponse(response as api.ListReleasesResponse);
       })));
     });
   });
@@ -3531,8 +3551,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CloneVersionRequest.fromJson(json);
-        checkCloneVersionRequest(obj);
+        var obj = api.CloneVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCloneVersionRequest(obj as api.CloneVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3572,7 +3593,7 @@ void main() {
       res
           .clone(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -3585,8 +3606,9 @@ void main() {
       var arg_versionId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Version.fromJson(json);
-        checkVersion(obj);
+        var obj =
+            api.Version.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVersion(obj as api.Version);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3633,7 +3655,7 @@ void main() {
               versionId: arg_versionId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -3681,7 +3703,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3741,7 +3763,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVersionsResponse(response);
+        checkListVersionsResponse(response as api.ListVersionsResponse);
       })));
     });
 
@@ -3753,8 +3775,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Version.fromJson(json);
-        checkVersion(obj);
+        var obj =
+            api.Version.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVersion(obj as api.Version);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3797,7 +3820,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVersion(response);
+        checkVersion(response as api.Version);
       })));
     });
 
@@ -3808,8 +3831,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PopulateVersionFilesRequest.fromJson(json);
-        checkPopulateVersionFilesRequest(obj);
+        var obj = api.PopulateVersionFilesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPopulateVersionFilesRequest(
+            obj as api.PopulateVersionFilesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3849,7 +3874,8 @@ void main() {
       res
           .populateFiles(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPopulateVersionFilesResponse(response);
+        checkPopulateVersionFilesResponse(
+            response as api.PopulateVersionFilesResponse);
       })));
     });
   });
@@ -3911,7 +3937,7 @@ void main() {
               status: arg_status,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListVersionFilesResponse(response);
+        checkListVersionFilesResponse(response as api.ListVersionFilesResponse);
       })));
     });
   });

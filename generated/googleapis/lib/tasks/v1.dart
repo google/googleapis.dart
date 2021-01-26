@@ -102,7 +102,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the authenticated user's specified task list.
@@ -151,7 +153,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TaskList.fromJson(data));
+    return _response.then(
+      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new task list and adds it to the authenticated user's task
@@ -200,7 +204,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TaskList.fromJson(data));
+    return _response.then(
+      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all the authenticated user's task lists.
@@ -255,7 +261,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TaskLists.fromJson(data));
+    return _response.then(
+      (data) => TaskLists.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the authenticated user's specified task list. This method supports
@@ -311,7 +319,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TaskList.fromJson(data));
+    return _response.then(
+      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the authenticated user's specified task list.
@@ -366,7 +376,9 @@ class TasklistsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TaskList.fromJson(data));
+    return _response.then(
+      (data) => TaskList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -424,7 +436,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Deletes the specified task from the task list.
@@ -481,7 +495,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Returns the specified task.
@@ -538,7 +554,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new task on the specified task list.
@@ -609,7 +627,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns all tasks in the specified task list.
@@ -733,7 +753,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tasks.fromJson(data));
+    return _response.then(
+      (data) => Tasks.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves the specified task to another position in the task list. This can
@@ -808,7 +830,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified task. This method supports patch semantics.
@@ -871,7 +895,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified task.
@@ -934,7 +960,9 @@ class TasksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Task.fromJson(data));
+    return _response.then(
+      (data) => Task.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1063,7 +1091,8 @@ class Task {
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
-          .map<TaskLinks>((value) => TaskLinks.fromJson(value))
+          .map<TaskLinks>((value) =>
+              TaskLinks.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notes')) {
@@ -1228,7 +1257,8 @@ class TaskLists {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<TaskList>((value) => TaskList.fromJson(value))
+          .map<TaskList>((value) =>
+              TaskList.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1278,7 +1308,8 @@ class Tasks {
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Task>((value) => Task.fromJson(value))
+          .map<Task>((value) =>
+              Task.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

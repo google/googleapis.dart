@@ -152,8 +152,10 @@ class ActionResultsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(data));
+    return _response.then(
+      (data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Upload a new execution result. In order to allow the server to perform
@@ -251,8 +253,10 @@ class ActionResultsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(data));
+    return _response.then(
+      (data) => BuildBazelRemoteExecutionV2ActionResult.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -359,7 +363,10 @@ class ActionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -435,8 +442,10 @@ class BlobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(data));
+    return _response.then(
+      (data) => BuildBazelRemoteExecutionV2BatchReadBlobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Upload many blobs at once. The server may enforce a limit of the combined
@@ -507,8 +516,10 @@ class BlobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(data));
+    return _response.then(
+      (data) => BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Determine if blobs are present in the CAS. Clients can use this API before
@@ -573,8 +584,10 @@ class BlobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(data));
+    return _response.then(
+      (data) => BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Fetch the entire directory tree rooted at a node. This request must be
@@ -677,7 +690,9 @@ class BlobsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(data));
+      (data) => BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -745,7 +760,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GoogleLongrunningOperation.fromJson(data));
+    return _response.then(
+      (data) => GoogleLongrunningOperation.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -812,7 +830,9 @@ class V2ResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(data));
+      (data) => BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -873,15 +893,15 @@ class BuildBazelRemoteExecutionV2Action {
 
   BuildBazelRemoteExecutionV2Action.fromJson(core.Map _json) {
     if (_json.containsKey('commandDigest')) {
-      commandDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['commandDigest']);
+      commandDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['commandDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('doNotCache')) {
       doNotCache = _json['doNotCache'] as core.bool;
     }
     if (_json.containsKey('inputRootDigest')) {
-      inputRootDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['inputRootDigest']);
+      inputRootDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['inputRootDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputNodeProperties')) {
       outputNodeProperties = (_json['outputNodeProperties'] as core.List)
@@ -1063,7 +1083,8 @@ class BuildBazelRemoteExecutionV2ActionResult {
     if (_json.containsKey('executionMetadata')) {
       executionMetadata =
           BuildBazelRemoteExecutionV2ExecutedActionMetadata.fromJson(
-              _json['executionMetadata']);
+              _json['executionMetadata']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('exitCode')) {
       exitCode = _json['exitCode'] as core.int;
@@ -1071,43 +1092,48 @@ class BuildBazelRemoteExecutionV2ActionResult {
     if (_json.containsKey('outputDirectories')) {
       outputDirectories = (_json['outputDirectories'] as core.List)
           .map<BuildBazelRemoteExecutionV2OutputDirectory>((value) =>
-              BuildBazelRemoteExecutionV2OutputDirectory.fromJson(value))
+              BuildBazelRemoteExecutionV2OutputDirectory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('outputDirectorySymlinks')) {
       outputDirectorySymlinks = (_json['outputDirectorySymlinks'] as core.List)
           .map<BuildBazelRemoteExecutionV2OutputSymlink>((value) =>
-              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(value))
+              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('outputFileSymlinks')) {
       outputFileSymlinks = (_json['outputFileSymlinks'] as core.List)
           .map<BuildBazelRemoteExecutionV2OutputSymlink>((value) =>
-              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(value))
+              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('outputFiles')) {
       outputFiles = (_json['outputFiles'] as core.List)
-          .map<BuildBazelRemoteExecutionV2OutputFile>(
-              (value) => BuildBazelRemoteExecutionV2OutputFile.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2OutputFile>((value) =>
+              BuildBazelRemoteExecutionV2OutputFile.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('outputSymlinks')) {
       outputSymlinks = (_json['outputSymlinks'] as core.List)
           .map<BuildBazelRemoteExecutionV2OutputSymlink>((value) =>
-              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(value))
+              BuildBazelRemoteExecutionV2OutputSymlink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('stderrDigest')) {
-      stderrDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['stderrDigest']);
+      stderrDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['stderrDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stderrRaw')) {
       stderrRaw = _json['stderrRaw'] as core.String;
     }
     if (_json.containsKey('stdoutDigest')) {
-      stdoutDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['stdoutDigest']);
+      stdoutDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['stdoutDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stdoutRaw')) {
       stdoutRaw = _json['stdoutRaw'] as core.String;
@@ -1168,8 +1194,9 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsRequest {
   BuildBazelRemoteExecutionV2BatchReadBlobsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('digests')) {
       digests = (_json['digests'] as core.List)
-          .map<BuildBazelRemoteExecutionV2Digest>(
-              (value) => BuildBazelRemoteExecutionV2Digest.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2Digest>((value) =>
+              BuildBazelRemoteExecutionV2Digest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1197,7 +1224,7 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponse {
           .map<BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse>(
               (value) =>
                   BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1236,10 +1263,12 @@ class BuildBazelRemoteExecutionV2BatchReadBlobsResponseResponse {
       data = _json['data'] as core.String;
     }
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = GoogleRpcStatus.fromJson(_json['status']);
+      status = GoogleRpcStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1271,7 +1300,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequest {
           .map<BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest>(
               (value) =>
                   BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1307,7 +1336,8 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsRequestRequest {
       data = _json['data'] as core.String;
     }
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1337,7 +1367,7 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponse {
           .map<BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse>(
               (value) =>
                   BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1364,10 +1394,12 @@ class BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse {
   BuildBazelRemoteExecutionV2BatchUpdateBlobsResponseResponse.fromJson(
       core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = GoogleRpcStatus.fromJson(_json['status']);
+      status = GoogleRpcStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1417,12 +1449,14 @@ class BuildBazelRemoteExecutionV2CacheCapabilities {
     if (_json.containsKey('actionCacheUpdateCapabilities')) {
       actionCacheUpdateCapabilities =
           BuildBazelRemoteExecutionV2ActionCacheUpdateCapabilities.fromJson(
-              _json['actionCacheUpdateCapabilities']);
+              _json['actionCacheUpdateCapabilities']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cachePriorityCapabilities')) {
       cachePriorityCapabilities =
           BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
-              _json['cachePriorityCapabilities']);
+              _json['cachePriorityCapabilities']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('digestFunction')) {
       digestFunction = (_json['digestFunction'] as core.List)
@@ -1567,7 +1601,7 @@ class BuildBazelRemoteExecutionV2Command {
       environmentVariables = (_json['environmentVariables'] as core.List)
           .map<BuildBazelRemoteExecutionV2CommandEnvironmentVariable>((value) =>
               BuildBazelRemoteExecutionV2CommandEnvironmentVariable.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('outputDirectories')) {
@@ -1586,8 +1620,8 @@ class BuildBazelRemoteExecutionV2Command {
           .toList();
     }
     if (_json.containsKey('platform')) {
-      platform =
-          BuildBazelRemoteExecutionV2Platform.fromJson(_json['platform']);
+      platform = BuildBazelRemoteExecutionV2Platform.fromJson(
+          _json['platform'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workingDirectory')) {
       workingDirectory = _json['workingDirectory'] as core.String;
@@ -1756,25 +1790,29 @@ class BuildBazelRemoteExecutionV2Directory {
     if (_json.containsKey('directories')) {
       directories = (_json['directories'] as core.List)
           .map<BuildBazelRemoteExecutionV2DirectoryNode>((value) =>
-              BuildBazelRemoteExecutionV2DirectoryNode.fromJson(value))
+              BuildBazelRemoteExecutionV2DirectoryNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<BuildBazelRemoteExecutionV2FileNode>(
-              (value) => BuildBazelRemoteExecutionV2FileNode.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2FileNode>((value) =>
+              BuildBazelRemoteExecutionV2FileNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
           .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('symlinks')) {
       symlinks = (_json['symlinks'] as core.List)
-          .map<BuildBazelRemoteExecutionV2SymlinkNode>(
-              (value) => BuildBazelRemoteExecutionV2SymlinkNode.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2SymlinkNode>((value) =>
+              BuildBazelRemoteExecutionV2SymlinkNode.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1813,7 +1851,8 @@ class BuildBazelRemoteExecutionV2DirectoryNode {
 
   BuildBazelRemoteExecutionV2DirectoryNode.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1859,8 +1898,8 @@ class BuildBazelRemoteExecutionV2ExecuteOperationMetadata {
 
   BuildBazelRemoteExecutionV2ExecuteOperationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('actionDigest')) {
-      actionDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['actionDigest']);
+      actionDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['actionDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stage')) {
       stage = _json['stage'] as core.String;
@@ -1923,17 +1962,18 @@ class BuildBazelRemoteExecutionV2ExecuteRequest {
 
   BuildBazelRemoteExecutionV2ExecuteRequest.fromJson(core.Map _json) {
     if (_json.containsKey('actionDigest')) {
-      actionDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['actionDigest']);
+      actionDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['actionDigest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('executionPolicy')) {
       executionPolicy = BuildBazelRemoteExecutionV2ExecutionPolicy.fromJson(
-          _json['executionPolicy']);
+          _json['executionPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resultsCachePolicy')) {
       resultsCachePolicy =
           BuildBazelRemoteExecutionV2ResultsCachePolicy.fromJson(
-              _json['resultsCachePolicy']);
+              _json['resultsCachePolicy']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('skipCacheLookup')) {
       skipCacheLookup = _json['skipCacheLookup'] as core.bool;
@@ -2002,16 +2042,19 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
       message = _json['message'] as core.String;
     }
     if (_json.containsKey('result')) {
-      result =
-          BuildBazelRemoteExecutionV2ActionResult.fromJson(_json['result']);
+      result = BuildBazelRemoteExecutionV2ActionResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverLogs')) {
       serverLogs = commons.mapMap<core.Map, BuildBazelRemoteExecutionV2LogFile>(
-          _json['serverLogs'].cast<core.String, core.Map>(),
-          (core.Map item) => BuildBazelRemoteExecutionV2LogFile.fromJson(item));
+          (_json['serverLogs'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => BuildBazelRemoteExecutionV2LogFile.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('status')) {
-      status = GoogleRpcStatus.fromJson(_json['status']);
+      status = GoogleRpcStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2183,7 +2226,8 @@ class BuildBazelRemoteExecutionV2ExecutionCapabilities {
     if (_json.containsKey('executionPriorityCapabilities')) {
       executionPriorityCapabilities =
           BuildBazelRemoteExecutionV2PriorityCapabilities.fromJson(
-              _json['executionPriorityCapabilities']);
+              _json['executionPriorityCapabilities']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('supportedNodeProperties')) {
       supportedNodeProperties = (_json['supportedNodeProperties'] as core.List)
@@ -2259,7 +2303,8 @@ class BuildBazelRemoteExecutionV2FileNode {
 
   BuildBazelRemoteExecutionV2FileNode.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isExecutable')) {
       isExecutable = _json['isExecutable'] as core.bool;
@@ -2270,7 +2315,8 @@ class BuildBazelRemoteExecutionV2FileNode {
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
           .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2304,8 +2350,9 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsRequest {
   BuildBazelRemoteExecutionV2FindMissingBlobsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('blobDigests')) {
       blobDigests = (_json['blobDigests'] as core.List)
-          .map<BuildBazelRemoteExecutionV2Digest>(
-              (value) => BuildBazelRemoteExecutionV2Digest.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2Digest>((value) =>
+              BuildBazelRemoteExecutionV2Digest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2330,8 +2377,9 @@ class BuildBazelRemoteExecutionV2FindMissingBlobsResponse {
   BuildBazelRemoteExecutionV2FindMissingBlobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('missingBlobDigests')) {
       missingBlobDigests = (_json['missingBlobDigests'] as core.List)
-          .map<BuildBazelRemoteExecutionV2Digest>(
-              (value) => BuildBazelRemoteExecutionV2Digest.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2Digest>((value) =>
+              BuildBazelRemoteExecutionV2Digest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2361,8 +2409,9 @@ class BuildBazelRemoteExecutionV2GetTreeResponse {
   BuildBazelRemoteExecutionV2GetTreeResponse.fromJson(core.Map _json) {
     if (_json.containsKey('directories')) {
       directories = (_json['directories'] as core.List)
-          .map<BuildBazelRemoteExecutionV2Directory>(
-              (value) => BuildBazelRemoteExecutionV2Directory.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2Directory>((value) =>
+              BuildBazelRemoteExecutionV2Directory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2399,7 +2448,8 @@ class BuildBazelRemoteExecutionV2LogFile {
 
   BuildBazelRemoteExecutionV2LogFile.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('humanReadable')) {
       humanReadable = _json['humanReadable'] as core.bool;
@@ -2470,8 +2520,8 @@ class BuildBazelRemoteExecutionV2OutputDirectory {
       path = _json['path'] as core.String;
     }
     if (_json.containsKey('treeDigest')) {
-      treeDigest =
-          BuildBazelRemoteExecutionV2Digest.fromJson(_json['treeDigest']);
+      treeDigest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['treeDigest'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2525,7 +2575,8 @@ class BuildBazelRemoteExecutionV2OutputFile {
       contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
-      digest = BuildBazelRemoteExecutionV2Digest.fromJson(_json['digest']);
+      digest = BuildBazelRemoteExecutionV2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isExecutable')) {
       isExecutable = _json['isExecutable'] as core.bool;
@@ -2533,7 +2584,8 @@ class BuildBazelRemoteExecutionV2OutputFile {
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
           .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('path')) {
@@ -2589,7 +2641,8 @@ class BuildBazelRemoteExecutionV2OutputSymlink {
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
           .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('path')) {
@@ -2633,7 +2686,8 @@ class BuildBazelRemoteExecutionV2Platform {
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
           .map<BuildBazelRemoteExecutionV2PlatformProperty>((value) =>
-              BuildBazelRemoteExecutionV2PlatformProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2PlatformProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2703,7 +2757,7 @@ class BuildBazelRemoteExecutionV2PriorityCapabilities {
           .map<BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange>(
               (value) =>
                   BuildBazelRemoteExecutionV2PriorityCapabilitiesPriorityRange
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2784,8 +2838,8 @@ class BuildBazelRemoteExecutionV2RequestMetadata {
       correlatedInvocationsId = _json['correlatedInvocationsId'] as core.String;
     }
     if (_json.containsKey('toolDetails')) {
-      toolDetails =
-          BuildBazelRemoteExecutionV2ToolDetails.fromJson(_json['toolDetails']);
+      toolDetails = BuildBazelRemoteExecutionV2ToolDetails.fromJson(
+          _json['toolDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('toolInvocationId')) {
       toolInvocationId = _json['toolInvocationId'] as core.String;
@@ -2861,22 +2915,25 @@ class BuildBazelRemoteExecutionV2ServerCapabilities {
   BuildBazelRemoteExecutionV2ServerCapabilities.fromJson(core.Map _json) {
     if (_json.containsKey('cacheCapabilities')) {
       cacheCapabilities = BuildBazelRemoteExecutionV2CacheCapabilities.fromJson(
-          _json['cacheCapabilities']);
+          _json['cacheCapabilities'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deprecatedApiVersion')) {
-      deprecatedApiVersion =
-          BuildBazelSemverSemVer.fromJson(_json['deprecatedApiVersion']);
+      deprecatedApiVersion = BuildBazelSemverSemVer.fromJson(
+          _json['deprecatedApiVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('executionCapabilities')) {
       executionCapabilities =
           BuildBazelRemoteExecutionV2ExecutionCapabilities.fromJson(
-              _json['executionCapabilities']);
+              _json['executionCapabilities']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('highApiVersion')) {
-      highApiVersion = BuildBazelSemverSemVer.fromJson(_json['highApiVersion']);
+      highApiVersion = BuildBazelSemverSemVer.fromJson(
+          _json['highApiVersion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lowApiVersion')) {
-      lowApiVersion = BuildBazelSemverSemVer.fromJson(_json['lowApiVersion']);
+      lowApiVersion = BuildBazelSemverSemVer.fromJson(
+          _json['lowApiVersion'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2926,7 +2983,8 @@ class BuildBazelRemoteExecutionV2SymlinkNode {
     if (_json.containsKey('nodeProperties')) {
       nodeProperties = (_json['nodeProperties'] as core.List)
           .map<BuildBazelRemoteExecutionV2NodeProperty>((value) =>
-              BuildBazelRemoteExecutionV2NodeProperty.fromJson(value))
+              BuildBazelRemoteExecutionV2NodeProperty.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('target')) {
@@ -2998,12 +3056,14 @@ class BuildBazelRemoteExecutionV2Tree {
   BuildBazelRemoteExecutionV2Tree.fromJson(core.Map _json) {
     if (_json.containsKey('children')) {
       children = (_json['children'] as core.List)
-          .map<BuildBazelRemoteExecutionV2Directory>(
-              (value) => BuildBazelRemoteExecutionV2Directory.fromJson(value))
+          .map<BuildBazelRemoteExecutionV2Directory>((value) =>
+              BuildBazelRemoteExecutionV2Directory.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('root')) {
-      root = BuildBazelRemoteExecutionV2Directory.fromJson(_json['root']);
+      root = BuildBazelRemoteExecutionV2Directory.fromJson(
+          _json['root'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3364,11 +3424,11 @@ class GoogleDevtoolsRemotebuildbotResourceUsage {
     }
     if (_json.containsKey('diskUsage')) {
       diskUsage = GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
-          _json['diskUsage']);
+          _json['diskUsage'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memoryUsage')) {
       memoryUsage = GoogleDevtoolsRemotebuildbotResourceUsageStat.fromJson(
-          _json['memoryUsage']);
+          _json['memoryUsage'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3501,7 +3561,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateInstanceRequest {
     if (_json.containsKey('instance')) {
       instance =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
-              _json['instance']);
+              _json['instance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('instanceId')) {
       instanceId = _json['instanceId'] as core.String;
@@ -3554,7 +3614,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaCreateWorkerPoolRequest {
     if (_json.containsKey('workerPool')) {
       workerPool =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
-              _json['workerPool']);
+              _json['workerPool'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3684,42 +3744,50 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy {
     if (_json.containsKey('containerImageSources')) {
       containerImageSources =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['containerImageSources']);
+              .fromJson(_json['containerImageSources']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerAddCapabilities')) {
       dockerAddCapabilities =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerAddCapabilities']);
+              .fromJson(_json['dockerAddCapabilities']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerChrootPath')) {
       dockerChrootPath =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerChrootPath']);
+              .fromJson(_json['dockerChrootPath']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerNetwork')) {
       dockerNetwork =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerNetwork']);
+              .fromJson(_json['dockerNetwork']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerPrivileged')) {
       dockerPrivileged =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerPrivileged']);
+              .fromJson(_json['dockerPrivileged']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerRunAsRoot')) {
       dockerRunAsRoot =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerRunAsRoot']);
+              .fromJson(_json['dockerRunAsRoot']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerRuntime')) {
       dockerRuntime =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerRuntime']);
+              .fromJson(_json['dockerRuntime']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dockerSiblingContainers')) {
       dockerSiblingContainers =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature
-              .fromJson(_json['dockerSiblingContainers']);
+              .fromJson(_json['dockerSiblingContainers']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linuxIsolation')) {
       linuxIsolation = _json['linuxIsolation'] as core.String;
@@ -3893,7 +3961,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance {
     if (_json.containsKey('featurePolicy')) {
       featurePolicy =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy.fromJson(
-              _json['featurePolicy']);
+              _json['featurePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -3964,7 +4032,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListInstancesResponse {
       instances = (_json['instances'] as core.List)
           .map<GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance>(
               (value) => GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4038,7 +4106,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaListWorkerPoolsResponse {
           .map<GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool>(
               (value) =>
                   GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4113,7 +4181,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateInstanceRequest {
     if (_json.containsKey('instance')) {
       instance =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaInstance.fromJson(
-              _json['instance']);
+              _json['instance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('loggingEnabled')) {
       loggingEnabled = _json['loggingEnabled'] as core.bool;
@@ -4168,7 +4236,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaUpdateWorkerPoolRequest {
     if (_json.containsKey('workerPool')) {
       workerPool =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool.fromJson(
-              _json['workerPool']);
+              _json['workerPool'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4244,7 +4312,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (_json.containsKey('accelerator')) {
       accelerator =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig
-              .fromJson(_json['accelerator']);
+              .fromJson(
+                  _json['accelerator'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diskSizeGb')) {
       diskSizeGb = _json['diskSizeGb'] as core.String;
@@ -4254,7 +4323,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('machineType')) {
@@ -4275,7 +4345,8 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
     if (_json.containsKey('soleTenancy')) {
       soleTenancy =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaSoleTenancyConfig
-              .fromJson(_json['soleTenancy']);
+              .fromJson(
+                  _json['soleTenancy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('vmImage')) {
       vmImage = _json['vmImage'] as core.String;
@@ -4368,7 +4439,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     if (_json.containsKey('autoscale')) {
       autoscale =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale.fromJson(
-              _json['autoscale']);
+              _json['autoscale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('channel')) {
       channel = _json['channel'] as core.String;
@@ -4382,7 +4453,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerPool {
     if (_json.containsKey('workerConfig')) {
       workerConfig =
           GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig.fromJson(
-              _json['workerConfig']);
+              _json['workerConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workerCount')) {
       workerCount = _json['workerCount'] as core.String;
@@ -4484,8 +4555,8 @@ class GoogleDevtoolsRemoteworkersV1test2Blob {
       contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
-      digest =
-          GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['digest']);
+      digest = GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4522,8 +4593,8 @@ class GoogleDevtoolsRemoteworkersV1test2CommandOutputs {
       exitCode = _json['exitCode'] as core.int;
     }
     if (_json.containsKey('outputs')) {
-      outputs =
-          GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['outputs']);
+      outputs = GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          _json['outputs'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4624,19 +4695,21 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
       metadata = (_json['metadata'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
     if (_json.containsKey('outputs')) {
-      outputs =
-          GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['outputs']);
+      outputs = GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          _json['outputs'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('overhead')) {
       overhead = _json['overhead'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = GoogleRpcStatus.fromJson(_json['status']);
+      status = GoogleRpcStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4682,15 +4755,15 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTask {
     if (_json.containsKey('expectedOutputs')) {
       expectedOutputs =
           GoogleDevtoolsRemoteworkersV1test2CommandTaskOutputs.fromJson(
-              _json['expectedOutputs']);
+              _json['expectedOutputs'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inputs')) {
       inputs = GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs.fromJson(
-          _json['inputs']);
+          _json['inputs'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timeouts')) {
       timeouts = GoogleDevtoolsRemoteworkersV1test2CommandTaskTimeouts.fromJson(
-          _json['timeouts']);
+          _json['timeouts'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4760,19 +4833,21 @@ class GoogleDevtoolsRemoteworkersV1test2CommandTaskInputs {
           .map<GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable>(
               (value) =>
                   GoogleDevtoolsRemoteworkersV1test2CommandTaskInputsEnvironmentVariable
-                      .fromJson(value))
+                      .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
           .map<GoogleDevtoolsRemoteworkersV1test2Digest>((value) =>
-              GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(value))
+              GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inlineBlobs')) {
       inlineBlobs = (_json['inlineBlobs'] as core.List)
-          .map<GoogleDevtoolsRemoteworkersV1test2Blob>(
-              (value) => GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(value))
+          .map<GoogleDevtoolsRemoteworkersV1test2Blob>((value) =>
+              GoogleDevtoolsRemoteworkersV1test2Blob.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('workingDirectory')) {
@@ -5007,13 +5082,14 @@ class GoogleDevtoolsRemoteworkersV1test2Directory {
       directories = (_json['directories'] as core.List)
           .map<GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata>((value) =>
               GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata.fromJson(
-                  value))
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
           .map<GoogleDevtoolsRemoteworkersV1test2FileMetadata>((value) =>
-              GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(value))
+              GoogleDevtoolsRemoteworkersV1test2FileMetadata.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5045,8 +5121,8 @@ class GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata {
 
   GoogleDevtoolsRemoteworkersV1test2DirectoryMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('digest')) {
-      digest =
-          GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['digest']);
+      digest = GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('path')) {
       path = _json['path'] as core.String;
@@ -5099,8 +5175,8 @@ class GoogleDevtoolsRemoteworkersV1test2FileMetadata {
       contents = _json['contents'] as core.String;
     }
     if (_json.containsKey('digest')) {
-      digest =
-          GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(_json['digest']);
+      digest = GoogleDevtoolsRemoteworkersV1test2Digest.fromJson(
+          _json['digest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isExecutable')) {
       isExecutable = _json['isExecutable'] as core.bool;
@@ -5172,11 +5248,13 @@ class GoogleLongrunningOperation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = GoogleRpcStatus.fromJson(_json['error']);
+      error = GoogleRpcStatus.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -5184,7 +5262,8 @@ class GoogleLongrunningOperation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -5242,7 +5321,8 @@ class GoogleRpcStatus {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

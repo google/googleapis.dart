@@ -115,7 +115,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Organization.fromJson(data));
+    return _response.then(
+      (data) =>
+          Organization.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for an Organization resource. May be empty
@@ -176,7 +179,9 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Organization resources that are visible to the user and satisfy the
@@ -248,7 +253,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOrganizationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOrganizationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on an Organization resource. Replaces any
@@ -309,7 +317,9 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified Organization. The
@@ -370,7 +380,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an Organization resource identified by the specified resource
@@ -428,7 +441,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Organization.fromJson(data));
+    return _response.then(
+      (data) =>
+          Organization.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -496,7 +512,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Marks the Project identified by the specified `project_id` (for example,
@@ -554,7 +572,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the Project identified by the specified `project_id` (for
@@ -604,7 +624,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a list of ancestors in the resource hierarchy for the Project
@@ -662,7 +684,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetAncestryResponse.fromJson(data));
+    return _response.then(
+      (data) => GetAncestryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the IAM access control policy for the specified Project.
@@ -723,7 +748,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists Projects that the caller has the `resourcemanager.projects.get`
@@ -816,7 +843,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListProjectsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProjectsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the IAM access control policy for the specified Project. CAUTION:
@@ -902,7 +932,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified Project.
@@ -960,7 +992,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores the Project identified by the specified `project_id` (for
@@ -1020,7 +1055,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the attributes of the Project identified by the specified
@@ -1076,7 +1113,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1089,7 +1128,8 @@ class Ancestor {
 
   Ancestor.fromJson(core.Map _json) {
     if (_json.containsKey('resourceId')) {
-      resourceId = ResourceId.fromJson(_json['resourceId']);
+      resourceId = ResourceId.fromJson(
+          _json['resourceId'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1132,7 +1172,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('service')) {
@@ -1253,7 +1294,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1495,7 +1537,8 @@ class GetAncestryResponse {
   GetAncestryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('ancestor')) {
       ancestor = (_json['ancestor'] as core.List)
-          .map<Ancestor>((value) => Ancestor.fromJson(value))
+          .map<Ancestor>((value) =>
+              Ancestor.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1519,7 +1562,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1580,7 +1624,8 @@ class ListOrganizationsResponse {
     }
     if (_json.containsKey('organizations')) {
       organizations = (_json['organizations'] as core.List)
-          .map<Organization>((value) => Organization.fromJson(value))
+          .map<Organization>((value) => Organization.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1623,7 +1668,8 @@ class ListProjectsResponse {
     }
     if (_json.containsKey('projects')) {
       projects = (_json['projects'] as core.List)
-          .map<Project>((value) => Project.fromJson(value))
+          .map<Project>((value) =>
+              Project.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1694,7 +1740,8 @@ class Organization {
       organizationId = _json['organizationId'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = OrganizationOwner.fromJson(_json['owner']);
+      owner = OrganizationOwner.fromJson(
+          _json['owner'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1826,12 +1873,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -1920,7 +1969,8 @@ class Project {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('lifecycleState')) {
@@ -1930,7 +1980,8 @@ class Project {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parent')) {
-      parent = ResourceId.fromJson(_json['parent']);
+      parent = ResourceId.fromJson(
+          _json['parent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
@@ -2064,7 +2115,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;

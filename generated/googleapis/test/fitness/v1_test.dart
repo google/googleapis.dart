@@ -83,8 +83,8 @@ core.List<api.Dataset> buildUnnamed1312() {
 
 void checkUnnamed1312(core.List<api.Dataset> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataset(o[0]);
-  checkDataset(o[1]);
+  checkDataset(o[0] as api.Dataset);
+  checkDataset(o[1] as api.Dataset);
 }
 
 core.int buildCounterAggregateBucket = 0;
@@ -109,7 +109,7 @@ void checkAggregateBucket(api.AggregateBucket o) {
     unittest.expect(o.activity, unittest.equals(42));
     checkUnnamed1312(o.dataset);
     unittest.expect(o.endTimeMillis, unittest.equals('foo'));
-    checkSession(o.session);
+    checkSession(o.session as api.Session);
     unittest.expect(o.startTimeMillis, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -146,8 +146,8 @@ core.List<api.AggregateBy> buildUnnamed1313() {
 
 void checkUnnamed1313(core.List<api.AggregateBy> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAggregateBy(o[0]);
-  checkAggregateBy(o[1]);
+  checkAggregateBy(o[0] as api.AggregateBy);
+  checkAggregateBy(o[1] as api.AggregateBy);
 }
 
 core.List<core.String> buildUnnamed1314() {
@@ -185,10 +185,10 @@ void checkAggregateRequest(api.AggregateRequest o) {
   buildCounterAggregateRequest++;
   if (buildCounterAggregateRequest < 3) {
     checkUnnamed1313(o.aggregateBy);
-    checkBucketByActivity(o.bucketByActivitySegment);
-    checkBucketByActivity(o.bucketByActivityType);
-    checkBucketBySession(o.bucketBySession);
-    checkBucketByTime(o.bucketByTime);
+    checkBucketByActivity(o.bucketByActivitySegment as api.BucketByActivity);
+    checkBucketByActivity(o.bucketByActivityType as api.BucketByActivity);
+    checkBucketBySession(o.bucketBySession as api.BucketBySession);
+    checkBucketByTime(o.bucketByTime as api.BucketByTime);
     unittest.expect(o.endTimeMillis, unittest.equals('foo'));
     checkUnnamed1314(o.filteredDataQualityStandard);
     unittest.expect(o.startTimeMillis, unittest.equals('foo'));
@@ -205,8 +205,8 @@ core.List<api.AggregateBucket> buildUnnamed1315() {
 
 void checkUnnamed1315(core.List<api.AggregateBucket> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAggregateBucket(o[0]);
-  checkAggregateBucket(o[1]);
+  checkAggregateBucket(o[0] as api.AggregateBucket);
+  checkAggregateBucket(o[1] as api.AggregateBucket);
 }
 
 core.int buildCounterAggregateResponse = 0;
@@ -309,7 +309,7 @@ void checkBucketByTime(api.BucketByTime o) {
   buildCounterBucketByTime++;
   if (buildCounterBucketByTime < 3) {
     unittest.expect(o.durationMillis, unittest.equals('foo'));
-    checkBucketByTimePeriod(o.period);
+    checkBucketByTimePeriod(o.period as api.BucketByTimePeriod);
   }
   buildCounterBucketByTime--;
 }
@@ -346,8 +346,8 @@ core.List<api.Value> buildUnnamed1316() {
 
 void checkUnnamed1316(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterDataPoint = 0;
@@ -417,12 +417,12 @@ api.DataSource buildDataSource() {
 void checkDataSource(api.DataSource o) {
   buildCounterDataSource++;
   if (buildCounterDataSource < 3) {
-    checkApplication(o.application);
+    checkApplication(o.application as api.Application);
     checkUnnamed1317(o.dataQualityStandard);
     unittest.expect(o.dataStreamId, unittest.equals('foo'));
     unittest.expect(o.dataStreamName, unittest.equals('foo'));
-    checkDataType(o.dataType);
-    checkDevice(o.device);
+    checkDataType(o.dataType as api.DataType);
+    checkDevice(o.device as api.Device);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -438,8 +438,8 @@ core.List<api.DataTypeField> buildUnnamed1318() {
 
 void checkUnnamed1318(core.List<api.DataTypeField> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataTypeField(o[0]);
-  checkDataTypeField(o[1]);
+  checkDataTypeField(o[0] as api.DataTypeField);
+  checkDataTypeField(o[1] as api.DataTypeField);
 }
 
 core.int buildCounterDataType = 0;
@@ -495,8 +495,8 @@ core.List<api.DataPoint> buildUnnamed1319() {
 
 void checkUnnamed1319(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataPoint(o[0]);
-  checkDataPoint(o[1]);
+  checkDataPoint(o[0] as api.DataPoint);
+  checkDataPoint(o[1] as api.DataPoint);
 }
 
 core.int buildCounterDataset = 0;
@@ -562,8 +562,8 @@ core.List<api.DataPoint> buildUnnamed1320() {
 
 void checkUnnamed1320(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataPoint(o[0]);
-  checkDataPoint(o[1]);
+  checkDataPoint(o[0] as api.DataPoint);
+  checkDataPoint(o[1] as api.DataPoint);
 }
 
 core.List<api.DataPoint> buildUnnamed1321() {
@@ -575,8 +575,8 @@ core.List<api.DataPoint> buildUnnamed1321() {
 
 void checkUnnamed1321(core.List<api.DataPoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataPoint(o[0]);
-  checkDataPoint(o[1]);
+  checkDataPoint(o[0] as api.DataPoint);
+  checkDataPoint(o[1] as api.DataPoint);
 }
 
 core.int buildCounterListDataPointChangesResponse = 0;
@@ -613,8 +613,8 @@ core.List<api.DataSource> buildUnnamed1322() {
 
 void checkUnnamed1322(core.List<api.DataSource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDataSource(o[0]);
-  checkDataSource(o[1]);
+  checkDataSource(o[0] as api.DataSource);
+  checkDataSource(o[1] as api.DataSource);
 }
 
 core.int buildCounterListDataSourcesResponse = 0;
@@ -645,8 +645,8 @@ core.List<api.Session> buildUnnamed1323() {
 
 void checkUnnamed1323(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSession(o[0]);
-  checkSession(o[1]);
+  checkSession(o[0] as api.Session);
+  checkSession(o[1] as api.Session);
 }
 
 core.List<api.Session> buildUnnamed1324() {
@@ -658,8 +658,8 @@ core.List<api.Session> buildUnnamed1324() {
 
 void checkUnnamed1324(core.List<api.Session> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSession(o[0]);
-  checkSession(o[1]);
+  checkSession(o[0] as api.Session);
+  checkSession(o[1] as api.Session);
 }
 
 core.int buildCounterListSessionsResponse = 0;
@@ -730,7 +730,7 @@ void checkSession(api.Session o) {
   if (buildCounterSession < 3) {
     unittest.expect(o.activeTimeMillis, unittest.equals('foo'));
     unittest.expect(o.activityType, unittest.equals(42));
-    checkApplication(o.application);
+    checkApplication(o.application as api.Application);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.endTimeMillis, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
@@ -750,8 +750,8 @@ core.List<api.ValueMapValEntry> buildUnnamed1325() {
 
 void checkUnnamed1325(core.List<api.ValueMapValEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValueMapValEntry(o[0]);
-  checkValueMapValEntry(o[1]);
+  checkValueMapValEntry(o[0] as api.ValueMapValEntry);
+  checkValueMapValEntry(o[1] as api.ValueMapValEntry);
 }
 
 core.int buildCounterValue = 0;
@@ -795,7 +795,7 @@ void checkValueMapValEntry(api.ValueMapValEntry o) {
   buildCounterValueMapValEntry++;
   if (buildCounterValueMapValEntry < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkMapValue(o.value);
+    checkMapValue(o.value as api.MapValue);
   }
   buildCounterValueMapValEntry--;
 }
@@ -831,7 +831,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAggregateBucket();
       var od = api.AggregateBucket.fromJson(o.toJson());
-      checkAggregateBucket(od);
+      checkAggregateBucket(od as api.AggregateBucket);
     });
   });
 
@@ -839,7 +839,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAggregateBy();
       var od = api.AggregateBy.fromJson(o.toJson());
-      checkAggregateBy(od);
+      checkAggregateBy(od as api.AggregateBy);
     });
   });
 
@@ -847,7 +847,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAggregateRequest();
       var od = api.AggregateRequest.fromJson(o.toJson());
-      checkAggregateRequest(od);
+      checkAggregateRequest(od as api.AggregateRequest);
     });
   });
 
@@ -855,7 +855,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAggregateResponse();
       var od = api.AggregateResponse.fromJson(o.toJson());
-      checkAggregateResponse(od);
+      checkAggregateResponse(od as api.AggregateResponse);
     });
   });
 
@@ -863,7 +863,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplication();
       var od = api.Application.fromJson(o.toJson());
-      checkApplication(od);
+      checkApplication(od as api.Application);
     });
   });
 
@@ -871,7 +871,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketByActivity();
       var od = api.BucketByActivity.fromJson(o.toJson());
-      checkBucketByActivity(od);
+      checkBucketByActivity(od as api.BucketByActivity);
     });
   });
 
@@ -879,7 +879,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketBySession();
       var od = api.BucketBySession.fromJson(o.toJson());
-      checkBucketBySession(od);
+      checkBucketBySession(od as api.BucketBySession);
     });
   });
 
@@ -887,7 +887,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketByTime();
       var od = api.BucketByTime.fromJson(o.toJson());
-      checkBucketByTime(od);
+      checkBucketByTime(od as api.BucketByTime);
     });
   });
 
@@ -895,7 +895,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketByTimePeriod();
       var od = api.BucketByTimePeriod.fromJson(o.toJson());
-      checkBucketByTimePeriod(od);
+      checkBucketByTimePeriod(od as api.BucketByTimePeriod);
     });
   });
 
@@ -903,7 +903,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataPoint();
       var od = api.DataPoint.fromJson(o.toJson());
-      checkDataPoint(od);
+      checkDataPoint(od as api.DataPoint);
     });
   });
 
@@ -911,7 +911,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataSource();
       var od = api.DataSource.fromJson(o.toJson());
-      checkDataSource(od);
+      checkDataSource(od as api.DataSource);
     });
   });
 
@@ -919,7 +919,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataType();
       var od = api.DataType.fromJson(o.toJson());
-      checkDataType(od);
+      checkDataType(od as api.DataType);
     });
   });
 
@@ -927,7 +927,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataTypeField();
       var od = api.DataTypeField.fromJson(o.toJson());
-      checkDataTypeField(od);
+      checkDataTypeField(od as api.DataTypeField);
     });
   });
 
@@ -935,7 +935,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDataset();
       var od = api.Dataset.fromJson(o.toJson());
-      checkDataset(od);
+      checkDataset(od as api.Dataset);
     });
   });
 
@@ -943,7 +943,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDevice();
       var od = api.Device.fromJson(o.toJson());
-      checkDevice(od);
+      checkDevice(od as api.Device);
     });
   });
 
@@ -951,7 +951,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDataPointChangesResponse();
       var od = api.ListDataPointChangesResponse.fromJson(o.toJson());
-      checkListDataPointChangesResponse(od);
+      checkListDataPointChangesResponse(od as api.ListDataPointChangesResponse);
     });
   });
 
@@ -959,7 +959,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDataSourcesResponse();
       var od = api.ListDataSourcesResponse.fromJson(o.toJson());
-      checkListDataSourcesResponse(od);
+      checkListDataSourcesResponse(od as api.ListDataSourcesResponse);
     });
   });
 
@@ -967,7 +967,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSessionsResponse();
       var od = api.ListSessionsResponse.fromJson(o.toJson());
-      checkListSessionsResponse(od);
+      checkListSessionsResponse(od as api.ListSessionsResponse);
     });
   });
 
@@ -975,7 +975,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapValue();
       var od = api.MapValue.fromJson(o.toJson());
-      checkMapValue(od);
+      checkMapValue(od as api.MapValue);
     });
   });
 
@@ -983,7 +983,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSession();
       var od = api.Session.fromJson(o.toJson());
-      checkSession(od);
+      checkSession(od as api.Session);
     });
   });
 
@@ -991,7 +991,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
-      checkValue(od);
+      checkValue(od as api.Value);
     });
   });
 
@@ -999,7 +999,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValueMapValEntry();
       var od = api.ValueMapValEntry.fromJson(o.toJson());
-      checkValueMapValEntry(od);
+      checkValueMapValEntry(od as api.ValueMapValEntry);
     });
   });
 
@@ -1011,8 +1011,9 @@ void main() {
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DataSource.fromJson(json);
-        checkDataSource(obj);
+        var obj = api.DataSource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDataSource(obj as api.DataSource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1048,7 +1049,7 @@ void main() {
       res
           .create(arg_request, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
 
@@ -1093,7 +1094,7 @@ void main() {
       res
           .delete(arg_userId, arg_dataSourceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
 
@@ -1138,7 +1139,7 @@ void main() {
       res
           .get(arg_userId, arg_dataSourceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
 
@@ -1186,7 +1187,7 @@ void main() {
           .list(arg_userId,
               dataTypeName: arg_dataTypeName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDataSourcesResponse(response);
+        checkListDataSourcesResponse(response as api.ListDataSourcesResponse);
       })));
     });
 
@@ -1198,8 +1199,9 @@ void main() {
       var arg_dataSourceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DataSource.fromJson(json);
-        checkDataSource(obj);
+        var obj = api.DataSource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDataSource(obj as api.DataSource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1236,7 +1238,7 @@ void main() {
           .update(arg_request, arg_userId, arg_dataSourceId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataSource(response);
+        checkDataSource(response as api.DataSource);
       })));
     });
   });
@@ -1290,7 +1292,8 @@ void main() {
           .list(arg_userId, arg_dataSourceId,
               limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDataPointChangesResponse(response);
+        checkListDataPointChangesResponse(
+            response as api.ListDataPointChangesResponse);
       })));
     });
   });
@@ -1398,7 +1401,7 @@ void main() {
           .get(arg_userId, arg_dataSourceId, arg_datasetId,
               limit: arg_limit, pageToken: arg_pageToken, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataset(response);
+        checkDataset(response as api.Dataset);
       })));
     });
 
@@ -1412,8 +1415,9 @@ void main() {
       var arg_currentTimeMillis = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Dataset.fromJson(json);
-        checkDataset(obj);
+        var obj =
+            api.Dataset.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDataset(obj as api.Dataset);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1452,7 +1456,7 @@ void main() {
           .patch(arg_request, arg_userId, arg_dataSourceId, arg_datasetId,
               currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDataset(response);
+        checkDataset(response as api.Dataset);
       })));
     });
   });
@@ -1465,8 +1469,9 @@ void main() {
       var arg_userId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AggregateRequest.fromJson(json);
-        checkAggregateRequest(obj);
+        var obj = api.AggregateRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAggregateRequest(obj as api.AggregateRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1502,7 +1507,7 @@ void main() {
       res
           .aggregate(arg_request, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAggregateResponse(response);
+        checkAggregateResponse(response as api.AggregateResponse);
       })));
     });
   });
@@ -1616,7 +1621,7 @@ void main() {
               startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSessionsResponse(response);
+        checkListSessionsResponse(response as api.ListSessionsResponse);
       })));
     });
 
@@ -1629,8 +1634,9 @@ void main() {
       var arg_currentTimeMillis = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Session.fromJson(json);
-        checkSession(obj);
+        var obj =
+            api.Session.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSession(obj as api.Session);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1669,7 +1675,7 @@ void main() {
           .update(arg_request, arg_userId, arg_sessionId,
               currentTimeMillis: arg_currentTimeMillis, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSession(response);
+        checkSession(response as api.Session);
       })));
     });
   });

@@ -248,7 +248,10 @@ class ProcessesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListUserProcessesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUserProcessesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List information about a script's executed processes, such as process type
@@ -374,7 +377,10 @@ class ProcessesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListScriptProcessesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListScriptProcessesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -434,7 +440,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a script project's metadata.
@@ -482,7 +490,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the content of the script project, including the code source and
@@ -540,7 +550,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Content.fromJson(data));
+    return _response.then(
+      (data) => Content.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get metrics data for scripts, such as number of executions and active
@@ -610,7 +622,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Metrics.fromJson(data));
+    return _response.then(
+      (data) => Metrics.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the content of the specified script project. This content is
@@ -670,7 +684,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Content.fromJson(data));
+    return _response.then(
+      (data) => Content.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -733,7 +749,10 @@ class ProjectsDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Deployment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a deployment of an Apps Script project.
@@ -790,7 +809,9 @@ class ProjectsDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a deployment of an Apps Script project.
@@ -847,7 +868,10 @@ class ProjectsDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Deployment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the deployments of an Apps Script project.
@@ -912,7 +936,10 @@ class ProjectsDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDeploymentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a deployment of an Apps Script project.
@@ -975,7 +1002,10 @@ class ProjectsDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Deployment.fromJson(data));
+    return _response.then(
+      (data) =>
+          Deployment.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1039,7 +1069,9 @@ class ProjectsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a version of a script project.
@@ -1096,7 +1128,9 @@ class ProjectsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List the versions of a script project.
@@ -1161,7 +1195,10 @@ class ProjectsVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1234,7 +1271,9 @@ class ScriptsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1253,7 +1292,8 @@ class Content {
   Content.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<File>((value) => File.fromJson(value))
+          .map<File>((value) =>
+              File.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('scriptId')) {
@@ -1324,14 +1364,16 @@ class Deployment {
 
   Deployment.fromJson(core.Map _json) {
     if (_json.containsKey('deploymentConfig')) {
-      deploymentConfig = DeploymentConfig.fromJson(_json['deploymentConfig']);
+      deploymentConfig = DeploymentConfig.fromJson(
+          _json['deploymentConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deploymentId')) {
       deploymentId = _json['deploymentId'] as core.String;
     }
     if (_json.containsKey('entryPoints')) {
       entryPoints = (_json['entryPoints'] as core.List)
-          .map<EntryPoint>((value) => EntryPoint.fromJson(value))
+          .map<EntryPoint>((value) =>
+              EntryPoint.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {
@@ -1448,17 +1490,19 @@ class EntryPoint {
 
   EntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey('addOn')) {
-      addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(_json['addOn']);
+      addOn = GoogleAppsScriptTypeAddOnEntryPoint.fromJson(
+          _json['addOn'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('entryPointType')) {
       entryPointType = _json['entryPointType'] as core.String;
     }
     if (_json.containsKey('executionApi')) {
       executionApi = GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(
-          _json['executionApi']);
+          _json['executionApi'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('webApp')) {
-      webApp = GoogleAppsScriptTypeWebAppEntryPoint.fromJson(_json['webApp']);
+      webApp = GoogleAppsScriptTypeWebAppEntryPoint.fromJson(
+          _json['webApp'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1490,7 +1534,8 @@ class ExecuteStreamResponse {
 
   ExecuteStreamResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = ScriptExecutionResult.fromJson(_json['result']);
+      result = ScriptExecutionResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1534,8 +1579,9 @@ class ExecutionError {
     if (_json.containsKey('scriptStackTraceElements')) {
       scriptStackTraceElements =
           (_json['scriptStackTraceElements'] as core.List)
-              .map<ScriptStackTraceElement>(
-                  (value) => ScriptStackTraceElement.fromJson(value))
+              .map<ScriptStackTraceElement>((value) =>
+                  ScriptStackTraceElement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
   }
@@ -1706,12 +1752,12 @@ class File {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('functionSet')) {
-      functionSet =
-          GoogleAppsScriptTypeFunctionSet.fromJson(_json['functionSet']);
+      functionSet = GoogleAppsScriptTypeFunctionSet.fromJson(
+          _json['functionSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastModifyUser')) {
-      lastModifyUser =
-          GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
+      lastModifyUser = GoogleAppsScriptTypeUser.fromJson(
+          _json['lastModifyUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1867,7 +1913,7 @@ class GoogleAppsScriptTypeExecutionApiEntryPoint {
   GoogleAppsScriptTypeExecutionApiEntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey('entryPointConfig')) {
       entryPointConfig = GoogleAppsScriptTypeExecutionApiConfig.fromJson(
-          _json['entryPointConfig']);
+          _json['entryPointConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1912,8 +1958,9 @@ class GoogleAppsScriptTypeFunctionSet {
   GoogleAppsScriptTypeFunctionSet.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<GoogleAppsScriptTypeFunction>(
-              (value) => GoogleAppsScriptTypeFunction.fromJson(value))
+          .map<GoogleAppsScriptTypeFunction>((value) =>
+              GoogleAppsScriptTypeFunction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2141,8 +2188,8 @@ class GoogleAppsScriptTypeWebAppEntryPoint {
 
   GoogleAppsScriptTypeWebAppEntryPoint.fromJson(core.Map _json) {
     if (_json.containsKey('entryPointConfig')) {
-      entryPointConfig =
-          GoogleAppsScriptTypeWebAppConfig.fromJson(_json['entryPointConfig']);
+      entryPointConfig = GoogleAppsScriptTypeWebAppConfig.fromJson(
+          _json['entryPointConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
       url = _json['url'] as core.String;
@@ -2175,7 +2222,8 @@ class ListDeploymentsResponse {
   ListDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deployments')) {
       deployments = (_json['deployments'] as core.List)
-          .map<Deployment>((value) => Deployment.fromJson(value))
+          .map<Deployment>((value) =>
+              Deployment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2213,8 +2261,9 @@ class ListScriptProcessesResponse {
     }
     if (_json.containsKey('processes')) {
       processes = (_json['processes'] as core.List)
-          .map<GoogleAppsScriptTypeProcess>(
-              (value) => GoogleAppsScriptTypeProcess.fromJson(value))
+          .map<GoogleAppsScriptTypeProcess>((value) =>
+              GoogleAppsScriptTypeProcess.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2248,8 +2297,9 @@ class ListUserProcessesResponse {
     }
     if (_json.containsKey('processes')) {
       processes = (_json['processes'] as core.List)
-          .map<GoogleAppsScriptTypeProcess>(
-              (value) => GoogleAppsScriptTypeProcess.fromJson(value))
+          .map<GoogleAppsScriptTypeProcess>((value) =>
+              GoogleAppsScriptTypeProcess.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2276,7 +2326,8 @@ class ListValue {
   ListValue.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2307,7 +2358,8 @@ class ListVersionsResponse {
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
-          .map<Version>((value) => Version.fromJson(value))
+          .map<Version>((value) =>
+              Version.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2341,17 +2393,20 @@ class Metrics {
   Metrics.fromJson(core.Map _json) {
     if (_json.containsKey('activeUsers')) {
       activeUsers = (_json['activeUsers'] as core.List)
-          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('failedExecutions')) {
       failedExecutions = (_json['failedExecutions'] as core.List)
-          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('totalExecutions')) {
       totalExecutions = (_json['totalExecutions'] as core.List)
-          .map<MetricsValue>((value) => MetricsValue.fromJson(value))
+          .map<MetricsValue>((value) => MetricsValue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2457,11 +2512,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2513,11 +2570,12 @@ class Project {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('creator')) {
-      creator = GoogleAppsScriptTypeUser.fromJson(_json['creator']);
+      creator = GoogleAppsScriptTypeUser.fromJson(
+          _json['creator'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastModifyUser')) {
-      lastModifyUser =
-          GoogleAppsScriptTypeUser.fromJson(_json['lastModifyUser']);
+      lastModifyUser = GoogleAppsScriptTypeUser.fromJson(
+          _json['lastModifyUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parentId')) {
       parentId = _json['parentId'] as core.String;
@@ -2569,7 +2627,8 @@ class ScriptExecutionResult {
 
   ScriptExecutionResult.fromJson(core.Map _json) {
     if (_json.containsKey('returnValue')) {
-      returnValue = Value.fromJson(_json['returnValue']);
+      returnValue = Value.fromJson(
+          _json['returnValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2644,7 +2703,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -2679,8 +2739,10 @@ class Struct {
   Struct.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = commons.mapMap<core.Map, Value>(
-          _json['fields'].cast<core.String, core.Map>(),
-          (core.Map item) => Value.fromJson(item));
+          (_json['fields'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Value.fromJson(item as core.Map<core.String, core.dynamic>));
     }
   }
 
@@ -2704,7 +2766,8 @@ class UpdateDeploymentRequest {
 
   UpdateDeploymentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deploymentConfig')) {
-      deploymentConfig = DeploymentConfig.fromJson(_json['deploymentConfig']);
+      deploymentConfig = DeploymentConfig.fromJson(
+          _json['deploymentConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2772,7 +2835,8 @@ class Value {
       dateValue = _json['dateValue'] as core.String;
     }
     if (_json.containsKey('listValue')) {
-      listValue = ListValue.fromJson(_json['listValue']);
+      listValue = ListValue.fromJson(
+          _json['listValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('nullValue')) {
       nullValue = _json['nullValue'] as core.String;
@@ -2782,14 +2846,16 @@ class Value {
     }
     if (_json.containsKey('protoValue')) {
       protoValue = commons.mapMap<core.Object, core.Object>(
-          _json['protoValue'].cast<core.String, core.Object>(),
+          (_json['protoValue'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('stringValue')) {
       stringValue = _json['stringValue'] as core.String;
     }
     if (_json.containsKey('structValue')) {
-      structValue = Struct.fromJson(_json['structValue']);
+      structValue = Struct.fromJson(
+          _json['structValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 

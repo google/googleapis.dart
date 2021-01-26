@@ -120,8 +120,10 @@ class SearchanalyticsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SearchAnalyticsQueryResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchAnalyticsQueryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -186,7 +188,9 @@ class SitemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves information about a specific sitemap.
@@ -245,7 +249,10 @@ class SitemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WmxSitemap.fromJson(data));
+    return _response.then(
+      (data) =>
+          WmxSitemap.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the [sitemaps-entries](/webmaster-tools/v3/sitemaps) submitted for
@@ -305,7 +312,10 @@ class SitemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SitemapsListResponse.fromJson(data));
+    return _response.then(
+      (data) => SitemapsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submits a sitemap for a site.
@@ -364,7 +374,9 @@ class SitemapsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -418,7 +430,9 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   ///  Removes a site from the set of the user's Search Console sites.
@@ -467,7 +481,9 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   ///  Retrieves information about specific site.
@@ -516,7 +532,9 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WmxSite.fromJson(data));
+    return _response.then(
+      (data) => WmxSite.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   ///  Lists the user's Search Console sites.
@@ -558,7 +576,10 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SitesListResponse.fromJson(data));
+    return _response.then(
+      (data) => SitesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -622,8 +643,10 @@ class UrlTestingToolsMobileFriendlyTestResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => RunMobileFriendlyTestResponse.fromJson(data));
+    return _response.then(
+      (data) => RunMobileFriendlyTestResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -747,8 +770,8 @@ class ApiDimensionFilterGroup {
   ApiDimensionFilterGroup.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<ApiDimensionFilter>(
-              (value) => ApiDimensionFilter.fromJson(value))
+          .map<ApiDimensionFilter>((value) => ApiDimensionFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('groupType')) {
@@ -878,7 +901,8 @@ class ResourceIssue {
 
   ResourceIssue.fromJson(core.Map _json) {
     if (_json.containsKey('blockedResource')) {
-      blockedResource = BlockedResource.fromJson(_json['blockedResource']);
+      blockedResource = BlockedResource.fromJson(
+          _json['blockedResource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -953,20 +977,23 @@ class RunMobileFriendlyTestResponse {
     }
     if (_json.containsKey('mobileFriendlyIssues')) {
       mobileFriendlyIssues = (_json['mobileFriendlyIssues'] as core.List)
-          .map<MobileFriendlyIssue>(
-              (value) => MobileFriendlyIssue.fromJson(value))
+          .map<MobileFriendlyIssue>((value) => MobileFriendlyIssue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('resourceIssues')) {
       resourceIssues = (_json['resourceIssues'] as core.List)
-          .map<ResourceIssue>((value) => ResourceIssue.fromJson(value))
+          .map<ResourceIssue>((value) => ResourceIssue.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('screenshot')) {
-      screenshot = Image.fromJson(_json['screenshot']);
+      screenshot = Image.fromJson(
+          _json['screenshot'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('testStatus')) {
-      testStatus = TestStatus.fromJson(_json['testStatus']);
+      testStatus = TestStatus.fromJson(
+          _json['testStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1056,8 +1083,9 @@ class SearchAnalyticsQueryRequest {
     }
     if (_json.containsKey('dimensionFilterGroups')) {
       dimensionFilterGroups = (_json['dimensionFilterGroups'] as core.List)
-          .map<ApiDimensionFilterGroup>(
-              (value) => ApiDimensionFilterGroup.fromJson(value))
+          .map<ApiDimensionFilterGroup>((value) =>
+              ApiDimensionFilterGroup.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensions')) {
@@ -1135,7 +1163,8 @@ class SearchAnalyticsQueryResponse {
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<ApiDataRow>((value) => ApiDataRow.fromJson(value))
+          .map<ApiDataRow>((value) =>
+              ApiDataRow.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1163,7 +1192,8 @@ class SitemapsListResponse {
   SitemapsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('sitemap')) {
       sitemap = (_json['sitemap'] as core.List)
-          .map<WmxSitemap>((value) => WmxSitemap.fromJson(value))
+          .map<WmxSitemap>((value) =>
+              WmxSitemap.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1189,7 +1219,8 @@ class SitesListResponse {
   SitesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('siteEntry')) {
       siteEntry = (_json['siteEntry'] as core.List)
-          .map<WmxSite>((value) => WmxSite.fromJson(value))
+          .map<WmxSite>((value) =>
+              WmxSite.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1333,7 +1364,8 @@ class WmxSitemap {
   WmxSitemap.fromJson(core.Map _json) {
     if (_json.containsKey('contents')) {
       contents = (_json['contents'] as core.List)
-          .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(value))
+          .map<WmxSitemapContent>((value) => WmxSitemapContent.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('errors')) {

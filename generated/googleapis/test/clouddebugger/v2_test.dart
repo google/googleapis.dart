@@ -104,8 +104,8 @@ core.List<api.Variable> buildUnnamed3853() {
 
 void checkUnnamed3853(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.List<core.String> buildUnnamed3854() {
@@ -143,8 +143,8 @@ core.List<api.StackFrame> buildUnnamed3856() {
 
 void checkUnnamed3856(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStackFrame(o[0]);
-  checkStackFrame(o[1]);
+  checkStackFrame(o[0] as api.StackFrame);
+  checkStackFrame(o[1] as api.StackFrame);
 }
 
 core.List<api.Variable> buildUnnamed3857() {
@@ -156,8 +156,8 @@ core.List<api.Variable> buildUnnamed3857() {
 
 void checkUnnamed3857(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterBreakpoint = 0;
@@ -201,12 +201,12 @@ void checkBreakpoint(api.Breakpoint o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.isFinalState, unittest.isTrue);
     checkUnnamed3855(o.labels);
-    checkSourceLocation(o.location);
+    checkSourceLocation(o.location as api.SourceLocation);
     unittest.expect(o.logLevel, unittest.equals('foo'));
     unittest.expect(o.logMessageFormat, unittest.equals('foo'));
     checkUnnamed3856(o.stackFrames);
     unittest.expect(o.state, unittest.equals('foo'));
-    checkStatusMessage(o.status);
+    checkStatusMessage(o.status as api.StatusMessage);
     unittest.expect(o.userEmail, unittest.equals('foo'));
     checkUnnamed3857(o.variableTable);
   }
@@ -230,9 +230,9 @@ api.CloudRepoSourceContext buildCloudRepoSourceContext() {
 void checkCloudRepoSourceContext(api.CloudRepoSourceContext o) {
   buildCounterCloudRepoSourceContext++;
   if (buildCounterCloudRepoSourceContext < 3) {
-    checkAliasContext(o.aliasContext);
+    checkAliasContext(o.aliasContext as api.AliasContext);
     unittest.expect(o.aliasName, unittest.equals('foo'));
-    checkRepoId(o.repoId);
+    checkRepoId(o.repoId as api.RepoId);
     unittest.expect(o.revisionId, unittest.equals('foo'));
   }
   buildCounterCloudRepoSourceContext--;
@@ -254,7 +254,7 @@ void checkCloudWorkspaceId(api.CloudWorkspaceId o) {
   buildCounterCloudWorkspaceId++;
   if (buildCounterCloudWorkspaceId < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkRepoId(o.repoId);
+    checkRepoId(o.repoId as api.RepoId);
   }
   buildCounterCloudWorkspaceId--;
 }
@@ -275,7 +275,7 @@ void checkCloudWorkspaceSourceContext(api.CloudWorkspaceSourceContext o) {
   buildCounterCloudWorkspaceSourceContext++;
   if (buildCounterCloudWorkspaceSourceContext < 3) {
     unittest.expect(o.snapshotId, unittest.equals('foo'));
-    checkCloudWorkspaceId(o.workspaceId);
+    checkCloudWorkspaceId(o.workspaceId as api.CloudWorkspaceId);
   }
   buildCounterCloudWorkspaceSourceContext--;
 }
@@ -289,8 +289,8 @@ core.List<api.ExtendedSourceContext> buildUnnamed3858() {
 
 void checkUnnamed3858(core.List<api.ExtendedSourceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExtendedSourceContext(o[0]);
-  checkExtendedSourceContext(o[1]);
+  checkExtendedSourceContext(o[0] as api.ExtendedSourceContext);
+  checkExtendedSourceContext(o[1] as api.ExtendedSourceContext);
 }
 
 core.Map<core.String, core.String> buildUnnamed3859() {
@@ -315,8 +315,8 @@ core.List<api.SourceContext> buildUnnamed3860() {
 
 void checkUnnamed3860(core.List<api.SourceContext> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSourceContext(o[0]);
-  checkSourceContext(o[1]);
+  checkSourceContext(o[0] as api.SourceContext);
+  checkSourceContext(o[1] as api.SourceContext);
 }
 
 core.int buildCounterDebuggee = 0;
@@ -354,7 +354,7 @@ void checkDebuggee(api.Debuggee o) {
     checkUnnamed3859(o.labels);
     unittest.expect(o.project, unittest.equals('foo'));
     checkUnnamed3860(o.sourceContexts);
-    checkStatusMessage(o.status);
+    checkStatusMessage(o.status as api.StatusMessage);
     unittest.expect(o.uniquifier, unittest.equals('foo'));
   }
   buildCounterDebuggee--;
@@ -403,7 +403,7 @@ api.ExtendedSourceContext buildExtendedSourceContext() {
 void checkExtendedSourceContext(api.ExtendedSourceContext o) {
   buildCounterExtendedSourceContext++;
   if (buildCounterExtendedSourceContext < 3) {
-    checkSourceContext(o.context);
+    checkSourceContext(o.context as api.SourceContext);
     checkUnnamed3861(o.labels);
   }
   buildCounterExtendedSourceContext--;
@@ -461,7 +461,7 @@ api.GerritSourceContext buildGerritSourceContext() {
 void checkGerritSourceContext(api.GerritSourceContext o) {
   buildCounterGerritSourceContext++;
   if (buildCounterGerritSourceContext < 3) {
-    checkAliasContext(o.aliasContext);
+    checkAliasContext(o.aliasContext as api.AliasContext);
     unittest.expect(o.aliasName, unittest.equals('foo'));
     unittest.expect(o.gerritProject, unittest.equals('foo'));
     unittest.expect(o.hostUri, unittest.equals('foo'));
@@ -484,7 +484,7 @@ api.GetBreakpointResponse buildGetBreakpointResponse() {
 void checkGetBreakpointResponse(api.GetBreakpointResponse o) {
   buildCounterGetBreakpointResponse++;
   if (buildCounterGetBreakpointResponse < 3) {
-    checkBreakpoint(o.breakpoint);
+    checkBreakpoint(o.breakpoint as api.Breakpoint);
   }
   buildCounterGetBreakpointResponse--;
 }
@@ -519,8 +519,8 @@ core.List<api.Breakpoint> buildUnnamed3863() {
 
 void checkUnnamed3863(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBreakpoint(o[0]);
-  checkBreakpoint(o[1]);
+  checkBreakpoint(o[0] as api.Breakpoint);
+  checkBreakpoint(o[1] as api.Breakpoint);
 }
 
 core.int buildCounterListActiveBreakpointsResponse = 0;
@@ -555,8 +555,8 @@ core.List<api.Breakpoint> buildUnnamed3864() {
 
 void checkUnnamed3864(core.List<api.Breakpoint> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBreakpoint(o[0]);
-  checkBreakpoint(o[1]);
+  checkBreakpoint(o[0] as api.Breakpoint);
+  checkBreakpoint(o[1] as api.Breakpoint);
 }
 
 core.int buildCounterListBreakpointsResponse = 0;
@@ -589,8 +589,8 @@ core.List<api.Debuggee> buildUnnamed3865() {
 
 void checkUnnamed3865(core.List<api.Debuggee> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDebuggee(o[0]);
-  checkDebuggee(o[1]);
+  checkDebuggee(o[0] as api.Debuggee);
+  checkDebuggee(o[1] as api.Debuggee);
 }
 
 core.int buildCounterListDebuggeesResponse = 0;
@@ -647,7 +647,7 @@ api.RegisterDebuggeeRequest buildRegisterDebuggeeRequest() {
 void checkRegisterDebuggeeRequest(api.RegisterDebuggeeRequest o) {
   buildCounterRegisterDebuggeeRequest++;
   if (buildCounterRegisterDebuggeeRequest < 3) {
-    checkDebuggee(o.debuggee);
+    checkDebuggee(o.debuggee as api.Debuggee);
   }
   buildCounterRegisterDebuggeeRequest--;
 }
@@ -668,7 +668,7 @@ void checkRegisterDebuggeeResponse(api.RegisterDebuggeeResponse o) {
   buildCounterRegisterDebuggeeResponse++;
   if (buildCounterRegisterDebuggeeResponse < 3) {
     unittest.expect(o.agentId, unittest.equals('foo'));
-    checkDebuggee(o.debuggee);
+    checkDebuggee(o.debuggee as api.Debuggee);
   }
   buildCounterRegisterDebuggeeResponse--;
 }
@@ -688,7 +688,7 @@ api.RepoId buildRepoId() {
 void checkRepoId(api.RepoId o) {
   buildCounterRepoId++;
   if (buildCounterRepoId < 3) {
-    checkProjectRepoId(o.projectRepoId);
+    checkProjectRepoId(o.projectRepoId as api.ProjectRepoId);
     unittest.expect(o.uid, unittest.equals('foo'));
   }
   buildCounterRepoId--;
@@ -708,7 +708,7 @@ api.SetBreakpointResponse buildSetBreakpointResponse() {
 void checkSetBreakpointResponse(api.SetBreakpointResponse o) {
   buildCounterSetBreakpointResponse++;
   if (buildCounterSetBreakpointResponse < 3) {
-    checkBreakpoint(o.breakpoint);
+    checkBreakpoint(o.breakpoint as api.Breakpoint);
   }
   buildCounterSetBreakpointResponse--;
 }
@@ -730,10 +730,11 @@ api.SourceContext buildSourceContext() {
 void checkSourceContext(api.SourceContext o) {
   buildCounterSourceContext++;
   if (buildCounterSourceContext < 3) {
-    checkCloudRepoSourceContext(o.cloudRepo);
-    checkCloudWorkspaceSourceContext(o.cloudWorkspace);
-    checkGerritSourceContext(o.gerrit);
-    checkGitSourceContext(o.git);
+    checkCloudRepoSourceContext(o.cloudRepo as api.CloudRepoSourceContext);
+    checkCloudWorkspaceSourceContext(
+        o.cloudWorkspace as api.CloudWorkspaceSourceContext);
+    checkGerritSourceContext(o.gerrit as api.GerritSourceContext);
+    checkGitSourceContext(o.git as api.GitSourceContext);
   }
   buildCounterSourceContext--;
 }
@@ -770,8 +771,8 @@ core.List<api.Variable> buildUnnamed3866() {
 
 void checkUnnamed3866(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.List<api.Variable> buildUnnamed3867() {
@@ -783,8 +784,8 @@ core.List<api.Variable> buildUnnamed3867() {
 
 void checkUnnamed3867(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterStackFrame = 0;
@@ -807,7 +808,7 @@ void checkStackFrame(api.StackFrame o) {
     checkUnnamed3866(o.arguments);
     unittest.expect(o.function, unittest.equals('foo'));
     checkUnnamed3867(o.locals);
-    checkSourceLocation(o.location);
+    checkSourceLocation(o.location as api.SourceLocation);
   }
   buildCounterStackFrame--;
 }
@@ -828,7 +829,7 @@ api.StatusMessage buildStatusMessage() {
 void checkStatusMessage(api.StatusMessage o) {
   buildCounterStatusMessage++;
   if (buildCounterStatusMessage < 3) {
-    checkFormatMessage(o.description);
+    checkFormatMessage(o.description as api.FormatMessage);
     unittest.expect(o.isError, unittest.isTrue);
     unittest.expect(o.refersTo, unittest.equals('foo'));
   }
@@ -849,7 +850,7 @@ api.UpdateActiveBreakpointRequest buildUpdateActiveBreakpointRequest() {
 void checkUpdateActiveBreakpointRequest(api.UpdateActiveBreakpointRequest o) {
   buildCounterUpdateActiveBreakpointRequest++;
   if (buildCounterUpdateActiveBreakpointRequest < 3) {
-    checkBreakpoint(o.breakpoint);
+    checkBreakpoint(o.breakpoint as api.Breakpoint);
   }
   buildCounterUpdateActiveBreakpointRequest--;
 }
@@ -878,8 +879,8 @@ core.List<api.Variable> buildUnnamed3868() {
 
 void checkUnnamed3868(core.List<api.Variable> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVariable(o[0]);
-  checkVariable(o[1]);
+  checkVariable(o[0] as api.Variable);
+  checkVariable(o[1] as api.Variable);
 }
 
 core.int buildCounterVariable = 0;
@@ -903,7 +904,7 @@ void checkVariable(api.Variable o) {
   if (buildCounterVariable < 3) {
     checkUnnamed3868(o.members);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkStatusMessage(o.status);
+    checkStatusMessage(o.status as api.StatusMessage);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.value, unittest.equals('foo'));
     unittest.expect(o.varTableIndex, unittest.equals(42));
@@ -916,7 +917,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAliasContext();
       var od = api.AliasContext.fromJson(o.toJson());
-      checkAliasContext(od);
+      checkAliasContext(od as api.AliasContext);
     });
   });
 
@@ -924,7 +925,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBreakpoint();
       var od = api.Breakpoint.fromJson(o.toJson());
-      checkBreakpoint(od);
+      checkBreakpoint(od as api.Breakpoint);
     });
   });
 
@@ -932,7 +933,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudRepoSourceContext();
       var od = api.CloudRepoSourceContext.fromJson(o.toJson());
-      checkCloudRepoSourceContext(od);
+      checkCloudRepoSourceContext(od as api.CloudRepoSourceContext);
     });
   });
 
@@ -940,7 +941,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudWorkspaceId();
       var od = api.CloudWorkspaceId.fromJson(o.toJson());
-      checkCloudWorkspaceId(od);
+      checkCloudWorkspaceId(od as api.CloudWorkspaceId);
     });
   });
 
@@ -948,7 +949,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudWorkspaceSourceContext();
       var od = api.CloudWorkspaceSourceContext.fromJson(o.toJson());
-      checkCloudWorkspaceSourceContext(od);
+      checkCloudWorkspaceSourceContext(od as api.CloudWorkspaceSourceContext);
     });
   });
 
@@ -956,7 +957,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDebuggee();
       var od = api.Debuggee.fromJson(o.toJson());
-      checkDebuggee(od);
+      checkDebuggee(od as api.Debuggee);
     });
   });
 
@@ -964,7 +965,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -972,7 +973,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExtendedSourceContext();
       var od = api.ExtendedSourceContext.fromJson(o.toJson());
-      checkExtendedSourceContext(od);
+      checkExtendedSourceContext(od as api.ExtendedSourceContext);
     });
   });
 
@@ -980,7 +981,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFormatMessage();
       var od = api.FormatMessage.fromJson(o.toJson());
-      checkFormatMessage(od);
+      checkFormatMessage(od as api.FormatMessage);
     });
   });
 
@@ -988,7 +989,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGerritSourceContext();
       var od = api.GerritSourceContext.fromJson(o.toJson());
-      checkGerritSourceContext(od);
+      checkGerritSourceContext(od as api.GerritSourceContext);
     });
   });
 
@@ -996,7 +997,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetBreakpointResponse();
       var od = api.GetBreakpointResponse.fromJson(o.toJson());
-      checkGetBreakpointResponse(od);
+      checkGetBreakpointResponse(od as api.GetBreakpointResponse);
     });
   });
 
@@ -1004,7 +1005,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGitSourceContext();
       var od = api.GitSourceContext.fromJson(o.toJson());
-      checkGitSourceContext(od);
+      checkGitSourceContext(od as api.GitSourceContext);
     });
   });
 
@@ -1012,7 +1013,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListActiveBreakpointsResponse();
       var od = api.ListActiveBreakpointsResponse.fromJson(o.toJson());
-      checkListActiveBreakpointsResponse(od);
+      checkListActiveBreakpointsResponse(
+          od as api.ListActiveBreakpointsResponse);
     });
   });
 
@@ -1020,7 +1022,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListBreakpointsResponse();
       var od = api.ListBreakpointsResponse.fromJson(o.toJson());
-      checkListBreakpointsResponse(od);
+      checkListBreakpointsResponse(od as api.ListBreakpointsResponse);
     });
   });
 
@@ -1028,7 +1030,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDebuggeesResponse();
       var od = api.ListDebuggeesResponse.fromJson(o.toJson());
-      checkListDebuggeesResponse(od);
+      checkListDebuggeesResponse(od as api.ListDebuggeesResponse);
     });
   });
 
@@ -1036,7 +1038,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjectRepoId();
       var od = api.ProjectRepoId.fromJson(o.toJson());
-      checkProjectRepoId(od);
+      checkProjectRepoId(od as api.ProjectRepoId);
     });
   });
 
@@ -1044,7 +1046,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRegisterDebuggeeRequest();
       var od = api.RegisterDebuggeeRequest.fromJson(o.toJson());
-      checkRegisterDebuggeeRequest(od);
+      checkRegisterDebuggeeRequest(od as api.RegisterDebuggeeRequest);
     });
   });
 
@@ -1052,7 +1054,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRegisterDebuggeeResponse();
       var od = api.RegisterDebuggeeResponse.fromJson(o.toJson());
-      checkRegisterDebuggeeResponse(od);
+      checkRegisterDebuggeeResponse(od as api.RegisterDebuggeeResponse);
     });
   });
 
@@ -1060,7 +1062,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRepoId();
       var od = api.RepoId.fromJson(o.toJson());
-      checkRepoId(od);
+      checkRepoId(od as api.RepoId);
     });
   });
 
@@ -1068,7 +1070,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetBreakpointResponse();
       var od = api.SetBreakpointResponse.fromJson(o.toJson());
-      checkSetBreakpointResponse(od);
+      checkSetBreakpointResponse(od as api.SetBreakpointResponse);
     });
   });
 
@@ -1076,7 +1078,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceContext();
       var od = api.SourceContext.fromJson(o.toJson());
-      checkSourceContext(od);
+      checkSourceContext(od as api.SourceContext);
     });
   });
 
@@ -1084,7 +1086,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSourceLocation();
       var od = api.SourceLocation.fromJson(o.toJson());
-      checkSourceLocation(od);
+      checkSourceLocation(od as api.SourceLocation);
     });
   });
 
@@ -1092,7 +1094,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStackFrame();
       var od = api.StackFrame.fromJson(o.toJson());
-      checkStackFrame(od);
+      checkStackFrame(od as api.StackFrame);
     });
   });
 
@@ -1100,7 +1102,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatusMessage();
       var od = api.StatusMessage.fromJson(o.toJson());
-      checkStatusMessage(od);
+      checkStatusMessage(od as api.StatusMessage);
     });
   });
 
@@ -1108,7 +1110,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateActiveBreakpointRequest();
       var od = api.UpdateActiveBreakpointRequest.fromJson(o.toJson());
-      checkUpdateActiveBreakpointRequest(od);
+      checkUpdateActiveBreakpointRequest(
+          od as api.UpdateActiveBreakpointRequest);
     });
   });
 
@@ -1116,7 +1119,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateActiveBreakpointResponse();
       var od = api.UpdateActiveBreakpointResponse.fromJson(o.toJson());
-      checkUpdateActiveBreakpointResponse(od);
+      checkUpdateActiveBreakpointResponse(
+          od as api.UpdateActiveBreakpointResponse);
     });
   });
 
@@ -1124,7 +1128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVariable();
       var od = api.Variable.fromJson(o.toJson());
-      checkVariable(od);
+      checkVariable(od as api.Variable);
     });
   });
 
@@ -1135,8 +1139,9 @@ void main() {
       var arg_request = buildRegisterDebuggeeRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RegisterDebuggeeRequest.fromJson(json);
-        checkRegisterDebuggeeRequest(obj);
+        var obj = api.RegisterDebuggeeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRegisterDebuggeeRequest(obj as api.RegisterDebuggeeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1175,7 +1180,7 @@ void main() {
       res
           .register(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRegisterDebuggeeResponse(response);
+        checkRegisterDebuggeeResponse(response as api.RegisterDebuggeeResponse);
       })));
     });
   });
@@ -1246,7 +1251,8 @@ void main() {
               waitToken: arg_waitToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListActiveBreakpointsResponse(response);
+        checkListActiveBreakpointsResponse(
+            response as api.ListActiveBreakpointsResponse);
       })));
     });
 
@@ -1258,8 +1264,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateActiveBreakpointRequest.fromJson(json);
-        checkUpdateActiveBreakpointRequest(obj);
+        var obj = api.UpdateActiveBreakpointRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateActiveBreakpointRequest(
+            obj as api.UpdateActiveBreakpointRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1310,7 +1318,8 @@ void main() {
       res
           .update(arg_request, arg_debuggeeId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUpdateActiveBreakpointResponse(response);
+        checkUpdateActiveBreakpointResponse(
+            response as api.UpdateActiveBreakpointResponse);
       })));
     });
   });
@@ -1371,7 +1380,7 @@ void main() {
               project: arg_project,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDebuggeesResponse(response);
+        checkListDebuggeesResponse(response as api.ListDebuggeesResponse);
       })));
     });
   });
@@ -1437,7 +1446,7 @@ void main() {
           .delete(arg_debuggeeId, arg_breakpointId,
               clientVersion: arg_clientVersion, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1501,7 +1510,7 @@ void main() {
           .get(arg_debuggeeId, arg_breakpointId,
               clientVersion: arg_clientVersion, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetBreakpointResponse(response);
+        checkGetBreakpointResponse(response as api.GetBreakpointResponse);
       })));
     });
 
@@ -1582,7 +1591,7 @@ void main() {
               waitToken: arg_waitToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBreakpointsResponse(response);
+        checkListBreakpointsResponse(response as api.ListBreakpointsResponse);
       })));
     });
 
@@ -1595,8 +1604,9 @@ void main() {
       var arg_clientVersion = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Breakpoint.fromJson(json);
-        checkBreakpoint(obj);
+        var obj = api.Breakpoint.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBreakpoint(obj as api.Breakpoint);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1651,7 +1661,7 @@ void main() {
               clientVersion: arg_clientVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSetBreakpointResponse(response);
+        checkSetBreakpointResponse(response as api.SetBreakpointResponse);
       })));
     });
   });

@@ -89,8 +89,8 @@ api.Annotation buildAnnotation() {
 void checkAnnotation(api.Annotation o) {
   buildCounterAnnotation++;
   if (buildCounterAnnotation < 3) {
-    checkAttributes(o.attributes);
-    checkTruncatableString(o.description);
+    checkAttributes(o.attributes as api.Attributes);
+    checkTruncatableString(o.description as api.TruncatableString);
   }
   buildCounterAnnotation--;
 }
@@ -113,7 +113,7 @@ void checkAttributeValue(api.AttributeValue o) {
   if (buildCounterAttributeValue < 3) {
     unittest.expect(o.boolValue, unittest.isTrue);
     unittest.expect(o.intValue, unittest.equals('foo'));
-    checkTruncatableString(o.stringValue);
+    checkTruncatableString(o.stringValue as api.TruncatableString);
   }
   buildCounterAttributeValue--;
 }
@@ -127,8 +127,8 @@ core.Map<core.String, api.AttributeValue> buildUnnamed1338() {
 
 void checkUnnamed1338(core.Map<core.String, api.AttributeValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttributeValue(o['x']);
-  checkAttributeValue(o['y']);
+  checkAttributeValue(o['x'] as api.AttributeValue);
+  checkAttributeValue(o['y'] as api.AttributeValue);
 }
 
 core.int buildCounterAttributes = 0;
@@ -161,8 +161,8 @@ core.List<api.Span> buildUnnamed1339() {
 
 void checkUnnamed1339(core.List<api.Span> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSpan(o[0]);
-  checkSpan(o[1]);
+  checkSpan(o[0] as api.Span);
+  checkSpan(o[1] as api.Span);
 }
 
 core.int buildCounterBatchWriteSpansRequest = 0;
@@ -216,7 +216,7 @@ api.Link buildLink() {
 void checkLink(api.Link o) {
   buildCounterLink++;
   if (buildCounterLink < 3) {
-    checkAttributes(o.attributes);
+    checkAttributes(o.attributes as api.Attributes);
     unittest.expect(o.spanId, unittest.equals('foo'));
     unittest.expect(o.traceId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
@@ -233,8 +233,8 @@ core.List<api.Link> buildUnnamed1340() {
 
 void checkUnnamed1340(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLink(o[0]);
-  checkLink(o[1]);
+  checkLink(o[0] as api.Link);
+  checkLink(o[1] as api.Link);
 }
 
 core.int buildCounterLinks = 0;
@@ -298,8 +298,8 @@ api.Module buildModule() {
 void checkModule(api.Module o) {
   buildCounterModule++;
   if (buildCounterModule < 3) {
-    checkTruncatableString(o.buildId);
-    checkTruncatableString(o.module);
+    checkTruncatableString(o.buildId as api.TruncatableString);
+    checkTruncatableString(o.module as api.TruncatableString);
   }
   buildCounterModule--;
 }
@@ -331,20 +331,20 @@ api.Span buildSpan() {
 void checkSpan(api.Span o) {
   buildCounterSpan++;
   if (buildCounterSpan < 3) {
-    checkAttributes(o.attributes);
+    checkAttributes(o.attributes as api.Attributes);
     unittest.expect(o.childSpanCount, unittest.equals(42));
-    checkTruncatableString(o.displayName);
+    checkTruncatableString(o.displayName as api.TruncatableString);
     unittest.expect(o.endTime, unittest.equals('foo'));
-    checkLinks(o.links);
+    checkLinks(o.links as api.Links);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.parentSpanId, unittest.equals('foo'));
     unittest.expect(o.sameProcessAsParentSpan, unittest.isTrue);
     unittest.expect(o.spanId, unittest.equals('foo'));
     unittest.expect(o.spanKind, unittest.equals('foo'));
-    checkStackTrace(o.stackTrace);
+    checkStackTrace(o.stackTrace as api.StackTrace);
     unittest.expect(o.startTime, unittest.equals('foo'));
-    checkStatus(o.status);
-    checkTimeEvents(o.timeEvents);
+    checkStatus(o.status as api.Status);
+    checkTimeEvents(o.timeEvents as api.TimeEvents);
   }
   buildCounterSpan--;
 }
@@ -370,12 +370,12 @@ void checkStackFrame(api.StackFrame o) {
   buildCounterStackFrame++;
   if (buildCounterStackFrame < 3) {
     unittest.expect(o.columnNumber, unittest.equals('foo'));
-    checkTruncatableString(o.fileName);
-    checkTruncatableString(o.functionName);
+    checkTruncatableString(o.fileName as api.TruncatableString);
+    checkTruncatableString(o.functionName as api.TruncatableString);
     unittest.expect(o.lineNumber, unittest.equals('foo'));
-    checkModule(o.loadModule);
-    checkTruncatableString(o.originalFunctionName);
-    checkTruncatableString(o.sourceVersion);
+    checkModule(o.loadModule as api.Module);
+    checkTruncatableString(o.originalFunctionName as api.TruncatableString);
+    checkTruncatableString(o.sourceVersion as api.TruncatableString);
   }
   buildCounterStackFrame--;
 }
@@ -389,8 +389,8 @@ core.List<api.StackFrame> buildUnnamed1341() {
 
 void checkUnnamed1341(core.List<api.StackFrame> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStackFrame(o[0]);
-  checkStackFrame(o[1]);
+  checkStackFrame(o[0] as api.StackFrame);
+  checkStackFrame(o[1] as api.StackFrame);
 }
 
 core.int buildCounterStackFrames = 0;
@@ -429,7 +429,7 @@ api.StackTrace buildStackTrace() {
 void checkStackTrace(api.StackTrace o) {
   buildCounterStackTrace++;
   if (buildCounterStackTrace < 3) {
-    checkStackFrames(o.stackFrames);
+    checkStackFrames(o.stackFrames as api.StackFrames);
     unittest.expect(o.stackTraceHashId, unittest.equals('foo'));
   }
   buildCounterStackTrace--;
@@ -516,8 +516,8 @@ api.TimeEvent buildTimeEvent() {
 void checkTimeEvent(api.TimeEvent o) {
   buildCounterTimeEvent++;
   if (buildCounterTimeEvent < 3) {
-    checkAnnotation(o.annotation);
-    checkMessageEvent(o.messageEvent);
+    checkAnnotation(o.annotation as api.Annotation);
+    checkMessageEvent(o.messageEvent as api.MessageEvent);
     unittest.expect(o.time, unittest.equals('foo'));
   }
   buildCounterTimeEvent--;
@@ -532,8 +532,8 @@ core.List<api.TimeEvent> buildUnnamed1344() {
 
 void checkUnnamed1344(core.List<api.TimeEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTimeEvent(o[0]);
-  checkTimeEvent(o[1]);
+  checkTimeEvent(o[0] as api.TimeEvent);
+  checkTimeEvent(o[1] as api.TimeEvent);
 }
 
 core.int buildCounterTimeEvents = 0;
@@ -585,7 +585,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnotation();
       var od = api.Annotation.fromJson(o.toJson());
-      checkAnnotation(od);
+      checkAnnotation(od as api.Annotation);
     });
   });
 
@@ -593,7 +593,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttributeValue();
       var od = api.AttributeValue.fromJson(o.toJson());
-      checkAttributeValue(od);
+      checkAttributeValue(od as api.AttributeValue);
     });
   });
 
@@ -601,7 +601,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
-      checkAttributes(od);
+      checkAttributes(od as api.Attributes);
     });
   });
 
@@ -609,7 +609,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchWriteSpansRequest();
       var od = api.BatchWriteSpansRequest.fromJson(o.toJson());
-      checkBatchWriteSpansRequest(od);
+      checkBatchWriteSpansRequest(od as api.BatchWriteSpansRequest);
     });
   });
 
@@ -617,7 +617,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -625,7 +625,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
-      checkLink(od);
+      checkLink(od as api.Link);
     });
   });
 
@@ -633,7 +633,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLinks();
       var od = api.Links.fromJson(o.toJson());
-      checkLinks(od);
+      checkLinks(od as api.Links);
     });
   });
 
@@ -641,7 +641,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMessageEvent();
       var od = api.MessageEvent.fromJson(o.toJson());
-      checkMessageEvent(od);
+      checkMessageEvent(od as api.MessageEvent);
     });
   });
 
@@ -649,7 +649,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModule();
       var od = api.Module.fromJson(o.toJson());
-      checkModule(od);
+      checkModule(od as api.Module);
     });
   });
 
@@ -657,7 +657,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSpan();
       var od = api.Span.fromJson(o.toJson());
-      checkSpan(od);
+      checkSpan(od as api.Span);
     });
   });
 
@@ -665,7 +665,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStackFrame();
       var od = api.StackFrame.fromJson(o.toJson());
-      checkStackFrame(od);
+      checkStackFrame(od as api.StackFrame);
     });
   });
 
@@ -673,7 +673,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStackFrames();
       var od = api.StackFrames.fromJson(o.toJson());
-      checkStackFrames(od);
+      checkStackFrames(od as api.StackFrames);
     });
   });
 
@@ -681,7 +681,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStackTrace();
       var od = api.StackTrace.fromJson(o.toJson());
-      checkStackTrace(od);
+      checkStackTrace(od as api.StackTrace);
     });
   });
 
@@ -689,7 +689,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -697,7 +697,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeEvent();
       var od = api.TimeEvent.fromJson(o.toJson());
-      checkTimeEvent(od);
+      checkTimeEvent(od as api.TimeEvent);
     });
   });
 
@@ -705,7 +705,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeEvents();
       var od = api.TimeEvents.fromJson(o.toJson());
-      checkTimeEvents(od);
+      checkTimeEvents(od as api.TimeEvents);
     });
   });
 
@@ -713,7 +713,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTruncatableString();
       var od = api.TruncatableString.fromJson(o.toJson());
-      checkTruncatableString(od);
+      checkTruncatableString(od as api.TruncatableString);
     });
   });
 
@@ -725,8 +725,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchWriteSpansRequest.fromJson(json);
-        checkBatchWriteSpansRequest(obj);
+        var obj = api.BatchWriteSpansRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchWriteSpansRequest(obj as api.BatchWriteSpansRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -766,7 +767,7 @@ void main() {
       res
           .batchWrite(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -779,8 +780,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Span.fromJson(json);
-        checkSpan(obj);
+        var obj =
+            api.Span.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSpan(obj as api.Span);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -820,7 +822,7 @@ void main() {
       res
           .createSpan(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSpan(response);
+        checkSpan(response as api.Span);
       })));
     });
   });

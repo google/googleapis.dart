@@ -115,7 +115,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -193,7 +195,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -268,7 +273,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a single game server deployment.
@@ -320,7 +327,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves information about the current state of the game server
@@ -381,8 +390,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => FetchDeploymentStateResponse.fromJson(data));
+    return _response.then(
+      (data) => FetchDeploymentStateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details of a single game server deployment.
@@ -434,7 +445,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GameServerDeployment.fromJson(data));
+    return _response.then(
+      (data) => GameServerDeployment.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -503,7 +517,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details a single game server deployment rollout.
@@ -556,7 +572,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GameServerDeploymentRollout.fromJson(data));
+    return _response.then(
+      (data) => GameServerDeploymentRollout.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists game server deployments in a given project and location.
@@ -638,8 +657,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListGameServerDeploymentsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGameServerDeploymentsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a game server deployment.
@@ -707,7 +728,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Previews the game server deployment rollout. This API does not mutate the
@@ -787,7 +810,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => PreviewGameServerDeploymentRolloutResponse.fromJson(data));
+      (data) => PreviewGameServerDeploymentRolloutResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -849,7 +874,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -913,7 +940,10 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a single game server deployment rollout. The method will not
@@ -988,7 +1018,9 @@ class ProjectsLocationsGameServerDeploymentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1064,7 +1096,9 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a single game server config. The deletion will fail if the game
@@ -1117,7 +1151,9 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details of a single game server config.
@@ -1169,7 +1205,10 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GameServerConfig.fromJson(data));
+    return _response.then(
+      (data) => GameServerConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists game server configs in a given project, location, and game server
@@ -1254,8 +1293,10 @@ class ProjectsLocationsGameServerDeploymentsConfigsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListGameServerConfigsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGameServerConfigsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1327,7 +1368,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1380,7 +1423,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1432,7 +1477,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1509,7 +1556,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1583,7 +1633,9 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a single realm.
@@ -1633,7 +1685,9 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details of a single realm.
@@ -1683,7 +1737,9 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Realm.fromJson(data));
+    return _response.then(
+      (data) => Realm.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists realms in a given project and location.
@@ -1764,7 +1820,10 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRealmsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRealmsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a single realm.
@@ -1830,7 +1889,9 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Previews patches to a single realm.
@@ -1904,7 +1965,10 @@ class ProjectsLocationsRealmsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PreviewRealmUpdateResponse.fromJson(data));
+    return _response.then(
+      (data) => PreviewRealmUpdateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1977,7 +2041,9 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a single game server cluster.
@@ -2029,7 +2095,9 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets details of a single game server cluster.
@@ -2081,7 +2149,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GameServerCluster.fromJson(data));
+    return _response.then(
+      (data) => GameServerCluster.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists game server clusters in a given project and location.
@@ -2163,8 +2234,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListGameServerClustersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGameServerClustersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a single game server cluster.
@@ -2233,7 +2306,9 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Previews creation of a new game server cluster in a given project and
@@ -2305,8 +2380,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PreviewCreateGameServerClusterResponse.fromJson(data));
+    return _response.then(
+      (data) => PreviewCreateGameServerClusterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Previews deletion of a single game server cluster.
@@ -2366,8 +2443,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PreviewDeleteGameServerClusterResponse.fromJson(data));
+    return _response.then(
+      (data) => PreviewDeleteGameServerClusterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Previews updating a GameServerCluster.
@@ -2444,8 +2523,10 @@ class ProjectsLocationsRealmsGameServerClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PreviewUpdateGameServerClusterResponse.fromJson(data));
+    return _response.then(
+      (data) => PreviewUpdateGameServerClusterResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2480,7 +2561,8 @@ class AuditConfig {
   AuditConfig.fromJson(core.Map _json) {
     if (_json.containsKey('auditLogConfigs')) {
       auditLogConfigs = (_json['auditLogConfigs'] as core.List)
-          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(value))
+          .map<AuditLogConfig>((value) => AuditLogConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('exemptedMembers')) {
@@ -2644,7 +2726,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -2705,7 +2788,8 @@ class CloudAuditOptions {
   CloudAuditOptions.fromJson(core.Map _json) {
     if (_json.containsKey('authorizationLoggingOptions')) {
       authorizationLoggingOptions = AuthorizationLoggingOptions.fromJson(
-          _json['authorizationLoggingOptions']);
+          _json['authorizationLoggingOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('logName')) {
       logName = _json['logName'] as core.String;
@@ -2870,7 +2954,8 @@ class CounterOptions {
   CounterOptions.fromJson(core.Map _json) {
     if (_json.containsKey('customFields')) {
       customFields = (_json['customFields'] as core.List)
-          .map<CustomField>((value) => CustomField.fromJson(value))
+          .map<CustomField>((value) => CustomField.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('field')) {
@@ -2983,8 +3068,8 @@ class DeployedClusterState {
     }
     if (_json.containsKey('fleetDetails')) {
       fleetDetails = (_json['fleetDetails'] as core.List)
-          .map<DeployedFleetDetails>(
-              (value) => DeployedFleetDetails.fromJson(value))
+          .map<DeployedFleetDetails>((value) => DeployedFleetDetails.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3028,10 +3113,12 @@ class DeployedFleet {
       fleetSpec = _json['fleetSpec'] as core.String;
     }
     if (_json.containsKey('specSource')) {
-      specSource = SpecSource.fromJson(_json['specSource']);
+      specSource = SpecSource.fromJson(
+          _json['specSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = DeployedFleetStatus.fromJson(_json['status']);
+      status = DeployedFleetStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3075,7 +3162,8 @@ class DeployedFleetAutoscaler {
       fleetAutoscalerSpec = _json['fleetAutoscalerSpec'] as core.String;
     }
     if (_json.containsKey('specSource')) {
-      specSource = SpecSource.fromJson(_json['specSource']);
+      specSource = SpecSource.fromJson(
+          _json['specSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3106,11 +3194,12 @@ class DeployedFleetDetails {
 
   DeployedFleetDetails.fromJson(core.Map _json) {
     if (_json.containsKey('deployedAutoscaler')) {
-      deployedAutoscaler =
-          DeployedFleetAutoscaler.fromJson(_json['deployedAutoscaler']);
+      deployedAutoscaler = DeployedFleetAutoscaler.fromJson(
+          _json['deployedAutoscaler'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deployedFleet')) {
-      deployedFleet = DeployedFleet.fromJson(_json['deployedFleet']);
+      deployedFleet = DeployedFleet.fromJson(
+          _json['deployedFleet'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3291,8 +3380,8 @@ class FetchDeploymentStateResponse {
   FetchDeploymentStateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('clusterState')) {
       clusterState = (_json['clusterState'] as core.List)
-          .map<DeployedClusterState>(
-              (value) => DeployedClusterState.fromJson(value))
+          .map<DeployedClusterState>((value) => DeployedClusterState.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unavailable')) {
@@ -3379,8 +3468,8 @@ class GameServerCluster {
 
   GameServerCluster.fromJson(core.Map _json) {
     if (_json.containsKey('connectionInfo')) {
-      connectionInfo =
-          GameServerClusterConnectionInfo.fromJson(_json['connectionInfo']);
+      connectionInfo = GameServerClusterConnectionInfo.fromJson(
+          _json['connectionInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -3393,7 +3482,8 @@ class GameServerCluster {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -3445,8 +3535,8 @@ class GameServerClusterConnectionInfo {
 
   GameServerClusterConnectionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('gkeClusterReference')) {
-      gkeClusterReference =
-          GkeClusterReference.fromJson(_json['gkeClusterReference']);
+      gkeClusterReference = GkeClusterReference.fromJson(
+          _json['gkeClusterReference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('namespace')) {
       namespace = _json['namespace'] as core.String;
@@ -3504,12 +3594,14 @@ class GameServerConfig {
     }
     if (_json.containsKey('fleetConfigs')) {
       fleetConfigs = (_json['fleetConfigs'] as core.List)
-          .map<FleetConfig>((value) => FleetConfig.fromJson(value))
+          .map<FleetConfig>((value) => FleetConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -3517,7 +3609,8 @@ class GameServerConfig {
     }
     if (_json.containsKey('scalingConfigs')) {
       scalingConfigs = (_json['scalingConfigs'] as core.List)
-          .map<ScalingConfig>((value) => ScalingConfig.fromJson(value))
+          .map<ScalingConfig>((value) => ScalingConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {
@@ -3569,7 +3662,8 @@ class GameServerConfigOverride {
       configVersion = _json['configVersion'] as core.String;
     }
     if (_json.containsKey('realmsSelector')) {
-      realmsSelector = RealmSelector.fromJson(_json['realmsSelector']);
+      realmsSelector = RealmSelector.fromJson(
+          _json['realmsSelector'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3623,7 +3717,8 @@ class GameServerDeployment {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -3701,8 +3796,9 @@ class GameServerDeploymentRollout {
     if (_json.containsKey('gameServerConfigOverrides')) {
       gameServerConfigOverrides =
           (_json['gameServerConfigOverrides'] as core.List)
-              .map<GameServerConfigOverride>(
-                  (value) => GameServerConfigOverride.fromJson(value))
+              .map<GameServerConfigOverride>((value) =>
+                  GameServerConfigOverride.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('name')) {
@@ -3775,7 +3871,8 @@ class LabelSelector {
   LabelSelector.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -3806,7 +3903,8 @@ class ListGameServerClustersResponse {
   ListGameServerClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('gameServerClusters')) {
       gameServerClusters = (_json['gameServerClusters'] as core.List)
-          .map<GameServerCluster>((value) => GameServerCluster.fromJson(value))
+          .map<GameServerCluster>((value) => GameServerCluster.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3852,7 +3950,8 @@ class ListGameServerConfigsResponse {
   ListGameServerConfigsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('gameServerConfigs')) {
       gameServerConfigs = (_json['gameServerConfigs'] as core.List)
-          .map<GameServerConfig>((value) => GameServerConfig.fromJson(value))
+          .map<GameServerConfig>((value) => GameServerConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3898,8 +3997,8 @@ class ListGameServerDeploymentsResponse {
   ListGameServerDeploymentsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('gameServerDeployments')) {
       gameServerDeployments = (_json['gameServerDeployments'] as core.List)
-          .map<GameServerDeployment>(
-              (value) => GameServerDeployment.fromJson(value))
+          .map<GameServerDeployment>((value) => GameServerDeployment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3941,7 +4040,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3977,7 +4077,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4014,7 +4115,8 @@ class ListRealmsResponse {
     }
     if (_json.containsKey('realms')) {
       realms = (_json['realms'] as core.List)
-          .map<Realm>((value) => Realm.fromJson(value))
+          .map<Realm>((value) =>
+              Realm.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unreachable')) {
@@ -4071,7 +4173,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -4079,7 +4182,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4123,13 +4227,16 @@ class LogConfig {
 
   LogConfig.fromJson(core.Map _json) {
     if (_json.containsKey('cloudAudit')) {
-      cloudAudit = CloudAuditOptions.fromJson(_json['cloudAudit']);
+      cloudAudit = CloudAuditOptions.fromJson(
+          _json['cloudAudit'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('counter')) {
-      counter = CounterOptions.fromJson(_json['counter']);
+      counter = CounterOptions.fromJson(
+          _json['counter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dataAccess')) {
-      dataAccess = DataAccessOptions.fromJson(_json['dataAccess']);
+      dataAccess = DataAccessOptions.fromJson(
+          _json['dataAccess'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4192,11 +4299,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -4204,7 +4313,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -4279,8 +4389,10 @@ class OperationMetadata {
     }
     if (_json.containsKey('operationStatus')) {
       operationStatus = commons.mapMap<core.Map, OperationStatus>(
-          _json['operationStatus'].cast<core.String, core.Map>(),
-          (core.Map item) => OperationStatus.fromJson(item));
+          (_json['operationStatus'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => OperationStatus.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('requestedCancellation')) {
       requestedCancellation = _json['requestedCancellation'] as core.bool;
@@ -4470,12 +4582,14 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('auditConfigs')) {
       auditConfigs = (_json['auditConfigs'] as core.List)
-          .map<AuditConfig>((value) => AuditConfig.fromJson(value))
+          .map<AuditConfig>((value) => AuditConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -4486,7 +4600,8 @@ class Policy {
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<Rule>((value) => Rule.fromJson(value))
+          .map<Rule>((value) =>
+              Rule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('version')) {
@@ -4535,7 +4650,8 @@ class PreviewCreateGameServerClusterResponse {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('targetState')) {
-      targetState = TargetState.fromJson(_json['targetState']);
+      targetState = TargetState.fromJson(
+          _json['targetState'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4567,7 +4683,8 @@ class PreviewDeleteGameServerClusterResponse {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('targetState')) {
-      targetState = TargetState.fromJson(_json['targetState']);
+      targetState = TargetState.fromJson(
+          _json['targetState'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4602,7 +4719,8 @@ class PreviewGameServerDeploymentRolloutResponse {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('targetState')) {
-      targetState = TargetState.fromJson(_json['targetState']);
+      targetState = TargetState.fromJson(
+          _json['targetState'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unavailable')) {
       unavailable = (_json['unavailable'] as core.List)
@@ -4641,7 +4759,8 @@ class PreviewRealmUpdateResponse {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('targetState')) {
-      targetState = TargetState.fromJson(_json['targetState']);
+      targetState = TargetState.fromJson(
+          _json['targetState'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4673,7 +4792,8 @@ class PreviewUpdateGameServerClusterResponse {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('targetState')) {
-      targetState = TargetState.fromJson(_json['targetState']);
+      targetState = TargetState.fromJson(
+          _json['targetState'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4730,7 +4850,8 @@ class Realm {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -4843,7 +4964,8 @@ class Rule {
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('description')) {
@@ -4856,7 +4978,8 @@ class Rule {
     }
     if (_json.containsKey('logConfig')) {
       logConfig = (_json['logConfig'] as core.List)
-          .map<LogConfig>((value) => LogConfig.fromJson(value))
+          .map<LogConfig>((value) =>
+              LogConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notIn')) {
@@ -4926,12 +5049,14 @@ class ScalingConfig {
     }
     if (_json.containsKey('schedules')) {
       schedules = (_json['schedules'] as core.List)
-          .map<Schedule>((value) => Schedule.fromJson(value))
+          .map<Schedule>((value) =>
+              Schedule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('selectors')) {
       selectors = (_json['selectors'] as core.List)
-          .map<LabelSelector>((value) => LabelSelector.fromJson(value))
+          .map<LabelSelector>((value) => LabelSelector.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5029,7 +5154,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateMask')) {
       updateMask = _json['updateMask'] as core.String;
@@ -5113,7 +5239,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -5155,8 +5282,8 @@ class TargetDetails {
   TargetDetails.fromJson(core.Map _json) {
     if (_json.containsKey('fleetDetails')) {
       fleetDetails = (_json['fleetDetails'] as core.List)
-          .map<TargetFleetDetails>(
-              (value) => TargetFleetDetails.fromJson(value))
+          .map<TargetFleetDetails>((value) => TargetFleetDetails.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('gameServerClusterName')) {
@@ -5200,7 +5327,8 @@ class TargetFleet {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('specSource')) {
-      specSource = SpecSource.fromJson(_json['specSource']);
+      specSource = SpecSource.fromJson(
+          _json['specSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5232,7 +5360,8 @@ class TargetFleetAutoscaler {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('specSource')) {
-      specSource = SpecSource.fromJson(_json['specSource']);
+      specSource = SpecSource.fromJson(
+          _json['specSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5260,10 +5389,12 @@ class TargetFleetDetails {
 
   TargetFleetDetails.fromJson(core.Map _json) {
     if (_json.containsKey('autoscaler')) {
-      autoscaler = TargetFleetAutoscaler.fromJson(_json['autoscaler']);
+      autoscaler = TargetFleetAutoscaler.fromJson(
+          _json['autoscaler'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fleet')) {
-      fleet = TargetFleet.fromJson(_json['fleet']);
+      fleet = TargetFleet.fromJson(
+          _json['fleet'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5289,7 +5420,8 @@ class TargetState {
   TargetState.fromJson(core.Map _json) {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
-          .map<TargetDetails>((value) => TargetDetails.fromJson(value))
+          .map<TargetDetails>((value) => TargetDetails.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

@@ -180,8 +180,8 @@ core.List<api.ListUpdateRequest> buildUnnamed4551() {
 
 void checkUnnamed4551(core.List<api.ListUpdateRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkListUpdateRequest(o[0]);
-  checkListUpdateRequest(o[1]);
+  checkListUpdateRequest(o[0] as api.ListUpdateRequest);
+  checkListUpdateRequest(o[1] as api.ListUpdateRequest);
 }
 
 core.int buildCounterFetchThreatListUpdatesRequest = 0;
@@ -199,7 +199,7 @@ api.FetchThreatListUpdatesRequest buildFetchThreatListUpdatesRequest() {
 void checkFetchThreatListUpdatesRequest(api.FetchThreatListUpdatesRequest o) {
   buildCounterFetchThreatListUpdatesRequest++;
   if (buildCounterFetchThreatListUpdatesRequest < 3) {
-    checkClientInfo(o.client);
+    checkClientInfo(o.client as api.ClientInfo);
     checkUnnamed4551(o.listUpdateRequests);
   }
   buildCounterFetchThreatListUpdatesRequest--;
@@ -214,8 +214,8 @@ core.List<api.ListUpdateResponse> buildUnnamed4552() {
 
 void checkUnnamed4552(core.List<api.ListUpdateResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkListUpdateResponse(o[0]);
-  checkListUpdateResponse(o[1]);
+  checkListUpdateResponse(o[0] as api.ListUpdateResponse);
+  checkListUpdateResponse(o[1] as api.ListUpdateResponse);
 }
 
 core.int buildCounterFetchThreatListUpdatesResponse = 0;
@@ -269,10 +269,10 @@ api.FindFullHashesRequest buildFindFullHashesRequest() {
 void checkFindFullHashesRequest(api.FindFullHashesRequest o) {
   buildCounterFindFullHashesRequest++;
   if (buildCounterFindFullHashesRequest < 3) {
-    checkClientInfo(o.apiClient);
-    checkClientInfo(o.client);
+    checkClientInfo(o.apiClient as api.ClientInfo);
+    checkClientInfo(o.client as api.ClientInfo);
     checkUnnamed4553(o.clientStates);
-    checkThreatInfo(o.threatInfo);
+    checkThreatInfo(o.threatInfo as api.ThreatInfo);
   }
   buildCounterFindFullHashesRequest--;
 }
@@ -286,8 +286,8 @@ core.List<api.ThreatMatch> buildUnnamed4554() {
 
 void checkUnnamed4554(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatMatch(o[0]);
-  checkThreatMatch(o[1]);
+  checkThreatMatch(o[0] as api.ThreatMatch);
+  checkThreatMatch(o[1] as api.ThreatMatch);
 }
 
 core.int buildCounterFindFullHashesResponse = 0;
@@ -328,8 +328,8 @@ api.FindThreatMatchesRequest buildFindThreatMatchesRequest() {
 void checkFindThreatMatchesRequest(api.FindThreatMatchesRequest o) {
   buildCounterFindThreatMatchesRequest++;
   if (buildCounterFindThreatMatchesRequest < 3) {
-    checkClientInfo(o.client);
-    checkThreatInfo(o.threatInfo);
+    checkClientInfo(o.client as api.ClientInfo);
+    checkThreatInfo(o.threatInfo as api.ThreatInfo);
   }
   buildCounterFindThreatMatchesRequest--;
 }
@@ -343,8 +343,8 @@ core.List<api.ThreatMatch> buildUnnamed4555() {
 
 void checkUnnamed4555(core.List<api.ThreatMatch> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatMatch(o[0]);
-  checkThreatMatch(o[1]);
+  checkThreatMatch(o[0] as api.ThreatMatch);
+  checkThreatMatch(o[1] as api.ThreatMatch);
 }
 
 core.int buildCounterFindThreatMatchesResponse = 0;
@@ -375,8 +375,8 @@ core.List<api.ThreatListDescriptor> buildUnnamed4556() {
 
 void checkUnnamed4556(core.List<api.ThreatListDescriptor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatListDescriptor(o[0]);
-  checkThreatListDescriptor(o[1]);
+  checkThreatListDescriptor(o[0] as api.ThreatListDescriptor);
+  checkThreatListDescriptor(o[1] as api.ThreatListDescriptor);
 }
 
 core.int buildCounterListThreatListsResponse = 0;
@@ -416,7 +416,7 @@ api.ListUpdateRequest buildListUpdateRequest() {
 void checkListUpdateRequest(api.ListUpdateRequest o) {
   buildCounterListUpdateRequest++;
   if (buildCounterListUpdateRequest < 3) {
-    checkConstraints(o.constraints);
+    checkConstraints(o.constraints as api.Constraints);
     unittest.expect(o.platformType, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.threatEntryType, unittest.equals('foo'));
@@ -434,8 +434,8 @@ core.List<api.ThreatEntrySet> buildUnnamed4557() {
 
 void checkUnnamed4557(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatEntrySet(o[0]);
-  checkThreatEntrySet(o[1]);
+  checkThreatEntrySet(o[0] as api.ThreatEntrySet);
+  checkThreatEntrySet(o[1] as api.ThreatEntrySet);
 }
 
 core.List<api.ThreatEntrySet> buildUnnamed4558() {
@@ -447,8 +447,8 @@ core.List<api.ThreatEntrySet> buildUnnamed4558() {
 
 void checkUnnamed4558(core.List<api.ThreatEntrySet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatEntrySet(o[0]);
-  checkThreatEntrySet(o[1]);
+  checkThreatEntrySet(o[0] as api.ThreatEntrySet);
+  checkThreatEntrySet(o[1] as api.ThreatEntrySet);
 }
 
 core.int buildCounterListUpdateResponse = 0;
@@ -473,7 +473,7 @@ void checkListUpdateResponse(api.ListUpdateResponse o) {
   buildCounterListUpdateResponse++;
   if (buildCounterListUpdateResponse < 3) {
     checkUnnamed4557(o.additions);
-    checkChecksum(o.checksum);
+    checkChecksum(o.checksum as api.Checksum);
     unittest.expect(o.newClientState, unittest.equals('foo'));
     unittest.expect(o.platformType, unittest.equals('foo'));
     checkUnnamed4558(o.removals);
@@ -615,8 +615,8 @@ core.List<api.MetadataEntry> buildUnnamed4560() {
 
 void checkUnnamed4560(core.List<api.MetadataEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMetadataEntry(o[0]);
-  checkMetadataEntry(o[1]);
+  checkMetadataEntry(o[0] as api.MetadataEntry);
+  checkMetadataEntry(o[1] as api.MetadataEntry);
 }
 
 core.int buildCounterThreatEntryMetadata = 0;
@@ -657,10 +657,10 @@ void checkThreatEntrySet(api.ThreatEntrySet o) {
   buildCounterThreatEntrySet++;
   if (buildCounterThreatEntrySet < 3) {
     unittest.expect(o.compressionType, unittest.equals('foo'));
-    checkRawHashes(o.rawHashes);
-    checkRawIndices(o.rawIndices);
-    checkRiceDeltaEncoding(o.riceHashes);
-    checkRiceDeltaEncoding(o.riceIndices);
+    checkRawHashes(o.rawHashes as api.RawHashes);
+    checkRawIndices(o.rawIndices as api.RawIndices);
+    checkRiceDeltaEncoding(o.riceHashes as api.RiceDeltaEncoding);
+    checkRiceDeltaEncoding(o.riceIndices as api.RiceDeltaEncoding);
   }
   buildCounterThreatEntrySet--;
 }
@@ -674,8 +674,8 @@ core.List<api.ThreatSource> buildUnnamed4561() {
 
 void checkUnnamed4561(core.List<api.ThreatSource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatSource(o[0]);
-  checkThreatSource(o[1]);
+  checkThreatSource(o[0] as api.ThreatSource);
+  checkThreatSource(o[1] as api.ThreatSource);
 }
 
 core.int buildCounterThreatHit = 0;
@@ -697,12 +697,12 @@ api.ThreatHit buildThreatHit() {
 void checkThreatHit(api.ThreatHit o) {
   buildCounterThreatHit++;
   if (buildCounterThreatHit < 3) {
-    checkClientInfo(o.clientInfo);
-    checkThreatEntry(o.entry);
+    checkClientInfo(o.clientInfo as api.ClientInfo);
+    checkThreatEntry(o.entry as api.ThreatEntry);
     unittest.expect(o.platformType, unittest.equals('foo'));
     checkUnnamed4561(o.resources);
     unittest.expect(o.threatType, unittest.equals('foo'));
-    checkUserInfo(o.userInfo);
+    checkUserInfo(o.userInfo as api.UserInfo);
   }
   buildCounterThreatHit--;
 }
@@ -729,8 +729,8 @@ core.List<api.ThreatEntry> buildUnnamed4563() {
 
 void checkUnnamed4563(core.List<api.ThreatEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThreatEntry(o[0]);
-  checkThreatEntry(o[1]);
+  checkThreatEntry(o[0] as api.ThreatEntry);
+  checkThreatEntry(o[1] as api.ThreatEntry);
 }
 
 core.List<core.String> buildUnnamed4564() {
@@ -828,8 +828,8 @@ void checkThreatMatch(api.ThreatMatch o) {
   if (buildCounterThreatMatch < 3) {
     unittest.expect(o.cacheDuration, unittest.equals('foo'));
     unittest.expect(o.platformType, unittest.equals('foo'));
-    checkThreatEntry(o.threat);
-    checkThreatEntryMetadata(o.threatEntryMetadata);
+    checkThreatEntry(o.threat as api.ThreatEntry);
+    checkThreatEntryMetadata(o.threatEntryMetadata as api.ThreatEntryMetadata);
     unittest.expect(o.threatEntryType, unittest.equals('foo'));
     unittest.expect(o.threatType, unittest.equals('foo'));
   }
@@ -887,7 +887,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChecksum();
       var od = api.Checksum.fromJson(o.toJson());
-      checkChecksum(od);
+      checkChecksum(od as api.Checksum);
     });
   });
 
@@ -895,7 +895,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildClientInfo();
       var od = api.ClientInfo.fromJson(o.toJson());
-      checkClientInfo(od);
+      checkClientInfo(od as api.ClientInfo);
     });
   });
 
@@ -903,7 +903,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildConstraints();
       var od = api.Constraints.fromJson(o.toJson());
-      checkConstraints(od);
+      checkConstraints(od as api.Constraints);
     });
   });
 
@@ -911,7 +911,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -919,7 +919,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFetchThreatListUpdatesRequest();
       var od = api.FetchThreatListUpdatesRequest.fromJson(o.toJson());
-      checkFetchThreatListUpdatesRequest(od);
+      checkFetchThreatListUpdatesRequest(
+          od as api.FetchThreatListUpdatesRequest);
     });
   });
 
@@ -927,7 +928,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFetchThreatListUpdatesResponse();
       var od = api.FetchThreatListUpdatesResponse.fromJson(o.toJson());
-      checkFetchThreatListUpdatesResponse(od);
+      checkFetchThreatListUpdatesResponse(
+          od as api.FetchThreatListUpdatesResponse);
     });
   });
 
@@ -935,7 +937,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFindFullHashesRequest();
       var od = api.FindFullHashesRequest.fromJson(o.toJson());
-      checkFindFullHashesRequest(od);
+      checkFindFullHashesRequest(od as api.FindFullHashesRequest);
     });
   });
 
@@ -943,7 +945,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFindFullHashesResponse();
       var od = api.FindFullHashesResponse.fromJson(o.toJson());
-      checkFindFullHashesResponse(od);
+      checkFindFullHashesResponse(od as api.FindFullHashesResponse);
     });
   });
 
@@ -951,7 +953,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFindThreatMatchesRequest();
       var od = api.FindThreatMatchesRequest.fromJson(o.toJson());
-      checkFindThreatMatchesRequest(od);
+      checkFindThreatMatchesRequest(od as api.FindThreatMatchesRequest);
     });
   });
 
@@ -959,7 +961,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFindThreatMatchesResponse();
       var od = api.FindThreatMatchesResponse.fromJson(o.toJson());
-      checkFindThreatMatchesResponse(od);
+      checkFindThreatMatchesResponse(od as api.FindThreatMatchesResponse);
     });
   });
 
@@ -967,7 +969,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListThreatListsResponse();
       var od = api.ListThreatListsResponse.fromJson(o.toJson());
-      checkListThreatListsResponse(od);
+      checkListThreatListsResponse(od as api.ListThreatListsResponse);
     });
   });
 
@@ -975,7 +977,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListUpdateRequest();
       var od = api.ListUpdateRequest.fromJson(o.toJson());
-      checkListUpdateRequest(od);
+      checkListUpdateRequest(od as api.ListUpdateRequest);
     });
   });
 
@@ -983,7 +985,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListUpdateResponse();
       var od = api.ListUpdateResponse.fromJson(o.toJson());
-      checkListUpdateResponse(od);
+      checkListUpdateResponse(od as api.ListUpdateResponse);
     });
   });
 
@@ -991,7 +993,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMetadataEntry();
       var od = api.MetadataEntry.fromJson(o.toJson());
-      checkMetadataEntry(od);
+      checkMetadataEntry(od as api.MetadataEntry);
     });
   });
 
@@ -999,7 +1001,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRawHashes();
       var od = api.RawHashes.fromJson(o.toJson());
-      checkRawHashes(od);
+      checkRawHashes(od as api.RawHashes);
     });
   });
 
@@ -1007,7 +1009,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRawIndices();
       var od = api.RawIndices.fromJson(o.toJson());
-      checkRawIndices(od);
+      checkRawIndices(od as api.RawIndices);
     });
   });
 
@@ -1015,7 +1017,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRiceDeltaEncoding();
       var od = api.RiceDeltaEncoding.fromJson(o.toJson());
-      checkRiceDeltaEncoding(od);
+      checkRiceDeltaEncoding(od as api.RiceDeltaEncoding);
     });
   });
 
@@ -1023,7 +1025,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatEntry();
       var od = api.ThreatEntry.fromJson(o.toJson());
-      checkThreatEntry(od);
+      checkThreatEntry(od as api.ThreatEntry);
     });
   });
 
@@ -1031,7 +1033,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatEntryMetadata();
       var od = api.ThreatEntryMetadata.fromJson(o.toJson());
-      checkThreatEntryMetadata(od);
+      checkThreatEntryMetadata(od as api.ThreatEntryMetadata);
     });
   });
 
@@ -1039,7 +1041,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatEntrySet();
       var od = api.ThreatEntrySet.fromJson(o.toJson());
-      checkThreatEntrySet(od);
+      checkThreatEntrySet(od as api.ThreatEntrySet);
     });
   });
 
@@ -1047,7 +1049,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatHit();
       var od = api.ThreatHit.fromJson(o.toJson());
-      checkThreatHit(od);
+      checkThreatHit(od as api.ThreatHit);
     });
   });
 
@@ -1055,7 +1057,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatInfo();
       var od = api.ThreatInfo.fromJson(o.toJson());
-      checkThreatInfo(od);
+      checkThreatInfo(od as api.ThreatInfo);
     });
   });
 
@@ -1063,7 +1065,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatListDescriptor();
       var od = api.ThreatListDescriptor.fromJson(o.toJson());
-      checkThreatListDescriptor(od);
+      checkThreatListDescriptor(od as api.ThreatListDescriptor);
     });
   });
 
@@ -1071,7 +1073,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatMatch();
       var od = api.ThreatMatch.fromJson(o.toJson());
-      checkThreatMatch(od);
+      checkThreatMatch(od as api.ThreatMatch);
     });
   });
 
@@ -1079,7 +1081,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThreatSource();
       var od = api.ThreatSource.fromJson(o.toJson());
-      checkThreatSource(od);
+      checkThreatSource(od as api.ThreatSource);
     });
   });
 
@@ -1087,7 +1089,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserInfo();
       var od = api.UserInfo.fromJson(o.toJson());
-      checkUserInfo(od);
+      checkUserInfo(od as api.UserInfo);
     });
   });
 
@@ -1147,7 +1149,7 @@ void main() {
               clientVersion: arg_clientVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFindFullHashesResponse(response);
+        checkFindFullHashesResponse(response as api.FindFullHashesResponse);
       })));
     });
   });
@@ -1208,7 +1210,8 @@ void main() {
               clientVersion: arg_clientVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFetchThreatListUpdatesResponse(response);
+        checkFetchThreatListUpdatesResponse(
+            response as api.FetchThreatListUpdatesResponse);
       })));
     });
   });
@@ -1220,8 +1223,9 @@ void main() {
       var arg_request = buildFindFullHashesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FindFullHashesRequest.fromJson(json);
-        checkFindFullHashesRequest(obj);
+        var obj = api.FindFullHashesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFindFullHashesRequest(obj as api.FindFullHashesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1260,7 +1264,7 @@ void main() {
       res
           .find(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFindFullHashesResponse(response);
+        checkFindFullHashesResponse(response as api.FindFullHashesResponse);
       })));
     });
   });
@@ -1272,8 +1276,9 @@ void main() {
       var arg_request = buildThreatHit();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ThreatHit.fromJson(json);
-        checkThreatHit(obj);
+        var obj =
+            api.ThreatHit.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkThreatHit(obj as api.ThreatHit);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1312,7 +1317,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -1324,8 +1329,10 @@ void main() {
       var arg_request = buildFetchThreatListUpdatesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FetchThreatListUpdatesRequest.fromJson(json);
-        checkFetchThreatListUpdatesRequest(obj);
+        var obj = api.FetchThreatListUpdatesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFetchThreatListUpdatesRequest(
+            obj as api.FetchThreatListUpdatesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1364,7 +1371,8 @@ void main() {
       res
           .fetch(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFetchThreatListUpdatesResponse(response);
+        checkFetchThreatListUpdatesResponse(
+            response as api.FetchThreatListUpdatesResponse);
       })));
     });
   });
@@ -1410,7 +1418,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.list($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkListThreatListsResponse(response);
+        checkListThreatListsResponse(response as api.ListThreatListsResponse);
       })));
     });
   });
@@ -1422,8 +1430,9 @@ void main() {
       var arg_request = buildFindThreatMatchesRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FindThreatMatchesRequest.fromJson(json);
-        checkFindThreatMatchesRequest(obj);
+        var obj = api.FindThreatMatchesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFindThreatMatchesRequest(obj as api.FindThreatMatchesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1462,7 +1471,8 @@ void main() {
       res
           .find(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkFindThreatMatchesResponse(response);
+        checkFindThreatMatchesResponse(
+            response as api.FindThreatMatchesResponse);
       })));
     });
   });

@@ -168,10 +168,12 @@ void checkUnnamed5618(
             api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['x']);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-      o['y']);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['x']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(o['y']
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
 }
 
 core.Map<core.String, core.String> buildUnnamed5619() {
@@ -204,8 +206,12 @@ void checkUnnamed5620(
             api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[0]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(o[1]
+      as api
+          .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
 }
 
 core.Map<core.String, core.String> buildUnnamed5621() {
@@ -260,13 +266,15 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
     checkUnnamed5617(o.maintenancePolicyNames);
     checkUnnamed5618(o.maintenanceSchedules);
     checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-        o.maintenanceSettings);
+        o.maintenanceSettings as api
+            .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5619(o.producerMetadata);
     checkUnnamed5620(o.provisionedResources);
     unittest.expect(o.slmInstanceTemplate, unittest.equals('foo'));
     checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
-        o.sloMetadata);
+        o.sloMetadata
+            as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     checkUnnamed5621(o.softwareVersions);
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.tenantProjectId, unittest.equals('foo'));
@@ -345,8 +353,10 @@ void checkUnnamed5622(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.int
@@ -475,8 +485,10 @@ void checkUnnamed5623(
     core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[0] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(
+      o[1] as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
 }
 
 core.List<api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
@@ -493,8 +505,10 @@ void checkUnnamed5624(
             api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata>
         o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]);
-  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[0]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
+  checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(o[1]
+      as api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
 }
 
 core.int
@@ -520,8 +534,9 @@ void checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
   buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata++;
   if (buildCounterGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata <
       3) {
-    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(
-        o.eligibility);
+    checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(o
+            .eligibility
+        as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     checkUnnamed5623(o.exclusions);
     checkUnnamed5624(o.nodes);
     unittest.expect(o.tier, unittest.equals('foo'));
@@ -538,8 +553,8 @@ core.List<api.FileShareConfig> buildUnnamed5625() {
 
 void checkUnnamed5625(core.List<api.FileShareConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFileShareConfig(o[0]);
-  checkFileShareConfig(o[1]);
+  checkFileShareConfig(o[0] as api.FileShareConfig);
+  checkFileShareConfig(o[1] as api.FileShareConfig);
 }
 
 core.Map<core.String, core.String> buildUnnamed5626() {
@@ -564,8 +579,8 @@ core.List<api.NetworkConfig> buildUnnamed5627() {
 
 void checkUnnamed5627(core.List<api.NetworkConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNetworkConfig(o[0]);
-  checkNetworkConfig(o[1]);
+  checkNetworkConfig(o[0] as api.NetworkConfig);
+  checkNetworkConfig(o[1] as api.NetworkConfig);
 }
 
 core.int buildCounterInstance = 0;
@@ -614,8 +629,8 @@ core.List<api.Instance> buildUnnamed5628() {
 
 void checkUnnamed5628(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstance(o[0]);
-  checkInstance(o[1]);
+  checkInstance(o[0] as api.Instance);
+  checkInstance(o[1] as api.Instance);
 }
 
 core.List<core.String> buildUnnamed5629() {
@@ -663,8 +678,8 @@ core.List<api.Location> buildUnnamed5630() {
 
 void checkUnnamed5630(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -697,8 +712,8 @@ core.List<api.Operation> buildUnnamed5631() {
 
 void checkUnnamed5631(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -919,7 +934,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed5636(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed5637(o.response);
@@ -1028,7 +1043,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCancelOperationRequest();
       var od = api.CancelOperationRequest.fromJson(o.toJson());
-      checkCancelOperationRequest(od);
+      checkCancelOperationRequest(od as api.CancelOperationRequest);
     });
   });
 
@@ -1036,7 +1051,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1044,7 +1059,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFileShareConfig();
       var od = api.FileShareConfig.fromJson(o.toJson());
-      checkFileShareConfig(od);
+      checkFileShareConfig(od as api.FileShareConfig);
     });
   });
 
@@ -1055,7 +1070,8 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1Instance.fromJson(
               o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1Instance(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1Instance);
     });
   });
 
@@ -1068,8 +1084,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule);
     });
   });
 
@@ -1082,8 +1099,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSettings);
     });
   });
 
@@ -1096,7 +1114,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1NodeSloMetadata);
     });
   });
 
@@ -1109,8 +1129,9 @@ void main() {
       var od =
           api.GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource
               .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(
-          od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource(od
+          as api
+              .GoogleCloudSaasacceleratorManagementProvidersV1ProvisionedResource);
     });
   });
 
@@ -1122,7 +1143,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloEligibility(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloEligibility);
     });
   });
 
@@ -1134,7 +1156,8 @@ void main() {
           buildGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloExclusion(od
+          as api.GoogleCloudSaasacceleratorManagementProvidersV1SloExclusion);
     });
   });
 
@@ -1145,7 +1168,8 @@ void main() {
       var o = buildGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata();
       var od = api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata
           .fromJson(o.toJson());
-      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(od);
+      checkGoogleCloudSaasacceleratorManagementProvidersV1SloMetadata(
+          od as api.GoogleCloudSaasacceleratorManagementProvidersV1SloMetadata);
     });
   });
 
@@ -1153,7 +1177,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
-      checkInstance(od);
+      checkInstance(od as api.Instance);
     });
   });
 
@@ -1161,7 +1185,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
-      checkListInstancesResponse(od);
+      checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
 
@@ -1169,7 +1193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1177,7 +1201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -1185,7 +1209,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1193,7 +1217,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNetworkConfig();
       var od = api.NetworkConfig.fromJson(o.toJson());
-      checkNetworkConfig(od);
+      checkNetworkConfig(od as api.NetworkConfig);
     });
   });
 
@@ -1201,7 +1225,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -1209,7 +1233,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperationMetadata();
       var od = api.OperationMetadata.fromJson(o.toJson());
-      checkOperationMetadata(od);
+      checkOperationMetadata(od as api.OperationMetadata);
     });
   });
 
@@ -1217,7 +1241,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -1266,7 +1290,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1330,7 +1354,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1344,8 +1368,9 @@ void main() {
       var arg_instanceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1388,7 +1413,7 @@ void main() {
           .create(arg_request, arg_parent,
               instanceId: arg_instanceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1436,7 +1461,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1484,7 +1509,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInstance(response);
+        checkInstance(response as api.Instance);
       })));
     });
 
@@ -1548,7 +1573,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response);
+        checkListInstancesResponse(response as api.ListInstancesResponse);
       })));
     });
 
@@ -1560,8 +1585,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1604,7 +1630,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1617,8 +1643,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CancelOperationRequest.fromJson(json);
-        checkCancelOperationRequest(obj);
+        var obj = api.CancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCancelOperationRequest(obj as api.CancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1658,7 +1685,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1706,7 +1733,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1754,7 +1781,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1814,7 +1841,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

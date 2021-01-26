@@ -167,7 +167,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Profile.fromJson(data));
+    return _response.then(
+      (data) => Profile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stop receiving push notifications for the given user mailbox.
@@ -217,7 +219,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Set up or update a push notification watch on the given user mailbox.
@@ -273,7 +277,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WatchResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          WatchResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -357,7 +364,9 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Draft.fromJson(data));
+    return _response.then(
+      (data) => Draft.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Immediately and permanently deletes the specified draft. Does not simply
@@ -416,7 +425,9 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified draft.
@@ -491,7 +502,9 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Draft.fromJson(data));
+    return _response.then(
+      (data) => Draft.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the drafts in the user's mailbox.
@@ -570,7 +583,10 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDraftsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDraftsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends the specified, existing draft to the recipients in the `To`, `Cc`,
@@ -649,7 +665,9 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replaces a draft's content.
@@ -736,7 +754,9 @@ class UsersDraftsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Draft.fromJson(data));
+    return _response.then(
+      (data) => Draft.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -835,7 +855,10 @@ class UsersHistoryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListHistoryResponse.fromJson(data));
+    return _response.then(
+      (data) => ListHistoryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -898,7 +921,9 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Label.fromJson(data));
+    return _response.then(
+      (data) => Label.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Immediately and permanently deletes the specified label and removes it
@@ -957,7 +982,9 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified label.
@@ -1015,7 +1042,9 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Label.fromJson(data));
+    return _response.then(
+      (data) => Label.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all labels in the user's mailbox.
@@ -1066,7 +1095,10 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLabelsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLabelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch the specified label.
@@ -1130,7 +1162,9 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Label.fromJson(data));
+    return _response.then(
+      (data) => Label.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified label.
@@ -1194,7 +1228,9 @@ class UsersLabelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Label.fromJson(data));
+    return _response.then(
+      (data) => Label.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1261,7 +1297,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Modifies the labels on the specified messages.
@@ -1318,7 +1356,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Immediately and permanently deletes the specified message. This operation
@@ -1377,7 +1417,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified message.
@@ -1459,7 +1501,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports a message into only this user's mailbox, with standard email
@@ -1573,7 +1617,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Directly inserts a message into only this user's mailbox similar to `IMAP
@@ -1672,7 +1718,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the messages in the user's mailbox.
@@ -1759,7 +1807,10 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListMessagesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListMessagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the labels on the specified message.
@@ -1824,7 +1875,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc`
@@ -1903,7 +1956,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves the specified message to the trash.
@@ -1962,7 +2017,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes the specified message from the trash.
@@ -2021,7 +2078,9 @@ class UsersMessagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Message.fromJson(data));
+    return _response.then(
+      (data) => Message.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2094,7 +2153,10 @@ class UsersMessagesAttachmentsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MessagePartBody.fromJson(data));
+    return _response.then(
+      (data) =>
+          MessagePartBody.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2160,7 +2222,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoForwarding.fromJson(data));
+    return _response.then(
+      (data) =>
+          AutoForwarding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets IMAP settings.
@@ -2211,7 +2276,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImapSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          ImapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets language settings.
@@ -2262,7 +2330,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LanguageSettings.fromJson(data));
+    return _response.then(
+      (data) => LanguageSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets POP settings.
@@ -2313,7 +2384,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PopSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          PopSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets vacation responder settings.
@@ -2364,7 +2438,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VacationSettings.fromJson(data));
+    return _response.then(
+      (data) => VacationSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the auto-forwarding setting for the specified account. A verified
@@ -2424,7 +2501,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoForwarding.fromJson(data));
+    return _response.then(
+      (data) =>
+          AutoForwarding.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates IMAP settings.
@@ -2481,7 +2561,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImapSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          ImapSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates language settings. If successful, the return object contains the
@@ -2542,7 +2625,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LanguageSettings.fromJson(data));
+    return _response.then(
+      (data) => LanguageSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates POP settings.
@@ -2599,7 +2685,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PopSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          PopSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates vacation responder settings.
@@ -2656,7 +2745,10 @@ class UsersSettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VacationSettings.fromJson(data));
+    return _response.then(
+      (data) => VacationSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2730,7 +2822,9 @@ class UsersSettingsDelegatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Delegate.fromJson(data));
+    return _response.then(
+      (data) => Delegate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes the specified delegate (which can be of any verification status),
@@ -2793,7 +2887,9 @@ class UsersSettingsDelegatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified delegate. Note that a delegate user must be referred to
@@ -2855,7 +2951,9 @@ class UsersSettingsDelegatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Delegate.fromJson(data));
+    return _response.then(
+      (data) => Delegate.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the delegates for the specified account. This method is only
@@ -2908,7 +3006,10 @@ class UsersSettingsDelegatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDelegatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDelegatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2972,7 +3073,9 @@ class UsersSettingsFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a filter.
@@ -3030,7 +3133,9 @@ class UsersSettingsFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a filter.
@@ -3088,7 +3193,9 @@ class UsersSettingsFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Filter.fromJson(data));
+    return _response.then(
+      (data) => Filter.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the message filters of a Gmail user.
@@ -3139,7 +3246,10 @@ class UsersSettingsFiltersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListFiltersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFiltersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3207,7 +3317,10 @@ class UsersSettingsForwardingAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingAddress.fromJson(data));
+    return _response.then(
+      (data) => ForwardingAddress.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified forwarding address and revokes any verification that
@@ -3267,7 +3380,9 @@ class UsersSettingsForwardingAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified forwarding address.
@@ -3325,7 +3440,10 @@ class UsersSettingsForwardingAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ForwardingAddress.fromJson(data));
+    return _response.then(
+      (data) => ForwardingAddress.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the forwarding addresses for the specified account.
@@ -3376,8 +3494,10 @@ class UsersSettingsForwardingAddressesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListForwardingAddressesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListForwardingAddressesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3452,7 +3572,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SendAs.fromJson(data));
+    return _response.then(
+      (data) => SendAs.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified send-as alias. Revokes any verification that may
@@ -3512,7 +3634,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified send-as alias. Fails with an HTTP 404 error if the
@@ -3571,7 +3695,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SendAs.fromJson(data));
+    return _response.then(
+      (data) => SendAs.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the send-as aliases for the specified account. The result includes
@@ -3624,7 +3750,10 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSendAsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSendAsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patch the specified send-as alias.
@@ -3688,7 +3817,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SendAs.fromJson(data));
+    return _response.then(
+      (data) => SendAs.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a send-as alias. If a signature is provided, Gmail will sanitize
@@ -3755,7 +3886,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SendAs.fromJson(data));
+    return _response.then(
+      (data) => SendAs.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sends a verification email to the specified send-as alias address. The
@@ -3816,7 +3949,9 @@ class UsersSettingsSendAsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -3890,7 +4025,9 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified S/MIME config for the specified send-as alias.
@@ -3957,7 +4094,9 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SmimeInfo.fromJson(data));
+    return _response.then(
+      (data) => SmimeInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Insert (upload) the given S/MIME config for the specified send-as alias.
@@ -4024,7 +4163,9 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SmimeInfo.fromJson(data));
+    return _response.then(
+      (data) => SmimeInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists S/MIME configs for the specified send-as alias.
@@ -4084,7 +4225,10 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSmimeInfoResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSmimeInfoResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the default S/MIME config for the specified send-as alias.
@@ -4152,7 +4296,9 @@ class UsersSettingsSendAsSmimeInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -4217,7 +4363,9 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets the specified thread.
@@ -4295,7 +4443,9 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Thread.fromJson(data));
+    return _response.then(
+      (data) => Thread.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the threads in the user's mailbox.
@@ -4382,7 +4532,10 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListThreadsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListThreadsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Modifies the labels applied to the thread. This applies to all messages in
@@ -4448,7 +4601,9 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Thread.fromJson(data));
+    return _response.then(
+      (data) => Thread.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Moves the specified thread to the trash.
@@ -4507,7 +4662,9 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Thread.fromJson(data));
+    return _response.then(
+      (data) => Thread.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Removes the specified thread from the trash.
@@ -4566,7 +4723,9 @@ class UsersThreadsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Thread.fromJson(data));
+    return _response.then(
+      (data) => Thread.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4744,7 +4903,8 @@ class Draft {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4776,10 +4936,12 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey('action')) {
-      action = FilterAction.fromJson(_json['action']);
+      action = FilterAction.fromJson(
+          _json['action'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('criteria')) {
-      criteria = FilterCriteria.fromJson(_json['criteria']);
+      criteria = FilterCriteria.fromJson(
+          _json['criteria'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -5019,30 +5181,32 @@ class History {
     }
     if (_json.containsKey('labelsAdded')) {
       labelsAdded = (_json['labelsAdded'] as core.List)
-          .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(value))
+          .map<HistoryLabelAdded>((value) => HistoryLabelAdded.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labelsRemoved')) {
       labelsRemoved = (_json['labelsRemoved'] as core.List)
-          .map<HistoryLabelRemoved>(
-              (value) => HistoryLabelRemoved.fromJson(value))
+          .map<HistoryLabelRemoved>((value) => HistoryLabelRemoved.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<Message>((value) => Message.fromJson(value))
+          .map<Message>((value) =>
+              Message.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('messagesAdded')) {
       messagesAdded = (_json['messagesAdded'] as core.List)
-          .map<HistoryMessageAdded>(
-              (value) => HistoryMessageAdded.fromJson(value))
+          .map<HistoryMessageAdded>((value) => HistoryMessageAdded.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('messagesDeleted')) {
       messagesDeleted = (_json['messagesDeleted'] as core.List)
-          .map<HistoryMessageDeleted>(
-              (value) => HistoryMessageDeleted.fromJson(value))
+          .map<HistoryMessageDeleted>((value) => HistoryMessageDeleted.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5089,7 +5253,8 @@ class HistoryLabelAdded {
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5119,7 +5284,8 @@ class HistoryLabelRemoved {
           .toList();
     }
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5142,7 +5308,8 @@ class HistoryMessageAdded {
 
   HistoryMessageAdded.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5162,7 +5329,8 @@ class HistoryMessageDeleted {
 
   HistoryMessageDeleted.fromJson(core.Map _json) {
     if (_json.containsKey('message')) {
-      message = Message.fromJson(_json['message']);
+      message = Message.fromJson(
+          _json['message'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5292,7 +5460,8 @@ class Label {
 
   Label.fromJson(core.Map _json) {
     if (_json.containsKey('color')) {
-      color = LabelColor.fromJson(_json['color']);
+      color = LabelColor.fromJson(
+          _json['color'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -5462,7 +5631,8 @@ class ListDelegatesResponse {
   ListDelegatesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('delegates')) {
       delegates = (_json['delegates'] as core.List)
-          .map<Delegate>((value) => Delegate.fromJson(value))
+          .map<Delegate>((value) =>
+              Delegate.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5493,7 +5663,8 @@ class ListDraftsResponse {
   ListDraftsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('drafts')) {
       drafts = (_json['drafts'] as core.List)
-          .map<Draft>((value) => Draft.fromJson(value))
+          .map<Draft>((value) =>
+              Draft.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -5529,7 +5700,8 @@ class ListFiltersResponse {
   ListFiltersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
       filter = (_json['filter'] as core.List)
-          .map<Filter>((value) => Filter.fromJson(value))
+          .map<Filter>((value) =>
+              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5553,7 +5725,8 @@ class ListForwardingAddressesResponse {
   ListForwardingAddressesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('forwardingAddresses')) {
       forwardingAddresses = (_json['forwardingAddresses'] as core.List)
-          .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(value))
+          .map<ForwardingAddress>((value) => ForwardingAddress.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5584,7 +5757,8 @@ class ListHistoryResponse {
   ListHistoryResponse.fromJson(core.Map _json) {
     if (_json.containsKey('history')) {
       history = (_json['history'] as core.List)
-          .map<History>((value) => History.fromJson(value))
+          .map<History>((value) =>
+              History.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('historyId')) {
@@ -5621,7 +5795,8 @@ class ListLabelsResponse {
   ListLabelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = (_json['labels'] as core.List)
-          .map<Label>((value) => Label.fromJson(value))
+          .map<Label>((value) =>
+              Label.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5652,7 +5827,8 @@ class ListMessagesResponse {
   ListMessagesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<Message>((value) => Message.fromJson(value))
+          .map<Message>((value) =>
+              Message.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -5688,7 +5864,8 @@ class ListSendAsResponse {
   ListSendAsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('sendAs')) {
       sendAs = (_json['sendAs'] as core.List)
-          .map<SendAs>((value) => SendAs.fromJson(value))
+          .map<SendAs>((value) =>
+              SendAs.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5711,7 +5888,8 @@ class ListSmimeInfoResponse {
   ListSmimeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('smimeInfo')) {
       smimeInfo = (_json['smimeInfo'] as core.List)
-          .map<SmimeInfo>((value) => SmimeInfo.fromJson(value))
+          .map<SmimeInfo>((value) =>
+              SmimeInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5748,7 +5926,8 @@ class ListThreadsResponse {
     }
     if (_json.containsKey('threads')) {
       threads = (_json['threads'] as core.List)
-          .map<Thread>((value) => Thread.fromJson(value))
+          .map<Thread>((value) =>
+              Thread.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5832,7 +6011,8 @@ class Message {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = MessagePart.fromJson(_json['payload']);
+      payload = MessagePart.fromJson(
+          _json['payload'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('raw')) {
       raw = _json['raw'] as core.String;
@@ -5912,14 +6092,16 @@ class MessagePart {
 
   MessagePart.fromJson(core.Map _json) {
     if (_json.containsKey('body')) {
-      body = MessagePartBody.fromJson(_json['body']);
+      body = MessagePartBody.fromJson(
+          _json['body'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('filename')) {
       filename = _json['filename'] as core.String;
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(value))
+          .map<MessagePartHeader>((value) => MessagePartHeader.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mimeType')) {
@@ -5930,7 +6112,8 @@ class MessagePart {
     }
     if (_json.containsKey('parts')) {
       parts = (_json['parts'] as core.List)
-          .map<MessagePart>((value) => MessagePart.fromJson(value))
+          .map<MessagePart>((value) => MessagePart.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6283,7 +6466,8 @@ class SendAs {
       signature = _json['signature'] as core.String;
     }
     if (_json.containsKey('smtpMsa')) {
-      smtpMsa = SmtpMsa.fromJson(_json['smtpMsa']);
+      smtpMsa = SmtpMsa.fromJson(
+          _json['smtpMsa'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('treatAsAlias')) {
       treatAsAlias = _json['treatAsAlias'] as core.bool;
@@ -6509,7 +6693,8 @@ class Thread {
     }
     if (_json.containsKey('messages')) {
       messages = (_json['messages'] as core.List)
-          .map<Message>((value) => Message.fromJson(value))
+          .map<Message>((value) =>
+              Message.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('snippet')) {

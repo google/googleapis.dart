@@ -83,8 +83,8 @@ core.List<api.BucketAccessControl> buildUnnamed3965() {
 
 void checkUnnamed3965(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucketAccessControl(o[0]);
-  checkBucketAccessControl(o[1]);
+  checkBucketAccessControl(o[0] as api.BucketAccessControl);
+  checkBucketAccessControl(o[1] as api.BucketAccessControl);
 }
 
 core.int buildCounterBucketBilling = 0;
@@ -179,8 +179,8 @@ core.List<api.BucketCors> buildUnnamed3969() {
 
 void checkUnnamed3969(core.List<api.BucketCors> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucketCors(o[0]);
-  checkBucketCors(o[1]);
+  checkBucketCors(o[0] as api.BucketCors);
+  checkBucketCors(o[1] as api.BucketCors);
 }
 
 core.List<api.ObjectAccessControl> buildUnnamed3970() {
@@ -192,8 +192,8 @@ core.List<api.ObjectAccessControl> buildUnnamed3970() {
 
 void checkUnnamed3970(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectAccessControl(o[0]);
-  checkObjectAccessControl(o[1]);
+  checkObjectAccessControl(o[0] as api.ObjectAccessControl);
+  checkObjectAccessControl(o[1] as api.ObjectAccessControl);
 }
 
 core.int buildCounterBucketEncryption = 0;
@@ -279,9 +279,11 @@ api.BucketIamConfiguration buildBucketIamConfiguration() {
 void checkBucketIamConfiguration(api.BucketIamConfiguration o) {
   buildCounterBucketIamConfiguration++;
   if (buildCounterBucketIamConfiguration < 3) {
-    checkBucketIamConfigurationBucketPolicyOnly(o.bucketPolicyOnly);
+    checkBucketIamConfigurationBucketPolicyOnly(
+        o.bucketPolicyOnly as api.BucketIamConfigurationBucketPolicyOnly);
     checkBucketIamConfigurationUniformBucketLevelAccess(
-        o.uniformBucketLevelAccess);
+        o.uniformBucketLevelAccess
+            as api.BucketIamConfigurationUniformBucketLevelAccess);
   }
   buildCounterBucketIamConfiguration--;
 }
@@ -388,8 +390,9 @@ api.BucketLifecycleRule buildBucketLifecycleRule() {
 void checkBucketLifecycleRule(api.BucketLifecycleRule o) {
   buildCounterBucketLifecycleRule++;
   if (buildCounterBucketLifecycleRule < 3) {
-    checkBucketLifecycleRuleAction(o.action);
-    checkBucketLifecycleRuleCondition(o.condition);
+    checkBucketLifecycleRuleAction(o.action as api.BucketLifecycleRuleAction);
+    checkBucketLifecycleRuleCondition(
+        o.condition as api.BucketLifecycleRuleCondition);
   }
   buildCounterBucketLifecycleRule--;
 }
@@ -403,8 +406,8 @@ core.List<api.BucketLifecycleRule> buildUnnamed3973() {
 
 void checkUnnamed3973(core.List<api.BucketLifecycleRule> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucketLifecycleRule(o[0]);
-  checkBucketLifecycleRule(o[1]);
+  checkBucketLifecycleRule(o[0] as api.BucketLifecycleRule);
+  checkBucketLifecycleRule(o[1] as api.BucketLifecycleRule);
 }
 
 core.int buildCounterBucketLifecycle = 0;
@@ -586,33 +589,34 @@ void checkBucket(api.Bucket o) {
   buildCounterBucket++;
   if (buildCounterBucket < 3) {
     checkUnnamed3965(o.acl);
-    checkBucketBilling(o.billing);
+    checkBucketBilling(o.billing as api.BucketBilling);
     checkUnnamed3969(o.cors);
     unittest.expect(o.defaultEventBasedHold, unittest.isTrue);
     checkUnnamed3970(o.defaultObjectAcl);
-    checkBucketEncryption(o.encryption);
+    checkBucketEncryption(o.encryption as api.BucketEncryption);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkBucketIamConfiguration(o.iamConfiguration);
+    checkBucketIamConfiguration(
+        o.iamConfiguration as api.BucketIamConfiguration);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed3971(o.labels);
-    checkBucketLifecycle(o.lifecycle);
+    checkBucketLifecycle(o.lifecycle as api.BucketLifecycle);
     unittest.expect(o.location, unittest.equals('foo'));
     unittest.expect(o.locationType, unittest.equals('foo'));
-    checkBucketLogging(o.logging);
+    checkBucketLogging(o.logging as api.BucketLogging);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkBucketOwner(o.owner);
+    checkBucketOwner(o.owner as api.BucketOwner);
     unittest.expect(o.projectNumber, unittest.equals('foo'));
-    checkBucketRetentionPolicy(o.retentionPolicy);
+    checkBucketRetentionPolicy(o.retentionPolicy as api.BucketRetentionPolicy);
     unittest.expect(o.selfLink, unittest.equals('foo'));
     unittest.expect(o.storageClass, unittest.equals('foo'));
     unittest.expect(o.timeCreated,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(
         o.updated, unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkBucketVersioning(o.versioning);
-    checkBucketWebsite(o.website);
+    checkBucketVersioning(o.versioning as api.BucketVersioning);
+    checkBucketWebsite(o.website as api.BucketWebsite);
     checkUnnamed3974(o.zoneAffinity);
   }
   buildCounterBucket--;
@@ -671,7 +675,8 @@ void checkBucketAccessControl(api.BucketAccessControl o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkBucketAccessControlProjectTeam(o.projectTeam);
+    checkBucketAccessControlProjectTeam(
+        o.projectTeam as api.BucketAccessControlProjectTeam);
     unittest.expect(o.role, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -687,8 +692,8 @@ core.List<api.BucketAccessControl> buildUnnamed3975() {
 
 void checkUnnamed3975(core.List<api.BucketAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucketAccessControl(o[0]);
-  checkBucketAccessControl(o[1]);
+  checkBucketAccessControl(o[0] as api.BucketAccessControl);
+  checkBucketAccessControl(o[1] as api.BucketAccessControl);
 }
 
 core.int buildCounterBucketAccessControls = 0;
@@ -721,8 +726,8 @@ core.List<api.Bucket> buildUnnamed3976() {
 
 void checkUnnamed3976(core.List<api.Bucket> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucket(o[0]);
-  checkBucket(o[1]);
+  checkBucket(o[0] as api.Bucket);
+  checkBucket(o[1] as api.Bucket);
 }
 
 core.int buildCounterBuckets = 0;
@@ -838,7 +843,8 @@ void checkComposeRequestSourceObjects(api.ComposeRequestSourceObjects o) {
   if (buildCounterComposeRequestSourceObjects < 3) {
     unittest.expect(o.generation, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkComposeRequestSourceObjectsObjectPreconditions(o.objectPreconditions);
+    checkComposeRequestSourceObjectsObjectPreconditions(o.objectPreconditions
+        as api.ComposeRequestSourceObjectsObjectPreconditions);
   }
   buildCounterComposeRequestSourceObjects--;
 }
@@ -852,8 +858,8 @@ core.List<api.ComposeRequestSourceObjects> buildUnnamed3978() {
 
 void checkUnnamed3978(core.List<api.ComposeRequestSourceObjects> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComposeRequestSourceObjects(o[0]);
-  checkComposeRequestSourceObjects(o[1]);
+  checkComposeRequestSourceObjects(o[0] as api.ComposeRequestSourceObjects);
+  checkComposeRequestSourceObjects(o[1] as api.ComposeRequestSourceObjects);
 }
 
 core.int buildCounterComposeRequest = 0;
@@ -872,7 +878,7 @@ api.ComposeRequest buildComposeRequest() {
 void checkComposeRequest(api.ComposeRequest o) {
   buildCounterComposeRequest++;
   if (buildCounterComposeRequest < 3) {
-    checkObject(o.destination);
+    checkObject(o.destination as api.Object);
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed3978(o.sourceObjects);
   }
@@ -921,7 +927,7 @@ void checkHmacKey(api.HmacKey o) {
   buildCounterHmacKey++;
   if (buildCounterHmacKey < 3) {
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkHmacKeyMetadata(o.metadata);
+    checkHmacKeyMetadata(o.metadata as api.HmacKeyMetadata);
     unittest.expect(o.secret, unittest.equals('foo'));
   }
   buildCounterHmacKey--;
@@ -975,8 +981,8 @@ core.List<api.HmacKeyMetadata> buildUnnamed3979() {
 
 void checkUnnamed3979(core.List<api.HmacKeyMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHmacKeyMetadata(o[0]);
-  checkHmacKeyMetadata(o[1]);
+  checkHmacKeyMetadata(o[0] as api.HmacKeyMetadata);
+  checkHmacKeyMetadata(o[1] as api.HmacKeyMetadata);
 }
 
 core.int buildCounterHmacKeysMetadata = 0;
@@ -1072,8 +1078,8 @@ core.List<api.Notification> buildUnnamed3982() {
 
 void checkUnnamed3982(core.List<api.Notification> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNotification(o[0]);
-  checkNotification(o[1]);
+  checkNotification(o[0] as api.Notification);
+  checkNotification(o[1] as api.Notification);
 }
 
 core.int buildCounterNotifications = 0;
@@ -1106,8 +1112,8 @@ core.List<api.ObjectAccessControl> buildUnnamed3983() {
 
 void checkUnnamed3983(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectAccessControl(o[0]);
-  checkObjectAccessControl(o[1]);
+  checkObjectAccessControl(o[0] as api.ObjectAccessControl);
+  checkObjectAccessControl(o[1] as api.ObjectAccessControl);
 }
 
 core.int buildCounterObjectCustomerEncryption = 0;
@@ -1221,7 +1227,8 @@ void checkObject(api.Object o) {
     unittest.expect(o.crc32c, unittest.equals('foo'));
     unittest.expect(o.customTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
-    checkObjectCustomerEncryption(o.customerEncryption);
+    checkObjectCustomerEncryption(
+        o.customerEncryption as api.ObjectCustomerEncryption);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.eventBasedHold, unittest.isTrue);
     unittest.expect(o.generation, unittest.equals('foo'));
@@ -1233,7 +1240,7 @@ void checkObject(api.Object o) {
     checkUnnamed3984(o.metadata);
     unittest.expect(o.metageneration, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkObjectOwner(o.owner);
+    checkObjectOwner(o.owner as api.ObjectOwner);
     unittest.expect(o.retentionExpirationTime,
         unittest.equals(core.DateTime.parse("2002-02-27T14:01:02")));
     unittest.expect(o.selfLink, unittest.equals('foo'));
@@ -1309,7 +1316,8 @@ void checkObjectAccessControl(api.ObjectAccessControl o) {
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.object, unittest.equals('foo'));
-    checkObjectAccessControlProjectTeam(o.projectTeam);
+    checkObjectAccessControlProjectTeam(
+        o.projectTeam as api.ObjectAccessControlProjectTeam);
     unittest.expect(o.role, unittest.equals('foo'));
     unittest.expect(o.selfLink, unittest.equals('foo'));
   }
@@ -1325,8 +1333,8 @@ core.List<api.ObjectAccessControl> buildUnnamed3985() {
 
 void checkUnnamed3985(core.List<api.ObjectAccessControl> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObjectAccessControl(o[0]);
-  checkObjectAccessControl(o[1]);
+  checkObjectAccessControl(o[0] as api.ObjectAccessControl);
+  checkObjectAccessControl(o[1] as api.ObjectAccessControl);
 }
 
 core.int buildCounterObjectAccessControls = 0;
@@ -1359,8 +1367,8 @@ core.List<api.Object> buildUnnamed3986() {
 
 void checkUnnamed3986(core.List<api.Object> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkObject(o[0]);
-  checkObject(o[1]);
+  checkObject(o[0] as api.Object);
+  checkObject(o[1] as api.Object);
 }
 
 core.List<core.String> buildUnnamed3987() {
@@ -1430,7 +1438,7 @@ api.PolicyBindings buildPolicyBindings() {
 void checkPolicyBindings(api.PolicyBindings o) {
   buildCounterPolicyBindings++;
   if (buildCounterPolicyBindings < 3) {
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed3988(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -1446,8 +1454,8 @@ core.List<api.PolicyBindings> buildUnnamed3989() {
 
 void checkUnnamed3989(core.List<api.PolicyBindings> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPolicyBindings(o[0]);
-  checkPolicyBindings(o[1]);
+  checkPolicyBindings(o[0] as api.PolicyBindings);
+  checkPolicyBindings(o[1] as api.PolicyBindings);
 }
 
 core.int buildCounterPolicy = 0;
@@ -1499,7 +1507,7 @@ void checkRewriteResponse(api.RewriteResponse o) {
     unittest.expect(o.done, unittest.isTrue);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.objectSize, unittest.equals('foo'));
-    checkObject(o.resource);
+    checkObject(o.resource as api.Object);
     unittest.expect(o.rewriteToken, unittest.equals('foo'));
     unittest.expect(o.totalBytesRewritten, unittest.equals('foo'));
   }
@@ -1592,7 +1600,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketBilling();
       var od = api.BucketBilling.fromJson(o.toJson());
-      checkBucketBilling(od);
+      checkBucketBilling(od as api.BucketBilling);
     });
   });
 
@@ -1600,7 +1608,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketCors();
       var od = api.BucketCors.fromJson(o.toJson());
-      checkBucketCors(od);
+      checkBucketCors(od as api.BucketCors);
     });
   });
 
@@ -1608,7 +1616,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketEncryption();
       var od = api.BucketEncryption.fromJson(o.toJson());
-      checkBucketEncryption(od);
+      checkBucketEncryption(od as api.BucketEncryption);
     });
   });
 
@@ -1616,7 +1624,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketIamConfigurationBucketPolicyOnly();
       var od = api.BucketIamConfigurationBucketPolicyOnly.fromJson(o.toJson());
-      checkBucketIamConfigurationBucketPolicyOnly(od);
+      checkBucketIamConfigurationBucketPolicyOnly(
+          od as api.BucketIamConfigurationBucketPolicyOnly);
     });
   });
 
@@ -1626,7 +1635,8 @@ void main() {
       var o = buildBucketIamConfigurationUniformBucketLevelAccess();
       var od = api.BucketIamConfigurationUniformBucketLevelAccess.fromJson(
           o.toJson());
-      checkBucketIamConfigurationUniformBucketLevelAccess(od);
+      checkBucketIamConfigurationUniformBucketLevelAccess(
+          od as api.BucketIamConfigurationUniformBucketLevelAccess);
     });
   });
 
@@ -1634,7 +1644,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketIamConfiguration();
       var od = api.BucketIamConfiguration.fromJson(o.toJson());
-      checkBucketIamConfiguration(od);
+      checkBucketIamConfiguration(od as api.BucketIamConfiguration);
     });
   });
 
@@ -1642,7 +1652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketLifecycleRuleAction();
       var od = api.BucketLifecycleRuleAction.fromJson(o.toJson());
-      checkBucketLifecycleRuleAction(od);
+      checkBucketLifecycleRuleAction(od as api.BucketLifecycleRuleAction);
     });
   });
 
@@ -1650,7 +1660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketLifecycleRuleCondition();
       var od = api.BucketLifecycleRuleCondition.fromJson(o.toJson());
-      checkBucketLifecycleRuleCondition(od);
+      checkBucketLifecycleRuleCondition(od as api.BucketLifecycleRuleCondition);
     });
   });
 
@@ -1658,7 +1668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketLifecycleRule();
       var od = api.BucketLifecycleRule.fromJson(o.toJson());
-      checkBucketLifecycleRule(od);
+      checkBucketLifecycleRule(od as api.BucketLifecycleRule);
     });
   });
 
@@ -1666,7 +1676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketLifecycle();
       var od = api.BucketLifecycle.fromJson(o.toJson());
-      checkBucketLifecycle(od);
+      checkBucketLifecycle(od as api.BucketLifecycle);
     });
   });
 
@@ -1674,7 +1684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketLogging();
       var od = api.BucketLogging.fromJson(o.toJson());
-      checkBucketLogging(od);
+      checkBucketLogging(od as api.BucketLogging);
     });
   });
 
@@ -1682,7 +1692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketOwner();
       var od = api.BucketOwner.fromJson(o.toJson());
-      checkBucketOwner(od);
+      checkBucketOwner(od as api.BucketOwner);
     });
   });
 
@@ -1690,7 +1700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketRetentionPolicy();
       var od = api.BucketRetentionPolicy.fromJson(o.toJson());
-      checkBucketRetentionPolicy(od);
+      checkBucketRetentionPolicy(od as api.BucketRetentionPolicy);
     });
   });
 
@@ -1698,7 +1708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketVersioning();
       var od = api.BucketVersioning.fromJson(o.toJson());
-      checkBucketVersioning(od);
+      checkBucketVersioning(od as api.BucketVersioning);
     });
   });
 
@@ -1706,7 +1716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketWebsite();
       var od = api.BucketWebsite.fromJson(o.toJson());
-      checkBucketWebsite(od);
+      checkBucketWebsite(od as api.BucketWebsite);
     });
   });
 
@@ -1714,7 +1724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucket();
       var od = api.Bucket.fromJson(o.toJson());
-      checkBucket(od);
+      checkBucket(od as api.Bucket);
     });
   });
 
@@ -1722,7 +1732,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketAccessControlProjectTeam();
       var od = api.BucketAccessControlProjectTeam.fromJson(o.toJson());
-      checkBucketAccessControlProjectTeam(od);
+      checkBucketAccessControlProjectTeam(
+          od as api.BucketAccessControlProjectTeam);
     });
   });
 
@@ -1730,7 +1741,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketAccessControl();
       var od = api.BucketAccessControl.fromJson(o.toJson());
-      checkBucketAccessControl(od);
+      checkBucketAccessControl(od as api.BucketAccessControl);
     });
   });
 
@@ -1738,7 +1749,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketAccessControls();
       var od = api.BucketAccessControls.fromJson(o.toJson());
-      checkBucketAccessControls(od);
+      checkBucketAccessControls(od as api.BucketAccessControls);
     });
   });
 
@@ -1746,7 +1757,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBuckets();
       var od = api.Buckets.fromJson(o.toJson());
-      checkBuckets(od);
+      checkBuckets(od as api.Buckets);
     });
   });
 
@@ -1754,7 +1765,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -1764,7 +1775,8 @@ void main() {
       var o = buildComposeRequestSourceObjectsObjectPreconditions();
       var od = api.ComposeRequestSourceObjectsObjectPreconditions.fromJson(
           o.toJson());
-      checkComposeRequestSourceObjectsObjectPreconditions(od);
+      checkComposeRequestSourceObjectsObjectPreconditions(
+          od as api.ComposeRequestSourceObjectsObjectPreconditions);
     });
   });
 
@@ -1772,7 +1784,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComposeRequestSourceObjects();
       var od = api.ComposeRequestSourceObjects.fromJson(o.toJson());
-      checkComposeRequestSourceObjects(od);
+      checkComposeRequestSourceObjects(od as api.ComposeRequestSourceObjects);
     });
   });
 
@@ -1780,7 +1792,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComposeRequest();
       var od = api.ComposeRequest.fromJson(o.toJson());
-      checkComposeRequest(od);
+      checkComposeRequest(od as api.ComposeRequest);
     });
   });
 
@@ -1788,7 +1800,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1796,7 +1808,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHmacKey();
       var od = api.HmacKey.fromJson(o.toJson());
-      checkHmacKey(od);
+      checkHmacKey(od as api.HmacKey);
     });
   });
 
@@ -1804,7 +1816,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHmacKeyMetadata();
       var od = api.HmacKeyMetadata.fromJson(o.toJson());
-      checkHmacKeyMetadata(od);
+      checkHmacKeyMetadata(od as api.HmacKeyMetadata);
     });
   });
 
@@ -1812,7 +1824,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHmacKeysMetadata();
       var od = api.HmacKeysMetadata.fromJson(o.toJson());
-      checkHmacKeysMetadata(od);
+      checkHmacKeysMetadata(od as api.HmacKeysMetadata);
     });
   });
 
@@ -1820,7 +1832,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
-      checkNotification(od);
+      checkNotification(od as api.Notification);
     });
   });
 
@@ -1828,7 +1840,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotifications();
       var od = api.Notifications.fromJson(o.toJson());
-      checkNotifications(od);
+      checkNotifications(od as api.Notifications);
     });
   });
 
@@ -1836,7 +1848,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjectCustomerEncryption();
       var od = api.ObjectCustomerEncryption.fromJson(o.toJson());
-      checkObjectCustomerEncryption(od);
+      checkObjectCustomerEncryption(od as api.ObjectCustomerEncryption);
     });
   });
 
@@ -1844,7 +1856,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjectOwner();
       var od = api.ObjectOwner.fromJson(o.toJson());
-      checkObjectOwner(od);
+      checkObjectOwner(od as api.ObjectOwner);
     });
   });
 
@@ -1852,7 +1864,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObject();
       var od = api.Object.fromJson(o.toJson());
-      checkObject(od);
+      checkObject(od as api.Object);
     });
   });
 
@@ -1860,7 +1872,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjectAccessControlProjectTeam();
       var od = api.ObjectAccessControlProjectTeam.fromJson(o.toJson());
-      checkObjectAccessControlProjectTeam(od);
+      checkObjectAccessControlProjectTeam(
+          od as api.ObjectAccessControlProjectTeam);
     });
   });
 
@@ -1868,7 +1881,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjectAccessControl();
       var od = api.ObjectAccessControl.fromJson(o.toJson());
-      checkObjectAccessControl(od);
+      checkObjectAccessControl(od as api.ObjectAccessControl);
     });
   });
 
@@ -1876,7 +1889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjectAccessControls();
       var od = api.ObjectAccessControls.fromJson(o.toJson());
-      checkObjectAccessControls(od);
+      checkObjectAccessControls(od as api.ObjectAccessControls);
     });
   });
 
@@ -1884,7 +1897,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildObjects();
       var od = api.Objects.fromJson(o.toJson());
-      checkObjects(od);
+      checkObjects(od as api.Objects);
     });
   });
 
@@ -1892,7 +1905,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyBindings();
       var od = api.PolicyBindings.fromJson(o.toJson());
-      checkPolicyBindings(od);
+      checkPolicyBindings(od as api.PolicyBindings);
     });
   });
 
@@ -1900,7 +1913,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1908,7 +1921,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRewriteResponse();
       var od = api.RewriteResponse.fromJson(o.toJson());
-      checkRewriteResponse(od);
+      checkRewriteResponse(od as api.RewriteResponse);
     });
   });
 
@@ -1916,7 +1929,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildServiceAccount();
       var od = api.ServiceAccount.fromJson(o.toJson());
-      checkServiceAccount(od);
+      checkServiceAccount(od as api.ServiceAccount);
     });
   });
 
@@ -1924,7 +1937,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -2067,7 +2080,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response);
+        checkBucketAccessControl(response as api.BucketAccessControl);
       })));
     });
 
@@ -2080,8 +2093,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BucketAccessControl.fromJson(json);
-        checkBucketAccessControl(obj);
+        var obj = api.BucketAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBucketAccessControl(obj as api.BucketAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2139,7 +2153,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response);
+        checkBucketAccessControl(response as api.BucketAccessControl);
       })));
     });
 
@@ -2207,7 +2221,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControls(response);
+        checkBucketAccessControls(response as api.BucketAccessControls);
       })));
     });
 
@@ -2221,8 +2235,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BucketAccessControl.fromJson(json);
-        checkBucketAccessControl(obj);
+        var obj = api.BucketAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBucketAccessControl(obj as api.BucketAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2283,7 +2298,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response);
+        checkBucketAccessControl(response as api.BucketAccessControl);
       })));
     });
 
@@ -2297,8 +2312,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BucketAccessControl.fromJson(json);
-        checkBucketAccessControl(obj);
+        var obj = api.BucketAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBucketAccessControl(obj as api.BucketAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2359,7 +2375,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucketAccessControl(response);
+        checkBucketAccessControl(response as api.BucketAccessControl);
       })));
     });
   });
@@ -2503,7 +2519,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucket(response);
+        checkBucket(response as api.Bucket);
       })));
     });
 
@@ -2576,7 +2592,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -2592,8 +2608,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Bucket.fromJson(json);
-        checkBucket(obj);
+        var obj =
+            api.Bucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBucket(obj as api.Bucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2653,7 +2670,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucket(response);
+        checkBucket(response as api.Bucket);
       })));
     });
 
@@ -2729,7 +2746,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBuckets(response);
+        checkBuckets(response as api.Buckets);
       })));
     });
 
@@ -2800,7 +2817,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucket(response);
+        checkBucket(response as api.Bucket);
       })));
     });
 
@@ -2818,8 +2835,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Bucket.fromJson(json);
-        checkBucket(obj);
+        var obj =
+            api.Bucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBucket(obj as api.Bucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2886,7 +2904,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucket(response);
+        checkBucket(response as api.Bucket);
       })));
     });
 
@@ -2899,8 +2917,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2958,7 +2977,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -3029,7 +3048,8 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -3047,8 +3067,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Bucket.fromJson(json);
-        checkBucket(obj);
+        var obj =
+            api.Bucket.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBucket(obj as api.Bucket);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3115,7 +3136,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBucket(response);
+        checkBucket(response as api.Bucket);
       })));
     });
   });
@@ -3127,8 +3148,9 @@ void main() {
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3312,7 +3334,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -3325,8 +3347,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3384,7 +3407,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -3460,7 +3483,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControls(response);
+        checkObjectAccessControls(response as api.ObjectAccessControls);
       })));
     });
 
@@ -3474,8 +3497,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3536,7 +3560,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -3550,8 +3574,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3612,7 +3637,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
   });
@@ -3756,7 +3781,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNotification(response);
+        checkNotification(response as api.Notification);
       })));
     });
 
@@ -3769,8 +3794,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Notification.fromJson(json);
-        checkNotification(obj);
+        var obj = api.Notification.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkNotification(obj as api.Notification);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3828,7 +3854,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNotification(response);
+        checkNotification(response as api.Notification);
       })));
     });
 
@@ -3896,7 +3922,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkNotifications(response);
+        checkNotifications(response as api.Notifications);
       })));
     });
   });
@@ -4068,7 +4094,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -4083,8 +4109,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4154,7 +4181,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -4236,7 +4263,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControls(response);
+        checkObjectAccessControls(response as api.ObjectAccessControls);
       })));
     });
 
@@ -4252,8 +4279,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4326,7 +4354,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
 
@@ -4342,8 +4370,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ObjectAccessControl.fromJson(json);
-        checkObjectAccessControl(obj);
+        var obj = api.ObjectAccessControl.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkObjectAccessControl(obj as api.ObjectAccessControl);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4416,7 +4445,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjectAccessControl(response);
+        checkObjectAccessControl(response as api.ObjectAccessControl);
       })));
     });
   });
@@ -4436,8 +4465,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ComposeRequest.fromJson(json);
-        checkComposeRequest(obj);
+        var obj = api.ComposeRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkComposeRequest(obj as api.ComposeRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4516,7 +4546,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -4544,8 +4574,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Object.fromJson(json);
-        checkObject(obj);
+        var obj =
+            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkObject(obj as api.Object);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4662,7 +4693,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -4851,7 +4882,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -4933,7 +4964,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -4958,8 +4989,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Object.fromJson(json);
-        checkObject(obj);
+        var obj =
+            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkObject(obj as api.Object);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5043,7 +5075,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -5146,7 +5178,7 @@ void main() {
               versions: arg_versions,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObjects(response);
+        checkObjects(response as api.Objects);
       })));
     });
 
@@ -5167,8 +5199,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Object.fromJson(json);
-        checkObject(obj);
+        var obj =
+            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkObject(obj as api.Object);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5250,7 +5283,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -5280,8 +5313,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Object.fromJson(json);
-        checkObject(obj);
+        var obj =
+            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkObject(obj as api.Object);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5404,7 +5438,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRewriteResponse(response);
+        checkRewriteResponse(response as api.RewriteResponse);
       })));
     });
 
@@ -5419,8 +5453,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Policy.fromJson(json);
-        checkPolicy(obj);
+        var obj =
+            api.Policy.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPolicy(obj as api.Policy);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5490,7 +5525,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -5575,7 +5610,8 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -5596,8 +5632,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Object.fromJson(json);
-        checkObject(obj);
+        var obj =
+            api.Object.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkObject(obj as api.Object);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5679,7 +5716,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkObject(response);
+        checkObject(response as api.Object);
       })));
     });
 
@@ -5701,8 +5738,9 @@ void main() {
       var arg_versions = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5786,7 +5824,7 @@ void main() {
               versions: arg_versions,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -5854,7 +5892,7 @@ void main() {
           .create(arg_projectId, arg_serviceAccountEmail,
               userProject: arg_userProject, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHmacKey(response);
+        checkHmacKey(response as api.HmacKey);
       })));
     });
 
@@ -5986,7 +6024,7 @@ void main() {
           .get(arg_projectId, arg_accessId,
               userProject: arg_userProject, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHmacKeyMetadata(response);
+        checkHmacKeyMetadata(response as api.HmacKeyMetadata);
       })));
     });
 
@@ -6066,7 +6104,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHmacKeysMetadata(response);
+        checkHmacKeysMetadata(response as api.HmacKeysMetadata);
       })));
     });
 
@@ -6079,8 +6117,9 @@ void main() {
       var arg_userProject = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.HmacKeyMetadata.fromJson(json);
-        checkHmacKeyMetadata(obj);
+        var obj = api.HmacKeyMetadata.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkHmacKeyMetadata(obj as api.HmacKeyMetadata);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6137,7 +6176,7 @@ void main() {
           .update(arg_request, arg_projectId, arg_accessId,
               userProject: arg_userProject, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHmacKeyMetadata(response);
+        checkHmacKeyMetadata(response as api.HmacKeyMetadata);
       })));
     });
   });
@@ -6207,7 +6246,7 @@ void main() {
               userProject: arg_userProject,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkServiceAccount(response);
+        checkServiceAccount(response as api.ServiceAccount);
       })));
     });
   });

@@ -221,7 +221,10 @@ class AssetlinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CheckResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          CheckResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -346,7 +349,10 @@ class StatementsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          ListResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -374,7 +380,8 @@ class AndroidAppAsset {
 
   AndroidAppAsset.fromJson(core.Map _json) {
     if (_json.containsKey('certificate')) {
-      certificate = CertificateInfo.fromJson(_json['certificate']);
+      certificate = CertificateInfo.fromJson(
+          _json['certificate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('packageName')) {
       packageName = _json['packageName'] as core.String;
@@ -408,10 +415,12 @@ class Asset {
 
   Asset.fromJson(core.Map _json) {
     if (_json.containsKey('androidApp')) {
-      androidApp = AndroidAppAsset.fromJson(_json['androidApp']);
+      androidApp = AndroidAppAsset.fromJson(
+          _json['androidApp'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('web')) {
-      web = WebAsset.fromJson(_json['web']);
+      web = WebAsset.fromJson(
+          _json['web'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -558,7 +567,8 @@ class ListResponse {
     }
     if (_json.containsKey('statements')) {
       statements = (_json['statements'] as core.List)
-          .map<Statement>((value) => Statement.fromJson(value))
+          .map<Statement>((value) =>
+              Statement.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -612,10 +622,12 @@ class Statement {
       relation = _json['relation'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Asset.fromJson(_json['source']);
+      source = Asset.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('target')) {
-      target = Asset.fromJson(_json['target']);
+      target = Asset.fromJson(
+          _json['target'] as core.Map<core.String, core.dynamic>);
     }
   }
 

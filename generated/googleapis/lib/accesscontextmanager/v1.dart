@@ -111,7 +111,9 @@ class AccessPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete an AccessPolicy by resource name. The longrunning Operation will
@@ -163,7 +165,9 @@ class AccessPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get an AccessPolicy by name.
@@ -213,7 +217,10 @@ class AccessPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccessPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all AccessPolicies under a container.
@@ -276,7 +283,10 @@ class AccessPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAccessPoliciesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAccessPoliciesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an AccessPolicy. The longrunning Operation from this RPC will have
@@ -342,7 +352,9 @@ class AccessPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -410,7 +422,9 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete an Access Level by resource name. The longrunning operation from
@@ -462,7 +476,9 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get an Access Level by resource name.
@@ -529,7 +545,10 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccessLevel.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccessLevel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all Access Levels for an access policy.
@@ -608,7 +627,10 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListAccessLevelsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAccessLevelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an Access Level. The longrunning operation from this RPC will have
@@ -676,7 +698,9 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replace all existing Access Levels in an Access Policy with the Access
@@ -742,7 +766,9 @@ class AccessPoliciesAccessLevelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -818,7 +844,9 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create a Service Perimeter. The longrunning operation from this RPC will
@@ -879,7 +907,9 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a Service Perimeter by resource name. The longrunning operation
@@ -931,7 +961,9 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a Service Perimeter by resource name.
@@ -981,7 +1013,10 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ServicePerimeter.fromJson(data));
+    return _response.then(
+      (data) => ServicePerimeter.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// List all Service Perimeters for an access policy.
@@ -1047,8 +1082,10 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListServicePerimetersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListServicePerimetersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update a Service Perimeter. The longrunning operation from this RPC will
@@ -1116,7 +1153,9 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replace all existing Service Perimeters in an Access Policy with the
@@ -1181,7 +1220,9 @@ class AccessPoliciesServicePerimetersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1250,7 +1291,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1302,7 +1345,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1353,7 +1398,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1428,7 +1475,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1505,7 +1555,9 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a GcpUserAccessBinding. Completion of this long-running operation
@@ -1558,7 +1610,9 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the GcpUserAccessBinding with the given name.
@@ -1609,7 +1663,10 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GcpUserAccessBinding.fromJson(data));
+    return _response.then(
+      (data) => GcpUserAccessBinding.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all GcpUserAccessBindings for a Google Cloud organization.
@@ -1676,8 +1733,10 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListGcpUserAccessBindingsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGcpUserAccessBindingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a GcpUserAccessBinding. Completion of this long-running operation
@@ -1748,7 +1807,9 @@ class OrganizationsGcpUserAccessBindingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1778,10 +1839,12 @@ class AccessLevel {
 
   AccessLevel.fromJson(core.Map _json) {
     if (_json.containsKey('basic')) {
-      basic = BasicLevel.fromJson(_json['basic']);
+      basic = BasicLevel.fromJson(
+          _json['basic'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('custom')) {
-      custom = CustomLevel.fromJson(_json['custom']);
+      custom = CustomLevel.fromJson(
+          _json['custom'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -1898,7 +1961,8 @@ class BasicLevel {
     }
     if (_json.containsKey('conditions')) {
       conditions = (_json['conditions'] as core.List)
-          .map<Condition>((value) => Condition.fromJson(value))
+          .map<Condition>((value) =>
+              Condition.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1968,7 +2032,8 @@ class CommitServicePerimetersResponse {
   CommitServicePerimetersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('servicePerimeters')) {
       servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
+          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2028,7 +2093,8 @@ class Condition {
 
   Condition.fromJson(core.Map _json) {
     if (_json.containsKey('devicePolicy')) {
-      devicePolicy = DevicePolicy.fromJson(_json['devicePolicy']);
+      devicePolicy = DevicePolicy.fromJson(
+          _json['devicePolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('ipSubnetworks')) {
       ipSubnetworks = (_json['ipSubnetworks'] as core.List)
@@ -2090,7 +2156,8 @@ class CustomLevel {
 
   CustomLevel.fromJson(core.Map _json) {
     if (_json.containsKey('expr')) {
-      expr = Expr.fromJson(_json['expr']);
+      expr =
+          Expr.fromJson(_json['expr'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2150,7 +2217,8 @@ class DevicePolicy {
     }
     if (_json.containsKey('osConstraints')) {
       osConstraints = (_json['osConstraints'] as core.List)
-          .map<OsConstraint>((value) => OsConstraint.fromJson(value))
+          .map<OsConstraint>((value) => OsConstraint.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('requireAdminApproval')) {
@@ -2345,7 +2413,8 @@ class ListAccessLevelsResponse {
   ListAccessLevelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accessLevels')) {
       accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(value))
+          .map<AccessLevel>((value) => AccessLevel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2380,7 +2449,8 @@ class ListAccessPoliciesResponse {
   ListAccessPoliciesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accessPolicies')) {
       accessPolicies = (_json['accessPolicies'] as core.List)
-          .map<AccessPolicy>((value) => AccessPolicy.fromJson(value))
+          .map<AccessPolicy>((value) => AccessPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2414,8 +2484,8 @@ class ListGcpUserAccessBindingsResponse {
   ListGcpUserAccessBindingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('gcpUserAccessBindings')) {
       gcpUserAccessBindings = (_json['gcpUserAccessBindings'] as core.List)
-          .map<GcpUserAccessBinding>(
-              (value) => GcpUserAccessBinding.fromJson(value))
+          .map<GcpUserAccessBinding>((value) => GcpUserAccessBinding.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2452,7 +2522,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2486,7 +2557,8 @@ class ListServicePerimetersResponse {
     }
     if (_json.containsKey('servicePerimeters')) {
       servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
+          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2548,11 +2620,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2560,7 +2634,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2660,7 +2735,8 @@ class ReplaceAccessLevelsRequest {
   ReplaceAccessLevelsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('accessLevels')) {
       accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(value))
+          .map<AccessLevel>((value) => AccessLevel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2692,7 +2768,8 @@ class ReplaceAccessLevelsResponse {
   ReplaceAccessLevelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accessLevels')) {
       accessLevels = (_json['accessLevels'] as core.List)
-          .map<AccessLevel>((value) => AccessLevel.fromJson(value))
+          .map<AccessLevel>((value) => AccessLevel.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2730,7 +2807,8 @@ class ReplaceServicePerimetersRequest {
     }
     if (_json.containsKey('servicePerimeters')) {
       servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
+          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2759,7 +2837,8 @@ class ReplaceServicePerimetersResponse {
   ReplaceServicePerimetersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('servicePerimeters')) {
       servicePerimeters = (_json['servicePerimeters'] as core.List)
-          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(value))
+          .map<ServicePerimeter>((value) => ServicePerimeter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2843,10 +2922,12 @@ class ServicePerimeter {
       perimeterType = _json['perimeterType'] as core.String;
     }
     if (_json.containsKey('spec')) {
-      spec = ServicePerimeterConfig.fromJson(_json['spec']);
+      spec = ServicePerimeterConfig.fromJson(
+          _json['spec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = ServicePerimeterConfig.fromJson(_json['status']);
+      status = ServicePerimeterConfig.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -2928,8 +3009,9 @@ class ServicePerimeterConfig {
           .toList();
     }
     if (_json.containsKey('vpcAccessibleServices')) {
-      vpcAccessibleServices =
-          VpcAccessibleServices.fromJson(_json['vpcAccessibleServices']);
+      vpcAccessibleServices = VpcAccessibleServices.fromJson(
+          _json['vpcAccessibleServices']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2983,7 +3065,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

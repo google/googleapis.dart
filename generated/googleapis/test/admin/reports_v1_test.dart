@@ -83,8 +83,8 @@ core.List<api.Activity> buildUnnamed4843() {
 
 void checkUnnamed4843(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivity(o[0]);
-  checkActivity(o[1]);
+  checkActivity(o[0] as api.Activity);
+  checkActivity(o[1] as api.Activity);
 }
 
 core.int buildCounterActivities = 0;
@@ -146,8 +146,8 @@ core.List<api.NestedParameter> buildUnnamed4844() {
 
 void checkUnnamed4844(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestedParameter(o[0]);
-  checkNestedParameter(o[1]);
+  checkNestedParameter(o[0] as api.NestedParameter);
+  checkNestedParameter(o[1] as api.NestedParameter);
 }
 
 core.int buildCounterActivityEventsParametersMessageValue = 0;
@@ -193,8 +193,8 @@ core.List<api.NestedParameter> buildUnnamed4846() {
 
 void checkUnnamed4846(core.List<api.NestedParameter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNestedParameter(o[0]);
-  checkNestedParameter(o[1]);
+  checkNestedParameter(o[0] as api.NestedParameter);
+  checkNestedParameter(o[1] as api.NestedParameter);
 }
 
 core.int buildCounterActivityEventsParametersMultiMessageValue = 0;
@@ -228,8 +228,10 @@ core.List<api.ActivityEventsParametersMultiMessageValue> buildUnnamed4847() {
 void checkUnnamed4847(
     core.List<api.ActivityEventsParametersMultiMessageValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivityEventsParametersMultiMessageValue(o[0]);
-  checkActivityEventsParametersMultiMessageValue(o[1]);
+  checkActivityEventsParametersMultiMessageValue(
+      o[0] as api.ActivityEventsParametersMultiMessageValue);
+  checkActivityEventsParametersMultiMessageValue(
+      o[1] as api.ActivityEventsParametersMultiMessageValue);
 }
 
 core.List<core.String> buildUnnamed4848() {
@@ -268,7 +270,8 @@ void checkActivityEventsParameters(api.ActivityEventsParameters o) {
   if (buildCounterActivityEventsParameters < 3) {
     unittest.expect(o.boolValue, unittest.isTrue);
     unittest.expect(o.intValue, unittest.equals('foo'));
-    checkActivityEventsParametersMessageValue(o.messageValue);
+    checkActivityEventsParametersMessageValue(
+        o.messageValue as api.ActivityEventsParametersMessageValue);
     checkUnnamed4845(o.multiIntValue);
     checkUnnamed4847(o.multiMessageValue);
     checkUnnamed4848(o.multiValue);
@@ -287,8 +290,8 @@ core.List<api.ActivityEventsParameters> buildUnnamed4849() {
 
 void checkUnnamed4849(core.List<api.ActivityEventsParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivityEventsParameters(o[0]);
-  checkActivityEventsParameters(o[1]);
+  checkActivityEventsParameters(o[0] as api.ActivityEventsParameters);
+  checkActivityEventsParameters(o[1] as api.ActivityEventsParameters);
 }
 
 core.int buildCounterActivityEvents = 0;
@@ -323,8 +326,8 @@ core.List<api.ActivityEvents> buildUnnamed4850() {
 
 void checkUnnamed4850(core.List<api.ActivityEvents> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivityEvents(o[0]);
-  checkActivityEvents(o[1]);
+  checkActivityEvents(o[0] as api.ActivityEvents);
+  checkActivityEvents(o[1] as api.ActivityEvents);
 }
 
 core.int buildCounterActivityId = 0;
@@ -373,10 +376,10 @@ api.Activity buildActivity() {
 void checkActivity(api.Activity o) {
   buildCounterActivity++;
   if (buildCounterActivity < 3) {
-    checkActivityActor(o.actor);
+    checkActivityActor(o.actor as api.ActivityActor);
     unittest.expect(o.etag, unittest.equals('foo'));
     checkUnnamed4850(o.events);
-    checkActivityId(o.id);
+    checkActivityId(o.id as api.ActivityId);
     unittest.expect(o.ipAddress, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.ownerDomain, unittest.equals('foo'));
@@ -612,8 +615,8 @@ core.List<api.UsageReportParameters> buildUnnamed4857() {
 
 void checkUnnamed4857(core.List<api.UsageReportParameters> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsageReportParameters(o[0]);
-  checkUsageReportParameters(o[1]);
+  checkUsageReportParameters(o[0] as api.UsageReportParameters);
+  checkUsageReportParameters(o[1] as api.UsageReportParameters);
 }
 
 core.int buildCounterUsageReport = 0;
@@ -635,7 +638,7 @@ void checkUsageReport(api.UsageReport o) {
   buildCounterUsageReport++;
   if (buildCounterUsageReport < 3) {
     unittest.expect(o.date, unittest.equals('foo'));
-    checkUsageReportEntity(o.entity);
+    checkUsageReportEntity(o.entity as api.UsageReportEntity);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed4857(o.parameters);
@@ -652,8 +655,8 @@ core.List<api.UsageReport> buildUnnamed4858() {
 
 void checkUnnamed4858(core.List<api.UsageReport> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsageReport(o[0]);
-  checkUsageReport(o[1]);
+  checkUsageReport(o[0] as api.UsageReport);
+  checkUsageReport(o[1] as api.UsageReport);
 }
 
 core.int buildCounterUsageReportsWarningsData = 0;
@@ -686,8 +689,8 @@ core.List<api.UsageReportsWarningsData> buildUnnamed4859() {
 
 void checkUnnamed4859(core.List<api.UsageReportsWarningsData> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsageReportsWarningsData(o[0]);
-  checkUsageReportsWarningsData(o[1]);
+  checkUsageReportsWarningsData(o[0] as api.UsageReportsWarningsData);
+  checkUsageReportsWarningsData(o[1] as api.UsageReportsWarningsData);
 }
 
 core.int buildCounterUsageReportsWarnings = 0;
@@ -722,8 +725,8 @@ core.List<api.UsageReportsWarnings> buildUnnamed4860() {
 
 void checkUnnamed4860(core.List<api.UsageReportsWarnings> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkUsageReportsWarnings(o[0]);
-  checkUsageReportsWarnings(o[1]);
+  checkUsageReportsWarnings(o[0] as api.UsageReportsWarnings);
+  checkUsageReportsWarnings(o[1] as api.UsageReportsWarnings);
 }
 
 core.int buildCounterUsageReports = 0;
@@ -758,7 +761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivities();
       var od = api.Activities.fromJson(o.toJson());
-      checkActivities(od);
+      checkActivities(od as api.Activities);
     });
   });
 
@@ -766,7 +769,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityActor();
       var od = api.ActivityActor.fromJson(o.toJson());
-      checkActivityActor(od);
+      checkActivityActor(od as api.ActivityActor);
     });
   });
 
@@ -774,7 +777,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityEventsParametersMessageValue();
       var od = api.ActivityEventsParametersMessageValue.fromJson(o.toJson());
-      checkActivityEventsParametersMessageValue(od);
+      checkActivityEventsParametersMessageValue(
+          od as api.ActivityEventsParametersMessageValue);
     });
   });
 
@@ -783,7 +787,8 @@ void main() {
       var o = buildActivityEventsParametersMultiMessageValue();
       var od =
           api.ActivityEventsParametersMultiMessageValue.fromJson(o.toJson());
-      checkActivityEventsParametersMultiMessageValue(od);
+      checkActivityEventsParametersMultiMessageValue(
+          od as api.ActivityEventsParametersMultiMessageValue);
     });
   });
 
@@ -791,7 +796,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityEventsParameters();
       var od = api.ActivityEventsParameters.fromJson(o.toJson());
-      checkActivityEventsParameters(od);
+      checkActivityEventsParameters(od as api.ActivityEventsParameters);
     });
   });
 
@@ -799,7 +804,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityEvents();
       var od = api.ActivityEvents.fromJson(o.toJson());
-      checkActivityEvents(od);
+      checkActivityEvents(od as api.ActivityEvents);
     });
   });
 
@@ -807,7 +812,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityId();
       var od = api.ActivityId.fromJson(o.toJson());
-      checkActivityId(od);
+      checkActivityId(od as api.ActivityId);
     });
   });
 
@@ -815,7 +820,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
-      checkActivity(od);
+      checkActivity(od as api.Activity);
     });
   });
 
@@ -823,7 +828,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -831,7 +836,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNestedParameter();
       var od = api.NestedParameter.fromJson(o.toJson());
-      checkNestedParameter(od);
+      checkNestedParameter(od as api.NestedParameter);
     });
   });
 
@@ -839,7 +844,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReportEntity();
       var od = api.UsageReportEntity.fromJson(o.toJson());
-      checkUsageReportEntity(od);
+      checkUsageReportEntity(od as api.UsageReportEntity);
     });
   });
 
@@ -847,7 +852,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReportParameters();
       var od = api.UsageReportParameters.fromJson(o.toJson());
-      checkUsageReportParameters(od);
+      checkUsageReportParameters(od as api.UsageReportParameters);
     });
   });
 
@@ -855,7 +860,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReport();
       var od = api.UsageReport.fromJson(o.toJson());
-      checkUsageReport(od);
+      checkUsageReport(od as api.UsageReport);
     });
   });
 
@@ -863,7 +868,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReportsWarningsData();
       var od = api.UsageReportsWarningsData.fromJson(o.toJson());
-      checkUsageReportsWarningsData(od);
+      checkUsageReportsWarningsData(od as api.UsageReportsWarningsData);
     });
   });
 
@@ -871,7 +876,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReportsWarnings();
       var od = api.UsageReportsWarnings.fromJson(o.toJson());
-      checkUsageReportsWarnings(od);
+      checkUsageReportsWarnings(od as api.UsageReportsWarnings);
     });
   });
 
@@ -879,7 +884,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUsageReports();
       var od = api.UsageReports.fromJson(o.toJson());
-      checkUsageReports(od);
+      checkUsageReports(od as api.UsageReports);
     });
   });
 
@@ -977,7 +982,7 @@ void main() {
               startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkActivities(response);
+        checkActivities(response as api.Activities);
       })));
     });
 
@@ -998,8 +1003,9 @@ void main() {
       var arg_startTime = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1084,7 +1090,7 @@ void main() {
               startTime: arg_startTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -1096,8 +1102,9 @@ void main() {
       var arg_request = buildChannel();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1199,7 +1206,7 @@ void main() {
               parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response);
+        checkUsageReports(response as api.UsageReports);
       })));
     });
   });
@@ -1292,7 +1299,7 @@ void main() {
               parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response);
+        checkUsageReports(response as api.UsageReports);
       })));
     });
   });
@@ -1379,7 +1386,7 @@ void main() {
               parameters: arg_parameters,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUsageReports(response);
+        checkUsageReports(response as api.UsageReports);
       })));
     });
   });

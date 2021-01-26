@@ -135,7 +135,9 @@ class EditsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppEdit.fromJson(data));
+    return _response.then(
+      (data) => AppEdit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an app edit.
@@ -192,7 +194,9 @@ class EditsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets an app edit.
@@ -249,7 +253,9 @@ class EditsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppEdit.fromJson(data));
+    return _response.then(
+      (data) => AppEdit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new edit for an app.
@@ -305,7 +311,9 @@ class EditsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppEdit.fromJson(data));
+    return _response.then(
+      (data) => AppEdit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Validates an app edit.
@@ -363,7 +371,9 @@ class EditsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppEdit.fromJson(data));
+    return _response.then(
+      (data) => AppEdit.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -436,8 +446,10 @@ class EditsApksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ApksAddExternallyHostedResponse.fromJson(data));
+    return _response.then(
+      (data) => ApksAddExternallyHostedResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all current APKs of the app and edit.
@@ -495,7 +507,10 @@ class EditsApksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ApksListResponse.fromJson(data));
+    return _response.then(
+      (data) => ApksListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads an APK and adds to the current edit.
@@ -578,7 +593,9 @@ class EditsApksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Apk.fromJson(data));
+    return _response.then(
+      (data) => Apk.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -642,7 +659,10 @@ class EditsBundlesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BundlesListResponse.fromJson(data));
+    return _response.then(
+      (data) => BundlesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads a new Android App Bundle to this edit. If you are using the Google
@@ -740,7 +760,9 @@ class EditsBundlesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Bundle.fromJson(data));
+    return _response.then(
+      (data) => Bundle.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -857,8 +879,10 @@ class EditsDeobfuscationfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => DeobfuscationFilesUploadResponse.fromJson(data));
+    return _response.then(
+      (data) => DeobfuscationFilesUploadResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -922,7 +946,10 @@ class EditsDetailsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppDetails.fromJson(data));
+    return _response.then(
+      (data) =>
+          AppDetails.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches details of an app.
@@ -986,7 +1013,10 @@ class EditsDetailsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppDetails.fromJson(data));
+    return _response.then(
+      (data) =>
+          AppDetails.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates details of an app.
@@ -1050,7 +1080,10 @@ class EditsDetailsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AppDetails.fromJson(data));
+    return _response.then(
+      (data) =>
+          AppDetails.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1136,7 +1169,10 @@ class EditsExpansionfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExpansionFile.fromJson(data));
+    return _response.then(
+      (data) =>
+          ExpansionFile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches the APK's expansion file configuration to reference another APK's
@@ -1222,7 +1258,10 @@ class EditsExpansionfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExpansionFile.fromJson(data));
+    return _response.then(
+      (data) =>
+          ExpansionFile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the APK's expansion file configuration to reference another APK's
@@ -1308,7 +1347,10 @@ class EditsExpansionfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ExpansionFile.fromJson(data));
+    return _response.then(
+      (data) =>
+          ExpansionFile.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads a new expansion file and attaches to the specified APK.
@@ -1418,8 +1460,10 @@ class EditsExpansionfilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ExpansionFilesUploadResponse.fromJson(data));
+    return _response.then(
+      (data) => ExpansionFilesUploadResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1518,7 +1562,9 @@ class EditsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Deletes all images for the specified language and image type. Returns an
@@ -1605,7 +1651,10 @@ class EditsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImagesDeleteAllResponse.fromJson(data));
+    return _response.then(
+      (data) => ImagesDeleteAllResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all images. The response may be empty.
@@ -1691,7 +1740,10 @@ class EditsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImagesListResponse.fromJson(data));
+    return _response.then(
+      (data) => ImagesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads an image of the specified language and image type, and adds to the
@@ -1808,7 +1860,10 @@ class EditsImagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ImagesUploadResponse.fromJson(data));
+    return _response.then(
+      (data) => ImagesUploadResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1880,7 +1935,9 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Deletes all store listings.
@@ -1938,7 +1995,9 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a localized store listing.
@@ -2004,7 +2063,9 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Listing.fromJson(data));
+    return _response.then(
+      (data) => Listing.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all localized store listings.
@@ -2062,7 +2123,10 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListingsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ListingsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a localized store listing.
@@ -2134,7 +2198,9 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Listing.fromJson(data));
+    return _response.then(
+      (data) => Listing.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates or updates a localized store listing.
@@ -2206,7 +2272,9 @@ class EditsListingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Listing.fromJson(data));
+    return _response.then(
+      (data) => Listing.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2277,7 +2345,9 @@ class EditsTestersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Testers.fromJson(data));
+    return _response.then(
+      (data) => Testers.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches testers.
@@ -2348,7 +2418,9 @@ class EditsTestersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Testers.fromJson(data));
+    return _response.then(
+      (data) => Testers.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates testers.
@@ -2419,7 +2491,9 @@ class EditsTestersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Testers.fromJson(data));
+    return _response.then(
+      (data) => Testers.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2490,7 +2564,9 @@ class EditsTracksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Track.fromJson(data));
+    return _response.then(
+      (data) => Track.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all tracks.
@@ -2548,7 +2624,10 @@ class EditsTracksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TracksListResponse.fromJson(data));
+    return _response.then(
+      (data) => TracksListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches a track.
@@ -2619,7 +2698,9 @@ class EditsTracksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Track.fromJson(data));
+    return _response.then(
+      (data) => Track.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a track.
@@ -2690,7 +2771,9 @@ class EditsTracksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Track.fromJson(data));
+    return _response.then(
+      (data) => Track.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2753,7 +2836,9 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets an in-app product, which can be a managed product or a subscription.
@@ -2810,7 +2895,10 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InAppProduct.fromJson(data));
+    return _response.then(
+      (data) =>
+          InAppProduct.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an in-app product (i.e. a managed product or a subscriptions).
@@ -2877,7 +2965,10 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InAppProduct.fromJson(data));
+    return _response.then(
+      (data) =>
+          InAppProduct.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all in-app products - both managed products and subscriptions.
@@ -2945,7 +3036,10 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InappproductsListResponse.fromJson(data));
+    return _response.then(
+      (data) => InappproductsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Patches an in-app product (i.e. a managed product or a subscriptions).
@@ -3019,7 +3113,10 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InAppProduct.fromJson(data));
+    return _response.then(
+      (data) =>
+          InAppProduct.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an in-app product (i.e. a managed product or a subscriptions).
@@ -3093,7 +3190,10 @@ class InappproductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InAppProduct.fromJson(data));
+    return _response.then(
+      (data) =>
+          InAppProduct.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3177,7 +3277,10 @@ class InternalappsharingartifactsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InternalAppSharingArtifact.fromJson(data));
+    return _response.then(
+      (data) => InternalAppSharingArtifact.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads an app bundle to internal app sharing. If you are using the Google
@@ -3254,7 +3357,10 @@ class InternalappsharingartifactsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InternalAppSharingArtifact.fromJson(data));
+    return _response.then(
+      (data) => InternalAppSharingArtifact.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3330,7 +3436,9 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -3425,7 +3533,9 @@ class PurchasesProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Checks the purchase and consumption status of an inapp item.
@@ -3493,7 +3603,10 @@ class PurchasesProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductPurchase.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductPurchase.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3575,7 +3688,9 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Cancels a user's subscription purchase. The subscription remains valid
@@ -3636,7 +3751,9 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Defers a user's subscription purchase until a specified future expiration
@@ -3712,8 +3829,10 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SubscriptionPurchasesDeferResponse.fromJson(data));
+    return _response.then(
+      (data) => SubscriptionPurchasesDeferResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Checks whether a user's subscription purchase is valid and returns its
@@ -3782,7 +3901,10 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SubscriptionPurchase.fromJson(data));
+    return _response.then(
+      (data) => SubscriptionPurchase.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Refunds a user's subscription purchase, but the subscription remains valid
@@ -3852,7 +3974,9 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Refunds and immediately revokes a user's subscription purchase. Access to
@@ -3923,7 +4047,9 @@ class PurchasesSubscriptionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -4038,7 +4164,10 @@ class PurchasesVoidedpurchasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VoidedPurchasesListResponse.fromJson(data));
+    return _response.then(
+      (data) => VoidedPurchasesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4107,7 +4236,9 @@ class ReviewsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Review.fromJson(data));
+    return _response.then(
+      (data) => Review.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all reviews.
@@ -4181,7 +4312,10 @@ class ReviewsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReviewsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ReviewsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Replies to a single review, or updates an existing reply.
@@ -4245,7 +4379,10 @@ class ReviewsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReviewsReplyResponse.fromJson(data));
+    return _response.then(
+      (data) => ReviewsReplyResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4326,7 +4463,9 @@ class SystemapksVariantsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Variant.fromJson(data));
+    return _response.then(
+      (data) => Variant.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Downloads a previously created system APK which is suitable for inclusion
@@ -4400,7 +4539,9 @@ class SystemapksVariantsResourceApi {
     );
     if (_downloadOptions == null ||
         _downloadOptions == commons.DownloadOptions.Metadata) {
-      return _response.then((data) => null);
+      return _response.then(
+        (data) => null,
+      );
     } else {
       return _response;
     }
@@ -4468,7 +4609,9 @@ class SystemapksVariantsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Variant.fromJson(data));
+    return _response.then(
+      (data) => Variant.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of previously created system APK variants.
@@ -4526,7 +4669,10 @@ class SystemapksVariantsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SystemApksListResponse.fromJson(data));
+    return _response.then(
+      (data) => SystemApksListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4542,7 +4688,8 @@ class Apk {
 
   Apk.fromJson(core.Map _json) {
     if (_json.containsKey('binary')) {
-      binary = ApkBinary.fromJson(_json['binary']);
+      binary = ApkBinary.fromJson(
+          _json['binary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('versionCode')) {
       versionCode = _json['versionCode'] as core.int;
@@ -4603,8 +4750,8 @@ class ApksAddExternallyHostedRequest {
 
   ApksAddExternallyHostedRequest.fromJson(core.Map _json) {
     if (_json.containsKey('externallyHostedApk')) {
-      externallyHostedApk =
-          ExternallyHostedApk.fromJson(_json['externallyHostedApk']);
+      externallyHostedApk = ExternallyHostedApk.fromJson(
+          _json['externallyHostedApk'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4626,8 +4773,8 @@ class ApksAddExternallyHostedResponse {
 
   ApksAddExternallyHostedResponse.fromJson(core.Map _json) {
     if (_json.containsKey('externallyHostedApk')) {
-      externallyHostedApk =
-          ExternallyHostedApk.fromJson(_json['externallyHostedApk']);
+      externallyHostedApk = ExternallyHostedApk.fromJson(
+          _json['externallyHostedApk'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4653,7 +4800,8 @@ class ApksListResponse {
   ApksListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('apks')) {
       apks = (_json['apks'] as core.List)
-          .map<Apk>((value) => Apk.fromJson(value))
+          .map<Apk>((value) =>
+              Apk.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4810,7 +4958,8 @@ class BundlesListResponse {
   BundlesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('bundles')) {
       bundles = (_json['bundles'] as core.List)
-          .map<Bundle>((value) => Bundle.fromJson(value))
+          .map<Bundle>((value) =>
+              Bundle.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4842,10 +4991,12 @@ class Comment {
 
   Comment.fromJson(core.Map _json) {
     if (_json.containsKey('developerComment')) {
-      developerComment = DeveloperComment.fromJson(_json['developerComment']);
+      developerComment = DeveloperComment.fromJson(
+          _json['developerComment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userComment')) {
-      userComment = UserComment.fromJson(_json['userComment']);
+      userComment = UserComment.fromJson(
+          _json['userComment'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4931,8 +5082,8 @@ class DeobfuscationFilesUploadResponse {
 
   DeobfuscationFilesUploadResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deobfuscationFile')) {
-      deobfuscationFile =
-          DeobfuscationFile.fromJson(_json['deobfuscationFile']);
+      deobfuscationFile = DeobfuscationFile.fromJson(
+          _json['deobfuscationFile'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4957,7 +5108,8 @@ class DeveloperComment {
 
   DeveloperComment.fromJson(core.Map _json) {
     if (_json.containsKey('lastModified')) {
-      lastModified = Timestamp.fromJson(_json['lastModified']);
+      lastModified = Timestamp.fromJson(
+          _json['lastModified'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -5176,7 +5328,8 @@ class ExpansionFilesUploadResponse {
 
   ExpansionFilesUploadResponse.fromJson(core.Map _json) {
     if (_json.containsKey('expansionFile')) {
-      expansionFile = ExpansionFile.fromJson(_json['expansionFile']);
+      expansionFile = ExpansionFile.fromJson(
+          _json['expansionFile'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5288,7 +5441,8 @@ class ExternallyHostedApk {
     }
     if (_json.containsKey('usesPermissions')) {
       usesPermissions = (_json['usesPermissions'] as core.List)
-          .map<UsesPermission>((value) => UsesPermission.fromJson(value))
+          .map<UsesPermission>((value) => UsesPermission.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('versionCode')) {
@@ -5410,7 +5564,8 @@ class ImagesDeleteAllResponse {
   ImagesDeleteAllResponse.fromJson(core.Map _json) {
     if (_json.containsKey('deleted')) {
       deleted = (_json['deleted'] as core.List)
-          .map<Image>((value) => Image.fromJson(value))
+          .map<Image>((value) =>
+              Image.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5434,7 +5589,8 @@ class ImagesListResponse {
   ImagesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('images')) {
       images = (_json['images'] as core.List)
-          .map<Image>((value) => Image.fromJson(value))
+          .map<Image>((value) =>
+              Image.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5457,7 +5613,8 @@ class ImagesUploadResponse {
 
   ImagesUploadResponse.fromJson(core.Map _json) {
     if (_json.containsKey('image')) {
-      image = Image.fromJson(_json['image']);
+      image =
+          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5532,23 +5689,28 @@ class InAppProduct {
       defaultLanguage = _json['defaultLanguage'] as core.String;
     }
     if (_json.containsKey('defaultPrice')) {
-      defaultPrice = Price.fromJson(_json['defaultPrice']);
+      defaultPrice = Price.fromJson(
+          _json['defaultPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gracePeriod')) {
       gracePeriod = _json['gracePeriod'] as core.String;
     }
     if (_json.containsKey('listings')) {
       listings = commons.mapMap<core.Map, InAppProductListing>(
-          _json['listings'].cast<core.String, core.Map>(),
-          (core.Map item) => InAppProductListing.fromJson(item));
+          (_json['listings'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => InAppProductListing.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('packageName')) {
       packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('prices')) {
       prices = commons.mapMap<core.Map, Price>(
-          _json['prices'].cast<core.String, core.Map>(),
-          (core.Map item) => Price.fromJson(item));
+          (_json['prices'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) =>
+              Price.fromJson(item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('purchaseType')) {
       purchaseType = _json['purchaseType'] as core.String;
@@ -5671,17 +5833,20 @@ class InappproductsListResponse {
   InappproductsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('inappproduct')) {
       inappproduct = (_json['inappproduct'] as core.List)
-          .map<InAppProduct>((value) => InAppProduct.fromJson(value))
+          .map<InAppProduct>((value) => InAppProduct.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
+      tokenPagination = TokenPagination.fromJson(
+          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5882,7 +6047,8 @@ class ListingsListResponse {
     }
     if (_json.containsKey('listings')) {
       listings = (_json['listings'] as core.List)
-          .map<Listing>((value) => Listing.fromJson(value))
+          .map<Listing>((value) =>
+              Listing.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6207,7 +6373,8 @@ class Review {
     }
     if (_json.containsKey('comments')) {
       comments = (_json['comments'] as core.List)
-          .map<Comment>((value) => Comment.fromJson(value))
+          .map<Comment>((value) =>
+              Comment.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('reviewId')) {
@@ -6242,7 +6409,8 @@ class ReviewReplyResult {
 
   ReviewReplyResult.fromJson(core.Map _json) {
     if (_json.containsKey('lastEdited')) {
-      lastEdited = Timestamp.fromJson(_json['lastEdited']);
+      lastEdited = Timestamp.fromJson(
+          _json['lastEdited'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replyText')) {
       replyText = _json['replyText'] as core.String;
@@ -6276,15 +6444,18 @@ class ReviewsListResponse {
 
   ReviewsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reviews')) {
       reviews = (_json['reviews'] as core.List)
-          .map<Review>((value) => Review.fromJson(value))
+          .map<Review>((value) =>
+              Review.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
+      tokenPagination = TokenPagination.fromJson(
+          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6335,7 +6506,8 @@ class ReviewsReplyResponse {
 
   ReviewsReplyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('result')) {
-      result = ReviewReplyResult.fromJson(_json['result']);
+      result = ReviewReplyResult.fromJson(
+          _json['result'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6442,7 +6614,8 @@ class SubscriptionPriceChange {
 
   SubscriptionPriceChange.fromJson(core.Map _json) {
     if (_json.containsKey('newPrice')) {
-      newPrice = Price.fromJson(_json['newPrice']);
+      newPrice = Price.fromJson(
+          _json['newPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.int;
@@ -6625,8 +6798,8 @@ class SubscriptionPurchase {
       cancelReason = _json['cancelReason'] as core.int;
     }
     if (_json.containsKey('cancelSurveyResult')) {
-      cancelSurveyResult =
-          SubscriptionCancelSurveyResult.fromJson(_json['cancelSurveyResult']);
+      cancelSurveyResult = SubscriptionCancelSurveyResult.fromJson(
+          _json['cancelSurveyResult'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('countryCode')) {
       countryCode = _json['countryCode'] as core.String;
@@ -6650,8 +6823,9 @@ class SubscriptionPurchase {
       givenName = _json['givenName'] as core.String;
     }
     if (_json.containsKey('introductoryPriceInfo')) {
-      introductoryPriceInfo =
-          IntroductoryPriceInfo.fromJson(_json['introductoryPriceInfo']);
+      introductoryPriceInfo = IntroductoryPriceInfo.fromJson(
+          _json['introductoryPriceInfo']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -6677,7 +6851,8 @@ class SubscriptionPurchase {
       priceAmountMicros = _json['priceAmountMicros'] as core.String;
     }
     if (_json.containsKey('priceChange')) {
-      priceChange = SubscriptionPriceChange.fromJson(_json['priceChange']);
+      priceChange = SubscriptionPriceChange.fromJson(
+          _json['priceChange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('priceCurrencyCode')) {
       priceCurrencyCode = _json['priceCurrencyCode'] as core.String;
@@ -6830,7 +7005,8 @@ class SubscriptionPurchasesDeferRequest {
 
   SubscriptionPurchasesDeferRequest.fromJson(core.Map _json) {
     if (_json.containsKey('deferralInfo')) {
-      deferralInfo = SubscriptionDeferralInfo.fromJson(_json['deferralInfo']);
+      deferralInfo = SubscriptionDeferralInfo.fromJson(
+          _json['deferralInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6875,7 +7051,8 @@ class SystemApksListResponse {
   SystemApksListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('variants')) {
       variants = (_json['variants'] as core.List)
-          .map<Variant>((value) => Variant.fromJson(value))
+          .map<Variant>((value) =>
+              Variant.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6999,7 +7176,8 @@ class Track {
   Track.fromJson(core.Map _json) {
     if (_json.containsKey('releases')) {
       releases = (_json['releases'] as core.List)
-          .map<TrackRelease>((value) => TrackRelease.fromJson(value))
+          .map<TrackRelease>((value) => TrackRelease.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('track')) {
@@ -7064,7 +7242,8 @@ class TrackRelease {
 
   TrackRelease.fromJson(core.Map _json) {
     if (_json.containsKey('countryTargeting')) {
-      countryTargeting = CountryTargeting.fromJson(_json['countryTargeting']);
+      countryTargeting = CountryTargeting.fromJson(
+          _json['countryTargeting'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inAppUpdatePriority')) {
       inAppUpdatePriority = _json['inAppUpdatePriority'] as core.int;
@@ -7074,7 +7253,8 @@ class TrackRelease {
     }
     if (_json.containsKey('releaseNotes')) {
       releaseNotes = (_json['releaseNotes'] as core.List)
-          .map<LocalizedText>((value) => LocalizedText.fromJson(value))
+          .map<LocalizedText>((value) => LocalizedText.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('status')) {
@@ -7134,7 +7314,8 @@ class TracksListResponse {
     }
     if (_json.containsKey('tracks')) {
       tracks = (_json['tracks'] as core.List)
-          .map<Track>((value) => Track.fromJson(value))
+          .map<Track>((value) =>
+              Track.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7213,10 +7394,12 @@ class UserComment {
       device = _json['device'] as core.String;
     }
     if (_json.containsKey('deviceMetadata')) {
-      deviceMetadata = DeviceMetadata.fromJson(_json['deviceMetadata']);
+      deviceMetadata = DeviceMetadata.fromJson(
+          _json['deviceMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lastModified')) {
-      lastModified = Timestamp.fromJson(_json['lastModified']);
+      lastModified = Timestamp.fromJson(
+          _json['lastModified'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('originalText')) {
       originalText = _json['originalText'] as core.String;
@@ -7324,7 +7507,8 @@ class Variant {
 
   Variant.fromJson(core.Map _json) {
     if (_json.containsKey('deviceSpec')) {
-      deviceSpec = DeviceSpec.fromJson(_json['deviceSpec']);
+      deviceSpec = DeviceSpec.fromJson(
+          _json['deviceSpec'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('variantId')) {
       variantId = _json['variantId'] as core.int;
@@ -7442,14 +7626,17 @@ class VoidedPurchasesListResponse {
 
   VoidedPurchasesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('pageInfo')) {
-      pageInfo = PageInfo.fromJson(_json['pageInfo']);
+      pageInfo = PageInfo.fromJson(
+          _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tokenPagination')) {
-      tokenPagination = TokenPagination.fromJson(_json['tokenPagination']);
+      tokenPagination = TokenPagination.fromJson(
+          _json['tokenPagination'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('voidedPurchases')) {
       voidedPurchases = (_json['voidedPurchases'] as core.List)
-          .map<VoidedPurchase>((value) => VoidedPurchase.fromJson(value))
+          .map<VoidedPurchase>((value) => VoidedPurchase.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

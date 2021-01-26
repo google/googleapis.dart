@@ -102,7 +102,10 @@ class LineitemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DownloadLineItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => DownloadLineItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads line items in CSV format. YouTube & partners line items are not
@@ -151,7 +154,10 @@ class LineitemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UploadLineItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => UploadLineItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -212,7 +218,9 @@ class QueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Query.fromJson(data));
+    return _response.then(
+      (data) => Query.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a stored query as well as the associated stored reports.
@@ -260,7 +268,9 @@ class QueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a stored query.
@@ -308,7 +318,9 @@ class QueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Query.fromJson(data));
+    return _response.then(
+      (data) => Query.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves stored queries.
@@ -363,7 +375,10 @@ class QueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListQueriesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListQueriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Runs a stored query to generate a report.
@@ -423,7 +438,9 @@ class QueriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 }
 
@@ -490,7 +507,10 @@ class ReportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReportsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReportsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -544,7 +564,10 @@ class SdfResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DownloadResponse.fromJson(data));
+    return _response.then(
+      (data) => DownloadResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -573,7 +596,8 @@ class ChannelGrouping {
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<Rule>((value) => Rule.fromJson(value))
+          .map<Rule>((value) =>
+              Rule.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -604,7 +628,8 @@ class DisjunctiveMatchStatement {
   DisjunctiveMatchStatement.fromJson(core.Map _json) {
     if (_json.containsKey('eventFilters')) {
       eventFilters = (_json['eventFilters'] as core.List)
-          .map<EventFilter>((value) => EventFilter.fromJson(value))
+          .map<EventFilter>((value) => EventFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -845,8 +870,8 @@ class EventFilter {
 
   EventFilter.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionFilter')) {
-      dimensionFilter =
-          PathQueryOptionsFilter.fromJson(_json['dimensionFilter']);
+      dimensionFilter = PathQueryOptionsFilter.fromJson(
+          _json['dimensionFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1175,7 +1200,8 @@ class ListQueriesResponse {
     }
     if (_json.containsKey('queries')) {
       queries = (_json['queries'] as core.List)
-          .map<Query>((value) => Query.fromJson(value))
+          .map<Query>((value) =>
+              Query.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1218,7 +1244,8 @@ class ListReportsResponse {
     }
     if (_json.containsKey('reports')) {
       reports = (_json['reports'] as core.List)
-          .map<Report>((value) => Report.fromJson(value))
+          .map<Report>((value) =>
+              Report.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1256,7 +1283,8 @@ class Options {
           _json['includeOnlyTargetedUserLists'] as core.bool;
     }
     if (_json.containsKey('pathQueryOptions')) {
-      pathQueryOptions = PathQueryOptions.fromJson(_json['pathQueryOptions']);
+      pathQueryOptions = PathQueryOptions.fromJson(
+          _json['pathQueryOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1332,7 +1360,8 @@ class Parameters {
   Parameters.fromJson(core.Map _json) {
     if (_json.containsKey('filters')) {
       filters = (_json['filters'] as core.List)
-          .map<FilterPair>((value) => FilterPair.fromJson(value))
+          .map<FilterPair>((value) =>
+              FilterPair.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('groupBys')) {
@@ -1349,7 +1378,8 @@ class Parameters {
           .toList();
     }
     if (_json.containsKey('options')) {
-      options = Options.fromJson(_json['options']);
+      options = Options.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -1402,7 +1432,8 @@ class PathFilter {
   PathFilter.fromJson(core.Map _json) {
     if (_json.containsKey('eventFilters')) {
       eventFilters = (_json['eventFilters'] as core.List)
-          .map<EventFilter>((value) => EventFilter.fromJson(value))
+          .map<EventFilter>((value) => EventFilter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pathMatchPosition')) {
@@ -1436,11 +1467,13 @@ class PathQueryOptions {
 
   PathQueryOptions.fromJson(core.Map _json) {
     if (_json.containsKey('channelGrouping')) {
-      channelGrouping = ChannelGrouping.fromJson(_json['channelGrouping']);
+      channelGrouping = ChannelGrouping.fromJson(
+          _json['channelGrouping'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pathFilters')) {
       pathFilters = (_json['pathFilters'] as core.List)
-          .map<PathFilter>((value) => PathFilter.fromJson(value))
+          .map<PathFilter>((value) =>
+              PathFilter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1807,10 +1840,12 @@ class Query {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = QueryMetadata.fromJson(_json['metadata']);
+      metadata = QueryMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('params')) {
-      params = Parameters.fromJson(_json['params']);
+      params = Parameters.fromJson(
+          _json['params'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryId')) {
       queryId = _json['queryId'] as core.String;
@@ -1822,7 +1857,8 @@ class Query {
       reportDataStartTimeMs = _json['reportDataStartTimeMs'] as core.String;
     }
     if (_json.containsKey('schedule')) {
-      schedule = QuerySchedule.fromJson(_json['schedule']);
+      schedule = QuerySchedule.fromJson(
+          _json['schedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timezoneCode')) {
       timezoneCode = _json['timezoneCode'] as core.String;
@@ -2089,13 +2125,16 @@ class Report {
 
   Report.fromJson(core.Map _json) {
     if (_json.containsKey('key')) {
-      key = ReportKey.fromJson(_json['key']);
+      key = ReportKey.fromJson(
+          _json['key'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = ReportMetadata.fromJson(_json['metadata']);
+      metadata = ReportMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('params')) {
-      params = Parameters.fromJson(_json['params']);
+      params = Parameters.fromJson(
+          _json['params'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2214,7 +2253,8 @@ class ReportMetadata {
       reportDataStartTimeMs = _json['reportDataStartTimeMs'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = ReportStatus.fromJson(_json['status']);
+      status = ReportStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2262,7 +2302,8 @@ class ReportStatus {
 
   ReportStatus.fromJson(core.Map _json) {
     if (_json.containsKey('failure')) {
-      failure = ReportFailure.fromJson(_json['failure']);
+      failure = ReportFailure.fromJson(
+          _json['failure'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('finishTimeMs')) {
       finishTimeMs = _json['finishTimeMs'] as core.String;
@@ -2378,8 +2419,9 @@ class Rule {
     if (_json.containsKey('disjunctiveMatchStatements')) {
       disjunctiveMatchStatements =
           (_json['disjunctiveMatchStatements'] as core.List)
-              .map<DisjunctiveMatchStatement>(
-                  (value) => DisjunctiveMatchStatement.fromJson(value))
+              .map<DisjunctiveMatchStatement>((value) =>
+                  DisjunctiveMatchStatement.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
               .toList();
     }
     if (_json.containsKey('name')) {
@@ -2528,7 +2570,8 @@ class UploadLineItemsResponse {
 
   UploadLineItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('uploadStatus')) {
-      uploadStatus = UploadStatus.fromJson(_json['uploadStatus']);
+      uploadStatus = UploadStatus.fromJson(
+          _json['uploadStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2559,7 +2602,8 @@ class UploadStatus {
     }
     if (_json.containsKey('rowStatus')) {
       rowStatus = (_json['rowStatus'] as core.List)
-          .map<RowStatus>((value) => RowStatus.fromJson(value))
+          .map<RowStatus>((value) =>
+              RowStatus.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

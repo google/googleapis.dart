@@ -136,7 +136,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an autoscaling policy. It is an error to delete an autoscaling
@@ -194,7 +197,9 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves autoscaling policy.
@@ -251,7 +256,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -312,7 +320,9 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists autoscaling policies in the project.
@@ -383,8 +393,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAutoscalingPoliciesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAutoscalingPoliciesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -446,7 +458,9 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -510,7 +524,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
@@ -574,7 +591,10 @@ class ProjectsLocationsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -644,7 +664,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a workflow template. It does not cancel in-progress workflows.
@@ -709,7 +732,9 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the latest workflow template.Can retrieve previously
@@ -775,7 +800,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -836,7 +864,9 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
@@ -909,7 +939,9 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Instantiates a template and begins execution.This method is equivalent to
@@ -996,7 +1028,9 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists workflows that match the specified filter in the request.
@@ -1067,8 +1101,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListWorkflowTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListWorkflowTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1130,7 +1166,9 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1194,7 +1232,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates (replaces) workflow template. The updated template must contain
@@ -1258,7 +1299,10 @@ class ProjectsLocationsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1345,7 +1389,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an autoscaling policy. It is an error to delete an autoscaling
@@ -1403,7 +1450,9 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves autoscaling policy.
@@ -1460,7 +1509,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -1521,7 +1573,9 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists autoscaling policies in the project.
@@ -1592,8 +1646,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListAutoscalingPoliciesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListAutoscalingPoliciesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -1655,7 +1711,9 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -1719,7 +1777,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates (replaces) autoscaling policy.Disabled check for update_mask,
@@ -1783,7 +1844,10 @@ class ProjectsRegionsAutoscalingPoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AutoscalingPolicy.fromJson(data));
+    return _response.then(
+      (data) => AutoscalingPolicy.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1870,7 +1934,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a cluster in a project. The returned Operation.metadata will be
@@ -1958,7 +2024,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets cluster diagnostic information. The returned Operation.metadata will
@@ -2036,7 +2104,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the resource representation for a cluster in a project.
@@ -2102,7 +2172,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Cluster.fromJson(data));
+    return _response.then(
+      (data) => Cluster.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -2162,7 +2234,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all regions/{region}/clusters in a project alphabetically.
@@ -2249,7 +2323,10 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListClustersResponse.fromJson(data));
+    return _response.then(
+      (data) => ListClustersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a cluster in a project. The returned Operation.metadata will be
@@ -2372,7 +2449,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -2433,7 +2512,9 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -2496,7 +2577,10 @@ class ProjectsRegionsClustersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2580,7 +2664,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the job from the project. If the job is active, the delete fails,
@@ -2647,7 +2733,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the resource representation for a job in a project.
@@ -2713,7 +2801,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -2773,7 +2863,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists regions/{region}/jobs in a project.
@@ -2879,7 +2971,10 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListJobsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListJobsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a job in a project.
@@ -2961,7 +3056,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -3022,7 +3119,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submits a job to a cluster.
@@ -3087,7 +3186,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Job.fromJson(data));
+    return _response.then(
+      (data) => Job.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submits job to a cluster.
@@ -3152,7 +3253,9 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -3215,7 +3318,10 @@ class ProjectsRegionsJobsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3279,7 +3385,9 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -3331,7 +3439,9 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -3382,7 +3492,9 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -3442,7 +3554,9 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -3517,7 +3631,10 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -3578,7 +3695,9 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -3641,7 +3760,10 @@ class ProjectsRegionsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3711,7 +3833,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a workflow template. It does not cancel in-progress workflows.
@@ -3776,7 +3901,9 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the latest workflow template.Can retrieve previously
@@ -3842,7 +3969,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the access control policy for a resource. Returns an empty policy if
@@ -3903,7 +4033,9 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Instantiates a template and begins execution.The returned Operation can be
@@ -3976,7 +4108,9 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Instantiates a template and begins execution.This method is equivalent to
@@ -4063,7 +4197,9 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists workflows that match the specified filter in the request.
@@ -4134,8 +4270,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListWorkflowTemplatesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListWorkflowTemplatesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the access control policy on the specified resource. Replaces any
@@ -4197,7 +4335,9 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns permissions that a caller has on the specified resource. If the
@@ -4261,7 +4401,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates (replaces) workflow template. The updated template must contain
@@ -4325,7 +4468,10 @@ class ProjectsRegionsWorkflowTemplatesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WorkflowTemplate.fromJson(data));
+    return _response.then(
+      (data) => WorkflowTemplate.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4426,8 +4572,8 @@ class AutoscalingPolicy {
 
   AutoscalingPolicy.fromJson(core.Map _json) {
     if (_json.containsKey('basicAlgorithm')) {
-      basicAlgorithm =
-          BasicAutoscalingAlgorithm.fromJson(_json['basicAlgorithm']);
+      basicAlgorithm = BasicAutoscalingAlgorithm.fromJson(
+          _json['basicAlgorithm'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -4437,11 +4583,12 @@ class AutoscalingPolicy {
     }
     if (_json.containsKey('secondaryWorkerConfig')) {
       secondaryWorkerConfig = InstanceGroupAutoscalingPolicyConfig.fromJson(
-          _json['secondaryWorkerConfig']);
+          _json['secondaryWorkerConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('workerConfig')) {
-      workerConfig =
-          InstanceGroupAutoscalingPolicyConfig.fromJson(_json['workerConfig']);
+      workerConfig = InstanceGroupAutoscalingPolicyConfig.fromJson(
+          _json['workerConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4483,7 +4630,8 @@ class BasicAutoscalingAlgorithm {
       cooldownPeriod = _json['cooldownPeriod'] as core.String;
     }
     if (_json.containsKey('yarnConfig')) {
-      yarnConfig = BasicYarnAutoscalingConfig.fromJson(_json['yarnConfig']);
+      yarnConfig = BasicYarnAutoscalingConfig.fromJson(
+          _json['yarnConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4643,7 +4791,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -4735,25 +4884,30 @@ class Cluster {
       clusterUuid = _json['clusterUuid'] as core.String;
     }
     if (_json.containsKey('config')) {
-      config = ClusterConfig.fromJson(_json['config']);
+      config = ClusterConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('metrics')) {
-      metrics = ClusterMetrics.fromJson(_json['metrics']);
+      metrics = ClusterMetrics.fromJson(
+          _json['metrics'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = ClusterStatus.fromJson(_json['status']);
+      status = ClusterStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('statusHistory')) {
       statusHistory = (_json['statusHistory'] as core.List)
-          .map<ClusterStatus>((value) => ClusterStatus.fromJson(value))
+          .map<ClusterStatus>((value) => ClusterStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4858,48 +5012,58 @@ class ClusterConfig {
 
   ClusterConfig.fromJson(core.Map _json) {
     if (_json.containsKey('autoscalingConfig')) {
-      autoscalingConfig =
-          AutoscalingConfig.fromJson(_json['autoscalingConfig']);
+      autoscalingConfig = AutoscalingConfig.fromJson(
+          _json['autoscalingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('configBucket')) {
       configBucket = _json['configBucket'] as core.String;
     }
     if (_json.containsKey('encryptionConfig')) {
-      encryptionConfig = EncryptionConfig.fromJson(_json['encryptionConfig']);
+      encryptionConfig = EncryptionConfig.fromJson(
+          _json['encryptionConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endpointConfig')) {
-      endpointConfig = EndpointConfig.fromJson(_json['endpointConfig']);
+      endpointConfig = EndpointConfig.fromJson(
+          _json['endpointConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gceClusterConfig')) {
-      gceClusterConfig = GceClusterConfig.fromJson(_json['gceClusterConfig']);
+      gceClusterConfig = GceClusterConfig.fromJson(
+          _json['gceClusterConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('initializationActions')) {
       initializationActions = (_json['initializationActions'] as core.List)
-          .map<NodeInitializationAction>(
-              (value) => NodeInitializationAction.fromJson(value))
+          .map<NodeInitializationAction>((value) =>
+              NodeInitializationAction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('lifecycleConfig')) {
-      lifecycleConfig = LifecycleConfig.fromJson(_json['lifecycleConfig']);
+      lifecycleConfig = LifecycleConfig.fromJson(
+          _json['lifecycleConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('masterConfig')) {
-      masterConfig = InstanceGroupConfig.fromJson(_json['masterConfig']);
+      masterConfig = InstanceGroupConfig.fromJson(
+          _json['masterConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('secondaryWorkerConfig')) {
-      secondaryWorkerConfig =
-          InstanceGroupConfig.fromJson(_json['secondaryWorkerConfig']);
+      secondaryWorkerConfig = InstanceGroupConfig.fromJson(
+          _json['secondaryWorkerConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('securityConfig')) {
-      securityConfig = SecurityConfig.fromJson(_json['securityConfig']);
+      securityConfig = SecurityConfig.fromJson(
+          _json['securityConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('softwareConfig')) {
-      softwareConfig = SoftwareConfig.fromJson(_json['softwareConfig']);
+      softwareConfig = SoftwareConfig.fromJson(
+          _json['softwareConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tempBucket')) {
       tempBucket = _json['tempBucket'] as core.String;
     }
     if (_json.containsKey('workerConfig')) {
-      workerConfig = InstanceGroupConfig.fromJson(_json['workerConfig']);
+      workerConfig = InstanceGroupConfig.fromJson(
+          _json['workerConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4964,12 +5128,14 @@ class ClusterMetrics {
   ClusterMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('hdfsMetrics')) {
       hdfsMetrics = commons.mapMap<core.String, core.String>(
-          _json['hdfsMetrics'].cast<core.String, core.String>(),
+          (_json['hdfsMetrics'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('yarnMetrics')) {
       yarnMetrics = commons.mapMap<core.String, core.String>(
-          _json['yarnMetrics'].cast<core.String, core.String>(),
+          (_json['yarnMetrics'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -5066,19 +5232,22 @@ class ClusterOperationMetadata {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = ClusterOperationStatus.fromJson(_json['status']);
+      status = ClusterOperationStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('statusHistory')) {
       statusHistory = (_json['statusHistory'] as core.List)
-          .map<ClusterOperationStatus>(
-              (value) => ClusterOperationStatus.fromJson(value))
+          .map<ClusterOperationStatus>((value) =>
+              ClusterOperationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('warnings')) {
@@ -5188,7 +5357,8 @@ class ClusterSelector {
   ClusterSelector.fromJson(core.Map _json) {
     if (_json.containsKey('clusterLabels')) {
       clusterLabels = commons.mapMap<core.String, core.String>(
-          _json['clusterLabels'].cast<core.String, core.String>(),
+          (_json['clusterLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('zone')) {
@@ -5419,7 +5589,8 @@ class EndpointConfig {
     }
     if (_json.containsKey('httpPorts')) {
       httpPorts = commons.mapMap<core.String, core.String>(
-          _json['httpPorts'].cast<core.String, core.String>(),
+          (_json['httpPorts'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -5601,22 +5772,23 @@ class GceClusterConfig {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.String, core.String>(
-          _json['metadata'].cast<core.String, core.String>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('networkUri')) {
       networkUri = _json['networkUri'] as core.String;
     }
     if (_json.containsKey('nodeGroupAffinity')) {
-      nodeGroupAffinity =
-          NodeGroupAffinity.fromJson(_json['nodeGroupAffinity']);
+      nodeGroupAffinity = NodeGroupAffinity.fromJson(
+          _json['nodeGroupAffinity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateIpv6GoogleAccess')) {
       privateIpv6GoogleAccess = _json['privateIpv6GoogleAccess'] as core.String;
     }
     if (_json.containsKey('reservationAffinity')) {
-      reservationAffinity =
-          ReservationAffinity.fromJson(_json['reservationAffinity']);
+      reservationAffinity = ReservationAffinity.fromJson(
+          _json['reservationAffinity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serviceAccount')) {
       serviceAccount = _json['serviceAccount'] as core.String;
@@ -5688,7 +5860,8 @@ class GetIamPolicyRequest {
 
   GetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('options')) {
-      options = GetPolicyOptions.fromJson(_json['options']);
+      options = GetPolicyOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5796,7 +5969,8 @@ class HadoopJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mainClass')) {
       mainClass = _json['mainClass'] as core.String;
@@ -5806,7 +5980,8 @@ class HadoopJob {
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -5882,18 +6057,21 @@ class HiveJob {
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
     }
     if (_json.containsKey('queryList')) {
-      queryList = QueryList.fromJson(_json['queryList']);
+      queryList = QueryList.fromJson(
+          _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
       scriptVariables = commons.mapMap<core.String, core.String>(
-          _json['scriptVariables'].cast<core.String, core.String>(),
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -6057,11 +6235,13 @@ class InstanceGroupConfig {
   InstanceGroupConfig.fromJson(core.Map _json) {
     if (_json.containsKey('accelerators')) {
       accelerators = (_json['accelerators'] as core.List)
-          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(value))
+          .map<AcceleratorConfig>((value) => AcceleratorConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('diskConfig')) {
-      diskConfig = DiskConfig.fromJson(_json['diskConfig']);
+      diskConfig = DiskConfig.fromJson(
+          _json['diskConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('imageUri')) {
       imageUri = _json['imageUri'] as core.String;
@@ -6073,7 +6253,8 @@ class InstanceGroupConfig {
     }
     if (_json.containsKey('instanceReferences')) {
       instanceReferences = (_json['instanceReferences'] as core.List)
-          .map<InstanceReference>((value) => InstanceReference.fromJson(value))
+          .map<InstanceReference>((value) => InstanceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('isPreemptible')) {
@@ -6083,8 +6264,8 @@ class InstanceGroupConfig {
       machineTypeUri = _json['machineTypeUri'] as core.String;
     }
     if (_json.containsKey('managedGroupConfig')) {
-      managedGroupConfig =
-          ManagedGroupConfig.fromJson(_json['managedGroupConfig']);
+      managedGroupConfig = ManagedGroupConfig.fromJson(
+          _json['managedGroupConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
@@ -6194,7 +6375,8 @@ class InstantiateWorkflowTemplateRequest {
   InstantiateWorkflowTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.String, core.String>(
-          _json['parameters'].cast<core.String, core.String>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('requestId')) {
@@ -6310,57 +6492,72 @@ class Job {
       driverOutputResourceUri = _json['driverOutputResourceUri'] as core.String;
     }
     if (_json.containsKey('hadoopJob')) {
-      hadoopJob = HadoopJob.fromJson(_json['hadoopJob']);
+      hadoopJob = HadoopJob.fromJson(
+          _json['hadoopJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hiveJob')) {
-      hiveJob = HiveJob.fromJson(_json['hiveJob']);
+      hiveJob = HiveJob.fromJson(
+          _json['hiveJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('jobUuid')) {
       jobUuid = _json['jobUuid'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('pigJob')) {
-      pigJob = PigJob.fromJson(_json['pigJob']);
+      pigJob = PigJob.fromJson(
+          _json['pigJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('placement')) {
-      placement = JobPlacement.fromJson(_json['placement']);
+      placement = JobPlacement.fromJson(
+          _json['placement'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('prestoJob')) {
-      prestoJob = PrestoJob.fromJson(_json['prestoJob']);
+      prestoJob = PrestoJob.fromJson(
+          _json['prestoJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pysparkJob')) {
-      pysparkJob = PySparkJob.fromJson(_json['pysparkJob']);
+      pysparkJob = PySparkJob.fromJson(
+          _json['pysparkJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reference')) {
-      reference = JobReference.fromJson(_json['reference']);
+      reference = JobReference.fromJson(
+          _json['reference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scheduling')) {
-      scheduling = JobScheduling.fromJson(_json['scheduling']);
+      scheduling = JobScheduling.fromJson(
+          _json['scheduling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkJob')) {
-      sparkJob = SparkJob.fromJson(_json['sparkJob']);
+      sparkJob = SparkJob.fromJson(
+          _json['sparkJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkRJob')) {
-      sparkRJob = SparkRJob.fromJson(_json['sparkRJob']);
+      sparkRJob = SparkRJob.fromJson(
+          _json['sparkRJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkSqlJob')) {
-      sparkSqlJob = SparkSqlJob.fromJson(_json['sparkSqlJob']);
+      sparkSqlJob = SparkSqlJob.fromJson(
+          _json['sparkSqlJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
-      status = JobStatus.fromJson(_json['status']);
+      status = JobStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('statusHistory')) {
       statusHistory = (_json['statusHistory'] as core.List)
-          .map<JobStatus>((value) => JobStatus.fromJson(value))
+          .map<JobStatus>((value) =>
+              JobStatus.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('yarnApplications')) {
       yarnApplications = (_json['yarnApplications'] as core.List)
-          .map<YarnApplication>((value) => YarnApplication.fromJson(value))
+          .map<YarnApplication>((value) => YarnApplication.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6457,7 +6654,8 @@ class JobMetadata {
       startTime = _json['startTime'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = JobStatus.fromJson(_json['status']);
+      status = JobStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6899,7 +7097,8 @@ class ListAutoscalingPoliciesResponse {
     }
     if (_json.containsKey('policies')) {
       policies = (_json['policies'] as core.List)
-          .map<AutoscalingPolicy>((value) => AutoscalingPolicy.fromJson(value))
+          .map<AutoscalingPolicy>((value) => AutoscalingPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6931,7 +7130,8 @@ class ListClustersResponse {
   ListClustersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
       clusters = (_json['clusters'] as core.List)
-          .map<Cluster>((value) => Cluster.fromJson(value))
+          .map<Cluster>((value) =>
+              Cluster.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -6966,7 +7166,8 @@ class ListJobsResponse {
   ListJobsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('jobs')) {
       jobs = (_json['jobs'] as core.List)
-          .map<Job>((value) => Job.fromJson(value))
+          .map<Job>((value) =>
+              Job.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7002,7 +7203,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7037,7 +7239,8 @@ class ListWorkflowTemplatesResponse {
     }
     if (_json.containsKey('templates')) {
       templates = (_json['templates'] as core.List)
-          .map<WorkflowTemplate>((value) => WorkflowTemplate.fromJson(value))
+          .map<WorkflowTemplate>((value) => WorkflowTemplate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7066,7 +7269,8 @@ class LoggingConfig {
   LoggingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('driverLogLevels')) {
       driverLogLevels = commons.mapMap<core.String, core.String>(
-          _json['driverLogLevels'].cast<core.String, core.String>(),
+          (_json['driverLogLevels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -7106,11 +7310,13 @@ class ManagedCluster {
       clusterName = _json['clusterName'] as core.String;
     }
     if (_json.containsKey('config')) {
-      config = ClusterConfig.fromJson(_json['config']);
+      config = ClusterConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -7268,11 +7474,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -7280,7 +7488,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -7359,18 +7568,22 @@ class OrderedJob {
 
   OrderedJob.fromJson(core.Map _json) {
     if (_json.containsKey('hadoopJob')) {
-      hadoopJob = HadoopJob.fromJson(_json['hadoopJob']);
+      hadoopJob = HadoopJob.fromJson(
+          _json['hadoopJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('hiveJob')) {
-      hiveJob = HiveJob.fromJson(_json['hiveJob']);
+      hiveJob = HiveJob.fromJson(
+          _json['hiveJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('pigJob')) {
-      pigJob = PigJob.fromJson(_json['pigJob']);
+      pigJob = PigJob.fromJson(
+          _json['pigJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('prerequisiteStepIds')) {
       prerequisiteStepIds = (_json['prerequisiteStepIds'] as core.List)
@@ -7378,22 +7591,28 @@ class OrderedJob {
           .toList();
     }
     if (_json.containsKey('prestoJob')) {
-      prestoJob = PrestoJob.fromJson(_json['prestoJob']);
+      prestoJob = PrestoJob.fromJson(
+          _json['prestoJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pysparkJob')) {
-      pysparkJob = PySparkJob.fromJson(_json['pysparkJob']);
+      pysparkJob = PySparkJob.fromJson(
+          _json['pysparkJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scheduling')) {
-      scheduling = JobScheduling.fromJson(_json['scheduling']);
+      scheduling = JobScheduling.fromJson(
+          _json['scheduling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkJob')) {
-      sparkJob = SparkJob.fromJson(_json['sparkJob']);
+      sparkJob = SparkJob.fromJson(
+          _json['sparkJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkRJob')) {
-      sparkRJob = SparkRJob.fromJson(_json['sparkRJob']);
+      sparkRJob = SparkRJob.fromJson(
+          _json['sparkRJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sparkSqlJob')) {
-      sparkSqlJob = SparkSqlJob.fromJson(_json['sparkSqlJob']);
+      sparkSqlJob = SparkSqlJob.fromJson(
+          _json['sparkSqlJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stepId')) {
       stepId = _json['stepId'] as core.String;
@@ -7454,10 +7673,12 @@ class ParameterValidation {
 
   ParameterValidation.fromJson(core.Map _json) {
     if (_json.containsKey('regex')) {
-      regex = RegexValidation.fromJson(_json['regex']);
+      regex = RegexValidation.fromJson(
+          _json['regex'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('values')) {
-      values = ValueValidation.fromJson(_json['values']);
+      values = ValueValidation.fromJson(
+          _json['values'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7516,22 +7737,26 @@ class PigJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
     }
     if (_json.containsKey('queryList')) {
-      queryList = QueryList.fromJson(_json['queryList']);
+      queryList = QueryList.fromJson(
+          _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
       scriptVariables = commons.mapMap<core.String, core.String>(
-          _json['scriptVariables'].cast<core.String, core.String>(),
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -7639,7 +7864,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -7708,21 +7934,24 @@ class PrestoJob {
       continueOnFailure = _json['continueOnFailure'] as core.bool;
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('outputFormat')) {
       outputFormat = _json['outputFormat'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
     }
     if (_json.containsKey('queryList')) {
-      queryList = QueryList.fromJson(_json['queryList']);
+      queryList = QueryList.fromJson(
+          _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7816,14 +8045,16 @@ class PySparkJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mainPythonFileUri')) {
       mainPythonFileUri = _json['mainPythonFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('pythonFileUris')) {
@@ -7975,7 +8206,8 @@ class SecurityConfig {
 
   SecurityConfig.fromJson(core.Map _json) {
     if (_json.containsKey('kerberosConfig')) {
-      kerberosConfig = KerberosConfig.fromJson(_json['kerberosConfig']);
+      kerberosConfig = KerberosConfig.fromJson(
+          _json['kerberosConfig'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8000,7 +8232,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8050,7 +8283,8 @@ class SoftwareConfig {
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -8131,7 +8365,8 @@ class SparkJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mainClass')) {
       mainClass = _json['mainClass'] as core.String;
@@ -8141,7 +8376,8 @@ class SparkJob {
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -8225,14 +8461,16 @@ class SparkRJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mainRFileUri')) {
       mainRFileUri = _json['mainRFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -8294,22 +8532,26 @@ class SparkSqlJob {
           .toList();
     }
     if (_json.containsKey('loggingConfig')) {
-      loggingConfig = LoggingConfig.fromJson(_json['loggingConfig']);
+      loggingConfig = LoggingConfig.fromJson(
+          _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
       properties = commons.mapMap<core.String, core.String>(
-          _json['properties'].cast<core.String, core.String>(),
+          (_json['properties'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
     }
     if (_json.containsKey('queryList')) {
-      queryList = QueryList.fromJson(_json['queryList']);
+      queryList = QueryList.fromJson(
+          _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
       scriptVariables = commons.mapMap<core.String, core.String>(
-          _json['scriptVariables'].cast<core.String, core.String>(),
+          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -8370,7 +8612,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -8412,7 +8655,7 @@ class SubmitJobRequest {
 
   SubmitJobRequest.fromJson(core.Map _json) {
     if (_json.containsKey('job')) {
-      job = Job.fromJson(_json['job']);
+      job = Job.fromJson(_json['job'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -8492,7 +8735,8 @@ class TemplateParameter {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('validation')) {
-      validation = ParameterValidation.fromJson(_json['validation']);
+      validation = ParameterValidation.fromJson(
+          _json['validation'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8599,7 +8843,8 @@ class WorkflowGraph {
   WorkflowGraph.fromJson(core.Map _json) {
     if (_json.containsKey('nodes')) {
       nodes = (_json['nodes'] as core.List)
-          .map<WorkflowNode>((value) => WorkflowNode.fromJson(value))
+          .map<WorkflowNode>((value) => WorkflowNode.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8671,20 +8916,24 @@ class WorkflowMetadata {
       clusterUuid = _json['clusterUuid'] as core.String;
     }
     if (_json.containsKey('createCluster')) {
-      createCluster = ClusterOperation.fromJson(_json['createCluster']);
+      createCluster = ClusterOperation.fromJson(
+          _json['createCluster'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteCluster')) {
-      deleteCluster = ClusterOperation.fromJson(_json['deleteCluster']);
+      deleteCluster = ClusterOperation.fromJson(
+          _json['deleteCluster'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('graph')) {
-      graph = WorkflowGraph.fromJson(_json['graph']);
+      graph = WorkflowGraph.fromJson(
+          _json['graph'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parameters')) {
       parameters = commons.mapMap<core.String, core.String>(
-          _json['parameters'].cast<core.String, core.String>(),
+          (_json['parameters'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('startTime')) {
@@ -8868,12 +9117,14 @@ class WorkflowTemplate {
     }
     if (_json.containsKey('jobs')) {
       jobs = (_json['jobs'] as core.List)
-          .map<OrderedJob>((value) => OrderedJob.fromJson(value))
+          .map<OrderedJob>((value) =>
+              OrderedJob.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -8881,11 +9132,13 @@ class WorkflowTemplate {
     }
     if (_json.containsKey('parameters')) {
       parameters = (_json['parameters'] as core.List)
-          .map<TemplateParameter>((value) => TemplateParameter.fromJson(value))
+          .map<TemplateParameter>((value) => TemplateParameter.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('placement')) {
-      placement = WorkflowTemplatePlacement.fromJson(_json['placement']);
+      placement = WorkflowTemplatePlacement.fromJson(
+          _json['placement'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -8942,10 +9195,12 @@ class WorkflowTemplatePlacement {
 
   WorkflowTemplatePlacement.fromJson(core.Map _json) {
     if (_json.containsKey('clusterSelector')) {
-      clusterSelector = ClusterSelector.fromJson(_json['clusterSelector']);
+      clusterSelector = ClusterSelector.fromJson(
+          _json['clusterSelector'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('managedCluster')) {
-      managedCluster = ManagedCluster.fromJson(_json['managedCluster']);
+      managedCluster = ManagedCluster.fromJson(
+          _json['managedCluster'] as core.Map<core.String, core.dynamic>);
     }
   }
 

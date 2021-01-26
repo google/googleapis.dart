@@ -97,7 +97,10 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteSummaryResponse.fromJson(data));
+    return _response.then(
+      (data) => SiteSummaryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -145,7 +148,10 @@ class ViolatingSitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ViolatingSitesResponse.fromJson(data));
+    return _response.then(
+      (data) => ViolatingSitesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -252,8 +258,8 @@ class ViolatingSitesResponse {
   ViolatingSitesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('violatingSites')) {
       violatingSites = (_json['violatingSites'] as core.List)
-          .map<SiteSummaryResponse>(
-              (value) => SiteSummaryResponse.fromJson(value))
+          .map<SiteSummaryResponse>((value) => SiteSummaryResponse.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

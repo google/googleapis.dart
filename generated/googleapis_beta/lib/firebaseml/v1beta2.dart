@@ -118,7 +118,9 @@ class ProjectsModelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a model
@@ -168,7 +170,9 @@ class ProjectsModelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a model resource.
@@ -218,7 +222,9 @@ class ProjectsModelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Model.fromJson(data));
+    return _response.then(
+      (data) => Model.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the models
@@ -290,7 +296,10 @@ class ProjectsModelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListModelsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListModelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a model. The longrunning operation will eventually return a Model.
@@ -353,7 +362,9 @@ class ProjectsModelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -411,7 +422,9 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -447,7 +460,8 @@ class ListModelsResponse {
   ListModelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('models')) {
       models = (_json['models'] as core.List)
-          .map<Model>((value) => Model.fromJson(value))
+          .map<Model>((value) =>
+              Model.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -511,7 +525,8 @@ class Model {
   Model.fromJson(core.Map _json) {
     if (_json.containsKey('activeOperations')) {
       activeOperations = (_json['activeOperations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('createTime')) {
@@ -530,7 +545,8 @@ class Model {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('state')) {
-      state = ModelState.fromJson(_json['state']);
+      state = ModelState.fromJson(
+          _json['state'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
@@ -538,7 +554,8 @@ class Model {
           .toList();
     }
     if (_json.containsKey('tfliteModel')) {
-      tfliteModel = TfLiteModel.fromJson(_json['tfliteModel']);
+      tfliteModel = TfLiteModel.fromJson(
+          _json['tfliteModel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -638,7 +655,8 @@ class ModelState {
       published = _json['published'] as core.bool;
     }
     if (_json.containsKey('validationError')) {
-      validationError = Status.fromJson(_json['validationError']);
+      validationError = Status.fromJson(
+          _json['validationError'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -698,11 +716,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -710,7 +730,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -768,7 +789,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }

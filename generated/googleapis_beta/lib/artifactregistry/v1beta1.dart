@@ -118,7 +118,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -187,7 +189,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -246,7 +251,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -323,7 +330,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -400,7 +410,9 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a repository and all of its contents. The returned Operation will
@@ -452,7 +464,9 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a repository.
@@ -502,7 +516,10 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Repository.fromJson(data));
+    return _response.then(
+      (data) =>
+          Repository.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the IAM policy for a given resource.
@@ -570,7 +587,9 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists repositories.
@@ -635,7 +654,10 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListRepositoriesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListRepositoriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a repository.
@@ -700,7 +722,10 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Repository.fromJson(data));
+    return _response.then(
+      (data) =>
+          Repository.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the IAM policy for a given resource.
@@ -760,7 +785,9 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Tests if the caller has a list of permissions on a resource.
@@ -820,7 +847,10 @@ class ProjectsLocationsRepositoriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TestIamPermissionsResponse.fromJson(data));
+    return _response.then(
+      (data) => TestIamPermissionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -877,7 +907,9 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => File.fromJson(data));
+    return _response.then(
+      (data) => File.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists files.
@@ -954,7 +986,10 @@ class ProjectsLocationsRepositoriesFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1017,7 +1052,9 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a package.
@@ -1067,7 +1104,9 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Package.fromJson(data));
+    return _response.then(
+      (data) => Package.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists packages.
@@ -1132,7 +1171,10 @@ class ProjectsLocationsRepositoriesPackagesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListPackagesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPackagesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1203,7 +1245,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a tag.
@@ -1253,7 +1297,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a tag.
@@ -1303,7 +1349,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists tags.
@@ -1377,7 +1425,10 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListTagsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListTagsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a tag.
@@ -1442,7 +1493,9 @@ class ProjectsLocationsRepositoriesPackagesTagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tag.fromJson(data));
+    return _response.then(
+      (data) => Tag.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1508,7 +1561,9 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a version
@@ -1570,7 +1625,9 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists versions.
@@ -1647,7 +1704,10 @@ class ProjectsLocationsRepositoriesPackagesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1708,7 +1768,8 @@ class Binding {
       bindingId = _json['bindingId'] as core.String;
     }
     if (_json.containsKey('condition')) {
-      condition = Expr.fromJson(_json['condition']);
+      condition = Expr.fromJson(
+          _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('members')) {
       members = (_json['members'] as core.List)
@@ -1854,7 +1915,8 @@ class File {
     }
     if (_json.containsKey('hashes')) {
       hashes = (_json['hashes'] as core.List)
-          .map<Hash>((value) => Hash.fromJson(value))
+          .map<Hash>((value) =>
+              Hash.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -1907,11 +1969,12 @@ class GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo {
 
   GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gcsSource')) {
       gcsSource = GoogleDevtoolsArtifactregistryV1alpha1GcsSource.fromJson(
-          _json['gcsSource']);
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1966,13 +2029,15 @@ class GoogleDevtoolsArtifactregistryV1alpha1ImportArtifactsResponse {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
           .map<GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo>((value) =>
-              GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo.fromJson(value))
+              GoogleDevtoolsArtifactregistryV1alpha1ErrorInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('packages')) {
       packages = (_json['packages'] as core.List)
           .map<GoogleDevtoolsArtifactregistryV1alpha1Package>((value) =>
-              GoogleDevtoolsArtifactregistryV1alpha1Package.fromJson(value))
+              GoogleDevtoolsArtifactregistryV1alpha1Package.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2094,7 +2159,8 @@ class ListFilesResponse {
   ListFilesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<File>((value) => File.fromJson(value))
+          .map<File>((value) =>
+              File.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2127,7 +2193,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2163,7 +2230,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2197,7 +2265,8 @@ class ListPackagesResponse {
     }
     if (_json.containsKey('packages')) {
       packages = (_json['packages'] as core.List)
-          .map<Package>((value) => Package.fromJson(value))
+          .map<Package>((value) =>
+              Package.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2231,7 +2300,8 @@ class ListRepositoriesResponse {
     }
     if (_json.containsKey('repositories')) {
       repositories = (_json['repositories'] as core.List)
-          .map<Repository>((value) => Repository.fromJson(value))
+          .map<Repository>((value) =>
+              Repository.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2266,7 +2336,8 @@ class ListTagsResponse {
     }
     if (_json.containsKey('tags')) {
       tags = (_json['tags'] as core.List)
-          .map<Tag>((value) => Tag.fromJson(value))
+          .map<Tag>((value) =>
+              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2300,7 +2371,8 @@ class ListVersionsResponse {
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
-          .map<Version>((value) => Version.fromJson(value))
+          .map<Version>((value) =>
+              Version.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2349,7 +2421,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -2357,7 +2430,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2430,11 +2504,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -2442,7 +2518,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2595,7 +2672,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('bindings')) {
       bindings = (_json['bindings'] as core.List)
-          .map<Binding>((value) => Binding.fromJson(value))
+          .map<Binding>((value) =>
+              Binding.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('etag')) {
@@ -2674,7 +2752,8 @@ class Repository {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -2724,7 +2803,8 @@ class SetIamPolicyRequest {
 
   SetIamPolicyRequest.fromJson(core.Map _json) {
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2769,7 +2849,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -2914,7 +2995,8 @@ class Version {
     }
     if (_json.containsKey('relatedTags')) {
       relatedTags = (_json['relatedTags'] as core.List)
-          .map<Tag>((value) => Tag.fromJson(value))
+          .map<Tag>((value) =>
+              Tag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('updateTime')) {

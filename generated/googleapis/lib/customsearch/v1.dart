@@ -420,7 +420,9 @@ class CseResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Search.fromJson(data));
+    return _response.then(
+      (data) => Search.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -800,7 +802,9 @@ class CseSiterestrictResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Search.fromJson(data));
+    return _response.then(
+      (data) => Search.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -921,8 +925,8 @@ class Promotion {
   Promotion.fromJson(core.Map _json) {
     if (_json.containsKey('bodyLines')) {
       bodyLines = (_json['bodyLines'] as core.List)
-          .map<PromotionBodyLines>(
-              (value) => PromotionBodyLines.fromJson(value))
+          .map<PromotionBodyLines>((value) => PromotionBodyLines.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('displayLink')) {
@@ -932,7 +936,8 @@ class Promotion {
       htmlTitle = _json['htmlTitle'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = PromotionImage.fromJson(_json['image']);
+      image = PromotionImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
       link = _json['link'] as core.String;
@@ -1164,14 +1169,16 @@ class Result {
       htmlTitle = _json['htmlTitle'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = ResultImage.fromJson(_json['image']);
+      image = ResultImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
       labels = (_json['labels'] as core.List)
-          .map<ResultLabels>((value) => ResultLabels.fromJson(value))
+          .map<ResultLabels>((value) => ResultLabels.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('link')) {
@@ -1182,7 +1189,8 @@ class Result {
     }
     if (_json.containsKey('pagemap')) {
       pagemap = commons.mapMap<core.Object, core.Object>(
-          _json['pagemap'].cast<core.String, core.Object>(),
+          (_json['pagemap'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('snippet')) {
@@ -2499,20 +2507,21 @@ class SearchQueries {
   SearchQueries.fromJson(core.Map _json) {
     if (_json.containsKey('nextPage')) {
       nextPage = (_json['nextPage'] as core.List)
-          .map<SearchQueriesNextPage>(
-              (value) => SearchQueriesNextPage.fromJson(value))
+          .map<SearchQueriesNextPage>((value) => SearchQueriesNextPage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('previousPage')) {
       previousPage = (_json['previousPage'] as core.List)
-          .map<SearchQueriesPreviousPage>(
-              (value) => SearchQueriesPreviousPage.fromJson(value))
+          .map<SearchQueriesPreviousPage>((value) =>
+              SearchQueriesPreviousPage.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('request')) {
       request = (_json['request'] as core.List)
-          .map<SearchQueriesRequest>(
-              (value) => SearchQueriesRequest.fromJson(value))
+          .map<SearchQueriesRequest>((value) => SearchQueriesRequest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2690,12 +2699,14 @@ class Search {
   Search.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
       context = commons.mapMap<core.Object, core.Object>(
-          _json['context'].cast<core.String, core.Object>(),
+          (_json['context'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Result>((value) => Result.fromJson(value))
+          .map<Result>((value) =>
+              Result.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2703,21 +2714,25 @@ class Search {
     }
     if (_json.containsKey('promotions')) {
       promotions = (_json['promotions'] as core.List)
-          .map<Promotion>((value) => Promotion.fromJson(value))
+          .map<Promotion>((value) =>
+              Promotion.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('queries')) {
-      queries = SearchQueries.fromJson(_json['queries']);
+      queries = SearchQueries.fromJson(
+          _json['queries'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchInformation')) {
-      searchInformation =
-          SearchSearchInformation.fromJson(_json['searchInformation']);
+      searchInformation = SearchSearchInformation.fromJson(
+          _json['searchInformation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spelling')) {
-      spelling = SearchSpelling.fromJson(_json['spelling']);
+      spelling = SearchSpelling.fromJson(
+          _json['spelling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('url')) {
-      url = SearchUrl.fromJson(_json['url']);
+      url = SearchUrl.fromJson(
+          _json['url'] as core.Map<core.String, core.dynamic>);
     }
   }
 

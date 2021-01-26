@@ -142,7 +142,9 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Change.fromJson(data));
+    return _response.then(
+      (data) => Change.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Fetch the representation of an existing Change.
@@ -217,7 +219,9 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Change.fromJson(data));
+    return _response.then(
+      (data) => Change.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enumerate Changes to a ResourceRecordSet collection.
@@ -304,7 +308,10 @@ class ChangesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ChangesListResponse.fromJson(data));
+    return _response.then(
+      (data) => ChangesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -392,7 +399,9 @@ class DnsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DnsKey.fromJson(data));
+    return _response.then(
+      (data) => DnsKey.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enumerate DnsKeys to a ResourceRecordSet collection.
@@ -473,7 +482,10 @@ class DnsKeysResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DnsKeysListResponse.fromJson(data));
+    return _response.then(
+      (data) => DnsKeysListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -553,7 +565,9 @@ class ManagedZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enumerate Operations for the given ManagedZone.
@@ -635,8 +649,10 @@ class ManagedZoneOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ManagedZoneOperationsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ManagedZoneOperationsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -706,7 +722,10 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedZone.fromJson(data));
+    return _response.then(
+      (data) =>
+          ManagedZone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a previously created ManagedZone.
@@ -772,7 +791,9 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Fetch the representation of an existing ManagedZone.
@@ -838,7 +859,10 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedZone.fromJson(data));
+    return _response.then(
+      (data) =>
+          ManagedZone.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enumerate ManagedZones that have been created but not yet deleted.
@@ -908,7 +932,10 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ManagedZonesListResponse.fromJson(data));
+    return _response.then(
+      (data) => ManagedZonesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Apply a partial update to an existing ManagedZone.
@@ -980,7 +1007,9 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing ManagedZone.
@@ -1052,7 +1081,9 @@ class ManagedZonesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1122,7 +1153,9 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete a previously created Policy. Will fail if the policy is still being
@@ -1189,7 +1222,9 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Fetch the representation of an existing Policy.
@@ -1255,7 +1290,9 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Policy.fromJson(data));
+    return _response.then(
+      (data) => Policy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Enumerate all Policies associated with a project.
@@ -1319,7 +1356,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PoliciesListResponse.fromJson(data));
+    return _response.then(
+      (data) => PoliciesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Apply a partial update to an existing Policy.
@@ -1391,7 +1431,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PoliciesPatchResponse.fromJson(data));
+    return _response.then(
+      (data) => PoliciesPatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update an existing Policy.
@@ -1463,7 +1506,10 @@ class PoliciesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PoliciesUpdateResponse.fromJson(data));
+    return _response.then(
+      (data) => PoliciesUpdateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1525,7 +1571,9 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Project.fromJson(data));
+    return _response.then(
+      (data) => Project.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1619,8 +1667,10 @@ class ResourceRecordSetsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ResourceRecordSetsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ResourceRecordSetsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1662,12 +1712,14 @@ class Change {
   Change.fromJson(core.Map _json) {
     if (_json.containsKey('additions')) {
       additions = (_json['additions'] as core.List)
-          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('deletions')) {
       deletions = (_json['deletions'] as core.List)
-          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -1740,11 +1792,13 @@ class ChangesListResponse {
   ChangesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('changes')) {
       changes = (_json['changes'] as core.List)
-          .map<Change>((value) => Change.fromJson(value))
+          .map<Change>((value) =>
+              Change.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -1844,7 +1898,8 @@ class DnsKey {
     }
     if (_json.containsKey('digests')) {
       digests = (_json['digests'] as core.List)
-          .map<DnsKeyDigest>((value) => DnsKeyDigest.fromJson(value))
+          .map<DnsKeyDigest>((value) => DnsKeyDigest.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
@@ -2030,11 +2085,13 @@ class DnsKeysListResponse {
   DnsKeysListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('dnsKeys')) {
       dnsKeys = (_json['dnsKeys'] as core.List)
-          .map<DnsKey>((value) => DnsKey.fromJson(value))
+          .map<DnsKey>((value) =>
+              DnsKey.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2140,11 +2197,12 @@ class ManagedZone {
       dnsName = _json['dnsName'] as core.String;
     }
     if (_json.containsKey('dnssecConfig')) {
-      dnssecConfig = ManagedZoneDnsSecConfig.fromJson(_json['dnssecConfig']);
+      dnssecConfig = ManagedZoneDnsSecConfig.fromJson(
+          _json['dnssecConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('forwardingConfig')) {
-      forwardingConfig =
-          ManagedZoneForwardingConfig.fromJson(_json['forwardingConfig']);
+      forwardingConfig = ManagedZoneForwardingConfig.fromJson(
+          _json['forwardingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2154,7 +2212,8 @@ class ManagedZone {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
@@ -2169,15 +2228,17 @@ class ManagedZone {
           .toList();
     }
     if (_json.containsKey('peeringConfig')) {
-      peeringConfig = ManagedZonePeeringConfig.fromJson(_json['peeringConfig']);
+      peeringConfig = ManagedZonePeeringConfig.fromJson(
+          _json['peeringConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('privateVisibilityConfig')) {
       privateVisibilityConfig = ManagedZonePrivateVisibilityConfig.fromJson(
-          _json['privateVisibilityConfig']);
+          _json['privateVisibilityConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reverseLookupConfig')) {
-      reverseLookupConfig =
-          ManagedZoneReverseLookupConfig.fromJson(_json['reverseLookupConfig']);
+      reverseLookupConfig = ManagedZoneReverseLookupConfig.fromJson(
+          _json['reverseLookupConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('visibility')) {
       visibility = _json['visibility'] as core.String;
@@ -2260,7 +2321,8 @@ class ManagedZoneDnsSecConfig {
   ManagedZoneDnsSecConfig.fromJson(core.Map _json) {
     if (_json.containsKey('defaultKeySpecs')) {
       defaultKeySpecs = (_json['defaultKeySpecs'] as core.List)
-          .map<DnsKeySpec>((value) => DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) =>
+              DnsKeySpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2309,7 +2371,8 @@ class ManagedZoneForwardingConfig {
     if (_json.containsKey('targetNameServers')) {
       targetNameServers = (_json['targetNameServers'] as core.List)
           .map<ManagedZoneForwardingConfigNameServerTarget>((value) =>
-              ManagedZoneForwardingConfigNameServerTarget.fromJson(value))
+              ManagedZoneForwardingConfigNameServerTarget.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2396,7 +2459,8 @@ class ManagedZoneOperationsListResponse {
 
   ManagedZoneOperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2406,7 +2470,8 @@ class ManagedZoneOperationsListResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2443,7 +2508,7 @@ class ManagedZonePeeringConfig {
     }
     if (_json.containsKey('targetNetwork')) {
       targetNetwork = ManagedZonePeeringConfigTargetNetwork.fromJson(
-          _json['targetNetwork']);
+          _json['targetNetwork'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2517,7 +2582,8 @@ class ManagedZonePrivateVisibilityConfig {
     if (_json.containsKey('networks')) {
       networks = (_json['networks'] as core.List)
           .map<ManagedZonePrivateVisibilityConfigNetwork>((value) =>
-              ManagedZonePrivateVisibilityConfigNetwork.fromJson(value))
+              ManagedZonePrivateVisibilityConfigNetwork.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2609,14 +2675,16 @@ class ManagedZonesListResponse {
 
   ManagedZonesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('managedZones')) {
       managedZones = (_json['managedZones'] as core.List)
-          .map<ManagedZone>((value) => ManagedZone.fromJson(value))
+          .map<ManagedZone>((value) => ManagedZone.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -2687,7 +2755,8 @@ class Operation {
 
   Operation.fromJson(core.Map _json) {
     if (_json.containsKey('dnsKeyContext')) {
-      dnsKeyContext = OperationDnsKeyContext.fromJson(_json['dnsKeyContext']);
+      dnsKeyContext = OperationDnsKeyContext.fromJson(
+          _json['dnsKeyContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -2708,7 +2777,8 @@ class Operation {
       user = _json['user'] as core.String;
     }
     if (_json.containsKey('zoneContext')) {
-      zoneContext = OperationManagedZoneContext.fromJson(_json['zoneContext']);
+      zoneContext = OperationManagedZoneContext.fromJson(
+          _json['zoneContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2753,10 +2823,12 @@ class OperationDnsKeyContext {
 
   OperationDnsKeyContext.fromJson(core.Map _json) {
     if (_json.containsKey('newValue')) {
-      newValue = DnsKey.fromJson(_json['newValue']);
+      newValue = DnsKey.fromJson(
+          _json['newValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oldValue')) {
-      oldValue = DnsKey.fromJson(_json['oldValue']);
+      oldValue = DnsKey.fromJson(
+          _json['oldValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2783,10 +2855,12 @@ class OperationManagedZoneContext {
 
   OperationManagedZoneContext.fromJson(core.Map _json) {
     if (_json.containsKey('newValue')) {
-      newValue = ManagedZone.fromJson(_json['newValue']);
+      newValue = ManagedZone.fromJson(
+          _json['newValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oldValue')) {
-      oldValue = ManagedZone.fromJson(_json['oldValue']);
+      oldValue = ManagedZone.fromJson(
+          _json['oldValue'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2826,7 +2900,8 @@ class PoliciesListResponse {
 
   PoliciesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -2836,7 +2911,8 @@ class PoliciesListResponse {
     }
     if (_json.containsKey('policies')) {
       policies = (_json['policies'] as core.List)
-          .map<Policy>((value) => Policy.fromJson(value))
+          .map<Policy>((value) =>
+              Policy.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2867,10 +2943,12 @@ class PoliciesPatchResponse {
 
   PoliciesPatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2894,10 +2972,12 @@ class PoliciesUpdateResponse {
 
   PoliciesUpdateResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('policy')) {
-      policy = Policy.fromJson(_json['policy']);
+      policy = Policy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2950,7 +3030,8 @@ class Policy {
   Policy.fromJson(core.Map _json) {
     if (_json.containsKey('alternativeNameServerConfig')) {
       alternativeNameServerConfig = PolicyAlternativeNameServerConfig.fromJson(
-          _json['alternativeNameServerConfig']);
+          _json['alternativeNameServerConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -2972,7 +3053,8 @@ class Policy {
     }
     if (_json.containsKey('networks')) {
       networks = (_json['networks'] as core.List)
-          .map<PolicyNetwork>((value) => PolicyNetwork.fromJson(value))
+          .map<PolicyNetwork>((value) => PolicyNetwork.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3027,7 +3109,8 @@ class PolicyAlternativeNameServerConfig {
     if (_json.containsKey('targetNameServers')) {
       targetNameServers = (_json['targetNameServers'] as core.List)
           .map<PolicyAlternativeNameServerConfigTargetNameServer>((value) =>
-              PolicyAlternativeNameServerConfigTargetNameServer.fromJson(value))
+              PolicyAlternativeNameServerConfigTargetNameServer.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3151,7 +3234,8 @@ class Project {
       number = _json['number'] as core.String;
     }
     if (_json.containsKey('quota')) {
-      quota = Quota.fromJson(_json['quota']);
+      quota =
+          Quota.fromJson(_json['quota'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3272,7 +3356,8 @@ class Quota {
     }
     if (_json.containsKey('whitelistedKeySpecs')) {
       whitelistedKeySpecs = (_json['whitelistedKeySpecs'] as core.List)
-          .map<DnsKeySpec>((value) => DnsKeySpec.fromJson(value))
+          .map<DnsKeySpec>((value) =>
+              DnsKeySpec.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3426,7 +3511,8 @@ class ResourceRecordSetsListResponse {
 
   ResourceRecordSetsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('header')) {
-      header = ResponseHeader.fromJson(_json['header']);
+      header = ResponseHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3436,7 +3522,8 @@ class ResourceRecordSetsListResponse {
     }
     if (_json.containsKey('rrsets')) {
       rrsets = (_json['rrsets'] as core.List)
-          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(value))
+          .map<ResourceRecordSet>((value) => ResourceRecordSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

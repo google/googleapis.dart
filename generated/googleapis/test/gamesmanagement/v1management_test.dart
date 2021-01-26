@@ -83,8 +83,8 @@ core.List<api.AchievementResetResponse> buildUnnamed72() {
 
 void checkUnnamed72(core.List<api.AchievementResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAchievementResetResponse(o[0]);
-  checkAchievementResetResponse(o[1]);
+  checkAchievementResetResponse(o[0] as api.AchievementResetResponse);
+  checkAchievementResetResponse(o[1] as api.AchievementResetResponse);
 }
 
 core.int buildCounterAchievementResetAllResponse = 0;
@@ -223,9 +223,10 @@ void checkGamesPlayerExperienceInfoResource(
   buildCounterGamesPlayerExperienceInfoResource++;
   if (buildCounterGamesPlayerExperienceInfoResource < 3) {
     unittest.expect(o.currentExperiencePoints, unittest.equals('foo'));
-    checkGamesPlayerLevelResource(o.currentLevel);
+    checkGamesPlayerLevelResource(
+        o.currentLevel as api.GamesPlayerLevelResource);
     unittest.expect(o.lastLevelUpTimestampMillis, unittest.equals('foo'));
-    checkGamesPlayerLevelResource(o.nextLevel);
+    checkGamesPlayerLevelResource(o.nextLevel as api.GamesPlayerLevelResource);
   }
   buildCounterGamesPlayerExperienceInfoResource--;
 }
@@ -271,7 +272,7 @@ void checkHiddenPlayer(api.HiddenPlayer o) {
   if (buildCounterHiddenPlayer < 3) {
     unittest.expect(o.hiddenTimeMillis, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPlayer(o.player);
+    checkPlayer(o.player as api.Player);
   }
   buildCounterHiddenPlayer--;
 }
@@ -285,8 +286,8 @@ core.List<api.HiddenPlayer> buildUnnamed75() {
 
 void checkUnnamed75(core.List<api.HiddenPlayer> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHiddenPlayer(o[0]);
-  checkHiddenPlayer(o[1]);
+  checkHiddenPlayer(o[0] as api.HiddenPlayer);
+  checkHiddenPlayer(o[1] as api.HiddenPlayer);
 }
 
 core.int buildCounterHiddenPlayerList = 0;
@@ -361,12 +362,13 @@ void checkPlayer(api.Player o) {
     unittest.expect(o.bannerUrlLandscape, unittest.equals('foo'));
     unittest.expect(o.bannerUrlPortrait, unittest.equals('foo'));
     unittest.expect(o.displayName, unittest.equals('foo'));
-    checkGamesPlayerExperienceInfoResource(o.experienceInfo);
+    checkGamesPlayerExperienceInfoResource(
+        o.experienceInfo as api.GamesPlayerExperienceInfoResource);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPlayerName(o.name);
+    checkPlayerName(o.name as api.PlayerName);
     unittest.expect(o.originalPlayerId, unittest.equals('foo'));
     unittest.expect(o.playerId, unittest.equals('foo'));
-    checkProfileSettings(o.profileSettings);
+    checkProfileSettings(o.profileSettings as api.ProfileSettings);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterPlayer--;
@@ -381,8 +383,8 @@ core.List<api.PlayerScoreResetResponse> buildUnnamed76() {
 
 void checkUnnamed76(core.List<api.PlayerScoreResetResponse> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlayerScoreResetResponse(o[0]);
-  checkPlayerScoreResetResponse(o[1]);
+  checkPlayerScoreResetResponse(o[0] as api.PlayerScoreResetResponse);
+  checkPlayerScoreResetResponse(o[1] as api.PlayerScoreResetResponse);
 }
 
 core.int buildCounterPlayerScoreResetAllResponse = 0;
@@ -503,7 +505,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementResetAllResponse();
       var od = api.AchievementResetAllResponse.fromJson(o.toJson());
-      checkAchievementResetAllResponse(od);
+      checkAchievementResetAllResponse(od as api.AchievementResetAllResponse);
     });
   });
 
@@ -511,7 +513,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementResetMultipleForAllRequest();
       var od = api.AchievementResetMultipleForAllRequest.fromJson(o.toJson());
-      checkAchievementResetMultipleForAllRequest(od);
+      checkAchievementResetMultipleForAllRequest(
+          od as api.AchievementResetMultipleForAllRequest);
     });
   });
 
@@ -519,7 +522,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAchievementResetResponse();
       var od = api.AchievementResetResponse.fromJson(o.toJson());
-      checkAchievementResetResponse(od);
+      checkAchievementResetResponse(od as api.AchievementResetResponse);
     });
   });
 
@@ -527,7 +530,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEventsResetMultipleForAllRequest();
       var od = api.EventsResetMultipleForAllRequest.fromJson(o.toJson());
-      checkEventsResetMultipleForAllRequest(od);
+      checkEventsResetMultipleForAllRequest(
+          od as api.EventsResetMultipleForAllRequest);
     });
   });
 
@@ -535,7 +539,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesPlayerExperienceInfoResource();
       var od = api.GamesPlayerExperienceInfoResource.fromJson(o.toJson());
-      checkGamesPlayerExperienceInfoResource(od);
+      checkGamesPlayerExperienceInfoResource(
+          od as api.GamesPlayerExperienceInfoResource);
     });
   });
 
@@ -543,7 +548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGamesPlayerLevelResource();
       var od = api.GamesPlayerLevelResource.fromJson(o.toJson());
-      checkGamesPlayerLevelResource(od);
+      checkGamesPlayerLevelResource(od as api.GamesPlayerLevelResource);
     });
   });
 
@@ -551,7 +556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHiddenPlayer();
       var od = api.HiddenPlayer.fromJson(o.toJson());
-      checkHiddenPlayer(od);
+      checkHiddenPlayer(od as api.HiddenPlayer);
     });
   });
 
@@ -559,7 +564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHiddenPlayerList();
       var od = api.HiddenPlayerList.fromJson(o.toJson());
-      checkHiddenPlayerList(od);
+      checkHiddenPlayerList(od as api.HiddenPlayerList);
     });
   });
 
@@ -567,7 +572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerName();
       var od = api.PlayerName.fromJson(o.toJson());
-      checkPlayerName(od);
+      checkPlayerName(od as api.PlayerName);
     });
   });
 
@@ -575,7 +580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayer();
       var od = api.Player.fromJson(o.toJson());
-      checkPlayer(od);
+      checkPlayer(od as api.Player);
     });
   });
 
@@ -583,7 +588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreResetAllResponse();
       var od = api.PlayerScoreResetAllResponse.fromJson(o.toJson());
-      checkPlayerScoreResetAllResponse(od);
+      checkPlayerScoreResetAllResponse(od as api.PlayerScoreResetAllResponse);
     });
   });
 
@@ -591,7 +596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlayerScoreResetResponse();
       var od = api.PlayerScoreResetResponse.fromJson(o.toJson());
-      checkPlayerScoreResetResponse(od);
+      checkPlayerScoreResetResponse(od as api.PlayerScoreResetResponse);
     });
   });
 
@@ -599,7 +604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProfileSettings();
       var od = api.ProfileSettings.fromJson(o.toJson());
-      checkProfileSettings(od);
+      checkProfileSettings(od as api.ProfileSettings);
     });
   });
 
@@ -607,7 +612,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildScoresResetMultipleForAllRequest();
       var od = api.ScoresResetMultipleForAllRequest.fromJson(o.toJson());
-      checkScoresResetMultipleForAllRequest(od);
+      checkScoresResetMultipleForAllRequest(
+          od as api.ScoresResetMultipleForAllRequest);
     });
   });
 
@@ -664,7 +670,7 @@ void main() {
       res
           .reset(arg_achievementId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementResetResponse(response);
+        checkAchievementResetResponse(response as api.AchievementResetResponse);
       })));
     });
 
@@ -710,7 +716,8 @@ void main() {
       res
           .resetAll($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAchievementResetAllResponse(response);
+        checkAchievementResetAllResponse(
+            response as api.AchievementResetAllResponse);
       })));
     });
 
@@ -820,8 +827,10 @@ void main() {
       var arg_request = buildAchievementResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AchievementResetMultipleForAllRequest.fromJson(json);
-        checkAchievementResetMultipleForAllRequest(obj);
+        var obj = api.AchievementResetMultipleForAllRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAchievementResetMultipleForAllRequest(
+            obj as api.AchievementResetMultipleForAllRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -927,7 +936,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHiddenPlayerList(response);
+        checkHiddenPlayerList(response as api.HiddenPlayerList);
       })));
     });
   });
@@ -1133,8 +1142,10 @@ void main() {
       var arg_request = buildEventsResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EventsResetMultipleForAllRequest.fromJson(json);
-        checkEventsResetMultipleForAllRequest(obj);
+        var obj = api.EventsResetMultipleForAllRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEventsResetMultipleForAllRequest(
+            obj as api.EventsResetMultipleForAllRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1349,7 +1360,7 @@ void main() {
       res
           .reset(arg_leaderboardId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResetResponse(response);
+        checkPlayerScoreResetResponse(response as api.PlayerScoreResetResponse);
       })));
     });
 
@@ -1395,7 +1406,8 @@ void main() {
       res
           .resetAll($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlayerScoreResetAllResponse(response);
+        checkPlayerScoreResetAllResponse(
+            response as api.PlayerScoreResetAllResponse);
       })));
     });
 
@@ -1503,8 +1515,10 @@ void main() {
       var arg_request = buildScoresResetMultipleForAllRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ScoresResetMultipleForAllRequest.fromJson(json);
-        checkScoresResetMultipleForAllRequest(obj);
+        var obj = api.ScoresResetMultipleForAllRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkScoresResetMultipleForAllRequest(
+            obj as api.ScoresResetMultipleForAllRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;

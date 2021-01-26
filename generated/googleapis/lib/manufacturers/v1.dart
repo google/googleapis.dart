@@ -125,7 +125,9 @@ class AccountsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the product from a Manufacturer Center account, including product
@@ -202,7 +204,9 @@ class AccountsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the products in a Manufacturer Center account.
@@ -273,7 +277,10 @@ class AccountsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListProductsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListProductsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts or updates the attributes of the product in a Manufacturer Center
@@ -356,7 +363,9 @@ class AccountsProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -511,7 +520,8 @@ class Attributes {
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('additionalImageLink')) {
       additionalImageLink = (_json['additionalImageLink'] as core.List)
-          .map<Image>((value) => Image.fromJson(value))
+          .map<Image>((value) =>
+              Image.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ageGroup')) {
@@ -521,13 +531,15 @@ class Attributes {
       brand = _json['brand'] as core.String;
     }
     if (_json.containsKey('capacity')) {
-      capacity = Capacity.fromJson(_json['capacity']);
+      capacity = Capacity.fromJson(
+          _json['capacity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('color')) {
       color = _json['color'] as core.String;
     }
     if (_json.containsKey('count')) {
-      count = Count.fromJson(_json['count']);
+      count =
+          Count.fromJson(_json['count'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -542,8 +554,8 @@ class Attributes {
     }
     if (_json.containsKey('featureDescription')) {
       featureDescription = (_json['featureDescription'] as core.List)
-          .map<FeatureDescription>(
-              (value) => FeatureDescription.fromJson(value))
+          .map<FeatureDescription>((value) => FeatureDescription.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('flavor')) {
@@ -561,7 +573,8 @@ class Attributes {
           .toList();
     }
     if (_json.containsKey('imageLink')) {
-      imageLink = Image.fromJson(_json['imageLink']);
+      imageLink = Image.fromJson(
+          _json['imageLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('includedDestination')) {
       includedDestination = (_json['includedDestination'] as core.List)
@@ -582,7 +595,8 @@ class Attributes {
     }
     if (_json.containsKey('productDetail')) {
       productDetail = (_json['productDetail'] as core.List)
-          .map<ProductDetail>((value) => ProductDetail.fromJson(value))
+          .map<ProductDetail>((value) => ProductDetail.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productLine')) {
@@ -620,7 +634,8 @@ class Attributes {
       sizeType = _json['sizeType'] as core.String;
     }
     if (_json.containsKey('suggestedRetailPrice')) {
-      suggestedRetailPrice = Price.fromJson(_json['suggestedRetailPrice']);
+      suggestedRetailPrice = Price.fromJson(
+          _json['suggestedRetailPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetClientId')) {
       targetClientId = _json['targetClientId'] as core.String;
@@ -892,7 +907,8 @@ class FeatureDescription {
       headline = _json['headline'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = Image.fromJson(_json['image']);
+      image =
+          Image.fromJson(_json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('text')) {
       text = _json['text'] as core.String;
@@ -1099,7 +1115,8 @@ class ListProductsResponse {
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<Product>((value) => Product.fromJson(value))
+          .map<Product>((value) =>
+              Product.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1187,19 +1204,22 @@ class Product {
 
   Product.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = Attributes.fromJson(_json['attributes']);
+      attributes = Attributes.fromJson(
+          _json['attributes'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentLanguage')) {
       contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('destinationStatuses')) {
       destinationStatuses = (_json['destinationStatuses'] as core.List)
-          .map<DestinationStatus>((value) => DestinationStatus.fromJson(value))
+          .map<DestinationStatus>((value) => DestinationStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('issues')) {
       issues = (_json['issues'] as core.List)
-          .map<Issue>((value) => Issue.fromJson(value))
+          .map<Issue>((value) =>
+              Issue.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {

@@ -120,7 +120,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DetectLanguageResponse.fromJson(data));
+    return _response.then(
+      (data) => DetectLanguageResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of supported languages for translation.
@@ -198,7 +201,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SupportedLanguages.fromJson(data));
+    return _response.then(
+      (data) => SupportedLanguages.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Translates input text and returns translated text.
@@ -262,7 +268,10 @@ class ProjectsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TranslateTextResponse.fromJson(data));
+    return _response.then(
+      (data) => TranslateTextResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -341,7 +350,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Detects the language of text within a request.
@@ -405,7 +416,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DetectLanguageResponse.fromJson(data));
+    return _response.then(
+      (data) => DetectLanguageResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets information about a location.
@@ -454,7 +468,9 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Location.fromJson(data));
+    return _response.then(
+      (data) => Location.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns a list of supported languages for translation.
@@ -532,7 +548,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SupportedLanguages.fromJson(data));
+    return _response.then(
+      (data) => SupportedLanguages.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists information about the supported locations for this service.
@@ -600,7 +619,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLocationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLocationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Translates input text and returns translated text.
@@ -664,7 +686,10 @@ class ProjectsLocationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TranslateTextResponse.fromJson(data));
+    return _response.then(
+      (data) => TranslateTextResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -729,7 +754,9 @@ class ProjectsLocationsGlossariesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a glossary, or cancels glossary construction if the glossary isn't
@@ -780,7 +807,9 @@ class ProjectsLocationsGlossariesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a glossary. Returns NOT_FOUND, if the glossary doesn't exist.
@@ -830,7 +859,9 @@ class ProjectsLocationsGlossariesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Glossary.fromJson(data));
+    return _response.then(
+      (data) => Glossary.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists glossaries in a project. Returns NOT_FOUND, if the project doesn't
@@ -921,7 +952,10 @@ class ProjectsLocationsGlossariesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListGlossariesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListGlossariesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -992,7 +1026,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a long-running operation. This method indicates that the client is
@@ -1045,7 +1081,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the latest state of a long-running operation. Clients can use this
@@ -1097,7 +1135,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists operations that match the specified filter in the request. If the
@@ -1173,7 +1213,10 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Waits for the specified long-running operation until it is done or reaches
@@ -1237,7 +1280,9 @@ class ProjectsLocationsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1288,26 +1333,32 @@ class BatchTranslateTextRequest {
   BatchTranslateTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('glossaries')) {
       glossaries = commons.mapMap<core.Map, TranslateTextGlossaryConfig>(
-          _json['glossaries'].cast<core.String, core.Map>(),
-          (core.Map item) => TranslateTextGlossaryConfig.fromJson(item));
+          (_json['glossaries'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => TranslateTextGlossaryConfig.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('inputConfigs')) {
       inputConfigs = (_json['inputConfigs'] as core.List)
-          .map<InputConfig>((value) => InputConfig.fromJson(value))
+          .map<InputConfig>((value) => InputConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('models')) {
       models = commons.mapMap<core.String, core.String>(
-          _json['models'].cast<core.String, core.String>(),
+          (_json['models'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('outputConfig')) {
-      outputConfig = OutputConfig.fromJson(_json['outputConfig']);
+      outputConfig = OutputConfig.fromJson(
+          _json['outputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceLanguageCode')) {
       sourceLanguageCode = _json['sourceLanguageCode'] as core.String;
@@ -1396,7 +1447,8 @@ class DetectLanguageRequest {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('mimeType')) {
@@ -1436,7 +1488,8 @@ class DetectLanguageResponse {
   DetectLanguageResponse.fromJson(core.Map _json) {
     if (_json.containsKey('languages')) {
       languages = (_json['languages'] as core.List)
-          .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(value))
+          .map<DetectedLanguage>((value) => DetectedLanguage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1583,13 +1636,16 @@ class Glossary {
       entryCount = _json['entryCount'] as core.int;
     }
     if (_json.containsKey('inputConfig')) {
-      inputConfig = GlossaryInputConfig.fromJson(_json['inputConfig']);
+      inputConfig = GlossaryInputConfig.fromJson(
+          _json['inputConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCodesSet')) {
-      languageCodesSet = LanguageCodesSet.fromJson(_json['languageCodesSet']);
+      languageCodesSet = LanguageCodesSet.fromJson(
+          _json['languageCodesSet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languagePair')) {
-      languagePair = LanguageCodePair.fromJson(_json['languagePair']);
+      languagePair = LanguageCodePair.fromJson(
+          _json['languagePair'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -1647,7 +1703,8 @@ class GlossaryInputConfig {
 
   GlossaryInputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsSource')) {
-      gcsSource = GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1686,7 +1743,8 @@ class InputConfig {
 
   InputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsSource')) {
-      gcsSource = GcsSource.fromJson(_json['gcsSource']);
+      gcsSource = GcsSource.fromJson(
+          _json['gcsSource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -1779,7 +1837,8 @@ class ListGlossariesResponse {
   ListGlossariesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('glossaries')) {
       glossaries = (_json['glossaries'] as core.List)
-          .map<Glossary>((value) => Glossary.fromJson(value))
+          .map<Glossary>((value) =>
+              Glossary.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1812,7 +1871,8 @@ class ListLocationsResponse {
   ListLocationsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<Location>((value) => Location.fromJson(value))
+          .map<Location>((value) =>
+              Location.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -1848,7 +1908,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1897,7 +1958,8 @@ class Location {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('locationId')) {
@@ -1905,7 +1967,8 @@ class Location {
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1978,11 +2041,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -1990,7 +2055,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -2068,7 +2134,8 @@ class OutputConfig {
 
   OutputConfig.fromJson(core.Map _json) {
     if (_json.containsKey('gcsDestination')) {
-      gcsDestination = GcsDestination.fromJson(_json['gcsDestination']);
+      gcsDestination = GcsDestination.fromJson(
+          _json['gcsDestination'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2113,7 +2180,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -2201,7 +2269,8 @@ class SupportedLanguages {
   SupportedLanguages.fromJson(core.Map _json) {
     if (_json.containsKey('languages')) {
       languages = (_json['languages'] as core.List)
-          .map<SupportedLanguage>((value) => SupportedLanguage.fromJson(value))
+          .map<SupportedLanguage>((value) => SupportedLanguage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2307,12 +2376,13 @@ class TranslateTextRequest {
           .toList();
     }
     if (_json.containsKey('glossaryConfig')) {
-      glossaryConfig =
-          TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']);
+      glossaryConfig = TranslateTextGlossaryConfig.fromJson(
+          _json['glossaryConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('mimeType')) {
@@ -2371,12 +2441,14 @@ class TranslateTextResponse {
   TranslateTextResponse.fromJson(core.Map _json) {
     if (_json.containsKey('glossaryTranslations')) {
       glossaryTranslations = (_json['glossaryTranslations'] as core.List)
-          .map<Translation>((value) => Translation.fromJson(value))
+          .map<Translation>((value) => Translation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('translations')) {
       translations = (_json['translations'] as core.List)
-          .map<Translation>((value) => Translation.fromJson(value))
+          .map<Translation>((value) => Translation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -2424,8 +2496,8 @@ class Translation {
       detectedLanguageCode = _json['detectedLanguageCode'] as core.String;
     }
     if (_json.containsKey('glossaryConfig')) {
-      glossaryConfig =
-          TranslateTextGlossaryConfig.fromJson(_json['glossaryConfig']);
+      glossaryConfig = TranslateTextGlossaryConfig.fromJson(
+          _json['glossaryConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('model')) {
       model = _json['model'] as core.String;

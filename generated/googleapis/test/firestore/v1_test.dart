@@ -83,8 +83,8 @@ core.List<api.Value> buildUnnamed3253() {
 
 void checkUnnamed3253(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterArrayValue = 0;
@@ -138,8 +138,8 @@ void checkBatchGetDocumentsRequest(api.BatchGetDocumentsRequest o) {
   buildCounterBatchGetDocumentsRequest++;
   if (buildCounterBatchGetDocumentsRequest < 3) {
     checkUnnamed3254(o.documents);
-    checkDocumentMask(o.mask);
-    checkTransactionOptions(o.newTransaction);
+    checkDocumentMask(o.mask as api.DocumentMask);
+    checkTransactionOptions(o.newTransaction as api.TransactionOptions);
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.transaction, unittest.equals('foo'));
   }
@@ -163,7 +163,7 @@ api.BatchGetDocumentsResponse buildBatchGetDocumentsResponse() {
 void checkBatchGetDocumentsResponse(api.BatchGetDocumentsResponse o) {
   buildCounterBatchGetDocumentsResponse++;
   if (buildCounterBatchGetDocumentsResponse < 3) {
-    checkDocument(o.found);
+    checkDocument(o.found as api.Document);
     unittest.expect(o.missing, unittest.equals('foo'));
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.transaction, unittest.equals('foo'));
@@ -193,8 +193,8 @@ core.List<api.Write> buildUnnamed3256() {
 
 void checkUnnamed3256(core.List<api.Write> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWrite(o[0]);
-  checkWrite(o[1]);
+  checkWrite(o[0] as api.Write);
+  checkWrite(o[1] as api.Write);
 }
 
 core.int buildCounterBatchWriteRequest = 0;
@@ -227,8 +227,8 @@ core.List<api.Status> buildUnnamed3257() {
 
 void checkUnnamed3257(core.List<api.Status> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStatus(o[0]);
-  checkStatus(o[1]);
+  checkStatus(o[0] as api.Status);
+  checkStatus(o[1] as api.Status);
 }
 
 core.List<api.WriteResult> buildUnnamed3258() {
@@ -240,8 +240,8 @@ core.List<api.WriteResult> buildUnnamed3258() {
 
 void checkUnnamed3258(core.List<api.WriteResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWriteResult(o[0]);
-  checkWriteResult(o[1]);
+  checkWriteResult(o[0] as api.WriteResult);
+  checkWriteResult(o[1] as api.WriteResult);
 }
 
 core.int buildCounterBatchWriteResponse = 0;
@@ -279,7 +279,7 @@ api.BeginTransactionRequest buildBeginTransactionRequest() {
 void checkBeginTransactionRequest(api.BeginTransactionRequest o) {
   buildCounterBeginTransactionRequest++;
   if (buildCounterBeginTransactionRequest < 3) {
-    checkTransactionOptions(o.options);
+    checkTransactionOptions(o.options as api.TransactionOptions);
   }
   buildCounterBeginTransactionRequest--;
 }
@@ -333,8 +333,8 @@ core.List<api.Write> buildUnnamed3259() {
 
 void checkUnnamed3259(core.List<api.Write> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWrite(o[0]);
-  checkWrite(o[1]);
+  checkWrite(o[0] as api.Write);
+  checkWrite(o[1] as api.Write);
 }
 
 core.int buildCounterCommitRequest = 0;
@@ -367,8 +367,8 @@ core.List<api.WriteResult> buildUnnamed3260() {
 
 void checkUnnamed3260(core.List<api.WriteResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWriteResult(o[0]);
-  checkWriteResult(o[1]);
+  checkWriteResult(o[0] as api.WriteResult);
+  checkWriteResult(o[1] as api.WriteResult);
 }
 
 core.int buildCounterCommitResponse = 0;
@@ -401,8 +401,8 @@ core.List<api.Filter> buildUnnamed3261() {
 
 void checkUnnamed3261(core.List<api.Filter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFilter(o[0]);
-  checkFilter(o[1]);
+  checkFilter(o[0] as api.Filter);
+  checkFilter(o[1] as api.Filter);
 }
 
 core.int buildCounterCompositeFilter = 0;
@@ -435,8 +435,8 @@ core.List<api.Value> buildUnnamed3262() {
 
 void checkUnnamed3262(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterCursor = 0;
@@ -469,8 +469,8 @@ core.Map<core.String, api.Value> buildUnnamed3263() {
 
 void checkUnnamed3263(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o['x']);
-  checkValue(o['y']);
+  checkValue(o['x'] as api.Value);
+  checkValue(o['y'] as api.Value);
 }
 
 core.int buildCounterDocument = 0;
@@ -540,7 +540,7 @@ api.DocumentChange buildDocumentChange() {
 void checkDocumentChange(api.DocumentChange o) {
   buildCounterDocumentChange++;
   if (buildCounterDocumentChange < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     checkUnnamed3264(o.removedTargetIds);
     checkUnnamed3265(o.targetIds);
   }
@@ -660,8 +660,8 @@ core.List<api.FieldTransform> buildUnnamed3269() {
 
 void checkUnnamed3269(core.List<api.FieldTransform> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFieldTransform(o[0]);
-  checkFieldTransform(o[1]);
+  checkFieldTransform(o[0] as api.FieldTransform);
+  checkFieldTransform(o[1] as api.FieldTransform);
 }
 
 core.int buildCounterDocumentTransform = 0;
@@ -769,9 +769,9 @@ api.FieldFilter buildFieldFilter() {
 void checkFieldFilter(api.FieldFilter o) {
   buildCounterFieldFilter++;
   if (buildCounterFieldFilter < 3) {
-    checkFieldReference(o.field);
+    checkFieldReference(o.field as api.FieldReference);
     unittest.expect(o.op, unittest.equals('foo'));
-    checkValue(o.value);
+    checkValue(o.value as api.Value);
   }
   buildCounterFieldFilter--;
 }
@@ -815,12 +815,12 @@ api.FieldTransform buildFieldTransform() {
 void checkFieldTransform(api.FieldTransform o) {
   buildCounterFieldTransform++;
   if (buildCounterFieldTransform < 3) {
-    checkArrayValue(o.appendMissingElements);
+    checkArrayValue(o.appendMissingElements as api.ArrayValue);
     unittest.expect(o.fieldPath, unittest.equals('foo'));
-    checkValue(o.increment);
-    checkValue(o.maximum);
-    checkValue(o.minimum);
-    checkArrayValue(o.removeAllFromArray);
+    checkValue(o.increment as api.Value);
+    checkValue(o.maximum as api.Value);
+    checkValue(o.minimum as api.Value);
+    checkArrayValue(o.removeAllFromArray as api.ArrayValue);
     unittest.expect(o.setToServerValue, unittest.equals('foo'));
   }
   buildCounterFieldTransform--;
@@ -842,9 +842,9 @@ api.Filter buildFilter() {
 void checkFilter(api.Filter o) {
   buildCounterFilter++;
   if (buildCounterFilter < 3) {
-    checkCompositeFilter(o.compositeFilter);
-    checkFieldFilter(o.fieldFilter);
-    checkUnaryFilter(o.unaryFilter);
+    checkCompositeFilter(o.compositeFilter as api.CompositeFilter);
+    checkFieldFilter(o.fieldFilter as api.FieldFilter);
+    checkUnaryFilter(o.unaryFilter as api.UnaryFilter);
   }
   buildCounterFilter--;
 }
@@ -888,8 +888,10 @@ void checkGoogleFirestoreAdminV1ExportDocumentsMetadata(
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.operationState, unittest.equals('foo'));
     unittest.expect(o.outputUriPrefix, unittest.equals('foo'));
-    checkGoogleFirestoreAdminV1Progress(o.progressBytes);
-    checkGoogleFirestoreAdminV1Progress(o.progressDocuments);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressBytes as api.GoogleFirestoreAdminV1Progress);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressDocuments as api.GoogleFirestoreAdminV1Progress);
     unittest.expect(o.startTime, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ExportDocumentsMetadata--;
@@ -967,7 +969,8 @@ api.GoogleFirestoreAdminV1Field buildGoogleFirestoreAdminV1Field() {
 void checkGoogleFirestoreAdminV1Field(api.GoogleFirestoreAdminV1Field o) {
   buildCounterGoogleFirestoreAdminV1Field++;
   if (buildCounterGoogleFirestoreAdminV1Field < 3) {
-    checkGoogleFirestoreAdminV1IndexConfig(o.indexConfig);
+    checkGoogleFirestoreAdminV1IndexConfig(
+        o.indexConfig as api.GoogleFirestoreAdminV1IndexConfig);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1Field--;
@@ -982,8 +985,10 @@ core.List<api.GoogleFirestoreAdminV1IndexConfigDelta> buildUnnamed3273() {
 
 void checkUnnamed3273(core.List<api.GoogleFirestoreAdminV1IndexConfigDelta> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirestoreAdminV1IndexConfigDelta(o[0]);
-  checkGoogleFirestoreAdminV1IndexConfigDelta(o[1]);
+  checkGoogleFirestoreAdminV1IndexConfigDelta(
+      o[0] as api.GoogleFirestoreAdminV1IndexConfigDelta);
+  checkGoogleFirestoreAdminV1IndexConfigDelta(
+      o[1] as api.GoogleFirestoreAdminV1IndexConfigDelta);
 }
 
 core.int buildCounterGoogleFirestoreAdminV1FieldOperationMetadata = 0;
@@ -1011,8 +1016,10 @@ void checkGoogleFirestoreAdminV1FieldOperationMetadata(
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.field, unittest.equals('foo'));
     checkUnnamed3273(o.indexConfigDeltas);
-    checkGoogleFirestoreAdminV1Progress(o.progressBytes);
-    checkGoogleFirestoreAdminV1Progress(o.progressDocuments);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressBytes as api.GoogleFirestoreAdminV1Progress);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressDocuments as api.GoogleFirestoreAdminV1Progress);
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -1058,8 +1065,10 @@ void checkGoogleFirestoreAdminV1ImportDocumentsMetadata(
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.inputUriPrefix, unittest.equals('foo'));
     unittest.expect(o.operationState, unittest.equals('foo'));
-    checkGoogleFirestoreAdminV1Progress(o.progressBytes);
-    checkGoogleFirestoreAdminV1Progress(o.progressDocuments);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressBytes as api.GoogleFirestoreAdminV1Progress);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressDocuments as api.GoogleFirestoreAdminV1Progress);
     unittest.expect(o.startTime, unittest.equals('foo'));
   }
   buildCounterGoogleFirestoreAdminV1ImportDocumentsMetadata--;
@@ -1110,8 +1119,10 @@ core.List<api.GoogleFirestoreAdminV1IndexField> buildUnnamed3276() {
 
 void checkUnnamed3276(core.List<api.GoogleFirestoreAdminV1IndexField> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirestoreAdminV1IndexField(o[0]);
-  checkGoogleFirestoreAdminV1IndexField(o[1]);
+  checkGoogleFirestoreAdminV1IndexField(
+      o[0] as api.GoogleFirestoreAdminV1IndexField);
+  checkGoogleFirestoreAdminV1IndexField(
+      o[1] as api.GoogleFirestoreAdminV1IndexField);
 }
 
 core.int buildCounterGoogleFirestoreAdminV1Index = 0;
@@ -1148,8 +1159,8 @@ core.List<api.GoogleFirestoreAdminV1Index> buildUnnamed3277() {
 
 void checkUnnamed3277(core.List<api.GoogleFirestoreAdminV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirestoreAdminV1Index(o[0]);
-  checkGoogleFirestoreAdminV1Index(o[1]);
+  checkGoogleFirestoreAdminV1Index(o[0] as api.GoogleFirestoreAdminV1Index);
+  checkGoogleFirestoreAdminV1Index(o[1] as api.GoogleFirestoreAdminV1Index);
 }
 
 core.int buildCounterGoogleFirestoreAdminV1IndexConfig = 0;
@@ -1196,7 +1207,8 @@ void checkGoogleFirestoreAdminV1IndexConfigDelta(
   buildCounterGoogleFirestoreAdminV1IndexConfigDelta++;
   if (buildCounterGoogleFirestoreAdminV1IndexConfigDelta < 3) {
     unittest.expect(o.changeType, unittest.equals('foo'));
-    checkGoogleFirestoreAdminV1Index(o.index);
+    checkGoogleFirestoreAdminV1Index(
+        o.index as api.GoogleFirestoreAdminV1Index);
   }
   buildCounterGoogleFirestoreAdminV1IndexConfigDelta--;
 }
@@ -1248,8 +1260,10 @@ void checkGoogleFirestoreAdminV1IndexOperationMetadata(
   if (buildCounterGoogleFirestoreAdminV1IndexOperationMetadata < 3) {
     unittest.expect(o.endTime, unittest.equals('foo'));
     unittest.expect(o.index, unittest.equals('foo'));
-    checkGoogleFirestoreAdminV1Progress(o.progressBytes);
-    checkGoogleFirestoreAdminV1Progress(o.progressDocuments);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressBytes as api.GoogleFirestoreAdminV1Progress);
+    checkGoogleFirestoreAdminV1Progress(
+        o.progressDocuments as api.GoogleFirestoreAdminV1Progress);
     unittest.expect(o.startTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
   }
@@ -1265,8 +1279,8 @@ core.List<api.GoogleFirestoreAdminV1Field> buildUnnamed3278() {
 
 void checkUnnamed3278(core.List<api.GoogleFirestoreAdminV1Field> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirestoreAdminV1Field(o[0]);
-  checkGoogleFirestoreAdminV1Field(o[1]);
+  checkGoogleFirestoreAdminV1Field(o[0] as api.GoogleFirestoreAdminV1Field);
+  checkGoogleFirestoreAdminV1Field(o[1] as api.GoogleFirestoreAdminV1Field);
 }
 
 core.int buildCounterGoogleFirestoreAdminV1ListFieldsResponse = 0;
@@ -1301,8 +1315,8 @@ core.List<api.GoogleFirestoreAdminV1Index> buildUnnamed3279() {
 
 void checkUnnamed3279(core.List<api.GoogleFirestoreAdminV1Index> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleFirestoreAdminV1Index(o[0]);
-  checkGoogleFirestoreAdminV1Index(o[1]);
+  checkGoogleFirestoreAdminV1Index(o[0] as api.GoogleFirestoreAdminV1Index);
+  checkGoogleFirestoreAdminV1Index(o[1] as api.GoogleFirestoreAdminV1Index);
 }
 
 core.int buildCounterGoogleFirestoreAdminV1ListIndexesResponse = 0;
@@ -1392,8 +1406,8 @@ core.List<api.GoogleLongrunningOperation> buildUnnamed3280() {
 
 void checkUnnamed3280(core.List<api.GoogleLongrunningOperation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleLongrunningOperation(o[0]);
-  checkGoogleLongrunningOperation(o[1]);
+  checkGoogleLongrunningOperation(o[0] as api.GoogleLongrunningOperation);
+  checkGoogleLongrunningOperation(o[1] as api.GoogleLongrunningOperation);
 }
 
 core.int buildCounterGoogleLongrunningListOperationsResponse = 0;
@@ -1496,7 +1510,7 @@ void checkGoogleLongrunningOperation(api.GoogleLongrunningOperation o) {
   buildCounterGoogleLongrunningOperation++;
   if (buildCounterGoogleLongrunningOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed3281(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed3282(o.response);
@@ -1589,8 +1603,8 @@ core.List<api.Document> buildUnnamed3284() {
 
 void checkUnnamed3284(core.List<api.Document> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDocument(o[0]);
-  checkDocument(o[1]);
+  checkDocument(o[0] as api.Document);
+  checkDocument(o[1] as api.Document);
 }
 
 core.int buildCounterListDocumentsResponse = 0;
@@ -1623,8 +1637,8 @@ core.List<api.Location> buildUnnamed3285() {
 
 void checkUnnamed3285(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -1677,7 +1691,7 @@ api.ListenRequest buildListenRequest() {
 void checkListenRequest(api.ListenRequest o) {
   buildCounterListenRequest++;
   if (buildCounterListenRequest < 3) {
-    checkTarget(o.addTarget);
+    checkTarget(o.addTarget as api.Target);
     checkUnnamed3286(o.labels);
     unittest.expect(o.removeTarget, unittest.equals(42));
   }
@@ -1702,11 +1716,11 @@ api.ListenResponse buildListenResponse() {
 void checkListenResponse(api.ListenResponse o) {
   buildCounterListenResponse++;
   if (buildCounterListenResponse < 3) {
-    checkDocumentChange(o.documentChange);
-    checkDocumentDelete(o.documentDelete);
-    checkDocumentRemove(o.documentRemove);
-    checkExistenceFilter(o.filter);
-    checkTargetChange(o.targetChange);
+    checkDocumentChange(o.documentChange as api.DocumentChange);
+    checkDocumentDelete(o.documentDelete as api.DocumentDelete);
+    checkDocumentRemove(o.documentRemove as api.DocumentRemove);
+    checkExistenceFilter(o.filter as api.ExistenceFilter);
+    checkTargetChange(o.targetChange as api.TargetChange);
   }
   buildCounterListenResponse--;
 }
@@ -1789,8 +1803,8 @@ core.Map<core.String, api.Value> buildUnnamed3289() {
 
 void checkUnnamed3289(core.Map<core.String, api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o['x']);
-  checkValue(o['y']);
+  checkValue(o['x'] as api.Value);
+  checkValue(o['y'] as api.Value);
 }
 
 core.int buildCounterMapValue = 0;
@@ -1828,7 +1842,7 @@ void checkOrder(api.Order o) {
   buildCounterOrder++;
   if (buildCounterOrder < 3) {
     unittest.expect(o.direction, unittest.equals('foo'));
-    checkFieldReference(o.field);
+    checkFieldReference(o.field as api.FieldReference);
   }
   buildCounterOrder--;
 }
@@ -1853,7 +1867,7 @@ void checkPartitionQueryRequest(api.PartitionQueryRequest o) {
     unittest.expect(o.pageSize, unittest.equals(42));
     unittest.expect(o.pageToken, unittest.equals('foo'));
     unittest.expect(o.partitionCount, unittest.equals('foo'));
-    checkStructuredQuery(o.structuredQuery);
+    checkStructuredQuery(o.structuredQuery as api.StructuredQuery);
   }
   buildCounterPartitionQueryRequest--;
 }
@@ -1867,8 +1881,8 @@ core.List<api.Cursor> buildUnnamed3290() {
 
 void checkUnnamed3290(core.List<api.Cursor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCursor(o[0]);
-  checkCursor(o[1]);
+  checkCursor(o[0] as api.Cursor);
+  checkCursor(o[1] as api.Cursor);
 }
 
 core.int buildCounterPartitionQueryResponse = 0;
@@ -1922,8 +1936,8 @@ core.List<api.FieldReference> buildUnnamed3291() {
 
 void checkUnnamed3291(core.List<api.FieldReference> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFieldReference(o[0]);
-  checkFieldReference(o[1]);
+  checkFieldReference(o[0] as api.FieldReference);
+  checkFieldReference(o[1] as api.FieldReference);
 }
 
 core.int buildCounterProjection = 0;
@@ -1961,7 +1975,7 @@ void checkQueryTarget(api.QueryTarget o) {
   buildCounterQueryTarget++;
   if (buildCounterQueryTarget < 3) {
     unittest.expect(o.parent, unittest.equals('foo'));
-    checkStructuredQuery(o.structuredQuery);
+    checkStructuredQuery(o.structuredQuery as api.StructuredQuery);
   }
   buildCounterQueryTarget--;
 }
@@ -2040,9 +2054,9 @@ api.RunQueryRequest buildRunQueryRequest() {
 void checkRunQueryRequest(api.RunQueryRequest o) {
   buildCounterRunQueryRequest++;
   if (buildCounterRunQueryRequest < 3) {
-    checkTransactionOptions(o.newTransaction);
+    checkTransactionOptions(o.newTransaction as api.TransactionOptions);
     unittest.expect(o.readTime, unittest.equals('foo'));
-    checkStructuredQuery(o.structuredQuery);
+    checkStructuredQuery(o.structuredQuery as api.StructuredQuery);
     unittest.expect(o.transaction, unittest.equals('foo'));
   }
   buildCounterRunQueryRequest--;
@@ -2065,7 +2079,7 @@ api.RunQueryResponse buildRunQueryResponse() {
 void checkRunQueryResponse(api.RunQueryResponse o) {
   buildCounterRunQueryResponse++;
   if (buildCounterRunQueryResponse < 3) {
-    checkDocument(o.document);
+    checkDocument(o.document as api.Document);
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.skippedResults, unittest.equals(42));
     unittest.expect(o.transaction, unittest.equals('foo'));
@@ -2147,8 +2161,8 @@ core.List<api.CollectionSelector> buildUnnamed3294() {
 
 void checkUnnamed3294(core.List<api.CollectionSelector> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCollectionSelector(o[0]);
-  checkCollectionSelector(o[1]);
+  checkCollectionSelector(o[0] as api.CollectionSelector);
+  checkCollectionSelector(o[1] as api.CollectionSelector);
 }
 
 core.List<api.Order> buildUnnamed3295() {
@@ -2160,8 +2174,8 @@ core.List<api.Order> buildUnnamed3295() {
 
 void checkUnnamed3295(core.List<api.Order> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOrder(o[0]);
-  checkOrder(o[1]);
+  checkOrder(o[0] as api.Order);
+  checkOrder(o[1] as api.Order);
 }
 
 core.int buildCounterStructuredQuery = 0;
@@ -2185,14 +2199,14 @@ api.StructuredQuery buildStructuredQuery() {
 void checkStructuredQuery(api.StructuredQuery o) {
   buildCounterStructuredQuery++;
   if (buildCounterStructuredQuery < 3) {
-    checkCursor(o.endAt);
+    checkCursor(o.endAt as api.Cursor);
     checkUnnamed3294(o.from);
     unittest.expect(o.limit, unittest.equals(42));
     unittest.expect(o.offset, unittest.equals(42));
     checkUnnamed3295(o.orderBy);
-    checkProjection(o.select);
-    checkCursor(o.startAt);
-    checkFilter(o.where);
+    checkProjection(o.select as api.Projection);
+    checkCursor(o.startAt as api.Cursor);
+    checkFilter(o.where as api.Filter);
   }
   buildCounterStructuredQuery--;
 }
@@ -2216,9 +2230,9 @@ api.Target buildTarget() {
 void checkTarget(api.Target o) {
   buildCounterTarget++;
   if (buildCounterTarget < 3) {
-    checkDocumentsTarget(o.documents);
+    checkDocumentsTarget(o.documents as api.DocumentsTarget);
     unittest.expect(o.once, unittest.isTrue);
-    checkQueryTarget(o.query);
+    checkQueryTarget(o.query as api.QueryTarget);
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.resumeToken, unittest.equals('foo'));
     unittest.expect(o.targetId, unittest.equals(42));
@@ -2257,7 +2271,7 @@ api.TargetChange buildTargetChange() {
 void checkTargetChange(api.TargetChange o) {
   buildCounterTargetChange++;
   if (buildCounterTargetChange < 3) {
-    checkStatus(o.cause);
+    checkStatus(o.cause as api.Status);
     unittest.expect(o.readTime, unittest.equals('foo'));
     unittest.expect(o.resumeToken, unittest.equals('foo'));
     unittest.expect(o.targetChangeType, unittest.equals('foo'));
@@ -2281,8 +2295,8 @@ api.TransactionOptions buildTransactionOptions() {
 void checkTransactionOptions(api.TransactionOptions o) {
   buildCounterTransactionOptions++;
   if (buildCounterTransactionOptions < 3) {
-    checkReadOnly(o.readOnly);
-    checkReadWrite(o.readWrite);
+    checkReadOnly(o.readOnly as api.ReadOnly);
+    checkReadWrite(o.readWrite as api.ReadWrite);
   }
   buildCounterTransactionOptions--;
 }
@@ -2302,7 +2316,7 @@ api.UnaryFilter buildUnaryFilter() {
 void checkUnaryFilter(api.UnaryFilter o) {
   buildCounterUnaryFilter++;
   if (buildCounterUnaryFilter < 3) {
-    checkFieldReference(o.field);
+    checkFieldReference(o.field as api.FieldReference);
     unittest.expect(o.op, unittest.equals('foo'));
   }
   buildCounterUnaryFilter--;
@@ -2332,13 +2346,13 @@ api.Value buildValue() {
 void checkValue(api.Value o) {
   buildCounterValue++;
   if (buildCounterValue < 3) {
-    checkArrayValue(o.arrayValue);
+    checkArrayValue(o.arrayValue as api.ArrayValue);
     unittest.expect(o.booleanValue, unittest.isTrue);
     unittest.expect(o.bytesValue, unittest.equals('foo'));
     unittest.expect(o.doubleValue, unittest.equals(42.0));
-    checkLatLng(o.geoPointValue);
+    checkLatLng(o.geoPointValue as api.LatLng);
     unittest.expect(o.integerValue, unittest.equals('foo'));
-    checkMapValue(o.mapValue);
+    checkMapValue(o.mapValue as api.MapValue);
     unittest.expect(o.nullValue, unittest.equals('foo'));
     unittest.expect(o.referenceValue, unittest.equals('foo'));
     unittest.expect(o.stringValue, unittest.equals('foo'));
@@ -2356,8 +2370,8 @@ core.List<api.FieldTransform> buildUnnamed3297() {
 
 void checkUnnamed3297(core.List<api.FieldTransform> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFieldTransform(o[0]);
-  checkFieldTransform(o[1]);
+  checkFieldTransform(o[0] as api.FieldTransform);
+  checkFieldTransform(o[1] as api.FieldTransform);
 }
 
 core.int buildCounterWrite = 0;
@@ -2379,11 +2393,11 @@ api.Write buildWrite() {
 void checkWrite(api.Write o) {
   buildCounterWrite++;
   if (buildCounterWrite < 3) {
-    checkPrecondition(o.currentDocument);
+    checkPrecondition(o.currentDocument as api.Precondition);
     unittest.expect(o.delete, unittest.equals('foo'));
-    checkDocumentTransform(o.transform);
-    checkDocument(o.update);
-    checkDocumentMask(o.updateMask);
+    checkDocumentTransform(o.transform as api.DocumentTransform);
+    checkDocument(o.update as api.Document);
+    checkDocumentMask(o.updateMask as api.DocumentMask);
     checkUnnamed3297(o.updateTransforms);
   }
   buildCounterWrite--;
@@ -2411,8 +2425,8 @@ core.List<api.Write> buildUnnamed3299() {
 
 void checkUnnamed3299(core.List<api.Write> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWrite(o[0]);
-  checkWrite(o[1]);
+  checkWrite(o[0] as api.Write);
+  checkWrite(o[1] as api.Write);
 }
 
 core.int buildCounterWriteRequest = 0;
@@ -2449,8 +2463,8 @@ core.List<api.WriteResult> buildUnnamed3300() {
 
 void checkUnnamed3300(core.List<api.WriteResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkWriteResult(o[0]);
-  checkWriteResult(o[1]);
+  checkWriteResult(o[0] as api.WriteResult);
+  checkWriteResult(o[1] as api.WriteResult);
 }
 
 core.int buildCounterWriteResponse = 0;
@@ -2487,8 +2501,8 @@ core.List<api.Value> buildUnnamed3301() {
 
 void checkUnnamed3301(core.List<api.Value> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkValue(o[0]);
-  checkValue(o[1]);
+  checkValue(o[0] as api.Value);
+  checkValue(o[1] as api.Value);
 }
 
 core.int buildCounterWriteResult = 0;
@@ -2582,7 +2596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildArrayValue();
       var od = api.ArrayValue.fromJson(o.toJson());
-      checkArrayValue(od);
+      checkArrayValue(od as api.ArrayValue);
     });
   });
 
@@ -2590,7 +2604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetDocumentsRequest();
       var od = api.BatchGetDocumentsRequest.fromJson(o.toJson());
-      checkBatchGetDocumentsRequest(od);
+      checkBatchGetDocumentsRequest(od as api.BatchGetDocumentsRequest);
     });
   });
 
@@ -2598,7 +2612,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchGetDocumentsResponse();
       var od = api.BatchGetDocumentsResponse.fromJson(o.toJson());
-      checkBatchGetDocumentsResponse(od);
+      checkBatchGetDocumentsResponse(od as api.BatchGetDocumentsResponse);
     });
   });
 
@@ -2606,7 +2620,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchWriteRequest();
       var od = api.BatchWriteRequest.fromJson(o.toJson());
-      checkBatchWriteRequest(od);
+      checkBatchWriteRequest(od as api.BatchWriteRequest);
     });
   });
 
@@ -2614,7 +2628,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchWriteResponse();
       var od = api.BatchWriteResponse.fromJson(o.toJson());
-      checkBatchWriteResponse(od);
+      checkBatchWriteResponse(od as api.BatchWriteResponse);
     });
   });
 
@@ -2622,7 +2636,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionRequest();
       var od = api.BeginTransactionRequest.fromJson(o.toJson());
-      checkBeginTransactionRequest(od);
+      checkBeginTransactionRequest(od as api.BeginTransactionRequest);
     });
   });
 
@@ -2630,7 +2644,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBeginTransactionResponse();
       var od = api.BeginTransactionResponse.fromJson(o.toJson());
-      checkBeginTransactionResponse(od);
+      checkBeginTransactionResponse(od as api.BeginTransactionResponse);
     });
   });
 
@@ -2638,7 +2652,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCollectionSelector();
       var od = api.CollectionSelector.fromJson(o.toJson());
-      checkCollectionSelector(od);
+      checkCollectionSelector(od as api.CollectionSelector);
     });
   });
 
@@ -2646,7 +2660,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitRequest();
       var od = api.CommitRequest.fromJson(o.toJson());
-      checkCommitRequest(od);
+      checkCommitRequest(od as api.CommitRequest);
     });
   });
 
@@ -2654,7 +2668,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommitResponse();
       var od = api.CommitResponse.fromJson(o.toJson());
-      checkCommitResponse(od);
+      checkCommitResponse(od as api.CommitResponse);
     });
   });
 
@@ -2662,7 +2676,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompositeFilter();
       var od = api.CompositeFilter.fromJson(o.toJson());
-      checkCompositeFilter(od);
+      checkCompositeFilter(od as api.CompositeFilter);
     });
   });
 
@@ -2670,7 +2684,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCursor();
       var od = api.Cursor.fromJson(o.toJson());
-      checkCursor(od);
+      checkCursor(od as api.Cursor);
     });
   });
 
@@ -2678,7 +2692,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocument();
       var od = api.Document.fromJson(o.toJson());
-      checkDocument(od);
+      checkDocument(od as api.Document);
     });
   });
 
@@ -2686,7 +2700,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentChange();
       var od = api.DocumentChange.fromJson(o.toJson());
-      checkDocumentChange(od);
+      checkDocumentChange(od as api.DocumentChange);
     });
   });
 
@@ -2694,7 +2708,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentDelete();
       var od = api.DocumentDelete.fromJson(o.toJson());
-      checkDocumentDelete(od);
+      checkDocumentDelete(od as api.DocumentDelete);
     });
   });
 
@@ -2702,7 +2716,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentMask();
       var od = api.DocumentMask.fromJson(o.toJson());
-      checkDocumentMask(od);
+      checkDocumentMask(od as api.DocumentMask);
     });
   });
 
@@ -2710,7 +2724,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentRemove();
       var od = api.DocumentRemove.fromJson(o.toJson());
-      checkDocumentRemove(od);
+      checkDocumentRemove(od as api.DocumentRemove);
     });
   });
 
@@ -2718,7 +2732,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentTransform();
       var od = api.DocumentTransform.fromJson(o.toJson());
-      checkDocumentTransform(od);
+      checkDocumentTransform(od as api.DocumentTransform);
     });
   });
 
@@ -2726,7 +2740,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDocumentsTarget();
       var od = api.DocumentsTarget.fromJson(o.toJson());
-      checkDocumentsTarget(od);
+      checkDocumentsTarget(od as api.DocumentsTarget);
     });
   });
 
@@ -2734,7 +2748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2742,7 +2756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExistenceFilter();
       var od = api.ExistenceFilter.fromJson(o.toJson());
-      checkExistenceFilter(od);
+      checkExistenceFilter(od as api.ExistenceFilter);
     });
   });
 
@@ -2750,7 +2764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFieldFilter();
       var od = api.FieldFilter.fromJson(o.toJson());
-      checkFieldFilter(od);
+      checkFieldFilter(od as api.FieldFilter);
     });
   });
 
@@ -2758,7 +2772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFieldReference();
       var od = api.FieldReference.fromJson(o.toJson());
-      checkFieldReference(od);
+      checkFieldReference(od as api.FieldReference);
     });
   });
 
@@ -2766,7 +2780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFieldTransform();
       var od = api.FieldTransform.fromJson(o.toJson());
-      checkFieldTransform(od);
+      checkFieldTransform(od as api.FieldTransform);
     });
   });
 
@@ -2774,7 +2788,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
-      checkFilter(od);
+      checkFilter(od as api.Filter);
     });
   });
 
@@ -2784,7 +2798,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsMetadata();
       var od = api.GoogleFirestoreAdminV1ExportDocumentsMetadata.fromJson(
           o.toJson());
-      checkGoogleFirestoreAdminV1ExportDocumentsMetadata(od);
+      checkGoogleFirestoreAdminV1ExportDocumentsMetadata(
+          od as api.GoogleFirestoreAdminV1ExportDocumentsMetadata);
     });
   });
 
@@ -2793,7 +2808,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsRequest();
       var od =
           api.GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1ExportDocumentsRequest(od);
+      checkGoogleFirestoreAdminV1ExportDocumentsRequest(
+          od as api.GoogleFirestoreAdminV1ExportDocumentsRequest);
     });
   });
 
@@ -2803,7 +2819,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ExportDocumentsResponse();
       var od = api.GoogleFirestoreAdminV1ExportDocumentsResponse.fromJson(
           o.toJson());
-      checkGoogleFirestoreAdminV1ExportDocumentsResponse(od);
+      checkGoogleFirestoreAdminV1ExportDocumentsResponse(
+          od as api.GoogleFirestoreAdminV1ExportDocumentsResponse);
     });
   });
 
@@ -2811,7 +2828,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Field();
       var od = api.GoogleFirestoreAdminV1Field.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1Field(od);
+      checkGoogleFirestoreAdminV1Field(od as api.GoogleFirestoreAdminV1Field);
     });
   });
 
@@ -2820,7 +2837,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1FieldOperationMetadata();
       var od =
           api.GoogleFirestoreAdminV1FieldOperationMetadata.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1FieldOperationMetadata(od);
+      checkGoogleFirestoreAdminV1FieldOperationMetadata(
+          od as api.GoogleFirestoreAdminV1FieldOperationMetadata);
     });
   });
 
@@ -2830,7 +2848,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ImportDocumentsMetadata();
       var od = api.GoogleFirestoreAdminV1ImportDocumentsMetadata.fromJson(
           o.toJson());
-      checkGoogleFirestoreAdminV1ImportDocumentsMetadata(od);
+      checkGoogleFirestoreAdminV1ImportDocumentsMetadata(
+          od as api.GoogleFirestoreAdminV1ImportDocumentsMetadata);
     });
   });
 
@@ -2839,7 +2858,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ImportDocumentsRequest();
       var od =
           api.GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1ImportDocumentsRequest(od);
+      checkGoogleFirestoreAdminV1ImportDocumentsRequest(
+          od as api.GoogleFirestoreAdminV1ImportDocumentsRequest);
     });
   });
 
@@ -2847,7 +2867,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Index();
       var od = api.GoogleFirestoreAdminV1Index.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1Index(od);
+      checkGoogleFirestoreAdminV1Index(od as api.GoogleFirestoreAdminV1Index);
     });
   });
 
@@ -2855,7 +2875,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexConfig();
       var od = api.GoogleFirestoreAdminV1IndexConfig.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1IndexConfig(od);
+      checkGoogleFirestoreAdminV1IndexConfig(
+          od as api.GoogleFirestoreAdminV1IndexConfig);
     });
   });
 
@@ -2863,7 +2884,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexConfigDelta();
       var od = api.GoogleFirestoreAdminV1IndexConfigDelta.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1IndexConfigDelta(od);
+      checkGoogleFirestoreAdminV1IndexConfigDelta(
+          od as api.GoogleFirestoreAdminV1IndexConfigDelta);
     });
   });
 
@@ -2871,7 +2893,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1IndexField();
       var od = api.GoogleFirestoreAdminV1IndexField.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1IndexField(od);
+      checkGoogleFirestoreAdminV1IndexField(
+          od as api.GoogleFirestoreAdminV1IndexField);
     });
   });
 
@@ -2880,7 +2903,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1IndexOperationMetadata();
       var od =
           api.GoogleFirestoreAdminV1IndexOperationMetadata.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1IndexOperationMetadata(od);
+      checkGoogleFirestoreAdminV1IndexOperationMetadata(
+          od as api.GoogleFirestoreAdminV1IndexOperationMetadata);
     });
   });
 
@@ -2889,7 +2913,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ListFieldsResponse();
       var od =
           api.GoogleFirestoreAdminV1ListFieldsResponse.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1ListFieldsResponse(od);
+      checkGoogleFirestoreAdminV1ListFieldsResponse(
+          od as api.GoogleFirestoreAdminV1ListFieldsResponse);
     });
   });
 
@@ -2898,7 +2923,8 @@ void main() {
       var o = buildGoogleFirestoreAdminV1ListIndexesResponse();
       var od =
           api.GoogleFirestoreAdminV1ListIndexesResponse.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1ListIndexesResponse(od);
+      checkGoogleFirestoreAdminV1ListIndexesResponse(
+          od as api.GoogleFirestoreAdminV1ListIndexesResponse);
     });
   });
 
@@ -2906,7 +2932,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1LocationMetadata();
       var od = api.GoogleFirestoreAdminV1LocationMetadata.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1LocationMetadata(od);
+      checkGoogleFirestoreAdminV1LocationMetadata(
+          od as api.GoogleFirestoreAdminV1LocationMetadata);
     });
   });
 
@@ -2914,7 +2941,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleFirestoreAdminV1Progress();
       var od = api.GoogleFirestoreAdminV1Progress.fromJson(o.toJson());
-      checkGoogleFirestoreAdminV1Progress(od);
+      checkGoogleFirestoreAdminV1Progress(
+          od as api.GoogleFirestoreAdminV1Progress);
     });
   });
 
@@ -2922,7 +2950,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningCancelOperationRequest();
       var od = api.GoogleLongrunningCancelOperationRequest.fromJson(o.toJson());
-      checkGoogleLongrunningCancelOperationRequest(od);
+      checkGoogleLongrunningCancelOperationRequest(
+          od as api.GoogleLongrunningCancelOperationRequest);
     });
   });
 
@@ -2930,7 +2959,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningListOperationsResponse();
       var od = api.GoogleLongrunningListOperationsResponse.fromJson(o.toJson());
-      checkGoogleLongrunningListOperationsResponse(od);
+      checkGoogleLongrunningListOperationsResponse(
+          od as api.GoogleLongrunningListOperationsResponse);
     });
   });
 
@@ -2938,7 +2968,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleLongrunningOperation();
       var od = api.GoogleLongrunningOperation.fromJson(o.toJson());
-      checkGoogleLongrunningOperation(od);
+      checkGoogleLongrunningOperation(od as api.GoogleLongrunningOperation);
     });
   });
 
@@ -2946,7 +2976,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
-      checkLatLng(od);
+      checkLatLng(od as api.LatLng);
     });
   });
 
@@ -2954,7 +2984,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCollectionIdsRequest();
       var od = api.ListCollectionIdsRequest.fromJson(o.toJson());
-      checkListCollectionIdsRequest(od);
+      checkListCollectionIdsRequest(od as api.ListCollectionIdsRequest);
     });
   });
 
@@ -2962,7 +2992,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCollectionIdsResponse();
       var od = api.ListCollectionIdsResponse.fromJson(o.toJson());
-      checkListCollectionIdsResponse(od);
+      checkListCollectionIdsResponse(od as api.ListCollectionIdsResponse);
     });
   });
 
@@ -2970,7 +3000,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListDocumentsResponse();
       var od = api.ListDocumentsResponse.fromJson(o.toJson());
-      checkListDocumentsResponse(od);
+      checkListDocumentsResponse(od as api.ListDocumentsResponse);
     });
   });
 
@@ -2978,7 +3008,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -2986,7 +3016,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListenRequest();
       var od = api.ListenRequest.fromJson(o.toJson());
-      checkListenRequest(od);
+      checkListenRequest(od as api.ListenRequest);
     });
   });
 
@@ -2994,7 +3024,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListenResponse();
       var od = api.ListenResponse.fromJson(o.toJson());
-      checkListenResponse(od);
+      checkListenResponse(od as api.ListenResponse);
     });
   });
 
@@ -3002,7 +3032,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -3010,7 +3040,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMapValue();
       var od = api.MapValue.fromJson(o.toJson());
-      checkMapValue(od);
+      checkMapValue(od as api.MapValue);
     });
   });
 
@@ -3018,7 +3048,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOrder();
       var od = api.Order.fromJson(o.toJson());
-      checkOrder(od);
+      checkOrder(od as api.Order);
     });
   });
 
@@ -3026,7 +3056,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartitionQueryRequest();
       var od = api.PartitionQueryRequest.fromJson(o.toJson());
-      checkPartitionQueryRequest(od);
+      checkPartitionQueryRequest(od as api.PartitionQueryRequest);
     });
   });
 
@@ -3034,7 +3064,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPartitionQueryResponse();
       var od = api.PartitionQueryResponse.fromJson(o.toJson());
-      checkPartitionQueryResponse(od);
+      checkPartitionQueryResponse(od as api.PartitionQueryResponse);
     });
   });
 
@@ -3042,7 +3072,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPrecondition();
       var od = api.Precondition.fromJson(o.toJson());
-      checkPrecondition(od);
+      checkPrecondition(od as api.Precondition);
     });
   });
 
@@ -3050,7 +3080,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProjection();
       var od = api.Projection.fromJson(o.toJson());
-      checkProjection(od);
+      checkProjection(od as api.Projection);
     });
   });
 
@@ -3058,7 +3088,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildQueryTarget();
       var od = api.QueryTarget.fromJson(o.toJson());
-      checkQueryTarget(od);
+      checkQueryTarget(od as api.QueryTarget);
     });
   });
 
@@ -3066,7 +3096,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadOnly();
       var od = api.ReadOnly.fromJson(o.toJson());
-      checkReadOnly(od);
+      checkReadOnly(od as api.ReadOnly);
     });
   });
 
@@ -3074,7 +3104,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReadWrite();
       var od = api.ReadWrite.fromJson(o.toJson());
-      checkReadWrite(od);
+      checkReadWrite(od as api.ReadWrite);
     });
   });
 
@@ -3082,7 +3112,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRollbackRequest();
       var od = api.RollbackRequest.fromJson(o.toJson());
-      checkRollbackRequest(od);
+      checkRollbackRequest(od as api.RollbackRequest);
     });
   });
 
@@ -3090,7 +3120,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunQueryRequest();
       var od = api.RunQueryRequest.fromJson(o.toJson());
-      checkRunQueryRequest(od);
+      checkRunQueryRequest(od as api.RunQueryRequest);
     });
   });
 
@@ -3098,7 +3128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRunQueryResponse();
       var od = api.RunQueryResponse.fromJson(o.toJson());
-      checkRunQueryResponse(od);
+      checkRunQueryResponse(od as api.RunQueryResponse);
     });
   });
 
@@ -3106,7 +3136,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -3114,7 +3144,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStructuredQuery();
       var od = api.StructuredQuery.fromJson(o.toJson());
-      checkStructuredQuery(od);
+      checkStructuredQuery(od as api.StructuredQuery);
     });
   });
 
@@ -3122,7 +3152,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTarget();
       var od = api.Target.fromJson(o.toJson());
-      checkTarget(od);
+      checkTarget(od as api.Target);
     });
   });
 
@@ -3130,7 +3160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTargetChange();
       var od = api.TargetChange.fromJson(o.toJson());
-      checkTargetChange(od);
+      checkTargetChange(od as api.TargetChange);
     });
   });
 
@@ -3138,7 +3168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTransactionOptions();
       var od = api.TransactionOptions.fromJson(o.toJson());
-      checkTransactionOptions(od);
+      checkTransactionOptions(od as api.TransactionOptions);
     });
   });
 
@@ -3146,7 +3176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUnaryFilter();
       var od = api.UnaryFilter.fromJson(o.toJson());
-      checkUnaryFilter(od);
+      checkUnaryFilter(od as api.UnaryFilter);
     });
   });
 
@@ -3154,7 +3184,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildValue();
       var od = api.Value.fromJson(o.toJson());
-      checkValue(od);
+      checkValue(od as api.Value);
     });
   });
 
@@ -3162,7 +3192,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWrite();
       var od = api.Write.fromJson(o.toJson());
-      checkWrite(od);
+      checkWrite(od as api.Write);
     });
   });
 
@@ -3170,7 +3200,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteRequest();
       var od = api.WriteRequest.fromJson(o.toJson());
-      checkWriteRequest(od);
+      checkWriteRequest(od as api.WriteRequest);
     });
   });
 
@@ -3178,7 +3208,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteResponse();
       var od = api.WriteResponse.fromJson(o.toJson());
-      checkWriteResponse(od);
+      checkWriteResponse(od as api.WriteResponse);
     });
   });
 
@@ -3186,7 +3216,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWriteResult();
       var od = api.WriteResult.fromJson(o.toJson());
-      checkWriteResult(od);
+      checkWriteResult(od as api.WriteResult);
     });
   });
 
@@ -3198,9 +3228,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(json);
-        checkGoogleFirestoreAdminV1ExportDocumentsRequest(obj);
+        var obj = api.GoogleFirestoreAdminV1ExportDocumentsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirestoreAdminV1ExportDocumentsRequest(
+            obj as api.GoogleFirestoreAdminV1ExportDocumentsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3240,7 +3271,8 @@ void main() {
       res
           .exportDocuments(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -3251,9 +3283,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj =
-            api.GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(json);
-        checkGoogleFirestoreAdminV1ImportDocumentsRequest(obj);
+        var obj = api.GoogleFirestoreAdminV1ImportDocumentsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirestoreAdminV1ImportDocumentsRequest(
+            obj as api.GoogleFirestoreAdminV1ImportDocumentsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3293,7 +3326,8 @@ void main() {
       res
           .importDocuments(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
   });
@@ -3345,7 +3379,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleFirestoreAdminV1Field(response);
+        checkGoogleFirestoreAdminV1Field(
+            response as api.GoogleFirestoreAdminV1Field);
       })));
     });
 
@@ -3407,7 +3442,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleFirestoreAdminV1ListFieldsResponse(response);
+        checkGoogleFirestoreAdminV1ListFieldsResponse(
+            response as api.GoogleFirestoreAdminV1ListFieldsResponse);
       })));
     });
 
@@ -3420,8 +3456,10 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleFirestoreAdminV1Field.fromJson(json);
-        checkGoogleFirestoreAdminV1Field(obj);
+        var obj = api.GoogleFirestoreAdminV1Field.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirestoreAdminV1Field(
+            obj as api.GoogleFirestoreAdminV1Field);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3464,7 +3502,8 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
   });
@@ -3479,8 +3518,10 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleFirestoreAdminV1Index.fromJson(json);
-        checkGoogleFirestoreAdminV1Index(obj);
+        var obj = api.GoogleFirestoreAdminV1Index.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleFirestoreAdminV1Index(
+            obj as api.GoogleFirestoreAdminV1Index);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3520,7 +3561,8 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -3569,7 +3611,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3618,7 +3660,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleFirestoreAdminV1Index(response);
+        checkGoogleFirestoreAdminV1Index(
+            response as api.GoogleFirestoreAdminV1Index);
       })));
     });
 
@@ -3680,7 +3723,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleFirestoreAdminV1ListIndexesResponse(response);
+        checkGoogleFirestoreAdminV1ListIndexesResponse(
+            response as api.GoogleFirestoreAdminV1ListIndexesResponse);
       })));
     });
   });
@@ -3693,8 +3737,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchGetDocumentsRequest.fromJson(json);
-        checkBatchGetDocumentsRequest(obj);
+        var obj = api.BatchGetDocumentsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchGetDocumentsRequest(obj as api.BatchGetDocumentsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3734,7 +3779,8 @@ void main() {
       res
           .batchGet(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchGetDocumentsResponse(response);
+        checkBatchGetDocumentsResponse(
+            response as api.BatchGetDocumentsResponse);
       })));
     });
 
@@ -3745,8 +3791,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchWriteRequest.fromJson(json);
-        checkBatchWriteRequest(obj);
+        var obj = api.BatchWriteRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchWriteRequest(obj as api.BatchWriteRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3786,7 +3833,7 @@ void main() {
       res
           .batchWrite(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBatchWriteResponse(response);
+        checkBatchWriteResponse(response as api.BatchWriteResponse);
       })));
     });
 
@@ -3797,8 +3844,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BeginTransactionRequest.fromJson(json);
-        checkBeginTransactionRequest(obj);
+        var obj = api.BeginTransactionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBeginTransactionRequest(obj as api.BeginTransactionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3838,7 +3886,7 @@ void main() {
       res
           .beginTransaction(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBeginTransactionResponse(response);
+        checkBeginTransactionResponse(response as api.BeginTransactionResponse);
       })));
     });
 
@@ -3849,8 +3897,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommitRequest.fromJson(json);
-        checkCommitRequest(obj);
+        var obj = api.CommitRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommitRequest(obj as api.CommitRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3890,7 +3939,7 @@ void main() {
       res
           .commit(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommitResponse(response);
+        checkCommitResponse(response as api.CommitResponse);
       })));
     });
 
@@ -3904,8 +3953,9 @@ void main() {
       var arg_mask_fieldPaths = buildUnnamed3302();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Document.fromJson(json);
-        checkDocument(obj);
+        var obj =
+            api.Document.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDocument(obj as api.Document);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3952,7 +4002,7 @@ void main() {
               mask_fieldPaths: arg_mask_fieldPaths,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDocument(response);
+        checkDocument(response as api.Document);
       })));
     });
 
@@ -4009,7 +4059,7 @@ void main() {
               currentDocument_updateTime: arg_currentDocument_updateTime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4070,7 +4120,7 @@ void main() {
               transaction: arg_transaction,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDocument(response);
+        checkDocument(response as api.Document);
       })));
     });
 
@@ -4148,7 +4198,7 @@ void main() {
               transaction: arg_transaction,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListDocumentsResponse(response);
+        checkListDocumentsResponse(response as api.ListDocumentsResponse);
       })));
     });
 
@@ -4159,8 +4209,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListCollectionIdsRequest.fromJson(json);
-        checkListCollectionIdsRequest(obj);
+        var obj = api.ListCollectionIdsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListCollectionIdsRequest(obj as api.ListCollectionIdsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4200,7 +4251,8 @@ void main() {
       res
           .listCollectionIds(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCollectionIdsResponse(response);
+        checkListCollectionIdsResponse(
+            response as api.ListCollectionIdsResponse);
       })));
     });
 
@@ -4211,8 +4263,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ListenRequest.fromJson(json);
-        checkListenRequest(obj);
+        var obj = api.ListenRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkListenRequest(obj as api.ListenRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4252,7 +4305,7 @@ void main() {
       res
           .listen(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListenResponse(response);
+        checkListenResponse(response as api.ListenResponse);
       })));
     });
 
@@ -4263,8 +4316,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PartitionQueryRequest.fromJson(json);
-        checkPartitionQueryRequest(obj);
+        var obj = api.PartitionQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPartitionQueryRequest(obj as api.PartitionQueryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4304,7 +4358,7 @@ void main() {
       res
           .partitionQuery(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPartitionQueryResponse(response);
+        checkPartitionQueryResponse(response as api.PartitionQueryResponse);
       })));
     });
 
@@ -4319,8 +4373,9 @@ void main() {
       var arg_updateMask_fieldPaths = buildUnnamed3306();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Document.fromJson(json);
-        checkDocument(obj);
+        var obj =
+            api.Document.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkDocument(obj as api.Document);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4373,7 +4428,7 @@ void main() {
               updateMask_fieldPaths: arg_updateMask_fieldPaths,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkDocument(response);
+        checkDocument(response as api.Document);
       })));
     });
 
@@ -4384,8 +4439,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RollbackRequest.fromJson(json);
-        checkRollbackRequest(obj);
+        var obj = api.RollbackRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRollbackRequest(obj as api.RollbackRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4425,7 +4481,7 @@ void main() {
       res
           .rollback(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4436,8 +4492,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.RunQueryRequest.fromJson(json);
-        checkRunQueryRequest(obj);
+        var obj = api.RunQueryRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRunQueryRequest(obj as api.RunQueryRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4477,7 +4534,7 @@ void main() {
       res
           .runQuery(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRunQueryResponse(response);
+        checkRunQueryResponse(response as api.RunQueryResponse);
       })));
     });
 
@@ -4488,8 +4545,9 @@ void main() {
       var arg_database = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.WriteRequest.fromJson(json);
-        checkWriteRequest(obj);
+        var obj = api.WriteRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkWriteRequest(obj as api.WriteRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4529,7 +4587,7 @@ void main() {
       res
           .write(arg_request, arg_database, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkWriteResponse(response);
+        checkWriteResponse(response as api.WriteResponse);
       })));
     });
   });
@@ -4542,8 +4600,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GoogleLongrunningCancelOperationRequest.fromJson(json);
-        checkGoogleLongrunningCancelOperationRequest(obj);
+        var obj = api.GoogleLongrunningCancelOperationRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGoogleLongrunningCancelOperationRequest(
+            obj as api.GoogleLongrunningCancelOperationRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4583,7 +4643,7 @@ void main() {
       res
           .cancel(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4631,7 +4691,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4679,7 +4739,8 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningOperation(response);
+        checkGoogleLongrunningOperation(
+            response as api.GoogleLongrunningOperation);
       })));
     });
 
@@ -4740,7 +4801,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGoogleLongrunningListOperationsResponse(response);
+        checkGoogleLongrunningListOperationsResponse(
+            response as api.GoogleLongrunningListOperationsResponse);
       })));
     });
   });
@@ -4790,7 +4852,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -4850,7 +4912,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });

@@ -127,7 +127,9 @@ class BackupRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a resource containing information about a backup run.
@@ -192,7 +194,9 @@ class BackupRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackupRun.fromJson(data));
+    return _response.then(
+      (data) => BackupRun.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new backup run on demand. This method is applicable only to
@@ -257,7 +261,9 @@ class BackupRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all backup runs associated with a given instance and configuration
@@ -329,7 +335,10 @@ class BackupRunsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BackupRunsListResponse.fromJson(data));
+    return _response.then(
+      (data) => BackupRunsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -400,7 +409,9 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a resource containing information about a database inside a
@@ -466,7 +477,9 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Database.fromJson(data));
+    return _response.then(
+      (data) => Database.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a resource containing information about a database inside a Cloud
@@ -531,7 +544,9 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists databases in the specified Cloud SQL instance.
@@ -589,7 +604,10 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DatabasesListResponse.fromJson(data));
+    return _response.then(
+      (data) => DatabasesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Partially updates a resource containing information about a database
@@ -661,7 +679,9 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a resource containing information about a database inside a Cloud
@@ -733,7 +753,9 @@ class DatabasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -789,7 +811,10 @@ class FlagsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => FlagsListResponse.fromJson(data));
+    return _response.then(
+      (data) => FlagsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -857,7 +882,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Cloud SQL instance as a clone of the source instance. Using this
@@ -924,7 +951,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Cloud SQL instance.
@@ -982,7 +1011,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Demotes the stand-alone instance to be a Cloud SQL read replica for an
@@ -1047,7 +1078,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL
@@ -1113,7 +1146,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Failover the instance to its failover replica instance. Using this
@@ -1178,7 +1213,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a resource containing information about a Cloud SQL instance.
@@ -1235,7 +1272,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DatabaseInstance.fromJson(data));
+    return _response.then(
+      (data) => DatabaseInstance.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Imports data into a Cloud SQL instance from a SQL dump or CSV file in
@@ -1300,7 +1340,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new Cloud SQL instance.
@@ -1357,7 +1399,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists instances under a given project.
@@ -1433,7 +1477,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => InstancesListResponse.fromJson(data));
+    return _response.then(
+      (data) => InstancesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the trusted Certificate Authorities (CAs) for the specified
@@ -1495,8 +1542,10 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => InstancesListServerCasResponse.fromJson(data));
+    return _response.then(
+      (data) => InstancesListServerCasResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates settings of a Cloud SQL instance. This method supports patch
@@ -1560,7 +1609,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Promotes the read replica instance to be a stand-alone Cloud SQL instance.
@@ -1619,7 +1670,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes all client certificates and generates a new server SSL certificate
@@ -1678,7 +1731,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restarts a Cloud SQL instance.
@@ -1737,7 +1792,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Restores a backup of a Cloud SQL instance. Using this operation might
@@ -1802,7 +1859,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rotates the server certificate to one signed by the Certificate Authority
@@ -1867,7 +1926,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Starts the replication in the read replica instance.
@@ -1925,7 +1986,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Stops the replication in the read replica instance.
@@ -1983,7 +2046,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Truncate MySQL general and slow query log tables
@@ -2047,7 +2112,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates settings of a Cloud SQL instance. Using this operation might cause
@@ -2111,7 +2178,9 @@ class InstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2174,7 +2243,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all instance operations that have been performed on the given Cloud
@@ -2244,7 +2315,10 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OperationsListResponse.fromJson(data));
+    return _response.then(
+      (data) => OperationsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2324,7 +2398,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Start External primary instance migration.
@@ -2395,7 +2471,9 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verify External primary instance external sync settings.
@@ -2473,8 +2551,10 @@ class ProjectsInstancesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(data));
+    return _response.then(
+      (data) => SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2547,7 +2627,9 @@ class SslCertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCert.fromJson(data));
+    return _response.then(
+      (data) => SslCert.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the SSL certificate. For First Generation instances, the
@@ -2613,7 +2695,9 @@ class SslCertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a particular SSL certificate. Does not include the private key
@@ -2680,7 +2764,9 @@ class SslCertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCert.fromJson(data));
+    return _response.then(
+      (data) => SslCert.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an SSL certificate and returns it along with the private key and
@@ -2746,7 +2832,10 @@ class SslCertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertsInsertResponse.fromJson(data));
+    return _response.then(
+      (data) => SslCertsInsertResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all of the current SSL certificates for the instance.
@@ -2804,7 +2893,10 @@ class SslCertsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SslCertsListResponse.fromJson(data));
+    return _response.then(
+      (data) => SslCertsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2861,7 +2953,10 @@ class TiersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => TiersListResponse.fromJson(data));
+    return _response.then(
+      (data) => TiersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2937,7 +3032,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new user in a Cloud SQL instance.
@@ -3001,7 +3098,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists users in the specified Cloud SQL instance.
@@ -3059,7 +3158,10 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UsersListResponse.fromJson(data));
+    return _response.then(
+      (data) => UsersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing user in a Cloud SQL instance.
@@ -3135,7 +3237,9 @@ class UsersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3261,8 +3365,9 @@ class BackupConfiguration {
 
   BackupConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('backupRetentionSettings')) {
-      backupRetentionSettings =
-          BackupRetentionSettings.fromJson(_json['backupRetentionSettings']);
+      backupRetentionSettings = BackupRetentionSettings.fromJson(
+          _json['backupRetentionSettings']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('binaryLogEnabled')) {
       binaryLogEnabled = _json['binaryLogEnabled'] as core.bool;
@@ -3456,11 +3561,12 @@ class BackupRun {
     }
     if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json['diskEncryptionConfiguration']);
+          _json['diskEncryptionConfiguration']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diskEncryptionStatus')) {
-      diskEncryptionStatus =
-          DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
+      diskEncryptionStatus = DiskEncryptionStatus.fromJson(
+          _json['diskEncryptionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('endTime')) {
       endTime = _json['endTime'] as core.String;
@@ -3469,7 +3575,8 @@ class BackupRun {
       enqueuedTime = _json['enqueuedTime'] as core.String;
     }
     if (_json.containsKey('error')) {
-      error = OperationError.fromJson(_json['error']);
+      error = OperationError.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -3572,7 +3679,8 @@ class BackupRunsListResponse {
   BackupRunsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<BackupRun>((value) => BackupRun.fromJson(value))
+          .map<BackupRun>((value) =>
+              BackupRun.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -3661,8 +3769,8 @@ class CloneContext {
 
   CloneContext.fromJson(core.Map _json) {
     if (_json.containsKey('binLogCoordinates')) {
-      binLogCoordinates =
-          BinLogCoordinates.fromJson(_json['binLogCoordinates']);
+      binLogCoordinates = BinLogCoordinates.fromJson(
+          _json['binLogCoordinates'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('destinationInstanceName')) {
       destinationInstanceName = _json['destinationInstanceName'] as core.String;
@@ -3757,8 +3865,9 @@ class Database {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('sqlserverDatabaseDetails')) {
-      sqlserverDatabaseDetails =
-          SqlServerDatabaseDetails.fromJson(_json['sqlserverDatabaseDetails']);
+      sqlserverDatabaseDetails = SqlServerDatabaseDetails.fromJson(
+          _json['sqlserverDatabaseDetails']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4054,18 +4163,19 @@ class DatabaseInstance {
     }
     if (_json.containsKey('diskEncryptionConfiguration')) {
       diskEncryptionConfiguration = DiskEncryptionConfiguration.fromJson(
-          _json['diskEncryptionConfiguration']);
+          _json['diskEncryptionConfiguration']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('diskEncryptionStatus')) {
-      diskEncryptionStatus =
-          DiskEncryptionStatus.fromJson(_json['diskEncryptionStatus']);
+      diskEncryptionStatus = DiskEncryptionStatus.fromJson(
+          _json['diskEncryptionStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('failoverReplica')) {
-      failoverReplica =
-          DatabaseInstanceFailoverReplica.fromJson(_json['failoverReplica']);
+      failoverReplica = DatabaseInstanceFailoverReplica.fromJson(
+          _json['failoverReplica'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gceZone')) {
       gceZone = _json['gceZone'] as core.String;
@@ -4075,7 +4185,8 @@ class DatabaseInstance {
     }
     if (_json.containsKey('ipAddresses')) {
       ipAddresses = (_json['ipAddresses'] as core.List)
-          .map<IpMapping>((value) => IpMapping.fromJson(value))
+          .map<IpMapping>((value) =>
+              IpMapping.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ipv6Address')) {
@@ -4094,8 +4205,9 @@ class DatabaseInstance {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('onPremisesConfiguration')) {
-      onPremisesConfiguration =
-          OnPremisesConfiguration.fromJson(_json['onPremisesConfiguration']);
+      onPremisesConfiguration = OnPremisesConfiguration.fromJson(
+          _json['onPremisesConfiguration']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('project')) {
       project = _json['project'] as core.String;
@@ -4104,8 +4216,8 @@ class DatabaseInstance {
       region = _json['region'] as core.String;
     }
     if (_json.containsKey('replicaConfiguration')) {
-      replicaConfiguration =
-          ReplicaConfiguration.fromJson(_json['replicaConfiguration']);
+      replicaConfiguration = ReplicaConfiguration.fromJson(
+          _json['replicaConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('replicaNames')) {
       replicaNames = (_json['replicaNames'] as core.List)
@@ -4116,21 +4228,23 @@ class DatabaseInstance {
       rootPassword = _json['rootPassword'] as core.String;
     }
     if (_json.containsKey('scheduledMaintenance')) {
-      scheduledMaintenance =
-          SqlScheduledMaintenance.fromJson(_json['scheduledMaintenance']);
+      scheduledMaintenance = SqlScheduledMaintenance.fromJson(
+          _json['scheduledMaintenance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('selfLink')) {
       selfLink = _json['selfLink'] as core.String;
     }
     if (_json.containsKey('serverCaCert')) {
-      serverCaCert = SslCert.fromJson(_json['serverCaCert']);
+      serverCaCert = SslCert.fromJson(
+          _json['serverCaCert'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serviceAccountEmailAddress')) {
       serviceAccountEmailAddress =
           _json['serviceAccountEmailAddress'] as core.String;
     }
     if (_json.containsKey('settings')) {
-      settings = Settings.fromJson(_json['settings']);
+      settings = Settings.fromJson(
+          _json['settings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -4250,7 +4364,8 @@ class DatabasesListResponse {
   DatabasesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Database>((value) => Database.fromJson(value))
+          .map<Database>((value) =>
+              Database.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4293,7 +4408,8 @@ class DemoteMasterConfiguration {
     if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration =
           DemoteMasterMySqlReplicaConfiguration.fromJson(
-              _json['mysqlReplicaConfiguration']);
+              _json['mysqlReplicaConfiguration']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4341,8 +4457,8 @@ class DemoteMasterContext {
       masterInstanceName = _json['masterInstanceName'] as core.String;
     }
     if (_json.containsKey('replicaConfiguration')) {
-      replicaConfiguration =
-          DemoteMasterConfiguration.fromJson(_json['replicaConfiguration']);
+      replicaConfiguration = DemoteMasterConfiguration.fromJson(
+          _json['replicaConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('verifyGtidConsistency')) {
       verifyGtidConsistency = _json['verifyGtidConsistency'] as core.bool;
@@ -4612,7 +4728,8 @@ class ExportContextSqlExportOptions {
     if (_json.containsKey('mysqlExportOptions')) {
       mysqlExportOptions =
           ExportContextSqlExportOptionsMysqlExportOptions.fromJson(
-              _json['mysqlExportOptions']);
+              _json['mysqlExportOptions']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('schemaOnly')) {
       schemaOnly = _json['schemaOnly'] as core.bool;
@@ -4683,8 +4800,8 @@ class ExportContext {
 
   ExportContext.fromJson(core.Map _json) {
     if (_json.containsKey('csvExportOptions')) {
-      csvExportOptions =
-          ExportContextCsvExportOptions.fromJson(_json['csvExportOptions']);
+      csvExportOptions = ExportContextCsvExportOptions.fromJson(
+          _json['csvExportOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('databases')) {
       databases = (_json['databases'] as core.List)
@@ -4701,8 +4818,8 @@ class ExportContext {
       offload = _json['offload'] as core.bool;
     }
     if (_json.containsKey('sqlExportOptions')) {
-      sqlExportOptions =
-          ExportContextSqlExportOptions.fromJson(_json['sqlExportOptions']);
+      sqlExportOptions = ExportContextSqlExportOptions.fromJson(
+          _json['sqlExportOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('uri')) {
       uri = _json['uri'] as core.String;
@@ -4907,7 +5024,8 @@ class FlagsListResponse {
   FlagsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Flag>((value) => Flag.fromJson(value))
+          .map<Flag>((value) =>
+              Flag.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4980,7 +5098,8 @@ class ImportContextBakImportOptions {
     if (_json.containsKey('encryptionOptions')) {
       encryptionOptions =
           ImportContextBakImportOptionsEncryptionOptions.fromJson(
-              _json['encryptionOptions']);
+              _json['encryptionOptions']
+                  as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5066,12 +5185,12 @@ class ImportContext {
 
   ImportContext.fromJson(core.Map _json) {
     if (_json.containsKey('bakImportOptions')) {
-      bakImportOptions =
-          ImportContextBakImportOptions.fromJson(_json['bakImportOptions']);
+      bakImportOptions = ImportContextBakImportOptions.fromJson(
+          _json['bakImportOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('csvImportOptions')) {
-      csvImportOptions =
-          ImportContextCsvImportOptions.fromJson(_json['csvImportOptions']);
+      csvImportOptions = ImportContextCsvImportOptions.fromJson(
+          _json['csvImportOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('database')) {
       database = _json['database'] as core.String;
@@ -5126,7 +5245,8 @@ class InstancesCloneRequest {
 
   InstancesCloneRequest.fromJson(core.Map _json) {
     if (_json.containsKey('cloneContext')) {
-      cloneContext = CloneContext.fromJson(_json['cloneContext']);
+      cloneContext = CloneContext.fromJson(
+          _json['cloneContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5148,8 +5268,8 @@ class InstancesDemoteMasterRequest {
 
   InstancesDemoteMasterRequest.fromJson(core.Map _json) {
     if (_json.containsKey('demoteMasterContext')) {
-      demoteMasterContext =
-          DemoteMasterContext.fromJson(_json['demoteMasterContext']);
+      demoteMasterContext = DemoteMasterContext.fromJson(
+          _json['demoteMasterContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5171,7 +5291,8 @@ class InstancesExportRequest {
 
   InstancesExportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('exportContext')) {
-      exportContext = ExportContext.fromJson(_json['exportContext']);
+      exportContext = ExportContext.fromJson(
+          _json['exportContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5193,7 +5314,8 @@ class InstancesFailoverRequest {
 
   InstancesFailoverRequest.fromJson(core.Map _json) {
     if (_json.containsKey('failoverContext')) {
-      failoverContext = FailoverContext.fromJson(_json['failoverContext']);
+      failoverContext = FailoverContext.fromJson(
+          _json['failoverContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5215,7 +5337,8 @@ class InstancesImportRequest {
 
   InstancesImportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('importContext')) {
-      importContext = ImportContext.fromJson(_json['importContext']);
+      importContext = ImportContext.fromJson(
+          _json['importContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5248,7 +5371,8 @@ class InstancesListResponse {
   InstancesListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(value))
+          .map<DatabaseInstance>((value) => DatabaseInstance.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5259,7 +5383,8 @@ class InstancesListResponse {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<ApiWarning>((value) => ApiWarning.fromJson(value))
+          .map<ApiWarning>((value) =>
+              ApiWarning.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5300,7 +5425,8 @@ class InstancesListServerCasResponse {
     }
     if (_json.containsKey('certs')) {
       certs = (_json['certs'] as core.List)
-          .map<SslCert>((value) => SslCert.fromJson(value))
+          .map<SslCert>((value) =>
+              SslCert.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -5332,8 +5458,8 @@ class InstancesRestoreBackupRequest {
 
   InstancesRestoreBackupRequest.fromJson(core.Map _json) {
     if (_json.containsKey('restoreBackupContext')) {
-      restoreBackupContext =
-          RestoreBackupContext.fromJson(_json['restoreBackupContext']);
+      restoreBackupContext = RestoreBackupContext.fromJson(
+          _json['restoreBackupContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5355,8 +5481,9 @@ class InstancesRotateServerCaRequest {
 
   InstancesRotateServerCaRequest.fromJson(core.Map _json) {
     if (_json.containsKey('rotateServerCaContext')) {
-      rotateServerCaContext =
-          RotateServerCaContext.fromJson(_json['rotateServerCaContext']);
+      rotateServerCaContext = RotateServerCaContext.fromJson(
+          _json['rotateServerCaContext']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5378,8 +5505,8 @@ class InstancesTruncateLogRequest {
 
   InstancesTruncateLogRequest.fromJson(core.Map _json) {
     if (_json.containsKey('truncateLogContext')) {
-      truncateLogContext =
-          TruncateLogContext.fromJson(_json['truncateLogContext']);
+      truncateLogContext = TruncateLogContext.fromJson(
+          _json['truncateLogContext'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5416,7 +5543,8 @@ class IpConfiguration {
   IpConfiguration.fromJson(core.Map _json) {
     if (_json.containsKey('authorizedNetworks')) {
       authorizedNetworks = (_json['authorizedNetworks'] as core.List)
-          .map<AclEntry>((value) => AclEntry.fromJson(value))
+          .map<AclEntry>((value) =>
+              AclEntry.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ipv4Enabled')) {
@@ -5929,13 +6057,16 @@ class Operation {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('error')) {
-      error = OperationErrors.fromJson(_json['error']);
+      error = OperationErrors.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('exportContext')) {
-      exportContext = ExportContext.fromJson(_json['exportContext']);
+      exportContext = ExportContext.fromJson(
+          _json['exportContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('importContext')) {
-      importContext = ImportContext.fromJson(_json['importContext']);
+      importContext = ImportContext.fromJson(
+          _json['importContext'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertTime')) {
       insertTime = _json['insertTime'] as core.String;
@@ -6076,7 +6207,8 @@ class OperationErrors {
   OperationErrors.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<OperationError>((value) => OperationError.fromJson(value))
+          .map<OperationError>((value) => OperationError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6113,7 +6245,8 @@ class OperationsListResponse {
   OperationsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6170,7 +6303,8 @@ class ReplicaConfiguration {
     }
     if (_json.containsKey('mysqlReplicaConfiguration')) {
       mysqlReplicaConfiguration = MySqlReplicaConfiguration.fromJson(
-          _json['mysqlReplicaConfiguration']);
+          _json['mysqlReplicaConfiguration']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6450,8 +6584,9 @@ class Settings {
       activationPolicy = _json['activationPolicy'] as core.String;
     }
     if (_json.containsKey('activeDirectoryConfig')) {
-      activeDirectoryConfig =
-          SqlActiveDirectoryConfig.fromJson(_json['activeDirectoryConfig']);
+      activeDirectoryConfig = SqlActiveDirectoryConfig.fromJson(
+          _json['activeDirectoryConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('authorizedGaeApplications')) {
       authorizedGaeApplications =
@@ -6463,8 +6598,8 @@ class Settings {
       availabilityType = _json['availabilityType'] as core.String;
     }
     if (_json.containsKey('backupConfiguration')) {
-      backupConfiguration =
-          BackupConfiguration.fromJson(_json['backupConfiguration']);
+      backupConfiguration = BackupConfiguration.fromJson(
+          _json['backupConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('collation')) {
       collation = _json['collation'] as core.String;
@@ -6481,7 +6616,8 @@ class Settings {
     }
     if (_json.containsKey('databaseFlags')) {
       databaseFlags = (_json['databaseFlags'] as core.List)
-          .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(value))
+          .map<DatabaseFlags>((value) => DatabaseFlags.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('databaseReplicationEnabled')) {
@@ -6490,23 +6626,24 @@ class Settings {
     }
     if (_json.containsKey('denyMaintenancePeriods')) {
       denyMaintenancePeriods = (_json['denyMaintenancePeriods'] as core.List)
-          .map<DenyMaintenancePeriod>(
-              (value) => DenyMaintenancePeriod.fromJson(value))
+          .map<DenyMaintenancePeriod>((value) => DenyMaintenancePeriod.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('ipConfiguration')) {
-      ipConfiguration = IpConfiguration.fromJson(_json['ipConfiguration']);
+      ipConfiguration = IpConfiguration.fromJson(
+          _json['ipConfiguration'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('locationPreference')) {
-      locationPreference =
-          LocationPreference.fromJson(_json['locationPreference']);
+      locationPreference = LocationPreference.fromJson(
+          _json['locationPreference'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maintenanceWindow')) {
-      maintenanceWindow =
-          MaintenanceWindow.fromJson(_json['maintenanceWindow']);
+      maintenanceWindow = MaintenanceWindow.fromJson(
+          _json['maintenanceWindow'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pricingPlan')) {
       pricingPlan = _json['pricingPlan'] as core.String;
@@ -6528,7 +6665,8 @@ class Settings {
     }
     if (_json.containsKey('userLabels')) {
       userLabels = commons.mapMap<core.String, core.String>(
-          _json['userLabels'].cast<core.String, core.String>(),
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -6723,7 +6861,8 @@ class SqlInstancesRescheduleMaintenanceRequestBody {
 
   SqlInstancesRescheduleMaintenanceRequestBody.fromJson(core.Map _json) {
     if (_json.containsKey('reschedule')) {
-      reschedule = Reschedule.fromJson(_json['reschedule']);
+      reschedule = Reschedule.fromJson(
+          _json['reschedule'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6749,8 +6888,9 @@ class SqlInstancesVerifyExternalSyncSettingsResponse {
   SqlInstancesVerifyExternalSyncSettingsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<SqlExternalSyncSettingError>(
-              (value) => SqlExternalSyncSettingError.fromJson(value))
+          .map<SqlExternalSyncSettingError>((value) =>
+              SqlExternalSyncSettingError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -6982,7 +7122,8 @@ class SslCertDetail {
 
   SslCertDetail.fromJson(core.Map _json) {
     if (_json.containsKey('certInfo')) {
-      certInfo = SslCert.fromJson(_json['certInfo']);
+      certInfo = SslCert.fromJson(
+          _json['certInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('certPrivateKey')) {
       certPrivateKey = _json['certPrivateKey'] as core.String;
@@ -7066,16 +7207,19 @@ class SslCertsInsertResponse {
 
   SslCertsInsertResponse.fromJson(core.Map _json) {
     if (_json.containsKey('clientCert')) {
-      clientCert = SslCertDetail.fromJson(_json['clientCert']);
+      clientCert = SslCertDetail.fromJson(
+          _json['clientCert'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('operation')) {
-      operation = Operation.fromJson(_json['operation']);
+      operation = Operation.fromJson(
+          _json['operation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverCaCert')) {
-      serverCaCert = SslCert.fromJson(_json['serverCaCert']);
+      serverCaCert = SslCert.fromJson(
+          _json['serverCaCert'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7110,7 +7254,8 @@ class SslCertsListResponse {
   SslCertsListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<SslCert>((value) => SslCert.fromJson(value))
+          .map<SslCert>((value) =>
+              SslCert.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7204,7 +7349,8 @@ class TiersListResponse {
   TiersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Tier>((value) => Tier.fromJson(value))
+          .map<Tier>((value) =>
+              Tier.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7321,8 +7467,8 @@ class User {
       project = _json['project'] as core.String;
     }
     if (_json.containsKey('sqlserverUserDetails')) {
-      sqlserverUserDetails =
-          SqlServerUserDetails.fromJson(_json['sqlserverUserDetails']);
+      sqlserverUserDetails = SqlServerUserDetails.fromJson(
+          _json['sqlserverUserDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -7380,7 +7526,8 @@ class UsersListResponse {
   UsersListResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<User>((value) => User.fromJson(value))
+          .map<User>((value) =>
+              User.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

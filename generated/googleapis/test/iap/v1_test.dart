@@ -110,10 +110,11 @@ api.AccessSettings buildAccessSettings() {
 void checkAccessSettings(api.AccessSettings o) {
   buildCounterAccessSettings++;
   if (buildCounterAccessSettings < 3) {
-    checkCorsSettings(o.corsSettings);
-    checkGcipSettings(o.gcipSettings);
-    checkOAuthSettings(o.oauthSettings);
-    checkPolicyDelegationSettings(o.policyDelegationSettings);
+    checkCorsSettings(o.corsSettings as api.CorsSettings);
+    checkGcipSettings(o.gcipSettings as api.GcipSettings);
+    checkOAuthSettings(o.oauthSettings as api.OAuthSettings);
+    checkPolicyDelegationSettings(
+        o.policyDelegationSettings as api.PolicyDelegationSettings);
   }
   buildCounterAccessSettings--;
 }
@@ -134,9 +135,10 @@ api.ApplicationSettings buildApplicationSettings() {
 void checkApplicationSettings(api.ApplicationSettings o) {
   buildCounterApplicationSettings++;
   if (buildCounterApplicationSettings < 3) {
-    checkAccessDeniedPageSettings(o.accessDeniedPageSettings);
+    checkAccessDeniedPageSettings(
+        o.accessDeniedPageSettings as api.AccessDeniedPageSettings);
     unittest.expect(o.cookieDomain, unittest.equals('foo'));
-    checkCsmSettings(o.csmSettings);
+    checkCsmSettings(o.csmSettings as api.CsmSettings);
   }
   buildCounterApplicationSettings--;
 }
@@ -172,7 +174,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed2778(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -330,7 +332,7 @@ api.GetIamPolicyRequest buildGetIamPolicyRequest() {
 void checkGetIamPolicyRequest(api.GetIamPolicyRequest o) {
   buildCounterGetIamPolicyRequest++;
   if (buildCounterGetIamPolicyRequest < 3) {
-    checkGetPolicyOptions(o.options);
+    checkGetPolicyOptions(o.options as api.GetPolicyOptions);
   }
   buildCounterGetIamPolicyRequest--;
 }
@@ -370,8 +372,8 @@ api.IapSettings buildIapSettings() {
 void checkIapSettings(api.IapSettings o) {
   buildCounterIapSettings++;
   if (buildCounterIapSettings < 3) {
-    checkAccessSettings(o.accessSettings);
-    checkApplicationSettings(o.applicationSettings);
+    checkAccessSettings(o.accessSettings as api.AccessSettings);
+    checkApplicationSettings(o.applicationSettings as api.ApplicationSettings);
     unittest.expect(o.name, unittest.equals('foo'));
   }
   buildCounterIapSettings--;
@@ -409,8 +411,8 @@ core.List<api.Brand> buildUnnamed2780() {
 
 void checkUnnamed2780(core.List<api.Brand> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBrand(o[0]);
-  checkBrand(o[1]);
+  checkBrand(o[0] as api.Brand);
+  checkBrand(o[1] as api.Brand);
 }
 
 core.int buildCounterListBrandsResponse = 0;
@@ -441,8 +443,8 @@ core.List<api.IdentityAwareProxyClient> buildUnnamed2781() {
 
 void checkUnnamed2781(core.List<api.IdentityAwareProxyClient> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIdentityAwareProxyClient(o[0]);
-  checkIdentityAwareProxyClient(o[1]);
+  checkIdentityAwareProxyClient(o[0] as api.IdentityAwareProxyClient);
+  checkIdentityAwareProxyClient(o[1] as api.IdentityAwareProxyClient);
 }
 
 core.int buildCounterListIdentityAwareProxyClientsResponse = 0;
@@ -498,8 +500,8 @@ core.List<api.Binding> buildUnnamed2782() {
 
 void checkUnnamed2782(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -544,8 +546,8 @@ void checkPolicyDelegationSettings(api.PolicyDelegationSettings o) {
   if (buildCounterPolicyDelegationSettings < 3) {
     unittest.expect(o.iamPermission, unittest.equals('foo'));
     unittest.expect(o.iamServiceName, unittest.equals('foo'));
-    checkPolicyName(o.policyName);
-    checkResource(o.resource);
+    checkPolicyName(o.policyName as api.PolicyName);
+    checkResource(o.resource as api.Resource);
   }
   buildCounterPolicyDelegationSettings--;
 }
@@ -642,7 +644,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
   }
   buildCounterSetIamPolicyRequest--;
 }
@@ -716,7 +718,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessDeniedPageSettings();
       var od = api.AccessDeniedPageSettings.fromJson(o.toJson());
-      checkAccessDeniedPageSettings(od);
+      checkAccessDeniedPageSettings(od as api.AccessDeniedPageSettings);
     });
   });
 
@@ -724,7 +726,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessSettings();
       var od = api.AccessSettings.fromJson(o.toJson());
-      checkAccessSettings(od);
+      checkAccessSettings(od as api.AccessSettings);
     });
   });
 
@@ -732,7 +734,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApplicationSettings();
       var od = api.ApplicationSettings.fromJson(o.toJson());
-      checkApplicationSettings(od);
+      checkApplicationSettings(od as api.ApplicationSettings);
     });
   });
 
@@ -740,7 +742,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -748,7 +750,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBrand();
       var od = api.Brand.fromJson(o.toJson());
-      checkBrand(od);
+      checkBrand(od as api.Brand);
     });
   });
 
@@ -756,7 +758,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCorsSettings();
       var od = api.CorsSettings.fromJson(o.toJson());
-      checkCorsSettings(od);
+      checkCorsSettings(od as api.CorsSettings);
     });
   });
 
@@ -764,7 +766,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCsmSettings();
       var od = api.CsmSettings.fromJson(o.toJson());
-      checkCsmSettings(od);
+      checkCsmSettings(od as api.CsmSettings);
     });
   });
 
@@ -772,7 +774,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -780,7 +782,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -788,7 +790,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcipSettings();
       var od = api.GcipSettings.fromJson(o.toJson());
-      checkGcipSettings(od);
+      checkGcipSettings(od as api.GcipSettings);
     });
   });
 
@@ -796,7 +798,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetIamPolicyRequest();
       var od = api.GetIamPolicyRequest.fromJson(o.toJson());
-      checkGetIamPolicyRequest(od);
+      checkGetIamPolicyRequest(od as api.GetIamPolicyRequest);
     });
   });
 
@@ -804,7 +806,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetPolicyOptions();
       var od = api.GetPolicyOptions.fromJson(o.toJson());
-      checkGetPolicyOptions(od);
+      checkGetPolicyOptions(od as api.GetPolicyOptions);
     });
   });
 
@@ -812,7 +814,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIapSettings();
       var od = api.IapSettings.fromJson(o.toJson());
-      checkIapSettings(od);
+      checkIapSettings(od as api.IapSettings);
     });
   });
 
@@ -820,7 +822,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIdentityAwareProxyClient();
       var od = api.IdentityAwareProxyClient.fromJson(o.toJson());
-      checkIdentityAwareProxyClient(od);
+      checkIdentityAwareProxyClient(od as api.IdentityAwareProxyClient);
     });
   });
 
@@ -828,7 +830,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListBrandsResponse();
       var od = api.ListBrandsResponse.fromJson(o.toJson());
-      checkListBrandsResponse(od);
+      checkListBrandsResponse(od as api.ListBrandsResponse);
     });
   });
 
@@ -836,7 +838,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListIdentityAwareProxyClientsResponse();
       var od = api.ListIdentityAwareProxyClientsResponse.fromJson(o.toJson());
-      checkListIdentityAwareProxyClientsResponse(od);
+      checkListIdentityAwareProxyClientsResponse(
+          od as api.ListIdentityAwareProxyClientsResponse);
     });
   });
 
@@ -844,7 +847,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOAuthSettings();
       var od = api.OAuthSettings.fromJson(o.toJson());
-      checkOAuthSettings(od);
+      checkOAuthSettings(od as api.OAuthSettings);
     });
   });
 
@@ -852,7 +855,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -860,7 +863,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyDelegationSettings();
       var od = api.PolicyDelegationSettings.fromJson(o.toJson());
-      checkPolicyDelegationSettings(od);
+      checkPolicyDelegationSettings(od as api.PolicyDelegationSettings);
     });
   });
 
@@ -868,7 +871,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicyName();
       var od = api.PolicyName.fromJson(o.toJson());
-      checkPolicyName(od);
+      checkPolicyName(od as api.PolicyName);
     });
   });
 
@@ -877,7 +880,8 @@ void main() {
       var o = buildResetIdentityAwareProxyClientSecretRequest();
       var od =
           api.ResetIdentityAwareProxyClientSecretRequest.fromJson(o.toJson());
-      checkResetIdentityAwareProxyClientSecretRequest(od);
+      checkResetIdentityAwareProxyClientSecretRequest(
+          od as api.ResetIdentityAwareProxyClientSecretRequest);
     });
   });
 
@@ -885,7 +889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResource();
       var od = api.Resource.fromJson(o.toJson());
-      checkResource(od);
+      checkResource(od as api.Resource);
     });
   });
 
@@ -893,7 +897,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -901,7 +905,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -909,7 +913,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -921,8 +925,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Brand.fromJson(json);
-        checkBrand(obj);
+        var obj =
+            api.Brand.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkBrand(obj as api.Brand);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -962,7 +967,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBrand(response);
+        checkBrand(response as api.Brand);
       })));
     });
 
@@ -1010,7 +1015,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkBrand(response);
+        checkBrand(response as api.Brand);
       })));
     });
 
@@ -1058,7 +1063,7 @@ void main() {
       res
           .list(arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListBrandsResponse(response);
+        checkListBrandsResponse(response as api.ListBrandsResponse);
       })));
     });
   });
@@ -1072,8 +1077,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.IdentityAwareProxyClient.fromJson(json);
-        checkIdentityAwareProxyClient(obj);
+        var obj = api.IdentityAwareProxyClient.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIdentityAwareProxyClient(obj as api.IdentityAwareProxyClient);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1113,7 +1119,7 @@ void main() {
       res
           .create(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response);
+        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
       })));
     });
 
@@ -1161,7 +1167,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1209,7 +1215,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response);
+        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
       })));
     });
 
@@ -1267,7 +1273,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListIdentityAwareProxyClientsResponse(response);
+        checkListIdentityAwareProxyClientsResponse(
+            response as api.ListIdentityAwareProxyClientsResponse);
       })));
     });
 
@@ -1278,8 +1285,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ResetIdentityAwareProxyClientSecretRequest.fromJson(json);
-        checkResetIdentityAwareProxyClientSecretRequest(obj);
+        var obj = api.ResetIdentityAwareProxyClientSecretRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkResetIdentityAwareProxyClientSecretRequest(
+            obj as api.ResetIdentityAwareProxyClientSecretRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1319,7 +1328,7 @@ void main() {
       res
           .resetSecret(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIdentityAwareProxyClient(response);
+        checkIdentityAwareProxyClient(response as api.IdentityAwareProxyClient);
       })));
     });
   });
@@ -1332,8 +1341,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetIamPolicyRequest.fromJson(json);
-        checkGetIamPolicyRequest(obj);
+        var obj = api.GetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetIamPolicyRequest(obj as api.GetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1373,7 +1383,7 @@ void main() {
       res
           .getIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1421,7 +1431,7 @@ void main() {
       res
           .getIapSettings(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIapSettings(response);
+        checkIapSettings(response as api.IapSettings);
       })));
     });
 
@@ -1432,8 +1442,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1473,7 +1484,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1484,8 +1495,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1525,7 +1537,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
 
@@ -1537,8 +1550,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.IapSettings.fromJson(json);
-        checkIapSettings(obj);
+        var obj = api.IapSettings.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkIapSettings(obj as api.IapSettings);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1581,7 +1595,7 @@ void main() {
           .updateIapSettings(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkIapSettings(response);
+        checkIapSettings(response as api.IapSettings);
       })));
     });
   });

@@ -106,7 +106,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the authenticated user's list of accounts.
@@ -148,7 +150,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsList.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccountsList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing account. This method supports patch semantics.
@@ -202,7 +207,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing account.
@@ -256,7 +263,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -310,7 +319,10 @@ class BillingInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BillingInfo.fromJson(data));
+    return _response.then(
+      (data) =>
+          BillingInfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of billing information for all accounts of the
@@ -353,7 +365,10 @@ class BillingInfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BillingInfoList.fromJson(data));
+    return _response.then(
+      (data) =>
+          BillingInfoList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -417,7 +432,9 @@ class BudgetResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Budget.fromJson(data));
+    return _response.then(
+      (data) => Budget.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the budget amount for the budget of the adgroup specified by the
@@ -482,7 +499,9 @@ class BudgetResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Budget.fromJson(data));
+    return _response.then(
+      (data) => Budget.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the budget amount for the budget of the adgroup specified by the
@@ -546,7 +565,9 @@ class BudgetResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Budget.fromJson(data));
+    return _response.then(
+      (data) => Budget.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -610,7 +631,9 @@ class CreativesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Creative.fromJson(data));
+    return _response.then(
+      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submit a new creative.
@@ -658,7 +681,9 @@ class CreativesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Creative.fromJson(data));
+    return _response.then(
+      (data) => Creative.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of the authenticated user's active creatives. A creative
@@ -742,7 +767,10 @@ class CreativesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CreativesList.fromJson(data));
+    return _response.then(
+      (data) =>
+          CreativesList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -796,7 +824,10 @@ class DirectDealsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DirectDeal.fromJson(data));
+    return _response.then(
+      (data) =>
+          DirectDeal.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the authenticated user's list of direct deals.
@@ -838,7 +869,10 @@ class DirectDealsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DirectDealsList.fromJson(data));
+    return _response.then(
+      (data) =>
+          DirectDealsList.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -926,7 +960,10 @@ class PerformanceReportResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PerformanceReportList.fromJson(data));
+    return _response.then(
+      (data) => PerformanceReportList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -990,7 +1027,9 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a specific pretargeting configuration
@@ -1047,7 +1086,10 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PretargetingConfig.fromJson(data));
+    return _response.then(
+      (data) => PretargetingConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a new pretargeting configuration.
@@ -1101,7 +1143,10 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PretargetingConfig.fromJson(data));
+    return _response.then(
+      (data) => PretargetingConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of the authenticated user's pretargeting configurations.
@@ -1149,7 +1194,10 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PretargetingConfigList.fromJson(data));
+    return _response.then(
+      (data) => PretargetingConfigList.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing pretargeting config. This method supports patch
@@ -1213,7 +1261,10 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PretargetingConfig.fromJson(data));
+    return _response.then(
+      (data) => PretargetingConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing pretargeting config.
@@ -1276,7 +1327,10 @@ class PretargetingConfigResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PretargetingConfig.fromJson(data));
+    return _response.then(
+      (data) => PretargetingConfig.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1361,8 +1415,8 @@ class Account {
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('bidderLocation')) {
       bidderLocation = (_json['bidderLocation'] as core.List)
-          .map<AccountBidderLocation>(
-              (value) => AccountBidderLocation.fromJson(value))
+          .map<AccountBidderLocation>((value) => AccountBidderLocation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cookieMatchingNid')) {
@@ -1433,7 +1487,8 @@ class AccountsList {
   AccountsList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1520,7 +1575,8 @@ class BillingInfoList {
   BillingInfoList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<BillingInfo>((value) => BillingInfo.fromJson(value))
+          .map<BillingInfo>((value) => BillingInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -1770,8 +1826,9 @@ class CreativeFilteringReasons {
     }
     if (_json.containsKey('reasons')) {
       reasons = (_json['reasons'] as core.List)
-          .map<CreativeFilteringReasonsReasons>(
-              (value) => CreativeFilteringReasonsReasons.fromJson(value))
+          .map<CreativeFilteringReasonsReasons>((value) =>
+              CreativeFilteringReasonsReasons.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1934,7 +1991,8 @@ class CreativeNativeAd {
       advertiser = _json['advertiser'] as core.String;
     }
     if (_json.containsKey('appIcon')) {
-      appIcon = CreativeNativeAdAppIcon.fromJson(_json['appIcon']);
+      appIcon = CreativeNativeAdAppIcon.fromJson(
+          _json['appIcon'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('body')) {
       body = _json['body'] as core.String;
@@ -1949,7 +2007,8 @@ class CreativeNativeAd {
       headline = _json['headline'] as core.String;
     }
     if (_json.containsKey('image')) {
-      image = CreativeNativeAdImage.fromJson(_json['image']);
+      image = CreativeNativeAdImage.fromJson(
+          _json['image'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('impressionTrackingUrl')) {
       impressionTrackingUrl = (_json['impressionTrackingUrl'] as core.List)
@@ -1957,7 +2016,8 @@ class CreativeNativeAd {
           .toList();
     }
     if (_json.containsKey('logo')) {
-      logo = CreativeNativeAdLogo.fromJson(_json['logo']);
+      logo = CreativeNativeAdLogo.fromJson(
+          _json['logo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('price')) {
       price = _json['price'] as core.String;
@@ -2107,7 +2167,8 @@ class Creative {
     }
     if (_json.containsKey('adTechnologyProviders')) {
       adTechnologyProviders = CreativeAdTechnologyProviders.fromJson(
-          _json['adTechnologyProviders']);
+          _json['adTechnologyProviders']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('advertiserId')) {
       advertiserId = (_json['advertiserId'] as core.List)
@@ -2139,19 +2200,20 @@ class Creative {
     }
     if (_json.containsKey('corrections')) {
       corrections = (_json['corrections'] as core.List)
-          .map<CreativeCorrections>(
-              (value) => CreativeCorrections.fromJson(value))
+          .map<CreativeCorrections>((value) => CreativeCorrections.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('disapprovalReasons')) {
       disapprovalReasons = (_json['disapprovalReasons'] as core.List)
-          .map<CreativeDisapprovalReasons>(
-              (value) => CreativeDisapprovalReasons.fromJson(value))
+          .map<CreativeDisapprovalReasons>((value) =>
+              CreativeDisapprovalReasons.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filteringReasons')) {
-      filteringReasons =
-          CreativeFilteringReasons.fromJson(_json['filteringReasons']);
+      filteringReasons = CreativeFilteringReasons.fromJson(
+          _json['filteringReasons'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('height')) {
       height = _json['height'] as core.int;
@@ -2165,7 +2227,8 @@ class Creative {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('nativeAd')) {
-      nativeAd = CreativeNativeAd.fromJson(_json['nativeAd']);
+      nativeAd = CreativeNativeAd.fromJson(
+          _json['nativeAd'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productCategories')) {
       productCategories = (_json['productCategories'] as core.List)
@@ -2303,7 +2366,8 @@ class CreativesList {
   CreativesList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Creative>((value) => Creative.fromJson(value))
+          .map<Creative>((value) =>
+              Creative.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2503,7 +2567,8 @@ class DirectDealsList {
   DirectDealsList.fromJson(core.Map _json) {
     if (_json.containsKey('directDeals')) {
       directDeals = (_json['directDeals'] as core.List)
-          .map<DirectDeal>((value) => DirectDeal.fromJson(value))
+          .map<DirectDeal>((value) =>
+              DirectDeal.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -2787,7 +2852,8 @@ class PerformanceReportList {
     }
     if (_json.containsKey('performanceReport')) {
       performanceReport = (_json['performanceReport'] as core.List)
-          .map<PerformanceReport>((value) => PerformanceReport.fromJson(value))
+          .map<PerformanceReport>((value) => PerformanceReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3009,8 +3075,9 @@ class PretargetingConfig {
     }
     if (_json.containsKey('dimensions')) {
       dimensions = (_json['dimensions'] as core.List)
-          .map<PretargetingConfigDimensions>(
-              (value) => PretargetingConfigDimensions.fromJson(value))
+          .map<PretargetingConfigDimensions>((value) =>
+              PretargetingConfigDimensions.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('excludedContentLabels')) {
@@ -3025,8 +3092,9 @@ class PretargetingConfig {
     }
     if (_json.containsKey('excludedPlacements')) {
       excludedPlacements = (_json['excludedPlacements'] as core.List)
-          .map<PretargetingConfigExcludedPlacements>(
-              (value) => PretargetingConfigExcludedPlacements.fromJson(value))
+          .map<PretargetingConfigExcludedPlacements>((value) =>
+              PretargetingConfigExcludedPlacements.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('excludedUserLists')) {
@@ -3076,8 +3144,9 @@ class PretargetingConfig {
     }
     if (_json.containsKey('placements')) {
       placements = (_json['placements'] as core.List)
-          .map<PretargetingConfigPlacements>(
-              (value) => PretargetingConfigPlacements.fromJson(value))
+          .map<PretargetingConfigPlacements>((value) =>
+              PretargetingConfigPlacements.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('platforms')) {
@@ -3199,8 +3268,8 @@ class PretargetingConfigList {
   PretargetingConfigList.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<PretargetingConfig>(
-              (value) => PretargetingConfig.fromJson(value))
+          .map<PretargetingConfig>((value) => PretargetingConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {

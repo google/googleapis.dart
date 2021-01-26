@@ -125,7 +125,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsAuthInfoResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsAuthInfoResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Claims the website of a Merchant Center sub-account.
@@ -192,8 +195,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AccountsClaimWebsiteResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsClaimWebsiteResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves, inserts, updates, and deletes multiple Merchant Center
@@ -242,7 +247,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a Merchant Center sub-account.
@@ -306,7 +314,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a Merchant Center account.
@@ -374,7 +384,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a Merchant Center sub-account.
@@ -429,7 +441,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Performs an action on a link between two Merchant Center accounts, namely
@@ -495,7 +509,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsLinkResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsLinkResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the sub-accounts in your Merchant Center account.
@@ -574,7 +591,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsListResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the list of accounts linked to your Merchant Center account.
@@ -646,7 +666,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountsListLinksResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsListLinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a Merchant Center account. Any fields that are not provided are
@@ -711,7 +734,9 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Account.fromJson(data));
+    return _response.then(
+      (data) => Account.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates labels that are assigned to the Merchant Center account by CSS
@@ -775,8 +800,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AccountsUpdateLabelsResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountsUpdateLabelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -830,8 +857,10 @@ class AccountstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AccountstatusesCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountstatusesCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the status of a Merchant Center account. No itemLevelIssues are
@@ -897,7 +926,10 @@ class AccountstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountStatus.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccountStatus.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the statuses of the sub-accounts in your Merchant Center account.
@@ -966,7 +998,10 @@ class AccountstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountstatusesListResponse.fromJson(data));
+    return _response.then(
+      (data) => AccountstatusesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1021,8 +1056,10 @@ class AccounttaxResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => AccounttaxCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => AccounttaxCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the tax settings of the account.
@@ -1081,7 +1118,10 @@ class AccounttaxResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountTax.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccountTax.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the tax settings of the sub-accounts in your Merchant Center
@@ -1144,7 +1184,10 @@ class AccounttaxResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccounttaxListResponse.fromJson(data));
+    return _response.then(
+      (data) => AccounttaxListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the tax settings of the account. Any fields that are not provided
@@ -1210,7 +1253,10 @@ class AccounttaxResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => AccountTax.fromJson(data));
+    return _response.then(
+      (data) =>
+          AccountTax.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1265,8 +1311,10 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => DatafeedsCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => DatafeedsCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a datafeed configuration from your Merchant Center account.
@@ -1323,7 +1371,9 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Invokes a fetch for the datafeed in your Merchant Center account.
@@ -1381,7 +1431,10 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DatafeedsFetchNowResponse.fromJson(data));
+    return _response.then(
+      (data) => DatafeedsFetchNowResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a datafeed configuration from your Merchant Center account.
@@ -1438,7 +1491,9 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Datafeed.fromJson(data));
+    return _response.then(
+      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Registers a datafeed configuration with your Merchant Center account.
@@ -1493,7 +1548,9 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Datafeed.fromJson(data));
+    return _response.then(
+      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the configurations for datafeeds in your Merchant Center account.
@@ -1555,7 +1612,10 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DatafeedsListResponse.fromJson(data));
+    return _response.then(
+      (data) => DatafeedsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a datafeed configuration of your Merchant Center account. Any
@@ -1619,7 +1679,9 @@ class DatafeedsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Datafeed.fromJson(data));
+    return _response.then(
+      (data) => Datafeed.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1674,8 +1736,10 @@ class DatafeedstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => DatafeedstatusesCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => DatafeedstatusesCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the status of a datafeed from your Merchant Center account.
@@ -1750,7 +1814,10 @@ class DatafeedstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DatafeedStatus.fromJson(data));
+    return _response.then(
+      (data) =>
+          DatafeedStatus.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the statuses of the datafeeds in your Merchant Center account.
@@ -1812,8 +1879,10 @@ class DatafeedstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => DatafeedstatusesListResponse.fromJson(data));
+    return _response.then(
+      (data) => DatafeedstatusesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1868,8 +1937,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LiasettingsCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the LIA settings of the account.
@@ -1928,7 +1999,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LiaSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          LiaSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of accessible Google My Business accounts.
@@ -1990,7 +2064,9 @@ class LiasettingsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => LiasettingsGetAccessibleGmbAccountsResponse.fromJson(data));
+      (data) => LiasettingsGetAccessibleGmbAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the LIA settings of the sub-accounts in your Merchant Center
@@ -2053,7 +2129,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LiasettingsListResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the list of POS data providers that have active settings for the
@@ -2096,8 +2175,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LiasettingsListPosDataProvidersResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsListPosDataProvidersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Requests access to a specified Google My Business account.
@@ -2163,8 +2244,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LiasettingsRequestGmbAccessResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsRequestGmbAccessResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Requests inventory validation for the specified country.
@@ -2232,8 +2315,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        LiasettingsRequestInventoryVerificationResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsRequestInventoryVerificationResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the inventory verification contract for the specified country.
@@ -2322,8 +2407,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        LiasettingsSetInventoryVerificationContactResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsSetInventoryVerificationContactResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the POS data provider for the specified country.
@@ -2403,8 +2490,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LiasettingsSetPosDataProviderResponse.fromJson(data));
+    return _response.then(
+      (data) => LiasettingsSetPosDataProviderResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the LIA settings of the account. Any fields that are not provided
@@ -2470,7 +2559,10 @@ class LiasettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LiaSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          LiaSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2525,8 +2617,10 @@ class LocalinventoryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => LocalinventoryCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => LocalinventoryCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the local inventory of a product in your Merchant Center account.
@@ -2591,7 +2685,10 @@ class LocalinventoryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LocalInventory.fromJson(data));
+    return _response.then(
+      (data) =>
+          LocalInventory.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2663,7 +2760,9 @@ class OrderinvoicesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => OrderinvoicesCreateChargeInvoiceResponse.fromJson(data));
+      (data) => OrderinvoicesCreateChargeInvoiceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a refund invoice for one or more shipment groups, and triggers a
@@ -2732,7 +2831,9 @@ class OrderinvoicesResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => OrderinvoicesCreateRefundInvoiceResponse.fromJson(data));
+      (data) => OrderinvoicesCreateRefundInvoiceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2816,8 +2917,10 @@ class OrderreportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrderreportsListDisbursementsResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreportsListDisbursementsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of transactions for a disbursement from your Merchant
@@ -2905,8 +3008,10 @@ class OrderreportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrderreportsListTransactionsResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreportsListTransactionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2976,8 +3081,10 @@ class OrderreturnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrderreturnsAcknowledgeResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreturnsAcknowledgeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Create return in your Merchant Center account.
@@ -3033,8 +3140,10 @@ class OrderreturnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrderreturnsCreateOrderReturnResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreturnsCreateOrderReturnResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an order return from your Merchant Center account.
@@ -3091,7 +3200,10 @@ class OrderreturnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => MerchantOrderReturn.fromJson(data));
+    return _response.then(
+      (data) => MerchantOrderReturn.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists order returns in your Merchant Center account.
@@ -3238,7 +3350,10 @@ class OrderreturnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrderreturnsListResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreturnsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Processes return in your Merchant Center account.
@@ -3302,7 +3417,10 @@ class OrderreturnsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrderreturnsProcessResponse.fromJson(data));
+    return _response.then(
+      (data) => OrderreturnsProcessResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3372,7 +3490,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersAcknowledgeResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersAcknowledgeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sandbox only. Moves a test order from state "`inProgress`" to state
@@ -3431,8 +3552,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersAdvanceTestOrderResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersAdvanceTestOrderResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Cancels all line items in an order, making a full refund.
@@ -3496,7 +3619,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersCancelResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersCancelResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Cancels a line item, making a full refund.
@@ -3560,8 +3686,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersCancelLineItemResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersCancelLineItemResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sandbox only. Cancels a test order for customer-initiated cancellation.
@@ -3626,8 +3754,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersCancelTestOrderByCustomerResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersCancelTestOrderByCustomerResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sandbox only. Creates a test order.
@@ -3682,8 +3812,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersCreateTestOrderResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersCreateTestOrderResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sandbox only. Creates a test return.
@@ -3747,8 +3879,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersCreateTestReturnResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersCreateTestReturnResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an order from your Merchant Center account.
@@ -3805,7 +3939,9 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Order.fromJson(data));
+    return _response.then(
+      (data) => Order.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves an order using merchant order ID.
@@ -3862,8 +3998,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersGetByMerchantOrderIdResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersGetByMerchantOrderIdResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sandbox only. Retrieves an order template that can be used to quickly
@@ -3934,8 +4072,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersGetTestOrderTemplateResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersGetTestOrderTemplateResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deprecated. Notifies that item return and refund was handled directly by
@@ -4007,8 +4147,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersInStoreRefundLineItemResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersInStoreRefundLineItemResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the orders in your Merchant Center account.
@@ -4116,7 +4258,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersListResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Issues a partial or total refund for items and shipment.
@@ -4180,7 +4325,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersRefundItemResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersRefundItemResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Issues a partial or total refund for an order.
@@ -4244,7 +4392,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersRefundOrderResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersRefundOrderResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Rejects return on an line item.
@@ -4308,8 +4459,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersRejectReturnLineItemResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersRejectReturnLineItemResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns and refunds a line item. Note that this method can only be called
@@ -4379,8 +4532,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersReturnRefundLineItemResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersReturnRefundLineItemResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets (or overrides if it already exists) merchant provided annotations in
@@ -4448,8 +4603,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersSetLineItemMetadataResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersSetLineItemMetadataResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Marks line item(s) as shipped.
@@ -4513,7 +4670,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => OrdersShipLineItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersShipLineItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates ship by and delivery by dates for a line item.
@@ -4579,7 +4739,9 @@ class OrdersResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => OrdersUpdateLineItemShippingDetailsResponse.fromJson(data));
+      (data) => OrdersUpdateLineItemShippingDetailsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the merchant order ID for a given order.
@@ -4643,8 +4805,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersUpdateMerchantOrderIdResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersUpdateMerchantOrderIdResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a shipment's status, carrier, and/or tracking ID.
@@ -4708,8 +4872,10 @@ class OrdersResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => OrdersUpdateShipmentResponse.fromJson(data));
+    return _response.then(
+      (data) => OrdersUpdateShipmentResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4763,7 +4929,10 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => PosCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a store for the given merchant.
@@ -4827,7 +4996,9 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves information about the given store.
@@ -4891,7 +5062,9 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosStore.fromJson(data));
+    return _response.then(
+      (data) => PosStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a store for the given merchant.
@@ -4954,7 +5127,9 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosStore.fromJson(data));
+    return _response.then(
+      (data) => PosStore.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submit inventory for the given merchant.
@@ -5017,7 +5192,10 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosInventoryResponse.fromJson(data));
+    return _response.then(
+      (data) => PosInventoryResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the stores of the target merchant.
@@ -5074,7 +5252,10 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosListResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          PosListResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Submit a sale event for the given merchant.
@@ -5137,7 +5318,10 @@ class PosResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PosSaleResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          PosSaleResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5191,7 +5375,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductsCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductsCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a product from your Merchant Center account.
@@ -5254,7 +5441,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Retrieves a product from your Merchant Center account.
@@ -5311,7 +5500,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Uploads a product to your Merchant Center account. If an item with the
@@ -5374,7 +5565,9 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Product.fromJson(data));
+    return _response.then(
+      (data) => Product.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the products in your Merchant Center account. The response might
@@ -5438,7 +5631,10 @@ class ProductsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5492,8 +5688,10 @@ class ProductstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ProductstatusesCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductstatusesCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the status of a product from your Merchant Center account.
@@ -5557,7 +5755,10 @@ class ProductstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductStatus.fromJson(data));
+    return _response.then(
+      (data) =>
+          ProductStatus.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the statuses of the products in your Merchant Center account.
@@ -5626,7 +5827,10 @@ class ProductstatusesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ProductstatusesListResponse.fromJson(data));
+    return _response.then(
+      (data) => ProductstatusesListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5683,7 +5887,10 @@ class PubsubnotificationsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PubsubNotificationSettings.fromJson(data));
+    return _response.then(
+      (data) => PubsubNotificationSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Register a Merchant Center account for pubsub notifications. Note that
@@ -5739,7 +5946,10 @@ class PubsubnotificationsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PubsubNotificationSettings.fromJson(data));
+    return _response.then(
+      (data) => PubsubNotificationSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5795,8 +6005,10 @@ class RegionalinventoryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => RegionalinventoryCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => RegionalinventoryCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Update the regional inventory of a product in your Merchant Center
@@ -5863,7 +6075,10 @@ class RegionalinventoryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => RegionalInventory.fromJson(data));
+    return _response.then(
+      (data) => RegionalInventory.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5917,8 +6132,10 @@ class ReturnaddressResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ReturnaddressCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => ReturnaddressCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a return address for the given Merchant Center account.
@@ -5975,7 +6192,9 @@ class ReturnaddressResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a return address of the Merchant Center account.
@@ -6031,7 +6250,10 @@ class ReturnaddressResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnAddress.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReturnAddress.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a return address for the Merchant Center account.
@@ -6085,7 +6307,10 @@ class ReturnaddressResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnAddress.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReturnAddress.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the return addresses of the Merchant Center account.
@@ -6153,7 +6378,10 @@ class ReturnaddressResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnaddressListResponse.fromJson(data));
+    return _response.then(
+      (data) => ReturnaddressListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6207,8 +6435,10 @@ class ReturnpolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ReturnpolicyCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => ReturnpolicyCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a return policy for the given Merchant Center account.
@@ -6265,7 +6495,9 @@ class ReturnpolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => null);
+    return _response.then(
+      (data) => null,
+    );
   }
 
   /// Gets a return policy of the Merchant Center account.
@@ -6321,7 +6553,10 @@ class ReturnpolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReturnPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Inserts a return policy for the Merchant Center account.
@@ -6375,7 +6610,10 @@ class ReturnpolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnPolicy.fromJson(data));
+    return _response.then(
+      (data) =>
+          ReturnPolicy.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the return policies of the Merchant Center account.
@@ -6423,7 +6661,10 @@ class ReturnpolicyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ReturnpolicyListResponse.fromJson(data));
+    return _response.then(
+      (data) => ReturnpolicyListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6486,7 +6727,10 @@ class SettlementreportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SettlementReport.fromJson(data));
+    return _response.then(
+      (data) => SettlementReport.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves a list of settlement reports from your Merchant Center account.
@@ -6562,8 +6806,10 @@ class SettlementreportsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SettlementreportsListResponse.fromJson(data));
+    return _response.then(
+      (data) => SettlementreportsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6648,8 +6894,10 @@ class SettlementtransactionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SettlementtransactionsListResponse.fromJson(data));
+    return _response.then(
+      (data) => SettlementtransactionsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6705,8 +6953,10 @@ class ShippingsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ShippingsettingsCustomBatchResponse.fromJson(data));
+    return _response.then(
+      (data) => ShippingsettingsCustomBatchResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves the shipping settings of the account.
@@ -6765,7 +7015,10 @@ class ShippingsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ShippingSettings.fromJson(data));
+    return _response.then(
+      (data) => ShippingSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves supported carriers and carrier services for an account.
@@ -6816,7 +7069,9 @@ class ShippingsettingsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ShippingsettingsGetSupportedCarriersResponse.fromJson(data));
+      (data) => ShippingsettingsGetSupportedCarriersResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves supported holidays for an account.
@@ -6867,7 +7122,9 @@ class ShippingsettingsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ShippingsettingsGetSupportedHolidaysResponse.fromJson(data));
+      (data) => ShippingsettingsGetSupportedHolidaysResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves supported pickup services for an account.
@@ -6918,8 +7175,10 @@ class ShippingsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        ShippingsettingsGetSupportedPickupServicesResponse.fromJson(data));
+    return _response.then(
+      (data) => ShippingsettingsGetSupportedPickupServicesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the shipping settings of the sub-accounts in your Merchant Center
@@ -6982,8 +7241,10 @@ class ShippingsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ShippingsettingsListResponse.fromJson(data));
+    return _response.then(
+      (data) => ShippingsettingsListResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the shipping settings of the account. Any fields that are not
@@ -7049,7 +7310,10 @@ class ShippingsettingsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ShippingSettings.fromJson(data));
+    return _response.then(
+      (data) => ShippingSettings.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7112,22 +7376,23 @@ class Account {
   Account.fromJson(core.Map _json) {
     if (_json.containsKey('adsLinks')) {
       adsLinks = (_json['adsLinks'] as core.List)
-          .map<AccountAdsLink>((value) => AccountAdsLink.fromJson(value))
+          .map<AccountAdsLink>((value) => AccountAdsLink.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('adultContent')) {
       adultContent = _json['adultContent'] as core.bool;
     }
     if (_json.containsKey('businessInformation')) {
-      businessInformation =
-          AccountBusinessInformation.fromJson(_json['businessInformation']);
+      businessInformation = AccountBusinessInformation.fromJson(
+          _json['businessInformation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('cssId')) {
       cssId = _json['cssId'] as core.String;
     }
     if (_json.containsKey('googleMyBusinessLink')) {
-      googleMyBusinessLink =
-          AccountGoogleMyBusinessLink.fromJson(_json['googleMyBusinessLink']);
+      googleMyBusinessLink = AccountGoogleMyBusinessLink.fromJson(
+          _json['googleMyBusinessLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -7148,7 +7413,8 @@ class Account {
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
-          .map<AccountUser>((value) => AccountUser.fromJson(value))
+          .map<AccountUser>((value) => AccountUser.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('websiteUrl')) {
@@ -7156,8 +7422,9 @@ class Account {
     }
     if (_json.containsKey('youtubeChannelLinks')) {
       youtubeChannelLinks = (_json['youtubeChannelLinks'] as core.List)
-          .map<AccountYouTubeChannelLink>(
-              (value) => AccountYouTubeChannelLink.fromJson(value))
+          .map<AccountYouTubeChannelLink>((value) =>
+              AccountYouTubeChannelLink.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7325,11 +7592,12 @@ class AccountBusinessInformation {
 
   AccountBusinessInformation.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = AccountAddress.fromJson(_json['address']);
+      address = AccountAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customerService')) {
-      customerService =
-          AccountCustomerService.fromJson(_json['customerService']);
+      customerService = AccountCustomerService.fromJson(
+          _json['customerService'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('phoneNumber')) {
       phoneNumber = _json['phoneNumber'] as core.String;
@@ -7497,8 +7765,9 @@ class AccountStatus {
     }
     if (_json.containsKey('accountLevelIssues')) {
       accountLevelIssues = (_json['accountLevelIssues'] as core.List)
-          .map<AccountStatusAccountLevelIssue>(
-              (value) => AccountStatusAccountLevelIssue.fromJson(value))
+          .map<AccountStatusAccountLevelIssue>((value) =>
+              AccountStatusAccountLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -7506,8 +7775,8 @@ class AccountStatus {
     }
     if (_json.containsKey('products')) {
       products = (_json['products'] as core.List)
-          .map<AccountStatusProducts>(
-              (value) => AccountStatusProducts.fromJson(value))
+          .map<AccountStatusProducts>((value) => AccountStatusProducts.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('websiteClaimed')) {
@@ -7736,12 +8005,14 @@ class AccountStatusProducts {
     }
     if (_json.containsKey('itemLevelIssues')) {
       itemLevelIssues = (_json['itemLevelIssues'] as core.List)
-          .map<AccountStatusItemLevelIssue>(
-              (value) => AccountStatusItemLevelIssue.fromJson(value))
+          .map<AccountStatusItemLevelIssue>((value) =>
+              AccountStatusItemLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('statistics')) {
-      statistics = AccountStatusStatistics.fromJson(_json['statistics']);
+      statistics = AccountStatusStatistics.fromJson(
+          _json['statistics'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7840,7 +8111,8 @@ class AccountTax {
     }
     if (_json.containsKey('rules')) {
       rules = (_json['rules'] as core.List)
-          .map<AccountTaxTaxRule>((value) => AccountTaxTaxRule.fromJson(value))
+          .map<AccountTaxTaxRule>((value) => AccountTaxTaxRule.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8034,7 +8306,8 @@ class AccountsAuthInfoResponse {
   AccountsAuthInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('accountIdentifiers')) {
       accountIdentifiers = (_json['accountIdentifiers'] as core.List)
-          .map<AccountIdentifier>((value) => AccountIdentifier.fromJson(value))
+          .map<AccountIdentifier>((value) => AccountIdentifier.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -8086,8 +8359,9 @@ class AccountsCustomBatchRequest {
   AccountsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<AccountsCustomBatchRequestEntry>(
-              (value) => AccountsCustomBatchRequestEntry.fromJson(value))
+          .map<AccountsCustomBatchRequestEntry>((value) =>
+              AccountsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8149,7 +8423,8 @@ class AccountsCustomBatchRequestEntry {
 
   AccountsCustomBatchRequestEntry.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
-      account = Account.fromJson(_json['account']);
+      account = Account.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('accountId')) {
       accountId = _json['accountId'] as core.String;
@@ -8167,7 +8442,7 @@ class AccountsCustomBatchRequestEntry {
     }
     if (_json.containsKey('linkRequest')) {
       linkRequest = AccountsCustomBatchRequestEntryLinkRequest.fromJson(
-          _json['linkRequest']);
+          _json['linkRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('merchantId')) {
       merchantId = _json['merchantId'] as core.String;
@@ -8292,8 +8567,9 @@ class AccountsCustomBatchResponse {
   AccountsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<AccountsCustomBatchResponseEntry>(
-              (value) => AccountsCustomBatchResponseEntry.fromJson(value))
+          .map<AccountsCustomBatchResponseEntry>((value) =>
+              AccountsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -8333,13 +8609,15 @@ class AccountsCustomBatchResponseEntry {
 
   AccountsCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
-      account = Account.fromJson(_json['account']);
+      account = Account.fromJson(
+          _json['account'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('batchId')) {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -8465,7 +8743,8 @@ class AccountsListLinksResponse {
     }
     if (_json.containsKey('links')) {
       links = (_json['links'] as core.List)
-          .map<LinkedAccount>((value) => LinkedAccount.fromJson(value))
+          .map<LinkedAccount>((value) => LinkedAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8508,7 +8787,8 @@ class AccountsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<Account>((value) => Account.fromJson(value))
+          .map<Account>((value) =>
+              Account.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8582,8 +8862,9 @@ class AccountstatusesCustomBatchRequest {
   AccountstatusesCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<AccountstatusesCustomBatchRequestEntry>(
-              (value) => AccountstatusesCustomBatchRequestEntry.fromJson(value))
+          .map<AccountstatusesCustomBatchRequestEntry>((value) =>
+              AccountstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8675,7 +8956,8 @@ class AccountstatusesCustomBatchResponse {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<AccountstatusesCustomBatchResponseEntry>((value) =>
-              AccountstatusesCustomBatchResponseEntry.fromJson(value))
+              AccountstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -8711,13 +8993,15 @@ class AccountstatusesCustomBatchResponseEntry {
 
   AccountstatusesCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountStatus')) {
-      accountStatus = AccountStatus.fromJson(_json['accountStatus']);
+      accountStatus = AccountStatus.fromJson(
+          _json['accountStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('batchId')) {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8756,7 +9040,8 @@ class AccountstatusesListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<AccountStatus>((value) => AccountStatus.fromJson(value))
+          .map<AccountStatus>((value) => AccountStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8785,8 +9070,9 @@ class AccounttaxCustomBatchRequest {
   AccounttaxCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<AccounttaxCustomBatchRequestEntry>(
-              (value) => AccounttaxCustomBatchRequestEntry.fromJson(value))
+          .map<AccounttaxCustomBatchRequestEntry>((value) =>
+              AccounttaxCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8829,7 +9115,8 @@ class AccounttaxCustomBatchRequestEntry {
       accountId = _json['accountId'] as core.String;
     }
     if (_json.containsKey('accountTax')) {
-      accountTax = AccountTax.fromJson(_json['accountTax']);
+      accountTax = AccountTax.fromJson(
+          _json['accountTax'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('batchId')) {
       batchId = _json['batchId'] as core.int;
@@ -8876,8 +9163,9 @@ class AccounttaxCustomBatchResponse {
   AccounttaxCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<AccounttaxCustomBatchResponseEntry>(
-              (value) => AccounttaxCustomBatchResponseEntry.fromJson(value))
+          .map<AccounttaxCustomBatchResponseEntry>((value) =>
+              AccounttaxCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -8916,13 +9204,15 @@ class AccounttaxCustomBatchResponseEntry {
 
   AccounttaxCustomBatchResponseEntry.fromJson(core.Map _json) {
     if (_json.containsKey('accountTax')) {
-      accountTax = AccountTax.fromJson(_json['accountTax']);
+      accountTax = AccountTax.fromJson(
+          _json['accountTax'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('batchId')) {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -8967,7 +9257,8 @@ class AccounttaxListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<AccountTax>((value) => AccountTax.fromJson(value))
+          .map<AccountTax>((value) =>
+              AccountTax.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8999,10 +9290,12 @@ class Amount {
 
   Amount.fromJson(core.Map _json) {
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9077,7 +9370,8 @@ class CarrierRate {
       carrierService = _json['carrierService'] as core.String;
     }
     if (_json.containsKey('flatAdjustment')) {
-      flatAdjustment = Price.fromJson(_json['flatAdjustment']);
+      flatAdjustment = Price.fromJson(
+          _json['flatAdjustment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -9173,7 +9467,8 @@ class CustomAttribute {
   CustomAttribute.fromJson(core.Map _json) {
     if (_json.containsKey('groupValues')) {
       groupValues = (_json['groupValues'] as core.List)
-          .map<CustomAttribute>((value) => CustomAttribute.fromJson(value))
+          .map<CustomAttribute>((value) => CustomAttribute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -9336,13 +9631,15 @@ class Datafeed {
       contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('fetchSchedule')) {
-      fetchSchedule = DatafeedFetchSchedule.fromJson(_json['fetchSchedule']);
+      fetchSchedule = DatafeedFetchSchedule.fromJson(
+          _json['fetchSchedule'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileName')) {
       fileName = _json['fileName'] as core.String;
     }
     if (_json.containsKey('format')) {
-      format = DatafeedFormat.fromJson(_json['format']);
+      format = DatafeedFormat.fromJson(
+          _json['format'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -9355,7 +9652,8 @@ class Datafeed {
     }
     if (_json.containsKey('targets')) {
       targets = (_json['targets'] as core.List)
-          .map<DatafeedTarget>((value) => DatafeedTarget.fromJson(value))
+          .map<DatafeedTarget>((value) => DatafeedTarget.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9616,8 +9914,8 @@ class DatafeedStatus {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<DatafeedStatusError>(
-              (value) => DatafeedStatusError.fromJson(value))
+          .map<DatafeedStatusError>((value) => DatafeedStatusError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('itemsTotal')) {
@@ -9640,8 +9938,8 @@ class DatafeedStatus {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<DatafeedStatusError>(
-              (value) => DatafeedStatusError.fromJson(value))
+          .map<DatafeedStatusError>((value) => DatafeedStatusError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9707,8 +10005,8 @@ class DatafeedStatusError {
     }
     if (_json.containsKey('examples')) {
       examples = (_json['examples'] as core.List)
-          .map<DatafeedStatusExample>(
-              (value) => DatafeedStatusExample.fromJson(value))
+          .map<DatafeedStatusExample>((value) => DatafeedStatusExample.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -9846,8 +10144,9 @@ class DatafeedsCustomBatchRequest {
   DatafeedsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<DatafeedsCustomBatchRequestEntry>(
-              (value) => DatafeedsCustomBatchRequestEntry.fromJson(value))
+          .map<DatafeedsCustomBatchRequestEntry>((value) =>
+              DatafeedsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9892,7 +10191,8 @@ class DatafeedsCustomBatchRequestEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeed')) {
-      datafeed = Datafeed.fromJson(_json['datafeed']);
+      datafeed = Datafeed.fromJson(
+          _json['datafeed'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('datafeedId')) {
       datafeedId = _json['datafeedId'] as core.String;
@@ -9939,8 +10239,9 @@ class DatafeedsCustomBatchResponse {
   DatafeedsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<DatafeedsCustomBatchResponseEntry>(
-              (value) => DatafeedsCustomBatchResponseEntry.fromJson(value))
+          .map<DatafeedsCustomBatchResponseEntry>((value) =>
+              DatafeedsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -9979,10 +10280,12 @@ class DatafeedsCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeed')) {
-      datafeed = Datafeed.fromJson(_json['datafeed']);
+      datafeed = Datafeed.fromJson(
+          _json['datafeed'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10043,7 +10346,8 @@ class DatafeedsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<Datafeed>((value) => Datafeed.fromJson(value))
+          .map<Datafeed>((value) =>
+              Datafeed.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10073,7 +10377,8 @@ class DatafeedstatusesCustomBatchRequest {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<DatafeedstatusesCustomBatchRequestEntry>((value) =>
-              DatafeedstatusesCustomBatchRequestEntry.fromJson(value))
+              DatafeedstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10175,7 +10480,8 @@ class DatafeedstatusesCustomBatchResponse {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<DatafeedstatusesCustomBatchResponseEntry>((value) =>
-              DatafeedstatusesCustomBatchResponseEntry.fromJson(value))
+              DatafeedstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -10214,10 +10520,12 @@ class DatafeedstatusesCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('datafeedStatus')) {
-      datafeedStatus = DatafeedStatus.fromJson(_json['datafeedStatus']);
+      datafeedStatus = DatafeedStatus.fromJson(
+          _json['datafeedStatus'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10256,7 +10564,8 @@ class DatafeedstatusesListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<DatafeedStatus>((value) => DatafeedStatus.fromJson(value))
+          .map<DatafeedStatus>((value) => DatafeedStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10321,15 +10630,18 @@ class DeliveryTime {
 
   DeliveryTime.fromJson(core.Map _json) {
     if (_json.containsKey('cutoffTime')) {
-      cutoffTime = CutoffTime.fromJson(_json['cutoffTime']);
+      cutoffTime = CutoffTime.fromJson(
+          _json['cutoffTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('handlingBusinessDayConfig')) {
-      handlingBusinessDayConfig =
-          BusinessDayConfig.fromJson(_json['handlingBusinessDayConfig']);
+      handlingBusinessDayConfig = BusinessDayConfig.fromJson(
+          _json['handlingBusinessDayConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('holidayCutoffs')) {
       holidayCutoffs = (_json['holidayCutoffs'] as core.List)
-          .map<HolidayCutoff>((value) => HolidayCutoff.fromJson(value))
+          .map<HolidayCutoff>((value) => HolidayCutoff.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('maxHandlingTimeInDays')) {
@@ -10345,11 +10657,13 @@ class DeliveryTime {
       minTransitTimeInDays = _json['minTransitTimeInDays'] as core.int;
     }
     if (_json.containsKey('transitBusinessDayConfig')) {
-      transitBusinessDayConfig =
-          BusinessDayConfig.fromJson(_json['transitBusinessDayConfig']);
+      transitBusinessDayConfig = BusinessDayConfig.fromJson(
+          _json['transitBusinessDayConfig']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transitTimeTable')) {
-      transitTimeTable = TransitTable.fromJson(_json['transitTimeTable']);
+      transitTimeTable = TransitTable.fromJson(
+          _json['transitTimeTable'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10446,7 +10760,8 @@ class Errors {
     }
     if (_json.containsKey('errors')) {
       errors = (_json['errors'] as core.List)
-          .map<Error>((value) => Error.fromJson(value))
+          .map<Error>((value) =>
+              Error.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -10484,8 +10799,8 @@ class GmbAccounts {
     }
     if (_json.containsKey('gmbAccounts')) {
       gmbAccounts = (_json['gmbAccounts'] as core.List)
-          .map<GmbAccountsGmbAccount>(
-              (value) => GmbAccountsGmbAccount.fromJson(value))
+          .map<GmbAccountsGmbAccount>((value) => GmbAccountsGmbAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10593,7 +10908,8 @@ class Headers {
   Headers.fromJson(core.Map _json) {
     if (_json.containsKey('locations')) {
       locations = (_json['locations'] as core.List)
-          .map<LocationIdSet>((value) => LocationIdSet.fromJson(value))
+          .map<LocationIdSet>((value) => LocationIdSet.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('numberOfItems')) {
@@ -10608,12 +10924,14 @@ class Headers {
     }
     if (_json.containsKey('prices')) {
       prices = (_json['prices'] as core.List)
-          .map<Price>((value) => Price.fromJson(value))
+          .map<Price>((value) =>
+              Price.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('weights')) {
       weights = (_json['weights'] as core.List)
-          .map<Weight>((value) => Weight.fromJson(value))
+          .map<Weight>((value) =>
+              Weight.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -10795,7 +11113,8 @@ class Installment {
 
   Installment.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = Price.fromJson(_json['amount']);
+      amount = Price.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('months')) {
       months = _json['months'] as core.String;
@@ -10825,14 +11144,16 @@ class InvoiceSummary {
 
   InvoiceSummary.fromJson(core.Map _json) {
     if (_json.containsKey('additionalChargeSummaries')) {
-      additionalChargeSummaries = (_json['additionalChargeSummaries']
-              as core.List)
-          .map<InvoiceSummaryAdditionalChargeSummary>(
-              (value) => InvoiceSummaryAdditionalChargeSummary.fromJson(value))
-          .toList();
+      additionalChargeSummaries =
+          (_json['additionalChargeSummaries'] as core.List)
+              .map<InvoiceSummaryAdditionalChargeSummary>((value) =>
+                  InvoiceSummaryAdditionalChargeSummary.fromJson(
+                      value as core.Map<core.String, core.dynamic>))
+              .toList();
     }
     if (_json.containsKey('productTotal')) {
-      productTotal = Amount.fromJson(_json['productTotal']);
+      productTotal = Amount.fromJson(
+          _json['productTotal'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -10863,7 +11184,8 @@ class InvoiceSummaryAdditionalChargeSummary {
 
   InvoiceSummaryAdditionalChargeSummary.fromJson(core.Map _json) {
     if (_json.containsKey('totalAmount')) {
-      totalAmount = Amount.fromJson(_json['totalAmount']);
+      totalAmount = Amount.fromJson(
+          _json['totalAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -10943,7 +11265,8 @@ class LiaCountrySettings {
 
   LiaCountrySettings.fromJson(core.Map _json) {
     if (_json.containsKey('about')) {
-      about = LiaAboutPageSettings.fromJson(_json['about']);
+      about = LiaAboutPageSettings.fromJson(
+          _json['about'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('country')) {
       country = _json['country'] as core.String;
@@ -10953,14 +11276,16 @@ class LiaCountrySettings {
           _json['hostedLocalStorefrontActive'] as core.bool;
     }
     if (_json.containsKey('inventory')) {
-      inventory = LiaInventorySettings.fromJson(_json['inventory']);
+      inventory = LiaInventorySettings.fromJson(
+          _json['inventory'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('onDisplayToOrder')) {
-      onDisplayToOrder =
-          LiaOnDisplayToOrderSettings.fromJson(_json['onDisplayToOrder']);
+      onDisplayToOrder = LiaOnDisplayToOrderSettings.fromJson(
+          _json['onDisplayToOrder'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('posDataProvider')) {
-      posDataProvider = LiaPosDataProvider.fromJson(_json['posDataProvider']);
+      posDataProvider = LiaPosDataProvider.fromJson(
+          _json['posDataProvider'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('storePickupActive')) {
       storePickupActive = _json['storePickupActive'] as core.bool;
@@ -11145,8 +11470,8 @@ class LiaSettings {
     }
     if (_json.containsKey('countrySettings')) {
       countrySettings = (_json['countrySettings'] as core.List)
-          .map<LiaCountrySettings>(
-              (value) => LiaCountrySettings.fromJson(value))
+          .map<LiaCountrySettings>((value) => LiaCountrySettings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -11179,8 +11504,9 @@ class LiasettingsCustomBatchRequest {
   LiasettingsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LiasettingsCustomBatchRequestEntry>(
-              (value) => LiasettingsCustomBatchRequestEntry.fromJson(value))
+          .map<LiasettingsCustomBatchRequestEntry>((value) =>
+              LiasettingsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11261,7 +11587,8 @@ class LiasettingsCustomBatchRequestEntry {
       gmbEmail = _json['gmbEmail'] as core.String;
     }
     if (_json.containsKey('liaSettings')) {
-      liaSettings = LiaSettings.fromJson(_json['liaSettings']);
+      liaSettings = LiaSettings.fromJson(
+          _json['liaSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('merchantId')) {
       merchantId = _json['merchantId'] as core.String;
@@ -11329,8 +11656,9 @@ class LiasettingsCustomBatchResponse {
   LiasettingsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LiasettingsCustomBatchResponseEntry>(
-              (value) => LiasettingsCustomBatchResponseEntry.fromJson(value))
+          .map<LiasettingsCustomBatchResponseEntry>((value) =>
+              LiasettingsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -11377,20 +11705,24 @@ class LiasettingsCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('gmbAccounts')) {
-      gmbAccounts = GmbAccounts.fromJson(_json['gmbAccounts']);
+      gmbAccounts = GmbAccounts.fromJson(
+          _json['gmbAccounts'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('liaSettings')) {
-      liaSettings = LiaSettings.fromJson(_json['liaSettings']);
+      liaSettings = LiaSettings.fromJson(
+          _json['liaSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('posDataProviders')) {
       posDataProviders = (_json['posDataProviders'] as core.List)
-          .map<PosDataProviders>((value) => PosDataProviders.fromJson(value))
+          .map<PosDataProviders>((value) => PosDataProviders.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11439,8 +11771,8 @@ class LiasettingsGetAccessibleGmbAccountsResponse {
     }
     if (_json.containsKey('gmbAccounts')) {
       gmbAccounts = (_json['gmbAccounts'] as core.List)
-          .map<GmbAccountsGmbAccount>(
-              (value) => GmbAccountsGmbAccount.fromJson(value))
+          .map<GmbAccountsGmbAccount>((value) => GmbAccountsGmbAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -11480,7 +11812,8 @@ class LiasettingsListPosDataProvidersResponse {
     }
     if (_json.containsKey('posDataProviders')) {
       posDataProviders = (_json['posDataProviders'] as core.List)
-          .map<PosDataProviders>((value) => PosDataProviders.fromJson(value))
+          .map<PosDataProviders>((value) => PosDataProviders.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11518,7 +11851,8 @@ class LiasettingsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<LiaSettings>((value) => LiaSettings.fromJson(value))
+          .map<LiaSettings>((value) => LiaSettings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11681,7 +12015,8 @@ class LinkedAccount {
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
-          .map<LinkService>((value) => LinkService.fromJson(value))
+          .map<LinkService>((value) => LinkService.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11755,13 +12090,15 @@ class LocalInventory {
       pickupSla = _json['pickupSla'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.int;
     }
     if (_json.containsKey('salePrice')) {
-      salePrice = Price.fromJson(_json['salePrice']);
+      salePrice = Price.fromJson(
+          _json['salePrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
       salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
@@ -11816,8 +12153,9 @@ class LocalinventoryCustomBatchRequest {
   LocalinventoryCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LocalinventoryCustomBatchRequestEntry>(
-              (value) => LocalinventoryCustomBatchRequestEntry.fromJson(value))
+          .map<LocalinventoryCustomBatchRequestEntry>((value) =>
+              LocalinventoryCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -11858,7 +12196,8 @@ class LocalinventoryCustomBatchRequestEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('localInventory')) {
-      localInventory = LocalInventory.fromJson(_json['localInventory']);
+      localInventory = LocalInventory.fromJson(
+          _json['localInventory'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('merchantId')) {
       merchantId = _json['merchantId'] as core.String;
@@ -11905,8 +12244,9 @@ class LocalinventoryCustomBatchResponse {
   LocalinventoryCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LocalinventoryCustomBatchResponseEntry>(
-              (value) => LocalinventoryCustomBatchResponseEntry.fromJson(value))
+          .map<LocalinventoryCustomBatchResponseEntry>((value) =>
+              LocalinventoryCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -11945,7 +12285,8 @@ class LocalinventoryCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -12074,17 +12415,19 @@ class MerchantOrderReturn {
     }
     if (_json.containsKey('returnItems')) {
       returnItems = (_json['returnItems'] as core.List)
-          .map<MerchantOrderReturnItem>(
-              (value) => MerchantOrderReturnItem.fromJson(value))
+          .map<MerchantOrderReturnItem>((value) =>
+              MerchantOrderReturnItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('returnPricingInfo')) {
-      returnPricingInfo =
-          ReturnPricingInfo.fromJson(_json['returnPricingInfo']);
+      returnPricingInfo = ReturnPricingInfo.fromJson(
+          _json['returnPricingInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnShipments')) {
       returnShipments = (_json['returnShipments'] as core.List)
-          .map<ReturnShipment>((value) => ReturnShipment.fromJson(value))
+          .map<ReturnShipment>((value) => ReturnShipment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12167,25 +12510,28 @@ class MerchantOrderReturnItem {
 
   MerchantOrderReturnItem.fromJson(core.Map _json) {
     if (_json.containsKey('customerReturnReason')) {
-      customerReturnReason =
-          CustomerReturnReason.fromJson(_json['customerReturnReason']);
+      customerReturnReason = CustomerReturnReason.fromJson(
+          _json['customerReturnReason'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('itemId')) {
       itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('merchantRejectionReason')) {
-      merchantRejectionReason =
-          MerchantRejectionReason.fromJson(_json['merchantRejectionReason']);
+      merchantRejectionReason = MerchantRejectionReason.fromJson(
+          _json['merchantRejectionReason']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('merchantReturnReason')) {
-      merchantReturnReason =
-          RefundReason.fromJson(_json['merchantReturnReason']);
+      merchantReturnReason = RefundReason.fromJson(
+          _json['merchantReturnReason'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('product')) {
-      product = OrderLineItemProduct.fromJson(_json['product']);
+      product = OrderLineItemProduct.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refundableAmount')) {
-      refundableAmount = MonetaryAmount.fromJson(_json['refundableAmount']);
+      refundableAmount = MonetaryAmount.fromJson(
+          _json['refundableAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnItemId')) {
       returnItemId = _json['returnItemId'] as core.String;
@@ -12284,7 +12630,8 @@ class MinimumOrderValueTable {
     if (_json.containsKey('storeCodeSetWithMovs')) {
       storeCodeSetWithMovs = (_json['storeCodeSetWithMovs'] as core.List)
           .map<MinimumOrderValueTableStoreCodeSetWithMov>((value) =>
-              MinimumOrderValueTableStoreCodeSetWithMov.fromJson(value))
+              MinimumOrderValueTableStoreCodeSetWithMov.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -12319,7 +12666,8 @@ class MinimumOrderValueTableStoreCodeSetWithMov {
           .toList();
     }
     if (_json.containsKey('value')) {
-      value = Price.fromJson(_json['value']);
+      value =
+          Price.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12351,10 +12699,12 @@ class MonetaryAmount {
 
   MonetaryAmount.fromJson(core.Map _json) {
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12495,18 +12845,21 @@ class Order {
     }
     if (_json.containsKey('annotations')) {
       annotations = (_json['annotations'] as core.List)
-          .map<OrderOrderAnnotation>(
-              (value) => OrderOrderAnnotation.fromJson(value))
+          .map<OrderOrderAnnotation>((value) => OrderOrderAnnotation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('billingAddress')) {
-      billingAddress = OrderAddress.fromJson(_json['billingAddress']);
+      billingAddress = OrderAddress.fromJson(
+          _json['billingAddress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customer')) {
-      customer = OrderCustomer.fromJson(_json['customer']);
+      customer = OrderCustomer.fromJson(
+          _json['customer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deliveryDetails')) {
-      deliveryDetails = OrderDeliveryDetails.fromJson(_json['deliveryDetails']);
+      deliveryDetails = OrderDeliveryDetails.fromJson(
+          _json['deliveryDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -12516,7 +12869,8 @@ class Order {
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
-          .map<OrderLineItem>((value) => OrderLineItem.fromJson(value))
+          .map<OrderLineItem>((value) => OrderLineItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('merchantId')) {
@@ -12526,40 +12880,48 @@ class Order {
       merchantOrderId = _json['merchantOrderId'] as core.String;
     }
     if (_json.containsKey('netPriceAmount')) {
-      netPriceAmount = Price.fromJson(_json['netPriceAmount']);
+      netPriceAmount = Price.fromJson(
+          _json['netPriceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('netTaxAmount')) {
-      netTaxAmount = Price.fromJson(_json['netTaxAmount']);
+      netTaxAmount = Price.fromJson(
+          _json['netTaxAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paymentStatus')) {
       paymentStatus = _json['paymentStatus'] as core.String;
     }
     if (_json.containsKey('pickupDetails')) {
-      pickupDetails = OrderPickupDetails.fromJson(_json['pickupDetails']);
+      pickupDetails = OrderPickupDetails.fromJson(
+          _json['pickupDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('placedDate')) {
       placedDate = _json['placedDate'] as core.String;
     }
     if (_json.containsKey('promotions')) {
       promotions = (_json['promotions'] as core.List)
-          .map<OrderPromotion>((value) => OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => OrderPromotion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('refunds')) {
       refunds = (_json['refunds'] as core.List)
-          .map<OrderRefund>((value) => OrderRefund.fromJson(value))
+          .map<OrderRefund>((value) => OrderRefund.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shipments')) {
       shipments = (_json['shipments'] as core.List)
-          .map<OrderShipment>((value) => OrderShipment.fromJson(value))
+          .map<OrderShipment>((value) => OrderShipment.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shippingCost')) {
-      shippingCost = Price.fromJson(_json['shippingCost']);
+      shippingCost = Price.fromJson(
+          _json['shippingCost'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingCostTax')) {
-      shippingCostTax = Price.fromJson(_json['shippingCostTax']);
+      shippingCostTax = Price.fromJson(
+          _json['shippingCostTax'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;
@@ -12864,11 +13226,12 @@ class OrderCustomer {
       invoiceReceivingEmail = _json['invoiceReceivingEmail'] as core.String;
     }
     if (_json.containsKey('loyaltyInfo')) {
-      loyaltyInfo = OrderCustomerLoyaltyInfo.fromJson(_json['loyaltyInfo']);
+      loyaltyInfo = OrderCustomerLoyaltyInfo.fromJson(
+          _json['loyaltyInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('marketingRightsInfo')) {
       marketingRightsInfo = OrderCustomerMarketingRightsInfo.fromJson(
-          _json['marketingRightsInfo']);
+          _json['marketingRightsInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -12982,7 +13345,8 @@ class OrderDeliveryDetails {
 
   OrderDeliveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = OrderAddress.fromJson(_json['address']);
+      address = OrderAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('phoneNumber')) {
       phoneNumber = _json['phoneNumber'] as core.String;
@@ -13066,29 +13430,34 @@ class OrderLineItem {
   OrderLineItem.fromJson(core.Map _json) {
     if (_json.containsKey('adjustments')) {
       adjustments = (_json['adjustments'] as core.List)
-          .map<OrderLineItemAdjustment>(
-              (value) => OrderLineItemAdjustment.fromJson(value))
+          .map<OrderLineItemAdjustment>((value) =>
+              OrderLineItemAdjustment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('annotations')) {
       annotations = (_json['annotations'] as core.List)
-          .map<OrderMerchantProvidedAnnotation>(
-              (value) => OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>((value) =>
+              OrderMerchantProvidedAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('cancellations')) {
       cancellations = (_json['cancellations'] as core.List)
-          .map<OrderCancellation>((value) => OrderCancellation.fromJson(value))
+          .map<OrderCancellation>((value) => OrderCancellation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('product')) {
-      product = OrderLineItemProduct.fromJson(_json['product']);
+      product = OrderLineItemProduct.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantityCanceled')) {
       quantityCanceled = _json['quantityCanceled'] as core.int;
@@ -13115,19 +13484,21 @@ class OrderLineItem {
       quantityUndeliverable = _json['quantityUndeliverable'] as core.int;
     }
     if (_json.containsKey('returnInfo')) {
-      returnInfo = OrderLineItemReturnInfo.fromJson(_json['returnInfo']);
+      returnInfo = OrderLineItemReturnInfo.fromJson(
+          _json['returnInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returns')) {
       returns = (_json['returns'] as core.List)
-          .map<OrderReturn>((value) => OrderReturn.fromJson(value))
+          .map<OrderReturn>((value) => OrderReturn.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shippingDetails')) {
-      shippingDetails =
-          OrderLineItemShippingDetails.fromJson(_json['shippingDetails']);
+      shippingDetails = OrderLineItemShippingDetails.fromJson(
+          _json['shippingDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('tax')) {
-      tax = Price.fromJson(_json['tax']);
+      tax = Price.fromJson(_json['tax'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -13211,10 +13582,12 @@ class OrderLineItemAdjustment {
 
   OrderLineItemAdjustment.fromJson(core.Map _json) {
     if (_json.containsKey('priceAdjustment')) {
-      priceAdjustment = Price.fromJson(_json['priceAdjustment']);
+      priceAdjustment = Price.fromJson(
+          _json['priceAdjustment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxAdjustment')) {
-      taxAdjustment = Price.fromJson(_json['taxAdjustment']);
+      taxAdjustment = Price.fromJson(
+          _json['taxAdjustment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -13303,8 +13676,9 @@ class OrderLineItemProduct {
     }
     if (_json.containsKey('fees')) {
       fees = (_json['fees'] as core.List)
-          .map<OrderLineItemProductFee>(
-              (value) => OrderLineItemProductFee.fromJson(value))
+          .map<OrderLineItemProductFee>((value) =>
+              OrderLineItemProductFee.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('gtin')) {
@@ -13326,7 +13700,8 @@ class OrderLineItemProduct {
       offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shownImage')) {
       shownImage = _json['shownImage'] as core.String;
@@ -13339,8 +13714,9 @@ class OrderLineItemProduct {
     }
     if (_json.containsKey('variantAttributes')) {
       variantAttributes = (_json['variantAttributes'] as core.List)
-          .map<OrderLineItemProductVariantAttribute>(
-              (value) => OrderLineItemProductVariantAttribute.fromJson(value))
+          .map<OrderLineItemProductVariantAttribute>((value) =>
+              OrderLineItemProductVariantAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -13408,7 +13784,8 @@ class OrderLineItemProductFee {
 
   OrderLineItemProductFee.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = Price.fromJson(_json['amount']);
+      amount = Price.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -13525,7 +13902,8 @@ class OrderLineItemShippingDetails {
       deliverByDate = _json['deliverByDate'] as core.String;
     }
     if (_json.containsKey('method')) {
-      method = OrderLineItemShippingDetailsMethod.fromJson(_json['method']);
+      method = OrderLineItemShippingDetailsMethod.fromJson(
+          _json['method'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pickupPromiseInMinutes')) {
       pickupPromiseInMinutes = _json['pickupPromiseInMinutes'] as core.int;
@@ -13696,12 +14074,14 @@ class OrderPickupDetails {
 
   OrderPickupDetails.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = OrderAddress.fromJson(_json['address']);
+      address = OrderAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('collectors')) {
       collectors = (_json['collectors'] as core.List)
-          .map<OrderPickupDetailsCollector>(
-              (value) => OrderPickupDetailsCollector.fromJson(value))
+          .map<OrderPickupDetailsCollector>((value) =>
+              OrderPickupDetailsCollector.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('locationId')) {
@@ -13840,14 +14220,14 @@ class OrderPromotion {
   OrderPromotion.fromJson(core.Map _json) {
     if (_json.containsKey('applicableItems')) {
       applicableItems = (_json['applicableItems'] as core.List)
-          .map<OrderPromotionItem>(
-              (value) => OrderPromotionItem.fromJson(value))
+          .map<OrderPromotionItem>((value) => OrderPromotionItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('appliedItems')) {
       appliedItems = (_json['appliedItems'] as core.List)
-          .map<OrderPromotionItem>(
-              (value) => OrderPromotionItem.fromJson(value))
+          .map<OrderPromotionItem>((value) => OrderPromotionItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('endTime')) {
@@ -13860,7 +14240,8 @@ class OrderPromotion {
       merchantPromotionId = _json['merchantPromotionId'] as core.String;
     }
     if (_json.containsKey('priceValue')) {
-      priceValue = Price.fromJson(_json['priceValue']);
+      priceValue = Price.fromJson(
+          _json['priceValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shortTitle')) {
       shortTitle = _json['shortTitle'] as core.String;
@@ -13872,7 +14253,8 @@ class OrderPromotion {
       subtype = _json['subtype'] as core.String;
     }
     if (_json.containsKey('taxValue')) {
-      taxValue = Price.fromJson(_json['taxValue']);
+      taxValue = Price.fromJson(
+          _json['taxValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -14053,7 +14435,8 @@ class OrderRefund {
       actor = _json['actor'] as core.String;
     }
     if (_json.containsKey('amount')) {
-      amount = Price.fromJson(_json['amount']);
+      amount = Price.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('creationDate')) {
       creationDate = _json['creationDate'] as core.String;
@@ -14109,7 +14492,8 @@ class OrderReportDisbursement {
 
   OrderReportDisbursement.fromJson(core.Map _json) {
     if (_json.containsKey('disbursementAmount')) {
-      disbursementAmount = Price.fromJson(_json['disbursementAmount']);
+      disbursementAmount = Price.fromJson(
+          _json['disbursementAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('disbursementCreationDate')) {
       disbursementCreationDate =
@@ -14179,7 +14563,8 @@ class OrderReportTransaction {
 
   OrderReportTransaction.fromJson(core.Map _json) {
     if (_json.containsKey('disbursementAmount')) {
-      disbursementAmount = Price.fromJson(_json['disbursementAmount']);
+      disbursementAmount = Price.fromJson(
+          _json['disbursementAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('disbursementCreationDate')) {
       disbursementCreationDate =
@@ -14201,7 +14586,8 @@ class OrderReportTransaction {
       orderId = _json['orderId'] as core.String;
     }
     if (_json.containsKey('productAmount')) {
-      productAmount = ProductAmount.fromJson(_json['productAmount']);
+      productAmount = ProductAmount.fromJson(
+          _json['productAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transactionDate')) {
       transactionDate = _json['transactionDate'] as core.String;
@@ -14427,13 +14813,15 @@ class OrderShipment {
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
-          .map<OrderShipmentLineItemShipment>(
-              (value) => OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>((value) =>
+              OrderShipmentLineItemShipment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('scheduledDeliveryDetails')) {
       scheduledDeliveryDetails = OrderShipmentScheduledDeliveryDetails.fromJson(
-          _json['scheduledDeliveryDetails']);
+          _json['scheduledDeliveryDetails']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shipmentGroupId')) {
       shipmentGroupId = _json['shipmentGroupId'] as core.String;
@@ -14578,12 +14966,14 @@ class OrderinvoicesCreateChargeInvoiceRequest {
       invoiceId = _json['invoiceId'] as core.String;
     }
     if (_json.containsKey('invoiceSummary')) {
-      invoiceSummary = InvoiceSummary.fromJson(_json['invoiceSummary']);
+      invoiceSummary = InvoiceSummary.fromJson(
+          _json['invoiceSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lineItemInvoices')) {
       lineItemInvoices = (_json['lineItemInvoices'] as core.List)
-          .map<ShipmentInvoiceLineItemInvoice>(
-              (value) => ShipmentInvoiceLineItemInvoice.fromJson(value))
+          .map<ShipmentInvoiceLineItemInvoice>((value) =>
+              ShipmentInvoiceLineItemInvoice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationId')) {
@@ -14685,16 +15075,19 @@ class OrderinvoicesCreateRefundInvoiceRequest {
     if (_json.containsKey('refundOnlyOption')) {
       refundOnlyOption =
           OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceRefundOption
-              .fromJson(_json['refundOnlyOption']);
+              .fromJson(_json['refundOnlyOption']
+                  as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnOption')) {
       returnOption =
           OrderinvoicesCustomBatchRequestEntryCreateRefundInvoiceReturnOption
-              .fromJson(_json['returnOption']);
+              .fromJson(
+                  _json['returnOption'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shipmentInvoices')) {
       shipmentInvoices = (_json['shipmentInvoices'] as core.List)
-          .map<ShipmentInvoice>((value) => ShipmentInvoice.fromJson(value))
+          .map<ShipmentInvoice>((value) => ShipmentInvoice.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -14895,8 +15288,9 @@ class OrderreportsListDisbursementsResponse {
   OrderreportsListDisbursementsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('disbursements')) {
       disbursements = (_json['disbursements'] as core.List)
-          .map<OrderReportDisbursement>(
-              (value) => OrderReportDisbursement.fromJson(value))
+          .map<OrderReportDisbursement>((value) =>
+              OrderReportDisbursement.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -14945,8 +15339,9 @@ class OrderreportsListTransactionsResponse {
     }
     if (_json.containsKey('transactions')) {
       transactions = (_json['transactions'] as core.List)
-          .map<OrderReportTransaction>(
-              (value) => OrderReportTransaction.fromJson(value))
+          .map<OrderReportTransaction>((value) =>
+              OrderReportTransaction.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15042,8 +15437,8 @@ class OrderreturnsCreateOrderReturnRequest {
   OrderreturnsCreateOrderReturnRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
-          .map<OrderreturnsLineItem>(
-              (value) => OrderreturnsLineItem.fromJson(value))
+          .map<OrderreturnsLineItem>((value) => OrderreturnsLineItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationId')) {
@@ -15100,7 +15495,8 @@ class OrderreturnsCreateOrderReturnResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('orderReturn')) {
-      orderReturn = MerchantOrderReturn.fromJson(_json['orderReturn']);
+      orderReturn = MerchantOrderReturn.fromJson(
+          _json['orderReturn'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15170,8 +15566,8 @@ class OrderreturnsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<MerchantOrderReturn>(
-              (value) => MerchantOrderReturn.fromJson(value))
+          .map<MerchantOrderReturn>((value) => MerchantOrderReturn.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15204,10 +15600,12 @@ class OrderreturnsPartialRefund {
 
   OrderreturnsPartialRefund.fromJson(core.Map _json) {
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15248,13 +15646,14 @@ class OrderreturnsProcessRequest {
       operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('refundShippingFee')) {
-      refundShippingFee =
-          OrderreturnsRefundOperation.fromJson(_json['refundShippingFee']);
+      refundShippingFee = OrderreturnsRefundOperation.fromJson(
+          _json['refundShippingFee'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnItems')) {
       returnItems = (_json['returnItems'] as core.List)
-          .map<OrderreturnsReturnItem>(
-              (value) => OrderreturnsReturnItem.fromJson(value))
+          .map<OrderreturnsReturnItem>((value) =>
+              OrderreturnsReturnItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15342,8 +15741,8 @@ class OrderreturnsRefundOperation {
       fullRefund = _json['fullRefund'] as core.bool;
     }
     if (_json.containsKey('partialRefund')) {
-      partialRefund =
-          OrderreturnsPartialRefund.fromJson(_json['partialRefund']);
+      partialRefund = OrderreturnsPartialRefund.fromJson(
+          _json['partialRefund'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('paymentType')) {
       paymentType = _json['paymentType'] as core.String;
@@ -15422,10 +15821,12 @@ class OrderreturnsReturnItem {
 
   OrderreturnsReturnItem.fromJson(core.Map _json) {
     if (_json.containsKey('refund')) {
-      refund = OrderreturnsRefundOperation.fromJson(_json['refund']);
+      refund = OrderreturnsRefundOperation.fromJson(
+          _json['refund'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reject')) {
-      reject = OrderreturnsRejectOperation.fromJson(_json['reject']);
+      reject = OrderreturnsRejectOperation.fromJson(
+          _json['reject'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnItemId')) {
       returnItemId = _json['returnItemId'] as core.String;
@@ -15809,7 +16210,8 @@ class OrdersCreateTestOrderRequest {
       templateName = _json['templateName'] as core.String;
     }
     if (_json.containsKey('testOrder')) {
-      testOrder = TestOrder.fromJson(_json['testOrder']);
+      testOrder = TestOrder.fromJson(
+          _json['testOrder'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -15870,7 +16272,7 @@ class OrdersCreateTestReturnRequest {
       items = (_json['items'] as core.List)
           .map<OrdersCustomBatchRequestEntryCreateTestReturnReturnItem>(
               (value) => OrdersCustomBatchRequestEntryCreateTestReturnReturnItem
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -15971,7 +16373,8 @@ class OrdersCustomBatchRequestEntryRefundItemItem {
 
   OrdersCustomBatchRequestEntryRefundItemItem.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = MonetaryAmount.fromJson(_json['amount']);
+      amount = MonetaryAmount.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fullRefund')) {
       fullRefund = _json['fullRefund'] as core.bool;
@@ -16021,7 +16424,8 @@ class OrdersCustomBatchRequestEntryRefundItemShipping {
 
   OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = Price.fromJson(_json['amount']);
+      amount = Price.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fullRefund')) {
       fullRefund = _json['fullRefund'] as core.bool;
@@ -16097,7 +16501,8 @@ class OrdersGetByMerchantOrderIdResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('order')) {
-      order = Order.fromJson(_json['order']);
+      order =
+          Order.fromJson(_json['order'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16128,7 +16533,8 @@ class OrdersGetTestOrderTemplateResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('template')) {
-      template = TestOrder.fromJson(_json['template']);
+      template = TestOrder.fromJson(
+          _json['template'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16197,7 +16603,8 @@ class OrdersInStoreRefundLineItemRequest {
       operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productId')) {
       productId = _json['productId'] as core.String;
@@ -16212,7 +16619,8 @@ class OrdersInStoreRefundLineItemRequest {
       reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16301,7 +16709,8 @@ class OrdersListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<Order>((value) => Order.fromJson(value))
+          .map<Order>((value) =>
+              Order.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -16361,7 +16770,8 @@ class OrdersRefundItemRequest {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
           .map<OrdersCustomBatchRequestEntryRefundItemItem>((value) =>
-              OrdersCustomBatchRequestEntryRefundItemItem.fromJson(value))
+              OrdersCustomBatchRequestEntryRefundItemItem.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationId')) {
@@ -16375,7 +16785,7 @@ class OrdersRefundItemRequest {
     }
     if (_json.containsKey('shipping')) {
       shipping = OrdersCustomBatchRequestEntryRefundItemShipping.fromJson(
-          _json['shipping']);
+          _json['shipping'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16461,7 +16871,8 @@ class OrdersRefundOrderRequest {
 
   OrdersRefundOrderRequest.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = MonetaryAmount.fromJson(_json['amount']);
+      amount = MonetaryAmount.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fullRefund')) {
       fullRefund = _json['fullRefund'] as core.bool;
@@ -16697,7 +17108,8 @@ class OrdersReturnRefundLineItemRequest {
       operationId = _json['operationId'] as core.String;
     }
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productId')) {
       productId = _json['productId'] as core.String;
@@ -16712,7 +17124,8 @@ class OrdersReturnRefundLineItemRequest {
       reasonText = _json['reasonText'] as core.String;
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -16800,8 +17213,9 @@ class OrdersSetLineItemMetadataRequest {
   OrdersSetLineItemMetadataRequest.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
       annotations = (_json['annotations'] as core.List)
-          .map<OrderMerchantProvidedAnnotation>(
-              (value) => OrderMerchantProvidedAnnotation.fromJson(value))
+          .map<OrderMerchantProvidedAnnotation>((value) =>
+              OrderMerchantProvidedAnnotation.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('lineItemId')) {
@@ -16890,8 +17304,9 @@ class OrdersShipLineItemsRequest {
   OrdersShipLineItemsRequest.fromJson(core.Map _json) {
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
-          .map<OrderShipmentLineItemShipment>(
-              (value) => OrderShipmentLineItemShipment.fromJson(value))
+          .map<OrderShipmentLineItemShipment>((value) =>
+              OrderShipmentLineItemShipment.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationId')) {
@@ -16904,7 +17319,7 @@ class OrdersShipLineItemsRequest {
       shipmentInfos = (_json['shipmentInfos'] as core.List)
           .map<OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo>(
               (value) => OrdersCustomBatchRequestEntryShipLineItemsShipmentInfo
-                  .fromJson(value))
+                  .fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17349,8 +17764,9 @@ class PosCustomBatchRequest {
   PosCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<PosCustomBatchRequestEntry>(
-              (value) => PosCustomBatchRequestEntry.fromJson(value))
+          .map<PosCustomBatchRequestEntry>((value) =>
+              PosCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17403,7 +17819,8 @@ class PosCustomBatchRequestEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('inventory')) {
-      inventory = PosInventory.fromJson(_json['inventory']);
+      inventory = PosInventory.fromJson(
+          _json['inventory'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('merchantId')) {
       merchantId = _json['merchantId'] as core.String;
@@ -17412,10 +17829,12 @@ class PosCustomBatchRequestEntry {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('sale')) {
-      sale = PosSale.fromJson(_json['sale']);
+      sale = PosSale.fromJson(
+          _json['sale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('store')) {
-      store = PosStore.fromJson(_json['store']);
+      store = PosStore.fromJson(
+          _json['store'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('storeCode')) {
       storeCode = _json['storeCode'] as core.String;
@@ -17468,8 +17887,9 @@ class PosCustomBatchResponse {
   PosCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<PosCustomBatchResponseEntry>(
-              (value) => PosCustomBatchResponseEntry.fromJson(value))
+          .map<PosCustomBatchResponseEntry>((value) =>
+              PosCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -17516,19 +17936,23 @@ class PosCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('inventory')) {
-      inventory = PosInventory.fromJson(_json['inventory']);
+      inventory = PosInventory.fromJson(
+          _json['inventory'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('sale')) {
-      sale = PosSale.fromJson(_json['sale']);
+      sale = PosSale.fromJson(
+          _json['sale'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('store')) {
-      store = PosStore.fromJson(_json['store']);
+      store = PosStore.fromJson(
+          _json['store'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -17571,8 +17995,9 @@ class PosDataProviders {
     }
     if (_json.containsKey('posDataProviders')) {
       posDataProviders = (_json['posDataProviders'] as core.List)
-          .map<PosDataProvidersPosDataProvider>(
-              (value) => PosDataProvidersPosDataProvider.fromJson(value))
+          .map<PosDataProvidersPosDataProvider>((value) =>
+              PosDataProvidersPosDataProvider.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17676,7 +18101,8 @@ class PosInventory {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -17764,7 +18190,8 @@ class PosInventoryRequest {
       itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -17856,7 +18283,8 @@ class PosInventoryResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -17919,7 +18347,8 @@ class PosListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<PosStore>((value) => PosStore.fromJson(value))
+          .map<PosStore>((value) =>
+              PosStore.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -17987,7 +18416,8 @@ class PosSale {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -18085,7 +18515,8 @@ class PosSaleRequest {
       itemId = _json['itemId'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -18187,7 +18618,8 @@ class PosSaleResponse {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantity')) {
       quantity = _json['quantity'] as core.String;
@@ -18305,7 +18737,8 @@ class PostalCodeGroup {
     }
     if (_json.containsKey('postalCodeRanges')) {
       postalCodeRanges = (_json['postalCodeRanges'] as core.List)
-          .map<PostalCodeRange>((value) => PostalCodeRange.fromJson(value))
+          .map<PostalCodeRange>((value) => PostalCodeRange.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -18740,11 +19173,13 @@ class Product {
       contentLanguage = _json['contentLanguage'] as core.String;
     }
     if (_json.containsKey('costOfGoodsSold')) {
-      costOfGoodsSold = Price.fromJson(_json['costOfGoodsSold']);
+      costOfGoodsSold = Price.fromJson(
+          _json['costOfGoodsSold'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customAttributes')) {
       customAttributes = (_json['customAttributes'] as core.List)
-          .map<CustomAttribute>((value) => CustomAttribute.fromJson(value))
+          .map<CustomAttribute>((value) => CustomAttribute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('customLabel0')) {
@@ -18817,7 +19252,8 @@ class Product {
           .toList();
     }
     if (_json.containsKey('installment')) {
-      installment = Installment.fromJson(_json['installment']);
+      installment = Installment.fromJson(
+          _json['installment'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isBundle')) {
       isBundle = _json['isBundle'] as core.bool;
@@ -18832,7 +19268,8 @@ class Product {
       link = _json['link'] as core.String;
     }
     if (_json.containsKey('loyaltyPoints')) {
-      loyaltyPoints = LoyaltyPoints.fromJson(_json['loyaltyPoints']);
+      loyaltyPoints = LoyaltyPoints.fromJson(
+          _json['loyaltyPoints'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('material')) {
       material = _json['material'] as core.String;
@@ -18867,12 +19304,13 @@ class Product {
       pattern = _json['pattern'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productDetails')) {
       productDetails = (_json['productDetails'] as core.List)
-          .map<ProductProductDetail>(
-              (value) => ProductProductDetail.fromJson(value))
+          .map<ProductProductDetail>((value) => ProductProductDetail.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('productHighlights')) {
@@ -18891,7 +19329,8 @@ class Product {
           .toList();
     }
     if (_json.containsKey('salePrice')) {
-      salePrice = Price.fromJson(_json['salePrice']);
+      salePrice = Price.fromJson(
+          _json['salePrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
       salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
@@ -18901,25 +19340,28 @@ class Product {
     }
     if (_json.containsKey('shipping')) {
       shipping = (_json['shipping'] as core.List)
-          .map<ProductShipping>((value) => ProductShipping.fromJson(value))
+          .map<ProductShipping>((value) => ProductShipping.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shippingHeight')) {
-      shippingHeight =
-          ProductShippingDimension.fromJson(_json['shippingHeight']);
+      shippingHeight = ProductShippingDimension.fromJson(
+          _json['shippingHeight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingLabel')) {
       shippingLabel = _json['shippingLabel'] as core.String;
     }
     if (_json.containsKey('shippingLength')) {
-      shippingLength =
-          ProductShippingDimension.fromJson(_json['shippingLength']);
+      shippingLength = ProductShippingDimension.fromJson(
+          _json['shippingLength'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingWeight')) {
-      shippingWeight = ProductShippingWeight.fromJson(_json['shippingWeight']);
+      shippingWeight = ProductShippingWeight.fromJson(
+          _json['shippingWeight'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingWidth')) {
-      shippingWidth = ProductShippingDimension.fromJson(_json['shippingWidth']);
+      shippingWidth = ProductShippingDimension.fromJson(
+          _json['shippingWidth'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shoppingAdsExcludedCountries')) {
       shoppingAdsExcludedCountries =
@@ -18942,8 +19384,8 @@ class Product {
       source = _json['source'] as core.String;
     }
     if (_json.containsKey('subscriptionCost')) {
-      subscriptionCost =
-          ProductSubscriptionCost.fromJson(_json['subscriptionCost']);
+      subscriptionCost = ProductSubscriptionCost.fromJson(
+          _json['subscriptionCost'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetCountry')) {
       targetCountry = _json['targetCountry'] as core.String;
@@ -18953,7 +19395,8 @@ class Product {
     }
     if (_json.containsKey('taxes')) {
       taxes = (_json['taxes'] as core.List)
-          .map<ProductTax>((value) => ProductTax.fromJson(value))
+          .map<ProductTax>((value) =>
+              ProductTax.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('title')) {
@@ -18964,11 +19407,12 @@ class Product {
     }
     if (_json.containsKey('unitPricingBaseMeasure')) {
       unitPricingBaseMeasure = ProductUnitPricingBaseMeasure.fromJson(
-          _json['unitPricingBaseMeasure']);
+          _json['unitPricingBaseMeasure']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unitPricingMeasure')) {
-      unitPricingMeasure =
-          ProductUnitPricingMeasure.fromJson(_json['unitPricingMeasure']);
+      unitPricingMeasure = ProductUnitPricingMeasure.fromJson(
+          _json['unitPricingMeasure'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -19234,13 +19678,16 @@ class ProductAmount {
 
   ProductAmount.fromJson(core.Map _json) {
     if (_json.containsKey('priceAmount')) {
-      priceAmount = Price.fromJson(_json['priceAmount']);
+      priceAmount = Price.fromJson(
+          _json['priceAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('remittedTaxAmount')) {
-      remittedTaxAmount = Price.fromJson(_json['remittedTaxAmount']);
+      remittedTaxAmount = Price.fromJson(
+          _json['remittedTaxAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -19340,7 +19787,8 @@ class ProductShipping {
       postalCode = _json['postalCode'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('region')) {
       region = _json['region'] as core.String;
@@ -19477,8 +19925,9 @@ class ProductStatus {
     }
     if (_json.containsKey('destinationStatuses')) {
       destinationStatuses = (_json['destinationStatuses'] as core.List)
-          .map<ProductStatusDestinationStatus>(
-              (value) => ProductStatusDestinationStatus.fromJson(value))
+          .map<ProductStatusDestinationStatus>((value) =>
+              ProductStatusDestinationStatus.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('googleExpirationDate')) {
@@ -19486,8 +19935,9 @@ class ProductStatus {
     }
     if (_json.containsKey('itemLevelIssues')) {
       itemLevelIssues = (_json['itemLevelIssues'] as core.List)
-          .map<ProductStatusItemLevelIssue>(
-              (value) => ProductStatusItemLevelIssue.fromJson(value))
+          .map<ProductStatusItemLevelIssue>((value) =>
+              ProductStatusItemLevelIssue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -19716,7 +20166,8 @@ class ProductSubscriptionCost {
 
   ProductSubscriptionCost.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = Price.fromJson(_json['amount']);
+      amount = Price.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('period')) {
       period = _json['period'] as core.String;
@@ -19881,8 +20332,9 @@ class ProductsCustomBatchRequest {
   ProductsCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ProductsCustomBatchRequestEntry>(
-              (value) => ProductsCustomBatchRequestEntry.fromJson(value))
+          .map<ProductsCustomBatchRequestEntry>((value) =>
+              ProductsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -19938,7 +20390,8 @@ class ProductsCustomBatchRequestEntry {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = Product.fromJson(_json['product']);
+      product = Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('productId')) {
       productId = _json['productId'] as core.String;
@@ -19982,8 +20435,9 @@ class ProductsCustomBatchResponse {
   ProductsCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ProductsCustomBatchResponseEntry>(
-              (value) => ProductsCustomBatchResponseEntry.fromJson(value))
+          .map<ProductsCustomBatchResponseEntry>((value) =>
+              ProductsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -20026,13 +20480,15 @@ class ProductsCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('product')) {
-      product = Product.fromJson(_json['product']);
+      product = Product.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -20074,7 +20530,8 @@ class ProductsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<Product>((value) => Product.fromJson(value))
+          .map<Product>((value) =>
+              Product.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20103,8 +20560,9 @@ class ProductstatusesCustomBatchRequest {
   ProductstatusesCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ProductstatusesCustomBatchRequestEntry>(
-              (value) => ProductstatusesCustomBatchRequestEntry.fromJson(value))
+          .map<ProductstatusesCustomBatchRequestEntry>((value) =>
+              ProductstatusesCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20203,7 +20661,8 @@ class ProductstatusesCustomBatchResponse {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<ProductstatusesCustomBatchResponseEntry>((value) =>
-              ProductstatusesCustomBatchResponseEntry.fromJson(value))
+              ProductstatusesCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -20245,13 +20704,15 @@ class ProductstatusesCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('productStatus')) {
-      productStatus = ProductStatus.fromJson(_json['productStatus']);
+      productStatus = ProductStatus.fromJson(
+          _json['productStatus'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -20293,7 +20754,8 @@ class ProductstatusesListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ProductStatus>((value) => ProductStatus.fromJson(value))
+          .map<ProductStatus>((value) => ProductStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20399,21 +20861,25 @@ class RateGroup {
     }
     if (_json.containsKey('carrierRates')) {
       carrierRates = (_json['carrierRates'] as core.List)
-          .map<CarrierRate>((value) => CarrierRate.fromJson(value))
+          .map<CarrierRate>((value) => CarrierRate.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mainTable')) {
-      mainTable = Table.fromJson(_json['mainTable']);
+      mainTable = Table.fromJson(
+          _json['mainTable'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('singleValue')) {
-      singleValue = Value.fromJson(_json['singleValue']);
+      singleValue = Value.fromJson(
+          _json['singleValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('subtables')) {
       subtables = (_json['subtables'] as core.List)
-          .map<Table>((value) => Table.fromJson(value))
+          .map<Table>((value) =>
+              Table.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20555,20 +21021,23 @@ class RegionalInventory {
     }
     if (_json.containsKey('customAttributes')) {
       customAttributes = (_json['customAttributes'] as core.List)
-          .map<CustomAttribute>((value) => CustomAttribute.fromJson(value))
+          .map<CustomAttribute>((value) => CustomAttribute.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('regionId')) {
       regionId = _json['regionId'] as core.String;
     }
     if (_json.containsKey('salePrice')) {
-      salePrice = Price.fromJson(_json['salePrice']);
+      salePrice = Price.fromJson(
+          _json['salePrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('salePriceEffectiveDate')) {
       salePriceEffectiveDate = _json['salePriceEffectiveDate'] as core.String;
@@ -20613,7 +21082,8 @@ class RegionalinventoryCustomBatchRequest {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<RegionalinventoryCustomBatchRequestEntry>((value) =>
-              RegionalinventoryCustomBatchRequestEntry.fromJson(value))
+              RegionalinventoryCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -20663,8 +21133,8 @@ class RegionalinventoryCustomBatchRequestEntry {
       productId = _json['productId'] as core.String;
     }
     if (_json.containsKey('regionalInventory')) {
-      regionalInventory =
-          RegionalInventory.fromJson(_json['regionalInventory']);
+      regionalInventory = RegionalInventory.fromJson(
+          _json['regionalInventory'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -20703,7 +21173,8 @@ class RegionalinventoryCustomBatchResponse {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<RegionalinventoryCustomBatchResponseEntry>((value) =>
-              RegionalinventoryCustomBatchResponseEntry.fromJson(value))
+              RegionalinventoryCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -20745,14 +21216,15 @@ class RegionalinventoryCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('regionalInventory')) {
-      regionalInventory =
-          RegionalInventory.fromJson(_json['regionalInventory']);
+      regionalInventory = RegionalInventory.fromJson(
+          _json['regionalInventory'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -20800,7 +21272,8 @@ class ReturnAddress {
 
   ReturnAddress.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = ReturnAddressAddress.fromJson(_json['address']);
+      address = ReturnAddressAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('country')) {
       country = _json['country'] as core.String;
@@ -20963,15 +21436,17 @@ class ReturnPolicy {
           .toList();
     }
     if (_json.containsKey('policy')) {
-      policy = ReturnPolicyPolicy.fromJson(_json['policy']);
+      policy = ReturnPolicyPolicy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnPolicyId')) {
       returnPolicyId = _json['returnPolicyId'] as core.String;
     }
     if (_json.containsKey('seasonalOverrides')) {
       seasonalOverrides = (_json['seasonalOverrides'] as core.List)
-          .map<ReturnPolicySeasonalOverride>(
-              (value) => ReturnPolicySeasonalOverride.fromJson(value))
+          .map<ReturnPolicySeasonalOverride>((value) =>
+              ReturnPolicySeasonalOverride.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21088,7 +21563,8 @@ class ReturnPolicySeasonalOverride {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('policy')) {
-      policy = ReturnPolicyPolicy.fromJson(_json['policy']);
+      policy = ReturnPolicyPolicy.fromJson(
+          _json['policy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startDate')) {
       startDate = _json['startDate'] as core.String;
@@ -21144,20 +21620,22 @@ class ReturnPricingInfo {
       chargeReturnShippingFee = _json['chargeReturnShippingFee'] as core.bool;
     }
     if (_json.containsKey('maxReturnShippingFee')) {
-      maxReturnShippingFee =
-          MonetaryAmount.fromJson(_json['maxReturnShippingFee']);
+      maxReturnShippingFee = MonetaryAmount.fromJson(
+          _json['maxReturnShippingFee'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refundableItemsTotalAmount')) {
-      refundableItemsTotalAmount =
-          MonetaryAmount.fromJson(_json['refundableItemsTotalAmount']);
+      refundableItemsTotalAmount = MonetaryAmount.fromJson(
+          _json['refundableItemsTotalAmount']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('refundableShippingAmount')) {
-      refundableShippingAmount =
-          MonetaryAmount.fromJson(_json['refundableShippingAmount']);
+      refundableShippingAmount = MonetaryAmount.fromJson(
+          _json['refundableShippingAmount']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('totalRefundedAmount')) {
-      totalRefundedAmount =
-          MonetaryAmount.fromJson(_json['totalRefundedAmount']);
+      totalRefundedAmount = MonetaryAmount.fromJson(
+          _json['totalRefundedAmount'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -21234,8 +21712,8 @@ class ReturnShipment {
     }
     if (_json.containsKey('shipmentTrackingInfos')) {
       shipmentTrackingInfos = (_json['shipmentTrackingInfos'] as core.List)
-          .map<ShipmentTrackingInfo>(
-              (value) => ShipmentTrackingInfo.fromJson(value))
+          .map<ShipmentTrackingInfo>((value) => ShipmentTrackingInfo.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shippingDate')) {
@@ -21283,8 +21761,9 @@ class ReturnaddressCustomBatchRequest {
   ReturnaddressCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ReturnaddressCustomBatchRequestEntry>(
-              (value) => ReturnaddressCustomBatchRequestEntry.fromJson(value))
+          .map<ReturnaddressCustomBatchRequestEntry>((value) =>
+              ReturnaddressCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21332,7 +21811,8 @@ class ReturnaddressCustomBatchRequestEntry {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('returnAddress')) {
-      returnAddress = ReturnAddress.fromJson(_json['returnAddress']);
+      returnAddress = ReturnAddress.fromJson(
+          _json['returnAddress'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnAddressId')) {
       returnAddressId = _json['returnAddressId'] as core.String;
@@ -21373,8 +21853,9 @@ class ReturnaddressCustomBatchResponse {
   ReturnaddressCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ReturnaddressCustomBatchResponseEntry>(
-              (value) => ReturnaddressCustomBatchResponseEntry.fromJson(value))
+          .map<ReturnaddressCustomBatchResponseEntry>((value) =>
+              ReturnaddressCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -21415,13 +21896,15 @@ class ReturnaddressCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('returnAddress')) {
-      returnAddress = ReturnAddress.fromJson(_json['returnAddress']);
+      returnAddress = ReturnAddress.fromJson(
+          _json['returnAddress'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -21463,7 +21946,8 @@ class ReturnaddressListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ReturnAddress>((value) => ReturnAddress.fromJson(value))
+          .map<ReturnAddress>((value) => ReturnAddress.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21492,8 +21976,9 @@ class ReturnpolicyCustomBatchRequest {
   ReturnpolicyCustomBatchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ReturnpolicyCustomBatchRequestEntry>(
-              (value) => ReturnpolicyCustomBatchRequestEntry.fromJson(value))
+          .map<ReturnpolicyCustomBatchRequestEntry>((value) =>
+              ReturnpolicyCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21541,7 +22026,8 @@ class ReturnpolicyCustomBatchRequestEntry {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('returnPolicy')) {
-      returnPolicy = ReturnPolicy.fromJson(_json['returnPolicy']);
+      returnPolicy = ReturnPolicy.fromJson(
+          _json['returnPolicy'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('returnPolicyId')) {
       returnPolicyId = _json['returnPolicyId'] as core.String;
@@ -21582,8 +22068,9 @@ class ReturnpolicyCustomBatchResponse {
   ReturnpolicyCustomBatchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<ReturnpolicyCustomBatchResponseEntry>(
-              (value) => ReturnpolicyCustomBatchResponseEntry.fromJson(value))
+          .map<ReturnpolicyCustomBatchResponseEntry>((value) =>
+              ReturnpolicyCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -21624,13 +22111,15 @@ class ReturnpolicyCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('returnPolicy')) {
-      returnPolicy = ReturnPolicy.fromJson(_json['returnPolicy']);
+      returnPolicy = ReturnPolicy.fromJson(
+          _json['returnPolicy'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -21666,7 +22155,8 @@ class ReturnpolicyListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ReturnPolicy>((value) => ReturnPolicy.fromJson(value))
+          .map<ReturnPolicy>((value) => ReturnPolicy.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21694,7 +22184,8 @@ class Row {
   Row.fromJson(core.Map _json) {
     if (_json.containsKey('cells')) {
       cells = (_json['cells'] as core.List)
-          .map<Value>((value) => Value.fromJson(value))
+          .map<Value>((value) =>
+              Value.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -21777,27 +22268,32 @@ class Service {
       deliveryCountry = _json['deliveryCountry'] as core.String;
     }
     if (_json.containsKey('deliveryTime')) {
-      deliveryTime = DeliveryTime.fromJson(_json['deliveryTime']);
+      deliveryTime = DeliveryTime.fromJson(
+          _json['deliveryTime'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('eligibility')) {
       eligibility = _json['eligibility'] as core.String;
     }
     if (_json.containsKey('minimumOrderValue')) {
-      minimumOrderValue = Price.fromJson(_json['minimumOrderValue']);
+      minimumOrderValue = Price.fromJson(
+          _json['minimumOrderValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('minimumOrderValueTable')) {
-      minimumOrderValueTable =
-          MinimumOrderValueTable.fromJson(_json['minimumOrderValueTable']);
+      minimumOrderValueTable = MinimumOrderValueTable.fromJson(
+          _json['minimumOrderValueTable']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pickupService')) {
-      pickupService = PickupCarrierService.fromJson(_json['pickupService']);
+      pickupService = PickupCarrierService.fromJson(
+          _json['pickupService'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rateGroups')) {
       rateGroups = (_json['rateGroups'] as core.List)
-          .map<RateGroup>((value) => RateGroup.fromJson(value))
+          .map<RateGroup>((value) =>
+              RateGroup.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shipmentType')) {
@@ -21888,7 +22384,8 @@ class SettlementReport {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('previousBalance')) {
-      previousBalance = Price.fromJson(_json['previousBalance']);
+      previousBalance = Price.fromJson(
+          _json['previousBalance'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('settlementId')) {
       settlementId = _json['settlementId'] as core.String;
@@ -21897,7 +22394,8 @@ class SettlementReport {
       startDate = _json['startDate'] as core.String;
     }
     if (_json.containsKey('transferAmount')) {
-      transferAmount = Price.fromJson(_json['transferAmount']);
+      transferAmount = Price.fromJson(
+          _json['transferAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('transferDate')) {
       transferDate = _json['transferDate'] as core.String;
@@ -21959,18 +22457,19 @@ class SettlementTransaction {
 
   SettlementTransaction.fromJson(core.Map _json) {
     if (_json.containsKey('amount')) {
-      amount = SettlementTransactionAmount.fromJson(_json['amount']);
+      amount = SettlementTransactionAmount.fromJson(
+          _json['amount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('identifiers')) {
-      identifiers =
-          SettlementTransactionIdentifiers.fromJson(_json['identifiers']);
+      identifiers = SettlementTransactionIdentifiers.fromJson(
+          _json['identifiers'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('transaction')) {
-      transaction =
-          SettlementTransactionTransaction.fromJson(_json['transaction']);
+      transaction = SettlementTransactionTransaction.fromJson(
+          _json['transaction'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -22060,14 +22559,15 @@ class SettlementTransactionAmount {
 
   SettlementTransactionAmount.fromJson(core.Map _json) {
     if (_json.containsKey('commission')) {
-      commission =
-          SettlementTransactionAmountCommission.fromJson(_json['commission']);
+      commission = SettlementTransactionAmountCommission.fromJson(
+          _json['commission'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('transactionAmount')) {
-      transactionAmount = Price.fromJson(_json['transactionAmount']);
+      transactionAmount = Price.fromJson(
+          _json['transactionAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -22296,7 +22796,8 @@ class SettlementreportsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<SettlementReport>((value) => SettlementReport.fromJson(value))
+          .map<SettlementReport>((value) => SettlementReport.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22336,8 +22837,8 @@ class SettlementtransactionsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<SettlementTransaction>(
-              (value) => SettlementTransaction.fromJson(value))
+          .map<SettlementTransaction>((value) => SettlementTransaction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22373,12 +22874,14 @@ class ShipmentInvoice {
 
   ShipmentInvoice.fromJson(core.Map _json) {
     if (_json.containsKey('invoiceSummary')) {
-      invoiceSummary = InvoiceSummary.fromJson(_json['invoiceSummary']);
+      invoiceSummary = InvoiceSummary.fromJson(
+          _json['invoiceSummary'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('lineItemInvoices')) {
       lineItemInvoices = (_json['lineItemInvoices'] as core.List)
-          .map<ShipmentInvoiceLineItemInvoice>(
-              (value) => ShipmentInvoiceLineItemInvoice.fromJson(value))
+          .map<ShipmentInvoiceLineItemInvoice>((value) =>
+              ShipmentInvoiceLineItemInvoice.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shipmentGroupId')) {
@@ -22434,7 +22937,8 @@ class ShipmentInvoiceLineItemInvoice {
           .toList();
     }
     if (_json.containsKey('unitInvoice')) {
-      unitInvoice = UnitInvoice.fromJson(_json['unitInvoice']);
+      unitInvoice = UnitInvoice.fromJson(
+          _json['unitInvoice'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -22540,12 +23044,14 @@ class ShippingSettings {
     }
     if (_json.containsKey('postalCodeGroups')) {
       postalCodeGroups = (_json['postalCodeGroups'] as core.List)
-          .map<PostalCodeGroup>((value) => PostalCodeGroup.fromJson(value))
+          .map<PostalCodeGroup>((value) => PostalCodeGroup.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('services')) {
       services = (_json['services'] as core.List)
-          .map<Service>((value) => Service.fromJson(value))
+          .map<Service>((value) =>
+              Service.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22576,7 +23082,8 @@ class ShippingsettingsCustomBatchRequest {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<ShippingsettingsCustomBatchRequestEntry>((value) =>
-              ShippingsettingsCustomBatchRequestEntry.fromJson(value))
+              ShippingsettingsCustomBatchRequestEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22628,7 +23135,8 @@ class ShippingsettingsCustomBatchRequestEntry {
       method = _json['method'] as core.String;
     }
     if (_json.containsKey('shippingSettings')) {
-      shippingSettings = ShippingSettings.fromJson(_json['shippingSettings']);
+      shippingSettings = ShippingSettings.fromJson(
+          _json['shippingSettings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -22667,7 +23175,8 @@ class ShippingsettingsCustomBatchResponse {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
           .map<ShippingsettingsCustomBatchResponseEntry>((value) =>
-              ShippingsettingsCustomBatchResponseEntry.fromJson(value))
+              ShippingsettingsCustomBatchResponseEntry.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -22709,13 +23218,15 @@ class ShippingsettingsCustomBatchResponseEntry {
       batchId = _json['batchId'] as core.int;
     }
     if (_json.containsKey('errors')) {
-      errors = Errors.fromJson(_json['errors']);
+      errors = Errors.fromJson(
+          _json['errors'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('shippingSettings')) {
-      shippingSettings = ShippingSettings.fromJson(_json['shippingSettings']);
+      shippingSettings = ShippingSettings.fromJson(
+          _json['shippingSettings'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -22750,7 +23261,8 @@ class ShippingsettingsGetSupportedCarriersResponse {
   ShippingsettingsGetSupportedCarriersResponse.fromJson(core.Map _json) {
     if (_json.containsKey('carriers')) {
       carriers = (_json['carriers'] as core.List)
-          .map<CarriersCarrier>((value) => CarriersCarrier.fromJson(value))
+          .map<CarriersCarrier>((value) => CarriersCarrier.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -22783,7 +23295,8 @@ class ShippingsettingsGetSupportedHolidaysResponse {
   ShippingsettingsGetSupportedHolidaysResponse.fromJson(core.Map _json) {
     if (_json.containsKey('holidays')) {
       holidays = (_json['holidays'] as core.List)
-          .map<HolidaysHoliday>((value) => HolidaysHoliday.fromJson(value))
+          .map<HolidaysHoliday>((value) => HolidaysHoliday.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -22819,8 +23332,9 @@ class ShippingsettingsGetSupportedPickupServicesResponse {
     }
     if (_json.containsKey('pickupServices')) {
       pickupServices = (_json['pickupServices'] as core.List)
-          .map<PickupServicesPickupService>(
-              (value) => PickupServicesPickupService.fromJson(value))
+          .map<PickupServicesPickupService>((value) =>
+              PickupServicesPickupService.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22858,7 +23372,8 @@ class ShippingsettingsListResponse {
     }
     if (_json.containsKey('resources')) {
       resources = (_json['resources'] as core.List)
-          .map<ShippingSettings>((value) => ShippingSettings.fromJson(value))
+          .map<ShippingSettings>((value) => ShippingSettings.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -22897,17 +23412,20 @@ class Table {
 
   Table.fromJson(core.Map _json) {
     if (_json.containsKey('columnHeaders')) {
-      columnHeaders = Headers.fromJson(_json['columnHeaders']);
+      columnHeaders = Headers.fromJson(
+          _json['columnHeaders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('rowHeaders')) {
-      rowHeaders = Headers.fromJson(_json['rowHeaders']);
+      rowHeaders = Headers.fromJson(
+          _json['rowHeaders'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<Row>((value) => Row.fromJson(value))
+          .map<Row>((value) =>
+              Row.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -23009,8 +23527,8 @@ class TestOrder {
 
   TestOrder.fromJson(core.Map _json) {
     if (_json.containsKey('deliveryDetails')) {
-      deliveryDetails =
-          TestOrderDeliveryDetails.fromJson(_json['deliveryDetails']);
+      deliveryDetails = TestOrderDeliveryDetails.fromJson(
+          _json['deliveryDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enableOrderinvoices')) {
       enableOrderinvoices = _json['enableOrderinvoices'] as core.bool;
@@ -23020,14 +23538,16 @@ class TestOrder {
     }
     if (_json.containsKey('lineItems')) {
       lineItems = (_json['lineItems'] as core.List)
-          .map<TestOrderLineItem>((value) => TestOrderLineItem.fromJson(value))
+          .map<TestOrderLineItem>((value) => TestOrderLineItem.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('notificationMode')) {
       notificationMode = _json['notificationMode'] as core.String;
     }
     if (_json.containsKey('pickupDetails')) {
-      pickupDetails = TestOrderPickupDetails.fromJson(_json['pickupDetails']);
+      pickupDetails = TestOrderPickupDetails.fromJson(
+          _json['pickupDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('predefinedBillingAddress')) {
       predefinedBillingAddress =
@@ -23045,11 +23565,13 @@ class TestOrder {
     }
     if (_json.containsKey('promotions')) {
       promotions = (_json['promotions'] as core.List)
-          .map<OrderPromotion>((value) => OrderPromotion.fromJson(value))
+          .map<OrderPromotion>((value) => OrderPromotion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shippingCost')) {
-      shippingCost = Price.fromJson(_json['shippingCost']);
+      shippingCost = Price.fromJson(
+          _json['shippingCost'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingOption')) {
       shippingOption = _json['shippingOption'] as core.String;
@@ -23207,7 +23729,8 @@ class TestOrderDeliveryDetails {
 
   TestOrderDeliveryDetails.fromJson(core.Map _json) {
     if (_json.containsKey('address')) {
-      address = TestOrderAddress.fromJson(_json['address']);
+      address = TestOrderAddress.fromJson(
+          _json['address'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('phoneNumber')) {
       phoneNumber = _json['phoneNumber'] as core.String;
@@ -23243,17 +23766,19 @@ class TestOrderLineItem {
 
   TestOrderLineItem.fromJson(core.Map _json) {
     if (_json.containsKey('product')) {
-      product = TestOrderLineItemProduct.fromJson(_json['product']);
+      product = TestOrderLineItemProduct.fromJson(
+          _json['product'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('quantityOrdered')) {
       quantityOrdered = _json['quantityOrdered'] as core.int;
     }
     if (_json.containsKey('returnInfo')) {
-      returnInfo = OrderLineItemReturnInfo.fromJson(_json['returnInfo']);
+      returnInfo = OrderLineItemReturnInfo.fromJson(
+          _json['returnInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('shippingDetails')) {
-      shippingDetails =
-          OrderLineItemShippingDetails.fromJson(_json['shippingDetails']);
+      shippingDetails = OrderLineItemShippingDetails.fromJson(
+          _json['shippingDetails'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -23338,8 +23863,9 @@ class TestOrderLineItemProduct {
     }
     if (_json.containsKey('fees')) {
       fees = (_json['fees'] as core.List)
-          .map<OrderLineItemProductFee>(
-              (value) => OrderLineItemProductFee.fromJson(value))
+          .map<OrderLineItemProductFee>((value) =>
+              OrderLineItemProductFee.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('gtin')) {
@@ -23358,7 +23884,8 @@ class TestOrderLineItemProduct {
       offerId = _json['offerId'] as core.String;
     }
     if (_json.containsKey('price')) {
-      price = Price.fromJson(_json['price']);
+      price =
+          Price.fromJson(_json['price'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('targetCountry')) {
       targetCountry = _json['targetCountry'] as core.String;
@@ -23368,8 +23895,9 @@ class TestOrderLineItemProduct {
     }
     if (_json.containsKey('variantAttributes')) {
       variantAttributes = (_json['variantAttributes'] as core.List)
-          .map<OrderLineItemProductVariantAttribute>(
-              (value) => OrderLineItemProductVariantAttribute.fromJson(value))
+          .map<OrderLineItemProductVariantAttribute>((value) =>
+              OrderLineItemProductVariantAttribute.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -23445,16 +23973,18 @@ class TestOrderPickupDetails {
       locationCode = _json['locationCode'] as core.String;
     }
     if (_json.containsKey('pickupLocationAddress')) {
-      pickupLocationAddress =
-          TestOrderAddress.fromJson(_json['pickupLocationAddress']);
+      pickupLocationAddress = TestOrderAddress.fromJson(
+          _json['pickupLocationAddress']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pickupLocationType')) {
       pickupLocationType = _json['pickupLocationType'] as core.String;
     }
     if (_json.containsKey('pickupPersons')) {
       pickupPersons = (_json['pickupPersons'] as core.List)
-          .map<TestOrderPickupDetailsPickupPerson>(
-              (value) => TestOrderPickupDetailsPickupPerson.fromJson(value))
+          .map<TestOrderPickupDetailsPickupPerson>((value) =>
+              TestOrderPickupDetailsPickupPerson.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -23530,8 +24060,9 @@ class TransitTable {
     }
     if (_json.containsKey('rows')) {
       rows = (_json['rows'] as core.List)
-          .map<TransitTableTransitTimeRow>(
-              (value) => TransitTableTransitTimeRow.fromJson(value))
+          .map<TransitTableTransitTimeRow>((value) =>
+              TransitTableTransitTimeRow.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('transitTimeLabels')) {
@@ -23565,7 +24096,8 @@ class TransitTableTransitTimeRow {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
           .map<TransitTableTransitTimeRowTransitTimeValue>((value) =>
-              TransitTableTransitTimeRowTransitTimeValue.fromJson(value))
+              TransitTableTransitTimeRowTransitTimeValue.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -23626,17 +24158,19 @@ class UnitInvoice {
   UnitInvoice.fromJson(core.Map _json) {
     if (_json.containsKey('additionalCharges')) {
       additionalCharges = (_json['additionalCharges'] as core.List)
-          .map<UnitInvoiceAdditionalCharge>(
-              (value) => UnitInvoiceAdditionalCharge.fromJson(value))
+          .map<UnitInvoiceAdditionalCharge>((value) =>
+              UnitInvoiceAdditionalCharge.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('unitPrice')) {
-      unitPrice = Price.fromJson(_json['unitPrice']);
+      unitPrice = Price.fromJson(
+          _json['unitPrice'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('unitPriceTaxes')) {
       unitPriceTaxes = (_json['unitPriceTaxes'] as core.List)
-          .map<UnitInvoiceTaxLine>(
-              (value) => UnitInvoiceTaxLine.fromJson(value))
+          .map<UnitInvoiceTaxLine>((value) => UnitInvoiceTaxLine.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -23672,7 +24206,8 @@ class UnitInvoiceAdditionalCharge {
 
   UnitInvoiceAdditionalCharge.fromJson(core.Map _json) {
     if (_json.containsKey('additionalChargeAmount')) {
-      additionalChargeAmount = Amount.fromJson(_json['additionalChargeAmount']);
+      additionalChargeAmount = Amount.fromJson(_json['additionalChargeAmount']
+          as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -23711,7 +24246,8 @@ class UnitInvoiceTaxLine {
 
   UnitInvoiceTaxLine.fromJson(core.Map _json) {
     if (_json.containsKey('taxAmount')) {
-      taxAmount = Price.fromJson(_json['taxAmount']);
+      taxAmount = Price.fromJson(
+          _json['taxAmount'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('taxName')) {
       taxName = _json['taxName'] as core.String;
@@ -23766,7 +24302,8 @@ class Value {
       carrierRateName = _json['carrierRateName'] as core.String;
     }
     if (_json.containsKey('flatRate')) {
-      flatRate = Price.fromJson(_json['flatRate']);
+      flatRate = Price.fromJson(
+          _json['flatRate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('noShipping')) {
       noShipping = _json['noShipping'] as core.bool;

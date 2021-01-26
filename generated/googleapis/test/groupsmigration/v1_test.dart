@@ -100,7 +100,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
-      checkGroups(od);
+      checkGroups(od as api.Groups);
     });
   });
 
@@ -160,7 +160,7 @@ void main() {
       res
           .insert(arg_groupId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroups(response);
+        checkGroups(response as api.Groups);
       })));
     });
   });

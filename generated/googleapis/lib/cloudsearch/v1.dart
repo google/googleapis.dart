@@ -188,7 +188,10 @@ class DebugDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CheckAccessResponse.fromJson(data));
+    return _response.then(
+      (data) => CheckAccessResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Fetches the item whose viewUrl exactly matches that of the URL provided in
@@ -246,8 +249,10 @@ class DebugDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => SearchItemsByViewUrlResponse.fromJson(data));
+    return _response.then(
+      (data) => SearchItemsByViewUrlResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -330,8 +335,10 @@ class DebugDatasourcesItemsUnmappedidsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListUnmappedIdentitiesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUnmappedIdentitiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -440,7 +447,9 @@ class DebugIdentitysourcesItemsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ListItemNamesForUnmappedIdentityResponse.fromJson(data));
+      (data) => ListItemNamesForUnmappedIdentityResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -541,8 +550,10 @@ class DebugIdentitysourcesUnmappedidsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListUnmappedIdentitiesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListUnmappedIdentitiesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -623,7 +634,9 @@ class IndexingDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the schema of a data source. **Note:** This API requires an admin or
@@ -685,7 +698,9 @@ class IndexingDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Schema.fromJson(data));
+    return _response.then(
+      (data) => Schema.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the schema of a data source. This method does not perform
@@ -746,7 +761,9 @@ class IndexingDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -845,7 +862,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes all items in a queue. This method is useful for deleting stale
@@ -906,7 +925,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets Item resource by item name. This API requires an admin or service
@@ -974,7 +995,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Item.fromJson(data));
+    return _response.then(
+      (data) => Item.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates Item ACL, metadata, and content. It will insert the Item if it
@@ -1036,7 +1059,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all or a subset of Item resources. This API requires an admin or
@@ -1133,7 +1158,10 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Polls for unreserved items from the indexing queue and marks a set as
@@ -1201,7 +1229,10 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PollItemsResponse.fromJson(data));
+    return _response.then(
+      (data) => PollItemsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Pushes an item onto a queue for later polling and updating. This API
@@ -1262,7 +1293,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Item.fromJson(data));
+    return _response.then(
+      (data) => Item.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Unreserves all items from a queue, making them all eligible to be polled.
@@ -1324,7 +1357,9 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates an upload session for uploading item content. For items smaller
@@ -1386,7 +1421,10 @@ class IndexingDatasourcesItemsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UploadItemRef.fromJson(data));
+    return _response.then(
+      (data) =>
+          UploadItemRef.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1473,7 +1511,9 @@ class MediaResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Media.fromJson(data));
+    return _response.then(
+      (data) => Media.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1532,7 +1572,9 @@ class OperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1613,7 +1655,10 @@ class OperationsLroResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListOperationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListOperationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1676,7 +1721,10 @@ class QueryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SearchResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Provides suggestions for autocompleting the query. **Note:** This API
@@ -1728,7 +1776,10 @@ class QueryResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SuggestResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          SuggestResponse.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1834,7 +1885,10 @@ class QuerySourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListQuerySourcesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListQuerySourcesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1901,7 +1955,9 @@ class SettingsDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a datasource. **Note:** This API requires an admin account to
@@ -1960,7 +2016,9 @@ class SettingsDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a datasource. **Note:** This API requires an admin account to
@@ -2019,7 +2077,10 @@ class SettingsDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DataSource.fromJson(data));
+    return _response.then(
+      (data) =>
+          DataSource.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists datasources. **Note:** This API requires an admin account to
@@ -2084,7 +2145,10 @@ class SettingsDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDataSourceResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDataSourceResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a datasource. **Note:** This API requires an admin account to
@@ -2141,7 +2205,9 @@ class SettingsDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2197,7 +2263,9 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a search application. **Note:** This API requires an admin account
@@ -2257,7 +2325,9 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the specified search application. **Note:** This API requires an
@@ -2317,7 +2387,10 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SearchApplication.fromJson(data));
+    return _response.then(
+      (data) => SearchApplication.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all search applications. **Note:** This API requires an admin
@@ -2382,8 +2455,10 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListSearchApplicationsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSearchApplicationsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Resets a search application to default settings. This will return an empty
@@ -2442,7 +2517,9 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a search application. **Note:** This API requires an admin account
@@ -2499,7 +2576,9 @@ class SettingsSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2593,8 +2672,10 @@ class StatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetCustomerIndexStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetCustomerIndexStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the query statistics for customer. **Note:** This API requires a
@@ -2675,8 +2756,10 @@ class StatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetCustomerQueryStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetCustomerQueryStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the # of search sessions, % of successful sessions with a click query
@@ -2758,8 +2841,10 @@ class StatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetCustomerSessionStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetCustomerSessionStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get the users statistics for customer. **Note:** This API requires a
@@ -2840,8 +2925,10 @@ class StatsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetCustomerUserStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetCustomerUserStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2946,8 +3033,10 @@ class StatsIndexDatasourcesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetDataSourceIndexStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetDataSourceIndexStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3052,8 +3141,10 @@ class StatsQuerySearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetSearchApplicationQueryStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetSearchApplicationQueryStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3160,7 +3251,9 @@ class StatsSessionSearchapplicationsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => GetSearchApplicationSessionStatsResponse.fromJson(data));
+      (data) => GetSearchApplicationSessionStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3265,8 +3358,10 @@ class StatsUserSearchapplicationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetSearchApplicationUserStatsResponse.fromJson(data));
+    return _response.then(
+      (data) => GetSearchApplicationUserStatsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3311,8 +3406,8 @@ class BooleanPropertyOptions {
 
   BooleanPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions =
-          BooleanOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = BooleanOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3365,7 +3460,8 @@ class CompositeFilter {
     }
     if (_json.containsKey('subFilters')) {
       subFilters = (_json['subFilters'] as core.List)
-          .map<Filter>((value) => Filter.fromJson(value))
+          .map<Filter>((value) =>
+              Filter.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3394,11 +3490,13 @@ class CustomerIndexStats {
 
   CustomerIndexStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('itemCountByStatus')) {
       itemCountByStatus = (_json['itemCountByStatus'] as core.List)
-          .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(value))
+          .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3426,12 +3524,13 @@ class CustomerQueryStats {
 
   CustomerQueryStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryCountByStatus')) {
       queryCountByStatus = (_json['queryCountByStatus'] as core.List)
-          .map<QueryCountByStatus>(
-              (value) => QueryCountByStatus.fromJson(value))
+          .map<QueryCountByStatus>((value) => QueryCountByStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3461,7 +3560,8 @@ class CustomerSessionStats {
 
   CustomerSessionStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchSessionsCount')) {
       searchSessionsCount = _json['searchSessionsCount'] as core.String;
@@ -3498,7 +3598,8 @@ class CustomerUserStats {
 
   CustomerUserStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oneDayActiveUsersCount')) {
       oneDayActiveUsersCount = _json['oneDayActiveUsersCount'] as core.String;
@@ -3595,7 +3696,8 @@ class DataSource {
     }
     if (_json.containsKey('itemsVisibility')) {
       itemsVisibility = (_json['itemsVisibility'] as core.List)
-          .map<GSuitePrincipal>((value) => GSuitePrincipal.fromJson(value))
+          .map<GSuitePrincipal>((value) => GSuitePrincipal.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -3657,11 +3759,13 @@ class DataSourceIndexStats {
 
   DataSourceIndexStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('itemCountByStatus')) {
       itemCountByStatus = (_json['itemCountByStatus'] as core.List)
-          .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(value))
+          .map<ItemCountByStatus>((value) => ItemCountByStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3698,11 +3802,13 @@ class DataSourceRestriction {
   DataSourceRestriction.fromJson(core.Map _json) {
     if (_json.containsKey('filterOptions')) {
       filterOptions = (_json['filterOptions'] as core.List)
-          .map<FilterOptions>((value) => FilterOptions.fromJson(value))
+          .map<FilterOptions>((value) => FilterOptions.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3835,7 +3941,8 @@ class DatePropertyOptions {
 
   DatePropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions = DateOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = DateOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -3857,7 +3964,8 @@ class DateValues {
   DateValues.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<Date>((value) => Date.fromJson(value))
+          .map<Date>((value) =>
+              Date.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3912,7 +4020,8 @@ class DeleteQueueItemsRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queue')) {
       queue = _json['queue'] as core.String;
@@ -3997,8 +4106,8 @@ class DoublePropertyOptions {
 
   DoublePropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions =
-          DoubleOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = DoubleOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4255,14 +4364,16 @@ class EnumPropertyOptions {
 
   EnumPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions = EnumOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = EnumOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('orderedRanking')) {
       orderedRanking = _json['orderedRanking'] as core.String;
     }
     if (_json.containsKey('possibleValues')) {
       possibleValues = (_json['possibleValues'] as core.List)
-          .map<EnumValuePair>((value) => EnumValuePair.fromJson(value))
+          .map<EnumValuePair>((value) => EnumValuePair.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4360,7 +4471,8 @@ class ErrorInfo {
   ErrorInfo.fromJson(core.Map _json) {
     if (_json.containsKey('errorMessages')) {
       errorMessages = (_json['errorMessages'] as core.List)
-          .map<ErrorMessage>((value) => ErrorMessage.fromJson(value))
+          .map<ErrorMessage>((value) => ErrorMessage.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4387,7 +4499,8 @@ class ErrorMessage {
       errorMessage = _json['errorMessage'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4431,7 +4544,8 @@ class FacetBucket {
       percentage = _json['percentage'] as core.int;
     }
     if (_json.containsKey('value')) {
-      value = Value.fromJson(_json['value']);
+      value =
+          Value.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4524,7 +4638,8 @@ class FacetResult {
   FacetResult.fromJson(core.Map _json) {
     if (_json.containsKey('buckets')) {
       buckets = (_json['buckets'] as core.List)
-          .map<FacetBucket>((value) => FacetBucket.fromJson(value))
+          .map<FacetBucket>((value) => FacetBucket.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('objectType')) {
@@ -4600,10 +4715,12 @@ class Filter {
 
   Filter.fromJson(core.Map _json) {
     if (_json.containsKey('compositeFilter')) {
-      compositeFilter = CompositeFilter.fromJson(_json['compositeFilter']);
+      compositeFilter = CompositeFilter.fromJson(
+          _json['compositeFilter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('valueFilter')) {
-      valueFilter = ValueFilter.fromJson(_json['valueFilter']);
+      valueFilter = ValueFilter.fromJson(
+          _json['valueFilter'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4633,7 +4750,8 @@ class FilterOptions {
 
   FilterOptions.fromJson(core.Map _json) {
     if (_json.containsKey('filter')) {
-      filter = Filter.fromJson(_json['filter']);
+      filter = Filter.fromJson(
+          _json['filter'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('objectType')) {
       objectType = _json['objectType'] as core.String;
@@ -4743,8 +4861,8 @@ class GetCustomerIndexStatsResponse {
   GetCustomerIndexStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<CustomerIndexStats>(
-              (value) => CustomerIndexStats.fromJson(value))
+          .map<CustomerIndexStats>((value) => CustomerIndexStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4766,8 +4884,8 @@ class GetCustomerQueryStatsResponse {
   GetCustomerQueryStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<CustomerQueryStats>(
-              (value) => CustomerQueryStats.fromJson(value))
+          .map<CustomerQueryStats>((value) => CustomerQueryStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4789,8 +4907,8 @@ class GetCustomerSessionStatsResponse {
   GetCustomerSessionStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<CustomerSessionStats>(
-              (value) => CustomerSessionStats.fromJson(value))
+          .map<CustomerSessionStats>((value) => CustomerSessionStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4812,7 +4930,8 @@ class GetCustomerUserStatsResponse {
   GetCustomerUserStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<CustomerUserStats>((value) => CustomerUserStats.fromJson(value))
+          .map<CustomerUserStats>((value) => CustomerUserStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4835,8 +4954,8 @@ class GetDataSourceIndexStatsResponse {
   GetDataSourceIndexStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<DataSourceIndexStats>(
-              (value) => DataSourceIndexStats.fromJson(value))
+          .map<DataSourceIndexStats>((value) => DataSourceIndexStats.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4858,8 +4977,9 @@ class GetSearchApplicationQueryStatsResponse {
   GetSearchApplicationQueryStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<SearchApplicationQueryStats>(
-              (value) => SearchApplicationQueryStats.fromJson(value))
+          .map<SearchApplicationQueryStats>((value) =>
+              SearchApplicationQueryStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4881,8 +5001,9 @@ class GetSearchApplicationSessionStatsResponse {
   GetSearchApplicationSessionStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<SearchApplicationSessionStats>(
-              (value) => SearchApplicationSessionStats.fromJson(value))
+          .map<SearchApplicationSessionStats>((value) =>
+              SearchApplicationSessionStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4904,8 +5025,9 @@ class GetSearchApplicationUserStatsResponse {
   GetSearchApplicationUserStatsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('stats')) {
       stats = (_json['stats'] as core.List)
-          .map<SearchApplicationUserStats>(
-              (value) => SearchApplicationUserStats.fromJson(value))
+          .map<SearchApplicationUserStats>((value) =>
+              SearchApplicationUserStats.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -4964,11 +5086,12 @@ class HtmlPropertyOptions {
 
   HtmlPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions = HtmlOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = HtmlOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retrievalImportance')) {
-      retrievalImportance =
-          RetrievalImportance.fromJson(_json['retrievalImportance']);
+      retrievalImportance = RetrievalImportance.fromJson(
+          _json['retrievalImportance'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5059,13 +5182,16 @@ class IndexItemRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('indexItemOptions')) {
-      indexItemOptions = IndexItemOptions.fromJson(_json['indexItemOptions']);
+      indexItemOptions = IndexItemOptions.fromJson(
+          _json['indexItemOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('item')) {
-      item = Item.fromJson(_json['item']);
+      item =
+          Item.fromJson(_json['item'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('mode')) {
       mode = _json['mode'] as core.String;
@@ -5193,8 +5319,8 @@ class IntegerPropertyOptions {
       minimumValue = _json['minimumValue'] as core.String;
     }
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions =
-          IntegerOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = IntegerOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('orderedRanking')) {
       orderedRanking = _json['orderedRanking'] as core.String;
@@ -5265,7 +5391,8 @@ class Interaction {
       interactionTime = _json['interactionTime'] as core.String;
     }
     if (_json.containsKey('principal')) {
-      principal = Principal.fromJson(_json['principal']);
+      principal = Principal.fromJson(
+          _json['principal'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -5353,16 +5480,19 @@ class Item {
 
   Item.fromJson(core.Map _json) {
     if (_json.containsKey('acl')) {
-      acl = ItemAcl.fromJson(_json['acl']);
+      acl =
+          ItemAcl.fromJson(_json['acl'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('content')) {
-      content = ItemContent.fromJson(_json['content']);
+      content = ItemContent.fromJson(
+          _json['content'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('itemType')) {
       itemType = _json['itemType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = ItemMetadata.fromJson(_json['metadata']);
+      metadata = ItemMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5374,10 +5504,12 @@ class Item {
       queue = _json['queue'] as core.String;
     }
     if (_json.containsKey('status')) {
-      status = ItemStatus.fromJson(_json['status']);
+      status = ItemStatus.fromJson(
+          _json['status'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('structuredData')) {
-      structuredData = ItemStructuredData.fromJson(_json['structuredData']);
+      structuredData = ItemStructuredData.fromJson(
+          _json['structuredData'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('version')) {
       version = _json['version'] as core.String;
@@ -5477,7 +5609,8 @@ class ItemAcl {
     }
     if (_json.containsKey('deniedReaders')) {
       deniedReaders = (_json['deniedReaders'] as core.List)
-          .map<Principal>((value) => Principal.fromJson(value))
+          .map<Principal>((value) =>
+              Principal.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('inheritAclFrom')) {
@@ -5485,12 +5618,14 @@ class ItemAcl {
     }
     if (_json.containsKey('owners')) {
       owners = (_json['owners'] as core.List)
-          .map<Principal>((value) => Principal.fromJson(value))
+          .map<Principal>((value) =>
+              Principal.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('readers')) {
       readers = (_json['readers'] as core.List)
-          .map<Principal>((value) => Principal.fromJson(value))
+          .map<Principal>((value) =>
+              Principal.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5550,7 +5685,8 @@ class ItemContent {
 
   ItemContent.fromJson(core.Map _json) {
     if (_json.containsKey('contentDataRef')) {
-      contentDataRef = UploadItemRef.fromJson(_json['contentDataRef']);
+      contentDataRef = UploadItemRef.fromJson(
+          _json['contentDataRef'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('contentFormat')) {
       contentFormat = _json['contentFormat'] as core.String;
@@ -5698,7 +5834,8 @@ class ItemMetadata {
     }
     if (_json.containsKey('interactions')) {
       interactions = (_json['interactions'] as core.List)
-          .map<Interaction>((value) => Interaction.fromJson(value))
+          .map<Interaction>((value) => Interaction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('keywords')) {
@@ -5713,8 +5850,9 @@ class ItemMetadata {
       objectType = _json['objectType'] as core.String;
     }
     if (_json.containsKey('searchQualityMetadata')) {
-      searchQualityMetadata =
-          SearchQualityMetadata.fromJson(_json['searchQualityMetadata']);
+      searchQualityMetadata = SearchQualityMetadata.fromJson(
+          _json['searchQualityMetadata']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceRepositoryUrl')) {
       sourceRepositoryUrl = _json['sourceRepositoryUrl'] as core.String;
@@ -5800,12 +5938,14 @@ class ItemStatus {
     }
     if (_json.containsKey('processingErrors')) {
       processingErrors = (_json['processingErrors'] as core.List)
-          .map<ProcessingError>((value) => ProcessingError.fromJson(value))
+          .map<ProcessingError>((value) => ProcessingError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('repositoryErrors')) {
       repositoryErrors = (_json['repositoryErrors'] as core.List)
-          .map<RepositoryError>((value) => RepositoryError.fromJson(value))
+          .map<RepositoryError>((value) => RepositoryError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5845,7 +5985,8 @@ class ItemStructuredData {
       hash = _json['hash'] as core.String;
     }
     if (_json.containsKey('object')) {
-      object = StructuredDataObject.fromJson(_json['object']);
+      object = StructuredDataObject.fromJson(
+          _json['object'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -5875,7 +6016,8 @@ class ListDataSourceResponse {
     }
     if (_json.containsKey('sources')) {
       sources = (_json['sources'] as core.List)
-          .map<DataSource>((value) => DataSource.fromJson(value))
+          .map<DataSource>((value) =>
+              DataSource.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -5936,7 +6078,8 @@ class ListItemsResponse {
   ListItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Item>((value) => Item.fromJson(value))
+          .map<Item>((value) =>
+              Item.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -5972,7 +6115,8 @@ class ListOperationsResponse {
     }
     if (_json.containsKey('operations')) {
       operations = (_json['operations'] as core.List)
-          .map<Operation>((value) => Operation.fromJson(value))
+          .map<Operation>((value) =>
+              Operation.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6002,7 +6146,8 @@ class ListQuerySourcesResponse {
     }
     if (_json.containsKey('sources')) {
       sources = (_json['sources'] as core.List)
-          .map<QuerySource>((value) => QuerySource.fromJson(value))
+          .map<QuerySource>((value) => QuerySource.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6033,7 +6178,8 @@ class ListSearchApplicationsResponse {
     }
     if (_json.containsKey('searchApplications')) {
       searchApplications = (_json['searchApplications'] as core.List)
-          .map<SearchApplication>((value) => SearchApplication.fromJson(value))
+          .map<SearchApplication>((value) => SearchApplication.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6065,7 +6211,8 @@ class ListUnmappedIdentitiesResponse {
     }
     if (_json.containsKey('unmappedIdentities')) {
       unmappedIdentities = (_json['unmappedIdentities'] as core.List)
-          .map<UnmappedIdentity>((value) => UnmappedIdentity.fromJson(value))
+          .map<UnmappedIdentity>((value) => UnmappedIdentity.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6172,11 +6319,13 @@ class Metadata {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('displayOptions')) {
-      displayOptions = ResultDisplayMetadata.fromJson(_json['displayOptions']);
+      displayOptions = ResultDisplayMetadata.fromJson(
+          _json['displayOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<NamedProperty>((value) => NamedProperty.fromJson(value))
+          .map<NamedProperty>((value) => NamedProperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('mimeType')) {
@@ -6186,10 +6335,12 @@ class Metadata {
       objectType = _json['objectType'] as core.String;
     }
     if (_json.containsKey('owner')) {
-      owner = Person.fromJson(_json['owner']);
+      owner = Person.fromJson(
+          _json['owner'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('updateTime')) {
       updateTime = _json['updateTime'] as core.String;
@@ -6238,7 +6389,8 @@ class Metaline {
   Metaline.fromJson(core.Map _json) {
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<DisplayedProperty>((value) => DisplayedProperty.fromJson(value))
+          .map<DisplayedProperty>((value) => DisplayedProperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6301,31 +6453,39 @@ class NamedProperty {
       booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('dateValues')) {
-      dateValues = DateValues.fromJson(_json['dateValues']);
+      dateValues = DateValues.fromJson(
+          _json['dateValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('doubleValues')) {
-      doubleValues = DoubleValues.fromJson(_json['doubleValues']);
+      doubleValues = DoubleValues.fromJson(
+          _json['doubleValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enumValues')) {
-      enumValues = EnumValues.fromJson(_json['enumValues']);
+      enumValues = EnumValues.fromJson(
+          _json['enumValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('htmlValues')) {
-      htmlValues = HtmlValues.fromJson(_json['htmlValues']);
+      htmlValues = HtmlValues.fromJson(
+          _json['htmlValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('integerValues')) {
-      integerValues = IntegerValues.fromJson(_json['integerValues']);
+      integerValues = IntegerValues.fromJson(
+          _json['integerValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('objectValues')) {
-      objectValues = ObjectValues.fromJson(_json['objectValues']);
+      objectValues = ObjectValues.fromJson(
+          _json['objectValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textValues')) {
-      textValues = TextValues.fromJson(_json['textValues']);
+      textValues = TextValues.fromJson(
+          _json['textValues'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestampValues')) {
-      timestampValues = TimestampValues.fromJson(_json['timestampValues']);
+      timestampValues = TimestampValues.fromJson(
+          _json['timestampValues'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6390,12 +6550,13 @@ class ObjectDefinition {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('options')) {
-      options = ObjectOptions.fromJson(_json['options']);
+      options = ObjectOptions.fromJson(
+          _json['options'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('propertyDefinitions')) {
       propertyDefinitions = (_json['propertyDefinitions'] as core.List)
-          .map<PropertyDefinition>(
-              (value) => PropertyDefinition.fromJson(value))
+          .map<PropertyDefinition>((value) => PropertyDefinition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6438,7 +6599,8 @@ class ObjectDisplayOptions {
   ObjectDisplayOptions.fromJson(core.Map _json) {
     if (_json.containsKey('metalines')) {
       metalines = (_json['metalines'] as core.List)
-          .map<Metaline>((value) => Metaline.fromJson(value))
+          .map<Metaline>((value) =>
+              Metaline.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('objectDisplayLabel')) {
@@ -6471,10 +6633,12 @@ class ObjectOptions {
 
   ObjectOptions.fromJson(core.Map _json) {
     if (_json.containsKey('displayOptions')) {
-      displayOptions = ObjectDisplayOptions.fromJson(_json['displayOptions']);
+      displayOptions = ObjectDisplayOptions.fromJson(
+          _json['displayOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('freshnessOptions')) {
-      freshnessOptions = FreshnessOptions.fromJson(_json['freshnessOptions']);
+      freshnessOptions = FreshnessOptions.fromJson(
+          _json['freshnessOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6503,8 +6667,8 @@ class ObjectPropertyOptions {
   ObjectPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('subobjectProperties')) {
       subobjectProperties = (_json['subobjectProperties'] as core.List)
-          .map<PropertyDefinition>(
-              (value) => PropertyDefinition.fromJson(value))
+          .map<PropertyDefinition>((value) => PropertyDefinition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6528,8 +6692,8 @@ class ObjectValues {
   ObjectValues.fromJson(core.Map _json) {
     if (_json.containsKey('values')) {
       values = (_json['values'] as core.List)
-          .map<StructuredDataObject>(
-              (value) => StructuredDataObject.fromJson(value))
+          .map<StructuredDataObject>((value) => StructuredDataObject.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6587,11 +6751,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -6599,7 +6765,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -6634,7 +6801,8 @@ class PeopleSuggestion {
 
   PeopleSuggestion.fromJson(core.Map _json) {
     if (_json.containsKey('person')) {
-      person = Person.fromJson(_json['person']);
+      person = Person.fromJson(
+          _json['person'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -6671,7 +6839,8 @@ class Person {
   Person.fromJson(core.Map _json) {
     if (_json.containsKey('emailAddresses')) {
       emailAddresses = (_json['emailAddresses'] as core.List)
-          .map<EmailAddress>((value) => EmailAddress.fromJson(value))
+          .map<EmailAddress>((value) => EmailAddress.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('name')) {
@@ -6682,12 +6851,14 @@ class Person {
     }
     if (_json.containsKey('personNames')) {
       personNames = (_json['personNames'] as core.List)
-          .map<Name>((value) => Name.fromJson(value))
+          .map<Name>((value) =>
+              Name.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('photos')) {
       photos = (_json['photos'] as core.List)
-          .map<Photo>((value) => Photo.fromJson(value))
+          .map<Photo>((value) =>
+              Photo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6763,7 +6934,8 @@ class PollItemsRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('limit')) {
       limit = _json['limit'] as core.int;
@@ -6810,7 +6982,8 @@ class PollItemsResponse {
   PollItemsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Item>((value) => Item.fromJson(value))
+          .map<Item>((value) =>
+              Item.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6846,7 +7019,8 @@ class Principal {
       groupResourceName = _json['groupResourceName'] as core.String;
     }
     if (_json.containsKey('gsuitePrincipal')) {
-      gsuitePrincipal = GSuitePrincipal.fromJson(_json['gsuitePrincipal']);
+      gsuitePrincipal = GSuitePrincipal.fromJson(
+          _json['gsuitePrincipal'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('userResourceName')) {
       userResourceName = _json['userResourceName'] as core.String;
@@ -6901,7 +7075,8 @@ class ProcessingError {
     }
     if (_json.containsKey('fieldViolations')) {
       fieldViolations = (_json['fieldViolations'] as core.List)
-          .map<FieldViolation>((value) => FieldViolation.fromJson(value))
+          .map<FieldViolation>((value) => FieldViolation.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -6990,31 +7165,35 @@ class PropertyDefinition {
 
   PropertyDefinition.fromJson(core.Map _json) {
     if (_json.containsKey('booleanPropertyOptions')) {
-      booleanPropertyOptions =
-          BooleanPropertyOptions.fromJson(_json['booleanPropertyOptions']);
+      booleanPropertyOptions = BooleanPropertyOptions.fromJson(
+          _json['booleanPropertyOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('datePropertyOptions')) {
-      datePropertyOptions =
-          DatePropertyOptions.fromJson(_json['datePropertyOptions']);
+      datePropertyOptions = DatePropertyOptions.fromJson(
+          _json['datePropertyOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayOptions')) {
-      displayOptions = PropertyDisplayOptions.fromJson(_json['displayOptions']);
+      displayOptions = PropertyDisplayOptions.fromJson(
+          _json['displayOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('doublePropertyOptions')) {
-      doublePropertyOptions =
-          DoublePropertyOptions.fromJson(_json['doublePropertyOptions']);
+      doublePropertyOptions = DoublePropertyOptions.fromJson(
+          _json['doublePropertyOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('enumPropertyOptions')) {
-      enumPropertyOptions =
-          EnumPropertyOptions.fromJson(_json['enumPropertyOptions']);
+      enumPropertyOptions = EnumPropertyOptions.fromJson(
+          _json['enumPropertyOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('htmlPropertyOptions')) {
-      htmlPropertyOptions =
-          HtmlPropertyOptions.fromJson(_json['htmlPropertyOptions']);
+      htmlPropertyOptions = HtmlPropertyOptions.fromJson(
+          _json['htmlPropertyOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('integerPropertyOptions')) {
-      integerPropertyOptions =
-          IntegerPropertyOptions.fromJson(_json['integerPropertyOptions']);
+      integerPropertyOptions = IntegerPropertyOptions.fromJson(
+          _json['integerPropertyOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('isFacetable')) {
       isFacetable = _json['isFacetable'] as core.bool;
@@ -7038,16 +7217,18 @@ class PropertyDefinition {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('objectPropertyOptions')) {
-      objectPropertyOptions =
-          ObjectPropertyOptions.fromJson(_json['objectPropertyOptions']);
+      objectPropertyOptions = ObjectPropertyOptions.fromJson(
+          _json['objectPropertyOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('textPropertyOptions')) {
-      textPropertyOptions =
-          TextPropertyOptions.fromJson(_json['textPropertyOptions']);
+      textPropertyOptions = TextPropertyOptions.fromJson(
+          _json['textPropertyOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('timestampPropertyOptions')) {
-      timestampPropertyOptions =
-          TimestampPropertyOptions.fromJson(_json['timestampPropertyOptions']);
+      timestampPropertyOptions = TimestampPropertyOptions.fromJson(
+          _json['timestampPropertyOptions']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7212,7 +7393,8 @@ class PushItem {
       queue = _json['queue'] as core.String;
     }
     if (_json.containsKey('repositoryError')) {
-      repositoryError = RepositoryError.fromJson(_json['repositoryError']);
+      repositoryError = RepositoryError.fromJson(
+          _json['repositoryError'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('structuredDataHash')) {
       structuredDataHash = _json['structuredDataHash'] as core.String;
@@ -7267,10 +7449,12 @@ class PushItemRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('item')) {
-      item = PushItem.fromJson(_json['item']);
+      item = PushItem.fromJson(
+          _json['item'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7597,14 +7781,16 @@ class QuerySource {
     }
     if (_json.containsKey('operators')) {
       operators = (_json['operators'] as core.List)
-          .map<QueryOperator>((value) => QueryOperator.fromJson(value))
+          .map<QueryOperator>((value) => QueryOperator.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('shortName')) {
       shortName = _json['shortName'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7729,7 +7915,8 @@ class RequestOptions {
 
   RequestOptions.fromJson(core.Map _json) {
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('languageCode')) {
       languageCode = _json['languageCode'] as core.String;
@@ -7768,7 +7955,8 @@ class ResetSearchApplicationRequest {
 
   ResetSearchApplicationRequest.fromJson(core.Map _json) {
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7820,20 +8008,24 @@ class RestrictItem {
 
   RestrictItem.fromJson(core.Map _json) {
     if (_json.containsKey('driveFollowUpRestrict')) {
-      driveFollowUpRestrict =
-          DriveFollowUpRestrict.fromJson(_json['driveFollowUpRestrict']);
+      driveFollowUpRestrict = DriveFollowUpRestrict.fromJson(
+          _json['driveFollowUpRestrict']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveLocationRestrict')) {
-      driveLocationRestrict =
-          DriveLocationRestrict.fromJson(_json['driveLocationRestrict']);
+      driveLocationRestrict = DriveLocationRestrict.fromJson(
+          _json['driveLocationRestrict']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveMimeTypeRestrict')) {
-      driveMimeTypeRestrict =
-          DriveMimeTypeRestrict.fromJson(_json['driveMimeTypeRestrict']);
+      driveMimeTypeRestrict = DriveMimeTypeRestrict.fromJson(
+          _json['driveMimeTypeRestrict']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('driveTimeSpanRestrict')) {
-      driveTimeSpanRestrict =
-          DriveTimeSpanRestrict.fromJson(_json['driveTimeSpanRestrict']);
+      driveTimeSpanRestrict = DriveTimeSpanRestrict.fromJson(
+          _json['driveTimeSpanRestrict']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchOperator')) {
       searchOperator = _json['searchOperator'] as core.String;
@@ -7871,7 +8063,8 @@ class ResultCounts {
   ResultCounts.fromJson(core.Map _json) {
     if (_json.containsKey('sourceResultCounts')) {
       sourceResultCounts = (_json['sourceResultCounts'] as core.List)
-          .map<SourceResultCount>((value) => SourceResultCount.fromJson(value))
+          .map<SourceResultCount>((value) => SourceResultCount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7929,7 +8122,8 @@ class ResultDisplayField {
       operatorName = _json['operatorName'] as core.String;
     }
     if (_json.containsKey('property')) {
-      property = NamedProperty.fromJson(_json['property']);
+      property = NamedProperty.fromJson(
+          _json['property'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7957,8 +8151,8 @@ class ResultDisplayLine {
   ResultDisplayLine.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
       fields = (_json['fields'] as core.List)
-          .map<ResultDisplayField>(
-              (value) => ResultDisplayField.fromJson(value))
+          .map<ResultDisplayField>((value) => ResultDisplayField.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -7984,7 +8178,8 @@ class ResultDisplayMetadata {
   ResultDisplayMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('metalines')) {
       metalines = (_json['metalines'] as core.List)
-          .map<ResultDisplayLine>((value) => ResultDisplayLine.fromJson(value))
+          .map<ResultDisplayLine>((value) => ResultDisplayLine.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('objectTypeLabel')) {
@@ -8050,7 +8245,8 @@ class Schema {
   Schema.fromJson(core.Map _json) {
     if (_json.containsKey('objectDefinitions')) {
       objectDefinitions = (_json['objectDefinitions'] as core.List)
-          .map<ObjectDefinition>((value) => ObjectDefinition.fromJson(value))
+          .map<ObjectDefinition>((value) => ObjectDefinition.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('operationIds')) {
@@ -8144,17 +8340,19 @@ class SearchApplication {
   SearchApplication.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceRestrictions')) {
       dataSourceRestrictions = (_json['dataSourceRestrictions'] as core.List)
-          .map<DataSourceRestriction>(
-              (value) => DataSourceRestriction.fromJson(value))
+          .map<DataSourceRestriction>((value) => DataSourceRestriction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('defaultFacetOptions')) {
       defaultFacetOptions = (_json['defaultFacetOptions'] as core.List)
-          .map<FacetOptions>((value) => FacetOptions.fromJson(value))
+          .map<FacetOptions>((value) => FacetOptions.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('defaultSortOptions')) {
-      defaultSortOptions = SortOptions.fromJson(_json['defaultSortOptions']);
+      defaultSortOptions = SortOptions.fromJson(
+          _json['defaultSortOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('displayName')) {
       displayName = _json['displayName'] as core.String;
@@ -8168,11 +8366,13 @@ class SearchApplication {
           .toList();
     }
     if (_json.containsKey('scoringConfig')) {
-      scoringConfig = ScoringConfig.fromJson(_json['scoringConfig']);
+      scoringConfig = ScoringConfig.fromJson(
+          _json['scoringConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceConfig')) {
       sourceConfig = (_json['sourceConfig'] as core.List)
-          .map<SourceConfig>((value) => SourceConfig.fromJson(value))
+          .map<SourceConfig>((value) => SourceConfig.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8220,12 +8420,13 @@ class SearchApplicationQueryStats {
 
   SearchApplicationQueryStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryCountByStatus')) {
       queryCountByStatus = (_json['queryCountByStatus'] as core.List)
-          .map<QueryCountByStatus>(
-              (value) => QueryCountByStatus.fromJson(value))
+          .map<QueryCountByStatus>((value) => QueryCountByStatus.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8255,7 +8456,8 @@ class SearchApplicationSessionStats {
 
   SearchApplicationSessionStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('searchSessionsCount')) {
       searchSessionsCount = _json['searchSessionsCount'] as core.String;
@@ -8292,7 +8494,8 @@ class SearchApplicationUserStats {
 
   SearchApplicationUserStats.fromJson(core.Map _json) {
     if (_json.containsKey('date')) {
-      date = Date.fromJson(_json['date']);
+      date =
+          Date.fromJson(_json['date'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('oneDayActiveUsersCount')) {
       oneDayActiveUsersCount = _json['oneDayActiveUsersCount'] as core.String;
@@ -8340,7 +8543,8 @@ class SearchItemsByViewUrlRequest {
 
   SearchItemsByViewUrlRequest.fromJson(core.Map _json) {
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('pageToken')) {
       pageToken = _json['pageToken'] as core.String;
@@ -8377,7 +8581,8 @@ class SearchItemsByViewUrlResponse {
   SearchItemsByViewUrlResponse.fromJson(core.Map _json) {
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)
-          .map<Item>((value) => Item.fromJson(value))
+          .map<Item>((value) =>
+              Item.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8454,13 +8659,14 @@ class SearchRequest {
   SearchRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceRestrictions')) {
       dataSourceRestrictions = (_json['dataSourceRestrictions'] as core.List)
-          .map<DataSourceRestriction>(
-              (value) => DataSourceRestriction.fromJson(value))
+          .map<DataSourceRestriction>((value) => DataSourceRestriction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('facetOptions')) {
       facetOptions = (_json['facetOptions'] as core.List)
-          .map<FacetOptions>((value) => FacetOptions.fromJson(value))
+          .map<FacetOptions>((value) => FacetOptions.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('pageSize')) {
@@ -8471,13 +8677,16 @@ class SearchRequest {
     }
     if (_json.containsKey('queryInterpretationOptions')) {
       queryInterpretationOptions = QueryInterpretationOptions.fromJson(
-          _json['queryInterpretationOptions']);
+          _json['queryInterpretationOptions']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('requestOptions')) {
-      requestOptions = RequestOptions.fromJson(_json['requestOptions']);
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sortOptions')) {
-      sortOptions = SortOptions.fromJson(_json['sortOptions']);
+      sortOptions = SortOptions.fromJson(
+          _json['sortOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('start')) {
       start = _json['start'] as core.int;
@@ -8557,22 +8766,25 @@ class SearchResponse {
 
   SearchResponse.fromJson(core.Map _json) {
     if (_json.containsKey('debugInfo')) {
-      debugInfo = ResponseDebugInfo.fromJson(_json['debugInfo']);
+      debugInfo = ResponseDebugInfo.fromJson(
+          _json['debugInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('errorInfo')) {
-      errorInfo = ErrorInfo.fromJson(_json['errorInfo']);
+      errorInfo = ErrorInfo.fromJson(
+          _json['errorInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('facetResults')) {
       facetResults = (_json['facetResults'] as core.List)
-          .map<FacetResult>((value) => FacetResult.fromJson(value))
+          .map<FacetResult>((value) => FacetResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('hasMoreResults')) {
       hasMoreResults = _json['hasMoreResults'] as core.bool;
     }
     if (_json.containsKey('queryInterpretation')) {
-      queryInterpretation =
-          QueryInterpretation.fromJson(_json['queryInterpretation']);
+      queryInterpretation = QueryInterpretation.fromJson(
+          _json['queryInterpretation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resultCountEstimate')) {
       resultCountEstimate = _json['resultCountEstimate'] as core.String;
@@ -8581,21 +8793,25 @@ class SearchResponse {
       resultCountExact = _json['resultCountExact'] as core.String;
     }
     if (_json.containsKey('resultCounts')) {
-      resultCounts = ResultCounts.fromJson(_json['resultCounts']);
+      resultCounts = ResultCounts.fromJson(
+          _json['resultCounts'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('results')) {
       results = (_json['results'] as core.List)
-          .map<SearchResult>((value) => SearchResult.fromJson(value))
+          .map<SearchResult>((value) => SearchResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('spellResults')) {
       spellResults = (_json['spellResults'] as core.List)
-          .map<SpellResult>((value) => SpellResult.fromJson(value))
+          .map<SpellResult>((value) => SpellResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('structuredResults')) {
       structuredResults = (_json['structuredResults'] as core.List)
-          .map<StructuredResult>((value) => StructuredResult.fromJson(value))
+          .map<StructuredResult>((value) => StructuredResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8670,17 +8886,21 @@ class SearchResult {
   SearchResult.fromJson(core.Map _json) {
     if (_json.containsKey('clusteredResults')) {
       clusteredResults = (_json['clusteredResults'] as core.List)
-          .map<SearchResult>((value) => SearchResult.fromJson(value))
+          .map<SearchResult>((value) => SearchResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('debugInfo')) {
-      debugInfo = ResultDebugInfo.fromJson(_json['debugInfo']);
+      debugInfo = ResultDebugInfo.fromJson(
+          _json['debugInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = Metadata.fromJson(_json['metadata']);
+      metadata = Metadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('snippet')) {
-      snippet = Snippet.fromJson(_json['snippet']);
+      snippet = Snippet.fromJson(
+          _json['snippet'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -8730,7 +8950,8 @@ class Snippet {
   Snippet.fromJson(core.Map _json) {
     if (_json.containsKey('matchRanges')) {
       matchRanges = (_json['matchRanges'] as core.List)
-          .map<MatchRange>((value) => MatchRange.fromJson(value))
+          .map<MatchRange>((value) =>
+              MatchRange.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('snippet')) {
@@ -8843,13 +9064,16 @@ class SourceConfig {
 
   SourceConfig.fromJson(core.Map _json) {
     if (_json.containsKey('crowdingConfig')) {
-      crowdingConfig = SourceCrowdingConfig.fromJson(_json['crowdingConfig']);
+      crowdingConfig = SourceCrowdingConfig.fromJson(
+          _json['crowdingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scoringConfig')) {
-      scoringConfig = SourceScoringConfig.fromJson(_json['scoringConfig']);
+      scoringConfig = SourceScoringConfig.fromJson(
+          _json['scoringConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -8932,7 +9156,8 @@ class SourceResultCount {
       resultCountExact = _json['resultCountExact'] as core.String;
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9018,7 +9243,8 @@ class StartUploadItemRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9066,7 +9292,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -9100,7 +9327,8 @@ class StructuredDataObject {
   StructuredDataObject.fromJson(core.Map _json) {
     if (_json.containsKey('properties')) {
       properties = (_json['properties'] as core.List)
-          .map<NamedProperty>((value) => NamedProperty.fromJson(value))
+          .map<NamedProperty>((value) => NamedProperty.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9123,7 +9351,8 @@ class StructuredResult {
 
   StructuredResult.fromJson(core.Map _json) {
     if (_json.containsKey('person')) {
-      person = Person.fromJson(_json['person']);
+      person = Person.fromJson(
+          _json['person'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9157,15 +9386,16 @@ class SuggestRequest {
   SuggestRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dataSourceRestrictions')) {
       dataSourceRestrictions = (_json['dataSourceRestrictions'] as core.List)
-          .map<DataSourceRestriction>(
-              (value) => DataSourceRestriction.fromJson(value))
+          .map<DataSourceRestriction>((value) => DataSourceRestriction.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('query')) {
       query = _json['query'] as core.String;
     }
     if (_json.containsKey('requestOptions')) {
-      requestOptions = RequestOptions.fromJson(_json['requestOptions']);
+      requestOptions = RequestOptions.fromJson(
+          _json['requestOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9195,7 +9425,8 @@ class SuggestResponse {
   SuggestResponse.fromJson(core.Map _json) {
     if (_json.containsKey('suggestResults')) {
       suggestResults = (_json['suggestResults'] as core.List)
-          .map<SuggestResult>((value) => SuggestResult.fromJson(value))
+          .map<SuggestResult>((value) => SuggestResult.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -9231,13 +9462,16 @@ class SuggestResult {
 
   SuggestResult.fromJson(core.Map _json) {
     if (_json.containsKey('peopleSuggestion')) {
-      peopleSuggestion = PeopleSuggestion.fromJson(_json['peopleSuggestion']);
+      peopleSuggestion = PeopleSuggestion.fromJson(
+          _json['peopleSuggestion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('querySuggestion')) {
-      querySuggestion = QuerySuggestion.fromJson(_json['querySuggestion']);
+      querySuggestion = QuerySuggestion.fromJson(
+          _json['querySuggestion'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
-      source = Source.fromJson(_json['source']);
+      source = Source.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('suggestedQuery')) {
       suggestedQuery = _json['suggestedQuery'] as core.String;
@@ -9323,11 +9557,12 @@ class TextPropertyOptions {
 
   TextPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions = TextOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = TextOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retrievalImportance')) {
-      retrievalImportance =
-          RetrievalImportance.fromJson(_json['retrievalImportance']);
+      retrievalImportance = RetrievalImportance.fromJson(
+          _json['retrievalImportance'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9438,8 +9673,8 @@ class TimestampPropertyOptions {
 
   TimestampPropertyOptions.fromJson(core.Map _json) {
     if (_json.containsKey('operatorOptions')) {
-      operatorOptions =
-          TimestampOperatorOptions.fromJson(_json['operatorOptions']);
+      operatorOptions = TimestampOperatorOptions.fromJson(
+          _json['operatorOptions'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9498,7 +9733,8 @@ class UnmappedIdentity {
 
   UnmappedIdentity.fromJson(core.Map _json) {
     if (_json.containsKey('externalIdentity')) {
-      externalIdentity = Principal.fromJson(_json['externalIdentity']);
+      externalIdentity = Principal.fromJson(
+          _json['externalIdentity'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resolutionStatusCode')) {
       resolutionStatusCode = _json['resolutionStatusCode'] as core.String;
@@ -9535,7 +9771,8 @@ class UnreserveItemsRequest {
       connectorName = _json['connectorName'] as core.String;
     }
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queue')) {
       queue = _json['queue'] as core.String;
@@ -9566,10 +9803,12 @@ class UpdateDataSourceRequest {
 
   UpdateDataSourceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('source')) {
-      source = DataSource.fromJson(_json['source']);
+      source = DataSource.fromJson(
+          _json['source'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -9600,10 +9839,12 @@ class UpdateSchemaRequest {
 
   UpdateSchemaRequest.fromJson(core.Map _json) {
     if (_json.containsKey('debugOptions')) {
-      debugOptions = DebugOptions.fromJson(_json['debugOptions']);
+      debugOptions = DebugOptions.fromJson(
+          _json['debugOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('schema')) {
-      schema = Schema.fromJson(_json['schema']);
+      schema = Schema.fromJson(
+          _json['schema'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('validateOnly')) {
       validateOnly = _json['validateOnly'] as core.bool;
@@ -9665,7 +9906,8 @@ class Value {
       booleanValue = _json['booleanValue'] as core.bool;
     }
     if (_json.containsKey('dateValue')) {
-      dateValue = Date.fromJson(_json['dateValue']);
+      dateValue = Date.fromJson(
+          _json['dateValue'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('doubleValue')) {
       doubleValue = (_json['doubleValue'] as core.num).toDouble();
@@ -9725,7 +9967,8 @@ class ValueFilter {
       operatorName = _json['operatorName'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = Value.fromJson(_json['value']);
+      value =
+          Value.fromJson(_json['value'] as core.Map<core.String, core.dynamic>);
     }
   }
 

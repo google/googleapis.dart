@@ -108,8 +108,10 @@ class ManagedShortLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CreateManagedShortLinkResponse.fromJson(data));
+    return _response.then(
+      (data) => CreateManagedShortLinkResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -168,8 +170,10 @@ class ShortLinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => CreateShortDynamicLinkResponse.fromJson(data));
+    return _response.then(
+      (data) => CreateShortDynamicLinkResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -238,7 +242,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DynamicLinkStats.fromJson(data));
+    return _response.then(
+      (data) => DynamicLinkStats.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get iOS strong/weak-match info for post-install attribution.
@@ -286,8 +293,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetIosPostInstallAttributionResponse.fromJson(data));
+    return _response.then(
+      (data) => GetIosPostInstallAttributionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get iOS reopen attribution for app universal link open deeplinking.
@@ -335,8 +344,10 @@ class V1ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetIosReopenAttributionResponse.fromJson(data));
+    return _response.then(
+      (data) => GetIosReopenAttributionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -352,12 +363,13 @@ class AnalyticsInfo {
 
   AnalyticsInfo.fromJson(core.Map _json) {
     if (_json.containsKey('googlePlayAnalytics')) {
-      googlePlayAnalytics =
-          GooglePlayAnalytics.fromJson(_json['googlePlayAnalytics']);
+      googlePlayAnalytics = GooglePlayAnalytics.fromJson(
+          _json['googlePlayAnalytics'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('itunesConnectAnalytics')) {
-      itunesConnectAnalytics =
-          ITunesConnectAnalytics.fromJson(_json['itunesConnectAnalytics']);
+      itunesConnectAnalytics = ITunesConnectAnalytics.fromJson(
+          _json['itunesConnectAnalytics']
+              as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -452,7 +464,8 @@ class CreateManagedShortLinkRequest {
 
   CreateManagedShortLinkRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dynamicLinkInfo')) {
-      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json['dynamicLinkInfo']);
+      dynamicLinkInfo = DynamicLinkInfo.fromJson(
+          _json['dynamicLinkInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('longDynamicLink')) {
       longDynamicLink = _json['longDynamicLink'] as core.String;
@@ -464,7 +477,8 @@ class CreateManagedShortLinkRequest {
       sdkVersion = _json['sdkVersion'] as core.String;
     }
     if (_json.containsKey('suffix')) {
-      suffix = Suffix.fromJson(_json['suffix']);
+      suffix = Suffix.fromJson(
+          _json['suffix'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -504,15 +518,16 @@ class CreateManagedShortLinkResponse {
 
   CreateManagedShortLinkResponse.fromJson(core.Map _json) {
     if (_json.containsKey('managedShortLink')) {
-      managedShortLink = ManagedShortLink.fromJson(_json['managedShortLink']);
+      managedShortLink = ManagedShortLink.fromJson(
+          _json['managedShortLink'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('previewLink')) {
       previewLink = _json['previewLink'] as core.String;
     }
     if (_json.containsKey('warning')) {
       warning = (_json['warning'] as core.List)
-          .map<DynamicLinkWarning>(
-              (value) => DynamicLinkWarning.fromJson(value))
+          .map<DynamicLinkWarning>((value) => DynamicLinkWarning.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -555,7 +570,8 @@ class CreateShortDynamicLinkRequest {
 
   CreateShortDynamicLinkRequest.fromJson(core.Map _json) {
     if (_json.containsKey('dynamicLinkInfo')) {
-      dynamicLinkInfo = DynamicLinkInfo.fromJson(_json['dynamicLinkInfo']);
+      dynamicLinkInfo = DynamicLinkInfo.fromJson(
+          _json['dynamicLinkInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('longDynamicLink')) {
       longDynamicLink = _json['longDynamicLink'] as core.String;
@@ -564,7 +580,8 @@ class CreateShortDynamicLinkRequest {
       sdkVersion = _json['sdkVersion'] as core.String;
     }
     if (_json.containsKey('suffix')) {
-      suffix = Suffix.fromJson(_json['suffix']);
+      suffix = Suffix.fromJson(
+          _json['suffix'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -608,8 +625,8 @@ class CreateShortDynamicLinkResponse {
     }
     if (_json.containsKey('warning')) {
       warning = (_json['warning'] as core.List)
-          .map<DynamicLinkWarning>(
-              (value) => DynamicLinkWarning.fromJson(value))
+          .map<DynamicLinkWarning>((value) => DynamicLinkWarning.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -837,13 +854,16 @@ class DynamicLinkInfo {
 
   DynamicLinkInfo.fromJson(core.Map _json) {
     if (_json.containsKey('analyticsInfo')) {
-      analyticsInfo = AnalyticsInfo.fromJson(_json['analyticsInfo']);
+      analyticsInfo = AnalyticsInfo.fromJson(
+          _json['analyticsInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('androidInfo')) {
-      androidInfo = AndroidInfo.fromJson(_json['androidInfo']);
+      androidInfo = AndroidInfo.fromJson(
+          _json['androidInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('desktopInfo')) {
-      desktopInfo = DesktopInfo.fromJson(_json['desktopInfo']);
+      desktopInfo = DesktopInfo.fromJson(
+          _json['desktopInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('domainUriPrefix')) {
       domainUriPrefix = _json['domainUriPrefix'] as core.String;
@@ -852,17 +872,19 @@ class DynamicLinkInfo {
       dynamicLinkDomain = _json['dynamicLinkDomain'] as core.String;
     }
     if (_json.containsKey('iosInfo')) {
-      iosInfo = IosInfo.fromJson(_json['iosInfo']);
+      iosInfo = IosInfo.fromJson(
+          _json['iosInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
       link = _json['link'] as core.String;
     }
     if (_json.containsKey('navigationInfo')) {
-      navigationInfo = NavigationInfo.fromJson(_json['navigationInfo']);
+      navigationInfo = NavigationInfo.fromJson(
+          _json['navigationInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('socialMetaTagInfo')) {
-      socialMetaTagInfo =
-          SocialMetaTagInfo.fromJson(_json['socialMetaTagInfo']);
+      socialMetaTagInfo = SocialMetaTagInfo.fromJson(
+          _json['socialMetaTagInfo'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -909,8 +931,8 @@ class DynamicLinkStats {
   DynamicLinkStats.fromJson(core.Map _json) {
     if (_json.containsKey('linkEventStats')) {
       linkEventStats = (_json['linkEventStats'] as core.List)
-          .map<DynamicLinkEventStat>(
-              (value) => DynamicLinkEventStat.fromJson(value))
+          .map<DynamicLinkEventStat>((value) => DynamicLinkEventStat.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1067,7 +1089,8 @@ class GetIosPostInstallAttributionRequest {
       bundleId = _json['bundleId'] as core.String;
     }
     if (_json.containsKey('device')) {
-      device = DeviceInfo.fromJson(_json['device']);
+      device = DeviceInfo.fromJson(
+          _json['device'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('iosVersion')) {
       iosVersion = _json['iosVersion'] as core.String;
@@ -1688,7 +1711,8 @@ class ManagedShortLink {
           .toList();
     }
     if (_json.containsKey('info')) {
-      info = DynamicLinkInfo.fromJson(_json['info']);
+      info = DynamicLinkInfo.fromJson(
+          _json['info'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('link')) {
       link = _json['link'] as core.String;

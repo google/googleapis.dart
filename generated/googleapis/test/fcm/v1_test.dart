@@ -111,8 +111,8 @@ void checkAndroidConfig(api.AndroidConfig o) {
     unittest.expect(o.collapseKey, unittest.equals('foo'));
     checkUnnamed1328(o.data);
     unittest.expect(o.directBootOk, unittest.isTrue);
-    checkAndroidFcmOptions(o.fcmOptions);
-    checkAndroidNotification(o.notification);
+    checkAndroidFcmOptions(o.fcmOptions as api.AndroidFcmOptions);
+    checkAndroidNotification(o.notification as api.AndroidNotification);
     unittest.expect(o.priority, unittest.equals('foo'));
     unittest.expect(o.restrictedPackageName, unittest.equals('foo'));
     unittest.expect(o.ttl, unittest.equals('foo'));
@@ -228,7 +228,7 @@ void checkAndroidNotification(api.AndroidNotification o) {
     unittest.expect(o.eventTime, unittest.equals('foo'));
     unittest.expect(o.icon, unittest.equals('foo'));
     unittest.expect(o.image, unittest.equals('foo'));
-    checkLightSettings(o.lightSettings);
+    checkLightSettings(o.lightSettings as api.LightSettings);
     unittest.expect(o.localOnly, unittest.isTrue);
     unittest.expect(o.notificationCount, unittest.equals(42));
     unittest.expect(o.notificationPriority, unittest.equals('foo'));
@@ -303,7 +303,7 @@ api.ApnsConfig buildApnsConfig() {
 void checkApnsConfig(api.ApnsConfig o) {
   buildCounterApnsConfig++;
   if (buildCounterApnsConfig < 3) {
-    checkApnsFcmOptions(o.fcmOptions);
+    checkApnsFcmOptions(o.fcmOptions as api.ApnsFcmOptions);
     checkUnnamed1332(o.headers);
     checkUnnamed1333(o.payload);
   }
@@ -391,7 +391,7 @@ api.LightSettings buildLightSettings() {
 void checkLightSettings(api.LightSettings o) {
   buildCounterLightSettings++;
   if (buildCounterLightSettings < 3) {
-    checkColor(o.color);
+    checkColor(o.color as api.Color);
     unittest.expect(o.lightOffDuration, unittest.equals('foo'));
     unittest.expect(o.lightOnDuration, unittest.equals('foo'));
   }
@@ -434,16 +434,16 @@ api.Message buildMessage() {
 void checkMessage(api.Message o) {
   buildCounterMessage++;
   if (buildCounterMessage < 3) {
-    checkAndroidConfig(o.android);
-    checkApnsConfig(o.apns);
+    checkAndroidConfig(o.android as api.AndroidConfig);
+    checkApnsConfig(o.apns as api.ApnsConfig);
     unittest.expect(o.condition, unittest.equals('foo'));
     checkUnnamed1334(o.data);
-    checkFcmOptions(o.fcmOptions);
+    checkFcmOptions(o.fcmOptions as api.FcmOptions);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkNotification(o.notification);
+    checkNotification(o.notification as api.Notification);
     unittest.expect(o.token, unittest.equals('foo'));
     unittest.expect(o.topic, unittest.equals('foo'));
-    checkWebpushConfig(o.webpush);
+    checkWebpushConfig(o.webpush as api.WebpushConfig);
   }
   buildCounterMessage--;
 }
@@ -486,7 +486,7 @@ api.SendMessageRequest buildSendMessageRequest() {
 void checkSendMessageRequest(api.SendMessageRequest o) {
   buildCounterSendMessageRequest++;
   if (buildCounterSendMessageRequest < 3) {
-    checkMessage(o.message);
+    checkMessage(o.message as api.Message);
     unittest.expect(o.validateOnly, unittest.isTrue);
   }
   buildCounterSendMessageRequest--;
@@ -565,7 +565,7 @@ void checkWebpushConfig(api.WebpushConfig o) {
   buildCounterWebpushConfig++;
   if (buildCounterWebpushConfig < 3) {
     checkUnnamed1335(o.data);
-    checkWebpushFcmOptions(o.fcmOptions);
+    checkWebpushFcmOptions(o.fcmOptions as api.WebpushFcmOptions);
     checkUnnamed1336(o.headers);
     checkUnnamed1337(o.notification);
   }
@@ -598,7 +598,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidConfig();
       var od = api.AndroidConfig.fromJson(o.toJson());
-      checkAndroidConfig(od);
+      checkAndroidConfig(od as api.AndroidConfig);
     });
   });
 
@@ -606,7 +606,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidFcmOptions();
       var od = api.AndroidFcmOptions.fromJson(o.toJson());
-      checkAndroidFcmOptions(od);
+      checkAndroidFcmOptions(od as api.AndroidFcmOptions);
     });
   });
 
@@ -614,7 +614,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAndroidNotification();
       var od = api.AndroidNotification.fromJson(o.toJson());
-      checkAndroidNotification(od);
+      checkAndroidNotification(od as api.AndroidNotification);
     });
   });
 
@@ -622,7 +622,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApnsConfig();
       var od = api.ApnsConfig.fromJson(o.toJson());
-      checkApnsConfig(od);
+      checkApnsConfig(od as api.ApnsConfig);
     });
   });
 
@@ -630,7 +630,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildApnsFcmOptions();
       var od = api.ApnsFcmOptions.fromJson(o.toJson());
-      checkApnsFcmOptions(od);
+      checkApnsFcmOptions(od as api.ApnsFcmOptions);
     });
   });
 
@@ -638,7 +638,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildColor();
       var od = api.Color.fromJson(o.toJson());
-      checkColor(od);
+      checkColor(od as api.Color);
     });
   });
 
@@ -646,7 +646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFcmOptions();
       var od = api.FcmOptions.fromJson(o.toJson());
-      checkFcmOptions(od);
+      checkFcmOptions(od as api.FcmOptions);
     });
   });
 
@@ -654,7 +654,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLightSettings();
       var od = api.LightSettings.fromJson(o.toJson());
-      checkLightSettings(od);
+      checkLightSettings(od as api.LightSettings);
     });
   });
 
@@ -662,7 +662,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMessage();
       var od = api.Message.fromJson(o.toJson());
-      checkMessage(od);
+      checkMessage(od as api.Message);
     });
   });
 
@@ -670,7 +670,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotification();
       var od = api.Notification.fromJson(o.toJson());
-      checkNotification(od);
+      checkNotification(od as api.Notification);
     });
   });
 
@@ -678,7 +678,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSendMessageRequest();
       var od = api.SendMessageRequest.fromJson(o.toJson());
-      checkSendMessageRequest(od);
+      checkSendMessageRequest(od as api.SendMessageRequest);
     });
   });
 
@@ -686,7 +686,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebpushConfig();
       var od = api.WebpushConfig.fromJson(o.toJson());
-      checkWebpushConfig(od);
+      checkWebpushConfig(od as api.WebpushConfig);
     });
   });
 
@@ -694,7 +694,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWebpushFcmOptions();
       var od = api.WebpushFcmOptions.fromJson(o.toJson());
-      checkWebpushFcmOptions(od);
+      checkWebpushFcmOptions(od as api.WebpushFcmOptions);
     });
   });
 
@@ -706,8 +706,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SendMessageRequest.fromJson(json);
-        checkSendMessageRequest(obj);
+        var obj = api.SendMessageRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSendMessageRequest(obj as api.SendMessageRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -747,7 +748,7 @@ void main() {
       res
           .send(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMessage(response);
+        checkMessage(response as api.Message);
       })));
     });
   });

@@ -223,7 +223,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGroups();
       var od = api.Groups.fromJson(o.toJson());
-      checkGroups(od);
+      checkGroups(od as api.Groups);
     });
   });
 
@@ -268,7 +268,7 @@ void main() {
       res
           .get(arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroups(response);
+        checkGroups(response as api.Groups);
       })));
     });
 
@@ -279,8 +279,9 @@ void main() {
       var arg_groupUniqueId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Groups.fromJson(json);
-        checkGroups(obj);
+        var obj =
+            api.Groups.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroups(obj as api.Groups);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -316,7 +317,7 @@ void main() {
       res
           .patch(arg_request, arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroups(response);
+        checkGroups(response as api.Groups);
       })));
     });
 
@@ -327,8 +328,9 @@ void main() {
       var arg_groupUniqueId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Groups.fromJson(json);
-        checkGroups(obj);
+        var obj =
+            api.Groups.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkGroups(obj as api.Groups);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -364,7 +366,7 @@ void main() {
       res
           .update(arg_request, arg_groupUniqueId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGroups(response);
+        checkGroups(response as api.Groups);
       })));
     });
   });

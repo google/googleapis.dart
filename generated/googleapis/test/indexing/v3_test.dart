@@ -88,7 +88,8 @@ api.PublishUrlNotificationResponse buildPublishUrlNotificationResponse() {
 void checkPublishUrlNotificationResponse(api.PublishUrlNotificationResponse o) {
   buildCounterPublishUrlNotificationResponse++;
   if (buildCounterPublishUrlNotificationResponse < 3) {
-    checkUrlNotificationMetadata(o.urlNotificationMetadata);
+    checkUrlNotificationMetadata(
+        o.urlNotificationMetadata as api.UrlNotificationMetadata);
   }
   buildCounterPublishUrlNotificationResponse--;
 }
@@ -132,8 +133,8 @@ api.UrlNotificationMetadata buildUrlNotificationMetadata() {
 void checkUrlNotificationMetadata(api.UrlNotificationMetadata o) {
   buildCounterUrlNotificationMetadata++;
   if (buildCounterUrlNotificationMetadata < 3) {
-    checkUrlNotification(o.latestRemove);
-    checkUrlNotification(o.latestUpdate);
+    checkUrlNotification(o.latestRemove as api.UrlNotification);
+    checkUrlNotification(o.latestUpdate as api.UrlNotification);
     unittest.expect(o.url, unittest.equals('foo'));
   }
   buildCounterUrlNotificationMetadata--;
@@ -144,7 +145,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPublishUrlNotificationResponse();
       var od = api.PublishUrlNotificationResponse.fromJson(o.toJson());
-      checkPublishUrlNotificationResponse(od);
+      checkPublishUrlNotificationResponse(
+          od as api.PublishUrlNotificationResponse);
     });
   });
 
@@ -152,7 +154,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlNotification();
       var od = api.UrlNotification.fromJson(o.toJson());
-      checkUrlNotification(od);
+      checkUrlNotification(od as api.UrlNotification);
     });
   });
 
@@ -160,7 +162,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUrlNotificationMetadata();
       var od = api.UrlNotificationMetadata.fromJson(o.toJson());
-      checkUrlNotificationMetadata(od);
+      checkUrlNotificationMetadata(od as api.UrlNotificationMetadata);
     });
   });
 
@@ -209,7 +211,7 @@ void main() {
       res
           .getMetadata(url: arg_url, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUrlNotificationMetadata(response);
+        checkUrlNotificationMetadata(response as api.UrlNotificationMetadata);
       })));
     });
 
@@ -219,8 +221,9 @@ void main() {
       var arg_request = buildUrlNotification();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UrlNotification.fromJson(json);
-        checkUrlNotification(obj);
+        var obj = api.UrlNotification.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUrlNotification(obj as api.UrlNotification);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -259,7 +262,8 @@ void main() {
       res
           .publish(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPublishUrlNotificationResponse(response);
+        checkPublishUrlNotificationResponse(
+            response as api.PublishUrlNotificationResponse);
       })));
     });
   });

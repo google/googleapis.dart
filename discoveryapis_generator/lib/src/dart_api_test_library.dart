@@ -202,8 +202,10 @@ class ResourceTest extends TestHelper {
             if (method.requestParameter != null) {
               final t =
                   apiTestLibrary.schemaTests[method.requestParameter.type];
-              final name = method.requestParameter.type.className;
-              sb.writeln('        var obj = api.$name.fromJson(json);');
+              sb.writeln(
+                'var obj = '
+                'api.${method.requestParameter.type.jsonDecode('json')};',
+              );
               sb.writeln('        ${t.checkSchemaStatement('obj')}');
               sb.writeln();
             }
@@ -805,7 +807,8 @@ abstract class NamedSchemaTest<T extends ComplexDartSchemaType>
   String get newSchemaExpr => 'build${schema.className.name}()';
 
   @override
-  String checkSchemaStatement(String o) => 'check${schema.className.name}($o);';
+  String checkSchemaStatement(String o) =>
+      'check${schema.className.name}($o as api.${schema.className.name});';
 }
 
 class ObjectSchemaTest extends NamedSchemaTest<ObjectType> {

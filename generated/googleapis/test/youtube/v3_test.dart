@@ -83,8 +83,8 @@ core.List<api.AbuseType> buildUnnamed2330() {
 
 void checkUnnamed2330(core.List<api.AbuseType> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAbuseType(o[0]);
-  checkAbuseType(o[1]);
+  checkAbuseType(o[0] as api.AbuseType);
+  checkAbuseType(o[1] as api.AbuseType);
 }
 
 core.List<api.RelatedEntity> buildUnnamed2331() {
@@ -96,8 +96,8 @@ core.List<api.RelatedEntity> buildUnnamed2331() {
 
 void checkUnnamed2331(core.List<api.RelatedEntity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkRelatedEntity(o[0]);
-  checkRelatedEntity(o[1]);
+  checkRelatedEntity(o[0] as api.RelatedEntity);
+  checkRelatedEntity(o[1] as api.RelatedEntity);
 }
 
 core.int buildCounterAbuseReport = 0;
@@ -120,7 +120,7 @@ void checkAbuseReport(api.AbuseReport o) {
     checkUnnamed2330(o.abuseTypes);
     unittest.expect(o.description, unittest.equals('foo'));
     checkUnnamed2331(o.relatedEntities);
-    checkEntity(o.subject);
+    checkEntity(o.subject as api.Entity);
   }
   buildCounterAbuseReport--;
 }
@@ -196,11 +196,11 @@ api.Activity buildActivity() {
 void checkActivity(api.Activity o) {
   buildCounterActivity++;
   if (buildCounterActivity < 3) {
-    checkActivityContentDetails(o.contentDetails);
+    checkActivityContentDetails(o.contentDetails as api.ActivityContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkActivitySnippet(o.snippet);
+    checkActivitySnippet(o.snippet as api.ActivitySnippet);
   }
   buildCounterActivity--;
 }
@@ -229,17 +229,27 @@ api.ActivityContentDetails buildActivityContentDetails() {
 void checkActivityContentDetails(api.ActivityContentDetails o) {
   buildCounterActivityContentDetails++;
   if (buildCounterActivityContentDetails < 3) {
-    checkActivityContentDetailsBulletin(o.bulletin);
-    checkActivityContentDetailsChannelItem(o.channelItem);
-    checkActivityContentDetailsComment(o.comment);
-    checkActivityContentDetailsFavorite(o.favorite);
-    checkActivityContentDetailsLike(o.like);
-    checkActivityContentDetailsPlaylistItem(o.playlistItem);
-    checkActivityContentDetailsPromotedItem(o.promotedItem);
-    checkActivityContentDetailsRecommendation(o.recommendation);
-    checkActivityContentDetailsSocial(o.social);
-    checkActivityContentDetailsSubscription(o.subscription);
-    checkActivityContentDetailsUpload(o.upload);
+    checkActivityContentDetailsBulletin(
+        o.bulletin as api.ActivityContentDetailsBulletin);
+    checkActivityContentDetailsChannelItem(
+        o.channelItem as api.ActivityContentDetailsChannelItem);
+    checkActivityContentDetailsComment(
+        o.comment as api.ActivityContentDetailsComment);
+    checkActivityContentDetailsFavorite(
+        o.favorite as api.ActivityContentDetailsFavorite);
+    checkActivityContentDetailsLike(o.like as api.ActivityContentDetailsLike);
+    checkActivityContentDetailsPlaylistItem(
+        o.playlistItem as api.ActivityContentDetailsPlaylistItem);
+    checkActivityContentDetailsPromotedItem(
+        o.promotedItem as api.ActivityContentDetailsPromotedItem);
+    checkActivityContentDetailsRecommendation(
+        o.recommendation as api.ActivityContentDetailsRecommendation);
+    checkActivityContentDetailsSocial(
+        o.social as api.ActivityContentDetailsSocial);
+    checkActivityContentDetailsSubscription(
+        o.subscription as api.ActivityContentDetailsSubscription);
+    checkActivityContentDetailsUpload(
+        o.upload as api.ActivityContentDetailsUpload);
   }
   buildCounterActivityContentDetails--;
 }
@@ -258,7 +268,7 @@ api.ActivityContentDetailsBulletin buildActivityContentDetailsBulletin() {
 void checkActivityContentDetailsBulletin(api.ActivityContentDetailsBulletin o) {
   buildCounterActivityContentDetailsBulletin++;
   if (buildCounterActivityContentDetailsBulletin < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsBulletin--;
 }
@@ -278,7 +288,7 @@ void checkActivityContentDetailsChannelItem(
     api.ActivityContentDetailsChannelItem o) {
   buildCounterActivityContentDetailsChannelItem++;
   if (buildCounterActivityContentDetailsChannelItem < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsChannelItem--;
 }
@@ -297,7 +307,7 @@ api.ActivityContentDetailsComment buildActivityContentDetailsComment() {
 void checkActivityContentDetailsComment(api.ActivityContentDetailsComment o) {
   buildCounterActivityContentDetailsComment++;
   if (buildCounterActivityContentDetailsComment < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsComment--;
 }
@@ -316,7 +326,7 @@ api.ActivityContentDetailsFavorite buildActivityContentDetailsFavorite() {
 void checkActivityContentDetailsFavorite(api.ActivityContentDetailsFavorite o) {
   buildCounterActivityContentDetailsFavorite++;
   if (buildCounterActivityContentDetailsFavorite < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsFavorite--;
 }
@@ -335,7 +345,7 @@ api.ActivityContentDetailsLike buildActivityContentDetailsLike() {
 void checkActivityContentDetailsLike(api.ActivityContentDetailsLike o) {
   buildCounterActivityContentDetailsLike++;
   if (buildCounterActivityContentDetailsLike < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsLike--;
 }
@@ -360,7 +370,7 @@ void checkActivityContentDetailsPlaylistItem(
   if (buildCounterActivityContentDetailsPlaylistItem < 3) {
     unittest.expect(o.playlistId, unittest.equals('foo'));
     unittest.expect(o.playlistItemId, unittest.equals('foo'));
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsPlaylistItem--;
 }
@@ -449,8 +459,8 @@ void checkActivityContentDetailsRecommendation(
   buildCounterActivityContentDetailsRecommendation++;
   if (buildCounterActivityContentDetailsRecommendation < 3) {
     unittest.expect(o.reason, unittest.equals('foo'));
-    checkResourceId(o.resourceId);
-    checkResourceId(o.seedResourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
+    checkResourceId(o.seedResourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsRecommendation--;
 }
@@ -476,7 +486,7 @@ void checkActivityContentDetailsSocial(api.ActivityContentDetailsSocial o) {
     unittest.expect(o.author, unittest.equals('foo'));
     unittest.expect(o.imageUrl, unittest.equals('foo'));
     unittest.expect(o.referenceUrl, unittest.equals('foo'));
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterActivityContentDetailsSocial--;
@@ -498,7 +508,7 @@ void checkActivityContentDetailsSubscription(
     api.ActivityContentDetailsSubscription o) {
   buildCounterActivityContentDetailsSubscription++;
   if (buildCounterActivityContentDetailsSubscription < 3) {
-    checkResourceId(o.resourceId);
+    checkResourceId(o.resourceId as api.ResourceId);
   }
   buildCounterActivityContentDetailsSubscription--;
 }
@@ -531,8 +541,8 @@ core.List<api.Activity> buildUnnamed2335() {
 
 void checkUnnamed2335(core.List<api.Activity> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkActivity(o[0]);
-  checkActivity(o[1]);
+  checkActivity(o[0] as api.Activity);
+  checkActivity(o[1] as api.Activity);
 }
 
 core.int buildCounterActivityListResponse = 0;
@@ -562,9 +572,9 @@ void checkActivityListResponse(api.ActivityListResponse o) {
     checkUnnamed2335(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterActivityListResponse--;
@@ -596,7 +606,7 @@ void checkActivitySnippet(api.ActivitySnippet o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.groupId, unittest.equals('foo'));
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -623,7 +633,7 @@ void checkCaption(api.Caption o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkCaptionSnippet(o.snippet);
+    checkCaptionSnippet(o.snippet as api.CaptionSnippet);
   }
   buildCounterCaption--;
 }
@@ -637,8 +647,8 @@ core.List<api.Caption> buildUnnamed2336() {
 
 void checkUnnamed2336(core.List<api.Caption> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCaption(o[0]);
-  checkCaption(o[1]);
+  checkCaption(o[0] as api.Caption);
+  checkCaption(o[1] as api.Caption);
 }
 
 core.int buildCounterCaptionListResponse = 0;
@@ -731,7 +741,7 @@ void checkCdnSettings(api.CdnSettings o) {
   if (buildCounterCdnSettings < 3) {
     unittest.expect(o.format, unittest.equals('foo'));
     unittest.expect(o.frameRate, unittest.equals('foo'));
-    checkIngestionInfo(o.ingestionInfo);
+    checkIngestionInfo(o.ingestionInfo as api.IngestionInfo);
     unittest.expect(o.ingestionType, unittest.equals('foo'));
     unittest.expect(o.resolution, unittest.equals('foo'));
   }
@@ -747,8 +757,8 @@ core.Map<core.String, api.ChannelLocalization> buildUnnamed2337() {
 
 void checkUnnamed2337(core.Map<core.String, api.ChannelLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannelLocalization(o['x']);
-  checkChannelLocalization(o['y']);
+  checkChannelLocalization(o['x'] as api.ChannelLocalization);
+  checkChannelLocalization(o['y'] as api.ChannelLocalization);
 }
 
 core.int buildCounterChannel = 0;
@@ -777,19 +787,22 @@ api.Channel buildChannel() {
 void checkChannel(api.Channel o) {
   buildCounterChannel++;
   if (buildCounterChannel < 3) {
-    checkChannelAuditDetails(o.auditDetails);
-    checkChannelBrandingSettings(o.brandingSettings);
-    checkChannelContentDetails(o.contentDetails);
-    checkChannelContentOwnerDetails(o.contentOwnerDetails);
-    checkChannelConversionPings(o.conversionPings);
+    checkChannelAuditDetails(o.auditDetails as api.ChannelAuditDetails);
+    checkChannelBrandingSettings(
+        o.brandingSettings as api.ChannelBrandingSettings);
+    checkChannelContentDetails(o.contentDetails as api.ChannelContentDetails);
+    checkChannelContentOwnerDetails(
+        o.contentOwnerDetails as api.ChannelContentOwnerDetails);
+    checkChannelConversionPings(
+        o.conversionPings as api.ChannelConversionPings);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed2337(o.localizations);
-    checkChannelSnippet(o.snippet);
-    checkChannelStatistics(o.statistics);
-    checkChannelStatus(o.status);
-    checkChannelTopicDetails(o.topicDetails);
+    checkChannelSnippet(o.snippet as api.ChannelSnippet);
+    checkChannelStatistics(o.statistics as api.ChannelStatistics);
+    checkChannelStatus(o.status as api.ChannelStatus);
+    checkChannelTopicDetails(o.topicDetails as api.ChannelTopicDetails);
   }
   buildCounterChannel--;
 }
@@ -849,8 +862,8 @@ core.List<api.PropertyValue> buildUnnamed2338() {
 
 void checkUnnamed2338(core.List<api.PropertyValue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPropertyValue(o[0]);
-  checkPropertyValue(o[1]);
+  checkPropertyValue(o[0] as api.PropertyValue);
+  checkPropertyValue(o[1] as api.PropertyValue);
 }
 
 core.int buildCounterChannelBrandingSettings = 0;
@@ -870,10 +883,10 @@ api.ChannelBrandingSettings buildChannelBrandingSettings() {
 void checkChannelBrandingSettings(api.ChannelBrandingSettings o) {
   buildCounterChannelBrandingSettings++;
   if (buildCounterChannelBrandingSettings < 3) {
-    checkChannelSettings(o.channel);
+    checkChannelSettings(o.channel as api.ChannelSettings);
     checkUnnamed2338(o.hints);
-    checkImageSettings(o.image);
-    checkWatchSettings(o.watch);
+    checkImageSettings(o.image as api.ImageSettings);
+    checkWatchSettings(o.watch as api.WatchSettings);
   }
   buildCounterChannelBrandingSettings--;
 }
@@ -921,7 +934,8 @@ api.ChannelContentDetails buildChannelContentDetails() {
 void checkChannelContentDetails(api.ChannelContentDetails o) {
   buildCounterChannelContentDetails++;
   if (buildCounterChannelContentDetails < 3) {
-    checkChannelContentDetailsRelatedPlaylists(o.relatedPlaylists);
+    checkChannelContentDetailsRelatedPlaylists(
+        o.relatedPlaylists as api.ChannelContentDetailsRelatedPlaylists);
   }
   buildCounterChannelContentDetails--;
 }
@@ -977,8 +991,8 @@ core.List<api.ChannelConversionPing> buildUnnamed2339() {
 
 void checkUnnamed2339(core.List<api.ChannelConversionPing> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannelConversionPing(o[0]);
-  checkChannelConversionPing(o[1]);
+  checkChannelConversionPing(o[0] as api.ChannelConversionPing);
+  checkChannelConversionPing(o[1] as api.ChannelConversionPing);
 }
 
 core.int buildCounterChannelConversionPings = 0;
@@ -1009,8 +1023,8 @@ core.List<api.Channel> buildUnnamed2340() {
 
 void checkUnnamed2340(core.List<api.Channel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannel(o[0]);
-  checkChannel(o[1]);
+  checkChannel(o[0] as api.Channel);
+  checkChannel(o[1] as api.Channel);
 }
 
 core.int buildCounterChannelListResponse = 0;
@@ -1040,9 +1054,9 @@ void checkChannelListResponse(api.ChannelListResponse o) {
     checkUnnamed2340(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterChannelListResponse--;
@@ -1103,8 +1117,8 @@ core.Map<core.String, api.ChannelSectionLocalization> buildUnnamed2341() {
 
 void checkUnnamed2341(core.Map<core.String, api.ChannelSectionLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannelSectionLocalization(o['x']);
-  checkChannelSectionLocalization(o['y']);
+  checkChannelSectionLocalization(o['x'] as api.ChannelSectionLocalization);
+  checkChannelSectionLocalization(o['y'] as api.ChannelSectionLocalization);
 }
 
 core.int buildCounterChannelSection = 0;
@@ -1127,13 +1141,14 @@ api.ChannelSection buildChannelSection() {
 void checkChannelSection(api.ChannelSection o) {
   buildCounterChannelSection++;
   if (buildCounterChannelSection < 3) {
-    checkChannelSectionContentDetails(o.contentDetails);
+    checkChannelSectionContentDetails(
+        o.contentDetails as api.ChannelSectionContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed2341(o.localizations);
-    checkChannelSectionSnippet(o.snippet);
-    checkChannelSectionTargeting(o.targeting);
+    checkChannelSectionSnippet(o.snippet as api.ChannelSectionSnippet);
+    checkChannelSectionTargeting(o.targeting as api.ChannelSectionTargeting);
   }
   buildCounterChannelSection--;
 }
@@ -1194,8 +1209,8 @@ core.List<api.ChannelSection> buildUnnamed2344() {
 
 void checkUnnamed2344(core.List<api.ChannelSection> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkChannelSection(o[0]);
-  checkChannelSection(o[1]);
+  checkChannelSection(o[0] as api.ChannelSection);
+  checkChannelSection(o[1] as api.ChannelSection);
 }
 
 core.int buildCounterChannelSectionListResponse = 0;
@@ -1266,7 +1281,8 @@ void checkChannelSectionSnippet(api.ChannelSectionSnippet o) {
   if (buildCounterChannelSectionSnippet < 3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
-    checkChannelSectionLocalization(o.localized);
+    checkChannelSectionLocalization(
+        o.localized as api.ChannelSectionLocalization);
     unittest.expect(o.position, unittest.equals(42));
     unittest.expect(o.style, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -1420,9 +1436,9 @@ void checkChannelSnippet(api.ChannelSnippet o) {
     unittest.expect(o.customUrl, unittest.equals('foo'));
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkChannelLocalization(o.localized);
+    checkChannelLocalization(o.localized as api.ChannelLocalization);
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterChannelSnippet--;
@@ -1570,7 +1586,7 @@ void checkComment(api.Comment o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkCommentSnippet(o.snippet);
+    checkCommentSnippet(o.snippet as api.CommentSnippet);
   }
   buildCounterComment--;
 }
@@ -1584,8 +1600,8 @@ core.List<api.Comment> buildUnnamed2351() {
 
 void checkUnnamed2351(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterCommentListResponse = 0;
@@ -1614,8 +1630,8 @@ void checkCommentListResponse(api.CommentListResponse o) {
     checkUnnamed2351(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterCommentListResponse--;
@@ -1649,7 +1665,8 @@ api.CommentSnippet buildCommentSnippet() {
 void checkCommentSnippet(api.CommentSnippet o) {
   buildCounterCommentSnippet++;
   if (buildCounterCommentSnippet < 3) {
-    checkCommentSnippetAuthorChannelId(o.authorChannelId);
+    checkCommentSnippetAuthorChannelId(
+        o.authorChannelId as api.CommentSnippetAuthorChannelId);
     unittest.expect(o.authorChannelUrl, unittest.equals('foo'));
     unittest.expect(o.authorDisplayName, unittest.equals('foo'));
     unittest.expect(o.authorProfileImageUrl, unittest.equals('foo'));
@@ -1708,8 +1725,8 @@ void checkCommentThread(api.CommentThread o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkCommentThreadReplies(o.replies);
-    checkCommentThreadSnippet(o.snippet);
+    checkCommentThreadReplies(o.replies as api.CommentThreadReplies);
+    checkCommentThreadSnippet(o.snippet as api.CommentThreadSnippet);
   }
   buildCounterCommentThread--;
 }
@@ -1723,8 +1740,8 @@ core.List<api.CommentThread> buildUnnamed2352() {
 
 void checkUnnamed2352(core.List<api.CommentThread> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCommentThread(o[0]);
-  checkCommentThread(o[1]);
+  checkCommentThread(o[0] as api.CommentThread);
+  checkCommentThread(o[1] as api.CommentThread);
 }
 
 core.int buildCounterCommentThreadListResponse = 0;
@@ -1753,8 +1770,8 @@ void checkCommentThreadListResponse(api.CommentThreadListResponse o) {
     checkUnnamed2352(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterCommentThreadListResponse--;
@@ -1769,8 +1786,8 @@ core.List<api.Comment> buildUnnamed2353() {
 
 void checkUnnamed2353(core.List<api.Comment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkComment(o[0]);
-  checkComment(o[1]);
+  checkComment(o[0] as api.Comment);
+  checkComment(o[1] as api.Comment);
 }
 
 core.int buildCounterCommentThreadReplies = 0;
@@ -1814,7 +1831,7 @@ void checkCommentThreadSnippet(api.CommentThreadSnippet o) {
     unittest.expect(o.canReply, unittest.isTrue);
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.isPublic, unittest.isTrue);
-    checkComment(o.topLevelComment);
+    checkComment(o.topLevelComment as api.Comment);
     unittest.expect(o.totalReplyCount, unittest.equals(42));
     unittest.expect(o.videoId, unittest.equals('foo'));
   }
@@ -2072,7 +2089,7 @@ void checkI18nLanguage(api.I18nLanguage o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkI18nLanguageSnippet(o.snippet);
+    checkI18nLanguageSnippet(o.snippet as api.I18nLanguageSnippet);
   }
   buildCounterI18nLanguage--;
 }
@@ -2086,8 +2103,8 @@ core.List<api.I18nLanguage> buildUnnamed2356() {
 
 void checkUnnamed2356(core.List<api.I18nLanguage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkI18nLanguage(o[0]);
-  checkI18nLanguage(o[1]);
+  checkI18nLanguage(o[0] as api.I18nLanguage);
+  checkI18nLanguage(o[1] as api.I18nLanguage);
 }
 
 core.int buildCounterI18nLanguageListResponse = 0;
@@ -2158,7 +2175,7 @@ void checkI18nRegion(api.I18nRegion o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkI18nRegionSnippet(o.snippet);
+    checkI18nRegionSnippet(o.snippet as api.I18nRegionSnippet);
   }
   buildCounterI18nRegion--;
 }
@@ -2172,8 +2189,8 @@ core.List<api.I18nRegion> buildUnnamed2357() {
 
 void checkUnnamed2357(core.List<api.I18nRegion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkI18nRegion(o[0]);
-  checkI18nRegion(o[1]);
+  checkI18nRegion(o[0] as api.I18nRegion);
+  checkI18nRegion(o[1] as api.I18nRegion);
 }
 
 core.int buildCounterI18nRegionListResponse = 0;
@@ -2259,7 +2276,7 @@ api.ImageSettings buildImageSettings() {
 void checkImageSettings(api.ImageSettings o) {
   buildCounterImageSettings++;
   if (buildCounterImageSettings < 3) {
-    checkLocalizedProperty(o.backgroundImageUrl);
+    checkLocalizedProperty(o.backgroundImageUrl as api.LocalizedProperty);
     unittest.expect(o.bannerExternalUrl, unittest.equals('foo'));
     unittest.expect(o.bannerImageUrl, unittest.equals('foo'));
     unittest.expect(o.bannerMobileExtraHdImageUrl, unittest.equals('foo'));
@@ -2275,10 +2292,14 @@ void checkImageSettings(api.ImageSettings o) {
     unittest.expect(o.bannerTvImageUrl, unittest.equals('foo'));
     unittest.expect(o.bannerTvLowImageUrl, unittest.equals('foo'));
     unittest.expect(o.bannerTvMediumImageUrl, unittest.equals('foo'));
-    checkLocalizedProperty(o.largeBrandedBannerImageImapScript);
-    checkLocalizedProperty(o.largeBrandedBannerImageUrl);
-    checkLocalizedProperty(o.smallBrandedBannerImageImapScript);
-    checkLocalizedProperty(o.smallBrandedBannerImageUrl);
+    checkLocalizedProperty(
+        o.largeBrandedBannerImageImapScript as api.LocalizedProperty);
+    checkLocalizedProperty(
+        o.largeBrandedBannerImageUrl as api.LocalizedProperty);
+    checkLocalizedProperty(
+        o.smallBrandedBannerImageImapScript as api.LocalizedProperty);
+    checkLocalizedProperty(
+        o.smallBrandedBannerImageUrl as api.LocalizedProperty);
     unittest.expect(o.trackingImageUrl, unittest.equals('foo'));
     unittest.expect(o.watchIconImageUrl, unittest.equals('foo'));
   }
@@ -2332,9 +2353,9 @@ void checkInvideoBranding(api.InvideoBranding o) {
   if (buildCounterInvideoBranding < 3) {
     unittest.expect(o.imageBytes, unittest.equals('foo'));
     unittest.expect(o.imageUrl, unittest.equals('foo'));
-    checkInvideoPosition(o.position);
+    checkInvideoPosition(o.position as api.InvideoPosition);
     unittest.expect(o.targetChannelId, unittest.equals('foo'));
-    checkInvideoTiming(o.timing);
+    checkInvideoTiming(o.timing as api.InvideoTiming);
   }
   buildCounterInvideoBranding--;
 }
@@ -2441,13 +2462,14 @@ api.LiveBroadcast buildLiveBroadcast() {
 void checkLiveBroadcast(api.LiveBroadcast o) {
   buildCounterLiveBroadcast++;
   if (buildCounterLiveBroadcast < 3) {
-    checkLiveBroadcastContentDetails(o.contentDetails);
+    checkLiveBroadcastContentDetails(
+        o.contentDetails as api.LiveBroadcastContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLiveBroadcastSnippet(o.snippet);
-    checkLiveBroadcastStatistics(o.statistics);
-    checkLiveBroadcastStatus(o.status);
+    checkLiveBroadcastSnippet(o.snippet as api.LiveBroadcastSnippet);
+    checkLiveBroadcastStatistics(o.statistics as api.LiveBroadcastStatistics);
+    checkLiveBroadcastStatus(o.status as api.LiveBroadcastStatus);
   }
   buildCounterLiveBroadcast--;
 }
@@ -2493,7 +2515,7 @@ void checkLiveBroadcastContentDetails(api.LiveBroadcastContentDetails o) {
     unittest.expect(o.enableLowLatency, unittest.isTrue);
     unittest.expect(o.latencyPreference, unittest.equals('foo'));
     unittest.expect(o.mesh, unittest.equals('foo'));
-    checkMonitorStreamInfo(o.monitorStream);
+    checkMonitorStreamInfo(o.monitorStream as api.MonitorStreamInfo);
     unittest.expect(o.projection, unittest.equals('foo'));
     unittest.expect(o.recordFromStart, unittest.isTrue);
     unittest.expect(o.startWithSlate, unittest.isTrue);
@@ -2510,8 +2532,8 @@ core.List<api.LiveBroadcast> buildUnnamed2358() {
 
 void checkUnnamed2358(core.List<api.LiveBroadcast> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiveBroadcast(o[0]);
-  checkLiveBroadcast(o[1]);
+  checkLiveBroadcast(o[0] as api.LiveBroadcast);
+  checkLiveBroadcast(o[1] as api.LiveBroadcast);
 }
 
 core.int buildCounterLiveBroadcastListResponse = 0;
@@ -2541,9 +2563,9 @@ void checkLiveBroadcastListResponse(api.LiveBroadcastListResponse o) {
     checkUnnamed2358(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterLiveBroadcastListResponse--;
@@ -2582,7 +2604,7 @@ void checkLiveBroadcastSnippet(api.LiveBroadcastSnippet o) {
     unittest.expect(o.publishedAt, unittest.equals('foo'));
     unittest.expect(o.scheduledEndTime, unittest.equals('foo'));
     unittest.expect(o.scheduledStartTime, unittest.equals('foo'));
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterLiveBroadcastSnippet--;
@@ -2656,7 +2678,7 @@ void checkLiveChatBan(api.LiveChatBan o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLiveChatBanSnippet(o.snippet);
+    checkLiveChatBanSnippet(o.snippet as api.LiveChatBanSnippet);
   }
   buildCounterLiveChatBan--;
 }
@@ -2679,7 +2701,8 @@ void checkLiveChatBanSnippet(api.LiveChatBanSnippet o) {
   buildCounterLiveChatBanSnippet++;
   if (buildCounterLiveChatBanSnippet < 3) {
     unittest.expect(o.banDurationSeconds, unittest.equals('foo'));
-    checkChannelProfileDetails(o.bannedUserDetails);
+    checkChannelProfileDetails(
+        o.bannedUserDetails as api.ChannelProfileDetails);
     unittest.expect(o.liveChatId, unittest.equals('foo'));
     unittest.expect(o.type, unittest.equals('foo'));
   }
@@ -2729,11 +2752,12 @@ api.LiveChatMessage buildLiveChatMessage() {
 void checkLiveChatMessage(api.LiveChatMessage o) {
   buildCounterLiveChatMessage++;
   if (buildCounterLiveChatMessage < 3) {
-    checkLiveChatMessageAuthorDetails(o.authorDetails);
+    checkLiveChatMessageAuthorDetails(
+        o.authorDetails as api.LiveChatMessageAuthorDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLiveChatMessageSnippet(o.snippet);
+    checkLiveChatMessageSnippet(o.snippet as api.LiveChatMessageSnippet);
   }
   buildCounterLiveChatMessage--;
 }
@@ -2799,8 +2823,8 @@ core.List<api.LiveChatMessage> buildUnnamed2359() {
 
 void checkUnnamed2359(core.List<api.LiveChatMessage> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiveChatMessage(o[0]);
-  checkLiveChatMessage(o[1]);
+  checkLiveChatMessage(o[0] as api.LiveChatMessage);
+  checkLiveChatMessage(o[1] as api.LiveChatMessage);
 }
 
 core.int buildCounterLiveChatMessageListResponse = 0;
@@ -2832,9 +2856,9 @@ void checkLiveChatMessageListResponse(api.LiveChatMessageListResponse o) {
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.offlineAt, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.pollingIntervalMillis, unittest.equals(42));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterLiveChatMessageListResponse--;
@@ -2888,17 +2912,24 @@ void checkLiveChatMessageSnippet(api.LiveChatMessageSnippet o) {
   if (buildCounterLiveChatMessageSnippet < 3) {
     unittest.expect(o.authorChannelId, unittest.equals('foo'));
     unittest.expect(o.displayMessage, unittest.equals('foo'));
-    checkLiveChatFanFundingEventDetails(o.fanFundingEventDetails);
+    checkLiveChatFanFundingEventDetails(
+        o.fanFundingEventDetails as api.LiveChatFanFundingEventDetails);
     unittest.expect(o.hasDisplayContent, unittest.isTrue);
     unittest.expect(o.liveChatId, unittest.equals('foo'));
-    checkLiveChatMessageDeletedDetails(o.messageDeletedDetails);
-    checkLiveChatMessageRetractedDetails(o.messageRetractedDetails);
+    checkLiveChatMessageDeletedDetails(
+        o.messageDeletedDetails as api.LiveChatMessageDeletedDetails);
+    checkLiveChatMessageRetractedDetails(
+        o.messageRetractedDetails as api.LiveChatMessageRetractedDetails);
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkLiveChatSuperChatDetails(o.superChatDetails);
-    checkLiveChatSuperStickerDetails(o.superStickerDetails);
-    checkLiveChatTextMessageDetails(o.textMessageDetails);
+    checkLiveChatSuperChatDetails(
+        o.superChatDetails as api.LiveChatSuperChatDetails);
+    checkLiveChatSuperStickerDetails(
+        o.superStickerDetails as api.LiveChatSuperStickerDetails);
+    checkLiveChatTextMessageDetails(
+        o.textMessageDetails as api.LiveChatTextMessageDetails);
     unittest.expect(o.type, unittest.equals('foo'));
-    checkLiveChatUserBannedMessageDetails(o.userBannedDetails);
+    checkLiveChatUserBannedMessageDetails(
+        o.userBannedDetails as api.LiveChatUserBannedMessageDetails);
   }
   buildCounterLiveChatMessageSnippet--;
 }
@@ -2923,7 +2954,7 @@ void checkLiveChatModerator(api.LiveChatModerator o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLiveChatModeratorSnippet(o.snippet);
+    checkLiveChatModeratorSnippet(o.snippet as api.LiveChatModeratorSnippet);
   }
   buildCounterLiveChatModerator--;
 }
@@ -2937,8 +2968,8 @@ core.List<api.LiveChatModerator> buildUnnamed2360() {
 
 void checkUnnamed2360(core.List<api.LiveChatModerator> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiveChatModerator(o[0]);
-  checkLiveChatModerator(o[1]);
+  checkLiveChatModerator(o[0] as api.LiveChatModerator);
+  checkLiveChatModerator(o[1] as api.LiveChatModerator);
 }
 
 core.int buildCounterLiveChatModeratorListResponse = 0;
@@ -2968,9 +2999,9 @@ void checkLiveChatModeratorListResponse(api.LiveChatModeratorListResponse o) {
     checkUnnamed2360(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterLiveChatModeratorListResponse--;
@@ -2992,7 +3023,7 @@ void checkLiveChatModeratorSnippet(api.LiveChatModeratorSnippet o) {
   buildCounterLiveChatModeratorSnippet++;
   if (buildCounterLiveChatModeratorSnippet < 3) {
     unittest.expect(o.liveChatId, unittest.equals('foo'));
-    checkChannelProfileDetails(o.moderatorDetails);
+    checkChannelProfileDetails(o.moderatorDetails as api.ChannelProfileDetails);
   }
   buildCounterLiveChatModeratorSnippet--;
 }
@@ -3045,7 +3076,8 @@ void checkLiveChatSuperStickerDetails(api.LiveChatSuperStickerDetails o) {
     unittest.expect(o.amountDisplayString, unittest.equals('foo'));
     unittest.expect(o.amountMicros, unittest.equals('foo'));
     unittest.expect(o.currency, unittest.equals('foo'));
-    checkSuperStickerMetadata(o.superStickerMetadata);
+    checkSuperStickerMetadata(
+        o.superStickerMetadata as api.SuperStickerMetadata);
     unittest.expect(o.tier, unittest.equals(42));
   }
   buildCounterLiveChatSuperStickerDetails--;
@@ -3089,7 +3121,8 @@ void checkLiveChatUserBannedMessageDetails(
   if (buildCounterLiveChatUserBannedMessageDetails < 3) {
     unittest.expect(o.banDurationSeconds, unittest.equals('foo'));
     unittest.expect(o.banType, unittest.equals('foo'));
-    checkChannelProfileDetails(o.bannedUserDetails);
+    checkChannelProfileDetails(
+        o.bannedUserDetails as api.ChannelProfileDetails);
   }
   buildCounterLiveChatUserBannedMessageDetails--;
 }
@@ -3114,13 +3147,14 @@ api.LiveStream buildLiveStream() {
 void checkLiveStream(api.LiveStream o) {
   buildCounterLiveStream++;
   if (buildCounterLiveStream < 3) {
-    checkCdnSettings(o.cdn);
-    checkLiveStreamContentDetails(o.contentDetails);
+    checkCdnSettings(o.cdn as api.CdnSettings);
+    checkLiveStreamContentDetails(
+        o.contentDetails as api.LiveStreamContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkLiveStreamSnippet(o.snippet);
-    checkLiveStreamStatus(o.status);
+    checkLiveStreamSnippet(o.snippet as api.LiveStreamSnippet);
+    checkLiveStreamStatus(o.status as api.LiveStreamStatus);
   }
   buildCounterLiveStream--;
 }
@@ -3180,8 +3214,8 @@ core.List<api.LiveStreamConfigurationIssue> buildUnnamed2361() {
 
 void checkUnnamed2361(core.List<api.LiveStreamConfigurationIssue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiveStreamConfigurationIssue(o[0]);
-  checkLiveStreamConfigurationIssue(o[1]);
+  checkLiveStreamConfigurationIssue(o[0] as api.LiveStreamConfigurationIssue);
+  checkLiveStreamConfigurationIssue(o[1] as api.LiveStreamConfigurationIssue);
 }
 
 core.int buildCounterLiveStreamHealthStatus = 0;
@@ -3216,8 +3250,8 @@ core.List<api.LiveStream> buildUnnamed2362() {
 
 void checkUnnamed2362(core.List<api.LiveStream> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLiveStream(o[0]);
-  checkLiveStream(o[1]);
+  checkLiveStream(o[0] as api.LiveStream);
+  checkLiveStream(o[1] as api.LiveStream);
 }
 
 core.int buildCounterLiveStreamListResponse = 0;
@@ -3247,9 +3281,9 @@ void checkLiveStreamListResponse(api.LiveStreamListResponse o) {
     checkUnnamed2362(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterLiveStreamListResponse--;
@@ -3297,7 +3331,7 @@ api.LiveStreamStatus buildLiveStreamStatus() {
 void checkLiveStreamStatus(api.LiveStreamStatus o) {
   buildCounterLiveStreamStatus++;
   if (buildCounterLiveStreamStatus < 3) {
-    checkLiveStreamHealthStatus(o.healthStatus);
+    checkLiveStreamHealthStatus(o.healthStatus as api.LiveStreamHealthStatus);
     unittest.expect(o.streamStatus, unittest.equals('foo'));
   }
   buildCounterLiveStreamStatus--;
@@ -3312,8 +3346,8 @@ core.List<api.LocalizedString> buildUnnamed2363() {
 
 void checkUnnamed2363(core.List<api.LocalizedString> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocalizedString(o[0]);
-  checkLocalizedString(o[1]);
+  checkLocalizedString(o[0] as api.LocalizedString);
+  checkLocalizedString(o[1] as api.LocalizedString);
 }
 
 core.int buildCounterLocalizedProperty = 0;
@@ -3333,7 +3367,7 @@ void checkLocalizedProperty(api.LocalizedProperty o) {
   buildCounterLocalizedProperty++;
   if (buildCounterLocalizedProperty < 3) {
     unittest.expect(o.default_, unittest.equals('foo'));
-    checkLanguageTag(o.defaultLanguage);
+    checkLanguageTag(o.defaultLanguage as api.LanguageTag);
     checkUnnamed2363(o.localized);
   }
   buildCounterLocalizedProperty--;
@@ -3378,7 +3412,7 @@ void checkMember(api.Member o) {
   if (buildCounterMember < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkMemberSnippet(o.snippet);
+    checkMemberSnippet(o.snippet as api.MemberSnippet);
   }
   buildCounterMember--;
 }
@@ -3392,8 +3426,8 @@ core.List<api.Member> buildUnnamed2364() {
 
 void checkUnnamed2364(core.List<api.Member> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMember(o[0]);
-  checkMember(o[1]);
+  checkMember(o[0] as api.Member);
+  checkMember(o[1] as api.Member);
 }
 
 core.int buildCounterMemberListResponse = 0;
@@ -3422,8 +3456,8 @@ void checkMemberListResponse(api.MemberListResponse o) {
     checkUnnamed2364(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterMemberListResponse--;
@@ -3446,8 +3480,8 @@ void checkMemberSnippet(api.MemberSnippet o) {
   buildCounterMemberSnippet++;
   if (buildCounterMemberSnippet < 3) {
     unittest.expect(o.creatorChannelId, unittest.equals('foo'));
-    checkChannelProfileDetails(o.memberDetails);
-    checkMembershipsDetails(o.membershipsDetails);
+    checkChannelProfileDetails(o.memberDetails as api.ChannelProfileDetails);
+    checkMembershipsDetails(o.membershipsDetails as api.MembershipsDetails);
   }
   buildCounterMemberSnippet--;
 }
@@ -3474,8 +3508,8 @@ core.List<api.MembershipsDurationAtLevel> buildUnnamed2366() {
 
 void checkUnnamed2366(core.List<api.MembershipsDurationAtLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembershipsDurationAtLevel(o[0]);
-  checkMembershipsDurationAtLevel(o[1]);
+  checkMembershipsDurationAtLevel(o[0] as api.MembershipsDurationAtLevel);
+  checkMembershipsDurationAtLevel(o[1] as api.MembershipsDurationAtLevel);
 }
 
 core.int buildCounterMembershipsDetails = 0;
@@ -3500,7 +3534,7 @@ void checkMembershipsDetails(api.MembershipsDetails o) {
     unittest.expect(o.highestAccessibleLevel, unittest.equals('foo'));
     unittest.expect(
         o.highestAccessibleLevelDisplayName, unittest.equals('foo'));
-    checkMembershipsDuration(o.membershipsDuration);
+    checkMembershipsDuration(o.membershipsDuration as api.MembershipsDuration);
     checkUnnamed2366(o.membershipsDurationAtLevels);
   }
   buildCounterMembershipsDetails--;
@@ -3570,7 +3604,7 @@ void checkMembershipsLevel(api.MembershipsLevel o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkMembershipsLevelSnippet(o.snippet);
+    checkMembershipsLevelSnippet(o.snippet as api.MembershipsLevelSnippet);
   }
   buildCounterMembershipsLevel--;
 }
@@ -3584,8 +3618,8 @@ core.List<api.MembershipsLevel> buildUnnamed2367() {
 
 void checkUnnamed2367(core.List<api.MembershipsLevel> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMembershipsLevel(o[0]);
-  checkMembershipsLevel(o[1]);
+  checkMembershipsLevel(o[0] as api.MembershipsLevel);
+  checkMembershipsLevel(o[1] as api.MembershipsLevel);
 }
 
 core.int buildCounterMembershipsLevelListResponse = 0;
@@ -3631,7 +3665,7 @@ void checkMembershipsLevelSnippet(api.MembershipsLevelSnippet o) {
   buildCounterMembershipsLevelSnippet++;
   if (buildCounterMembershipsLevelSnippet < 3) {
     unittest.expect(o.creatorChannelId, unittest.equals('foo'));
-    checkLevelDetails(o.levelDetails);
+    checkLevelDetails(o.levelDetails as api.LevelDetails);
   }
   buildCounterMembershipsLevelSnippet--;
 }
@@ -3689,8 +3723,8 @@ core.Map<core.String, api.PlaylistLocalization> buildUnnamed2368() {
 
 void checkUnnamed2368(core.Map<core.String, api.PlaylistLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlaylistLocalization(o['x']);
-  checkPlaylistLocalization(o['y']);
+  checkPlaylistLocalization(o['x'] as api.PlaylistLocalization);
+  checkPlaylistLocalization(o['y'] as api.PlaylistLocalization);
 }
 
 core.int buildCounterPlaylist = 0;
@@ -3714,14 +3748,14 @@ api.Playlist buildPlaylist() {
 void checkPlaylist(api.Playlist o) {
   buildCounterPlaylist++;
   if (buildCounterPlaylist < 3) {
-    checkPlaylistContentDetails(o.contentDetails);
+    checkPlaylistContentDetails(o.contentDetails as api.PlaylistContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     checkUnnamed2368(o.localizations);
-    checkPlaylistPlayer(o.player);
-    checkPlaylistSnippet(o.snippet);
-    checkPlaylistStatus(o.status);
+    checkPlaylistPlayer(o.player as api.PlaylistPlayer);
+    checkPlaylistSnippet(o.snippet as api.PlaylistSnippet);
+    checkPlaylistStatus(o.status as api.PlaylistStatus);
   }
   buildCounterPlaylist--;
 }
@@ -3764,12 +3798,13 @@ api.PlaylistItem buildPlaylistItem() {
 void checkPlaylistItem(api.PlaylistItem o) {
   buildCounterPlaylistItem++;
   if (buildCounterPlaylistItem < 3) {
-    checkPlaylistItemContentDetails(o.contentDetails);
+    checkPlaylistItemContentDetails(
+        o.contentDetails as api.PlaylistItemContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkPlaylistItemSnippet(o.snippet);
-    checkPlaylistItemStatus(o.status);
+    checkPlaylistItemSnippet(o.snippet as api.PlaylistItemSnippet);
+    checkPlaylistItemStatus(o.status as api.PlaylistItemStatus);
   }
   buildCounterPlaylistItem--;
 }
@@ -3810,8 +3845,8 @@ core.List<api.PlaylistItem> buildUnnamed2369() {
 
 void checkUnnamed2369(core.List<api.PlaylistItem> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlaylistItem(o[0]);
-  checkPlaylistItem(o[1]);
+  checkPlaylistItem(o[0] as api.PlaylistItem);
+  checkPlaylistItem(o[1] as api.PlaylistItem);
 }
 
 core.int buildCounterPlaylistItemListResponse = 0;
@@ -3841,9 +3876,9 @@ void checkPlaylistItemListResponse(api.PlaylistItemListResponse o) {
     checkUnnamed2369(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterPlaylistItemListResponse--;
@@ -3877,8 +3912,8 @@ void checkPlaylistItemSnippet(api.PlaylistItemSnippet o) {
     unittest.expect(o.playlistId, unittest.equals('foo'));
     unittest.expect(o.position, unittest.equals(42));
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkResourceId(o.resourceId);
-    checkThumbnailDetails(o.thumbnails);
+    checkResourceId(o.resourceId as api.ResourceId);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterPlaylistItemSnippet--;
@@ -3912,8 +3947,8 @@ core.List<api.Playlist> buildUnnamed2370() {
 
 void checkUnnamed2370(core.List<api.Playlist> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkPlaylist(o[0]);
-  checkPlaylist(o[1]);
+  checkPlaylist(o[0] as api.Playlist);
+  checkPlaylist(o[1] as api.Playlist);
 }
 
 core.int buildCounterPlaylistListResponse = 0;
@@ -3943,9 +3978,9 @@ void checkPlaylistListResponse(api.PlaylistListResponse o) {
     checkUnnamed2370(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterPlaylistListResponse--;
@@ -4030,10 +4065,10 @@ void checkPlaylistSnippet(api.PlaylistSnippet o) {
     unittest.expect(o.channelTitle, unittest.equals('foo'));
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkPlaylistLocalization(o.localized);
+    checkPlaylistLocalization(o.localized as api.PlaylistLocalization);
     unittest.expect(o.publishedAt, unittest.equals('foo'));
     checkUnnamed2371(o.tags);
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterPlaylistSnippet--;
@@ -4093,7 +4128,7 @@ api.RelatedEntity buildRelatedEntity() {
 void checkRelatedEntity(api.RelatedEntity o) {
   buildCounterRelatedEntity++;
   if (buildCounterRelatedEntity < 3) {
-    checkEntity(o.entity);
+    checkEntity(o.entity as api.Entity);
   }
   buildCounterRelatedEntity--;
 }
@@ -4132,8 +4167,8 @@ core.List<api.SearchResult> buildUnnamed2372() {
 
 void checkUnnamed2372(core.List<api.SearchResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSearchResult(o[0]);
-  checkSearchResult(o[1]);
+  checkSearchResult(o[0] as api.SearchResult);
+  checkSearchResult(o[1] as api.SearchResult);
 }
 
 core.int buildCounterSearchListResponse = 0;
@@ -4164,10 +4199,10 @@ void checkSearchListResponse(api.SearchListResponse o) {
     checkUnnamed2372(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
     unittest.expect(o.regionCode, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterSearchListResponse--;
@@ -4191,9 +4226,9 @@ void checkSearchResult(api.SearchResult o) {
   buildCounterSearchResult++;
   if (buildCounterSearchResult < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkResourceId(o.id);
+    checkResourceId(o.id as api.ResourceId);
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkSearchResultSnippet(o.snippet);
+    checkSearchResultSnippet(o.snippet as api.SearchResultSnippet);
   }
   buildCounterSearchResult--;
 }
@@ -4223,7 +4258,7 @@ void checkSearchResultSnippet(api.SearchResultSnippet o) {
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.liveBroadcastContent, unittest.equals('foo'));
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterSearchResultSnippet--;
@@ -4247,7 +4282,7 @@ void checkSponsor(api.Sponsor o) {
   if (buildCounterSponsor < 3) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkSponsorSnippet(o.snippet);
+    checkSponsorSnippet(o.snippet as api.SponsorSnippet);
   }
   buildCounterSponsor--;
 }
@@ -4261,8 +4296,8 @@ core.List<api.Sponsor> buildUnnamed2373() {
 
 void checkUnnamed2373(core.List<api.Sponsor> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSponsor(o[0]);
-  checkSponsor(o[1]);
+  checkSponsor(o[0] as api.Sponsor);
+  checkSponsor(o[1] as api.Sponsor);
 }
 
 core.int buildCounterSponsorListResponse = 0;
@@ -4291,8 +4326,8 @@ void checkSponsorListResponse(api.SponsorListResponse o) {
     checkUnnamed2373(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterSponsorListResponse--;
@@ -4317,7 +4352,7 @@ void checkSponsorSnippet(api.SponsorSnippet o) {
   if (buildCounterSponsorSnippet < 3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.cumulativeDurationMonths, unittest.equals(42));
-    checkChannelProfileDetails(o.sponsorDetails);
+    checkChannelProfileDetails(o.sponsorDetails as api.ChannelProfileDetails);
     unittest.expect(o.sponsorSince, unittest.equals('foo'));
   }
   buildCounterSponsorSnippet--;
@@ -4342,12 +4377,14 @@ api.Subscription buildSubscription() {
 void checkSubscription(api.Subscription o) {
   buildCounterSubscription++;
   if (buildCounterSubscription < 3) {
-    checkSubscriptionContentDetails(o.contentDetails);
+    checkSubscriptionContentDetails(
+        o.contentDetails as api.SubscriptionContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkSubscriptionSnippet(o.snippet);
-    checkSubscriptionSubscriberSnippet(o.subscriberSnippet);
+    checkSubscriptionSnippet(o.snippet as api.SubscriptionSnippet);
+    checkSubscriptionSubscriberSnippet(
+        o.subscriberSnippet as api.SubscriptionSubscriberSnippet);
   }
   buildCounterSubscription--;
 }
@@ -4384,8 +4421,8 @@ core.List<api.Subscription> buildUnnamed2374() {
 
 void checkUnnamed2374(core.List<api.Subscription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSubscription(o[0]);
-  checkSubscription(o[1]);
+  checkSubscription(o[0] as api.Subscription);
+  checkSubscription(o[1] as api.Subscription);
 }
 
 core.int buildCounterSubscriptionListResponse = 0;
@@ -4415,9 +4452,9 @@ void checkSubscriptionListResponse(api.SubscriptionListResponse o) {
     checkUnnamed2374(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterSubscriptionListResponse--;
@@ -4447,8 +4484,8 @@ void checkSubscriptionSnippet(api.SubscriptionSnippet o) {
     unittest.expect(o.channelTitle, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.publishedAt, unittest.equals('foo'));
-    checkResourceId(o.resourceId);
-    checkThumbnailDetails(o.thumbnails);
+    checkResourceId(o.resourceId as api.ResourceId);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterSubscriptionSnippet--;
@@ -4473,7 +4510,7 @@ void checkSubscriptionSubscriberSnippet(api.SubscriptionSubscriberSnippet o) {
   if (buildCounterSubscriptionSubscriberSnippet < 3) {
     unittest.expect(o.channelId, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterSubscriptionSubscriberSnippet--;
@@ -4499,7 +4536,7 @@ void checkSuperChatEvent(api.SuperChatEvent o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkSuperChatEventSnippet(o.snippet);
+    checkSuperChatEventSnippet(o.snippet as api.SuperChatEventSnippet);
   }
   buildCounterSuperChatEvent--;
 }
@@ -4513,8 +4550,8 @@ core.List<api.SuperChatEvent> buildUnnamed2375() {
 
 void checkUnnamed2375(core.List<api.SuperChatEvent> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSuperChatEvent(o[0]);
-  checkSuperChatEvent(o[1]);
+  checkSuperChatEvent(o[0] as api.SuperChatEvent);
+  checkSuperChatEvent(o[1] as api.SuperChatEvent);
 }
 
 core.int buildCounterSuperChatEventListResponse = 0;
@@ -4543,8 +4580,8 @@ void checkSuperChatEventListResponse(api.SuperChatEventListResponse o) {
     checkUnnamed2375(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
-    checkTokenPagination(o.tokenPagination);
+    checkPageInfo(o.pageInfo as api.PageInfo);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterSuperChatEventListResponse--;
@@ -4581,8 +4618,9 @@ void checkSuperChatEventSnippet(api.SuperChatEventSnippet o) {
     unittest.expect(o.displayString, unittest.equals('foo'));
     unittest.expect(o.isSuperStickerEvent, unittest.isTrue);
     unittest.expect(o.messageType, unittest.equals(42));
-    checkSuperStickerMetadata(o.superStickerMetadata);
-    checkChannelProfileDetails(o.supporterDetails);
+    checkSuperStickerMetadata(
+        o.superStickerMetadata as api.SuperStickerMetadata);
+    checkChannelProfileDetails(o.supporterDetails as api.ChannelProfileDetails);
   }
   buildCounterSuperChatEventSnippet--;
 }
@@ -4628,7 +4666,7 @@ void checkTestItem(api.TestItem o) {
   if (buildCounterTestItem < 3) {
     unittest.expect(o.gaia, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkTestItemTestItemSnippet(o.snippet);
+    checkTestItemTestItemSnippet(o.snippet as api.TestItemTestItemSnippet);
   }
   buildCounterTestItem--;
 }
@@ -4669,8 +4707,8 @@ void checkThirdPartyLink(api.ThirdPartyLink o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.linkingToken, unittest.equals('foo'));
-    checkThirdPartyLinkSnippet(o.snippet);
-    checkThirdPartyLinkStatus(o.status);
+    checkThirdPartyLinkSnippet(o.snippet as api.ThirdPartyLinkSnippet);
+    checkThirdPartyLinkStatus(o.status as api.ThirdPartyLinkStatus);
   }
   buildCounterThirdPartyLink--;
 }
@@ -4690,7 +4728,8 @@ api.ThirdPartyLinkSnippet buildThirdPartyLinkSnippet() {
 void checkThirdPartyLinkSnippet(api.ThirdPartyLinkSnippet o) {
   buildCounterThirdPartyLinkSnippet++;
   if (buildCounterThirdPartyLinkSnippet < 3) {
-    checkChannelToStoreLinkDetails(o.channelToStoreLink);
+    checkChannelToStoreLinkDetails(
+        o.channelToStoreLink as api.ChannelToStoreLinkDetails);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterThirdPartyLinkSnippet--;
@@ -4756,11 +4795,11 @@ api.ThumbnailDetails buildThumbnailDetails() {
 void checkThumbnailDetails(api.ThumbnailDetails o) {
   buildCounterThumbnailDetails++;
   if (buildCounterThumbnailDetails < 3) {
-    checkThumbnail(o.default_);
-    checkThumbnail(o.high);
-    checkThumbnail(o.maxres);
-    checkThumbnail(o.medium);
-    checkThumbnail(o.standard);
+    checkThumbnail(o.default_ as api.Thumbnail);
+    checkThumbnail(o.high as api.Thumbnail);
+    checkThumbnail(o.maxres as api.Thumbnail);
+    checkThumbnail(o.medium as api.Thumbnail);
+    checkThumbnail(o.standard as api.Thumbnail);
   }
   buildCounterThumbnailDetails--;
 }
@@ -4774,8 +4813,8 @@ core.List<api.ThumbnailDetails> buildUnnamed2376() {
 
 void checkUnnamed2376(core.List<api.ThumbnailDetails> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkThumbnailDetails(o[0]);
-  checkThumbnailDetails(o[1]);
+  checkThumbnailDetails(o[0] as api.ThumbnailDetails);
+  checkThumbnailDetails(o[1] as api.ThumbnailDetails);
 }
 
 core.int buildCounterThumbnailSetResponse = 0;
@@ -4829,8 +4868,8 @@ core.Map<core.String, api.VideoLocalization> buildUnnamed2377() {
 
 void checkUnnamed2377(core.Map<core.String, api.VideoLocalization> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoLocalization(o['x']);
-  checkVideoLocalization(o['y']);
+  checkVideoLocalization(o['x'] as api.VideoLocalization);
+  checkVideoLocalization(o['y'] as api.VideoLocalization);
 }
 
 core.int buildCounterVideo = 0;
@@ -4864,24 +4903,27 @@ api.Video buildVideo() {
 void checkVideo(api.Video o) {
   buildCounterVideo++;
   if (buildCounterVideo < 3) {
-    checkVideoAgeGating(o.ageGating);
-    checkVideoContentDetails(o.contentDetails);
+    checkVideoAgeGating(o.ageGating as api.VideoAgeGating);
+    checkVideoContentDetails(o.contentDetails as api.VideoContentDetails);
     unittest.expect(o.etag, unittest.equals('foo'));
-    checkVideoFileDetails(o.fileDetails);
+    checkVideoFileDetails(o.fileDetails as api.VideoFileDetails);
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkVideoLiveStreamingDetails(o.liveStreamingDetails);
+    checkVideoLiveStreamingDetails(
+        o.liveStreamingDetails as api.VideoLiveStreamingDetails);
     checkUnnamed2377(o.localizations);
-    checkVideoMonetizationDetails(o.monetizationDetails);
-    checkVideoPlayer(o.player);
-    checkVideoProcessingDetails(o.processingDetails);
-    checkVideoProjectDetails(o.projectDetails);
-    checkVideoRecordingDetails(o.recordingDetails);
-    checkVideoSnippet(o.snippet);
-    checkVideoStatistics(o.statistics);
-    checkVideoStatus(o.status);
-    checkVideoSuggestions(o.suggestions);
-    checkVideoTopicDetails(o.topicDetails);
+    checkVideoMonetizationDetails(
+        o.monetizationDetails as api.VideoMonetizationDetails);
+    checkVideoPlayer(o.player as api.VideoPlayer);
+    checkVideoProcessingDetails(
+        o.processingDetails as api.VideoProcessingDetails);
+    checkVideoProjectDetails(o.projectDetails as api.VideoProjectDetails);
+    checkVideoRecordingDetails(o.recordingDetails as api.VideoRecordingDetails);
+    checkVideoSnippet(o.snippet as api.VideoSnippet);
+    checkVideoStatistics(o.statistics as api.VideoStatistics);
+    checkVideoStatus(o.status as api.VideoStatus);
+    checkVideoSuggestions(o.suggestions as api.VideoSuggestions);
+    checkVideoTopicDetails(o.topicDetails as api.VideoTopicDetails);
   }
   buildCounterVideo--;
 }
@@ -4933,7 +4975,8 @@ void checkVideoAbuseReportReason(api.VideoAbuseReportReason o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkVideoAbuseReportReasonSnippet(o.snippet);
+    checkVideoAbuseReportReasonSnippet(
+        o.snippet as api.VideoAbuseReportReasonSnippet);
   }
   buildCounterVideoAbuseReportReason--;
 }
@@ -4947,8 +4990,8 @@ core.List<api.VideoAbuseReportReason> buildUnnamed2378() {
 
 void checkUnnamed2378(core.List<api.VideoAbuseReportReason> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoAbuseReportReason(o[0]);
-  checkVideoAbuseReportReason(o[1]);
+  checkVideoAbuseReportReason(o[0] as api.VideoAbuseReportReason);
+  checkVideoAbuseReportReason(o[1] as api.VideoAbuseReportReason);
 }
 
 core.int buildCounterVideoAbuseReportReasonListResponse = 0;
@@ -4989,8 +5032,10 @@ core.List<api.VideoAbuseReportSecondaryReason> buildUnnamed2379() {
 
 void checkUnnamed2379(core.List<api.VideoAbuseReportSecondaryReason> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoAbuseReportSecondaryReason(o[0]);
-  checkVideoAbuseReportSecondaryReason(o[1]);
+  checkVideoAbuseReportSecondaryReason(
+      o[0] as api.VideoAbuseReportSecondaryReason);
+  checkVideoAbuseReportSecondaryReason(
+      o[1] as api.VideoAbuseReportSecondaryReason);
 }
 
 core.int buildCounterVideoAbuseReportReasonSnippet = 0;
@@ -5079,7 +5124,7 @@ void checkVideoCategory(api.VideoCategory o) {
     unittest.expect(o.etag, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.kind, unittest.equals('foo'));
-    checkVideoCategorySnippet(o.snippet);
+    checkVideoCategorySnippet(o.snippet as api.VideoCategorySnippet);
   }
   buildCounterVideoCategory--;
 }
@@ -5093,8 +5138,8 @@ core.List<api.VideoCategory> buildUnnamed2380() {
 
 void checkUnnamed2380(core.List<api.VideoCategory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoCategory(o[0]);
-  checkVideoCategory(o[1]);
+  checkVideoCategory(o[0] as api.VideoCategory);
+  checkVideoCategory(o[1] as api.VideoCategory);
 }
 
 core.int buildCounterVideoCategoryListResponse = 0;
@@ -5124,9 +5169,9 @@ void checkVideoCategoryListResponse(api.VideoCategoryListResponse o) {
     checkUnnamed2380(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterVideoCategoryListResponse--;
@@ -5179,15 +5224,16 @@ void checkVideoContentDetails(api.VideoContentDetails o) {
   buildCounterVideoContentDetails++;
   if (buildCounterVideoContentDetails < 3) {
     unittest.expect(o.caption, unittest.equals('foo'));
-    checkContentRating(o.contentRating);
-    checkAccessPolicy(o.countryRestriction);
+    checkContentRating(o.contentRating as api.ContentRating);
+    checkAccessPolicy(o.countryRestriction as api.AccessPolicy);
     unittest.expect(o.definition, unittest.equals('foo'));
     unittest.expect(o.dimension, unittest.equals('foo'));
     unittest.expect(o.duration, unittest.equals('foo'));
     unittest.expect(o.hasCustomThumbnail, unittest.isTrue);
     unittest.expect(o.licensedContent, unittest.isTrue);
     unittest.expect(o.projection, unittest.equals('foo'));
-    checkVideoContentDetailsRegionRestriction(o.regionRestriction);
+    checkVideoContentDetailsRegionRestriction(
+        o.regionRestriction as api.VideoContentDetailsRegionRestriction);
   }
   buildCounterVideoContentDetails--;
 }
@@ -5250,8 +5296,8 @@ core.List<api.VideoFileDetailsAudioStream> buildUnnamed2383() {
 
 void checkUnnamed2383(core.List<api.VideoFileDetailsAudioStream> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoFileDetailsAudioStream(o[0]);
-  checkVideoFileDetailsAudioStream(o[1]);
+  checkVideoFileDetailsAudioStream(o[0] as api.VideoFileDetailsAudioStream);
+  checkVideoFileDetailsAudioStream(o[1] as api.VideoFileDetailsAudioStream);
 }
 
 core.List<api.VideoFileDetailsVideoStream> buildUnnamed2384() {
@@ -5263,8 +5309,8 @@ core.List<api.VideoFileDetailsVideoStream> buildUnnamed2384() {
 
 void checkUnnamed2384(core.List<api.VideoFileDetailsVideoStream> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoFileDetailsVideoStream(o[0]);
-  checkVideoFileDetailsVideoStream(o[1]);
+  checkVideoFileDetailsVideoStream(o[0] as api.VideoFileDetailsVideoStream);
+  checkVideoFileDetailsVideoStream(o[1] as api.VideoFileDetailsVideoStream);
 }
 
 core.int buildCounterVideoFileDetails = 0;
@@ -5369,8 +5415,8 @@ core.List<api.Video> buildUnnamed2385() {
 
 void checkUnnamed2385(core.List<api.Video> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideo(o[0]);
-  checkVideo(o[1]);
+  checkVideo(o[0] as api.Video);
+  checkVideo(o[1] as api.Video);
 }
 
 core.int buildCounterVideoListResponse = 0;
@@ -5400,9 +5446,9 @@ void checkVideoListResponse(api.VideoListResponse o) {
     checkUnnamed2385(o.items);
     unittest.expect(o.kind, unittest.equals('foo'));
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
-    checkPageInfo(o.pageInfo);
+    checkPageInfo(o.pageInfo as api.PageInfo);
     unittest.expect(o.prevPageToken, unittest.equals('foo'));
-    checkTokenPagination(o.tokenPagination);
+    checkTokenPagination(o.tokenPagination as api.TokenPagination);
     unittest.expect(o.visitorId, unittest.equals('foo'));
   }
   buildCounterVideoListResponse--;
@@ -5472,7 +5518,7 @@ api.VideoMonetizationDetails buildVideoMonetizationDetails() {
 void checkVideoMonetizationDetails(api.VideoMonetizationDetails o) {
   buildCounterVideoMonetizationDetails++;
   if (buildCounterVideoMonetizationDetails < 3) {
-    checkAccessPolicy(o.access);
+    checkAccessPolicy(o.access as api.AccessPolicy);
   }
   buildCounterVideoMonetizationDetails--;
 }
@@ -5525,7 +5571,8 @@ void checkVideoProcessingDetails(api.VideoProcessingDetails o) {
     unittest.expect(o.fileDetailsAvailability, unittest.equals('foo'));
     unittest.expect(o.processingFailureReason, unittest.equals('foo'));
     unittest.expect(o.processingIssuesAvailability, unittest.equals('foo'));
-    checkVideoProcessingDetailsProcessingProgress(o.processingProgress);
+    checkVideoProcessingDetailsProcessingProgress(
+        o.processingProgress as api.VideoProcessingDetailsProcessingProgress);
     unittest.expect(o.processingStatus, unittest.equals('foo'));
     unittest.expect(o.tagSuggestionsAvailability, unittest.equals('foo'));
     unittest.expect(o.thumbnailsAvailability, unittest.equals('foo'));
@@ -5620,8 +5667,8 @@ core.List<api.VideoRating> buildUnnamed2387() {
 
 void checkUnnamed2387(core.List<api.VideoRating> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoRating(o[0]);
-  checkVideoRating(o[1]);
+  checkVideoRating(o[0] as api.VideoRating);
+  checkVideoRating(o[1] as api.VideoRating);
 }
 
 core.int buildCounterVideoRatingListResponse = 0;
@@ -5667,7 +5714,7 @@ api.VideoRecordingDetails buildVideoRecordingDetails() {
 void checkVideoRecordingDetails(api.VideoRecordingDetails o) {
   buildCounterVideoRecordingDetails++;
   if (buildCounterVideoRecordingDetails < 3) {
-    checkGeoPoint(o.location);
+    checkGeoPoint(o.location as api.GeoPoint);
     unittest.expect(o.locationDescription, unittest.equals('foo'));
     unittest.expect(o.recordingDate, unittest.equals('foo'));
   }
@@ -5719,10 +5766,10 @@ void checkVideoSnippet(api.VideoSnippet o) {
     unittest.expect(o.defaultLanguage, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.liveBroadcastContent, unittest.equals('foo'));
-    checkVideoLocalization(o.localized);
+    checkVideoLocalization(o.localized as api.VideoLocalization);
     unittest.expect(o.publishedAt, unittest.equals('foo'));
     checkUnnamed2388(o.tags);
-    checkThumbnailDetails(o.thumbnails);
+    checkThumbnailDetails(o.thumbnails as api.ThumbnailDetails);
     unittest.expect(o.title, unittest.equals('foo'));
   }
   buildCounterVideoSnippet--;
@@ -5853,8 +5900,8 @@ core.List<api.VideoSuggestionsTagSuggestion> buildUnnamed2393() {
 
 void checkUnnamed2393(core.List<api.VideoSuggestionsTagSuggestion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkVideoSuggestionsTagSuggestion(o[0]);
-  checkVideoSuggestionsTagSuggestion(o[1]);
+  checkVideoSuggestionsTagSuggestion(o[0] as api.VideoSuggestionsTagSuggestion);
+  checkVideoSuggestionsTagSuggestion(o[1] as api.VideoSuggestionsTagSuggestion);
 }
 
 core.int buildCounterVideoSuggestions = 0;
@@ -6931,7 +6978,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAbuseReport();
       var od = api.AbuseReport.fromJson(o.toJson());
-      checkAbuseReport(od);
+      checkAbuseReport(od as api.AbuseReport);
     });
   });
 
@@ -6939,7 +6986,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAbuseType();
       var od = api.AbuseType.fromJson(o.toJson());
-      checkAbuseType(od);
+      checkAbuseType(od as api.AbuseType);
     });
   });
 
@@ -6947,7 +6994,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessPolicy();
       var od = api.AccessPolicy.fromJson(o.toJson());
-      checkAccessPolicy(od);
+      checkAccessPolicy(od as api.AccessPolicy);
     });
   });
 
@@ -6955,7 +7002,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivity();
       var od = api.Activity.fromJson(o.toJson());
-      checkActivity(od);
+      checkActivity(od as api.Activity);
     });
   });
 
@@ -6963,7 +7010,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetails();
       var od = api.ActivityContentDetails.fromJson(o.toJson());
-      checkActivityContentDetails(od);
+      checkActivityContentDetails(od as api.ActivityContentDetails);
     });
   });
 
@@ -6971,7 +7018,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsBulletin();
       var od = api.ActivityContentDetailsBulletin.fromJson(o.toJson());
-      checkActivityContentDetailsBulletin(od);
+      checkActivityContentDetailsBulletin(
+          od as api.ActivityContentDetailsBulletin);
     });
   });
 
@@ -6979,7 +7027,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsChannelItem();
       var od = api.ActivityContentDetailsChannelItem.fromJson(o.toJson());
-      checkActivityContentDetailsChannelItem(od);
+      checkActivityContentDetailsChannelItem(
+          od as api.ActivityContentDetailsChannelItem);
     });
   });
 
@@ -6987,7 +7036,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsComment();
       var od = api.ActivityContentDetailsComment.fromJson(o.toJson());
-      checkActivityContentDetailsComment(od);
+      checkActivityContentDetailsComment(
+          od as api.ActivityContentDetailsComment);
     });
   });
 
@@ -6995,7 +7045,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsFavorite();
       var od = api.ActivityContentDetailsFavorite.fromJson(o.toJson());
-      checkActivityContentDetailsFavorite(od);
+      checkActivityContentDetailsFavorite(
+          od as api.ActivityContentDetailsFavorite);
     });
   });
 
@@ -7003,7 +7054,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsLike();
       var od = api.ActivityContentDetailsLike.fromJson(o.toJson());
-      checkActivityContentDetailsLike(od);
+      checkActivityContentDetailsLike(od as api.ActivityContentDetailsLike);
     });
   });
 
@@ -7011,7 +7062,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsPlaylistItem();
       var od = api.ActivityContentDetailsPlaylistItem.fromJson(o.toJson());
-      checkActivityContentDetailsPlaylistItem(od);
+      checkActivityContentDetailsPlaylistItem(
+          od as api.ActivityContentDetailsPlaylistItem);
     });
   });
 
@@ -7019,7 +7071,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsPromotedItem();
       var od = api.ActivityContentDetailsPromotedItem.fromJson(o.toJson());
-      checkActivityContentDetailsPromotedItem(od);
+      checkActivityContentDetailsPromotedItem(
+          od as api.ActivityContentDetailsPromotedItem);
     });
   });
 
@@ -7027,7 +7080,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsRecommendation();
       var od = api.ActivityContentDetailsRecommendation.fromJson(o.toJson());
-      checkActivityContentDetailsRecommendation(od);
+      checkActivityContentDetailsRecommendation(
+          od as api.ActivityContentDetailsRecommendation);
     });
   });
 
@@ -7035,7 +7089,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsSocial();
       var od = api.ActivityContentDetailsSocial.fromJson(o.toJson());
-      checkActivityContentDetailsSocial(od);
+      checkActivityContentDetailsSocial(od as api.ActivityContentDetailsSocial);
     });
   });
 
@@ -7043,7 +7097,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsSubscription();
       var od = api.ActivityContentDetailsSubscription.fromJson(o.toJson());
-      checkActivityContentDetailsSubscription(od);
+      checkActivityContentDetailsSubscription(
+          od as api.ActivityContentDetailsSubscription);
     });
   });
 
@@ -7051,7 +7106,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityContentDetailsUpload();
       var od = api.ActivityContentDetailsUpload.fromJson(o.toJson());
-      checkActivityContentDetailsUpload(od);
+      checkActivityContentDetailsUpload(od as api.ActivityContentDetailsUpload);
     });
   });
 
@@ -7059,7 +7114,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivityListResponse();
       var od = api.ActivityListResponse.fromJson(o.toJson());
-      checkActivityListResponse(od);
+      checkActivityListResponse(od as api.ActivityListResponse);
     });
   });
 
@@ -7067,7 +7122,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildActivitySnippet();
       var od = api.ActivitySnippet.fromJson(o.toJson());
-      checkActivitySnippet(od);
+      checkActivitySnippet(od as api.ActivitySnippet);
     });
   });
 
@@ -7075,7 +7130,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCaption();
       var od = api.Caption.fromJson(o.toJson());
-      checkCaption(od);
+      checkCaption(od as api.Caption);
     });
   });
 
@@ -7083,7 +7138,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCaptionListResponse();
       var od = api.CaptionListResponse.fromJson(o.toJson());
-      checkCaptionListResponse(od);
+      checkCaptionListResponse(od as api.CaptionListResponse);
     });
   });
 
@@ -7091,7 +7146,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCaptionSnippet();
       var od = api.CaptionSnippet.fromJson(o.toJson());
-      checkCaptionSnippet(od);
+      checkCaptionSnippet(od as api.CaptionSnippet);
     });
   });
 
@@ -7099,7 +7154,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCdnSettings();
       var od = api.CdnSettings.fromJson(o.toJson());
-      checkCdnSettings(od);
+      checkCdnSettings(od as api.CdnSettings);
     });
   });
 
@@ -7107,7 +7162,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannel();
       var od = api.Channel.fromJson(o.toJson());
-      checkChannel(od);
+      checkChannel(od as api.Channel);
     });
   });
 
@@ -7115,7 +7170,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelAuditDetails();
       var od = api.ChannelAuditDetails.fromJson(o.toJson());
-      checkChannelAuditDetails(od);
+      checkChannelAuditDetails(od as api.ChannelAuditDetails);
     });
   });
 
@@ -7123,7 +7178,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelBannerResource();
       var od = api.ChannelBannerResource.fromJson(o.toJson());
-      checkChannelBannerResource(od);
+      checkChannelBannerResource(od as api.ChannelBannerResource);
     });
   });
 
@@ -7131,7 +7186,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelBrandingSettings();
       var od = api.ChannelBrandingSettings.fromJson(o.toJson());
-      checkChannelBrandingSettings(od);
+      checkChannelBrandingSettings(od as api.ChannelBrandingSettings);
     });
   });
 
@@ -7139,7 +7194,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelContentDetailsRelatedPlaylists();
       var od = api.ChannelContentDetailsRelatedPlaylists.fromJson(o.toJson());
-      checkChannelContentDetailsRelatedPlaylists(od);
+      checkChannelContentDetailsRelatedPlaylists(
+          od as api.ChannelContentDetailsRelatedPlaylists);
     });
   });
 
@@ -7147,7 +7203,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelContentDetails();
       var od = api.ChannelContentDetails.fromJson(o.toJson());
-      checkChannelContentDetails(od);
+      checkChannelContentDetails(od as api.ChannelContentDetails);
     });
   });
 
@@ -7155,7 +7211,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelContentOwnerDetails();
       var od = api.ChannelContentOwnerDetails.fromJson(o.toJson());
-      checkChannelContentOwnerDetails(od);
+      checkChannelContentOwnerDetails(od as api.ChannelContentOwnerDetails);
     });
   });
 
@@ -7163,7 +7219,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelConversionPing();
       var od = api.ChannelConversionPing.fromJson(o.toJson());
-      checkChannelConversionPing(od);
+      checkChannelConversionPing(od as api.ChannelConversionPing);
     });
   });
 
@@ -7171,7 +7227,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelConversionPings();
       var od = api.ChannelConversionPings.fromJson(o.toJson());
-      checkChannelConversionPings(od);
+      checkChannelConversionPings(od as api.ChannelConversionPings);
     });
   });
 
@@ -7179,7 +7235,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelListResponse();
       var od = api.ChannelListResponse.fromJson(o.toJson());
-      checkChannelListResponse(od);
+      checkChannelListResponse(od as api.ChannelListResponse);
     });
   });
 
@@ -7187,7 +7243,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelLocalization();
       var od = api.ChannelLocalization.fromJson(o.toJson());
-      checkChannelLocalization(od);
+      checkChannelLocalization(od as api.ChannelLocalization);
     });
   });
 
@@ -7195,7 +7251,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelProfileDetails();
       var od = api.ChannelProfileDetails.fromJson(o.toJson());
-      checkChannelProfileDetails(od);
+      checkChannelProfileDetails(od as api.ChannelProfileDetails);
     });
   });
 
@@ -7203,7 +7259,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSection();
       var od = api.ChannelSection.fromJson(o.toJson());
-      checkChannelSection(od);
+      checkChannelSection(od as api.ChannelSection);
     });
   });
 
@@ -7211,7 +7267,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSectionContentDetails();
       var od = api.ChannelSectionContentDetails.fromJson(o.toJson());
-      checkChannelSectionContentDetails(od);
+      checkChannelSectionContentDetails(od as api.ChannelSectionContentDetails);
     });
   });
 
@@ -7219,7 +7275,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSectionListResponse();
       var od = api.ChannelSectionListResponse.fromJson(o.toJson());
-      checkChannelSectionListResponse(od);
+      checkChannelSectionListResponse(od as api.ChannelSectionListResponse);
     });
   });
 
@@ -7227,7 +7283,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSectionLocalization();
       var od = api.ChannelSectionLocalization.fromJson(o.toJson());
-      checkChannelSectionLocalization(od);
+      checkChannelSectionLocalization(od as api.ChannelSectionLocalization);
     });
   });
 
@@ -7235,7 +7291,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSectionSnippet();
       var od = api.ChannelSectionSnippet.fromJson(o.toJson());
-      checkChannelSectionSnippet(od);
+      checkChannelSectionSnippet(od as api.ChannelSectionSnippet);
     });
   });
 
@@ -7243,7 +7299,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSectionTargeting();
       var od = api.ChannelSectionTargeting.fromJson(o.toJson());
-      checkChannelSectionTargeting(od);
+      checkChannelSectionTargeting(od as api.ChannelSectionTargeting);
     });
   });
 
@@ -7251,7 +7307,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSettings();
       var od = api.ChannelSettings.fromJson(o.toJson());
-      checkChannelSettings(od);
+      checkChannelSettings(od as api.ChannelSettings);
     });
   });
 
@@ -7259,7 +7315,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelSnippet();
       var od = api.ChannelSnippet.fromJson(o.toJson());
-      checkChannelSnippet(od);
+      checkChannelSnippet(od as api.ChannelSnippet);
     });
   });
 
@@ -7267,7 +7323,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelStatistics();
       var od = api.ChannelStatistics.fromJson(o.toJson());
-      checkChannelStatistics(od);
+      checkChannelStatistics(od as api.ChannelStatistics);
     });
   });
 
@@ -7275,7 +7331,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelStatus();
       var od = api.ChannelStatus.fromJson(o.toJson());
-      checkChannelStatus(od);
+      checkChannelStatus(od as api.ChannelStatus);
     });
   });
 
@@ -7283,7 +7339,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelToStoreLinkDetails();
       var od = api.ChannelToStoreLinkDetails.fromJson(o.toJson());
-      checkChannelToStoreLinkDetails(od);
+      checkChannelToStoreLinkDetails(od as api.ChannelToStoreLinkDetails);
     });
   });
 
@@ -7291,7 +7347,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildChannelTopicDetails();
       var od = api.ChannelTopicDetails.fromJson(o.toJson());
-      checkChannelTopicDetails(od);
+      checkChannelTopicDetails(od as api.ChannelTopicDetails);
     });
   });
 
@@ -7299,7 +7355,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildComment();
       var od = api.Comment.fromJson(o.toJson());
-      checkComment(od);
+      checkComment(od as api.Comment);
     });
   });
 
@@ -7307,7 +7363,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentListResponse();
       var od = api.CommentListResponse.fromJson(o.toJson());
-      checkCommentListResponse(od);
+      checkCommentListResponse(od as api.CommentListResponse);
     });
   });
 
@@ -7315,7 +7371,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentSnippet();
       var od = api.CommentSnippet.fromJson(o.toJson());
-      checkCommentSnippet(od);
+      checkCommentSnippet(od as api.CommentSnippet);
     });
   });
 
@@ -7323,7 +7379,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentSnippetAuthorChannelId();
       var od = api.CommentSnippetAuthorChannelId.fromJson(o.toJson());
-      checkCommentSnippetAuthorChannelId(od);
+      checkCommentSnippetAuthorChannelId(
+          od as api.CommentSnippetAuthorChannelId);
     });
   });
 
@@ -7331,7 +7388,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentThread();
       var od = api.CommentThread.fromJson(o.toJson());
-      checkCommentThread(od);
+      checkCommentThread(od as api.CommentThread);
     });
   });
 
@@ -7339,7 +7396,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentThreadListResponse();
       var od = api.CommentThreadListResponse.fromJson(o.toJson());
-      checkCommentThreadListResponse(od);
+      checkCommentThreadListResponse(od as api.CommentThreadListResponse);
     });
   });
 
@@ -7347,7 +7404,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentThreadReplies();
       var od = api.CommentThreadReplies.fromJson(o.toJson());
-      checkCommentThreadReplies(od);
+      checkCommentThreadReplies(od as api.CommentThreadReplies);
     });
   });
 
@@ -7355,7 +7412,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommentThreadSnippet();
       var od = api.CommentThreadSnippet.fromJson(o.toJson());
-      checkCommentThreadSnippet(od);
+      checkCommentThreadSnippet(od as api.CommentThreadSnippet);
     });
   });
 
@@ -7363,7 +7420,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildContentRating();
       var od = api.ContentRating.fromJson(o.toJson());
-      checkContentRating(od);
+      checkContentRating(od as api.ContentRating);
     });
   });
 
@@ -7371,7 +7428,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEntity();
       var od = api.Entity.fromJson(o.toJson());
-      checkEntity(od);
+      checkEntity(od as api.Entity);
     });
   });
 
@@ -7379,7 +7436,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGeoPoint();
       var od = api.GeoPoint.fromJson(o.toJson());
-      checkGeoPoint(od);
+      checkGeoPoint(od as api.GeoPoint);
     });
   });
 
@@ -7387,7 +7444,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nLanguage();
       var od = api.I18nLanguage.fromJson(o.toJson());
-      checkI18nLanguage(od);
+      checkI18nLanguage(od as api.I18nLanguage);
     });
   });
 
@@ -7395,7 +7452,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nLanguageListResponse();
       var od = api.I18nLanguageListResponse.fromJson(o.toJson());
-      checkI18nLanguageListResponse(od);
+      checkI18nLanguageListResponse(od as api.I18nLanguageListResponse);
     });
   });
 
@@ -7403,7 +7460,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nLanguageSnippet();
       var od = api.I18nLanguageSnippet.fromJson(o.toJson());
-      checkI18nLanguageSnippet(od);
+      checkI18nLanguageSnippet(od as api.I18nLanguageSnippet);
     });
   });
 
@@ -7411,7 +7468,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nRegion();
       var od = api.I18nRegion.fromJson(o.toJson());
-      checkI18nRegion(od);
+      checkI18nRegion(od as api.I18nRegion);
     });
   });
 
@@ -7419,7 +7476,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nRegionListResponse();
       var od = api.I18nRegionListResponse.fromJson(o.toJson());
-      checkI18nRegionListResponse(od);
+      checkI18nRegionListResponse(od as api.I18nRegionListResponse);
     });
   });
 
@@ -7427,7 +7484,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildI18nRegionSnippet();
       var od = api.I18nRegionSnippet.fromJson(o.toJson());
-      checkI18nRegionSnippet(od);
+      checkI18nRegionSnippet(od as api.I18nRegionSnippet);
     });
   });
 
@@ -7435,7 +7492,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImageSettings();
       var od = api.ImageSettings.fromJson(o.toJson());
-      checkImageSettings(od);
+      checkImageSettings(od as api.ImageSettings);
     });
   });
 
@@ -7443,7 +7500,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIngestionInfo();
       var od = api.IngestionInfo.fromJson(o.toJson());
-      checkIngestionInfo(od);
+      checkIngestionInfo(od as api.IngestionInfo);
     });
   });
 
@@ -7451,7 +7508,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInvideoBranding();
       var od = api.InvideoBranding.fromJson(o.toJson());
-      checkInvideoBranding(od);
+      checkInvideoBranding(od as api.InvideoBranding);
     });
   });
 
@@ -7459,7 +7516,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInvideoPosition();
       var od = api.InvideoPosition.fromJson(o.toJson());
-      checkInvideoPosition(od);
+      checkInvideoPosition(od as api.InvideoPosition);
     });
   });
 
@@ -7467,7 +7524,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInvideoTiming();
       var od = api.InvideoTiming.fromJson(o.toJson());
-      checkInvideoTiming(od);
+      checkInvideoTiming(od as api.InvideoTiming);
     });
   });
 
@@ -7475,7 +7532,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLanguageTag();
       var od = api.LanguageTag.fromJson(o.toJson());
-      checkLanguageTag(od);
+      checkLanguageTag(od as api.LanguageTag);
     });
   });
 
@@ -7483,7 +7540,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLevelDetails();
       var od = api.LevelDetails.fromJson(o.toJson());
-      checkLevelDetails(od);
+      checkLevelDetails(od as api.LevelDetails);
     });
   });
 
@@ -7491,7 +7548,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcast();
       var od = api.LiveBroadcast.fromJson(o.toJson());
-      checkLiveBroadcast(od);
+      checkLiveBroadcast(od as api.LiveBroadcast);
     });
   });
 
@@ -7499,7 +7556,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcastContentDetails();
       var od = api.LiveBroadcastContentDetails.fromJson(o.toJson());
-      checkLiveBroadcastContentDetails(od);
+      checkLiveBroadcastContentDetails(od as api.LiveBroadcastContentDetails);
     });
   });
 
@@ -7507,7 +7564,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcastListResponse();
       var od = api.LiveBroadcastListResponse.fromJson(o.toJson());
-      checkLiveBroadcastListResponse(od);
+      checkLiveBroadcastListResponse(od as api.LiveBroadcastListResponse);
     });
   });
 
@@ -7515,7 +7572,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcastSnippet();
       var od = api.LiveBroadcastSnippet.fromJson(o.toJson());
-      checkLiveBroadcastSnippet(od);
+      checkLiveBroadcastSnippet(od as api.LiveBroadcastSnippet);
     });
   });
 
@@ -7523,7 +7580,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcastStatistics();
       var od = api.LiveBroadcastStatistics.fromJson(o.toJson());
-      checkLiveBroadcastStatistics(od);
+      checkLiveBroadcastStatistics(od as api.LiveBroadcastStatistics);
     });
   });
 
@@ -7531,7 +7588,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveBroadcastStatus();
       var od = api.LiveBroadcastStatus.fromJson(o.toJson());
-      checkLiveBroadcastStatus(od);
+      checkLiveBroadcastStatus(od as api.LiveBroadcastStatus);
     });
   });
 
@@ -7539,7 +7596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatBan();
       var od = api.LiveChatBan.fromJson(o.toJson());
-      checkLiveChatBan(od);
+      checkLiveChatBan(od as api.LiveChatBan);
     });
   });
 
@@ -7547,7 +7604,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatBanSnippet();
       var od = api.LiveChatBanSnippet.fromJson(o.toJson());
-      checkLiveChatBanSnippet(od);
+      checkLiveChatBanSnippet(od as api.LiveChatBanSnippet);
     });
   });
 
@@ -7555,7 +7612,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatFanFundingEventDetails();
       var od = api.LiveChatFanFundingEventDetails.fromJson(o.toJson());
-      checkLiveChatFanFundingEventDetails(od);
+      checkLiveChatFanFundingEventDetails(
+          od as api.LiveChatFanFundingEventDetails);
     });
   });
 
@@ -7563,7 +7621,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessage();
       var od = api.LiveChatMessage.fromJson(o.toJson());
-      checkLiveChatMessage(od);
+      checkLiveChatMessage(od as api.LiveChatMessage);
     });
   });
 
@@ -7571,7 +7629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessageAuthorDetails();
       var od = api.LiveChatMessageAuthorDetails.fromJson(o.toJson());
-      checkLiveChatMessageAuthorDetails(od);
+      checkLiveChatMessageAuthorDetails(od as api.LiveChatMessageAuthorDetails);
     });
   });
 
@@ -7579,7 +7637,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessageDeletedDetails();
       var od = api.LiveChatMessageDeletedDetails.fromJson(o.toJson());
-      checkLiveChatMessageDeletedDetails(od);
+      checkLiveChatMessageDeletedDetails(
+          od as api.LiveChatMessageDeletedDetails);
     });
   });
 
@@ -7587,7 +7646,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessageListResponse();
       var od = api.LiveChatMessageListResponse.fromJson(o.toJson());
-      checkLiveChatMessageListResponse(od);
+      checkLiveChatMessageListResponse(od as api.LiveChatMessageListResponse);
     });
   });
 
@@ -7595,7 +7654,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessageRetractedDetails();
       var od = api.LiveChatMessageRetractedDetails.fromJson(o.toJson());
-      checkLiveChatMessageRetractedDetails(od);
+      checkLiveChatMessageRetractedDetails(
+          od as api.LiveChatMessageRetractedDetails);
     });
   });
 
@@ -7603,7 +7663,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatMessageSnippet();
       var od = api.LiveChatMessageSnippet.fromJson(o.toJson());
-      checkLiveChatMessageSnippet(od);
+      checkLiveChatMessageSnippet(od as api.LiveChatMessageSnippet);
     });
   });
 
@@ -7611,7 +7671,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatModerator();
       var od = api.LiveChatModerator.fromJson(o.toJson());
-      checkLiveChatModerator(od);
+      checkLiveChatModerator(od as api.LiveChatModerator);
     });
   });
 
@@ -7619,7 +7679,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatModeratorListResponse();
       var od = api.LiveChatModeratorListResponse.fromJson(o.toJson());
-      checkLiveChatModeratorListResponse(od);
+      checkLiveChatModeratorListResponse(
+          od as api.LiveChatModeratorListResponse);
     });
   });
 
@@ -7627,7 +7688,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatModeratorSnippet();
       var od = api.LiveChatModeratorSnippet.fromJson(o.toJson());
-      checkLiveChatModeratorSnippet(od);
+      checkLiveChatModeratorSnippet(od as api.LiveChatModeratorSnippet);
     });
   });
 
@@ -7635,7 +7696,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatSuperChatDetails();
       var od = api.LiveChatSuperChatDetails.fromJson(o.toJson());
-      checkLiveChatSuperChatDetails(od);
+      checkLiveChatSuperChatDetails(od as api.LiveChatSuperChatDetails);
     });
   });
 
@@ -7643,7 +7704,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatSuperStickerDetails();
       var od = api.LiveChatSuperStickerDetails.fromJson(o.toJson());
-      checkLiveChatSuperStickerDetails(od);
+      checkLiveChatSuperStickerDetails(od as api.LiveChatSuperStickerDetails);
     });
   });
 
@@ -7651,7 +7712,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatTextMessageDetails();
       var od = api.LiveChatTextMessageDetails.fromJson(o.toJson());
-      checkLiveChatTextMessageDetails(od);
+      checkLiveChatTextMessageDetails(od as api.LiveChatTextMessageDetails);
     });
   });
 
@@ -7659,7 +7720,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveChatUserBannedMessageDetails();
       var od = api.LiveChatUserBannedMessageDetails.fromJson(o.toJson());
-      checkLiveChatUserBannedMessageDetails(od);
+      checkLiveChatUserBannedMessageDetails(
+          od as api.LiveChatUserBannedMessageDetails);
     });
   });
 
@@ -7667,7 +7729,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStream();
       var od = api.LiveStream.fromJson(o.toJson());
-      checkLiveStream(od);
+      checkLiveStream(od as api.LiveStream);
     });
   });
 
@@ -7675,7 +7737,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamConfigurationIssue();
       var od = api.LiveStreamConfigurationIssue.fromJson(o.toJson());
-      checkLiveStreamConfigurationIssue(od);
+      checkLiveStreamConfigurationIssue(od as api.LiveStreamConfigurationIssue);
     });
   });
 
@@ -7683,7 +7745,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamContentDetails();
       var od = api.LiveStreamContentDetails.fromJson(o.toJson());
-      checkLiveStreamContentDetails(od);
+      checkLiveStreamContentDetails(od as api.LiveStreamContentDetails);
     });
   });
 
@@ -7691,7 +7753,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamHealthStatus();
       var od = api.LiveStreamHealthStatus.fromJson(o.toJson());
-      checkLiveStreamHealthStatus(od);
+      checkLiveStreamHealthStatus(od as api.LiveStreamHealthStatus);
     });
   });
 
@@ -7699,7 +7761,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamListResponse();
       var od = api.LiveStreamListResponse.fromJson(o.toJson());
-      checkLiveStreamListResponse(od);
+      checkLiveStreamListResponse(od as api.LiveStreamListResponse);
     });
   });
 
@@ -7707,7 +7769,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamSnippet();
       var od = api.LiveStreamSnippet.fromJson(o.toJson());
-      checkLiveStreamSnippet(od);
+      checkLiveStreamSnippet(od as api.LiveStreamSnippet);
     });
   });
 
@@ -7715,7 +7777,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLiveStreamStatus();
       var od = api.LiveStreamStatus.fromJson(o.toJson());
-      checkLiveStreamStatus(od);
+      checkLiveStreamStatus(od as api.LiveStreamStatus);
     });
   });
 
@@ -7723,7 +7785,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizedProperty();
       var od = api.LocalizedProperty.fromJson(o.toJson());
-      checkLocalizedProperty(od);
+      checkLocalizedProperty(od as api.LocalizedProperty);
     });
   });
 
@@ -7731,7 +7793,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocalizedString();
       var od = api.LocalizedString.fromJson(o.toJson());
-      checkLocalizedString(od);
+      checkLocalizedString(od as api.LocalizedString);
     });
   });
 
@@ -7739,7 +7801,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMember();
       var od = api.Member.fromJson(o.toJson());
-      checkMember(od);
+      checkMember(od as api.Member);
     });
   });
 
@@ -7747,7 +7809,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMemberListResponse();
       var od = api.MemberListResponse.fromJson(o.toJson());
-      checkMemberListResponse(od);
+      checkMemberListResponse(od as api.MemberListResponse);
     });
   });
 
@@ -7755,7 +7817,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMemberSnippet();
       var od = api.MemberSnippet.fromJson(o.toJson());
-      checkMemberSnippet(od);
+      checkMemberSnippet(od as api.MemberSnippet);
     });
   });
 
@@ -7763,7 +7825,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsDetails();
       var od = api.MembershipsDetails.fromJson(o.toJson());
-      checkMembershipsDetails(od);
+      checkMembershipsDetails(od as api.MembershipsDetails);
     });
   });
 
@@ -7771,7 +7833,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsDuration();
       var od = api.MembershipsDuration.fromJson(o.toJson());
-      checkMembershipsDuration(od);
+      checkMembershipsDuration(od as api.MembershipsDuration);
     });
   });
 
@@ -7779,7 +7841,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsDurationAtLevel();
       var od = api.MembershipsDurationAtLevel.fromJson(o.toJson());
-      checkMembershipsDurationAtLevel(od);
+      checkMembershipsDurationAtLevel(od as api.MembershipsDurationAtLevel);
     });
   });
 
@@ -7787,7 +7849,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsLevel();
       var od = api.MembershipsLevel.fromJson(o.toJson());
-      checkMembershipsLevel(od);
+      checkMembershipsLevel(od as api.MembershipsLevel);
     });
   });
 
@@ -7795,7 +7857,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsLevelListResponse();
       var od = api.MembershipsLevelListResponse.fromJson(o.toJson());
-      checkMembershipsLevelListResponse(od);
+      checkMembershipsLevelListResponse(od as api.MembershipsLevelListResponse);
     });
   });
 
@@ -7803,7 +7865,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMembershipsLevelSnippet();
       var od = api.MembershipsLevelSnippet.fromJson(o.toJson());
-      checkMembershipsLevelSnippet(od);
+      checkMembershipsLevelSnippet(od as api.MembershipsLevelSnippet);
     });
   });
 
@@ -7811,7 +7873,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMonitorStreamInfo();
       var od = api.MonitorStreamInfo.fromJson(o.toJson());
-      checkMonitorStreamInfo(od);
+      checkMonitorStreamInfo(od as api.MonitorStreamInfo);
     });
   });
 
@@ -7819,7 +7881,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPageInfo();
       var od = api.PageInfo.fromJson(o.toJson());
-      checkPageInfo(od);
+      checkPageInfo(od as api.PageInfo);
     });
   });
 
@@ -7827,7 +7889,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylist();
       var od = api.Playlist.fromJson(o.toJson());
-      checkPlaylist(od);
+      checkPlaylist(od as api.Playlist);
     });
   });
 
@@ -7835,7 +7897,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistContentDetails();
       var od = api.PlaylistContentDetails.fromJson(o.toJson());
-      checkPlaylistContentDetails(od);
+      checkPlaylistContentDetails(od as api.PlaylistContentDetails);
     });
   });
 
@@ -7843,7 +7905,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistItem();
       var od = api.PlaylistItem.fromJson(o.toJson());
-      checkPlaylistItem(od);
+      checkPlaylistItem(od as api.PlaylistItem);
     });
   });
 
@@ -7851,7 +7913,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistItemContentDetails();
       var od = api.PlaylistItemContentDetails.fromJson(o.toJson());
-      checkPlaylistItemContentDetails(od);
+      checkPlaylistItemContentDetails(od as api.PlaylistItemContentDetails);
     });
   });
 
@@ -7859,7 +7921,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistItemListResponse();
       var od = api.PlaylistItemListResponse.fromJson(o.toJson());
-      checkPlaylistItemListResponse(od);
+      checkPlaylistItemListResponse(od as api.PlaylistItemListResponse);
     });
   });
 
@@ -7867,7 +7929,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistItemSnippet();
       var od = api.PlaylistItemSnippet.fromJson(o.toJson());
-      checkPlaylistItemSnippet(od);
+      checkPlaylistItemSnippet(od as api.PlaylistItemSnippet);
     });
   });
 
@@ -7875,7 +7937,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistItemStatus();
       var od = api.PlaylistItemStatus.fromJson(o.toJson());
-      checkPlaylistItemStatus(od);
+      checkPlaylistItemStatus(od as api.PlaylistItemStatus);
     });
   });
 
@@ -7883,7 +7945,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistListResponse();
       var od = api.PlaylistListResponse.fromJson(o.toJson());
-      checkPlaylistListResponse(od);
+      checkPlaylistListResponse(od as api.PlaylistListResponse);
     });
   });
 
@@ -7891,7 +7953,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistLocalization();
       var od = api.PlaylistLocalization.fromJson(o.toJson());
-      checkPlaylistLocalization(od);
+      checkPlaylistLocalization(od as api.PlaylistLocalization);
     });
   });
 
@@ -7899,7 +7961,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistPlayer();
       var od = api.PlaylistPlayer.fromJson(o.toJson());
-      checkPlaylistPlayer(od);
+      checkPlaylistPlayer(od as api.PlaylistPlayer);
     });
   });
 
@@ -7907,7 +7969,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistSnippet();
       var od = api.PlaylistSnippet.fromJson(o.toJson());
-      checkPlaylistSnippet(od);
+      checkPlaylistSnippet(od as api.PlaylistSnippet);
     });
   });
 
@@ -7915,7 +7977,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPlaylistStatus();
       var od = api.PlaylistStatus.fromJson(o.toJson());
-      checkPlaylistStatus(od);
+      checkPlaylistStatus(od as api.PlaylistStatus);
     });
   });
 
@@ -7923,7 +7985,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPropertyValue();
       var od = api.PropertyValue.fromJson(o.toJson());
-      checkPropertyValue(od);
+      checkPropertyValue(od as api.PropertyValue);
     });
   });
 
@@ -7931,7 +7993,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRelatedEntity();
       var od = api.RelatedEntity.fromJson(o.toJson());
-      checkRelatedEntity(od);
+      checkRelatedEntity(od as api.RelatedEntity);
     });
   });
 
@@ -7939,7 +8001,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResourceId();
       var od = api.ResourceId.fromJson(o.toJson());
-      checkResourceId(od);
+      checkResourceId(od as api.ResourceId);
     });
   });
 
@@ -7947,7 +8009,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchListResponse();
       var od = api.SearchListResponse.fromJson(o.toJson());
-      checkSearchListResponse(od);
+      checkSearchListResponse(od as api.SearchListResponse);
     });
   });
 
@@ -7955,7 +8017,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchResult();
       var od = api.SearchResult.fromJson(o.toJson());
-      checkSearchResult(od);
+      checkSearchResult(od as api.SearchResult);
     });
   });
 
@@ -7963,7 +8025,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchResultSnippet();
       var od = api.SearchResultSnippet.fromJson(o.toJson());
-      checkSearchResultSnippet(od);
+      checkSearchResultSnippet(od as api.SearchResultSnippet);
     });
   });
 
@@ -7971,7 +8033,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSponsor();
       var od = api.Sponsor.fromJson(o.toJson());
-      checkSponsor(od);
+      checkSponsor(od as api.Sponsor);
     });
   });
 
@@ -7979,7 +8041,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSponsorListResponse();
       var od = api.SponsorListResponse.fromJson(o.toJson());
-      checkSponsorListResponse(od);
+      checkSponsorListResponse(od as api.SponsorListResponse);
     });
   });
 
@@ -7987,7 +8049,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSponsorSnippet();
       var od = api.SponsorSnippet.fromJson(o.toJson());
-      checkSponsorSnippet(od);
+      checkSponsorSnippet(od as api.SponsorSnippet);
     });
   });
 
@@ -7995,7 +8057,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscription();
       var od = api.Subscription.fromJson(o.toJson());
-      checkSubscription(od);
+      checkSubscription(od as api.Subscription);
     });
   });
 
@@ -8003,7 +8065,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionContentDetails();
       var od = api.SubscriptionContentDetails.fromJson(o.toJson());
-      checkSubscriptionContentDetails(od);
+      checkSubscriptionContentDetails(od as api.SubscriptionContentDetails);
     });
   });
 
@@ -8011,7 +8073,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionListResponse();
       var od = api.SubscriptionListResponse.fromJson(o.toJson());
-      checkSubscriptionListResponse(od);
+      checkSubscriptionListResponse(od as api.SubscriptionListResponse);
     });
   });
 
@@ -8019,7 +8081,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionSnippet();
       var od = api.SubscriptionSnippet.fromJson(o.toJson());
-      checkSubscriptionSnippet(od);
+      checkSubscriptionSnippet(od as api.SubscriptionSnippet);
     });
   });
 
@@ -8027,7 +8089,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubscriptionSubscriberSnippet();
       var od = api.SubscriptionSubscriberSnippet.fromJson(o.toJson());
-      checkSubscriptionSubscriberSnippet(od);
+      checkSubscriptionSubscriberSnippet(
+          od as api.SubscriptionSubscriberSnippet);
     });
   });
 
@@ -8035,7 +8098,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSuperChatEvent();
       var od = api.SuperChatEvent.fromJson(o.toJson());
-      checkSuperChatEvent(od);
+      checkSuperChatEvent(od as api.SuperChatEvent);
     });
   });
 
@@ -8043,7 +8106,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSuperChatEventListResponse();
       var od = api.SuperChatEventListResponse.fromJson(o.toJson());
-      checkSuperChatEventListResponse(od);
+      checkSuperChatEventListResponse(od as api.SuperChatEventListResponse);
     });
   });
 
@@ -8051,7 +8114,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSuperChatEventSnippet();
       var od = api.SuperChatEventSnippet.fromJson(o.toJson());
-      checkSuperChatEventSnippet(od);
+      checkSuperChatEventSnippet(od as api.SuperChatEventSnippet);
     });
   });
 
@@ -8059,7 +8122,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSuperStickerMetadata();
       var od = api.SuperStickerMetadata.fromJson(o.toJson());
-      checkSuperStickerMetadata(od);
+      checkSuperStickerMetadata(od as api.SuperStickerMetadata);
     });
   });
 
@@ -8067,7 +8130,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestItem();
       var od = api.TestItem.fromJson(o.toJson());
-      checkTestItem(od);
+      checkTestItem(od as api.TestItem);
     });
   });
 
@@ -8075,7 +8138,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestItemTestItemSnippet();
       var od = api.TestItemTestItemSnippet.fromJson(o.toJson());
-      checkTestItemTestItemSnippet(od);
+      checkTestItemTestItemSnippet(od as api.TestItemTestItemSnippet);
     });
   });
 
@@ -8083,7 +8146,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThirdPartyLink();
       var od = api.ThirdPartyLink.fromJson(o.toJson());
-      checkThirdPartyLink(od);
+      checkThirdPartyLink(od as api.ThirdPartyLink);
     });
   });
 
@@ -8091,7 +8154,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThirdPartyLinkSnippet();
       var od = api.ThirdPartyLinkSnippet.fromJson(o.toJson());
-      checkThirdPartyLinkSnippet(od);
+      checkThirdPartyLinkSnippet(od as api.ThirdPartyLinkSnippet);
     });
   });
 
@@ -8099,7 +8162,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThirdPartyLinkStatus();
       var od = api.ThirdPartyLinkStatus.fromJson(o.toJson());
-      checkThirdPartyLinkStatus(od);
+      checkThirdPartyLinkStatus(od as api.ThirdPartyLinkStatus);
     });
   });
 
@@ -8107,7 +8170,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThumbnail();
       var od = api.Thumbnail.fromJson(o.toJson());
-      checkThumbnail(od);
+      checkThumbnail(od as api.Thumbnail);
     });
   });
 
@@ -8115,7 +8178,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThumbnailDetails();
       var od = api.ThumbnailDetails.fromJson(o.toJson());
-      checkThumbnailDetails(od);
+      checkThumbnailDetails(od as api.ThumbnailDetails);
     });
   });
 
@@ -8123,7 +8186,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildThumbnailSetResponse();
       var od = api.ThumbnailSetResponse.fromJson(o.toJson());
-      checkThumbnailSetResponse(od);
+      checkThumbnailSetResponse(od as api.ThumbnailSetResponse);
     });
   });
 
@@ -8131,7 +8194,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTokenPagination();
       var od = api.TokenPagination.fromJson(o.toJson());
-      checkTokenPagination(od);
+      checkTokenPagination(od as api.TokenPagination);
     });
   });
 
@@ -8139,7 +8202,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideo();
       var od = api.Video.fromJson(o.toJson());
-      checkVideo(od);
+      checkVideo(od as api.Video);
     });
   });
 
@@ -8147,7 +8210,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAbuseReport();
       var od = api.VideoAbuseReport.fromJson(o.toJson());
-      checkVideoAbuseReport(od);
+      checkVideoAbuseReport(od as api.VideoAbuseReport);
     });
   });
 
@@ -8155,7 +8218,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAbuseReportReason();
       var od = api.VideoAbuseReportReason.fromJson(o.toJson());
-      checkVideoAbuseReportReason(od);
+      checkVideoAbuseReportReason(od as api.VideoAbuseReportReason);
     });
   });
 
@@ -8163,7 +8226,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAbuseReportReasonListResponse();
       var od = api.VideoAbuseReportReasonListResponse.fromJson(o.toJson());
-      checkVideoAbuseReportReasonListResponse(od);
+      checkVideoAbuseReportReasonListResponse(
+          od as api.VideoAbuseReportReasonListResponse);
     });
   });
 
@@ -8171,7 +8235,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAbuseReportReasonSnippet();
       var od = api.VideoAbuseReportReasonSnippet.fromJson(o.toJson());
-      checkVideoAbuseReportReasonSnippet(od);
+      checkVideoAbuseReportReasonSnippet(
+          od as api.VideoAbuseReportReasonSnippet);
     });
   });
 
@@ -8179,7 +8244,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAbuseReportSecondaryReason();
       var od = api.VideoAbuseReportSecondaryReason.fromJson(o.toJson());
-      checkVideoAbuseReportSecondaryReason(od);
+      checkVideoAbuseReportSecondaryReason(
+          od as api.VideoAbuseReportSecondaryReason);
     });
   });
 
@@ -8187,7 +8253,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoAgeGating();
       var od = api.VideoAgeGating.fromJson(o.toJson());
-      checkVideoAgeGating(od);
+      checkVideoAgeGating(od as api.VideoAgeGating);
     });
   });
 
@@ -8195,7 +8261,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoCategory();
       var od = api.VideoCategory.fromJson(o.toJson());
-      checkVideoCategory(od);
+      checkVideoCategory(od as api.VideoCategory);
     });
   });
 
@@ -8203,7 +8269,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoCategoryListResponse();
       var od = api.VideoCategoryListResponse.fromJson(o.toJson());
-      checkVideoCategoryListResponse(od);
+      checkVideoCategoryListResponse(od as api.VideoCategoryListResponse);
     });
   });
 
@@ -8211,7 +8277,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoCategorySnippet();
       var od = api.VideoCategorySnippet.fromJson(o.toJson());
-      checkVideoCategorySnippet(od);
+      checkVideoCategorySnippet(od as api.VideoCategorySnippet);
     });
   });
 
@@ -8219,7 +8285,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoContentDetails();
       var od = api.VideoContentDetails.fromJson(o.toJson());
-      checkVideoContentDetails(od);
+      checkVideoContentDetails(od as api.VideoContentDetails);
     });
   });
 
@@ -8227,7 +8293,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoContentDetailsRegionRestriction();
       var od = api.VideoContentDetailsRegionRestriction.fromJson(o.toJson());
-      checkVideoContentDetailsRegionRestriction(od);
+      checkVideoContentDetailsRegionRestriction(
+          od as api.VideoContentDetailsRegionRestriction);
     });
   });
 
@@ -8235,7 +8302,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoFileDetails();
       var od = api.VideoFileDetails.fromJson(o.toJson());
-      checkVideoFileDetails(od);
+      checkVideoFileDetails(od as api.VideoFileDetails);
     });
   });
 
@@ -8243,7 +8310,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoFileDetailsAudioStream();
       var od = api.VideoFileDetailsAudioStream.fromJson(o.toJson());
-      checkVideoFileDetailsAudioStream(od);
+      checkVideoFileDetailsAudioStream(od as api.VideoFileDetailsAudioStream);
     });
   });
 
@@ -8251,7 +8318,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoFileDetailsVideoStream();
       var od = api.VideoFileDetailsVideoStream.fromJson(o.toJson());
-      checkVideoFileDetailsVideoStream(od);
+      checkVideoFileDetailsVideoStream(od as api.VideoFileDetailsVideoStream);
     });
   });
 
@@ -8259,7 +8326,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoListResponse();
       var od = api.VideoListResponse.fromJson(o.toJson());
-      checkVideoListResponse(od);
+      checkVideoListResponse(od as api.VideoListResponse);
     });
   });
 
@@ -8267,7 +8334,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoLiveStreamingDetails();
       var od = api.VideoLiveStreamingDetails.fromJson(o.toJson());
-      checkVideoLiveStreamingDetails(od);
+      checkVideoLiveStreamingDetails(od as api.VideoLiveStreamingDetails);
     });
   });
 
@@ -8275,7 +8342,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoLocalization();
       var od = api.VideoLocalization.fromJson(o.toJson());
-      checkVideoLocalization(od);
+      checkVideoLocalization(od as api.VideoLocalization);
     });
   });
 
@@ -8283,7 +8350,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoMonetizationDetails();
       var od = api.VideoMonetizationDetails.fromJson(o.toJson());
-      checkVideoMonetizationDetails(od);
+      checkVideoMonetizationDetails(od as api.VideoMonetizationDetails);
     });
   });
 
@@ -8291,7 +8358,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoPlayer();
       var od = api.VideoPlayer.fromJson(o.toJson());
-      checkVideoPlayer(od);
+      checkVideoPlayer(od as api.VideoPlayer);
     });
   });
 
@@ -8299,7 +8366,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoProcessingDetails();
       var od = api.VideoProcessingDetails.fromJson(o.toJson());
-      checkVideoProcessingDetails(od);
+      checkVideoProcessingDetails(od as api.VideoProcessingDetails);
     });
   });
 
@@ -8308,7 +8375,8 @@ void main() {
       var o = buildVideoProcessingDetailsProcessingProgress();
       var od =
           api.VideoProcessingDetailsProcessingProgress.fromJson(o.toJson());
-      checkVideoProcessingDetailsProcessingProgress(od);
+      checkVideoProcessingDetailsProcessingProgress(
+          od as api.VideoProcessingDetailsProcessingProgress);
     });
   });
 
@@ -8316,7 +8384,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoProjectDetails();
       var od = api.VideoProjectDetails.fromJson(o.toJson());
-      checkVideoProjectDetails(od);
+      checkVideoProjectDetails(od as api.VideoProjectDetails);
     });
   });
 
@@ -8324,7 +8392,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoRating();
       var od = api.VideoRating.fromJson(o.toJson());
-      checkVideoRating(od);
+      checkVideoRating(od as api.VideoRating);
     });
   });
 
@@ -8332,7 +8400,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoRatingListResponse();
       var od = api.VideoRatingListResponse.fromJson(o.toJson());
-      checkVideoRatingListResponse(od);
+      checkVideoRatingListResponse(od as api.VideoRatingListResponse);
     });
   });
 
@@ -8340,7 +8408,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoRecordingDetails();
       var od = api.VideoRecordingDetails.fromJson(o.toJson());
-      checkVideoRecordingDetails(od);
+      checkVideoRecordingDetails(od as api.VideoRecordingDetails);
     });
   });
 
@@ -8348,7 +8416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoSnippet();
       var od = api.VideoSnippet.fromJson(o.toJson());
-      checkVideoSnippet(od);
+      checkVideoSnippet(od as api.VideoSnippet);
     });
   });
 
@@ -8356,7 +8424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoStatistics();
       var od = api.VideoStatistics.fromJson(o.toJson());
-      checkVideoStatistics(od);
+      checkVideoStatistics(od as api.VideoStatistics);
     });
   });
 
@@ -8364,7 +8432,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoStatus();
       var od = api.VideoStatus.fromJson(o.toJson());
-      checkVideoStatus(od);
+      checkVideoStatus(od as api.VideoStatus);
     });
   });
 
@@ -8372,7 +8440,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoSuggestions();
       var od = api.VideoSuggestions.fromJson(o.toJson());
-      checkVideoSuggestions(od);
+      checkVideoSuggestions(od as api.VideoSuggestions);
     });
   });
 
@@ -8380,7 +8448,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoSuggestionsTagSuggestion();
       var od = api.VideoSuggestionsTagSuggestion.fromJson(o.toJson());
-      checkVideoSuggestionsTagSuggestion(od);
+      checkVideoSuggestionsTagSuggestion(
+          od as api.VideoSuggestionsTagSuggestion);
     });
   });
 
@@ -8388,7 +8457,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildVideoTopicDetails();
       var od = api.VideoTopicDetails.fromJson(o.toJson());
-      checkVideoTopicDetails(od);
+      checkVideoTopicDetails(od as api.VideoTopicDetails);
     });
   });
 
@@ -8396,7 +8465,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildWatchSettings();
       var od = api.WatchSettings.fromJson(o.toJson());
-      checkWatchSettings(od);
+      checkWatchSettings(od as api.WatchSettings);
     });
   });
 
@@ -8408,8 +8477,9 @@ void main() {
       var arg_part = buildUnnamed2398();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AbuseReport.fromJson(json);
-        checkAbuseReport(obj);
+        var obj = api.AbuseReport.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAbuseReport(obj as api.AbuseReport);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8449,7 +8519,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAbuseReport(response);
+        checkAbuseReport(response as api.AbuseReport);
       })));
     });
   });
@@ -8530,7 +8600,7 @@ void main() {
               regionCode: arg_regionCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkActivityListResponse(response);
+        checkActivityListResponse(response as api.ActivityListResponse);
       })));
     });
   });
@@ -8670,8 +8740,9 @@ void main() {
       var arg_sync = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Caption.fromJson(json);
-        checkCaption(obj);
+        var obj =
+            api.Caption.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCaption(obj as api.Caption);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8720,7 +8791,7 @@ void main() {
               sync: arg_sync,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCaption(response);
+        checkCaption(response as api.Caption);
       })));
     });
 
@@ -8783,7 +8854,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCaptionListResponse(response);
+        checkCaptionListResponse(response as api.CaptionListResponse);
       })));
     });
 
@@ -8800,8 +8871,9 @@ void main() {
       var arg_sync = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Caption.fromJson(json);
-        checkCaption(obj);
+        var obj =
+            api.Caption.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCaption(obj as api.Caption);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8850,7 +8922,7 @@ void main() {
               sync: arg_sync,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCaption(response);
+        checkCaption(response as api.Caption);
       })));
     });
   });
@@ -8868,8 +8940,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ChannelBannerResource.fromJson(json);
-        checkChannelBannerResource(obj);
+        var obj = api.ChannelBannerResource.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChannelBannerResource(obj as api.ChannelBannerResource);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -8918,7 +8991,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannelBannerResource(response);
+        checkChannelBannerResource(response as api.ChannelBannerResource);
       })));
     });
   });
@@ -8984,8 +9057,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ChannelSection.fromJson(json);
-        checkChannelSection(obj);
+        var obj = api.ChannelSection.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChannelSection(obj as api.ChannelSection);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9032,7 +9106,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannelSection(response);
+        checkChannelSection(response as api.ChannelSection);
       })));
     });
 
@@ -9098,7 +9172,8 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannelSectionListResponse(response);
+        checkChannelSectionListResponse(
+            response as api.ChannelSectionListResponse);
       })));
     });
 
@@ -9110,8 +9185,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ChannelSection.fromJson(json);
-        checkChannelSection(obj);
+        var obj = api.ChannelSection.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkChannelSection(obj as api.ChannelSection);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9155,7 +9231,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannelSection(response);
+        checkChannelSection(response as api.ChannelSection);
       })));
     });
   });
@@ -9243,7 +9319,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannelListResponse(response);
+        checkChannelListResponse(response as api.ChannelListResponse);
       })));
     });
 
@@ -9255,8 +9331,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Channel.fromJson(json);
-        checkChannel(obj);
+        var obj =
+            api.Channel.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkChannel(obj as api.Channel);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9300,7 +9377,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkChannel(response);
+        checkChannel(response as api.Channel);
       })));
     });
   });
@@ -9313,8 +9390,9 @@ void main() {
       var arg_part = buildUnnamed2411();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommentThread.fromJson(json);
-        checkCommentThread(obj);
+        var obj = api.CommentThread.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommentThread(obj as api.CommentThread);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9354,7 +9432,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentThread(response);
+        checkCommentThread(response as api.CommentThread);
       })));
     });
 
@@ -9441,7 +9519,8 @@ void main() {
               videoId: arg_videoId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentThreadListResponse(response);
+        checkCommentThreadListResponse(
+            response as api.CommentThreadListResponse);
       })));
     });
 
@@ -9452,8 +9531,9 @@ void main() {
       var arg_part = buildUnnamed2414();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CommentThread.fromJson(json);
-        checkCommentThread(obj);
+        var obj = api.CommentThread.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCommentThread(obj as api.CommentThread);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9493,7 +9573,7 @@ void main() {
       res
           .update(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentThread(response);
+        checkCommentThread(response as api.CommentThread);
       })));
     });
   });
@@ -9552,8 +9632,9 @@ void main() {
       var arg_part = buildUnnamed2415();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Comment.fromJson(json);
-        checkComment(obj);
+        var obj =
+            api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkComment(obj as api.Comment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9593,7 +9674,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
 
@@ -9661,7 +9742,7 @@ void main() {
               textFormat: arg_textFormat,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCommentListResponse(response);
+        checkCommentListResponse(response as api.CommentListResponse);
       })));
     });
 
@@ -9771,8 +9852,9 @@ void main() {
       var arg_part = buildUnnamed2420();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Comment.fromJson(json);
-        checkComment(obj);
+        var obj =
+            api.Comment.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkComment(obj as api.Comment);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -9812,7 +9894,7 @@ void main() {
       res
           .update(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkComment(response);
+        checkComment(response as api.Comment);
       })));
     });
   });
@@ -9864,7 +9946,7 @@ void main() {
       res
           .list(arg_part, hl: arg_hl, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkI18nLanguageListResponse(response);
+        checkI18nLanguageListResponse(response as api.I18nLanguageListResponse);
       })));
     });
   });
@@ -9916,7 +9998,7 @@ void main() {
       res
           .list(arg_part, hl: arg_hl, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkI18nRegionListResponse(response);
+        checkI18nRegionListResponse(response as api.I18nRegionListResponse);
       })));
     });
   });
@@ -9981,7 +10063,7 @@ void main() {
               streamId: arg_streamId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcast(response);
+        checkLiveBroadcast(response as api.LiveBroadcast);
       })));
     });
 
@@ -10052,7 +10134,7 @@ void main() {
               walltime: arg_walltime,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcast(response);
+        checkLiveBroadcast(response as api.LiveBroadcast);
       })));
     });
 
@@ -10120,8 +10202,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveBroadcast.fromJson(json);
-        checkLiveBroadcast(obj);
+        var obj = api.LiveBroadcast.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveBroadcast(obj as api.LiveBroadcast);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10168,7 +10251,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcast(response);
+        checkLiveBroadcast(response as api.LiveBroadcast);
       })));
     });
 
@@ -10247,7 +10330,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcastListResponse(response);
+        checkLiveBroadcastListResponse(
+            response as api.LiveBroadcastListResponse);
       })));
     });
 
@@ -10309,7 +10393,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcast(response);
+        checkLiveBroadcast(response as api.LiveBroadcast);
       })));
     });
 
@@ -10322,8 +10406,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveBroadcast.fromJson(json);
-        checkLiveBroadcast(obj);
+        var obj = api.LiveBroadcast.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveBroadcast(obj as api.LiveBroadcast);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10370,7 +10455,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveBroadcast(response);
+        checkLiveBroadcast(response as api.LiveBroadcast);
       })));
     });
   });
@@ -10429,8 +10514,9 @@ void main() {
       var arg_part = buildUnnamed2430();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveChatBan.fromJson(json);
-        checkLiveChatBan(obj);
+        var obj = api.LiveChatBan.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveChatBan(obj as api.LiveChatBan);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10470,7 +10556,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveChatBan(response);
+        checkLiveChatBan(response as api.LiveChatBan);
       })));
     });
   });
@@ -10529,8 +10615,9 @@ void main() {
       var arg_part = buildUnnamed2431();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveChatMessage.fromJson(json);
-        checkLiveChatMessage(obj);
+        var obj = api.LiveChatMessage.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveChatMessage(obj as api.LiveChatMessage);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10570,7 +10657,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveChatMessage(response);
+        checkLiveChatMessage(response as api.LiveChatMessage);
       })));
     });
 
@@ -10637,7 +10724,8 @@ void main() {
               profileImageSize: arg_profileImageSize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveChatMessageListResponse(response);
+        checkLiveChatMessageListResponse(
+            response as api.LiveChatMessageListResponse);
       })));
     });
   });
@@ -10696,8 +10784,9 @@ void main() {
       var arg_part = buildUnnamed2433();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveChatModerator.fromJson(json);
-        checkLiveChatModerator(obj);
+        var obj = api.LiveChatModerator.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveChatModerator(obj as api.LiveChatModerator);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10737,7 +10826,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveChatModerator(response);
+        checkLiveChatModerator(response as api.LiveChatModerator);
       })));
     });
 
@@ -10797,7 +10886,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveChatModeratorListResponse(response);
+        checkLiveChatModeratorListResponse(
+            response as api.LiveChatModeratorListResponse);
       })));
     });
   });
@@ -10867,8 +10957,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveStream.fromJson(json);
-        checkLiveStream(obj);
+        var obj = api.LiveStream.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveStream(obj as api.LiveStream);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -10915,7 +11006,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveStream(response);
+        checkLiveStream(response as api.LiveStream);
       })));
     });
 
@@ -10986,7 +11077,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveStreamListResponse(response);
+        checkLiveStreamListResponse(response as api.LiveStreamListResponse);
       })));
     });
 
@@ -10999,8 +11090,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.LiveStream.fromJson(json);
-        checkLiveStream(obj);
+        var obj = api.LiveStream.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkLiveStream(obj as api.LiveStream);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11047,7 +11139,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLiveStream(response);
+        checkLiveStream(response as api.LiveStream);
       })));
     });
   });
@@ -11117,7 +11209,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMemberListResponse(response);
+        checkMemberListResponse(response as api.MemberListResponse);
       })));
     });
   });
@@ -11167,7 +11259,8 @@ void main() {
       res
           .list(arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkMembershipsLevelListResponse(response);
+        checkMembershipsLevelListResponse(
+            response as api.MembershipsLevelListResponse);
       })));
     });
   });
@@ -11232,8 +11325,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PlaylistItem.fromJson(json);
-        checkPlaylistItem(obj);
+        var obj = api.PlaylistItem.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPlaylistItem(obj as api.PlaylistItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11277,7 +11371,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylistItem(response);
+        checkPlaylistItem(response as api.PlaylistItem);
       })));
     });
 
@@ -11349,7 +11443,7 @@ void main() {
               videoId: arg_videoId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylistItemListResponse(response);
+        checkPlaylistItemListResponse(response as api.PlaylistItemListResponse);
       })));
     });
 
@@ -11361,8 +11455,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.PlaylistItem.fromJson(json);
-        checkPlaylistItem(obj);
+        var obj = api.PlaylistItem.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkPlaylistItem(obj as api.PlaylistItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11406,7 +11501,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylistItem(response);
+        checkPlaylistItem(response as api.PlaylistItem);
       })));
     });
   });
@@ -11472,8 +11567,9 @@ void main() {
       var arg_onBehalfOfContentOwnerChannel = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Playlist.fromJson(json);
-        checkPlaylist(obj);
+        var obj =
+            api.Playlist.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPlaylist(obj as api.Playlist);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11520,7 +11616,7 @@ void main() {
               onBehalfOfContentOwnerChannel: arg_onBehalfOfContentOwnerChannel,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylist(response);
+        checkPlaylist(response as api.Playlist);
       })));
     });
 
@@ -11598,7 +11694,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylistListResponse(response);
+        checkPlaylistListResponse(response as api.PlaylistListResponse);
       })));
     });
 
@@ -11610,8 +11706,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Playlist.fromJson(json);
-        checkPlaylist(obj);
+        var obj =
+            api.Playlist.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkPlaylist(obj as api.Playlist);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11655,7 +11752,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPlaylist(response);
+        checkPlaylist(response as api.Playlist);
       })));
     });
   });
@@ -11823,7 +11920,7 @@ void main() {
               videoType: arg_videoType,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchListResponse(response);
+        checkSearchListResponse(response as api.SearchListResponse);
       })));
     });
   });
@@ -11885,7 +11982,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSponsorListResponse(response);
+        checkSponsorListResponse(response as api.SponsorListResponse);
       })));
     });
   });
@@ -11944,8 +12041,9 @@ void main() {
       var arg_part = buildUnnamed2452();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Subscription.fromJson(json);
-        checkSubscription(obj);
+        var obj = api.Subscription.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSubscription(obj as api.Subscription);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -11985,7 +12083,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscription(response);
+        checkSubscription(response as api.Subscription);
       })));
     });
 
@@ -12075,7 +12173,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSubscriptionListResponse(response);
+        checkSubscriptionListResponse(response as api.SubscriptionListResponse);
       })));
     });
   });
@@ -12137,7 +12235,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSuperChatEventListResponse(response);
+        checkSuperChatEventListResponse(
+            response as api.SuperChatEventListResponse);
       })));
     });
   });
@@ -12150,8 +12249,9 @@ void main() {
       var arg_part = buildUnnamed2456();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestItem.fromJson(json);
-        checkTestItem(obj);
+        var obj =
+            api.TestItem.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTestItem(obj as api.TestItem);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12191,7 +12291,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestItem(response);
+        checkTestItem(response as api.TestItem);
       })));
     });
   });
@@ -12256,8 +12356,9 @@ void main() {
       var arg_part = buildUnnamed2458();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ThirdPartyLink.fromJson(json);
-        checkThirdPartyLink(obj);
+        var obj = api.ThirdPartyLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkThirdPartyLink(obj as api.ThirdPartyLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12297,7 +12398,7 @@ void main() {
       res
           .insert(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkThirdPartyLink(response);
+        checkThirdPartyLink(response as api.ThirdPartyLink);
       })));
     });
 
@@ -12353,7 +12454,7 @@ void main() {
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkThirdPartyLink(response);
+        checkThirdPartyLink(response as api.ThirdPartyLink);
       })));
     });
 
@@ -12364,8 +12465,9 @@ void main() {
       var arg_part = buildUnnamed2460();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ThirdPartyLink.fromJson(json);
-        checkThirdPartyLink(obj);
+        var obj = api.ThirdPartyLink.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkThirdPartyLink(obj as api.ThirdPartyLink);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12405,7 +12507,7 @@ void main() {
       res
           .update(arg_request, arg_part, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkThirdPartyLink(response);
+        checkThirdPartyLink(response as api.ThirdPartyLink);
       })));
     });
   });
@@ -12464,7 +12566,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkThumbnailSetResponse(response);
+        checkThumbnailSetResponse(response as api.ThumbnailSetResponse);
       })));
     });
   });
@@ -12517,7 +12619,8 @@ void main() {
       res
           .list(arg_part, hl: arg_hl, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideoAbuseReportReasonListResponse(response);
+        checkVideoAbuseReportReasonListResponse(
+            response as api.VideoAbuseReportReasonListResponse);
       })));
     });
   });
@@ -12578,7 +12681,8 @@ void main() {
               regionCode: arg_regionCode,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideoCategoryListResponse(response);
+        checkVideoCategoryListResponse(
+            response as api.VideoCategoryListResponse);
       })));
     });
   });
@@ -12684,7 +12788,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideoRatingListResponse(response);
+        checkVideoRatingListResponse(response as api.VideoRatingListResponse);
       })));
     });
 
@@ -12703,8 +12807,9 @@ void main() {
       var arg_stabilize = true;
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Video.fromJson(json);
-        checkVideo(obj);
+        var obj =
+            api.Video.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVideo(obj as api.Video);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12760,7 +12865,7 @@ void main() {
               stabilize: arg_stabilize,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideo(response);
+        checkVideo(response as api.Video);
       })));
     });
 
@@ -12853,7 +12958,7 @@ void main() {
               videoCategoryId: arg_videoCategoryId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideoListResponse(response);
+        checkVideoListResponse(response as api.VideoListResponse);
       })));
     });
 
@@ -12912,8 +13017,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.VideoAbuseReport.fromJson(json);
-        checkVideoAbuseReport(obj);
+        var obj = api.VideoAbuseReport.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkVideoAbuseReport(obj as api.VideoAbuseReport);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -12966,8 +13072,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Video.fromJson(json);
-        checkVideo(obj);
+        var obj =
+            api.Video.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkVideo(obj as api.Video);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -13011,7 +13118,7 @@ void main() {
               onBehalfOfContentOwner: arg_onBehalfOfContentOwner,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkVideo(response);
+        checkVideo(response as api.Video);
       })));
     });
   });
@@ -13028,8 +13135,9 @@ void main() {
       var arg_onBehalfOfContentOwner = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.InvideoBranding.fromJson(json);
-        checkInvideoBranding(obj);
+        var obj = api.InvideoBranding.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInvideoBranding(obj as api.InvideoBranding);
 
         var path = (req.url).path;
         var pathOffset = 0;

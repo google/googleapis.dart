@@ -153,7 +153,9 @@ class BillingAccountsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -222,7 +224,10 @@ class BillingAccountsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an exclusion.
@@ -276,7 +281,9 @@ class BillingAccountsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the description of an exclusion.
@@ -330,7 +337,10 @@ class BillingAccountsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -400,7 +410,10 @@ class BillingAccountsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExclusionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExclusionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -471,7 +484,10 @@ class BillingAccountsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -555,7 +571,9 @@ class BillingAccountsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7
@@ -612,7 +630,9 @@ class BillingAccountsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists buckets (Beta).
@@ -685,7 +705,10 @@ class BillingAccountsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBucketsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBucketsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. This method replaces the following fields in the
@@ -764,7 +787,9 @@ class BillingAccountsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a bucket. A bucket that has been deleted may be undeleted within
@@ -826,7 +851,9 @@ class BillingAccountsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -892,7 +919,9 @@ class BillingAccountsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -961,7 +990,10 @@ class BillingAccountsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1044,7 +1076,9 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a sink. If the sink has a unique writer_identity, then that
@@ -1100,7 +1134,9 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a sink.
@@ -1154,7 +1190,9 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists sinks.
@@ -1222,7 +1260,10 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSinksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -1313,7 +1354,9 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -1404,7 +1447,9 @@ class BillingAccountsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1461,7 +1506,10 @@ class EntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogEntriesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogEntriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Writes log entries to Logging. This API method is the only way to send log
@@ -1513,7 +1561,10 @@ class EntriesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => WriteLogEntriesResponse.fromJson(data));
+    return _response.then(
+      (data) => WriteLogEntriesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1581,7 +1632,10 @@ class ExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an exclusion.
@@ -1635,7 +1689,9 @@ class ExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the description of an exclusion.
@@ -1689,7 +1745,10 @@ class ExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -1759,7 +1818,10 @@ class ExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExclusionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExclusionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -1830,7 +1892,10 @@ class ExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1912,7 +1977,10 @@ class FoldersExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an exclusion.
@@ -1966,7 +2034,9 @@ class FoldersExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the description of an exclusion.
@@ -2020,7 +2090,10 @@ class FoldersExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -2090,7 +2163,10 @@ class FoldersExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExclusionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExclusionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -2161,7 +2237,10 @@ class FoldersExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2245,7 +2324,9 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7
@@ -2301,7 +2382,9 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a bucket (Beta).
@@ -2355,7 +2438,9 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists buckets (Beta).
@@ -2428,7 +2513,10 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBucketsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBucketsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. This method replaces the following fields in the
@@ -2506,7 +2594,9 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a bucket. A bucket that has been deleted may be undeleted within
@@ -2567,7 +2657,9 @@ class FoldersLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2632,7 +2724,9 @@ class FoldersLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -2701,7 +2795,10 @@ class FoldersLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2783,7 +2880,9 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a sink. If the sink has a unique writer_identity, then that
@@ -2839,7 +2938,9 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a sink.
@@ -2893,7 +2994,9 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists sinks.
@@ -2961,7 +3064,10 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSinksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -3052,7 +3158,9 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -3143,7 +3251,9 @@ class FoldersSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3226,7 +3336,9 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7
@@ -3282,7 +3394,9 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a bucket (Beta).
@@ -3336,7 +3450,9 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists buckets (Beta).
@@ -3409,7 +3525,10 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBucketsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBucketsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. This method replaces the following fields in the
@@ -3487,7 +3606,9 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a bucket. A bucket that has been deleted may be undeleted within
@@ -3548,7 +3669,9 @@ class LocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3613,7 +3736,9 @@ class LogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -3682,7 +3807,10 @@ class LogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3749,7 +3877,9 @@ class MonitoredResourceDescriptorsResourceApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-        (data) => ListMonitoredResourceDescriptorsResponse.fromJson(data));
+      (data) => ListMonitoredResourceDescriptorsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3827,7 +3957,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CmekSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
@@ -3908,7 +4041,10 @@ class OrganizationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CmekSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3977,7 +4113,10 @@ class OrganizationsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an exclusion.
@@ -4031,7 +4170,9 @@ class OrganizationsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the description of an exclusion.
@@ -4085,7 +4226,10 @@ class OrganizationsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -4155,7 +4299,10 @@ class OrganizationsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExclusionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExclusionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -4226,7 +4373,10 @@ class OrganizationsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4310,7 +4460,9 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7
@@ -4367,7 +4519,9 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a bucket (Beta).
@@ -4422,7 +4576,9 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists buckets (Beta).
@@ -4495,7 +4651,10 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBucketsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBucketsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. This method replaces the following fields in the
@@ -4574,7 +4733,9 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a bucket. A bucket that has been deleted may be undeleted within
@@ -4636,7 +4797,9 @@ class OrganizationsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4702,7 +4865,9 @@ class OrganizationsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -4771,7 +4936,10 @@ class OrganizationsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -4854,7 +5022,9 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a sink. If the sink has a unique writer_identity, then that
@@ -4910,7 +5080,9 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a sink.
@@ -4964,7 +5136,9 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists sinks.
@@ -5032,7 +5206,10 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSinksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -5123,7 +5300,9 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -5214,7 +5393,9 @@ class OrganizationsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5298,7 +5479,10 @@ class ProjectsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes an exclusion.
@@ -5352,7 +5536,9 @@ class ProjectsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets the description of an exclusion.
@@ -5406,7 +5592,10 @@ class ProjectsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists all the exclusions in a parent resource.
@@ -5476,7 +5665,10 @@ class ProjectsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListExclusionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListExclusionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Changes one or more properties of an existing exclusion.
@@ -5547,7 +5739,10 @@ class ProjectsExclusionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogExclusion.fromJson(data));
+    return _response.then(
+      (data) =>
+          LogExclusion.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -5631,7 +5826,9 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a bucket. Moves the bucket to the DELETE_REQUESTED state. After 7
@@ -5687,7 +5884,9 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a bucket (Beta).
@@ -5741,7 +5940,9 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists buckets (Beta).
@@ -5814,7 +6015,10 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListBucketsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListBucketsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a bucket. This method replaces the following fields in the
@@ -5892,7 +6096,9 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogBucket.fromJson(data));
+    return _response.then(
+      (data) => LogBucket.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Undeletes a bucket. A bucket that has been deleted may be undeleted within
@@ -5953,7 +6159,9 @@ class ProjectsLocationsBucketsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6018,7 +6226,9 @@ class ProjectsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the logs in projects, organizations, folders, or billing accounts.
@@ -6087,7 +6297,10 @@ class ProjectsLogsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6151,7 +6364,9 @@ class ProjectsMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogMetric.fromJson(data));
+    return _response.then(
+      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a logs-based metric.
@@ -6201,7 +6416,9 @@ class ProjectsMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a logs-based metric.
@@ -6251,7 +6468,9 @@ class ProjectsMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogMetric.fromJson(data));
+    return _response.then(
+      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists logs-based metrics.
@@ -6319,7 +6538,10 @@ class ProjectsMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListLogMetricsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListLogMetricsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates or updates a logs-based metric.
@@ -6378,7 +6600,9 @@ class ProjectsMetricsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogMetric.fromJson(data));
+    return _response.then(
+      (data) => LogMetric.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6460,7 +6684,9 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a sink. If the sink has a unique writer_identity, then that
@@ -6516,7 +6742,9 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a sink.
@@ -6570,7 +6798,9 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists sinks.
@@ -6638,7 +6868,10 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSinksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -6729,7 +6962,9 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -6820,7 +7055,9 @@ class ProjectsSinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -6902,7 +7139,9 @@ class SinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a sink. If the sink has a unique writer_identity, then that
@@ -6958,7 +7197,9 @@ class SinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a sink.
@@ -7012,7 +7253,9 @@ class SinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists sinks.
@@ -7080,7 +7323,10 @@ class SinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListSinksResponse.fromJson(data));
+    return _response.then(
+      (data) => ListSinksResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates a sink. This method replaces the following fields in the existing
@@ -7171,7 +7417,9 @@ class SinksResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => LogSink.fromJson(data));
+    return _response.then(
+      (data) => LogSink.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7240,7 +7488,10 @@ class V2ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CmekSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the Logs Router CMEK settings for the given resource.Note: CMEK
@@ -7321,7 +7572,10 @@ class V2ResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CmekSettings.fromJson(data));
+    return _response.then(
+      (data) =>
+          CmekSettings.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -7397,13 +7651,16 @@ class BucketOptions {
 
   BucketOptions.fromJson(core.Map _json) {
     if (_json.containsKey('explicitBuckets')) {
-      explicitBuckets = Explicit.fromJson(_json['explicitBuckets']);
+      explicitBuckets = Explicit.fromJson(
+          _json['explicitBuckets'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('exponentialBuckets')) {
-      exponentialBuckets = Exponential.fromJson(_json['exponentialBuckets']);
+      exponentialBuckets = Exponential.fromJson(
+          _json['exponentialBuckets'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('linearBuckets')) {
-      linearBuckets = Linear.fromJson(_json['linearBuckets']);
+      linearBuckets = Linear.fromJson(
+          _json['linearBuckets'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -7850,7 +8107,8 @@ class ListBucketsResponse {
   ListBucketsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('buckets')) {
       buckets = (_json['buckets'] as core.List)
-          .map<LogBucket>((value) => LogBucket.fromJson(value))
+          .map<LogBucket>((value) =>
+              LogBucket.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -7885,7 +8143,8 @@ class ListExclusionsResponse {
   ListExclusionsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('exclusions')) {
       exclusions = (_json['exclusions'] as core.List)
-          .map<LogExclusion>((value) => LogExclusion.fromJson(value))
+          .map<LogExclusion>((value) => LogExclusion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8022,7 +8281,8 @@ class ListLogEntriesResponse {
   ListLogEntriesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LogEntry>((value) => LogEntry.fromJson(value))
+          .map<LogEntry>((value) =>
+              LogEntry.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8057,7 +8317,8 @@ class ListLogMetricsResponse {
   ListLogMetricsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('metrics')) {
       metrics = (_json['metrics'] as core.List)
-          .map<LogMetric>((value) => LogMetric.fromJson(value))
+          .map<LogMetric>((value) =>
+              LogMetric.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -8131,8 +8392,9 @@ class ListMonitoredResourceDescriptorsResponse {
     }
     if (_json.containsKey('resourceDescriptors')) {
       resourceDescriptors = (_json['resourceDescriptors'] as core.List)
-          .map<MonitoredResourceDescriptor>(
-              (value) => MonitoredResourceDescriptor.fromJson(value))
+          .map<MonitoredResourceDescriptor>((value) =>
+              MonitoredResourceDescriptor.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8168,7 +8430,8 @@ class ListSinksResponse {
     }
     if (_json.containsKey('sinks')) {
       sinks = (_json['sinks'] as core.List)
-          .map<LogSink>((value) => LogSink.fromJson(value))
+          .map<LogSink>((value) =>
+              LogSink.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -8415,46 +8678,54 @@ class LogEntry {
 
   LogEntry.fromJson(core.Map _json) {
     if (_json.containsKey('httpRequest')) {
-      httpRequest = HttpRequest.fromJson(_json['httpRequest']);
+      httpRequest = HttpRequest.fromJson(
+          _json['httpRequest'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('insertId')) {
       insertId = _json['insertId'] as core.String;
     }
     if (_json.containsKey('jsonPayload')) {
       jsonPayload = commons.mapMap<core.Object, core.Object>(
-          _json['jsonPayload'].cast<core.String, core.Object>(),
+          (_json['jsonPayload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('logName')) {
       logName = _json['logName'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = MonitoredResourceMetadata.fromJson(_json['metadata']);
+      metadata = MonitoredResourceMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('operation')) {
-      operation = LogEntryOperation.fromJson(_json['operation']);
+      operation = LogEntryOperation.fromJson(
+          _json['operation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('protoPayload')) {
       protoPayload = commons.mapMap<core.Object, core.Object>(
-          _json['protoPayload'].cast<core.String, core.Object>(),
+          (_json['protoPayload'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('receiveTimestamp')) {
       receiveTimestamp = _json['receiveTimestamp'] as core.String;
     }
     if (_json.containsKey('resource')) {
-      resource = MonitoredResource.fromJson(_json['resource']);
+      resource = MonitoredResource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('severity')) {
       severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('sourceLocation')) {
-      sourceLocation = LogEntrySourceLocation.fromJson(_json['sourceLocation']);
+      sourceLocation = LogEntrySourceLocation.fromJson(
+          _json['sourceLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('spanId')) {
       spanId = _json['spanId'] as core.String;
@@ -8754,7 +9025,8 @@ class LogLine {
       severity = _json['severity'] as core.String;
     }
     if (_json.containsKey('sourceLocation')) {
-      sourceLocation = SourceLocation.fromJson(_json['sourceLocation']);
+      sourceLocation = SourceLocation.fromJson(
+          _json['sourceLocation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('time')) {
       time = _json['time'] as core.String;
@@ -8878,7 +9150,8 @@ class LogMetric {
 
   LogMetric.fromJson(core.Map _json) {
     if (_json.containsKey('bucketOptions')) {
-      bucketOptions = BucketOptions.fromJson(_json['bucketOptions']);
+      bucketOptions = BucketOptions.fromJson(
+          _json['bucketOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -8891,11 +9164,13 @@ class LogMetric {
     }
     if (_json.containsKey('labelExtractors')) {
       labelExtractors = commons.mapMap<core.String, core.String>(
-          _json['labelExtractors'].cast<core.String, core.String>(),
+          (_json['labelExtractors'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('metricDescriptor')) {
-      metricDescriptor = MetricDescriptor.fromJson(_json['metricDescriptor']);
+      metricDescriptor = MetricDescriptor.fromJson(
+          _json['metricDescriptor'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -9037,7 +9312,8 @@ class LogSink {
 
   LogSink.fromJson(core.Map _json) {
     if (_json.containsKey('bigqueryOptions')) {
-      bigqueryOptions = BigQueryOptions.fromJson(_json['bigqueryOptions']);
+      bigqueryOptions = BigQueryOptions.fromJson(
+          _json['bigqueryOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -9053,7 +9329,8 @@ class LogSink {
     }
     if (_json.containsKey('exclusions')) {
       exclusions = (_json['exclusions'] as core.List)
-          .map<LogExclusion>((value) => LogExclusion.fromJson(value))
+          .map<LogExclusion>((value) => LogExclusion.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('filter')) {
@@ -9294,14 +9571,16 @@ class MetricDescriptor {
     }
     if (_json.containsKey('labels')) {
       labels = (_json['labels'] as core.List)
-          .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('launchStage')) {
       launchStage = _json['launchStage'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = MetricDescriptorMetadata.fromJson(_json['metadata']);
+      metadata = MetricDescriptorMetadata.fromJson(
+          _json['metadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metricKind')) {
       metricKind = _json['metricKind'] as core.String;
@@ -9467,7 +9746,8 @@ class MonitoredResource {
   MonitoredResource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('type')) {
@@ -9585,7 +9865,8 @@ class MonitoredResourceDescriptor {
     }
     if (_json.containsKey('labels')) {
       labels = (_json['labels'] as core.List)
-          .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(value))
+          .map<LabelDescriptor>((value) => LabelDescriptor.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('launchStage')) {
@@ -9648,12 +9929,14 @@ class MonitoredResourceMetadata {
   MonitoredResourceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('systemLabels')) {
       systemLabels = commons.mapMap<core.Object, core.Object>(
-          _json['systemLabels'].cast<core.String, core.Object>(),
+          (_json['systemLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('userLabels')) {
       userLabels = commons.mapMap<core.String, core.String>(
-          _json['userLabels'].cast<core.String, core.String>(),
+          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -9830,7 +10113,8 @@ class RequestLog {
     }
     if (_json.containsKey('line')) {
       line = (_json['line'] as core.List)
-          .map<LogLine>((value) => LogLine.fromJson(value))
+          .map<LogLine>((value) =>
+              LogLine.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('megaCycles')) {
@@ -9862,7 +10146,8 @@ class RequestLog {
     }
     if (_json.containsKey('sourceReference')) {
       sourceReference = (_json['sourceReference'] as core.List)
-          .map<SourceReference>((value) => SourceReference.fromJson(value))
+          .map<SourceReference>((value) => SourceReference.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('startTime')) {
@@ -10165,12 +10450,14 @@ class WriteLogEntriesRequest {
     }
     if (_json.containsKey('entries')) {
       entries = (_json['entries'] as core.List)
-          .map<LogEntry>((value) => LogEntry.fromJson(value))
+          .map<LogEntry>((value) =>
+              LogEntry.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('logName')) {
@@ -10180,7 +10467,8 @@ class WriteLogEntriesRequest {
       partialSuccess = _json['partialSuccess'] as core.bool;
     }
     if (_json.containsKey('resource')) {
-      resource = MonitoredResource.fromJson(_json['resource']);
+      resource = MonitoredResource.fromJson(
+          _json['resource'] as core.Map<core.String, core.dynamic>);
     }
   }
 

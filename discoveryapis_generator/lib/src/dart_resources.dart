@@ -387,14 +387,14 @@ $urlPatternCode
       requestCode.write('''
     if (_downloadOptions == null ||
         _downloadOptions == ${imports.commons}.DownloadOptions.Metadata) {
-      return _response.then((data) => $plainResponse);
+      return _response.then((data) => $plainResponse,);
     } else {
       return _response;
     }
 ''');
     } else {
       requestCode.write('''
-    return _response.then((data) => $plainResponse);
+    return _response.then((data) => $plainResponse,);
 ''');
     }
 

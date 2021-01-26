@@ -192,8 +192,8 @@ core.List<api.Link> buildUnnamed1485() {
 
 void checkUnnamed1485(core.List<api.Link> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLink(o[0]);
-  checkLink(o[1]);
+  checkLink(o[0] as api.Link);
+  checkLink(o[1] as api.Link);
 }
 
 core.int buildCounterNotice = 0;
@@ -243,8 +243,8 @@ core.List<api.Notice> buildUnnamed1487() {
 
 void checkUnnamed1487(core.List<api.Notice> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNotice(o[0]);
-  checkNotice(o[1]);
+  checkNotice(o[0] as api.Notice);
+  checkNotice(o[1] as api.Notice);
 }
 
 core.List<core.String> buildUnnamed1488() {
@@ -282,7 +282,7 @@ void checkRdapResponse(api.RdapResponse o) {
   if (buildCounterRdapResponse < 3) {
     checkUnnamed1486(o.description);
     unittest.expect(o.errorCode, unittest.equals(42));
-    checkHttpBody(o.jsonResponse);
+    checkHttpBody(o.jsonResponse as api.HttpBody);
     unittest.expect(o.lang, unittest.equals('foo'));
     checkUnnamed1487(o.notices);
     checkUnnamed1488(o.rdapConformance);
@@ -296,7 +296,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHttpBody();
       var od = api.HttpBody.fromJson(o.toJson());
-      checkHttpBody(od);
+      checkHttpBody(od as api.HttpBody);
     });
   });
 
@@ -304,7 +304,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
-      checkLink(od);
+      checkLink(od as api.Link);
     });
   });
 
@@ -312,7 +312,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNotice();
       var od = api.Notice.fromJson(o.toJson());
-      checkNotice(od);
+      checkNotice(od as api.Notice);
     });
   });
 
@@ -320,7 +320,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRdapResponse();
       var od = api.RdapResponse.fromJson(o.toJson());
-      checkRdapResponse(od);
+      checkRdapResponse(od as api.RdapResponse);
     });
   });
 
@@ -371,7 +371,7 @@ void main() {
       res
           .get(arg_autnumId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
   });
@@ -421,7 +421,7 @@ void main() {
       res
           .get(arg_domainName, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
   });
@@ -473,7 +473,7 @@ void main() {
       res
           .get(arg_entityId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
   });
@@ -535,7 +535,7 @@ void main() {
       res
           .get(arg_ipId, arg_ipId1, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
   });
@@ -587,7 +587,7 @@ void main() {
       res
           .get(arg_nameserverId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
   });
@@ -635,7 +635,7 @@ void main() {
       res
           .getDomains($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
 
@@ -681,7 +681,7 @@ void main() {
       res
           .getEntities($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
 
@@ -725,7 +725,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getHelp($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -769,7 +769,7 @@ void main() {
         return async.Future.value(stringResponse(200, h, resp));
       }), true);
       res.getIp($fields: arg_$fields).then(unittest.expectAsync1(((response) {
-        checkHttpBody(response);
+        checkHttpBody(response as api.HttpBody);
       })));
     });
 
@@ -815,7 +815,7 @@ void main() {
       res
           .getNameservers($fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRdapResponse(response);
+        checkRdapResponse(response as api.RdapResponse);
       })));
     });
   });

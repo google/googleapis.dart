@@ -98,7 +98,9 @@ class ChallengeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Challenge.fromJson(data));
+    return _response.then(
+      (data) => Challenge.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// VerifyChallengeResponse API
@@ -146,8 +148,10 @@ class ChallengeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => VerifyChallengeResponseResult.fromJson(data));
+    return _response.then(
+      (data) => VerifyChallengeResponseResult.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -164,10 +168,12 @@ class Challenge {
 
   Challenge.fromJson(core.Map _json) {
     if (_json.containsKey('alternativeChallenge')) {
-      alternativeChallenge = SignedData.fromJson(_json['alternativeChallenge']);
+      alternativeChallenge = SignedData.fromJson(
+          _json['alternativeChallenge'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('challenge')) {
-      challenge = SignedData.fromJson(_json['challenge']);
+      challenge = SignedData.fromJson(
+          _json['challenge'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -260,7 +266,8 @@ class VerifyChallengeResponseRequest {
 
   VerifyChallengeResponseRequest.fromJson(core.Map _json) {
     if (_json.containsKey('challengeResponse')) {
-      challengeResponse = SignedData.fromJson(_json['challengeResponse']);
+      challengeResponse = SignedData.fromJson(
+          _json['challengeResponse'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('expectedIdentity')) {
       expectedIdentity = _json['expectedIdentity'] as core.String;

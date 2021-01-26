@@ -95,7 +95,10 @@ class AmpUrlsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => BatchGetAmpUrlsResponse.fromJson(data));
+    return _response.then(
+      (data) => BatchGetAmpUrlsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -255,12 +258,14 @@ class BatchGetAmpUrlsResponse {
   BatchGetAmpUrlsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('ampUrls')) {
       ampUrls = (_json['ampUrls'] as core.List)
-          .map<AmpUrl>((value) => AmpUrl.fromJson(value))
+          .map<AmpUrl>((value) =>
+              AmpUrl.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('urlErrors')) {
       urlErrors = (_json['urlErrors'] as core.List)
-          .map<AmpUrlError>((value) => AmpUrlError.fromJson(value))
+          .map<AmpUrlError>((value) => AmpUrlError.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }

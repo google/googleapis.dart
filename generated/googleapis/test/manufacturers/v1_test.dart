@@ -83,8 +83,8 @@ core.List<api.Image> buildUnnamed1727() {
 
 void checkUnnamed1727(core.List<api.Image> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkImage(o[0]);
-  checkImage(o[1]);
+  checkImage(o[0] as api.Image);
+  checkImage(o[1] as api.Image);
 }
 
 core.List<core.String> buildUnnamed1728() {
@@ -109,8 +109,8 @@ core.List<api.FeatureDescription> buildUnnamed1729() {
 
 void checkUnnamed1729(core.List<api.FeatureDescription> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkFeatureDescription(o[0]);
-  checkFeatureDescription(o[1]);
+  checkFeatureDescription(o[0] as api.FeatureDescription);
+  checkFeatureDescription(o[1] as api.FeatureDescription);
 }
 
 core.List<core.String> buildUnnamed1730() {
@@ -148,8 +148,8 @@ core.List<api.ProductDetail> buildUnnamed1732() {
 
 void checkUnnamed1732(core.List<api.ProductDetail> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProductDetail(o[0]);
-  checkProductDetail(o[1]);
+  checkProductDetail(o[0] as api.ProductDetail);
+  checkProductDetail(o[1] as api.ProductDetail);
 }
 
 core.List<core.String> buildUnnamed1733() {
@@ -243,9 +243,9 @@ void checkAttributes(api.Attributes o) {
     checkUnnamed1727(o.additionalImageLink);
     unittest.expect(o.ageGroup, unittest.equals('foo'));
     unittest.expect(o.brand, unittest.equals('foo'));
-    checkCapacity(o.capacity);
+    checkCapacity(o.capacity as api.Capacity);
     unittest.expect(o.color, unittest.equals('foo'));
-    checkCount(o.count);
+    checkCount(o.count as api.Count);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.disclosureDate, unittest.equals('foo'));
     checkUnnamed1728(o.excludedDestination);
@@ -254,7 +254,7 @@ void checkAttributes(api.Attributes o) {
     unittest.expect(o.format, unittest.equals('foo'));
     unittest.expect(o.gender, unittest.equals('foo'));
     checkUnnamed1730(o.gtin);
-    checkImage(o.imageLink);
+    checkImage(o.imageLink as api.Image);
     checkUnnamed1731(o.includedDestination);
     unittest.expect(o.itemGroupId, unittest.equals('foo'));
     unittest.expect(o.material, unittest.equals('foo'));
@@ -271,7 +271,7 @@ void checkAttributes(api.Attributes o) {
     unittest.expect(o.size, unittest.equals('foo'));
     unittest.expect(o.sizeSystem, unittest.equals('foo'));
     unittest.expect(o.sizeType, unittest.equals('foo'));
-    checkPrice(o.suggestedRetailPrice);
+    checkPrice(o.suggestedRetailPrice as api.Price);
     unittest.expect(o.targetClientId, unittest.equals('foo'));
     unittest.expect(o.theme, unittest.equals('foo'));
     unittest.expect(o.title, unittest.equals('foo'));
@@ -375,7 +375,7 @@ void checkFeatureDescription(api.FeatureDescription o) {
   buildCounterFeatureDescription++;
   if (buildCounterFeatureDescription < 3) {
     unittest.expect(o.headline, unittest.equals('foo'));
-    checkImage(o.image);
+    checkImage(o.image as api.Image);
     unittest.expect(o.text, unittest.equals('foo'));
   }
   buildCounterFeatureDescription--;
@@ -446,8 +446,8 @@ core.List<api.Product> buildUnnamed1736() {
 
 void checkUnnamed1736(core.List<api.Product> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkProduct(o[0]);
-  checkProduct(o[1]);
+  checkProduct(o[0] as api.Product);
+  checkProduct(o[1] as api.Product);
 }
 
 core.int buildCounterListProductsResponse = 0;
@@ -501,8 +501,8 @@ core.List<api.DestinationStatus> buildUnnamed1737() {
 
 void checkUnnamed1737(core.List<api.DestinationStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkDestinationStatus(o[0]);
-  checkDestinationStatus(o[1]);
+  checkDestinationStatus(o[0] as api.DestinationStatus);
+  checkDestinationStatus(o[1] as api.DestinationStatus);
 }
 
 core.List<api.Issue> buildUnnamed1738() {
@@ -514,8 +514,8 @@ core.List<api.Issue> buildUnnamed1738() {
 
 void checkUnnamed1738(core.List<api.Issue> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkIssue(o[0]);
-  checkIssue(o[1]);
+  checkIssue(o[0] as api.Issue);
+  checkIssue(o[1] as api.Issue);
 }
 
 core.int buildCounterProduct = 0;
@@ -539,7 +539,7 @@ api.Product buildProduct() {
 void checkProduct(api.Product o) {
   buildCounterProduct++;
   if (buildCounterProduct < 3) {
-    checkAttributes(o.attributes);
+    checkAttributes(o.attributes as api.Attributes);
     unittest.expect(o.contentLanguage, unittest.equals('foo'));
     checkUnnamed1737(o.destinationStatuses);
     checkUnnamed1738(o.issues);
@@ -605,7 +605,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttributes();
       var od = api.Attributes.fromJson(o.toJson());
-      checkAttributes(od);
+      checkAttributes(od as api.Attributes);
     });
   });
 
@@ -613,7 +613,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCapacity();
       var od = api.Capacity.fromJson(o.toJson());
-      checkCapacity(od);
+      checkCapacity(od as api.Capacity);
     });
   });
 
@@ -621,7 +621,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCount();
       var od = api.Count.fromJson(o.toJson());
-      checkCount(od);
+      checkCount(od as api.Count);
     });
   });
 
@@ -629,7 +629,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDestinationStatus();
       var od = api.DestinationStatus.fromJson(o.toJson());
-      checkDestinationStatus(od);
+      checkDestinationStatus(od as api.DestinationStatus);
     });
   });
 
@@ -637,7 +637,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -645,7 +645,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFeatureDescription();
       var od = api.FeatureDescription.fromJson(o.toJson());
-      checkFeatureDescription(od);
+      checkFeatureDescription(od as api.FeatureDescription);
     });
   });
 
@@ -653,7 +653,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImage();
       var od = api.Image.fromJson(o.toJson());
-      checkImage(od);
+      checkImage(od as api.Image);
     });
   });
 
@@ -661,7 +661,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIssue();
       var od = api.Issue.fromJson(o.toJson());
-      checkIssue(od);
+      checkIssue(od as api.Issue);
     });
   });
 
@@ -669,7 +669,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListProductsResponse();
       var od = api.ListProductsResponse.fromJson(o.toJson());
-      checkListProductsResponse(od);
+      checkListProductsResponse(od as api.ListProductsResponse);
     });
   });
 
@@ -677,7 +677,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPrice();
       var od = api.Price.fromJson(o.toJson());
-      checkPrice(od);
+      checkPrice(od as api.Price);
     });
   });
 
@@ -685,7 +685,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProduct();
       var od = api.Product.fromJson(o.toJson());
-      checkProduct(od);
+      checkProduct(od as api.Product);
     });
   });
 
@@ -693,7 +693,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildProductDetail();
       var od = api.ProductDetail.fromJson(o.toJson());
-      checkProductDetail(od);
+      checkProductDetail(od as api.ProductDetail);
     });
   });
 
@@ -743,7 +743,7 @@ void main() {
       res
           .delete(arg_parent, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -794,7 +794,7 @@ void main() {
       res
           .get(arg_parent, arg_name, include: arg_include, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkProduct(response);
+        checkProduct(response as api.Product);
       })));
     });
 
@@ -854,7 +854,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListProductsResponse(response);
+        checkListProductsResponse(response as api.ListProductsResponse);
       })));
     });
 
@@ -866,8 +866,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Attributes.fromJson(json);
-        checkAttributes(obj);
+        var obj = api.Attributes.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAttributes(obj as api.Attributes);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -907,7 +908,7 @@ void main() {
       res
           .update(arg_request, arg_parent, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });

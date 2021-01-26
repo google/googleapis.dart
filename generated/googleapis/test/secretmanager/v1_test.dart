@@ -90,7 +90,7 @@ void checkAccessSecretVersionResponse(api.AccessSecretVersionResponse o) {
   buildCounterAccessSecretVersionResponse++;
   if (buildCounterAccessSecretVersionResponse < 3) {
     unittest.expect(o.name, unittest.equals('foo'));
-    checkSecretPayload(o.payload);
+    checkSecretPayload(o.payload as api.SecretPayload);
   }
   buildCounterAccessSecretVersionResponse--;
 }
@@ -109,7 +109,7 @@ api.AddSecretVersionRequest buildAddSecretVersionRequest() {
 void checkAddSecretVersionRequest(api.AddSecretVersionRequest o) {
   buildCounterAddSecretVersionRequest++;
   if (buildCounterAddSecretVersionRequest < 3) {
-    checkSecretPayload(o.payload);
+    checkSecretPayload(o.payload as api.SecretPayload);
   }
   buildCounterAddSecretVersionRequest--;
 }
@@ -123,8 +123,8 @@ core.List<api.AuditLogConfig> buildUnnamed5125() {
 
 void checkUnnamed5125(core.List<api.AuditLogConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditLogConfig(o[0]);
-  checkAuditLogConfig(o[1]);
+  checkAuditLogConfig(o[0] as api.AuditLogConfig);
+  checkAuditLogConfig(o[1] as api.AuditLogConfig);
 }
 
 core.int buildCounterAuditConfig = 0;
@@ -196,7 +196,8 @@ api.Automatic buildAutomatic() {
 void checkAutomatic(api.Automatic o) {
   buildCounterAutomatic++;
   if (buildCounterAutomatic < 3) {
-    checkCustomerManagedEncryption(o.customerManagedEncryption);
+    checkCustomerManagedEncryption(
+        o.customerManagedEncryption as api.CustomerManagedEncryption);
   }
   buildCounterAutomatic--;
 }
@@ -215,7 +216,8 @@ api.AutomaticStatus buildAutomaticStatus() {
 void checkAutomaticStatus(api.AutomaticStatus o) {
   buildCounterAutomaticStatus++;
   if (buildCounterAutomaticStatus < 3) {
-    checkCustomerManagedEncryptionStatus(o.customerManagedEncryption);
+    checkCustomerManagedEncryptionStatus(
+        o.customerManagedEncryption as api.CustomerManagedEncryptionStatus);
   }
   buildCounterAutomaticStatus--;
 }
@@ -251,7 +253,7 @@ void checkBinding(api.Binding o) {
   buildCounterBinding++;
   if (buildCounterBinding < 3) {
     unittest.expect(o.bindingId, unittest.equals('foo'));
-    checkExpr(o.condition);
+    checkExpr(o.condition as api.Expr);
     checkUnnamed5127(o.members);
     unittest.expect(o.role, unittest.equals('foo'));
   }
@@ -391,8 +393,8 @@ core.List<api.Location> buildUnnamed5128() {
 
 void checkUnnamed5128(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -425,8 +427,8 @@ core.List<api.SecretVersion> buildUnnamed5129() {
 
 void checkUnnamed5129(core.List<api.SecretVersion> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSecretVersion(o[0]);
-  checkSecretVersion(o[1]);
+  checkSecretVersion(o[0] as api.SecretVersion);
+  checkSecretVersion(o[1] as api.SecretVersion);
 }
 
 core.int buildCounterListSecretVersionsResponse = 0;
@@ -461,8 +463,8 @@ core.List<api.Secret> buildUnnamed5130() {
 
 void checkUnnamed5130(core.List<api.Secret> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSecret(o[0]);
-  checkSecret(o[1]);
+  checkSecret(o[0] as api.Secret);
+  checkSecret(o[1] as api.Secret);
 }
 
 core.int buildCounterListSecretsResponse = 0;
@@ -566,8 +568,8 @@ core.List<api.AuditConfig> buildUnnamed5133() {
 
 void checkUnnamed5133(core.List<api.AuditConfig> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAuditConfig(o[0]);
-  checkAuditConfig(o[1]);
+  checkAuditConfig(o[0] as api.AuditConfig);
+  checkAuditConfig(o[1] as api.AuditConfig);
 }
 
 core.List<api.Binding> buildUnnamed5134() {
@@ -579,8 +581,8 @@ core.List<api.Binding> buildUnnamed5134() {
 
 void checkUnnamed5134(core.List<api.Binding> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBinding(o[0]);
-  checkBinding(o[1]);
+  checkBinding(o[0] as api.Binding);
+  checkBinding(o[1] as api.Binding);
 }
 
 core.int buildCounterPolicy = 0;
@@ -623,7 +625,8 @@ api.Replica buildReplica() {
 void checkReplica(api.Replica o) {
   buildCounterReplica++;
   if (buildCounterReplica < 3) {
-    checkCustomerManagedEncryption(o.customerManagedEncryption);
+    checkCustomerManagedEncryption(
+        o.customerManagedEncryption as api.CustomerManagedEncryption);
     unittest.expect(o.location, unittest.equals('foo'));
   }
   buildCounterReplica--;
@@ -644,7 +647,8 @@ api.ReplicaStatus buildReplicaStatus() {
 void checkReplicaStatus(api.ReplicaStatus o) {
   buildCounterReplicaStatus++;
   if (buildCounterReplicaStatus < 3) {
-    checkCustomerManagedEncryptionStatus(o.customerManagedEncryption);
+    checkCustomerManagedEncryptionStatus(
+        o.customerManagedEncryption as api.CustomerManagedEncryptionStatus);
     unittest.expect(o.location, unittest.equals('foo'));
   }
   buildCounterReplicaStatus--;
@@ -665,8 +669,8 @@ api.Replication buildReplication() {
 void checkReplication(api.Replication o) {
   buildCounterReplication++;
   if (buildCounterReplication < 3) {
-    checkAutomatic(o.automatic);
-    checkUserManaged(o.userManaged);
+    checkAutomatic(o.automatic as api.Automatic);
+    checkUserManaged(o.userManaged as api.UserManaged);
   }
   buildCounterReplication--;
 }
@@ -686,8 +690,8 @@ api.ReplicationStatus buildReplicationStatus() {
 void checkReplicationStatus(api.ReplicationStatus o) {
   buildCounterReplicationStatus++;
   if (buildCounterReplicationStatus < 3) {
-    checkAutomaticStatus(o.automatic);
-    checkUserManagedStatus(o.userManaged);
+    checkAutomaticStatus(o.automatic as api.AutomaticStatus);
+    checkUserManagedStatus(o.userManaged as api.UserManagedStatus);
   }
   buildCounterReplicationStatus--;
 }
@@ -725,7 +729,7 @@ void checkSecret(api.Secret o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     checkUnnamed5135(o.labels);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkReplication(o.replication);
+    checkReplication(o.replication as api.Replication);
   }
   buildCounterSecret--;
 }
@@ -770,7 +774,7 @@ void checkSecretVersion(api.SecretVersion o) {
     unittest.expect(o.createTime, unittest.equals('foo'));
     unittest.expect(o.destroyTime, unittest.equals('foo'));
     unittest.expect(o.name, unittest.equals('foo'));
-    checkReplicationStatus(o.replicationStatus);
+    checkReplicationStatus(o.replicationStatus as api.ReplicationStatus);
     unittest.expect(o.state, unittest.equals('foo'));
   }
   buildCounterSecretVersion--;
@@ -791,7 +795,7 @@ api.SetIamPolicyRequest buildSetIamPolicyRequest() {
 void checkSetIamPolicyRequest(api.SetIamPolicyRequest o) {
   buildCounterSetIamPolicyRequest++;
   if (buildCounterSetIamPolicyRequest < 3) {
-    checkPolicy(o.policy);
+    checkPolicy(o.policy as api.Policy);
     unittest.expect(o.updateMask, unittest.equals('foo'));
   }
   buildCounterSetIamPolicyRequest--;
@@ -870,8 +874,8 @@ core.List<api.Replica> buildUnnamed5138() {
 
 void checkUnnamed5138(core.List<api.Replica> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReplica(o[0]);
-  checkReplica(o[1]);
+  checkReplica(o[0] as api.Replica);
+  checkReplica(o[1] as api.Replica);
 }
 
 core.int buildCounterUserManaged = 0;
@@ -902,8 +906,8 @@ core.List<api.ReplicaStatus> buildUnnamed5139() {
 
 void checkUnnamed5139(core.List<api.ReplicaStatus> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkReplicaStatus(o[0]);
-  checkReplicaStatus(o[1]);
+  checkReplicaStatus(o[0] as api.ReplicaStatus);
+  checkReplicaStatus(o[1] as api.ReplicaStatus);
 }
 
 core.int buildCounterUserManagedStatus = 0;
@@ -930,7 +934,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAccessSecretVersionResponse();
       var od = api.AccessSecretVersionResponse.fromJson(o.toJson());
-      checkAccessSecretVersionResponse(od);
+      checkAccessSecretVersionResponse(od as api.AccessSecretVersionResponse);
     });
   });
 
@@ -938,7 +942,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAddSecretVersionRequest();
       var od = api.AddSecretVersionRequest.fromJson(o.toJson());
-      checkAddSecretVersionRequest(od);
+      checkAddSecretVersionRequest(od as api.AddSecretVersionRequest);
     });
   });
 
@@ -946,7 +950,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditConfig();
       var od = api.AuditConfig.fromJson(o.toJson());
-      checkAuditConfig(od);
+      checkAuditConfig(od as api.AuditConfig);
     });
   });
 
@@ -954,7 +958,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAuditLogConfig();
       var od = api.AuditLogConfig.fromJson(o.toJson());
-      checkAuditLogConfig(od);
+      checkAuditLogConfig(od as api.AuditLogConfig);
     });
   });
 
@@ -962,7 +966,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAutomatic();
       var od = api.Automatic.fromJson(o.toJson());
-      checkAutomatic(od);
+      checkAutomatic(od as api.Automatic);
     });
   });
 
@@ -970,7 +974,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAutomaticStatus();
       var od = api.AutomaticStatus.fromJson(o.toJson());
-      checkAutomaticStatus(od);
+      checkAutomaticStatus(od as api.AutomaticStatus);
     });
   });
 
@@ -978,7 +982,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBinding();
       var od = api.Binding.fromJson(o.toJson());
-      checkBinding(od);
+      checkBinding(od as api.Binding);
     });
   });
 
@@ -986,7 +990,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomerManagedEncryption();
       var od = api.CustomerManagedEncryption.fromJson(o.toJson());
-      checkCustomerManagedEncryption(od);
+      checkCustomerManagedEncryption(od as api.CustomerManagedEncryption);
     });
   });
 
@@ -994,7 +998,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomerManagedEncryptionStatus();
       var od = api.CustomerManagedEncryptionStatus.fromJson(o.toJson());
-      checkCustomerManagedEncryptionStatus(od);
+      checkCustomerManagedEncryptionStatus(
+          od as api.CustomerManagedEncryptionStatus);
     });
   });
 
@@ -1002,7 +1007,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDestroySecretVersionRequest();
       var od = api.DestroySecretVersionRequest.fromJson(o.toJson());
-      checkDestroySecretVersionRequest(od);
+      checkDestroySecretVersionRequest(od as api.DestroySecretVersionRequest);
     });
   });
 
@@ -1010,7 +1015,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDisableSecretVersionRequest();
       var od = api.DisableSecretVersionRequest.fromJson(o.toJson());
-      checkDisableSecretVersionRequest(od);
+      checkDisableSecretVersionRequest(od as api.DisableSecretVersionRequest);
     });
   });
 
@@ -1018,7 +1023,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -1026,7 +1031,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEnableSecretVersionRequest();
       var od = api.EnableSecretVersionRequest.fromJson(o.toJson());
-      checkEnableSecretVersionRequest(od);
+      checkEnableSecretVersionRequest(od as api.EnableSecretVersionRequest);
     });
   });
 
@@ -1034,7 +1039,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExpr();
       var od = api.Expr.fromJson(o.toJson());
-      checkExpr(od);
+      checkExpr(od as api.Expr);
     });
   });
 
@@ -1042,7 +1047,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -1050,7 +1055,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSecretVersionsResponse();
       var od = api.ListSecretVersionsResponse.fromJson(o.toJson());
-      checkListSecretVersionsResponse(od);
+      checkListSecretVersionsResponse(od as api.ListSecretVersionsResponse);
     });
   });
 
@@ -1058,7 +1063,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListSecretsResponse();
       var od = api.ListSecretsResponse.fromJson(o.toJson());
-      checkListSecretsResponse(od);
+      checkListSecretsResponse(od as api.ListSecretsResponse);
     });
   });
 
@@ -1066,7 +1071,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -1074,7 +1079,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPolicy();
       var od = api.Policy.fromJson(o.toJson());
-      checkPolicy(od);
+      checkPolicy(od as api.Policy);
     });
   });
 
@@ -1082,7 +1087,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplica();
       var od = api.Replica.fromJson(o.toJson());
-      checkReplica(od);
+      checkReplica(od as api.Replica);
     });
   });
 
@@ -1090,7 +1095,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplicaStatus();
       var od = api.ReplicaStatus.fromJson(o.toJson());
-      checkReplicaStatus(od);
+      checkReplicaStatus(od as api.ReplicaStatus);
     });
   });
 
@@ -1098,7 +1103,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplication();
       var od = api.Replication.fromJson(o.toJson());
-      checkReplication(od);
+      checkReplication(od as api.Replication);
     });
   });
 
@@ -1106,7 +1111,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReplicationStatus();
       var od = api.ReplicationStatus.fromJson(o.toJson());
-      checkReplicationStatus(od);
+      checkReplicationStatus(od as api.ReplicationStatus);
     });
   });
 
@@ -1114,7 +1119,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSecret();
       var od = api.Secret.fromJson(o.toJson());
-      checkSecret(od);
+      checkSecret(od as api.Secret);
     });
   });
 
@@ -1122,7 +1127,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSecretPayload();
       var od = api.SecretPayload.fromJson(o.toJson());
-      checkSecretPayload(od);
+      checkSecretPayload(od as api.SecretPayload);
     });
   });
 
@@ -1130,7 +1135,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSecretVersion();
       var od = api.SecretVersion.fromJson(o.toJson());
-      checkSecretVersion(od);
+      checkSecretVersion(od as api.SecretVersion);
     });
   });
 
@@ -1138,7 +1143,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSetIamPolicyRequest();
       var od = api.SetIamPolicyRequest.fromJson(o.toJson());
-      checkSetIamPolicyRequest(od);
+      checkSetIamPolicyRequest(od as api.SetIamPolicyRequest);
     });
   });
 
@@ -1146,7 +1151,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsRequest();
       var od = api.TestIamPermissionsRequest.fromJson(o.toJson());
-      checkTestIamPermissionsRequest(od);
+      checkTestIamPermissionsRequest(od as api.TestIamPermissionsRequest);
     });
   });
 
@@ -1154,7 +1159,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTestIamPermissionsResponse();
       var od = api.TestIamPermissionsResponse.fromJson(o.toJson());
-      checkTestIamPermissionsResponse(od);
+      checkTestIamPermissionsResponse(od as api.TestIamPermissionsResponse);
     });
   });
 
@@ -1162,7 +1167,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserManaged();
       var od = api.UserManaged.fromJson(o.toJson());
-      checkUserManaged(od);
+      checkUserManaged(od as api.UserManaged);
     });
   });
 
@@ -1170,7 +1175,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserManagedStatus();
       var od = api.UserManagedStatus.fromJson(o.toJson());
-      checkUserManagedStatus(od);
+      checkUserManagedStatus(od as api.UserManagedStatus);
     });
   });
 
@@ -1219,7 +1224,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -1279,7 +1284,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1292,8 +1297,9 @@ void main() {
       var arg_parent = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.AddSecretVersionRequest.fromJson(json);
-        checkAddSecretVersionRequest(obj);
+        var obj = api.AddSecretVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAddSecretVersionRequest(obj as api.AddSecretVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1333,7 +1339,7 @@ void main() {
       res
           .addVersion(arg_request, arg_parent, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response);
+        checkSecretVersion(response as api.SecretVersion);
       })));
     });
 
@@ -1345,8 +1351,9 @@ void main() {
       var arg_secretId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Secret.fromJson(json);
-        checkSecret(obj);
+        var obj =
+            api.Secret.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSecret(obj as api.Secret);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1389,7 +1396,7 @@ void main() {
           .create(arg_request, arg_parent,
               secretId: arg_secretId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecret(response);
+        checkSecret(response as api.Secret);
       })));
     });
 
@@ -1437,7 +1444,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1485,7 +1492,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecret(response);
+        checkSecret(response as api.Secret);
       })));
     });
 
@@ -1540,7 +1547,7 @@ void main() {
                   arg_options_requestedPolicyVersion,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1597,7 +1604,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSecretsResponse(response);
+        checkListSecretsResponse(response as api.ListSecretsResponse);
       })));
     });
 
@@ -1609,8 +1616,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Secret.fromJson(json);
-        checkSecret(obj);
+        var obj =
+            api.Secret.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkSecret(obj as api.Secret);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1653,7 +1661,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecret(response);
+        checkSecret(response as api.Secret);
       })));
     });
 
@@ -1664,8 +1672,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SetIamPolicyRequest.fromJson(json);
-        checkSetIamPolicyRequest(obj);
+        var obj = api.SetIamPolicyRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSetIamPolicyRequest(obj as api.SetIamPolicyRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1705,7 +1714,7 @@ void main() {
       res
           .setIamPolicy(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkPolicy(response);
+        checkPolicy(response as api.Policy);
       })));
     });
 
@@ -1716,8 +1725,9 @@ void main() {
       var arg_resource = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TestIamPermissionsRequest.fromJson(json);
-        checkTestIamPermissionsRequest(obj);
+        var obj = api.TestIamPermissionsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTestIamPermissionsRequest(obj as api.TestIamPermissionsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1757,7 +1767,8 @@ void main() {
       res
           .testIamPermissions(arg_request, arg_resource, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTestIamPermissionsResponse(response);
+        checkTestIamPermissionsResponse(
+            response as api.TestIamPermissionsResponse);
       })));
     });
   });
@@ -1807,7 +1818,8 @@ void main() {
       res
           .access(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAccessSecretVersionResponse(response);
+        checkAccessSecretVersionResponse(
+            response as api.AccessSecretVersionResponse);
       })));
     });
 
@@ -1818,8 +1830,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DestroySecretVersionRequest.fromJson(json);
-        checkDestroySecretVersionRequest(obj);
+        var obj = api.DestroySecretVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDestroySecretVersionRequest(
+            obj as api.DestroySecretVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1859,7 +1873,7 @@ void main() {
       res
           .destroy(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response);
+        checkSecretVersion(response as api.SecretVersion);
       })));
     });
 
@@ -1870,8 +1884,10 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DisableSecretVersionRequest.fromJson(json);
-        checkDisableSecretVersionRequest(obj);
+        var obj = api.DisableSecretVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDisableSecretVersionRequest(
+            obj as api.DisableSecretVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1911,7 +1927,7 @@ void main() {
       res
           .disable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response);
+        checkSecretVersion(response as api.SecretVersion);
       })));
     });
 
@@ -1922,8 +1938,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.EnableSecretVersionRequest.fromJson(json);
-        checkEnableSecretVersionRequest(obj);
+        var obj = api.EnableSecretVersionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkEnableSecretVersionRequest(obj as api.EnableSecretVersionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1963,7 +1980,7 @@ void main() {
       res
           .enable(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response);
+        checkSecretVersion(response as api.SecretVersion);
       })));
     });
 
@@ -2011,7 +2028,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSecretVersion(response);
+        checkSecretVersion(response as api.SecretVersion);
       })));
     });
 
@@ -2068,7 +2085,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListSecretVersionsResponse(response);
+        checkListSecretVersionsResponse(
+            response as api.ListSecretVersionsResponse);
       })));
     });
   });

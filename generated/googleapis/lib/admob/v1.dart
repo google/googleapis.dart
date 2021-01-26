@@ -105,7 +105,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => PublisherAccount.fromJson(data));
+    return _response.then(
+      (data) => PublisherAccount.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the AdMob publisher account accessible with the client credential.
@@ -163,8 +166,10 @@ class AccountsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => ListPublisherAccountsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListPublisherAccountsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -230,8 +235,10 @@ class AccountsMediationReportResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GenerateMediationReportResponse.fromJson(data));
+    return _response.then(
+      (data) => GenerateMediationReportResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -297,8 +304,10 @@ class AccountsNetworkReportResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GenerateNetworkReportResponse.fromJson(data));
+    return _response.then(
+      (data) => GenerateNetworkReportResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -367,10 +376,12 @@ class DateRange {
 
   DateRange.fromJson(core.Map _json) {
     if (_json.containsKey('endDate')) {
-      endDate = Date.fromJson(_json['endDate']);
+      endDate = Date.fromJson(
+          _json['endDate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('startDate')) {
-      startDate = Date.fromJson(_json['startDate']);
+      startDate = Date.fromJson(
+          _json['startDate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -395,7 +406,8 @@ class GenerateMediationReportRequest {
 
   GenerateMediationReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('reportSpec')) {
-      reportSpec = MediationReportSpec.fromJson(_json['reportSpec']);
+      reportSpec = MediationReportSpec.fromJson(
+          _json['reportSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -434,13 +446,16 @@ class GenerateMediationReportResponse {
 
   GenerateMediationReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey('footer')) {
-      footer = ReportFooter.fromJson(_json['footer']);
+      footer = ReportFooter.fromJson(
+          _json['footer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('header')) {
-      header = ReportHeader.fromJson(_json['header']);
+      header = ReportHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('row')) {
-      row = ReportRow.fromJson(_json['row']);
+      row = ReportRow.fromJson(
+          _json['row'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -468,7 +483,8 @@ class GenerateNetworkReportRequest {
 
   GenerateNetworkReportRequest.fromJson(core.Map _json) {
     if (_json.containsKey('reportSpec')) {
-      reportSpec = NetworkReportSpec.fromJson(_json['reportSpec']);
+      reportSpec = NetworkReportSpec.fromJson(
+          _json['reportSpec'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -507,13 +523,16 @@ class GenerateNetworkReportResponse {
 
   GenerateNetworkReportResponse.fromJson(core.Map _json) {
     if (_json.containsKey('footer')) {
-      footer = ReportFooter.fromJson(_json['footer']);
+      footer = ReportFooter.fromJson(
+          _json['footer'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('header')) {
-      header = ReportHeader.fromJson(_json['header']);
+      header = ReportHeader.fromJson(
+          _json['header'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('row')) {
-      row = ReportRow.fromJson(_json['row']);
+      row = ReportRow.fromJson(
+          _json['row'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -546,7 +565,8 @@ class ListPublisherAccountsResponse {
   ListPublisherAccountsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('account')) {
       account = (_json['account'] as core.List)
-          .map<PublisherAccount>((value) => PublisherAccount.fromJson(value))
+          .map<PublisherAccount>((value) => PublisherAccount.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -656,12 +676,14 @@ class MediationReportSpec {
 
   MediationReportSpec.fromJson(core.Map _json) {
     if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(_json['dateRange']);
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dimensionFilters')) {
       dimensionFilters = (_json['dimensionFilters'] as core.List)
-          .map<MediationReportSpecDimensionFilter>(
-              (value) => MediationReportSpecDimensionFilter.fromJson(value))
+          .map<MediationReportSpecDimensionFilter>((value) =>
+              MediationReportSpecDimensionFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensions')) {
@@ -670,8 +692,8 @@ class MediationReportSpec {
           .toList();
     }
     if (_json.containsKey('localizationSettings')) {
-      localizationSettings =
-          LocalizationSettings.fromJson(_json['localizationSettings']);
+      localizationSettings = LocalizationSettings.fromJson(
+          _json['localizationSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxReportRows')) {
       maxReportRows = _json['maxReportRows'] as core.int;
@@ -683,8 +705,9 @@ class MediationReportSpec {
     }
     if (_json.containsKey('sortConditions')) {
       sortConditions = (_json['sortConditions'] as core.List)
-          .map<MediationReportSpecSortCondition>(
-              (value) => MediationReportSpecSortCondition.fromJson(value))
+          .map<MediationReportSpecSortCondition>((value) =>
+              MediationReportSpecSortCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timeZone')) {
@@ -766,7 +789,8 @@ class MediationReportSpecDimensionFilter {
       dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('matchesAny')) {
-      matchesAny = StringList.fromJson(_json['matchesAny']);
+      matchesAny = StringList.fromJson(
+          _json['matchesAny'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -934,12 +958,14 @@ class NetworkReportSpec {
 
   NetworkReportSpec.fromJson(core.Map _json) {
     if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(_json['dateRange']);
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dimensionFilters')) {
       dimensionFilters = (_json['dimensionFilters'] as core.List)
-          .map<NetworkReportSpecDimensionFilter>(
-              (value) => NetworkReportSpecDimensionFilter.fromJson(value))
+          .map<NetworkReportSpecDimensionFilter>((value) =>
+              NetworkReportSpecDimensionFilter.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('dimensions')) {
@@ -948,8 +974,8 @@ class NetworkReportSpec {
           .toList();
     }
     if (_json.containsKey('localizationSettings')) {
-      localizationSettings =
-          LocalizationSettings.fromJson(_json['localizationSettings']);
+      localizationSettings = LocalizationSettings.fromJson(
+          _json['localizationSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maxReportRows')) {
       maxReportRows = _json['maxReportRows'] as core.int;
@@ -961,8 +987,9 @@ class NetworkReportSpec {
     }
     if (_json.containsKey('sortConditions')) {
       sortConditions = (_json['sortConditions'] as core.List)
-          .map<NetworkReportSpecSortCondition>(
-              (value) => NetworkReportSpecSortCondition.fromJson(value))
+          .map<NetworkReportSpecSortCondition>((value) =>
+              NetworkReportSpecSortCondition.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('timeZone')) {
@@ -1043,7 +1070,8 @@ class NetworkReportSpecDimensionFilter {
       dimension = _json['dimension'] as core.String;
     }
     if (_json.containsKey('matchesAny')) {
-      matchesAny = StringList.fromJson(_json['matchesAny']);
+      matchesAny = StringList.fromJson(
+          _json['matchesAny'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -1230,7 +1258,8 @@ class ReportFooter {
     }
     if (_json.containsKey('warnings')) {
       warnings = (_json['warnings'] as core.List)
-          .map<ReportWarning>((value) => ReportWarning.fromJson(value))
+          .map<ReportWarning>((value) => ReportWarning.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1266,11 +1295,12 @@ class ReportHeader {
 
   ReportHeader.fromJson(core.Map _json) {
     if (_json.containsKey('dateRange')) {
-      dateRange = DateRange.fromJson(_json['dateRange']);
+      dateRange = DateRange.fromJson(
+          _json['dateRange'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('localizationSettings')) {
-      localizationSettings =
-          LocalizationSettings.fromJson(_json['localizationSettings']);
+      localizationSettings = LocalizationSettings.fromJson(
+          _json['localizationSettings'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('reportingTimeZone')) {
       reportingTimeZone = _json['reportingTimeZone'] as core.String;
@@ -1307,13 +1337,17 @@ class ReportRow {
   ReportRow.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionValues')) {
       dimensionValues = commons.mapMap<core.Map, ReportRowDimensionValue>(
-          _json['dimensionValues'].cast<core.String, core.Map>(),
-          (core.Map item) => ReportRowDimensionValue.fromJson(item));
+          (_json['dimensionValues'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ReportRowDimensionValue.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
     if (_json.containsKey('metricValues')) {
       metricValues = commons.mapMap<core.Map, ReportRowMetricValue>(
-          _json['metricValues'].cast<core.String, core.Map>(),
-          (core.Map item) => ReportRowMetricValue.fromJson(item));
+          (_json['metricValues'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Map>(),
+          (core.Map item) => ReportRowMetricValue.fromJson(
+              item as core.Map<core.String, core.dynamic>));
     }
   }
 

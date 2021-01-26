@@ -102,7 +102,9 @@ class Oauth2Api {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Tokeninfo.fromJson(data));
+    return _response.then(
+      (data) => Tokeninfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -150,7 +152,9 @@ class UserinfoResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Userinfo.fromJson(data));
+    return _response.then(
+      (data) => Userinfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -204,7 +208,9 @@ class UserinfoV2MeResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Userinfo.fromJson(data));
+    return _response.then(
+      (data) => Userinfo.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

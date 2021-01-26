@@ -102,7 +102,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => CreateAuthUriResponse.fromJson(data));
+    return _response.then(
+      (data) => CreateAuthUriResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Delete user account.
@@ -150,7 +153,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DeleteAccountResponse.fromJson(data));
+    return _response.then(
+      (data) => DeleteAccountResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Batch download user accounts.
@@ -198,7 +204,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => DownloadAccountResponse.fromJson(data));
+    return _response.then(
+      (data) => DownloadAccountResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reset password for a user.
@@ -246,7 +255,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => EmailLinkSigninResponse.fromJson(data));
+    return _response.then(
+      (data) => EmailLinkSigninResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Returns the account info.
@@ -294,7 +306,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetAccountInfoResponse.fromJson(data));
+    return _response.then(
+      (data) => GetAccountInfoResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get a code for user action confirmation.
@@ -342,8 +357,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => GetOobConfirmationCodeResponse.fromJson(data));
+    return _response.then(
+      (data) => GetOobConfirmationCodeResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get project configuration.
@@ -398,8 +415,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(data));
+    return _response.then(
+      (data) => IdentitytoolkitRelyingpartyGetProjectConfigResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get token signing public key.
@@ -441,8 +460,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(data));
+    return _response.then(
+      (data) => IdentitytoolkitRelyingpartyGetPublicKeysResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Get recaptcha secure param.
@@ -484,7 +505,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => GetRecaptchaParamResponse.fromJson(data));
+    return _response.then(
+      (data) => GetRecaptchaParamResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Reset password for a user.
@@ -532,7 +556,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ResetPasswordResponse.fromJson(data));
+    return _response.then(
+      (data) => ResetPasswordResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Send SMS verification code.
@@ -582,8 +609,11 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(data));
+    return _response.then(
+      (data) =>
+          IdentitytoolkitRelyingpartySendVerificationCodeResponse.fromJson(
+              data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Set account info for a user.
@@ -631,7 +661,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SetAccountInfoResponse.fromJson(data));
+    return _response.then(
+      (data) => SetAccountInfoResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Set project configuration.
@@ -680,8 +713,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(data));
+    return _response.then(
+      (data) => IdentitytoolkitRelyingpartySetProjectConfigResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sign out user.
@@ -729,8 +764,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(data));
+    return _response.then(
+      (data) => IdentitytoolkitRelyingpartySignOutUserResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Signup new user.
@@ -778,7 +815,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SignupNewUserResponse.fromJson(data));
+    return _response.then(
+      (data) => SignupNewUserResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Batch upload existing user accounts.
@@ -826,7 +866,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => UploadAccountResponse.fromJson(data));
+    return _response.then(
+      (data) => UploadAccountResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verifies the assertion returned by the IdP.
@@ -874,7 +917,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VerifyAssertionResponse.fromJson(data));
+    return _response.then(
+      (data) => VerifyAssertionResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verifies the developer asserted ID token.
@@ -922,7 +968,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VerifyCustomTokenResponse.fromJson(data));
+    return _response.then(
+      (data) => VerifyCustomTokenResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verifies the user entered password.
@@ -970,7 +1019,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => VerifyPasswordResponse.fromJson(data));
+    return _response.then(
+      (data) => VerifyPasswordResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Verifies ownership of a phone number and creates/updates the user account
@@ -1020,8 +1072,10 @@ class RelyingpartyResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) =>
-        IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(data));
+    return _response.then(
+      (data) => IdentitytoolkitRelyingpartyVerifyPhoneNumberResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1169,7 +1223,8 @@ class DownloadAccountResponse {
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
-          .map<UserInfo>((value) => UserInfo.fromJson(value))
+          .map<UserInfo>((value) =>
+              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1348,7 +1403,8 @@ class GetAccountInfoResponse {
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
-          .map<UserInfo>((value) => UserInfo.fromJson(value))
+          .map<UserInfo>((value) =>
+              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -1531,7 +1587,8 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
     }
     if (_json.containsKey('customParameter')) {
       customParameter = commons.mapMap<core.String, core.String>(
-          _json['customParameter'].cast<core.String, core.String>(),
+          (_json['customParameter'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('hostedDomain')) {
@@ -1869,8 +1926,8 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
           .toList();
     }
     if (_json.containsKey('changeEmailTemplate')) {
-      changeEmailTemplate =
-          EmailTemplate.fromJson(_json['changeEmailTemplate']);
+      changeEmailTemplate = EmailTemplate.fromJson(
+          _json['changeEmailTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('dynamicLinksDomain')) {
       dynamicLinksDomain = _json['dynamicLinksDomain'] as core.String;
@@ -1880,26 +1937,29 @@ class IdentitytoolkitRelyingpartyGetProjectConfigResponse {
     }
     if (_json.containsKey('idpConfig')) {
       idpConfig = (_json['idpConfig'] as core.List)
-          .map<IdpConfig>((value) => IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) =>
+              IdpConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('legacyResetPasswordTemplate')) {
-      legacyResetPasswordTemplate =
-          EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']);
+      legacyResetPasswordTemplate = EmailTemplate.fromJson(
+          _json['legacyResetPasswordTemplate']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('projectId')) {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('resetPasswordTemplate')) {
-      resetPasswordTemplate =
-          EmailTemplate.fromJson(_json['resetPasswordTemplate']);
+      resetPasswordTemplate = EmailTemplate.fromJson(
+          _json['resetPasswordTemplate']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('useEmailSending')) {
       useEmailSending = _json['useEmailSending'] as core.bool;
     }
     if (_json.containsKey('verifyEmailTemplate')) {
-      verifyEmailTemplate =
-          EmailTemplate.fromJson(_json['verifyEmailTemplate']);
+      verifyEmailTemplate = EmailTemplate.fromJson(
+          _json['verifyEmailTemplate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2383,8 +2443,8 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
           .toList();
     }
     if (_json.containsKey('changeEmailTemplate')) {
-      changeEmailTemplate =
-          EmailTemplate.fromJson(_json['changeEmailTemplate']);
+      changeEmailTemplate = EmailTemplate.fromJson(
+          _json['changeEmailTemplate'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('delegatedProjectNumber')) {
       delegatedProjectNumber = _json['delegatedProjectNumber'] as core.String;
@@ -2394,23 +2454,26 @@ class IdentitytoolkitRelyingpartySetProjectConfigRequest {
     }
     if (_json.containsKey('idpConfig')) {
       idpConfig = (_json['idpConfig'] as core.List)
-          .map<IdpConfig>((value) => IdpConfig.fromJson(value))
+          .map<IdpConfig>((value) =>
+              IdpConfig.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('legacyResetPasswordTemplate')) {
-      legacyResetPasswordTemplate =
-          EmailTemplate.fromJson(_json['legacyResetPasswordTemplate']);
+      legacyResetPasswordTemplate = EmailTemplate.fromJson(
+          _json['legacyResetPasswordTemplate']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resetPasswordTemplate')) {
-      resetPasswordTemplate =
-          EmailTemplate.fromJson(_json['resetPasswordTemplate']);
+      resetPasswordTemplate = EmailTemplate.fromJson(
+          _json['resetPasswordTemplate']
+              as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('useEmailSending')) {
       useEmailSending = _json['useEmailSending'] as core.bool;
     }
     if (_json.containsKey('verifyEmailTemplate')) {
-      verifyEmailTemplate =
-          EmailTemplate.fromJson(_json['verifyEmailTemplate']);
+      verifyEmailTemplate = EmailTemplate.fromJson(
+          _json['verifyEmailTemplate'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -2768,7 +2831,8 @@ class IdentitytoolkitRelyingpartyUploadAccountRequest {
     }
     if (_json.containsKey('users')) {
       users = (_json['users'] as core.List)
-          .map<UserInfo>((value) => UserInfo.fromJson(value))
+          .map<UserInfo>((value) =>
+              UserInfo.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3679,8 +3743,9 @@ class SetAccountInfoResponse {
     }
     if (_json.containsKey('providerUserInfo')) {
       providerUserInfo = (_json['providerUserInfo'] as core.List)
-          .map<SetAccountInfoResponseProviderUserInfo>(
-              (value) => SetAccountInfoResponseProviderUserInfo.fromJson(value))
+          .map<SetAccountInfoResponseProviderUserInfo>((value) =>
+              SetAccountInfoResponseProviderUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('refreshToken')) {
@@ -3852,8 +3917,9 @@ class UploadAccountResponse {
   UploadAccountResponse.fromJson(core.Map _json) {
     if (_json.containsKey('error')) {
       error = (_json['error'] as core.List)
-          .map<UploadAccountResponseError>(
-              (value) => UploadAccountResponseError.fromJson(value))
+          .map<UploadAccountResponseError>((value) =>
+              UploadAccountResponseError.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('kind')) {
@@ -4075,8 +4141,9 @@ class UserInfo {
     }
     if (_json.containsKey('providerUserInfo')) {
       providerUserInfo = (_json['providerUserInfo'] as core.List)
-          .map<UserInfoProviderUserInfo>(
-              (value) => UserInfoProviderUserInfo.fromJson(value))
+          .map<UserInfoProviderUserInfo>((value) =>
+              UserInfoProviderUserInfo.fromJson(
+                  value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rawPassword')) {

@@ -130,7 +130,7 @@ void checkBucketizedCount(api.BucketizedCount o) {
   buildCounterBucketizedCount++;
   if (buildCounterBucketizedCount < 3) {
     unittest.expect(o.count, unittest.equals(42));
-    checkBucketRange(o.range);
+    checkBucketRange(o.range as api.BucketRange);
   }
   buildCounterBucketizedCount--;
 }
@@ -150,7 +150,7 @@ api.CommuteInfo buildCommuteInfo() {
 void checkCommuteInfo(api.CommuteInfo o) {
   buildCounterCommuteInfo++;
   if (buildCounterCommuteInfo < 3) {
-    checkJobLocation(o.jobLocation);
+    checkJobLocation(o.jobLocation as api.JobLocation);
     unittest.expect(o.travelDuration, unittest.equals('foo'));
   }
   buildCounterCommuteInfo--;
@@ -179,7 +179,7 @@ void checkCommutePreference(api.CommutePreference o) {
     unittest.expect(o.departureHourLocal, unittest.equals(42));
     unittest.expect(o.method, unittest.equals('foo'));
     unittest.expect(o.roadTraffic, unittest.equals('foo'));
-    checkLatLng(o.startLocation);
+    checkLatLng(o.startLocation as api.LatLng);
     unittest.expect(o.travelTime, unittest.equals('foo'));
   }
   buildCounterCommutePreference--;
@@ -194,8 +194,8 @@ core.List<api.CompanyInfoSource> buildUnnamed4341() {
 
 void checkUnnamed4341(core.List<api.CompanyInfoSource> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompanyInfoSource(o[0]);
-  checkCompanyInfoSource(o[1]);
+  checkCompanyInfoSource(o[0] as api.CompanyInfoSource);
+  checkCompanyInfoSource(o[1] as api.CompanyInfoSource);
 }
 
 core.List<core.String> buildUnnamed4342() {
@@ -269,7 +269,7 @@ void checkCompany(api.Company o) {
     checkUnnamed4342(o.keywordSearchableCustomAttributes);
     checkUnnamed4343(o.keywordSearchableCustomFields);
     unittest.expect(o.name, unittest.equals('foo'));
-    checkJobLocation(o.structuredCompanyHqLocation);
+    checkJobLocation(o.structuredCompanyHqLocation as api.JobLocation);
     unittest.expect(o.suspended, unittest.isTrue);
     unittest.expect(o.title, unittest.equals('foo'));
     unittest.expect(o.website, unittest.equals('foo'));
@@ -321,10 +321,10 @@ api.CompensationEntry buildCompensationEntry() {
 void checkCompensationEntry(api.CompensationEntry o) {
   buildCounterCompensationEntry++;
   if (buildCounterCompensationEntry < 3) {
-    checkMoney(o.amount);
+    checkMoney(o.amount as api.Money);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.expectedUnitsPerYear, unittest.equals(42.0));
-    checkCompensationRange(o.range);
+    checkCompensationRange(o.range as api.CompensationRange);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unit, unittest.equals('foo'));
   }
@@ -363,7 +363,7 @@ void checkCompensationFilter(api.CompensationFilter o) {
   if (buildCounterCompensationFilter < 3) {
     unittest.expect(
         o.includeJobsWithUnspecifiedCompensationRange, unittest.isTrue);
-    checkCompensationRange(o.range);
+    checkCompensationRange(o.range as api.CompensationRange);
     unittest.expect(o.type, unittest.equals('foo'));
     checkUnnamed4344(o.units);
   }
@@ -385,7 +385,8 @@ api.CompensationHistogramRequest buildCompensationHistogramRequest() {
 void checkCompensationHistogramRequest(api.CompensationHistogramRequest o) {
   buildCounterCompensationHistogramRequest++;
   if (buildCounterCompensationHistogramRequest < 3) {
-    checkNumericBucketingOption(o.bucketingOption);
+    checkNumericBucketingOption(
+        o.bucketingOption as api.NumericBucketingOption);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCompensationHistogramRequest--;
@@ -406,7 +407,7 @@ api.CompensationHistogramResult buildCompensationHistogramResult() {
 void checkCompensationHistogramResult(api.CompensationHistogramResult o) {
   buildCounterCompensationHistogramResult++;
   if (buildCounterCompensationHistogramResult < 3) {
-    checkNumericBucketingResult(o.result);
+    checkNumericBucketingResult(o.result as api.NumericBucketingResult);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCompensationHistogramResult--;
@@ -421,8 +422,8 @@ core.List<api.CompensationEntry> buildUnnamed4345() {
 
 void checkUnnamed4345(core.List<api.CompensationEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompensationEntry(o[0]);
-  checkCompensationEntry(o[1]);
+  checkCompensationEntry(o[0] as api.CompensationEntry);
+  checkCompensationEntry(o[1] as api.CompensationEntry);
 }
 
 core.int buildCounterCompensationInfo = 0;
@@ -445,12 +446,14 @@ api.CompensationInfo buildCompensationInfo() {
 void checkCompensationInfo(api.CompensationInfo o) {
   buildCounterCompensationInfo++;
   if (buildCounterCompensationInfo < 3) {
-    checkMoney(o.amount);
-    checkCompensationRange(o.annualizedBaseCompensationRange);
-    checkCompensationRange(o.annualizedTotalCompensationRange);
+    checkMoney(o.amount as api.Money);
+    checkCompensationRange(
+        o.annualizedBaseCompensationRange as api.CompensationRange);
+    checkCompensationRange(
+        o.annualizedTotalCompensationRange as api.CompensationRange);
     checkUnnamed4345(o.entries);
-    checkMoney(o.max);
-    checkMoney(o.min);
+    checkMoney(o.max as api.Money);
+    checkMoney(o.min as api.Money);
     unittest.expect(o.type, unittest.equals('foo'));
   }
   buildCounterCompensationInfo--;
@@ -471,8 +474,8 @@ api.CompensationRange buildCompensationRange() {
 void checkCompensationRange(api.CompensationRange o) {
   buildCounterCompensationRange++;
   if (buildCounterCompensationRange < 3) {
-    checkMoney(o.max);
-    checkMoney(o.min);
+    checkMoney(o.max as api.Money);
+    checkMoney(o.min as api.Money);
   }
   buildCounterCompensationRange--;
 }
@@ -486,8 +489,8 @@ core.List<api.CompletionResult> buildUnnamed4346() {
 
 void checkUnnamed4346(core.List<api.CompletionResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompletionResult(o[0]);
-  checkCompletionResult(o[1]);
+  checkCompletionResult(o[0] as api.CompletionResult);
+  checkCompletionResult(o[1] as api.CompletionResult);
 }
 
 core.int buildCounterCompleteQueryResponse = 0;
@@ -506,7 +509,7 @@ void checkCompleteQueryResponse(api.CompleteQueryResponse o) {
   buildCounterCompleteQueryResponse++;
   if (buildCounterCompleteQueryResponse < 3) {
     checkUnnamed4346(o.completionResults);
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
   }
   buildCounterCompleteQueryResponse--;
 }
@@ -551,8 +554,8 @@ void checkCreateJobRequest(api.CreateJobRequest o) {
   buildCounterCreateJobRequest++;
   if (buildCounterCreateJobRequest < 3) {
     unittest.expect(o.disableStreetAddressResolution, unittest.isTrue);
-    checkJob(o.job);
-    checkJobProcessingOptions(o.processingOptions);
+    checkJob(o.job as api.Job);
+    checkJobProcessingOptions(o.processingOptions as api.JobProcessingOptions);
   }
   buildCounterCreateJobRequest--;
 }
@@ -575,7 +578,7 @@ void checkCustomAttribute(api.CustomAttribute o) {
   if (buildCounterCustomAttribute < 3) {
     unittest.expect(o.filterable, unittest.isTrue);
     unittest.expect(o.longValue, unittest.equals('foo'));
-    checkStringValues(o.stringValues);
+    checkStringValues(o.stringValues as api.StringValues);
   }
   buildCounterCustomAttribute--;
 }
@@ -598,7 +601,8 @@ void checkCustomAttributeHistogramRequest(
   buildCounterCustomAttributeHistogramRequest++;
   if (buildCounterCustomAttributeHistogramRequest < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkNumericBucketingOption(o.longValueHistogramBucketingOption);
+    checkNumericBucketingOption(
+        o.longValueHistogramBucketingOption as api.NumericBucketingOption);
     unittest.expect(o.stringValueHistogram, unittest.isTrue);
   }
   buildCounterCustomAttributeHistogramRequest--;
@@ -634,7 +638,8 @@ void checkCustomAttributeHistogramResult(api.CustomAttributeHistogramResult o) {
   buildCounterCustomAttributeHistogramResult++;
   if (buildCounterCustomAttributeHistogramResult < 3) {
     unittest.expect(o.key, unittest.equals('foo'));
-    checkNumericBucketingResult(o.longValueHistogramResult);
+    checkNumericBucketingResult(
+        o.longValueHistogramResult as api.NumericBucketingResult);
     checkUnnamed4347(o.stringValueHistogramResult);
   }
   buildCounterCustomAttributeHistogramResult--;
@@ -745,7 +750,7 @@ void checkDeleteJobsByFilterRequest(api.DeleteJobsByFilterRequest o) {
   buildCounterDeleteJobsByFilterRequest++;
   if (buildCounterDeleteJobsByFilterRequest < 3) {
     unittest.expect(o.disableFastProcess, unittest.isTrue);
-    checkFilter(o.filter);
+    checkFilter(o.filter as api.Filter);
   }
   buildCounterDeleteJobsByFilterRequest--;
 }
@@ -817,7 +822,8 @@ api.ExtendedCompensationFilter buildExtendedCompensationFilter() {
 void checkExtendedCompensationFilter(api.ExtendedCompensationFilter o) {
   buildCounterExtendedCompensationFilter++;
   if (buildCounterExtendedCompensationFilter < 3) {
-    checkExtendedCompensationInfoCompensationRange(o.compensationRange);
+    checkExtendedCompensationInfoCompensationRange(
+        o.compensationRange as api.ExtendedCompensationInfoCompensationRange);
     checkUnnamed4350(o.compensationUnits);
     unittest.expect(o.currency, unittest.equals('foo'));
     unittest.expect(
@@ -837,8 +843,10 @@ core.List<api.ExtendedCompensationInfoCompensationEntry> buildUnnamed4351() {
 void checkUnnamed4351(
     core.List<api.ExtendedCompensationInfoCompensationEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkExtendedCompensationInfoCompensationEntry(o[0]);
-  checkExtendedCompensationInfoCompensationEntry(o[1]);
+  checkExtendedCompensationInfoCompensationEntry(
+      o[0] as api.ExtendedCompensationInfoCompensationEntry);
+  checkExtendedCompensationInfoCompensationEntry(
+      o[1] as api.ExtendedCompensationInfoCompensationEntry);
 }
 
 core.int buildCounterExtendedCompensationInfo = 0;
@@ -863,10 +871,12 @@ void checkExtendedCompensationInfo(api.ExtendedCompensationInfo o) {
   buildCounterExtendedCompensationInfo++;
   if (buildCounterExtendedCompensationInfo < 3) {
     checkExtendedCompensationInfoCompensationRange(
-        o.annualizedBaseCompensationRange);
+        o.annualizedBaseCompensationRange
+            as api.ExtendedCompensationInfoCompensationRange);
     unittest.expect(o.annualizedBaseCompensationUnspecified, unittest.isTrue);
     checkExtendedCompensationInfoCompensationRange(
-        o.annualizedTotalCompensationRange);
+        o.annualizedTotalCompensationRange
+            as api.ExtendedCompensationInfoCompensationRange);
     unittest.expect(o.annualizedTotalCompensationUnspecified, unittest.isTrue);
     unittest.expect(o.currency, unittest.equals('foo'));
     checkUnnamed4351(o.entries);
@@ -896,10 +906,13 @@ void checkExtendedCompensationInfoCompensationEntry(
     api.ExtendedCompensationInfoCompensationEntry o) {
   buildCounterExtendedCompensationInfoCompensationEntry++;
   if (buildCounterExtendedCompensationInfoCompensationEntry < 3) {
-    checkExtendedCompensationInfoDecimal(o.amount);
+    checkExtendedCompensationInfoDecimal(
+        o.amount as api.ExtendedCompensationInfoDecimal);
     unittest.expect(o.description, unittest.equals('foo'));
-    checkExtendedCompensationInfoDecimal(o.expectedUnitsPerYear);
-    checkExtendedCompensationInfoCompensationRange(o.range);
+    checkExtendedCompensationInfoDecimal(
+        o.expectedUnitsPerYear as api.ExtendedCompensationInfoDecimal);
+    checkExtendedCompensationInfoCompensationRange(
+        o.range as api.ExtendedCompensationInfoCompensationRange);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unit, unittest.equals('foo'));
     unittest.expect(o.unspecified, unittest.isTrue);
@@ -924,8 +937,10 @@ void checkExtendedCompensationInfoCompensationRange(
     api.ExtendedCompensationInfoCompensationRange o) {
   buildCounterExtendedCompensationInfoCompensationRange++;
   if (buildCounterExtendedCompensationInfoCompensationRange < 3) {
-    checkExtendedCompensationInfoDecimal(o.max);
-    checkExtendedCompensationInfoDecimal(o.min);
+    checkExtendedCompensationInfoDecimal(
+        o.max as api.ExtendedCompensationInfoDecimal);
+    checkExtendedCompensationInfoDecimal(
+        o.min as api.ExtendedCompensationInfoDecimal);
   }
   buildCounterExtendedCompensationInfoCompensationRange--;
 }
@@ -1003,9 +1018,9 @@ void checkGetHistogramRequest(api.GetHistogramRequest o) {
   buildCounterGetHistogramRequest++;
   if (buildCounterGetHistogramRequest < 3) {
     unittest.expect(o.allowBroadening, unittest.isTrue);
-    checkJobFilters(o.filters);
-    checkJobQuery(o.query);
-    checkRequestMetadata(o.requestMetadata);
+    checkJobFilters(o.filters as api.JobFilters);
+    checkJobQuery(o.query as api.JobQuery);
+    checkRequestMetadata(o.requestMetadata as api.RequestMetadata);
     checkUnnamed4352(o.searchTypes);
   }
   buildCounterGetHistogramRequest--;
@@ -1020,8 +1035,8 @@ core.List<api.HistogramResult> buildUnnamed4353() {
 
 void checkUnnamed4353(core.List<api.HistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistogramResult(o[0]);
-  checkHistogramResult(o[1]);
+  checkHistogramResult(o[0] as api.HistogramResult);
+  checkHistogramResult(o[1] as api.HistogramResult);
 }
 
 core.int buildCounterGetHistogramResponse = 0;
@@ -1039,7 +1054,7 @@ api.GetHistogramResponse buildGetHistogramResponse() {
 void checkGetHistogramResponse(api.GetHistogramResponse o) {
   buildCounterGetHistogramResponse++;
   if (buildCounterGetHistogramResponse < 3) {
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
     checkUnnamed4353(o.results);
   }
   buildCounterGetHistogramResponse--;
@@ -1054,8 +1069,8 @@ core.List<api.GoogleCloudTalentV4JobResult> buildUnnamed4354() {
 
 void checkUnnamed4354(core.List<api.GoogleCloudTalentV4JobResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4JobResult(o[0]);
-  checkGoogleCloudTalentV4JobResult(o[1]);
+  checkGoogleCloudTalentV4JobResult(o[0] as api.GoogleCloudTalentV4JobResult);
+  checkGoogleCloudTalentV4JobResult(o[1] as api.GoogleCloudTalentV4JobResult);
 }
 
 core.int buildCounterGoogleCloudTalentV4BatchCreateJobsResponse = 0;
@@ -1088,8 +1103,8 @@ core.List<api.GoogleCloudTalentV4JobResult> buildUnnamed4355() {
 
 void checkUnnamed4355(core.List<api.GoogleCloudTalentV4JobResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4JobResult(o[0]);
-  checkGoogleCloudTalentV4JobResult(o[1]);
+  checkGoogleCloudTalentV4JobResult(o[0] as api.GoogleCloudTalentV4JobResult);
+  checkGoogleCloudTalentV4JobResult(o[1] as api.GoogleCloudTalentV4JobResult);
 }
 
 core.int buildCounterGoogleCloudTalentV4BatchDeleteJobsResponse = 0;
@@ -1157,8 +1172,8 @@ core.List<api.GoogleCloudTalentV4JobResult> buildUnnamed4356() {
 
 void checkUnnamed4356(core.List<api.GoogleCloudTalentV4JobResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4JobResult(o[0]);
-  checkGoogleCloudTalentV4JobResult(o[1]);
+  checkGoogleCloudTalentV4JobResult(o[0] as api.GoogleCloudTalentV4JobResult);
+  checkGoogleCloudTalentV4JobResult(o[1] as api.GoogleCloudTalentV4JobResult);
 }
 
 core.int buildCounterGoogleCloudTalentV4BatchUpdateJobsResponse = 0;
@@ -1193,8 +1208,10 @@ core.List<api.GoogleCloudTalentV4CompensationInfoCompensationEntry>
 void checkUnnamed4357(
     core.List<api.GoogleCloudTalentV4CompensationInfoCompensationEntry> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(o[0]);
-  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(o[1]);
+  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(
+      o[0] as api.GoogleCloudTalentV4CompensationInfoCompensationEntry);
+  checkGoogleCloudTalentV4CompensationInfoCompensationEntry(
+      o[1] as api.GoogleCloudTalentV4CompensationInfoCompensationEntry);
 }
 
 core.int buildCounterGoogleCloudTalentV4CompensationInfo = 0;
@@ -1218,9 +1235,11 @@ void checkGoogleCloudTalentV4CompensationInfo(
   buildCounterGoogleCloudTalentV4CompensationInfo++;
   if (buildCounterGoogleCloudTalentV4CompensationInfo < 3) {
     checkGoogleCloudTalentV4CompensationInfoCompensationRange(
-        o.annualizedBaseCompensationRange);
+        o.annualizedBaseCompensationRange
+            as api.GoogleCloudTalentV4CompensationInfoCompensationRange);
     checkGoogleCloudTalentV4CompensationInfoCompensationRange(
-        o.annualizedTotalCompensationRange);
+        o.annualizedTotalCompensationRange
+            as api.GoogleCloudTalentV4CompensationInfoCompensationRange);
     checkUnnamed4357(o.entries);
   }
   buildCounterGoogleCloudTalentV4CompensationInfo--;
@@ -1247,10 +1266,11 @@ void checkGoogleCloudTalentV4CompensationInfoCompensationEntry(
     api.GoogleCloudTalentV4CompensationInfoCompensationEntry o) {
   buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry++;
   if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationEntry < 3) {
-    checkMoney(o.amount);
+    checkMoney(o.amount as api.Money);
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.expectedUnitsPerYear, unittest.equals(42.0));
-    checkGoogleCloudTalentV4CompensationInfoCompensationRange(o.range);
+    checkGoogleCloudTalentV4CompensationInfoCompensationRange(
+        o.range as api.GoogleCloudTalentV4CompensationInfoCompensationRange);
     unittest.expect(o.type, unittest.equals('foo'));
     unittest.expect(o.unit, unittest.equals('foo'));
   }
@@ -1274,8 +1294,8 @@ void checkGoogleCloudTalentV4CompensationInfoCompensationRange(
     api.GoogleCloudTalentV4CompensationInfoCompensationRange o) {
   buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange++;
   if (buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange < 3) {
-    checkMoney(o.maxCompensation);
-    checkMoney(o.minCompensation);
+    checkMoney(o.maxCompensation as api.Money);
+    checkMoney(o.minCompensation as api.Money);
   }
   buildCounterGoogleCloudTalentV4CompensationInfoCompensationRange--;
 }
@@ -1357,8 +1377,10 @@ core.Map<core.String, api.GoogleCloudTalentV4CustomAttribute>
 void checkUnnamed4361(
     core.Map<core.String, api.GoogleCloudTalentV4CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4CustomAttribute(o['x']);
-  checkGoogleCloudTalentV4CustomAttribute(o['y']);
+  checkGoogleCloudTalentV4CustomAttribute(
+      o['x'] as api.GoogleCloudTalentV4CustomAttribute);
+  checkGoogleCloudTalentV4CustomAttribute(
+      o['y'] as api.GoogleCloudTalentV4CustomAttribute);
 }
 
 core.List<core.String> buildUnnamed4362() {
@@ -1444,14 +1466,17 @@ void checkGoogleCloudTalentV4Job(api.GoogleCloudTalentV4Job o) {
   buildCounterGoogleCloudTalentV4Job++;
   if (buildCounterGoogleCloudTalentV4Job < 3) {
     checkUnnamed4360(o.addresses);
-    checkGoogleCloudTalentV4JobApplicationInfo(o.applicationInfo);
+    checkGoogleCloudTalentV4JobApplicationInfo(
+        o.applicationInfo as api.GoogleCloudTalentV4JobApplicationInfo);
     unittest.expect(o.company, unittest.equals('foo'));
     unittest.expect(o.companyDisplayName, unittest.equals('foo'));
-    checkGoogleCloudTalentV4CompensationInfo(o.compensationInfo);
+    checkGoogleCloudTalentV4CompensationInfo(
+        o.compensationInfo as api.GoogleCloudTalentV4CompensationInfo);
     checkUnnamed4361(o.customAttributes);
     checkUnnamed4362(o.degreeTypes);
     unittest.expect(o.department, unittest.equals('foo'));
-    checkGoogleCloudTalentV4JobDerivedInfo(o.derivedInfo);
+    checkGoogleCloudTalentV4JobDerivedInfo(
+        o.derivedInfo as api.GoogleCloudTalentV4JobDerivedInfo);
     unittest.expect(o.description, unittest.equals('foo'));
     checkUnnamed4363(o.employmentTypes);
     unittest.expect(o.incentives, unittest.equals('foo'));
@@ -1466,7 +1491,8 @@ void checkGoogleCloudTalentV4Job(api.GoogleCloudTalentV4Job o) {
     unittest.expect(o.postingPublishTime, unittest.equals('foo'));
     unittest.expect(o.postingRegion, unittest.equals('foo'));
     unittest.expect(o.postingUpdateTime, unittest.equals('foo'));
-    checkGoogleCloudTalentV4JobProcessingOptions(o.processingOptions);
+    checkGoogleCloudTalentV4JobProcessingOptions(
+        o.processingOptions as api.GoogleCloudTalentV4JobProcessingOptions);
     unittest.expect(o.promotionValue, unittest.equals(42));
     unittest.expect(o.qualifications, unittest.equals('foo'));
     unittest.expect(o.requisitionId, unittest.equals('foo'));
@@ -1550,8 +1576,8 @@ core.List<api.GoogleCloudTalentV4Location> buildUnnamed4368() {
 
 void checkUnnamed4368(core.List<api.GoogleCloudTalentV4Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudTalentV4Location(o[0]);
-  checkGoogleCloudTalentV4Location(o[1]);
+  checkGoogleCloudTalentV4Location(o[0] as api.GoogleCloudTalentV4Location);
+  checkGoogleCloudTalentV4Location(o[1] as api.GoogleCloudTalentV4Location);
 }
 
 core.int buildCounterGoogleCloudTalentV4JobDerivedInfo = 0;
@@ -1614,8 +1640,8 @@ api.GoogleCloudTalentV4JobResult buildGoogleCloudTalentV4JobResult() {
 void checkGoogleCloudTalentV4JobResult(api.GoogleCloudTalentV4JobResult o) {
   buildCounterGoogleCloudTalentV4JobResult++;
   if (buildCounterGoogleCloudTalentV4JobResult < 3) {
-    checkGoogleCloudTalentV4Job(o.job);
-    checkStatus(o.status);
+    checkGoogleCloudTalentV4Job(o.job as api.GoogleCloudTalentV4Job);
+    checkStatus(o.status as api.Status);
   }
   buildCounterGoogleCloudTalentV4JobResult--;
 }
@@ -1637,9 +1663,9 @@ api.GoogleCloudTalentV4Location buildGoogleCloudTalentV4Location() {
 void checkGoogleCloudTalentV4Location(api.GoogleCloudTalentV4Location o) {
   buildCounterGoogleCloudTalentV4Location++;
   if (buildCounterGoogleCloudTalentV4Location < 3) {
-    checkLatLng(o.latLng);
+    checkLatLng(o.latLng as api.LatLng);
     unittest.expect(o.locationType, unittest.equals('foo'));
-    checkPostalAddress(o.postalAddress);
+    checkPostalAddress(o.postalAddress as api.PostalAddress);
     unittest.expect(o.radiusMiles, unittest.equals(42.0));
   }
   buildCounterGoogleCloudTalentV4Location--;
@@ -1654,8 +1680,8 @@ core.List<api.CompensationHistogramRequest> buildUnnamed4369() {
 
 void checkUnnamed4369(core.List<api.CompensationHistogramRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompensationHistogramRequest(o[0]);
-  checkCompensationHistogramRequest(o[1]);
+  checkCompensationHistogramRequest(o[0] as api.CompensationHistogramRequest);
+  checkCompensationHistogramRequest(o[1] as api.CompensationHistogramRequest);
 }
 
 core.List<api.CustomAttributeHistogramRequest> buildUnnamed4370() {
@@ -1667,8 +1693,10 @@ core.List<api.CustomAttributeHistogramRequest> buildUnnamed4370() {
 
 void checkUnnamed4370(core.List<api.CustomAttributeHistogramRequest> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttributeHistogramRequest(o[0]);
-  checkCustomAttributeHistogramRequest(o[1]);
+  checkCustomAttributeHistogramRequest(
+      o[0] as api.CustomAttributeHistogramRequest);
+  checkCustomAttributeHistogramRequest(
+      o[1] as api.CustomAttributeHistogramRequest);
 }
 
 core.List<core.String> buildUnnamed4371() {
@@ -1750,8 +1778,8 @@ core.List<api.CompensationHistogramResult> buildUnnamed4373() {
 
 void checkUnnamed4373(core.List<api.CompensationHistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompensationHistogramResult(o[0]);
-  checkCompensationHistogramResult(o[1]);
+  checkCompensationHistogramResult(o[0] as api.CompensationHistogramResult);
+  checkCompensationHistogramResult(o[1] as api.CompensationHistogramResult);
 }
 
 core.List<api.CustomAttributeHistogramResult> buildUnnamed4374() {
@@ -1763,8 +1791,10 @@ core.List<api.CustomAttributeHistogramResult> buildUnnamed4374() {
 
 void checkUnnamed4374(core.List<api.CustomAttributeHistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttributeHistogramResult(o[0]);
-  checkCustomAttributeHistogramResult(o[1]);
+  checkCustomAttributeHistogramResult(
+      o[0] as api.CustomAttributeHistogramResult);
+  checkCustomAttributeHistogramResult(
+      o[1] as api.CustomAttributeHistogramResult);
 }
 
 core.List<api.HistogramResult> buildUnnamed4375() {
@@ -1776,8 +1806,8 @@ core.List<api.HistogramResult> buildUnnamed4375() {
 
 void checkUnnamed4375(core.List<api.HistogramResult> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkHistogramResult(o[0]);
-  checkHistogramResult(o[1]);
+  checkHistogramResult(o[0] as api.HistogramResult);
+  checkHistogramResult(o[1] as api.HistogramResult);
 }
 
 core.int buildCounterHistogramResults = 0;
@@ -1851,8 +1881,8 @@ core.Map<core.String, api.CustomAttribute> buildUnnamed4379() {
 
 void checkUnnamed4379(core.Map<core.String, api.CustomAttribute> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomAttribute(o['x']);
-  checkCustomAttribute(o['y']);
+  checkCustomAttribute(o['x'] as api.CustomAttribute);
+  checkCustomAttribute(o['y'] as api.CustomAttribute);
 }
 
 core.List<core.String> buildUnnamed4380() {
@@ -1890,8 +1920,8 @@ core.Map<core.String, api.CustomField> buildUnnamed4382() {
 
 void checkUnnamed4382(core.Map<core.String, api.CustomField> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomField(o['x']);
-  checkCustomField(o['y']);
+  checkCustomField(o['x'] as api.CustomField);
+  checkCustomField(o['y'] as api.CustomField);
 }
 
 core.List<api.JobLocation> buildUnnamed4383() {
@@ -1903,8 +1933,8 @@ core.List<api.JobLocation> buildUnnamed4383() {
 
 void checkUnnamed4383(core.List<api.JobLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJobLocation(o[0]);
-  checkJobLocation(o[1]);
+  checkJobLocation(o[0] as api.JobLocation);
+  checkJobLocation(o[1] as api.JobLocation);
 }
 
 core.List<core.String> buildUnnamed4384() {
@@ -1929,8 +1959,8 @@ core.Map<core.String, api.CustomField> buildUnnamed4385() {
 
 void checkUnnamed4385(core.Map<core.String, api.CustomField> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomField(o['x']);
-  checkCustomField(o['y']);
+  checkCustomField(o['x'] as api.CustomField);
+  checkCustomField(o['y'] as api.CustomField);
 }
 
 core.int buildCounterJob = 0;
@@ -1991,7 +2021,7 @@ void checkJob(api.Job o) {
     unittest.expect(o.companyDisplayName, unittest.equals('foo'));
     unittest.expect(o.companyName, unittest.equals('foo'));
     unittest.expect(o.companyTitle, unittest.equals('foo'));
-    checkCompensationInfo(o.compensationInfo);
+    checkCompensationInfo(o.compensationInfo as api.CompensationInfo);
     unittest.expect(o.createTime, unittest.equals('foo'));
     checkUnnamed4379(o.customAttributes);
     unittest.expect(o.department, unittest.equals('foo'));
@@ -1999,10 +2029,11 @@ void checkJob(api.Job o) {
     unittest.expect(o.distributorCompanyId, unittest.equals('foo'));
     checkUnnamed4380(o.educationLevels);
     checkUnnamed4381(o.employmentTypes);
-    checkDate(o.endDate);
+    checkDate(o.endDate as api.Date);
     unittest.expect(o.expireTime, unittest.equals('foo'));
-    checkDate(o.expiryDate);
-    checkExtendedCompensationInfo(o.extendedCompensationInfo);
+    checkDate(o.expiryDate as api.Date);
+    checkExtendedCompensationInfo(
+        o.extendedCompensationInfo as api.ExtendedCompensationInfo);
     checkUnnamed4382(o.filterableCustomFields);
     unittest.expect(o.incentives, unittest.equals('foo'));
     checkUnnamed4383(o.jobLocations);
@@ -2012,13 +2043,13 @@ void checkJob(api.Job o) {
     checkUnnamed4384(o.locations);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.promotionValue, unittest.equals(42));
-    checkDate(o.publishDate);
+    checkDate(o.publishDate as api.Date);
     unittest.expect(o.qualifications, unittest.equals('foo'));
     unittest.expect(o.referenceUrl, unittest.equals('foo'));
     unittest.expect(o.region, unittest.equals('foo'));
     unittest.expect(o.requisitionId, unittest.equals('foo'));
     unittest.expect(o.responsibilities, unittest.equals('foo'));
-    checkDate(o.startDate);
+    checkDate(o.startDate as api.Date);
     checkUnnamed4385(o.unindexedCustomFields);
     unittest.expect(o.updateTime, unittest.equals('foo'));
     unittest.expect(o.visibility, unittest.equals('foo'));
@@ -2074,8 +2105,8 @@ core.Map<core.String, api.CustomFieldFilter> buildUnnamed4389() {
 
 void checkUnnamed4389(core.Map<core.String, api.CustomFieldFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCustomFieldFilter(o['x']);
-  checkCustomFieldFilter(o['y']);
+  checkCustomFieldFilter(o['x'] as api.CustomFieldFilter);
+  checkCustomFieldFilter(o['y'] as api.CustomFieldFilter);
 }
 
 core.List<core.String> buildUnnamed4390() {
@@ -2113,8 +2144,8 @@ core.List<api.LocationFilter> buildUnnamed4392() {
 
 void checkUnnamed4392(core.List<api.LocationFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocationFilter(o[0]);
-  checkLocationFilter(o[1]);
+  checkLocationFilter(o[0] as api.LocationFilter);
+  checkLocationFilter(o[1] as api.LocationFilter);
 }
 
 core.int buildCounterJobFilters = 0;
@@ -2146,15 +2177,16 @@ void checkJobFilters(api.JobFilters o) {
   buildCounterJobFilters++;
   if (buildCounterJobFilters < 3) {
     checkUnnamed4386(o.categories);
-    checkCommutePreference(o.commuteFilter);
+    checkCommutePreference(o.commuteFilter as api.CommutePreference);
     checkUnnamed4387(o.companyNames);
     checkUnnamed4388(o.companyTitles);
-    checkCompensationFilter(o.compensationFilter);
+    checkCompensationFilter(o.compensationFilter as api.CompensationFilter);
     unittest.expect(o.customAttributeFilter, unittest.equals('foo'));
     checkUnnamed4389(o.customFieldFilters);
     unittest.expect(o.disableSpellCheck, unittest.isTrue);
     checkUnnamed4390(o.employmentTypes);
-    checkExtendedCompensationFilter(o.extendedCompensationFilter);
+    checkExtendedCompensationFilter(
+        o.extendedCompensationFilter as api.ExtendedCompensationFilter);
     checkUnnamed4391(o.languageCodes);
     checkUnnamed4392(o.locationFilters);
     unittest.expect(o.publishDateRange, unittest.equals('foo'));
@@ -2181,9 +2213,9 @@ api.JobLocation buildJobLocation() {
 void checkJobLocation(api.JobLocation o) {
   buildCounterJobLocation++;
   if (buildCounterJobLocation < 3) {
-    checkLatLng(o.latLng);
+    checkLatLng(o.latLng as api.LatLng);
     unittest.expect(o.locationType, unittest.equals('foo'));
-    checkPostalAddress(o.postalAddress);
+    checkPostalAddress(o.postalAddress as api.PostalAddress);
     unittest.expect(o.radiusMeters, unittest.equals(42.0));
   }
   buildCounterJobLocation--;
@@ -2284,8 +2316,8 @@ core.List<api.LocationFilter> buildUnnamed4398() {
 
 void checkUnnamed4398(core.List<api.LocationFilter> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocationFilter(o[0]);
-  checkLocationFilter(o[1]);
+  checkLocationFilter(o[0] as api.LocationFilter);
+  checkLocationFilter(o[1] as api.LocationFilter);
 }
 
 core.int buildCounterJobQuery = 0;
@@ -2314,10 +2346,10 @@ void checkJobQuery(api.JobQuery o) {
   buildCounterJobQuery++;
   if (buildCounterJobQuery < 3) {
     checkUnnamed4393(o.categories);
-    checkCommutePreference(o.commuteFilter);
+    checkCommutePreference(o.commuteFilter as api.CommutePreference);
     checkUnnamed4394(o.companyDisplayNames);
     checkUnnamed4395(o.companyNames);
-    checkCompensationFilter(o.compensationFilter);
+    checkCompensationFilter(o.compensationFilter as api.CompensationFilter);
     unittest.expect(o.customAttributeFilter, unittest.equals('foo'));
     unittest.expect(o.disableSpellCheck, unittest.isTrue);
     checkUnnamed4396(o.employmentTypes);
@@ -2359,8 +2391,8 @@ core.List<api.Company> buildUnnamed4399() {
 
 void checkUnnamed4399(core.List<api.Company> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCompany(o[0]);
-  checkCompany(o[1]);
+  checkCompany(o[0] as api.Company);
+  checkCompany(o[1] as api.Company);
 }
 
 core.int buildCounterListCompaniesResponse = 0;
@@ -2380,7 +2412,7 @@ void checkListCompaniesResponse(api.ListCompaniesResponse o) {
   buildCounterListCompaniesResponse++;
   if (buildCounterListCompaniesResponse < 3) {
     checkUnnamed4399(o.companies);
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListCompaniesResponse--;
@@ -2395,8 +2427,8 @@ core.List<api.Job> buildUnnamed4400() {
 
 void checkUnnamed4400(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJob(o[0]);
-  checkJob(o[1]);
+  checkJob(o[0] as api.Job);
+  checkJob(o[1] as api.Job);
 }
 
 core.int buildCounterListCompanyJobsResponse = 0;
@@ -2417,7 +2449,7 @@ void checkListCompanyJobsResponse(api.ListCompanyJobsResponse o) {
   buildCounterListCompanyJobsResponse++;
   if (buildCounterListCompanyJobsResponse < 3) {
     checkUnnamed4400(o.jobs);
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.totalSize, unittest.equals('foo'));
   }
@@ -2433,8 +2465,8 @@ core.List<api.Job> buildUnnamed4401() {
 
 void checkUnnamed4401(core.List<api.Job> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJob(o[0]);
-  checkJob(o[1]);
+  checkJob(o[0] as api.Job);
+  checkJob(o[1] as api.Job);
 }
 
 core.int buildCounterListJobsResponse = 0;
@@ -2454,7 +2486,7 @@ void checkListJobsResponse(api.ListJobsResponse o) {
   buildCounterListJobsResponse++;
   if (buildCounterListJobsResponse < 3) {
     checkUnnamed4401(o.jobs);
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
   }
   buildCounterListJobsResponse--;
@@ -2480,7 +2512,7 @@ void checkLocationFilter(api.LocationFilter o) {
   if (buildCounterLocationFilter < 3) {
     unittest.expect(o.distanceInMiles, unittest.equals(42.0));
     unittest.expect(o.isTelecommute, unittest.isTrue);
-    checkLatLng(o.latLng);
+    checkLatLng(o.latLng as api.LatLng);
     unittest.expect(o.name, unittest.equals('foo'));
     unittest.expect(o.regionCode, unittest.equals('foo'));
   }
@@ -2505,8 +2537,8 @@ api.MatchingJob buildMatchingJob() {
 void checkMatchingJob(api.MatchingJob o) {
   buildCounterMatchingJob++;
   if (buildCounterMatchingJob < 3) {
-    checkCommuteInfo(o.commuteInfo);
-    checkJob(o.job);
+    checkCommuteInfo(o.commuteInfo as api.CommuteInfo);
+    checkJob(o.job as api.Job);
     unittest.expect(o.jobSummary, unittest.equals('foo'));
     unittest.expect(o.jobTitleSnippet, unittest.equals('foo'));
     unittest.expect(o.searchTextSnippet, unittest.equals('foo'));
@@ -2523,8 +2555,8 @@ core.Map<core.String, api.NamespacedDebugInput> buildUnnamed4402() {
 
 void checkUnnamed4402(core.Map<core.String, api.NamespacedDebugInput> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkNamespacedDebugInput(o['x']);
-  checkNamespacedDebugInput(o['y']);
+  checkNamespacedDebugInput(o['x'] as api.NamespacedDebugInput);
+  checkNamespacedDebugInput(o['y'] as api.NamespacedDebugInput);
 }
 
 core.int buildCounterMendelDebugInput = 0;
@@ -2800,8 +2832,8 @@ core.List<api.BucketizedCount> buildUnnamed4415() {
 
 void checkUnnamed4415(core.List<api.BucketizedCount> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkBucketizedCount(o[0]);
-  checkBucketizedCount(o[1]);
+  checkBucketizedCount(o[0] as api.BucketizedCount);
+  checkBucketizedCount(o[1] as api.BucketizedCount);
 }
 
 core.int buildCounterNumericBucketingResult = 0;
@@ -2909,7 +2941,7 @@ api.RequestMetadata buildRequestMetadata() {
 void checkRequestMetadata(api.RequestMetadata o) {
   buildCounterRequestMetadata++;
   if (buildCounterRequestMetadata < 3) {
-    checkDeviceInfo(o.deviceInfo);
+    checkDeviceInfo(o.deviceInfo as api.DeviceInfo);
     unittest.expect(o.domain, unittest.equals('foo'));
     unittest.expect(o.sessionId, unittest.equals('foo'));
     unittest.expect(o.userId, unittest.equals('foo'));
@@ -2983,16 +3015,16 @@ void checkSearchJobsRequest(api.SearchJobsRequest o) {
     unittest.expect(o.disableRelevanceThresholding, unittest.isTrue);
     unittest.expect(o.enableBroadening, unittest.isTrue);
     unittest.expect(o.enablePreciseResultSize, unittest.isTrue);
-    checkJobFilters(o.filters);
-    checkHistogramFacets(o.histogramFacets);
+    checkJobFilters(o.filters as api.JobFilters);
+    checkHistogramFacets(o.histogramFacets as api.HistogramFacets);
     unittest.expect(o.jobView, unittest.equals('foo'));
     unittest.expect(o.mode, unittest.equals('foo'));
     unittest.expect(o.offset, unittest.equals(42));
     unittest.expect(o.orderBy, unittest.equals('foo'));
     unittest.expect(o.pageSize, unittest.equals(42));
     unittest.expect(o.pageToken, unittest.equals('foo'));
-    checkJobQuery(o.query);
-    checkRequestMetadata(o.requestMetadata);
+    checkJobQuery(o.query as api.JobQuery);
+    checkRequestMetadata(o.requestMetadata as api.RequestMetadata);
     unittest.expect(o.sortBy, unittest.equals('foo'));
   }
   buildCounterSearchJobsRequest--;
@@ -3007,8 +3039,8 @@ core.List<api.JobLocation> buildUnnamed4419() {
 
 void checkUnnamed4419(core.List<api.JobLocation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkJobLocation(o[0]);
-  checkJobLocation(o[1]);
+  checkJobLocation(o[0] as api.JobLocation);
+  checkJobLocation(o[1] as api.JobLocation);
 }
 
 core.List<api.MatchingJob> buildUnnamed4420() {
@@ -3020,8 +3052,8 @@ core.List<api.MatchingJob> buildUnnamed4420() {
 
 void checkUnnamed4420(core.List<api.MatchingJob> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMatchingJob(o[0]);
-  checkMatchingJob(o[1]);
+  checkMatchingJob(o[0] as api.MatchingJob);
+  checkMatchingJob(o[1] as api.MatchingJob);
 }
 
 core.int buildCounterSearchJobsResponse = 0;
@@ -3048,16 +3080,16 @@ api.SearchJobsResponse buildSearchJobsResponse() {
 void checkSearchJobsResponse(api.SearchJobsResponse o) {
   buildCounterSearchJobsResponse++;
   if (buildCounterSearchJobsResponse < 3) {
-    checkCommutePreference(o.appliedCommuteFilter);
+    checkCommutePreference(o.appliedCommuteFilter as api.CommutePreference);
     checkUnnamed4419(o.appliedJobLocationFilters);
     unittest.expect(o.estimatedTotalSize, unittest.equals('foo'));
-    checkHistogramResults(o.histogramResults);
+    checkHistogramResults(o.histogramResults as api.HistogramResults);
     unittest.expect(o.jobView, unittest.equals('foo'));
     checkUnnamed4420(o.matchingJobs);
-    checkResponseMetadata(o.metadata);
+    checkResponseMetadata(o.metadata as api.ResponseMetadata);
     unittest.expect(o.nextPageToken, unittest.equals('foo'));
     unittest.expect(o.numJobsFromBroadenedQuery, unittest.equals(42));
-    checkSpellingCorrection(o.spellResult);
+    checkSpellingCorrection(o.spellResult as api.SpellingCorrection);
     unittest.expect(o.totalSize, unittest.equals('foo'));
   }
   buildCounterSearchJobsResponse--;
@@ -3199,8 +3231,8 @@ void checkUpdateJobRequest(api.UpdateJobRequest o) {
   buildCounterUpdateJobRequest++;
   if (buildCounterUpdateJobRequest < 3) {
     unittest.expect(o.disableStreetAddressResolution, unittest.isTrue);
-    checkJob(o.job);
-    checkJobProcessingOptions(o.processingOptions);
+    checkJob(o.job as api.Job);
+    checkJobProcessingOptions(o.processingOptions as api.JobProcessingOptions);
     unittest.expect(o.updateJobFields, unittest.equals('foo'));
   }
   buildCounterUpdateJobRequest--;
@@ -3211,7 +3243,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBatchDeleteJobsRequest();
       var od = api.BatchDeleteJobsRequest.fromJson(o.toJson());
-      checkBatchDeleteJobsRequest(od);
+      checkBatchDeleteJobsRequest(od as api.BatchDeleteJobsRequest);
     });
   });
 
@@ -3219,7 +3251,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketRange();
       var od = api.BucketRange.fromJson(o.toJson());
-      checkBucketRange(od);
+      checkBucketRange(od as api.BucketRange);
     });
   });
 
@@ -3227,7 +3259,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildBucketizedCount();
       var od = api.BucketizedCount.fromJson(o.toJson());
-      checkBucketizedCount(od);
+      checkBucketizedCount(od as api.BucketizedCount);
     });
   });
 
@@ -3235,7 +3267,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommuteInfo();
       var od = api.CommuteInfo.fromJson(o.toJson());
-      checkCommuteInfo(od);
+      checkCommuteInfo(od as api.CommuteInfo);
     });
   });
 
@@ -3243,7 +3275,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCommutePreference();
       var od = api.CommutePreference.fromJson(o.toJson());
-      checkCommutePreference(od);
+      checkCommutePreference(od as api.CommutePreference);
     });
   });
 
@@ -3251,7 +3283,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompany();
       var od = api.Company.fromJson(o.toJson());
-      checkCompany(od);
+      checkCompany(od as api.Company);
     });
   });
 
@@ -3259,7 +3291,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompanyInfoSource();
       var od = api.CompanyInfoSource.fromJson(o.toJson());
-      checkCompanyInfoSource(od);
+      checkCompanyInfoSource(od as api.CompanyInfoSource);
     });
   });
 
@@ -3267,7 +3299,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationEntry();
       var od = api.CompensationEntry.fromJson(o.toJson());
-      checkCompensationEntry(od);
+      checkCompensationEntry(od as api.CompensationEntry);
     });
   });
 
@@ -3275,7 +3307,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationFilter();
       var od = api.CompensationFilter.fromJson(o.toJson());
-      checkCompensationFilter(od);
+      checkCompensationFilter(od as api.CompensationFilter);
     });
   });
 
@@ -3283,7 +3315,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationHistogramRequest();
       var od = api.CompensationHistogramRequest.fromJson(o.toJson());
-      checkCompensationHistogramRequest(od);
+      checkCompensationHistogramRequest(od as api.CompensationHistogramRequest);
     });
   });
 
@@ -3291,7 +3323,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationHistogramResult();
       var od = api.CompensationHistogramResult.fromJson(o.toJson());
-      checkCompensationHistogramResult(od);
+      checkCompensationHistogramResult(od as api.CompensationHistogramResult);
     });
   });
 
@@ -3299,7 +3331,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationInfo();
       var od = api.CompensationInfo.fromJson(o.toJson());
-      checkCompensationInfo(od);
+      checkCompensationInfo(od as api.CompensationInfo);
     });
   });
 
@@ -3307,7 +3339,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompensationRange();
       var od = api.CompensationRange.fromJson(o.toJson());
-      checkCompensationRange(od);
+      checkCompensationRange(od as api.CompensationRange);
     });
   });
 
@@ -3315,7 +3347,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompleteQueryResponse();
       var od = api.CompleteQueryResponse.fromJson(o.toJson());
-      checkCompleteQueryResponse(od);
+      checkCompleteQueryResponse(od as api.CompleteQueryResponse);
     });
   });
 
@@ -3323,7 +3355,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCompletionResult();
       var od = api.CompletionResult.fromJson(o.toJson());
-      checkCompletionResult(od);
+      checkCompletionResult(od as api.CompletionResult);
     });
   });
 
@@ -3331,7 +3363,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCreateJobRequest();
       var od = api.CreateJobRequest.fromJson(o.toJson());
-      checkCreateJobRequest(od);
+      checkCreateJobRequest(od as api.CreateJobRequest);
     });
   });
 
@@ -3339,7 +3371,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomAttribute();
       var od = api.CustomAttribute.fromJson(o.toJson());
-      checkCustomAttribute(od);
+      checkCustomAttribute(od as api.CustomAttribute);
     });
   });
 
@@ -3347,7 +3379,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomAttributeHistogramRequest();
       var od = api.CustomAttributeHistogramRequest.fromJson(o.toJson());
-      checkCustomAttributeHistogramRequest(od);
+      checkCustomAttributeHistogramRequest(
+          od as api.CustomAttributeHistogramRequest);
     });
   });
 
@@ -3355,7 +3388,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomAttributeHistogramResult();
       var od = api.CustomAttributeHistogramResult.fromJson(o.toJson());
-      checkCustomAttributeHistogramResult(od);
+      checkCustomAttributeHistogramResult(
+          od as api.CustomAttributeHistogramResult);
     });
   });
 
@@ -3363,7 +3397,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomField();
       var od = api.CustomField.fromJson(o.toJson());
-      checkCustomField(od);
+      checkCustomField(od as api.CustomField);
     });
   });
 
@@ -3371,7 +3405,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCustomFieldFilter();
       var od = api.CustomFieldFilter.fromJson(o.toJson());
-      checkCustomFieldFilter(od);
+      checkCustomFieldFilter(od as api.CustomFieldFilter);
     });
   });
 
@@ -3379,7 +3413,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -3387,7 +3421,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeleteJobsByFilterRequest();
       var od = api.DeleteJobsByFilterRequest.fromJson(o.toJson());
-      checkDeleteJobsByFilterRequest(od);
+      checkDeleteJobsByFilterRequest(od as api.DeleteJobsByFilterRequest);
     });
   });
 
@@ -3395,7 +3429,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDeviceInfo();
       var od = api.DeviceInfo.fromJson(o.toJson());
-      checkDeviceInfo(od);
+      checkDeviceInfo(od as api.DeviceInfo);
     });
   });
 
@@ -3403,7 +3437,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -3411,7 +3445,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExtendedCompensationFilter();
       var od = api.ExtendedCompensationFilter.fromJson(o.toJson());
-      checkExtendedCompensationFilter(od);
+      checkExtendedCompensationFilter(od as api.ExtendedCompensationFilter);
     });
   });
 
@@ -3419,7 +3453,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExtendedCompensationInfo();
       var od = api.ExtendedCompensationInfo.fromJson(o.toJson());
-      checkExtendedCompensationInfo(od);
+      checkExtendedCompensationInfo(od as api.ExtendedCompensationInfo);
     });
   });
 
@@ -3428,7 +3462,8 @@ void main() {
       var o = buildExtendedCompensationInfoCompensationEntry();
       var od =
           api.ExtendedCompensationInfoCompensationEntry.fromJson(o.toJson());
-      checkExtendedCompensationInfoCompensationEntry(od);
+      checkExtendedCompensationInfoCompensationEntry(
+          od as api.ExtendedCompensationInfoCompensationEntry);
     });
   });
 
@@ -3437,7 +3472,8 @@ void main() {
       var o = buildExtendedCompensationInfoCompensationRange();
       var od =
           api.ExtendedCompensationInfoCompensationRange.fromJson(o.toJson());
-      checkExtendedCompensationInfoCompensationRange(od);
+      checkExtendedCompensationInfoCompensationRange(
+          od as api.ExtendedCompensationInfoCompensationRange);
     });
   });
 
@@ -3445,7 +3481,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExtendedCompensationInfoDecimal();
       var od = api.ExtendedCompensationInfoDecimal.fromJson(o.toJson());
-      checkExtendedCompensationInfoDecimal(od);
+      checkExtendedCompensationInfoDecimal(
+          od as api.ExtendedCompensationInfoDecimal);
     });
   });
 
@@ -3453,7 +3490,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFilter();
       var od = api.Filter.fromJson(o.toJson());
-      checkFilter(od);
+      checkFilter(od as api.Filter);
     });
   });
 
@@ -3461,7 +3498,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetHistogramRequest();
       var od = api.GetHistogramRequest.fromJson(o.toJson());
-      checkGetHistogramRequest(od);
+      checkGetHistogramRequest(od as api.GetHistogramRequest);
     });
   });
 
@@ -3469,7 +3506,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGetHistogramResponse();
       var od = api.GetHistogramResponse.fromJson(o.toJson());
-      checkGetHistogramResponse(od);
+      checkGetHistogramResponse(od as api.GetHistogramResponse);
     });
   });
 
@@ -3478,7 +3515,8 @@ void main() {
       var o = buildGoogleCloudTalentV4BatchCreateJobsResponse();
       var od =
           api.GoogleCloudTalentV4BatchCreateJobsResponse.fromJson(o.toJson());
-      checkGoogleCloudTalentV4BatchCreateJobsResponse(od);
+      checkGoogleCloudTalentV4BatchCreateJobsResponse(
+          od as api.GoogleCloudTalentV4BatchCreateJobsResponse);
     });
   });
 
@@ -3487,7 +3525,8 @@ void main() {
       var o = buildGoogleCloudTalentV4BatchDeleteJobsResponse();
       var od =
           api.GoogleCloudTalentV4BatchDeleteJobsResponse.fromJson(o.toJson());
-      checkGoogleCloudTalentV4BatchDeleteJobsResponse(od);
+      checkGoogleCloudTalentV4BatchDeleteJobsResponse(
+          od as api.GoogleCloudTalentV4BatchDeleteJobsResponse);
     });
   });
 
@@ -3496,7 +3535,8 @@ void main() {
       var o = buildGoogleCloudTalentV4BatchOperationMetadata();
       var od =
           api.GoogleCloudTalentV4BatchOperationMetadata.fromJson(o.toJson());
-      checkGoogleCloudTalentV4BatchOperationMetadata(od);
+      checkGoogleCloudTalentV4BatchOperationMetadata(
+          od as api.GoogleCloudTalentV4BatchOperationMetadata);
     });
   });
 
@@ -3505,7 +3545,8 @@ void main() {
       var o = buildGoogleCloudTalentV4BatchUpdateJobsResponse();
       var od =
           api.GoogleCloudTalentV4BatchUpdateJobsResponse.fromJson(o.toJson());
-      checkGoogleCloudTalentV4BatchUpdateJobsResponse(od);
+      checkGoogleCloudTalentV4BatchUpdateJobsResponse(
+          od as api.GoogleCloudTalentV4BatchUpdateJobsResponse);
     });
   });
 
@@ -3513,7 +3554,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4CompensationInfo();
       var od = api.GoogleCloudTalentV4CompensationInfo.fromJson(o.toJson());
-      checkGoogleCloudTalentV4CompensationInfo(od);
+      checkGoogleCloudTalentV4CompensationInfo(
+          od as api.GoogleCloudTalentV4CompensationInfo);
     });
   });
 
@@ -3524,7 +3566,8 @@ void main() {
       var od =
           api.GoogleCloudTalentV4CompensationInfoCompensationEntry.fromJson(
               o.toJson());
-      checkGoogleCloudTalentV4CompensationInfoCompensationEntry(od);
+      checkGoogleCloudTalentV4CompensationInfoCompensationEntry(
+          od as api.GoogleCloudTalentV4CompensationInfoCompensationEntry);
     });
   });
 
@@ -3535,7 +3578,8 @@ void main() {
       var od =
           api.GoogleCloudTalentV4CompensationInfoCompensationRange.fromJson(
               o.toJson());
-      checkGoogleCloudTalentV4CompensationInfoCompensationRange(od);
+      checkGoogleCloudTalentV4CompensationInfoCompensationRange(
+          od as api.GoogleCloudTalentV4CompensationInfoCompensationRange);
     });
   });
 
@@ -3543,7 +3587,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4CustomAttribute();
       var od = api.GoogleCloudTalentV4CustomAttribute.fromJson(o.toJson());
-      checkGoogleCloudTalentV4CustomAttribute(od);
+      checkGoogleCloudTalentV4CustomAttribute(
+          od as api.GoogleCloudTalentV4CustomAttribute);
     });
   });
 
@@ -3551,7 +3596,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4Job();
       var od = api.GoogleCloudTalentV4Job.fromJson(o.toJson());
-      checkGoogleCloudTalentV4Job(od);
+      checkGoogleCloudTalentV4Job(od as api.GoogleCloudTalentV4Job);
     });
   });
 
@@ -3559,7 +3604,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4JobApplicationInfo();
       var od = api.GoogleCloudTalentV4JobApplicationInfo.fromJson(o.toJson());
-      checkGoogleCloudTalentV4JobApplicationInfo(od);
+      checkGoogleCloudTalentV4JobApplicationInfo(
+          od as api.GoogleCloudTalentV4JobApplicationInfo);
     });
   });
 
@@ -3567,7 +3613,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4JobDerivedInfo();
       var od = api.GoogleCloudTalentV4JobDerivedInfo.fromJson(o.toJson());
-      checkGoogleCloudTalentV4JobDerivedInfo(od);
+      checkGoogleCloudTalentV4JobDerivedInfo(
+          od as api.GoogleCloudTalentV4JobDerivedInfo);
     });
   });
 
@@ -3575,7 +3622,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4JobProcessingOptions();
       var od = api.GoogleCloudTalentV4JobProcessingOptions.fromJson(o.toJson());
-      checkGoogleCloudTalentV4JobProcessingOptions(od);
+      checkGoogleCloudTalentV4JobProcessingOptions(
+          od as api.GoogleCloudTalentV4JobProcessingOptions);
     });
   });
 
@@ -3583,7 +3631,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4JobResult();
       var od = api.GoogleCloudTalentV4JobResult.fromJson(o.toJson());
-      checkGoogleCloudTalentV4JobResult(od);
+      checkGoogleCloudTalentV4JobResult(od as api.GoogleCloudTalentV4JobResult);
     });
   });
 
@@ -3591,7 +3639,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudTalentV4Location();
       var od = api.GoogleCloudTalentV4Location.fromJson(o.toJson());
-      checkGoogleCloudTalentV4Location(od);
+      checkGoogleCloudTalentV4Location(od as api.GoogleCloudTalentV4Location);
     });
   });
 
@@ -3599,7 +3647,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHistogramFacets();
       var od = api.HistogramFacets.fromJson(o.toJson());
-      checkHistogramFacets(od);
+      checkHistogramFacets(od as api.HistogramFacets);
     });
   });
 
@@ -3607,7 +3655,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHistogramResult();
       var od = api.HistogramResult.fromJson(o.toJson());
-      checkHistogramResult(od);
+      checkHistogramResult(od as api.HistogramResult);
     });
   });
 
@@ -3615,7 +3663,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildHistogramResults();
       var od = api.HistogramResults.fromJson(o.toJson());
-      checkHistogramResults(od);
+      checkHistogramResults(od as api.HistogramResults);
     });
   });
 
@@ -3623,7 +3671,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJob();
       var od = api.Job.fromJson(o.toJson());
-      checkJob(od);
+      checkJob(od as api.Job);
     });
   });
 
@@ -3631,7 +3679,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJobFilters();
       var od = api.JobFilters.fromJson(o.toJson());
-      checkJobFilters(od);
+      checkJobFilters(od as api.JobFilters);
     });
   });
 
@@ -3639,7 +3687,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJobLocation();
       var od = api.JobLocation.fromJson(o.toJson());
-      checkJobLocation(od);
+      checkJobLocation(od as api.JobLocation);
     });
   });
 
@@ -3647,7 +3695,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJobProcessingOptions();
       var od = api.JobProcessingOptions.fromJson(o.toJson());
-      checkJobProcessingOptions(od);
+      checkJobProcessingOptions(od as api.JobProcessingOptions);
     });
   });
 
@@ -3655,7 +3703,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildJobQuery();
       var od = api.JobQuery.fromJson(o.toJson());
-      checkJobQuery(od);
+      checkJobQuery(od as api.JobQuery);
     });
   });
 
@@ -3663,7 +3711,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLatLng();
       var od = api.LatLng.fromJson(o.toJson());
-      checkLatLng(od);
+      checkLatLng(od as api.LatLng);
     });
   });
 
@@ -3671,7 +3719,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCompaniesResponse();
       var od = api.ListCompaniesResponse.fromJson(o.toJson());
-      checkListCompaniesResponse(od);
+      checkListCompaniesResponse(od as api.ListCompaniesResponse);
     });
   });
 
@@ -3679,7 +3727,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCompanyJobsResponse();
       var od = api.ListCompanyJobsResponse.fromJson(o.toJson());
-      checkListCompanyJobsResponse(od);
+      checkListCompanyJobsResponse(od as api.ListCompanyJobsResponse);
     });
   });
 
@@ -3687,7 +3735,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListJobsResponse();
       var od = api.ListJobsResponse.fromJson(o.toJson());
-      checkListJobsResponse(od);
+      checkListJobsResponse(od as api.ListJobsResponse);
     });
   });
 
@@ -3695,7 +3743,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocationFilter();
       var od = api.LocationFilter.fromJson(o.toJson());
-      checkLocationFilter(od);
+      checkLocationFilter(od as api.LocationFilter);
     });
   });
 
@@ -3703,7 +3751,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMatchingJob();
       var od = api.MatchingJob.fromJson(o.toJson());
-      checkMatchingJob(od);
+      checkMatchingJob(od as api.MatchingJob);
     });
   });
 
@@ -3711,7 +3759,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMendelDebugInput();
       var od = api.MendelDebugInput.fromJson(o.toJson());
-      checkMendelDebugInput(od);
+      checkMendelDebugInput(od as api.MendelDebugInput);
     });
   });
 
@@ -3719,7 +3767,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMoney();
       var od = api.Money.fromJson(o.toJson());
-      checkMoney(od);
+      checkMoney(od as api.Money);
     });
   });
 
@@ -3727,7 +3775,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNamespacedDebugInput();
       var od = api.NamespacedDebugInput.fromJson(o.toJson());
-      checkNamespacedDebugInput(od);
+      checkNamespacedDebugInput(od as api.NamespacedDebugInput);
     });
   });
 
@@ -3735,7 +3783,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNumericBucketingOption();
       var od = api.NumericBucketingOption.fromJson(o.toJson());
-      checkNumericBucketingOption(od);
+      checkNumericBucketingOption(od as api.NumericBucketingOption);
     });
   });
 
@@ -3743,7 +3791,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildNumericBucketingResult();
       var od = api.NumericBucketingResult.fromJson(o.toJson());
-      checkNumericBucketingResult(od);
+      checkNumericBucketingResult(od as api.NumericBucketingResult);
     });
   });
 
@@ -3751,7 +3799,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildPostalAddress();
       var od = api.PostalAddress.fromJson(o.toJson());
-      checkPostalAddress(od);
+      checkPostalAddress(od as api.PostalAddress);
     });
   });
 
@@ -3759,7 +3807,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRequestMetadata();
       var od = api.RequestMetadata.fromJson(o.toJson());
-      checkRequestMetadata(od);
+      checkRequestMetadata(od as api.RequestMetadata);
     });
   });
 
@@ -3767,7 +3815,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildResponseMetadata();
       var od = api.ResponseMetadata.fromJson(o.toJson());
-      checkResponseMetadata(od);
+      checkResponseMetadata(od as api.ResponseMetadata);
     });
   });
 
@@ -3775,7 +3823,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchJobsRequest();
       var od = api.SearchJobsRequest.fromJson(o.toJson());
-      checkSearchJobsRequest(od);
+      checkSearchJobsRequest(od as api.SearchJobsRequest);
     });
   });
 
@@ -3783,7 +3831,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSearchJobsResponse();
       var od = api.SearchJobsResponse.fromJson(o.toJson());
-      checkSearchJobsResponse(od);
+      checkSearchJobsResponse(od as api.SearchJobsResponse);
     });
   });
 
@@ -3791,7 +3839,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSpellingCorrection();
       var od = api.SpellingCorrection.fromJson(o.toJson());
-      checkSpellingCorrection(od);
+      checkSpellingCorrection(od as api.SpellingCorrection);
     });
   });
 
@@ -3799,7 +3847,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -3807,7 +3855,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStringValues();
       var od = api.StringValues.fromJson(o.toJson());
-      checkStringValues(od);
+      checkStringValues(od as api.StringValues);
     });
   });
 
@@ -3815,7 +3863,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpdateJobRequest();
       var od = api.UpdateJobRequest.fromJson(o.toJson());
-      checkUpdateJobRequest(od);
+      checkUpdateJobRequest(od as api.UpdateJobRequest);
     });
   });
 
@@ -3826,8 +3874,9 @@ void main() {
       var arg_request = buildCompany();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Company.fromJson(json);
-        checkCompany(obj);
+        var obj =
+            api.Company.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCompany(obj as api.Company);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3866,7 +3915,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCompany(response);
+        checkCompany(response as api.Company);
       })));
     });
 
@@ -3914,7 +3963,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3962,7 +4011,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCompany(response);
+        checkCompany(response as api.Company);
       })));
     });
 
@@ -4021,7 +4070,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCompaniesResponse(response);
+        checkListCompaniesResponse(response as api.ListCompaniesResponse);
       })));
     });
 
@@ -4033,8 +4082,9 @@ void main() {
       var arg_updateCompanyFields = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Company.fromJson(json);
-        checkCompany(obj);
+        var obj =
+            api.Company.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCompany(obj as api.Company);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4078,7 +4128,7 @@ void main() {
               updateCompanyFields: arg_updateCompanyFields,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCompany(response);
+        checkCompany(response as api.Company);
       })));
     });
   });
@@ -4149,7 +4199,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCompanyJobsResponse(response);
+        checkListCompanyJobsResponse(response as api.ListCompanyJobsResponse);
       })));
     });
   });
@@ -4161,8 +4211,9 @@ void main() {
       var arg_request = buildBatchDeleteJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.BatchDeleteJobsRequest.fromJson(json);
-        checkBatchDeleteJobsRequest(obj);
+        var obj = api.BatchDeleteJobsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkBatchDeleteJobsRequest(obj as api.BatchDeleteJobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4201,7 +4252,7 @@ void main() {
       res
           .batchDelete(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4211,8 +4262,9 @@ void main() {
       var arg_request = buildCreateJobRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CreateJobRequest.fromJson(json);
-        checkCreateJobRequest(obj);
+        var obj = api.CreateJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCreateJobRequest(obj as api.CreateJobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4251,7 +4303,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -4303,7 +4355,7 @@ void main() {
           .delete(arg_name,
               disableFastProcess: arg_disableFastProcess, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4313,8 +4365,9 @@ void main() {
       var arg_request = buildDeleteJobsByFilterRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.DeleteJobsByFilterRequest.fromJson(json);
-        checkDeleteJobsByFilterRequest(obj);
+        var obj = api.DeleteJobsByFilterRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkDeleteJobsByFilterRequest(obj as api.DeleteJobsByFilterRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4353,7 +4406,7 @@ void main() {
       res
           .deleteByFilter(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4401,7 +4454,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -4411,8 +4464,9 @@ void main() {
       var arg_request = buildGetHistogramRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GetHistogramRequest.fromJson(json);
-        checkGetHistogramRequest(obj);
+        var obj = api.GetHistogramRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGetHistogramRequest(obj as api.GetHistogramRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4451,7 +4505,7 @@ void main() {
       res
           .histogram(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGetHistogramResponse(response);
+        checkGetHistogramResponse(response as api.GetHistogramResponse);
       })));
     });
 
@@ -4513,7 +4567,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListJobsResponse(response);
+        checkListJobsResponse(response as api.ListJobsResponse);
       })));
     });
 
@@ -4524,8 +4578,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpdateJobRequest.fromJson(json);
-        checkUpdateJobRequest(obj);
+        var obj = api.UpdateJobRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpdateJobRequest(obj as api.UpdateJobRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4565,7 +4620,7 @@ void main() {
       res
           .patch(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkJob(response);
+        checkJob(response as api.Job);
       })));
     });
 
@@ -4575,8 +4630,9 @@ void main() {
       var arg_request = buildSearchJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchJobsRequest.fromJson(json);
-        checkSearchJobsRequest(obj);
+        var obj = api.SearchJobsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchJobsRequest(obj as api.SearchJobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4615,7 +4671,7 @@ void main() {
       res
           .search(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchJobsResponse(response);
+        checkSearchJobsResponse(response as api.SearchJobsResponse);
       })));
     });
 
@@ -4625,8 +4681,9 @@ void main() {
       var arg_request = buildSearchJobsRequest();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.SearchJobsRequest.fromJson(json);
-        checkSearchJobsRequest(obj);
+        var obj = api.SearchJobsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkSearchJobsRequest(obj as api.SearchJobsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4665,7 +4722,7 @@ void main() {
       res
           .searchForAlert(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkSearchJobsResponse(response);
+        checkSearchJobsResponse(response as api.SearchJobsResponse);
       })));
     });
   });
@@ -4735,7 +4792,7 @@ void main() {
               type: arg_type,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCompleteQueryResponse(response);
+        checkCompleteQueryResponse(response as api.CompleteQueryResponse);
       })));
     });
   });

@@ -97,7 +97,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Groups.fromJson(data));
+    return _response.then(
+      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing resource. This method supports patch semantics.
@@ -151,7 +153,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Groups.fromJson(data));
+    return _response.then(
+      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates an existing resource.
@@ -205,7 +209,9 @@ class GroupsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Groups.fromJson(data));
+    return _response.then(
+      (data) => Groups.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 

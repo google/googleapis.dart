@@ -125,7 +125,9 @@ class ProjectsOperationsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -190,7 +192,10 @@ class ProjectsSitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          SiteConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the Hosting metadata for a specific site.
@@ -256,7 +261,10 @@ class ProjectsSitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          SiteConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -330,7 +338,9 @@ class ProjectsSitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a channel of a site. The `live` channel cannot be deleted.
@@ -379,7 +389,9 @@ class ProjectsSitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves information for the specified channel of a site.
@@ -428,7 +440,9 @@ class ProjectsSitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the channels for the specified site. All sites have a default "live"
@@ -495,7 +509,10 @@ class ProjectsSitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListChannelsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListChannelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates information for the specified channel of a site. This method will
@@ -558,7 +575,9 @@ class ProjectsSitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -634,7 +653,9 @@ class ProjectsSitesChannelsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the releases that have been created on the specified site.
@@ -698,7 +719,10 @@ class ProjectsSitesChannelsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReleasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReleasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -763,7 +787,9 @@ class ProjectsSitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the existing domain mapping on the specified site.
@@ -812,7 +838,9 @@ class ProjectsSitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a domain mapping on the specified site.
@@ -861,7 +889,9 @@ class ProjectsSitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the domains for the specified site.
@@ -925,7 +955,10 @@ class ProjectsSitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDomainsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDomainsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified domain mapping, creating the mapping as if it does
@@ -982,7 +1015,9 @@ class ProjectsSitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1058,7 +1093,9 @@ class ProjectsSitesReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the releases that have been created on the specified site.
@@ -1122,7 +1159,10 @@ class ProjectsSitesReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReleasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReleasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1191,7 +1231,9 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new version for a site.
@@ -1263,7 +1305,9 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified version.
@@ -1313,7 +1357,9 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the versions that have been created on the specified site. Will
@@ -1390,7 +1436,10 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified metadata for a version. Note that this method will
@@ -1462,7 +1511,9 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds content files to a version. Each file must be under 2 GB.
@@ -1520,8 +1571,10 @@ class ProjectsSitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PopulateVersionFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => PopulateVersionFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1606,7 +1659,10 @@ class ProjectsSitesVersionsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1667,7 +1723,10 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          SiteConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Sets the Hosting metadata for a specific site.
@@ -1733,7 +1792,10 @@ class SitesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => SiteConfig.fromJson(data));
+    return _response.then(
+      (data) =>
+          SiteConfig.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -1806,7 +1868,9 @@ class SitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes a channel of a site. The `live` channel cannot be deleted.
@@ -1855,7 +1919,9 @@ class SitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Retrieves information for the specified channel of a site.
@@ -1904,7 +1970,9 @@ class SitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the channels for the specified site. All sites have a default "live"
@@ -1971,7 +2039,10 @@ class SitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListChannelsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListChannelsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates information for the specified channel of a site. This method will
@@ -2034,7 +2105,9 @@ class SitesChannelsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Channel.fromJson(data));
+    return _response.then(
+      (data) => Channel.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2110,7 +2183,9 @@ class SitesChannelsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the releases that have been created on the specified site.
@@ -2174,7 +2249,10 @@ class SitesChannelsReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReleasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReleasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2238,7 +2316,9 @@ class SitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the existing domain mapping on the specified site.
@@ -2287,7 +2367,9 @@ class SitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Gets a domain mapping on the specified site.
@@ -2336,7 +2418,9 @@ class SitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the domains for the specified site.
@@ -2400,7 +2484,10 @@ class SitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListDomainsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListDomainsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified domain mapping, creating the mapping as if it does
@@ -2457,7 +2544,9 @@ class SitesDomainsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Domain.fromJson(data));
+    return _response.then(
+      (data) => Domain.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2532,7 +2621,9 @@ class SitesReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Release.fromJson(data));
+    return _response.then(
+      (data) => Release.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the releases that have been created on the specified site.
@@ -2596,7 +2687,10 @@ class SitesReleasesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListReleasesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListReleasesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -2664,7 +2758,9 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Operation.fromJson(data));
+    return _response.then(
+      (data) => Operation.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Creates a new version for a site.
@@ -2736,7 +2832,9 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Deletes the specified version.
@@ -2786,7 +2884,9 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Empty.fromJson(data));
+    return _response.then(
+      (data) => Empty.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Lists the versions that have been created on the specified site. Will
@@ -2863,7 +2963,10 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionsResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionsResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Updates the specified metadata for a version. Note that this method will
@@ -2935,7 +3038,9 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => Version.fromJson(data));
+    return _response.then(
+      (data) => Version.fromJson(data as core.Map<core.String, core.dynamic>),
+    );
   }
 
   /// Adds content files to a version. Each file must be under 2 GB.
@@ -2993,8 +3098,10 @@ class SitesVersionsResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response
-        .then((data) => PopulateVersionFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => PopulateVersionFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3079,7 +3186,10 @@ class SitesVersionsFilesResourceApi {
       uploadMedia: _uploadMedia,
       downloadOptions: _downloadOptions,
     );
-    return _response.then((data) => ListVersionFilesResponse.fromJson(data));
+    return _response.then(
+      (data) => ListVersionFilesResponse.fromJson(
+          data as core.Map<core.String, core.dynamic>),
+    );
   }
 }
 
@@ -3230,14 +3340,16 @@ class Channel {
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('release')) {
-      release = Release.fromJson(_json['release']);
+      release = Release.fromJson(
+          _json['release'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('retainedReleaseCount')) {
       retainedReleaseCount = _json['retainedReleaseCount'] as core.int;
@@ -3307,13 +3419,15 @@ class CloneVersionRequest {
 
   CloneVersionRequest.fromJson(core.Map _json) {
     if (_json.containsKey('exclude')) {
-      exclude = PathFilter.fromJson(_json['exclude']);
+      exclude = PathFilter.fromJson(
+          _json['exclude'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('finalize')) {
       finalize = _json['finalize'] as core.bool;
     }
     if (_json.containsKey('include')) {
-      include = PathFilter.fromJson(_json['include']);
+      include = PathFilter.fromJson(
+          _json['include'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('sourceVersion')) {
       sourceVersion = _json['sourceVersion'] as core.String;
@@ -3415,10 +3529,12 @@ class Domain {
       domainName = _json['domainName'] as core.String;
     }
     if (_json.containsKey('domainRedirect')) {
-      domainRedirect = DomainRedirect.fromJson(_json['domainRedirect']);
+      domainRedirect = DomainRedirect.fromJson(
+          _json['domainRedirect'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('provisioning')) {
-      provisioning = DomainProvisioning.fromJson(_json['provisioning']);
+      provisioning = DomainProvisioning.fromJson(
+          _json['provisioning'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('site')) {
       site = _json['site'] as core.String;
@@ -3514,11 +3630,12 @@ class DomainProvisioning {
               .toList();
     }
     if (_json.containsKey('certChallengeDns')) {
-      certChallengeDns = CertDnsChallenge.fromJson(_json['certChallengeDns']);
+      certChallengeDns = CertDnsChallenge.fromJson(
+          _json['certChallengeDns'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('certChallengeHttp')) {
-      certChallengeHttp =
-          CertHttpChallenge.fromJson(_json['certChallengeHttp']);
+      certChallengeHttp = CertHttpChallenge.fromJson(
+          _json['certChallengeHttp'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('certStatus')) {
       certStatus = _json['certStatus'] as core.String;
@@ -3650,7 +3767,8 @@ class Header {
     }
     if (_json.containsKey('headers')) {
       headers = commons.mapMap<core.String, core.String>(
-          _json['headers'].cast<core.String, core.String>(),
+          (_json['headers'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('regex')) {
@@ -3712,7 +3830,8 @@ class ListChannelsResponse {
   ListChannelsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('channels')) {
       channels = (_json['channels'] as core.List)
-          .map<Channel>((value) => Channel.fromJson(value))
+          .map<Channel>((value) =>
+              Channel.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3745,7 +3864,8 @@ class ListDomainsResponse {
   ListDomainsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('domains')) {
       domains = (_json['domains'] as core.List)
-          .map<Domain>((value) => Domain.fromJson(value))
+          .map<Domain>((value) =>
+              Domain.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3783,7 +3903,8 @@ class ListReleasesResponse {
     }
     if (_json.containsKey('releases')) {
       releases = (_json['releases'] as core.List)
-          .map<Release>((value) => Release.fromJson(value))
+          .map<Release>((value) =>
+              Release.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3812,7 +3933,8 @@ class ListVersionFilesResponse {
   ListVersionFilesResponse.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = (_json['files'] as core.List)
-          .map<VersionFile>((value) => VersionFile.fromJson(value))
+          .map<VersionFile>((value) => VersionFile.fromJson(
+              value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('nextPageToken')) {
@@ -3847,7 +3969,8 @@ class ListVersionsResponse {
     }
     if (_json.containsKey('versions')) {
       versions = (_json['versions'] as core.List)
-          .map<Version>((value) => Version.fromJson(value))
+          .map<Version>((value) =>
+              Version.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
   }
@@ -3908,11 +4031,13 @@ class Operation {
       done = _json['done'] as core.bool;
     }
     if (_json.containsKey('error')) {
-      error = Status.fromJson(_json['error']);
+      error = Status.fromJson(
+          _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
       metadata = commons.mapMap<core.Object, core.Object>(
-          _json['metadata'].cast<core.String, core.Object>(),
+          (_json['metadata'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
     if (_json.containsKey('name')) {
@@ -3920,7 +4045,8 @@ class Operation {
     }
     if (_json.containsKey('response')) {
       response = commons.mapMap<core.Object, core.Object>(
-          _json['response'].cast<core.String, core.Object>(),
+          (_json['response'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.Object>(),
           (core.Object item) => item as core.Object);
     }
   }
@@ -3983,7 +4109,8 @@ class PopulateVersionFilesRequest {
   PopulateVersionFilesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('files')) {
       files = commons.mapMap<core.String, core.String>(
-          _json['files'].cast<core.String, core.String>(),
+          (_json['files'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
   }
@@ -4172,13 +4299,15 @@ class Release {
       releaseTime = _json['releaseTime'] as core.String;
     }
     if (_json.containsKey('releaseUser')) {
-      releaseUser = ActingUser.fromJson(_json['releaseUser']);
+      releaseUser = ActingUser.fromJson(
+          _json['releaseUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('version')) {
-      version = Version.fromJson(_json['version']);
+      version = Version.fromJson(
+          _json['version'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4250,7 +4379,8 @@ class Rewrite {
       regex = _json['regex'] as core.String;
     }
     if (_json.containsKey('run')) {
-      run = CloudRunRewrite.fromJson(_json['run']);
+      run = CloudRunRewrite.fromJson(
+          _json['run'] as core.Map<core.String, core.dynamic>);
     }
   }
 
@@ -4335,20 +4465,24 @@ class ServingConfig {
     }
     if (_json.containsKey('headers')) {
       headers = (_json['headers'] as core.List)
-          .map<Header>((value) => Header.fromJson(value))
+          .map<Header>((value) =>
+              Header.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('i18n')) {
-      i18n = I18nConfig.fromJson(_json['i18n']);
+      i18n = I18nConfig.fromJson(
+          _json['i18n'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('redirects')) {
       redirects = (_json['redirects'] as core.List)
-          .map<Redirect>((value) => Redirect.fromJson(value))
+          .map<Redirect>((value) =>
+              Redirect.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('rewrites')) {
       rewrites = (_json['rewrites'] as core.List)
-          .map<Rewrite>((value) => Rewrite.fromJson(value))
+          .map<Rewrite>((value) =>
+              Rewrite.fromJson(value as core.Map<core.String, core.dynamic>))
           .toList();
     }
     if (_json.containsKey('trailingSlashBehavior')) {
@@ -4452,7 +4586,8 @@ class Status {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
               commons.mapMap<core.Object, core.Object>(
-                  value.cast<core.String, core.Object>(),
+                  (value as core.Map<core.String, core.dynamic>)
+                      .cast<core.String, core.Object>(),
                   (core.Object item) => item as core.Object))
           .toList();
     }
@@ -4553,19 +4688,22 @@ class Version {
 
   Version.fromJson(core.Map _json) {
     if (_json.containsKey('config')) {
-      config = ServingConfig.fromJson(_json['config']);
+      config = ServingConfig.fromJson(
+          _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('createUser')) {
-      createUser = ActingUser.fromJson(_json['createUser']);
+      createUser = ActingUser.fromJson(
+          _json['createUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('deleteTime')) {
       deleteTime = _json['deleteTime'] as core.String;
     }
     if (_json.containsKey('deleteUser')) {
-      deleteUser = ActingUser.fromJson(_json['deleteUser']);
+      deleteUser = ActingUser.fromJson(
+          _json['deleteUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileCount')) {
       fileCount = _json['fileCount'] as core.String;
@@ -4574,18 +4712,21 @@ class Version {
       finalizeTime = _json['finalizeTime'] as core.String;
     }
     if (_json.containsKey('finalizeUser')) {
-      finalizeUser = ActingUser.fromJson(_json['finalizeUser']);
+      finalizeUser = ActingUser.fromJson(
+          _json['finalizeUser'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
       labels = commons.mapMap<core.String, core.String>(
-          _json['labels'].cast<core.String, core.String>(),
+          (_json['labels'] as core.Map<core.String, core.dynamic>)
+              .cast<core.String, core.String>(),
           (core.String item) => item as core.String);
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('preview')) {
-      preview = PreviewConfig.fromJson(_json['preview']);
+      preview = PreviewConfig.fromJson(
+          _json['preview'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('status')) {
       status = _json['status'] as core.String;

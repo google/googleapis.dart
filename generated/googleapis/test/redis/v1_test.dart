@@ -103,7 +103,7 @@ api.ExportInstanceRequest buildExportInstanceRequest() {
 void checkExportInstanceRequest(api.ExportInstanceRequest o) {
   buildCounterExportInstanceRequest++;
   if (buildCounterExportInstanceRequest < 3) {
-    checkOutputConfig(o.outputConfig);
+    checkOutputConfig(o.outputConfig as api.OutputConfig);
   }
   buildCounterExportInstanceRequest--;
 }
@@ -175,8 +175,10 @@ core.Map<core.String, api.GoogleCloudRedisV1ZoneMetadata> buildUnnamed2288() {
 void checkUnnamed2288(
     core.Map<core.String, api.GoogleCloudRedisV1ZoneMetadata> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGoogleCloudRedisV1ZoneMetadata(o['x']);
-  checkGoogleCloudRedisV1ZoneMetadata(o['y']);
+  checkGoogleCloudRedisV1ZoneMetadata(
+      o['x'] as api.GoogleCloudRedisV1ZoneMetadata);
+  checkGoogleCloudRedisV1ZoneMetadata(
+      o['y'] as api.GoogleCloudRedisV1ZoneMetadata);
 }
 
 core.int buildCounterGoogleCloudRedisV1LocationMetadata = 0;
@@ -262,7 +264,7 @@ api.ImportInstanceRequest buildImportInstanceRequest() {
 void checkImportInstanceRequest(api.ImportInstanceRequest o) {
   buildCounterImportInstanceRequest++;
   if (buildCounterImportInstanceRequest < 3) {
-    checkInputConfig(o.inputConfig);
+    checkInputConfig(o.inputConfig as api.InputConfig);
   }
   buildCounterImportInstanceRequest--;
 }
@@ -281,7 +283,7 @@ api.InputConfig buildInputConfig() {
 void checkInputConfig(api.InputConfig o) {
   buildCounterInputConfig++;
   if (buildCounterInputConfig < 3) {
-    checkGcsSource(o.gcsSource);
+    checkGcsSource(o.gcsSource as api.GcsSource);
   }
   buildCounterInputConfig--;
 }
@@ -376,8 +378,8 @@ core.List<api.Instance> buildUnnamed2291() {
 
 void checkUnnamed2291(core.List<api.Instance> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInstance(o[0]);
-  checkInstance(o[1]);
+  checkInstance(o[0] as api.Instance);
+  checkInstance(o[1] as api.Instance);
 }
 
 core.List<core.String> buildUnnamed2292() {
@@ -425,8 +427,8 @@ core.List<api.Location> buildUnnamed2293() {
 
 void checkUnnamed2293(core.List<api.Location> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkLocation(o[0]);
-  checkLocation(o[1]);
+  checkLocation(o[0] as api.Location);
+  checkLocation(o[1] as api.Location);
 }
 
 core.int buildCounterListLocationsResponse = 0;
@@ -459,8 +461,8 @@ core.List<api.Operation> buildUnnamed2294() {
 
 void checkUnnamed2294(core.List<api.Operation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkOperation(o[0]);
-  checkOperation(o[1]);
+  checkOperation(o[0] as api.Operation);
+  checkOperation(o[1] as api.Operation);
 }
 
 core.int buildCounterListOperationsResponse = 0;
@@ -630,7 +632,7 @@ void checkOperation(api.Operation o) {
   buildCounterOperation++;
   if (buildCounterOperation < 3) {
     unittest.expect(o.done, unittest.isTrue);
-    checkStatus(o.error);
+    checkStatus(o.error as api.Status);
     checkUnnamed2297(o.metadata);
     unittest.expect(o.name, unittest.equals('foo'));
     checkUnnamed2298(o.response);
@@ -652,7 +654,7 @@ api.OutputConfig buildOutputConfig() {
 void checkOutputConfig(api.OutputConfig o) {
   buildCounterOutputConfig++;
   if (buildCounterOutputConfig < 3) {
-    checkGcsDestination(o.gcsDestination);
+    checkGcsDestination(o.gcsDestination as api.GcsDestination);
   }
   buildCounterOutputConfig--;
 }
@@ -746,7 +748,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -754,7 +756,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildExportInstanceRequest();
       var od = api.ExportInstanceRequest.fromJson(o.toJson());
-      checkExportInstanceRequest(od);
+      checkExportInstanceRequest(od as api.ExportInstanceRequest);
     });
   });
 
@@ -762,7 +764,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFailoverInstanceRequest();
       var od = api.FailoverInstanceRequest.fromJson(o.toJson());
-      checkFailoverInstanceRequest(od);
+      checkFailoverInstanceRequest(od as api.FailoverInstanceRequest);
     });
   });
 
@@ -770,7 +772,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcsDestination();
       var od = api.GcsDestination.fromJson(o.toJson());
-      checkGcsDestination(od);
+      checkGcsDestination(od as api.GcsDestination);
     });
   });
 
@@ -778,7 +780,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGcsSource();
       var od = api.GcsSource.fromJson(o.toJson());
-      checkGcsSource(od);
+      checkGcsSource(od as api.GcsSource);
     });
   });
 
@@ -786,7 +788,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudRedisV1LocationMetadata();
       var od = api.GoogleCloudRedisV1LocationMetadata.fromJson(o.toJson());
-      checkGoogleCloudRedisV1LocationMetadata(od);
+      checkGoogleCloudRedisV1LocationMetadata(
+          od as api.GoogleCloudRedisV1LocationMetadata);
     });
   });
 
@@ -794,7 +797,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudRedisV1OperationMetadata();
       var od = api.GoogleCloudRedisV1OperationMetadata.fromJson(o.toJson());
-      checkGoogleCloudRedisV1OperationMetadata(od);
+      checkGoogleCloudRedisV1OperationMetadata(
+          od as api.GoogleCloudRedisV1OperationMetadata);
     });
   });
 
@@ -802,7 +806,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGoogleCloudRedisV1ZoneMetadata();
       var od = api.GoogleCloudRedisV1ZoneMetadata.fromJson(o.toJson());
-      checkGoogleCloudRedisV1ZoneMetadata(od);
+      checkGoogleCloudRedisV1ZoneMetadata(
+          od as api.GoogleCloudRedisV1ZoneMetadata);
     });
   });
 
@@ -810,7 +815,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildImportInstanceRequest();
       var od = api.ImportInstanceRequest.fromJson(o.toJson());
-      checkImportInstanceRequest(od);
+      checkImportInstanceRequest(od as api.ImportInstanceRequest);
     });
   });
 
@@ -818,7 +823,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInputConfig();
       var od = api.InputConfig.fromJson(o.toJson());
-      checkInputConfig(od);
+      checkInputConfig(od as api.InputConfig);
     });
   });
 
@@ -826,7 +831,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInstance();
       var od = api.Instance.fromJson(o.toJson());
-      checkInstance(od);
+      checkInstance(od as api.Instance);
     });
   });
 
@@ -834,7 +839,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInstancesResponse();
       var od = api.ListInstancesResponse.fromJson(o.toJson());
-      checkListInstancesResponse(od);
+      checkListInstancesResponse(od as api.ListInstancesResponse);
     });
   });
 
@@ -842,7 +847,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListLocationsResponse();
       var od = api.ListLocationsResponse.fromJson(o.toJson());
-      checkListLocationsResponse(od);
+      checkListLocationsResponse(od as api.ListLocationsResponse);
     });
   });
 
@@ -850,7 +855,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListOperationsResponse();
       var od = api.ListOperationsResponse.fromJson(o.toJson());
-      checkListOperationsResponse(od);
+      checkListOperationsResponse(od as api.ListOperationsResponse);
     });
   });
 
@@ -858,7 +863,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLocation();
       var od = api.Location.fromJson(o.toJson());
-      checkLocation(od);
+      checkLocation(od as api.Location);
     });
   });
 
@@ -866,7 +871,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOperation();
       var od = api.Operation.fromJson(o.toJson());
-      checkOperation(od);
+      checkOperation(od as api.Operation);
     });
   });
 
@@ -874,7 +879,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildOutputConfig();
       var od = api.OutputConfig.fromJson(o.toJson());
-      checkOutputConfig(od);
+      checkOutputConfig(od as api.OutputConfig);
     });
   });
 
@@ -882,7 +887,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStatus();
       var od = api.Status.fromJson(o.toJson());
-      checkStatus(od);
+      checkStatus(od as api.Status);
     });
   });
 
@@ -890,7 +895,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUpgradeInstanceRequest();
       var od = api.UpgradeInstanceRequest.fromJson(o.toJson());
-      checkUpgradeInstanceRequest(od);
+      checkUpgradeInstanceRequest(od as api.UpgradeInstanceRequest);
     });
   });
 
@@ -939,7 +944,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkLocation(response);
+        checkLocation(response as api.Location);
       })));
     });
 
@@ -999,7 +1004,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListLocationsResponse(response);
+        checkListLocationsResponse(response as api.ListLocationsResponse);
       })));
     });
   });
@@ -1013,8 +1018,9 @@ void main() {
       var arg_instanceId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1057,7 +1063,7 @@ void main() {
           .create(arg_request, arg_parent,
               instanceId: arg_instanceId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1105,7 +1111,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1116,8 +1122,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ExportInstanceRequest.fromJson(json);
-        checkExportInstanceRequest(obj);
+        var obj = api.ExportInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkExportInstanceRequest(obj as api.ExportInstanceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1157,7 +1164,7 @@ void main() {
       res
           .export(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1168,8 +1175,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.FailoverInstanceRequest.fromJson(json);
-        checkFailoverInstanceRequest(obj);
+        var obj = api.FailoverInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkFailoverInstanceRequest(obj as api.FailoverInstanceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1209,7 +1217,7 @@ void main() {
       res
           .failover(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1257,7 +1265,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInstance(response);
+        checkInstance(response as api.Instance);
       })));
     });
 
@@ -1268,8 +1276,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ImportInstanceRequest.fromJson(json);
-        checkImportInstanceRequest(obj);
+        var obj = api.ImportInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkImportInstanceRequest(obj as api.ImportInstanceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1309,7 +1318,7 @@ void main() {
       res
           .import(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1366,7 +1375,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInstancesResponse(response);
+        checkListInstancesResponse(response as api.ListInstancesResponse);
       })));
     });
 
@@ -1378,8 +1387,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Instance.fromJson(json);
-        checkInstance(obj);
+        var obj =
+            api.Instance.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkInstance(obj as api.Instance);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1422,7 +1432,7 @@ void main() {
           .patch(arg_request, arg_name,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1433,8 +1443,9 @@ void main() {
       var arg_name = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.UpgradeInstanceRequest.fromJson(json);
-        checkUpgradeInstanceRequest(obj);
+        var obj = api.UpgradeInstanceRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkUpgradeInstanceRequest(obj as api.UpgradeInstanceRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -1474,7 +1485,7 @@ void main() {
       res
           .upgrade(arg_request, arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
   });
@@ -1524,7 +1535,7 @@ void main() {
       res
           .cancel(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1572,7 +1583,7 @@ void main() {
       res
           .delete(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -1620,7 +1631,7 @@ void main() {
       res
           .get(arg_name, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkOperation(response);
+        checkOperation(response as api.Operation);
       })));
     });
 
@@ -1680,7 +1691,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListOperationsResponse(response);
+        checkListOperationsResponse(response as api.ListOperationsResponse);
       })));
     });
   });

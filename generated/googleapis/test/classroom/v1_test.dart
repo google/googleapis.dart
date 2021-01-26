@@ -83,8 +83,8 @@ core.List<api.Material> buildUnnamed4666() {
 
 void checkUnnamed4666(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMaterial(o[0]);
-  checkMaterial(o[1]);
+  checkMaterial(o[0] as api.Material);
+  checkMaterial(o[1] as api.Material);
 }
 
 core.int buildCounterAnnouncement = 0;
@@ -118,7 +118,8 @@ void checkAnnouncement(api.Announcement o) {
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.creatorUserId, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkIndividualStudentsOptions(o.individualStudentsOptions);
+    checkIndividualStudentsOptions(
+        o.individualStudentsOptions as api.IndividualStudentsOptions);
     checkUnnamed4666(o.materials);
     unittest.expect(o.scheduledTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -142,7 +143,7 @@ api.Assignment buildAssignment() {
 void checkAssignment(api.Assignment o) {
   buildCounterAssignment++;
   if (buildCounterAssignment < 3) {
-    checkDriveFolder(o.studentWorkFolder);
+    checkDriveFolder(o.studentWorkFolder as api.DriveFolder);
   }
   buildCounterAssignment--;
 }
@@ -156,8 +157,8 @@ core.List<api.Attachment> buildUnnamed4667() {
 
 void checkUnnamed4667(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttachment(o[0]);
-  checkAttachment(o[1]);
+  checkAttachment(o[0] as api.Attachment);
+  checkAttachment(o[1] as api.Attachment);
 }
 
 core.int buildCounterAssignmentSubmission = 0;
@@ -196,10 +197,10 @@ api.Attachment buildAttachment() {
 void checkAttachment(api.Attachment o) {
   buildCounterAttachment++;
   if (buildCounterAttachment < 3) {
-    checkDriveFile(o.driveFile);
-    checkForm(o.form);
-    checkLink(o.link);
-    checkYouTubeVideo(o.youTubeVideo);
+    checkDriveFile(o.driveFile as api.DriveFile);
+    checkForm(o.form as api.Form);
+    checkLink(o.link as api.Link);
+    checkYouTubeVideo(o.youTubeVideo as api.YouTubeVideo);
   }
   buildCounterAttachment--;
 }
@@ -232,8 +233,8 @@ core.List<api.CourseMaterialSet> buildUnnamed4668() {
 
 void checkUnnamed4668(core.List<api.CourseMaterialSet> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourseMaterialSet(o[0]);
-  checkCourseMaterialSet(o[1]);
+  checkCourseMaterialSet(o[0] as api.CourseMaterialSet);
+  checkCourseMaterialSet(o[1] as api.CourseMaterialSet);
 }
 
 core.int buildCounterCourse = 0;
@@ -282,7 +283,7 @@ void checkCourse(api.Course o) {
     unittest.expect(o.ownerId, unittest.equals('foo'));
     unittest.expect(o.room, unittest.equals('foo'));
     unittest.expect(o.section, unittest.equals('foo'));
-    checkDriveFolder(o.teacherFolder);
+    checkDriveFolder(o.teacherFolder as api.DriveFolder);
     unittest.expect(o.teacherGroupEmail, unittest.equals('foo'));
     unittest.expect(o.updateTime, unittest.equals('foo'));
   }
@@ -325,10 +326,10 @@ api.CourseMaterial buildCourseMaterial() {
 void checkCourseMaterial(api.CourseMaterial o) {
   buildCounterCourseMaterial++;
   if (buildCounterCourseMaterial < 3) {
-    checkDriveFile(o.driveFile);
-    checkForm(o.form);
-    checkLink(o.link);
-    checkYouTubeVideo(o.youTubeVideo);
+    checkDriveFile(o.driveFile as api.DriveFile);
+    checkForm(o.form as api.Form);
+    checkLink(o.link as api.Link);
+    checkYouTubeVideo(o.youTubeVideo as api.YouTubeVideo);
   }
   buildCounterCourseMaterial--;
 }
@@ -342,8 +343,8 @@ core.List<api.CourseMaterial> buildUnnamed4669() {
 
 void checkUnnamed4669(core.List<api.CourseMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourseMaterial(o[0]);
-  checkCourseMaterial(o[1]);
+  checkCourseMaterial(o[0] as api.CourseMaterial);
+  checkCourseMaterial(o[1] as api.CourseMaterial);
 }
 
 core.int buildCounterCourseMaterialSet = 0;
@@ -395,8 +396,8 @@ core.List<api.Material> buildUnnamed4670() {
 
 void checkUnnamed4670(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMaterial(o[0]);
-  checkMaterial(o[1]);
+  checkMaterial(o[0] as api.Material);
+  checkMaterial(o[1] as api.Material);
 }
 
 core.int buildCounterCourseWork = 0;
@@ -436,19 +437,21 @@ void checkCourseWork(api.CourseWork o) {
   if (buildCounterCourseWork < 3) {
     unittest.expect(o.alternateLink, unittest.equals('foo'));
     unittest.expect(o.assigneeMode, unittest.equals('foo'));
-    checkAssignment(o.assignment);
+    checkAssignment(o.assignment as api.Assignment);
     unittest.expect(o.associatedWithDeveloper, unittest.isTrue);
     unittest.expect(o.courseId, unittest.equals('foo'));
     unittest.expect(o.creationTime, unittest.equals('foo'));
     unittest.expect(o.creatorUserId, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
-    checkDate(o.dueDate);
-    checkTimeOfDay(o.dueTime);
+    checkDate(o.dueDate as api.Date);
+    checkTimeOfDay(o.dueTime as api.TimeOfDay);
     unittest.expect(o.id, unittest.equals('foo'));
-    checkIndividualStudentsOptions(o.individualStudentsOptions);
+    checkIndividualStudentsOptions(
+        o.individualStudentsOptions as api.IndividualStudentsOptions);
     checkUnnamed4670(o.materials);
     unittest.expect(o.maxPoints, unittest.equals(42.0));
-    checkMultipleChoiceQuestion(o.multipleChoiceQuestion);
+    checkMultipleChoiceQuestion(
+        o.multipleChoiceQuestion as api.MultipleChoiceQuestion);
     unittest.expect(o.scheduledTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
     unittest.expect(o.submissionModificationMode, unittest.equals('foo'));
@@ -488,8 +491,8 @@ core.List<api.Material> buildUnnamed4671() {
 
 void checkUnnamed4671(core.List<api.Material> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkMaterial(o[0]);
-  checkMaterial(o[1]);
+  checkMaterial(o[0] as api.Material);
+  checkMaterial(o[1] as api.Material);
 }
 
 core.int buildCounterCourseWorkMaterial = 0;
@@ -526,7 +529,8 @@ void checkCourseWorkMaterial(api.CourseWorkMaterial o) {
     unittest.expect(o.creatorUserId, unittest.equals('foo'));
     unittest.expect(o.description, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkIndividualStudentsOptions(o.individualStudentsOptions);
+    checkIndividualStudentsOptions(
+        o.individualStudentsOptions as api.IndividualStudentsOptions);
     checkUnnamed4671(o.materials);
     unittest.expect(o.scheduledTime, unittest.equals('foo'));
     unittest.expect(o.state, unittest.equals('foo'));
@@ -639,8 +643,10 @@ api.Feed buildFeed() {
 void checkFeed(api.Feed o) {
   buildCounterFeed++;
   if (buildCounterFeed < 3) {
-    checkCourseRosterChangesInfo(o.courseRosterChangesInfo);
-    checkCourseWorkChangesInfo(o.courseWorkChangesInfo);
+    checkCourseRosterChangesInfo(
+        o.courseRosterChangesInfo as api.CourseRosterChangesInfo);
+    checkCourseWorkChangesInfo(
+        o.courseWorkChangesInfo as api.CourseWorkChangesInfo);
     unittest.expect(o.feedType, unittest.equals('foo'));
   }
   buildCounterFeed--;
@@ -735,7 +741,7 @@ void checkGuardian(api.Guardian o) {
   buildCounterGuardian++;
   if (buildCounterGuardian < 3) {
     unittest.expect(o.guardianId, unittest.equals('foo'));
-    checkUserProfile(o.guardianProfile);
+    checkUserProfile(o.guardianProfile as api.UserProfile);
     unittest.expect(o.invitedEmailAddress, unittest.equals('foo'));
     unittest.expect(o.studentId, unittest.equals('foo'));
   }
@@ -858,8 +864,8 @@ core.List<api.Announcement> buildUnnamed4673() {
 
 void checkUnnamed4673(core.List<api.Announcement> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAnnouncement(o[0]);
-  checkAnnouncement(o[1]);
+  checkAnnouncement(o[0] as api.Announcement);
+  checkAnnouncement(o[1] as api.Announcement);
 }
 
 core.int buildCounterListAnnouncementsResponse = 0;
@@ -892,8 +898,8 @@ core.List<api.CourseAlias> buildUnnamed4674() {
 
 void checkUnnamed4674(core.List<api.CourseAlias> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourseAlias(o[0]);
-  checkCourseAlias(o[1]);
+  checkCourseAlias(o[0] as api.CourseAlias);
+  checkCourseAlias(o[1] as api.CourseAlias);
 }
 
 core.int buildCounterListCourseAliasesResponse = 0;
@@ -926,8 +932,8 @@ core.List<api.CourseWorkMaterial> buildUnnamed4675() {
 
 void checkUnnamed4675(core.List<api.CourseWorkMaterial> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourseWorkMaterial(o[0]);
-  checkCourseWorkMaterial(o[1]);
+  checkCourseWorkMaterial(o[0] as api.CourseWorkMaterial);
+  checkCourseWorkMaterial(o[1] as api.CourseWorkMaterial);
 }
 
 core.int buildCounterListCourseWorkMaterialResponse = 0;
@@ -960,8 +966,8 @@ core.List<api.CourseWork> buildUnnamed4676() {
 
 void checkUnnamed4676(core.List<api.CourseWork> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourseWork(o[0]);
-  checkCourseWork(o[1]);
+  checkCourseWork(o[0] as api.CourseWork);
+  checkCourseWork(o[1] as api.CourseWork);
 }
 
 core.int buildCounterListCourseWorkResponse = 0;
@@ -994,8 +1000,8 @@ core.List<api.Course> buildUnnamed4677() {
 
 void checkUnnamed4677(core.List<api.Course> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkCourse(o[0]);
-  checkCourse(o[1]);
+  checkCourse(o[0] as api.Course);
+  checkCourse(o[1] as api.Course);
 }
 
 core.int buildCounterListCoursesResponse = 0;
@@ -1028,8 +1034,8 @@ core.List<api.GuardianInvitation> buildUnnamed4678() {
 
 void checkUnnamed4678(core.List<api.GuardianInvitation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGuardianInvitation(o[0]);
-  checkGuardianInvitation(o[1]);
+  checkGuardianInvitation(o[0] as api.GuardianInvitation);
+  checkGuardianInvitation(o[1] as api.GuardianInvitation);
 }
 
 core.int buildCounterListGuardianInvitationsResponse = 0;
@@ -1063,8 +1069,8 @@ core.List<api.Guardian> buildUnnamed4679() {
 
 void checkUnnamed4679(core.List<api.Guardian> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGuardian(o[0]);
-  checkGuardian(o[1]);
+  checkGuardian(o[0] as api.Guardian);
+  checkGuardian(o[1] as api.Guardian);
 }
 
 core.int buildCounterListGuardiansResponse = 0;
@@ -1097,8 +1103,8 @@ core.List<api.Invitation> buildUnnamed4680() {
 
 void checkUnnamed4680(core.List<api.Invitation> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkInvitation(o[0]);
-  checkInvitation(o[1]);
+  checkInvitation(o[0] as api.Invitation);
+  checkInvitation(o[1] as api.Invitation);
 }
 
 core.int buildCounterListInvitationsResponse = 0;
@@ -1131,8 +1137,8 @@ core.List<api.StudentSubmission> buildUnnamed4681() {
 
 void checkUnnamed4681(core.List<api.StudentSubmission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStudentSubmission(o[0]);
-  checkStudentSubmission(o[1]);
+  checkStudentSubmission(o[0] as api.StudentSubmission);
+  checkStudentSubmission(o[1] as api.StudentSubmission);
 }
 
 core.int buildCounterListStudentSubmissionsResponse = 0;
@@ -1165,8 +1171,8 @@ core.List<api.Student> buildUnnamed4682() {
 
 void checkUnnamed4682(core.List<api.Student> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkStudent(o[0]);
-  checkStudent(o[1]);
+  checkStudent(o[0] as api.Student);
+  checkStudent(o[1] as api.Student);
 }
 
 core.int buildCounterListStudentsResponse = 0;
@@ -1199,8 +1205,8 @@ core.List<api.Teacher> buildUnnamed4683() {
 
 void checkUnnamed4683(core.List<api.Teacher> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTeacher(o[0]);
-  checkTeacher(o[1]);
+  checkTeacher(o[0] as api.Teacher);
+  checkTeacher(o[1] as api.Teacher);
 }
 
 core.int buildCounterListTeachersResponse = 0;
@@ -1233,8 +1239,8 @@ core.List<api.Topic> buildUnnamed4684() {
 
 void checkUnnamed4684(core.List<api.Topic> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkTopic(o[0]);
-  checkTopic(o[1]);
+  checkTopic(o[0] as api.Topic);
+  checkTopic(o[1] as api.Topic);
 }
 
 core.int buildCounterListTopicResponse = 0;
@@ -1275,10 +1281,10 @@ api.Material buildMaterial() {
 void checkMaterial(api.Material o) {
   buildCounterMaterial++;
   if (buildCounterMaterial < 3) {
-    checkSharedDriveFile(o.driveFile);
-    checkForm(o.form);
-    checkLink(o.link);
-    checkYouTubeVideo(o.youtubeVideo);
+    checkSharedDriveFile(o.driveFile as api.SharedDriveFile);
+    checkForm(o.form as api.Form);
+    checkLink(o.link as api.Link);
+    checkYouTubeVideo(o.youtubeVideo as api.YouTubeVideo);
   }
   buildCounterMaterial--;
 }
@@ -1301,7 +1307,8 @@ void checkModifyAnnouncementAssigneesRequest(
   buildCounterModifyAnnouncementAssigneesRequest++;
   if (buildCounterModifyAnnouncementAssigneesRequest < 3) {
     unittest.expect(o.assigneeMode, unittest.equals('foo'));
-    checkModifyIndividualStudentsOptions(o.modifyIndividualStudentsOptions);
+    checkModifyIndividualStudentsOptions(o.modifyIndividualStudentsOptions
+        as api.ModifyIndividualStudentsOptions);
   }
   buildCounterModifyAnnouncementAssigneesRequest--;
 }
@@ -1315,8 +1322,8 @@ core.List<api.Attachment> buildUnnamed4685() {
 
 void checkUnnamed4685(core.List<api.Attachment> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkAttachment(o[0]);
-  checkAttachment(o[1]);
+  checkAttachment(o[0] as api.Attachment);
+  checkAttachment(o[1] as api.Attachment);
 }
 
 core.int buildCounterModifyAttachmentsRequest = 0;
@@ -1355,7 +1362,8 @@ void checkModifyCourseWorkAssigneesRequest(
   buildCounterModifyCourseWorkAssigneesRequest++;
   if (buildCounterModifyCourseWorkAssigneesRequest < 3) {
     unittest.expect(o.assigneeMode, unittest.equals('foo'));
-    checkModifyIndividualStudentsOptions(o.modifyIndividualStudentsOptions);
+    checkModifyIndividualStudentsOptions(o.modifyIndividualStudentsOptions
+        as api.ModifyIndividualStudentsOptions);
   }
   buildCounterModifyCourseWorkAssigneesRequest--;
 }
@@ -1515,9 +1523,9 @@ api.Registration buildRegistration() {
 void checkRegistration(api.Registration o) {
   buildCounterRegistration++;
   if (buildCounterRegistration < 3) {
-    checkCloudPubsubTopic(o.cloudPubsubTopic);
+    checkCloudPubsubTopic(o.cloudPubsubTopic as api.CloudPubsubTopic);
     unittest.expect(o.expiryTime, unittest.equals('foo'));
-    checkFeed(o.feed);
+    checkFeed(o.feed as api.Feed);
     unittest.expect(o.registrationId, unittest.equals('foo'));
   }
   buildCounterRegistration--;
@@ -1553,7 +1561,7 @@ api.SharedDriveFile buildSharedDriveFile() {
 void checkSharedDriveFile(api.SharedDriveFile o) {
   buildCounterSharedDriveFile++;
   if (buildCounterSharedDriveFile < 3) {
-    checkDriveFile(o.driveFile);
+    checkDriveFile(o.driveFile as api.DriveFile);
     unittest.expect(o.shareMode, unittest.equals('foo'));
   }
   buildCounterSharedDriveFile--;
@@ -1619,8 +1627,8 @@ void checkStudent(api.Student o) {
   buildCounterStudent++;
   if (buildCounterStudent < 3) {
     unittest.expect(o.courseId, unittest.equals('foo'));
-    checkUserProfile(o.profile);
-    checkDriveFolder(o.studentWorkFolder);
+    checkUserProfile(o.profile as api.UserProfile);
+    checkDriveFolder(o.studentWorkFolder as api.DriveFolder);
     unittest.expect(o.userId, unittest.equals('foo'));
   }
   buildCounterStudent--;
@@ -1635,8 +1643,8 @@ core.List<api.SubmissionHistory> buildUnnamed4689() {
 
 void checkUnnamed4689(core.List<api.SubmissionHistory> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkSubmissionHistory(o[0]);
-  checkSubmissionHistory(o[1]);
+  checkSubmissionHistory(o[0] as api.SubmissionHistory);
+  checkSubmissionHistory(o[1] as api.SubmissionHistory);
 }
 
 core.int buildCounterStudentSubmission = 0;
@@ -1671,7 +1679,8 @@ void checkStudentSubmission(api.StudentSubmission o) {
   if (buildCounterStudentSubmission < 3) {
     unittest.expect(o.alternateLink, unittest.equals('foo'));
     unittest.expect(o.assignedGrade, unittest.equals(42.0));
-    checkAssignmentSubmission(o.assignmentSubmission);
+    checkAssignmentSubmission(
+        o.assignmentSubmission as api.AssignmentSubmission);
     unittest.expect(o.associatedWithDeveloper, unittest.isTrue);
     unittest.expect(o.courseId, unittest.equals('foo'));
     unittest.expect(o.courseWorkId, unittest.equals('foo'));
@@ -1680,8 +1689,10 @@ void checkStudentSubmission(api.StudentSubmission o) {
     unittest.expect(o.draftGrade, unittest.equals(42.0));
     unittest.expect(o.id, unittest.equals('foo'));
     unittest.expect(o.late, unittest.isTrue);
-    checkMultipleChoiceSubmission(o.multipleChoiceSubmission);
-    checkShortAnswerSubmission(o.shortAnswerSubmission);
+    checkMultipleChoiceSubmission(
+        o.multipleChoiceSubmission as api.MultipleChoiceSubmission);
+    checkShortAnswerSubmission(
+        o.shortAnswerSubmission as api.ShortAnswerSubmission);
     unittest.expect(o.state, unittest.equals('foo'));
     checkUnnamed4689(o.submissionHistory);
     unittest.expect(o.updateTime, unittest.equals('foo'));
@@ -1705,8 +1716,8 @@ api.SubmissionHistory buildSubmissionHistory() {
 void checkSubmissionHistory(api.SubmissionHistory o) {
   buildCounterSubmissionHistory++;
   if (buildCounterSubmissionHistory < 3) {
-    checkGradeHistory(o.gradeHistory);
-    checkStateHistory(o.stateHistory);
+    checkGradeHistory(o.gradeHistory as api.GradeHistory);
+    checkStateHistory(o.stateHistory as api.StateHistory);
   }
   buildCounterSubmissionHistory--;
 }
@@ -1728,7 +1739,7 @@ void checkTeacher(api.Teacher o) {
   buildCounterTeacher++;
   if (buildCounterTeacher < 3) {
     unittest.expect(o.courseId, unittest.equals('foo'));
-    checkUserProfile(o.profile);
+    checkUserProfile(o.profile as api.UserProfile);
     unittest.expect(o.userId, unittest.equals('foo'));
   }
   buildCounterTeacher--;
@@ -1808,8 +1819,8 @@ core.List<api.GlobalPermission> buildUnnamed4690() {
 
 void checkUnnamed4690(core.List<api.GlobalPermission> o) {
   unittest.expect(o, unittest.hasLength(2));
-  checkGlobalPermission(o[0]);
-  checkGlobalPermission(o[1]);
+  checkGlobalPermission(o[0] as api.GlobalPermission);
+  checkGlobalPermission(o[1] as api.GlobalPermission);
 }
 
 core.int buildCounterUserProfile = 0;
@@ -1833,7 +1844,7 @@ void checkUserProfile(api.UserProfile o) {
   if (buildCounterUserProfile < 3) {
     unittest.expect(o.emailAddress, unittest.equals('foo'));
     unittest.expect(o.id, unittest.equals('foo'));
-    checkName(o.name);
+    checkName(o.name as api.Name);
     checkUnnamed4690(o.permissions);
     unittest.expect(o.photoUrl, unittest.equals('foo'));
     unittest.expect(o.verifiedTeacher, unittest.isTrue);
@@ -1949,7 +1960,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAnnouncement();
       var od = api.Announcement.fromJson(o.toJson());
-      checkAnnouncement(od);
+      checkAnnouncement(od as api.Announcement);
     });
   });
 
@@ -1957,7 +1968,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignment();
       var od = api.Assignment.fromJson(o.toJson());
-      checkAssignment(od);
+      checkAssignment(od as api.Assignment);
     });
   });
 
@@ -1965,7 +1976,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAssignmentSubmission();
       var od = api.AssignmentSubmission.fromJson(o.toJson());
-      checkAssignmentSubmission(od);
+      checkAssignmentSubmission(od as api.AssignmentSubmission);
     });
   });
 
@@ -1973,7 +1984,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildAttachment();
       var od = api.Attachment.fromJson(o.toJson());
-      checkAttachment(od);
+      checkAttachment(od as api.Attachment);
     });
   });
 
@@ -1981,7 +1992,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCloudPubsubTopic();
       var od = api.CloudPubsubTopic.fromJson(o.toJson());
-      checkCloudPubsubTopic(od);
+      checkCloudPubsubTopic(od as api.CloudPubsubTopic);
     });
   });
 
@@ -1989,7 +2000,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourse();
       var od = api.Course.fromJson(o.toJson());
-      checkCourse(od);
+      checkCourse(od as api.Course);
     });
   });
 
@@ -1997,7 +2008,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseAlias();
       var od = api.CourseAlias.fromJson(o.toJson());
-      checkCourseAlias(od);
+      checkCourseAlias(od as api.CourseAlias);
     });
   });
 
@@ -2005,7 +2016,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseMaterial();
       var od = api.CourseMaterial.fromJson(o.toJson());
-      checkCourseMaterial(od);
+      checkCourseMaterial(od as api.CourseMaterial);
     });
   });
 
@@ -2013,7 +2024,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseMaterialSet();
       var od = api.CourseMaterialSet.fromJson(o.toJson());
-      checkCourseMaterialSet(od);
+      checkCourseMaterialSet(od as api.CourseMaterialSet);
     });
   });
 
@@ -2021,7 +2032,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseRosterChangesInfo();
       var od = api.CourseRosterChangesInfo.fromJson(o.toJson());
-      checkCourseRosterChangesInfo(od);
+      checkCourseRosterChangesInfo(od as api.CourseRosterChangesInfo);
     });
   });
 
@@ -2029,7 +2040,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseWork();
       var od = api.CourseWork.fromJson(o.toJson());
-      checkCourseWork(od);
+      checkCourseWork(od as api.CourseWork);
     });
   });
 
@@ -2037,7 +2048,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseWorkChangesInfo();
       var od = api.CourseWorkChangesInfo.fromJson(o.toJson());
-      checkCourseWorkChangesInfo(od);
+      checkCourseWorkChangesInfo(od as api.CourseWorkChangesInfo);
     });
   });
 
@@ -2045,7 +2056,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildCourseWorkMaterial();
       var od = api.CourseWorkMaterial.fromJson(o.toJson());
-      checkCourseWorkMaterial(od);
+      checkCourseWorkMaterial(od as api.CourseWorkMaterial);
     });
   });
 
@@ -2053,7 +2064,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDate();
       var od = api.Date.fromJson(o.toJson());
-      checkDate(od);
+      checkDate(od as api.Date);
     });
   });
 
@@ -2061,7 +2072,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveFile();
       var od = api.DriveFile.fromJson(o.toJson());
-      checkDriveFile(od);
+      checkDriveFile(od as api.DriveFile);
     });
   });
 
@@ -2069,7 +2080,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildDriveFolder();
       var od = api.DriveFolder.fromJson(o.toJson());
-      checkDriveFolder(od);
+      checkDriveFolder(od as api.DriveFolder);
     });
   });
 
@@ -2077,7 +2088,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildEmpty();
       var od = api.Empty.fromJson(o.toJson());
-      checkEmpty(od);
+      checkEmpty(od as api.Empty);
     });
   });
 
@@ -2085,7 +2096,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildFeed();
       var od = api.Feed.fromJson(o.toJson());
-      checkFeed(od);
+      checkFeed(od as api.Feed);
     });
   });
 
@@ -2093,7 +2104,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildForm();
       var od = api.Form.fromJson(o.toJson());
-      checkForm(od);
+      checkForm(od as api.Form);
     });
   });
 
@@ -2101,7 +2112,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGlobalPermission();
       var od = api.GlobalPermission.fromJson(o.toJson());
-      checkGlobalPermission(od);
+      checkGlobalPermission(od as api.GlobalPermission);
     });
   });
 
@@ -2109,7 +2120,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGradeHistory();
       var od = api.GradeHistory.fromJson(o.toJson());
-      checkGradeHistory(od);
+      checkGradeHistory(od as api.GradeHistory);
     });
   });
 
@@ -2117,7 +2128,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGuardian();
       var od = api.Guardian.fromJson(o.toJson());
-      checkGuardian(od);
+      checkGuardian(od as api.Guardian);
     });
   });
 
@@ -2125,7 +2136,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildGuardianInvitation();
       var od = api.GuardianInvitation.fromJson(o.toJson());
-      checkGuardianInvitation(od);
+      checkGuardianInvitation(od as api.GuardianInvitation);
     });
   });
 
@@ -2133,7 +2144,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildIndividualStudentsOptions();
       var od = api.IndividualStudentsOptions.fromJson(o.toJson());
-      checkIndividualStudentsOptions(od);
+      checkIndividualStudentsOptions(od as api.IndividualStudentsOptions);
     });
   });
 
@@ -2141,7 +2152,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildInvitation();
       var od = api.Invitation.fromJson(o.toJson());
-      checkInvitation(od);
+      checkInvitation(od as api.Invitation);
     });
   });
 
@@ -2149,7 +2160,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildLink();
       var od = api.Link.fromJson(o.toJson());
-      checkLink(od);
+      checkLink(od as api.Link);
     });
   });
 
@@ -2157,7 +2168,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListAnnouncementsResponse();
       var od = api.ListAnnouncementsResponse.fromJson(o.toJson());
-      checkListAnnouncementsResponse(od);
+      checkListAnnouncementsResponse(od as api.ListAnnouncementsResponse);
     });
   });
 
@@ -2165,7 +2176,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCourseAliasesResponse();
       var od = api.ListCourseAliasesResponse.fromJson(o.toJson());
-      checkListCourseAliasesResponse(od);
+      checkListCourseAliasesResponse(od as api.ListCourseAliasesResponse);
     });
   });
 
@@ -2173,7 +2184,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCourseWorkMaterialResponse();
       var od = api.ListCourseWorkMaterialResponse.fromJson(o.toJson());
-      checkListCourseWorkMaterialResponse(od);
+      checkListCourseWorkMaterialResponse(
+          od as api.ListCourseWorkMaterialResponse);
     });
   });
 
@@ -2181,7 +2193,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCourseWorkResponse();
       var od = api.ListCourseWorkResponse.fromJson(o.toJson());
-      checkListCourseWorkResponse(od);
+      checkListCourseWorkResponse(od as api.ListCourseWorkResponse);
     });
   });
 
@@ -2189,7 +2201,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListCoursesResponse();
       var od = api.ListCoursesResponse.fromJson(o.toJson());
-      checkListCoursesResponse(od);
+      checkListCoursesResponse(od as api.ListCoursesResponse);
     });
   });
 
@@ -2197,7 +2209,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGuardianInvitationsResponse();
       var od = api.ListGuardianInvitationsResponse.fromJson(o.toJson());
-      checkListGuardianInvitationsResponse(od);
+      checkListGuardianInvitationsResponse(
+          od as api.ListGuardianInvitationsResponse);
     });
   });
 
@@ -2205,7 +2218,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListGuardiansResponse();
       var od = api.ListGuardiansResponse.fromJson(o.toJson());
-      checkListGuardiansResponse(od);
+      checkListGuardiansResponse(od as api.ListGuardiansResponse);
     });
   });
 
@@ -2213,7 +2226,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListInvitationsResponse();
       var od = api.ListInvitationsResponse.fromJson(o.toJson());
-      checkListInvitationsResponse(od);
+      checkListInvitationsResponse(od as api.ListInvitationsResponse);
     });
   });
 
@@ -2221,7 +2234,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListStudentSubmissionsResponse();
       var od = api.ListStudentSubmissionsResponse.fromJson(o.toJson());
-      checkListStudentSubmissionsResponse(od);
+      checkListStudentSubmissionsResponse(
+          od as api.ListStudentSubmissionsResponse);
     });
   });
 
@@ -2229,7 +2243,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListStudentsResponse();
       var od = api.ListStudentsResponse.fromJson(o.toJson());
-      checkListStudentsResponse(od);
+      checkListStudentsResponse(od as api.ListStudentsResponse);
     });
   });
 
@@ -2237,7 +2251,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTeachersResponse();
       var od = api.ListTeachersResponse.fromJson(o.toJson());
-      checkListTeachersResponse(od);
+      checkListTeachersResponse(od as api.ListTeachersResponse);
     });
   });
 
@@ -2245,7 +2259,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildListTopicResponse();
       var od = api.ListTopicResponse.fromJson(o.toJson());
-      checkListTopicResponse(od);
+      checkListTopicResponse(od as api.ListTopicResponse);
     });
   });
 
@@ -2253,7 +2267,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMaterial();
       var od = api.Material.fromJson(o.toJson());
-      checkMaterial(od);
+      checkMaterial(od as api.Material);
     });
   });
 
@@ -2261,7 +2275,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyAnnouncementAssigneesRequest();
       var od = api.ModifyAnnouncementAssigneesRequest.fromJson(o.toJson());
-      checkModifyAnnouncementAssigneesRequest(od);
+      checkModifyAnnouncementAssigneesRequest(
+          od as api.ModifyAnnouncementAssigneesRequest);
     });
   });
 
@@ -2269,7 +2284,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyAttachmentsRequest();
       var od = api.ModifyAttachmentsRequest.fromJson(o.toJson());
-      checkModifyAttachmentsRequest(od);
+      checkModifyAttachmentsRequest(od as api.ModifyAttachmentsRequest);
     });
   });
 
@@ -2277,7 +2292,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyCourseWorkAssigneesRequest();
       var od = api.ModifyCourseWorkAssigneesRequest.fromJson(o.toJson());
-      checkModifyCourseWorkAssigneesRequest(od);
+      checkModifyCourseWorkAssigneesRequest(
+          od as api.ModifyCourseWorkAssigneesRequest);
     });
   });
 
@@ -2285,7 +2301,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildModifyIndividualStudentsOptions();
       var od = api.ModifyIndividualStudentsOptions.fromJson(o.toJson());
-      checkModifyIndividualStudentsOptions(od);
+      checkModifyIndividualStudentsOptions(
+          od as api.ModifyIndividualStudentsOptions);
     });
   });
 
@@ -2293,7 +2310,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMultipleChoiceQuestion();
       var od = api.MultipleChoiceQuestion.fromJson(o.toJson());
-      checkMultipleChoiceQuestion(od);
+      checkMultipleChoiceQuestion(od as api.MultipleChoiceQuestion);
     });
   });
 
@@ -2301,7 +2318,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildMultipleChoiceSubmission();
       var od = api.MultipleChoiceSubmission.fromJson(o.toJson());
-      checkMultipleChoiceSubmission(od);
+      checkMultipleChoiceSubmission(od as api.MultipleChoiceSubmission);
     });
   });
 
@@ -2309,7 +2326,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildName();
       var od = api.Name.fromJson(o.toJson());
-      checkName(od);
+      checkName(od as api.Name);
     });
   });
 
@@ -2317,7 +2334,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReclaimStudentSubmissionRequest();
       var od = api.ReclaimStudentSubmissionRequest.fromJson(o.toJson());
-      checkReclaimStudentSubmissionRequest(od);
+      checkReclaimStudentSubmissionRequest(
+          od as api.ReclaimStudentSubmissionRequest);
     });
   });
 
@@ -2325,7 +2343,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildRegistration();
       var od = api.Registration.fromJson(o.toJson());
-      checkRegistration(od);
+      checkRegistration(od as api.Registration);
     });
   });
 
@@ -2333,7 +2351,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildReturnStudentSubmissionRequest();
       var od = api.ReturnStudentSubmissionRequest.fromJson(o.toJson());
-      checkReturnStudentSubmissionRequest(od);
+      checkReturnStudentSubmissionRequest(
+          od as api.ReturnStudentSubmissionRequest);
     });
   });
 
@@ -2341,7 +2360,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSharedDriveFile();
       var od = api.SharedDriveFile.fromJson(o.toJson());
-      checkSharedDriveFile(od);
+      checkSharedDriveFile(od as api.SharedDriveFile);
     });
   });
 
@@ -2349,7 +2368,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildShortAnswerSubmission();
       var od = api.ShortAnswerSubmission.fromJson(o.toJson());
-      checkShortAnswerSubmission(od);
+      checkShortAnswerSubmission(od as api.ShortAnswerSubmission);
     });
   });
 
@@ -2357,7 +2376,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStateHistory();
       var od = api.StateHistory.fromJson(o.toJson());
-      checkStateHistory(od);
+      checkStateHistory(od as api.StateHistory);
     });
   });
 
@@ -2365,7 +2384,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStudent();
       var od = api.Student.fromJson(o.toJson());
-      checkStudent(od);
+      checkStudent(od as api.Student);
     });
   });
 
@@ -2373,7 +2392,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildStudentSubmission();
       var od = api.StudentSubmission.fromJson(o.toJson());
-      checkStudentSubmission(od);
+      checkStudentSubmission(od as api.StudentSubmission);
     });
   });
 
@@ -2381,7 +2400,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildSubmissionHistory();
       var od = api.SubmissionHistory.fromJson(o.toJson());
-      checkSubmissionHistory(od);
+      checkSubmissionHistory(od as api.SubmissionHistory);
     });
   });
 
@@ -2389,7 +2408,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTeacher();
       var od = api.Teacher.fromJson(o.toJson());
-      checkTeacher(od);
+      checkTeacher(od as api.Teacher);
     });
   });
 
@@ -2397,7 +2416,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTimeOfDay();
       var od = api.TimeOfDay.fromJson(o.toJson());
-      checkTimeOfDay(od);
+      checkTimeOfDay(od as api.TimeOfDay);
     });
   });
 
@@ -2405,7 +2424,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTopic();
       var od = api.Topic.fromJson(o.toJson());
-      checkTopic(od);
+      checkTopic(od as api.Topic);
     });
   });
 
@@ -2413,7 +2432,8 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildTurnInStudentSubmissionRequest();
       var od = api.TurnInStudentSubmissionRequest.fromJson(o.toJson());
-      checkTurnInStudentSubmissionRequest(od);
+      checkTurnInStudentSubmissionRequest(
+          od as api.TurnInStudentSubmissionRequest);
     });
   });
 
@@ -2421,7 +2441,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildUserProfile();
       var od = api.UserProfile.fromJson(o.toJson());
-      checkUserProfile(od);
+      checkUserProfile(od as api.UserProfile);
     });
   });
 
@@ -2429,7 +2449,7 @@ void main() {
     unittest.test('to-json--from-json', () {
       var o = buildYouTubeVideo();
       var od = api.YouTubeVideo.fromJson(o.toJson());
-      checkYouTubeVideo(od);
+      checkYouTubeVideo(od as api.YouTubeVideo);
     });
   });
 
@@ -2440,8 +2460,9 @@ void main() {
       var arg_request = buildCourse();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Course.fromJson(json);
-        checkCourse(obj);
+        var obj =
+            api.Course.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCourse(obj as api.Course);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2480,7 +2501,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourse(response);
+        checkCourse(response as api.Course);
       })));
     });
 
@@ -2530,7 +2551,7 @@ void main() {
       res
           .delete(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2580,7 +2601,7 @@ void main() {
       res
           .get(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourse(response);
+        checkCourse(response as api.Course);
       })));
     });
 
@@ -2647,7 +2668,7 @@ void main() {
               teacherId: arg_teacherId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCoursesResponse(response);
+        checkListCoursesResponse(response as api.ListCoursesResponse);
       })));
     });
 
@@ -2659,8 +2680,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Course.fromJson(json);
-        checkCourse(obj);
+        var obj =
+            api.Course.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCourse(obj as api.Course);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2705,7 +2727,7 @@ void main() {
           .patch(arg_request, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourse(response);
+        checkCourse(response as api.Course);
       })));
     });
 
@@ -2716,8 +2738,9 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Course.fromJson(json);
-        checkCourse(obj);
+        var obj =
+            api.Course.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkCourse(obj as api.Course);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2759,7 +2782,7 @@ void main() {
       res
           .update(arg_request, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourse(response);
+        checkCourse(response as api.Course);
       })));
     });
   });
@@ -2772,8 +2795,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CourseAlias.fromJson(json);
-        checkCourseAlias(obj);
+        var obj = api.CourseAlias.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCourseAlias(obj as api.CourseAlias);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -2821,7 +2845,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseAlias(response);
+        checkCourseAlias(response as api.CourseAlias);
       })));
     });
 
@@ -2881,7 +2905,7 @@ void main() {
       res
           .delete(arg_courseId, arg_alias, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -2946,7 +2970,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCourseAliasesResponse(response);
+        checkListCourseAliasesResponse(
+            response as api.ListCourseAliasesResponse);
       })));
     });
   });
@@ -2959,8 +2984,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Announcement.fromJson(json);
-        checkAnnouncement(obj);
+        var obj = api.Announcement.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnnouncement(obj as api.Announcement);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3008,7 +3034,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response);
+        checkAnnouncement(response as api.Announcement);
       })));
     });
 
@@ -3068,7 +3094,7 @@ void main() {
       res
           .delete(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3128,7 +3154,7 @@ void main() {
       res
           .get(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response);
+        checkAnnouncement(response as api.Announcement);
       })));
     });
 
@@ -3201,7 +3227,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListAnnouncementsResponse(response);
+        checkListAnnouncementsResponse(
+            response as api.ListAnnouncementsResponse);
       })));
     });
 
@@ -3213,8 +3240,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyAnnouncementAssigneesRequest.fromJson(json);
-        checkModifyAnnouncementAssigneesRequest(obj);
+        var obj = api.ModifyAnnouncementAssigneesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyAnnouncementAssigneesRequest(
+            obj as api.ModifyAnnouncementAssigneesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3272,7 +3301,7 @@ void main() {
           .modifyAssignees(arg_request, arg_courseId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response);
+        checkAnnouncement(response as api.Announcement);
       })));
     });
 
@@ -3285,8 +3314,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Announcement.fromJson(json);
-        checkAnnouncement(obj);
+        var obj = api.Announcement.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkAnnouncement(obj as api.Announcement);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3340,7 +3370,7 @@ void main() {
           .patch(arg_request, arg_courseId, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkAnnouncement(response);
+        checkAnnouncement(response as api.Announcement);
       })));
     });
   });
@@ -3353,8 +3383,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CourseWork.fromJson(json);
-        checkCourseWork(obj);
+        var obj = api.CourseWork.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCourseWork(obj as api.CourseWork);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3402,7 +3433,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response);
+        checkCourseWork(response as api.CourseWork);
       })));
     });
 
@@ -3462,7 +3493,7 @@ void main() {
       res
           .delete(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -3522,7 +3553,7 @@ void main() {
       res
           .get(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response);
+        checkCourseWork(response as api.CourseWork);
       })));
     });
 
@@ -3595,7 +3626,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCourseWorkResponse(response);
+        checkListCourseWorkResponse(response as api.ListCourseWorkResponse);
       })));
     });
 
@@ -3607,8 +3638,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyCourseWorkAssigneesRequest.fromJson(json);
-        checkModifyCourseWorkAssigneesRequest(obj);
+        var obj = api.ModifyCourseWorkAssigneesRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyCourseWorkAssigneesRequest(
+            obj as api.ModifyCourseWorkAssigneesRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3666,7 +3699,7 @@ void main() {
           .modifyAssignees(arg_request, arg_courseId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response);
+        checkCourseWork(response as api.CourseWork);
       })));
     });
 
@@ -3679,8 +3712,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CourseWork.fromJson(json);
-        checkCourseWork(obj);
+        var obj = api.CourseWork.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCourseWork(obj as api.CourseWork);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3734,7 +3768,7 @@ void main() {
           .patch(arg_request, arg_courseId, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWork(response);
+        checkCourseWork(response as api.CourseWork);
       })));
     });
   });
@@ -3806,7 +3840,7 @@ void main() {
       res
           .get(arg_courseId, arg_courseWorkId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response);
+        checkStudentSubmission(response as api.StudentSubmission);
       })));
     });
 
@@ -3890,7 +3924,8 @@ void main() {
               userId: arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListStudentSubmissionsResponse(response);
+        checkListStudentSubmissionsResponse(
+            response as api.ListStudentSubmissionsResponse);
       })));
     });
 
@@ -3903,8 +3938,9 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ModifyAttachmentsRequest.fromJson(json);
-        checkModifyAttachmentsRequest(obj);
+        var obj = api.ModifyAttachmentsRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkModifyAttachmentsRequest(obj as api.ModifyAttachmentsRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -3972,7 +4008,7 @@ void main() {
               arg_request, arg_courseId, arg_courseWorkId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response);
+        checkStudentSubmission(response as api.StudentSubmission);
       })));
     });
 
@@ -3986,8 +4022,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.StudentSubmission.fromJson(json);
-        checkStudentSubmission(obj);
+        var obj = api.StudentSubmission.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkStudentSubmission(obj as api.StudentSubmission);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4050,7 +4087,7 @@ void main() {
           .patch(arg_request, arg_courseId, arg_courseWorkId, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStudentSubmission(response);
+        checkStudentSubmission(response as api.StudentSubmission);
       })));
     });
 
@@ -4063,8 +4100,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReclaimStudentSubmissionRequest.fromJson(json);
-        checkReclaimStudentSubmissionRequest(obj);
+        var obj = api.ReclaimStudentSubmissionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReclaimStudentSubmissionRequest(
+            obj as api.ReclaimStudentSubmissionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4131,7 +4170,7 @@ void main() {
           .reclaim(arg_request, arg_courseId, arg_courseWorkId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4144,8 +4183,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.ReturnStudentSubmissionRequest.fromJson(json);
-        checkReturnStudentSubmissionRequest(obj);
+        var obj = api.ReturnStudentSubmissionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkReturnStudentSubmissionRequest(
+            obj as api.ReturnStudentSubmissionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4212,7 +4253,7 @@ void main() {
           .return_(arg_request, arg_courseId, arg_courseWorkId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4225,8 +4266,10 @@ void main() {
       var arg_id = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.TurnInStudentSubmissionRequest.fromJson(json);
-        checkTurnInStudentSubmissionRequest(obj);
+        var obj = api.TurnInStudentSubmissionRequest.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkTurnInStudentSubmissionRequest(
+            obj as api.TurnInStudentSubmissionRequest);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4293,7 +4336,7 @@ void main() {
           .turnIn(arg_request, arg_courseId, arg_courseWorkId, arg_id,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -4306,8 +4349,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CourseWorkMaterial.fromJson(json);
-        checkCourseWorkMaterial(obj);
+        var obj = api.CourseWorkMaterial.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCourseWorkMaterial(obj as api.CourseWorkMaterial);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4355,7 +4399,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response);
+        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
       })));
     });
 
@@ -4415,7 +4459,7 @@ void main() {
       res
           .delete(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4475,7 +4519,7 @@ void main() {
       res
           .get(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response);
+        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
       })));
     });
 
@@ -4556,7 +4600,8 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListCourseWorkMaterialResponse(response);
+        checkListCourseWorkMaterialResponse(
+            response as api.ListCourseWorkMaterialResponse);
       })));
     });
 
@@ -4569,8 +4614,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.CourseWorkMaterial.fromJson(json);
-        checkCourseWorkMaterial(obj);
+        var obj = api.CourseWorkMaterial.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkCourseWorkMaterial(obj as api.CourseWorkMaterial);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4624,7 +4670,7 @@ void main() {
           .patch(arg_request, arg_courseId, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkCourseWorkMaterial(response);
+        checkCourseWorkMaterial(response as api.CourseWorkMaterial);
       })));
     });
   });
@@ -4638,8 +4684,9 @@ void main() {
       var arg_enrollmentCode = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Student.fromJson(json);
-        checkStudent(obj);
+        var obj =
+            api.Student.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkStudent(obj as api.Student);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4690,7 +4737,7 @@ void main() {
           .create(arg_request, arg_courseId,
               enrollmentCode: arg_enrollmentCode, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStudent(response);
+        checkStudent(response as api.Student);
       })));
     });
 
@@ -4750,7 +4797,7 @@ void main() {
       res
           .delete(arg_courseId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -4810,7 +4857,7 @@ void main() {
       res
           .get(arg_courseId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkStudent(response);
+        checkStudent(response as api.Student);
       })));
     });
 
@@ -4875,7 +4922,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListStudentsResponse(response);
+        checkListStudentsResponse(response as api.ListStudentsResponse);
       })));
     });
   });
@@ -4888,8 +4935,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Teacher.fromJson(json);
-        checkTeacher(obj);
+        var obj =
+            api.Teacher.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTeacher(obj as api.Teacher);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -4937,7 +4985,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeacher(response);
+        checkTeacher(response as api.Teacher);
       })));
     });
 
@@ -4997,7 +5045,7 @@ void main() {
       res
           .delete(arg_courseId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5057,7 +5105,7 @@ void main() {
       res
           .get(arg_courseId, arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTeacher(response);
+        checkTeacher(response as api.Teacher);
       })));
     });
 
@@ -5122,7 +5170,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTeachersResponse(response);
+        checkListTeachersResponse(response as api.ListTeachersResponse);
       })));
     });
   });
@@ -5135,8 +5183,9 @@ void main() {
       var arg_courseId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Topic.fromJson(json);
-        checkTopic(obj);
+        var obj =
+            api.Topic.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTopic(obj as api.Topic);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5184,7 +5233,7 @@ void main() {
       res
           .create(arg_request, arg_courseId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTopic(response);
+        checkTopic(response as api.Topic);
       })));
     });
 
@@ -5244,7 +5293,7 @@ void main() {
       res
           .delete(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5304,7 +5353,7 @@ void main() {
       res
           .get(arg_courseId, arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTopic(response);
+        checkTopic(response as api.Topic);
       })));
     });
 
@@ -5369,7 +5418,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListTopicResponse(response);
+        checkListTopicResponse(response as api.ListTopicResponse);
       })));
     });
 
@@ -5382,8 +5431,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Topic.fromJson(json);
-        checkTopic(obj);
+        var obj =
+            api.Topic.fromJson(json as core.Map<core.String, core.dynamic>);
+        checkTopic(obj as api.Topic);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5437,7 +5487,7 @@ void main() {
           .patch(arg_request, arg_courseId, arg_id,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkTopic(response);
+        checkTopic(response as api.Topic);
       })));
     });
   });
@@ -5495,7 +5545,7 @@ void main() {
       res
           .accept(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5505,8 +5555,9 @@ void main() {
       var arg_request = buildInvitation();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Invitation.fromJson(json);
-        checkInvitation(obj);
+        var obj = api.Invitation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkInvitation(obj as api.Invitation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5545,7 +5596,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInvitation(response);
+        checkInvitation(response as api.Invitation);
       })));
     });
 
@@ -5595,7 +5646,7 @@ void main() {
       res
           .delete(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -5645,7 +5696,7 @@ void main() {
       res
           .get(arg_id, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkInvitation(response);
+        checkInvitation(response as api.Invitation);
       })));
     });
 
@@ -5707,7 +5758,7 @@ void main() {
               userId: arg_userId,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListInvitationsResponse(response);
+        checkListInvitationsResponse(response as api.ListInvitationsResponse);
       })));
     });
   });
@@ -5719,8 +5770,9 @@ void main() {
       var arg_request = buildRegistration();
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.Registration.fromJson(json);
-        checkRegistration(obj);
+        var obj = api.Registration.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkRegistration(obj as api.Registration);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5759,7 +5811,7 @@ void main() {
       res
           .create(arg_request, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkRegistration(response);
+        checkRegistration(response as api.Registration);
       })));
     });
 
@@ -5809,7 +5861,7 @@ void main() {
       res
           .delete(arg_registrationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
   });
@@ -5861,7 +5913,7 @@ void main() {
       res
           .get(arg_userId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkUserProfile(response);
+        checkUserProfile(response as api.UserProfile);
       })));
     });
   });
@@ -5874,8 +5926,9 @@ void main() {
       var arg_studentId = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GuardianInvitation.fromJson(json);
-        checkGuardianInvitation(obj);
+        var obj = api.GuardianInvitation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGuardianInvitation(obj as api.GuardianInvitation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -5923,7 +5976,7 @@ void main() {
       res
           .create(arg_request, arg_studentId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response);
+        checkGuardianInvitation(response as api.GuardianInvitation);
       })));
     });
 
@@ -5983,7 +6036,7 @@ void main() {
       res
           .get(arg_studentId, arg_invitationId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response);
+        checkGuardianInvitation(response as api.GuardianInvitation);
       })));
     });
 
@@ -6055,7 +6108,8 @@ void main() {
               states: arg_states,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGuardianInvitationsResponse(response);
+        checkListGuardianInvitationsResponse(
+            response as api.ListGuardianInvitationsResponse);
       })));
     });
 
@@ -6068,8 +6122,9 @@ void main() {
       var arg_updateMask = 'foo';
       var arg_$fields = 'foo';
       mock.register(unittest.expectAsync2((http.BaseRequest req, json) {
-        var obj = api.GuardianInvitation.fromJson(json);
-        checkGuardianInvitation(obj);
+        var obj = api.GuardianInvitation.fromJson(
+            json as core.Map<core.String, core.dynamic>);
+        checkGuardianInvitation(obj as api.GuardianInvitation);
 
         var path = (req.url).path;
         var pathOffset = 0;
@@ -6123,7 +6178,7 @@ void main() {
           .patch(arg_request, arg_studentId, arg_invitationId,
               updateMask: arg_updateMask, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGuardianInvitation(response);
+        checkGuardianInvitation(response as api.GuardianInvitation);
       })));
     });
   });
@@ -6185,7 +6240,7 @@ void main() {
       res
           .delete(arg_studentId, arg_guardianId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkEmpty(response);
+        checkEmpty(response as api.Empty);
       })));
     });
 
@@ -6245,7 +6300,7 @@ void main() {
       res
           .get(arg_studentId, arg_guardianId, $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkGuardian(response);
+        checkGuardian(response as api.Guardian);
       })));
     });
 
@@ -6314,7 +6369,7 @@ void main() {
               pageToken: arg_pageToken,
               $fields: arg_$fields)
           .then(unittest.expectAsync1(((response) {
-        checkListGuardiansResponse(response);
+        checkListGuardiansResponse(response as api.ListGuardiansResponse);
       })));
     });
   });
