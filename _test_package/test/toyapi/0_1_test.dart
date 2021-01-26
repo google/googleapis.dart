@@ -18,7 +18,7 @@
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-library googleapis.toyApi.D0_1.test;
+library test_package.toyApi.D0_1.test;
 
 import "dart:core" as core;
 import "dart:async" as async;
@@ -27,7 +27,7 @@ import "dart:convert" as convert;
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
 
-import 'package:googleapis/toyapi/0_1.dart' as api;
+import 'package:test_package/toyapi/0_1.dart' as api;
 
 class HttpServerMock extends http.BaseClient {
   core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)

@@ -16,7 +16,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library discoveryapis_tests.toyApi.client;
+library file_test_package.toyApi.client;
 
 import 'dart:core' as core;
 import 'dart:async' as async;
@@ -24,7 +24,7 @@ import 'dart:convert' as convert;
 
 import 'package:_discoveryapis_commons/_discoveryapis_commons.dart' as commons;
 import 'package:http/http.dart' as http;
-import 'package:discoveryapis_tests/messages.dart';
+import 'package:file_test_package/messages.dart';
 export 'package:_discoveryapis_commons/_discoveryapis_commons.dart'
     show ApiRequestError, DetailedApiRequestError;
 

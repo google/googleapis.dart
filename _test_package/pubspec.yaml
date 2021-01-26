@@ -1,4 +1,4 @@
-name: googleapis
+name: test_package
 version: 0.1.0-dev
 description: Auto-generated client libraries.
 environment:

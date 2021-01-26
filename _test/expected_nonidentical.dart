@@ -16,7 +16,7 @@
 // ignore_for_file: unnecessary_parenthesis
 // ignore_for_file: unnecessary_string_interpolations
 
-library discoveryapis_tests.toyApi.D0_1;
+library file_test_package.toyApi.D0_1;
 
 import 'dart:core' as core;
 import 'dart:collection' as collection;

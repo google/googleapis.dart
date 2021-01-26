@@ -1,4 +1,4 @@
-name: discoveryapis_tests
+name: file_test_package
 description: Pubspec used for unittesting of the discoveryapis_generator package.
 publish_to: none
 environment:
