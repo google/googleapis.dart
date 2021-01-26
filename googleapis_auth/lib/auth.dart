@@ -264,7 +264,7 @@ Future<AccessCredentials> refreshCredentials(
   final idToken = jsonMap['id_token'] as String?;
   final token = jsonMap['access_token'] as String?;
   final seconds = jsonMap['expires_in'];
-  final tokenType = jsonMap['token_type'] as String;
+  final tokenType = jsonMap['token_type'] as String?;
   final error = jsonMap['error'];
 
   if (response.statusCode != 200 && error != null) {
@@ -272,7 +272,10 @@ Future<AccessCredentials> refreshCredentials(
         'Response was ${response.statusCode}. Error message was $error.');
   }
 
-  if (token == null || seconds is! int || tokenType != 'Bearer') {
+  if (token == null ||
+      seconds is! int ||
+      tokenType == null ||
+      tokenType != 'Bearer') {
     throw Exception('Refresing attempt failed. '
         'Invalid server response.');
   }
