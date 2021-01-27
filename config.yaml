@@ -15,12 +15,15 @@ packages:
     - oauth2:v2 # Note: this is used many places and sometimes the document is missing
     - abusiveexperiencereport:v1 # https://developers.google.com/abusive-experience-report/
     - acceleratedmobilepageurl:v1 # https://developers.google.com/amp/cache/
+    - accessapproval:v1
+    - accesscontextmanager:v1
     - adexchangebuyer:v1.3 # https://developers.google.com/ad-exchange/buyer-rest/
     - adexchangebuyer:v1.4 # https://developers.google.com/ad-exchange/buyer-rest/
     - adexperiencereport:v1 # https://developers.google.com/ad-experience-report/
     - admin:datatransfer_v1 # https://developers.google.com/admin-sdk/data-transfer/
     - admin:directory_v1 # https://developers.google.com/admin-sdk/directory/
     - admin:reports_v1 # https://developers.google.com/admin-sdk/reports/
+    - admob:v1
     - adsense:v1.4 # https://developers.google.com/adsense/management/
     - adsensehost:v4.1 # https://developers.google.com/adsense/host/
     - analytics:v3 # https://developers.google.com/analytics/
@@ -29,16 +32,25 @@ packages:
     - androidenterprise:v1 # https://developers.google.com/api-client-library/java/apis/androidenterprise/v1
     - androidmanagement:v1 # https://developers.google.com/android/management
     - androidpublisher:v3 # https://developers.google.com/android-publisher/
+    - apigateway:v1
+    - apigee:v1
     - appengine:v1 # https://cloud.google.com/appengine/docs/admin-api/
+    - artifactregistry:v1
+    - assuredworkloads:v1
     - bigquery:v2 # https://developers.google.com/bigquery/
     - bigquerydatatransfer:v1 # https://cloud.google.com/bigquery/transfer/
+    - bigqueryreservation:v1
     - bigtableadmin:v2 # https://cloud.google.com/bigtable/
+    - billingbudgets:v1
+    - binaryauthorization:v1
     - blogger:v3 # https://developers.google.com/blogger/
     - books:v1 # https://developers.google.com/books/
     - calendar:v3 # https://developers.google.com/google-apps/calendar/
     - chat:v1 # https://developers.google.com/hangouts/chat
+    - chromeuxreport:v1
     - civicinfo:v2 # https://developers.google.com/civic-information/
     - classroom:v1 # https://developers.google.com/classroom/
+    - cloudasset:v1
     - cloudbilling:v1 # https://cloud.google.com/billing/
     - cloudbuild:v1 # https://cloud.google.com/container-builder/docs/
     - clouddebugger:v2 # https://cloud.google.com/tools/cloud-debugger
@@ -49,133 +61,135 @@ packages:
     - cloudprofiler:v2 # https://cloud.google.com/profiler/
     - cloudresourcemanager:v1 # https://cloud.google.com/resource-manager/
     - cloudresourcemanager:v2 # https://cloud.google.com/resource-manager/
+    - cloudscheduler:v1
     - cloudsearch:v1 # https://gsuite.google.com/products/cloud-search/
     - cloudshell:v1 # https://cloud.google.com/shell/docs/
+    - cloudtasks:v2
     - cloudtrace:v2 # https://cloud.google.com/cloud-trace/
     - composer:v1 # https://cloud.google.com/composer/
     - compute:v1 # https://developers.google.com/compute/
     - container:v1 # https://cloud.google.com/container-engine/
     - content:v2.1 # https://developers.google.com/shopping-content/
     - customsearch:v1 # https://developers.google.com/custom-search/
+    - datafusion:v1
     - dataproc:v1 # https://cloud.google.com/dataproc/
     - datastore:v1 # https://developers.google.com/datastore/
     - deploymentmanager:v2 # https://cloud.google.com/deployment-manager/
+    - dfareporting:v3.4
     - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
-    - dialogflow:v2 # https://cloud.google.com/dialogflow-enterprise/
+    - dialogflow:v3 # https://cloud.google.com/dialogflow-enterprise/
     - digitalassetlinks:v1 # https://developers.google.com/digital-asset-links/
     - discovery:v1 # https://developers.google.com/discovery/
+    - displayvideo:v1
     - dlp:v2 # https://cloud.google.com/dlp/
     - dns:v1 # https://cloud.google.com/dns/api/v1/
+    - docs:v1
+    - domainsrdap:v1
+    - doubleclickbidmanager:v1.1
     - doubleclicksearch:v2 # https://developers.google.com/doubleclick-search/
     - drive:v2 # https://developers.google.com/drive/v2/reference/
     - drive:v3 # https://developers.google.com/drive/v3/reference/
     - driveactivity:v2 # https://developers.google.com/drive/activity/
+    - eventarc:v1
+    - fcm:v1
+    - file:v1
     - firebasedynamiclinks:v1 # https://firebase.google.com/docs/dynamic-links/
+    - firebasehosting:v1
+    - firebaseml:v1
     - firebaserules:v1 # https://firebase.google.com/docs/storage/security/start
     - firestore:v1 # https://cloud.google.com/firestore
     - fitness:v1 # https://developers.google.com/fitness/
     - games:v1 # https://developers.google.com/games/services/
     - gamesConfiguration:v1configuration # https://developers.google.com/games/services/publishing/api/
+    - gameservices:v1
     - gamesManagement:v1management # https://developers.google.com/games/services/management/api/
     - genomics:v1 # https://cloud.google.com/genomics/
     - gmail:v1 # https://developers.google.com/gmail/
+    - gmailpostmastertools:v1
     - groupsmigration:v1 # https://developers.google.com/admin-sdk/groups-migration/
     - groupssettings:v1 # https://developers.google.com/admin-sdk/groups-settings/
+    - healthcare:v1
+    - homegraph:v1
     - iam:v1 # https://cloud.google.com/iam/
     - iamcredentials:v1 # https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials
     - iap:v1 # https://cloud.google.com/iap
     - identitytoolkit:v3 # https://developers.google.com/identity-toolkit/
     - indexing:v3 # https://developers.google.com/search/apis/indexing-api/
-    - jobs:v2 # https://cloud.google.com/job-discovery/docs
     - jobs:v3 # https://cloud.google.com/job-discovery/docs
+    - jobs:v4
     - kgsearch:v1 # https://developers.google.com/knowledge-graph/
     - language:v1 # https://cloud.google.com/natural-language/
     - libraryagent:v1 # https://cloud.google.com/docs/quota
     - licensing:v1 # https://developers.google.com/admin-sdk/licensing/v1/how-tos/using
+    - localservices:v1
     - logging:v2 # https://cloud.google.com/logging/docs/
+    - managedidentities:v1
     - manufacturers:v1 # https://developers.google.com/manufacturers/
+    - memcache:v1
     - ml:v1 # https://cloud.google.com/ml-engine/
     - monitoring:v3 # https://cloud.google.com/monitoring/api/
+    - networkmanagement:v1
+    - notebooks:v1
+    - osconfig:v1
     - oslogin:v1 # https://cloud.google.com/compute/docs/oslogin/rest/
     - pagespeedonline:v5 # https://developers.google.com/speed/docs/insights/about
     - people:v1 # https://developers.google.com/people/
+    - playablelocations:v3
     - playcustomapp:v1 # https://developers.google.com/android/work/play/custom-app-api
+    - policytroubleshooter:v1
     - poly:v1 # https://devsite.googleplex.com/poly/
     - pubsub:v1 # https://cloud.google.com/pubsub/
+    - pubsublite:v1
+    - realtimebidding:v1
+    - recommender:v1
     - redis:v1 # https://cloud.google.com/memorystore/docs/redis/
+    - remotebuildexecution:v2
     - reseller:v1 # https://developers.google.com/admin-sdk/reseller/
+    - retail:v2
+    - run:v1
     - runtimeconfig:v1 # https://cloud.google.com/deployment-manager/runtime-configurator/
     - safebrowsing:v4 # https://developers.google.com/safe-browsing/
     - script:v1 # https://developers.google.com/apps-script/execution/rest/v1/run
     - searchconsole:v1 # https://developers.google.com/webmaster-tools/search-console-api/
+    - secretmanager:v1
+    - securitycenter:v1
     - serviceconsumermanagement:v1 # https://cloud.google.com/service-consumer-management/docs/overview
     - servicecontrol:v1 # https://cloud.google.com/service-control/
+    - servicecontrol:v2
+    - servicedirectory:v1
     - servicemanagement:v1 # https://cloud.google.com/service-management/
+    - servicenetworking:v1
     - serviceusage:v1 # https://cloud.google.com/service-usage/
     - sheets:v4 # https://developers.google.com/sheets/reference/rest/
     - siteVerification:v1 # https://developers.google.com/site-verification/
     - slides:v1 # https://developers.google.com/slides/
+    - smartdevicemanagement:v1
     - sourcerepo:v1 # https://cloud.google.com/eap/cloud-repositories/cloud-sourcerepo-api
     - spanner:v1 # https://cloud.google.com/spanner/docs/
     - speech:v1 # https://cloud.google.com/speech/
     - storage:v1 # https://developers.google.com/storage/
     - storagetransfer:v1 # https://cloud.google.com/storage/transfer/
     - streetviewpublish:v1 # https://developers.google.com/streetview/publish/
+    - sts:v1
     - tagmanager:v1 # https://developers.google.com/tag-manager/
     - tagmanager:v2 # https://developers.google.com/tag-manager/
     - tasks:v1 # https://developers.google.com/google-apps/tasks/
     - testing:v1 # https://developers.google.com/cloud-test-lab/
     - texttospeech:v1 # https://cloud.google.com/text-to-speech/
     - tpu:v1 # https://cloud.google.com/tpu/
+    - trafficdirector:v2
+    - translate:v3
     - vault:v1 # https://apps.google.com/products/vault/
+    - vectortile:v1
+    - verifiedaccess:v1
     - videointelligence:v1 # https://cloud.google.com/video-intelligence/
     - vision:v1 # https://cloud.google.com/vision/reference/rest/
     - webfonts:v1 # https://developers.google.com/fonts/docs/developer_api
     - webmasters:v3 # https://developers.google.com/webmaster-tools/
+    - websecurityscanner:v1
     - youtube:v3 # https://developers.google.com/youtube/
     - youtubeAnalytics:v2 # https://developers.google.com/youtube/analytics/
     - youtubereporting:v1 # https://developers.google.com/youtube/reporting/v1/reports/
-    - accesscontextmanager:v1
-    - cloudasset:v1
-    - cloudscheduler:v1
-    - cloudtasks:v2
-    - docs:v1
-    - fcm:v1
-    - file:v1
-    - run:v1
-    - remotebuildexecution:v2
-    - securitycenter:v1
-    - servicenetworking:v1
-    - websecurityscanner:v1
-    - accesscontextmanager:v1
-    - cloudasset:v1
-    - cloudscheduler:v1
-    - cloudtasks:v2
-    - docs:v1
-    - fcm:v1
-    - file:v1
-    - run:v1
-    - remotebuildexecution:v2
-    - servicenetworking:v1
-    - accessapproval:v1
-    - admob:v1
-    - apigee:v1
-    - bigqueryreservation:v1
-    - binaryauthorization:v1
-    - dfareporting:v3.4
-    - displayvideo:v1
-    - domainsrdap:v1
-    - doubleclickbidmanager:v1.1
-    - healthcare:v1
-    - homegraph:v1
-    - osconfig:v1
-    - policytroubleshooter:v1
-    - secretmanager:v1
-    - managedidentities:v1
-    - translate:v3
-    - verifiedaccess:v1
-    - networkmanagement:v1
-    - recommender:v1
 
 - googleapis_beta:
     version: 1.0.0-dev
@@ -187,113 +201,139 @@ packages:
     apis:
     - adexchangebuyer2:v2beta1 # https://developers.google.com/ad-exchange/buyer-rest/guides/client-access/
     - alertcenter:v1beta1 # https://developers.google.com/admin-sdk/alertcenter/
-    - appengine:v1beta # https://cloud.google.com/appengine/docs/admin-api/
+    - analyticsadmin:v1alpha
+    - analyticsdata:v1alpha
+    - area120tables:v1alpha1
+    - bigqueryconnection:v1beta1
     - clouderrorreporting:v1beta1 # https://cloud.google.com/error-reporting/
-    - cloudresourcemanager:v1beta1 # https://cloud.google.com/resource-manager
     - containeranalysis:v1beta1 # https://cloud.google.com/container-registry/docs/reference/rest/
+    - datacatalog:v1beta1
     - dataflow:v1b3 # https://cloud.google.com/dataflow/
-    - dialogflow:v2beta1 # https://cloud.google.com/dialogflow-enterprise/
-    - firebasehosting:v1beta1 # https://firebase.google.com/docs/hosting/
-    - language:v1beta1 # https://cloud.google.com/natural-language/
-    - language:v1beta2 # https://cloud.google.com/natural-language/
-    - oslogin:v1alpha # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
-    - oslogin:v1beta # https://developers.google.com/apis-explorer/#p/oslogin/v1alpha/
-    - pubsub:v1beta2 # https://developers.google.com/pubsub/ (Limited Preview)
-    - runtimeconfig:v1beta1 # https://cloud.google.com/deployment-manager/docs/
-    - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
-    - tpu:v1alpha1 # https://cloud.google.com/tpu/
-    - datafusion:v1beta1
+    - datalabeling:v1beta1
+    - datamigration:v1beta1
+    - documentai:v1beta3
+    - domains:v1beta1
     - factchecktools:v1alpha1
     - firebase:v1beta1
-    - bigqueryconnection:v1beta1
-    - billingbudgets:v1beta1
-    - datacatalog:v1beta1
-    - firebaseml:v1beta2
-    - gameservices:v1beta
+    - firebasedatabase:v1beta
     - lifesciences:v2beta
-    - memcache:v1beta2
+    - metastore:v1beta
+    - networkconnectivity:v1alpha1
+    - privateca:v1beta1
     - prod_tt_sasportal:v1alpha1
+    - recommendationengine:v1beta1
     - sasportal:v1alpha1
-    - servicedirectory:v1beta1
-    - speech:v2beta1
-    - artifactregistry:v1beta1
-    - documentai:v1beta2
     - sqladmin:v1beta4
+    - toolresults:v1beta3 # https://developers.google.com/cloud-test-lab/
+    - transcoder:v1beta1
+    - workflowexecutions:v1beta
+    - workflows:v1beta
 
 # APIs that we do not wish to include in this package
 skipped_apis:
+- accesscontextmanager:v1beta
 - adexchangebuyer:v1.2 # v1.3 included
+- admob:v1beta #v1 included
+- apigateway:v1beta # v1 included
 - appengine:v1alpha # v1 included
+- appengine:v1beta
+- artifactregistry:v1beta1 #v1 included
+- artifactregistry:v1beta2 #v1 included
+- bigqueryreservation:v1beta1 # v1 included
+- bigtableadmin:v1 # v2 included
+- billingbudgets:v1beta1 # v1 included
+- binaryauthorization:v1beta1 # v1 included
 - blogger:v2 # v3 included
+- cloudasset:v1beta1
+- cloudasset:v1p1beta1 # v1 included
+- cloudasset:v1p4beta1 # v1 included
+- cloudasset:v1p5beta1 # v1 included
 - cloudbuild:v1alpha1 # v1 included
+- cloudbuild:v1alpha2 # v1 included
 - cloudidentity:v1beta1 # v1 included
+- cloudresourcemanager:v1beta1 # https://cloud.google.com/resource-manager
 - cloudresourcemanager:v2beta1 # v2 included
+- cloudscheduler:v1beta1
 - cloudshell:v1alpha1 # v1 included
 - cloudtasks:v2beta2 # v2beta3 included
+- cloudtasks:v2beta3
 - cloudtrace:v1 # v2 included
+- cloudtrace:v2beta1 # v2 included
 - composer:v1beta1 # v1 included
 - compute:alpha # v1 included
 - compute:beta # v1 included
 - container:v1beta1 # v1 included
 - containeranalysis:v1alpha1 # v1beta1 included
 - content:v2 # v2.1 included
+- datafusion:v1beta1 # v1 included
 - dataproc:v1beta2 # v1 included
 - datastore:v1beta1 # v1 included
 - datastore:v1beta3 # v1 included
 - deploymentmanager:alpha # v2beta # v1 included
 - deploymentmanager:v2beta # v1 included
+- dfareporting:v3.3 # v3.4 included
+- dialogflow:v2beta1 # https://cloud.google.com/dialogflow-enterprise/
+- dialogflow:v3beta1 # v3 included
 - dns:v1beta2 # v1 included
+- documentai:v1beta2 # v1beta3 included
+- domains:v1alpha2 # v1beta1 included
+- doubleclickbidmanager:v1 # v1.1 included
+- eventarc:v1beta1 # v1 included
+- file:v1beta1
+- firebasehosting:v1beta1 # v1 included
+- firebaseml:v1beta2
 - firestore:v1beta1 # v1 included
 - firestore:v1beta2 # v1 included
+- gameservices:v1beta # v1 included
 - genomics:v1alpha2 # v1 included
-- genomics:v2alpha1
+- genomics:v2alpha1 # v1 included
+- gmailpostmastertools:v1beta1 # v1 included
+- healthcare:v1beta1 # v1 included
 - iap:v1beta1 # v1 included
 - jobs:v3p1beta1 # v3 included
+- language:v1beta1 # https://cloud.google.com/natural-language/
+- language:v1beta2 # https://cloud.google.com/natural-language/
+- managedidentities:v1alpha1 # v1 included
+- managedidentities:v1beta1 # v1 included
+- memcache:v1beta2 # v1 included
+- metastore:v1alpha # v1beta included
+- monitoring:v1 # v3 included
+- networkmanagement:v1beta1 # v1 included
+- osconfig:v1beta # v1 included
+- oslogin:v1alpha # v1 available
+- oslogin:v1beta # v1 available
+- policytroubleshooter:v1beta # v1 included
 - pubsub:v1beta1a # v1beta1, v1bets2 and v1 included
+- pubsub:v1beta2 # v1 included
+- realtimebidding:v1alpha
+- recommender:v1beta1 # v1 included
 - redis:v1beta1 # v1 included
 - remotebuildexecution:v1 # v2 included
 - remotebuildexecution:v1alpha # v2 included
+- retail:v2alpha # v2 included
+- retail:v2beta # v2 included
+- run:v1alpha1 #v1 included
+- run:v1beta1 #v1 included
+- runtimeconfig:v1beta1 # v1 included
+- secretmanager:v1beta1 # v1 included
+- securitycenter:v1beta1 # v1 included
+- securitycenter:v1beta2 # v1 included
+- serviceconsumermanagement:v1beta1 # v1 included
+- servicedirectory:v1beta1 # v1 included
+- servicenetworking:v1beta # v1 included
 - serviceusage:v1beta1 # v1 included
 - speech:v1p1beta1 # v1 included
+- speech:v2beta1 # v1 included
+- sts:v1beta #v1 included
 - texttospeech:v1beta1 # v1 included
+- tpu:v1alpha1 # v1 included
+- translate:v2 # v3 included
+- translate:v3beta1 # v3 included
 - videointelligence:v1beta2 # v1 included
 - videointelligence:v1p1beta1 # v1 included
-- vision:v1p1beta1 # v1 included
-- vision:v1p2beta1 # v1 included
-- bigtableadmin:v1 # v2 included
-- websecurityscanner:v1beta # v1 included
-- websecurityscanner:v1alpha # v1 included
-- accesscontextmanager:v1beta
-- cloudasset:v1beta1
-- cloudscheduler:v1beta1
-- cloudtasks:v2beta3
-- file:v1beta1
-- servicenetworking:v1beta # v1 included
 - videointelligence:v1p2beta1
 - videointelligence:v1p3beta1
-- securitycenter:v1beta1 # v1 included
-- run:v1beta1
-- run:v1alpha1
-- dfareporting:v3.3 # v3.4 included
-- doubleclickbidmanager:v1 # v1.1 included
-- healthcare:v1beta1 # v1 included
-- translate:v2 # v3 included
-- bigqueryreservation:v1alpha2 # v1 included
-- bigqueryreservation:v1beta1 # v1 included
-- cloudasset:v1p1beta1 # v1 included
-- cloudasset:v1p4beta1 # v1 included
-- cloudbuild:v1alpha2 # v1 included
-- cloudtrace:v2beta1 # v2 included
-- managedidentities:v1alpha1 # v1 included
-- managedidentities:v1beta1 # v1 included
-- monitoring:v1 # v3 included
-- osconfig:v1beta # v1 included
-- policytroubleshooter:v1beta # v1 included
-- secretmanager:v1beta1 # v1 included
-- serviceconsumermanagement:v1beta1 # v1 included
-- translate:v3beta1 # v3 included
-- binaryauthorization:v1beta1 # v1 included
-- displayvideo:v1beta # v1 included
-- networkmanagement:v1beta1 # v1 included
-- recommender:v1beta1 # v1 included
-- youtubeAnalytics:v1 # resource definition is empty - broken!
+- vision:v1p1beta1 # v1 included
+- vision:v1p2beta1 # v1 included
+- websecurityscanner:v1alpha # v1 included
+- websecurityscanner:v1beta # v1 included
