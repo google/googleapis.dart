@@ -51901,11 +51901,13 @@ class AcceleratorTypeAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, AcceleratorTypesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => AcceleratorTypesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              AcceleratorTypesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -51933,9 +51935,8 @@ class AcceleratorTypeAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<AcceleratorTypesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (AcceleratorTypesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -52772,11 +52773,13 @@ class AddressAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, AddressesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => AddressesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              AddressesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -52804,9 +52807,8 @@ class AddressAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<AddressesScopedList, core.Map<core.String, core.Object>>(
-              items, (AddressesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -53677,10 +53679,13 @@ class AttachedDiskInitializeParams {
       diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('onUpdateAction')) {
       onUpdateAction = _json['onUpdateAction'] as core.String;
@@ -54223,11 +54228,13 @@ class AutoscalerAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, AutoscalersScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => AutoscalersScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              AutoscalersScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -54255,9 +54262,8 @@ class AutoscalerAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<AutoscalersScopedList, core.Map<core.String, core.Object>>(
-              items, (AutoscalersScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -56191,11 +56197,13 @@ class BackendServiceAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, BackendServicesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => BackendServicesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              BackendServicesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -56223,9 +56231,8 @@ class BackendServiceAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<BackendServicesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (BackendServicesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -56372,10 +56379,14 @@ class BackendServiceGroupHealth {
 
   BackendServiceGroupHealth.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
-      annotations = commons.mapMap<core.String, core.String>(
-          (_json['annotations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      annotations = (_json['annotations'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('healthStatus')) {
       healthStatus = (_json['healthStatus'] as core.List)
@@ -57462,11 +57473,13 @@ class CommitmentAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, CommitmentsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => CommitmentsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              CommitmentsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -57494,9 +57507,8 @@ class CommitmentAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<CommitmentsScopedList, core.Map<core.String, core.Object>>(
-              items, (CommitmentsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -58589,10 +58601,13 @@ class Disk {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastAttachTimestamp')) {
       lastAttachTimestamp = _json['lastAttachTimestamp'] as core.String;
@@ -58928,11 +58943,13 @@ class DiskAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, DisksScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => DisksScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              DisksScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -58961,8 +58978,7 @@ class DiskAggregatedList {
     }
     if (items != null) {
       _json['items'] =
-          commons.mapMap<DisksScopedList, core.Map<core.String, core.Object>>(
-              items, (DisksScopedList item) => item.toJson());
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -59556,11 +59572,13 @@ class DiskTypeAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, DiskTypesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => DiskTypesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              DiskTypesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -59588,9 +59606,8 @@ class DiskTypeAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<DiskTypesScopedList, core.Map<core.String, core.Object>>(
-              items, (DiskTypesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -60686,10 +60703,13 @@ class ExternalVpnGateway {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -62239,11 +62259,13 @@ class ForwardingRuleAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, ForwardingRulesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ForwardingRulesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ForwardingRulesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -62271,9 +62293,8 @@ class ForwardingRuleAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<ForwardingRulesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (ForwardingRulesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -62797,10 +62818,13 @@ class GlobalSetLabelsRequest {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -64280,11 +64304,13 @@ class HealthChecksAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, HealthChecksScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => HealthChecksScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              HealthChecksScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -64312,9 +64338,8 @@ class HealthChecksAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<HealthChecksScopedList, core.Map<core.String, core.Object>>(
-              items, (HealthChecksScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -64504,10 +64529,14 @@ class HealthStatus {
 
   HealthStatus.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
-      annotations = commons.mapMap<core.String, core.String>(
-          (_json['annotations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      annotations = (_json['annotations'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('healthState')) {
       healthState = _json['healthState'] as core.String;
@@ -66557,10 +66586,13 @@ class Image {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('licenseCodes')) {
       licenseCodes = (_json['licenseCodes'] as core.List)
@@ -67225,10 +67257,13 @@ class Instance {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
@@ -67554,11 +67589,13 @@ class InstanceAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, InstancesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InstancesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              InstancesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -67586,9 +67623,8 @@ class InstanceAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<InstancesScopedList, core.Map<core.String, core.Object>>(
-              items, (InstancesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -67930,11 +67966,13 @@ class InstanceGroupAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, InstanceGroupsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InstanceGroupsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              InstanceGroupsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -67962,9 +68000,8 @@ class InstanceGroupAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<InstanceGroupsScopedList, core.Map<core.String, core.Object>>(
-              items, (InstanceGroupsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -68711,11 +68748,13 @@ class InstanceGroupManagerAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, InstanceGroupManagersScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InstanceGroupManagersScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              InstanceGroupManagersScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -68743,9 +68782,8 @@ class InstanceGroupManagerAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<InstanceGroupManagersScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (InstanceGroupManagersScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -71091,10 +71129,13 @@ class InstanceProperties {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
@@ -71791,10 +71832,13 @@ class InstancesSetLabelsRequest {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -72765,11 +72809,13 @@ class InterconnectAttachmentAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, InterconnectAttachmentsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InterconnectAttachmentsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              InterconnectAttachmentsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -72797,9 +72843,8 @@ class InterconnectAttachmentAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<InterconnectAttachmentsScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (InterconnectAttachmentsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -75348,11 +75393,13 @@ class MachineTypeAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, MachineTypesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => MachineTypesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              MachineTypesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -75380,9 +75427,8 @@ class MachineTypeAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<MachineTypesScopedList, core.Map<core.String, core.Object>>(
-              items, (MachineTypesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -76467,10 +76513,14 @@ class NetworkEndpoint {
 
   NetworkEndpoint.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
-      annotations = commons.mapMap<core.String, core.String>(
-          (_json['annotations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      annotations = (_json['annotations'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fqdn')) {
       fqdn = _json['fqdn'] as core.String;
@@ -76597,10 +76647,14 @@ class NetworkEndpointGroup {
 
   NetworkEndpointGroup.fromJson(core.Map _json) {
     if (_json.containsKey('annotations')) {
-      annotations = commons.mapMap<core.String, core.String>(
-          (_json['annotations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      annotations = (_json['annotations'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('appEngine')) {
       appEngine = NetworkEndpointGroupAppEngine.fromJson(
@@ -76855,11 +76909,13 @@ class NetworkEndpointGroupAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, NetworkEndpointGroupsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NetworkEndpointGroupsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              NetworkEndpointGroupsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -76887,9 +76943,8 @@ class NetworkEndpointGroupAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<NetworkEndpointGroupsScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (NetworkEndpointGroupsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -78602,11 +78657,13 @@ class NodeGroupAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, NodeGroupsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NodeGroupsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              NodeGroupsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -78634,9 +78691,8 @@ class NodeGroupAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<NodeGroupsScopedList, core.Map<core.String, core.Object>>(
-              items, (NodeGroupsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -79470,10 +79526,14 @@ class NodeTemplate {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('nodeAffinityLabels')) {
-      nodeAffinityLabels = commons.mapMap<core.String, core.String>(
-          (_json['nodeAffinityLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      nodeAffinityLabels = (_json['nodeAffinityLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('nodeType')) {
       nodeType = _json['nodeType'] as core.String;
@@ -79690,11 +79750,13 @@ class NodeTemplateAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, NodeTemplatesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NodeTemplatesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              NodeTemplatesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -79722,9 +79784,8 @@ class NodeTemplateAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<NodeTemplatesScopedList, core.Map<core.String, core.Object>>(
-              items, (NodeTemplatesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -80383,11 +80444,13 @@ class NodeTypeAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, NodeTypesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NodeTypesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              NodeTypesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -80415,9 +80478,8 @@ class NodeTypeAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<NodeTypesScopedList, core.Map<core.String, core.Object>>(
-              items, (NodeTypesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -81713,11 +81775,13 @@ class OperationAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, OperationsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => OperationsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              OperationsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -81745,9 +81809,8 @@ class OperationAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<OperationsScopedList, core.Map<core.String, core.Object>>(
-              items, (OperationsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -82552,11 +82615,13 @@ class PacketMirroringAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, PacketMirroringsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PacketMirroringsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              PacketMirroringsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -82584,9 +82649,8 @@ class PacketMirroringAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<PacketMirroringsScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (PacketMirroringsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -83658,26 +83722,30 @@ class PreservedState {
 
   PreservedState.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
-      disks = commons.mapMap<core.Map, PreservedStatePreservedDisk>(
-          (_json['disks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PreservedStatePreservedDisk.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      disks = (_json['disks'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              PreservedStatePreservedDisk.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.String, core.String>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (disks != null) {
-      _json['disks'] = commons.mapMap<PreservedStatePreservedDisk,
-              core.Map<core.String, core.Object>>(
-          disks, (PreservedStatePreservedDisk item) => item.toJson());
+      _json['disks'] =
+          disks.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (metadata != null) {
       _json['metadata'] = metadata;
@@ -86180,10 +86248,13 @@ class RegionSetLabelsRequest {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -86653,11 +86724,13 @@ class ReservationAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, ReservationsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ReservationsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ReservationsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -86685,9 +86758,8 @@ class ReservationAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<ReservationsScopedList, core.Map<core.String, core.Object>>(
-              items, (ReservationsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -87544,11 +87616,13 @@ class ResourcePolicyAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, ResourcePoliciesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ResourcePoliciesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ResourcePoliciesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -87579,9 +87653,8 @@ class ResourcePolicyAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<ResourcePoliciesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (ResourcePoliciesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -88074,10 +88147,13 @@ class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
       guestFlush = _json['guestFlush'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('storageLocations')) {
       storageLocations = (_json['storageLocations'] as core.List)
@@ -88999,11 +89075,13 @@ class RouterAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, RoutersScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => RoutersScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              RoutersScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -89032,8 +89110,7 @@ class RouterAggregatedList {
     }
     if (items != null) {
       _json['items'] =
-          commons.mapMap<RoutersScopedList, core.Map<core.String, core.Object>>(
-              items, (RoutersScopedList item) => item.toJson());
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -91595,10 +91672,13 @@ class Snapshot {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('licenseCodes')) {
       licenseCodes = (_json['licenseCodes'] as core.List)
@@ -92259,11 +92339,13 @@ class SslCertificateAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, SslCertificatesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SslCertificatesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              SslCertificatesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -92291,9 +92373,8 @@ class SslCertificateAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<SslCertificatesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (SslCertificatesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -92521,10 +92602,14 @@ class SslCertificateManagedSslCertificate {
 
   SslCertificateManagedSslCertificate.fromJson(core.Map _json) {
     if (_json.containsKey('domainStatus')) {
-      domainStatus = commons.mapMap<core.String, core.String>(
-          (_json['domainStatus'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      domainStatus = (_json['domainStatus'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('domains')) {
       domains = (_json['domains'] as core.List)
@@ -93265,20 +93350,21 @@ class StatefulPolicyPreservedState {
 
   StatefulPolicyPreservedState.fromJson(core.Map _json) {
     if (_json.containsKey('disks')) {
-      disks = commons.mapMap<core.Map, StatefulPolicyPreservedStateDiskDevice>(
-          (_json['disks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => StatefulPolicyPreservedStateDiskDevice.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      disks = (_json['disks'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              StatefulPolicyPreservedStateDiskDevice.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (disks != null) {
-      _json['disks'] = commons.mapMap<StatefulPolicyPreservedStateDiskDevice,
-              core.Map<core.String, core.Object>>(disks,
-          (StatefulPolicyPreservedStateDiskDevice item) => item.toJson());
+      _json['disks'] =
+          disks.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -93737,11 +93823,13 @@ class SubnetworkAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, SubnetworksScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SubnetworksScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              SubnetworksScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -93769,9 +93857,8 @@ class SubnetworkAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<SubnetworksScopedList, core.Map<core.String, core.Object>>(
-              items, (SubnetworksScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -95064,11 +95151,13 @@ class TargetHttpProxyAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, TargetHttpProxiesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TargetHttpProxiesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TargetHttpProxiesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -95092,9 +95181,8 @@ class TargetHttpProxyAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<TargetHttpProxiesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (TargetHttpProxiesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -95795,11 +95883,13 @@ class TargetHttpsProxyAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, TargetHttpsProxiesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TargetHttpsProxiesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TargetHttpsProxiesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -95827,9 +95917,8 @@ class TargetHttpsProxyAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<TargetHttpsProxiesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (TargetHttpsProxiesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -96295,11 +96384,13 @@ class TargetInstanceAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, TargetInstancesScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TargetInstancesScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TargetInstancesScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -96327,9 +96418,8 @@ class TargetInstanceAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<TargetInstancesScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (TargetInstancesScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -97004,11 +97094,13 @@ class TargetPoolAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, TargetPoolsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TargetPoolsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TargetPoolsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -97036,9 +97128,8 @@ class TargetPoolAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<TargetPoolsScopedList, core.Map<core.String, core.Object>>(
-              items, (TargetPoolsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -98547,11 +98638,13 @@ class TargetVpnGatewayAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, TargetVpnGatewaysScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TargetVpnGatewaysScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TargetVpnGatewaysScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -98579,9 +98672,8 @@ class TargetVpnGatewayAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons.mapMap<TargetVpnGatewaysScopedList,
-              core.Map<core.String, core.Object>>(
-          items, (TargetVpnGatewaysScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -99722,11 +99814,13 @@ class UrlMapsAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, UrlMapsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => UrlMapsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              UrlMapsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -99755,8 +99849,7 @@ class UrlMapsAggregatedList {
     }
     if (items != null) {
       _json['items'] =
-          commons.mapMap<UrlMapsScopedList, core.Map<core.String, core.Object>>(
-              items, (UrlMapsScopedList item) => item.toJson());
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -100698,10 +100791,13 @@ class VpnGateway {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -100906,11 +101002,13 @@ class VpnGatewayAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, VpnGatewaysScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => VpnGatewaysScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              VpnGatewaysScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -100938,9 +101036,8 @@ class VpnGatewayAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<VpnGatewaysScopedList, core.Map<core.String, core.Object>>(
-              items, (VpnGatewaysScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -101939,11 +102036,13 @@ class VpnTunnelAggregatedList {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('items')) {
-      items = commons.mapMap<core.Map, VpnTunnelsScopedList>(
-          (_json['items'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => VpnTunnelsScopedList.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      items = (_json['items'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              VpnTunnelsScopedList.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -101971,9 +102070,8 @@ class VpnTunnelAggregatedList {
       _json['id'] = id;
     }
     if (items != null) {
-      _json['items'] = commons
-          .mapMap<VpnTunnelsScopedList, core.Map<core.String, core.Object>>(
-              items, (VpnTunnelsScopedList item) => item.toJson());
+      _json['items'] =
+          items.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -102998,10 +103096,13 @@ class ZoneSetLabelsRequest {
       labelFingerprint = _json['labelFingerprint'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 

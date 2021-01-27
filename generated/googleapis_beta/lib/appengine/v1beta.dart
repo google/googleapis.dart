@@ -3883,11 +3883,12 @@ class Deployment {
           _json['container'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('files')) {
-      files = commons.mapMap<core.Map, FileInfo>(
-          (_json['files'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              FileInfo.fromJson(item as core.Map<core.String, core.dynamic>));
+      files = (_json['files'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              FileInfo.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('zip')) {
       zip =
@@ -3908,8 +3909,7 @@ class Deployment {
     }
     if (files != null) {
       _json['files'] =
-          commons.mapMap<FileInfo, core.Map<core.String, core.Object>>(
-              files, (FileInfo item) => item.toJson());
+          files.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (zip != null) {
       _json['zip'] = zip.toJson();
@@ -5115,19 +5115,25 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5483,19 +5489,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -6270,10 +6282,14 @@ class StaticFilesHandler {
       expiration = _json['expiration'] as core.String;
     }
     if (_json.containsKey('httpHeaders')) {
-      httpHeaders = commons.mapMap<core.String, core.String>(
-          (_json['httpHeaders'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      httpHeaders = (_json['httpHeaders'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -6347,10 +6363,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -6405,10 +6423,13 @@ class TrafficSplit {
 
   TrafficSplit.fromJson(core.Map _json) {
     if (_json.containsKey('allocations')) {
-      allocations = commons.mapMap<core.num, core.double>(
-          (_json['allocations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.num>(),
-          (core.num item) => (item as core.num).toDouble());
+      allocations =
+          (_json['allocations'] as core.Map).cast<core.String, core.num>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  (item as core.num).toDouble(),
+                ),
+              );
     }
     if (_json.containsKey('shardBy')) {
       shardBy = _json['shardBy'] as core.String;
@@ -6795,16 +6816,24 @@ class Version {
           _json['basicScaling'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('betaSettings')) {
-      betaSettings = commons.mapMap<core.String, core.String>(
-          (_json['betaSettings'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      betaSettings = (_json['betaSettings'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('buildEnvVariables')) {
-      buildEnvVariables = commons.mapMap<core.String, core.String>(
-          (_json['buildEnvVariables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      buildEnvVariables = (_json['buildEnvVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('createTime')) {
       createTime = _json['createTime'] as core.String;
@@ -6834,10 +6863,14 @@ class Version {
       env = _json['env'] as core.String;
     }
     if (_json.containsKey('envVariables')) {
-      envVariables = commons.mapMap<core.String, core.String>(
-          (_json['envVariables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      envVariables = (_json['envVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('errorHandlers')) {
       errorHandlers = (_json['errorHandlers'] as core.List)

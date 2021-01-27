@@ -1188,10 +1188,13 @@ class Result {
       mime = _json['mime'] as core.String;
     }
     if (_json.containsKey('pagemap')) {
-      pagemap = commons.mapMap<core.Object, core.Object>(
-          (_json['pagemap'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      pagemap =
+          (_json['pagemap'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('snippet')) {
       snippet = _json['snippet'] as core.String;
@@ -2698,10 +2701,13 @@ class Search {
 
   Search.fromJson(core.Map _json) {
     if (_json.containsKey('context')) {
-      context = commons.mapMap<core.Object, core.Object>(
-          (_json['context'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      context =
+          (_json['context'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('items')) {
       items = (_json['items'] as core.List)

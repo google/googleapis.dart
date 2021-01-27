@@ -1679,12 +1679,15 @@ class Policy {
               .toList();
     }
     if (_json.containsKey('clusterAdmissionRules')) {
-      clusterAdmissionRules = commons.mapMap<core.Map, AdmissionRule>(
-          (_json['clusterAdmissionRules']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => AdmissionRule.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      clusterAdmissionRules = (_json['clusterAdmissionRules'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              AdmissionRule.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('defaultAdmissionRule')) {
       defaultAdmissionRule = AdmissionRule.fromJson(
@@ -1712,9 +1715,8 @@ class Policy {
           admissionWhitelistPatterns.map((value) => value.toJson()).toList();
     }
     if (clusterAdmissionRules != null) {
-      _json['clusterAdmissionRules'] =
-          commons.mapMap<AdmissionRule, core.Map<core.String, core.Object>>(
-              clusterAdmissionRules, (AdmissionRule item) => item.toJson());
+      _json['clusterAdmissionRules'] = clusterAdmissionRules
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (defaultAdmissionRule != null) {
       _json['defaultAdmissionRule'] = defaultAdmissionRule.toJson();

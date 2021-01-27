@@ -631,10 +631,8 @@ class UnnamedMapType extends ComplexDartSchemaType {
   @override
   String jsonEncode(String value) {
     if (fromType.needsJsonEncoding || toType.needsJsonEncoding) {
-      return '${imports.commons}.mapMap'
-          '<${toType.declaration}, ${toType.jsonType.declaration}>'
-          '($value, (${toType.declaration} item) '
-          '=> ${toType.jsonEncode('item')})';
+      return '$value.map((key, item) => '
+          '${imports.core.ref()}MapEntry(key, ${toType.jsonEncode('item')}))';
     } else {
       // NOTE: The Map from the user can be encoded directly. We have a big
       // ASSUMPTION here: The user does not modify the map while we're
@@ -651,15 +649,15 @@ class UnnamedMapType extends ComplexDartSchemaType {
       final toTypeJsonDeclaration = generateNullSafeCode
           ? toType.jsonType.declaration
           : toType.jsonType.baseDeclaration;
-      return '${imports.commons}.mapMap'
-          '<$toTypeJsonDeclaration, ${toType.declaration}>'
-          '(($json as $coreMapJsonType)'
-          '.cast<${fromType.jsonType.baseDeclaration}, '
-          '$toTypeJsonDeclaration>(), '
-          // More precise about generics in null safe mode, so just infer the
-          // type.
-          '(${generateNullSafeCode ? '' : toTypeJsonDeclaration} item) '
-          '=> ${toType.jsonDecode('item')})';
+      return '''
+($json as ${imports.core.ref()}Map)
+.cast<${fromType.jsonType.baseDeclaration}, $toTypeJsonDeclaration>()
+.map(
+(key, item) => ${imports.core.ref()}MapEntry(
+key,
+${toType.jsonDecode('item')},
+),
+)''';
     } else {
       // NOTE: The Map returned from JSON.decode() transfers ownership to the
       // user (i.e. we don't need to make a copy of it).

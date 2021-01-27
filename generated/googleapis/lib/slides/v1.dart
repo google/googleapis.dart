@@ -2063,10 +2063,13 @@ class DuplicateObjectRequest {
       objectId = _json['objectId'] as core.String;
     }
     if (_json.containsKey('objectIds')) {
-      objectIds = commons.mapMap<core.String, core.String>(
-          (_json['objectIds'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      objectIds =
+          (_json['objectIds'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -3004,11 +3007,14 @@ class List {
       listId = _json['listId'] as core.String;
     }
     if (_json.containsKey('nestingLevel')) {
-      nestingLevel = commons.mapMap<core.Map, NestingLevel>(
-          (_json['nestingLevel'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NestingLevel.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      nestingLevel =
+          (_json['nestingLevel'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  NestingLevel.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
@@ -3019,8 +3025,7 @@ class List {
     }
     if (nestingLevel != null) {
       _json['nestingLevel'] =
-          commons.mapMap<NestingLevel, core.Map<core.String, core.Object>>(
-              nestingLevel, (NestingLevel item) => item.toJson());
+          nestingLevel.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -6714,11 +6719,12 @@ class TextContent {
 
   TextContent.fromJson(core.Map _json) {
     if (_json.containsKey('lists')) {
-      lists = commons.mapMap<core.Map, List>(
-          (_json['lists'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              List.fromJson(item as core.Map<core.String, core.dynamic>));
+      lists = (_json['lists'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              List.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('textElements')) {
       textElements = (_json['textElements'] as core.List)
@@ -6731,8 +6737,8 @@ class TextContent {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (lists != null) {
-      _json['lists'] = commons.mapMap<List, core.Map<core.String, core.Object>>(
-          lists, (List item) => item.toJson());
+      _json['lists'] =
+          lists.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textElements != null) {
       _json['textElements'] =

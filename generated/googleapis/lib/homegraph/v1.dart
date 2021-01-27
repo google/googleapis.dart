@@ -463,16 +463,24 @@ class Device {
 
   Device.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = commons.mapMap<core.Object, core.Object>(
-          (_json['attributes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      attributes = (_json['attributes'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('customData')) {
-      customData = commons.mapMap<core.Object, core.Object>(
-          (_json['customData'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      customData = (_json['customData'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('deviceInfo')) {
       deviceInfo = DeviceInfo.fromJson(
@@ -814,13 +822,18 @@ class QueryResponsePayload {
 
   QueryResponsePayload.fromJson(core.Map _json) {
     if (_json.containsKey('devices')) {
-      devices = commons.mapMap<core.Map, core.Map<core.String, core.Object>>(
-          (_json['devices'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => commons.mapMap<core.Object, core.Object>(
-              (item as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Object>(),
-              (core.Object item) => item as core.Object));
+      devices =
+          (_json['devices'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  (item as core.Map).cast<core.String, core.Object>().map(
+                        (key, item) => core.MapEntry(
+                          key,
+                          item as core.Object,
+                        ),
+                      ),
+                ),
+              );
     }
   }
 
@@ -855,16 +868,23 @@ class ReportStateAndNotificationDevice {
 
   ReportStateAndNotificationDevice.fromJson(core.Map _json) {
     if (_json.containsKey('notifications')) {
-      notifications = commons.mapMap<core.Object, core.Object>(
-          (_json['notifications'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      notifications = (_json['notifications'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('states')) {
-      states = commons.mapMap<core.Object, core.Object>(
-          (_json['states'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      states =
+          (_json['states'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 

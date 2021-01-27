@@ -7592,10 +7592,14 @@ class Column {
 
   Column.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = commons.mapMap<core.String, core.String>(
-          (_json['attributes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      attributes = (_json['attributes'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;
@@ -10694,10 +10698,14 @@ class GaData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = commons.mapMap<core.String, core.String>(
-          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -11984,10 +11992,14 @@ class McfData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = commons.mapMap<core.String, core.String>(
-          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -13063,10 +13075,14 @@ class RealtimeData {
       totalResults = _json['totalResults'] as core.int;
     }
     if (_json.containsKey('totalsForAllResults')) {
-      totalsForAllResults = commons.mapMap<core.String, core.String>(
-          (_json['totalsForAllResults'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      totalsForAllResults = (_json['totalsForAllResults'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 

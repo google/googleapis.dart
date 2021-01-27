@@ -2046,11 +2046,14 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
           _json['result'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('serverLogs')) {
-      serverLogs = commons.mapMap<core.Map, BuildBazelRemoteExecutionV2LogFile>(
-          (_json['serverLogs'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => BuildBazelRemoteExecutionV2LogFile.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      serverLogs =
+          (_json['serverLogs'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  BuildBazelRemoteExecutionV2LogFile.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('status')) {
       status = GoogleRpcStatus.fromJson(
@@ -2070,9 +2073,8 @@ class BuildBazelRemoteExecutionV2ExecuteResponse {
       _json['result'] = result.toJson();
     }
     if (serverLogs != null) {
-      _json['serverLogs'] = commons.mapMap<BuildBazelRemoteExecutionV2LogFile,
-              core.Map<core.String, core.Object>>(serverLogs,
-          (BuildBazelRemoteExecutionV2LogFile item) => item.toJson());
+      _json['serverLogs'] =
+          serverLogs.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (status != null) {
       _json['status'] = status.toJson();
@@ -4322,10 +4324,13 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig {
       diskType = _json['diskType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('machineType')) {
       machineType = _json['machineType'] as core.String;
@@ -4694,10 +4699,12 @@ class GoogleDevtoolsRemoteworkersV1test2CommandResult {
     if (_json.containsKey('metadata')) {
       metadata = (_json['metadata'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('outputs')) {
@@ -5252,19 +5259,25 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -5320,10 +5333,12 @@ class GoogleRpcStatus {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

@@ -4036,10 +4036,14 @@ class AlertPolicy {
           .toList();
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = commons.mapMap<core.String, core.String>(
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      userLabels = (_json['userLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('validity')) {
       validity = Status.fromJson(
@@ -4411,11 +4415,14 @@ class CollectdPayload {
       endTime = _json['endTime'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Map, TypedValue>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              TypedValue.fromJson(item as core.Map<core.String, core.dynamic>));
+      metadata = (_json['metadata'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              TypedValue.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('plugin')) {
       plugin = _json['plugin'] as core.String;
@@ -4447,8 +4454,7 @@ class CollectdPayload {
     }
     if (metadata != null) {
       _json['metadata'] =
-          commons.mapMap<TypedValue, core.Map<core.String, core.Object>>(
-              metadata, (TypedValue item) => item.toJson());
+          metadata.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (plugin != null) {
       _json['plugin'] = plugin;
@@ -5124,10 +5130,12 @@ class DroppedLabels {
 
   DroppedLabels.fromJson(core.Map _json) {
     if (_json.containsKey('label')) {
-      label = commons.mapMap<core.String, core.String>(
-          (_json['label'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      label = (_json['label'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -5220,10 +5228,12 @@ class Exemplar {
     if (_json.containsKey('attachments')) {
       attachments = (_json['attachments'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('timestamp')) {
@@ -5730,10 +5740,13 @@ class HttpCheck {
       contentType = _json['contentType'] as core.String;
     }
     if (_json.containsKey('headers')) {
-      headers = commons.mapMap<core.String, core.String>(
-          (_json['headers'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      headers =
+          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('maskHeaders')) {
       maskHeaders = _json['maskHeaders'] as core.bool;
@@ -6612,10 +6625,13 @@ class Metric {
 
   Metric.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -7239,10 +7255,13 @@ class MonitoredResource {
 
   MonitoredResource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -7405,16 +7424,24 @@ class MonitoredResourceMetadata {
 
   MonitoredResourceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('systemLabels')) {
-      systemLabels = commons.mapMap<core.Object, core.Object>(
-          (_json['systemLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      systemLabels = (_json['systemLabels'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = commons.mapMap<core.String, core.String>(
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      userLabels = (_json['userLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -7604,10 +7631,13 @@ class NotificationChannel {
       enabled = _json['enabled'] as core.bool;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7616,10 +7646,14 @@ class NotificationChannel {
       type = _json['type'] as core.String;
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = commons.mapMap<core.String, core.String>(
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      userLabels = (_json['userLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('verificationStatus')) {
       verificationStatus = _json['verificationStatus'] as core.String;
@@ -7795,10 +7829,12 @@ class Option {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = commons.mapMap<core.Object, core.Object>(
-          (_json['value'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      value = (_json['value'] as core.Map).cast<core.String, core.Object>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -8489,10 +8525,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

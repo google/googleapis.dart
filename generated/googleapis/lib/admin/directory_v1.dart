@@ -8035,10 +8035,13 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -11587,11 +11590,15 @@ class User {
       creationTime = core.DateTime.parse(_json['creationTime'] as core.String);
     }
     if (_json.containsKey('customSchemas')) {
-      customSchemas = commons.mapMap<core.Map, UserCustomProperties>(
-          (_json['customSchemas'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => UserCustomProperties.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      customSchemas = (_json['customSchemas'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              UserCustomProperties.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('customerId')) {
       customerId = _json['customerId'] as core.String;

@@ -12164,10 +12164,12 @@ class GoogleApiHttpBody {
     if (_json.containsKey('extensions')) {
       extensions = (_json['extensions'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
   }
@@ -12932,11 +12934,15 @@ class GoogleCloudApigeeV1ApiProxyRevision {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
-          (_json['entityMetaDataAsProperties']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      entityMetaDataAsProperties =
+          (_json['entityMetaDataAsProperties'] as core.Map)
+              .cast<core.String, core.String>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastModifiedAt')) {
       lastModifiedAt = _json['lastModifiedAt'] as core.String;
@@ -14307,10 +14313,14 @@ class GoogleCloudApigeeV1DebugMask {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('namespaces')) {
-      namespaces = commons.mapMap<core.String, core.String>(
-          (_json['namespaces'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      namespaces = (_json['namespaces'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('requestJSONPaths')) {
       requestJSONPaths = (_json['requestJSONPaths'] as core.List)
@@ -14886,10 +14896,14 @@ class GoogleCloudApigeeV1DeploymentConfig {
 
   GoogleCloudApigeeV1DeploymentConfig.fromJson(core.Map _json) {
     if (_json.containsKey('attributes')) {
-      attributes = commons.mapMap<core.String, core.String>(
-          (_json['attributes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      attributes = (_json['attributes'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('basePath')) {
       basePath = _json['basePath'] as core.String;
@@ -15564,10 +15578,14 @@ class GoogleCloudApigeeV1EnvironmentConfig {
           .toList();
     }
     if (_json.containsKey('featureFlags')) {
-      featureFlags = commons.mapMap<core.String, core.String>(
-          (_json['featureFlags'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      featureFlags = (_json['featureFlags'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('flowhooks')) {
       flowhooks = (_json['flowhooks'] as core.List)
@@ -19583,11 +19601,15 @@ class GoogleCloudApigeeV1SharedFlowRevision {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('entityMetaDataAsProperties')) {
-      entityMetaDataAsProperties = commons.mapMap<core.String, core.String>(
-          (_json['entityMetaDataAsProperties']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      entityMetaDataAsProperties =
+          (_json['entityMetaDataAsProperties'] as core.Map)
+              .cast<core.String, core.String>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastModifiedAt')) {
       lastModifiedAt = _json['lastModifiedAt'] as core.String;
@@ -20841,19 +20863,25 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -21001,10 +21029,12 @@ class GoogleRpcStatus {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

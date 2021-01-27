@@ -247,13 +247,14 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
           _json['condition'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('memberships')) {
-      memberships = commons.mapMap<core.Map,
-              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership>(
-          (_json['memberships'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                  .fromJson(item as core.Map<core.String, core.dynamic>));
+      memberships =
+          (_json['memberships'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
+                      .fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('relevance')) {
       relevance = _json['relevance'] as core.String;
@@ -278,13 +279,8 @@ class GoogleCloudPolicytroubleshooterV1BindingExplanation {
       _json['condition'] = condition.toJson();
     }
     if (memberships != null) {
-      _json['memberships'] = commons.mapMap<
-              GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership,
-              core.Map<core.String, core.Object>>(
-          memberships,
-          (GoogleCloudPolicytroubleshooterV1BindingExplanationAnnotatedMembership
-                  item) =>
-              item.toJson());
+      _json['memberships'] =
+          memberships.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (relevance != null) {
       _json['relevance'] = relevance;

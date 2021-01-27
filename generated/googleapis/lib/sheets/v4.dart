@@ -2831,11 +2831,14 @@ class BasicFilter {
 
   BasicFilter.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
-      criteria = commons.mapMap<core.Map, FilterCriteria>(
-          (_json['criteria'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => FilterCriteria.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      criteria =
+          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  FilterCriteria.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
@@ -2859,8 +2862,7 @@ class BasicFilter {
     final _json = <core.String, core.Object>{};
     if (criteria != null) {
       _json['criteria'] =
-          commons.mapMap<FilterCriteria, core.Map<core.String, core.Object>>(
-              criteria, (FilterCriteria item) => item.toJson());
+          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (filterSpecs != null) {
       _json['filterSpecs'] =
@@ -8157,11 +8159,14 @@ class FilterView {
 
   FilterView.fromJson(core.Map _json) {
     if (_json.containsKey('criteria')) {
-      criteria = commons.mapMap<core.Map, FilterCriteria>(
-          (_json['criteria'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => FilterCriteria.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      criteria =
+          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  FilterCriteria.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('filterSpecs')) {
       filterSpecs = (_json['filterSpecs'] as core.List)
@@ -8194,8 +8199,7 @@ class FilterView {
     final _json = <core.String, core.Object>{};
     if (criteria != null) {
       _json['criteria'] =
-          commons.mapMap<FilterCriteria, core.Map<core.String, core.Object>>(
-              criteria, (FilterCriteria item) => item.toJson());
+          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (filterSpecs != null) {
       _json['filterSpecs'] =
@@ -10300,11 +10304,14 @@ class PivotTable {
           .toList();
     }
     if (_json.containsKey('criteria')) {
-      criteria = commons.mapMap<core.Map, PivotFilterCriteria>(
-          (_json['criteria'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PivotFilterCriteria.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      criteria =
+          (_json['criteria'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  PivotFilterCriteria.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('dataExecutionStatus')) {
       dataExecutionStatus = DataExecutionStatus.fromJson(
@@ -10346,9 +10353,8 @@ class PivotTable {
       _json['columns'] = columns.map((value) => value.toJson()).toList();
     }
     if (criteria != null) {
-      _json['criteria'] = commons
-          .mapMap<PivotFilterCriteria, core.Map<core.String, core.Object>>(
-              criteria, (PivotFilterCriteria item) => item.toJson());
+      _json['criteria'] =
+          criteria.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (dataExecutionStatus != null) {
       _json['dataExecutionStatus'] = dataExecutionStatus.toJson();

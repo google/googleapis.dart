@@ -3704,11 +3704,13 @@ class CreateClusterMetadata {
       requestTime = _json['requestTime'] as core.String;
     }
     if (_json.containsKey('tables')) {
-      tables = commons.mapMap<core.Map, TableProgress>(
-          (_json['tables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TableProgress.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      tables = (_json['tables'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              TableProgress.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -3725,8 +3727,7 @@ class CreateClusterMetadata {
     }
     if (tables != null) {
       _json['tables'] =
-          commons.mapMap<TableProgress, core.Map<core.String, core.Object>>(
-              tables, (TableProgress item) => item.toJson());
+          tables.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -3844,11 +3845,13 @@ class CreateInstanceRequest {
 
   CreateInstanceRequest.fromJson(core.Map _json) {
     if (_json.containsKey('clusters')) {
-      clusters = commons.mapMap<core.Map, Cluster>(
-          (_json['clusters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Cluster.fromJson(item as core.Map<core.String, core.dynamic>));
+      clusters =
+          (_json['clusters'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Cluster.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('instance')) {
       instance = Instance.fromJson(
@@ -3866,8 +3869,7 @@ class CreateInstanceRequest {
     final _json = <core.String, core.Object>{};
     if (clusters != null) {
       _json['clusters'] =
-          commons.mapMap<Cluster, core.Map<core.String, core.Object>>(
-              clusters, (Cluster item) => item.toJson());
+          clusters.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (instance != null) {
       _json['instance'] = instance.toJson();
@@ -4313,10 +4315,13 @@ class Instance {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4693,19 +4698,25 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -4883,19 +4894,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -5418,10 +5435,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -5482,18 +5501,26 @@ class Table {
 
   Table.fromJson(core.Map _json) {
     if (_json.containsKey('clusterStates')) {
-      clusterStates = commons.mapMap<core.Map, ClusterState>(
-          (_json['clusterStates'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ClusterState.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      clusterStates = (_json['clusterStates'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ClusterState.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('columnFamilies')) {
-      columnFamilies = commons.mapMap<core.Map, ColumnFamily>(
-          (_json['columnFamilies'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ColumnFamily.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      columnFamilies = (_json['columnFamilies'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ColumnFamily.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('granularity')) {
       granularity = _json['granularity'] as core.String;
@@ -5511,13 +5538,11 @@ class Table {
     final _json = <core.String, core.Object>{};
     if (clusterStates != null) {
       _json['clusterStates'] =
-          commons.mapMap<ClusterState, core.Map<core.String, core.Object>>(
-              clusterStates, (ClusterState item) => item.toJson());
+          clusterStates.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (columnFamilies != null) {
       _json['columnFamilies'] =
-          commons.mapMap<ColumnFamily, core.Map<core.String, core.Object>>(
-              columnFamilies, (ColumnFamily item) => item.toJson());
+          columnFamilies.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (granularity != null) {
       _json['granularity'] = granularity;

@@ -5561,11 +5561,13 @@ class GoogleCloudDatacatalogV1beta1Tag {
       column = _json['column'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = commons.mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagField>(
-          (_json['fields'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => GoogleCloudDatacatalogV1beta1TagField.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1beta1TagField.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5584,9 +5586,8 @@ class GoogleCloudDatacatalogV1beta1Tag {
       _json['column'] = column;
     }
     if (fields != null) {
-      _json['fields'] = commons.mapMap<GoogleCloudDatacatalogV1beta1TagField,
-              core.Map<core.String, core.Object>>(fields,
-          (GoogleCloudDatacatalogV1beta1TagField item) => item.toJson());
+      _json['fields'] =
+          fields.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (name != null) {
       _json['name'] = name;
@@ -5738,13 +5739,13 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('fields')) {
-      fields = commons
-          .mapMap<core.Map, GoogleCloudDatacatalogV1beta1TagTemplateField>(
-              (_json['fields'] as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) =>
-                  GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
-                      item as core.Map<core.String, core.dynamic>));
+      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudDatacatalogV1beta1TagTemplateField.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5757,12 +5758,8 @@ class GoogleCloudDatacatalogV1beta1TagTemplate {
       _json['displayName'] = displayName;
     }
     if (fields != null) {
-      _json['fields'] = commons.mapMap<
-              GoogleCloudDatacatalogV1beta1TagTemplateField,
-              core.Map<core.String, core.Object>>(
-          fields,
-          (GoogleCloudDatacatalogV1beta1TagTemplateField item) =>
-              item.toJson());
+      _json['fields'] =
+          fields.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (name != null) {
       _json['name'] = name;

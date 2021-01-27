@@ -296,11 +296,14 @@ class Attributes {
 
   Attributes.fromJson(core.Map _json) {
     if (_json.containsKey('attributeMap')) {
-      attributeMap = commons.mapMap<core.Map, AttributeValue>(
-          (_json['attributeMap'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => AttributeValue.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      attributeMap =
+          (_json['attributeMap'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  AttributeValue.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('droppedAttributesCount')) {
       droppedAttributesCount = _json['droppedAttributesCount'] as core.int;
@@ -311,8 +314,7 @@ class Attributes {
     final _json = <core.String, core.Object>{};
     if (attributeMap != null) {
       _json['attributeMap'] =
-          commons.mapMap<AttributeValue, core.Map<core.String, core.Object>>(
-              attributeMap, (AttributeValue item) => item.toJson());
+          attributeMap.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (droppedAttributesCount != null) {
       _json['droppedAttributesCount'] = droppedAttributesCount;
@@ -927,10 +929,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

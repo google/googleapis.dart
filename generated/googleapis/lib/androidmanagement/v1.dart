@@ -2118,10 +2118,14 @@ class ApplicationPolicy {
       lockTaskAllowed = _json['lockTaskAllowed'] as core.bool;
     }
     if (_json.containsKey('managedConfiguration')) {
-      managedConfiguration = commons.mapMap<core.Object, core.Object>(
-          (_json['managedConfiguration'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      managedConfiguration = (_json['managedConfiguration'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('managedConfigurationTemplate')) {
       managedConfigurationTemplate = ManagedConfigurationTemplate.fromJson(
@@ -2942,10 +2946,14 @@ class Device {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('systemProperties')) {
-      systemProperties = commons.mapMap<core.String, core.String>(
-          (_json['systemProperties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      systemProperties = (_json['systemProperties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('user')) {
       user =
@@ -4211,11 +4219,14 @@ class ManagedConfigurationTemplate {
 
   ManagedConfigurationTemplate.fromJson(core.Map _json) {
     if (_json.containsKey('configurationVariables')) {
-      configurationVariables = commons.mapMap<core.String, core.String>(
-          (_json['configurationVariables']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      configurationVariables = (_json['configurationVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('templateId')) {
       templateId = _json['templateId'] as core.String;
@@ -4743,19 +4754,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -5727,11 +5744,14 @@ class Policy {
       networkResetDisabled = _json['networkResetDisabled'] as core.bool;
     }
     if (_json.containsKey('openNetworkConfiguration')) {
-      openNetworkConfiguration = commons.mapMap<core.Object, core.Object>(
-          (_json['openNetworkConfiguration']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      openNetworkConfiguration = (_json['openNetworkConfiguration'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('outgoingBeamDisabled')) {
       outgoingBeamDisabled = _json['outgoingBeamDisabled'] as core.bool;
@@ -6671,10 +6691,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -7006,10 +7028,14 @@ class UserFacingMessage {
       defaultMessage = _json['defaultMessage'] as core.String;
     }
     if (_json.containsKey('localizedMessages')) {
-      localizedMessages = commons.mapMap<core.String, core.String>(
-          (_json['localizedMessages'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      localizedMessages = (_json['localizedMessages'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 

@@ -3857,10 +3857,13 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -3968,18 +3971,23 @@ class Colors {
 
   Colors.fromJson(core.Map _json) {
     if (_json.containsKey('calendar')) {
-      calendar = commons.mapMap<core.Map, ColorDefinition>(
-          (_json['calendar'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ColorDefinition.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      calendar =
+          (_json['calendar'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  ColorDefinition.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('event')) {
-      event = commons.mapMap<core.Map, ColorDefinition>(
-          (_json['event'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ColorDefinition.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      event = (_json['event'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ColorDefinition.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -3993,13 +4001,11 @@ class Colors {
     final _json = <core.String, core.Object>{};
     if (calendar != null) {
       _json['calendar'] =
-          commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
-              calendar, (ColorDefinition item) => item.toJson());
+          calendar.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (event != null) {
       _json['event'] =
-          commons.mapMap<ColorDefinition, core.Map<core.String, core.Object>>(
-              event, (ColorDefinition item) => item.toJson());
+          event.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;
@@ -4147,10 +4153,14 @@ class ConferenceParametersAddOnParameters {
 
   ConferenceParametersAddOnParameters.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.String, core.String>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -4595,16 +4605,22 @@ class EventExtendedProperties {
 
   EventExtendedProperties.fromJson(core.Map _json) {
     if (_json.containsKey('private')) {
-      private = commons.mapMap<core.String, core.String>(
-          (_json['private'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      private =
+          (_json['private'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('shared')) {
-      shared = commons.mapMap<core.String, core.String>(
-          (_json['shared'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      shared =
+          (_json['shared'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -4668,10 +4684,14 @@ class EventGadget {
       link = _json['link'] as core.String;
     }
     if (_json.containsKey('preferences')) {
-      preferences = commons.mapMap<core.String, core.String>(
-          (_json['preferences'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      preferences = (_json['preferences'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('title')) {
       title = _json['title'] as core.String;
@@ -5889,18 +5909,23 @@ class FreeBusyResponse {
 
   FreeBusyResponse.fromJson(core.Map _json) {
     if (_json.containsKey('calendars')) {
-      calendars = commons.mapMap<core.Map, FreeBusyCalendar>(
-          (_json['calendars'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => FreeBusyCalendar.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      calendars =
+          (_json['calendars'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  FreeBusyCalendar.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('groups')) {
-      groups = commons.mapMap<core.Map, FreeBusyGroup>(
-          (_json['groups'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => FreeBusyGroup.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      groups = (_json['groups'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              FreeBusyGroup.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -5917,13 +5942,11 @@ class FreeBusyResponse {
     final _json = <core.String, core.Object>{};
     if (calendars != null) {
       _json['calendars'] =
-          commons.mapMap<FreeBusyCalendar, core.Map<core.String, core.Object>>(
-              calendars, (FreeBusyCalendar item) => item.toJson());
+          calendars.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (groups != null) {
       _json['groups'] =
-          commons.mapMap<FreeBusyGroup, core.Map<core.String, core.Object>>(
-              groups, (FreeBusyGroup item) => item.toJson());
+          groups.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;

@@ -145,10 +145,12 @@ class Webfont {
       family = _json['family'] as core.String;
     }
     if (_json.containsKey('files')) {
-      files = commons.mapMap<core.String, core.String>(
-          (_json['files'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      files = (_json['files'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;

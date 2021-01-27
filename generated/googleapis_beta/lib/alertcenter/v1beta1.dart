@@ -998,10 +998,12 @@ class Alert {
       customerId = _json['customerId'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = commons.mapMap<core.Object, core.Object>(
-          (_json['data'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      data = (_json['data'] as core.Map).cast<core.String, core.Object>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('deleted')) {
       deleted = _json['deleted'] as core.bool;
@@ -1389,11 +1391,14 @@ class BatchDeleteAlertsResponse {
 
   BatchDeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus = commons.mapMap<core.Map, Status>(
-          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Status.fromJson(item as core.Map<core.String, core.dynamic>));
+      failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Status.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1405,9 +1410,8 @@ class BatchDeleteAlertsResponse {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (failedAlertStatus != null) {
-      _json['failedAlertStatus'] =
-          commons.mapMap<Status, core.Map<core.String, core.Object>>(
-              failedAlertStatus, (Status item) => item.toJson());
+      _json['failedAlertStatus'] = failedAlertStatus
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (successAlertIds != null) {
       _json['successAlertIds'] = successAlertIds;
@@ -1462,11 +1466,14 @@ class BatchUndeleteAlertsResponse {
 
   BatchUndeleteAlertsResponse.fromJson(core.Map _json) {
     if (_json.containsKey('failedAlertStatus')) {
-      failedAlertStatus = commons.mapMap<core.Map, Status>(
-          (_json['failedAlertStatus'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Status.fromJson(item as core.Map<core.String, core.dynamic>));
+      failedAlertStatus = (_json['failedAlertStatus'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Status.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('successAlertIds')) {
       successAlertIds = (_json['successAlertIds'] as core.List)
@@ -1478,9 +1485,8 @@ class BatchUndeleteAlertsResponse {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (failedAlertStatus != null) {
-      _json['failedAlertStatus'] =
-          commons.mapMap<Status, core.Map<core.String, core.Object>>(
-              failedAlertStatus, (Status item) => item.toJson());
+      _json['failedAlertStatus'] = failedAlertStatus
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (successAlertIds != null) {
       _json['successAlertIds'] = successAlertIds;
@@ -2589,10 +2595,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

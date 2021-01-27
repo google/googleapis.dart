@@ -9722,10 +9722,13 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessage {
               _json['outputAudioText'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('playAudio')) {
       playAudio =
@@ -9789,10 +9792,13 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess {
   GoogleCloudDialogflowCxV3beta1ResponseMessageConversationSuccess.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -9840,10 +9846,13 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff {
   GoogleCloudDialogflowCxV3beta1ResponseMessageLiveAgentHandoff.fromJson(
       core.Map _json) {
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -10079,10 +10088,14 @@ class GoogleCloudDialogflowCxV3beta1SessionInfo {
 
   GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('session')) {
       session = _json['session'] as core.String;
@@ -10159,10 +10172,13 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequest {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
@@ -10243,13 +10259,14 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
       lastMatchedIntent = _json['lastMatchedIntent'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Map,
-              GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
-                  .fromJson(item as core.Map<core.String, core.dynamic>));
+      parameters =
+          (_json['parameters'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
+                      .fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
@@ -10259,13 +10276,8 @@ class GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfo {
       _json['lastMatchedIntent'] = lastMatchedIntent;
     }
     if (parameters != null) {
-      _json['parameters'] = commons.mapMap<
-              GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue,
-              core.Map<core.String, core.Object>>(
-          parameters,
-          (GoogleCloudDialogflowCxV3beta1WebhookRequestIntentInfoIntentParameterValue
-                  item) =>
-              item.toJson());
+      _json['parameters'] =
+          parameters.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -10350,10 +10362,13 @@ class GoogleCloudDialogflowCxV3beta1WebhookResponse {
           _json['pageInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('sessionInfo')) {
       sessionInfo = GoogleCloudDialogflowCxV3beta1SessionInfo.fromJson(
@@ -10593,10 +10608,14 @@ class GoogleCloudDialogflowV2Context {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -10861,10 +10880,14 @@ class GoogleCloudDialogflowV2EventInput {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -11334,10 +11357,13 @@ class GoogleCloudDialogflowV2IntentMessage {
           _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('platform')) {
       platform = _json['platform'] as core.String;
@@ -12891,10 +12917,13 @@ class GoogleCloudDialogflowV2OriginalDetectIntentRequest {
 
   GoogleCloudDialogflowV2OriginalDetectIntentRequest.fromJson(core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -13026,10 +13055,14 @@ class GoogleCloudDialogflowV2QueryResult {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = commons.mapMap<core.Object, core.Object>(
-          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -13060,10 +13093,14 @@ class GoogleCloudDialogflowV2QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('queryText')) {
       queryText = _json['queryText'] as core.String;
@@ -13079,10 +13116,14 @@ class GoogleCloudDialogflowV2QueryResult {
           (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = commons.mapMap<core.Object, core.Object>(
-          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      webhookPayload = (_json['webhookPayload'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('webhookSource')) {
       webhookSource = _json['webhookSource'] as core.String;
@@ -13420,10 +13461,13 @@ class GoogleCloudDialogflowV2WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -14212,10 +14256,14 @@ class GoogleCloudDialogflowV2beta1Context {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -14857,10 +14905,14 @@ class GoogleCloudDialogflowV2beta1EventInput {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -15075,10 +15127,14 @@ class GoogleCloudDialogflowV2beta1FulfillmentGenericWebService {
       password = _json['password'] as core.String;
     }
     if (_json.containsKey('requestHeaders')) {
-      requestHeaders = commons.mapMap<core.String, core.String>(
-          (_json['requestHeaders'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      requestHeaders = (_json['requestHeaders'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('uri')) {
       uri = _json['uri'] as core.String;
@@ -15851,10 +15907,13 @@ class GoogleCloudDialogflowV2beta1IntentMessage {
               _json['mediaContent'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('platform')) {
       platform = _json['platform'] as core.String;
@@ -18392,10 +18451,13 @@ class GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest {
   GoogleCloudDialogflowV2beta1OriginalDetectIntentRequest.fromJson(
       core.Map _json) {
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('source')) {
       source = _json['source'] as core.String;
@@ -18605,10 +18667,13 @@ class GoogleCloudDialogflowV2beta1QueryParameters {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('resetContexts')) {
       resetContexts = _json['resetContexts'] as core.bool;
@@ -18637,10 +18702,14 @@ class GoogleCloudDialogflowV2beta1QueryParameters {
       timeZone = _json['timeZone'] as core.String;
     }
     if (_json.containsKey('webhookHeaders')) {
-      webhookHeaders = commons.mapMap<core.String, core.String>(
-          (_json['webhookHeaders'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      webhookHeaders = (_json['webhookHeaders'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -18793,10 +18862,14 @@ class GoogleCloudDialogflowV2beta1QueryResult {
       allRequiredParamsPresent = _json['allRequiredParamsPresent'] as core.bool;
     }
     if (_json.containsKey('diagnosticInfo')) {
-      diagnosticInfo = commons.mapMap<core.Object, core.Object>(
-          (_json['diagnosticInfo'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      diagnosticInfo = (_json['diagnosticInfo'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('fulfillmentMessages')) {
       fulfillmentMessages = (_json['fulfillmentMessages'] as core.List)
@@ -18831,10 +18904,14 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           .toList();
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.Object, core.Object>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('queryText')) {
       queryText = _json['queryText'] as core.String;
@@ -18850,10 +18927,14 @@ class GoogleCloudDialogflowV2beta1QueryResult {
           (_json['speechRecognitionConfidence'] as core.num).toDouble();
     }
     if (_json.containsKey('webhookPayload')) {
-      webhookPayload = commons.mapMap<core.Object, core.Object>(
-          (_json['webhookPayload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      webhookPayload = (_json['webhookPayload'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('webhookSource')) {
       webhookSource = _json['webhookSource'] as core.String;
@@ -19773,10 +19854,13 @@ class GoogleCloudDialogflowV2beta1WebhookResponse {
           .toList();
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('sessionEntityTypes')) {
       sessionEntityTypes = (_json['sessionEntityTypes'] as core.List)
@@ -20061,19 +20145,25 @@ class GoogleLongrunningOperation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -20147,10 +20237,12 @@ class GoogleRpcStatus {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
