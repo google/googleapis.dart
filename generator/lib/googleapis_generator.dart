@@ -15,17 +15,20 @@ import 'package:pool/pool.dart';
 
 import 'src/package_configuration.dart';
 
-Future<List<DirectoryListItems>> _listAllApis() {
+Future<List<DirectoryListItems>> _listAllApis() async {
   final client = http.Client();
-  return _discoveryClient(client)
-      .apis
-      .list()
-      .then((DirectoryList list) => list.items)
-      .whenComplete(client.close);
+  try {
+    final result = await DiscoveryApi(client).apis.list();
+    return result.items;
+  } finally {
+    client.close();
+  }
 }
 
-Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
-        {List<String> ids}) =>
+Future<List<RestDescription>> downloadDiscoveryDocuments(
+  String outputDir, {
+  List<String> ids,
+}) =>
     fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
       final directory = Directory(outputDir);
       if (directory.existsSync()) {
@@ -45,12 +48,13 @@ Future<List<RestDescription>> downloadDiscoveryDocuments(String outputDir,
       return apis;
     });
 
-Future<List<RestDescription>> fetchDiscoveryDocuments(
-    {List<String> ids}) async {
+Future<List<RestDescription>> fetchDiscoveryDocuments({
+  List<String> ids,
+}) async {
   final client = http.Client();
 
   try {
-    final discovery = _discoveryClient(client);
+    final discovery = DiscoveryApi(client);
 
     final list = await discovery.apis.list();
 
@@ -59,22 +63,35 @@ Future<List<RestDescription>> fetchDiscoveryDocuments(
       var count = 0;
       return await pool
           .forEach(list.items, (DirectoryListItems item) async {
-            print(
-              ansi.darkGray.wrap(
-                  'Requesting ${++count} of ${list.items.length} - ${item.id}'),
-            );
+            print(ansi.darkGray.wrap(
+              'Requesting ${++count} of ${list.items.length} - ${item.id}',
+            ));
+
             if (ids == null || ids.contains(item.id)) {
               try {
-                // NOTE: await is intentional here – ensures the catch clause
-                // is executed on an async error
-                return await discovery.apis.getRest(item.name, item.version);
-              } catch (e) {
+                final result = await client.get(item.discoveryRestUrl);
+
+                if (result.statusCode != 200) {
+                  throw StateError(
+                    'Not a 200 – ${result.statusCode}\n${result.body}',
+                  );
+                }
+
+                return RestDescription.fromJson(
+                  jsonDecode(result.body) as Map<String, dynamic>,
+                );
+              } catch (e, stack) {
                 print(
                   ansi.red.wrap(
-                    'Failed to retrieve document for '
-                    '"${item.name}:${item.version}" -> Ignoring!',
+                    '''
+Failed to retrieve document for "${item.name}:${item.version}" -> Ignoring!
+$e
+$stack
+''',
                   ),
                 );
+                print(item.discoveryRestUrl);
+                print(item.discoveryLink);
               }
             }
           })
@@ -138,5 +155,3 @@ void generateFromConfiguration(
     deleteExisting,
   );
 }
-
-DiscoveryApi _discoveryClient(http.Client client) => DiscoveryApi(client);
