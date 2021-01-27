@@ -9,7 +9,6 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
-import 'package:pool/pool.dart';
 import 'package:yaml/yaml.dart';
 
 import '../googleapis_generator.dart';
@@ -91,7 +90,7 @@ class DiscoveryPackagesConfiguration {
   ///
   /// [discoveryDocsDir] is the directory where all the downloaded discovery
   /// documents are stored.
-  Future download(
+  Future<void> download(
     String discoveryDocsDir,
     List<DirectoryListItems> items,
   ) async {
@@ -122,23 +121,16 @@ class DiscoveryPackagesConfiguration {
     final allApis = await fetchDiscoveryDocuments();
     _initialize(allApis);
 
-    // Download the discovery documents for the packages to build
-    // (only the APIs we're interested in).
-
-    final pool = Pool(10);
-
     var count = 0;
-    try {
-      await pool.forEach(packages.entries, (MapEntry<String, Package> e) async {
-        print(' ${++count} of ${packages.length} - ${e.key}');
+    for (var entry in packages.entries) {
+      print(' ${++count} of ${packages.length} - ${entry.key}');
 
-        await downloadDiscoveryDocuments(
-          '$discoveryDocsDir/${e.key}',
-          ids: e.value.apis,
-        );
-      }).drain();
-    } finally {
-      await pool.close();
+      writeDiscoveryDocuments(
+        '$discoveryDocsDir/${entry.key}',
+        entry.value.apis.map(
+          (e) => allApis.singleWhere((element) => element.id == e),
+        ),
+      );
     }
   }
 

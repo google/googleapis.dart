@@ -27,31 +27,34 @@ Future<List<DirectoryListItems>> _listAllApis() async {
 }
 
 Future<List<RestDescription>> downloadDiscoveryDocuments(
-  String outputDir, {
-  List<String> ids,
-}) =>
-    fetchDiscoveryDocuments(ids: ids).then((List<RestDescription> apis) {
-      final directory = Directory(outputDir);
-      if (directory.existsSync()) {
-        print('Deleting directory $outputDir.');
-        directory.deleteSync(recursive: true);
-      }
-      directory.createSync(recursive: true);
+  String outputDir,
+) async {
+  final apis = await fetchDiscoveryDocuments();
+  writeDiscoveryDocuments(outputDir, apis);
+  return apis;
+}
 
-      for (var description in apis) {
-        final name =
-            '$outputDir/${description.name}__${description.version}.json';
-        final file = File(name);
-        const encoder = JsonEncoder.withIndent('    ');
-        file.writeAsStringSync(encoder.convert(description.toJson()));
-        print('Wrote: $name');
-      }
-      return apis;
-    });
+void writeDiscoveryDocuments(
+  String outputDir,
+  Iterable<RestDescription> apis,
+) {
+  final directory = Directory(outputDir);
+  if (directory.existsSync()) {
+    print('Deleting directory $outputDir.');
+    directory.deleteSync(recursive: true);
+  }
+  directory.createSync(recursive: true);
 
-Future<List<RestDescription>> fetchDiscoveryDocuments({
-  List<String> ids,
-}) async {
+  for (var description in apis) {
+    final name = '$outputDir/${description.name}__${description.version}.json';
+    final file = File(name);
+    const encoder = JsonEncoder.withIndent('    ');
+    file.writeAsStringSync(encoder.convert(description.toJson()));
+    print('Wrote: $name');
+  }
+}
+
+Future<List<RestDescription>> fetchDiscoveryDocuments() async {
   final client = http.Client();
 
   try {
@@ -68,37 +71,34 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({
               'Requesting ${++count} of ${list.items.length} - ${item.id}',
             ));
 
-            if (ids == null || ids.contains(item.id)) {
-              try {
-                final result = await client.get(item.discoveryRestUrl);
+            try {
+              final result = await client.get(item.discoveryRestUrl);
 
-                if (result.statusCode != 200) {
-                  throw StateError(
-                    'Not a 200 – ${result.statusCode}\n${result.body}',
-                  );
-                }
-
-                final description = RestDescription.fromJson(
-                  jsonDecode(result.body) as Map<String, dynamic>,
+              if (result.statusCode != 200) {
+                throw StateError(
+                  'Not a 200 – ${result.statusCode}\n${result.body}',
                 );
+              }
 
-                // Sort members here for stability in the output!
-                description.sort();
+              final description = RestDescription.fromJson(
+                jsonDecode(result.body) as Map<String, dynamic>,
+              );
 
-                return description;
-              } catch (e, stack) {
-                print(
-                  ansi.red.wrap(
-                    '''
+              // Sort members here for stability in the output!
+              description.sort();
+
+              return description;
+            } catch (e, stack) {
+              print(
+                ansi.red.wrap(
+                  '''
+${item.discoveryRestUrl}
 Failed to retrieve document for "${item.name}:${item.version}" -> Ignoring!
 $e
 $stack
 ''',
-                  ),
-                );
-                print(item.discoveryRestUrl);
-                print(item.discoveryLink);
-              }
+                ),
+              );
             }
           })
           .where((rd) => rd != null)
