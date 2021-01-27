@@ -143,6 +143,18 @@ Future downloadFromConfiguration(String configFile) async {
       print('- $id');
     }
   }
+
+  void prettyNotNull(String header, Map<String, String> value) {
+    if (value == null || value.isEmpty) return;
+
+    print(header);
+    for (var entry in value.entries) {
+      print('  ${entry.key.padRight(30)} ${entry.value}');
+    }
+  }
+
+  prettyNotNull('new revisions', configuration.newRevisions);
+  prettyNotNull('old revisions', configuration.oldRevisions);
 }
 
 void generateFromConfiguration(

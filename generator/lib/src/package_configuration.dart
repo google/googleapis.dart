@@ -5,6 +5,7 @@
 library googleapis_generator.package_configuration;
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:discoveryapis_generator/discoveryapis_generator.dart';
@@ -42,8 +43,11 @@ class DiscoveryPackagesConfiguration {
   Map yaml;
   Map<String, Package> packages;
 
-  Iterable<String> excessApis;
-  Iterable<String> missingApis;
+  Set<String> excessApis;
+  List<String> missingApis;
+  final existingApiRevisions = <String, String>{};
+  Map<String, String> newRevisions;
+  Map<String, String> oldRevisions;
 
   /// Create a new discovery packages configuration.
   ///
@@ -93,7 +97,26 @@ class DiscoveryPackagesConfiguration {
   ) async {
     // Delete all downloaded discovery documents.
     final dir = Directory(discoveryDocsDir);
-    if (dir.existsSync()) dir.deleteSync(recursive: true);
+    if (dir.existsSync()) {
+      print('*** Cataloging and deleting existing discovery JSON files');
+      for (var file in dir.listSync(recursive: true).whereType<File>()) {
+        final json =
+            jsonDecode(file.readAsStringSync()) as Map<String, dynamic>;
+        final id = json['id'] as String;
+        assert(id != null, 'id should not be null for ${file.path}');
+        final revision = json['revision'] as String;
+        assert(
+          revision != null,
+          'revision should not be null for ${file.path}',
+        );
+        assert(!existingApiRevisions.containsKey(id));
+        existingApiRevisions[id] = revision;
+      }
+
+      print('Existing API count: ${existingApiRevisions.length}');
+
+      dir.deleteSync(recursive: true);
+    }
 
     // Get all rest discovery documents & initialize this object.
     final allApis = await fetchDiscoveryDocuments();
@@ -196,6 +219,25 @@ class DiscoveryPackagesConfiguration {
     );
     missingApis = _calculateMissingApis(knownApis, allApis);
     excessApis = _calculateExcessApis(knownApis, allApis);
+
+    if (existingApiRevisions.isNotEmpty) {
+      for (var api in allApis) {
+        final existingRevision = existingApiRevisions[api.id];
+        if (existingRevision != null) {
+          final compare = api.revision.compareTo(existingRevision);
+          if (compare == 0) {
+            continue;
+          }
+          final value = 'previous: $existingRevision; current: ${api.revision}';
+          if (compare.isNegative) {
+            (oldRevisions ??= {})[api.id] = value;
+          }
+          if (compare > 0) {
+            (newRevisions ??= {})[api.id] = value;
+          }
+        }
+      }
+    }
   }
 
   // Return empty list for YAML null value.
@@ -357,18 +399,20 @@ package.
 
   /// The missing APIs are the APIs returned from the Discovery Service
   /// but not mentioned in the configuration.
-  static Iterable<String> _calculateMissingApis(
-          Iterable<String> knownApis, List<RestDescription> allApis) =>
+  static List<String> _calculateMissingApis(
+    Iterable<String> knownApis,
+    List<RestDescription> allApis,
+  ) =>
       allApis
           .where((item) => !knownApis.contains(item.id))
-          .map((item) => item.id);
+          .map((item) => item.id)
+          .toList();
 
   /// The excess APIs are the APIs mentioned in the configuration but not
   /// returned from the Discovery Service.
-  static Iterable<String> _calculateExcessApis(
-      Iterable<String> knownApis, List<RestDescription> allApis) {
-    final excessApis = Set<String>.from(knownApis)
-      ..removeAll(allApis.map((e) => e.id));
-    return excessApis;
-  }
+  static Set<String> _calculateExcessApis(
+    Iterable<String> knownApis,
+    List<RestDescription> allApis,
+  ) =>
+      Set<String>.from(knownApis)..removeAll(allApis.map((e) => e.id));
 }
