@@ -8685,16 +8685,23 @@ class LogEntry {
       insertId = _json['insertId'] as core.String;
     }
     if (_json.containsKey('jsonPayload')) {
-      jsonPayload = commons.mapMap<core.Object, core.Object>(
-          (_json['jsonPayload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      jsonPayload = (_json['jsonPayload'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('logName')) {
       logName = _json['logName'] as core.String;
@@ -8708,10 +8715,14 @@ class LogEntry {
           _json['operation'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('protoPayload')) {
-      protoPayload = commons.mapMap<core.Object, core.Object>(
-          (_json['protoPayload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      protoPayload = (_json['protoPayload'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('receiveTimestamp')) {
       receiveTimestamp = _json['receiveTimestamp'] as core.String;
@@ -9163,10 +9174,14 @@ class LogMetric {
       filter = _json['filter'] as core.String;
     }
     if (_json.containsKey('labelExtractors')) {
-      labelExtractors = commons.mapMap<core.String, core.String>(
-          (_json['labelExtractors'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labelExtractors = (_json['labelExtractors'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('metricDescriptor')) {
       metricDescriptor = MetricDescriptor.fromJson(
@@ -9745,10 +9760,13 @@ class MonitoredResource {
 
   MonitoredResource.fromJson(core.Map _json) {
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('type')) {
       type = _json['type'] as core.String;
@@ -9928,16 +9946,24 @@ class MonitoredResourceMetadata {
 
   MonitoredResourceMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('systemLabels')) {
-      systemLabels = commons.mapMap<core.Object, core.Object>(
-          (_json['systemLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      systemLabels = (_json['systemLabels'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = commons.mapMap<core.String, core.String>(
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      userLabels = (_json['userLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -10455,10 +10481,13 @@ class WriteLogEntriesRequest {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('logName')) {
       logName = _json['logName'] as core.String;

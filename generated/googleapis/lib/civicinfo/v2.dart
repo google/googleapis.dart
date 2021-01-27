@@ -1718,11 +1718,14 @@ class RepresentativeInfoData {
 
   RepresentativeInfoData.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions = commons.mapMap<core.Map, GeographicDivision>(
-          (_json['divisions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => GeographicDivision.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      divisions =
+          (_json['divisions'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  GeographicDivision.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('offices')) {
       offices = (_json['offices'] as core.List)
@@ -1741,9 +1744,8 @@ class RepresentativeInfoData {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (divisions != null) {
-      _json['divisions'] = commons
-          .mapMap<GeographicDivision, core.Map<core.String, core.Object>>(
-              divisions, (GeographicDivision item) => item.toJson());
+      _json['divisions'] =
+          divisions.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (offices != null) {
       _json['offices'] = offices.map((value) => value.toJson()).toList();
@@ -1780,11 +1782,14 @@ class RepresentativeInfoResponse {
 
   RepresentativeInfoResponse.fromJson(core.Map _json) {
     if (_json.containsKey('divisions')) {
-      divisions = commons.mapMap<core.Map, GeographicDivision>(
-          (_json['divisions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => GeographicDivision.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      divisions =
+          (_json['divisions'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  GeographicDivision.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
@@ -1810,9 +1815,8 @@ class RepresentativeInfoResponse {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (divisions != null) {
-      _json['divisions'] = commons
-          .mapMap<GeographicDivision, core.Map<core.String, core.Object>>(
-              divisions, (GeographicDivision item) => item.toJson());
+      _json['divisions'] =
+          divisions.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (kind != null) {
       _json['kind'] = kind;

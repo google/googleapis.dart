@@ -1336,32 +1336,37 @@ class ReportRow {
 
   ReportRow.fromJson(core.Map _json) {
     if (_json.containsKey('dimensionValues')) {
-      dimensionValues = commons.mapMap<core.Map, ReportRowDimensionValue>(
-          (_json['dimensionValues'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ReportRowDimensionValue.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      dimensionValues = (_json['dimensionValues'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ReportRowDimensionValue.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('metricValues')) {
-      metricValues = commons.mapMap<core.Map, ReportRowMetricValue>(
-          (_json['metricValues'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ReportRowMetricValue.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      metricValues =
+          (_json['metricValues'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  ReportRowMetricValue.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (dimensionValues != null) {
-      _json['dimensionValues'] = commons
-          .mapMap<ReportRowDimensionValue, core.Map<core.String, core.Object>>(
-              dimensionValues, (ReportRowDimensionValue item) => item.toJson());
+      _json['dimensionValues'] =
+          dimensionValues.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (metricValues != null) {
-      _json['metricValues'] = commons
-          .mapMap<ReportRowMetricValue, core.Map<core.String, core.Object>>(
-              metricValues, (ReportRowMetricValue item) => item.toJson());
+      _json['metricValues'] =
+          metricValues.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }

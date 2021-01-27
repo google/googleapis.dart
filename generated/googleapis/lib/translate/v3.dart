@@ -1332,11 +1332,14 @@ class BatchTranslateTextRequest {
 
   BatchTranslateTextRequest.fromJson(core.Map _json) {
     if (_json.containsKey('glossaries')) {
-      glossaries = commons.mapMap<core.Map, TranslateTextGlossaryConfig>(
-          (_json['glossaries'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => TranslateTextGlossaryConfig.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      glossaries =
+          (_json['glossaries'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  TranslateTextGlossaryConfig.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('inputConfigs')) {
       inputConfigs = (_json['inputConfigs'] as core.List)
@@ -1345,16 +1348,22 @@ class BatchTranslateTextRequest {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('models')) {
-      models = commons.mapMap<core.String, core.String>(
-          (_json['models'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      models =
+          (_json['models'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('outputConfig')) {
       outputConfig = OutputConfig.fromJson(
@@ -1373,9 +1382,8 @@ class BatchTranslateTextRequest {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (glossaries != null) {
-      _json['glossaries'] = commons.mapMap<TranslateTextGlossaryConfig,
-              core.Map<core.String, core.Object>>(
-          glossaries, (TranslateTextGlossaryConfig item) => item.toJson());
+      _json['glossaries'] =
+          glossaries.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (inputConfigs != null) {
       _json['inputConfigs'] =
@@ -1446,10 +1454,13 @@ class DetectLanguageRequest {
       content = _json['content'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;
@@ -1957,19 +1968,25 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2045,19 +2062,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -2179,10 +2202,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -2380,10 +2405,13 @@ class TranslateTextRequest {
           _json['glossaryConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('mimeType')) {
       mimeType = _json['mimeType'] as core.String;

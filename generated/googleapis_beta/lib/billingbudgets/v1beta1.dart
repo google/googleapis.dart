@@ -655,12 +655,14 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
       creditTypesTreatment = _json['creditTypesTreatment'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.List, core.List<core.Object>>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.List>(),
-          (core.List item) => (item as core.List)
-              .map<core.Object>((value) => value as core.Object)
-              .toList());
+      labels = (_json['labels'] as core.Map).cast<core.String, core.List>().map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.List)
+                  .map<core.Object>((value) => value as core.Object)
+                  .toList(),
+            ),
+          );
     }
     if (_json.containsKey('projects')) {
       projects = (_json['projects'] as core.List)

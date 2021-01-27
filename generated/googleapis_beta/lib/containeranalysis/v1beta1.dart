@@ -1842,19 +1842,20 @@ class BatchCreateNotesRequest {
 
   BatchCreateNotesRequest.fromJson(core.Map _json) {
     if (_json.containsKey('notes')) {
-      notes = commons.mapMap<core.Map, Note>(
-          (_json['notes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Note.fromJson(item as core.Map<core.String, core.dynamic>));
+      notes = (_json['notes'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              Note.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (notes != null) {
-      _json['notes'] = commons.mapMap<Note, core.Map<core.String, core.Object>>(
-          notes, (Note item) => item.toJson());
+      _json['notes'] =
+          notes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -2108,10 +2109,14 @@ class BuildProvenance {
 
   BuildProvenance.fromJson(core.Map _json) {
     if (_json.containsKey('buildOptions')) {
-      buildOptions = commons.mapMap<core.String, core.String>(
-          (_json['buildOptions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      buildOptions = (_json['buildOptions'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('builderVersion')) {
       builderVersion = _json['builderVersion'] as core.String;
@@ -2286,10 +2291,14 @@ class ByProducts {
 
   ByProducts.fromJson(core.Map _json) {
     if (_json.containsKey('customValues')) {
-      customValues = commons.mapMap<core.String, core.String>(
-          (_json['customValues'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      customValues = (_json['customValues'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -3079,10 +3088,14 @@ class Environment {
 
   Environment.fromJson(core.Map _json) {
     if (_json.containsKey('customValues')) {
-      customValues = commons.mapMap<core.String, core.String>(
-          (_json['customValues'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      customValues = (_json['customValues'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -5427,11 +5440,14 @@ class Source {
           _json['context'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('fileHashes')) {
-      fileHashes = commons.mapMap<core.Map, FileHashes>(
-          (_json['fileHashes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              FileHashes.fromJson(item as core.Map<core.String, core.dynamic>));
+      fileHashes = (_json['fileHashes'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              FileHashes.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -5449,8 +5465,7 @@ class Source {
     }
     if (fileHashes != null) {
       _json['fileHashes'] =
-          commons.mapMap<FileHashes, core.Map<core.String, core.Object>>(
-              fileHashes, (FileHashes item) => item.toJson());
+          fileHashes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -5487,10 +5502,13 @@ class SourceContext {
           _json['git'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -5543,10 +5561,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

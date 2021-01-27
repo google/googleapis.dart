@@ -2516,10 +2516,13 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -2702,10 +2705,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -2738,11 +2743,12 @@ class Struct {
 
   Struct.fromJson(core.Map _json) {
     if (_json.containsKey('fields')) {
-      fields = commons.mapMap<core.Map, Value>(
-          (_json['fields'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Value.fromJson(item as core.Map<core.String, core.dynamic>));
+      fields = (_json['fields'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              Value.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -2750,8 +2756,7 @@ class Struct {
     final _json = <core.String, core.Object>{};
     if (fields != null) {
       _json['fields'] =
-          commons.mapMap<Value, core.Map<core.String, core.Object>>(
-              fields, (Value item) => item.toJson());
+          fields.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -2845,10 +2850,14 @@ class Value {
       numberValue = (_json['numberValue'] as core.num).toDouble();
     }
     if (_json.containsKey('protoValue')) {
-      protoValue = commons.mapMap<core.Object, core.Object>(
-          (_json['protoValue'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      protoValue = (_json['protoValue'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('stringValue')) {
       stringValue = _json['stringValue'] as core.String;

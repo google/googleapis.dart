@@ -483,10 +483,12 @@ class DocumentResponse {
 
   DocumentResponse.fromJson(core.Map _json) {
     if (_json.containsKey('info')) {
-      info = commons.mapMap<core.String, core.String>(
-          (_json['info'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      info = (_json['info'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 

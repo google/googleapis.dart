@@ -499,10 +499,13 @@ class LighthouseAuditResultV5 {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('details')) {
-      details = commons.mapMap<core.Object, core.Object>(
-          (_json['details'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      details =
+          (_json['details'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('displayValue')) {
       displayValue = _json['displayValue'] as core.String;
@@ -701,22 +704,28 @@ class LighthouseResultV5 {
 
   LighthouseResultV5.fromJson(core.Map _json) {
     if (_json.containsKey('audits')) {
-      audits = commons.mapMap<core.Map, LighthouseAuditResultV5>(
-          (_json['audits'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => LighthouseAuditResultV5.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      audits = (_json['audits'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              LighthouseAuditResultV5.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('categories')) {
       categories = Categories.fromJson(
           _json['categories'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('categoryGroups')) {
-      categoryGroups = commons.mapMap<core.Map, CategoryGroupV5>(
-          (_json['categoryGroups'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => CategoryGroupV5.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      categoryGroups = (_json['categoryGroups'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              CategoryGroupV5.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('configSettings')) {
       configSettings = ConfigSettings.fromJson(
@@ -769,17 +778,15 @@ class LighthouseResultV5 {
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (audits != null) {
-      _json['audits'] = commons
-          .mapMap<LighthouseAuditResultV5, core.Map<core.String, core.Object>>(
-              audits, (LighthouseAuditResultV5 item) => item.toJson());
+      _json['audits'] =
+          audits.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (categories != null) {
       _json['categories'] = categories.toJson();
     }
     if (categoryGroups != null) {
       _json['categoryGroups'] =
-          commons.mapMap<CategoryGroupV5, core.Map<core.String, core.Object>>(
-              categoryGroups, (CategoryGroupV5 item) => item.toJson());
+          categoryGroups.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (configSettings != null) {
       _json['configSettings'] = configSettings.toJson();
@@ -848,11 +855,14 @@ class PagespeedApiLoadingExperienceV5 {
       initialUrl = _json['initial_url'] as core.String;
     }
     if (_json.containsKey('metrics')) {
-      metrics = commons.mapMap<core.Map, UserPageLoadMetricV5>(
-          (_json['metrics'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => UserPageLoadMetricV5.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      metrics =
+          (_json['metrics'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  UserPageLoadMetricV5.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('origin_fallback')) {
       originFallback = _json['origin_fallback'] as core.bool;
@@ -871,9 +881,8 @@ class PagespeedApiLoadingExperienceV5 {
       _json['initial_url'] = initialUrl;
     }
     if (metrics != null) {
-      _json['metrics'] = commons
-          .mapMap<UserPageLoadMetricV5, core.Map<core.String, core.Object>>(
-              metrics, (UserPageLoadMetricV5 item) => item.toJson());
+      _json['metrics'] =
+          metrics.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (originFallback != null) {
       _json['origin_fallback'] = originFallback;
@@ -1221,10 +1230,14 @@ class StackPack {
 
   StackPack.fromJson(core.Map _json) {
     if (_json.containsKey('descriptions')) {
-      descriptions = commons.mapMap<core.String, core.String>(
-          (_json['descriptions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      descriptions = (_json['descriptions'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('iconDataURL')) {
       iconDataURL = _json['iconDataURL'] as core.String;

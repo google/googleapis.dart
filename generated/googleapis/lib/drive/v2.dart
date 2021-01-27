@@ -7124,10 +7124,13 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -9437,10 +9440,14 @@ class File {
       explicitlyTrashed = _json['explicitlyTrashed'] as core.bool;
     }
     if (_json.containsKey('exportLinks')) {
-      exportLinks = commons.mapMap<core.String, core.String>(
-          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      exportLinks = (_json['exportLinks'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fileExtension')) {
       fileExtension = _json['fileExtension'] as core.String;
@@ -9516,10 +9523,14 @@ class File {
       modifiedDate = core.DateTime.parse(_json['modifiedDate'] as core.String);
     }
     if (_json.containsKey('openWithLinks')) {
-      openWithLinks = commons.mapMap<core.String, core.String>(
-          (_json['openWithLinks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      openWithLinks = (_json['openWithLinks'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('originalFilename')) {
       originalFilename = _json['originalFilename'] as core.String;
@@ -10753,10 +10764,14 @@ class Revision {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('exportLinks')) {
-      exportLinks = commons.mapMap<core.String, core.String>(
-          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      exportLinks = (_json['exportLinks'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fileSize')) {
       fileSize = _json['fileSize'] as core.String;

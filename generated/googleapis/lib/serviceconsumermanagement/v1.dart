@@ -3587,10 +3587,14 @@ class MetricRule {
 
   MetricRule.fromJson(core.Map _json) {
     if (_json.containsKey('metricCosts')) {
-      metricCosts = commons.mapMap<core.String, core.String>(
-          (_json['metricCosts'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      metricCosts = (_json['metricCosts'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('selector')) {
       selector = _json['selector'] as core.String;
@@ -3982,19 +3986,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -4044,10 +4054,12 @@ class Option {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('value')) {
-      value = commons.mapMap<core.Object, core.Object>(
-          (_json['value'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      value = (_json['value'] as core.Map).cast<core.String, core.Object>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
@@ -4309,10 +4321,13 @@ class QuotaLimit {
       unit = _json['unit'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = commons.mapMap<core.String, core.String>(
-          (_json['values'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      values =
+          (_json['values'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -4865,10 +4880,12 @@ class SourceInfo {
     if (_json.containsKey('sourceFiles')) {
       sourceFiles = (_json['sourceFiles'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
   }
@@ -4913,10 +4930,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -5167,10 +5186,13 @@ class TenantProjectConfig {
       folder = _json['folder'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('serviceAccountConfig')) {
       serviceAccountConfig = ServiceAccountConfig.fromJson(
@@ -5718,10 +5740,14 @@ class V1Beta1ProducerQuotaPolicy {
       container = _json['container'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = commons.mapMap<core.String, core.String>(
-          (_json['dimensions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      dimensions = (_json['dimensions'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('metric')) {
       metric = _json['metric'] as core.String;
@@ -5809,10 +5835,14 @@ class V1Beta1QuotaOverride {
       adminOverrideAncestor = _json['adminOverrideAncestor'] as core.String;
     }
     if (_json.containsKey('dimensions')) {
-      dimensions = commons.mapMap<core.String, core.String>(
-          (_json['dimensions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      dimensions = (_json['dimensions'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('metric')) {
       metric = _json['metric'] as core.String;

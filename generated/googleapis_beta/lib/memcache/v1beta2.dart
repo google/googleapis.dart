@@ -1002,11 +1002,15 @@ class GoogleCloudMemcacheV1beta2LocationMetadata {
 
   GoogleCloudMemcacheV1beta2LocationMetadata.fromJson(core.Map _json) {
     if (_json.containsKey('availableZones')) {
-      availableZones = commons.mapMap<core.Map, ZoneMetadata>(
-          (_json['availableZones'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ZoneMetadata.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      availableZones = (_json['availableZones'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ZoneMetadata.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -1014,8 +1018,7 @@ class GoogleCloudMemcacheV1beta2LocationMetadata {
     final _json = <core.String, core.Object>{};
     if (availableZones != null) {
       _json['availableZones'] =
-          commons.mapMap<ZoneMetadata, core.Map<core.String, core.Object>>(
-              availableZones, (ZoneMetadata item) => item.toJson());
+          availableZones.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -1191,26 +1194,34 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('maintenancePolicyNames')) {
-      maintenancePolicyNames = commons.mapMap<core.String, core.String>(
-          (_json['maintenancePolicyNames']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      maintenancePolicyNames = (_json['maintenancePolicyNames'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('maintenanceSchedules')) {
-      maintenanceSchedules = commons.mapMap<core.Map,
-              GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule>(
-          (_json['maintenanceSchedules'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
+      maintenanceSchedules = (_json['maintenanceSchedules'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
               GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
-                  .fromJson(item as core.Map<core.String, core.dynamic>));
+                  .fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('maintenanceSettings')) {
       maintenanceSettings =
@@ -1222,10 +1233,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('producerMetadata')) {
-      producerMetadata = commons.mapMap<core.String, core.String>(
-          (_json['producerMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      producerMetadata = (_json['producerMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('provisionedResources')) {
       provisionedResources = (_json['provisionedResources'] as core.List)
@@ -1244,10 +1259,14 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
               _json['sloMetadata'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('softwareVersions')) {
-      softwareVersions = commons.mapMap<core.String, core.String>(
-          (_json['softwareVersions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      softwareVersions = (_json['softwareVersions'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('state')) {
       state = _json['state'] as core.String;
@@ -1275,13 +1294,8 @@ class GoogleCloudSaasacceleratorManagementProvidersV1Instance {
       _json['maintenancePolicyNames'] = maintenancePolicyNames;
     }
     if (maintenanceSchedules != null) {
-      _json['maintenanceSchedules'] = commons.mapMap<
-              GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule,
-              core.Map<core.String, core.Object>>(
-          maintenanceSchedules,
-          (GoogleCloudSaasacceleratorManagementProvidersV1MaintenanceSchedule
-                  item) =>
-              item.toJson());
+      _json['maintenanceSchedules'] = maintenanceSchedules
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (maintenanceSettings != null) {
       _json['maintenanceSettings'] = maintenanceSettings.toJson();
@@ -1770,10 +1784,13 @@ class Instance {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('memcacheFullVersion')) {
       memcacheFullVersion = _json['memcacheFullVersion'] as core.String;
@@ -2052,19 +2069,25 @@ class Location {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('locationId')) {
       locationId = _json['locationId'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -2109,10 +2132,13 @@ class MemcacheParameters {
       id = _json['id'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -2282,19 +2308,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -2350,10 +2382,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

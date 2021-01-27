@@ -789,10 +789,13 @@ class GoogleCloudRecommenderV1Insight {
       category = _json['category'] as core.String;
     }
     if (_json.containsKey('content')) {
-      content = commons.mapMap<core.Object, core.Object>(
-          (_json['content'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      content =
+          (_json['content'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('description')) {
       description = _json['description'] as core.String;
@@ -913,10 +916,14 @@ class GoogleCloudRecommenderV1InsightStateInfo {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -1021,10 +1028,14 @@ class GoogleCloudRecommenderV1MarkInsightAcceptedRequest {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -1058,10 +1069,14 @@ class GoogleCloudRecommenderV1MarkRecommendationClaimedRequest {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -1095,10 +1110,14 @@ class GoogleCloudRecommenderV1MarkRecommendationFailedRequest {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -1132,10 +1151,14 @@ class GoogleCloudRecommenderV1MarkRecommendationSucceededRequest {
       etag = _json['etag'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -1231,19 +1254,25 @@ class GoogleCloudRecommenderV1Operation {
       path = _json['path'] as core.String;
     }
     if (_json.containsKey('pathFilters')) {
-      pathFilters = commons.mapMap<core.Object, core.Object>(
-          (_json['pathFilters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      pathFilters = (_json['pathFilters'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('pathValueMatchers')) {
-      pathValueMatchers =
-          commons.mapMap<core.Map, GoogleCloudRecommenderV1ValueMatcher>(
-              (_json['pathValueMatchers']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => GoogleCloudRecommenderV1ValueMatcher.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+      pathValueMatchers = (_json['pathValueMatchers'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudRecommenderV1ValueMatcher.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('resource')) {
       resource = _json['resource'] as core.String;
@@ -1278,10 +1307,8 @@ class GoogleCloudRecommenderV1Operation {
       _json['pathFilters'] = pathFilters;
     }
     if (pathValueMatchers != null) {
-      _json['pathValueMatchers'] = commons.mapMap<
-              GoogleCloudRecommenderV1ValueMatcher,
-              core.Map<core.String, core.Object>>(pathValueMatchers,
-          (GoogleCloudRecommenderV1ValueMatcher item) => item.toJson());
+      _json['pathValueMatchers'] = pathValueMatchers
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (resource != null) {
       _json['resource'] = resource;
@@ -1547,10 +1574,14 @@ class GoogleCloudRecommenderV1RecommendationStateInfo {
       state = _json['state'] as core.String;
     }
     if (_json.containsKey('stateMetadata')) {
-      stateMetadata = commons.mapMap<core.String, core.String>(
-          (_json['stateMetadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      stateMetadata = (_json['stateMetadata'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 

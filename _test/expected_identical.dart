@@ -172,11 +172,13 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-      (data) => commons.mapMap<core.Map, ToyResponse>(
-          (data as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ToyResponseFactory.fromJson(
-              item as core.Map<core.String, core.dynamic>)),
+      (data) => (data as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ToyResponseFactory.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          ),
     );
   }
 
@@ -227,11 +229,13 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-      (data) => commons.mapMap<core.Map, ToyResponse>(
-          (data as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ToyResponseFactory.fromJson(
-              item as core.Map<core.String, core.dynamic>)),
+      (data) => (data as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              ToyResponseFactory.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          ),
     );
   }
 
@@ -279,10 +283,12 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-      (data) => commons.mapMap<core.int, core.int>(
-          (data as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.int>(),
-          (core.int item) => item as core.int),
+      (data) => (data as core.Map).cast<core.String, core.int>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.int,
+            ),
+          ),
     );
   }
 
@@ -559,13 +565,15 @@ class ToyApi {
     );
     return _response.then(
       (data) => (data as core.List)
-          .map<core.Map<core.String, core.List<core.String>>>((value) =>
-              commons.mapMap<core.List, core.List<core.String>>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.List>(),
-                  (core.List item) => (item as core.List)
-                      .map<core.String>((value) => value as core.String)
-                      .toList()))
+          .map<core.Map<core.String, core.List<core.String>>>(
+              (value) => (value as core.Map).cast<core.String, core.List>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      (item as core.List)
+                          .map<core.String>((value) => value as core.String)
+                          .toList(),
+                    ),
+                  ))
           .toList(),
     );
   }
@@ -660,17 +668,20 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-      (data) => commons
-          .mapMap<core.List, core.List<core.Map<core.String, core.bool>>>(
-              (data as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.List>(),
-              (core.List item) => (item as core.List)
+      (data) => (data as core.Map).cast<core.String, core.List>().map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.List)
                   .map<core.Map<core.String, core.bool>>((value) =>
-                      commons.mapMap<core.bool, core.bool>(
-                          (value as core.Map<core.String, core.dynamic>)
-                              .cast<core.String, core.bool>(),
-                          (core.bool item) => item as core.bool))
-                  .toList()),
+                      (value as core.Map).cast<core.String, core.bool>().map(
+                            (key, item) => core.MapEntry(
+                              key,
+                              item as core.bool,
+                            ),
+                          ))
+                  .toList(),
+            ),
+          ),
     );
   }
 
@@ -720,13 +731,17 @@ class ToyApi {
       downloadOptions: _downloadOptions,
     );
     return _response.then(
-      (data) => commons.mapMap<core.Map, core.Map<core.String, core.bool>>(
-          (data as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => commons.mapMap<core.bool, core.bool>(
-              (item as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.bool>(),
-              (core.bool item) => item as core.bool)),
+      (data) => (data as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.Map).cast<core.String, core.bool>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.bool,
+                    ),
+                  ),
+            ),
+          ),
     );
   }
 
@@ -1126,11 +1141,14 @@ class ToyMapResponseFactory {
   static ToyMapResponse fromJson(core.Map _json) {
     var message = ToyMapResponse();
     if (_json.containsKey('mapResult')) {
-      message.mapResult = commons.mapMap<core.Map, NestedResponse>(
-          (_json['mapResult'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NestedResponseFactory.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      message.mapResult =
+          (_json['mapResult'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  NestedResponseFactory.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('result')) {
       message.result = _json['result'] as core.String;
@@ -1141,10 +1159,8 @@ class ToyMapResponseFactory {
   static core.Map<core.String, core.dynamic> toJson(ToyMapResponse message) {
     var _json = <core.String, core.dynamic>{};
     if (message.mapResult != null) {
-      _json['mapResult'] =
-          commons.mapMap<NestedResponse, core.Map<core.String, core.Object>>(
-              message.mapResult,
-              (NestedResponse item) => NestedResponseFactory.toJson(item));
+      _json['mapResult'] = message.mapResult.map((key, item) =>
+          core.MapEntry(key, NestedResponseFactory.toJson(item)));
     }
     if (message.result != null) {
       _json['result'] = message.result;

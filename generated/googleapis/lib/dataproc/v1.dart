@@ -4888,10 +4888,13 @@ class Cluster {
           _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('metrics')) {
       metrics = ClusterMetrics.fromJson(
@@ -5127,16 +5130,24 @@ class ClusterMetrics {
 
   ClusterMetrics.fromJson(core.Map _json) {
     if (_json.containsKey('hdfsMetrics')) {
-      hdfsMetrics = commons.mapMap<core.String, core.String>(
-          (_json['hdfsMetrics'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      hdfsMetrics = (_json['hdfsMetrics'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('yarnMetrics')) {
-      yarnMetrics = commons.mapMap<core.String, core.String>(
-          (_json['yarnMetrics'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      yarnMetrics = (_json['yarnMetrics'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -5231,10 +5242,13 @@ class ClusterOperationMetadata {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('operationType')) {
       operationType = _json['operationType'] as core.String;
@@ -5356,10 +5370,14 @@ class ClusterSelector {
 
   ClusterSelector.fromJson(core.Map _json) {
     if (_json.containsKey('clusterLabels')) {
-      clusterLabels = commons.mapMap<core.String, core.String>(
-          (_json['clusterLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      clusterLabels = (_json['clusterLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;
@@ -5588,10 +5606,13 @@ class EndpointConfig {
       enableHttpPortAccess = _json['enableHttpPortAccess'] as core.bool;
     }
     if (_json.containsKey('httpPorts')) {
-      httpPorts = commons.mapMap<core.String, core.String>(
-          (_json['httpPorts'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      httpPorts =
+          (_json['httpPorts'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -5771,10 +5792,13 @@ class GceClusterConfig {
       internalIpOnly = _json['internalIpOnly'] as core.bool;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.String, core.String>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('networkUri')) {
       networkUri = _json['networkUri'] as core.String;
@@ -5979,10 +6003,14 @@ class HadoopJob {
       mainJarFileUri = _json['mainJarFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -6056,10 +6084,14 @@ class HiveJob {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -6069,10 +6101,14 @@ class HiveJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = commons.mapMap<core.String, core.String>(
-          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      scriptVariables = (_json['scriptVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -6374,10 +6410,14 @@ class InstantiateWorkflowTemplateRequest {
 
   InstantiateWorkflowTemplateRequest.fromJson(core.Map _json) {
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.String, core.String>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('requestId')) {
       requestId = _json['requestId'] as core.String;
@@ -6503,10 +6543,13 @@ class Job {
       jobUuid = _json['jobUuid'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('pigJob')) {
       pigJob = PigJob.fromJson(
@@ -7268,10 +7311,14 @@ class LoggingConfig {
 
   LoggingConfig.fromJson(core.Map _json) {
     if (_json.containsKey('driverLogLevels')) {
-      driverLogLevels = commons.mapMap<core.String, core.String>(
-          (_json['driverLogLevels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      driverLogLevels = (_json['driverLogLevels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -7314,10 +7361,13 @@ class ManagedCluster {
           _json['config'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -7478,19 +7528,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -7576,10 +7632,13 @@ class OrderedJob {
           _json['hiveJob'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('pigJob')) {
       pigJob = PigJob.fromJson(
@@ -7741,10 +7800,14 @@ class PigJob {
           _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -7754,10 +7817,14 @@ class PigJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = commons.mapMap<core.String, core.String>(
-          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      scriptVariables = (_json['scriptVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -7941,10 +8008,14 @@ class PrestoJob {
       outputFormat = _json['outputFormat'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -8052,10 +8123,14 @@ class PySparkJob {
       mainPythonFileUri = _json['mainPythonFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('pythonFileUris')) {
       pythonFileUris = (_json['pythonFileUris'] as core.List)
@@ -8282,10 +8357,14 @@ class SoftwareConfig {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -8375,10 +8454,14 @@ class SparkJob {
       mainJarFileUri = _json['mainJarFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -8468,10 +8551,14 @@ class SparkRJob {
       mainRFileUri = _json['mainRFileUri'] as core.String;
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -8536,10 +8623,14 @@ class SparkSqlJob {
           _json['loggingConfig'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('queryFileUri')) {
       queryFileUri = _json['queryFileUri'] as core.String;
@@ -8549,10 +8640,14 @@ class SparkSqlJob {
           _json['queryList'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('scriptVariables')) {
-      scriptVariables = commons.mapMap<core.String, core.String>(
-          (_json['scriptVariables'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      scriptVariables = (_json['scriptVariables'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 
@@ -8611,10 +8706,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {
@@ -8931,10 +9028,14 @@ class WorkflowMetadata {
           _json['graph'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('parameters')) {
-      parameters = commons.mapMap<core.String, core.String>(
-          (_json['parameters'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      parameters = (_json['parameters'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('startTime')) {
       startTime = _json['startTime'] as core.String;
@@ -9122,10 +9223,13 @@ class WorkflowTemplate {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;

@@ -3962,12 +3962,16 @@ class About {
           .toList();
     }
     if (_json.containsKey('exportFormats')) {
-      exportFormats = commons.mapMap<core.List, core.List<core.String>>(
-          (_json['exportFormats'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.List>(),
-          (core.List item) => (item as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList());
+      exportFormats = (_json['exportFormats'] as core.Map)
+          .cast<core.String, core.List>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList(),
+            ),
+          );
     }
     if (_json.containsKey('folderColorPalette')) {
       folderColorPalette = (_json['folderColorPalette'] as core.List)
@@ -3975,21 +3979,29 @@ class About {
           .toList();
     }
     if (_json.containsKey('importFormats')) {
-      importFormats = commons.mapMap<core.List, core.List<core.String>>(
-          (_json['importFormats'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.List>(),
-          (core.List item) => (item as core.List)
-              .map<core.String>((value) => value as core.String)
-              .toList());
+      importFormats = (_json['importFormats'] as core.Map)
+          .cast<core.String, core.List>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.List)
+                  .map<core.String>((value) => value as core.String)
+                  .toList(),
+            ),
+          );
     }
     if (_json.containsKey('kind')) {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('maxImportSizes')) {
-      maxImportSizes = commons.mapMap<core.String, core.String>(
-          (_json['maxImportSizes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      maxImportSizes = (_json['maxImportSizes'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('maxUploadSize')) {
       maxUploadSize = _json['maxUploadSize'] as core.String;
@@ -4287,10 +4299,13 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -6109,10 +6124,14 @@ class File {
 
   File.fromJson(core.Map _json) {
     if (_json.containsKey('appProperties')) {
-      appProperties = commons.mapMap<core.String, core.String>(
-          (_json['appProperties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      appProperties = (_json['appProperties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('capabilities')) {
       capabilities = FileCapabilities.fromJson(
@@ -6145,10 +6164,14 @@ class File {
       explicitlyTrashed = _json['explicitlyTrashed'] as core.bool;
     }
     if (_json.containsKey('exportLinks')) {
-      exportLinks = commons.mapMap<core.String, core.String>(
-          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      exportLinks = (_json['exportLinks'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fileExtension')) {
       fileExtension = _json['fileExtension'] as core.String;
@@ -6236,10 +6259,14 @@ class File {
           .toList();
     }
     if (_json.containsKey('properties')) {
-      properties = commons.mapMap<core.String, core.String>(
-          (_json['properties'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      properties = (_json['properties'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('quotaBytesUsed')) {
       quotaBytesUsed = _json['quotaBytesUsed'] as core.String;
@@ -7149,10 +7176,14 @@ class Revision {
 
   Revision.fromJson(core.Map _json) {
     if (_json.containsKey('exportLinks')) {
-      exportLinks = commons.mapMap<core.String, core.String>(
-          (_json['exportLinks'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      exportLinks = (_json['exportLinks'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('id')) {
       id = _json['id'] as core.String;

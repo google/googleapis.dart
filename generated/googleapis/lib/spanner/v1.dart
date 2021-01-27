@@ -4947,17 +4947,22 @@ class ExecuteSqlRequest {
 
   ExecuteSqlRequest.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes = commons.mapMap<core.Map, Type>(
-          (_json['paramTypes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Type.fromJson(item as core.Map<core.String, core.dynamic>));
+      paramTypes =
+          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.Object, core.Object>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('partitionToken')) {
       partitionToken = _json['partitionToken'] as core.String;
@@ -4988,8 +4993,7 @@ class ExecuteSqlRequest {
     final _json = <core.String, core.Object>{};
     if (paramTypes != null) {
       _json['paramTypes'] =
-          commons.mapMap<Type, core.Map<core.String, core.Object>>(
-              paramTypes, (Type item) => item.toJson());
+          paramTypes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (params != null) {
       _json['params'] = params;
@@ -5272,10 +5276,13 @@ class Instance {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -5942,19 +5949,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -6288,17 +6301,22 @@ class PartitionQueryRequest {
 
   PartitionQueryRequest.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes = commons.mapMap<core.Map, Type>(
-          (_json['paramTypes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Type.fromJson(item as core.Map<core.String, core.dynamic>));
+      paramTypes =
+          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.Object, core.Object>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('partitionOptions')) {
       partitionOptions = PartitionOptions.fromJson(
@@ -6317,8 +6335,7 @@ class PartitionQueryRequest {
     final _json = <core.String, core.Object>{};
     if (paramTypes != null) {
       _json['paramTypes'] =
-          commons.mapMap<Type, core.Map<core.String, core.Object>>(
-              paramTypes, (Type item) => item.toJson());
+          paramTypes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (params != null) {
       _json['params'] = params;
@@ -6525,10 +6542,14 @@ class PlanNode {
       displayName = _json['displayName'] as core.String;
     }
     if (_json.containsKey('executionStats')) {
-      executionStats = commons.mapMap<core.Object, core.Object>(
-          (_json['executionStats'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      executionStats = (_json['executionStats'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('index')) {
       index = _json['index'] as core.int;
@@ -6537,10 +6558,13 @@ class PlanNode {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('shortRepresentation')) {
       shortRepresentation = ShortRepresentation.fromJson(
@@ -7312,10 +7336,14 @@ class ResultSetStats {
           _json['queryPlan'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('queryStats')) {
-      queryStats = commons.mapMap<core.Object, core.Object>(
-          (_json['queryStats'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      queryStats = (_json['queryStats'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
     if (_json.containsKey('rowCountExact')) {
       rowCountExact = _json['rowCountExact'] as core.String;
@@ -7403,10 +7431,13 @@ class Session {
       createTime = _json['createTime'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
@@ -7476,10 +7507,13 @@ class ShortRepresentation {
       description = _json['description'] as core.String;
     }
     if (_json.containsKey('subqueries')) {
-      subqueries = commons.mapMap<core.int, core.int>(
-          (_json['subqueries'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.int>(),
-          (core.int item) => item as core.int);
+      subqueries =
+          (_json['subqueries'] as core.Map).cast<core.String, core.int>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.int,
+                ),
+              );
     }
   }
 
@@ -7524,17 +7558,22 @@ class Statement {
 
   Statement.fromJson(core.Map _json) {
     if (_json.containsKey('paramTypes')) {
-      paramTypes = commons.mapMap<core.Map, Type>(
-          (_json['paramTypes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Type.fromJson(item as core.Map<core.String, core.dynamic>));
+      paramTypes =
+          (_json['paramTypes'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Type.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.Object, core.Object>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('sql')) {
       sql = _json['sql'] as core.String;
@@ -7545,8 +7584,7 @@ class Statement {
     final _json = <core.String, core.Object>{};
     if (paramTypes != null) {
       _json['paramTypes'] =
-          commons.mapMap<Type, core.Map<core.String, core.Object>>(
-              paramTypes, (Type item) => item.toJson());
+          paramTypes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (params != null) {
       _json['params'] = params;
@@ -7589,10 +7627,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

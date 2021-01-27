@@ -1586,10 +1586,14 @@ class IdentitytoolkitRelyingpartyCreateAuthUriRequest {
       continueUri = _json['continueUri'] as core.String;
     }
     if (_json.containsKey('customParameter')) {
-      customParameter = commons.mapMap<core.String, core.String>(
-          (_json['customParameter'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      customParameter = (_json['customParameter'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('hostedDomain')) {
       hostedDomain = _json['hostedDomain'] as core.String;

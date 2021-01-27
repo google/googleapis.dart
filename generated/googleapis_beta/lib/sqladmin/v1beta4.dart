@@ -6664,10 +6664,14 @@ class Settings {
       tier = _json['tier'] as core.String;
     }
     if (_json.containsKey('userLabels')) {
-      userLabels = commons.mapMap<core.String, core.String>(
-          (_json['userLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      userLabels = (_json['userLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
   }
 

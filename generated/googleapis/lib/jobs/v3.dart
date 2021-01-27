@@ -1299,10 +1299,13 @@ class ClientEvent {
       eventId = _json['eventId'] as core.String;
     }
     if (_json.containsKey('extraInfo')) {
-      extraInfo = commons.mapMap<core.String, core.String>(
-          (_json['extraInfo'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      extraInfo =
+          (_json['extraInfo'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('jobEvent')) {
       jobEvent = JobEvent.fromJson(
@@ -2298,11 +2301,15 @@ class CustomAttributeHistogramResult {
               as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('stringValueHistogramResult')) {
-      stringValueHistogramResult = commons.mapMap<core.int, core.int>(
-          (_json['stringValueHistogramResult']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.int>(),
-          (core.int item) => item as core.int);
+      stringValueHistogramResult =
+          (_json['stringValueHistogramResult'] as core.Map)
+              .cast<core.String, core.int>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.int,
+                ),
+              );
     }
   }
 
@@ -3091,12 +3098,15 @@ class GoogleCloudTalentV4Job {
           _json['compensationInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customAttributes')) {
-      customAttributes =
-          commons.mapMap<core.Map, GoogleCloudTalentV4CustomAttribute>(
-              (_json['customAttributes'] as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => GoogleCloudTalentV4CustomAttribute.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+      customAttributes = (_json['customAttributes'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              GoogleCloudTalentV4CustomAttribute.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('degreeTypes')) {
       degreeTypes = (_json['degreeTypes'] as core.List)
@@ -3198,10 +3208,8 @@ class GoogleCloudTalentV4Job {
       _json['compensationInfo'] = compensationInfo.toJson();
     }
     if (customAttributes != null) {
-      _json['customAttributes'] = commons.mapMap<
-              GoogleCloudTalentV4CustomAttribute,
-              core.Map<core.String, core.Object>>(customAttributes,
-          (GoogleCloudTalentV4CustomAttribute item) => item.toJson());
+      _json['customAttributes'] = customAttributes
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (degreeTypes != null) {
       _json['degreeTypes'] = degreeTypes;
@@ -3640,10 +3648,12 @@ class HistogramResult {
       searchType = _json['searchType'] as core.String;
     }
     if (_json.containsKey('values')) {
-      values = commons.mapMap<core.int, core.int>(
-          (_json['values'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.int>(),
-          (core.int item) => item as core.int);
+      values = (_json['values'] as core.Map).cast<core.String, core.int>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.int,
+            ),
+          );
     }
   }
 
@@ -3972,11 +3982,15 @@ class Job {
           _json['compensationInfo'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('customAttributes')) {
-      customAttributes = commons.mapMap<core.Map, CustomAttribute>(
-          (_json['customAttributes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => CustomAttribute.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      customAttributes = (_json['customAttributes'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              CustomAttribute.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('degreeTypes')) {
       degreeTypes = (_json['degreeTypes'] as core.List)
@@ -4078,9 +4092,8 @@ class Job {
       _json['compensationInfo'] = compensationInfo.toJson();
     }
     if (customAttributes != null) {
-      _json['customAttributes'] =
-          commons.mapMap<CustomAttribute, core.Map<core.String, core.Object>>(
-              customAttributes, (CustomAttribute item) => item.toJson());
+      _json['customAttributes'] = customAttributes
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (degreeTypes != null) {
       _json['degreeTypes'] = degreeTypes;
@@ -4871,21 +4884,23 @@ class MendelDebugInput {
 
   MendelDebugInput.fromJson(core.Map _json) {
     if (_json.containsKey('namespacedDebugInput')) {
-      namespacedDebugInput = commons.mapMap<core.Map, NamespacedDebugInput>(
-          (_json['namespacedDebugInput'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NamespacedDebugInput.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      namespacedDebugInput = (_json['namespacedDebugInput'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              NamespacedDebugInput.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
   core.Map<core.String, core.Object> toJson() {
     final _json = <core.String, core.Object>{};
     if (namespacedDebugInput != null) {
-      _json['namespacedDebugInput'] = commons
-          .mapMap<NamespacedDebugInput, core.Map<core.String, core.Object>>(
-              namespacedDebugInput,
-              (NamespacedDebugInput item) => item.toJson());
+      _json['namespacedDebugInput'] = namespacedDebugInput
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -5080,16 +5095,24 @@ class NamespacedDebugInput {
       disableOrganicSelection = _json['disableOrganicSelection'] as core.bool;
     }
     if (_json.containsKey('forcedFlags')) {
-      forcedFlags = commons.mapMap<core.String, core.String>(
-          (_json['forcedFlags'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      forcedFlags = (_json['forcedFlags'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('forcedRollouts')) {
-      forcedRollouts = commons.mapMap<core.bool, core.bool>(
-          (_json['forcedRollouts'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.bool>(),
-          (core.bool item) => item as core.bool);
+      forcedRollouts = (_json['forcedRollouts'] as core.Map)
+          .cast<core.String, core.bool>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.bool,
+            ),
+          );
     }
   }
 
@@ -5939,10 +5962,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

@@ -1150,12 +1150,15 @@ class ListOfMapOfListOfString
 
   ListOfMapOfListOfString.fromJson(core.List json)
       : _inner = json
-            .map((value) => commons.mapMap<core.List, core.List<core.String>>(
-                (value as core.Map<core.String, core.dynamic>)
-                    .cast<core.String, core.List>(),
-                (core.List item) => (item as core.List)
-                    .map<core.String>((value) => value as core.String)
-                    .toList()))
+            .map((value) =>
+                (value as core.Map).cast<core.String, core.List>().map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        (item as core.List)
+                            .map<core.String>((value) => value as core.String)
+                            .toList(),
+                      ),
+                    ))
             .toList();
 
   core.List<core.Map<core.String, core.List<core.String>>> toJson() {
@@ -1189,12 +1192,15 @@ class ListOfMapOfListOfint
 
   ListOfMapOfListOfint.fromJson(core.List json)
       : _inner = json
-            .map((value) => commons.mapMap<core.List, core.List<core.int>>(
-                (value as core.Map<core.String, core.dynamic>)
-                    .cast<core.String, core.List>(),
-                (core.List item) => (item as core.List)
-                    .map<core.int>((value) => value as core.int)
-                    .toList()))
+            .map((value) =>
+                (value as core.Map).cast<core.String, core.List>().map(
+                      (key, item) => core.MapEntry(
+                        key,
+                        (item as core.List)
+                            .map<core.int>((value) => value as core.int)
+                            .toList(),
+                      ),
+                    ))
             .toList();
 
   core.List<core.Map<core.String, core.List<core.int>>> toJson() {
@@ -1291,11 +1297,13 @@ class MapOfListOfMapOfbool extends collection
   MapOfListOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.bool>>((value) =>
-              commons.mapMap<core.bool, core.bool>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.bool>(),
-                  (core.bool item) => item as core.bool))
+          .map<core.Map<core.String, core.bool>>(
+              (value) => (value as core.Map).cast<core.String, core.bool>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.bool,
+                    ),
+                  ))
           .toList();
     });
   }
@@ -1335,11 +1343,13 @@ class MapOfListOfMapOfint extends collection
   MapOfListOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
       this[key] = (value as core.List)
-          .map<core.Map<core.String, core.int>>((value) =>
-              commons.mapMap<core.int, core.int>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.int>(),
-                  (core.int item) => item as core.int))
+          .map<core.Map<core.String, core.int>>(
+              (value) => (value as core.Map).cast<core.String, core.int>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.int,
+                    ),
+                  ))
           .toList();
     });
   }
@@ -1378,10 +1388,12 @@ class MapOfMapOfbool
 
   MapOfMapOfbool.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = commons.mapMap<core.bool, core.bool>(
-          (value as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.bool>(),
-          (core.bool item) => item as core.bool);
+      this[key] = (value as core.Map).cast<core.String, core.bool>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.bool,
+            ),
+          );
     });
   }
 
@@ -1418,10 +1430,12 @@ class MapOfMapOfint
 
   MapOfMapOfint.fromJson(core.Map<core.String, core.dynamic> _json) {
     _json.forEach((core.String key, value) {
-      this[key] = commons.mapMap<core.int, core.int>(
-          (value as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.int>(),
-          (core.int item) => item as core.int);
+      this[key] = (value as core.Map).cast<core.String, core.int>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.int,
+            ),
+          );
     });
   }
 
@@ -1567,11 +1581,14 @@ class ToyMapResponse {
 
   ToyMapResponse.fromJson(core.Map _json) {
     if (_json.containsKey('mapResult')) {
-      mapResult = commons.mapMap<core.Map, NestedResponse>(
-          (_json['mapResult'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NestedResponse.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      mapResult =
+          (_json['mapResult'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  NestedResponse.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('result')) {
       result = _json['result'] as core.String;
@@ -1582,8 +1599,7 @@ class ToyMapResponse {
     final _json = <core.String, core.Object>{};
     if (mapResult != null) {
       _json['mapResult'] =
-          commons.mapMap<NestedResponse, core.Map<core.String, core.Object>>(
-              mapResult, (NestedResponse item) => item.toJson());
+          mapResult.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (result != null) {
       _json['result'] = result;

@@ -4585,10 +4585,13 @@ class Dataset {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastModifiedTime')) {
       lastModifiedTime = _json['lastModifiedTime'] as core.String;
@@ -4698,10 +4701,13 @@ class DatasetListDatasets {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -4850,10 +4856,13 @@ class DestinationTableProperties {
       friendlyName = _json['friendlyName'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
   }
 
@@ -6237,10 +6246,13 @@ class JobConfiguration {
       jobType = _json['jobType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('load')) {
       load = JobConfigurationLoad.fromJson(
@@ -6980,11 +6992,15 @@ class JobConfigurationQuery {
           .toList();
     }
     if (_json.containsKey('tableDefinitions')) {
-      tableDefinitions = commons.mapMap<core.Map, ExternalDataConfiguration>(
-          (_json['tableDefinitions'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ExternalDataConfiguration.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      tableDefinitions = (_json['tableDefinitions'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ExternalDataConfiguration.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('timePartitioning')) {
       timePartitioning = TimePartitioning.fromJson(
@@ -7066,9 +7082,8 @@ class JobConfigurationQuery {
       _json['schemaUpdateOptions'] = schemaUpdateOptions;
     }
     if (tableDefinitions != null) {
-      _json['tableDefinitions'] = commons.mapMap<ExternalDataConfiguration,
-              core.Map<core.String, core.Object>>(
-          tableDefinitions, (ExternalDataConfiguration item) => item.toJson());
+      _json['tableDefinitions'] = tableDefinitions
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (timePartitioning != null) {
       _json['timePartitioning'] = timePartitioning.toJson();
@@ -8394,10 +8409,13 @@ class Model {
           .toList();
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastModifiedTime')) {
       lastModifiedTime = _json['lastModifiedTime'] as core.String;
@@ -9034,11 +9052,14 @@ class QueryParameterValue {
           .toList();
     }
     if (_json.containsKey('structValues')) {
-      structValues = commons.mapMap<core.Map, QueryParameterValue>(
-          (_json['structValues'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => QueryParameterValue.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      structValues =
+          (_json['structValues'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  QueryParameterValue.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('value')) {
       value = _json['value'] as core.String;
@@ -9052,9 +9073,8 @@ class QueryParameterValue {
           arrayValues.map((value) => value.toJson()).toList();
     }
     if (structValues != null) {
-      _json['structValues'] = commons
-          .mapMap<QueryParameterValue, core.Map<core.String, core.Object>>(
-              structValues, (QueryParameterValue item) => item.toJson());
+      _json['structValues'] =
+          structValues.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (value != null) {
       _json['value'] = value;
@@ -9184,10 +9204,13 @@ class QueryRequest {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('location')) {
       location = _json['location'] as core.String;
@@ -10488,10 +10511,13 @@ class Table {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lastModifiedTime')) {
       lastModifiedTime = _json['lastModifiedTime'] as core.String;
@@ -11131,10 +11157,13 @@ class TableListTables {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('rangePartitioning')) {
       rangePartitioning = RangePartitioning.fromJson(
@@ -11805,10 +11834,14 @@ class TrainingOptions {
       l2Regularization = (_json['l2Regularization'] as core.num).toDouble();
     }
     if (_json.containsKey('labelClassWeights')) {
-      labelClassWeights = commons.mapMap<core.num, core.double>(
-          (_json['labelClassWeights'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.num>(),
-          (core.num item) => (item as core.num).toDouble());
+      labelClassWeights = (_json['labelClassWeights'] as core.Map)
+          .cast<core.String, core.num>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              (item as core.num).toDouble(),
+            ),
+          );
     }
     if (_json.containsKey('learnRate')) {
       learnRate = (_json['learnRate'] as core.num).toDouble();

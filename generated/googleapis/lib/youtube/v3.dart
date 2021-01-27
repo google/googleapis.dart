@@ -8424,11 +8424,15 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = commons.mapMap<core.Map, ChannelLocalization>(
-          (_json['localizations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ChannelLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      localizations = (_json['localizations'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ChannelLocalization.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('snippet')) {
       snippet = ChannelSnippet.fromJson(
@@ -8475,9 +8479,8 @@ class Channel {
       _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json['localizations'] = commons
-          .mapMap<ChannelLocalization, core.Map<core.String, core.Object>>(
-              localizations, (ChannelLocalization item) => item.toJson());
+      _json['localizations'] =
+          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (snippet != null) {
       _json['snippet'] = snippet.toJson();
@@ -9047,11 +9050,15 @@ class ChannelSection {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = commons.mapMap<core.Map, ChannelSectionLocalization>(
-          (_json['localizations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ChannelSectionLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      localizations = (_json['localizations'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              ChannelSectionLocalization.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('snippet')) {
       snippet = ChannelSectionSnippet.fromJson(
@@ -9078,9 +9085,8 @@ class ChannelSection {
       _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json['localizations'] = commons.mapMap<ChannelSectionLocalization,
-              core.Map<core.String, core.Object>>(
-          localizations, (ChannelSectionLocalization item) => item.toJson());
+      _json['localizations'] =
+          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (snippet != null) {
       _json['snippet'] = snippet.toJson();
@@ -15322,11 +15328,15 @@ class Playlist {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('localizations')) {
-      localizations = commons.mapMap<core.Map, PlaylistLocalization>(
-          (_json['localizations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PlaylistLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      localizations = (_json['localizations'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              PlaylistLocalization.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('player')) {
       player = PlaylistPlayer.fromJson(
@@ -15357,9 +15367,8 @@ class Playlist {
       _json['kind'] = kind;
     }
     if (localizations != null) {
-      _json['localizations'] = commons
-          .mapMap<PlaylistLocalization, core.Map<core.String, core.Object>>(
-              localizations, (PlaylistLocalization item) => item.toJson());
+      _json['localizations'] =
+          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (player != null) {
       _json['player'] = player.toJson();
@@ -17712,11 +17721,15 @@ class Video {
           _json['liveStreamingDetails'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('localizations')) {
-      localizations = commons.mapMap<core.Map, VideoLocalization>(
-          (_json['localizations'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => VideoLocalization.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      localizations = (_json['localizations'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              VideoLocalization.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('monetizationDetails')) {
       monetizationDetails = VideoMonetizationDetails.fromJson(
@@ -17785,8 +17798,7 @@ class Video {
     }
     if (localizations != null) {
       _json['localizations'] =
-          commons.mapMap<VideoLocalization, core.Map<core.String, core.Object>>(
-              localizations, (VideoLocalization item) => item.toJson());
+          localizations.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (monetizationDetails != null) {
       _json['monetizationDetails'] = monetizationDetails.toJson();

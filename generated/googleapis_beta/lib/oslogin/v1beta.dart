@@ -520,11 +520,15 @@ class LoginProfile {
           .toList();
     }
     if (_json.containsKey('sshPublicKeys')) {
-      sshPublicKeys = commons.mapMap<core.Map, SshPublicKey>(
-          (_json['sshPublicKeys'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SshPublicKey.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      sshPublicKeys = (_json['sshPublicKeys'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              SshPublicKey.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -539,8 +543,7 @@ class LoginProfile {
     }
     if (sshPublicKeys != null) {
       _json['sshPublicKeys'] =
-          commons.mapMap<SshPublicKey, core.Map<core.String, core.Object>>(
-              sshPublicKeys, (SshPublicKey item) => item.toJson());
+          sshPublicKeys.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }

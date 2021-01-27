@@ -5946,10 +5946,13 @@ class Bucket {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('lifecycle')) {
       lifecycle = BucketLifecycle.fromJson(
@@ -6387,10 +6390,13 @@ class Channel {
       kind = _json['kind'] as core.String;
     }
     if (_json.containsKey('params')) {
-      params = commons.mapMap<core.String, core.String>(
-          (_json['params'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      params =
+          (_json['params'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
       payload = _json['payload'] as core.bool;
@@ -6843,10 +6849,14 @@ class Notification {
 
   Notification.fromJson(core.Map _json) {
     if (_json.containsKey('custom_attributes')) {
-      customAttributes = commons.mapMap<core.String, core.String>(
-          (_json['custom_attributes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      customAttributes = (_json['custom_attributes'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('etag')) {
       etag = _json['etag'] as core.String;
@@ -7206,10 +7216,13 @@ class Object {
       mediaLink = _json['mediaLink'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.String, core.String>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('metageneration')) {
       metageneration = _json['metageneration'] as core.String;

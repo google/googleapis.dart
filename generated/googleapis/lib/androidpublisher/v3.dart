@@ -5696,21 +5696,25 @@ class InAppProduct {
       gracePeriod = _json['gracePeriod'] as core.String;
     }
     if (_json.containsKey('listings')) {
-      listings = commons.mapMap<core.Map, InAppProductListing>(
-          (_json['listings'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InAppProductListing.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      listings =
+          (_json['listings'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  InAppProductListing.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('packageName')) {
       packageName = _json['packageName'] as core.String;
     }
     if (_json.containsKey('prices')) {
-      prices = commons.mapMap<core.Map, Price>(
-          (_json['prices'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Price.fromJson(item as core.Map<core.String, core.dynamic>));
+      prices = (_json['prices'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              Price.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('purchaseType')) {
       purchaseType = _json['purchaseType'] as core.String;
@@ -5741,17 +5745,15 @@ class InAppProduct {
       _json['gracePeriod'] = gracePeriod;
     }
     if (listings != null) {
-      _json['listings'] = commons
-          .mapMap<InAppProductListing, core.Map<core.String, core.Object>>(
-              listings, (InAppProductListing item) => item.toJson());
+      _json['listings'] =
+          listings.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (packageName != null) {
       _json['packageName'] = packageName;
     }
     if (prices != null) {
       _json['prices'] =
-          commons.mapMap<Price, core.Map<core.String, core.Object>>(
-              prices, (Price item) => item.toJson());
+          prices.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (purchaseType != null) {
       _json['purchaseType'] = purchaseType;

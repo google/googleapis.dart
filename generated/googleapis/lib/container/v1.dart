@@ -5714,10 +5714,14 @@ class Cluster {
           _json['releaseChannel'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = commons.mapMap<core.String, core.String>(
-          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      resourceLabels = (_json['resourceLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('resourceUsageExportConfig')) {
       resourceUsageExportConfig = ResourceUsageExportConfig.fromJson(
@@ -7399,12 +7403,14 @@ class MaintenanceWindow {
               as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('maintenanceExclusions')) {
-      maintenanceExclusions = commons.mapMap<core.Map, TimeWindow>(
-          (_json['maintenanceExclusions']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>));
+      maintenanceExclusions = (_json['maintenanceExclusions'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              TimeWindow.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('recurringWindow')) {
       recurringWindow = RecurringTimeWindow.fromJson(
@@ -7418,9 +7424,8 @@ class MaintenanceWindow {
       _json['dailyMaintenanceWindow'] = dailyMaintenanceWindow.toJson();
     }
     if (maintenanceExclusions != null) {
-      _json['maintenanceExclusions'] =
-          commons.mapMap<TimeWindow, core.Map<core.String, core.Object>>(
-              maintenanceExclusions, (TimeWindow item) => item.toJson());
+      _json['maintenanceExclusions'] = maintenanceExclusions
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (recurringWindow != null) {
       _json['recurringWindow'] = recurringWindow.toJson();
@@ -7894,10 +7899,13 @@ class NodeConfig {
       imageType = _json['imageType'] as core.String;
     }
     if (_json.containsKey('labels')) {
-      labels = commons.mapMap<core.String, core.String>(
-          (_json['labels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      labels =
+          (_json['labels'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('localSsdCount')) {
       localSsdCount = _json['localSsdCount'] as core.int;
@@ -7906,10 +7914,13 @@ class NodeConfig {
       machineType = _json['machineType'] as core.String;
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.String, core.String>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('minCpuPlatform')) {
       minCpuPlatform = _json['minCpuPlatform'] as core.String;
@@ -9279,10 +9290,14 @@ class SetLabelsRequest {
       projectId = _json['projectId'] as core.String;
     }
     if (_json.containsKey('resourceLabels')) {
-      resourceLabels = commons.mapMap<core.String, core.String>(
-          (_json['resourceLabels'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      resourceLabels = (_json['resourceLabels'] as core.Map)
+          .cast<core.String, core.String>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('zone')) {
       zone = _json['zone'] as core.String;

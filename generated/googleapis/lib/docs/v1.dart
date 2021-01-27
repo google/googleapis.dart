@@ -307,12 +307,16 @@ class AutoText {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -332,10 +336,8 @@ class AutoText {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -646,12 +648,16 @@ class ColumnBreak {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -668,10 +674,8 @@ class ColumnBreak {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -1490,78 +1494,103 @@ class Document {
           _json['documentStyle'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('footers')) {
-      footers = commons.mapMap<core.Map, Footer>(
-          (_json['footers'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Footer.fromJson(item as core.Map<core.String, core.dynamic>));
+      footers =
+          (_json['footers'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Footer.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('footnotes')) {
-      footnotes = commons.mapMap<core.Map, Footnote>(
-          (_json['footnotes'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Footnote.fromJson(item as core.Map<core.String, core.dynamic>));
+      footnotes = (_json['footnotes'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              Footnote.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('headers')) {
-      headers = commons.mapMap<core.Map, Header>(
-          (_json['headers'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              Header.fromJson(item as core.Map<core.String, core.dynamic>));
+      headers =
+          (_json['headers'] as core.Map).cast<core.String, core.Map>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  Header.fromJson(item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('inlineObjects')) {
-      inlineObjects = commons.mapMap<core.Map, InlineObject>(
-          (_json['inlineObjects'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => InlineObject.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      inlineObjects = (_json['inlineObjects'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              InlineObject.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('lists')) {
-      lists = commons.mapMap<core.Map, List>(
-          (_json['lists'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) =>
-              List.fromJson(item as core.Map<core.String, core.dynamic>));
+      lists = (_json['lists'] as core.Map).cast<core.String, core.Map>().map(
+            (key, item) => core.MapEntry(
+              key,
+              List.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('namedRanges')) {
-      namedRanges = commons.mapMap<core.Map, NamedRanges>(
-          (_json['namedRanges'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => NamedRanges.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      namedRanges = (_json['namedRanges'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              NamedRanges.fromJson(item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('namedStyles')) {
       namedStyles = NamedStyles.fromJson(
           _json['namedStyles'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('positionedObjects')) {
-      positionedObjects = commons.mapMap<core.Map, PositionedObject>(
-          (_json['positionedObjects'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PositionedObject.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      positionedObjects = (_json['positionedObjects'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              PositionedObject.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('revisionId')) {
       revisionId = _json['revisionId'] as core.String;
     }
     if (_json.containsKey('suggestedDocumentStyleChanges')) {
       suggestedDocumentStyleChanges =
-          commons.mapMap<core.Map, SuggestedDocumentStyle>(
-              (_json['suggestedDocumentStyleChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedDocumentStyle.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedDocumentStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedDocumentStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('suggestedNamedStylesChanges')) {
       suggestedNamedStylesChanges =
-          commons.mapMap<core.Map, SuggestedNamedStyles>(
-              (_json['suggestedNamedStylesChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedNamedStyles.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedNamedStylesChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedNamedStyles.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('suggestionsViewMode')) {
       suggestionsViewMode = _json['suggestionsViewMode'] as core.String;
@@ -1584,55 +1613,45 @@ class Document {
     }
     if (footers != null) {
       _json['footers'] =
-          commons.mapMap<Footer, core.Map<core.String, core.Object>>(
-              footers, (Footer item) => item.toJson());
+          footers.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (footnotes != null) {
       _json['footnotes'] =
-          commons.mapMap<Footnote, core.Map<core.String, core.Object>>(
-              footnotes, (Footnote item) => item.toJson());
+          footnotes.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (headers != null) {
       _json['headers'] =
-          commons.mapMap<Header, core.Map<core.String, core.Object>>(
-              headers, (Header item) => item.toJson());
+          headers.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (inlineObjects != null) {
       _json['inlineObjects'] =
-          commons.mapMap<InlineObject, core.Map<core.String, core.Object>>(
-              inlineObjects, (InlineObject item) => item.toJson());
+          inlineObjects.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (lists != null) {
-      _json['lists'] = commons.mapMap<List, core.Map<core.String, core.Object>>(
-          lists, (List item) => item.toJson());
+      _json['lists'] =
+          lists.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (namedRanges != null) {
       _json['namedRanges'] =
-          commons.mapMap<NamedRanges, core.Map<core.String, core.Object>>(
-              namedRanges, (NamedRanges item) => item.toJson());
+          namedRanges.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (namedStyles != null) {
       _json['namedStyles'] = namedStyles.toJson();
     }
     if (positionedObjects != null) {
-      _json['positionedObjects'] =
-          commons.mapMap<PositionedObject, core.Map<core.String, core.Object>>(
-              positionedObjects, (PositionedObject item) => item.toJson());
+      _json['positionedObjects'] = positionedObjects
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (revisionId != null) {
       _json['revisionId'] = revisionId;
     }
     if (suggestedDocumentStyleChanges != null) {
-      _json['suggestedDocumentStyleChanges'] = commons
-          .mapMap<SuggestedDocumentStyle, core.Map<core.String, core.Object>>(
-              suggestedDocumentStyleChanges,
-              (SuggestedDocumentStyle item) => item.toJson());
+      _json['suggestedDocumentStyleChanges'] = suggestedDocumentStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (suggestedNamedStylesChanges != null) {
-      _json['suggestedNamedStylesChanges'] = commons
-          .mapMap<SuggestedNamedStyles, core.Map<core.String, core.Object>>(
-              suggestedNamedStylesChanges,
-              (SuggestedNamedStyles item) => item.toJson());
+      _json['suggestedNamedStylesChanges'] = suggestedNamedStylesChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (suggestionsViewMode != null) {
       _json['suggestionsViewMode'] = suggestionsViewMode;
@@ -2640,12 +2659,16 @@ class FootnoteReference {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -2668,10 +2691,8 @@ class FootnoteReference {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -2750,12 +2771,16 @@ class HorizontalRule {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -2772,10 +2797,8 @@ class HorizontalRule {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -2990,12 +3013,15 @@ class InlineObject {
     }
     if (_json.containsKey('suggestedInlineObjectPropertiesChanges')) {
       suggestedInlineObjectPropertiesChanges =
-          commons.mapMap<core.Map, SuggestedInlineObjectProperties>(
-              (_json['suggestedInlineObjectPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedInlineObjectProperties.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedInlineObjectPropertiesChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedInlineObjectProperties.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('suggestedInsertionId')) {
       suggestedInsertionId = _json['suggestedInsertionId'] as core.String;
@@ -3014,11 +3040,9 @@ class InlineObject {
       _json['suggestedDeletionIds'] = suggestedDeletionIds;
     }
     if (suggestedInlineObjectPropertiesChanges != null) {
-      _json['suggestedInlineObjectPropertiesChanges'] = commons.mapMap<
-              SuggestedInlineObjectProperties,
-              core.Map<core.String, core.Object>>(
-          suggestedInlineObjectPropertiesChanges,
-          (SuggestedInlineObjectProperties item) => item.toJson());
+      _json['suggestedInlineObjectPropertiesChanges'] =
+          suggestedInlineObjectPropertiesChanges
+              .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (suggestedInsertionId != null) {
       _json['suggestedInsertionId'] = suggestedInsertionId;
@@ -3068,12 +3092,16 @@ class InlineObjectElement {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -3093,10 +3121,8 @@ class InlineObjectElement {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -3680,12 +3706,15 @@ class List {
     }
     if (_json.containsKey('suggestedListPropertiesChanges')) {
       suggestedListPropertiesChanges =
-          commons.mapMap<core.Map, SuggestedListProperties>(
-              (_json['suggestedListPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedListProperties.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedListPropertiesChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedListProperties.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
@@ -3701,10 +3730,8 @@ class List {
       _json['suggestedInsertionId'] = suggestedInsertionId;
     }
     if (suggestedListPropertiesChanges != null) {
-      _json['suggestedListPropertiesChanges'] = commons
-          .mapMap<SuggestedListProperties, core.Map<core.String, core.Object>>(
-              suggestedListPropertiesChanges,
-              (SuggestedListProperties item) => item.toJson());
+      _json['suggestedListPropertiesChanges'] = suggestedListPropertiesChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -4411,12 +4438,16 @@ class PageBreak {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -4433,10 +4464,8 @@ class PageBreak {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();
@@ -4495,29 +4524,39 @@ class Paragraph {
           .toList();
     }
     if (_json.containsKey('suggestedBulletChanges')) {
-      suggestedBulletChanges = commons.mapMap<core.Map, SuggestedBullet>(
-          (_json['suggestedBulletChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedBullet.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedBulletChanges = (_json['suggestedBulletChanges'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              SuggestedBullet.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('suggestedParagraphStyleChanges')) {
       suggestedParagraphStyleChanges =
-          commons.mapMap<core.Map, SuggestedParagraphStyle>(
-              (_json['suggestedParagraphStyleChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedParagraphStyle.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedParagraphStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedParagraphStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('suggestedPositionedObjectIds')) {
-      suggestedPositionedObjectIds = commons.mapMap<core.Map, ObjectReferences>(
-          (_json['suggestedPositionedObjectIds']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => ObjectReferences.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedPositionedObjectIds =
+          (_json['suggestedPositionedObjectIds'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  ObjectReferences.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
@@ -4536,21 +4575,16 @@ class Paragraph {
       _json['positionedObjectIds'] = positionedObjectIds;
     }
     if (suggestedBulletChanges != null) {
-      _json['suggestedBulletChanges'] =
-          commons.mapMap<SuggestedBullet, core.Map<core.String, core.Object>>(
-              suggestedBulletChanges, (SuggestedBullet item) => item.toJson());
+      _json['suggestedBulletChanges'] = suggestedBulletChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (suggestedParagraphStyleChanges != null) {
-      _json['suggestedParagraphStyleChanges'] = commons
-          .mapMap<SuggestedParagraphStyle, core.Map<core.String, core.Object>>(
-              suggestedParagraphStyleChanges,
-              (SuggestedParagraphStyle item) => item.toJson());
+      _json['suggestedParagraphStyleChanges'] = suggestedParagraphStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (suggestedPositionedObjectIds != null) {
-      _json['suggestedPositionedObjectIds'] =
-          commons.mapMap<ObjectReferences, core.Map<core.String, core.Object>>(
-              suggestedPositionedObjectIds,
-              (ObjectReferences item) => item.toJson());
+      _json['suggestedPositionedObjectIds'] = suggestedPositionedObjectIds
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -5265,12 +5299,15 @@ class PositionedObject {
     }
     if (_json.containsKey('suggestedPositionedObjectPropertiesChanges')) {
       suggestedPositionedObjectPropertiesChanges =
-          commons.mapMap<core.Map, SuggestedPositionedObjectProperties>(
-              (_json['suggestedPositionedObjectPropertiesChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedPositionedObjectProperties.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedPositionedObjectPropertiesChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedPositionedObjectProperties.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
   }
 
@@ -5289,11 +5326,9 @@ class PositionedObject {
       _json['suggestedInsertionId'] = suggestedInsertionId;
     }
     if (suggestedPositionedObjectPropertiesChanges != null) {
-      _json['suggestedPositionedObjectPropertiesChanges'] = commons.mapMap<
-              SuggestedPositionedObjectProperties,
-              core.Map<core.String, core.Object>>(
-          suggestedPositionedObjectPropertiesChanges,
-          (SuggestedPositionedObjectProperties item) => item.toJson());
+      _json['suggestedPositionedObjectPropertiesChanges'] =
+          suggestedPositionedObjectPropertiesChanges
+              .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -7335,12 +7370,15 @@ class TableCell {
     }
     if (_json.containsKey('suggestedTableCellStyleChanges')) {
       suggestedTableCellStyleChanges =
-          commons.mapMap<core.Map, SuggestedTableCellStyle>(
-              (_json['suggestedTableCellStyleChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedTableCellStyle.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedTableCellStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTableCellStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('tableCellStyle')) {
       tableCellStyle = TableCellStyle.fromJson(
@@ -7366,10 +7404,8 @@ class TableCell {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTableCellStyleChanges != null) {
-      _json['suggestedTableCellStyleChanges'] = commons
-          .mapMap<SuggestedTableCellStyle, core.Map<core.String, core.Object>>(
-              suggestedTableCellStyleChanges,
-              (SuggestedTableCellStyle item) => item.toJson());
+      _json['suggestedTableCellStyleChanges'] = suggestedTableCellStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (tableCellStyle != null) {
       _json['tableCellStyle'] = tableCellStyle.toJson();
@@ -7926,12 +7962,15 @@ class TableRow {
     }
     if (_json.containsKey('suggestedTableRowStyleChanges')) {
       suggestedTableRowStyleChanges =
-          commons.mapMap<core.Map, SuggestedTableRowStyle>(
-              (_json['suggestedTableRowStyleChanges']
-                      as core.Map<core.String, core.dynamic>)
-                  .cast<core.String, core.Map>(),
-              (core.Map item) => SuggestedTableRowStyle.fromJson(
-                  item as core.Map<core.String, core.dynamic>));
+          (_json['suggestedTableRowStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTableRowStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('tableCells')) {
       tableCells = (_json['tableCells'] as core.List)
@@ -7960,10 +7999,8 @@ class TableRow {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTableRowStyleChanges != null) {
-      _json['suggestedTableRowStyleChanges'] = commons
-          .mapMap<SuggestedTableRowStyle, core.Map<core.String, core.Object>>(
-              suggestedTableRowStyleChanges,
-              (SuggestedTableRowStyle item) => item.toJson());
+      _json['suggestedTableRowStyleChanges'] = suggestedTableRowStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (tableCells != null) {
       _json['tableCells'] = tableCells.map((value) => value.toJson()).toList();
@@ -8091,12 +8128,16 @@ class TextRun {
           .toList();
     }
     if (_json.containsKey('suggestedTextStyleChanges')) {
-      suggestedTextStyleChanges = commons.mapMap<core.Map, SuggestedTextStyle>(
-          (_json['suggestedTextStyleChanges']
-                  as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => SuggestedTextStyle.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      suggestedTextStyleChanges =
+          (_json['suggestedTextStyleChanges'] as core.Map)
+              .cast<core.String, core.Map>()
+              .map(
+                (key, item) => core.MapEntry(
+                  key,
+                  SuggestedTextStyle.fromJson(
+                      item as core.Map<core.String, core.dynamic>),
+                ),
+              );
     }
     if (_json.containsKey('textStyle')) {
       textStyle = TextStyle.fromJson(
@@ -8116,10 +8157,8 @@ class TextRun {
       _json['suggestedInsertionIds'] = suggestedInsertionIds;
     }
     if (suggestedTextStyleChanges != null) {
-      _json['suggestedTextStyleChanges'] = commons
-          .mapMap<SuggestedTextStyle, core.Map<core.String, core.Object>>(
-              suggestedTextStyleChanges,
-              (SuggestedTextStyle item) => item.toJson());
+      _json['suggestedTextStyleChanges'] = suggestedTextStyleChanges
+          .map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (textStyle != null) {
       _json['textStyle'] = textStyle.toJson();

@@ -1119,19 +1119,25 @@ class Operation {
           _json['error'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('metadata')) {
-      metadata = commons.mapMap<core.Object, core.Object>(
-          (_json['metadata'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      metadata =
+          (_json['metadata'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
     if (_json.containsKey('name')) {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('response')) {
-      response = commons.mapMap<core.Object, core.Object>(
-          (_json['response'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      response =
+          (_json['response'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -1294,11 +1300,15 @@ class ProjectConfig {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pubsubConfigs')) {
-      pubsubConfigs = commons.mapMap<core.Map, PubsubConfig>(
-          (_json['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PubsubConfig.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      pubsubConfigs = (_json['pubsubConfigs'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              PubsubConfig.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
   }
 
@@ -1312,8 +1322,7 @@ class ProjectConfig {
     }
     if (pubsubConfigs != null) {
       _json['pubsubConfigs'] =
-          commons.mapMap<PubsubConfig, core.Map<core.String, core.Object>>(
-              pubsubConfigs, (PubsubConfig item) => item.toJson());
+          pubsubConfigs.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     return _json;
   }
@@ -1402,11 +1411,15 @@ class Repo {
       name = _json['name'] as core.String;
     }
     if (_json.containsKey('pubsubConfigs')) {
-      pubsubConfigs = commons.mapMap<core.Map, PubsubConfig>(
-          (_json['pubsubConfigs'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Map>(),
-          (core.Map item) => PubsubConfig.fromJson(
-              item as core.Map<core.String, core.dynamic>));
+      pubsubConfigs = (_json['pubsubConfigs'] as core.Map)
+          .cast<core.String, core.Map>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              PubsubConfig.fromJson(
+                  item as core.Map<core.String, core.dynamic>),
+            ),
+          );
     }
     if (_json.containsKey('size')) {
       size = _json['size'] as core.String;
@@ -1426,8 +1439,7 @@ class Repo {
     }
     if (pubsubConfigs != null) {
       _json['pubsubConfigs'] =
-          commons.mapMap<PubsubConfig, core.Map<core.String, core.Object>>(
-              pubsubConfigs, (PubsubConfig item) => item.toJson());
+          pubsubConfigs.map((key, item) => core.MapEntry(key, item.toJson()));
     }
     if (size != null) {
       _json['size'] = size;
@@ -1507,10 +1519,12 @@ class Status {
     if (_json.containsKey('details')) {
       details = (_json['details'] as core.List)
           .map<core.Map<core.String, core.Object>>((value) =>
-              commons.mapMap<core.Object, core.Object>(
-                  (value as core.Map<core.String, core.dynamic>)
-                      .cast<core.String, core.Object>(),
-                  (core.Object item) => item as core.Object))
+              (value as core.Map).cast<core.String, core.Object>().map(
+                    (key, item) => core.MapEntry(
+                      key,
+                      item as core.Object,
+                    ),
+                  ))
           .toList();
     }
     if (_json.containsKey('message')) {

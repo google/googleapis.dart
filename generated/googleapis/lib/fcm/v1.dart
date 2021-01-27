@@ -194,10 +194,12 @@ class AndroidConfig {
       collapseKey = _json['collapseKey'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = commons.mapMap<core.String, core.String>(
-          (_json['data'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('directBootOk')) {
       directBootOk = _json['directBootOk'] as core.bool;
@@ -652,16 +654,22 @@ class ApnsConfig {
           _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
-      headers = commons.mapMap<core.String, core.String>(
-          (_json['headers'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      headers =
+          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('payload')) {
-      payload = commons.mapMap<core.Object, core.Object>(
-          (_json['payload'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      payload =
+          (_json['payload'] as core.Map).cast<core.String, core.Object>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.Object,
+                ),
+              );
     }
   }
 
@@ -940,10 +948,12 @@ class Message {
       condition = _json['condition'] as core.String;
     }
     if (_json.containsKey('data')) {
-      data = commons.mapMap<core.String, core.String>(
-          (_json['data'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fcmOptions')) {
       fcmOptions = FcmOptions.fromJson(
@@ -1110,26 +1120,35 @@ class WebpushConfig {
 
   WebpushConfig.fromJson(core.Map _json) {
     if (_json.containsKey('data')) {
-      data = commons.mapMap<core.String, core.String>(
-          (_json['data'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      data = (_json['data'] as core.Map).cast<core.String, core.String>().map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.String,
+            ),
+          );
     }
     if (_json.containsKey('fcmOptions')) {
       fcmOptions = WebpushFcmOptions.fromJson(
           _json['fcmOptions'] as core.Map<core.String, core.dynamic>);
     }
     if (_json.containsKey('headers')) {
-      headers = commons.mapMap<core.String, core.String>(
-          (_json['headers'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.String>(),
-          (core.String item) => item as core.String);
+      headers =
+          (_json['headers'] as core.Map).cast<core.String, core.String>().map(
+                (key, item) => core.MapEntry(
+                  key,
+                  item as core.String,
+                ),
+              );
     }
     if (_json.containsKey('notification')) {
-      notification = commons.mapMap<core.Object, core.Object>(
-          (_json['notification'] as core.Map<core.String, core.dynamic>)
-              .cast<core.String, core.Object>(),
-          (core.Object item) => item as core.Object);
+      notification = (_json['notification'] as core.Map)
+          .cast<core.String, core.Object>()
+          .map(
+            (key, item) => core.MapEntry(
+              key,
+              item as core.Object,
+            ),
+          );
     }
   }
 
