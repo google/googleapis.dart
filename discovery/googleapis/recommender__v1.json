@@ -25,38 +25,16 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
-            "location": "query",
-            "type": "string"
-        },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "callback": {
-            "description": "JSONP",
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
             "location": "query",
             "type": "string"
         },
@@ -81,16 +59,23 @@
             "location": "query",
             "type": "string"
         },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
+        "callback": {
+            "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
+            "location": "query",
+            "type": "string"
+        },
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+            "location": "query",
+            "type": "string"
+        },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
             "location": "query",
             "type": "string"
         },
@@ -99,6 +84,21 @@
             "description": "Returns response with indentations and line breaks.",
             "location": "query",
             "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
+            "location": "query",
+            "type": "string"
         }
     },
     "protocol": "rest",
@@ -111,6 +111,30 @@
                             "resources": {
                                 "insights": {
                                     "methods": {
+                                        "get": {
+                                            "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
+                                            "httpMethod": "GET",
+                                            "id": "recommender.projects.locations.insightTypes.insights.get",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Name of the insight.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}",
+                                            "response": {
+                                                "$ref": "GoogleCloudRecommenderV1Insight"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
+                                        },
                                         "list": {
                                             "description": "Lists insights for a Cloud project. Requires the recommender.*.list IAM permission for the specified insight type.",
                                             "httpMethod": "GET",
@@ -124,13 +148,6 @@
                                                     "location": "query",
                                                     "type": "string"
                                                 },
-                                                "parent": {
-                                                    "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                },
                                                 "pageSize": {
                                                     "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
                                                     "format": "int32",
@@ -140,6 +157,13 @@
                                                 "pageToken": {
                                                     "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
                                                     "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ INSIGHT_TYPE_ID refers to supported insight types: https://cloud.google.com/recommender/docs/insights/insight-types.)",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+$",
+                                                    "required": true,
                                                     "type": "string"
                                                 }
                                             },
@@ -171,30 +195,6 @@
                                             "request": {
                                                 "$ref": "GoogleCloudRecommenderV1MarkInsightAcceptedRequest"
                                             },
-                                            "response": {
-                                                "$ref": "GoogleCloudRecommenderV1Insight"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
-                                        },
-                                        "get": {
-                                            "description": "Gets the requested insight. Requires the recommender.*.get IAM permission for the specified insight type.",
-                                            "httpMethod": "GET",
-                                            "id": "recommender.projects.locations.insightTypes.insights.get",
-                                            "parameterOrder": [
-                                                "name"
-                                            ],
-                                            "parameters": {
-                                                "name": {
-                                                    "description": "Required. Name of the insight.",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/locations/[^/]+/insightTypes/[^/]+/insights/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "GoogleCloudRecommenderV1Insight"
                                             },
@@ -234,28 +234,41 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
-                                        "markSucceeded": {
-                                            "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
-                                            "httpMethod": "POST",
-                                            "id": "recommender.projects.locations.recommenders.recommendations.markSucceeded",
+                                        "list": {
+                                            "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
+                                            "httpMethod": "GET",
+                                            "id": "recommender.projects.locations.recommenders.recommendations.list",
                                             "parameterOrder": [
-                                                "name"
+                                                "parent"
                                             ],
                                             "parameters": {
-                                                "name": {
-                                                    "description": "Required. Name of the recommendation.",
+                                                "filter": {
+                                                    "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "pageSize": {
+                                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
+                                                    "format": "int32",
+                                                    "location": "query",
+                                                    "type": "integer"
+                                                },
+                                                "pageToken": {
+                                                    "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
+                                                    "location": "query",
+                                                    "type": "string"
+                                                },
+                                                "parent": {
+                                                    "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
                                                     "location": "path",
-                                                    "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$",
                                                     "required": true,
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1/{+name}:markSucceeded",
-                                            "request": {
-                                                "$ref": "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest"
-                                            },
+                                            "path": "v1/{+parent}/recommendations",
                                             "response": {
-                                                "$ref": "GoogleCloudRecommenderV1Recommendation"
+                                                "$ref": "GoogleCloudRecommenderV1ListRecommendationsResponse"
                                             },
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
@@ -288,46 +301,6 @@
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
                                         },
-                                        "list": {
-                                            "description": "Lists recommendations for a Cloud project. Requires the recommender.*.list IAM permission for the specified recommender.",
-                                            "httpMethod": "GET",
-                                            "id": "recommender.projects.locations.recommenders.recommendations.list",
-                                            "parameterOrder": [
-                                                "parent"
-                                            ],
-                                            "parameters": {
-                                                "filter": {
-                                                    "description": "Filter expression to restrict the recommendations returned. Supported filter fields: state_info.state Eg: `state_info.state:\"DISMISSED\" or state_info.state:\"FAILED\"",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageToken": {
-                                                    "description": "Optional. If present, retrieves the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters must be identical to those in the previous call.",
-                                                    "location": "query",
-                                                    "type": "string"
-                                                },
-                                                "pageSize": {
-                                                    "description": "Optional. The maximum number of results to return from this request. Non-positive values are ignored. If not specified, the server will determine the number of results to return.",
-                                                    "format": "int32",
-                                                    "location": "query",
-                                                    "type": "integer"
-                                                },
-                                                "parent": {
-                                                    "description": "Required. The container resource on which to execute the request. Acceptable formats: 1. \"projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]\", LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ RECOMMENDER_ID refers to supported recommenders: https://cloud.google.com/recommender/docs/recommenders.",
-                                                    "location": "path",
-                                                    "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+$",
-                                                    "required": true,
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "path": "v1/{+parent}/recommendations",
-                                            "response": {
-                                                "$ref": "GoogleCloudRecommenderV1ListRecommendationsResponse"
-                                            },
-                                            "scopes": [
-                                                "https://www.googleapis.com/auth/cloud-platform"
-                                            ]
-                                        },
                                         "markFailed": {
                                             "description": "Marks the Recommendation State as Failed. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation failed. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationFailed can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
                                             "httpMethod": "POST",
@@ -354,6 +327,33 @@
                                             "scopes": [
                                                 "https://www.googleapis.com/auth/cloud-platform"
                                             ]
+                                        },
+                                        "markSucceeded": {
+                                            "description": "Marks the Recommendation State as Succeeded. Users can use this method to indicate to the Recommender API that they have applied the recommendation themselves, and the operation was successful. This stops the recommendation content from being updated. Associated insights are frozen and placed in the ACCEPTED state. MarkRecommendationSucceeded can be applied to recommendations in ACTIVE, CLAIMED, SUCCEEDED, or FAILED state. Requires the recommender.*.update IAM permission for the specified recommender.",
+                                            "httpMethod": "POST",
+                                            "id": "recommender.projects.locations.recommenders.recommendations.markSucceeded",
+                                            "parameterOrder": [
+                                                "name"
+                                            ],
+                                            "parameters": {
+                                                "name": {
+                                                    "description": "Required. Name of the recommendation.",
+                                                    "location": "path",
+                                                    "pattern": "^projects/[^/]+/locations/[^/]+/recommenders/[^/]+/recommendations/[^/]+$",
+                                                    "required": true,
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "path": "v1/{+name}:markSucceeded",
+                                            "request": {
+                                                "$ref": "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest"
+                                            },
+                                            "response": {
+                                                "$ref": "GoogleCloudRecommenderV1Recommendation"
+                                            },
+                                            "scopes": [
+                                                "https://www.googleapis.com/auth/cloud-platform"
+                                            ]
                                         }
                                     }
                                 }
@@ -367,52 +367,18 @@
     "revision": "20201003",
     "rootUrl": "https://recommender.googleapis.com/",
     "schemas": {
-        "GoogleCloudRecommenderV1InsightRecommendationReference": {
-            "description": "Reference to an associated recommendation.",
-            "id": "GoogleCloudRecommenderV1InsightRecommendationReference",
+        "GoogleCloudRecommenderV1CostProjection": {
+            "description": "Contains metadata about how much money a recommendation can save or incur.",
+            "id": "GoogleCloudRecommenderV1CostProjection",
             "properties": {
-                "recommendation": {
-                    "description": "Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleTypeMoney": {
-            "description": "Represents an amount of money with its currency type.",
-            "id": "GoogleTypeMoney",
-            "properties": {
-                "units": {
-                    "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
-                    "format": "int64",
-                    "type": "string"
+                "cost": {
+                    "$ref": "GoogleTypeMoney",
+                    "description": "An approximate projection on amount saved or amount incurred. Negative cost units indicate cost savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative units."
                 },
-                "currencyCode": {
-                    "description": "The 3-letter currency code defined in ISO 4217.",
+                "duration": {
+                    "description": "Duration for which this cost applies.",
+                    "format": "google-duration",
                     "type": "string"
-                },
-                "nanos": {
-                    "description": "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
-                    "format": "int32",
-                    "type": "integer"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1ListInsightsResponse": {
-            "description": "Response to the `ListInsights` method.",
-            "id": "GoogleCloudRecommenderV1ListInsightsResponse",
-            "properties": {
-                "nextPageToken": {
-                    "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
-                    "type": "string"
-                },
-                "insights": {
-                    "description": "The set of insights for the `parent` resource.",
-                    "items": {
-                        "$ref": "GoogleCloudRecommenderV1Insight"
-                    },
-                    "type": "array"
                 }
             },
             "type": "object"
@@ -446,120 +412,90 @@
             },
             "type": "object"
         },
-        "GoogleCloudRecommenderV1RecommendationStateInfo": {
-            "description": "Information for state. Contains state and metadata.",
-            "id": "GoogleCloudRecommenderV1RecommendationStateInfo",
+        "GoogleCloudRecommenderV1Insight": {
+            "description": "An insight along with the information used to derive the insight. The insight may have associated recomendations as well.",
+            "id": "GoogleCloudRecommenderV1Insight",
             "properties": {
-                "stateMetadata": {
-                    "additionalProperties": {
-                        "type": "string"
+                "associatedRecommendations": {
+                    "description": "Recommendations derived from this insight.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1InsightRecommendationReference"
                     },
-                    "description": "A map of metadata for the state, provided by user or automations systems.",
-                    "type": "object"
+                    "type": "array"
                 },
-                "state": {
-                    "description": "The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.",
+                "category": {
+                    "description": "Category being targeted by the insight.",
                     "enum": [
-                        "STATE_UNSPECIFIED",
-                        "ACTIVE",
-                        "CLAIMED",
-                        "SUCCEEDED",
-                        "FAILED",
-                        "DISMISSED"
+                        "CATEGORY_UNSPECIFIED",
+                        "COST",
+                        "SECURITY",
+                        "PERFORMANCE",
+                        "MANAGEABILITY"
                     ],
                     "enumDescriptions": [
-                        "Default state. Don't use directly.",
-                        "Recommendation is active and can be applied. Recommendations content can be updated by Google. ACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-                        "Recommendation is in claimed state. Recommendations content is immutable and cannot be updated by Google. CLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
-                        "Recommendation is in succeeded state. Recommendations content is immutable and cannot be updated by Google. SUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
-                        "Recommendation is in failed state. Recommendations content is immutable and cannot be updated by Google. FAILED recommendations can be marked as SUCCEEDED, or FAILED.",
-                        "Recommendation is in dismissed state. Recommendation content can be updated by Google. DISMISSED recommendations can be marked as ACTIVE."
+                        "Unspecified category.",
+                        "The insight is related to cost.",
+                        "The insight is related to security.",
+                        "The insight is related to performance.",
+                        "This insight is related to manageability."
                     ],
                     "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1OperationGroup": {
-            "description": "Group of operations that need to be performed atomically.",
-            "id": "GoogleCloudRecommenderV1OperationGroup",
-            "properties": {
-                "operations": {
-                    "description": "List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear.",
-                    "items": {
-                        "$ref": "GoogleCloudRecommenderV1Operation"
+                },
+                "content": {
+                    "additionalProperties": {
+                        "description": "Properties of the object.",
+                        "type": "any"
                     },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1CostProjection": {
-            "description": "Contains metadata about how much money a recommendation can save or incur.",
-            "id": "GoogleCloudRecommenderV1CostProjection",
-            "properties": {
-                "cost": {
-                    "$ref": "GoogleTypeMoney",
-                    "description": "An approximate projection on amount saved or amount incurred. Negative cost units indicate cost savings and positive cost units indicate increase. See google.type.Money documentation for positive/negative units."
-                },
-                "duration": {
-                    "description": "Duration for which this cost applies.",
-                    "format": "google-duration",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1Recommendation": {
-            "description": "A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized VM, IAM role recommendations, etc",
-            "id": "GoogleCloudRecommenderV1Recommendation",
-            "properties": {
-                "primaryImpact": {
-                    "$ref": "GoogleCloudRecommenderV1Impact",
-                    "description": "The primary impact that this recommendation can have while trying to optimize for one category."
-                },
-                "etag": {
-                    "description": "Fingerprint of the Recommendation. Provides optimistic locking when updating states.",
-                    "type": "string"
-                },
-                "stateInfo": {
-                    "$ref": "GoogleCloudRecommenderV1RecommendationStateInfo",
-                    "description": "Information for state. Contains state and metadata."
-                },
-                "associatedInsights": {
-                    "description": "Insights that led to this recommendation.",
-                    "items": {
-                        "$ref": "GoogleCloudRecommenderV1RecommendationInsightReference"
-                    },
-                    "type": "array"
-                },
-                "name": {
-                    "description": "Name of recommendation.",
-                    "type": "string"
+                    "description": "A struct of custom fields to explain the insight. Example: \"grantedPermissionsCount\": \"1000\"",
+                    "type": "object"
                 },
                 "description": {
                     "description": "Free-form human readable summary in English. The maximum length is 500 characters.",
                     "type": "string"
                 },
-                "recommenderSubtype": {
-                    "description": "Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype is a function of content and impact, meaning a new subtype might be added when significant changes to `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of subtypes for a given Recommender. Examples: For recommender = \"google.iam.policy.Recommender\", recommender_subtype can be one of \"REMOVE_ROLE\"/\"REPLACE_ROLE\"",
+                "etag": {
+                    "description": "Fingerprint of the Insight. Provides optimistic locking when updating states.",
+                    "type": "string"
+                },
+                "insightSubtype": {
+                    "description": "Insight subtype. Insight content schema will be stable for a given subtype.",
                     "type": "string"
                 },
                 "lastRefreshTime": {
-                    "description": "Last time this recommendation was refreshed by the system that created it in the first place.",
+                    "description": "Timestamp of the latest data used to generate the insight.",
                     "format": "google-datetime",
                     "type": "string"
                 },
-                "content": {
-                    "$ref": "GoogleCloudRecommenderV1RecommendationContent",
-                    "description": "Content of the recommendation describing recommended changes to resources."
+                "name": {
+                    "description": "Name of the insight.",
+                    "type": "string"
                 },
-                "additionalImpact": {
-                    "description": "Optional set of additional impact that this recommendation may have when trying to optimize for the primary category. These may be positive or negative.",
+                "observationPeriod": {
+                    "description": "Observation period that led to the insight. The source data used to generate the insight ends at last_refresh_time and begins at (last_refresh_time - observation_period).",
+                    "format": "google-duration",
+                    "type": "string"
+                },
+                "stateInfo": {
+                    "$ref": "GoogleCloudRecommenderV1InsightStateInfo",
+                    "description": "Information state and metadata."
+                },
+                "targetResources": {
+                    "description": "Fully qualified resource names that this insight is targeting.",
                     "items": {
-                        "$ref": "GoogleCloudRecommenderV1Impact"
+                        "type": "string"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1InsightRecommendationReference": {
+            "description": "Reference to an associated recommendation.",
+            "id": "GoogleCloudRecommenderV1InsightRecommendationReference",
+            "properties": {
+                "recommendation": {
+                    "description": "Recommendation resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/recommendations/[RECOMMENDATION_ID]",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -594,55 +530,38 @@
             },
             "type": "object"
         },
-        "GoogleCloudRecommenderV1Operation": {
-            "description": "Contains an operation for a resource loosely based on the JSON-PATCH format with support for: * Custom filters for describing partial array patch. * Extended path values for describing nested arrays. * Custom fields for describing the resource for which the operation is being described. * Allows extension to custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the original RFC.",
-            "id": "GoogleCloudRecommenderV1Operation",
+        "GoogleCloudRecommenderV1ListInsightsResponse": {
+            "description": "Response to the `ListInsights` method.",
+            "id": "GoogleCloudRecommenderV1ListInsightsResponse",
             "properties": {
-                "pathFilters": {
-                    "additionalProperties": {
-                        "type": "any"
+                "insights": {
+                    "description": "The set of insights for the `parent` resource.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1Insight"
                     },
-                    "description": "Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down to a single unique element that is being tested/modified. This is intended to be an exact match per filter. To perform advanced matching, use path_value_matchers. * Example: { \"/versions/*/name\" : \"it-123\" \"/versions/*/targetSize/percent\": 20 } * Example: { \"/bindings/*/role\": \"roles/admin\" \"/bindings/*/condition\" : null } * Example: { \"/bindings/*/role\": \"roles/admin\" \"/bindings/*/members/*\" : [\"x@google.com\", \"y@google.com\"] } When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
-                    "type": "object"
+                    "type": "array"
                 },
-                "path": {
-                    "description": "Path to the target field being operated on. If the operation is at the resource level, then path should be \"/\". This field is always populated.",
+                "nextPageToken": {
+                    "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1ListRecommendationsResponse": {
+            "description": "Response to the `ListRecommendations` method.",
+            "id": "GoogleCloudRecommenderV1ListRecommendationsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
                     "type": "string"
                 },
-                "sourceResource": {
-                    "description": "Can be set with action 'copy' to copy resource configuration across different resources of the same type. Example: A resource clone can be done via action = 'copy', path = \"/\", from = \"/\", source_resource = and resource_name = . This field is empty for all other values of `action`.",
-                    "type": "string"
-                },
-                "sourcePath": {
-                    "description": "Can be set with action 'copy' or 'move' to indicate the source field within resource or source_resource, ignored if provided for other operation types.",
-                    "type": "string"
-                },
-                "pathValueMatchers": {
-                    "additionalProperties": {
-                        "$ref": "GoogleCloudRecommenderV1ValueMatcher"
+                "recommendations": {
+                    "description": "The set of recommendations for the `parent` resource.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1Recommendation"
                     },
-                    "description": "Similar to path_filters, this contains set of filters to apply if `path` field referes to array elements. This is meant to support value matching beyond exact match. To perform exact match, use path_filters. When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
-                    "type": "object"
-                },
-                "resourceType": {
-                    "description": "Type of GCP resource being modified/tested. This field is always populated. Example: cloudresourcemanager.googleapis.com/Project, compute.googleapis.com/Instance",
-                    "type": "string"
-                },
-                "resource": {
-                    "description": "Contains the fully qualified resource name. This field is always populated. ex: //cloudresourcemanager.googleapis.com/projects/foo.",
-                    "type": "string"
-                },
-                "action": {
-                    "description": "Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and custom operations. This field is case-insensitive and always populated.",
-                    "type": "string"
-                },
-                "value": {
-                    "description": "Value for the `path` field. Will be set for actions:'add'/'replace'. Maybe set for action: 'test'. Either this or `value_matcher` will be set for 'test' operation. An exact match must be performed.",
-                    "type": "any"
-                },
-                "valueMatcher": {
-                    "$ref": "GoogleCloudRecommenderV1ValueMatcher",
-                    "description": "Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation."
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -651,41 +570,16 @@
             "description": "Request for the `MarkInsightAccepted` method.",
             "id": "GoogleCloudRecommenderV1MarkInsightAcceptedRequest",
             "properties": {
+                "etag": {
+                    "description": "Required. Fingerprint of the Insight. Provides optimistic locking.",
+                    "type": "string"
+                },
                 "stateMetadata": {
                     "additionalProperties": {
                         "type": "string"
                     },
                     "description": "Optional. State properties user wish to include with this state. Full replace of the current state_metadata.",
                     "type": "object"
-                },
-                "etag": {
-                    "description": "Required. Fingerprint of the Insight. Provides optimistic locking.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1RecommendationContent": {
-            "description": "Contains what resources are changing and how they are changing.",
-            "id": "GoogleCloudRecommenderV1RecommendationContent",
-            "properties": {
-                "operationGroups": {
-                    "description": "Operations to one or more Google Cloud resources grouped in such a way that, all operations within one group are expected to be performed atomically and in an order.",
-                    "items": {
-                        "$ref": "GoogleCloudRecommenderV1OperationGroup"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1RecommendationInsightReference": {
-            "description": "Reference to an associated insight.",
-            "id": "GoogleCloudRecommenderV1RecommendationInsightReference",
-            "properties": {
-                "insight": {
-                    "description": "Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]",
-                    "type": "string"
                 }
             },
             "type": "object"
@@ -726,79 +620,200 @@
             },
             "type": "object"
         },
-        "GoogleCloudRecommenderV1Insight": {
-            "description": "An insight along with the information used to derive the insight. The insight may have associated recomendations as well.",
-            "id": "GoogleCloudRecommenderV1Insight",
+        "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest": {
+            "description": "Request for the `MarkRecommendationSucceeded` Method.",
+            "id": "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest",
             "properties": {
-                "targetResources": {
-                    "description": "Fully qualified resource names that this insight is targeting.",
-                    "items": {
+                "etag": {
+                    "description": "Required. Fingerprint of the Recommendation. Provides optimistic locking.",
+                    "type": "string"
+                },
+                "stateMetadata": {
+                    "additionalProperties": {
                         "type": "string"
                     },
-                    "type": "array"
-                },
-                "etag": {
-                    "description": "Fingerprint of the Insight. Provides optimistic locking when updating states.",
+                    "description": "State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1Operation": {
+            "description": "Contains an operation for a resource loosely based on the JSON-PATCH format with support for: * Custom filters for describing partial array patch. * Extended path values for describing nested arrays. * Custom fields for describing the resource for which the operation is being described. * Allows extension to custom operations not natively supported by RFC6902. See https://tools.ietf.org/html/rfc6902 for details on the original RFC.",
+            "id": "GoogleCloudRecommenderV1Operation",
+            "properties": {
+                "action": {
+                    "description": "Type of this operation. Contains one of 'and', 'remove', 'replace', 'move', 'copy', 'test' and custom operations. This field is case-insensitive and always populated.",
                     "type": "string"
                 },
-                "content": {
+                "path": {
+                    "description": "Path to the target field being operated on. If the operation is at the resource level, then path should be \"/\". This field is always populated.",
+                    "type": "string"
+                },
+                "pathFilters": {
                     "additionalProperties": {
-                        "description": "Properties of the object.",
                         "type": "any"
                     },
-                    "description": "A struct of custom fields to explain the insight. Example: \"grantedPermissionsCount\": \"1000\"",
+                    "description": "Set of filters to apply if `path` refers to array elements or nested array elements in order to narrow down to a single unique element that is being tested/modified. This is intended to be an exact match per filter. To perform advanced matching, use path_value_matchers. * Example: { \"/versions/*/name\" : \"it-123\" \"/versions/*/targetSize/percent\": 20 } * Example: { \"/bindings/*/role\": \"roles/admin\" \"/bindings/*/condition\" : null } * Example: { \"/bindings/*/role\": \"roles/admin\" \"/bindings/*/members/*\" : [\"x@google.com\", \"y@google.com\"] } When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
                     "type": "object"
                 },
-                "category": {
-                    "description": "Category being targeted by the insight.",
-                    "enum": [
-                        "CATEGORY_UNSPECIFIED",
-                        "COST",
-                        "SECURITY",
-                        "PERFORMANCE",
-                        "MANAGEABILITY"
-                    ],
-                    "enumDescriptions": [
-                        "Unspecified category.",
-                        "The insight is related to cost.",
-                        "The insight is related to security.",
-                        "The insight is related to performance.",
-                        "This insight is related to manageability."
-                    ],
+                "pathValueMatchers": {
+                    "additionalProperties": {
+                        "$ref": "GoogleCloudRecommenderV1ValueMatcher"
+                    },
+                    "description": "Similar to path_filters, this contains set of filters to apply if `path` field referes to array elements. This is meant to support value matching beyond exact match. To perform exact match, use path_filters. When both path_filters and path_value_matchers are set, an implicit AND must be performed.",
+                    "type": "object"
+                },
+                "resource": {
+                    "description": "Contains the fully qualified resource name. This field is always populated. ex: //cloudresourcemanager.googleapis.com/projects/foo.",
                     "type": "string"
                 },
-                "insightSubtype": {
-                    "description": "Insight subtype. Insight content schema will be stable for a given subtype.",
+                "resourceType": {
+                    "description": "Type of GCP resource being modified/tested. This field is always populated. Example: cloudresourcemanager.googleapis.com/Project, compute.googleapis.com/Instance",
                     "type": "string"
                 },
-                "lastRefreshTime": {
-                    "description": "Timestamp of the latest data used to generate the insight.",
-                    "format": "google-datetime",
+                "sourcePath": {
+                    "description": "Can be set with action 'copy' or 'move' to indicate the source field within resource or source_resource, ignored if provided for other operation types.",
                     "type": "string"
                 },
-                "stateInfo": {
-                    "$ref": "GoogleCloudRecommenderV1InsightStateInfo",
-                    "description": "Information state and metadata."
-                },
-                "observationPeriod": {
-                    "description": "Observation period that led to the insight. The source data used to generate the insight ends at last_refresh_time and begins at (last_refresh_time - observation_period).",
-                    "format": "google-duration",
+                "sourceResource": {
+                    "description": "Can be set with action 'copy' to copy resource configuration across different resources of the same type. Example: A resource clone can be done via action = 'copy', path = \"/\", from = \"/\", source_resource = and resource_name = . This field is empty for all other values of `action`.",
                     "type": "string"
                 },
-                "name": {
-                    "description": "Name of the insight.",
-                    "type": "string"
+                "value": {
+                    "description": "Value for the `path` field. Will be set for actions:'add'/'replace'. Maybe set for action: 'test'. Either this or `value_matcher` will be set for 'test' operation. An exact match must be performed.",
+                    "type": "any"
                 },
-                "associatedRecommendations": {
-                    "description": "Recommendations derived from this insight.",
+                "valueMatcher": {
+                    "$ref": "GoogleCloudRecommenderV1ValueMatcher",
+                    "description": "Can be set for action 'test' for advanced matching for the value of 'path' field. Either this or `value` will be set for 'test' operation."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1OperationGroup": {
+            "description": "Group of operations that need to be performed atomically.",
+            "id": "GoogleCloudRecommenderV1OperationGroup",
+            "properties": {
+                "operations": {
+                    "description": "List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear.",
                     "items": {
-                        "$ref": "GoogleCloudRecommenderV1InsightRecommendationReference"
+                        "$ref": "GoogleCloudRecommenderV1Operation"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1Recommendation": {
+            "description": "A recommendation along with a suggested action. E.g., a rightsizing recommendation for an underutilized VM, IAM role recommendations, etc",
+            "id": "GoogleCloudRecommenderV1Recommendation",
+            "properties": {
+                "additionalImpact": {
+                    "description": "Optional set of additional impact that this recommendation may have when trying to optimize for the primary category. These may be positive or negative.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1Impact"
+                    },
+                    "type": "array"
+                },
+                "associatedInsights": {
+                    "description": "Insights that led to this recommendation.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1RecommendationInsightReference"
+                    },
+                    "type": "array"
+                },
+                "content": {
+                    "$ref": "GoogleCloudRecommenderV1RecommendationContent",
+                    "description": "Content of the recommendation describing recommended changes to resources."
                 },
                 "description": {
                     "description": "Free-form human readable summary in English. The maximum length is 500 characters.",
                     "type": "string"
+                },
+                "etag": {
+                    "description": "Fingerprint of the Recommendation. Provides optimistic locking when updating states.",
+                    "type": "string"
+                },
+                "lastRefreshTime": {
+                    "description": "Last time this recommendation was refreshed by the system that created it in the first place.",
+                    "format": "google-datetime",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Name of recommendation.",
+                    "type": "string"
+                },
+                "primaryImpact": {
+                    "$ref": "GoogleCloudRecommenderV1Impact",
+                    "description": "The primary impact that this recommendation can have while trying to optimize for one category."
+                },
+                "recommenderSubtype": {
+                    "description": "Contains an identifier for a subtype of recommendations produced for the same recommender. Subtype is a function of content and impact, meaning a new subtype might be added when significant changes to `content` or `primary_impact.category` are introduced. See the Recommenders section to see a list of subtypes for a given Recommender. Examples: For recommender = \"google.iam.policy.Recommender\", recommender_subtype can be one of \"REMOVE_ROLE\"/\"REPLACE_ROLE\"",
+                    "type": "string"
+                },
+                "stateInfo": {
+                    "$ref": "GoogleCloudRecommenderV1RecommendationStateInfo",
+                    "description": "Information for state. Contains state and metadata."
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1RecommendationContent": {
+            "description": "Contains what resources are changing and how they are changing.",
+            "id": "GoogleCloudRecommenderV1RecommendationContent",
+            "properties": {
+                "operationGroups": {
+                    "description": "Operations to one or more Google Cloud resources grouped in such a way that, all operations within one group are expected to be performed atomically and in an order.",
+                    "items": {
+                        "$ref": "GoogleCloudRecommenderV1OperationGroup"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1RecommendationInsightReference": {
+            "description": "Reference to an associated insight.",
+            "id": "GoogleCloudRecommenderV1RecommendationInsightReference",
+            "properties": {
+                "insight": {
+                    "description": "Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID]",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GoogleCloudRecommenderV1RecommendationStateInfo": {
+            "description": "Information for state. Contains state and metadata.",
+            "id": "GoogleCloudRecommenderV1RecommendationStateInfo",
+            "properties": {
+                "state": {
+                    "description": "The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ACTIVE",
+                        "CLAIMED",
+                        "SUCCEEDED",
+                        "FAILED",
+                        "DISMISSED"
+                    ],
+                    "enumDescriptions": [
+                        "Default state. Don't use directly.",
+                        "Recommendation is active and can be applied. Recommendations content can be updated by Google. ACTIVE recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+                        "Recommendation is in claimed state. Recommendations content is immutable and cannot be updated by Google. CLAIMED recommendations can be marked as CLAIMED, SUCCEEDED, or FAILED.",
+                        "Recommendation is in succeeded state. Recommendations content is immutable and cannot be updated by Google. SUCCEEDED recommendations can be marked as SUCCEEDED, or FAILED.",
+                        "Recommendation is in failed state. Recommendations content is immutable and cannot be updated by Google. FAILED recommendations can be marked as SUCCEEDED, or FAILED.",
+                        "Recommendation is in dismissed state. Recommendation content can be updated by Google. DISMISSED recommendations can be marked as ACTIVE."
+                    ],
+                    "type": "string"
+                },
+                "stateMetadata": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "A map of metadata for the state, provided by user or automations systems.",
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -814,38 +829,23 @@
             },
             "type": "object"
         },
-        "GoogleCloudRecommenderV1ListRecommendationsResponse": {
-            "description": "Response to the `ListRecommendations` method.",
-            "id": "GoogleCloudRecommenderV1ListRecommendationsResponse",
+        "GoogleTypeMoney": {
+            "description": "Represents an amount of money with its currency type.",
+            "id": "GoogleTypeMoney",
             "properties": {
-                "nextPageToken": {
-                    "description": "A token that can be used to request the next page of results. This field is empty if there are no additional results.",
+                "currencyCode": {
+                    "description": "The 3-letter currency code defined in ISO 4217.",
                     "type": "string"
                 },
-                "recommendations": {
-                    "description": "The set of recommendations for the `parent` resource.",
-                    "items": {
-                        "$ref": "GoogleCloudRecommenderV1Recommendation"
-                    },
-                    "type": "array"
-                }
-            },
-            "type": "object"
-        },
-        "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest": {
-            "description": "Request for the `MarkRecommendationSucceeded` Method.",
-            "id": "GoogleCloudRecommenderV1MarkRecommendationSucceededRequest",
-            "properties": {
-                "etag": {
-                    "description": "Required. Fingerprint of the Recommendation. Provides optimistic locking.",
-                    "type": "string"
+                "nanos": {
+                    "description": "Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000.",
+                    "format": "int32",
+                    "type": "integer"
                 },
-                "stateMetadata": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex /^a-z0-9{0,62}$/. Values must match the regex /^[a-zA-Z0-9_./-]{0,255}$/.",
-                    "type": "object"
+                "units": {
+                    "description": "The whole units of the amount. For example if `currencyCode` is `\"USD\"`, then 1 unit is one US dollar.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"

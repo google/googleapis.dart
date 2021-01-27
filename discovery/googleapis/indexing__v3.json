@@ -25,26 +25,6 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
-        },
-        "access_token": {
-            "description": "OAuth access token.",
-            "location": "query",
-            "type": "string"
-        },
-        "quotaUser": {
-            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
-            "location": "query",
-            "type": "string"
-        },
-        "oauth_token": {
-            "description": "OAuth 2.0 token for the current user.",
-            "location": "query",
-            "type": "string"
-        },
         "$.xgafv": {
             "description": "V1 error format.",
             "enum": [
@@ -55,6 +35,11 @@
                 "v1 error format",
                 "v2 error format"
             ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
             "location": "query",
             "type": "string"
         },
@@ -74,14 +59,13 @@
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "callback": {
             "description": "JSONP",
+            "location": "query",
+            "type": "string"
+        },
+        "fields": {
+            "description": "Selector specifying which fields to include in a partial response.",
             "location": "query",
             "type": "string"
         },
@@ -90,13 +74,29 @@
             "location": "query",
             "type": "string"
         },
+        "oauth_token": {
+            "description": "OAuth 2.0 token for the current user.",
+            "location": "query",
+            "type": "string"
+        },
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
+            "location": "query",
+            "type": "boolean"
+        },
+        "quotaUser": {
+            "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
+            "location": "query",
+            "type": "string"
+        },
         "uploadType": {
             "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
             "location": "query",
             "type": "string"
         },
-        "fields": {
-            "description": "Selector specifying which fields to include in a partial response.",
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -105,23 +105,6 @@
     "resources": {
         "urlNotifications": {
             "methods": {
-                "publish": {
-                    "description": "Notifies that a URL has been updated or deleted.",
-                    "httpMethod": "POST",
-                    "id": "indexing.urlNotifications.publish",
-                    "parameterOrder": [],
-                    "parameters": {},
-                    "path": "v3/urlNotifications:publish",
-                    "request": {
-                        "$ref": "UrlNotification"
-                    },
-                    "response": {
-                        "$ref": "PublishUrlNotificationResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/indexing"
-                    ]
-                },
                 "getMetadata": {
                     "description": "Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.",
                     "httpMethod": "GET",
@@ -141,6 +124,23 @@
                     "scopes": [
                         "https://www.googleapis.com/auth/indexing"
                     ]
+                },
+                "publish": {
+                    "description": "Notifies that a URL has been updated or deleted.",
+                    "httpMethod": "POST",
+                    "id": "indexing.urlNotifications.publish",
+                    "parameterOrder": [],
+                    "parameters": {},
+                    "path": "v3/urlNotifications:publish",
+                    "request": {
+                        "$ref": "UrlNotification"
+                    },
+                    "response": {
+                        "$ref": "PublishUrlNotificationResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/indexing"
+                    ]
                 }
             }
         }
@@ -148,25 +148,6 @@
     "revision": "20201006",
     "rootUrl": "https://indexing.googleapis.com/",
     "schemas": {
-        "UrlNotificationMetadata": {
-            "description": "Summary of the most recent Indexing API notifications successfully received, for a given URL.",
-            "id": "UrlNotificationMetadata",
-            "properties": {
-                "latestRemove": {
-                    "$ref": "UrlNotification",
-                    "description": "Latest notification received with type `URL_REMOVED`."
-                },
-                "url": {
-                    "description": "URL to which this metadata refers.",
-                    "type": "string"
-                },
-                "latestUpdate": {
-                    "$ref": "UrlNotification",
-                    "description": "Latest notification received with type `URL_UPDATED`."
-                }
-            },
-            "type": "object"
-        },
         "PublishUrlNotificationResponse": {
             "description": "Output for PublishUrlNotification",
             "id": "PublishUrlNotificationResponse",
@@ -187,10 +168,6 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
-                "url": {
-                    "description": "The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google.",
-                    "type": "string"
-                },
                 "type": {
                     "description": "The URL life cycle event that Google is being notified about.",
                     "enum": [
@@ -203,6 +180,29 @@
                         "The given URL (Web document) has been updated.",
                         "The given URL (Web document) has been deleted."
                     ],
+                    "type": "string"
+                },
+                "url": {
+                    "description": "The object of this notification. The URL must be owned by the publisher of this notification and, in case of `URL_UPDATED` notifications, it _must_ be crawlable by Google.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UrlNotificationMetadata": {
+            "description": "Summary of the most recent Indexing API notifications successfully received, for a given URL.",
+            "id": "UrlNotificationMetadata",
+            "properties": {
+                "latestRemove": {
+                    "$ref": "UrlNotification",
+                    "description": "Latest notification received with type `URL_REMOVED`."
+                },
+                "latestUpdate": {
+                    "$ref": "UrlNotification",
+                    "description": "Latest notification received with type `URL_UPDATED`."
+                },
+                "url": {
+                    "description": "URL to which this metadata refers.",
                     "type": "string"
                 }
             },

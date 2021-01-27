@@ -14,6 +14,7 @@ import 'package:io/ansi.dart' as ansi;
 import 'package:pool/pool.dart';
 
 import 'src/package_configuration.dart';
+import 'src/utils.dart';
 
 Future<List<DirectoryListItems>> _listAllApis() async {
   final client = http.Client();
@@ -77,9 +78,14 @@ Future<List<RestDescription>> fetchDiscoveryDocuments({
                   );
                 }
 
-                return RestDescription.fromJson(
+                final description = RestDescription.fromJson(
                   jsonDecode(result.body) as Map<String, dynamic>,
                 );
+
+                // Sort members here for stability in the output!
+                description.sort();
+
+                return description;
               } catch (e, stack) {
                 print(
                   ansi.red.wrap(

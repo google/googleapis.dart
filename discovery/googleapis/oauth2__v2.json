@@ -2,14 +2,14 @@
     "auth": {
         "oauth2": {
             "scopes": {
-                "openid": {
-                    "description": "Associate you with your personal info on Google"
-                },
                 "https://www.googleapis.com/auth/userinfo.email": {
                     "description": "View your email address"
                 },
                 "https://www.googleapis.com/auth/userinfo.profile": {
                     "description": "See your personal info, including any personal info you've made publicly available"
+                },
+                "openid": {
+                    "description": "Associate you with your personal info on Google"
                 }
             }
         }

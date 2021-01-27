@@ -16,6 +16,24 @@
     "ownerDomain": "google.com",
     "ownerName": "Google",
     "parameters": {
+        "$.xgafv": {
+            "description": "V1 error format.",
+            "enum": [
+                "1",
+                "2"
+            ],
+            "enumDescriptions": [
+                "v1 error format",
+                "v2 error format"
+            ],
+            "location": "query",
+            "type": "string"
+        },
+        "access_token": {
+            "description": "OAuth access token.",
+            "location": "query",
+            "type": "string"
+        },
         "alt": {
             "default": "json",
             "description": "Data format for response.",
@@ -32,27 +50,8 @@
             "location": "query",
             "type": "string"
         },
-        "prettyPrint": {
-            "default": "true",
-            "description": "Returns response with indentations and line breaks.",
-            "location": "query",
-            "type": "boolean"
-        },
         "callback": {
             "description": "JSONP",
-            "location": "query",
-            "type": "string"
-        },
-        "$.xgafv": {
-            "description": "V1 error format.",
-            "enum": [
-                "1",
-                "2"
-            ],
-            "enumDescriptions": [
-                "v1 error format",
-                "v2 error format"
-            ],
             "location": "query",
             "type": "string"
         },
@@ -61,8 +60,8 @@
             "location": "query",
             "type": "string"
         },
-        "uploadType": {
-            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+        "key": {
+            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
             "location": "query",
             "type": "string"
         },
@@ -71,23 +70,24 @@
             "location": "query",
             "type": "string"
         },
-        "key": {
-            "description": "API key. Your API key identifies your project and provides you with API access, quota, and reports. Required unless you provide an OAuth 2.0 token.",
+        "prettyPrint": {
+            "default": "true",
+            "description": "Returns response with indentations and line breaks.",
             "location": "query",
-            "type": "string"
-        },
-        "upload_protocol": {
-            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
-            "location": "query",
-            "type": "string"
+            "type": "boolean"
         },
         "quotaUser": {
             "description": "Available to use for quota purposes for server-side applications. Can be any arbitrary string assigned to a user, but should not exceed 40 characters.",
             "location": "query",
             "type": "string"
         },
-        "access_token": {
-            "description": "OAuth access token.",
+        "uploadType": {
+            "description": "Legacy upload protocol for media (e.g. \"media\", \"multipart\").",
+            "location": "query",
+            "type": "string"
+        },
+        "upload_protocol": {
+            "description": "Upload protocol for media (e.g. \"raw\", \"multipart\").",
             "location": "query",
             "type": "string"
         }
@@ -138,32 +138,30 @@
     "revision": "20201003",
     "rootUrl": "https://adexperiencereport.googleapis.com/",
     "schemas": {
-        "SiteSummaryResponse": {
-            "description": "Response message for GetSiteSummary.",
-            "id": "SiteSummaryResponse",
-            "properties": {
-                "mobileSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "The site's Ad Experience Report summary on mobile."
-                },
-                "reviewedSite": {
-                    "description": "The name of the reviewed site, e.g. `google.com`.",
-                    "type": "string"
-                },
-                "desktopSummary": {
-                    "$ref": "PlatformSummary",
-                    "description": "The site's Ad Experience Report summary on desktop."
-                }
-            },
-            "type": "object"
-        },
         "PlatformSummary": {
             "description": "A site's Ad Experience Report summary on a single platform.",
             "id": "PlatformSummary",
             "properties": {
-                "underReview": {
-                    "description": "Whether the site is currently under review on this platform.",
-                    "type": "boolean"
+                "betterAdsStatus": {
+                    "description": "The site's Ad Experience Report status on this platform.",
+                    "enum": [
+                        "UNKNOWN",
+                        "PASSING",
+                        "WARNING",
+                        "FAILING"
+                    ],
+                    "enumDescriptions": [
+                        "Not reviewed.",
+                        "Passing.",
+                        "Warning. No longer a possible status.",
+                        "Failing."
+                    ],
+                    "type": "string"
+                },
+                "enforcementTime": {
+                    "description": "The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF.",
+                    "format": "google-datetime",
+                    "type": "string"
                 },
                 "filterStatus": {
                     "description": "The site's [enforcement status](https://support.google.com/webtools/answer/7308033) on this platform.",
@@ -181,6 +179,11 @@
                         "Ad filtering is paused.",
                         "Ad filtering is pending."
                     ],
+                    "type": "string"
+                },
+                "lastChangeTime": {
+                    "description": "The time at which the site's status last changed on this platform.",
+                    "format": "google-datetime",
                     "type": "string"
                 },
                 "region": {
@@ -206,30 +209,27 @@
                     "description": "A link to the full Ad Experience Report for the site on this platform.. Not set in ViolatingSitesResponse. Note that you must complete the [Search Console verification process](https://support.google.com/webmasters/answer/9008080) for the site before you can access the full report.",
                     "type": "string"
                 },
-                "lastChangeTime": {
-                    "description": "The time at which the site's status last changed on this platform.",
-                    "format": "google-datetime",
-                    "type": "string"
+                "underReview": {
+                    "description": "Whether the site is currently under review on this platform.",
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "SiteSummaryResponse": {
+            "description": "Response message for GetSiteSummary.",
+            "id": "SiteSummaryResponse",
+            "properties": {
+                "desktopSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "The site's Ad Experience Report summary on desktop."
                 },
-                "enforcementTime": {
-                    "description": "The time at which [enforcement](https://support.google.com/webtools/answer/7308033) against the site began or will begin on this platform. Not set when the filter_status is OFF.",
-                    "format": "google-datetime",
-                    "type": "string"
+                "mobileSummary": {
+                    "$ref": "PlatformSummary",
+                    "description": "The site's Ad Experience Report summary on mobile."
                 },
-                "betterAdsStatus": {
-                    "description": "The site's Ad Experience Report status on this platform.",
-                    "enum": [
-                        "UNKNOWN",
-                        "PASSING",
-                        "WARNING",
-                        "FAILING"
-                    ],
-                    "enumDescriptions": [
-                        "Not reviewed.",
-                        "Passing.",
-                        "Warning. No longer a possible status.",
-                        "Failing."
-                    ],
+                "reviewedSite": {
+                    "description": "The name of the reviewed site, e.g. `google.com`.",
                     "type": "string"
                 }
             },
