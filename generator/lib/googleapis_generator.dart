@@ -54,13 +54,46 @@ void writeDiscoveryDocuments(
   }
 }
 
-Future<List<RestDescription>> fetchDiscoveryDocuments() async {
+Future<List<RestDescription>> fetchDiscoveryDocuments({
+  Map<String, String> existingRevisions,
+}) async {
   final client = http.Client();
 
-  try {
-    final discovery = DiscoveryApi(client);
+  Future<RestDescription> download(DirectoryListItems item) async {
+    try {
+      final result = await client.get(item.discoveryRestUrl);
 
-    final list = await discovery.apis.list();
+      if (result.statusCode != 200) {
+        throw StateError(
+          'Not a 200 – ${result.statusCode}\n${result.body}',
+        );
+      }
+
+      final description = RestDescription.fromJson(
+        jsonDecode(result.body) as Map<String, dynamic>,
+      );
+
+      // Sort members here for stability in the output!
+      description.sort();
+
+      return description;
+    } catch (e, stack) {
+      print(
+        ansi.red.wrap(
+          '''
+${item.discoveryRestUrl}
+Failed to retrieve document for "${item.name}:${item.version}" -> Ignoring!
+$e
+$stack
+''',
+        ),
+      );
+      return null;
+    }
+  }
+
+  try {
+    final list = await DiscoveryApi(client).apis.list();
 
     final pool = Pool(10);
     try {
@@ -71,35 +104,40 @@ Future<List<RestDescription>> fetchDiscoveryDocuments() async {
               'Requesting ${++count} of ${list.items.length} - ${item.id}',
             ));
 
-            try {
-              final result = await client.get(item.discoveryRestUrl);
-
-              if (result.statusCode != 200) {
-                throw StateError(
-                  'Not a 200 – ${result.statusCode}\n${result.body}',
-                );
+            RestDescription description;
+            for (var i = 1; i <= 10; i++) {
+              description = await download(item);
+              if (i > 1) {
+                print('  ${item.id} try #$i');
               }
 
-              final description = RestDescription.fromJson(
-                jsonDecode(result.body) as Map<String, dynamic>,
-              );
+              final existingRevision = existingRevisions[description?.id];
+              if (existingRevision != null &&
+                  existingRevision != description.revision) {
+                final compare =
+                    existingRevision.compareTo(description.revision);
 
-              // Sort members here for stability in the output!
-              description.sort();
+                if (compare.isNegative) {
+                  print(
+                    '  New! ${description.id} '
+                    'from $existingRevision to ${description.revision}',
+                  );
+                } else {
+                  final tryAgainLag = i > 5 ? 5 : i;
+                  print(
+                    '  Old revision for ${description.id} '
+                    'from $existingRevision to ${description.revision}.\n'
+                    '    Trying again in $tryAgainLag second(s) – '
+                    '${item.discoveryRestUrl}',
+                  );
+                  await Future.delayed(Duration(seconds: tryAgainLag));
+                  continue;
+                }
+              }
 
               return description;
-            } catch (e, stack) {
-              print(
-                ansi.red.wrap(
-                  '''
-${item.discoveryRestUrl}
-Failed to retrieve document for "${item.name}:${item.version}" -> Ignoring!
-$e
-$stack
-''',
-                ),
-              );
             }
+            return description;
           })
           .where((rd) => rd != null)
           .toList();

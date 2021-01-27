@@ -118,7 +118,9 @@ class DiscoveryPackagesConfiguration {
     }
 
     // Get all rest discovery documents & initialize this object.
-    final allApis = await fetchDiscoveryDocuments();
+    final allApis = await fetchDiscoveryDocuments(
+      existingRevisions: existingApiRevisions,
+    );
     _initialize(allApis);
 
     var count = 0;
@@ -128,7 +130,9 @@ class DiscoveryPackagesConfiguration {
       writeDiscoveryDocuments(
         '$discoveryDocsDir/${entry.key}',
         entry.value.apis.map(
-          (e) => allApis.singleWhere((element) => element.id == e),
+          (e) => allApis.singleWhere((element) => element.id == e, orElse: () {
+            throw StateError('  !!! Colud not find an element for `$e`!');
+          }),
         ),
       );
     }
