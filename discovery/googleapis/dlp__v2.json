@@ -646,6 +646,75 @@
                                 }
                             }
                         },
+                        "dlpJobs": {
+                            "methods": {
+                                "list": {
+                                    "description": "Lists DlpJobs that match the specified filter in the request. See https://cloud.google.com/dlp/docs/inspecting-storage and https://cloud.google.com/dlp/docs/compute-risk-analysis to learn more.",
+                                    "httpMethod": "GET",
+                                    "id": "dlp.organizations.locations.dlpJobs.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `state` - PENDING|RUNNING|CANCELED|FINISHED|FAILED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - `trigger_name` - The resource name of the trigger that created job. - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds to time the job finished. * Supported fields for risk analysis jobs: - `state` - RUNNING|CANCELED|FINISHED|FAILED - 'end_time` - Corresponds to time the job finished. - 'start_time` - Corresponds to time the job finished. * The operator must be `=` or `!=`. Examples: * inspected_storage = cloud_storage AND state = done * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = done OR state = canceled) * end_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "locationId": {
+                                            "description": "Deprecated. This field has no effect.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Comma separated list of fields to order by, followed by `asc` or `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space characters are insignificant. Example: `name asc, end_time asc, create_time desc` Supported fields are: - `create_time`: corresponds to time the job was created. - `end_time`: corresponds to time the job ended. - `name`: corresponds to job's name. - `state`: corresponds to `state`",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The standard list page size.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The standard list page token.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Parent resource name. The format of this value varies depending on whether you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "description": "The type of job. Defaults to `DlpJobType.INSPECT`",
+                                            "enum": [
+                                                "DLP_JOB_TYPE_UNSPECIFIED",
+                                                "INSPECT_JOB",
+                                                "RISK_ANALYSIS_JOB"
+                                            ],
+                                            "enumDescriptions": [
+                                                "Unused",
+                                                "The job inspected Google Cloud for sensitive data.",
+                                                "The job executed a Risk Analysis computation."
+                                            ],
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/dlpJobs",
+                                    "response": {
+                                        "$ref": "GooglePrivacyDlpV2ListDlpJobsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
                         "inspectTemplates": {
                             "methods": {
                                 "create": {
@@ -790,6 +859,162 @@
                                     },
                                     "response": {
                                         "$ref": "GooglePrivacyDlpV2InspectTemplate"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        },
+                        "jobTriggers": {
+                            "methods": {
+                                "create": {
+                                    "description": "Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "httpMethod": "POST",
+                                    "id": "dlp.organizations.locations.jobTriggers.create",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Parent resource name. The format of this value varies depending on whether you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/jobTriggers",
+                                    "request": {
+                                        "$ref": "GooglePrivacyDlpV2CreateJobTriggerRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GooglePrivacyDlpV2JobTrigger"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "delete": {
+                                    "description": "Deletes a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "httpMethod": "DELETE",
+                                    "id": "dlp.organizations.locations.jobTriggers.delete",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-project/jobTriggers/53234423`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "GoogleProtobufEmpty"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "get": {
+                                    "description": "Gets a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "httpMethod": "GET",
+                                    "id": "dlp.organizations.locations.jobTriggers.get",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-project/jobTriggers/53234423`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "response": {
+                                        "$ref": "GooglePrivacyDlpV2JobTrigger"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists job triggers. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "httpMethod": "GET",
+                                    "id": "dlp.organizations.locations.jobTriggers.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "filter": {
+                                            "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "locationId": {
+                                            "description": "Deprecated. This field has no effect.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Comma separated list of triggeredJob fields to order by, followed by `asc` or `desc` postfix. This list is case-insensitive, default sorting order is ascending, redundant space characters are insignificant. Example: `name asc,update_time, create_time desc` Supported fields are: - `create_time`: corresponds to time the JobTrigger was created. - `update_time`: corresponds to time the JobTrigger was last updated. - `last_run_time`: corresponds to the last time the JobTrigger ran. - `name`: corresponds to JobTrigger's name. - `display_name`: corresponds to JobTrigger's display name. - `status`: corresponds to JobTrigger's status.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "Size of the page, can be limited by a server.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "Page token to continue retrieval. Comes from previous call to ListJobTriggers. `order_by` field must not change for subsequent calls.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Parent resource name. The format of this value varies depending on whether you have [specified a processing location](https://cloud.google.com/dlp/docs/specifying-location): + Projects scope, location specified: `projects/`PROJECT_ID`/locations/`LOCATION_ID + Projects scope, no location specified (defaults to global): `projects/`PROJECT_ID The following example `parent` string specifies a parent project with the identifier `example-project`, and specifies the `europe-west3` location for processing data: parent=projects/example-project/locations/europe-west3",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+parent}/jobTriggers",
+                                    "response": {
+                                        "$ref": "GooglePrivacyDlpV2ListJobTriggersResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Updates a job trigger. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.",
+                                    "httpMethod": "PATCH",
+                                    "id": "dlp.organizations.locations.jobTriggers.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. Resource name of the project and the triggeredJob, for example `projects/dlp-test-project/jobTriggers/53234423`.",
+                                            "location": "path",
+                                            "pattern": "^organizations/[^/]+/locations/[^/]+/jobTriggers/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v2/{+name}",
+                                    "request": {
+                                        "$ref": "GooglePrivacyDlpV2UpdateJobTriggerRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GooglePrivacyDlpV2JobTrigger"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -1807,7 +2032,7 @@
                             ],
                             "parameters": {
                                 "filter": {
-                                    "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2196,7 +2421,7 @@
                                     ]
                                 },
                                 "finish": {
-                                    "description": "Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled actions that have not yet run. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages.",
+                                    "description": "Finish a running hybrid DlpJob. Triggers the finalization steps and running of any enabled actions that have not yet run.",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.finish",
                                     "parameterOrder": [
@@ -2247,7 +2472,7 @@
                                     ]
                                 },
                                 "hybridInspect": {
-                                    "description": "Inspect hybrid content and store findings to a job. To review the findings inspect the job. Inspection will occur asynchronously. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages.",
+                                    "description": "Inspect hybrid content and store findings to a job. To review the findings, inspect the job. Inspection will occur asynchronously.",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.dlpJobs.hybridInspect",
                                     "parameterOrder": [
@@ -2627,7 +2852,7 @@
                                     ]
                                 },
                                 "hybridInspect": {
-                                    "description": "Inspect hybrid content and store findings to a trigger. The inspection will be processed asynchronously. To review the findings monitor the jobs within the trigger. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages.",
+                                    "description": "Inspect hybrid content and store findings to a trigger. The inspection will be processed asynchronously. To review the findings monitor the jobs within the trigger.",
                                     "httpMethod": "POST",
                                     "id": "dlp.projects.locations.jobTriggers.hybridInspect",
                                     "parameterOrder": [
@@ -2662,7 +2887,7 @@
                                     ],
                                     "parameters": {
                                         "filter": {
-                                            "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect jobs: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
+                                            "description": "Allows filtering. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * Supported fields/values for inspect triggers: - `status` - HEALTHY|PAUSED|CANCELLED - `inspected_storage` - DATASTORE|CLOUD_STORAGE|BIGQUERY - 'last_run_time` - RFC 3339 formatted timestamp, surrounded by quotation marks. Nanoseconds are ignored. - 'error_count' - Number of errors that have occurred while running. * The operator must be `=` or `!=` for status and inspected_storage. Examples: * inspected_storage = cloud_storage AND status = HEALTHY * inspected_storage = cloud_storage OR inspected_storage = bigquery * inspected_storage = cloud_storage AND (state = PAUSED OR state = HEALTHY) * last_run_time > \\\"2017-12-12T00:00:00+00:00\\\" The length of this field should be no more than 500 characters.",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -3039,7 +3264,7 @@
             }
         }
     },
-    "revision": "20200927",
+    "revision": "20210109",
     "rootUrl": "https://dlp.googleapis.com/",
     "schemas": {
         "GooglePrivacyDlpV2Action": {
@@ -3515,7 +3740,7 @@
                         "enumDescriptions": [
                             "Includes all files.",
                             "Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.",
-                            "Included file extensions: asc, brf, c, cc, cpp, csv, cxx, c++, cs, css, dart, eml, go, h, hh, hpp, hxx, h++, hs, html, htm, shtml, shtm, xhtml, lhs, ini, java, js, json, ocaml, md, mkd, markdown, m, ml, mli, pl, pm, php, phtml, pht, py, pyw, rb, rbw, rs, rc, scala, sh, sql, tex, txt, text, tsv, vcard, vcs, wml, xml, xsl, xsd, yml, yaml.",
+                            "Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.",
                             "Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.",
                             "Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm",
                             "PDF files >30 MB will be scanned as binary files. Included file extensions: pdf",
@@ -3775,7 +4000,7 @@
             "properties": {
                 "inspectJob": {
                     "$ref": "GooglePrivacyDlpV2InspectJobConfig",
-                    "description": "Set to control what and how to inspect."
+                    "description": "An inspection job scans a storage repository for InfoTypes."
                 },
                 "jobId": {
                     "description": "The job id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.",
@@ -3787,7 +4012,7 @@
                 },
                 "riskJob": {
                     "$ref": "GooglePrivacyDlpV2RiskAnalysisJobConfig",
-                    "description": "Set to choose what metric to calculate."
+                    "description": "A risk analysis job calculates re-identification risk metrics for a BigQuery table."
                 }
             },
             "type": "object"
@@ -4579,6 +4804,10 @@
                     "format": "google-datetime",
                     "type": "string"
                 },
+                "findingId": {
+                    "description": "The unique finding id.",
+                    "type": "string"
+                },
                 "infoType": {
                     "$ref": "GooglePrivacyDlpV2InfoType",
                     "description": "The type of content that might have been found. Provided if `excluded_types` is false."
@@ -5106,7 +5335,7 @@
                 },
                 "result": {
                     "$ref": "GooglePrivacyDlpV2Result",
-                    "description": "A summary of the outcome of this inspect job."
+                    "description": "A summary of the outcome of this inspection job."
                 }
             },
             "type": "object"
@@ -6412,7 +6641,7 @@
             "properties": {
                 "hybridStats": {
                     "$ref": "GooglePrivacyDlpV2HybridInspectStatistics",
-                    "description": "Statistics related to the processing of hybrid inspect. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages."
+                    "description": "Statistics related to the processing of hybrid inspect."
                 },
                 "infoTypeStats": {
                     "description": "Statistics of how many instances of each info type were found during inspect job.",
@@ -6533,7 +6762,7 @@
                 },
                 "hybridOptions": {
                     "$ref": "GooglePrivacyDlpV2HybridOptions",
-                    "description": "Hybrid inspection options. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages."
+                    "description": "Hybrid inspection options."
                 },
                 "timespanConfig": {
                     "$ref": "GooglePrivacyDlpV2TimespanConfig"
@@ -6834,18 +7063,18 @@
                     "type": "boolean"
                 },
                 "endTime": {
-                    "description": "Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.",
+                    "description": "Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "startTime": {
-                    "description": "Exclude files or rows older than this value.",
+                    "description": "Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.",
                     "format": "google-datetime",
                     "type": "string"
                 },
                 "timestampField": {
                     "$ref": "GooglePrivacyDlpV2FieldId",
-                    "description": "Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: Required to filter out rows based on the given start and end times. If not specified and the table was modified between the given start and end times, the entire table will be scanned. The valid data types of the timestamp field are: `INTEGER`, `DATE`, `TIMESTAMP`, or `DATETIME` BigQuery column. For Datastore. Valid data types of the timestamp field are: `TIMESTAMP`. Datastore entity will be scanned if the timestamp property does not exist or its value is empty or invalid."
+                    "description": "Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`."
                 }
             },
             "type": "object"
@@ -6943,7 +7172,7 @@
             "properties": {
                 "manual": {
                     "$ref": "GooglePrivacyDlpV2Manual",
-                    "description": "For use with hybrid jobs. Jobs must be manually created and finished. Early access feature is in a pre-release state and might change or have limited support. For more information, see https://cloud.google.com/products#product-launch-stages."
+                    "description": "For use with hybrid jobs. Jobs must be manually created and finished."
                 },
                 "schedule": {
                     "$ref": "GooglePrivacyDlpV2Schedule",
@@ -7154,21 +7383,21 @@
             "type": "object"
         },
         "GoogleTypeDate": {
-            "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
             "id": "GoogleTypeDate",
             "properties": {
                 "day": {
-                    "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant.",
+                    "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "month": {
-                    "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.",
+                    "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "year": {
-                    "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.",
+                    "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
                     "format": "int32",
                     "type": "integer"
                 }

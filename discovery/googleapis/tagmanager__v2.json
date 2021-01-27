@@ -3044,7 +3044,7 @@
             }
         }
     },
-    "revision": "20201007",
+    "revision": "20210201",
     "rootUrl": "https://tagmanager.googleapis.com/",
     "schemas": {
         "Account": {
@@ -3714,6 +3714,10 @@
                     "description": "Container version display name.",
                     "type": "string"
                 },
+                "numClients": {
+                    "description": "Number of clients in the container version.",
+                    "type": "string"
+                },
                 "numCustomTemplates": {
                     "description": "Number of custom templates in the container version.",
                     "type": "string"
@@ -3869,9 +3873,13 @@
                     ],
                     "type": "string"
                 },
+                "client": {
+                    "$ref": "Client",
+                    "description": "The client being represented by the entity."
+                },
                 "folder": {
                     "$ref": "Folder",
-                    "description": "The Folder being represented by the entity."
+                    "description": "The folder being represented by the entity."
                 },
                 "tag": {
                     "$ref": "Tag",

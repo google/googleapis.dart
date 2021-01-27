@@ -27,8 +27,8 @@
         }
     },
     "basePath": "",
-    "baseUrl": "https://www.googleapis.com/",
-    "batchPath": "batch/youtube/v3",
+    "baseUrl": "https://youtube.googleapis.com/",
+    "batchPath": "batch",
     "canonicalName": "YouTube",
     "description": "The YouTube Data API v3 is an API that provides access to YouTube data, such as videos, playlists, and channels.",
     "discoveryVersion": "v1",
@@ -176,6 +176,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -363,8 +365,8 @@
                     "httpMethod": "GET",
                     "id": "youtube.captions.list",
                     "parameterOrder": [
-                        "videoId",
-                        "part"
+                        "part",
+                        "videoId"
                     ],
                     "parameters": {
                         "id": {
@@ -725,6 +727,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -861,6 +865,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
                             "type": "integer"
                         },
                         "moderationStatus": {
@@ -1039,6 +1045,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "100",
+                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1300,65 +1308,6 @@
                         "https://www.googleapis.com/auth/youtube.force-ssl"
                     ]
                 },
-                "control": {
-                    "description": "Slate and recording control of the live broadcast. Support actions: slate on/off, recording start/stop/pause/resume. Design doc: goto/yt-api-liveBroadcast-control",
-                    "httpMethod": "POST",
-                    "id": "youtube.liveBroadcasts.control",
-                    "parameterOrder": [
-                        "id",
-                        "part"
-                    ],
-                    "parameters": {
-                        "displaySlate": {
-                            "description": "Whether display or hide slate.",
-                            "location": "query",
-                            "type": "boolean"
-                        },
-                        "id": {
-                            "description": "Broadcast to operate.",
-                            "location": "query",
-                            "required": true,
-                            "type": "string"
-                        },
-                        "offsetTimeMs": {
-                            "description": "The exact time when the actions (e.g. slate on) are executed. It is an offset from the first frame of the monitor stream. If not set, it means \"now\" or ASAP. This field should not be set if the monitor stream is disabled, otherwise an error will be returned.",
-                            "format": "uint64",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "onBehalfOfContentOwner": {
-                            "description": "*Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwner* parameter indicates that the request's authorization credentials identify a YouTube CMS user who is acting on behalf of the content owner specified in the parameter value. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The CMS account that the user authenticates with must be linked to the specified YouTube content owner.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "onBehalfOfContentOwnerChannel": {
-                            "description": "This parameter can only be used in a properly authorized request. *Note:* This parameter is intended exclusively for YouTube content partners. The *onBehalfOfContentOwnerChannel* parameter specifies the YouTube channel ID of the channel to which a video is being added. This parameter is required when a request specifies a value for the onBehalfOfContentOwner parameter, and it can only be used in conjunction with that parameter. In addition, the request must be authorized using a CMS account that is linked to the content owner that the onBehalfOfContentOwner parameter specifies. Finally, the channel that the onBehalfOfContentOwnerChannel parameter value specifies must be linked to the content owner that the onBehalfOfContentOwner parameter specifies. This parameter is intended for YouTube content partners that own and manage many different YouTube channels. It allows content owners to authenticate once and perform actions on behalf of the channel specified in the parameter value, without having to provide authentication credentials for each separate channel.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "part": {
-                            "description": "The *part* parameter specifies a comma-separated list of one or more liveBroadcast resource properties that the API response will include. The part names that you can include in the parameter value are id, snippet, contentDetails, and status.",
-                            "location": "query",
-                            "repeated": true,
-                            "required": true,
-                            "type": "string"
-                        },
-                        "walltime": {
-                            "description": "The wall clock time at which the action should be executed. Only one of offset_time_ms and walltime may be set at a time.",
-                            "format": "google-datetime",
-                            "location": "query",
-                            "type": "string"
-                        }
-                    },
-                    "path": "youtube/v3/liveBroadcasts/control",
-                    "response": {
-                        "$ref": "LiveBroadcast"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.force-ssl"
-                    ]
-                },
                 "delete": {
                     "description": "Delete a given broadcast.",
                     "httpMethod": "DELETE",
@@ -1484,6 +1433,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -1528,8 +1479,8 @@
                     "httpMethod": "POST",
                     "id": "youtube.liveBroadcasts.transition",
                     "parameterOrder": [
-                        "id",
                         "broadcastStatus",
+                        "id",
                         "part"
                     ],
                     "parameters": {
@@ -1751,6 +1702,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "2000",
+                            "minimum": "200",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1769,6 +1722,8 @@
                             "description": "Specifies the size of the profile image that should be returned for each user.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "720",
+                            "minimum": "16",
                             "type": "integer"
                         }
                     },
@@ -1854,6 +1809,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -1932,7 +1889,7 @@
                             "type": "string"
                         },
                         "part": {
-                            "description": "The *part* parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include. The part properties that you can include in the parameter value are id, snippet, cdn, and status.",
+                            "description": "The *part* parameter serves two purposes in this operation. It identifies the properties that the write operation will set as well as the properties that the API response will include. The part properties that you can include in the parameter value are id, snippet, cdn, content_details, and status.",
                             "location": "query",
                             "repeated": true,
                             "required": true,
@@ -1970,6 +1927,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -2074,6 +2033,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "1000",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mode": {
@@ -2110,11 +2071,7 @@
                         "$ref": "MemberListResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
-                        "https://www.googleapis.com/auth/youtube.force-ssl",
-                        "https://www.googleapis.com/auth/youtube.readonly",
-                        "https://www.googleapis.com/auth/youtubepartner"
+                        "https://www.googleapis.com/auth/youtube.channel-memberships.creator"
                     ]
                 }
             }
@@ -2142,11 +2099,7 @@
                         "$ref": "MembershipsLevelListResponse"
                     },
                     "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.channel-memberships.creator",
-                        "https://www.googleapis.com/auth/youtube.force-ssl",
-                        "https://www.googleapis.com/auth/youtube.readonly",
-                        "https://www.googleapis.com/auth/youtubepartner"
+                        "https://www.googleapis.com/auth/youtube.channel-memberships.creator"
                     ]
                 }
             }
@@ -2231,6 +2184,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "onBehalfOfContentOwner": {
@@ -2404,6 +2359,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -2558,6 +2515,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "onBehalfOfContentOwner": {
@@ -2810,64 +2769,6 @@
                 }
             }
         },
-        "sponsors": {
-            "methods": {
-                "list": {
-                    "description": "Retrieves a list of sponsors that match the request criteria for a channel.",
-                    "httpMethod": "GET",
-                    "id": "youtube.sponsors.list",
-                    "parameterOrder": [
-                        "part"
-                    ],
-                    "parameters": {
-                        "filter": {
-                            "default": "newest",
-                            "description": "Parameter that specifies which channel sponsors to return.",
-                            "enum": [
-                                "sponsorFilterUnknown",
-                                "newest",
-                                "all"
-                            ],
-                            "enumDescriptions": [
-                                "",
-                                "Return the most recent sponsors, from newest to oldest.",
-                                "Return all sponsors, from newest to oldest."
-                            ],
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "maxResults": {
-                            "default": "5",
-                            "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
-                            "format": "uint32",
-                            "location": "query",
-                            "type": "integer"
-                        },
-                        "pageToken": {
-                            "description": "The *pageToken* parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.",
-                            "location": "query",
-                            "type": "string"
-                        },
-                        "part": {
-                            "description": "The *part* parameter specifies the sponsor resource parts that the API response will include. Supported values are id and snippet.",
-                            "location": "query",
-                            "repeated": true,
-                            "required": true,
-                            "type": "string"
-                        }
-                    },
-                    "path": "youtube/v3/sponsors",
-                    "response": {
-                        "$ref": "SponsorListResponse"
-                    },
-                    "scopes": [
-                        "https://www.googleapis.com/auth/youtube",
-                        "https://www.googleapis.com/auth/youtube.force-ssl",
-                        "https://www.googleapis.com/auth/youtube.readonly"
-                    ]
-                }
-            }
-        },
         "subscriptions": {
             "methods": {
                 "delete": {
@@ -2949,6 +2850,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "0",
                             "type": "integer"
                         },
                         "mine": {
@@ -3039,6 +2942,8 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "1",
                             "type": "integer"
                         },
                         "pageToken": {
@@ -3290,7 +3195,7 @@
                     ],
                     "parameters": {
                         "hl": {
-                            "default": "en_US",
+                            "default": "en-US",
                             "location": "query",
                             "type": "string"
                         },
@@ -3531,6 +3436,8 @@
                         "maxHeight": {
                             "format": "int32",
                             "location": "query",
+                            "maximum": "8192",
+                            "minimum": "72",
                             "type": "integer"
                         },
                         "maxResults": {
@@ -3538,12 +3445,16 @@
                             "description": "The *maxResults* parameter specifies the maximum number of items that should be returned in the result set. *Note:* This parameter is supported for use in conjunction with the myRating and chart parameters, but it is not supported for use in conjunction with the id parameter.",
                             "format": "uint32",
                             "location": "query",
+                            "maximum": "50",
+                            "minimum": "1",
                             "type": "integer"
                         },
                         "maxWidth": {
                             "description": "Return the player with maximum height specified in",
                             "format": "int32",
                             "location": "query",
+                            "maximum": "8192",
+                            "minimum": "72",
                             "type": "integer"
                         },
                         "myRating": {
@@ -3776,8 +3687,8 @@
             }
         }
     },
-    "revision": "20201007",
-    "rootUrl": "https://www.googleapis.com/",
+    "revision": "20210203",
+    "rootUrl": "https://youtube.googleapis.com/",
     "schemas": {
         "AbuseReport": {
             "id": "AbuseReport",
@@ -4201,7 +4112,8 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the video was uploaded. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the video was uploaded.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -4365,7 +4277,8 @@
                     "type": "string"
                 },
                 "lastUpdated": {
-                    "description": "The date and time when the caption track was last updated. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the caption track was last updated.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "name": {
@@ -4649,7 +4562,8 @@
                     "type": "string"
                 },
                 "timeLinked": {
-                    "description": "The date and time of when the channel was linked to the content owner. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the channel was linked to the content owner.",
+                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -5077,7 +4991,8 @@
                     "description": "Localized title and description, read-only."
                 },
                 "publishedAt": {
-                    "description": "The date and time that the channel was created. The value is specified in < a href=\"//www.w3.org/TR/NOTE-datetime\">ISO 8601 format.",
+                    "description": "The date and time that the channel was created.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -5323,7 +5238,8 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "description": "The date and time when the comment was orignally published. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the comment was originally published.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "textDisplay": {
@@ -5335,7 +5251,8 @@
                     "type": "string"
                 },
                 "updatedAt": {
-                    "description": "The date and time when was last updated . The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the comment was last updated.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "videoId": {
@@ -7407,7 +7324,7 @@
                     "description": "The URL for the background image shown on the video watch page. The image should be 1200px by 615px, with a maximum file size of 128k."
                 },
                 "bannerExternalUrl": {
-                    "description": "This is used only in update requests; if it's set, we use this URL to generate all of the above banner URLs.",
+                    "description": "This is generated when a ChannelBanner.Insert request has succeeded for the given channel.",
                     "type": "string"
                 },
                 "bannerImageUrl": {
@@ -7674,6 +7591,7 @@
                 },
                 "boundStreamLastUpdateTimeMs": {
                     "description": "The date and time that the live stream referenced by boundStreamId was last updated.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "closedCaptionsType": {
@@ -7792,6 +7710,22 @@
                     },
                     "description": "This setting indicates whether the broadcast should automatically begin with an in-stream slate when you update the broadcast's status to live. After updating the status, you then need to send a liveCuepoints.insert request that sets the cuepoint's eventState to end to remove the in-stream slate and make your broadcast stream visible to viewers.",
                     "type": "boolean"
+                },
+                "stereoLayout": {
+                    "description": "The 3D stereo layout of this broadcast. This defaults to mono.",
+                    "enum": [
+                        "stereoLayoutUnspecified",
+                        "mono",
+                        "leftRight",
+                        "topBottom"
+                    ],
+                    "enumDescriptions": [
+                        "",
+                        "",
+                        "",
+                        ""
+                    ],
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -7846,11 +7780,13 @@
             "id": "LiveBroadcastSnippet",
             "properties": {
                 "actualEndTime": {
-                    "description": "The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the broadcast actually ended. This information is only available once the broadcast's state is complete.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "actualStartTime": {
-                    "description": "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the broadcast actually started. This information is only available once the broadcast's state is live.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "channelId": {
@@ -7870,15 +7806,18 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the broadcast was added to YouTube's live broadcast schedule. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the broadcast was added to YouTube's live broadcast schedule.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledEndTime": {
-                    "description": "The date and time that the broadcast is scheduled to end. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the broadcast is scheduled to start.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledStartTime": {
-                    "description": "The date and time that the broadcast is scheduled to start. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the broadcast is scheduled to end.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -8171,7 +8110,8 @@
                     "type": "string"
                 },
                 "offlineAt": {
-                    "description": "The date and time when the underlying stream went offline. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the underlying stream went offline.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "pageInfo": {
@@ -8231,7 +8171,8 @@
                     "$ref": "LiveChatMessageRetractedDetails"
                 },
                 "publishedAt": {
-                    "description": "The date and time when the message was orignally published. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the message was orignally published.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "superChatDetails": {
@@ -8712,7 +8653,8 @@
                     "type": "boolean"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the stream was created. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the stream was created.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "title": {
@@ -9146,7 +9088,8 @@
                     "type": "string"
                 },
                 "videoPublishedAt": {
-                    "description": "The date and time that the video was published to YouTube. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the video was published to YouTube.",
+                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -9222,7 +9165,8 @@
                     "type": "integer"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the item was added to the playlist. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the item was added to the playlist.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "resourceId": {
@@ -9356,7 +9300,8 @@
                     "description": "Localized title and description, read-only."
                 },
                 "publishedAt": {
-                    "description": "The date and time that the playlist was created. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the playlist was created.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "tags": {
@@ -9549,7 +9494,8 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "description": "The creation date and time of the resource that the search result identifies. The value is specified in ISO 8601 format.",
+                    "description": "The creation date and time of the resource that the search result identifies.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "thumbnails": {
@@ -9558,89 +9504,6 @@
                 },
                 "title": {
                     "description": "The title of the search result.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "Sponsor": {
-            "description": "A `__sponsor__` resource represents a sponsor for a YouTube channel. A sponsor provides recurring monetary support to a creator and receives special benefits.",
-            "id": "Sponsor",
-            "properties": {
-                "etag": {
-                    "description": "Etag of this resource.",
-                    "type": "string"
-                },
-                "kind": {
-                    "default": "youtube#sponsor",
-                    "description": "Identifies what kind of resource this is. Value: the fixed string `\"youtube#sponsor\"`.",
-                    "type": "string"
-                },
-                "snippet": {
-                    "$ref": "SponsorSnippet",
-                    "description": "The `snippet` object contains basic details about the sponsor."
-                }
-            },
-            "type": "object"
-        },
-        "SponsorListResponse": {
-            "id": "SponsorListResponse",
-            "properties": {
-                "etag": {
-                    "description": "Etag of this resource.",
-                    "type": "string"
-                },
-                "eventId": {
-                    "description": "Serialized EventId of the request which produced this response.",
-                    "type": "string"
-                },
-                "items": {
-                    "description": "A list of sponsors that match the request criteria.",
-                    "items": {
-                        "$ref": "Sponsor"
-                    },
-                    "type": "array"
-                },
-                "kind": {
-                    "default": "youtube#sponsorListResponse",
-                    "description": "Identifies what kind of resource this is. Value: the fixed string `\"youtube#sponsorListResponse\".",
-                    "type": "string"
-                },
-                "nextPageToken": {
-                    "description": "The token that can be used as the value of the `pageToken` parameter to retrieve the next page in the result set.",
-                    "type": "string"
-                },
-                "pageInfo": {
-                    "$ref": "PageInfo"
-                },
-                "tokenPagination": {
-                    "$ref": "TokenPagination"
-                },
-                "visitorId": {
-                    "description": "The `visitorId` identifies the visitor.",
-                    "type": "string"
-                }
-            },
-            "type": "object"
-        },
-        "SponsorSnippet": {
-            "id": "SponsorSnippet",
-            "properties": {
-                "channelId": {
-                    "description": "The id of the channel being sponsored.",
-                    "type": "string"
-                },
-                "cumulativeDurationMonths": {
-                    "description": "The cumulative time a user has been a sponsor in months.",
-                    "format": "int32",
-                    "type": "integer"
-                },
-                "sponsorDetails": {
-                    "$ref": "ChannelProfileDetails",
-                    "description": "Details about the sponsor."
-                },
-                "sponsorSince": {
-                    "description": "The date and time when the user became a sponsor. The value is specified in ISO 8601 (`YYYY-MM-DDThh:mm:ss.sZ`) format.",
                     "type": "string"
                 }
             },
@@ -9770,7 +9633,8 @@
                     "type": "string"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the subscription was created. The value is specified in ISO 8601 format.",
+                    "description": "The date and time that the subscription was created.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "resourceId": {
@@ -9897,7 +9761,8 @@
                     "type": "string"
                 },
                 "createdAt": {
-                    "description": "The date and time when the event occurred. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the event occurred.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "currency": {
@@ -10178,7 +10043,7 @@
                 },
                 "projectDetails": {
                     "$ref": "VideoProjectDetails",
-                    "description": "The projectDetails object contains information about the project specific video metadata."
+                    "description": "The projectDetails object contains information about the project specific video metadata. b/157517979: This part was never populated after it was added. However, it sees non-zero traffic because there is generated client code in the wild that refers to it [1]. We keep this field and do NOT remove it because otherwise V3 would return an error when this part gets requested [2]. [1] https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2] http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677"
                 },
                 "recordingDetails": {
                     "$ref": "VideoRecordingDetails",
@@ -10735,11 +10600,13 @@
                     "type": "string"
                 },
                 "actualEndTime": {
-                    "description": "The time that the broadcast actually ended. The value is specified in ISO 8601 format. This value will not be available until the broadcast is over.",
+                    "description": "The time that the broadcast actually ended. This value will not be available until the broadcast is over.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "actualStartTime": {
-                    "description": "The time that the broadcast actually started. The value is specified in ISO 8601 format. This value will not be available until the broadcast begins.",
+                    "description": "The time that the broadcast actually started. This value will not be available until the broadcast begins.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "concurrentViewers": {
@@ -10748,11 +10615,13 @@
                     "type": "string"
                 },
                 "scheduledEndTime": {
-                    "description": "The time that the broadcast is scheduled to end. The value is specified in ISO 8601 format. If the value is empty or the property is not present, then the broadcast is scheduled to continue indefinitely.",
+                    "description": "The time that the broadcast is scheduled to end. If the value is empty or the property is not present, then the broadcast is scheduled to contiue indefinitely.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "scheduledStartTime": {
-                    "description": "The time that the broadcast is scheduled to begin. The value is specified in ISO 8601 format.",
+                    "description": "The time that the broadcast is scheduled to begin.",
+                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -10890,17 +10759,9 @@
             "type": "object"
         },
         "VideoProjectDetails": {
-            "description": "Project specific details about the content of a YouTube Video.",
+            "description": "DEPRECATED. b/157517979: This part was never populated after it was added. However, it sees non-zero traffic because there is generated client code in the wild that refers to it [1]. We keep this field and do NOT remove it because otherwise V3 would return an error when this part gets requested [2]. [1] https://developers.google.com/resources/api-libraries/documentation/youtube/v3/csharp/latest/classGoogle_1_1Apis_1_1YouTube_1_1v3_1_1Data_1_1VideoProjectDetails.html [2] http://google3/video/youtube/src/python/servers/data_api/common.py?l=1565-1569&rcl=344141677",
             "id": "VideoProjectDetails",
-            "properties": {
-                "tags": {
-                    "description": "A list of project tags associated with the video during the upload.",
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                }
-            },
+            "properties": {},
             "type": "object"
         },
         "VideoRating": {
@@ -10971,7 +10832,8 @@
                     "type": "string"
                 },
                 "recordingDate": {
-                    "description": "The date and time when the video was recorded. The value is specified in ISO 8601 (YYYY-MM-DDThh:mm:ss.sssZ) format.",
+                    "description": "The date and time when the video was recorded.",
+                    "format": "date-time",
                     "type": "string"
                 }
             },
@@ -11026,7 +10888,8 @@
                     "description": "Localized snippet selected with the hl parameter. If no such localization exists, this field is populated with the default snippet. (Read-only)"
                 },
                 "publishedAt": {
-                    "description": "The date and time that the video was uploaded. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the video was uploaded.",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "tags": {
@@ -11141,7 +11004,8 @@
                     "type": "boolean"
                 },
                 "publishAt": {
-                    "description": "The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private. The value is specified in ISO 8601 format.",
+                    "description": "The date and time when the video is scheduled to publish. It can be set only if the privacy status of the video is private..",
+                    "format": "date-time",
                     "type": "string"
                 },
                 "rejectionReason": {

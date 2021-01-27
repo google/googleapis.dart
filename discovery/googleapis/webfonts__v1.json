@@ -132,7 +132,7 @@
             }
         }
     },
-    "revision": "20200915",
+    "revision": "20210120",
     "rootUrl": "https://webfonts.googleapis.com/",
     "schemas": {
         "Webfont": {

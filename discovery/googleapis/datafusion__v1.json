@@ -19,7 +19,7 @@
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "datafusion:v1beta1",
+    "id": "datafusion:v1",
     "kind": "discovery#restDescription",
     "name": "datafusion",
     "ownerDomain": "google.com",
@@ -123,7 +123,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta1/{+name}",
+                            "path": "v1/{+name}",
                             "response": {
                                 "$ref": "Location"
                             },
@@ -168,7 +168,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta1/{+name}/locations",
+                            "path": "v1/{+name}/locations",
                             "response": {
                                 "$ref": "ListLocationsResponse"
                             },
@@ -201,7 +201,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+parent}/instances",
+                                    "path": "v1/{+parent}/instances",
                                     "request": {
                                         "$ref": "Instance"
                                     },
@@ -228,7 +228,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Operation"
                                     },
@@ -252,7 +252,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Instance"
                                     },
@@ -282,7 +282,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:getIamPolicy",
+                                    "path": "v1/{+resource}:getIamPolicy",
                                     "response": {
                                         "$ref": "Policy"
                                     },
@@ -327,7 +327,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+parent}/instances",
+                                    "path": "v1/{+parent}/instances",
                                     "response": {
                                         "$ref": "ListInstancesResponse"
                                     },
@@ -351,13 +351,13 @@
                                             "type": "string"
                                         },
                                         "updateMask": {
-                                            "description": "Field mask is used to specify the fields that the update will overwrite in an instance resource. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, all the supported fields (labels and options currently) will be overwritten.",
+                                            "description": "Field mask is used to specify the fields that the update will overwrite in an instance resource. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, all the supported fields (labels, options, and version currently) will be overwritten.",
                                             "format": "google-fieldmask",
                                             "location": "query",
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "request": {
                                         "$ref": "Instance"
                                     },
@@ -384,7 +384,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}:restart",
+                                    "path": "v1/{+name}:restart",
                                     "request": {
                                         "$ref": "RestartInstanceRequest"
                                     },
@@ -411,7 +411,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:setIamPolicy",
+                                    "path": "v1/{+resource}:setIamPolicy",
                                     "request": {
                                         "$ref": "SetIamPolicyRequest"
                                     },
@@ -438,39 +438,12 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:testIamPermissions",
+                                    "path": "v1/{+resource}:testIamPermissions",
                                     "request": {
                                         "$ref": "TestIamPermissionsRequest"
                                     },
                                     "response": {
                                         "$ref": "TestIamPermissionsResponse"
-                                    },
-                                    "scopes": [
-                                        "https://www.googleapis.com/auth/cloud-platform"
-                                    ]
-                                },
-                                "upgrade": {
-                                    "description": "Upgrade a single Data Fusion instance. At the end of an operation instance is fully upgraded.",
-                                    "httpMethod": "POST",
-                                    "id": "datafusion.projects.locations.instances.upgrade",
-                                    "parameterOrder": [
-                                        "name"
-                                    ],
-                                    "parameters": {
-                                        "name": {
-                                            "description": "Name of the Data Fusion instance which need to be upgraded in the form of projects/{project}/locations/{location}/instances/{instance} Instance will be upgraded with the latest stable version of the Data Fusion.",
-                                            "location": "path",
-                                            "pattern": "^projects/[^/]+/locations/[^/]+/instances/[^/]+$",
-                                            "required": true,
-                                            "type": "string"
-                                        }
-                                    },
-                                    "path": "v1beta1/{+name}:upgrade",
-                                    "request": {
-                                        "$ref": "UpgradeInstanceRequest"
-                                    },
-                                    "response": {
-                                        "$ref": "Operation"
                                     },
                                     "scopes": [
                                         "https://www.googleapis.com/auth/cloud-platform"
@@ -496,7 +469,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}:cancel",
+                                    "path": "v1/{+name}:cancel",
                                     "request": {
                                         "$ref": "CancelOperationRequest"
                                     },
@@ -523,7 +496,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Empty"
                                     },
@@ -547,7 +520,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Operation"
                                     },
@@ -587,7 +560,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}/operations",
+                                    "path": "v1/{+name}/operations",
                                     "response": {
                                         "$ref": "ListOperationsResponse"
                                     },
@@ -631,7 +604,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+parent}/versions",
+                                    "path": "v1/{+parent}/versions",
                                     "response": {
                                         "$ref": "ListAvailableVersionsResponse"
                                     },
@@ -646,7 +619,7 @@
             }
         }
     },
-    "revision": "20201001",
+    "revision": "20210121",
     "rootUrl": "https://datafusion.googleapis.com/",
     "schemas": {
         "Accelerator": {
@@ -664,6 +637,22 @@
                         "Default value, if unspecified.",
                         "Change Data Capture accelerator for CDF.",
                         "Cloud Healthcare accelerator for CDF. This accelerator is to enable Cloud Healthcare specific CDF plugins developed by Healthcare team."
+                    ],
+                    "type": "string"
+                },
+                "state": {
+                    "description": "The state of the accelerator",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "ENABLED",
+                        "DISABLED",
+                        "UNKNOWN"
+                    ],
+                    "enumDescriptions": [
+                        "Default value, do not use",
+                        "Indicates that the accelerator is enabled and available to use",
+                        "Indicates that the accelerator is disabled and not available to use",
+                        "Indicates that accelerator state is currently unknown. Requests for enable, disable could be retried while in this state"
                     ],
                     "type": "string"
                 }
@@ -722,10 +711,6 @@
             "description": "Associates `members` with a `role`.",
             "id": "Binding",
             "properties": {
-                "bindingId": {
-                    "description": "A client-specified ID for this binding. Expected to be globally unique to support the internal bindings-by-ID API.",
-                    "type": "string"
-                },
                 "condition": {
                     "$ref": "Expr",
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
@@ -837,7 +822,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels.",
+                    "description": "The resource labels for instance to use to annotate any related underlying resources such as GCE VMs. The character '=' is not allowed to be used within the labels.",
                     "type": "object"
                 },
                 "name": {
@@ -880,7 +865,7 @@
                     "enum": [
                         "STATE_UNSPECIFIED",
                         "CREATING",
-                        "RUNNING",
+                        "ACTIVE",
                         "FAILED",
                         "DELETING",
                         "UPGRADING",
@@ -892,7 +877,7 @@
                     "enumDescriptions": [
                         "Instance does not have a state yet",
                         "Instance is being created",
-                        "Instance is running and ready for requests",
+                        "Instance is active and ready for requests. This corresponds to 'RUNNING' in datafusion.v1beta1.",
                         "Instance creation failed",
                         "Instance is being deleted",
                         "Instance is being upgraded",
@@ -937,11 +922,11 @@
                     "type": "string"
                 },
                 "version": {
-                    "description": "Current version of Data Fusion.",
+                    "description": "Current version of the Data Fusion. Only specifiable in Update.",
                     "type": "string"
                 },
                 "zone": {
-                    "description": "Name of the zone in which the Data Fusion instance will be created.",
+                    "description": "Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.",
                     "type": "string"
                 }
             },
@@ -1065,7 +1050,7 @@
             "id": "NetworkConfig",
             "properties": {
                 "ipAllocation": {
-                    "description": "The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the Data Fusion instance network.",
+                    "description": "The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.",
                     "type": "string"
                 },
                 "network": {
@@ -1114,6 +1099,13 @@
             "description": "Represents the metadata of a long-running operation.",
             "id": "OperationMetadata",
             "properties": {
+                "additionalStatus": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Map to hold any additonal status info for the operation If there is an accelerator being enabled/disabled/deleted, this will be populated with accelerator name as key and status as ENABLING, DISABLING or DELETING",
+                    "type": "object"
+                },
                 "apiVersion": {
                     "description": "API version used to start the operation.",
                     "type": "string"
@@ -1255,14 +1247,8 @@
             },
             "type": "object"
         },
-        "UpgradeInstanceRequest": {
-            "description": "Request message for upgrading a Data Fusion instance. To change the instance properties, instance update should be used.",
-            "id": "UpgradeInstanceRequest",
-            "properties": {},
-            "type": "object"
-        },
         "Version": {
-            "description": "The Data Fusion version.",
+            "description": "The Data Fusion version. This proto message stores information about certain Data Fusion version, which is used for Data Fusion version upgrade.",
             "id": "Version",
             "properties": {
                 "availableFeatures": {
@@ -1286,6 +1272,6 @@
     },
     "servicePath": "",
     "title": "Cloud Data Fusion API",
-    "version": "v1beta1",
+    "version": "v1",
     "version_module": true
 }

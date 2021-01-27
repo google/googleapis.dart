@@ -1066,6 +1066,152 @@
                 }
             }
         },
+        "rowAccessPolicies": {
+            "methods": {
+                "getIamPolicy": {
+                    "description": "Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.",
+                    "httpMethod": "POST",
+                    "id": "bigquery.rowAccessPolicies.getIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which the policy is being requested. See the operation documentation for the appropriate value for this field.",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:getIamPolicy",
+                    "request": {
+                        "$ref": "GetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/bigquery.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                },
+                "list": {
+                    "description": "Lists all row access policies on the specified table.",
+                    "httpMethod": "GET",
+                    "id": "bigquery.rowAccessPolicies.list",
+                    "parameterOrder": [
+                        "projectId",
+                        "datasetId",
+                        "tableId"
+                    ],
+                    "parameters": {
+                        "datasetId": {
+                            "description": "Required. Dataset ID of row access policies to list.",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "pageSize": {
+                            "description": "The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.",
+                            "format": "int32",
+                            "location": "query",
+                            "type": "integer"
+                        },
+                        "pageToken": {
+                            "description": "Page token, returned by a previous call, to request the next page of results.",
+                            "location": "query",
+                            "type": "string"
+                        },
+                        "projectId": {
+                            "description": "Required. Project ID of the row access policies to list.",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        },
+                        "tableId": {
+                            "description": "Required. Table ID of the table to list row access policies.",
+                            "location": "path",
+                            "pattern": "^[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies",
+                    "response": {
+                        "$ref": "ListRowAccessPoliciesResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/bigquery.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                },
+                "setIamPolicy": {
+                    "description": "Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.",
+                    "httpMethod": "POST",
+                    "id": "bigquery.rowAccessPolicies.setIamPolicy",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which the policy is being specified. See the operation documentation for the appropriate value for this field.",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:setIamPolicy",
+                    "request": {
+                        "$ref": "SetIamPolicyRequest"
+                    },
+                    "response": {
+                        "$ref": "Policy"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/cloud-platform"
+                    ]
+                },
+                "testIamPermissions": {
+                    "description": "Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may \"fail open\" without warning.",
+                    "httpMethod": "POST",
+                    "id": "bigquery.rowAccessPolicies.testIamPermissions",
+                    "parameterOrder": [
+                        "resource"
+                    ],
+                    "parameters": {
+                        "resource": {
+                            "description": "REQUIRED: The resource for which the policy detail is being requested. See the operation documentation for the appropriate value for this field.",
+                            "location": "path",
+                            "pattern": "^projects/[^/]+/datasets/[^/]+/tables/[^/]+/rowAccessPolicies/[^/]+$",
+                            "required": true,
+                            "type": "string"
+                        }
+                    },
+                    "path": "{+resource}:testIamPermissions",
+                    "request": {
+                        "$ref": "TestIamPermissionsRequest"
+                    },
+                    "response": {
+                        "$ref": "TestIamPermissionsResponse"
+                    },
+                    "scopes": [
+                        "https://www.googleapis.com/auth/bigquery",
+                        "https://www.googleapis.com/auth/bigquery.readonly",
+                        "https://www.googleapis.com/auth/cloud-platform",
+                        "https://www.googleapis.com/auth/cloud-platform.read-only"
+                    ]
+                }
+            }
+        },
         "tabledata": {
             "methods": {
                 "insertAll": {
@@ -1507,7 +1653,7 @@
             }
         }
     },
-    "revision": "20200929",
+    "revision": "20210120",
     "rootUrl": "https://bigquery.googleapis.com/",
     "schemas": {
         "AggregateClassificationMetrics": {
@@ -2305,7 +2451,7 @@
             "id": "ClusteringMetrics",
             "properties": {
                 "clusters": {
-                    "description": "[Beta] Information for all clusters.",
+                    "description": "Information for all clusters.",
                     "items": {
                         "$ref": "Cluster"
                     },
@@ -2427,6 +2573,10 @@
                             "role": {
                                 "description": "[Required] An IAM role ID that should be granted to the user, group, or domain specified in this access entry. The following legacy mappings will be applied: OWNER  roles/bigquery.dataOwner WRITER  roles/bigquery.dataEditor READER  roles/bigquery.dataViewer This field will accept any of the above formats, but will return only the legacy format. For example, if you set this field to \"roles/bigquery.dataOwner\", it will be returned back as \"OWNER\".",
                                 "type": "string"
+                            },
+                            "routine": {
+                                "$ref": "RoutineReference",
+                                "description": "[Pick one] A routine from a different dataset to grant access to. Queries executed against that routine will have read access to views/tables/routines in this dataset. Only UDF is supported for now. The role field is not required when this field is set. If that routine is updated by any user, access to the routine needs to be granted again via an update operation."
                             },
                             "specialGroup": {
                                 "description": "[Pick one] A special group to grant access to. Possible values include: projectOwners: Owners of the enclosing project. projectReaders: Readers of the enclosing project. projectWriters: Writers of the enclosing project. allAuthenticatedUsers: All authenticated BigQuery users. Maps to similarly-named IAM members.",
@@ -2616,6 +2766,18 @@
             },
             "type": "object"
         },
+        "DimensionalityReductionMetrics": {
+            "description": "Model evaluation metrics for dimensionality reduction models.",
+            "id": "DimensionalityReductionMetrics",
+            "properties": {
+                "totalExplainedVarianceRatio": {
+                    "description": "Total percentage of variance explained by the selected principal components.",
+                    "format": "double",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "EncryptionConfiguration": {
             "id": "EncryptionConfiguration",
             "properties": {
@@ -2679,6 +2841,10 @@
                 "clusteringMetrics": {
                     "$ref": "ClusteringMetrics",
                     "description": "Populated for clustering models."
+                },
+                "dimensionalityReductionMetrics": {
+                    "$ref": "DimensionalityReductionMetrics",
+                    "description": "Evaluation metrics when the model is a dimensionality reduction model, which currently includes PCA."
                 },
                 "multiClassClassificationMetrics": {
                     "$ref": "MultiClassClassificationMetrics",
@@ -2871,6 +3037,22 @@
             },
             "type": "object"
         },
+        "Explanation": {
+            "description": "Explanation for a single feature.",
+            "id": "Explanation",
+            "properties": {
+                "attribution": {
+                    "description": "Attribution of feature.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "featureName": {
+                    "description": "Full name of the feature. For non-numerical features, will be formatted like .. Overall size of feature name will always be truncated to first 120 characters.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "Expr": {
             "description": "Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: \"Summary size limit\" description: \"Determines if a summary is less than 100 chars\" expression: \"document.summary.size() < 100\" Example (Equality): title: \"Requestor is owner\" description: \"Determines if requestor is the document owner\" expression: \"document.owner == request.auth.claims.email\" Example (Logic): title: \"Public documents\" description: \"Determine whether the document should be publicly visible\" expression: \"document.type != 'private' && document.type != 'internal'\" Example (Data Manipulation): title: \"Notification string\" description: \"Create a notification string with a timestamp.\" expression: \"'New message received at ' + string(document.create_time)\" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.",
             "id": "Expr",
@@ -2923,7 +3105,7 @@
                 },
                 "hivePartitioningOptions": {
                     "$ref": "HivePartitioningOptions",
-                    "description": "[Optional, Trusted Tester] Options to configure hive partitioning support."
+                    "description": "[Optional] Options to configure hive partitioning support."
                 },
                 "ignoreUnknownValues": {
                     "description": "[Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.",
@@ -3074,6 +3256,24 @@
             },
             "type": "object"
         },
+        "GlobalExplanation": {
+            "description": "Global explanations containing the top most important features after training.",
+            "id": "GlobalExplanation",
+            "properties": {
+                "classLabel": {
+                    "description": "Class label for this set of global explanations. Will be empty/null for binary logistic and linear regression models. Sorted alphabetically in descending order.",
+                    "type": "string"
+                },
+                "explanations": {
+                    "description": "A list of the top global explanations. Sorted by absolute value of attribution in descending order.",
+                    "items": {
+                        "$ref": "Explanation"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "GoogleSheetsOptions": {
             "id": "GoogleSheetsOptions",
             "properties": {
@@ -3140,6 +3340,13 @@
                     "description": "Learn rate used for this iteration.",
                     "format": "double",
                     "type": "number"
+                },
+                "principalComponentInfos": {
+                    "description": "The information of the principal components.",
+                    "items": {
+                        "$ref": "PrincipalComponentInfo"
+                    },
+                    "type": "array"
                 },
                 "trainingLoss": {
                     "description": "Loss computed on the training data at the end of iteration.",
@@ -3319,7 +3526,7 @@
                     "type": "string"
                 },
                 "decimalTargetTypes": {
-                    "description": "[Trusted Tester] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. For example: suppose decimal_target_type = [\"NUMERIC\", \"BIGNUMERIC\"]. Then if (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). For duplicated types in this field, only one will be considered and the rest will be ignored. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC.",
+                    "description": "Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC ([Preview](/products/#product-launch-stages)), and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is [\"NUMERIC\", \"BIGNUMERIC\"]. If (precision,scale) is: * (38,9) -> NUMERIC; * (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); * (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); * (76,38) -> BIGNUMERIC; * (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, [\"BIGNUMERIC\", \"NUMERIC\"] is the same as [\"NUMERIC\", \"BIGNUMERIC\"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to [\"NUMERIC\", \"STRING\"] for ORC and [\"NUMERIC\"] for the other file formats.",
                     "items": {
                         "type": "string"
                     },
@@ -3347,11 +3554,15 @@
                 },
                 "hivePartitioningOptions": {
                     "$ref": "HivePartitioningOptions",
-                    "description": "[Optional, Trusted Tester] Options to configure hive partitioning support."
+                    "description": "[Optional] Options to configure hive partitioning support."
                 },
                 "ignoreUnknownValues": {
                     "description": "[Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names",
                     "type": "boolean"
+                },
+                "jsonExtension": {
+                    "description": "[Optional] If sourceFormat is set to newline-delimited JSON, indicates whether it should be processed as a JSON variant such as GeoJSON. For a sourceFormat other than JSON, omit this field. If the sourceFormat is newline-delimited JSON: - for newline-delimited GeoJSON: set to GEOJSON.",
+                    "type": "string"
                 },
                 "maxBadRecords": {
                     "description": "[Optional] The maximum number of bad records that BigQuery can ignore when running the job. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV and JSON. The default value is 0, which requires that all records are valid.",
@@ -4043,6 +4254,24 @@
             },
             "type": "object"
         },
+        "ListRowAccessPoliciesResponse": {
+            "description": "Response message for the ListRowAccessPolicies method.",
+            "id": "ListRowAccessPoliciesResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to request the next page of results.",
+                    "type": "string"
+                },
+                "rowAccessPolicies": {
+                    "description": "Row access policies on the requested table.",
+                    "items": {
+                        "$ref": "RowAccessPolicy"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
         "LocationMetadata": {
             "description": "BigQuery-specific metadata about a location. This will be set on google.cloud.location.Location.metadata in Cloud Location API responses.",
             "id": "LocationMetadata",
@@ -4170,12 +4399,12 @@
                         "Logistic regression based classification model.",
                         "K-means clustering model.",
                         "Matrix factorization model.",
-                        "[Beta] DNN classifier model.",
-                        "[Beta] An imported TensorFlow model.",
-                        "[Beta] DNN regressor model.",
-                        "[Beta] Boosted tree regressor model.",
-                        "[Beta] Boosted tree classifier model.",
-                        "[Beta] ARIMA model.",
+                        "DNN classifier model.",
+                        "An imported TensorFlow model.",
+                        "DNN regressor model.",
+                        "Boosted tree regressor model.",
+                        "Boosted tree classifier model.",
+                        "ARIMA model.",
                         "[Beta] AutoML Tables regression model.",
                         "[Beta] AutoML Tables classification model."
                     ],
@@ -4287,6 +4516,33 @@
                     "description": "Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "PrincipalComponentInfo": {
+            "description": "Principal component infos, used only for eigen decomposition based models, e.g., PCA. Ordered by explained_variance in the descending order.",
+            "id": "PrincipalComponentInfo",
+            "properties": {
+                "cumulativeExplainedVarianceRatio": {
+                    "description": "The explained_variance is pre-ordered in the descending order to compute the cumulative explained variance ratio.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "explainedVariance": {
+                    "description": "Explained variance by this principal component, which is simply the eigenvalue.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "explainedVarianceRatio": {
+                    "description": "Explained_variance over the total explained variance.",
+                    "format": "double",
+                    "type": "number"
+                },
+                "principalComponentId": {
+                    "description": "Id of the principal component.",
+                    "format": "int64",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -4697,7 +4953,7 @@
                     "type": "number"
                 },
                 "rSquared": {
-                    "description": "R^2 score.",
+                    "description": "R^2 score. This corresponds to r2_score in ML.EVALUATE.",
                     "format": "double",
                     "type": "number"
                 }
@@ -4832,6 +5088,38 @@
                         "$ref": "Entry"
                     },
                     "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "RowAccessPolicy": {
+            "description": "Represents access on a subset of rows on the specified table, defined by its filter predicate. Access to the subset of rows is controlled by its IAM policy.",
+            "id": "RowAccessPolicy",
+            "properties": {
+                "creationTime": {
+                    "description": "Output only. The time when this row access policy was created, in milliseconds since the epoch.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "etag": {
+                    "description": "Output only. A hash of this resource.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "filterPredicate": {
+                    "description": "Required. A SQL boolean expression that represents the rows defined by this row access policy, similar to the boolean expression in a WHERE clause of a SELECT query on a table. References to other tables, routines, and temporary functions are not supported. Examples: region=\"EU\" date_field = CAST('2019-9-27' as DATE) nullable_field is not NULL numeric_field BETWEEN 1.0 AND 5.0",
+                    "type": "string"
+                },
+                "lastModifiedTime": {
+                    "description": "Output only. The time when this row access policy was last modified, in milliseconds since the epoch.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "rowAccessPolicyReference": {
+                    "$ref": "RowAccessPolicyReference",
+                    "description": "Required. Reference describing the ID of this row access policy."
                 }
             },
             "type": "object"
@@ -5175,7 +5463,7 @@
                     "description": "Time-based partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified."
                 },
                 "type": {
-                    "description": "[Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. [TrustedTester] SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.",
+                    "description": "[Output-only] Describes the table type. The following values are supported: TABLE: A normal BigQuery table. VIEW: A virtual table defined by a SQL query. SNAPSHOT: An immutable, read-only table that is a copy of another table. [TrustedTester] MATERIALIZED_VIEW: SQL query whose result is persisted. EXTERNAL: A table that references data stored in an external storage system, such as Google Cloud Storage. The default value is TABLE.",
                     "type": "string"
                 },
                 "view": {
@@ -5345,7 +5633,7 @@
                     "type": "object"
                 },
                 "type": {
-                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).",
+                    "description": "[Required] The field data type. Possible values include STRING, BYTES, INTEGER, INT64 (same as INTEGER), FLOAT, FLOAT64 (same as FLOAT), NUMERIC, BIGNUMERIC, BOOLEAN, BOOL (same as BOOLEAN), TIMESTAMP, DATE, TIME, DATETIME, RECORD (where RECORD indicates that the field contains a nested schema) or STRUCT (same as RECORD).",
                     "type": "string"
                 }
             },
@@ -5554,6 +5842,7 @@
             "type": "object"
         },
         "TrainingOptions": {
+            "description": "Options used in model training.",
             "id": "TrainingOptions",
             "properties": {
                 "autoArima": {
@@ -5580,7 +5869,8 @@
                         "MONTHLY",
                         "WEEKLY",
                         "DAILY",
-                        "HOURLY"
+                        "HOURLY",
+                        "PER_MINUTE"
                     ],
                     "enumDescriptions": [
                         "",
@@ -5590,7 +5880,8 @@
                         "Monthly data.",
                         "Weekly data.",
                         "Daily data.",
-                        "Hourly data."
+                        "Hourly data.",
+                        "Per-minute data."
                     ],
                     "type": "string"
                 },
@@ -5852,7 +6143,7 @@
                         "KMEANS_PLUS_PLUS"
                     ],
                     "enumDescriptions": [
-                        "",
+                        "Unspecified initialization method.",
                         "Initializes the centroids randomly.",
                         "Initializes the centroids using data specified in kmeans_initialization_column.",
                         "Initializes with kmeans++."
@@ -5931,7 +6222,7 @@
                     "type": "number"
                 },
                 "modelUri": {
-                    "description": "[Beta] Google Cloud Storage URI from which the model was imported. Only applicable for imported models.",
+                    "description": "Google Cloud Storage URI from which the model was imported. Only applicable for imported models.",
                     "type": "string"
                 },
                 "nonSeasonalOrder": {
@@ -6010,6 +6301,13 @@
                 "evaluationMetrics": {
                     "$ref": "EvaluationMetrics",
                     "description": "The evaluation metrics over training/eval data that were computed at the end of training."
+                },
+                "globalExplanations": {
+                    "description": "Global explanations for important features of the model. For multi-class models, there is one entry for each label class. For other models, there is only one entry in the list.",
+                    "items": {
+                        "$ref": "GlobalExplanation"
+                    },
+                    "type": "array"
                 },
                 "results": {
                     "description": "Output of each iteration run, results.size() <= max_iterations.",

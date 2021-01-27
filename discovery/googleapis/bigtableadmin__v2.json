@@ -1713,7 +1713,7 @@
             }
         }
     },
-    "revision": "20200916",
+    "revision": "20210121",
     "rootUrl": "https://bigtableadmin.googleapis.com/",
     "schemas": {
         "AppProfile": {

@@ -296,7 +296,7 @@
             }
         }
     },
-    "revision": "20201007",
+    "revision": "20210202",
     "rootUrl": "https://factchecktools.googleapis.com/",
     "schemas": {
         "GoogleFactcheckingFactchecktoolsV1alpha1Claim": {

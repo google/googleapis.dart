@@ -204,7 +204,7 @@
             }
         }
     },
-    "revision": "20201005",
+    "revision": "20210125",
     "rootUrl": "https://genomics.googleapis.com/",
     "schemas": {
         "CancelOperationRequest": {

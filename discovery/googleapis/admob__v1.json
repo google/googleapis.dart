@@ -2,6 +2,9 @@
     "auth": {
         "oauth2": {
             "scopes": {
+                "https://www.googleapis.com/auth/admob.readonly": {
+                    "description": "See your AdMob data"
+                },
                 "https://www.googleapis.com/auth/admob.report": {
                     "description": "See your AdMob data"
                 }
@@ -126,11 +129,12 @@
                         "$ref": "PublisherAccount"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/admob.readonly",
                         "https://www.googleapis.com/auth/admob.report"
                     ]
                 },
                 "list": {
-                    "description": "Lists the AdMob publisher account accessible with the client credential. Currently, all credentials have access to at most one AdMob account.",
+                    "description": "List the AdMob publisher account accessible with the client credential. Currently, all credentials have access to at most one AdMob account.",
                     "httpMethod": "GET",
                     "id": "admob.accounts.list",
                     "parameterOrder": [],
@@ -152,6 +156,7 @@
                         "$ref": "ListPublisherAccountsResponse"
                     },
                     "scopes": [
+                        "https://www.googleapis.com/auth/admob.readonly",
                         "https://www.googleapis.com/auth/admob.report"
                     ]
                 }
@@ -160,7 +165,7 @@
                 "mediationReport": {
                     "methods": {
                         "generate": {
-                            "description": "Generates an AdMob Mediation report based on the provided report specification.",
+                            "description": "Generates an AdMob Mediation report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
                             "httpMethod": "POST",
                             "id": "admob.accounts.mediationReport.generate",
                             "parameterOrder": [
@@ -183,6 +188,7 @@
                                 "$ref": "GenerateMediationReportResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/admob.readonly",
                                 "https://www.googleapis.com/auth/admob.report"
                             ]
                         }
@@ -191,7 +197,7 @@
                 "networkReport": {
                     "methods": {
                         "generate": {
-                            "description": "Generates an AdMob Network report based on the provided report specification.",
+                            "description": "Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.",
                             "httpMethod": "POST",
                             "id": "admob.accounts.networkReport.generate",
                             "parameterOrder": [
@@ -214,6 +220,7 @@
                                 "$ref": "GenerateNetworkReportResponse"
                             },
                             "scopes": [
+                                "https://www.googleapis.com/auth/admob.readonly",
                                 "https://www.googleapis.com/auth/admob.report"
                             ]
                         }
@@ -222,25 +229,25 @@
             }
         }
     },
-    "revision": "20201008",
+    "revision": "20210204",
     "rootUrl": "https://admob.googleapis.com/",
     "schemas": {
         "Date": {
-            "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
             "id": "Date",
             "properties": {
                 "day": {
-                    "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant.",
+                    "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "month": {
-                    "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.",
+                    "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "year": {
-                    "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.",
+                    "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -656,7 +663,7 @@
                             "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
                             "The total number of ads shown to users. The value is an integer.",
                             "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-                            "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+                            "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
                             "The number of times ads are returned in response to a request. The value is an integer.",
                             "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
                             "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."
@@ -771,7 +778,7 @@
                         "The estimated earnings of the AdMob publisher. The currency unit (USD, EUR, or other) of the earning metrics are determined by the localization setting for currency. The amount is in micros. For example, $6.50 would be represented as 6500000.",
                         "The total number of ads shown to users. The value is an integer.",
                         "The ratio of clicks over impressions. The value is a double precision (approximate) decimal value.",
-                        "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
+                        "The estimated earnings per thousand ad impressions. The value is in micros. For example, $1.03 would be represented as 1030000. Equivalent to eCPM in the AdMob UI. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
                         "The number of times ads are returned in response to a request. The value is an integer.",
                         "The ratio of matched ad requests over the total ad requests. The value is a double precision (approximate) decimal value. **Warning:** The metric is incompatible with [AD_TYPE](#Dimension.ENUM_VALUES.AD_TYPE) dimension.",
                         "The ratio of ads that are displayed over ads that are returned, defined as impressions / matched requests. The value is a double precision (approximate) decimal value."

@@ -342,7 +342,7 @@
             }
         }
     },
-    "revision": "20201007",
+    "revision": "20210108",
     "rootUrl": "https://civicinfo.googleapis.com/",
     "schemas": {
         "AdministrationRegion": {
@@ -352,10 +352,6 @@
                 "electionAdministrationBody": {
                     "$ref": "AdministrativeBody",
                     "description": "The election administration body for this area."
-                },
-                "id": {
-                    "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
-                    "type": "string"
                 },
                 "local_jurisdiction": {
                     "$ref": "AdministrationRegion",
@@ -532,10 +528,6 @@
                 },
                 "electorateSpecifications": {
                     "description": "A description of any additional eligibility requirements for voting in this contest.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
                     "type": "string"
                 },
                 "level": {
@@ -1029,10 +1021,6 @@
                 },
                 "endDate": {
                     "description": "The last date that this early vote site or drop off location may be used. This field is not populated for polling locations.",
-                    "type": "string"
-                },
-                "id": {
-                    "description": "An ID for this object. IDs may change in future requests and should not be cached. Access to this field requires special access that can be requested from the Request more link on the Quotas page.",
                     "type": "string"
                 },
                 "latitude": {

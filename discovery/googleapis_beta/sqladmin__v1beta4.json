@@ -3,7 +3,7 @@
         "oauth2": {
             "scopes": {
                 "https://www.googleapis.com/auth/cloud-platform": {
-                    "description": "View and manage your data across Google Cloud Platform services"
+                    "description": "See, edit, configure, and delete your Google Cloud Platform data"
                 },
                 "https://www.googleapis.com/auth/sqlservice.admin": {
                     "description": "Manage your Google SQL Service instances"
@@ -1338,8 +1338,13 @@
                                     "required": true,
                                     "type": "string"
                                 },
+                                "skipVerification": {
+                                    "description": "Whether to skip the verification step (VESS).",
+                                    "location": "query",
+                                    "type": "boolean"
+                                },
                                 "syncMode": {
-                                    "description": "External sync mode",
+                                    "description": "External sync mode.",
                                     "enum": [
                                         "EXTERNAL_SYNC_MODE_UNSPECIFIED",
                                         "ONLINE",
@@ -1780,7 +1785,7 @@
             }
         }
     },
-    "revision": "20200930",
+    "revision": "20210119",
     "rootUrl": "https://sqladmin.googleapis.com/",
     "schemas": {
         "AclEntry": {
@@ -1826,6 +1831,10 @@
                 "message": {
                     "description": "The warning message.",
                     "type": "string"
+                },
+                "region": {
+                    "description": "The region name for REGION_UNREACHABLE warning.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1870,6 +1879,22 @@
                     "description": "The number of days of transaction logs we retain for point in time restore, from 1-7.",
                     "format": "int32",
                     "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "BackupContext": {
+            "description": "Backup context.",
+            "id": "BackupContext",
+            "properties": {
+                "backupId": {
+                    "description": "The identifier of the backup.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "kind": {
+                    "description": "This is always *sql#backupContext*.",
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -1997,7 +2022,7 @@
                     "type": "string"
                 },
                 "type": {
-                    "description": "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\".",
+                    "description": "The type of this run; can be either \"AUTOMATED\" or \"ON_DEMAND\". This field defaults to \"ON_DEMAND\" and is ignored, when specified for insert requests.",
                     "enum": [
                         "SQL_BACKUP_RUN_TYPE_UNSPECIFIED",
                         "AUTOMATED",
@@ -2314,9 +2339,17 @@
                     "description": "Initial root password. Use only on creation.",
                     "type": "string"
                 },
+                "satisfiesPzs": {
+                    "description": "The status indicating if instance satisfies physical zone separation. Reserved for future use.",
+                    "type": "boolean"
+                },
                 "scheduledMaintenance": {
                     "$ref": "SqlScheduledMaintenance",
                     "description": "The start time of any upcoming scheduled maintenance for this instance."
+                },
+                "secondaryGceZone": {
+                    "description": "The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone. Reserved for future use.",
+                    "type": "string"
                 },
                 "selfLink": {
                     "description": "The URI of this resource.",
@@ -2335,7 +2368,7 @@
                     "description": "The user settings."
                 },
                 "state": {
-                    "description": "The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance has been stopped by owner. It is not currently running, but it's ready to be restarted. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.",
+                    "description": "The current serving state of the Cloud SQL instance. This can be one of the following. *SQL_INSTANCE_STATE_UNSPECIFIED*: The state of the instance is unknown. *RUNNABLE*: The instance is running, or has been stopped by owner. *SUSPENDED*: The instance is not available, for example due to problems with billing. for example due to problems with billing. *PENDING_DELETE*: The instance is being deleted. *PENDING_CREATE*: The instance is being created. *MAINTENANCE*: The instance is down for maintenance. *FAILED*: The instance creation failed.",
                     "enum": [
                         "SQL_INSTANCE_STATE_UNSPECIFIED",
                         "RUNNABLE",
@@ -2347,7 +2380,7 @@
                     ],
                     "enumDescriptions": [
                         "The state of the instance is unknown.",
-                        "The instance has been stopped by owner. It is not currently running, but it's ready to be restarted.",
+                        "The instance is running, or has been stopped by owner.",
                         "The instance is not available, for example due to problems with billing.",
                         "The instance is being deleted.",
                         "The instance is being created.",
@@ -2521,7 +2554,7 @@
             "id": "ExportContext",
             "properties": {
                 "csvExportOptions": {
-                    "description": "Options for exporting data as CSV.",
+                    "description": "Options for exporting data as CSV. *MySQL* and *PostgreSQL* instances only.",
                     "properties": {
                         "selectQuery": {
                             "description": "The select query used to extract the data.",
@@ -2538,7 +2571,7 @@
                     "type": "array"
                 },
                 "fileType": {
-                    "description": "The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV data.",
+                    "description": "The file type for the specified uri. *SQL*: The file contains SQL statements. *CSV*: The file contains CSV data. *BAK*: The file contains backup data for a SQL Server instance.",
                     "enum": [
                         "SQL_FILE_TYPE_UNSPECIFIED",
                         "SQL",
@@ -2568,7 +2601,7 @@
                             "description": "Options for exporting from MySQL.",
                             "properties": {
                                 "masterData": {
-                                    "description": "Option to include SQL statement required to set up replication. If set to *1*, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates. If set to *2*, the CHANGE MASTER TO statement is written as a SQL comment, and has no effect. All other values are ignored.",
+                                    "description": "Option to include SQL statement required to set up replication. If set to *1*, the dump file includes a CHANGE MASTER TO statement with the binary log coordinates, and --set-gtid-purged is set to ON. If set to *2*, the CHANGE MASTER TO statement is written as a SQL comment and has no effect. If set to any value other than *1*, --set-gtid-purged is set to OFF.",
                                     "format": "int32",
                                     "type": "integer"
                                 }
@@ -2590,7 +2623,7 @@
                     "type": "object"
                 },
                 "uri": {
-                    "description": "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form *gs: //bucketName/fileName*. If the file already exists, the requests // succeeds, but the operation fails. If *fileType* is // *SQL* and the filename ends with .gz, the contents are // compressed.",
+                    "description": "The path to the file in Google Cloud Storage where the export will be stored. The URI is in the form *gs://bucketName/fileName*. If the file already exists, the request succeeds, but the operation fails. If *fileType* is *SQL* and the filename ends with .gz, the contents are compressed.",
                     "type": "string"
                 }
             },
@@ -2816,8 +2849,32 @@
                     "type": "string"
                 },
                 "uri": {
-                    "description": "Path to the import file in Cloud Storage, in the form *gs: //bucketName/fileName*. Compressed gzip files (.gz) are supported // when *fileType* is *SQL*. The instance must have // write permissions to the bucket and read access to the file.",
+                    "description": "Path to the import file in Cloud Storage, in the form *gs://bucketName/fileName*. Compressed gzip files (.gz) are supported when *fileType* is *SQL*. The instance must have write permissions to the bucket and read access to the file.",
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InsightsConfig": {
+            "description": "Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.",
+            "id": "InsightsConfig",
+            "properties": {
+                "queryInsightsEnabled": {
+                    "description": "Whether Query Insights feature is enabled.",
+                    "type": "boolean"
+                },
+                "queryStringLength": {
+                    "description": "Maximum query length stored in bytes. Default value: 1024 bytes. Range: 256-4500 bytes. Query length more than this field value will be truncated to this value. When unset, query length will be the default value.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "recordApplicationTags": {
+                    "description": "Whether Query Insights will record application tags from query when enabled.",
+                    "type": "boolean"
+                },
+                "recordClientAddress": {
+                    "description": "Whether Query Insights will record client address when enabled.",
+                    "type": "boolean"
                 }
             },
             "type": "object"
@@ -3032,6 +3089,10 @@
                     "description": "This is always *sql#locationPreference*.",
                     "type": "string"
                 },
+                "secondaryZone": {
+                    "description": "The preferred Compute Engine zone for the secondary/failover (for example: us-central1-a, us-central1-b, etc.). Reserved for future use.",
+                    "type": "string"
+                },
                 "zone": {
                     "description": "The preferred Compute Engine zone (for example: us-central1-a, us-central1-b, etc.).",
                     "type": "string"
@@ -3167,9 +3228,13 @@
             "type": "object"
         },
         "Operation": {
-            "description": "An Operation resource. For successful operations that return an Operation resource, only the fields relevant to the operation are populated in the resource.",
+            "description": "An Operation resource. For successful operations that return an Operation resource, only the fields relevant to the operation are populated in the resource. Next field: 18",
             "id": "Operation",
             "properties": {
+                "backupContext": {
+                    "$ref": "BackupContext",
+                    "description": "The context for backup operation, if applicable."
+                },
                 "endTime": {
                     "description": "The time this operation finished in UTC timezone in RFC 3339 format, for example *2012-11-15T16:19:00.094Z*.",
                     "format": "google-datetime",
@@ -3487,7 +3552,7 @@
                 },
                 "activeDirectoryConfig": {
                     "$ref": "SqlActiveDirectoryConfig",
-                    "description": "Active Directory configuration, for now relevant only for SQL Server"
+                    "description": "Active Directory configuration, relevant only for Cloud SQL for SQL Server."
                 },
                 "authorizedGaeApplications": {
                     "description": "The App Engine app IDs that can access this instance. (Deprecated) Applied to First Generation instances only.",
@@ -3560,6 +3625,10 @@
                         "$ref": "DenyMaintenancePeriod"
                     },
                     "type": "array"
+                },
+                "insightsConfig": {
+                    "$ref": "InsightsConfig",
+                    "description": "Insights configuration, for now relevant only for Postgres."
                 },
                 "ipConfiguration": {
                     "$ref": "IpConfiguration",
@@ -3634,15 +3703,15 @@
             "type": "object"
         },
         "SqlActiveDirectoryConfig": {
-            "description": "Active Directory configuration, for now relevant only for SQL Server",
+            "description": "Active Directory configuration, relevant only for Cloud SQL for SQL Server.",
             "id": "SqlActiveDirectoryConfig",
             "properties": {
                 "domain": {
-                    "description": "Domain name",
+                    "description": "The name of the domain (e.g., mydomain.com).",
                     "type": "string"
                 },
                 "kind": {
-                    "description": "This will be always sql#activeDirectoryConfig.",
+                    "description": "This is always sql#activeDirectoryConfig.",
                     "type": "string"
                 }
             },
@@ -3682,7 +3751,9 @@
                         "INVALID_LOGGING_SETUP",
                         "INVALID_DB_PARAM",
                         "UNSUPPORTED_GTID_MODE",
-                        "SQLSERVER_AGENT_NOT_RUNNING"
+                        "SQLSERVER_AGENT_NOT_RUNNING",
+                        "UNSUPPORTED_TABLE_DEFINITION",
+                        "UNSUPPORTED_DEFINER"
                     ],
                     "enumDescriptions": [
                         "",
@@ -3704,7 +3775,9 @@
                         "The primary instance logging setup doesn't allow EM sync.",
                         "The primary instance database parameter setup doesn't allow EM sync.",
                         "The gtid_mode is not supported, applicable for MySQL.",
-                        "SQL Server Agent is not running."
+                        "SQL Server Agent is not running.",
+                        "The table definition is not support due to missing primary key or replica identity, applicable for postgres.",
+                        "The customer has a definer that will break EM setup."
                     ],
                     "type": "string"
                 }
@@ -3857,6 +3930,10 @@
             "description": "SslCerts create ephemeral certificate request.",
             "id": "SslCertsCreateEphemeralRequest",
             "properties": {
+                "access_token": {
+                    "description": "Access token to include in the signed certificate.",
+                    "type": "string"
+                },
                 "public_key": {
                     "description": "PEM encoded public key to include in the signed certificate.",
                     "type": "string"

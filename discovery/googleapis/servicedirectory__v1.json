@@ -19,7 +19,7 @@
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
     },
-    "id": "servicedirectory:v1beta1",
+    "id": "servicedirectory:v1",
     "kind": "discovery#restDescription",
     "name": "servicedirectory",
     "ownerDomain": "google.com",
@@ -123,7 +123,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta1/{+name}",
+                            "path": "v1/{+name}",
                             "response": {
                                 "$ref": "Location"
                             },
@@ -163,7 +163,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "v1beta1/{+name}/locations",
+                            "path": "v1/{+name}/locations",
                             "response": {
                                 "$ref": "ListLocationsResponse"
                             },
@@ -196,7 +196,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+parent}/namespaces",
+                                    "path": "v1/{+parent}/namespaces",
                                     "request": {
                                         "$ref": "Namespace"
                                     },
@@ -223,7 +223,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Empty"
                                     },
@@ -247,7 +247,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "response": {
                                         "$ref": "Namespace"
                                     },
@@ -271,7 +271,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:getIamPolicy",
+                                    "path": "v1/{+resource}:getIamPolicy",
                                     "request": {
                                         "$ref": "GetIamPolicyRequest"
                                     },
@@ -319,7 +319,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+parent}/namespaces",
+                                    "path": "v1/{+parent}/namespaces",
                                     "response": {
                                         "$ref": "ListNamespacesResponse"
                                     },
@@ -349,7 +349,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+name}",
+                                    "path": "v1/{+name}",
                                     "request": {
                                         "$ref": "Namespace"
                                     },
@@ -376,7 +376,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:setIamPolicy",
+                                    "path": "v1/{+resource}:setIamPolicy",
                                     "request": {
                                         "$ref": "SetIamPolicyRequest"
                                     },
@@ -403,7 +403,7 @@
                                             "type": "string"
                                         }
                                     },
-                                    "path": "v1beta1/{+resource}:testIamPermissions",
+                                    "path": "v1/{+resource}:testIamPermissions",
                                     "request": {
                                         "$ref": "TestIamPermissionsRequest"
                                     },
@@ -439,7 +439,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+parent}/services",
+                                            "path": "v1/{+parent}/services",
                                             "request": {
                                                 "$ref": "Service"
                                             },
@@ -466,7 +466,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+name}",
+                                            "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "Empty"
                                             },
@@ -490,7 +490,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+name}",
+                                            "path": "v1/{+name}",
                                             "response": {
                                                 "$ref": "Service"
                                             },
@@ -514,7 +514,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+resource}:getIamPolicy",
+                                            "path": "v1/{+resource}:getIamPolicy",
                                             "request": {
                                                 "$ref": "GetIamPolicyRequest"
                                             },
@@ -562,7 +562,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+parent}/services",
+                                            "path": "v1/{+parent}/services",
                                             "response": {
                                                 "$ref": "ListServicesResponse"
                                             },
@@ -592,7 +592,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+name}",
+                                            "path": "v1/{+name}",
                                             "request": {
                                                 "$ref": "Service"
                                             },
@@ -619,7 +619,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+name}:resolve",
+                                            "path": "v1/{+name}:resolve",
                                             "request": {
                                                 "$ref": "ResolveServiceRequest"
                                             },
@@ -646,7 +646,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+resource}:setIamPolicy",
+                                            "path": "v1/{+resource}:setIamPolicy",
                                             "request": {
                                                 "$ref": "SetIamPolicyRequest"
                                             },
@@ -673,7 +673,7 @@
                                                     "type": "string"
                                                 }
                                             },
-                                            "path": "v1beta1/{+resource}:testIamPermissions",
+                                            "path": "v1/{+resource}:testIamPermissions",
                                             "request": {
                                                 "$ref": "TestIamPermissionsRequest"
                                             },
@@ -709,7 +709,7 @@
                                                             "type": "string"
                                                         }
                                                     },
-                                                    "path": "v1beta1/{+parent}/endpoints",
+                                                    "path": "v1/{+parent}/endpoints",
                                                     "request": {
                                                         "$ref": "Endpoint"
                                                     },
@@ -736,7 +736,7 @@
                                                             "type": "string"
                                                         }
                                                     },
-                                                    "path": "v1beta1/{+name}",
+                                                    "path": "v1/{+name}",
                                                     "response": {
                                                         "$ref": "Empty"
                                                     },
@@ -760,7 +760,7 @@
                                                             "type": "string"
                                                         }
                                                     },
-                                                    "path": "v1beta1/{+name}",
+                                                    "path": "v1/{+name}",
                                                     "response": {
                                                         "$ref": "Endpoint"
                                                     },
@@ -805,7 +805,7 @@
                                                             "type": "string"
                                                         }
                                                     },
-                                                    "path": "v1beta1/{+parent}/endpoints",
+                                                    "path": "v1/{+parent}/endpoints",
                                                     "response": {
                                                         "$ref": "ListEndpointsResponse"
                                                     },
@@ -835,7 +835,7 @@
                                                             "type": "string"
                                                         }
                                                     },
-                                                    "path": "v1beta1/{+name}",
+                                                    "path": "v1/{+name}",
                                                     "request": {
                                                         "$ref": "Endpoint"
                                                     },
@@ -857,17 +857,13 @@
             }
         }
     },
-    "revision": "20201003",
+    "revision": "20210121",
     "rootUrl": "https://servicedirectory.googleapis.com/",
     "schemas": {
         "Binding": {
             "description": "Associates `members` with a `role`.",
             "id": "Binding",
             "properties": {
-                "bindingId": {
-                    "description": "A client-specified ID for this binding. Expected to be globally unique to support the internal bindings-by-ID API.",
-                    "type": "string"
-                },
                 "condition": {
                     "$ref": "Expr",
                     "description": "The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the members in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies)."
@@ -900,11 +896,11 @@
                     "description": "Optional. An IPv4 or IPv6 address. Service Directory will reject bad addresses like: \"8.8.8\" \"8.8.8.8:53\" \"test:bad:address\" \"[::1]\" \"[::1]:8080\" Limited to 45 characters.",
                     "type": "string"
                 },
-                "metadata": {
+                "annotations": {
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "Optional. Metadata for the endpoint. This data can be consumed by service clients. The entire metadata dictionary may contain up to 512 characters, spread accoss all key-value pairs. Metadata that goes beyond any these limits will be rejected.",
+                    "description": "Optional. Annotations for the endpoint. This data can be consumed by service clients. Restrictions: - The entire annotations dictionary may contain up to 512 characters, spread accoss all key-value pairs. Annotations that goes beyond any these limits will be rejected. - Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/' prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries will be silently ignored by the system. Note: This field is equivalent to the 'metadata' field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.",
                     "type": "object"
                 },
                 "name": {
@@ -1143,6 +1139,13 @@
             "description": "An individual service. A service contains a name and optional metadata. A service must exist before endpoints can be added to it.",
             "id": "Service",
             "properties": {
+                "annotations": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Optional. Annotations for the service. This data can be consumed by service clients. Restrictions: - The entire annotations dictionary may contain up to 2000 characters, spread accoss all key-value pairs. Annotations that goes beyond any these limits will be rejected. - Valid annotation keys have two segments: an optional prefix and name, separated by a slash (/). The name segment is required and must be 63 characters or less, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between. The prefix is optional. If specified, the prefix must be a DNS subdomain: a series of DNS labels separated by dots (.), not longer than 253 characters in total, followed by a slash (/). Annotations that fails to meet these requirements will be rejected. - The '(*.)google.com/' and '(*.)googleapis.com/' prefixes are reserved for system annotations managed by Service Directory. If the user tries to write to these keyspaces, those entries will be silently ignored by the system. Note: This field is equivalent to the 'metadata' field in the v1beta1 API. They have the same syntax and read/write to the same location in Service Directory.",
+                    "type": "object"
+                },
                 "endpoints": {
                     "description": "Output only. Endpoints associated with this service. Returned on LookupService.Resolve. Control plane clients should use RegistrationService.ListEndpoints.",
                     "items": {
@@ -1150,13 +1153,6 @@
                     },
                     "readOnly": true,
                     "type": "array"
-                },
-                "metadata": {
-                    "additionalProperties": {
-                        "type": "string"
-                    },
-                    "description": "Optional. Metadata for the service. This data can be consumed by service clients. The entire metadata dictionary may contain up to 2000 characters, spread across all key-value pairs. Metadata that goes beyond any these limits will be rejected.",
-                    "type": "object"
                 },
                 "name": {
                     "description": "Immutable. The resource name for the service in the format 'projects/*/locations/*/namespaces/*/services/*'.",
@@ -1207,6 +1203,6 @@
     },
     "servicePath": "",
     "title": "Service Directory API",
-    "version": "v1beta1",
+    "version": "v1",
     "version_module": true
 }

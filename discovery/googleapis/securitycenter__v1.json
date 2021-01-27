@@ -14,7 +14,7 @@
     "canonicalName": "Security Command Center",
     "description": "Security Command Center API provides access to temporal views of assets and findings within an organization.",
     "discoveryVersion": "v1",
-    "documentationLink": "https://console.cloud.google.com/apis/api/securitycenter.googleapis.com/overview",
+    "documentationLink": "https://cloud.google.com/security-command-center",
     "icons": {
         "x16": "http://www.google.com/images/icons/product/search-16.gif",
         "x32": "http://www.google.com/images/icons/product/search-32.gif"
@@ -103,6 +103,377 @@
     },
     "protocol": "rest",
     "resources": {
+        "folders": {
+            "resources": {
+                "assets": {
+                    "methods": {
+                        "group": {
+                            "description": "Filters an organization's assets and groups them by their specified properties.",
+                            "httpMethod": "POST",
+                            "id": "securitycenter.folders.assets.group",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/assets:group",
+                            "request": {
+                                "$ref": "GroupAssetsRequest"
+                            },
+                            "response": {
+                                "$ref": "GroupAssetsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists an organization's assets.",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.folders.assets.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "compareDuration": {
+                                    "description": "When compare_duration is set, the ListAssetsResult's \"state_change\" attribute is updated to indicate whether the asset was added, removed, or remained present during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence of the asset at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the asset is removed and re-created again. Possible \"state_change\" values when compare_duration is specified: * \"ADDED\": indicates that the asset was not present at the start of compare_duration, but present at read_time. * \"REMOVED\": indicates that the asset was present at the start of compare_duration, but not present at read_time. * \"ACTIVE\": indicates that the asset was present at both the start and the end of the time period defined by compare_duration and read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all assets present at read_time.",
+                                    "format": "google-duration",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "fieldMask": {
+                                    "description": "A field mask to specify the ListAssetsResult fields to be listed in the response. An empty field mask will list all fields.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Expression that defines the filter to apply across assets. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the Asset resource. Examples include: * name * security_center_properties.resource_name * resource_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following are the allowed field and operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time = \"2019-06-10T16:07:18-07:00\"` `update_time = 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time = \"2019-06-10T16:07:18-07:00\"` `create_time = 1560208038000` * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` * security_center_properties.resource_display_name: `=`, `:` * security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent: `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` * security_center_properties.resource_project: `=`, `:` * security_center_properties.resource_project_display_name: `=`, `:` * security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `resource_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-resource_properties.my_property : \"\"`",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Expression that defines what fields and order to use for sorting. The string value should follow SQL syntax: comma separated list of fields. For example: \"name,resource_properties.a_property\". The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. For example: \"name desc,resource_properties.a_property\". Redundant space characters in the syntax are insignificant. \"name desc,resource_properties.a_property\" and \" name desc , resource_properties.a_property \" are equivalent. The following fields are supported: name update_time resource_properties security_marks.marks security_center_properties.resource_name security_center_properties.resource_display_name security_center_properties.resource_parent security_center_properties.resource_parent_display_name security_center_properties.resource_project security_center_properties.resource_project_display_name security_center_properties.resource_type",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListAssetsResponse`; indicates that this is a continuation of a prior `ListAssets` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "readTime": {
+                                    "description": "Time used as a reference point when filtering assets. The filter is limited to assets existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/assets",
+                            "response": {
+                                "$ref": "ListAssetsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSecurityMarks": {
+                            "description": "Updates security marks.",
+                            "httpMethod": "PATCH",
+                            "id": "securitycenter.folders.assets.updateSecurityMarks",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+/assets/[^/]+/securityMarks$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "startTime": {
+                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "The FieldMask to use when updating the security marks resource. The field mask must not contain duplicate fields. If empty or set to \"marks\", all marks will be replaced. Individual marks can be updated using \"marks.\".",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "SecurityMarks"
+                            },
+                            "response": {
+                                "$ref": "SecurityMarks"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "sources": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists all sources belonging to an organization.",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.folders.sources.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListSourcesResponse`; indicates that this is a continuation of a prior `ListSources` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^folders/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/sources",
+                            "response": {
+                                "$ref": "ListSourcesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "findings": {
+                            "methods": {
+                                "group": {
+                                    "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
+                                    "httpMethod": "POST",
+                                    "id": "securitycenter.folders.sources.findings.group",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the source to groupBy. Its format is \"organizations/[organization_id]/sources/[source_id]\", folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or projects/{project_id}/sources/-",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/sources/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/findings:group",
+                                    "request": {
+                                        "$ref": "GroupFindingsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GroupFindingsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "httpMethod": "GET",
+                                    "id": "securitycenter.folders.sources.findings.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "compareDuration": {
+                                            "description": "When compare_duration is set, the ListFindingsResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added in any state during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time.",
+                                            "format": "google-duration",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "fieldMask": {
+                                            "description": "A field mask to specify the Finding fields to be listed in the response. An empty field mask will list all fields.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "filter": {
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Expression that defines what fields and order to use for sorting. The string value should follow SQL syntax: comma separated list of fields. For example: \"name,resource_properties.a_property\". The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. For example: \"name desc,source_properties.a_property\". Redundant space characters in the syntax are insignificant. \"name desc,source_properties.a_property\" and \" name desc , source_properties.a_property \" are equivalent. The following fields are supported: name parent state category resource_name event_time source_properties security_marks.marks",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The value returned by the last `ListFindingsResponse`; indicates that this is a continuation of a prior `ListFindings` call, and that the system should return the next page of data.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Name of the source the findings belong to. Its format is \"organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]\". To list across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or projects/{projects_id}/sources/-",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/sources/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "readTime": {
+                                            "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/findings",
+                                    "response": {
+                                        "$ref": "ListFindingsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
+                                    "httpMethod": "PATCH",
+                                    "id": "securitycenter.folders.sources.findings.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The FieldMask to use when updating the finding resource. This field should not be specified when creating a finding. When updating a finding, an empty mask is treated as updating all mutable fields and replacing source_properties. Individual source_properties can be added/updated by using \"source_properties.\" in the field mask.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "Finding"
+                                    },
+                                    "response": {
+                                        "$ref": "Finding"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "setState": {
+                                    "description": "Updates the state of a finding.",
+                                    "httpMethod": "POST",
+                                    "id": "securitycenter.folders.sources.findings.setState",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:setState",
+                                    "request": {
+                                        "$ref": "SetFindingStateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Finding"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "updateSecurityMarks": {
+                                    "description": "Updates security marks.",
+                                    "httpMethod": "PATCH",
+                                    "id": "securitycenter.folders.sources.findings.updateSecurityMarks",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                                            "location": "path",
+                                            "pattern": "^folders/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "startTime": {
+                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The FieldMask to use when updating the security marks resource. The field mask must not contain duplicate fields. If empty or set to \"marks\", all marks will be replaced. Individual marks can be updated using \"marks.\".",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "SecurityMarks"
+                                    },
+                                    "response": {
+                                        "$ref": "SecurityMarks"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "organizations": {
             "methods": {
                 "getOrganizationSettings": {
@@ -175,7 +546,7 @@
                             ],
                             "parameters": {
                                 "parent": {
-                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id]\".",
+                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -235,7 +606,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id]\".",
+                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -692,7 +1063,7 @@
                                     "type": "string"
                                 },
                                 "parent": {
-                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id]\".",
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
                                     "location": "path",
                                     "pattern": "^organizations/[^/]+$",
                                     "required": true,
@@ -831,7 +1202,7 @@
                                     ]
                                 },
                                 "group": {
-                                    "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
                                     "httpMethod": "POST",
                                     "id": "securitycenter.organizations.sources.findings.group",
                                     "parameterOrder": [
@@ -839,7 +1210,7 @@
                                     ],
                                     "parameters": {
                                         "parent": {
-                                            "description": "Required. Name of the source to groupBy. Its format is \"organizations/[organization_id]/sources/[source_id]\". To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-",
+                                            "description": "Required. Name of the source to groupBy. Its format is \"organizations/[organization_id]/sources/[source_id]\", folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or projects/{project_id}/sources/-",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/sources/[^/]+$",
                                             "required": true,
@@ -878,7 +1249,7 @@
                                             "type": "string"
                                         },
                                         "filter": {
-                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: name: `=` parent: `=`, `:` resource_name: `=`, `:` state: `=`, `:` category: `=`, `:` external_uri: `=`, `:` event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
                                             "location": "query",
                                             "type": "string"
                                         },
@@ -899,7 +1270,7 @@
                                             "type": "string"
                                         },
                                         "parent": {
-                                            "description": "Required. Name of the source the findings belong to. Its format is \"organizations/[organization_id]/sources/[source_id]\". To list across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-",
+                                            "description": "Required. Name of the source the findings belong to. Its format is \"organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]\". To list across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or projects/{projects_id}/sources/-",
                                             "location": "path",
                                             "pattern": "^organizations/[^/]+/sources/[^/]+$",
                                             "required": true,
@@ -1024,9 +1395,380 @@
                     }
                 }
             }
+        },
+        "projects": {
+            "resources": {
+                "assets": {
+                    "methods": {
+                        "group": {
+                            "description": "Filters an organization's assets and groups them by their specified properties.",
+                            "httpMethod": "POST",
+                            "id": "securitycenter.projects.assets.group",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "parent": {
+                                    "description": "Required. Name of the organization to groupBy. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/assets:group",
+                            "request": {
+                                "$ref": "GroupAssetsRequest"
+                            },
+                            "response": {
+                                "$ref": "GroupAssetsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists an organization's assets.",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.projects.assets.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "compareDuration": {
+                                    "description": "When compare_duration is set, the ListAssetsResult's \"state_change\" attribute is updated to indicate whether the asset was added, removed, or remained present during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence of the asset at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the asset is removed and re-created again. Possible \"state_change\" values when compare_duration is specified: * \"ADDED\": indicates that the asset was not present at the start of compare_duration, but present at read_time. * \"REMOVED\": indicates that the asset was present at the start of compare_duration, but not present at read_time. * \"ACTIVE\": indicates that the asset was present at both the start and the end of the time period defined by compare_duration and read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all assets present at read_time.",
+                                    "format": "google-duration",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "fieldMask": {
+                                    "description": "A field mask to specify the ListAssetsResult fields to be listed in the response. An empty field mask will list all fields.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Expression that defines the filter to apply across assets. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the Asset resource. Examples include: * name * security_center_properties.resource_name * resource_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following are the allowed field and operator combinations: * name: `=` * update_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `update_time = \"2019-06-10T16:07:18-07:00\"` `update_time = 1560208038000` * create_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `create_time = \"2019-06-10T16:07:18-07:00\"` `create_time = 1560208038000` * iam_policy.policy_blob: `=`, `:` * resource_properties: `=`, `:`, `>`, `<`, `>=`, `<=` * security_marks.marks: `=`, `:` * security_center_properties.resource_name: `=`, `:` * security_center_properties.resource_display_name: `=`, `:` * security_center_properties.resource_type: `=`, `:` * security_center_properties.resource_parent: `=`, `:` * security_center_properties.resource_parent_display_name: `=`, `:` * security_center_properties.resource_project: `=`, `:` * security_center_properties.resource_project_display_name: `=`, `:` * security_center_properties.resource_owners: `=`, `:` For example, `resource_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `resource_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-resource_properties.my_property : \"\"`",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Expression that defines what fields and order to use for sorting. The string value should follow SQL syntax: comma separated list of fields. For example: \"name,resource_properties.a_property\". The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. For example: \"name desc,resource_properties.a_property\". Redundant space characters in the syntax are insignificant. \"name desc,resource_properties.a_property\" and \" name desc , resource_properties.a_property \" are equivalent. The following fields are supported: name update_time resource_properties security_marks.marks security_center_properties.resource_name security_center_properties.resource_display_name security_center_properties.resource_parent security_center_properties.resource_parent_display_name security_center_properties.resource_project security_center_properties.resource_project_display_name security_center_properties.resource_type",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListAssetsResponse`; indicates that this is a continuation of a prior `ListAssets` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Name of the organization assets should belong to. Its format is \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "readTime": {
+                                    "description": "Time used as a reference point when filtering assets. The filter is limited to assets existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/assets",
+                            "response": {
+                                "$ref": "ListAssetsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        },
+                        "updateSecurityMarks": {
+                            "description": "Updates security marks.",
+                            "httpMethod": "PATCH",
+                            "id": "securitycenter.projects.assets.updateSecurityMarks",
+                            "parameterOrder": [
+                                "name"
+                            ],
+                            "parameters": {
+                                "name": {
+                                    "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+/assets/[^/]+/securityMarks$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "startTime": {
+                                    "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time.",
+                                    "format": "google-datetime",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "The FieldMask to use when updating the security marks resource. The field mask must not contain duplicate fields. If empty or set to \"marks\", all marks will be replaced. Individual marks can be updated using \"marks.\".",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+name}",
+                            "request": {
+                                "$ref": "SecurityMarks"
+                            },
+                            "response": {
+                                "$ref": "SecurityMarks"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    }
+                },
+                "sources": {
+                    "methods": {
+                        "list": {
+                            "description": "Lists all sources belonging to an organization.",
+                            "httpMethod": "GET",
+                            "id": "securitycenter.projects.sources.list",
+                            "parameterOrder": [
+                                "parent"
+                            ],
+                            "parameters": {
+                                "pageSize": {
+                                    "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "The value returned by the last `ListSourcesResponse`; indicates that this is a continuation of a prior `ListSources` call, and that the system should return the next page of data.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "parent": {
+                                    "description": "Required. Resource name of the parent of sources to list. Its format should be \"organizations/[organization_id], folders/[folder_id], or projects/[project_id]\".",
+                                    "location": "path",
+                                    "pattern": "^projects/[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/{+parent}/sources",
+                            "response": {
+                                "$ref": "ListSourcesResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/cloud-platform"
+                            ]
+                        }
+                    },
+                    "resources": {
+                        "findings": {
+                            "methods": {
+                                "group": {
+                                    "description": "Filters an organization or source's findings and groups them by their specified properties. To group across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings, /v1/folders/{folder_id}/sources/-/findings, /v1/projects/{project_id}/sources/-/findings",
+                                    "httpMethod": "POST",
+                                    "id": "securitycenter.projects.sources.findings.group",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "parent": {
+                                            "description": "Required. Name of the source to groupBy. Its format is \"organizations/[organization_id]/sources/[source_id]\", folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]. To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/-, or projects/{project_id}/sources/-",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sources/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/findings:group",
+                                    "request": {
+                                        "$ref": "GroupFindingsRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "GroupFindingsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "list": {
+                                    "description": "Lists an organization or source's findings. To list across all sources provide a `-` as the source id. Example: /v1/organizations/{organization_id}/sources/-/findings",
+                                    "httpMethod": "GET",
+                                    "id": "securitycenter.projects.sources.findings.list",
+                                    "parameterOrder": [
+                                        "parent"
+                                    ],
+                                    "parameters": {
+                                        "compareDuration": {
+                                            "description": "When compare_duration is set, the ListFindingsResult's \"state_change\" attribute is updated to indicate whether the finding had its state changed, the finding's state remained unchanged, or if the finding was added in any state during the compare_duration period of time that precedes the read_time. This is the time between (read_time - compare_duration) and read_time. The state_change value is derived based on the presence and state of the finding at the two points in time. Intermediate state changes between the two times don't affect the result. For example, the results aren't affected if the finding is made inactive and then active again. Possible \"state_change\" values when compare_duration is specified: * \"CHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration, but changed its state at read_time. * \"UNCHANGED\": indicates that the finding was present and matched the given filter at the start of compare_duration and did not change state at read_time. * \"ADDED\": indicates that the finding did not match the given filter or was not present at the start of compare_duration, but was present at read_time. * \"REMOVED\": indicates that the finding was present and matched the filter at the start of compare_duration, but did not match the filter at read_time. If compare_duration is not specified, then the only possible state_change is \"UNUSED\", which will be the state_change set for all findings present at read_time.",
+                                            "format": "google-duration",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "fieldMask": {
+                                            "description": "A field mask to specify the Finding fields to be listed in the response. An empty field mask will list all fields.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "filter": {
+                                            "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` security_marks.marks: `=`, `:` source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "orderBy": {
+                                            "description": "Expression that defines what fields and order to use for sorting. The string value should follow SQL syntax: comma separated list of fields. For example: \"name,resource_properties.a_property\". The default sorting order is ascending. To specify descending order for a field, a suffix \" desc\" should be appended to the field name. For example: \"name desc,source_properties.a_property\". Redundant space characters in the syntax are insignificant. \"name desc,source_properties.a_property\" and \" name desc , source_properties.a_property \" are equivalent. The following fields are supported: name parent state category resource_name event_time source_properties security_marks.marks",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "pageSize": {
+                                            "description": "The maximum number of results to return in a single response. Default is 10, minimum is 1, maximum is 1000.",
+                                            "format": "int32",
+                                            "location": "query",
+                                            "type": "integer"
+                                        },
+                                        "pageToken": {
+                                            "description": "The value returned by the last `ListFindingsResponse`; indicates that this is a continuation of a prior `ListFindings` call, and that the system should return the next page of data.",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "parent": {
+                                            "description": "Required. Name of the source the findings belong to. Its format is \"organizations/[organization_id]/sources/[source_id], folders/[folder_id]/sources/[source_id], or projects/[project_id]/sources/[source_id]\". To list across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/-, folders/{folder_id}/sources/- or projects/{projects_id}/sources/-",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sources/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "readTime": {
+                                            "description": "Time used as a reference point when filtering findings. The filter is limited to findings existing at the supplied time and their values are those at that specific time. Absence of this field will default to the API's version of NOW.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+parent}/findings",
+                                    "response": {
+                                        "$ref": "ListFindingsResponse"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "patch": {
+                                    "description": "Creates or updates a finding. The corresponding source must exist for a finding creation to succeed.",
+                                    "httpMethod": "PATCH",
+                                    "id": "securitycenter.projects.sources.findings.patch",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}\"",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The FieldMask to use when updating the finding resource. This field should not be specified when creating a finding. When updating a finding, an empty mask is treated as updating all mutable fields and replacing source_properties. Individual source_properties can be added/updated by using \"source_properties.\" in the field mask.",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "Finding"
+                                    },
+                                    "response": {
+                                        "$ref": "Finding"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "setState": {
+                                    "description": "Updates the state of a finding.",
+                                    "httpMethod": "POST",
+                                    "id": "securitycenter.projects.sources.findings.setState",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: \"organizations/{organization_id}/sources/{source_id}/finding/{finding_id}\".",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+$",
+                                            "required": true,
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}:setState",
+                                    "request": {
+                                        "$ref": "SetFindingStateRequest"
+                                    },
+                                    "response": {
+                                        "$ref": "Finding"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                },
+                                "updateSecurityMarks": {
+                                    "description": "Updates security marks.",
+                                    "httpMethod": "PATCH",
+                                    "id": "securitycenter.projects.sources.findings.updateSecurityMarks",
+                                    "parameterOrder": [
+                                        "name"
+                                    ],
+                                    "parameters": {
+                                        "name": {
+                                            "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+                                            "location": "path",
+                                            "pattern": "^projects/[^/]+/sources/[^/]+/findings/[^/]+/securityMarks$",
+                                            "required": true,
+                                            "type": "string"
+                                        },
+                                        "startTime": {
+                                            "description": "The time at which the updated SecurityMarks take effect. If not set uses current server time. Updates will be applied to the SecurityMarks that are active immediately preceding this time.",
+                                            "format": "google-datetime",
+                                            "location": "query",
+                                            "type": "string"
+                                        },
+                                        "updateMask": {
+                                            "description": "The FieldMask to use when updating the security marks resource. The field mask must not contain duplicate fields. If empty or set to \"marks\", all marks will be replaced. Individual marks can be updated using \"marks.\".",
+                                            "format": "google-fieldmask",
+                                            "location": "query",
+                                            "type": "string"
+                                        }
+                                    },
+                                    "path": "v1/{+name}",
+                                    "request": {
+                                        "$ref": "SecurityMarks"
+                                    },
+                                    "response": {
+                                        "$ref": "SecurityMarks"
+                                    },
+                                    "scopes": [
+                                        "https://www.googleapis.com/auth/cloud-platform"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
-    "revision": "20201002",
+    "revision": "20210129",
     "rootUrl": "https://securitycenter.googleapis.com/",
     "schemas": {
         "Asset": {
@@ -1073,6 +1815,13 @@
             "description": "The configuration used for Asset Discovery runs.",
             "id": "AssetDiscoveryConfig",
             "properties": {
+                "folderIds": {
+                    "description": "The folder ids to use for filtering asset discovery. It consists of only digits, e.g., 756619654966.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "inclusionMode": {
                     "description": "The mode to use for filtering asset discovery.",
                     "enum": [
@@ -1235,6 +1984,24 @@
                     "description": "Output only. User specified security marks. These marks are entirely managed by the user and come from the SecurityMarks resource that belongs to the finding.",
                     "readOnly": true
                 },
+                "severity": {
+                    "description": "The severity of the finding. This field is managed by the source that writes the finding.",
+                    "enum": [
+                        "SEVERITY_UNSPECIFIED",
+                        "CRITICAL",
+                        "HIGH",
+                        "MEDIUM",
+                        "LOW"
+                    ],
+                    "enumDescriptions": [
+                        "This value is used for findings when a source doesn't write a severity value.",
+                        "Vulnerability: A critical vulnerability is easily discoverable by an external actor, exploitable, and results in the direct ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. Examples include publicly accessible unprotected user data, public SSH access with weak or no passwords, etc. Threat: Indicates a threat that is able to access, modify, or delete data or execute unauthorized code within existing resources.",
+                        "Vulnerability: A high risk vulnerability can be easily discovered and exploited in combination with other vulnerabilities in order to gain direct access and the ability to execute arbitrary code, exfiltrate data, and otherwise gain additional access and privileges to cloud resources and workloads. An example is a database with weak or no passwords that is only accessible internally. This database could easily be compromised by an actor that had access to the internal network. Threat: Indicates a threat that is able to create new computational resources in an environment but not able to access data or execute code in existing resources.",
+                        "Vulnerability: A medium risk vulnerability could be used by an actor to gain access to resources or privileges that enable them to eventually (through multiple steps or a complex exploit) gain access and the ability to execute arbitrary code or exfiltrate data. An example is a service account with access to more projects than it should have. If an actor gains access to the service account, they could potentially use that access to manipulate a project the service account was not intended to. Threat: Indicates a threat that is able to cause operational impact but may not access data or execute unauthorized code.",
+                        "Vulnerability: A low risk vulnerability hampers a security organization’s ability to detect vulnerabilities or active threats in their deployment, or prevents the root cause investigation of security issues. An example is monitoring and logs being disabled for resource configurations and access. Threat: Indicates a threat that has obtained minimal access to an environment but is not able to access data, execute code, or create resources."
+                    ],
+                    "type": "string"
+                },
                 "sourceProperties": {
                     "additionalProperties": {
                         "type": "any"
@@ -1254,6 +2021,21 @@
                         "The finding requires attention and has not been addressed yet.",
                         "The finding has been fixed, triaged as a non-issue or otherwise addressed and is no longer active."
                     ],
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Folder": {
+            "description": "Message that contains the resource name and display name of a folder resource.",
+            "id": "Folder",
+            "properties": {
+                "resourceFolder": {
+                    "description": "Full resource name of this folder. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
+                    "type": "string"
+                },
+                "resourceFolderDisplayName": {
+                    "description": "The user defined display name for this folder.",
                     "type": "string"
                 }
             },
@@ -1305,6 +2087,14 @@
             "description": "Information related to the Google Cloud resource.",
             "id": "GoogleCloudSecuritycenterV1Resource",
             "properties": {
+                "folders": {
+                    "description": "Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization.",
+                    "items": {
+                        "$ref": "Folder"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "name": {
                     "description": "The full resource name of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
                     "type": "string"
@@ -1465,6 +2255,21 @@
             },
             "type": "object"
         },
+        "GoogleCloudSecuritycenterV1p1beta1Folder": {
+            "description": "Message that contains the resource name and display name of a folder resource.",
+            "id": "GoogleCloudSecuritycenterV1p1beta1Folder",
+            "properties": {
+                "resourceFolder": {
+                    "description": "Full resource name of this folder. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
+                    "type": "string"
+                },
+                "resourceFolderDisplayName": {
+                    "description": "The user defined display name for this folder.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GoogleCloudSecuritycenterV1p1beta1NotificationMessage": {
             "description": "Security Command Center's Notification",
             "id": "GoogleCloudSecuritycenterV1p1beta1NotificationMessage",
@@ -1488,6 +2293,14 @@
             "description": "Information related to the Google Cloud resource.",
             "id": "GoogleCloudSecuritycenterV1p1beta1Resource",
             "properties": {
+                "folders": {
+                    "description": "Output only. Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization.",
+                    "items": {
+                        "$ref": "GoogleCloudSecuritycenterV1p1beta1Folder"
+                    },
+                    "readOnly": true,
+                    "type": "array"
+                },
                 "name": {
                     "description": "The full resource name of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
                     "type": "string"
@@ -1629,11 +2442,11 @@
                     "type": "string"
                 },
                 "filter": {
-                    "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
+                    "description": "Expression that defines the filter to apply across findings. The expression is a list of one or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. Examples include: * name * source_properties.a_property * security_marks.marks.marka The supported operators are: * `=` for all value types. * `>`, `<`, `>=`, `<=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes. The following field and operator combinations are supported: * name: `=` * parent: `=`, `:` * resource_name: `=`, `:` * state: `=`, `:` * category: `=`, `:` * external_uri: `=`, `:` * event_time: `=`, `>`, `<`, `>=`, `<=` * severity: `=`, `:` Usage: This should be milliseconds since epoch or an RFC3339 string. Examples: `event_time = \"2019-06-10T16:07:18-07:00\"` `event_time = 1560208038000` * security_marks.marks: `=`, `:` * source_properties: `=`, `:`, `>`, `<`, `>=`, `<=` For example, `source_properties.size = 100` is a valid filter string. Use a partial match on the empty string to filter based on a property existing: `source_properties.my_property : \"\"` Use a negated partial match on the empty string to filter based on a property not existing: `-source_properties.my_property : \"\"`",
                     "type": "string"
                 },
                 "groupBy": {
-                    "description": "Required. Expression that defines what assets fields to use for grouping (including `state_change`). The string value should follow SQL syntax: comma separated list of fields. For example: \"parent,resource_name\". The following fields are supported: * resource_name * category * state * parent The following fields are supported when compare_duration is set: * state_change",
+                    "description": "Required. Expression that defines what assets fields to use for grouping (including `state_change`). The string value should follow SQL syntax: comma separated list of fields. For example: \"parent,resource_name\". The following fields are supported: * resource_name * category * state * parent * severity The following fields are supported when compare_duration is set: * state_change",
                     "type": "string"
                 },
                 "pageSize": {
@@ -1999,6 +2812,13 @@
             "description": "Information related to the Google Cloud resource that is associated with this finding. LINT.IfChange",
             "id": "Resource",
             "properties": {
+                "folders": {
+                    "description": "Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization.",
+                    "items": {
+                        "$ref": "Folder"
+                    },
+                    "type": "array"
+                },
                 "name": {
                     "description": "The full resource name of the resource. See: https://cloud.google.com/apis/design/resource_names#full_resource_name",
                     "type": "string"
@@ -2032,6 +2852,13 @@
             "description": "Security Command Center managed properties. These properties are managed by Security Command Center and cannot be modified by the user.",
             "id": "SecurityCenterProperties",
             "properties": {
+                "folders": {
+                    "description": "Contains a Folder message for each folder in the assets ancestry. The first folder is the deepest nested folder, and the last folder is the folder directly under the Organization.",
+                    "items": {
+                        "$ref": "Folder"
+                    },
+                    "type": "array"
+                },
                 "resourceDisplayName": {
                     "description": "The user defined display name for this resource.",
                     "type": "string"

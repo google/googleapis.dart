@@ -2103,11 +2103,18 @@
                             "id": "androidpublisher.purchases.subscriptions.cancel",
                             "parameterOrder": [
                                 "packageName",
+                                "subscriptionId",
                                 "token"
                             ],
                             "parameters": {
                                 "packageName": {
                                     "description": "The package name of the application for which this subscription was purchased (for example, 'com.some.thing').",
+                                    "location": "path",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "subscriptionId": {
+                                    "description": "The purchased subscription ID (for example, 'monthly001').",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -2119,7 +2126,7 @@
                                     "type": "string"
                                 }
                             },
-                            "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/tokens/{token}:cancel",
+                            "path": "androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}:cancel",
                             "scopes": [
                                 "https://www.googleapis.com/auth/androidpublisher"
                             ]
@@ -2466,7 +2473,7 @@
                             ],
                             "parameters": {
                                 "packageName": {
-                                    "description": "Unique identifier of the Android app.",
+                                    "description": "Package name of the app.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -2501,7 +2508,7 @@
                             ],
                             "parameters": {
                                 "packageName": {
-                                    "description": "Unique identifier of the Android app.",
+                                    "description": "Package name of the app.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -2539,7 +2546,7 @@
                             ],
                             "parameters": {
                                 "packageName": {
-                                    "description": "Unique identifier of the Android app.",
+                                    "description": "Package name of the app.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -2577,7 +2584,7 @@
                             ],
                             "parameters": {
                                 "packageName": {
-                                    "description": "Unique identifier of the Android app.",
+                                    "description": "Package name of the app.",
                                     "location": "path",
                                     "required": true,
                                     "type": "string"
@@ -2603,7 +2610,7 @@
             }
         }
     },
-    "revision": "20201008",
+    "revision": "20210202",
     "rootUrl": "https://androidpublisher.googleapis.com/",
     "schemas": {
         "Apk": {
@@ -3647,7 +3654,7 @@
                     "type": "string"
                 },
                 "paymentState": {
-                    "description": "The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade",
+                    "description": "The payment state of the subscription. Possible values are: 0. Payment pending 1. Payment received 2. Free trial 3. Pending deferred upgrade/downgrade Not present for canceled, expired subscriptions.",
                     "format": "int32",
                     "type": "integer"
                 },

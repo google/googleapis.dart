@@ -139,7 +139,7 @@
             }
         }
     },
-    "revision": "20201005",
+    "revision": "20210201",
     "rootUrl": "https://fcm.googleapis.com/",
     "schemas": {
         "AndroidConfig": {

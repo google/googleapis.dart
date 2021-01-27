@@ -1433,7 +1433,7 @@
             }
         }
     },
-    "revision": "20201008",
+    "revision": "20210203",
     "rootUrl": "https://toolresults.googleapis.com/",
     "schemas": {
         "ANR": {
@@ -1736,6 +1736,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "DeviceOutOfMemory": {
+            "description": "A warning that device ran out of memory",
+            "id": "DeviceOutOfMemory",
+            "properties": {},
             "type": "object"
         },
         "Duration": {
@@ -2463,6 +2469,12 @@
                     "type": "array"
                 }
             },
+            "type": "object"
+        },
+        "LogcatCollectionError": {
+            "description": "A warning that there were issues in logcat collection.",
+            "id": "LogcatCollectionError",
+            "properties": {},
             "type": "object"
         },
         "MatrixDimensionDefinition": {
@@ -3572,7 +3584,9 @@
                         "uiElementsTooDeep",
                         "blankScreen",
                         "overlappingUiElements",
-                        "unityException"
+                        "unityException",
+                        "deviceOutOfMemory",
+                        "logcatCollectionError"
                     ],
                     "enumDescriptions": [
                         "Default unspecified type. Do not use. For versioning only.",
@@ -3603,7 +3617,9 @@
                         "UI element depth is greater than the threshold",
                         "Blank screen is found in the Robo crawl",
                         "Overlapping UI elements are found in the Robo crawl",
-                        "An uncaught Unity exception was detected (these don't crash apps)."
+                        "An uncaught Unity exception was detected (these don't crash apps).",
+                        "Device running out of memory was detected",
+                        "Problems detected while collecting logcat"
                     ],
                     "type": "string"
                 },

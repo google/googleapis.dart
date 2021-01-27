@@ -293,12 +293,12 @@
                     "parameterOrder": [],
                     "parameters": {
                         "filter": {
-                            "description": "Allows filtering by advertiser properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` - `displayName` - `entityStatus` Examples: * All active advertisers under a partner: `entityStatus=\"ENTITY_STATUS_ACTIVE\"` The length of this field should be no more than 500 characters.",
+                            "description": "Allows filtering by advertiser properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. * Supported fields: - `advertiserId` - `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: * All active advertisers under a partner: `entityStatus=\"ENTITY_STATUS_ACTIVE\"` * All advertisers with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All advertisers with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters.",
                             "location": "query",
                             "type": "string"
                         },
                         "orderBy": {
-                            "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. For example, `displayName desc`.",
+                            "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. For example, `displayName desc`.",
                             "location": "query",
                             "type": "string"
                         },
@@ -526,12 +526,12 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by campaign properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `entityStatus` Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\")` The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by campaign properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `entityStatus` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` campaigns under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\")` * All campaigns with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All campaigns with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
+                                    "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` * `updateTime` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1276,12 +1276,12 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by insertion order properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `budget.budget_segments.date_range.end_date` must be LESS THAN (<). * The operators used on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `entityStatus` - `budget.budget_segments.date_range.end_date` (input as YYYY-MM-DD) Examples: * All insertion orders under a campaign: `campaignId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\")` * All insertion orders whose budget segments' dates end before March 28, 2019: `budget.budget_segments.date_range.end_date<\"2019-03-28\"` The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by insertion order properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `budget.budget_segments.date_range.end_date` must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operators used on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `entityStatus` - `budget.budget_segments.date_range.end_date` (input as YYYY-MM-DD) - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) Examples: * All insertion orders under a campaign: `campaignId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` insertion orders under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\")` * All insertion orders whose budget segments' dates end before March 28, 2019: `budget.budget_segments.date_range.end_date<\"2019-03-28\"` * All insertion orders with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All insertion orders with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Field by which to sort the list. Acceptable values are: * \"displayName\" (default) * \"entityStatus\" The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
+                                    "description": "Field by which to sort the list. Acceptable values are: * \"displayName\" (default) * \"entityStatus\" * \"updateTime\" The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -1557,12 +1557,12 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by line item properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on `warningMessages` must be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) - `warningMessages` Examples: * All line items under an insertion order: `insertionOrderId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\") AND lineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"` * All line items whose flight dates end before March 28, 2019: `flight.dateRange.endDate<\"2019-03-28\"` * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `warningMessages:\"NO_VALID_CREATIVE\"` The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by line item properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator used on `flight.dateRange.endDate` must be LESS THAN (<). * The operator used on `updateTime` must be `GREATER THAN OR EQUAL TO (>=)` or `LESS THAN OR EQUAL TO (<=)`. * The operator used on `warningMessages` must be `HAS (:)`. * The operators used on all other fields must be `EQUALS (=)`. * Supported fields: - `campaignId` - `displayName` - `insertionOrderId` - `entityStatus` - `lineItemId` - `lineItemType` - `flight.dateRange.endDate` (input formatted as YYYY-MM-DD) - `warningMessages` - `flight.triggerId` - `updateTime` (input in ISO 8601 format, or YYYY-MM-DDTHH:MM:SSZ) * The operator can be `NO LESS THAN (>=)` or `NO GREATER THAN (<=)`. - `updateTime` (format of ISO 8601) Examples: * All line items under an insertion order: `insertionOrderId=\"1234\"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` and `LINE_ITEM_TYPE_DISPLAY_DEFAULT` line items under an advertiser: `(entityStatus=\"ENTITY_STATUS_ACTIVE\" OR entityStatus=\"ENTITY_STATUS_PAUSED\") AND lineItemType=\"LINE_ITEM_TYPE_DISPLAY_DEFAULT\"` * All line items whose flight dates end before March 28, 2019: `flight.dateRange.endDate<\"2019-03-28\"` * All line items that have `NO_VALID_CREATIVE` in `warningMessages`: `warningMessages:\"NO_VALID_CREATIVE\"` * All line items with an update time less than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime<=\"2020-11-04T18:54:47Z\"` * All line items with an update time greater than or equal to `2020-11-04T18:54:47Z (format of ISO 8601)`: `updateTime>=\"2020-11-04T18:54:47Z\"` The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
                                 "orderBy": {
-                                    "description": "Field by which to sort the list. Acceptable values are: * \"displayName\" (default) * \"entityStatus\" * “flight.dateRange.endDate” The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
+                                    "description": "Field by which to sort the list. Acceptable values are: * \"displayName\" (default) * \"entityStatus\" * “flight.dateRange.endDate” * \"updateTime\" The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. Example: `displayName desc`.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -2494,6 +2494,235 @@
                         }
                     }
                 },
+                "manualTriggers": {
+                    "methods": {
+                        "activate": {
+                            "description": "Activates a manual trigger. Each activation of the manual trigger must be at least 5 minutes apart, otherwise an error will be returned.",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.advertisers.manualTriggers.activate",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "triggerId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser that the manual trigger belongs.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "triggerId": {
+                                    "description": "Required. The ID of the manual trigger to activate.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:activate",
+                            "request": {
+                                "$ref": "ActivateManualTriggerRequest"
+                            },
+                            "response": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "create": {
+                            "description": "Creates a new manual trigger. Returns the newly created manual trigger if successful.",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.advertisers.manualTriggers.create",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers",
+                            "request": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "response": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "deactivate": {
+                            "description": "Deactivates a manual trigger.",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.advertisers.manualTriggers.deactivate",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "triggerId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser that the manual trigger belongs.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "triggerId": {
+                                    "description": "Required. The ID of the manual trigger to deactivate.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}:deactivate",
+                            "request": {
+                                "$ref": "DeactivateManualTriggerRequest"
+                            },
+                            "response": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "get": {
+                            "description": "Gets a manual trigger.",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.manualTriggers.get",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "triggerId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser this manual trigger belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "triggerId": {
+                                    "description": "Required. The ID of the manual trigger to fetch.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}",
+                            "response": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "list": {
+                            "description": "Lists manual triggers that are accessible to the current user for a given advertiser ID. The order is defined by the order_by parameter. A single advertiser_id is required.",
+                            "httpMethod": "GET",
+                            "id": "displayvideo.advertisers.manualTriggers.list",
+                            "parameterOrder": [
+                                "advertiserId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. The ID of the advertiser that the fetched manual triggers belong to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "filter": {
+                                    "description": "Allows filtering by manual trigger properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` or `OR` logical operators. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * The operator must be `EQUALS (=)`. * Supported fields: - `displayName` - `state` Examples: * All active manual triggers under an advertiser: `state=\"ACTIVE\"` The length of this field should be no more than 500 characters.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "orderBy": {
+                                    "description": "Field by which to sort the list. Acceptable values are: * `displayName` (default) * `state` The default sorting order is ascending. To specify descending order for a field, a suffix \"desc\" should be added to the field name. For example, `displayName desc`.",
+                                    "location": "query",
+                                    "type": "string"
+                                },
+                                "pageSize": {
+                                    "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`.",
+                                    "format": "int32",
+                                    "location": "query",
+                                    "type": "integer"
+                                },
+                                "pageToken": {
+                                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListManualTriggers` method. If not specified, the first page of results will be returned.",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers",
+                            "response": {
+                                "$ref": "ListManualTriggersResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "patch": {
+                            "description": "Updates a manual trigger. Returns the updated manual trigger if successful.",
+                            "httpMethod": "PATCH",
+                            "id": "displayvideo.advertisers.manualTriggers.patch",
+                            "parameterOrder": [
+                                "advertiserId",
+                                "triggerId"
+                            ],
+                            "parameters": {
+                                "advertiserId": {
+                                    "description": "Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "triggerId": {
+                                    "description": "Output only. The unique ID of the manual trigger.",
+                                    "format": "int64",
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                },
+                                "updateMask": {
+                                    "description": "Required. The mask to control which fields to update.",
+                                    "format": "google-fieldmask",
+                                    "location": "query",
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/advertisers/{+advertiserId}/manualTriggers/{+triggerId}",
+                            "request": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "response": {
+                                "$ref": "ManualTrigger"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        }
+                    }
+                },
                 "negativeKeywordLists": {
                     "methods": {
                         "create": {
@@ -2868,7 +3097,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option.",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -2992,7 +3221,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option.",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -3113,7 +3342,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of this assigned targeting option.",
+                                            "description": "Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -3247,7 +3476,7 @@
                                             "type": "string"
                                         },
                                         "targetingType": {
-                                            "description": "Required. Identifies the type of assigned targeting options to list.",
+                                            "description": "Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                                             "enum": [
                                                 "TARGETING_TYPE_UNSPECIFIED",
                                                 "TARGETING_TYPE_CHANNEL",
@@ -5501,7 +5730,7 @@
                                     "type": "string"
                                 },
                                 "filter": {
-                                    "description": "Allows filtering by targeting option properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The operator must be \"=\" (equal sign). * Supported fields: - `carrier_and_isp_details.type` - `geo_region_details.geo_region_type` - `targetingOptionId` Examples: * All `GEO REGION` targeting options that belong to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `geo_region_details.geo_region_type=\"GEO_REGION_TYPE_COUNTRY\" OR geo_region_details.geo_region_type=\"GEO_REGION_TYPE_STATE\"` * All `CARRIER AND ISP` targeting options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`: `carrier_and_isp_details.type=\"CARRIER_AND_ISP_TYPE_CARRIER\"`. The length of this field should be no more than 500 characters.",
+                                    "description": "Allows filtering by targeting option properties. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `OR` logical operators. * A restriction has the form of `{field} {operator} {value}`. * The operator must be \"=\" (equal sign). * Supported fields: - `carrierAndIspDetails.type` - `geoRegionDetails.geoRegionType` - `targetingOptionId` Examples: * All `GEO REGION` targeting options that belong to sub type `GEO_REGION_TYPE_COUNTRY` or `GEO_REGION_TYPE_STATE`: `geoRegionDetails.geoRegionType=\"GEO_REGION_TYPE_COUNTRY\" OR geoRegionDetails.geoRegionType=\"GEO_REGION_TYPE_STATE\"` * All `CARRIER AND ISP` targeting options that belong to sub type `CARRIER_AND_ISP_TYPE_CARRIER`: `carrierAndIspDetails.type=\"CARRIER_AND_ISP_TYPE_CARRIER\"`. The length of this field should be no more than 500 characters.",
                                     "location": "query",
                                     "type": "string"
                                 },
@@ -5612,6 +5841,113 @@
                             "path": "v1/targetingTypes/{+targetingType}/targetingOptions",
                             "response": {
                                 "$ref": "ListTargetingOptionsResponse"
+                            },
+                            "scopes": [
+                                "https://www.googleapis.com/auth/display-video"
+                            ]
+                        },
+                        "search": {
+                            "description": "Searches for targeting options of a given type based on the given search terms.",
+                            "httpMethod": "POST",
+                            "id": "displayvideo.targetingTypes.targetingOptions.search",
+                            "parameterOrder": [
+                                "targetingType"
+                            ],
+                            "parameters": {
+                                "targetingType": {
+                                    "description": "Required. The type of targeting options to retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION`",
+                                    "enum": [
+                                        "TARGETING_TYPE_UNSPECIFIED",
+                                        "TARGETING_TYPE_CHANNEL",
+                                        "TARGETING_TYPE_APP_CATEGORY",
+                                        "TARGETING_TYPE_APP",
+                                        "TARGETING_TYPE_URL",
+                                        "TARGETING_TYPE_DAY_AND_TIME",
+                                        "TARGETING_TYPE_AGE_RANGE",
+                                        "TARGETING_TYPE_REGIONAL_LOCATION_LIST",
+                                        "TARGETING_TYPE_PROXIMITY_LOCATION_LIST",
+                                        "TARGETING_TYPE_GENDER",
+                                        "TARGETING_TYPE_VIDEO_PLAYER_SIZE",
+                                        "TARGETING_TYPE_USER_REWARDED_CONTENT",
+                                        "TARGETING_TYPE_PARENTAL_STATUS",
+                                        "TARGETING_TYPE_CONTENT_INSTREAM_POSITION",
+                                        "TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION",
+                                        "TARGETING_TYPE_DEVICE_TYPE",
+                                        "TARGETING_TYPE_AUDIENCE_GROUP",
+                                        "TARGETING_TYPE_BROWSER",
+                                        "TARGETING_TYPE_HOUSEHOLD_INCOME",
+                                        "TARGETING_TYPE_ON_SCREEN_POSITION",
+                                        "TARGETING_TYPE_THIRD_PARTY_VERIFIER",
+                                        "TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION",
+                                        "TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION",
+                                        "TARGETING_TYPE_ENVIRONMENT",
+                                        "TARGETING_TYPE_CARRIER_AND_ISP",
+                                        "TARGETING_TYPE_OPERATING_SYSTEM",
+                                        "TARGETING_TYPE_DEVICE_MAKE_MODEL",
+                                        "TARGETING_TYPE_KEYWORD",
+                                        "TARGETING_TYPE_NEGATIVE_KEYWORD_LIST",
+                                        "TARGETING_TYPE_VIEWABILITY",
+                                        "TARGETING_TYPE_CATEGORY",
+                                        "TARGETING_TYPE_INVENTORY_SOURCE",
+                                        "TARGETING_TYPE_LANGUAGE",
+                                        "TARGETING_TYPE_AUTHORIZED_SELLER_STATUS",
+                                        "TARGETING_TYPE_GEO_REGION",
+                                        "TARGETING_TYPE_INVENTORY_SOURCE_GROUP",
+                                        "TARGETING_TYPE_EXCHANGE",
+                                        "TARGETING_TYPE_SUB_EXCHANGE"
+                                    ],
+                                    "enumDescriptions": [
+                                        "Default value when type is not specified or is unknown in this version.",
+                                        "Target a channel (a custom group of related websites or apps).",
+                                        "Target an app category (for example, education or puzzle games).",
+                                        "Target a specific app (for example, Angry Birds).",
+                                        "Target a specific url (for example, quora.com).",
+                                        "Target ads during a chosen time period on a specific day.",
+                                        "Target ads to a specific age range (for example, 18-24).",
+                                        "Target ads to the specified regions on a regional location list.",
+                                        "Target ads to the specified points of interest on a proximity location list.",
+                                        "Target ads to a specific gender (for example, female or male).",
+                                        "Target a specific video player size for video ads.",
+                                        "Target user rewarded content for video ads.",
+                                        "Target ads to a specific parental status (for example, parent or not a parent).",
+                                        "Target video or audio ads in a specific content instream position (for example, pre-roll, mid-roll, or post-roll).",
+                                        "Target ads in a specific content outstream position.",
+                                        "Target ads to a specific device type (for example, tablet or connected TV).",
+                                        "Target ads to an audience or groups of audiences. Singleton field, at most one can exist on a single Lineitem at a time.",
+                                        "Target ads to specific web browsers (for example, Chrome).",
+                                        "Target ads to a specific household income range (for example, top 10%).",
+                                        "Target ads in a specific on screen position.",
+                                        "Filter web sites through third party verification (for example, IAS or DoubleVerify).",
+                                        "Filter web sites by specific digital content label ratings (for example, DL-MA: suitable only for mature audiences).",
+                                        "Filter website content by sensitive categories (for example, adult).",
+                                        "Target ads to a specific environment (for example, web or app).",
+                                        "Target ads to a specific network carrier or internet service provider (ISP) (for example, Comcast or Orange).",
+                                        "Target ads to a specific operating system (for example, macOS).",
+                                        "Target ads to a specific device make or model (for example, Roku or Samsung).",
+                                        "Target ads to a specific keyword (for example, dog or retriever).",
+                                        "Target ads to a specific negative keyword list.",
+                                        "Target ads to a specific viewability (for example, 80% viewable).",
+                                        "Target ads to a specific content category (for example, arts & entertainment).",
+                                        "Purchase impressions from specific deals and auction packages.",
+                                        "Target ads to a specific language (for example, English or Japanese).",
+                                        "Target ads to ads.txt authorized sellers.",
+                                        "Target ads to a specific regional location (for example, a city or state).",
+                                        "Purchase impressions from a group of deals and auction packages.",
+                                        "Purchase impressions from specific exchanges.",
+                                        "Purchase impressions from specific sub-exchanges."
+                                    ],
+                                    "location": "path",
+                                    "pattern": "^[^/]+$",
+                                    "required": true,
+                                    "type": "string"
+                                }
+                            },
+                            "path": "v1/targetingTypes/{+targetingType}/targetingOptions:search",
+                            "request": {
+                                "$ref": "SearchTargetingOptionsRequest"
+                            },
+                            "response": {
+                                "$ref": "SearchTargetingOptionsResponse"
                             },
                             "scopes": [
                                 "https://www.googleapis.com/auth/display-video"
@@ -5791,9 +6127,15 @@
             }
         }
     },
-    "revision": "20201008",
+    "revision": "20210202",
     "rootUrl": "https://displayvideo.googleapis.com/",
     "schemas": {
+        "ActivateManualTriggerRequest": {
+            "description": "Request message for ManualTriggerService.ActivateManualTrigger.",
+            "id": "ActivateManualTriggerRequest",
+            "properties": {},
+            "type": "object"
+        },
         "ActiveViewVideoViewabilityMetricConfig": {
             "description": "Configuration for custom Active View video viewability metrics.",
             "id": "ActiveViewVideoViewabilityMetricConfig",
@@ -6028,7 +6370,7 @@
             "properties": {
                 "cmHybridConfig": {
                     "$ref": "CmHybridConfig",
-                    "description": "The configuration for advertisers that use both Campaign Manager (CM) and third-party ad servers."
+                    "description": "The configuration for advertisers that use both Campaign Manager 360 (CM360) and third-party ad servers."
                 },
                 "thirdPartyOnlyConfig": {
                     "$ref": "ThirdPartyOnlyConfig",
@@ -6055,7 +6397,7 @@
                     "type": "boolean"
                 },
                 "videoCreativeDataSharingAuthorized": {
-                    "description": "By setting this field to `true`, you, on behalf of your company, authorize Google to use video creatives associated with this Display & Video 360 advertiser to provide reporting and features related to the advertiser's television campaigns. Applicable only when the advertiser has a CM hybrid ad server configuration.",
+                    "description": "By setting this field to `true`, you, on behalf of your company, authorize Google to use video creatives associated with this Display & Video 360 advertiser to provide reporting and features related to the advertiser's television campaigns. Applicable only when the advertiser has a CM360 hybrid ad server configuration.",
                     "type": "boolean"
                 }
             },
@@ -6085,7 +6427,7 @@
                     "type": "string"
                 },
                 "timeZone": {
-                    "description": "Output only. The standard TZ database name of the advertiser's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM hybrid advertisers, the time zone is the same as that of the associated CM account; for third-party only advertisers, the time zone is the same as that of the parent partner.",
+                    "description": "Output only. The standard TZ database name of the advertiser's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones For CM360 hybrid advertisers, the time zone is the same as that of the associated CM360 account; for third-party only advertisers, the time zone is the same as that of the parent partner.",
                     "readOnly": true,
                     "type": "string"
                 }
@@ -6874,14 +7216,14 @@
             "id": "BulkEditAdvertiserAssignedTargetingOptionsRequest",
             "properties": {
                 "createRequests": {
-                    "description": "The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`.",
+                    "description": "The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                     "items": {
                         "$ref": "CreateAssignedTargetingOptionsRequest"
                     },
                     "type": "array"
                 },
                 "deleteRequests": {
-                    "description": "The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`.",
+                    "description": "The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`",
                     "items": {
                         "$ref": "DeleteAssignedTargetingOptionsRequest"
                     },
@@ -7440,16 +7782,16 @@
             "type": "object"
         },
         "CmHybridConfig": {
-            "description": "Settings for advertisers that use both Campaign Manager (CM) and third-party ad servers.",
+            "description": "Settings for advertisers that use both Campaign Manager 360 (CM360) and third-party ad servers.",
             "id": "CmHybridConfig",
             "properties": {
                 "cmAccountId": {
-                    "description": "Required. Immutable. Account ID of the CM Floodlight configuration linked with the DV360 advertiser.",
+                    "description": "Required. Immutable. Account ID of the CM360 Floodlight configuration linked with the DV360 advertiser.",
                     "format": "int64",
                     "type": "string"
                 },
                 "cmFloodlightConfigId": {
-                    "description": "Required. Immutable. ID of the CM Floodlight configuration linked with the DV360 advertiser.",
+                    "description": "Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser.",
                     "format": "int64",
                     "type": "string"
                 },
@@ -7458,7 +7800,7 @@
                     "type": "boolean"
                 },
                 "cmSyncableSiteIds": {
-                    "description": "A list of CM sites whose placements will be synced to DV360 as creatives. If absent or empty in CreateAdvertiser method, the system will automatically create a CM site. Removing sites from this list may cause DV360 creatives synced from CM to be deleted. At least one site must be specified.",
+                    "description": "A list of CM360 sites whose placements will be synced to DV360 as creatives. If absent or empty in CreateAdvertiser method, the system will automatically create a CM360 site. Removing sites from this list may cause DV360 creatives synced from CM360 to be deleted. At least one site must be specified.",
                     "items": {
                         "format": "int64",
                         "type": "string"
@@ -7466,32 +7808,32 @@
                     "type": "array"
                 },
                 "dv360ToCmCostReportingEnabled": {
-                    "description": "Whether or not to report DV360 cost to CM.",
+                    "description": "Whether or not to report DV360 cost to CM360.",
                     "type": "boolean"
                 },
                 "dv360ToCmDataSharingEnabled": {
-                    "description": "Whether or not to include DV360 data in CM data transfer reports.",
+                    "description": "Whether or not to include DV360 data in CM360 data transfer reports.",
                     "type": "boolean"
                 }
             },
             "type": "object"
         },
         "CmTrackingAd": {
-            "description": "A Campaign Manager tracking ad.",
+            "description": "A Campaign Manager 360 tracking ad.",
             "id": "CmTrackingAd",
             "properties": {
                 "cmAdId": {
-                    "description": "The ad ID of the campaign manager tracking Ad.",
+                    "description": "The ad ID of the campaign manager 360 tracking Ad.",
                     "format": "int64",
                     "type": "string"
                 },
                 "cmCreativeId": {
-                    "description": "The creative ID of the campaign manager tracking Ad.",
+                    "description": "The creative ID of the campaign manager 360 tracking Ad.",
                     "format": "int64",
                     "type": "string"
                 },
                 "cmPlacementId": {
-                    "description": "The placement ID of the campaign manager tracking Ad.",
+                    "description": "The placement ID of the campaign manager 360 tracking Ad.",
                     "format": "int64",
                     "type": "string"
                 }
@@ -7849,7 +8191,8 @@
                         "SDF_VERSION_4_2",
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
-                        "SDF_VERSION_5_2"
+                        "SDF_VERSION_5_2",
+                        "SDF_VERSION_5_3"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -7859,7 +8202,8 @@
                         "SDF version 4.2",
                         "SDF version 5.",
                         "SDF version 5.1",
-                        "SDF version 5.2;"
+                        "SDF version 5.2",
+                        "SDF version 5.3"
                     ],
                     "type": "string"
                 }
@@ -7895,14 +8239,14 @@
                     "type": "array"
                 },
                 "cmPlacementId": {
-                    "description": "Output only. The unique ID of the Campaign Manager placement associated with the creative. This field is only applicable for creatives that are synced from Campaign Manager.",
+                    "description": "Output only. The unique ID of the Campaign Manager 360 placement associated with the creative. This field is only applicable for creatives that are synced from Campaign Manager.",
                     "format": "int64",
                     "readOnly": true,
                     "type": "string"
                 },
                 "cmTrackingAd": {
                     "$ref": "CmTrackingAd",
-                    "description": "The Campaign Manager tracking ad associated with the creative. Optional for the following creative_type when created by an advertiser that uses both Campaign Manager and third-party ad serving: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases."
+                    "description": "The Campaign Manager 360 tracking ad associated with the creative. Optional for the following creative_type when created by an advertiser that uses both Campaign Manager 360 and third-party ad serving: * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` Output only for other cases."
                 },
                 "companionCreativeIds": {
                     "description": "The IDs of companion creatives for a video creative. You can assign existing display creatives (with image or HTML5 assets) to serve surrounding the publisher's video player. Companions display around the video player while the video is playing and remain after the video has completed. Creatives contain additional dimensions can not be companion creatives. This field is only supported for following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`",
@@ -8078,10 +8422,10 @@
                     ],
                     "enumDescriptions": [
                         "Hosting source is not specified or is unknown in this version.",
-                        "A creative synced from Campaign Manager. Create and update methods are **not** supported for this hosting type.",
-                        "A creative hosted by a third-party ad server (3PAS). Create and update methods are supported for this hosting type if the creative_type is one of the following: * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`",
-                        "A creative created in DV360 and hosted by Campaign Manager. Create and update methods are supported for this hosting type if the creative_type is one of the following: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`",
-                        "A rich media creative created in Studio and hosted by Campaign Manager. Create and update methods are **not** supported for this hosting type."
+                        "A creative synced from Campaign Manager 360. Create and update methods are **not** supported for this hosting type.",
+                        "A creative hosted by a third-party ad server (3PAS). Create and update methods are supported for this hosting type if the creative_type is one of the following: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_EXPANDABLE` * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`",
+                        "A creative created in DV360 and hosted by Campaign Manager 360. Create and update methods are supported for this hosting type if the creative_type is one of the following: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_NATIVE` * `CREATIVE_TYPE_NATIVE_APP_INSTALL` * `CREATIVE_TYPE_NATIVE_APP_INSTALL_SQUARE` * `CREATIVE_TYPE_NATIVE_SITE_SQUARE` * `CREATIVE_TYPE_NATIVE_VIDEO` * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_VIDEO`",
+                        "A rich media creative created in Studio and hosted by Campaign Manager 360. Create and update methods are **not** supported for this hosting type."
                     ],
                     "type": "string"
                 },
@@ -8143,7 +8487,7 @@
                     "type": "boolean"
                 },
                 "requirePingForAttribution": {
-                    "description": "Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when using a Campaign Manager tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro. Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO`",
+                    "description": "Optional. Indicates that the creative will wait for a return ping for attribution. Only valid when using a Campaign Manager 360 tracking ad with a third-party ad server parameter and the ${DC_DBM_TOKEN} macro. Optional and only valid for third-party tag creatives or third-party VAST tag creatives. Third-party tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`",
                     "type": "boolean"
                 },
                 "reviewStatus": {
@@ -8203,7 +8547,7 @@
                     "type": "string"
                 },
                 "vastTagUrl": {
-                    "description": "Optional. The URL of the VAST tag for a third-party VAST tag creative. Required and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_VIDEO`",
+                    "description": "Optional. The URL of the VAST tag for a third-party VAST tag creative. Required and only valid for third-party VAST tag creatives. Third-party VAST tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_AUDIO` * `CREATIVE_TYPE_VIDEO`",
                     "type": "string"
                 },
                 "vpaid": {
@@ -8383,21 +8727,21 @@
             "type": "object"
         },
         "Date": {
-            "description": "Represents a whole or partial calendar date, e.g. a birthday. The time of day and time zone are either specified elsewhere or are not significant. The date is relative to the Proleptic Gregorian Calendar. This can represent: * A full date, with non-zero year, month and day values * A month and day value, with a zero year, e.g. an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, e.g. a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
+            "description": "Represents a whole or partial calendar date, such as a birthday. The time of day and time zone are either specified elsewhere or are insignificant. The date is relative to the Gregorian Calendar. This can represent one of the following: * A full date, with non-zero year, month, and day values * A month and day value, with a zero year, such as an anniversary * A year on its own, with zero month and day values * A year and month value, with a zero day, such as a credit card expiration date Related types are google.type.TimeOfDay and `google.protobuf.Timestamp`.",
             "id": "Date",
             "properties": {
                 "day": {
-                    "description": "Day of month. Must be from 1 to 31 and valid for the year and month, or 0 if specifying a year by itself or a year and month where the day is not significant.",
+                    "description": "Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "month": {
-                    "description": "Month of year. Must be from 1 to 12, or 0 if specifying a year without a month and day.",
+                    "description": "Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.",
                     "format": "int32",
                     "type": "integer"
                 },
                 "year": {
-                    "description": "Year of date. Must be from 1 to 9999, or 0 if specifying a date without a year.",
+                    "description": "Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.",
                     "format": "int32",
                     "type": "integer"
                 }
@@ -8472,6 +8816,12 @@
                     "type": "string"
                 }
             },
+            "type": "object"
+        },
+        "DeactivateManualTriggerRequest": {
+            "description": "Request message for ManualTriggerService.DeactivateManualTrigger.",
+            "id": "DeactivateManualTriggerRequest",
+            "properties": {},
             "type": "object"
         },
         "DeleteAssignedTargetingOptionsRequest": {
@@ -8773,6 +9123,11 @@
                 "brandSafetyCategories": {
                     "$ref": "DoubleVerifyBrandSafetyCategories",
                     "description": "DV Brand Safety Controls."
+                },
+                "customSegmentId": {
+                    "description": "The custom segment ID provided by DoubleVerify. The ID must start with \"51\" and consist of eight digits. Custom segment ID cannot be specified along with any of the following fields: * brand_safety_categories * avoided_age_ratings * app_star_rating * fraud_invalid_traffic",
+                    "format": "int64",
+                    "type": "string"
                 },
                 "displayViewability": {
                     "$ref": "DoubleVerifyDisplayViewability",
@@ -9226,8 +9581,11 @@
                         "EXCHANGE_INMOBI",
                         "EXCHANGE_SMAATO",
                         "EXCHANGE_AJA",
+                        "EXCHANGE_SUPERSHIP",
                         "EXCHANGE_NEXSTAR_DIGITAL",
-                        "EXCHANGE_WAZE"
+                        "EXCHANGE_WAZE",
+                        "EXCHANGE_SOUNDCAST",
+                        "EXCHANGE_SHARETHROUGH"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -9280,16 +9638,19 @@
                         "United.",
                         "Yieldlab.",
                         "Yieldmo.",
-                        "UnrulyX",
-                        "Open8",
+                        "UnrulyX.",
+                        "Open8.",
                         "Triton.",
-                        "TripleLift",
-                        "Taboola",
+                        "TripleLift.",
+                        "Taboola.",
                         "InMobi.",
-                        "Smaato",
+                        "Smaato.",
                         "Aja.",
+                        "Supership.",
                         "Nexstar Digital.",
-                        "Waze."
+                        "Waze.",
+                        "SoundCast.",
+                        "Sharethrough."
                     ],
                     "type": "string"
                 },
@@ -9376,8 +9737,11 @@
                         "EXCHANGE_INMOBI",
                         "EXCHANGE_SMAATO",
                         "EXCHANGE_AJA",
+                        "EXCHANGE_SUPERSHIP",
                         "EXCHANGE_NEXSTAR_DIGITAL",
-                        "EXCHANGE_WAZE"
+                        "EXCHANGE_WAZE",
+                        "EXCHANGE_SOUNDCAST",
+                        "EXCHANGE_SHARETHROUGH"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -9430,16 +9794,19 @@
                         "United.",
                         "Yieldlab.",
                         "Yieldmo.",
-                        "UnrulyX",
-                        "Open8",
+                        "UnrulyX.",
+                        "Open8.",
                         "Triton.",
-                        "TripleLift",
-                        "Taboola",
+                        "TripleLift.",
+                        "Taboola.",
                         "InMobi.",
-                        "Smaato",
+                        "Smaato.",
                         "Aja.",
+                        "Supership.",
                         "Nexstar Digital.",
-                        "Waze."
+                        "Waze.",
+                        "SoundCast.",
+                        "Sharethrough."
                     ],
                     "type": "string"
                 },
@@ -9527,8 +9894,11 @@
                         "EXCHANGE_INMOBI",
                         "EXCHANGE_SMAATO",
                         "EXCHANGE_AJA",
+                        "EXCHANGE_SUPERSHIP",
                         "EXCHANGE_NEXSTAR_DIGITAL",
-                        "EXCHANGE_WAZE"
+                        "EXCHANGE_WAZE",
+                        "EXCHANGE_SOUNDCAST",
+                        "EXCHANGE_SHARETHROUGH"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -9581,16 +9951,19 @@
                         "United.",
                         "Yieldlab.",
                         "Yieldmo.",
-                        "UnrulyX",
-                        "Open8",
+                        "UnrulyX.",
+                        "Open8.",
                         "Triton.",
-                        "TripleLift",
-                        "Taboola",
+                        "TripleLift.",
+                        "Taboola.",
                         "InMobi.",
-                        "Smaato",
+                        "Smaato.",
                         "Aja.",
+                        "Supership.",
                         "Nexstar Digital.",
-                        "Waze."
+                        "Waze.",
+                        "SoundCast.",
+                        "Sharethrough."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -9655,7 +10028,7 @@
                     "enumDescriptions": [
                         "Default value when audience source is not specified or is unknown.",
                         "Originated from Display & Video 360.",
-                        "Originated from Campaign Manager.",
+                        "Originated from Campaign Manager 360.",
                         "Originated from Google Ad Manager.",
                         "Originated from Search Ads 360.",
                         "Originated from Youtube.",
@@ -10109,6 +10482,17 @@
             },
             "type": "object"
         },
+        "GeoRegionSearchTerms": {
+            "description": "Search terms for geo region targeting options.",
+            "id": "GeoRegionSearchTerms",
+            "properties": {
+                "geoRegionQuery": {
+                    "description": "The search query for the desired geo region. The query can be a prefix, e.g. \"New Yor\", \"Seattle\", \"USA\", etc.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "GeoRegionTargetingOptionDetails": {
             "description": "Represents a targetable geographic region. This will be populated in the geo_region_details field when targeting_type is `TARGETING_TYPE_GEO_REGION`.",
             "id": "GeoRegionTargetingOptionDetails",
@@ -10210,14 +10594,18 @@
                         "GOOGLE_AUDIENCE_TYPE_AFFINITY",
                         "GOOGLE_AUDIENCE_TYPE_IN_MARKET",
                         "GOOGLE_AUDIENCE_TYPE_INSTALLED_APPS",
-                        "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES"
+                        "GOOGLE_AUDIENCE_TYPE_NEW_MOBILE_DEVICES",
+                        "GOOGLE_AUDIENCE_TYPE_LIFE_EVENT",
+                        "GOOGLE_AUDIENCE_TYPE_EXTENDED_DEMOGRAPHIC"
                     ],
                     "enumDescriptions": [
                         "Default value when type is not specified or is unknown.",
                         "Affinity type Google audience.",
                         "In-Market type Google audience.",
-                        "Installed-apps type Google audience.",
-                        "New-mobile-devices type Google audience."
+                        "Installed-Apps type Google audience.",
+                        "New-Mobile-Devices type Google audience.",
+                        "Life-Event type Google audience.",
+                        "Extended-Demographic type Google audience."
                     ],
                     "readOnly": true,
                     "type": "string"
@@ -10402,7 +10790,7 @@
                 },
                 "bidStrategy": {
                     "$ref": "BiddingStrategy",
-                    "description": "Optional. The bidding strategy of the insertion order. By default, fixed_bid is set."
+                    "description": "The bidding strategy of the insertion order. By default, fixed_bid is set."
                 },
                 "budget": {
                     "$ref": "InsertionOrderBudget",
@@ -10445,6 +10833,20 @@
                     "description": "Output only. The unique ID of the insertion order. Assigned by the system.",
                     "format": "int64",
                     "readOnly": true,
+                    "type": "string"
+                },
+                "insertionOrderType": {
+                    "description": "The type of insertion order. If this field is unspecified in creation, the value defaults to `RTB`.",
+                    "enum": [
+                        "INSERTION_ORDER_TYPE_UNSPECIFIED",
+                        "RTB",
+                        "OVER_THE_TOP"
+                    ],
+                    "enumDescriptions": [
+                        "Insertion order type is not specified or is unknown.",
+                        "Real-time bidding.",
+                        "Over-the-top."
+                    ],
                     "type": "string"
                 },
                 "integrationDetails": {
@@ -10553,6 +10955,14 @@
             "description": "Details of Integral Ad Science settings.",
             "id": "IntegralAdScience",
             "properties": {
+                "customSegmentId": {
+                    "description": "The custom segment ID provided by Integral Ad Science. The ID must be between `1000001` and `1999999`, inclusive.",
+                    "items": {
+                        "format": "int64",
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
                 "displayViewability": {
                     "description": "Display Viewability section (applicable to display line items only).",
                     "enum": [
@@ -10869,8 +11279,11 @@
                         "EXCHANGE_INMOBI",
                         "EXCHANGE_SMAATO",
                         "EXCHANGE_AJA",
+                        "EXCHANGE_SUPERSHIP",
                         "EXCHANGE_NEXSTAR_DIGITAL",
-                        "EXCHANGE_WAZE"
+                        "EXCHANGE_WAZE",
+                        "EXCHANGE_SOUNDCAST",
+                        "EXCHANGE_SHARETHROUGH"
                     ],
                     "enumDescriptions": [
                         "Exchange is not specified or is unknown in this version.",
@@ -10923,16 +11336,19 @@
                         "United.",
                         "Yieldlab.",
                         "Yieldmo.",
-                        "UnrulyX",
-                        "Open8",
+                        "UnrulyX.",
+                        "Open8.",
                         "Triton.",
-                        "TripleLift",
-                        "Taboola",
+                        "TripleLift.",
+                        "Taboola.",
                         "InMobi.",
-                        "Smaato",
+                        "Smaato.",
                         "Aja.",
+                        "Supership.",
                         "Nexstar Digital.",
-                        "Waze."
+                        "Waze.",
+                        "SoundCast.",
+                        "Sharethrough."
                     ],
                     "type": "string"
                 },
@@ -11290,7 +11706,8 @@
                         "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL",
                         "LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INVENTORY",
                         "LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INVENTORY",
-                        "LINE_ITEM_TYPE_AUDIO_DEFAULT"
+                        "LINE_ITEM_TYPE_AUDIO_DEFAULT",
+                        "LINE_ITEM_TYPE_VIDEO_OVER_THE_TOP"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
@@ -11300,9 +11717,14 @@
                         "Video ads that drive installs of an app.",
                         "Display ads served on mobile app inventory.",
                         "Video ads served on mobile app inventory.",
-                        "Rtb Audio ads sold for a variety of environments."
+                        "RTB Audio ads sold for a variety of environments.",
+                        "Over-the-top ads present in OTT insertion orders. This type is only applicable to line items with an insertion order of insertion_order_type `OVER_THE_TOP`."
                     ],
                     "type": "string"
+                },
+                "mobileApp": {
+                    "$ref": "MobileApp",
+                    "description": "The mobile app promoted by the line item. This is applicable only when line_item_type is either `LINE_ITEM_TYPE_DISPLAY_MOBILE_APP_INSTALL` or `LINE_ITEM_TYPE_VIDEO_MOBILE_APP_INSTALL`."
                 },
                 "name": {
                     "description": "Output only. The resource name of the line item.",
@@ -11323,6 +11745,10 @@
                 "partnerRevenueModel": {
                     "$ref": "PartnerRevenueModel",
                     "description": "Required. The partner revenue model setting of the line item."
+                },
+                "targetingExpansion": {
+                    "$ref": "TargetingExpansionConfig",
+                    "description": "The [targeting expansion](https://support.google.com/displayvideo/answer/10191558) settings of the line item. This config is only applicable when eligible audience list targeting is assigned to the line item."
                 },
                 "updateTime": {
                     "description": "Output only. The timestamp when the line item was last updated. Assigned by the system.",
@@ -11350,7 +11776,8 @@
                             "TARGETING_REVOKED_OR_CLOSED_USER_LIST",
                             "APP_INSTALL_NO_OPTIMAL_BIDDING_STRATEGY",
                             "CREATIVE_SIZE_NOT_IN_USE_FOR_TARGETED_DEALS",
-                            "NO_CREATIVE_FOR_TARGETED_DEALS"
+                            "NO_CREATIVE_FOR_TARGETED_DEALS",
+                            "TARGETING_DEPRECATED_GEO_TARGET"
                         ],
                         "enumDescriptions": [
                             "Not specified or is unknown.",
@@ -11369,7 +11796,8 @@
                             "This line item targets one or more user lists that are no longer available. In the future, this will prevent the line item from serving, so consider removing these lists from your targeting.",
                             "This app install line item does not have an optimal bidding strategy.",
                             "Deals targeted by this line item accept creative sizes which are not in use. This may limit the line item's delivery or performance.",
-                            "This line item does not contain any creative for the targeted deals."
+                            "This line item does not contain any creative for the targeted deals.",
+                            "This line item targets a geo target that is deprecated."
                         ],
                         "type": "string"
                     },
@@ -11435,13 +11863,20 @@
                     "enum": [
                         "LINE_ITEM_FLIGHT_DATE_TYPE_UNSPECIFIED",
                         "LINE_ITEM_FLIGHT_DATE_TYPE_INHERITED",
-                        "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM"
+                        "LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM",
+                        "LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER"
                     ],
                     "enumDescriptions": [
                         "Type value is not specified or is unknown in this version.",
                         "The line item's flight dates are inherited from its parent insertion order.",
-                        "The line item uses its own custom flight dates."
+                        "The line item uses its own custom flight dates.",
+                        "The line item uses a trigger."
                     ],
+                    "type": "string"
+                },
+                "triggerId": {
+                    "description": "The ID of the manual trigger associated with the line item. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_TRIGGER`. Must not be set otherwise. * When set, the line item's flight dates are inherited from its parent insertion order. * Active line items will spend when the selected trigger is activated within the parent insertion order's flight dates.",
+                    "format": "int64",
                     "type": "string"
                 }
             },
@@ -11758,6 +12193,23 @@
             },
             "type": "object"
         },
+        "ListManualTriggersResponse": {
+            "id": "ListManualTriggersResponse",
+            "properties": {
+                "manualTriggers": {
+                    "description": "The list of manual triggers. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "ManualTrigger"
+                    },
+                    "type": "array"
+                },
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListManualTriggers` method to retrieve the next page of results.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "ListNegativeKeywordListsResponse": {
             "description": "Response message for NegativeKeywordListService.ListNegativeKeywordLists.",
             "id": "ListNegativeKeywordListsResponse",
@@ -11939,6 +12391,59 @@
             },
             "type": "object"
         },
+        "ManualTrigger": {
+            "description": "A single manual trigger in Display & Video 360.",
+            "id": "ManualTrigger",
+            "properties": {
+                "activationDurationMinutes": {
+                    "description": "Required. The maximum duration of each activation in minutes. Must be between 1 and 360 inclusive. After this duration, the trigger will be automatically deactivated.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "advertiserId": {
+                    "description": "Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Required. The display name of the manual trigger. Must be UTF-8 encoded with a maximum size of 240 bytes.",
+                    "type": "string"
+                },
+                "latestActivationTime": {
+                    "description": "Output only. The timestamp of the trigger's latest activation.",
+                    "format": "google-datetime",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Output only. The resource name of the manual trigger.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "state": {
+                    "description": "Output only. The state of the manual trigger. Will be set to the `INACTIVE` state upon creation.",
+                    "enum": [
+                        "STATE_UNSPECIFIED",
+                        "INACTIVE",
+                        "ACTIVE"
+                    ],
+                    "enumDescriptions": [
+                        "Default value when state is not specified or is unknown in this version.",
+                        "The trigger is currently inactive and ready to be activated.",
+                        "The trigger is currently active (activated)."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "triggerId": {
+                    "description": "Output only. The unique ID of the manual trigger.",
+                    "format": "int64",
+                    "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "MaximizeSpendBidStrategy": {
             "description": "A strategy that automatically adjusts the bid to optimize a specified performance goal while spending the full budget.",
             "id": "MaximizeSpendBidStrategy",
@@ -11985,12 +12490,48 @@
             "id": "MeasurementConfig",
             "properties": {
                 "dv360ToCmCostReportingEnabled": {
-                    "description": "Whether or not to report DV360 cost to CM.",
+                    "description": "Whether or not to report DV360 cost to CM360.",
                     "type": "boolean"
                 },
                 "dv360ToCmDataSharingEnabled": {
-                    "description": "Whether or not to include DV360 data in CM data transfer reports.",
+                    "description": "Whether or not to include DV360 data in CM360 data transfer reports.",
                     "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "MobileApp": {
+            "description": "A mobile app promoted by a mobile app install line item.",
+            "id": "MobileApp",
+            "properties": {
+                "appId": {
+                    "description": "Required. The ID of the app provided by the platform store. Android apps are identified by the bundle ID used by Android's Play store, such as `com.google.android.gm`. iOS apps are identified by a nine-digit app ID used by Apple's App store, such as `422689480`.",
+                    "type": "string"
+                },
+                "displayName": {
+                    "description": "Output only. The app name.",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "platform": {
+                    "description": "Output only. The app platform.",
+                    "enum": [
+                        "PLATFORM_UNSPECIFIED",
+                        "IOS",
+                        "ANDROID"
+                    ],
+                    "enumDescriptions": [
+                        "Platform is not specified.",
+                        "iOS platform.",
+                        "Android platform."
+                    ],
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "publisher": {
+                    "description": "Output only. The app publisher.",
+                    "readOnly": true,
+                    "type": "string"
                 }
             },
             "type": "object"
@@ -12000,7 +12541,7 @@
             "id": "Money",
             "properties": {
                 "currencyCode": {
-                    "description": "The 3-letter currency code defined in ISO 4217.",
+                    "description": "The three-letter currency code defined in ISO 4217.",
                     "type": "string"
                 },
                 "nanos": {
@@ -12940,7 +13481,8 @@
                         "SDF_VERSION_4_2",
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
-                        "SDF_VERSION_5_2"
+                        "SDF_VERSION_5_2",
+                        "SDF_VERSION_5_3"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -12950,7 +13492,8 @@
                         "SDF version 4.2",
                         "SDF version 5.",
                         "SDF version 5.1",
-                        "SDF version 5.2;"
+                        "SDF version 5.2",
+                        "SDF version 5.3"
                     ],
                     "type": "string"
                 }
@@ -12992,7 +13535,8 @@
                         "SDF_VERSION_4_2",
                         "SDF_VERSION_5",
                         "SDF_VERSION_5_1",
-                        "SDF_VERSION_5_2"
+                        "SDF_VERSION_5_2",
+                        "SDF_VERSION_5_3"
                     ],
                     "enumDescriptions": [
                         "SDF version value is not specified or is unknown in this version.",
@@ -13002,9 +13546,53 @@
                         "SDF version 4.2",
                         "SDF version 5.",
                         "SDF version 5.1",
-                        "SDF version 5.2;"
+                        "SDF version 5.2",
+                        "SDF version 5.3"
                     ],
                     "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchTargetingOptionsRequest": {
+            "description": "Request message for SearchTargetingOptions.",
+            "id": "SearchTargetingOptionsRequest",
+            "properties": {
+                "advertiserId": {
+                    "description": "Required. The Advertiser this request is being made in the context of.",
+                    "format": "int64",
+                    "type": "string"
+                },
+                "geoRegionSearchTerms": {
+                    "$ref": "GeoRegionSearchTerms",
+                    "description": "Search terms for geo region targeting options. Can only be used when targeting_type is `TARGETING_TYPE_GEO_REGION`."
+                },
+                "pageSize": {
+                    "description": "Requested page size. Must be between `1` and `100`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified.",
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "pageToken": {
+                    "description": "A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `SearchTargetingOptions` method. If not specified, the first page of results will be returned.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SearchTargetingOptionsResponse": {
+            "description": "Response message for SearchTargetingOptionsResponse.",
+            "id": "SearchTargetingOptionsResponse",
+            "properties": {
+                "nextPageToken": {
+                    "description": "A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `SearchTargetingOptions` method to retrieve the next page of results.",
+                    "type": "string"
+                },
+                "targetingOptions": {
+                    "description": "The list of targeting options that match the search criteria. This list will be absent if empty.",
+                    "items": {
+                        "$ref": "TargetingOption"
+                    },
+                    "type": "array"
                 }
             },
             "type": "object"
@@ -13178,6 +13766,39 @@
                 "displayName": {
                     "description": "Output only. The display name of the sub-exchange.",
                     "readOnly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "TargetingExpansionConfig": {
+            "description": "Settings that control the targeting expansion of the line item. Targeting expansion allows the line item to reach a larger audience based on the original audience list and the targeting expansion level.",
+            "id": "TargetingExpansionConfig",
+            "properties": {
+                "excludeFirstPartyAudience": {
+                    "description": "Required. Whether to exclude first party audiences from targeting. Similar audiences of the excluded first party lists will not be excluded. Only applicable when a first-party audience is positively targeted (directly or included in a combined audience), otherwise this selection will be ignored.",
+                    "type": "boolean"
+                },
+                "targetingExpansionLevel": {
+                    "description": "Required. Magnitude of expansion for applicable targeting under this line item.",
+                    "enum": [
+                        "TARGETING_EXPANSION_LEVEL_UNSPECIFIED",
+                        "NO_EXPANSION",
+                        "LEAST_EXPANSION",
+                        "SOME_EXPANSION",
+                        "BALANCED_EXPANSION",
+                        "MORE_EXPANSION",
+                        "MOST_EXPANSION"
+                    ],
+                    "enumDescriptions": [
+                        "Targeting expansion level is not specified or is unknown in this version.",
+                        "Targeting expansion off.",
+                        "Conservative targeting expansion, lowest reach.",
+                        "Moderately conservative targeting expansion, lower reach.",
+                        "Moderate targeting expansion, medium reach.",
+                        "Moderately aggressive targeting expansion, higher reach.",
+                        "Aggressive targeting expansion, highest reach."
+                    ],
                     "type": "string"
                 }
             },
@@ -13592,7 +14213,7 @@
                         "Use Ad-ID to provide the Universal Ad ID.",
                         "Use clearcast.co.uk to provide the Universal Ad ID.",
                         "Use Display & Video 360 to provide the Universal Ad ID.",
-                        "Use Campaign Manager to provide the Universal Ad ID."
+                        "Use Campaign Manager 360 to provide the Universal Ad ID."
                     ],
                     "type": "string"
                 }

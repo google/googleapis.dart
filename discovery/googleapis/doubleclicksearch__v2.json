@@ -389,7 +389,7 @@
             }
         }
     },
-    "revision": "20201006",
+    "revision": "20210128",
     "rootUrl": "https://doubleclicksearch.googleapis.com/",
     "schemas": {
         "Availability": {

@@ -331,7 +331,7 @@
             }
         }
     },
-    "revision": "20200930",
+    "revision": "20210125",
     "rootUrl": "https://doubleclickbidmanager.googleapis.com/",
     "schemas": {
         "ChannelGrouping": {
@@ -800,9 +800,13 @@
                         "FILTER_PATH_PATTERN_ID",
                         "FILTER_PATH_EVENT_INDEX",
                         "FILTER_EVENT_TYPE",
-                        "FILTER_CHANNEL_GROUPING"
+                        "FILTER_CHANNEL_GROUPING",
+                        "FILTER_OM_SDK_AVAILABLE",
+                        "FILTER_DATA_SOURCE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -1408,9 +1412,13 @@
                             "FILTER_PATH_PATTERN_ID",
                             "FILTER_PATH_EVENT_INDEX",
                             "FILTER_EVENT_TYPE",
-                            "FILTER_CHANNEL_GROUPING"
+                            "FILTER_CHANNEL_GROUPING",
+                            "FILTER_OM_SDK_AVAILABLE",
+                            "FILTER_DATA_SOURCE"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -2116,9 +2124,31 @@
                             "METRIC_CONVERTING_PATHS",
                             "METRIC_ACTIVITY_REVENUE",
                             "METRIC_PERCENT_INVALID_IMPRESSIONS_PREBID",
-                            "METRIC_PROVISIONAL_IMPRESSIONS"
+                            "METRIC_GRP_CORRECTED_IMPRESSIONS",
+                            "METRIC_DEMO_CORRECTED_CLICKS",
+                            "METRIC_VIRTUAL_PEOPLE_IMPRESSION_REACH_BY_DEMO",
+                            "METRIC_VIRTUAL_PEOPLE_CLICK_REACH_BY_DEMO",
+                            "METRIC_VIRTUAL_PEOPLE_AVERAGE_IMPRESSION_FREQUENCY_BY_DEMO",
+                            "METRIC_DEMO_COMPOSITION_IMPRESSION",
+                            "METRIC_VIRTUAL_PEOPLE_IMPRESSION_REACH_SHARE_PERCENT",
+                            "METRIC_DEMO_POPULATION",
+                            "METRIC_VIRTUAL_PEOPLE_IMPRESSION_REACH_PERCENT",
+                            "METRIC_TARGET_RATING_POINTS",
+                            "METRIC_PROVISIONAL_IMPRESSIONS",
+                            "METRIC_VENDOR_BLOCKED_ADS"
                         ],
                         "enumDescriptions": [
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
                             "",
                             "",
                             "",
@@ -2952,9 +2982,13 @@
                         "FILTER_PATH_PATTERN_ID",
                         "FILTER_PATH_EVENT_INDEX",
                         "FILTER_EVENT_TYPE",
-                        "FILTER_CHANNEL_GROUPING"
+                        "FILTER_CHANNEL_GROUPING",
+                        "FILTER_OM_SDK_AVAILABLE",
+                        "FILTER_DATA_SOURCE"
                     ],
                     "enumDescriptions": [
+                        "",
+                        "",
                         "",
                         "",
                         "",
@@ -3429,7 +3463,7 @@
                     "type": "string"
                 },
                 "nextRunMinuteOfDay": {
-                    "description": "Deprecated. This field has no effect.",
+                    "description": "Time of day at which a new report will be generated, represented as minutes past midnight. Range is 0 to 1439. Only applies to scheduled reports.",
                     "format": "int32",
                     "type": "integer"
                 },

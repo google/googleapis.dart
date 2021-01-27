@@ -116,6 +116,10 @@
                                 ],
                                 "maxSize": "10737418240",
                                 "protocols": {
+                                    "resumable": {
+                                        "multipart": true,
+                                        "path": "/resumable/upload/playcustomapp/v1/accounts/{account}/customApps"
+                                    },
                                     "simple": {
                                         "multipart": true,
                                         "path": "/upload/playcustomapp/v1/accounts/{account}/customApps"
@@ -151,7 +155,7 @@
             }
         }
     },
-    "revision": "20201007",
+    "revision": "20210203",
     "rootUrl": "https://playcustomapp.googleapis.com/",
     "schemas": {
         "CustomApp": {
