@@ -105,17 +105,31 @@ $ignoreForFileComments
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-import "dart:core" as core;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
 
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
-
 import '$apiImportPath' as api;
 
+import '../$testSharedDartFileName';
+
+""";
+}
+
+const testSharedDartFileName = 'test_shared.dart';
+
+const testHelperLibraryContent = '''
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
+
+import 'package:http/http.dart' as http;
+
 class HttpServerMock extends http.BaseClient {
-  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object) _callback;
+  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
+      _callback;
   core.bool _expectJson;
 
   void register(
@@ -141,7 +155,7 @@ class HttpServerMock extends http.BaseClient {
         return _callback(request, convert.json.decode(jsonString));
       }
     } else {
-      var stream = request.finalize();
+      final stream = request.finalize();
       if (stream == null) {
         return _callback(request, []);
       } else {
@@ -153,12 +167,14 @@ class HttpServerMock extends http.BaseClient {
 }
 
 http.StreamedResponse stringResponse(
-    core.int status, core.Map<core.String, core.String> headers, core.String body) {
-  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
+  core.int status,
+  core.Map<core.String, core.String> headers,
+  core.String body,
+) {
+  final stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
   return http.StreamedResponse(stream, status, headers: headers);
 }
-""";
-}
+''';
 
 /// Will generate tests for [resource] of [apiLibrary].
 class ResourceTest extends TestHelper {

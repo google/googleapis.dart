@@ -18,59 +18,15 @@
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-import "dart:core" as core;
-import "dart:async" as async;
-import "dart:convert" as convert;
+import 'dart:async' as async;
+import 'dart:convert' as convert;
+import 'dart:core' as core;
 
 import 'package:http/http.dart' as http;
 import 'package:test/test.dart' as unittest;
-
 import 'package:googleapis_beta/dataflow/v1b3.dart' as api;
 
-class HttpServerMock extends http.BaseClient {
-  core.Future<http.StreamedResponse> Function(http.BaseRequest, core.Object)
-      _callback;
-  core.bool _expectJson;
-
-  void register(
-    core.Future<http.StreamedResponse> Function(
-      http.BaseRequest bob,
-      core.Object foo,
-    )
-        callback,
-    core.bool expectJson,
-  ) {
-    _callback = callback;
-    _expectJson = expectJson;
-  }
-
-  @core.override
-  async.Future<http.StreamedResponse> send(http.BaseRequest request) async {
-    if (_expectJson) {
-      final jsonString =
-          await request.finalize().transform(convert.utf8.decoder).join('');
-      if (jsonString.isEmpty) {
-        return _callback(request, null);
-      } else {
-        return _callback(request, convert.json.decode(jsonString));
-      }
-    } else {
-      var stream = request.finalize();
-      if (stream == null) {
-        return _callback(request, []);
-      } else {
-        final data = await stream.toBytes();
-        return _callback(request, data);
-      }
-    }
-  }
-}
-
-http.StreamedResponse stringResponse(core.int status,
-    core.Map<core.String, core.String> headers, core.String body) {
-  var stream = async.Stream.fromIterable([convert.utf8.encode(body)]);
-  return http.StreamedResponse(stream, status, headers: headers);
-}
+import '../test_shared.dart';
 
 core.int buildCounterApproximateProgress = 0;
 api.ApproximateProgress buildApproximateProgress() {

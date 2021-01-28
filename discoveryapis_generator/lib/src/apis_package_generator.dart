@@ -75,6 +75,10 @@ class ApisPackageGenerator {
 
     writeFile(pubspecYamlPath, _writePubspec);
     writeString(gitIgnorePath, gitIgnore);
+    writeDartSource(
+      '$testFolderPath/$testSharedDartFileName',
+      testHelperLibraryContent,
+    );
 
     final results = <GenerateResult>[];
     for (var description in descriptions) {
@@ -111,7 +115,8 @@ class ApisPackageGenerator {
           errorMessage = '$error\nstack: $stack';
         }
         results.add(
-            GenerateResult.error(name, version, packagePath, errorMessage));
+          GenerateResult.error(name, version, packagePath, errorMessage),
+        );
       }
     }
     return results;
