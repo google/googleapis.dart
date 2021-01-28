@@ -105,8 +105,6 @@ $ignoreForFileComments
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-library ${apiLibrary.libraryName}.test;
-
 import "dart:core" as core;
 import "dart:async" as async;
 import "dart:convert" as convert;

@@ -18,8 +18,6 @@
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-library googleapis_beta.oslogin.v1beta.test;
-
 import "dart:core" as core;
 import "dart:async" as async;
 import "dart:convert" as convert;

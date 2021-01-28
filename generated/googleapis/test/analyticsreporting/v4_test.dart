@@ -18,8 +18,6 @@
 // ignore_for_file: prefer_single_quotes
 // ignore_for_file: unused_local_variable
 
-library googleapis.analyticsreporting.v4.test;
-
 import "dart:core" as core;
 import "dart:async" as async;
 import "dart:convert" as convert;
