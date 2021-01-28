@@ -1,2 +1,2 @@
 /// User-Agent request header used by all libraries in this package
-const userAgent = 'Dart package:googleapis / 0.57.0';
+const userAgent = 'Dart package:googleapis / 1.0.0-dev';

@@ -2,7 +2,7 @@
 # should be ignored.
 packages:
 - googleapis:
-    version: 0.57.0
+    version: 1.0.0-dev
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
@@ -178,7 +178,7 @@ packages:
     - recommender:v1
 
 - googleapis_beta:
-    version: 0.51.0
+    version: 1.0.0-dev
     homepage: https://github.com/dart-lang/googleapis
     readme: resources/README.md
     license: resources/LICENSE
